@@ -142,6 +142,7 @@ PY_cos_doubles(
   PyObject *kwds)
 {
 // splicer begin function.cos_doubles
+    double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
     npy_intp SHD_out[1];
@@ -171,7 +172,7 @@ PY_cos_doubles(
     }
 
     // pre_call
-    double * in = PyArray_DATA(SHPy_in);
+    in = PyArray_DATA(SHPy_in);
     double * out = PyArray_DATA(SHPy_out);
     int sizein = PyArray_SIZE(SHPy_in);
 
@@ -215,6 +216,7 @@ PY_truncate_to_int(
   PyObject *kwds)
 {
 // splicer begin function.truncate_to_int
+    double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
     npy_intp SHD_out[1];
@@ -244,7 +246,7 @@ PY_truncate_to_int(
     }
 
     // pre_call
-    double * in = PyArray_DATA(SHPy_in);
+    in = PyArray_DATA(SHPy_in);
     int * out = PyArray_DATA(SHPy_out);
     int sizein = PyArray_SIZE(SHPy_in);
 
@@ -514,6 +516,7 @@ PY_Sum(
   PyObject *kwds)
 {
 // splicer begin function.sum
+    int * values;
     PyObject * SHTPy_values;
     PyArrayObject * SHPy_values = NULL;
     char *SHT_kwlist[] = {
@@ -535,7 +538,7 @@ PY_Sum(
     }
 
     // pre_call
-    int * values = PyArray_DATA(SHPy_values);
+    values = PyArray_DATA(SHPy_values);
     int result;  // intent(out)
     int len = PyArray_SIZE(SHPy_values);
 

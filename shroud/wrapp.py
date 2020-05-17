@@ -3643,23 +3643,27 @@ py_statements = [
     dict(
         name="py_native_*_in_pointer_numpy",
         need_numpy=True,
-        parse_format="O",
-        parse_args=["&{pytmp_var}"],
-        c_local_var="pointer",
         declare=[
+            "{cxx_type} * {c_var};",
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
+        parse_format="O",
+        parse_args=["&{pytmp_var}"],
+#XXX        c_local_var="pointer",
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_type} * {c_var} = PyArray_DATA({py_var});",
+#XXX            "{c_type} * {c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+#XXX            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
+        arg_call=["{c_var}"],
         cleanup=[
             "Py_DECREF({py_var});",
         ],
