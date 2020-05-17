@@ -48,6 +48,16 @@ contains
     call assert_true(associated(arr))
     call assert_equals(10, size(arr))
 
+    ! Make sure we're pointing to the array in the instance.
+    arr(:) = 0
+    call assert_equals(0, arrinst%sum_array())
+    arr(:) = 1
+    call assert_equals(10, arrinst%sum_array())
+    arr(:) = 0
+    arr(1) = 10
+    arr(10) = 1
+    call assert_equals(11, arrinst%sum_array())
+
     arrconst => arrinst%get_array_const()
     call assert_true(associated(arrconst, arr))
     call assert_equals(10, size(arrconst))

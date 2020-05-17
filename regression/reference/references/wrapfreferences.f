@@ -69,6 +69,7 @@ module references_mod
         procedure :: fetch_void_ptr => arraywrapper_fetch_void_ptr
         procedure :: fetch_void_ref => arraywrapper_fetch_void_ref
         procedure :: check_ptr => arraywrapper_check_ptr
+        procedure :: sum_array => arraywrapper_sum_array
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -506,6 +507,20 @@ module references_mod
             logical(C_BOOL) :: SHT_rv
         end function c_arraywrapper_check_ptr
 
+        ! ----------------------------------------
+        ! Function:  int sumArray
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_arraywrapper_sum_array(self) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_sum_array")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_arraywrapper_sum_array
+
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
 
@@ -885,6 +900,23 @@ contains
         SHT_rv = c_arraywrapper_check_ptr(obj%cxxmem, array)
         ! splicer end class.ArrayWrapper.method.check_ptr
     end function arraywrapper_check_ptr
+
+    ! ----------------------------------------
+    ! Function:  int sumArray
+    ! int sumArray
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function arraywrapper_sum_array(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(arraywrapper) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.ArrayWrapper.method.sum_array
+        SHT_rv = c_arraywrapper_sum_array(obj%cxxmem)
+        ! splicer end class.ArrayWrapper.method.sum_array
+    end function arraywrapper_sum_array
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)

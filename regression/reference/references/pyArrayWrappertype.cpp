@@ -582,6 +582,32 @@ fail:
     return nullptr;
 // splicer end class.ArrayWrapper.method.check_ptr
 }
+
+// ----------------------------------------
+// Function:  int sumArray
+// Requested: py_native_scalar_result
+// Match:     py_default
+static char PY_sumArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_sumArray(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.sum_array
+    PyObject * SHTPy_rv = nullptr;
+
+    int SHCXX_rv = self->obj->sumArray();
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.ArrayWrapper.method.sum_array
+}
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
 static PyMethodDef PY_ArrayWrapper_methods[] = {
@@ -615,6 +641,8 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_fetchVoidRef__doc__},
     {"checkPtr", (PyCFunction)PY_checkPtr, METH_VARARGS|METH_KEYWORDS,
         PY_checkPtr__doc__},
+    {"sumArray", (PyCFunction)PY_sumArray, METH_NOARGS,
+        PY_sumArray__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

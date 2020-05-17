@@ -94,6 +94,8 @@ void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
 
 bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array);
 
+int REF_ArrayWrapper_sum_array(REF_ArrayWrapper * self);
+
 #ifdef __cplusplus
 }
 #endif
