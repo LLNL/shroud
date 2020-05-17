@@ -1293,7 +1293,8 @@ return 1;""",
                 # not sure how function pointers work with Python.
                 c_local_var = "funcptr"
             else:
-                # non-strings should be scalars
+                # non-strings should be scalars.
+                # This allows PyArg to fill in their values.
                 fmt_arg.c_deref = ""
                 #                fmt_arg.cxx_addr = '&'
                 #                fmt_arg.cxx_member = '.'
@@ -3694,8 +3695,8 @@ py_statements = [
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        c_local_var="pointer",
         declare=[
+            "{cxx_type} * {cxx_var};",
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
@@ -3704,11 +3705,12 @@ py_statements = [
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_type} * {c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
+        arg_call=["{c_var}"],
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
@@ -3719,7 +3721,9 @@ py_statements = [
     dict(
         name="py_native_*_out_pointer_numpy",
         need_numpy=True,
-        c_local_var="pointer",
+        arg_declare=[
+            "{cxx_type} * {cxx_var};",
+        ],
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
@@ -3730,11 +3734,12 @@ py_statements = [
             "{npy_rank}, {npy_dims_var}, {numpy_type}){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_type} * {c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{cxx_type} * {cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
+        arg_call=["{c_var}"],
         object_created=True,
         fail=[
             "Py_XDECREF({py_var});",
@@ -3795,12 +3800,13 @@ py_statements = [
         name="py_native_**_out_pointer_numpy",
         base="py_native_*_result_pointer_numpy",
         # Declare a local variable for the argument.
-        declare=[
+        arg_declare=[
             "{c_const}{c_type} *{c_var};",
+        ],
+        declare=[
             "{npy_intp_decl}"
             "PyObject *{py_var} = {nullptr};"
         ],
-        c_local_var="pointer",
         arg_call=["&{cxx_var}"],
     ),
 
@@ -3811,7 +3817,6 @@ py_statements = [
         c_helper="create_from_PyObject_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        c_local_var="pointer",
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
             "{cxx_type} * {cxx_var} = {nullptr};",
@@ -3822,6 +3827,7 @@ py_statements = [
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
+        arg_call=["{cxx_var}"],
         cleanup=[
             "{stdlib}free({cxx_var});",
         ],
@@ -3837,7 +3843,6 @@ py_statements = [
         c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        c_local_var="pointer",
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
             "{cxx_type} * {cxx_var} = {nullptr};",
@@ -3848,6 +3853,7 @@ py_statements = [
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
+        arg_call=["{cxx_var}"],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
             "PyObject *{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
@@ -3868,10 +3874,11 @@ py_statements = [
         c_helper="to_PyList_{cxx_type}",
         c_header=["<stdlib.h>"],  # malloc/free
         cxx_header=["<cstdlib>"],  # malloc/free
-        c_local_var="pointer",
+        arg_declare=[
+            "{cxx_type} * {cxx_var} = {nullptr};",
+        ],
         declare=[
             "PyObject *{py_var} = {nullptr};",
-            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         c_pre_call=[
             "{c_var} = malloc(\tsizeof({c_type}) * ({array_size}));",
@@ -3879,6 +3886,7 @@ py_statements = [
         cxx_pre_call=[
             "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));",
         ] + malloc_error,
+        arg_call=["{c_var}"],
         post_call=[
             "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});",
             "if ({py_var} == {nullptr}) goto fail;",
@@ -3898,11 +3906,12 @@ py_statements = [
         name="py_native_**_out_pointer_list",
         base="py_native_*_result_pointer_list",
         # Declare a local variable for the argument.
-        declare=[
+        arg_declare=[
             "{c_const}{c_type} *{c_var};",
+        ],
+        declare=[
             "PyObject *{py_var} = {nullptr};"
         ],
-        c_local_var="pointer",
         arg_call=["&{cxx_var}"],
     ),
     
@@ -3922,11 +3931,12 @@ py_statements = [
     dict(
         # Declare a local pointer, pass address to library, convert to capsule.
         name="py_native_**_out_raw",
-        declare=[
+        arg_declare=[
             "{c_type} *{c_var};",
+        ],
+        declare=[
             "PyObject *{py_var} = {nullptr};"
         ],
-        c_local_var="pointer",
         arg_call=["&{cxx_var}"],
         post_call=[
             "{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);",
@@ -3937,24 +3947,24 @@ py_statements = [
 # char *
     dict(
         name="py_char_*_in",
-        c_local_var="pointer",
         declare=[
             "{c_const}char * {c_var};",
         ],
+        arg_call=["{c_var}"],
     ),
     dict(
         name="py_char_*_out_charlen",
-        c_local_var="pointer",
-        pre_call=[
+        arg_declare=[
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
+        arg_call=["{c_var}"],
     ),
     dict(
         name="py_char_*_inout",
-        c_local_var="pointer",
         declare=[
             "{c_const}char * {c_var};",
         ],
+        arg_call=["{c_var}"],
     ),
 
     dict(
@@ -3962,7 +3972,6 @@ py_statements = [
         c_helper="create_from_PyObject_char",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        c_local_var="pointer",
         declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",
             "PyObject * {pytmp_var};", # set by PyArg_Parse
@@ -3973,6 +3982,7 @@ py_statements = [
             ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
             "+goto fail;-",
         ],
+        arg_call=["{cxx_var}"],
         post_call=[
             "{stdlib}free({cxx_var});",
             "{cxx_var} = {nullptr};",
@@ -3989,14 +3999,12 @@ py_statements = [
 # string
     dict(
         name="py_string_in",
-        c_local_var="pointer",
         declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         name="py_string_inout",
-        c_local_var="pointer",
         declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
@@ -4273,7 +4281,6 @@ py_statements = [
         # Pass to C++ function.
         # cxx_var is released by the compiler.
         c_helper="create_from_PyObject_vector_{cxx_T}",
-        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4296,7 +4303,6 @@ py_statements = [
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
         c_helper="to_PyList_vector_{cxx_T}",
-        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         declare=[
             "PyObject * {py_var} = {nullptr};",
@@ -4343,7 +4349,6 @@ py_statements = [
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="scalar",
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
@@ -4368,7 +4373,6 @@ py_statements = [
         # Create a pointer a std::vector and pass to C++ function.
         # Create a NumPy array with the std::vector as the capsule object.
         need_numpy=True,
-        c_local_var="none",  # avoids defining fmt.c_decl and cxx_decl
         cxx_local_var="pointer",
         allocate_local_var=True,
         declare=[

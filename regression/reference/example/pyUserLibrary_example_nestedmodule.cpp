@@ -694,6 +694,7 @@ PP_cos_doubles(
     double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = nullptr;
+    double * out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
@@ -723,7 +724,7 @@ PP_cos_doubles(
     {
         // pre_call
         in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        double * out = static_cast<double *>(PyArray_DATA(SHPy_out));
+        out = static_cast<double *>(PyArray_DATA(SHPy_out));
         int sizein = PyArray_SIZE(SHPy_in);
 
         example::nested::cos_doubles(in, out, sizein);

@@ -145,6 +145,7 @@ PY_cos_doubles(
     double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
+    double * out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = NULL;
     char *SHT_kwlist[] = {
@@ -173,7 +174,7 @@ PY_cos_doubles(
 
     // pre_call
     in = PyArray_DATA(SHPy_in);
-    double * out = PyArray_DATA(SHPy_out);
+    out = PyArray_DATA(SHPy_out);
     int sizein = PyArray_SIZE(SHPy_in);
 
     cos_doubles(in, out, sizein);
@@ -219,6 +220,7 @@ PY_truncate_to_int(
     double * in;
     PyObject * SHTPy_in;
     PyArrayObject * SHPy_in = NULL;
+    int * out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = NULL;
     char *SHT_kwlist[] = {
@@ -247,7 +249,7 @@ PY_truncate_to_int(
 
     // pre_call
     in = PyArray_DATA(SHPy_in);
-    int * out = PyArray_DATA(SHPy_out);
+    out = PyArray_DATA(SHPy_out);
     int sizein = PyArray_SIZE(SHPy_in);
 
     truncate_to_int(in, out, sizein);
@@ -293,6 +295,7 @@ PY_get_values(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values
+    int * values;
     npy_intp SHD_values[1];
     PyArrayObject * SHPy_values = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
@@ -308,7 +311,7 @@ PY_get_values(
 
     // pre_call
     int nvalues;  // intent(out)
-    int * values = PyArray_DATA(SHPy_values);
+    values = PyArray_DATA(SHPy_values);
 
     get_values(&nvalues, values);
 
@@ -349,8 +352,10 @@ PY_get_values2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values2
+    int * arg1;
     npy_intp SHD_arg1[1];
     PyArrayObject * SHPy_arg1 = NULL;
+    int * arg2;
     npy_intp SHD_arg2[1];
     PyArrayObject * SHPy_arg2 = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
@@ -372,8 +377,8 @@ PY_get_values2(
     }
 
     // pre_call
-    int * arg1 = PyArray_DATA(SHPy_arg1);
-    int * arg2 = PyArray_DATA(SHPy_arg2);
+    arg1 = PyArray_DATA(SHPy_arg1);
+    arg2 = PyArray_DATA(SHPy_arg2);
 
     get_values2(arg1, arg2);
 
@@ -411,6 +416,7 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
+    int * values;
     npy_intp SHD_values[1];
     PyArrayObject * SHPy_values = NULL;
     char *SHT_kwlist[] = {
@@ -431,7 +437,7 @@ PY_iota_allocatable(
     }
 
     // pre_call
-    int * values = PyArray_DATA(SHPy_values);
+    values = PyArray_DATA(SHPy_values);
 
     iota_allocatable(nvar, values);
     return (PyObject *) SHPy_values;
@@ -464,6 +470,7 @@ PY_iota_dimension(
 {
 // splicer begin function.iota_dimension
     int nvar;
+    int * values;
     npy_intp SHD_values[1];
     PyArrayObject * SHPy_values = NULL;
     char *SHT_kwlist[] = {
@@ -484,7 +491,7 @@ PY_iota_dimension(
     }
 
     // pre_call
-    int * values = PyArray_DATA(SHPy_values);
+    values = PyArray_DATA(SHPy_values);
 
     iota_dimension(nvar, values);
     return (PyObject *) SHPy_values;
@@ -578,6 +585,7 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fill_int_array
+    int * out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = NULL;
 
@@ -591,7 +599,7 @@ PY_fillIntArray(
     }
 
     // pre_call
-    int * out = PyArray_DATA(SHPy_out);
+    out = PyArray_DATA(SHPy_out);
 
     fillIntArray(out);
     return (PyObject *) SHPy_out;
@@ -622,6 +630,7 @@ PY_incrementIntArray(
   PyObject *kwds)
 {
 // splicer begin function.increment_int_array
+    int * array;
     PyObject * SHTPy_array;
     PyArrayObject * SHPy_array = NULL;
     char *SHT_kwlist[] = {
@@ -642,7 +651,7 @@ PY_incrementIntArray(
     }
 
     // pre_call
-    int * array = PyArray_DATA(SHPy_array);
+    array = PyArray_DATA(SHPy_array);
     int sizein = PyArray_SIZE(SHPy_array);
 
     incrementIntArray(array, sizein);

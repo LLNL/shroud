@@ -226,8 +226,8 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyObject *SHPy_out = NULL;
     double * out = NULL;
+    PyObject *SHPy_out = NULL;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -299,8 +299,8 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyObject *SHPy_out = NULL;
     int * out = NULL;
+    PyObject *SHPy_out = NULL;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -373,8 +373,8 @@ PY_get_values(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values
-    PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
 
     // pre_call
@@ -431,10 +431,10 @@ PY_get_values2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values2
-    PyObject *SHPy_arg1 = NULL;
     int * arg1 = NULL;
-    PyObject *SHPy_arg2 = NULL;
+    PyObject *SHPy_arg1 = NULL;
     int * arg2 = NULL;
+    PyObject *SHPy_arg2 = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
 
     // pre_call
@@ -497,8 +497,8 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
-    PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     char *SHT_kwlist[] = {
         "nvar",
         NULL };
@@ -555,8 +555,8 @@ PY_iota_dimension(
 {
 // splicer begin function.iota_dimension
     int nvar;
-    PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     char *SHT_kwlist[] = {
         "nvar",
         NULL };
@@ -669,8 +669,8 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fill_int_array
-    PyObject *SHPy_out = NULL;
     int * out = NULL;
+    PyObject *SHPy_out = NULL;
 
     // pre_call
     out = malloc(sizeof(int) * (3));

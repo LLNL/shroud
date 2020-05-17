@@ -1210,10 +1210,12 @@
                                 "fmtpy": {
                                     "array_size": "isize",
                                     "c_const": "",
-                                    "c_deref": "*",
+                                    "c_decl": "double array",
+                                    "c_deref": "",
                                     "c_type": "double",
                                     "c_var": "array",
                                     "cxx_addr": "",
+                                    "cxx_decl": "double array",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "array",
                                     "cxx_type": "double",

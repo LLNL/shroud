@@ -181,6 +181,7 @@ PY_passStruct2(
 // splicer begin function.pass_struct2
     PyObject * SHTPy_s1 = NULL;
     PyArrayObject * SHPy_s1 = NULL;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "s1",
         NULL };
@@ -202,7 +203,6 @@ PY_passStruct2(
 
     // pre_call
     Cstruct1 * s1 = PyArray_DATA(SHPy_s1);
-    char outbuf[LENOUTBUF];  // intent(out)
 
     int SHCXX_rv = passStruct2(s1, outbuf);
 
@@ -557,6 +557,7 @@ PY_returnStructPtr2(
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "i",
         "d",
@@ -567,9 +568,6 @@ PY_returnStructPtr2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         SHT_kwlist, &i, &d))
         return NULL;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 

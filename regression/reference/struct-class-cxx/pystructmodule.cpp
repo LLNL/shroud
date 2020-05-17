@@ -139,6 +139,7 @@ PY_passStruct2(
 {
 // splicer begin function.pass_struct2
     PY_Cstruct1 * SHPy_s1;
+    char outbuf[LENOUTBUF];  // intent(out)
     const char *SHT_kwlist[] = {
         "s1",
         nullptr };
@@ -150,9 +151,6 @@ PY_passStruct2(
 
     // post_parse
     Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     int SHCXX_rv = passStruct2(s1, outbuf);
 
@@ -463,6 +461,7 @@ PY_returnStructPtr2(
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
+    char outbuf[LENOUTBUF];  // intent(out)
     const char *SHT_kwlist[] = {
         "i",
         "d",
@@ -473,9 +472,6 @@ PY_returnStructPtr2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         const_cast<char **>(SHT_kwlist), &i, &d))
         return nullptr;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 

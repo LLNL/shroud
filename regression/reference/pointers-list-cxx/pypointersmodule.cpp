@@ -228,8 +228,8 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     PyObject *SHTPy_in = nullptr;
     double * in = nullptr;
-    PyObject *SHPy_out = nullptr;
     double * out = nullptr;
+    PyObject *SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         nullptr };
@@ -303,8 +303,8 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     PyObject *SHTPy_in = nullptr;
     double * in = nullptr;
-    PyObject *SHPy_out = nullptr;
     int * out = nullptr;
+    PyObject *SHPy_out = nullptr;
     const char *SHT_kwlist[] = {
         "in",
         nullptr };
@@ -379,8 +379,8 @@ PY_get_values(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values
-    PyObject *SHPy_values = nullptr;
     int * values = nullptr;
+    PyObject *SHPy_values = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     {
@@ -439,10 +439,10 @@ PY_get_values2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values2
-    PyObject *SHPy_arg1 = nullptr;
     int * arg1 = nullptr;
-    PyObject *SHPy_arg2 = nullptr;
+    PyObject *SHPy_arg1 = nullptr;
     int * arg2 = nullptr;
+    PyObject *SHPy_arg2 = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
     {
@@ -507,8 +507,8 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
-    PyObject *SHPy_values = nullptr;
     int * values = nullptr;
+    PyObject *SHPy_values = nullptr;
     const char *SHT_kwlist[] = {
         "nvar",
         nullptr };
@@ -566,8 +566,8 @@ PY_iota_dimension(
 {
 // splicer begin function.iota_dimension
     int nvar;
-    PyObject *SHPy_values = nullptr;
     int * values = nullptr;
+    PyObject *SHPy_values = nullptr;
     const char *SHT_kwlist[] = {
         "nvar",
         nullptr };
@@ -682,8 +682,8 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fill_int_array
-    PyObject *SHPy_out = nullptr;
     int * out = nullptr;
+    PyObject *SHPy_out = nullptr;
 
     {
         // pre_call

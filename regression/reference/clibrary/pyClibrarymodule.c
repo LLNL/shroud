@@ -385,10 +385,8 @@ PY_returnOneName(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_one_name
-    PyObject * SHPy_name1 = NULL;
-
-    // pre_call
     char name1[MAXNAME];  // intent(out)
+    PyObject * SHPy_name1 = NULL;
 
     returnOneName(name1);
 
@@ -426,11 +424,9 @@ PY_returnTwoNames(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_two_names
-    PyObject *SHTPy_rv = NULL;  // return value object
-
-    // pre_call
     char name1[MAXNAME];  // intent(out)
     char name2[MAXNAME];  // intent(out)
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     returnTwoNames(name1, name2);
 
@@ -462,10 +458,10 @@ PY_ImpliedTextLen(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.implied_text_len
+    char text[MAXNAME];  // intent(out)
     PyObject * SHPy_text = NULL;
 
     // pre_call
-    char text[MAXNAME];  // intent(out)
     int ltext = MAXNAME;
 
     ImpliedTextLen(text, ltext);

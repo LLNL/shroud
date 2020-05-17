@@ -156,6 +156,7 @@ PY_passCharPtr(
   PyObject *kwds)
 {
 // splicer begin function.pass_char_ptr
+    char dest[40];  // intent(out)
     const char * src;
     const char *SHT_kwlist[] = {
         "src",
@@ -165,9 +166,6 @@ PY_passCharPtr(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
         const_cast<char **>(SHT_kwlist), &src))
         return nullptr;
-
-    // pre_call
-    char dest[40];  // intent(out)
 
     passCharPtr(dest, src);
 
