@@ -1384,9 +1384,6 @@ return 1;""",
                         # Explicit declarations from py_statements.
                         for line in intent_blk.arg_declare:
                             append_format(declare_code, line, fmt_arg)
-                    elif dimension:
-                        # If an array, a local NumPy array has already been defined.
-                        pass
                     elif intent_blk.c_local_var:
                         pass
                     elif not cxx_local_var:
