@@ -858,6 +858,23 @@ void * POI_return_address2(int flag)
 // end POI_return_address2
 
 // ----------------------------------------
+// Function:  void fetchVoidPtr
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * * addr +intent(out)
+// Requested: c_unknown_**_out
+// Match:     c_default
+// start POI_fetch_void_ptr
+void POI_fetch_void_ptr(void * * addr)
+{
+    // splicer begin function.fetch_void_ptr
+    fetchVoidPtr(addr);
+    // splicer end function.fetch_void_ptr
+}
+// end POI_fetch_void_ptr
+
+// ----------------------------------------
 // Function:  int * returnIntPtrToScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default

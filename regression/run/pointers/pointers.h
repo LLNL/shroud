@@ -48,6 +48,7 @@ void getRawPtrToFixedArray(int **count);
 
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
+void fetchVoidPtr(void **addr);
 
 int *returnIntPtrToScalar(void);
 int *returnIntPtrToFixedArray(void);

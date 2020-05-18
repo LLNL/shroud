@@ -302,33 +302,33 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: py_native_&_in
+// Argument:  int * isize +hidden+intent(in)
+// Requested: py_native_*_in
 // Match:     py_default
-static char PY_fetchArray__doc__[] =
+static char PY_fetchArrayPtr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_fetchArray(
+PY_fetchArrayPtr(
   PY_ArrayWrapper *self,
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.ArrayWrapper.method.fetch_array
+// splicer begin class.ArrayWrapper.method.fetch_array_ptr
     double *array;
     npy_intp SHD_array[1];
     PyObject *SHPy_array = nullptr;
     int isize;
 
     {
-        self->obj->fetchArray(&array, isize);
+        self->obj->fetchArrayPtr(&array, &isize);
 
         // post_call
         SHD_array[0] = isize;
@@ -342,7 +342,271 @@ PY_fetchArray(
 fail:
     Py_XDECREF(SHPy_array);
     return nullptr;
-// splicer end class.ArrayWrapper.method.fetch_array
+// splicer end class.ArrayWrapper.method.fetch_array_ptr
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Exact:     py_native_*&_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: py_native_&_in
+// Match:     py_default
+static char PY_fetchArrayRef__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchArrayRef(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_array_ref
+    double *array;
+    npy_intp SHD_array[1];
+    PyObject *SHPy_array = nullptr;
+    int isize;
+
+    {
+        self->obj->fetchArrayRef(array, isize);
+
+        // post_call
+        SHD_array[0] = isize;
+        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+            array);
+        if (SHPy_array == nullptr) goto fail;
+
+        return (PyObject *) SHPy_array;
+    }
+
+fail:
+    Py_XDECREF(SHPy_array);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.fetch_array_ref
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayPtrConst
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Exact:     py_native_**_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: py_native_*_in
+// Match:     py_default
+static char PY_fetchArrayPtrConst__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchArrayPtrConst(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
+    const double *array;
+    npy_intp SHD_array[1];
+    PyObject *SHPy_array = nullptr;
+    int isize;
+
+    {
+        self->obj->fetchArrayPtrConst(&array, &isize);
+
+        // post_call
+        SHD_array[0] = isize;
+        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+            const_cast<double *>(array));
+        if (SHPy_array == nullptr) goto fail;
+
+        return (PyObject *) SHPy_array;
+    }
+
+fail:
+    Py_XDECREF(SHPy_array);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.fetch_array_ptr_const
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRefConst
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Exact:     py_native_*&_out_pointer_numpy
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: py_native_&_in
+// Match:     py_default
+static char PY_fetchArrayRefConst__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchArrayRefConst(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_array_ref_const
+    const double *array;
+    npy_intp SHD_array[1];
+    PyObject *SHPy_array = nullptr;
+    int isize;
+
+    {
+        self->obj->fetchArrayRefConst(array, isize);
+
+        // post_call
+        SHD_array[0] = isize;
+        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+            const_cast<double *>(array));
+        if (SHPy_array == nullptr) goto fail;
+
+        return (PyObject *) SHPy_array;
+    }
+
+fail:
+    Py_XDECREF(SHPy_array);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.fetch_array_ref_const
+}
+
+// ----------------------------------------
+// Function:  void fetchVoidPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void * * array +intent(out)
+// Exact:     py_unknown_**_out
+static char PY_fetchVoidPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchVoidPtr(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_void_ptr
+    void *array;
+    PyObject * SHPy_array = nullptr;
+
+    self->obj->fetchVoidPtr(&array);
+
+    // post_call
+    SHPy_array = PyCapsule_New(array, NULL, NULL);
+
+    return (PyObject *) SHPy_array;
+// splicer end class.ArrayWrapper.method.fetch_void_ptr
+}
+
+// ----------------------------------------
+// Function:  void fetchVoidRef
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void * & array +intent(out)
+// Exact:     py_unknown_*&_out
+static char PY_fetchVoidRef__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchVoidRef(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.fetch_void_ref
+    void *array;
+    PyObject * SHPy_array = nullptr;
+
+    self->obj->fetchVoidRef(array);
+
+    // post_call
+    SHPy_array = PyCapsule_New(array, NULL, NULL);
+
+    return (PyObject *) SHPy_array;
+// splicer end class.ArrayWrapper.method.fetch_void_ref
+}
+
+// ----------------------------------------
+// Function:  bool checkPtr
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  void * array +intent(in)+value
+// Exact:     py_unknown_*_in
+static char PY_checkPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_checkPtr(
+  PY_ArrayWrapper *self,
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin class.ArrayWrapper.method.check_ptr
+    void *array;
+    PyObject *SHPy_array;
+    const char *SHT_kwlist[] = {
+        "array",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:checkPtr",
+        const_cast<char **>(SHT_kwlist), &SHPy_array))
+        return nullptr;
+
+    // post_parse
+    array = PyCapsule_GetPointer(SHPy_array, NULL);
+    if (PyErr_Occurred())
+        goto fail;
+    {
+        bool SHCXX_rv = self->obj->checkPtr(array);
+
+        // post_call
+        SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+        if (SHTPy_rv == nullptr) goto fail;
+
+        return (PyObject *) SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end class.ArrayWrapper.method.check_ptr
+}
+
+// ----------------------------------------
+// Function:  double sumArray
+// Requested: py_native_scalar_result
+// Match:     py_default
+static char PY_sumArray__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_sumArray(
+  PY_ArrayWrapper *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin class.ArrayWrapper.method.sum_array
+    PyObject * SHTPy_rv = nullptr;
+
+    double SHCXX_rv = self->obj->sumArray();
+
+    // post_call
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end class.ArrayWrapper.method.sum_array
 }
 // splicer begin class.ArrayWrapper.impl.after_methods
 // splicer end class.ArrayWrapper.impl.after_methods
@@ -363,8 +627,22 @@ static PyMethodDef PY_ArrayWrapper_methods[] = {
         PY_getArrayC__doc__},
     {"getArrayConstC", (PyCFunction)PY_getArrayConstC, METH_NOARGS,
         PY_getArrayConstC__doc__},
-    {"fetchArray", (PyCFunction)PY_fetchArray, METH_NOARGS,
-        PY_fetchArray__doc__},
+    {"fetchArrayPtr", (PyCFunction)PY_fetchArrayPtr, METH_NOARGS,
+        PY_fetchArrayPtr__doc__},
+    {"fetchArrayRef", (PyCFunction)PY_fetchArrayRef, METH_NOARGS,
+        PY_fetchArrayRef__doc__},
+    {"fetchArrayPtrConst", (PyCFunction)PY_fetchArrayPtrConst,
+        METH_NOARGS, PY_fetchArrayPtrConst__doc__},
+    {"fetchArrayRefConst", (PyCFunction)PY_fetchArrayRefConst,
+        METH_NOARGS, PY_fetchArrayRefConst__doc__},
+    {"fetchVoidPtr", (PyCFunction)PY_fetchVoidPtr, METH_NOARGS,
+        PY_fetchVoidPtr__doc__},
+    {"fetchVoidRef", (PyCFunction)PY_fetchVoidRef, METH_NOARGS,
+        PY_fetchVoidRef__doc__},
+    {"checkPtr", (PyCFunction)PY_checkPtr, METH_VARARGS|METH_KEYWORDS,
+        PY_checkPtr__doc__},
+    {"sumArray", (PyCFunction)PY_sumArray, METH_NOARGS,
+        PY_sumArray__doc__},
     // splicer begin class.ArrayWrapper.PyMethodDef
     // splicer end class.ArrayWrapper.PyMethodDef
     {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

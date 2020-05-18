@@ -783,6 +783,25 @@ module pointers_mod
     ! end c_return_address2
 
     ! ----------------------------------------
+    ! Function:  void fetchVoidPtr
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * addr +intent(out)
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    ! start fetch_void_ptr
+    interface
+        subroutine fetch_void_ptr(addr) &
+                bind(C, name="fetchVoidPtr")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: addr
+        end subroutine fetch_void_ptr
+    end interface
+    ! end fetch_void_ptr
+
+    ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar +deref(pointer)
     ! Requested: c_native_*_result
     ! Match:     c_default

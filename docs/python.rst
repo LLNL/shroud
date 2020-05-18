@@ -317,7 +317,7 @@ their lengths are known.
 arg_call
 ^^^^^^^^
 
-Arguments to pass to function.
+List of arguments to pass to function.
 
 post_call
 ^^^^^^^^^

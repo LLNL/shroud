@@ -230,7 +230,7 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
@@ -238,36 +238,36 @@ const double * REF_ArrayWrapper_get_array_const_c_bufferify(
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in
 // Match:     c_default
-void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr(REF_ArrayWrapper * self,
     double * * array, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array
-    SH_this->fetchArray(array, *isize);
-    // splicer end class.ArrayWrapper.method.fetch_array
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr
+    SH_this->fetchArrayPtr(array, isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr
 }
 
 // ----------------------------------------
-// Function:  void fetchArray
+// Function:  void fetchArrayPtr
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in_buf
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in_buf
 // Match:     c_default
-void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
-    // splicer begin class.ArrayWrapper.method.fetch_array_bufferify
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_bufferify
     double *array;
-    SH_this->fetchArray(&array, *isize);
+    SH_this->fetchArrayPtr(&array, isize);
     Darray->cxx.addr  = array;
     Darray->cxx.idtor = 0;
     Darray->addr.base = array;
@@ -276,7 +276,221 @@ void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
     Darray->rank = 1;
     Darray->shape[0] = *isize;
     Darray->size = Darray->shape[0];
-    // splicer end class.ArrayWrapper.method.fetch_array_bufferify
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr_bufferify
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Requested: c_native_*&_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
+    double * * array, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref
+    SH_this->fetchArrayRef(*array, *isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ref
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Exact:     c_native_*&_out_buf
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in_buf
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref_bufferify
+    double *array;
+    SH_this->fetchArrayRef(array, *isize);
+    Darray->cxx.addr  = array;
+    Darray->cxx.idtor = 0;
+    Darray->addr.base = array;
+    Darray->type = SH_TYPE_DOUBLE;
+    Darray->elem_len = sizeof(double);
+    Darray->rank = 1;
+    Darray->shape[0] = *isize;
+    Darray->size = Darray->shape[0];
+    // splicer end class.ArrayWrapper.method.fetch_array_ref_bufferify
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayPtrConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Requested: c_native_**_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ptr_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
+    SH_this->fetchArrayPtrConst(array, isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr_const
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayPtrConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Exact:     c_native_**_out_buf
+// ----------------------------------------
+// Argument:  int * isize +hidden+intent(in)
+// Requested: c_native_*_in_buf
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ptr_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
+    const double *array;
+    SH_this->fetchArrayPtrConst(&array, isize);
+    Darray->cxx.addr  = const_cast<double *>(array);
+    Darray->cxx.idtor = 0;
+    Darray->addr.base = array;
+    Darray->type = SH_TYPE_DOUBLE;
+    Darray->elem_len = sizeof(double);
+    Darray->rank = 1;
+    Darray->shape[0] = *isize;
+    Darray->size = Darray->shape[0];
+    // splicer end class.ArrayWrapper.method.fetch_array_ptr_const_bufferify
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRefConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Requested: c_native_*&_out
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref_const
+    SH_this->fetchArrayRefConst(*array, *isize);
+    // splicer end class.ArrayWrapper.method.fetch_array_ref_const
+}
+
+// ----------------------------------------
+// Function:  void fetchArrayRefConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Exact:     c_native_*&_out_buf
+// ----------------------------------------
+// Argument:  int & isize +hidden+intent(in)
+// Requested: c_native_&_in_buf
+// Match:     c_default
+void REF_ArrayWrapper_fetch_array_ref_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_array_ref_const_bufferify
+    const double *array;
+    SH_this->fetchArrayRefConst(array, *isize);
+    Darray->cxx.addr  = const_cast<double *>(array);
+    Darray->cxx.idtor = 0;
+    Darray->addr.base = array;
+    Darray->type = SH_TYPE_DOUBLE;
+    Darray->elem_len = sizeof(double);
+    Darray->rank = 1;
+    Darray->shape[0] = *isize;
+    Darray->size = Darray->shape[0];
+    // splicer end class.ArrayWrapper.method.fetch_array_ref_const_bufferify
+}
+
+// ----------------------------------------
+// Function:  void fetchVoidPtr
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * * array +intent(out)
+// Requested: c_unknown_**_out
+// Match:     c_default
+void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
+    void * * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_void_ptr
+    SH_this->fetchVoidPtr(array);
+    // splicer end class.ArrayWrapper.method.fetch_void_ptr
+}
+
+// ----------------------------------------
+// Function:  void fetchVoidRef
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * & array +intent(out)
+// Requested: c_unknown_*&_out
+// Match:     c_default
+void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
+    void * * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.fetch_void_ref
+    SH_this->fetchVoidRef(*array);
+    // splicer end class.ArrayWrapper.method.fetch_void_ref
+}
+
+// ----------------------------------------
+// Function:  bool checkPtr
+// Requested: c_bool_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * array +intent(in)+value
+// Requested: c_unknown_*_in
+// Match:     c_default
+bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.check_ptr
+    bool SHC_rv = SH_this->checkPtr(array);
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.check_ptr
+}
+
+// ----------------------------------------
+// Function:  double sumArray
+// Requested: c_native_scalar_result
+// Match:     c_default
+double REF_ArrayWrapper_sum_array(REF_ArrayWrapper * self)
+{
+    ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
+    // splicer begin class.ArrayWrapper.method.sum_array
+    double SHC_rv = SH_this->sumArray();
+    return SHC_rv;
+    // splicer end class.ArrayWrapper.method.sum_array
 }
 
 }  // extern "C"

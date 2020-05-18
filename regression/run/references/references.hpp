@@ -45,7 +45,26 @@ public:
     double *getArrayConst() const { return arr; }
     const double *getArrayC() { return arr; }
     const double *getArrayConstC() const { return arr; }
-    void fetchArray(double **array, int &isize) { *array = arr; isize = sz; }
+    void fetchArrayPtr(double **array, int *isize) { *array = arr; *isize = sz; }
+    void fetchArrayRef(double *&array, int &isize) { array = arr; isize = sz; }
+    void fetchArrayPtrConst(const double **array, int *isize) {
+        *array = arr;
+        *isize = sz;
+    }
+    void fetchArrayRefConst(const double *&array, int &isize) {
+        array = arr;
+        isize = sz;
+    }
+    void fetchVoidPtr(void **array) { *array = arr; }
+    void fetchVoidRef(void *&array) { array = arr; }
+    bool checkPtr(void *array) { return array == arr ? true : false; }
+    double sumArray() {
+        double sum = 0;
+        for (int i=0; i < sz; ++i) {
+            sum += arr[i];
+        }
+        return sum;
+    }
 private:
     double* arr {nullptr};   
     int sz{0};
