@@ -45,9 +45,9 @@ CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv);
 
 void CLA_set_global_flag(int arg);
 
-int CLA_get_global_flag();
+int CLA_get_global_flag(void);
 
-const char * CLA_last_function_called();
+const char * CLA_last_function_called(void);
 
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
 

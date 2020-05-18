@@ -46,7 +46,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // Requested: c_string_*_result
 // Match:     c_string_result
 // start STR_get_const_string_ptr_alloc
-const char * STR_get_const_string_ptr_alloc()
+const char * STR_get_const_string_ptr_alloc(void)
 {
     // splicer begin function.get_const_string_ptr_alloc
     const std::string * SHCXX_rv = getConstStringPtrAlloc();

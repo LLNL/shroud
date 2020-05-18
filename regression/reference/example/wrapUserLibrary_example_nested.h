@@ -36,14 +36,14 @@ extern "C" {
 // splicer begin namespace.example::nested.C_declarations
 // splicer end namespace.example::nested.C_declarations
 
-void AA_example_nested_local_function1();
+void AA_example_nested_local_function1(void);
 
 bool AA_example_nested_is_name_valid(const char * name);
 
 bool AA_example_nested_is_name_valid_bufferify(const char * name,
     int Lname);
 
-bool AA_example_nested_is_initialized();
+bool AA_example_nested_is_initialized(void);
 
 void AA_example_nested_test_names(const char * name);
 
@@ -55,20 +55,20 @@ void AA_example_nested_test_names_flag(const char * name, int flag);
 void AA_example_nested_test_names_flag_bufferify(const char * name,
     int Lname, int flag);
 
-void AA_example_nested_testoptional_0();
+void AA_example_nested_testoptional_0(void);
 
 void AA_example_nested_testoptional_1(int i);
 
 void AA_example_nested_testoptional_2(int i, long j);
 
-size_t AA_example_nested_test_size_t();
+size_t AA_example_nested_test_size_t(void);
 
 #ifdef HAVE_MPI
 void AA_example_nested_testmpi_mpi(MPI_Fint comm);
 #endif
 
 #ifndef HAVE_MPI
-void AA_example_nested_testmpi_serial();
+void AA_example_nested_testmpi_serial(void);
 #endif
 
 void AA_example_nested_func_ptr1(void ( * get)());

@@ -1903,14 +1903,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int sumFixedArray()",
+                "decl": "int sumFixedArray(void)",
                 "declgen": "int sumFixedArray()",
                 "doxygen": {
                     "description": "Used to test values global_array.\n"
                 },
                 "fmtdict": {
                     "C_name": "sumFixedArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_sum_fixed_array",
                     "F_C_name": "sum_fixed_array",
@@ -4020,6 +4020,95 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "c_unknown_**_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_intent": "OUT",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "addr",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "f_unknown_**_out",
+                            "stmt1": "f_unknown_**_out",
+                            "stmtc0": "c_unknown_**_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fetchVoidPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchVoidPtr(void **addr+intent(out))",
+                "declgen": "void fetchVoidPtr(void * * addr +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "addr",
+                    "C_name": "fetchVoidPtr",
+                    "C_prototype": "void * * addr",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fetch_void_ptr",
+                    "F_C_name": "fetch_void_ptr",
+                    "F_arg_c_call": "addr",
+                    "F_arguments": "addr",
+                    "F_name_function": "fetch_void_ptr",
+                    "F_name_generic": "fetch_void_ptr",
+                    "F_name_impl": "fetch_void_ptr",
+                    "F_subprogram": "subroutine",
+                    "function_name": "fetchVoidPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "fetch_void_ptr"
+                },
+                "options": {}
+            },
+            {
                 "_fmtresult": {
                     "fmtc": {
                         "c_const": "",
@@ -4065,11 +4154,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToScalar()",
+                "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar()",
                 "fmtdict": {
                     "C_name": "returnIntPtrToScalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_scalar",
                     "F_C_name": "c_return_int_ptr_to_scalar",
@@ -4146,11 +4235,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "returnIntPtrToFixedArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
@@ -4217,7 +4306,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
@@ -4283,11 +4372,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToConstScalar()",
+                "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar()",
                 "fmtdict": {
                     "C_name": "returnIntPtrToConstScalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_const_scalar",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
@@ -4365,11 +4454,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "returnIntPtrToFixedConstArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
@@ -4437,7 +4526,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray() +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
@@ -4501,11 +4590,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntScalar() +deref(scalar)",
+                "decl": "int *returnIntScalar(void) +deref(scalar)",
                 "declgen": "int * returnIntScalar() +deref(scalar)",
                 "fmtdict": {
                     "C_name": "POI_return_int_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_return_int_scalar",
                     "F_C_name": "return_int_scalar",

@@ -44,6 +44,16 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr.shape)
         self.assertEqual(10, arr.size)
 
+        # Make sure we're pointing to the array in the instance.
+        arr[:] = 0.0
+        self.assertEqual(0.0, arrinst.sumArray())
+        arr[:] = 1.0
+        self.assertEqual(10.0, arrinst.sumArray())
+        arr[:] = 0.0
+        arr[0] = 10.0
+        arr[9] = 1.0
+        self.assertEqual(11.0, arrinst.sumArray())
+
         arrconst = arrinst.getArrayConst()
         self.assertIsInstance(arrconst, np.ndarray)
         self.assertEqual('float64', arrconst.dtype.name)
@@ -69,12 +79,46 @@ class References(unittest.TestCase):
         self.assertEqual((10,), arr4.shape)
         self.assertEqual(10, arr4.size)
 
-        arr5 = arrinst.fetchArray()
+        arr5 = arrinst.fetchArrayPtr()
         self.assertIsInstance(arr4, np.ndarray)
         self.assertEqual('float64', arr5.dtype.name)
         self.assertEqual(1, arr5.ndim)
         self.assertEqual((10,), arr5.shape)
         self.assertEqual(10, arr5.size)
+
+        arr6 = arrinst.fetchArrayRef()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr6.dtype.name)
+        self.assertEqual(1, arr6.ndim)
+        self.assertEqual((10,), arr6.shape)
+        self.assertEqual(10, arr6.size)
+
+        arr7 = arrinst.fetchArrayPtrConst()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr7.dtype.name)
+        self.assertEqual(1, arr7.ndim)
+        self.assertEqual((10,), arr7.shape)
+        self.assertEqual(10, arr7.size)
+
+        arr8 = arrinst.fetchArrayRefConst()
+        self.assertIsInstance(arr4, np.ndarray)
+        self.assertEqual('float64', arr8.dtype.name)
+        self.assertEqual(1, arr8.ndim)
+        self.assertEqual((10,), arr8.shape)
+        self.assertEqual(10, arr8.size)
+
+        with self.assertRaises(ValueError) as context:
+            arrinst.checkPtr(None)
+        self.assertTrue("called with invalid PyCapsule object"
+                        in str(context.exception))
+
+        voidptr = arrinst.fetchVoidPtr()
+        self.assertEqual('PyCapsule', voidptr.__class__.__name__)
+        self.assertTrue(arrinst.checkPtr(voidptr))
+
+        voidptr = arrinst.fetchVoidRef()
+        self.assertEqual('PyCapsule', voidptr.__class__.__name__)
+        self.assertTrue(arrinst.checkPtr(voidptr))
 
 
 # creating a new test suite

@@ -85,7 +85,7 @@
                 "declgen": "void NoReturnNoArguments()",
                 "fmtdict": {
                     "C_name": "TUT_no_return_no_arguments",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_no_return_no_arguments",
                     "F_C_name": "no_return_no_arguments",
@@ -783,7 +783,7 @@
                 ],
                 "fmtdict": {
                     "C_name": "TUT_use_default_arguments",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_call": "c_use_default_arguments",
                     "F_C_name": "c_use_default_arguments",
@@ -1993,7 +1993,7 @@
                 "fmtdict": {
                     "CXX_template": "<int>",
                     "C_name": "TUT_template_return_int",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_template_return_int",
                     "F_C_name": "c_template_return_int",
@@ -2090,7 +2090,7 @@
                 "fmtdict": {
                     "CXX_template": "<double>",
                     "C_name": "TUT_template_return_double",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_call": "c_template_return_double",
                     "F_C_name": "c_template_return_double",
@@ -2162,7 +2162,7 @@
                 "declgen": "void FortranGenericOverloaded()",
                 "fmtdict": {
                     "C_name": "TUT_fortran_generic_overloaded_0",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_fortran_generic_overloaded_0",
                     "F_C_name": "c_fortran_generic_overloaded_0",
@@ -5088,7 +5088,7 @@
                 "declgen": "const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",

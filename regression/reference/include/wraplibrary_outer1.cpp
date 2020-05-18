@@ -17,7 +17,7 @@ extern "C" {
 // Function:  void outer_func
 // Requested: c
 // Match:     c_default
-void LIB_outer1_outer_func()
+void LIB_outer1_outer_func(void)
 {
     outer1::outer_func();
 }

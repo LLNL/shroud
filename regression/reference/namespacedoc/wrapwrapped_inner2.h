@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin namespace.inner2.C_declarations
 // splicer end namespace.inner2.C_declarations
 
-void WWW_inner2_worker();
+void WWW_inner2_worker(void);
 
 #ifdef __cplusplus
 }

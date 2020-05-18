@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   are a lot of classes which may create lots of duplicate helpers.
 - Parse array syntax for variables and struct members.
 - Change Python setter and getter functions to be driven by py_statements.
+- Parse `(void)` C prototype to indicate no parameters.	
 
 ### Changed
 - *intent(in)* pointer arguments now use the *rank* attribute instead of

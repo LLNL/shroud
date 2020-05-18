@@ -20,7 +20,7 @@ options:
 
 declarations:
 
-- decl: double GetGlobalDouble()
+- decl: double GetGlobalDouble(void)
 
 - decl: void GenericReal(double arg)
   options:

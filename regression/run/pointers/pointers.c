@@ -236,6 +236,10 @@ void *returnAddress2(int flag)
 {
     return (void *) &global_int;
 }
+void fetchVoidPtr(void **addr)
+{
+    *addr = (void *) &global_int;
+}
 
 int *returnIntPtrToScalar(void)
 {

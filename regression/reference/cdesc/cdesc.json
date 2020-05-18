@@ -917,7 +917,7 @@
                 "fmtdict": {
                     "CXX_template": "<int>",
                     "C_name": "CDE_get_data_int",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_get_data_int",
                     "F_C_name": "c_get_data_int",
@@ -1017,7 +1017,7 @@
                 "fmtdict": {
                     "CXX_template": "<double>",
                     "C_name": "CDE_get_data_double",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "double",
                     "F_C_call": "c_get_data_double",
                     "F_C_name": "c_get_data_double",

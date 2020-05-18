@@ -258,7 +258,7 @@
                 "declgen": "void function1()",
                 "fmtdict": {
                     "C_name": "YYY_TES_function1",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "yyy_tes_function1",
                     "F_C_name": "yyy_tes_function1",
@@ -293,7 +293,7 @@
                 "declgen": "void function2()",
                 "fmtdict": {
                     "C_name": "c_name_special",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "f_c_name_special",
                     "F_C_name": "f_c_name_special",
@@ -782,7 +782,7 @@
                 "declgen": "void function5() +name(fiveplus)",
                 "fmtdict": {
                     "C_name": "YYY_TES_fiveplus",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "yyy_tes_fiveplus",
                     "F_C_name": "yyy_tes_fiveplus",
@@ -1822,7 +1822,7 @@
                 "fmtdict": {
                     "CXX_template": "<internal::ImplWorker1>",
                     "C_name": "TES_use_impl_worker_instantiation3",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_use_impl_worker_instantiation3",
                     "F_C_name": "c_use_impl_worker_instantiation3",
@@ -2077,7 +2077,7 @@
                         "declgen": "void init_ns1()",
                         "fmtdict": {
                             "C_name": "TES_ns1_init_ns1",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_init_ns1",
                             "F_C_name": "c_init_ns1",
@@ -2634,7 +2634,7 @@
                         "declgen": "void Worker1()",
                         "fmtdict": {
                             "C_name": "TES_capi_worker1",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_worker1",
                             "F_C_name": "c_worker1",

@@ -1231,6 +1231,35 @@ PY_returnAddress2(
 }
 
 // ----------------------------------------
+// Function:  void fetchVoidPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  void * * addr +intent(out)
+// Exact:     py_unknown_**_out
+static char PY_fetchVoidPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fetchVoidPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.fetch_void_ptr
+    void *addr;
+    PyObject * SHPy_addr = nullptr;
+
+    fetchVoidPtr(&addr);
+
+    // post_call
+    SHPy_addr = PyCapsule_New(addr, NULL, NULL);
+
+    return (PyObject *) SHPy_addr;
+// splicer end function.fetch_void_ptr
+}
+
+// ----------------------------------------
 // Function:  int * returnIntPtrToScalar +deref(pointer)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToScalar__doc__[] =
@@ -1419,6 +1448,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress1__doc__},
 {"returnAddress2", (PyCFunction)PY_returnAddress2,
     METH_VARARGS|METH_KEYWORDS, PY_returnAddress2__doc__},
+{"fetchVoidPtr", (PyCFunction)PY_fetchVoidPtr, METH_NOARGS,
+    PY_fetchVoidPtr__doc__},
 {"returnIntPtrToScalar", (PyCFunction)PY_returnIntPtrToScalar,
     METH_NOARGS, PY_returnIntPtrToScalar__doc__},
 {"returnIntPtrToFixedArray", (PyCFunction)PY_returnIntPtrToFixedArray,

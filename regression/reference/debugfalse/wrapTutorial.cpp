@@ -59,7 +59,7 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // splicer end C_definitions
 
 // start TUT_no_return_no_arguments
-void TUT_no_return_no_arguments()
+void TUT_no_return_no_arguments(void)
 {
     // splicer begin function.no_return_no_arguments
     tutorial::NoReturnNoArguments();
@@ -92,7 +92,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 }
 
 // start TUT_use_default_arguments
-double TUT_use_default_arguments()
+double TUT_use_default_arguments(void)
 {
     // splicer begin function.use_default_arguments
     double SHC_rv = tutorial::UseDefaultArguments();
@@ -159,7 +159,7 @@ void TUT_template_argument_double(double arg)
     // splicer end function.template_argument_double
 }
 
-int TUT_template_return_int()
+int TUT_template_return_int(void)
 {
     // splicer begin function.template_return_int
     int SHC_rv = tutorial::TemplateReturn<int>();
@@ -167,7 +167,7 @@ int TUT_template_return_int()
     // splicer end function.template_return_int
 }
 
-double TUT_template_return_double()
+double TUT_template_return_double(void)
 {
     // splicer begin function.template_return_double
     double SHC_rv = tutorial::TemplateReturn<double>();
@@ -175,7 +175,7 @@ double TUT_template_return_double()
     // splicer end function.template_return_double
 }
 
-void TUT_fortran_generic_overloaded_0()
+void TUT_fortran_generic_overloaded_0(void)
 {
     // splicer begin function.fortran_generic_overloaded_0
     tutorial::FortranGenericOverloaded();
@@ -306,7 +306,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 }
 // end TUT_callback1
 
-const char * TUT_last_function_called()
+const char * TUT_last_function_called(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();

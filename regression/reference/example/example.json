@@ -5190,7 +5190,7 @@
                                 "declgen": "void local_function1()",
                                 "fmtdict": {
                                     "C_name": "AA_example_nested_local_function1",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_call": "c_local_function1",
                                     "F_C_name": "local_function1",
@@ -5559,7 +5559,7 @@
                                 "declgen": "bool isInitialized()",
                                 "fmtdict": {
                                     "C_name": "AA_example_nested_is_initialized",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "bool",
                                     "F_C_call": "c_is_initialized",
                                     "F_C_name": "c_is_initialized",
@@ -6103,7 +6103,7 @@
                                 "declgen": "void testoptional()",
                                 "fmtdict": {
                                     "C_name": "AA_example_nested_testoptional_0",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_call": "c_testoptional_0",
                                     "F_C_name": "c_testoptional_0",
@@ -6486,7 +6486,7 @@
                                 "declgen": "size_t test_size_t()",
                                 "fmtdict": {
                                     "C_name": "AA_example_nested_test_size_t",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "size_t",
                                     "F_C_call": "c_test_size_t",
                                     "F_C_name": "test_size_t",
@@ -6643,7 +6643,7 @@
                                 "declgen": "void testmpi()",
                                 "fmtdict": {
                                     "C_name": "AA_example_nested_testmpi_serial",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_call": "c_testmpi_serial",
                                     "F_C_name": "c_testmpi_serial",

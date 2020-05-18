@@ -63,7 +63,7 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 // Requested: c
 // Match:     c_default
 // start TUT_no_return_no_arguments
-void TUT_no_return_no_arguments()
+void TUT_no_return_no_arguments(void)
 {
     // splicer begin function.no_return_no_arguments
     tutorial::NoReturnNoArguments();
@@ -127,7 +127,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start TUT_use_default_arguments
-double TUT_use_default_arguments()
+double TUT_use_default_arguments(void)
 {
     // splicer begin function.use_default_arguments
     double SHC_rv = tutorial::UseDefaultArguments();
@@ -258,7 +258,7 @@ void TUT_template_argument_double(double arg)
 // Function:  int TemplateReturn
 // Requested: c_native_scalar_result
 // Match:     c_default
-int TUT_template_return_int()
+int TUT_template_return_int(void)
 {
     // splicer begin function.template_return_int
     int SHC_rv = tutorial::TemplateReturn<int>();
@@ -270,7 +270,7 @@ int TUT_template_return_int()
 // Function:  double TemplateReturn
 // Requested: c_native_scalar_result
 // Match:     c_default
-double TUT_template_return_double()
+double TUT_template_return_double(void)
 {
     // splicer begin function.template_return_double
     double SHC_rv = tutorial::TemplateReturn<double>();
@@ -282,7 +282,7 @@ double TUT_template_return_double()
 // Function:  void FortranGenericOverloaded
 // Requested: c
 // Match:     c_default
-void TUT_fortran_generic_overloaded_0()
+void TUT_fortran_generic_overloaded_0(void)
 {
     // splicer begin function.fortran_generic_overloaded_0
     tutorial::FortranGenericOverloaded();
@@ -573,7 +573,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Requested: c_string_&_result
 // Match:     c_string_result
-const char * TUT_last_function_called()
+const char * TUT_last_function_called(void)
 {
     // splicer begin function.last_function_called
     const std::string & SHCXX_rv = tutorial::LastFunctionCalled();

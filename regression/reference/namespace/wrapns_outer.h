@@ -34,7 +34,7 @@ typedef struct s_NS_cstruct1 NS_cstruct1;
 // splicer begin namespace.outer.C_declarations
 // splicer end namespace.outer.C_declarations
 
-void NS_outer_one();
+void NS_outer_one(void);
 
 #ifdef __cplusplus
 }

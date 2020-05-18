@@ -42,7 +42,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Function:  void function1
 // Requested: c
 // Match:     c_default
-void YYY_TES_function1()
+void YYY_TES_function1(void)
 {
     // splicer begin function.function1
     function1();
@@ -53,7 +53,7 @@ void YYY_TES_function1()
 // Function:  void function2
 // Requested: c
 // Match:     c_default
-void c_name_special()
+void c_name_special(void)
 {
     // splicer begin function.function2
     function2();
@@ -128,7 +128,7 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 // Function:  void function5 +name(fiveplus)
 // Requested: c
 // Match:     c_default
-void YYY_TES_fiveplus()
+void YYY_TES_fiveplus(void)
 {
     // splicer begin function.fiveplus
     fiveplus();
@@ -236,7 +236,7 @@ void TES_function_tu_instantiation2(float arg1, double arg2)
 // Function:  int UseImplWorker
 // Requested: c_native_scalar_result
 // Match:     c_default
-int TES_use_impl_worker_instantiation3()
+int TES_use_impl_worker_instantiation3(void)
 {
     // splicer begin function.use_impl_worker_instantiation3
     int SHC_rv = UseImplWorker<internal::ImplWorker1>();

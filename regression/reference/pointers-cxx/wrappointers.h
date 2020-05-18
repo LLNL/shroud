@@ -54,7 +54,7 @@ void POI_accept_char_array_in_bufferify(char *names, long Snames,
 
 void POI_set_global_int(int value);
 
-int POI_sum_fixed_array();
+int POI_sum_fixed_array(void);
 
 void POI_get_ptr_to_scalar(int * * nitems);
 
@@ -100,21 +100,23 @@ void * POI_return_address1(int flag);
 
 void * POI_return_address2(int flag);
 
-int * POI_return_int_ptr_to_scalar();
+void POI_fetch_void_ptr(void * * addr);
 
-int * POI_return_int_ptr_to_fixed_array();
+int * POI_return_int_ptr_to_scalar(void);
+
+int * POI_return_int_ptr_to_fixed_array(void);
 
 int * POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
-const int * POI_return_int_ptr_to_const_scalar();
+const int * POI_return_int_ptr_to_const_scalar(void);
 
-const int * POI_return_int_ptr_to_fixed_const_array();
+const int * POI_return_int_ptr_to_fixed_const_array(void);
 
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
-int POI_return_int_scalar();
+int POI_return_int_scalar(void);
 
 #ifdef __cplusplus
 }

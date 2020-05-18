@@ -26,7 +26,7 @@
                 "declgen": "void worker3()",
                 "fmtdict": {
                     "C_name": "WWW_inner3_worker3",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_inner3_worker3",
                     "F_C_name": "inner3_worker3",
@@ -61,7 +61,7 @@
                 "declgen": "void worker()",
                 "fmtdict": {
                     "C_name": "WWW_worker",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_worker",
                     "F_C_name": "worker",
@@ -118,7 +118,7 @@
                         "declgen": "void worker()",
                         "fmtdict": {
                             "C_name": "WWW_inner1_worker",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_worker",
                             "F_C_name": "worker",
@@ -181,7 +181,7 @@
                         "declgen": "void worker()",
                         "fmtdict": {
                             "C_name": "WWW_inner2_worker",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_worker",
                             "F_C_name": "worker",
@@ -245,7 +245,7 @@
                         "declgen": "void worker4()",
                         "fmtdict": {
                             "C_name": "WWW_inner4_worker4",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_inner4_worker4",
                             "F_C_name": "inner4_worker4",

@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin namespace.inner4.C_declarations
 // splicer end namespace.inner4.C_declarations
 
-void WWW_inner4_worker4();
+void WWW_inner4_worker4(void);
 
 #ifdef __cplusplus
 }

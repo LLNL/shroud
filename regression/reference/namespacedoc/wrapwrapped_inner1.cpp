@@ -20,7 +20,7 @@ extern "C" {
 // Function:  void worker
 // Requested: c
 // Match:     c_default
-void WWW_inner1_worker()
+void WWW_inner1_worker(void)
 {
     // splicer begin namespace.inner1.function.worker
     outer::inner1::worker();

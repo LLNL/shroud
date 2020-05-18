@@ -37,14 +37,14 @@ enum TUT_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void TUT_no_return_no_arguments();
+void TUT_no_return_no_arguments(void);
 
 double TUT_pass_by_value(double arg1, int arg2);
 
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv);
 
-double TUT_use_default_arguments();
+double TUT_use_default_arguments(void);
 
 double TUT_use_default_arguments_arg1(double arg1);
 
@@ -61,11 +61,11 @@ void TUT_template_argument_int(int arg);
 
 void TUT_template_argument_double(double arg);
 
-int TUT_template_return_int();
+int TUT_template_return_int(void);
 
-double TUT_template_return_double();
+double TUT_template_return_double(void);
 
-void TUT_fortran_generic_overloaded_0();
+void TUT_fortran_generic_overloaded_0(void);
 
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2);
 
@@ -96,7 +96,7 @@ void TUT_get_min_max(int * min, int * max);
 
 int TUT_callback1(int in, int ( * incr)(int));
 
-const char * TUT_last_function_called();
+const char * TUT_last_function_called(void);
 
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv);
 

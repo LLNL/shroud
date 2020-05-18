@@ -21,7 +21,7 @@ extern "C" {
 // Function:  void One
 // Requested: c
 // Match:     c_default
-void NS_outer_one()
+void NS_outer_one(void)
 {
     // splicer begin namespace.outer.function.one
     outer::One();

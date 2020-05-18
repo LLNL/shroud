@@ -237,7 +237,7 @@
                 "declgen": "int * ReturnIntPtrRaw() +deref(raw)",
                 "fmtdict": {
                     "C_name": "OWN_return_int_ptr_raw",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_name": "c_return_int_ptr_raw",
                     "cxx_rv_decl": "int * SHC_rv",
@@ -315,7 +315,7 @@
                 "declgen": "int * ReturnIntPtrScalar() +deref(scalar)",
                 "fmtdict": {
                     "C_name": "OWN_return_int_ptr_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_return_int_ptr_scalar",
                     "F_C_name": "return_int_ptr_scalar",
@@ -400,7 +400,7 @@
                 "declgen": "int * ReturnIntPtrPointer() +deref(pointer)",
                 "fmtdict": {
                     "C_name": "OWN_return_int_ptr_pointer",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_pointer",
                     "F_C_name": "c_return_int_ptr_pointer",

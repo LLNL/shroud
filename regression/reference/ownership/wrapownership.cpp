@@ -23,7 +23,7 @@ extern "C" {
 // Function:  int * ReturnIntPtrRaw +deref(raw)
 // Requested: c_native_*_result
 // Match:     c_default
-int * OWN_return_int_ptr_raw()
+int * OWN_return_int_ptr_raw(void)
 {
     // splicer begin function.return_int_ptr_raw
     int * SHC_rv = ReturnIntPtrRaw();
@@ -35,7 +35,7 @@ int * OWN_return_int_ptr_raw()
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
 // Requested: c_native_*_result
 // Match:     c_default
-int OWN_return_int_ptr_scalar()
+int OWN_return_int_ptr_scalar(void)
 {
     // splicer begin function.return_int_ptr_scalar
     int * SHC_rv = ReturnIntPtrScalar();
@@ -47,7 +47,7 @@ int OWN_return_int_ptr_scalar()
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default
-int * OWN_return_int_ptr_pointer()
+int * OWN_return_int_ptr_pointer(void)
 {
     // splicer begin function.return_int_ptr_pointer
     int * SHC_rv = ReturnIntPtrPointer();

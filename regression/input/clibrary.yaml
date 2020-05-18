@@ -47,7 +47,7 @@ declarations:
     wrap_lua: False
     wrap_python: False
 
-- decl: void NoReturnNoArguments()
+- decl: void NoReturnNoArguments(void)
   options:
     literalinclude: True
 - decl: double PassByValue(double arg1, int arg2)
@@ -149,7 +149,7 @@ declarations:
     brief: Single, implied bool argument
 
 ######################################################################
-- decl: void bindC1()
+- decl: void bindC1(void)
   doxygen:
     brief: Rename Fortran name for interface only function
     description: |
@@ -215,8 +215,7 @@ declarations:
 ######################################################################
 # Function pointer (from tutorial.yaml)
 
-# XXX (void)
-- decl: int callback1(int type, void (*incr)()+external)
+- decl: int callback1(int type, void (*incr)(void)+external)
   doxygen:
     brief: Test function pointer
   options:
