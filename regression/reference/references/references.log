@@ -25,7 +25,7 @@ C method void fetchArrayRefConst(const double * & array +context(Darray)+deref(p
 C method void fetchVoidPtr(void * * array +intent(out))
 C method void fetchVoidRef(void * & array +intent(out))
 C method bool checkPtr(void * array +intent(in)+value)
-C method int sumArray()
+C method double sumArray()
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wrapreferences.cpp
@@ -55,7 +55,7 @@ C-interface method void fetchArrayRefConst(const double * & array +context(Darra
 C-interface, Fortran method void fetchVoidPtr(void * * array +intent(out))
 C-interface, Fortran method void fetchVoidRef(void * & array +intent(out))
 C-interface, Fortran method bool checkPtr(void * array +intent(in)+value)
-C-interface, Fortran method int sumArray()
+C-interface, Fortran method double sumArray()
 Close wrapfreferences.f
 class ArrayWrapper
 Python method ArrayWrapper()
@@ -74,7 +74,7 @@ Python method void fetchArrayRefConst(const double * & array +deref(pointer)+dim
 Python method void fetchVoidPtr(void * * array +intent(out))
 Python method void fetchVoidRef(void * & array +intent(out))
 Python method bool checkPtr(void * array +intent(in)+value)
-Python method int sumArray()
+Python method double sumArray()
 Close pyArrayWrappertype.cpp
 Close pyreferencesmodule.cpp
 Close pyreferencesutil.cpp

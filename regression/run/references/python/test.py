@@ -45,14 +45,14 @@ class References(unittest.TestCase):
         self.assertEqual(10, arr.size)
 
         # Make sure we're pointing to the array in the instance.
-        arr[:] = 0
-        self.assertEqual(0, arrinst.sumArray())
-        arr[:] = 1
-        self.assertEqual(10, arrinst.sumArray())
-        arr[:] = 0
-        arr[0] = 10
-        arr[9] = 1
-        self.assertEqual(11, arrinst.sumArray())
+        arr[:] = 0.0
+        self.assertEqual(0.0, arrinst.sumArray())
+        arr[:] = 1.0
+        self.assertEqual(10.0, arrinst.sumArray())
+        arr[:] = 0.0
+        arr[0] = 10.0
+        arr[9] = 1.0
+        self.assertEqual(11.0, arrinst.sumArray())
 
         arrconst = arrinst.getArrayConst()
         self.assertIsInstance(arrconst, np.ndarray)

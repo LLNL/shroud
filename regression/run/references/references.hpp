@@ -58,8 +58,8 @@ public:
     void fetchVoidPtr(void **array) { *array = arr; }
     void fetchVoidRef(void *&array) { array = arr; }
     bool checkPtr(void *array) { return array == arr ? true : false; }
-    int  sumArray() {
-        int sum = 0;
+    double sumArray() {
+        double sum = 0;
         for (int i=0; i < sz; ++i) {
             sum += arr[i];
         }

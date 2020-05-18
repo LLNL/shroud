@@ -42,4 +42,4 @@ declarations:
   - decl: void fetchVoidPtr(void **array +intent(out))
   - decl: void fetchVoidRef(void *&array +intent(out))
   - decl: bool checkPtr(void *array)
-  - decl: int sumArray()
+  - decl: double sumArray()

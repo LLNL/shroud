@@ -508,17 +508,17 @@ module references_mod
         end function c_arraywrapper_check_ptr
 
         ! ----------------------------------------
-        ! Function:  int sumArray
+        ! Function:  double sumArray
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_arraywrapper_sum_array(self) &
                 result(SHT_rv) &
                 bind(C, name="REF_ArrayWrapper_sum_array")
-            use iso_c_binding, only : C_INT
+            use iso_c_binding, only : C_DOUBLE
             import :: SHROUD_arraywrapper_capsule
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
-            integer(C_INT) :: SHT_rv
+            real(C_DOUBLE) :: SHT_rv
         end function c_arraywrapper_sum_array
 
         ! splicer begin class.ArrayWrapper.additional_interfaces
@@ -902,17 +902,17 @@ contains
     end function arraywrapper_check_ptr
 
     ! ----------------------------------------
-    ! Function:  int sumArray
-    ! int sumArray
+    ! Function:  double sumArray
+    ! double sumArray
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function arraywrapper_sum_array(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT
+        use iso_c_binding, only : C_DOUBLE
         class(arraywrapper) :: obj
-        integer(C_INT) :: SHT_rv
+        real(C_DOUBLE) :: SHT_rv
         ! splicer begin class.ArrayWrapper.method.sum_array
         SHT_rv = c_arraywrapper_sum_array(obj%cxxmem)
         ! splicer end class.ArrayWrapper.method.sum_array

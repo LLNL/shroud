@@ -481,14 +481,14 @@ bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array)
 }
 
 // ----------------------------------------
-// Function:  int sumArray
+// Function:  double sumArray
 // Requested: c_native_scalar_result
 // Match:     c_default
-int REF_ArrayWrapper_sum_array(REF_ArrayWrapper * self)
+double REF_ArrayWrapper_sum_array(REF_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.sum_array
-    int SHC_rv = SH_this->sumArray();
+    double SHC_rv = SH_this->sumArray();
     return SHC_rv;
     // splicer end class.ArrayWrapper.method.sum_array
 }

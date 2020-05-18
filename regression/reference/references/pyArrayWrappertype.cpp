@@ -584,7 +584,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int sumArray
+// Function:  double sumArray
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_sumArray__doc__[] =
@@ -600,10 +600,10 @@ PY_sumArray(
 // splicer begin class.ArrayWrapper.method.sum_array
     PyObject * SHTPy_rv = nullptr;
 
-    int SHCXX_rv = self->obj->sumArray();
+    double SHCXX_rv = self->obj->sumArray();
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = PyFloat_FromDouble(SHCXX_rv);
 
     return (PyObject *) SHTPy_rv;
 // splicer end class.ArrayWrapper.method.sum_array
