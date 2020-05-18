@@ -16,6 +16,9 @@
 #define WRAPARRAYWRAPPER_H
 
 #include "typesreferences.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin class.ArrayWrapper.CXX_declarations
 // splicer end class.ArrayWrapper.CXX_declarations
@@ -59,11 +62,39 @@ const double * REF_ArrayWrapper_get_array_const_c(
 const double * REF_ArrayWrapper_get_array_const_c_bufferify(
     const REF_ArrayWrapper * self, REF_SHROUD_array *DSHC_rv);
 
-void REF_ArrayWrapper_fetch_array(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr(REF_ArrayWrapper * self,
     double * * array, int * isize);
 
-void REF_ArrayWrapper_fetch_array_bufferify(REF_ArrayWrapper * self,
+void REF_ArrayWrapper_fetch_array_ptr_bufferify(REF_ArrayWrapper * self,
     REF_SHROUD_array *Darray, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref(REF_ArrayWrapper * self,
+    double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_bufferify(REF_ArrayWrapper * self,
+    REF_SHROUD_array *Darray, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ptr_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ptr_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_const(REF_ArrayWrapper * self,
+    const double * * array, int * isize);
+
+void REF_ArrayWrapper_fetch_array_ref_const_bufferify(
+    REF_ArrayWrapper * self, REF_SHROUD_array *Darray, int * isize);
+
+void REF_ArrayWrapper_fetch_void_ptr(REF_ArrayWrapper * self,
+    void * * array);
+
+void REF_ArrayWrapper_fetch_void_ref(REF_ArrayWrapper * self,
+    void * * array);
+
+bool REF_ArrayWrapper_check_ptr(REF_ArrayWrapper * self, void * array);
+
+double REF_ArrayWrapper_sum_array(REF_ArrayWrapper * self);
 
 #ifdef __cplusplus
 }

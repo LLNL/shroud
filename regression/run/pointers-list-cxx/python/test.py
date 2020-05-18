@@ -200,6 +200,10 @@ class Pointers(unittest.TestCase):
         void = pointers.returnAddress2(1)
         self.assertEqual('PyCapsule', void.__class__.__name__)
 
+        void = None
+        void = pointers.fetchVoidPtr()
+        self.assertEqual('PyCapsule', void.__class__.__name__)
+
     def test_return_ptr(self):
         # Pointers return a list.
         ptr = pointers.returnIntPtrToScalar()

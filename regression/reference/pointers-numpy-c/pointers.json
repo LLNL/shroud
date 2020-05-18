@@ -2287,6 +2287,70 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "void",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "data_var": "SHData_addr",
+                            "numpy_type": null,
+                            "py_var": "SHPy_addr",
+                            "size_var": "SHSize_addr",
+                            "stmt0": "py_unknown_**_out",
+                            "stmt1": "py_unknown_**_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fetchVoidPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchVoidPtr(void **addr+intent(out))",
+                "declgen": "void fetchVoidPtr(void * * addr +intent(out))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_fetchVoidPtr",
+                    "function_name": "fetchVoidPtr",
+                    "underscore_name": "fetch_void_ptr"
+                },
+                "options": {}
+            },
+            {
                 "_fmtresult": {
                     "fmtpy": {
                         "array_size": "1",

@@ -4020,6 +4020,95 @@
                 }
             },
             {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "c_unknown_**_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_intent": "OUT",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "addr",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "stmt0": "f_unknown_**_out",
+                            "stmt1": "f_unknown_**_out",
+                            "stmtc0": "c_unknown_**_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fetchVoidPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchVoidPtr(void **addr+intent(out))",
+                "declgen": "void fetchVoidPtr(void * * addr +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "addr",
+                    "C_name": "POI_fetch_void_ptr",
+                    "C_prototype": "void * * addr",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fetch_void_ptr",
+                    "F_C_name": "fetch_void_ptr",
+                    "F_arg_c_call": "addr",
+                    "F_arguments": "addr",
+                    "F_name_function": "fetch_void_ptr",
+                    "F_name_generic": "fetch_void_ptr",
+                    "F_name_impl": "fetch_void_ptr",
+                    "F_subprogram": "subroutine",
+                    "function_name": "fetchVoidPtr",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "fetch_void_ptr"
+                },
+                "options": {}
+            },
+            {
                 "_fmtresult": {
                     "fmtc": {
                         "c_const": "",

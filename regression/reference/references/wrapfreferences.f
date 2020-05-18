@@ -62,7 +62,14 @@ module references_mod
         procedure :: get_array_const => arraywrapper_get_array_const
         procedure :: get_array_c => arraywrapper_get_array_c
         procedure :: get_array_const_c => arraywrapper_get_array_const_c
-        procedure :: fetch_array => arraywrapper_fetch_array
+        procedure :: fetch_array_ptr => arraywrapper_fetch_array_ptr
+        procedure :: fetch_array_ref => arraywrapper_fetch_array_ref
+        procedure :: fetch_array_ptr_const => arraywrapper_fetch_array_ptr_const
+        procedure :: fetch_array_ref_const => arraywrapper_fetch_array_ref_const
+        procedure :: fetch_void_ptr => arraywrapper_fetch_void_ptr
+        procedure :: fetch_void_ref => arraywrapper_fetch_void_ref
+        procedure :: check_ptr => arraywrapper_check_ptr
+        procedure :: sum_array => arraywrapper_sum_array
         procedure :: get_instance => arraywrapper_get_instance
         procedure :: set_instance => arraywrapper_set_instance
         procedure :: associated => arraywrapper_associated
@@ -266,7 +273,7 @@ module references_mod
         end function c_arraywrapper_get_array_const_c_bufferify
 
         ! ----------------------------------------
-        ! Function:  void fetchArray
+        ! Function:  void fetchArrayPtr
         ! Requested: c_unknown_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -274,21 +281,21 @@ module references_mod
         ! Requested: c_native_**_out_pointer
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in
+        ! Argument:  int * isize +hidden+intent(in)
+        ! Requested: c_native_*_in
         ! Match:     c_default
-        subroutine c_arraywrapper_fetch_array(self, array, isize) &
-                bind(C, name="REF_ArrayWrapper_fetch_array")
+        subroutine c_arraywrapper_fetch_array_ptr(self, array, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ptr")
             use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_arraywrapper_capsule
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(C_PTR), intent(OUT) :: array
             integer(C_INT), intent(IN) :: isize
-        end subroutine c_arraywrapper_fetch_array
+        end subroutine c_arraywrapper_fetch_array_ptr
 
         ! ----------------------------------------
-        ! Function:  void fetchArray
+        ! Function:  void fetchArrayPtr
         ! Requested: c_unknown_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
@@ -296,19 +303,223 @@ module references_mod
         ! Requested: c_native_**_out_buf_pointer
         ! Match:     c_native_**_out_buf
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in_buf
+        ! Argument:  int * isize +hidden+intent(in)
+        ! Requested: c_native_*_in_buf
         ! Match:     c_default
-        subroutine c_arraywrapper_fetch_array_bufferify(self, Darray, &
-                isize) &
-                bind(C, name="REF_ArrayWrapper_fetch_array_bufferify")
+        subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
+                Darray, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ptr_bufferify")
             use iso_c_binding, only : C_INT
             import :: SHROUD_array, SHROUD_arraywrapper_capsule
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: Darray
             integer(C_INT), intent(IN) :: isize
-        end subroutine c_arraywrapper_fetch_array_bufferify
+        end subroutine c_arraywrapper_fetch_array_ptr_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayRef
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_*&_out_pointer
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ref(self, array, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ref")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ref
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayRef
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_*&_out_buf_pointer
+        ! Match:     c_native_*&_out_buf
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in_buf
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
+                Darray, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ref_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array, SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(INOUT) :: Darray
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ref_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayPtrConst
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_**_out_pointer
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int * isize +hidden+intent(in)
+        ! Requested: c_native_*_in
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ptr_const(self, array, &
+                isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ptr_const")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ptr_const
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayPtrConst
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_**_out_buf_pointer
+        ! Match:     c_native_**_out_buf
+        ! ----------------------------------------
+        ! Argument:  int * isize +hidden+intent(in)
+        ! Requested: c_native_*_in_buf
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
+                Darray, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ptr_const_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array, SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(INOUT) :: Darray
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ptr_const_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayRefConst
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_*&_out_pointer
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ref_const(self, array, &
+                isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ref_const")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ref_const
+
+        ! ----------------------------------------
+        ! Function:  void fetchArrayRefConst
+        ! Requested: c_unknown_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+        ! Requested: c_native_*&_out_buf_pointer
+        ! Match:     c_native_*&_out_buf
+        ! ----------------------------------------
+        ! Argument:  int & isize +hidden+intent(in)
+        ! Requested: c_native_&_in_buf
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
+                Darray, isize) &
+                bind(C, name="REF_ArrayWrapper_fetch_array_ref_const_bufferify")
+            use iso_c_binding, only : C_INT
+            import :: SHROUD_array, SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(SHROUD_array), intent(INOUT) :: Darray
+            integer(C_INT), intent(IN) :: isize
+        end subroutine c_arraywrapper_fetch_array_ref_const_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void fetchVoidPtr
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * * array +intent(out)
+        ! Requested: c_unknown_**_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_void_ptr(self, array) &
+                bind(C, name="REF_ArrayWrapper_fetch_void_ptr")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+        end subroutine c_arraywrapper_fetch_void_ptr
+
+        ! ----------------------------------------
+        ! Function:  void fetchVoidRef
+        ! Requested: c_unknown_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * & array +intent(out)
+        ! Requested: c_unknown_*&_out
+        ! Match:     c_default
+        subroutine c_arraywrapper_fetch_void_ref(self, array) &
+                bind(C, name="REF_ArrayWrapper_fetch_void_ref")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), intent(OUT) :: array
+        end subroutine c_arraywrapper_fetch_void_ref
+
+        ! ----------------------------------------
+        ! Function:  bool checkPtr
+        ! Requested: c_bool_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  void * array +intent(in)+value
+        ! Requested: c_unknown_*_in
+        ! Match:     c_default
+        function c_arraywrapper_check_ptr(self, array) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_check_ptr")
+            use iso_c_binding, only : C_BOOL, C_PTR
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            type(C_PTR), value, intent(IN) :: array
+            logical(C_BOOL) :: SHT_rv
+        end function c_arraywrapper_check_ptr
+
+        ! ----------------------------------------
+        ! Function:  double sumArray
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_arraywrapper_sum_array(self) &
+                result(SHT_rv) &
+                bind(C, name="REF_ArrayWrapper_sum_array")
+            use iso_c_binding, only : C_DOUBLE
+            import :: SHROUD_arraywrapper_capsule
+            implicit none
+            type(SHROUD_arraywrapper_capsule), intent(IN) :: self
+            real(C_DOUBLE) :: SHT_rv
+        end function c_arraywrapper_sum_array
 
         ! splicer begin class.ArrayWrapper.additional_interfaces
         ! splicer end class.ArrayWrapper.additional_interfaces
@@ -495,8 +706,8 @@ contains
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Function:  void fetchArray
-    ! void fetchArray
+    ! Function:  void fetchArrayPtr
+    ! void fetchArrayPtr
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -508,23 +719,204 @@ contains
     ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  int & isize +hidden+intent(in)
-    ! Requested: f_native_&_in
+    ! Argument:  int * isize +hidden+intent(in)
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_&_in_buf
+    ! Requested: c_native_*_in_buf
     ! Match:     c_default
-    subroutine arraywrapper_fetch_array(obj, array)
+    subroutine arraywrapper_fetch_array_ptr(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
         class(arraywrapper) :: obj
         real(C_DOUBLE), intent(OUT), pointer :: array(:)
         type(SHROUD_array) :: Darray
         integer(C_INT) :: isize
-        ! splicer begin class.ArrayWrapper.method.fetch_array
-        call c_arraywrapper_fetch_array_bufferify(obj%cxxmem, Darray, &
-            isize)
+        ! splicer begin class.ArrayWrapper.method.fetch_array_ptr
+        call c_arraywrapper_fetch_array_ptr_bufferify(obj%cxxmem, &
+            Darray, isize)
         call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
-        ! splicer end class.ArrayWrapper.method.fetch_array
-    end subroutine arraywrapper_fetch_array
+        ! splicer end class.ArrayWrapper.method.fetch_array_ptr
+    end subroutine arraywrapper_fetch_array_ptr
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void fetchArrayRef
+    ! void fetchArrayRef
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+    ! Requested: f_native_*&_out_pointer
+    ! Match:     f_native_*&_out
+    ! Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+    ! Exact:     c_native_*&_out_buf
+    ! ----------------------------------------
+    ! Argument:  int & isize +hidden+intent(in)
+    ! Requested: f_native_&_in
+    ! Match:     f_default
+    ! Requested: c_native_&_in_buf
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_array_ref(obj, array)
+        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        class(arraywrapper) :: obj
+        real(C_DOUBLE), intent(OUT), pointer :: array(:)
+        type(SHROUD_array) :: Darray
+        integer(C_INT) :: isize
+        ! splicer begin class.ArrayWrapper.method.fetch_array_ref
+        call c_arraywrapper_fetch_array_ref_bufferify(obj%cxxmem, &
+            Darray, isize)
+        call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
+        ! splicer end class.ArrayWrapper.method.fetch_array_ref
+    end subroutine arraywrapper_fetch_array_ref
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void fetchArrayPtrConst
+    ! void fetchArrayPtrConst
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+    ! Requested: f_native_**_out_pointer
+    ! Match:     f_native_**_out
+    ! Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+    ! Exact:     c_native_**_out_buf
+    ! ----------------------------------------
+    ! Argument:  int * isize +hidden+intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in_buf
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_array_ptr_const(obj, array)
+        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        class(arraywrapper) :: obj
+        real(C_DOUBLE), intent(OUT), pointer :: array(:)
+        type(SHROUD_array) :: Darray
+        integer(C_INT) :: isize
+        ! splicer begin class.ArrayWrapper.method.fetch_array_ptr_const
+        call c_arraywrapper_fetch_array_ptr_const_bufferify(obj%cxxmem, &
+            Darray, isize)
+        call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
+        ! splicer end class.ArrayWrapper.method.fetch_array_ptr_const
+    end subroutine arraywrapper_fetch_array_ptr_const
+
+    ! Generated by arg_to_buffer
+    ! ----------------------------------------
+    ! Function:  void fetchArrayRefConst
+    ! void fetchArrayRefConst
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+    ! Requested: f_native_*&_out_pointer
+    ! Match:     f_native_*&_out
+    ! Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+    ! Exact:     c_native_*&_out_buf
+    ! ----------------------------------------
+    ! Argument:  int & isize +hidden+intent(in)
+    ! Requested: f_native_&_in
+    ! Match:     f_default
+    ! Requested: c_native_&_in_buf
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_array_ref_const(obj, array)
+        use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
+        class(arraywrapper) :: obj
+        real(C_DOUBLE), intent(OUT), pointer :: array(:)
+        type(SHROUD_array) :: Darray
+        integer(C_INT) :: isize
+        ! splicer begin class.ArrayWrapper.method.fetch_array_ref_const
+        call c_arraywrapper_fetch_array_ref_const_bufferify(obj%cxxmem, &
+            Darray, isize)
+        call c_f_pointer(Darray%base_addr, array, Darray%shape(1:1))
+        ! splicer end class.ArrayWrapper.method.fetch_array_ref_const
+    end subroutine arraywrapper_fetch_array_ref_const
+
+    ! ----------------------------------------
+    ! Function:  void fetchVoidPtr
+    ! void fetchVoidPtr
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * array +intent(out)
+    ! Exact:     f_unknown_**_out
+    ! Requested: c_unknown_**_out
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_void_ptr(obj, array)
+        use iso_c_binding, only : C_PTR
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(OUT) :: array
+        ! splicer begin class.ArrayWrapper.method.fetch_void_ptr
+        call c_arraywrapper_fetch_void_ptr(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.fetch_void_ptr
+    end subroutine arraywrapper_fetch_void_ptr
+
+    ! ----------------------------------------
+    ! Function:  void fetchVoidRef
+    ! void fetchVoidRef
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * & array +intent(out)
+    ! Requested: f_unknown_*&_out
+    ! Match:     f_default
+    ! Requested: c_unknown_*&_out
+    ! Match:     c_default
+    subroutine arraywrapper_fetch_void_ref(obj, array)
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(OUT) :: array
+        ! splicer begin class.ArrayWrapper.method.fetch_void_ref
+        call c_arraywrapper_fetch_void_ref(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.fetch_void_ref
+    end subroutine arraywrapper_fetch_void_ref
+
+    ! ----------------------------------------
+    ! Function:  bool checkPtr
+    ! bool checkPtr
+    ! Requested: f_bool_scalar_result
+    ! Match:     f_bool_result
+    ! Requested: c_bool_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * array +intent(in)+value
+    ! Exact:     f_unknown_*_in
+    ! Requested: c_unknown_*_in
+    ! Match:     c_default
+    function arraywrapper_check_ptr(obj, array) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_BOOL, C_PTR
+        class(arraywrapper) :: obj
+        type(C_PTR), intent(IN) :: array
+        logical :: SHT_rv
+        ! splicer begin class.ArrayWrapper.method.check_ptr
+        SHT_rv = c_arraywrapper_check_ptr(obj%cxxmem, array)
+        ! splicer end class.ArrayWrapper.method.check_ptr
+    end function arraywrapper_check_ptr
+
+    ! ----------------------------------------
+    ! Function:  double sumArray
+    ! double sumArray
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function arraywrapper_sum_array(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE
+        class(arraywrapper) :: obj
+        real(C_DOUBLE) :: SHT_rv
+        ! splicer begin class.ArrayWrapper.method.sum_array
+        SHT_rv = c_arraywrapper_sum_array(obj%cxxmem)
+        ! splicer end class.ArrayWrapper.method.sum_array
+    end function arraywrapper_sum_array
 
     ! Return pointer to C++ memory.
     function arraywrapper_get_instance(obj) result (cxxptr)

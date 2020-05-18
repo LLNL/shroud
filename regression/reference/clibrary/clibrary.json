@@ -3428,7 +3428,7 @@
                             "f_var": "in",
                             "sh_type": "SH_TYPE_CPTR",
                             "stmt0": "f_unknown_*_in",
-                            "stmt1": "f_unknown_*",
+                            "stmt1": "f_unknown_*_in",
                             "stmtc0": "c_unknown_*_in",
                             "stmtc1": "c_default"
                         }
@@ -3527,7 +3527,7 @@
                     "C_return_type": "void",
                     "F_C_call": "c_pass_void_star_star",
                     "F_C_name": "pass_void_star_star",
-                    "F_arg_c_call": "C_LOC(in),\t out",
+                    "F_arg_c_call": "in,\t out",
                     "F_arguments": "in,\t out",
                     "F_name_function": "pass_void_star_star",
                     "F_name_generic": "pass_void_star_star",

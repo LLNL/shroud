@@ -3588,6 +3588,45 @@ fail_capsule=[
 py_statements = [
 
 ########################################
+# void
+    dict(
+        # Accept a capsule and extract address.
+        name="py_unknown_*_in",
+        declare=[
+            "void *{c_var};",
+            "PyObject *{py_var};",
+        ],
+        parse_format="O",
+        parse_args=["&{py_var}"],
+        post_parse=[
+            "{c_var} = PyCapsule_GetPointer({py_var}, NULL);",
+            "if (PyErr_Occurred())",
+            "+goto fail;-",
+        ],
+        arg_call=[
+            "{c_var}",
+        ],
+        goto_fail=True,
+    ),
+    dict(
+        name="py_unknown_**_out",
+        declare=[
+            "void *{c_var};",
+        ],
+#        arg_call=[
+#            "&{c_var}",
+#        ],
+        c_local_var="scalar",  # XXX - not really a scalar
+    ),
+    dict(
+        name="py_unknown_*&_out",
+        base="py_unknown_**_out",
+        arg_call=[
+            "{c_var}",
+        ]
+    ),
+
+########################################
 # bool
     dict(
         name="py_bool_in",
@@ -3782,6 +3821,11 @@ py_statements = [
         ],
         c_local_var="pointer",
         arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        name="py_native_*&_out_pointer_numpy",
+        base="py_native_**_out_pointer_numpy",
+        arg_call=["{cxx_var}"],
     ),
 
 ########################################
