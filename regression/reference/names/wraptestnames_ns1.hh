@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin namespace.ns1.C_declarations
 // splicer end namespace.ns1.C_declarations
 
-void TES_ns1_init_ns1();
+void TES_ns1_init_ns1(void);
 
 #ifdef __cplusplus
 }

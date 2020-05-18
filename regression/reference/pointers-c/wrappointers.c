@@ -378,7 +378,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_scalar
-int POI_return_int_scalar()
+int POI_return_int_scalar(void)
 {
     // splicer begin function.return_int_scalar
     int * SHC_rv = returnIntScalar();

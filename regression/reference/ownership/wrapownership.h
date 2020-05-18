@@ -27,11 +27,11 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int * OWN_return_int_ptr_raw();
+int * OWN_return_int_ptr_raw(void);
 
-int OWN_return_int_ptr_scalar();
+int OWN_return_int_ptr_scalar(void);
 
-int * OWN_return_int_ptr_pointer();
+int * OWN_return_int_ptr_pointer(void);
 
 int * OWN_return_int_ptr_dim_raw(int * len);
 

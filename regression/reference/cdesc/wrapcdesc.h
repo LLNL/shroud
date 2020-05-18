@@ -34,9 +34,9 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue);
 void CDE_get_scalar1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue);
 
-int CDE_get_data_int();
+int CDE_get_data_int(void);
 
-double CDE_get_data_double();
+double CDE_get_data_double(void);
 
 #ifdef __cplusplus
 }

@@ -27,9 +27,9 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
-int STMT_get_name_length();
+int STMT_get_name_length(void);
 
-const char * STMT_get_name_error_pattern();
+const char * STMT_get_name_error_pattern(void);
 
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv);
 

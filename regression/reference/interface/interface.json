@@ -29,7 +29,7 @@
                 "declgen": "void Function1()",
                 "fmtdict": {
                     "C_name": "Function1",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_function1",
                     "F_C_name": "function1",

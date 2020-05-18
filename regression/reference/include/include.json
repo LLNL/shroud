@@ -269,7 +269,7 @@
                                 "declgen": "void function1()",
                                 "fmtdict": {
                                     "C_name": "LIB_one_two_function1",
-                                    "C_prototype": "",
+                                    "C_prototype": "void",
                                     "C_return_type": "void",
                                     "F_C_call": "c_function1",
                                     "F_C_name": "function1",
@@ -540,7 +540,7 @@
                         "declgen": "void outer_func()",
                         "fmtdict": {
                             "C_name": "LIB_outer1_outer_func",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_outer_func",
                             "F_C_name": "outer_func",
@@ -667,7 +667,7 @@
                         "declgen": "void outer_func()",
                         "fmtdict": {
                             "C_name": "LIB_outer2_outer_func",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_outer_func",
                             "F_C_name": "outer_func",

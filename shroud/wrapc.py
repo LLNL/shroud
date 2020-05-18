@@ -1153,6 +1153,8 @@ class Wrapc(util.WrapperMixin):
         if call_list:
             fmt_func.C_call_list = ",\t ".join(call_list)
 
+        if len(proto_list) + len(proto_tail) == 0:
+            proto_list.append("void")
         fmt_func.C_prototype = options.get(
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )

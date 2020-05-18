@@ -358,6 +358,7 @@ class Parser(ExprParser):
         self.namespace = node
 
     def parameter_list(self):
+        """Parse function parameters."""
         # look for ... var arg at end
         """
         <parameter-list> ::= '(' <declaration>?  [ , <declaration ]* ')'
@@ -546,6 +547,13 @@ class Parser(ExprParser):
 
         if self.token.typ == "LPAREN":  # peek
             node.params = self.parameter_list()
+
+            # Look for (void), set to no parameters.
+            if len(node.params) == 1:
+                chk = node.params[0]
+                if (chk.declarator is None and
+                    chk.specifier == ["void"]):
+                    node.params = []
 
             #  method const
             if self.token.typ == "TYPE_QUALIFIER":

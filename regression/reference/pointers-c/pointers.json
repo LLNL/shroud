@@ -1903,14 +1903,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int sumFixedArray()",
+                "decl": "int sumFixedArray(void)",
                 "declgen": "int sumFixedArray()",
                 "doxygen": {
                     "description": "Used to test values global_array.\n"
                 },
                 "fmtdict": {
                     "C_name": "sumFixedArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_sum_fixed_array",
                     "F_C_name": "sum_fixed_array",
@@ -4154,11 +4154,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToScalar()",
+                "decl": "int *returnIntPtrToScalar(void)",
                 "declgen": "int * returnIntPtrToScalar()",
                 "fmtdict": {
                     "C_name": "returnIntPtrToScalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_scalar",
                     "F_C_name": "c_return_int_ptr_to_scalar",
@@ -4235,11 +4235,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "returnIntPtrToFixedArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
@@ -4306,7 +4306,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntPtrToFixedArray() +dimension(10)",
+                "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
                 "declgen": "int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
@@ -4372,11 +4372,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToConstScalar()",
+                "decl": "const int *returnIntPtrToConstScalar(void)",
                 "declgen": "const int * returnIntPtrToConstScalar()",
                 "fmtdict": {
                     "C_name": "returnIntPtrToConstScalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_const_scalar",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
@@ -4454,11 +4454,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
                 "fmtdict": {
                     "C_name": "returnIntPtrToFixedConstArray",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
@@ -4526,7 +4526,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "const int *returnIntPtrToFixedConstArray() +dimension(10)",
+                "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "declgen": "const int * returnIntPtrToFixedConstArray() +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
@@ -4590,11 +4590,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int *returnIntScalar() +deref(scalar)",
+                "decl": "int *returnIntScalar(void) +deref(scalar)",
                 "declgen": "int * returnIntScalar() +deref(scalar)",
                 "fmtdict": {
                     "C_name": "POI_return_int_scalar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "int",
                     "F_C_call": "c_return_int_scalar",
                     "F_C_name": "return_int_scalar",

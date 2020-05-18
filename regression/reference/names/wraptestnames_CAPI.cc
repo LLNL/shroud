@@ -20,7 +20,7 @@ extern "C" {
 // Function:  void Worker1
 // Requested: c
 // Match:     c_default
-void TES_capi_worker1()
+void TES_capi_worker1(void)
 {
     // splicer begin namespace.CAPI.function.worker1
     CAPI::Worker1();

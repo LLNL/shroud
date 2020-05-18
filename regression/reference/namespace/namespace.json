@@ -81,7 +81,7 @@
                 "declgen": "const std::string & LastFunctionCalled() +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "NS_last_function_called",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_last_function_called_bufferify",
                     "F_C_name": "c_last_function_called",
@@ -218,7 +218,7 @@
                 "declgen": "void One()",
                 "fmtdict": {
                     "C_name": "NS_one",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_one",
                     "F_C_name": "one",
@@ -566,7 +566,7 @@
                         "declgen": "void One()",
                         "fmtdict": {
                             "C_name": "NS_outer_one",
-                            "C_prototype": "",
+                            "C_prototype": "void",
                             "C_return_type": "void",
                             "F_C_call": "c_one",
                             "F_C_name": "one",

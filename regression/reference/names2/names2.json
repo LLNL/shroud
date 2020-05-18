@@ -26,7 +26,7 @@
                 "declgen": "void AFunction()",
                 "fmtdict": {
                     "C_name": "NAM_afunction",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "void",
                     "F_C_call": "c_afunction",
                     "F_C_name": "afunction",

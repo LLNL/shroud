@@ -180,7 +180,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_return_char",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "char",
                     "F_C_call": "c_return_char_bufferify",
                     "F_C_name": "c_return_char",
@@ -861,7 +861,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_char_ptr1",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_char_ptr1_bufferify",
                     "F_C_name": "c_get_char_ptr1",
@@ -1061,7 +1061,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_char_ptr2",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_char_ptr2_bufferify",
                     "F_C_name": "c_get_char_ptr2",
@@ -1250,7 +1250,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_char_ptr3",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_name": "c_get_char_ptr3",
                     "F_string_result_as_arg": "output",
@@ -2238,7 +2238,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_pure",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_pure_bufferify",
                     "F_C_name": "c_get_const_string_ref_pure",
@@ -2441,7 +2441,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_len",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_len_bufferify",
                     "F_C_name": "c_get_const_string_ref_len",
@@ -2632,7 +2632,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_as_arg",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_name": "c_get_const_string_ref_as_arg",
                     "F_string_result_as_arg": "output",
@@ -2891,7 +2891,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_len_empty",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
                     "F_C_name": "c_get_const_string_ref_len_empty",
@@ -3086,7 +3086,7 @@
                 "declgen": "const std::string & getConstStringRefAlloc() +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ref_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ref_alloc",
@@ -3282,7 +3282,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_len",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_len_bufferify",
                     "F_C_name": "c_get_const_string_ptr_len",
@@ -3492,7 +3492,7 @@
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc",
@@ -3686,7 +3686,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
@@ -3884,7 +3884,7 @@
                 },
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
@@ -5374,7 +5374,7 @@
                 },
                 "fmtdict": {
                     "C_name": "CreturnChar",
-                    "C_prototype": "",
+                    "C_prototype": "void",
                     "C_return_type": "char",
                     "F_C_call": "c_creturn_char_bufferify",
                     "F_C_name": "c_creturn_char",

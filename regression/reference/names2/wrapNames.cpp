@@ -22,7 +22,7 @@ extern "C" {
 // Function:  void AFunction
 // Requested: c
 // Match:     c_default
-void NAM_afunction()
+void NAM_afunction(void)
 {
     // splicer begin function.afunction
     ignore1::ignore2::AFunction();

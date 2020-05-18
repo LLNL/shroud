@@ -21,7 +21,7 @@ extern "C" {
 // Function:  void local_function1
 // Requested: c
 // Match:     c_default
-void AA_example_nested_local_function1()
+void AA_example_nested_local_function1(void)
 {
     // splicer begin namespace.example::nested.function.local_function1
     example::nested::local_function1();
@@ -63,7 +63,7 @@ bool AA_example_nested_is_name_valid_bufferify(const char * name,
 // Function:  bool isInitialized
 // Requested: c_bool_scalar_result
 // Match:     c_default
-bool AA_example_nested_is_initialized()
+bool AA_example_nested_is_initialized(void)
 {
     // splicer begin namespace.example::nested.function.is_initialized
     bool SHC_rv = example::nested::isInitialized();
@@ -149,7 +149,7 @@ void AA_example_nested_test_names_flag_bufferify(const char * name,
 // Function:  void testoptional
 // Requested: c
 // Match:     c_default
-void AA_example_nested_testoptional_0()
+void AA_example_nested_testoptional_0(void)
 {
     // splicer begin namespace.example::nested.function.testoptional_0
     example::nested::testoptional();
@@ -194,7 +194,7 @@ void AA_example_nested_testoptional_2(int i, long j)
 // Function:  size_t test_size_t
 // Requested: c_native_scalar_result
 // Match:     c_default
-size_t AA_example_nested_test_size_t()
+size_t AA_example_nested_test_size_t(void)
 {
     // splicer begin namespace.example::nested.function.test_size_t
     size_t SHC_rv = example::nested::test_size_t();
@@ -225,7 +225,7 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm)
 // Function:  void testmpi
 // Requested: c
 // Match:     c_default
-void AA_example_nested_testmpi_serial()
+void AA_example_nested_testmpi_serial(void)
 {
     // splicer begin namespace.example::nested.function.testmpi_serial
     example::nested::testmpi();
