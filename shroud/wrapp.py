@@ -3620,7 +3620,7 @@ py_statements = [
     ),
     dict(
         name="py_unknown_**_out",
-        declare=[
+        arg_declare=[
             "void *{c_var};",
         ],
 #        arg_call=[

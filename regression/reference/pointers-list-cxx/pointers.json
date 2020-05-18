@@ -2350,10 +2350,12 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_deref": "*",
+                            "c_decl": "void addr",
+                            "c_deref": "",
                             "c_type": "void",
                             "c_var": "addr",
                             "cxx_addr": "",
+                            "cxx_decl": "void addr",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
                             "cxx_type": "void",
