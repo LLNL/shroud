@@ -3645,7 +3645,7 @@ py_statements = [
         pre_call=["{cxx_var} = PyObject_IsTrue({py_var});"],
         # py_var is already declared for inout
         post_call=[
-            "{py_var} = PyBool_FromLong({c_deref}{c_var});",
+            "{py_var} = PyBool_FromLong({c_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
