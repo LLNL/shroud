@@ -214,6 +214,24 @@ If *True*, add NumPy headers and initialize in the module.
 arg_declare
 ^^^^^^^^^^^
 
+By default a local variable will be declared the same type as the
+argument to the function.
+
+For some cases, this will not be correct.  This field will be used
+if defined to replace the default declaration.
+
+references
+
+In some cases the declaration is correct but need to be initialized.
+For example, setting a pointer.
+
+Assign a blank list will not add any declarations.
+This is used when only an output ``std::string`` or ``std::vector``
+is created after parsing arguments.
+
+
+The argument will be non-const to allow it to be assigned later.
+
 declare
 ^^^^^^^
 
@@ -286,9 +304,12 @@ post_declare
 ^^^^^^^^^^^^
 
 Declaration of C++ variables after calling
-``PyArg_ParseTupleAndKeywords``.  Usually involves object constructors
-such as ``std::string`` or ``std::vector``.  These declarations should
-not include ``goto fail``.  This allows them to be created without a
+``PyArg_ParseTupleAndKeywords``.
+Usually involves object constructors such as ``std::string`` or ``std::vector``.
+Or for extracting struct and class pointers out of a `PyObject`.
+
+These declarations should not include ``goto fail``.
+This allows them to be created without a
 "jump to label 'fail' crosses initialization of" error.
 
 "It is possible to transfer into a block, but not in a way that
@@ -296,7 +317,6 @@ bypasses declarations with initialization. A program that jumps from a
 point where a local variable with automatic storage duration is not in
 scope to a point where it is in scope is ill-formed unless the
 variable has POD type (3.9) and is declared without an initializer."
-
 
 post_parse
 ^^^^^^^^^^

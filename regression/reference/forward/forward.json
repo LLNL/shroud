@@ -247,6 +247,7 @@
                                     "lua_var": "SH_Lua_arg"
                                 },
                                 "fmtpy": {
+                                    "PyTypeObject": "PY_Class1_Type",
                                     "array_size": "1",
                                     "c_const": "",
                                     "c_decl": "TUT_Class1 arg",
@@ -258,9 +259,10 @@
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "arg",
                                     "cxx_type": "tutorial::Class1",
-                                    "cxx_var": "SH_arg",
+                                    "cxx_var": "arg",
                                     "data_var": "SHData_arg",
                                     "numpy_type": null,
+                                    "py_type": "PyObject",
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
                                     "stmt0": "py_shadow_*_in",

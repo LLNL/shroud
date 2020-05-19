@@ -960,7 +960,7 @@ return 1;""",
         if implied:
             fmt = node._fmtargs[arg.name]["fmtpy"]
             fmt.pre_call_intent = py_implied(implied, node)
-            append_format(pre_call, "{cxx_decl} = {pre_call_intent};", fmt)
+            append_format(pre_call, "{cxx_var} = {pre_call_intent};", fmt)
 
     def intent_out(self, typemap, intent_blk, fmt):
         """Add code for post-call.
@@ -1244,6 +1244,8 @@ return 1;""",
             deref = attrs["deref"] or "pointer"
             if intent_blk is not None:
                 pass
+            elif arg.is_function_pointer():
+                intent_blk = default_scope
             elif implied:
                 arg_implied.append(arg)
                 intent_blk = default_scope
@@ -1268,6 +1270,10 @@ return 1;""",
                 # Scalar argument
                 # ex. (int * arg1 +intent(in))
                 stmts = ["py", sgroup, spointer, intent]
+            if options.debug:
+                stmts_comments.append(
+                    "// ----------------------------------------")
+                stmts_comments.append("// Argument:  " + arg.gen_decl())
             if stmts is not None:
                 if intent_blk is None:
                     intent_blk = lookup_stmts(stmts)
@@ -1276,15 +1282,27 @@ return 1;""",
                 fmt_arg.stmt1 = intent_blk.name
                 # Add some debug comments to function.
                 if options.debug:
-                    stmts_comments.append(
-                        "// ----------------------------------------")
-                    stmts_comments.append("// Argument:  " + arg.gen_decl())
                     self.document_stmts(
                         stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+            elif options.debug:
+                stmts_comments.append(
+                    self.comment + " Exact:     " + intent_blk.name)
 
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             # local_var - 'funcptr', 'pointer', or 'scalar'
+
+            # Declare argument variable.
+            if intent_blk.arg_declare is not None:
+                # Explicit declarations from py_statements.
+                for line in intent_blk.arg_declare:
+                    append_format(declare_code, line, fmt_arg)
+            else:
+                # Since all declarations are at the top, remove const
+                # since it will be assigned later.
+                junk = arg.gen_arg_as_c(remove_const=True, continuation=True)
+                declare_code.append(junk + ";")
+            
             if arg.is_function_pointer():
                 fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
@@ -1313,11 +1331,9 @@ return 1;""",
                 elif cxx_local_var == "pointer":
                     fmt_arg.cxx_member = "->"
 
-            if implied:
+            if implied or hidden:
                 # Argument is implied from other arguments.
                 pass
-            elif hidden and intent == "in":
-                append_format(declare_code, "{c_decl};", fmt_arg)
             elif intent in ["inout", "in"]:
                 # names to PyArg_ParseTupleAndKeywords
                 arg_names.append(arg_name)
@@ -1370,21 +1386,14 @@ return 1;""",
                     parse_format.append("&")
                     parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append("&" + fmt_arg.cxx_var)
-                elif intent_blk.declare:
-#                    append_format_lst(declare_code, intent_blk.declare, fmt_arg)
-                    parse_format.append(arg_typemap.PY_format)
-                    parse_vargs.append("&" + fmt_arg.c_var)
                 else:
-                    append_format(declare_code, "{c_decl};", fmt_arg)
                     parse_format.append(arg_typemap.PY_format)
                     parse_vargs.append("&" + fmt_arg.c_var)
 
             if intent in ["inout", "out"]:
                 if intent == "out":
                     if intent_blk.arg_declare:
-                        # Explicit declarations from py_statements.
-                        for line in intent_blk.arg_declare:
-                            append_format(declare_code, line, fmt_arg)
+                        pass
                     elif not cxx_local_var:
                         pass_var = fmt_arg.cxx_var
                         append_format(
@@ -3450,7 +3459,7 @@ class PyStmts(object):
     def __init__(
         self,
         name="py_default",
-        arg_declare=None,
+        arg_declare=None,   # Empty list indicates no declaration.
         post_declare=[],
             
         allocate_local_var=False,
@@ -3603,7 +3612,6 @@ py_statements = [
         # Accept a capsule and extract address.
         name="py_unknown_*_in",
         declare=[
-            "void *{c_var};",
             "PyObject *{py_var};",
         ],
         parse_format="O",
@@ -3626,7 +3634,6 @@ py_statements = [
 #        arg_call=[
 #            "&{c_var}",
 #        ],
-        c_local_var="scalar",  # XXX - not really a scalar
     ),
     dict(
         name="py_unknown_*&_out",
@@ -3640,11 +3647,14 @@ py_statements = [
 # bool
     dict(
         name="py_bool_in",
-        pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"]
+        pre_call=["{cxx_var} = PyObject_IsTrue({py_var});"]
     ),
     dict(
         name="py_bool_inout",
-        pre_call=["bool {cxx_var} = PyObject_IsTrue({py_var});"],
+        arg_declare=[
+            "bool {cxx_var};",
+        ],
+        pre_call=["{cxx_var} = PyObject_IsTrue({py_var});"],
         # py_var is already declared for inout
         post_call=[
             "{py_var} = PyBool_FromLong({c_deref}{c_var});",
@@ -3658,6 +3668,9 @@ py_statements = [
     ),
     dict(
         name="py_bool_out",
+        arg_declare=[
+            "bool {cxx_var};",
+        ],
         declare=[
             "{PyObject} * {py_var} = {nullptr};",
         ],
@@ -3688,12 +3701,39 @@ py_statements = [
     ),
     
 ####################
+    dict(
+        name="py_native_*_in",
+        arg_declare=["{c_type} {c_var};"],
+        arg_call=["&{c_var}"],
+    ),
+    dict(
+        name="py_native_*_inout",
+        arg_declare=["{c_type} {c_var};"],
+        arg_call=["&{c_var}"],
+    ),
+    dict(
+        name="py_native_*_out",
+        arg_declare=["{c_type} {c_var};"],
+        arg_call=["&{c_var}"],
+    ),
+    dict(
+        name="py_native_&_in",
+        arg_declare=["{c_type} {c_var};"],
+    ),
+    dict(
+        name="py_native_&_out",
+        arg_declare=["{c_const}{c_type} {c_var};"],
+    ),
+
+####################
 ## numpy
     dict(
         name="py_native_*_in_pointer_numpy",
         need_numpy=True,
-        declare=[
+        arg_decl=[
             "{cxx_type} * {c_var};",
+        ],
+        declare=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
@@ -3724,8 +3764,10 @@ py_statements = [
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        declare=[
+        arg_declare=[
             "{cxx_type} * {cxx_var};",
+        ],
+        declare=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
         ],
@@ -3851,9 +3893,11 @@ py_statements = [
         c_helper="create_from_PyObject_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
+        arg_declare=[ # initialize
+            "{cxx_type} * {cxx_var} = {nullptr};",
+        ],
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
-            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3877,9 +3921,11 @@ py_statements = [
         c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
+        arg_declare=[
+            "{cxx_type} * {cxx_var} = {nullptr};",
+        ],
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
-            "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         post_parse=[
             "Py_ssize_t {size_var};",
@@ -3981,9 +4027,6 @@ py_statements = [
 # char *
     dict(
         name="py_char_*_in",
-        declare=[
-            "{c_const}char * {c_var};",
-        ],
         arg_call=["{c_var}"],
     ),
     dict(
@@ -3995,9 +4038,6 @@ py_statements = [
     ),
     dict(
         name="py_char_*_inout",
-        declare=[
-            "{c_const}char * {c_var};",
-        ],
         arg_call=["{c_var}"],
     ),
 
@@ -4006,8 +4046,10 @@ py_statements = [
         c_helper="create_from_PyObject_char",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        declare=[
+        arg_declare=[
             "{c_const}char ** {cxx_var} = {nullptr};",
+        ],
+        declare=[
             "PyObject * {pytmp_var};", # set by PyArg_Parse
         ],
         pre_call=[
@@ -4033,18 +4075,17 @@ py_statements = [
 # string
     dict(
         name="py_string_in",
-        declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         name="py_string_inout",
-        declare=["{c_const}char * {c_var};"],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
         name="py_string_out",
+        arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
     ),
@@ -4053,12 +4094,30 @@ py_statements = [
 # struct
 # "struct", intent, PY_struct_arg
 # numpy
+# Note that c_type is from the C wrapper for a C++ struct
+# and does not apply in Python.
+    dict(
+        name="py_struct_in_list",
+        arg_declare=[],
+    ),
+    dict(
+        name="py_struct_inout_list",
+        arg_declare=[],
+    ),
+    dict(
+        name="py_struct_out_list",
+        arg_declare=[],
+    ),
+
     dict(
         name="py_struct_in_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
+        arg_declare=[ # Must be a pointer.
+            "{cxx_type} *{cxx_var};",
+        ],
         declare=[
             "PyObject * {pytmp_var} = {nullptr};",
             "PyArrayObject * {py_var} = {nullptr};",
@@ -4073,11 +4132,10 @@ py_statements = [
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = "
-            "static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
             "Py_DECREF({py_var});",
@@ -4093,6 +4151,9 @@ py_statements = [
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
+        arg_declare=[ # Must be a pointer.
+            "{cxx_type} *{cxx_var};",
+        ],
         declare=[
             "PyObject * {pytmp_var} = {nullptr};",
             "PyArrayObject * {py_var} = {nullptr};",
@@ -4107,11 +4168,10 @@ py_statements = [
             "\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};",
         ] + array_error,
         c_pre_call=[
-            "{c_const}{c_type} * {c_var} = PyArray_DATA({py_var});",
+            "{c_var} = PyArray_DATA({py_var});",
         ],
         cxx_pre_call=[
-            "{c_const}{cxx_type} * {cxx_var} = "
-            "static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
+            "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         object_created=True,
         fail=[
@@ -4181,16 +4241,18 @@ py_statements = [
 ##########
     dict(
         name="py_struct_in_class",
+        arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
-        post_parse=[
+        post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
     ),
     dict(
         name="py_struct_inout_class",
+        arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
-        post_parse=[
+        post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};",
         ],
@@ -4251,6 +4313,7 @@ py_statements = [
 # shadow a.k.a class
     dict(
         name="py_shadow_in",
+        arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
@@ -4259,6 +4322,7 @@ py_statements = [
     ),
     dict(
         name="py_shadow_inout",
+        arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_parse=[
             "{c_const}{cxx_type} * {cxx_var} ="
@@ -4318,6 +4382,7 @@ py_statements = [
         cxx_local_var="scalar",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
+        arg_declare=[],
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
@@ -4338,6 +4403,7 @@ py_statements = [
         # cxx_var is released by the compiler.
         c_helper="to_PyList_vector_{cxx_T}",
         cxx_local_var="scalar",
+        arg_declare=[],
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
@@ -4384,6 +4450,7 @@ py_statements = [
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         cxx_local_var="scalar",
+        arg_declare=[],
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
             "PyArrayObject * {py_var} = {nullptr};",
@@ -4409,6 +4476,7 @@ py_statements = [
         need_numpy=True,
         cxx_local_var="pointer",
         allocate_local_var=True,
+        arg_declare=[],
         declare=[
             "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
@@ -4461,6 +4529,7 @@ py_statements = [
     # ctor
     dict(
         name="base_py_ctor_array",
+        arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             "{PY_typedef_converter} {py_var}"
             " = {{ {nullptr}, {nullptr}, 0 }};",
@@ -4477,6 +4546,7 @@ py_statements = [
     dict(
         # Fill an array struct member.
         name="base_py_ctor_array_fill",
+        arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             # Initialize to NULL since it is optional.
             "PyObject *{py_var} = {nullptr};",
@@ -4496,6 +4566,7 @@ py_statements = [
     
     dict(
         name="py_ctor_native",
+        arg_declare=[],  # No local variable, assign to struct in post_call.
         declare=[
             "{c_type} {c_var} = 0;",
         ],

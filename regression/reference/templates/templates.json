@@ -1463,7 +1463,7 @@
                                             "py_var": "SHPy_value",
                                             "size_var": "SHSize_value",
                                             "stmt0": "py_native_&_in",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_&_in"
                                         }
                                     }
                                 },
@@ -2027,7 +2027,7 @@
                                             "py_var": "SHPy_value",
                                             "size_var": "SHSize_value",
                                             "stmt0": "py_native_&_in",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_&_in"
                                         }
                                     }
                                 },

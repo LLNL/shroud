@@ -94,7 +94,7 @@ PP_ExClass1_tp_init_1(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -294,6 +294,7 @@ PP_hasAddr(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+    bool in;
     PyObject * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
@@ -305,7 +306,7 @@ PP_hasAddr(
         return nullptr;
 
     // pre_call
-    bool in = PyObject_IsTrue(SHPy_in);
+    in = PyObject_IsTrue(SHPy_in);
 
     bool SHCXX_rv = self->obj->hasAddr(in);
 

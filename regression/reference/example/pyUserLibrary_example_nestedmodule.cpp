@@ -71,7 +71,7 @@ PP_isNameValid(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.is_name_valid
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -142,7 +142,7 @@ PP_test_names(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.test_names
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -177,7 +177,7 @@ PP_test_names_flag(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.test_names_flag
-    const char * name;
+    char * name;
     int flag;
     const char *SHT_kwlist[] = {
         "name",
@@ -330,8 +330,7 @@ PP_testmpi_serial(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void ( * get)() +intent(in)+value
-// Requested: py_unknown_scalar_in
-// Match:     py_default
+// Exact:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
 ;
@@ -366,8 +365,7 @@ PP_FuncPtr1(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * ( * get)() +intent(in)
-// Requested: py_native_*_in
-// Match:     py_default
+// Exact:     py_default
 static char PP_FuncPtr2__doc__[] =
 "documentation"
 ;
@@ -402,8 +400,7 @@ PP_FuncPtr2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
-// Requested: py_native_scalar_in
-// Match:     py_default
+// Exact:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
 ;
@@ -438,8 +435,7 @@ PP_FuncPtr3(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
-// Requested: py_unknown_scalar_in
-// Match:     py_default
+// Exact:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"
 ;
@@ -473,44 +469,34 @@ PP_FuncPtr5(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 static char PP_verylongfunctionname1__doc__[] =
 "documentation"
 ;
@@ -676,6 +662,9 @@ PP_verylongfunctionname2(
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
 // Exact:     py_native_*_out_allocatable_numpy
+// ----------------------------------------
+// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Exact:     py_default
 static char PP_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -697,6 +686,7 @@ PP_cos_doubles(
     double * out;
     npy_intp SHD_out[1];
     PyArrayObject * SHPy_out = nullptr;
+    int sizein;
     const char *SHT_kwlist[] = {
         "in",
         nullptr };
@@ -725,7 +715,7 @@ PP_cos_doubles(
         // pre_call
         in = static_cast<double *>(PyArray_DATA(SHPy_in));
         out = static_cast<double *>(PyArray_DATA(SHPy_out));
-        int sizein = PyArray_SIZE(SHPy_in);
+        sizein = PyArray_SIZE(SHPy_in);
 
         example::nested::cos_doubles(in, out, sizein);
 

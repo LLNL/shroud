@@ -593,7 +593,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_struct_in_list",
-                            "stmt1": "py_default"
+                            "stmt1": "py_struct_in_list"
                         }
                     }
                 },
@@ -677,7 +677,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_struct_in_list",
-                            "stmt1": "py_default"
+                            "stmt1": "py_struct_in_list"
                         }
                     }
                 },
@@ -787,7 +787,7 @@
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
                             "stmt0": "py_struct_in_list",
-                            "stmt1": "py_default"
+                            "stmt1": "py_struct_in_list"
                         }
                     }
                 },
@@ -933,7 +933,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_struct_out_list",
-                            "stmt1": "py_default",
+                            "stmt1": "py_struct_out_list",
                             "vargs": "arg"
                         }
                     },
@@ -1076,7 +1076,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_struct_inout_list",
-                            "stmt1": "py_default",
+                            "stmt1": "py_struct_inout_list",
                             "vargs": "arg"
                         }
                     }

@@ -62,7 +62,7 @@ PY_passStructByValue(
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStructByValue(*arg);
@@ -102,7 +102,7 @@ PY_passStruct1(
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = passStruct1(arg);
@@ -149,7 +149,7 @@ PY_passStruct2(
         const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_s1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
 
     int SHCXX_rv = passStruct2(s1, outbuf);
@@ -248,7 +248,7 @@ PY_acceptStructInOutPtr(
         &PY_Cstruct1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     acceptStructInOutPtr(arg);

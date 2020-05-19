@@ -57,6 +57,7 @@ PY_acceptBothStructs(
 {
 // splicer begin function.accept_both_structs
     PY_Cstruct_as_class * SHPy_s1;
+    Cstruct_as_numpy *s2;
     PyObject * SHTPy_s2 = nullptr;
     PyArrayObject * SHPy_s2 = nullptr;
     const char *SHT_kwlist[] = {
@@ -70,8 +71,10 @@ PY_acceptBothStructs(
         &PY_Cstruct_as_class_Type, &SHPy_s1, &SHTPy_s2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     Cstruct_as_class * s1 = SHPy_s1 ? SHPy_s1->obj : nullptr;
+
+    // post_parse
     Py_INCREF(PY_Cstruct_as_numpy_array_descr);
     SHPy_s2 = reinterpret_cast<PyArrayObject *>(PyArray_FromAny(
         SHTPy_s2, PY_Cstruct_as_numpy_array_descr, 0, 1,
@@ -83,8 +86,7 @@ PY_acceptBothStructs(
     }
     {
         // pre_call
-        Cstruct_as_numpy * s2 = static_cast<Cstruct_as_numpy *>
-            (PyArray_DATA(SHPy_s2));
+        s2 = static_cast<Cstruct_as_numpy *>(PyArray_DATA(SHPy_s2));
 
         int SHCXX_rv = acceptBothStructs(s1, s2);
 

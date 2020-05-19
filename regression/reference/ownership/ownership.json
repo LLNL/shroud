@@ -548,7 +548,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -836,7 +836,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -1124,7 +1124,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -1515,7 +1515,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -1805,7 +1805,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -1949,7 +1949,7 @@
                             "py_var": "SHPy_len",
                             "size_var": "SHSize_len",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },

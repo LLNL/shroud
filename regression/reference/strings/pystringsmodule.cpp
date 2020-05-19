@@ -157,7 +157,7 @@ PY_passCharPtr(
 {
 // splicer begin function.pass_char_ptr
     char dest[40];  // intent(out)
-    const char * src;
+    char * src;
     const char *SHT_kwlist[] = {
         "src",
         nullptr };
@@ -735,7 +735,7 @@ PY_acceptStringConstReference(
   PyObject *kwds)
 {
 // splicer begin function.accept_string_const_reference
-    const char * arg1;
+    char * arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -1048,8 +1048,8 @@ PY_PostDeclare(
   PyObject *kwds)
 {
 // splicer begin function.post_declare
-    PyObject *SHTPy_count = nullptr;
     int * count = nullptr;
+    PyObject *SHTPy_count = nullptr;
     char * name;
     const char *SHT_kwlist[] = {
         "count",

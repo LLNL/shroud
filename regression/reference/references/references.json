@@ -345,7 +345,7 @@
                                     "py_var": "SHPy_size",
                                     "size_var": "SHSize_size",
                                     "stmt0": "py_native_&_out",
-                                    "stmt1": "py_default"
+                                    "stmt1": "py_native_&_out"
                                 }
                             }
                         },
@@ -1268,7 +1268,7 @@
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
                                     "stmt0": "py_native_*_in",
-                                    "stmt1": "py_default"
+                                    "stmt1": "py_native_*_in"
                                 }
                             }
                         },
@@ -1602,7 +1602,7 @@
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
                                     "stmt0": "py_native_&_in",
-                                    "stmt1": "py_default"
+                                    "stmt1": "py_native_&_in"
                                 }
                             }
                         },
@@ -1936,7 +1936,7 @@
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
                                     "stmt0": "py_native_*_in",
-                                    "stmt1": "py_default"
+                                    "stmt1": "py_native_*_in"
                                 }
                             }
                         },
@@ -2272,7 +2272,7 @@
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
                                     "stmt0": "py_native_&_in",
-                                    "stmt1": "py_default"
+                                    "stmt1": "py_native_&_in"
                                 }
                             }
                         },
