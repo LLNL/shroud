@@ -1304,8 +1304,6 @@ return 1;""",
                 declare_code.append(junk + ";")
             
             if arg.is_function_pointer():
-                fmt_arg.c_decl = arg.gen_arg_as_c(continuation=True)
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(continuation=True)
                 # not sure how function pointers work with Python.
                 c_local_var = "funcptr"
             else:
@@ -1314,8 +1312,6 @@ return 1;""",
                 fmt_arg.c_deref = ""
                 #                fmt_arg.cxx_addr = '&'
                 #                fmt_arg.cxx_member = '.'
-                fmt_arg.c_decl = wformat("{c_type} {c_var}", fmt_arg)
-                fmt_arg.cxx_decl = wformat("{cxx_type} {cxx_var}", fmt_arg)
                 c_local_var = "scalar"
 
             cxx_local_var = intent_blk.cxx_local_var
@@ -1380,7 +1376,10 @@ return 1;""",
                 elif arg_typemap.PY_from_object:
                     # Use function to convert object
                     # cxx_var created directly (no c_var)
-                    append_format(declare_code, "{cxx_decl};", fmt_arg)
+#                    append_format(declare_code, "{cxx_decl};", fmt_arg)
+                    print("XXXX unused")
+                    # XXX this code is not hit by the testsuite.
+                    # XXX not sure how if cxx_decl is still needed.
                     pass_var = fmt_arg.cxx_var
                     parse_format.append(arg_typemap.PY_format)
                     parse_format.append("&")
