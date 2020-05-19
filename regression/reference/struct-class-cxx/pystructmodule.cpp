@@ -40,7 +40,7 @@ PyObject *PY_error_obj;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
-// Exact:     py_struct_in_class
+// Exact:     py_struct_scalar_in_class
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -80,7 +80,7 @@ PY_passStructByValue(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
-// Exact:     py_struct_in_class
+// Exact:     py_struct_*_in_class
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -120,7 +120,7 @@ PY_passStruct1(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
-// Exact:     py_struct_in_class
+// Exact:     py_struct_*_in_class
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
@@ -166,7 +166,7 @@ PY_passStruct2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
-// Exact:     py_struct_out_class
+// Exact:     py_struct_*_out_class
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
@@ -226,7 +226,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
-// Exact:     py_struct_inout_class
+// Exact:     py_struct_*_inout_class
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;

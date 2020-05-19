@@ -1256,7 +1256,7 @@ return 1;""",
                     fmt_arg.charlen = charlen
                     stmts.append("charlen")
             elif arg_typemap.base == "struct":
-                stmts = ["py", sgroup, intent, arg_typemap.PY_struct_as]
+                stmts = ["py", sgroup, spointer, intent, arg_typemap.PY_struct_as]
             elif arg_typemap.base == "vector":
                 stmts = ["py", sgroup, intent, options.PY_array_arg]
             elif rank or dimension:
@@ -1422,9 +1422,7 @@ return 1;""",
                 for arg in intent_blk.arg_call:
                     append_format(cxx_call_list, arg, fmt_arg)
             else:
-                prefix = typemap.compute_return_prefix(
-                    arg, cxx_local_var or c_local_var)
-                cxx_call_list.append(prefix + pass_var)
+                cxx_call_list.append(pass_var)
         # end for arg in args:
 
         # Add implied argument initialization to pre_call_code
@@ -3621,9 +3619,9 @@ py_statements = [
         arg_declare=[
             "void *{c_var};",
         ],
-#        arg_call=[
-#            "&{c_var}",
-#        ],
+        arg_call=[
+            "&{c_var}",
+        ],
     ),
     dict(
         name="py_unknown_*&_out",
@@ -3689,6 +3687,16 @@ py_statements = [
         ],
         goto_fail=True,
     ),
+    dict(
+        name="py_bool_*_out",
+        base="py_bool_out",
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        name="py_bool_*_inout",
+        base="py_bool_inout",
+        arg_call=["&{cxx_var}"],
+    ),
     
 ####################
     dict(
@@ -3720,9 +3728,6 @@ py_statements = [
     dict(
         name="py_native_*_in_pointer_numpy",
         need_numpy=True,
-        arg_decl=[
-            "{cxx_type} * {c_var};",
-        ],
         declare=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
@@ -3754,9 +3759,6 @@ py_statements = [
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        arg_declare=[
-            "{cxx_type} * {cxx_var};",
-        ],
         declare=[
             "PyObject * {pytmp_var};",
             "PyArrayObject * {py_var} = {nullptr};",
@@ -3782,9 +3784,6 @@ py_statements = [
     dict(
         name="py_native_*_out_pointer_numpy",
         need_numpy=True,
-        arg_declare=[
-            "{cxx_type} * {cxx_var};",
-        ],
         declare=[
             "{npy_intp_decl}"  # Must contain a newline if non-blank.
             "PyArrayObject * {py_var} = {nullptr};",
@@ -4079,6 +4078,16 @@ py_statements = [
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
     ),
+    dict(
+        name="py_string_*_in",
+        base="py_string_in",
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        name="py_string_*_inout",
+        base="py_string_inout",
+        arg_call=["&{cxx_var}"],
+    ),
 
 ########################################
 # struct
@@ -4103,12 +4112,34 @@ py_statements = [
     ),
 
     dict(
-        name="py_struct_in_numpy",
+        name="py_struct_scalar_in_list",
+        base="py_struct_in_list",
+    ),
+
+    # struct-list-cxx   (XXX - is not compiled)
+    dict(
+        name="py_struct_*_in_list",
+        base="py_struct_in_list",
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        name="py_struct_*_inout_list",
+        base="py_struct_inout_list",
+        arg_call=["&{cxx_var}"],
+    ),
+    dict(
+        name="py_struct_*_out_list",
+        base="py_struct_out_list",
+        arg_call=["&{cxx_var}"],
+    ),
+
+    dict(
+        name="py_struct_*_in_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         cxx_local_var="pointer",
-        arg_declare=[ # Must be a pointer.
+        arg_declare=[ # Must be a pointer of cxx_type.
             "{cxx_type} *{cxx_var};",
         ],
         declare=[
@@ -4139,7 +4170,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_inout_numpy",
+        name="py_struct_*_inout_numpy",
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
@@ -4173,7 +4204,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_struct_out_numpy",
+        name="py_struct_*_out_numpy",
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
@@ -4231,9 +4262,20 @@ py_statements = [
         fail_capsule=fail_capsule,
     ),
 
-##########
     dict(
-        name="py_struct_in_class",
+        name="py_struct_scalar_in_numpy",
+        base="py_struct_*_in_numpy",
+        arg_call=["*{cxx_var}"],
+    ),
+# cannot support inout/out with call-by-value
+#        name="py_struct_*_inout_numpy",
+#        name="py_struct_*_out_numpy",
+
+##########
+# Since cxx_var is always a pointer, use that case as the base for
+# pass by value.
+    dict(
+        name="py_struct_*_in_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4242,7 +4284,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_struct_inout_class",
+        name="py_struct_*_inout_class",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4252,7 +4294,7 @@ py_statements = [
         object_created=True,
     ),
     dict(
-        name="py_struct_out_class",
+        name="py_struct_*_out_class",
 #        allocate_local_var=True,  # needed to release memory
         cxx_local_var="pointer",
         arg_declare=[
@@ -4301,6 +4343,15 @@ py_statements = [
         goto_fail=True,
     ),
 
+
+    dict(
+        name="py_struct_scalar_in_class",
+        base="py_struct_*_in_class",
+        arg_call=["*{cxx_var}"],
+    ),
+# cannot support inout/out with call-by-value
+#        name="py_struct_scalar_inout_class",
+#        name="py_struct_scalar_out_class",
 
 ########################################
 # shadow a.k.a class
@@ -4361,6 +4412,16 @@ py_statements = [
 #                "Py_XDECREF({py_var});",
 #            ],
 #            goto_fail=True,
+    ),
+    dict(
+        name="py_shadow_scalar_in",
+        base="py_shadow_in",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        name="py_shadow_&_in",
+        base="py_shadow_in",
+        arg_call=["*{cxx_var}"],
     ),
     
 ########################################
@@ -4474,6 +4535,7 @@ py_statements = [
             "{npy_intp_decl}"
             "PyObject * {py_var} = {nullptr};",
         ],
+        arg_call=["*{cxx_var}"],
         post_call=[
 #            "{npy_intp_asgn}"
             "{npy_dims_var}[0] = {cxx_var}->size();",

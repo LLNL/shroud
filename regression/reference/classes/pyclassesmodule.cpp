@@ -79,8 +79,7 @@ PY_directionFunc(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class1 arg +intent(in)+value
-// Requested: py_shadow_scalar_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_scalar_in
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;

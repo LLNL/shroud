@@ -153,8 +153,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(trim_name)
-// Requested: py_string_*_in
-// Match:     py_string_in
+// Exact:     py_string_*_in
 /**
  * \brief constructor
  *

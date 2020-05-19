@@ -722,7 +722,7 @@
                             "py_var": "SHPy_arg2",
                             "size_var": "SHSize_arg2",
                             "stmt0": "py_bool_*_out",
-                            "stmt1": "py_bool_out"
+                            "stmt1": "py_bool_*_out"
                         }
                     },
                     "arg3": {
@@ -772,7 +772,7 @@
                             "py_var": "SHPy_arg3",
                             "size_var": "SHSize_arg3",
                             "stmt0": "py_bool_*_inout",
-                            "stmt1": "py_bool_inout"
+                            "stmt1": "py_bool_*_inout"
                         }
                     }
                 },

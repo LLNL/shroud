@@ -124,8 +124,7 @@ PY_Method1(
 // Exact:     py_bool_result
 // ----------------------------------------
 // Argument:  const Class1 & obj2 +intent(in)
-// Requested: py_shadow_&_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_&_in
 static char PY_equivalent__doc__[] =
 "documentation"
 ;

@@ -331,8 +331,8 @@
                             "py_type": "PY_Cstruct_as_class",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_in_class",
-                            "stmt1": "py_struct_in_class"
+                            "stmt0": "py_struct_*_in_class",
+                            "stmt1": "py_struct_*_in_class"
                         }
                     },
                     "s2": {
@@ -356,8 +356,8 @@
                             "py_var": "SHPy_s2",
                             "pytmp_var": "SHTPy_s2",
                             "size_var": "SHSize_s2",
-                            "stmt0": "py_struct_in_numpy",
-                            "stmt1": "py_struct_in_numpy"
+                            "stmt0": "py_struct_*_in_numpy",
+                            "stmt1": "py_struct_*_in_numpy"
                         }
                     }
                 },

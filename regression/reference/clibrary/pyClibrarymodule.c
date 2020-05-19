@@ -185,12 +185,10 @@ PY_PassByValueMacro(
 // Match:     py_bool_in
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
-// Requested: py_bool_*_out
-// Match:     py_bool_out
+// Exact:     py_bool_*_out
 // ----------------------------------------
 // Argument:  bool * arg3 +intent(inout)
-// Requested: py_bool_*_inout
-// Match:     py_bool_inout
+// Exact:     py_bool_*_inout
 static char PY_checkBool__doc__[] =
 "documentation"
 ;

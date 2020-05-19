@@ -1559,8 +1559,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_class",
-                            "stmt1": "py_struct_in_class"
+                            "stmt0": "py_struct_scalar_in_class",
+                            "stmt1": "py_struct_scalar_in_class"
                         }
                     }
                 },
@@ -1641,8 +1641,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_class",
-                            "stmt1": "py_struct_in_class"
+                            "stmt0": "py_struct_*_in_class",
+                            "stmt1": "py_struct_*_in_class"
                         }
                     }
                 },
@@ -1747,8 +1747,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_in_class",
-                            "stmt1": "py_struct_in_class"
+                            "stmt0": "py_struct_*_in_class",
+                            "stmt1": "py_struct_*_in_class"
                         }
                     }
                 },
@@ -1890,8 +1890,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_out_class",
-                            "stmt1": "py_struct_out_class"
+                            "stmt0": "py_struct_*_out_class",
+                            "stmt1": "py_struct_*_out_class"
                         }
                     },
                     "d": {
@@ -2025,8 +2025,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_inout_class",
-                            "stmt1": "py_struct_inout_class"
+                            "stmt0": "py_struct_*_inout_class",
+                            "stmt1": "py_struct_*_inout_class"
                         }
                     }
                 },

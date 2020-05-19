@@ -590,8 +590,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_list",
-                            "stmt1": "py_struct_in_list"
+                            "stmt0": "py_struct_scalar_in_list",
+                            "stmt1": "py_struct_scalar_in_list"
                         }
                     }
                 },
@@ -672,8 +672,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_list",
-                            "stmt1": "py_struct_in_list"
+                            "stmt0": "py_struct_*_in_list",
+                            "stmt1": "py_struct_*_in_list"
                         }
                     }
                 },
@@ -778,8 +778,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_in_list",
-                            "stmt1": "py_struct_in_list"
+                            "stmt0": "py_struct_*_in_list",
+                            "stmt1": "py_struct_*_in_list"
                         }
                     }
                 },
@@ -922,8 +922,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_out_list",
-                            "stmt1": "py_struct_out_list",
+                            "stmt0": "py_struct_*_out_list",
+                            "stmt1": "py_struct_*_out_list",
                             "vargs": "arg"
                         }
                     },
@@ -1059,8 +1059,8 @@
                             "py_type": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_inout_list",
-                            "stmt1": "py_struct_inout_list",
+                            "stmt0": "py_struct_*_inout_list",
+                            "stmt1": "py_struct_*_inout_list",
                             "vargs": "arg"
                         }
                     }

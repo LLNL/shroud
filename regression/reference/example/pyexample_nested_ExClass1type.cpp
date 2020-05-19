@@ -77,8 +77,7 @@ PP_ExClass1_tp_init_0(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +intent(in)
-// Requested: py_string_*_in
-// Match:     py_string_in
+// Exact:     py_string_*_in
 /**
  * \brief constructor
  *

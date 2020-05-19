@@ -847,8 +847,7 @@ PY_acceptStringReference(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(inout)
-// Requested: py_string_*_inout
-// Match:     py_string_inout
+// Exact:     py_string_*_inout
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;

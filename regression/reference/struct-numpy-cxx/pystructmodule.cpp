@@ -45,7 +45,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_scalar_in_numpy
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -106,7 +106,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_*_in_numpy
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -167,7 +167,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_*_in_numpy
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
@@ -234,7 +234,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
-// Exact:     py_struct_out_numpy
+// Exact:     py_struct_*_out_numpy
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
@@ -300,7 +300,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
-// Exact:     py_struct_inout_numpy
+// Exact:     py_struct_*_inout_numpy
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;

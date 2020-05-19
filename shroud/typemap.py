@@ -1202,6 +1202,9 @@ def update_stmt_tree(stmts, tree, defaults):
     # XXX - look for duplicate names?
     nodes = {}
     for node in stmts:
+        if "name" not in node:
+            raise RuntimeError("Missing name in statements: {}".
+                               format(str(node)))
         if node["name"] in nodes:
             raise RuntimeError("Duplicate key in statements: {}".
                                format(node["name"]))

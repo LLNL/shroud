@@ -590,8 +590,8 @@
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_numpy",
-                            "stmt1": "py_struct_in_numpy"
+                            "stmt0": "py_struct_scalar_in_numpy",
+                            "stmt1": "py_struct_scalar_in_numpy"
                         }
                     }
                 },
@@ -672,8 +672,8 @@
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_in_numpy",
-                            "stmt1": "py_struct_in_numpy"
+                            "stmt0": "py_struct_*_in_numpy",
+                            "stmt1": "py_struct_*_in_numpy"
                         }
                     }
                 },
@@ -778,8 +778,8 @@
                             "py_var": "SHPy_s1",
                             "pytmp_var": "SHTPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_in_numpy",
-                            "stmt1": "py_struct_in_numpy"
+                            "stmt0": "py_struct_*_in_numpy",
+                            "stmt1": "py_struct_*_in_numpy"
                         }
                     }
                 },
@@ -921,8 +921,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_out_numpy",
-                            "stmt1": "py_struct_out_numpy"
+                            "stmt0": "py_struct_*_out_numpy",
+                            "stmt1": "py_struct_*_out_numpy"
                         }
                     },
                     "d": {
@@ -1056,8 +1056,8 @@
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_inout_numpy",
-                            "stmt1": "py_struct_inout_numpy"
+                            "stmt0": "py_struct_*_inout_numpy",
+                            "stmt1": "py_struct_*_inout_numpy"
                         }
                     }
                 },
