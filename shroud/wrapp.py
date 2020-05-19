@@ -1391,15 +1391,6 @@ return 1;""",
                     parse_vargs.append("&" + fmt_arg.c_var)
 
             if intent in ["inout", "out"]:
-                if intent == "out":
-                    if intent_blk.arg_declare:
-                        pass
-                    elif not cxx_local_var:
-                        pass_var = fmt_arg.cxx_var
-                        append_format(
-                            pre_call_code, "{cxx_decl};  // intent(out)", fmt_arg
-                        )
-
                 if not hidden:
                     # output variable must be a pointer
                     build_tuples.append(
@@ -4107,6 +4098,9 @@ py_statements = [
     dict(
         name="py_struct_out_list",
         arg_declare=[],
+        post_declare=[
+            "{cxx_type} {cxx_var};",
+        ],
     ),
 
     dict(

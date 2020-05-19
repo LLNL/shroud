@@ -198,8 +198,8 @@ PY_acceptStructOutPtr(
         &d))
         return nullptr;
 
-    // pre_call
-    Cstruct1 arg;  // intent(out)
+    // post_declare
+    Cstruct1 arg;
 
     acceptStructOutPtr(&arg, i, d);
 
