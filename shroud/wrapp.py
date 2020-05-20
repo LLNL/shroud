@@ -4135,6 +4135,11 @@ py_statements = [
         base="py_string_inout",
         arg_call=["&{cxx_var}"],
     ),
+    dict(
+        name="py_string_*_out",
+        base="py_string_out",
+        arg_call=["&{cxx_var}"],
+    ),
 
 ########################################
 # struct

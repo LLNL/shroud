@@ -118,10 +118,29 @@ void STR_accept_string_reference(char * arg1);
 void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
     int Narg1);
 
+void STR_accept_string_pointer_const(const char * arg1);
+
+void STR_accept_string_pointer_const_bufferify(const char * arg1,
+    int Larg1);
+
 void STR_accept_string_pointer(char * arg1);
 
 void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
     int Narg1);
+
+void STR_fetch_string_pointer(char * arg1);
+
+void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1);
+
+void STR_accept_string_pointer_len(char * arg1, int * nlen);
+
+void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
+    int Narg1, int * nlen);
+
+void STR_fetch_string_pointer_len(char * arg1, int * nlen);
+
+void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
+    int * nlen);
 
 void STR_explicit1(char * name);
 

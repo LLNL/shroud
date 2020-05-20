@@ -989,7 +989,48 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
 // end STR_accept_string_reference_bufferify
 
 /**
- * \brief Accept a string pointer
+ * \brief Accept a const string pointer - intent(in)
+ *
+ */
+// ----------------------------------------
+// Function:  void acceptStringPointerConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const std::string * arg1 +intent(in)
+// Requested: c_string_*_in
+// Match:     c_string_in
+void STR_accept_string_pointer_const(const char * arg1)
+{
+    // splicer begin function.accept_string_pointer_const
+    const std::string SHCXX_arg1(arg1);
+    acceptStringPointerConst(&SHCXX_arg1);
+    // splicer end function.accept_string_pointer_const
+}
+
+/**
+ * \brief Accept a const string pointer - intent(in)
+ *
+ */
+// ----------------------------------------
+// Function:  void acceptStringPointerConst
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
+// Requested: c_string_*_in_buf
+// Match:     c_string_in_buf
+void STR_accept_string_pointer_const_bufferify(const char * arg1,
+    int Larg1)
+{
+    // splicer begin function.accept_string_pointer_const_bufferify
+    const std::string SHCXX_arg1(arg1, Larg1);
+    acceptStringPointerConst(&SHCXX_arg1);
+    // splicer end function.accept_string_pointer_const_bufferify
+}
+
+/**
+ * \brief Accept a string pointer - intent(inout)
  *
  */
 // ----------------------------------------
@@ -1010,7 +1051,7 @@ void STR_accept_string_pointer(char * arg1)
 }
 
 /**
- * \brief Accept a string pointer
+ * \brief Accept a string pointer - intent(inout)
  *
  */
 // ----------------------------------------
@@ -1029,6 +1070,162 @@ void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
     acceptStringPointer(&SHCXX_arg1);
     ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
     // splicer end function.accept_string_pointer_bufferify
+}
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ */
+// ----------------------------------------
+// Function:  void fetchStringPointer
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)
+// Requested: c_string_*_out
+// Match:     c_string_out
+void STR_fetch_string_pointer(char * arg1)
+{
+    // splicer begin function.fetch_string_pointer
+    std::string SHCXX_arg1;
+    fetchStringPointer(&SHCXX_arg1);
+    strcpy(arg1, SHCXX_arg1.c_str());
+    // splicer end function.fetch_string_pointer
+}
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ */
+// ----------------------------------------
+// Function:  void fetchStringPointer
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)+len(Narg1)
+// Requested: c_string_*_out_buf
+// Match:     c_string_out_buf
+void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1)
+{
+    // splicer begin function.fetch_string_pointer_bufferify
+    std::string SHCXX_arg1;
+    fetchStringPointer(&SHCXX_arg1);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    // splicer end function.fetch_string_pointer_bufferify
+}
+
+/**
+ * \brief Accept a string pointer - intent(inout)
+ *
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+// ----------------------------------------
+// Function:  void acceptStringPointerLen
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(inout)
+// Requested: c_string_*_inout
+// Match:     c_string_inout
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+void STR_accept_string_pointer_len(char * arg1, int * nlen)
+{
+    // splicer begin function.accept_string_pointer_len
+    std::string SHCXX_arg1(arg1);
+    acceptStringPointerLen(&SHCXX_arg1, nlen);
+    strcpy(arg1, SHCXX_arg1.c_str());
+    // splicer end function.accept_string_pointer_len
+}
+
+/**
+ * \brief Accept a string pointer - intent(inout)
+ *
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+// ----------------------------------------
+// Function:  void acceptStringPointerLen
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Requested: c_string_*_inout_buf
+// Match:     c_string_inout_buf
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Requested: c_native_*_out_buf
+// Match:     c_default
+void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
+    int Narg1, int * nlen)
+{
+    // splicer begin function.accept_string_pointer_len_bufferify
+    std::string SHCXX_arg1(arg1, Larg1);
+    acceptStringPointerLen(&SHCXX_arg1, nlen);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    // splicer end function.accept_string_pointer_len_bufferify
+}
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+// ----------------------------------------
+// Function:  void fetchStringPointerLen
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)
+// Requested: c_string_*_out
+// Match:     c_string_out
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+void STR_fetch_string_pointer_len(char * arg1, int * nlen)
+{
+    // splicer begin function.fetch_string_pointer_len
+    std::string SHCXX_arg1;
+    fetchStringPointerLen(&SHCXX_arg1, nlen);
+    strcpy(arg1, SHCXX_arg1.c_str());
+    // splicer end function.fetch_string_pointer_len
+}
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+// ----------------------------------------
+// Function:  void fetchStringPointerLen
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)+len(Narg1)
+// Requested: c_string_*_out_buf
+// Match:     c_string_out_buf
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Requested: c_native_*_out_buf
+// Match:     c_default
+void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
+    int * nlen)
+{
+    // splicer begin function.fetch_string_pointer_len_bufferify
+    std::string SHCXX_arg1;
+    fetchStringPointerLen(&SHCXX_arg1, nlen);
+    ShroudStrCopy(arg1, Narg1, SHCXX_arg1.data(), SHCXX_arg1.size());
+    // splicer end function.fetch_string_pointer_len_bufferify
 }
 
 // ----------------------------------------

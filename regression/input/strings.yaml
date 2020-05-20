@@ -202,9 +202,36 @@ declarations:
   options:
     literalinclude: True
 
+- decl: void acceptStringPointerConst(const std::string * arg1)
+  doxygen:
+    brief: Accept a const string pointer - intent(in)
+
 - decl: void acceptStringPointer(std::string * arg1)
   doxygen:
-    brief: Accept a string pointer
+    brief: Accept a string pointer - intent(inout)
+
+- decl: void fetchStringPointer(std::string * arg1 +intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(out)
+    description: |
+      Return global_str.
+
+- decl: void acceptStringPointerLen(std::string * arg1,
+                                    int *nlen+intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(inout)
+    description: |
+      Test return tuple with two arguments.
+      Must rename argument to nlen to avoid conflict with intrinsic len.
+
+- decl: void fetchStringPointerLen(std::string * arg1 +intent(out),
+                                   int *nlen+intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(out)
+    description: |
+      Return global_str.
+      Test return tuple with two arguments.
+      Must rename argument to nlen to avoid conflict with intrinsic len.
 
 #- decl: void acceptStringInstance(std::string arg1)
 #  doxygen:

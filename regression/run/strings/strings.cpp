@@ -174,9 +174,31 @@ void acceptStringReference(std::string & arg1)
 }
 // end acceptStringReference
 
+void acceptStringPointerConst(const std::string * arg1)
+{
+    global_str = *arg1;
+}
+
 void acceptStringPointer(std::string * arg1)
 {
     arg1->append("dog");
+}
+
+void fetchStringPointer(std::string * arg1)
+{
+    *arg1 = global_str;
+}
+
+void acceptStringPointerLen(std::string * arg1, int *len)
+{
+    arg1->append("dog");
+    *len = arg1->size();
+}
+
+void fetchStringPointerLen(std::string * arg1, int *len)
+{
+    *arg1 = global_str;
+    *len = arg1->size();
 }
 
 void returnStrings(std::string & arg1, std::string & arg2)

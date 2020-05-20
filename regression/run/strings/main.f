@@ -98,6 +98,7 @@ contains
     character(len=:), allocatable :: astr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
+    integer(C_INT) :: nlen
 
     call set_case_name("test_functions")
 
@@ -207,9 +208,26 @@ contains
     call assert_true( str(1:6) == "catdog")
     call assert_true( str(7:7) == C_NULL_CHAR)
 
+    ! Store in global_str.
+    call accept_string_pointer_const("from Fortran")
+
+    ! Fetch from global_str.
+    call fetch_string_pointer(str)
+    call assert_true( str == "from Fortran")
+
+    call fetch_string_pointer_len(str, nlen)
+    call assert_true( str == "from Fortran")
+    call assert_equals(len_trim(str), nlen)
+
+    ! append "dog".
     str = "bird"
     call accept_string_pointer(str)
     call assert_true( str == "birddog")
+
+    str = "bird"
+    call accept_string_pointer_len(str, nlen)
+    call assert_true( str == "birddog")
+    call assert_equals(len_trim(str), nlen)
 
   end subroutine test_functions
 
