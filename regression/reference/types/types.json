@@ -3369,7 +3369,7 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "flag",
                             "ctor_expr": "flag",

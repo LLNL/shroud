@@ -211,13 +211,20 @@ need_numpy
 
 If *True*, add NumPy headers and initialize in the module.
 
-format
-^^^^^^
+fmtdict
+^^^^^^^
 
 Update format dictionary to override generated values.
+Each field will be evaluated before assigment.
 
 ctor_expr - expression passed to Typemap.PY_ctor
 ``PyInt_FromLong({ctor_expr})``.
+
+.. code-block:: python
+
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
 
 
 arg_declare
@@ -227,7 +234,7 @@ By default a local variable will be declared the same type as the
 argument to the function.
 
 For some cases, this will not be correct.  This field will be used
-if defined to replace the default declaration.
+to replace the default declaration.
 
 references
 
@@ -252,13 +259,11 @@ declare
 ^^^^^^^
 
 Code needed to declare local variable.
+Often used to define variables of type ``PyObject *``.
 
 .. When defined, *typemap.PY_format* is append to the
    format string for ``PyArg_ParseTupleAndKeywords`` and
    *c_var* is used to hold the parsed.
-
-If the *declare* block is not defined, a local variable is defined of
-the same type as the function argument.
 
 cxx_local_var
 ^^^^^^^^^^^^^

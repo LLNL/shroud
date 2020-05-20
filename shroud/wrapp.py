@@ -1294,6 +1294,9 @@ return 1;""",
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
             # local_var - 'funcptr', 'pointer', or 'scalar'
+            if intent_blk.fmtdict is not None:
+                for key, value in intent_blk.fmtdict.items():
+                    setattr(fmt_arg, key, wformat(value, fmt_arg))
 
             # Declare argument variable.
             if intent_blk.arg_declare is not None:
@@ -1312,8 +1315,8 @@ return 1;""",
             else:
                 # non-strings should be scalars.
                 # This allows PyArg to fill in their values.
-                fmt_arg.c_deref = ""
-                fmt_arg.ctor_expr = fmt_arg.c_var
+#                fmt_arg.c_deref = ""
+#                fmt_arg.ctor_expr = fmt_arg.c_var
                 #                fmt_arg.cxx_addr = '&'
                 #                fmt_arg.cxx_member = '.'
                 c_local_var = "scalar"
@@ -3456,6 +3459,7 @@ class PyStmts(object):
         name="py_default",
         arg_declare=None,   # Empty list indicates no declaration.
         post_declare=[],
+        fmtdict=None,
             
         allocate_local_var=False,
         arg_call=None,
@@ -3476,6 +3480,7 @@ class PyStmts(object):
         self.name = name
         self.arg_declare = arg_declare
         self.post_declare = post_declare
+        self.fmtdict = fmtdict
 
         self.allocate_local_var = allocate_local_var
         self.arg_call = arg_call
@@ -3720,6 +3725,9 @@ py_statements = [
         name="py_native_*_out",
         arg_declare=["{c_type} {c_var};"],
         arg_call=["&{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
     ),
     dict(
         name="py_native_&_in",
