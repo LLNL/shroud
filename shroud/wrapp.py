@@ -3620,6 +3620,9 @@ py_statements = [
         arg_call=[
             "&{c_var}",
         ],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}",
+        ),
     ),
     dict(
         name="py_unknown_*&_out",
@@ -3627,6 +3630,12 @@ py_statements = [
         arg_call=[
             "{c_var}",
         ]
+    ),
+    dict(
+        name="py_unknown_result",
+        fmtdict=dict(
+            ctor_expr="{cxx_var}",
+        ),
     ),
 
 ########################################

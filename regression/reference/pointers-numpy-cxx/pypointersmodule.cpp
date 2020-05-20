@@ -1085,8 +1085,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Requested: py_unknown_result
-// Match:     py_default
+// Exact:     py_unknown_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1123,8 +1122,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Requested: py_unknown_result
-// Match:     py_default
+// Exact:     py_unknown_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in

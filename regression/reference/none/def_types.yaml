@@ -604,7 +604,7 @@ typemap:
       f_type: type(C_PTR)
       f_cast: "{f_var}"
       PY_format: O
-      PY_ctor: PyCapsule_New({cxx_var}, NULL, NULL)
+      PY_ctor: PyCapsule_New({ctor_expr}, NULL, NULL)
       LUA_type: LUA_TNONE
       LUA_pop: POP
       LUA_push: PUSH

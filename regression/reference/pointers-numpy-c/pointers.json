@@ -2157,7 +2157,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2168,7 +2168,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_unknown_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_unknown_result"
                     }
                 },
                 "ast": {
@@ -2238,7 +2238,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2249,7 +2249,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_unknown_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_unknown_result"
                     }
                 },
                 "ast": {
@@ -2302,7 +2302,7 @@
                             "c_deref": "*",
                             "c_type": "void",
                             "c_var": "addr",
-                            "ctor_expr": "*addr",
+                            "ctor_expr": "addr",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",

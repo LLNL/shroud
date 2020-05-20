@@ -281,8 +281,7 @@ def initialize():
             # fortran='subroutine',
             f_type="type(C_PTR)",
             f_c_module=dict(iso_c_binding=["C_PTR"]),
-#XXX            PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
-            PY_ctor="PyCapsule_New({cxx_var}, NULL, NULL)",
+            PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
         ),
         short=Typemap(

@@ -804,7 +804,7 @@
             "sh_type": "SH_TYPE_UNSIGNED_SHORT"
         },
         "void": {
-            "PY_ctor": "PyCapsule_New({cxx_var}, NULL, NULL)",
+            "PY_ctor": "PyCapsule_New({ctor_expr}, NULL, NULL)",
             "c_type": "void",
             "cxx_type": "void",
             "f_c_module": {
