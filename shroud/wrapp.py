@@ -1293,6 +1293,18 @@ return 1;""",
 
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
+            cxx_local_var = intent_blk.cxx_local_var
+            if cxx_local_var:
+                # With PY_PyTypeObject, there is no c_var, only cxx_var
+                if not arg_typemap.PY_PyTypeObject:
+                    fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
+                pass_var = fmt_arg.cxx_var
+                # cxx_member used with typemap fields like PY_ctor.
+                if cxx_local_var == "scalar":
+                    fmt_arg.cxx_member = "."
+                elif cxx_local_var == "pointer":
+                    fmt_arg.cxx_member = "->"
+
             if intent_blk.fmtdict is not None:
                 for key, value in intent_blk.fmtdict.items():
                     setattr(fmt_arg, key, wformat(value, fmt_arg))
@@ -1308,18 +1320,6 @@ return 1;""",
                 junk = arg.gen_arg_as_c(remove_const=True, continuation=True)
                 declare_code.append(junk + ";")
             
-            cxx_local_var = intent_blk.cxx_local_var
-            if cxx_local_var:
-                # With PY_PyTypeObject, there is no c_var, only cxx_var
-                if not arg_typemap.PY_PyTypeObject:
-                    fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                pass_var = fmt_arg.cxx_var
-                # cxx_member used with typemap fields like PY_ctor.
-                if cxx_local_var == "scalar":
-                    fmt_arg.cxx_member = "."
-                elif cxx_local_var == "pointer":
-                    fmt_arg.cxx_member = "->"
-
             if implied or hidden:
                 # Argument is implied from other arguments.
                 pass
@@ -4079,17 +4079,32 @@ py_statements = [
         name="py_string_in",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
     ),
     dict(
         name="py_string_inout",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
     ),
     dict(
         name="py_string_out",
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
+    ),
+    dict(
+        name="py_string_result",
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
     ),
     dict(
         name="py_string_*_in",

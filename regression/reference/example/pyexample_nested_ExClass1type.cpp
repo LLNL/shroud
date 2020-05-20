@@ -155,8 +155,7 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -182,8 +181,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;

@@ -307,8 +307,7 @@ PY_getCharPtr3(
 
 // ----------------------------------------
 // Function:  const string getConstStringResult +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
@@ -338,8 +337,7 @@ PY_getConstStringResult(
 
 // ----------------------------------------
 // Function:  const string getConstStringLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -369,8 +367,7 @@ PY_getConstStringLen(
 
 // ----------------------------------------
 // Function:  const string getConstStringAsArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -400,8 +397,7 @@ PY_getConstStringAsArg(
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
@@ -427,8 +423,7 @@ PY_getConstStringAlloc(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
@@ -458,8 +453,7 @@ PY_getConstStringRefPure(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -492,8 +486,7 @@ PY_getConstStringRefLen(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -525,8 +518,7 @@ PY_getConstStringRefAsArg(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -556,8 +548,7 @@ PY_getConstStringRefLenEmpty(
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
@@ -583,8 +574,7 @@ PY_getConstStringRefAlloc(
 
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
@@ -618,8 +608,7 @@ PY_getConstStringPtrLen(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
 ;
@@ -645,8 +634,7 @@ PY_getConstStringPtrAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
@@ -679,8 +667,7 @@ PY_getConstStringPtrOwnsAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;

@@ -45,7 +45,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -56,7 +56,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {

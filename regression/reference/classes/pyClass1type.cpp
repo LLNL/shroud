@@ -197,8 +197,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getName__doc__[] =
 "documentation"
 ;

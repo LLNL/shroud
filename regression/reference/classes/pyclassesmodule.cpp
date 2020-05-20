@@ -261,8 +261,7 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

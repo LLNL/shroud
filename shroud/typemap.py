@@ -717,7 +717,7 @@ def initialize():
             f_c_type="character(kind=C_CHAR)",
             f_c_module=dict(iso_c_binding=["C_CHAR"]),
             PY_format="s",
-            PY_ctor="PyString_FromStringAndSize(\t{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size())",
+            PY_ctor="PyString_FromStringAndSize({ctor_expr})",
             PY_build_format="s#",
             PY_build_arg="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
             LUA_type="LUA_TSTRING",

@@ -378,7 +378,7 @@ typemap:
       impl_header:
       - <string>
       PY_format: s
-      PY_ctor: PyString_FromStringAndSize({cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size())
+      PY_ctor: PyString_FromStringAndSize({ctor_expr})
       PY_build_arg: "{cxx_var}{cxx_member}data(), {cxx_var}{cxx_member}size()"
       PY_build_format: s#
       LUA_type: LUA_TSTRING
