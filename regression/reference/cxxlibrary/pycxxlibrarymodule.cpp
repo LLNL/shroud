@@ -96,9 +96,52 @@ fail:
     return nullptr;
 // splicer end function.pass_struct_by_reference
 }
+
+// ----------------------------------------
+// Function:  int passStructByReferenceCls
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1_cls & arg +intent(in)
+// Exact:     py_struct_&_in_class
+static char PY_passStructByReferenceCls__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByReferenceCls(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_struct_by_reference_cls
+    PY_Cstruct1_cls * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!:passStructByReferenceCls", const_cast<char **>(SHT_kwlist), 
+        &PY_Cstruct1_cls_Type, &SHPy_arg))
+        return nullptr;
+
+    // post_declare
+    Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+
+    int SHCXX_rv = passStructByReferenceCls(*arg);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.pass_struct_by_reference_cls
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReference__doc__},
+{"passStructByReferenceCls", (PyCFunction)PY_passStructByReferenceCls,
+    METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceCls__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
@@ -240,6 +283,14 @@ initcxxlibrary(void)
     struct module_state *st = GETSTATE(m);
 
     import_array();
+
+    // Cstruct1_cls
+    PY_Cstruct1_cls_Type.tp_new   = PyType_GenericNew;
+    PY_Cstruct1_cls_Type.tp_alloc = PyType_GenericAlloc;
+    if (PyType_Ready(&PY_Cstruct1_cls_Type) < 0)
+        return RETVAL;
+    Py_INCREF(&PY_Cstruct1_cls_Type);
+    PyModule_AddObject(m, "Cstruct1_cls", (PyObject *)&PY_Cstruct1_cls_Type);
 
     // Define PyArray_Descr for structs
     PY_Cstruct1_array_descr = PY_Cstruct1_create_array_descr();

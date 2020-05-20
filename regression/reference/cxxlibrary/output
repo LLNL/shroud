@@ -3,6 +3,8 @@ Wrote wrapcxxlibrary.h
 Wrote wrapcxxlibrary.cpp
 Wrote typescxxlibrary.h
 Wrote wrapfcxxlibrary.f
+Wrote pyCstruct1_clstype.cpp
 Wrote pycxxlibrarymodule.cpp
+Wrote pycxxlibraryutil.cpp
 Wrote pycxxlibrarymodule.hpp
 Wrote setup.py

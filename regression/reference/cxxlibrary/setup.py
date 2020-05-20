@@ -12,7 +12,9 @@ import numpy
 module = Extension(
     'cxxlibrary',
     sources=[
-         'pycxxlibrarymodule.cpp'
+         'pyCstruct1_clstype.cpp',
+         'pycxxlibrarymodule.cpp',
+         'pycxxlibraryutil.cpp'
     ],
     language='c++',
     include_dirs = [numpy.get_include()],

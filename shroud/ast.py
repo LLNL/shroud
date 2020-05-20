@@ -818,6 +818,10 @@ class BlockNode(AstNode, NamespaceMixin):
         self.functions = parent.functions
         self.namespaces = parent.namespaces
         self.variables = parent.variables
+        self.scope = parent.scope
+        self.scope_file = parent.scope_file
+        self.symbols = parent.symbols
+        self.cxx_header = parent.cxx_header
 
         self.options = util.Scope(parent=parent.options)
         if options:

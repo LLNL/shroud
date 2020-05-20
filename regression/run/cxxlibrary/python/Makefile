@@ -21,7 +21,9 @@ VPATH = \
 
 OBJS = \
     cxxlibrary.o \
-    pycxxlibrarymodule.o
+    pyCstruct1_clstype.o \
+    pycxxlibrarymodule.o \
+    pycxxlibraryutil.o
 
 CXXFLAGS += $(SHARED)
 
@@ -29,6 +31,8 @@ all : cxxlibrary.so
 
 cxxlibrary.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
+
+cxxlibrary.o : cxxlibrary.hpp
 
 clean :
 	rm -f *.so *.o

@@ -27,7 +27,9 @@
                     "file_scope": "Cstruct1"
                 },
                 "name": "Cstruct1",
-                "options": {},
+                "options": {
+                    "PY_struct_arg": "numpy"
+                },
                 "scope": "Cstruct1::",
                 "typemap_name": "Cstruct1",
                 "variables": [
@@ -65,6 +67,225 @@
                             "typemap_name": "double"
                         },
                         "fmtdict": {
+                            "c_type": "double",
+                            "cxx_type": "double",
+                            "field_name": "dfield",
+                            "variable_lower": "dfield",
+                            "variable_name": "dfield",
+                            "variable_upper": "DFIELD"
+                        },
+                        "name": "dfield",
+                        "options": {}
+                    }
+                ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct1_cls.h",
+                    "C_impl_filename": "wrapCstruct1_cls.cpp",
+                    "C_name_scope": "Cstruct1_cls_",
+                    "C_type_name": "CXX_cstruct1_cls",
+                    "F_capsule_data_type": "SHROUD_cstruct1_cls_capsule",
+                    "F_derived_name": "cstruct1_cls",
+                    "F_name_scope": "cstruct1_cls_",
+                    "PY_PyObject": "PY_Cstruct1_cls",
+                    "PY_PyTypeObject": "PY_Cstruct1_cls_Type",
+                    "PY_capsule_name": "PY_Cstruct1_cls_capsule_name",
+                    "PY_from_object_func": "PP_Cstruct1_cls_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct1_cls_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct1_cls_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct1_cls_array_descr",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Cstruct1_cls_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct1_cls_to_Object_idtor",
+                    "PY_type_filename": "pyCstruct1_clstype.cpp",
+                    "class_scope": "Cstruct1_cls::",
+                    "cxx_class": "Cstruct1_cls",
+                    "cxx_type": "Cstruct1_cls",
+                    "file_scope": "Cstruct1_cls"
+                },
+                "functions": [
+                    {
+                        "_fmtargs": {
+                            "dfield": {
+                                "fmtpy": {
+                                    "PY_member_object": "XXXPY_member_object",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_type": "double",
+                                    "c_var": "dfield",
+                                    "ctor_expr": "dfield",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&dfield",
+                                    "cxx_type": "double",
+                                    "cxx_var": "dfield",
+                                    "data_var": "SHData_dfield",
+                                    "field_name": "dfield",
+                                    "numpy_type": "NPY_DOUBLE",
+                                    "py_var": "SHPy_dfield",
+                                    "size_var": "SHSize_dfield",
+                                    "stmt0": "py_ctor_native_scalar_numpy",
+                                    "stmt1": "py_ctor_native"
+                                }
+                            },
+                            "ifield": {
+                                "fmtpy": {
+                                    "PY_member_object": "XXXPY_member_object",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_type": "int",
+                                    "c_var": "ifield",
+                                    "ctor_expr": "ifield",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&ifield",
+                                    "cxx_type": "int",
+                                    "cxx_var": "ifield",
+                                    "data_var": "SHData_ifield",
+                                    "field_name": "ifield",
+                                    "numpy_type": "NPY_INT",
+                                    "py_var": "SHPy_ifield",
+                                    "size_var": "SHSize_ifield",
+                                    "stmt0": "py_ctor_native_scalar_numpy",
+                                    "stmt1": "py_ctor_native"
+                                }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtpy": {
+                                "PYN_descr": "PY_Cstruct1_cls_array_descr",
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Cstruct1_cls_to_Object_idtor",
+                                "PyObject": "PY_Cstruct1_cls",
+                                "PyTypeObject": "PY_Cstruct1_cls_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "Cstruct1_cls",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_default",
+                                "stmt1": "py_default",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "_generated": "struct_as_class_ctor",
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "name": "Cstruct1_cls_ctor"
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "ifield",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "ifield"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "dfield",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "struct_member": "dfield"
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "specifier": [
+                                "Cstruct1_cls"
+                            ],
+                            "typemap_name": "Cstruct1_cls"
+                        },
+                        "decl": "Cstruct1_cls_ctor",
+                        "declgen": "Cstruct1_cls(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_cls_ctor)",
+                        "fmtdict": {
+                            "PY_name_impl": "PY_Cstruct1_cls_tp_init",
+                            "PY_type_impl": "PY_Cstruct1_cls_tp_init",
+                            "PY_type_method": "tp_init",
+                            "function_name": "Cstruct1_cls_ctor",
+                            "underscore_name": "cstruct1_cls_ctor"
+                        },
+                        "options": {
+                            "wrap_c": false,
+                            "wrap_fortran": false,
+                            "wrap_lua": false
+                        }
+                    }
+                ],
+                "name": "Cstruct1_cls",
+                "options": {
+                    "PY_struct_arg": "class"
+                },
+                "scope": "Cstruct1_cls::",
+                "typemap_name": "Cstruct1_cls",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "ifield",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "PY_getter": "PY_Cstruct1_cls_ifield_getter",
+                            "PY_setter": "PY_Cstruct1_cls_ifield_setter",
+                            "PY_struct_context": "self->obj->",
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "ifield",
+                            "variable_lower": "ifield",
+                            "variable_name": "ifield",
+                            "variable_upper": "IFIELD"
+                        },
+                        "name": "ifield",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "dfield",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "fmtdict": {
+                            "PY_getter": "PY_Cstruct1_cls_dfield_getter",
+                            "PY_setter": "PY_Cstruct1_cls_dfield_setter",
+                            "PY_struct_context": "self->obj->",
                             "c_type": "double",
                             "cxx_type": "double",
                             "field_name": "dfield",
@@ -239,6 +460,91 @@
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStructByReference",
                     "underscore_name": "pass_struct_by_reference"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_cls_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_cls_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1_cls",
+                            "PyTypeObject": "PY_Cstruct1_cls_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "CXX_cstruct1_cls",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "Cstruct1_cls",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": null,
+                            "py_type": "PY_Cstruct1_cls",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_struct_&_in_class",
+                            "stmt1": "py_struct_&_in_class"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_scalar_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStructByReferenceCls",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1_cls"
+                            ],
+                            "typemap_name": "Cstruct1_cls"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
+                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg +intent(in))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_passStructByReferenceCls",
+                    "function_name": "passStructByReferenceCls",
+                    "underscore_name": "pass_struct_by_reference_cls"
                 },
                 "options": {}
             }

@@ -8,7 +8,12 @@ Close typescxxlibrary.h
 class Cstruct1
 C-interface, Fortran function int passStructByReference(Cstruct1 & arg +intent(in))
 Close wrapfcxxlibrary.f
+class Cstruct1_cls
+Python method Cstruct1_cls(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_cls_ctor)
+Close pyCstruct1_clstype.cpp
 Python function int passStructByReference(Cstruct1 & arg +intent(in))
+Python function int passStructByReferenceCls(Cstruct1_cls & arg +intent(in))
 Close pycxxlibrarymodule.cpp
+Close pycxxlibraryutil.cpp
 Close pycxxlibrarymodule.hpp
 Close setup.py

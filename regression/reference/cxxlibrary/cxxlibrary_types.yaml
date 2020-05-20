@@ -13,3 +13,8 @@ typemap:
       base: struct
       c_type: CXX_cstruct1
       f_derived_type: cstruct1
+  - type: Cstruct1_cls
+    fields:
+      base: struct
+      c_type: CXX_cstruct1_cls
+      f_derived_type: cstruct1_cls

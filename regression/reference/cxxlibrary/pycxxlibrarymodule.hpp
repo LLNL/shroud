@@ -13,6 +13,31 @@
 // splicer begin header.include
 // splicer end header.include
 
+// utility functions
+extern void PY_SHROUD_release_memory(int icontext, void *ptr);
+extern void *PY_SHROUD_fetch_context(int icontext);
+extern void PY_SHROUD_capsule_destructor(PyObject *cap);
+
+// ------------------------------
+extern PyTypeObject PY_Cstruct1_cls_Type;
+// splicer begin class.Cstruct1_cls.C_declaration
+// splicer end class.Cstruct1_cls.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    Cstruct1_cls * obj;
+    int idtor;
+    // splicer begin class.Cstruct1_cls.C_object
+    // splicer end class.Cstruct1_cls.C_object
+} PY_Cstruct1_cls;
+
+extern const char *PY_Cstruct1_cls_capsule_name;
+PyObject *PP_Cstruct1_cls_to_Object_idtor(Cstruct1_cls *addr,
+    int idtor);
+PyObject *PP_Cstruct1_cls_to_Object(Cstruct1_cls *addr);
+int PP_Cstruct1_cls_from_Object(PyObject *obj, void **addr);
+// ------------------------------
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

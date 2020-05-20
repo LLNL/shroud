@@ -4412,6 +4412,11 @@ py_statements = [
 # cannot support inout/out with call-by-value
 #        name="py_struct_scalar_inout_class",
 #        name="py_struct_scalar_out_class",
+    dict(
+        name="py_struct_&_in_class",
+        base="py_struct_*_in_class",
+        arg_call=["*{cxx_var}"],
+    ),
 
 ########################################
 # shadow a.k.a class
