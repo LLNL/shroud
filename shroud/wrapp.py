@@ -3513,6 +3513,7 @@ class PyStmts(object):
         for key in [
                 "name",
                 "allocate_local_var",
+                "arg_call",
                 "arg_declare",
                 "c_header",
                 "c_helper",
