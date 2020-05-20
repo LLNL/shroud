@@ -6,9 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pyreferencesmodule.hpp"
+#include "pyarrayclassmodule.hpp"
 #define NO_IMPORT_ARRAY
-#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_REFERENCES_ARRAY_API
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_ARRAYCLASS_ARRAY_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 // splicer begin class.ArrayWrapper.impl.include
@@ -648,7 +648,7 @@ static char ArrayWrapper__doc__[] =
 /* static */
 PyTypeObject PY_ArrayWrapper_Type = {
     PyVarObject_HEAD_INIT(nullptr, 0)
-    "references.ArrayWrapper",                       /* tp_name */
+    "arrayclass.ArrayWrapper",                       /* tp_name */
     sizeof(PY_ArrayWrapper),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

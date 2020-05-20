@@ -9,7 +9,7 @@
                     "C_header_filename": "wrapArrayWrapper.h",
                     "C_impl_filename": "wrapArrayWrapper.cpp",
                     "C_name_scope": "ArrayWrapper_",
-                    "C_type_name": "REF_ArrayWrapper",
+                    "C_type_name": "ARR_ArrayWrapper",
                     "F_capsule_data_type": "SHROUD_arraywrapper_capsule",
                     "F_derived_name": "arraywrapper",
                     "F_name_scope": "arraywrapper_",
@@ -31,7 +31,7 @@
                         "_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
-                                "c_type": "REF_ArrayWrapper",
+                                "c_type": "ARR_ArrayWrapper",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
@@ -88,9 +88,9 @@
                         "decl": "ArrayWrapper()",
                         "declgen": "ArrayWrapper()",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_ctor",
-                            "C_prototype": "REF_ArrayWrapper * SHC_rv",
-                            "C_return_type": "REF_ArrayWrapper *",
+                            "C_name": "ARR_ArrayWrapper_ctor",
+                            "C_prototype": "ARR_ArrayWrapper * SHC_rv",
+                            "C_return_type": "ARR_ArrayWrapper *",
                             "F_C_call": "c_arraywrapper_ctor",
                             "F_C_name": "c_arraywrapper_ctor",
                             "F_arg_c_call": "SHT_rv%cxxmem",
@@ -190,8 +190,8 @@
                         "declgen": "void setSize(int size +intent(in)+value)",
                         "fmtdict": {
                             "C_call_list": "size",
-                            "C_name": "REF_ArrayWrapper_set_size",
-                            "C_prototype": "REF_ArrayWrapper * self,\t int size",
+                            "C_name": "ARR_ArrayWrapper_set_size",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t int size",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_set_size",
                             "F_C_name": "c_arraywrapper_set_size",
@@ -274,8 +274,8 @@
                         "decl": "int getSize() const",
                         "declgen": "int getSize() const",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_size",
-                            "C_prototype": "const REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_get_size",
+                            "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "int",
                             "F_C_call": "c_arraywrapper_get_size",
                             "F_C_name": "c_arraywrapper_get_size",
@@ -382,8 +382,8 @@
                         "declgen": "void fillSize(int & size +intent(out))",
                         "fmtdict": {
                             "C_call_list": "*size",
-                            "C_name": "REF_ArrayWrapper_fill_size",
-                            "C_prototype": "REF_ArrayWrapper * self,\t int * size",
+                            "C_name": "ARR_ArrayWrapper_fill_size",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fill_size",
                             "F_C_name": "c_arraywrapper_fill_size",
@@ -422,8 +422,8 @@
                         "decl": "void allocate()",
                         "declgen": "void allocate()",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_allocate",
-                            "C_prototype": "REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_allocate",
+                            "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_allocate",
                             "F_C_name": "c_arraywrapper_allocate",
@@ -534,8 +534,8 @@
                         "decl": "double* getArray() +dimension(getSize())",
                         "declgen": "double * getArray() +dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array",
-                            "C_prototype": "REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_get_array",
+                            "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_call": "c_arraywrapper_get_array_bufferify",
                             "F_C_name": "c_arraywrapper_get_array",
@@ -611,8 +611,8 @@
                         "decl": "double* getArray() +dimension(getSize())",
                         "declgen": "double * getArray() +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *DSHC_rv",
+                            "C_name": "ARR_ArrayWrapper_get_array_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "double *",
                             "F_C_name": "c_arraywrapper_get_array_bufferify",
                             "c_const": "",
@@ -719,8 +719,8 @@
                         "decl": "double* getArrayConst() const +dimension(getSize())",
                         "declgen": "double * getArrayConst() const +dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_const",
-                            "C_prototype": "const REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_get_array_const",
+                            "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
                             "F_C_call": "c_arraywrapper_get_array_const_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_const",
@@ -797,8 +797,8 @@
                         "decl": "double* getArrayConst() const +dimension(getSize())",
                         "declgen": "double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_const_bufferify",
-                            "C_prototype": "const REF_ArrayWrapper * self,\t REF_SHROUD_array *DSHC_rv",
+                            "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
+                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "double *",
                             "F_C_name": "c_arraywrapper_get_array_const_bufferify",
                             "c_const": "const ",
@@ -905,8 +905,8 @@
                         "decl": "const double *getArrayC() +dimension(getSize())",
                         "declgen": "const double * getArrayC() +dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_c",
-                            "C_prototype": "REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_get_array_c",
+                            "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_call": "c_arraywrapper_get_array_c_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_c",
@@ -983,8 +983,8 @@
                         "decl": "const double *getArrayC() +dimension(getSize())",
                         "declgen": "const double * getArrayC() +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_c_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *DSHC_rv",
+                            "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "const double *",
                             "F_C_name": "c_arraywrapper_get_array_c_bufferify",
                             "c_const": "",
@@ -1092,8 +1092,8 @@
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
                         "declgen": "const double * getArrayConstC() const +dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_const_c",
-                            "C_prototype": "const REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_get_array_const_c",
+                            "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
                             "F_C_call": "c_arraywrapper_get_array_const_c_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_const_c",
@@ -1171,8 +1171,8 @@
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
                         "declgen": "const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_get_array_const_c_bufferify",
-                            "C_prototype": "const REF_ArrayWrapper * self,\t REF_SHROUD_array *DSHC_rv",
+                            "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
+                            "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "const double *",
                             "F_C_name": "c_arraywrapper_get_array_const_c_bufferify",
                             "c_const": "const ",
@@ -1337,8 +1337,8 @@
                         "declgen": "void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ptr",
-                            "C_prototype": "REF_ArrayWrapper * self,\t double * * array,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr",
@@ -1502,8 +1502,8 @@
                         "declgen": "void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "c_const": "",
@@ -1669,8 +1669,8 @@
                         "declgen": "void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ref",
-                            "C_prototype": "REF_ArrayWrapper * self,\t double * * array,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ref",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_array_ref_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref",
@@ -1834,8 +1834,8 @@
                         "declgen": "void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ref_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_bufferify",
                             "c_const": "",
@@ -2002,8 +2002,8 @@
                         "declgen": "void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_const",
-                            "C_prototype": "REF_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const",
@@ -2168,8 +2168,8 @@
                         "declgen": "void fetchArrayPtrConst(const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ptr_const_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const_bufferify",
                             "c_const": "",
@@ -2336,8 +2336,8 @@
                         "declgen": "void fetchArrayRefConst(const double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ref_const",
-                            "C_prototype": "REF_ArrayWrapper * self,\t const double * * array,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_const",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_array_ref_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const",
@@ -2502,8 +2502,8 @@
                         "declgen": "void fetchArrayRefConst(const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
-                            "C_name": "REF_ArrayWrapper_fetch_array_ref_const_bufferify",
-                            "C_prototype": "REF_ArrayWrapper * self,\t REF_SHROUD_array *Darray,\t int * isize",
+                            "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const_bufferify",
                             "c_const": "",
@@ -2611,8 +2611,8 @@
                         "declgen": "void fetchVoidPtr(void * * array +intent(out))",
                         "fmtdict": {
                             "C_call_list": "array",
-                            "C_name": "REF_ArrayWrapper_fetch_void_ptr",
-                            "C_prototype": "REF_ArrayWrapper * self,\t void * * array",
+                            "C_name": "ARR_ArrayWrapper_fetch_void_ptr",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_void_ptr",
                             "F_C_name": "c_arraywrapper_fetch_void_ptr",
@@ -2724,8 +2724,8 @@
                         "declgen": "void fetchVoidRef(void * & array +intent(out))",
                         "fmtdict": {
                             "C_call_list": "*array",
-                            "C_name": "REF_ArrayWrapper_fetch_void_ref",
-                            "C_prototype": "REF_ArrayWrapper * self,\t void * * array",
+                            "C_name": "ARR_ArrayWrapper_fetch_void_ref",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                             "C_return_type": "void",
                             "F_C_call": "c_arraywrapper_fetch_void_ref",
                             "F_C_name": "c_arraywrapper_fetch_void_ref",
@@ -2880,8 +2880,8 @@
                         "declgen": "bool checkPtr(void * array +intent(in)+value)",
                         "fmtdict": {
                             "C_call_list": "array",
-                            "C_name": "REF_ArrayWrapper_check_ptr",
-                            "C_prototype": "REF_ArrayWrapper * self,\t void * array",
+                            "C_name": "ARR_ArrayWrapper_check_ptr",
+                            "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
                             "C_return_type": "bool",
                             "F_C_call": "c_arraywrapper_check_ptr",
                             "F_C_name": "c_arraywrapper_check_ptr",
@@ -2961,8 +2961,8 @@
                         "decl": "double sumArray()",
                         "declgen": "double sumArray()",
                         "fmtdict": {
-                            "C_name": "REF_ArrayWrapper_sum_array",
-                            "C_prototype": "REF_ArrayWrapper * self",
+                            "C_name": "ARR_ArrayWrapper_sum_array",
+                            "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double",
                             "F_C_call": "c_arraywrapper_sum_array",
                             "F_C_name": "c_arraywrapper_sum_array",
@@ -3000,11 +3000,11 @@
             ""
         ],
         "cxx_header": [
-            "references.hpp"
+            "arrayclass.hpp"
         ],
         "language": "cxx",
         "scope_file": [
-            "references"
+            "arrayclass"
         ]
     }
 }

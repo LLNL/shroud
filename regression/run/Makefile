@@ -35,7 +35,7 @@ test-fortran : \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
-  test-fortran-references \
+  test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
@@ -127,7 +127,7 @@ test-python : \
   test-python-pointers-list-cxx \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
-  test-python-references \
+  test-python-arrayclass \
   test-python-struct-numpy-c \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
@@ -210,8 +210,8 @@ phony_explicit:
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
-    $(tempdir)/run/references/.. \
-    $(tempdir)/run/references/python/.. \
+    $(tempdir)/run/arrayclass/.. \
+    $(tempdir)/run/arrayclass/python/.. \
     $(tempdir)/run/scope/.. \
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \

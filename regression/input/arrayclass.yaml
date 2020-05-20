@@ -9,8 +9,8 @@ copyright:
 # Test references
 # and pointers with classes.
 
-library: references
-cxx_header: references.hpp
+library: arrayclass
+cxx_header: arrayclass.hpp
 
 options:
   debug: True

@@ -1,5 +1,5 @@
-Read yaml references.yaml
-Close references_types.yaml
+Read yaml arrayclass.yaml
+Close arrayclass_types.yaml
 class ArrayWrapper
 C method ArrayWrapper()
 C method void setSize(int size +intent(in)+value)
@@ -28,8 +28,8 @@ C method bool checkPtr(void * array +intent(in)+value)
 C method double sumArray()
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
-Close wrapreferences.cpp
-Close typesreferences.h
+Close wraparrayclass.cpp
+Close typesarrayclass.h
 class ArrayWrapper
 C-interface, Fortran method ArrayWrapper()
 C-interface, Fortran method void setSize(int size +intent(in)+value)
@@ -56,7 +56,7 @@ C-interface, Fortran method void fetchVoidPtr(void * * array +intent(out))
 C-interface, Fortran method void fetchVoidRef(void * & array +intent(out))
 C-interface, Fortran method bool checkPtr(void * array +intent(in)+value)
 C-interface, Fortran method double sumArray()
-Close wrapfreferences.f
+Close wrapfarrayclass.f
 class ArrayWrapper
 Python method ArrayWrapper()
 Python method void setSize(int size +intent(in)+value)
@@ -76,7 +76,7 @@ Python method void fetchVoidRef(void * & array +intent(out))
 Python method bool checkPtr(void * array +intent(in)+value)
 Python method double sumArray()
 Close pyArrayWrappertype.cpp
-Close pyreferencesmodule.cpp
-Close pyreferencesutil.cpp
-Close pyreferencesmodule.hpp
+Close pyarrayclassmodule.cpp
+Close pyarrayclassutil.cpp
+Close pyarrayclassmodule.hpp
 Close setup.py
