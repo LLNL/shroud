@@ -211,6 +211,15 @@ need_numpy
 
 If *True*, add NumPy headers and initialize in the module.
 
+format
+^^^^^^
+
+Update format dictionary to override generated values.
+
+ctor_expr - expression passed to Typemap.PY_ctor
+``PyInt_FromLong({ctor_expr})``.
+
+
 arg_declare
 ^^^^^^^^^^^
 
@@ -231,6 +240,13 @@ is created after parsing arguments.
 
 
 The argument will be non-const to allow it to be assigned later.
+
+.. code-block:: python
+
+        name="py_char_*_out_charlen",
+        arg_declare=[
+            "{c_const}char {c_var}[{charlen}];  // intent(out)",
+        ],
 
 declare
 ^^^^^^^

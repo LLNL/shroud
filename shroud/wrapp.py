@@ -715,6 +715,7 @@ return 1;""",
         # c_var is used with PY_ctor
         fmt.c_var_raw = wformat("{PY_struct_context}{field_name}", fmt_var)
         fmt.c_var = fmt.c_var_raw
+        fmt.ctor_expr = fmt.c_var_raw
         fmt.cxx_var = fmt.c_var
         fmt.c_var_non_const = fmt.c_var
         fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
@@ -1205,10 +1206,12 @@ return 1;""",
                 fmt_arg.c_deref = "*"
                 fmt_arg.cxx_addr = ""
                 fmt_arg.cxx_member = "->"
+                fmt_arg.ctor_expr = "*" + fmt_arg.c_var
             else:
                 fmt_arg.c_deref = ""
                 fmt_arg.cxx_addr = "&"
                 fmt_arg.cxx_member = "."
+                fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
 
@@ -1310,6 +1313,7 @@ return 1;""",
                 # non-strings should be scalars.
                 # This allows PyArg to fill in their values.
                 fmt_arg.c_deref = ""
+                fmt_arg.ctor_expr = fmt_arg.c_var
                 #                fmt_arg.cxx_addr = '&'
                 #                fmt_arg.cxx_member = '.'
                 c_local_var = "scalar"
@@ -1896,10 +1900,12 @@ return 1;""",
             fmt_result.c_deref = "*"
             fmt_result.cxx_addr = ""
             fmt_result.cxx_member = "->"
+            fmt_result.ctor_expr = "*" + fmt_result.cxx_var
         else:
             fmt_result.c_deref = ""
             fmt_result.cxx_addr = "&"
             fmt_result.cxx_member = "."
+            fmt_result.ctor_expr = fmt_result.cxx_var
         fmt_result.c_var = fmt_result.cxx_var
         fmt_result.py_var = fmt.PY_result
         fmt_result.data_var = "SHData_" + fmt_result.C_result
@@ -2001,6 +2007,7 @@ return 1;""",
             fmt.c_deref = "*"
             fmt.cxx_addr = ""
             fmt.cxx_member = "->"
+            fmt.ctor_expr = "*" + fmt.c_var
             typemap = ast.typemap
 #            result_typeflag = ast.typemap.base
 #        result_typemap = node.CXX_result_typemap

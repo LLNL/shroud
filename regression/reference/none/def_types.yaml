@@ -116,7 +116,7 @@ typemap:
         - C_DOUBLE
       f_cast: real({f_var}, C_DOUBLE)
       PY_format: d
-      PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
+      PY_ctor: PyFloat_FromDouble({ctor_expr})
       PY_get: PyFloat_AsDouble({py_var})
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
@@ -138,7 +138,7 @@ typemap:
         - C_FLOAT
       f_cast: real({f_var}, C_FLOAT)
       PY_format: f
-      PY_ctor: PyFloat_FromDouble({c_deref}{c_var})
+      PY_ctor: PyFloat_FromDouble({ctor_expr})
       PY_get: PyFloat_AsDouble({py_var})
       PYN_typenum: NPY_FLOAT
       LUA_type: LUA_TNUMBER
@@ -160,7 +160,7 @@ typemap:
         - C_INT
       f_cast: int({f_var}, C_INT)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT
       LUA_type: LUA_TNUMBER
@@ -186,7 +186,7 @@ typemap:
         - C_INT16_T
       f_cast: int({f_var}, C_INT16_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT16
       LUA_type: LUA_TNUMBER
@@ -212,7 +212,7 @@ typemap:
         - C_INT32_T
       f_cast: int({f_var}, C_INT32_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT32
       LUA_type: LUA_TNUMBER
@@ -238,7 +238,7 @@ typemap:
         - C_INT64_T
       f_cast: int({f_var}, C_INT64_t)
       PY_format: L
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT64
       LUA_type: LUA_TNUMBER
@@ -264,7 +264,7 @@ typemap:
         - C_INT8_T
       f_cast: int({f_var}, C_INT8_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT8
       LUA_type: LUA_TNUMBER
@@ -286,7 +286,7 @@ typemap:
         - C_LONG
       f_cast: int({f_var}, C_LONG)
       PY_format: l
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_LONG
       LUA_type: LUA_TNUMBER
@@ -328,7 +328,7 @@ typemap:
         - C_SHORT
       f_cast: int({f_var}, C_SHORT)
       PY_format: h
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_SHORT
       LUA_type: LUA_TNUMBER
@@ -354,7 +354,7 @@ typemap:
         - C_SIZE_T
       f_cast: int({f_var}, C_SIZE_T)
       PY_format: n
-      PY_ctor: PyInt_FromSize_t({c_deref}{c_var})
+      PY_ctor: PyInt_FromSize_t({ctor_expr})
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
       LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
@@ -419,7 +419,7 @@ typemap:
         - C_INT16_T
       f_cast: int({f_var}, C_INT16_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_UINT16
       LUA_type: LUA_TNUMBER
@@ -445,7 +445,7 @@ typemap:
         - C_INT32_T
       f_cast: int({f_var}, C_INT32_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_UINT32
       LUA_type: LUA_TNUMBER
@@ -471,7 +471,7 @@ typemap:
         - C_INT64_T
       f_cast: int({f_var}, C_INT64_t)
       PY_format: L
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_UINT64
       LUA_type: LUA_TNUMBER
@@ -497,7 +497,7 @@ typemap:
         - C_INT8_T
       f_cast: int({f_var}, C_INT8_t)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_UINT8
       LUA_type: LUA_TNUMBER
@@ -519,7 +519,7 @@ typemap:
         - C_INT
       f_cast: int({f_var}, C_INT)
       PY_format: i
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_INT
       LUA_type: LUA_TNUMBER
@@ -541,7 +541,7 @@ typemap:
         - C_LONG
       f_cast: int({f_var}, C_LONG)
       PY_format: l
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_LONG
       LUA_type: LUA_TNUMBER
@@ -583,7 +583,7 @@ typemap:
         - C_SHORT
       f_cast: int({f_var}, C_SHORT)
       PY_format: h
-      PY_ctor: PyInt_FromLong({c_deref}{c_var})
+      PY_ctor: PyInt_FromLong({ctor_expr})
       PY_get: PyInt_AsLong({py_var})
       PYN_typenum: NPY_SHORT
       LUA_type: LUA_TNUMBER

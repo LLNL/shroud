@@ -635,9 +635,7 @@ def add_to_PyList_helper(fmt, ntypemap):
     if ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
-        fmt.Py_ctor = ntypemap.PY_ctor.format(
-            c_deref="", c_var="in[i]",
-            cxx_var="in[i]", cxx_member="X")
+        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
         fmt.c_const="const "
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
@@ -646,9 +644,7 @@ def add_to_PyList_helper(fmt, ntypemap):
     # Used with intent(inout)
     name = "update_PyList_" + flat_name
     if ntypemap.PY_ctor is not None:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(
-            c_deref="", c_var="in[i]",
-            cxx_var="in[i]", cxx_member="X")
+        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
         fmt.hname = name
         fmt.hnameproto = wformat(
             "void {PY_helper_prefix}{hname}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
@@ -970,7 +966,7 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
-    fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
+    fmt.Py_ctor = ctor.format(ctor_expr="in[i]")
     fmt.hname = name
     fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
     fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
@@ -999,7 +995,7 @@ return out;
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
-    fmt.Py_ctor = ctor.format(c_deref="", c_var="in[i]")
+    fmt.Py_ctor = ctor.format(ctor_expr="in[i]")
     fmt.hname = name
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}{hname}", fmt)
