@@ -1400,14 +1400,15 @@ return 1;""",
 
             if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
                 # Make intermediate C++ variable
-                # Needed to pass address of variable
+                # Needed to pass address of variable.
+                # Convert type like with enums or MPI_Comm.
                 # Helpful with debugging.
                 fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
                 fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
                     name=fmt_arg.cxx_var, params=None, continuation=True
                 )
                 fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                append_format(post_parse_code, "{cxx_decl} =\t {cxx_val};", fmt_arg)
+                append_format(post_declare_code, "{cxx_decl} =\t {cxx_val};", fmt_arg)
                 pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
@@ -1507,8 +1508,11 @@ return 1;""",
                 PY_code.append("case %d:" % nargs)
                 PY_code.append(1)
                 need_blank = False
-                if post_parse_len or pre_call_len:
-                    # Only add scope if necessary
+                if post_declare_len or post_parse_len or pre_call_len:
+                    # Only add scope if necessary.
+                    # There may be declarations in these code blocks.
+                    # Need to avoid error:
+                    # jump to label 'fail' crosses initialization of ...
                     PY_code.append("{")
                     PY_code.append(1)
                     extra_scope = True
@@ -3510,6 +3514,7 @@ class PyStmts(object):
                 "c_helper",
                 "cxx_header",
                 "cxx_local_var",
+                "fmtdict",
                 "need_numpy",
                 "object_created",
                 "parse_format",
@@ -4130,7 +4135,9 @@ py_statements = [
 # struct
 # "struct", intent, PY_struct_arg
 # numpy
-# Note that c_type is from the C wrapper for a C++ struct
+# Note that Typemap.c_type is a C wrapper over a C++ struct
+# created in wrapc.py. Do not use here.
+    
 # and does not apply in Python.
     dict(
         name="py_struct_in_list",

@@ -339,6 +339,11 @@ point where a local variable with automatic storage duration is not in
 scope to a point where it is in scope is ill-formed unless the
 variable has POD type (3.9) and is declared without an initializer."
 
+cxx_local_var
+^^^^^^^^^^^^^
+
+Set to *scalar* or *pointer* depending on the declaration in *post_declare*.
+
 post_parse
 ^^^^^^^^^^
 Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.

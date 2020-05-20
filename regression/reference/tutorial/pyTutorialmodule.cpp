@@ -583,7 +583,7 @@ PY_enumfunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     tutorial::EnumTypeID SH_arg =
         static_cast<tutorial::EnumTypeID>(arg);
 
@@ -625,7 +625,7 @@ PY_colorfunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     tutorial::Color SH_arg = static_cast<tutorial::Color>(arg);
 
     tutorial::Color SHCXX_rv = tutorial::colorfunc(SH_arg);

@@ -299,7 +299,7 @@ PP_testmpi_mpi(
         const_cast<char **>(SHT_kwlist), &comm))
         return nullptr;
 
-    // post_parse
+    // post_declare
     MPI_Comm SH_comm = MPI_Comm_f2c(comm);
 
     example::nested::testmpi(SH_comm);

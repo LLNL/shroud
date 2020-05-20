@@ -401,7 +401,7 @@ PP_declare_1(
     switch (SH_nargs) {
     case 1:
         {
-            // post_parse
+            // post_declare
             TypeID SH_type = getTypeID(type);
 
             self->obj->declare(SH_type);
@@ -409,7 +409,7 @@ PP_declare_1(
         }
     case 2:
         {
-            // post_parse
+            // post_declare
             TypeID SH_type = getTypeID(type);
 
             self->obj->declare(SH_type, len);

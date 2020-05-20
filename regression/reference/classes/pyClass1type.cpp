@@ -254,7 +254,7 @@ PY_directionFunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     classes::Class1::DIRECTION SH_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
 
