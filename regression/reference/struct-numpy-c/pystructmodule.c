@@ -45,7 +45,7 @@ PyArray_Descr *PY_Arrays1_array_descr;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_scalar_in_numpy
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -57,6 +57,7 @@ PY_passStructByValue(
   PyObject *kwds)
 {
 // splicer begin function.pass_struct_by_value
+    Cstruct1 *arg;
     PyObject * SHTPy_arg = NULL;
     PyArrayObject * SHPy_arg = NULL;
     char *SHT_kwlist[] = {
@@ -79,7 +80,7 @@ PY_passStructByValue(
     }
 
     // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    arg = PyArray_DATA(SHPy_arg);
 
     int SHCXX_rv = passStructByValue(*arg);
 
@@ -103,7 +104,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_*_in_numpy
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -115,6 +116,7 @@ PY_passStruct1(
   PyObject *kwds)
 {
 // splicer begin function.pass_struct1
+    Cstruct1 *arg;
     PyObject * SHTPy_arg = NULL;
     PyArrayObject * SHPy_arg = NULL;
     char *SHT_kwlist[] = {
@@ -137,7 +139,7 @@ PY_passStruct1(
     }
 
     // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    arg = PyArray_DATA(SHPy_arg);
 
     int SHCXX_rv = passStruct1(arg);
 
@@ -161,7 +163,7 @@ fail:
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_*_in_numpy
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
@@ -179,8 +181,10 @@ PY_passStruct2(
   PyObject *kwds)
 {
 // splicer begin function.pass_struct2
+    Cstruct1 *s1;
     PyObject * SHTPy_s1 = NULL;
     PyArrayObject * SHPy_s1 = NULL;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "s1",
         NULL };
@@ -201,8 +205,7 @@ PY_passStruct2(
     }
 
     // pre_call
-    Cstruct1 * s1 = PyArray_DATA(SHPy_s1);
-    char outbuf[LENOUTBUF];  // intent(out)
+    s1 = PyArray_DATA(SHPy_s1);
 
     int SHCXX_rv = passStruct2(s1, outbuf);
 
@@ -225,7 +228,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
-// Exact:     py_struct_out_numpy
+// Exact:     py_struct_*_out_numpy
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
@@ -248,6 +251,7 @@ PY_acceptStructOutPtr(
   PyObject *kwds)
 {
 // splicer begin function.accept_struct_out_ptr
+    Cstruct1 *arg;
     PyArrayObject * SHPy_arg = NULL;
     int i;
     double d;
@@ -271,7 +275,7 @@ PY_acceptStructOutPtr(
     }
 
     // pre_call
-    Cstruct1 *arg = PyArray_DATA(SHPy_arg);
+    arg = PyArray_DATA(SHPy_arg);
 
     acceptStructOutPtr(arg, i, d);
     return (PyObject *) SHPy_arg;
@@ -287,7 +291,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
-// Exact:     py_struct_inout_numpy
+// Exact:     py_struct_*_inout_numpy
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;
@@ -299,6 +303,7 @@ PY_acceptStructInOutPtr(
   PyObject *kwds)
 {
 // splicer begin function.accept_struct_in_out_ptr
+    Cstruct1 *arg;
     PyObject * SHTPy_arg = NULL;
     PyArrayObject * SHPy_arg = NULL;
     char *SHT_kwlist[] = {
@@ -320,7 +325,7 @@ PY_acceptStructInOutPtr(
     }
 
     // pre_call
-    Cstruct1 * arg = PyArray_DATA(SHPy_arg);
+    arg = PyArray_DATA(SHPy_arg);
 
     acceptStructInOutPtr(arg);
     return (PyObject *) SHPy_arg;
@@ -556,6 +561,7 @@ PY_returnStructPtr2(
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "i",
         "d",
@@ -566,9 +572,6 @@ PY_returnStructPtr2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         SHT_kwlist, &i, &d))
         return NULL;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 

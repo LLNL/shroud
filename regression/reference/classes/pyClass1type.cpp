@@ -124,8 +124,7 @@ PY_Method1(
 // Exact:     py_bool_result
 // ----------------------------------------
 // Argument:  const Class1 & obj2 +intent(in)
-// Requested: py_shadow_&_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_&_in
 static char PY_equivalent__doc__[] =
 "documentation"
 ;
@@ -151,7 +150,7 @@ PY_equivalent(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_obj2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const classes::Class1 * obj2 = SHPy_obj2 ? SHPy_obj2->obj : nullptr;
 
     bool SHCXX_rv = self->obj->equivalent(*obj2);
@@ -198,8 +197,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -256,7 +254,7 @@ PY_directionFunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     classes::Class1::DIRECTION SH_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
 

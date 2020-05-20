@@ -22,6 +22,7 @@
                             "c_deref": "",
                             "c_type": null,
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -47,6 +48,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -120,6 +122,7 @@
                             "c_deref": "",
                             "c_type": null,
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_T": "int",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -510,6 +513,7 @@
                             "c_deref": "",
                             "c_type": null,
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_T": "double",
                             "cxx_addr": "&",
                             "cxx_member": ".",
@@ -752,12 +756,11 @@
                     "n": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int n",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "n",
+                            "ctor_expr": "n",
                             "cxx_addr": "&",
-                            "cxx_decl": "int n",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&n",
                             "cxx_type": "int",
@@ -775,6 +778,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_T": "int",
                         "cxx_addr": "&",
                         "cxx_member": ".",

@@ -105,6 +105,7 @@
                                                 "PyTypeObject": "PP_ExClass1_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -194,6 +195,7 @@
                                                     "c_deref": "*",
                                                     "c_type": "char",
                                                     "c_var": "name",
+                                                    "ctor_expr": "SH_name.data(),\t SH_name.size()",
                                                     "cxx_addr": "",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(name)",
@@ -204,7 +206,7 @@
                                                     "py_var": "SHPy_name",
                                                     "size_var": "SHSize_name",
                                                     "stmt0": "py_string_*_in",
-                                                    "stmt1": "py_string_in"
+                                                    "stmt1": "py_string_*_in"
                                                 }
                                             }
                                         },
@@ -245,6 +247,7 @@
                                                 "PyTypeObject": "PP_ExClass1_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -519,12 +522,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "int incr",
                                                     "c_deref": "",
                                                     "c_type": "int",
                                                     "c_var": "incr",
+                                                    "ctor_expr": "incr",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "int incr",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&incr",
                                                     "cxx_type": "int",
@@ -573,6 +575,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -679,6 +682,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -689,7 +693,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -876,6 +880,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -886,7 +891,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -1143,12 +1148,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "int value",
                                                     "c_deref": "",
                                                     "c_type": "int",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "int value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "int",
@@ -1197,6 +1201,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1311,12 +1316,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "long value",
                                                     "c_deref": "",
                                                     "c_type": "long",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "long value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "long",
@@ -1365,6 +1369,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1478,12 +1483,11 @@
                                                 "fmtpy": {
                                                     "PyTypeObject": "PyBool_Type",
                                                     "c_const": "",
-                                                    "c_decl": "bool in",
                                                     "c_deref": "",
                                                     "c_type": "bool",
                                                     "c_var": "in",
+                                                    "ctor_expr": "in",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "bool in",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&in",
                                                     "cxx_type": "bool",
@@ -1534,6 +1538,7 @@
                                                 "PyTypeObject": "PyBool_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1728,6 +1733,7 @@
                                                     "c_deref": "*",
                                                     "c_type": "char",
                                                     "c_var": "name",
+                                                    "ctor_expr": "SH_name.data(),\t SH_name.size()",
                                                     "cxx_addr": "",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "const_cast<std::string *>\t(name)",
@@ -1738,7 +1744,7 @@
                                                     "py_var": "SHPy_name",
                                                     "size_var": "SHSize_name",
                                                     "stmt0": "py_string_*_in",
-                                                    "stmt1": "py_string_in"
+                                                    "stmt1": "py_string_*_in"
                                                 }
                                             }
                                         },
@@ -1779,6 +1785,7 @@
                                                 "PyTypeObject": "PP_ExClass2_Type",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2044,6 +2051,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2054,7 +2062,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -2254,6 +2262,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2264,7 +2273,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -2459,6 +2468,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2469,7 +2479,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -2664,6 +2674,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2674,7 +2685,7 @@
                                                 "py_var": "SHTPy_rv",
                                                 "size_var": "SHSize_rv",
                                                 "stmt0": "py_string_result",
-                                                "stmt1": "py_default"
+                                                "stmt1": "py_string_result"
                                             }
                                         },
                                         "ast": {
@@ -2865,6 +2876,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2974,12 +2986,11 @@
                                                     "PyTypeObject": "PP_ExClass1_Type",
                                                     "array_size": "1",
                                                     "c_const": "const ",
-                                                    "c_decl": "AA_example_nested_ExClass1 in",
-                                                    "c_deref": "",
+                                                    "c_deref": "*",
                                                     "c_type": "AA_example_nested_ExClass1",
                                                     "c_var": "in",
+                                                    "ctor_expr": "*in",
                                                     "cxx_addr": "",
-                                                    "cxx_decl": "example::nested::ExClass1 in",
                                                     "cxx_member": "->",
                                                     "cxx_nonconst_ptr": "const_cast<example::nested::ExClass1 *>\t(in)",
                                                     "cxx_type": "example::nested::ExClass1",
@@ -3032,6 +3043,7 @@
                                                 "array_size": "1",
                                                 "c_deref": "*",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "*SHCXX_rv",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_nonconst_ptr": "SHCXX_rv",
@@ -3468,12 +3480,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "SIDRE_SidreLength len",
                                                     "c_deref": "",
                                                     "c_type": "SIDRE_SidreLength",
                                                     "c_var": "len",
+                                                    "ctor_expr": "len",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "SidreLength len",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&len",
                                                     "cxx_type": "SidreLength",
@@ -3530,10 +3541,10 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "int type",
                                                     "c_deref": "",
                                                     "c_type": "int",
                                                     "c_var": "type",
+                                                    "ctor_expr": "type",
                                                     "cxx_addr": "&",
                                                     "cxx_decl": "TypeID SH_type",
                                                     "cxx_member": ".",
@@ -3943,6 +3954,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -4139,12 +4151,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "int value",
                                                     "c_deref": "",
                                                     "c_type": "int",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "int value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "int",
@@ -4318,12 +4329,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "long value",
                                                     "c_deref": "",
                                                     "c_type": "long",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "long value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "long",
@@ -4495,12 +4505,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "float value",
                                                     "c_deref": "",
                                                     "c_type": "float",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "float value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "float",
@@ -4672,12 +4681,11 @@
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
-                                                    "c_decl": "double value",
                                                     "c_deref": "",
                                                     "c_type": "double",
                                                     "c_var": "value",
+                                                    "ctor_expr": "value",
                                                     "cxx_addr": "&",
-                                                    "cxx_decl": "double value",
                                                     "cxx_member": ".",
                                                     "cxx_nonconst_ptr": "&value",
                                                     "cxx_type": "double",
@@ -4907,6 +4915,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -5033,6 +5042,7 @@
                                             "fmtpy": {
                                                 "c_deref": "",
                                                 "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
                                                 "cxx_addr": "&",
                                                 "cxx_member": ".",
                                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -5243,6 +5253,7 @@
                                             "c_deref": "",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "ctor_expr": "SH_name.data(),\t SH_name.size()",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
@@ -5293,6 +5304,7 @@
                                         "PyTypeObject": "PyBool_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -5525,6 +5537,7 @@
                                         "PyTypeObject": "PyBool_Type",
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -5608,6 +5621,7 @@
                                             "c_deref": "",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "ctor_expr": "SH_name.data(),\t SH_name.size()",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
@@ -5803,12 +5817,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int flag",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "flag",
+                                            "ctor_expr": "flag",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int flag",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&flag",
                                             "cxx_type": "int",
@@ -5855,6 +5868,7 @@
                                             "c_deref": "",
                                             "c_type": "char",
                                             "c_var": "name",
+                                            "ctor_expr": "SH_name.data(),\t SH_name.size()",
                                             "cxx_addr": "&",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&name)",
@@ -6257,12 +6271,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int i",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "i",
+                                            "ctor_expr": "i",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int i",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&i",
                                             "cxx_type": "int",
@@ -6317,12 +6330,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "long j",
                                             "c_deref": "",
                                             "c_type": "long",
                                             "c_var": "j",
+                                            "ctor_expr": "j",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "long j",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&j",
                                             "cxx_type": "long",
@@ -6448,6 +6460,7 @@
                                     "fmtpy": {
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -6541,10 +6554,10 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "MPI_Fint comm",
                                             "c_deref": "",
                                             "c_type": "MPI_Fint",
                                             "c_var": "comm",
+                                            "ctor_expr": "comm",
                                             "cxx_addr": "&",
                                             "cxx_decl": "MPI_Comm SH_comm",
                                             "cxx_member": ".",
@@ -6693,12 +6706,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "void ( * get)(\t)",
                                             "c_deref": "",
                                             "c_type": "void",
                                             "c_var": "get",
+                                            "ctor_expr": "get",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "void ( * get)(\t)",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&get",
                                             "cxx_type": "void",
@@ -6706,9 +6718,7 @@
                                             "data_var": "SHData_get",
                                             "numpy_type": null,
                                             "py_var": "SHPy_get",
-                                            "size_var": "SHSize_get",
-                                            "stmt0": "py_unknown_scalar_in",
-                                            "stmt1": "py_default"
+                                            "size_var": "SHSize_get"
                                         }
                                     }
                                 },
@@ -6817,12 +6827,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "double * ( * get)(\t)",
                                             "c_deref": "*",
                                             "c_type": "double",
                                             "c_var": "get",
+                                            "ctor_expr": "*get",
                                             "cxx_addr": "",
-                                            "cxx_decl": "double * ( * get)(\t)",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "get",
                                             "cxx_type": "double",
@@ -6830,9 +6839,7 @@
                                             "data_var": "SHData_get",
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_get",
-                                            "size_var": "SHSize_get",
-                                            "stmt0": "py_native_*_in",
-                                            "stmt1": "py_default"
+                                            "size_var": "SHSize_get"
                                         }
                                     }
                                 },
@@ -6943,12 +6950,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "double ( * get)(\tint i,\t int)",
                                             "c_deref": "",
                                             "c_type": "double",
                                             "c_var": "get",
+                                            "ctor_expr": "get",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "double ( * get)(\tint i,\t int)",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&get",
                                             "cxx_type": "double",
@@ -6956,9 +6962,7 @@
                                             "data_var": "SHData_get",
                                             "numpy_type": "NPY_DOUBLE",
                                             "py_var": "SHPy_get",
-                                            "size_var": "SHSize_get",
-                                            "stmt0": "py_native_scalar_in",
-                                            "stmt1": "py_default"
+                                            "size_var": "SHSize_get"
                                         }
                                     }
                                 },
@@ -7206,12 +7210,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "c_deref": "",
                                             "c_type": "void",
                                             "c_var": "get",
+                                            "ctor_expr": "get",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&get",
                                             "cxx_type": "void",
@@ -7219,9 +7222,7 @@
                                             "data_var": "SHData_get",
                                             "numpy_type": null,
                                             "py_var": "SHPy_get",
-                                            "size_var": "SHSize_get",
-                                            "stmt0": "py_unknown_scalar_in",
-                                            "stmt1": "py_default"
+                                            "size_var": "SHSize_get"
                                         }
                                     }
                                 },
@@ -7462,12 +7463,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname1",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname1",
+                                            "ctor_expr": "*verylongname1",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname1",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname1",
                                             "cxx_type": "int",
@@ -7477,7 +7477,7 @@
                                             "py_var": "SHPy_verylongname1",
                                             "size_var": "SHSize_verylongname1",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname10": {
@@ -7523,12 +7523,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname10",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname10",
+                                            "ctor_expr": "*verylongname10",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname10",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname10",
                                             "cxx_type": "int",
@@ -7538,7 +7537,7 @@
                                             "py_var": "SHPy_verylongname10",
                                             "size_var": "SHSize_verylongname10",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname2": {
@@ -7584,12 +7583,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname2",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname2",
+                                            "ctor_expr": "*verylongname2",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname2",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname2",
                                             "cxx_type": "int",
@@ -7599,7 +7597,7 @@
                                             "py_var": "SHPy_verylongname2",
                                             "size_var": "SHSize_verylongname2",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname3": {
@@ -7645,12 +7643,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname3",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname3",
+                                            "ctor_expr": "*verylongname3",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname3",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname3",
                                             "cxx_type": "int",
@@ -7660,7 +7657,7 @@
                                             "py_var": "SHPy_verylongname3",
                                             "size_var": "SHSize_verylongname3",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname4": {
@@ -7706,12 +7703,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname4",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname4",
+                                            "ctor_expr": "*verylongname4",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname4",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname4",
                                             "cxx_type": "int",
@@ -7721,7 +7717,7 @@
                                             "py_var": "SHPy_verylongname4",
                                             "size_var": "SHSize_verylongname4",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname5": {
@@ -7767,12 +7763,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname5",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname5",
+                                            "ctor_expr": "*verylongname5",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname5",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname5",
                                             "cxx_type": "int",
@@ -7782,7 +7777,7 @@
                                             "py_var": "SHPy_verylongname5",
                                             "size_var": "SHSize_verylongname5",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname6": {
@@ -7828,12 +7823,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname6",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname6",
+                                            "ctor_expr": "*verylongname6",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname6",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname6",
                                             "cxx_type": "int",
@@ -7843,7 +7837,7 @@
                                             "py_var": "SHPy_verylongname6",
                                             "size_var": "SHSize_verylongname6",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname7": {
@@ -7889,12 +7883,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname7",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname7",
+                                            "ctor_expr": "*verylongname7",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname7",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname7",
                                             "cxx_type": "int",
@@ -7904,7 +7897,7 @@
                                             "py_var": "SHPy_verylongname7",
                                             "size_var": "SHSize_verylongname7",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname8": {
@@ -7950,12 +7943,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname8",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname8",
+                                            "ctor_expr": "*verylongname8",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname8",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname8",
                                             "cxx_type": "int",
@@ -7965,7 +7957,7 @@
                                             "py_var": "SHPy_verylongname8",
                                             "size_var": "SHSize_verylongname8",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     },
                                     "verylongname9": {
@@ -8011,12 +8003,11 @@
                                         "fmtpy": {
                                             "array_size": "1",
                                             "c_const": "",
-                                            "c_decl": "int verylongname9",
-                                            "c_deref": "",
+                                            "c_deref": "*",
                                             "c_type": "int",
                                             "c_var": "verylongname9",
+                                            "ctor_expr": "*verylongname9",
                                             "cxx_addr": "",
-                                            "cxx_decl": "int verylongname9",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "verylongname9",
                                             "cxx_type": "int",
@@ -8026,7 +8017,7 @@
                                             "py_var": "SHPy_verylongname9",
                                             "size_var": "SHSize_verylongname9",
                                             "stmt0": "py_native_*_inout",
-                                            "stmt1": "py_default"
+                                            "stmt1": "py_native_*_inout"
                                         }
                                     }
                                 },
@@ -8285,12 +8276,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname1",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname1",
+                                            "ctor_expr": "verylongname1",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname1",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname1",
                                             "cxx_type": "int",
@@ -8345,12 +8335,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname10",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname10",
+                                            "ctor_expr": "verylongname10",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname10",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname10",
                                             "cxx_type": "int",
@@ -8405,12 +8394,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname2",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname2",
+                                            "ctor_expr": "verylongname2",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname2",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname2",
                                             "cxx_type": "int",
@@ -8465,12 +8453,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname3",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname3",
+                                            "ctor_expr": "verylongname3",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname3",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname3",
                                             "cxx_type": "int",
@@ -8525,12 +8512,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname4",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname4",
+                                            "ctor_expr": "verylongname4",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname4",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname4",
                                             "cxx_type": "int",
@@ -8585,12 +8571,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname5",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname5",
+                                            "ctor_expr": "verylongname5",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname5",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname5",
                                             "cxx_type": "int",
@@ -8645,12 +8630,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname6",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname6",
+                                            "ctor_expr": "verylongname6",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname6",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname6",
                                             "cxx_type": "int",
@@ -8705,12 +8689,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname7",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname7",
+                                            "ctor_expr": "verylongname7",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname7",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname7",
                                             "cxx_type": "int",
@@ -8765,12 +8748,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname8",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname8",
+                                            "ctor_expr": "verylongname8",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname8",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname8",
                                             "cxx_type": "int",
@@ -8825,12 +8807,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int verylongname9",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "verylongname9",
+                                            "ctor_expr": "verylongname9",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int verylongname9",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&verylongname9",
                                             "cxx_type": "int",
@@ -8879,6 +8860,7 @@
                                     "fmtpy": {
                                         "c_deref": "",
                                         "c_var": "SHCXX_rv",
+                                        "ctor_expr": "SHCXX_rv",
                                         "cxx_addr": "&",
                                         "cxx_member": ".",
                                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -9124,6 +9106,7 @@
                                             "c_deref": "*",
                                             "c_type": "double",
                                             "c_var": "in",
+                                            "ctor_expr": "*in",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "in",
@@ -9188,6 +9171,7 @@
                                             "c_deref": "*",
                                             "c_type": "double",
                                             "c_var": "out",
+                                            "ctor_expr": "*out",
                                             "cxx_addr": "",
                                             "cxx_member": "->",
                                             "cxx_nonconst_ptr": "out",
@@ -9245,12 +9229,11 @@
                                         },
                                         "fmtpy": {
                                             "c_const": "",
-                                            "c_decl": "int sizein",
                                             "c_deref": "",
                                             "c_type": "int",
                                             "c_var": "sizein",
+                                            "ctor_expr": "sizein",
                                             "cxx_addr": "&",
-                                            "cxx_decl": "int sizein",
                                             "cxx_member": ".",
                                             "cxx_nonconst_ptr": "&sizein",
                                             "cxx_type": "int",

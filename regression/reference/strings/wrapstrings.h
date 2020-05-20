@@ -134,6 +134,11 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv);
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src);
 
+void STR_post_declare(int * count, char * name);
+
+void STR_post_declare_bufferify(int * count, char * name, int Lname,
+    int Nname);
+
 #ifdef __cplusplus
 }
 #endif

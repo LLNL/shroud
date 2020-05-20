@@ -46,12 +46,11 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char status",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "status",
+                            "ctor_expr": "status",
                             "cxx_addr": "&",
-                            "cxx_decl": "char status",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
                             "cxx_type": "char",
@@ -149,6 +148,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -328,6 +328,7 @@
                             "c_type": "char",
                             "c_var": "dest",
                             "charlen": "40",
+                            "ctor_expr": "dest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -364,6 +365,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "src",
+                            "ctor_expr": "*src",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
@@ -624,6 +626,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "s",
+                            "ctor_expr": "s",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "s",
@@ -822,6 +825,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -832,7 +836,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
@@ -1021,6 +1025,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1031,7 +1036,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
@@ -1211,6 +1216,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1221,7 +1227,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
@@ -1449,6 +1455,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1459,7 +1466,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -1623,6 +1630,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1633,7 +1641,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -1789,6 +1797,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1799,7 +1808,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -2017,6 +2026,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2027,7 +2037,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -2199,6 +2209,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2209,7 +2220,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -2400,6 +2411,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2410,7 +2422,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -2592,6 +2604,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2602,7 +2615,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -2851,6 +2864,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2861,7 +2875,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -3050,6 +3064,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3060,7 +3075,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -3241,6 +3256,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3251,7 +3267,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -3455,6 +3471,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3465,7 +3482,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -3646,6 +3663,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3656,7 +3674,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -3843,6 +3861,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv->data(),\t SHCXX_rv->size()",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3853,7 +3872,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {
@@ -4036,6 +4055,7 @@
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&arg1)",
@@ -4224,12 +4244,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "std::string",
@@ -4418,6 +4437,7 @@
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
@@ -4613,6 +4633,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
                             "cxx_addr": "",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "arg1",
@@ -4623,7 +4644,7 @@
                             "py_var": "SHPy_arg1",
                             "size_var": "SHSize_arg1",
                             "stmt0": "py_string_*_inout",
-                            "stmt1": "py_string_inout"
+                            "stmt1": "py_string_*_inout"
                         }
                     }
                 },
@@ -4784,12 +4805,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "char arg1",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string arg1",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg1",
                             "cxx_type": "std::string",
@@ -4806,12 +4826,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "char arg2",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "arg2",
+                            "ctor_expr": "SH_arg2.data(),\t SH_arg2.size()",
                             "cxx_addr": "&",
-                            "cxx_decl": "std::string arg2",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg2",
                             "cxx_type": "std::string",
@@ -4966,6 +4985,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "name",
+                            "ctor_expr": "*name",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "name",
@@ -5238,12 +5258,11 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "char status",
                             "c_deref": "",
                             "c_type": "char",
                             "c_var": "status",
+                            "ctor_expr": "status",
                             "cxx_addr": "&",
-                            "cxx_decl": "char status",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&status",
                             "cxx_type": "char",
@@ -5343,6 +5362,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -5751,6 +5771,305 @@
                 "options": {
                     "C_extern_C": true,
                     "wrap_Lua": false,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "count",
+                            "ctor_expr": "*count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "data_var": "SHData_count",
+                            "hnamefunc0": "SHROUD_create_from_PyObject_int",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_count",
+                            "pytmp_var": "SHTPy_count",
+                            "size_var": "SHSize_count",
+                            "stmt0": "py_native_*_in_pointer_list",
+                            "stmt1": "py_native_*_in_pointer_list"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_&_inout",
+                            "stmt1": "c_string_inout"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "ctor_expr": "SH_name.data(),\t SH_name.size()",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_name",
+                            "data_var": "SHData_name",
+                            "numpy_type": null,
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name",
+                            "stmt0": "py_string_&_inout",
+                            "stmt1": "py_string_inout"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "PostDeclare",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
+                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))",
+                "fmtdict": {
+                    "C_call_list": "count,\t SHCXX_name",
+                    "C_name": "STR_post_declare",
+                    "C_prototype": "int * count,\t char * name",
+                    "C_return_type": "void",
+                    "F_C_call": "c_post_declare_bufferify",
+                    "F_C_name": "c_post_declare",
+                    "F_arg_c_call": "count,\t name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT)",
+                    "F_arguments": "count,\t name",
+                    "F_name_function": "post_declare",
+                    "F_name_generic": "post_declare",
+                    "F_name_impl": "post_declare",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_PostDeclare",
+                    "function_name": "PostDeclare",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "post_declare"
+                },
+                "options": {
+                    "PY_array_arg": "list",
+                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
+                }
+            },
+            {
+                "_fmtargs": {
+                    "count": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "count",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "count",
+                            "cxx_type": "int",
+                            "cxx_var": "count",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_count",
+                            "c_var": "count",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "count",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(count)",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in_buf",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_len": "Nname",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_&_inout_buf",
+                            "stmt1": "c_string_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_len": "Nname",
+                            "c_var_trim": "Lname",
+                            "f_intent": "INOUT",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_&_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "PostDeclare",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "len": "Nname",
+                                "len_trim": "Lname"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
+                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout)+len(Nname)+len_trim(Lname))",
+                "fmtdict": {
+                    "C_call_list": "count,\t SHCXX_name",
+                    "C_name": "STR_post_declare_bufferify",
+                    "C_prototype": "int * count,\t char * name,\t int Lname,\t int Nname",
+                    "C_return_type": "void",
+                    "F_C_name": "c_post_declare_bufferify",
+                    "function_name": "PostDeclare",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "post_declare"
+                },
+                "options": {
+                    "PY_array_arg": "list",
+                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n",
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,

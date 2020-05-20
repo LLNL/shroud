@@ -95,8 +95,7 @@ fail:
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimPointer__doc__[] =
 "documentation"
 ;
@@ -108,11 +107,9 @@ PY_ReturnIntPtrDimPointer(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_pointer
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimPointer(&len);
 
@@ -134,8 +131,7 @@ fail:
 // Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
 "documentation"
 ;
@@ -147,11 +143,9 @@ PY_ReturnIntPtrDimAlloc(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_alloc
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimAlloc(&len);
 
@@ -173,8 +167,7 @@ fail:
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimDefault__doc__[] =
 "documentation"
 ;
@@ -186,11 +179,9 @@ PY_ReturnIntPtrDimDefault(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_default
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimDefault(&len);
 
@@ -212,8 +203,7 @@ fail:
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
 "documentation"
 ;
@@ -225,11 +215,9 @@ PY_ReturnIntPtrDimPointerNew(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_pointer_new
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimPointerNew(&len);
 
@@ -251,8 +239,7 @@ fail:
 // Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
 "documentation"
 ;
@@ -264,11 +251,9 @@ PY_ReturnIntPtrDimAllocNew(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_alloc_new
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimAllocNew(&len);
 
@@ -290,8 +275,7 @@ fail:
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
 "documentation"
 ;
@@ -303,11 +287,9 @@ PY_ReturnIntPtrDimDefaultNew(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_int_ptr_dim_default_new
+    int len;
     npy_intp SHD_rv[1];
     PyObject * SHTPy_rv = nullptr;
-
-    // pre_call
-    int len;  // intent(out)
 
     int * SHCXX_rv = ReturnIntPtrDimDefaultNew(&len);
 

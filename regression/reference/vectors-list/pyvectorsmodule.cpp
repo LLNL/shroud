@@ -108,9 +108,11 @@ PY_vector_sum(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
         return nullptr;
+
+    // post_declare
+    std::vector<int> SH_arg;
     {
         // pre_call
-        std::vector<int> SH_arg;
         if (SHROUD_create_from_PyObject_vector_int(SHTPy_arg, "arg",
             SH_arg) == -1)
             goto fail;
@@ -151,10 +153,9 @@ PY_vector_iota_out(
 // splicer begin function.vector_iota_out
     PyObject * SHPy_arg = nullptr;
 
+    // post_declare
+    std::vector<int> SH_arg;
     {
-        // pre_call
-        std::vector<int> SH_arg;
-
         vector_iota_out(SH_arg);
 
         // post_call
@@ -193,10 +194,9 @@ PY_vector_iota_out_d(
 // splicer begin function.vector_iota_out_d
     PyObject * SHPy_arg = nullptr;
 
+    // post_declare
+    std::vector<double> SH_arg;
     {
-        // pre_call
-        std::vector<double> SH_arg;
-
         vector_iota_out_d(SH_arg);
 
         // post_call

@@ -65,8 +65,7 @@ PY_vector_int_tp_init(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
-// Requested: py_native_&_in
-// Match:     py_default
+// Exact:     py_native_&_in
 static char PY_push_back__doc__[] =
 "documentation"
 ;

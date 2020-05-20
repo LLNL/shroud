@@ -96,8 +96,7 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 // ----------------------------------------
 // Argument:  const std::string & arg1 +intent(in)
 // Requested: py_string_&_in
@@ -121,8 +120,8 @@ PY_ConcatenateStrings(
   PyObject *kwds)
 {
 // splicer begin function.concatenate_strings
-    const char * arg1;
-    const char * arg2;
+    char * arg1;
+    char * arg2;
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
@@ -134,7 +133,7 @@ PY_ConcatenateStrings(
         &arg2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_arg1(arg1);
     const std::string SH_arg2(arg2);
 
@@ -174,6 +173,7 @@ PY_UseDefaultArguments_arg1_arg2(
 // splicer begin function.use_default_arguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
+    bool arg2;
     PyObject * SHPy_arg2;
     const char *SHT_kwlist[] = {
         "arg1",
@@ -198,7 +198,7 @@ PY_UseDefaultArguments_arg1_arg2(
     case 2:
         {
             // pre_call
-            bool arg2 = PyObject_IsTrue(SHPy_arg2);
+            arg2 = PyObject_IsTrue(SHPy_arg2);
 
             SHCXX_rv = tutorial::UseDefaultArguments(arg1, arg2);
             break;
@@ -229,7 +229,7 @@ PY_OverloadedFunction_from_name(
   PyObject *kwds)
 {
 // splicer begin function.overloaded_function_from_name
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -238,7 +238,7 @@ PY_OverloadedFunction_from_name(
         const_cast<char **>(SHT_kwlist), &name))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     tutorial::OverloadedFunction(SH_name);
@@ -363,7 +363,7 @@ PY_FortranGenericOverloaded_1(
   PyObject *kwds)
 {
 // splicer begin function.fortran_generic_overloaded_1
-    const char * name;
+    char * name;
     double arg2;
     const char *SHT_kwlist[] = {
         "name",
@@ -375,7 +375,7 @@ PY_FortranGenericOverloaded_1(
         &name, &arg2))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     tutorial::FortranGenericOverloaded(SH_name, arg2);
@@ -583,7 +583,7 @@ PY_enumfunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     tutorial::EnumTypeID SH_arg =
         static_cast<tutorial::EnumTypeID>(arg);
 
@@ -625,7 +625,7 @@ PY_colorfunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     tutorial::Color SH_arg = static_cast<tutorial::Color>(arg);
 
     tutorial::Color SHCXX_rv = tutorial::colorfunc(SH_arg);
@@ -642,12 +642,10 @@ PY_colorfunc(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int & min +intent(out)
-// Requested: py_native_&_out
-// Match:     py_default
+// Exact:     py_native_&_out
 // ----------------------------------------
 // Argument:  int & max +intent(out)
-// Requested: py_native_&_out
-// Match:     py_default
+// Exact:     py_native_&_out
 static char PY_getMinMax__doc__[] =
 "documentation"
 ;
@@ -663,11 +661,9 @@ PY_getMinMax(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_min_max
+    int min;
+    int max;
     PyObject *SHTPy_rv = nullptr;  // return value object
-
-    // pre_call
-    int min;  // intent(out)
-    int max;  // intent(out)
 
     tutorial::getMinMax(min, max);
 
@@ -680,8 +676,7 @@ PY_getMinMax(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

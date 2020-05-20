@@ -280,6 +280,15 @@ declarations:
       This avoid a copy-in on dest.
       extern "C"
 
+- decl: void PostDeclare(int *count +rank(1)+intent(in), std::string &name)
+  options:
+    PY_array_arg: list
+    description: |
+      Test post_declare.
+      The std::string in py_string_inout must be declared before the
+      goto added by py_native_*_in_pointer_list to avoid
+      "jump to label 'fail' crosses initialization of" error.
+
 ########################################
 patterns:
     C_invalid_name: |

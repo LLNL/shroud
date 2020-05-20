@@ -54,6 +54,8 @@ C function char CreturnChar()
 C function void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 C function void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
 C function void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
+C function void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))
+C function void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout)+len(Nname)+len_trim(Lname))
 Close wrapstrings.h
 Close wrapstrings.cpp
 Close typesstrings.h
@@ -114,6 +116,8 @@ C-interface, Fortran function char CreturnChar()
 C-interface function void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 C-interface, Fortran function void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))
 C-interface function void CpassCharPtr(char * dest +intent(out)+len(Ndest), const char * src +intent(in))
+C-interface, Fortran function void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))
+C-interface function void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout)+len(Nname)+len_trim(Lname))
 Close wrapfstrings.f
 Close utilstrings.cpp
 Python function void passChar(char status +intent(in)+value)
@@ -144,6 +148,7 @@ Python function void returnStrings(std::string & arg1 +intent(out), std::string 
 Python function void explicit1(char * name +intent(in)+len_trim(AAlen))
 Python function void CpassChar(char status +intent(in)+value)
 Python function char CreturnChar()
+Python function void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))
 Close pystringsmodule.cpp
 Close pystringsmodule.hpp
 Close setup.py

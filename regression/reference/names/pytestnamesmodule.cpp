@@ -148,7 +148,7 @@ PY_function4(
   PyObject *kwds)
 {
 // splicer begin function.function4
-    const char * rv;
+    char * rv;
     const char *SHT_kwlist[] = {
         "rv",
         nullptr };
@@ -158,7 +158,7 @@ PY_function4(
         const_cast<char **>(SHT_kwlist), &rv))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_rv(rv);
 
     int ARG_rv = function4(SH_rv);
@@ -198,8 +198,7 @@ PY_fiveplus(
 // Match:     py_string_inout
 // ----------------------------------------
 // Argument:  int * value +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_TestMultilineSplicer__doc__[] =
 "documentation"
 ;

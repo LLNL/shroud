@@ -74,19 +74,19 @@ PY_func1(
   PyObject *kwds)
 {
 // splicer begin class.Class2.method.func1
-    TUT_Class1 arg;
+    PyObject * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:func1",
-        const_cast<char **>(SHT_kwlist), &arg))
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:func1",
+        const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
-    tutorial::Class1 * SH_arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+    // post_declare
+    tutorial::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
-    self->obj->func1(SH_arg);
+    self->obj->func1(arg);
     Py_RETURN_NONE;
 // splicer end class.Class2.method.func1
 }
@@ -118,7 +118,7 @@ PY_acceptClass3(
         const_cast<char **>(SHT_kwlist), &PY_Class3_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     forward::Class3 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     self->obj->acceptClass3(arg);

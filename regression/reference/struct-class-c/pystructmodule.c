@@ -40,7 +40,7 @@ PyObject *PY_error_obj;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +intent(in)+value
-// Exact:     py_struct_in_class
+// Exact:     py_struct_scalar_in_class
 static char PY_passStructByValue__doc__[] =
 "documentation"
 ;
@@ -62,7 +62,7 @@ PY_passStructByValue(
         SHT_kwlist, &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHCXX_rv = passStructByValue(*arg);
@@ -80,7 +80,7 @@ PY_passStructByValue(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
-// Exact:     py_struct_in_class
+// Exact:     py_struct_*_in_class
 static char PY_passStruct1__doc__[] =
 "documentation"
 ;
@@ -102,7 +102,7 @@ PY_passStruct1(
         SHT_kwlist, &PY_Cstruct1_Type, &SHPy_arg))
         return NULL;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     int SHCXX_rv = passStruct1(arg);
@@ -120,7 +120,7 @@ PY_passStruct1(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * s1 +intent(in)
-// Exact:     py_struct_in_class
+// Exact:     py_struct_*_in_class
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
 // Exact:     py_char_*_out_charlen
@@ -139,6 +139,7 @@ PY_passStruct2(
 {
 // splicer begin function.pass_struct2
     PY_Cstruct1 * SHPy_s1;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "s1",
         NULL };
@@ -148,11 +149,8 @@ PY_passStruct2(
         SHT_kwlist, &PY_Cstruct1_Type, &SHPy_s1))
         return NULL;
 
-    // post_parse
+    // post_declare
     Cstruct1 * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     int SHCXX_rv = passStruct2(s1, outbuf);
 
@@ -168,7 +166,7 @@ PY_passStruct2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
-// Exact:     py_struct_out_class
+// Exact:     py_struct_*_out_class
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: py_native_scalar_in
@@ -191,6 +189,7 @@ PY_acceptStructOutPtr(
   PyObject *kwds)
 {
 // splicer begin function.accept_struct_out_ptr
+    Cstruct1 *arg = NULL;
     PyObject *SHPy_arg = NULL;
     int i;
     double d;
@@ -204,7 +203,7 @@ PY_acceptStructOutPtr(
         return NULL;
 
     // pre_call
-    Cstruct1 * arg = malloc(sizeof(Cstruct1));
+    arg = malloc(sizeof(Cstruct1));
 
     acceptStructOutPtr(arg, i, d);
 
@@ -225,7 +224,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
-// Exact:     py_struct_inout_class
+// Exact:     py_struct_*_inout_class
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
 ;
@@ -247,7 +246,7 @@ PY_acceptStructInOutPtr(
         &SHPy_arg))
         return NULL;
 
-    // post_parse
+    // post_declare
     Cstruct1 * arg = SHPy_arg ? SHPy_arg->obj : NULL;
 
     acceptStructInOutPtr(arg);
@@ -458,6 +457,7 @@ PY_returnStructPtr2(
 // splicer begin function.return_struct_ptr2
     int i;
     double d;
+    char outbuf[LENOUTBUF];  // intent(out)
     char *SHT_kwlist[] = {
         "i",
         "d",
@@ -468,9 +468,6 @@ PY_returnStructPtr2(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "id:returnStructPtr2",
         SHT_kwlist, &i, &d))
         return NULL;
-
-    // pre_call
-    char outbuf[LENOUTBUF];  // intent(out)
 
     Cstruct1 * SHCXX_rv = returnStructPtr2(i, d, outbuf);
 

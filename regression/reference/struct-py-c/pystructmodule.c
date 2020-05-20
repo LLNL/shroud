@@ -41,10 +41,10 @@ PyArray_Descr *PY_Cstruct_as_numpy_array_descr;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct_as_class * s1 +intent(in)
-// Exact:     py_struct_in_class
+// Exact:     py_struct_*_in_class
 // ----------------------------------------
 // Argument:  Cstruct_as_numpy * s2 +intent(in)
-// Exact:     py_struct_in_numpy
+// Exact:     py_struct_*_in_numpy
 static char PY_acceptBothStructs__doc__[] =
 "documentation"
 ;
@@ -57,6 +57,7 @@ PY_acceptBothStructs(
 {
 // splicer begin function.accept_both_structs
     PY_Cstruct_as_class * SHPy_s1;
+    Cstruct_as_numpy *s2;
     PyObject * SHTPy_s2 = NULL;
     PyArrayObject * SHPy_s2 = NULL;
     char *SHT_kwlist[] = {
@@ -70,8 +71,10 @@ PY_acceptBothStructs(
         &SHPy_s1, &SHTPy_s2))
         return NULL;
 
-    // post_parse
+    // post_declare
     Cstruct_as_class * s1 = SHPy_s1 ? SHPy_s1->obj : NULL;
+
+    // post_parse
     Py_INCREF(PY_Cstruct_as_numpy_array_descr);
     SHPy_s2 = (PyArrayObject *) PyArray_FromAny(SHTPy_s2,
         PY_Cstruct_as_numpy_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY,
@@ -83,7 +86,7 @@ PY_acceptBothStructs(
     }
 
     // pre_call
-    Cstruct_as_numpy * s2 = PyArray_DATA(SHPy_s2);
+    s2 = PyArray_DATA(SHPy_s2);
 
     int SHCXX_rv = acceptBothStructs(s1, s2);
 

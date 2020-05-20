@@ -885,6 +885,7 @@ PY_bool_func(
   PyObject *kwds)
 {
 // splicer begin function.bool_func
+    bool arg;
     PyObject * SHPy_arg;
     const char *SHT_kwlist[] = {
         "arg",
@@ -896,7 +897,7 @@ PY_bool_func(
         return nullptr;
 
     // pre_call
-    bool arg = PyObject_IsTrue(SHPy_arg);
+    arg = PyObject_IsTrue(SHPy_arg);
 
     bool SHCXX_rv = bool_func(arg);
 
@@ -917,8 +918,7 @@ fail:
 // Exact:     py_bool_result
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_returnBoolAndOthers__doc__[] =
 "documentation"
 ;
@@ -940,11 +940,9 @@ PY_returnBoolAndOthers(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_bool_and_others
+    int flag;
     PyObject * SHTPy_rv = nullptr;
     PyObject *SHPyResult = nullptr;  // return value object
-
-    // pre_call
-    int flag;  // intent(out)
 
     bool SHCXX_rv = returnBoolAndOthers(&flag);
 

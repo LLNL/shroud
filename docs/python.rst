@@ -211,29 +211,59 @@ need_numpy
 
 If *True*, add NumPy headers and initialize in the module.
 
+fmtdict
+^^^^^^^
+
+Update format dictionary to override generated values.
+Each field will be evaluated before assigment.
+
+ctor_expr - expression passed to Typemap.PY_ctor
+``PyInt_FromLong({ctor_expr})``.
+
+.. code-block:: python
+
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
+
+
+arg_declare
+^^^^^^^^^^^
+
+By default a local variable will be declared the same type as the
+argument to the function.
+
+For some cases, this will not be correct.  This field will be used
+to replace the default declaration.
+
+references
+
+In some cases the declaration is correct but need to be initialized.
+For example, setting a pointer.
+
+Assign a blank list will not add any declarations.
+This is used when only an output ``std::string`` or ``std::vector``
+is created after parsing arguments.
+
+
+The argument will be non-const to allow it to be assigned later.
+
+.. code-block:: python
+
+        name="py_char_*_out_charlen",
+        arg_declare=[
+            "{c_const}char {c_var}[{charlen}];  // intent(out)",
+        ],
+
 declare
 ^^^^^^^
 
 Code needed to declare local variable.
+Often used to define variables of type ``PyObject *``.
 
 .. When defined, *typemap.PY_format* is append to the
    format string for ``PyArg_ParseTupleAndKeywords`` and
    *c_var* is used to hold the parsed.
-
-If the *declare* block is not defined, a local variable is defined of
-the same type as the function argument.
-
-c_local_var
-^^^^^^^^^^^
-
-A local variable for the argument has been declared in *declare*.
-
-As *pointer*, *none*
-
-create_out_decl
-^^^^^^^^^^^^^^^
-
-Used with *intent(inout)* and *intent(out)*.
 
 cxx_local_var
 ^^^^^^^^^^^^^
@@ -290,7 +320,31 @@ parse_args
 
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
-    
+
+cxx_local_var
+^^^^^^^^^^^^^
+
+Set to *scalar* or *pointer* depending on the declaration in *post_declare*
+*post_parse* or *pre_call*.
+
+post_declare
+^^^^^^^^^^^^
+
+Declaration of C++ variables after calling
+``PyArg_ParseTupleAndKeywords``.
+Usually involves object constructors such as ``std::string`` or ``std::vector``.
+Or for extracting struct and class pointers out of a `PyObject`.
+
+These declarations should not include ``goto fail``.
+This allows them to be created without a
+"jump to label 'fail' crosses initialization of" error.
+
+"It is possible to transfer into a block, but not in a way that
+bypasses declarations with initialization. A program that jumps from a
+point where a local variable with automatic storage duration is not in
+scope to a point where it is in scope is ill-formed unless the
+variable has POD type (3.9) and is declared without an initializer."
+
 post_parse
 ^^^^^^^^^^
 Statements to execute after the call to ``PyArg_ParseTupleAndKeywords``.

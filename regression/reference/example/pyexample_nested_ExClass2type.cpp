@@ -153,8 +153,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(trim_name)
-// Requested: py_string_*_in
-// Match:     py_string_in
+// Exact:     py_string_*_in
 /**
  * \brief constructor
  *
@@ -166,7 +165,7 @@ PP_ExClass2_tp_init(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass2.method.ctor
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -175,7 +174,7 @@ PP_ExClass2_tp_init(
         const_cast<char **>(SHT_kwlist), &name))
         return -1;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass2(&SH_name);
@@ -190,8 +189,7 @@ PP_ExClass2_tp_init(
 
 // ----------------------------------------
 // Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getName__doc__[] =
 "documentation"
 ;
@@ -217,8 +215,7 @@ PP_getName(
 
 // ----------------------------------------
 // Function:  const string & getName2 +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getName2__doc__[] =
 "documentation"
 ;
@@ -244,8 +241,7 @@ PP_getName2(
 
 // ----------------------------------------
 // Function:  string & getName3 +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getName3__doc__[] =
 "documentation"
 ;
@@ -271,8 +267,7 @@ PP_getName3(
 
 // ----------------------------------------
 // Function:  string & getName4 +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getName4__doc__[] =
 "documentation"
 ;
@@ -353,7 +348,7 @@ PP_get_class1(
         const_cast<char **>(SHT_kwlist), &PP_ExClass1_Type, &SHPy_in))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const example::nested::ExClass1 * in =
         SHPy_in ? SHPy_in->obj : nullptr;
 
@@ -406,7 +401,7 @@ PP_declare_1(
     switch (SH_nargs) {
     case 1:
         {
-            // post_parse
+            // post_declare
             TypeID SH_type = getTypeID(type);
 
             self->obj->declare(SH_type);
@@ -414,7 +409,7 @@ PP_declare_1(
         }
     case 2:
         {
-            // post_parse
+            // post_declare
             TypeID SH_type = getTypeID(type);
 
             self->obj->declare(SH_type, len);

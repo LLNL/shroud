@@ -227,3 +227,9 @@ extern "C" void CpassCharPtr(char *dest, const char *src)
 }
 
 //----------------------------------------
+
+void PostDeclare(int *count, std::string &name)
+{
+}
+
+//----------------------------------------

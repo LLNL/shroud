@@ -18,12 +18,11 @@
                     "argin": {
                         "fmtpy": {
                             "c_const": "const ",
-                            "c_decl": "int argin",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "argin",
+                            "ctor_expr": "argin",
                             "cxx_addr": "&",
-                            "cxx_decl": "int argin",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<int *>\t(&argin)",
                             "cxx_type": "int",
@@ -40,12 +39,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int arginout",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "arginout",
+                            "ctor_expr": "*arginout",
                             "cxx_addr": "",
-                            "cxx_decl": "int arginout",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arginout",
                             "cxx_type": "int",
@@ -55,19 +53,18 @@
                             "py_var": "SHPy_arginout",
                             "size_var": "SHSize_arginout",
                             "stmt0": "py_native_*_inout",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_inout"
                         }
                     },
                     "argout": {
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int argout",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "argout",
+                            "ctor_expr": "argout",
                             "cxx_addr": "",
-                            "cxx_decl": "int argout",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "argout",
                             "cxx_type": "int",
@@ -77,7 +74,7 @@
                             "py_var": "SHPy_argout",
                             "size_var": "SHSize_argout",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -160,6 +157,7 @@
                             "c_deref": "*",
                             "c_type": "double",
                             "c_var": "in",
+                            "ctor_expr": "*in",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -182,6 +180,7 @@
                             "c_deref": "*",
                             "c_type": "double",
                             "c_var": "out",
+                            "ctor_expr": "*out",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "out",
@@ -204,12 +203,11 @@
                     "sizein": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int sizein",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "sizein",
+                            "ctor_expr": "sizein",
                             "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&sizein",
                             "cxx_type": "int",
@@ -320,6 +318,7 @@
                             "c_deref": "*",
                             "c_type": "double",
                             "c_var": "in",
+                            "ctor_expr": "*in",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "in",
@@ -342,6 +341,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "out",
+                            "ctor_expr": "*out",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "out",
@@ -364,12 +364,11 @@
                     "sizein": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int sizein",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "sizein",
+                            "ctor_expr": "sizein",
                             "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&sizein",
                             "cxx_type": "int",
@@ -477,12 +476,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int nvalues",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "nvalues",
+                            "ctor_expr": "nvalues",
                             "cxx_addr": "",
-                            "cxx_decl": "int nvalues",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nvalues",
                             "cxx_type": "int",
@@ -492,7 +490,7 @@
                             "py_var": "SHPy_nvalues",
                             "size_var": "SHSize_nvalues",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     },
                     "values": {
@@ -502,6 +500,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "values",
+                            "ctor_expr": "*values",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "values",
@@ -598,6 +597,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "arg1",
+                            "ctor_expr": "*arg1",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg1",
@@ -624,6 +624,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "arg2",
+                            "ctor_expr": "*arg2",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arg2",
@@ -724,12 +725,11 @@
                     "nvar": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int nvar",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "nvar",
+                            "ctor_expr": "nvar",
                             "cxx_addr": "&",
-                            "cxx_decl": "int nvar",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&nvar",
                             "cxx_type": "int",
@@ -749,6 +749,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "values",
+                            "ctor_expr": "*values",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "values",
@@ -835,12 +836,11 @@
                     "nvar": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int nvar",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "nvar",
+                            "ctor_expr": "nvar",
                             "cxx_addr": "&",
-                            "cxx_decl": "int nvar",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&nvar",
                             "cxx_type": "int",
@@ -860,6 +860,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "values",
+                            "ctor_expr": "*values",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "values",
@@ -945,12 +946,11 @@
                     "len": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int len",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "len",
+                            "ctor_expr": "len",
                             "cxx_addr": "&",
-                            "cxx_decl": "int len",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&len",
                             "cxx_type": "int",
@@ -966,12 +966,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int result",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "result",
+                            "ctor_expr": "result",
                             "cxx_addr": "",
-                            "cxx_decl": "int result",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "result",
                             "cxx_type": "int",
@@ -981,7 +980,7 @@
                             "py_var": "SHPy_result",
                             "size_var": "SHSize_result",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     },
                     "values": {
@@ -991,6 +990,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "values",
+                            "ctor_expr": "*values",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "values",
@@ -1089,6 +1089,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "out",
+                            "ctor_expr": "*out",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "out",
@@ -1167,6 +1168,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "array",
+                            "ctor_expr": "*array",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "array",
@@ -1186,12 +1188,11 @@
                     "sizein": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int sizein",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "sizein",
+                            "ctor_expr": "sizein",
                             "cxx_addr": "&",
-                            "cxx_decl": "int sizein",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&sizein",
                             "cxx_type": "int",
@@ -1270,6 +1271,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "names",
+                            "ctor_expr": "*names",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "names",
@@ -1333,12 +1335,11 @@
                     "value": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int value",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "value",
+                            "ctor_expr": "value",
                             "cxx_addr": "&",
-                            "cxx_decl": "int value",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&value",
                             "cxx_type": "int",
@@ -1392,6 +1393,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1481,6 +1483,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -1563,6 +1566,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -1586,12 +1590,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int ncount",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "ncount",
+                            "ctor_expr": "ncount",
                             "cxx_addr": "",
-                            "cxx_decl": "int ncount",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "ncount",
                             "cxx_type": "int",
@@ -1601,7 +1604,7 @@
                             "py_var": "SHPy_ncount",
                             "size_var": "SHSize_ncount",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -1685,6 +1688,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -1813,6 +1817,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
@@ -1893,6 +1898,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<int *>\t(count)",
@@ -1916,12 +1922,11 @@
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
-                            "c_decl": "int ncount",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "int",
                             "c_var": "ncount",
+                            "ctor_expr": "ncount",
                             "cxx_addr": "",
-                            "cxx_decl": "int ncount",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "ncount",
                             "cxx_type": "int",
@@ -1931,7 +1936,7 @@
                             "py_var": "SHPy_ncount",
                             "size_var": "SHSize_ncount",
                             "stmt0": "py_native_*_out",
-                            "stmt1": "py_default"
+                            "stmt1": "py_native_*_out"
                         }
                     }
                 },
@@ -2013,6 +2018,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "nitems",
+                            "ctor_expr": "*nitems",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "nitems",
@@ -2081,6 +2087,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "count",
+                            "ctor_expr": "*count",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "count",
@@ -2145,12 +2152,11 @@
                     "flag": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int flag",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "flag",
+                            "ctor_expr": "flag",
                             "cxx_addr": "&",
-                            "cxx_decl": "int flag",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
                             "cxx_type": "int",
@@ -2169,6 +2175,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2179,7 +2186,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_unknown_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_unknown_result"
                     }
                 },
                 "ast": {
@@ -2226,12 +2233,11 @@
                     "flag": {
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int flag",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "flag",
+                            "ctor_expr": "flag",
                             "cxx_addr": "&",
-                            "cxx_decl": "int flag",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&flag",
                             "cxx_type": "int",
@@ -2250,6 +2256,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2260,7 +2267,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_unknown_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_unknown_result"
                     }
                 },
                 "ast": {
@@ -2313,6 +2320,7 @@
                             "c_deref": "*",
                             "c_type": "void",
                             "c_var": "addr",
+                            "ctor_expr": "addr",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -2374,6 +2382,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2421,6 +2430,7 @@
                         "array_size": "10",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2481,6 +2491,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_rv)",
@@ -2529,6 +2540,7 @@
                         "array_size": "10",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<int *>\t(SHCXX_rv)",
@@ -2590,6 +2602,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",

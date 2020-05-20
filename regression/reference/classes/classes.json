@@ -133,6 +133,7 @@
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -218,12 +219,11 @@
                                 },
                                 "fmtpy": {
                                     "c_const": "",
-                                    "c_decl": "int flag",
                                     "c_deref": "",
                                     "c_type": "int",
                                     "c_var": "flag",
+                                    "ctor_expr": "flag",
                                     "cxx_addr": "&",
-                                    "cxx_decl": "int flag",
                                     "cxx_member": ".",
                                     "cxx_nonconst_ptr": "&flag",
                                     "cxx_type": "int",
@@ -268,6 +268,7 @@
                                 "PyTypeObject": "PY_Class1_Type",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -406,6 +407,7 @@
                             "fmtpy": {
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -496,12 +498,11 @@
                                     "PyTypeObject": "PY_Class1_Type",
                                     "array_size": "1",
                                     "c_const": "const ",
-                                    "c_decl": "CLA_Class1 obj2",
                                     "c_deref": "",
                                     "c_type": "CLA_Class1",
                                     "c_var": "obj2",
+                                    "ctor_expr": "obj2",
                                     "cxx_addr": "&",
-                                    "cxx_decl": "classes::Class1 obj2",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(&obj2)",
                                     "cxx_type": "classes::Class1",
@@ -512,7 +513,7 @@
                                     "py_var": "SHPy_obj2",
                                     "size_var": "SHSize_obj2",
                                     "stmt0": "py_shadow_&_in",
-                                    "stmt1": "py_shadow_in"
+                                    "stmt1": "py_shadow_&_in"
                                 }
                             }
                         },
@@ -546,6 +547,7 @@
                                 "PyTypeObject": "PyBool_Type",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1008,6 +1010,7 @@
                                 "array_size": "1",
                                 "c_deref": "*",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "*SHCXX_rv",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
                                 "cxx_nonconst_ptr": "SHCXX_rv",
@@ -1100,6 +1103,7 @@
                                 "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1110,7 +1114,7 @@
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
                                 "stmt0": "py_string_result",
-                                "stmt1": "py_default"
+                                "stmt1": "py_string_result"
                             }
                         },
                         "ast": {
@@ -1306,10 +1310,10 @@
                                 },
                                 "fmtpy": {
                                     "c_const": "",
-                                    "c_decl": "int arg",
                                     "c_deref": "",
                                     "c_type": "int",
                                     "c_var": "arg",
+                                    "ctor_expr": "arg",
                                     "cxx_addr": "&",
                                     "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                                     "cxx_member": ".",
@@ -1357,6 +1361,7 @@
                             "fmtpy": {
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -1786,6 +1791,7 @@
                                 "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -1796,7 +1802,7 @@
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
                                 "stmt0": "py_string_result",
-                                "stmt1": "py_default"
+                                "stmt1": "py_string_result"
                             }
                         },
                         "ast": {
@@ -2021,6 +2027,7 @@
                                 "array_size": "1",
                                 "c_deref": "",
                                 "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
                                 "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2136,10 +2143,10 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int arg",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_addr": "&",
                             "cxx_decl": "classes::Class1::DIRECTION SH_arg",
                             "cxx_member": ".",
@@ -2187,6 +2194,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2285,12 +2293,11 @@
                             "PyObject": "PY_Class1",
                             "PyTypeObject": "PY_Class1_Type",
                             "c_const": "",
-                            "c_decl": "CLA_Class1 arg",
                             "c_deref": "",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_addr": "&",
-                            "cxx_decl": "classes::Class1 arg",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "classes::Class1",
@@ -2301,7 +2308,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_shadow_scalar_in",
-                            "stmt1": "py_shadow_in"
+                            "stmt1": "py_shadow_scalar_in"
                         }
                     }
                 },
@@ -2398,12 +2405,11 @@
                             "PyTypeObject": "PY_Class1_Type",
                             "array_size": "1",
                             "c_const": "const ",
-                            "c_decl": "CLA_Class1 arg",
-                            "c_deref": "",
+                            "c_deref": "*",
                             "c_type": "CLA_Class1",
                             "c_var": "arg",
+                            "ctor_expr": "*arg",
                             "cxx_addr": "",
-                            "cxx_decl": "classes::Class1 arg",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<classes::Class1 *>\t(arg)",
                             "cxx_type": "classes::Class1",
@@ -2447,6 +2453,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2615,6 +2622,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -2767,6 +2775,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2965,12 +2974,11 @@
                         },
                         "fmtpy": {
                             "c_const": "",
-                            "c_decl": "int arg",
                             "c_deref": "",
                             "c_type": "int",
                             "c_var": "arg",
+                            "ctor_expr": "arg",
                             "cxx_addr": "&",
-                            "cxx_decl": "int arg",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "int",
@@ -3065,6 +3073,7 @@
                     "fmtpy": {
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -3144,6 +3153,7 @@
                         "array_size": "1",
                         "c_deref": "",
                         "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv.data(),\t SHCXX_rv.size()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
                         "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3154,7 +3164,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_string_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_string_result"
                     }
                 },
                 "ast": {

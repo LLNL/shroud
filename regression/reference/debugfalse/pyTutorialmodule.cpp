@@ -90,8 +90,8 @@ PY_ConcatenateStrings(
   PyObject *kwds)
 {
 // splicer begin function.concatenate_strings
-    const char * arg1;
-    const char * arg2;
+    char * arg1;
+    char * arg2;
     const char *SHT_kwlist[] = {
         "arg1",
         "arg2",
@@ -125,6 +125,7 @@ PY_UseDefaultArguments_arg1_arg2(
 // splicer begin function.use_default_arguments
     Py_ssize_t SH_nargs = 0;
     double arg1;
+    bool arg2;
     PyObject * SHPy_arg2;
     const char *SHT_kwlist[] = {
         "arg1",
@@ -148,7 +149,7 @@ PY_UseDefaultArguments_arg1_arg2(
         break;
     case 2:
         {
-            bool arg2 = PyObject_IsTrue(SHPy_arg2);
+            arg2 = PyObject_IsTrue(SHPy_arg2);
             SHCXX_rv = tutorial::UseDefaultArguments(arg1, arg2);
             break;
         }
@@ -168,7 +169,7 @@ PY_OverloadedFunction_from_name(
   PyObject *kwds)
 {
 // splicer begin function.overloaded_function_from_name
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -261,7 +262,7 @@ PY_FortranGenericOverloaded_1(
   PyObject *kwds)
 {
 // splicer begin function.fortran_generic_overloaded_1
-    const char * name;
+    char * name;
     double arg2;
     const char *SHT_kwlist[] = {
         "name",
@@ -465,10 +466,10 @@ PY_getMinMax(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_min_max
+    int min;
+    int max;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
-    int min;  // intent(out)
-    int max;  // intent(out)
     tutorial::getMinMax(min, max);
     SHTPy_rv = Py_BuildValue("ii", min, max);
     return SHTPy_rv;

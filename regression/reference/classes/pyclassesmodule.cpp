@@ -60,7 +60,7 @@ PY_directionFunc(
         const_cast<char **>(SHT_kwlist), &arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     classes::Class1::DIRECTION SH_arg =
         static_cast<classes::Class1::DIRECTION>(arg);
 
@@ -79,8 +79,7 @@ PY_directionFunc(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class1 arg +intent(in)+value
-// Requested: py_shadow_scalar_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_scalar_in
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -105,7 +104,7 @@ PY_passClassByValue(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     classes::passClassByValue(*arg);
@@ -142,7 +141,7 @@ PY_useclass(
         const_cast<char **>(SHT_kwlist), &PY_Class1_Type, &SHPy_arg))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const classes::Class1 * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
 
     int SHCXX_rv = classes::useclass(arg);
@@ -262,8 +261,7 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

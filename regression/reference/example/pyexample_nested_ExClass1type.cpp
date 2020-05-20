@@ -77,8 +77,7 @@ PP_ExClass1_tp_init_0(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +intent(in)
-// Requested: py_string_*_in
-// Match:     py_string_in
+// Exact:     py_string_*_in
 /**
  * \brief constructor
  *
@@ -94,7 +93,7 @@ PP_ExClass1_tp_init_1(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.ctor_1
-    const char * name;
+    char * name;
     const char *SHT_kwlist[] = {
         "name",
         nullptr };
@@ -103,7 +102,7 @@ PP_ExClass1_tp_init_1(
         const_cast<char **>(SHT_kwlist), &name))
         return -1;
 
-    // post_parse
+    // post_declare
     const std::string SH_name(name);
 
     self->obj = new example::nested::ExClass1(&SH_name);
@@ -156,8 +155,7 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -183,8 +181,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;
@@ -294,6 +291,7 @@ PP_hasAddr(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.class.ExClass1.method.has_addr
+    bool in;
     PyObject * SHPy_in;
     const char *SHT_kwlist[] = {
         "in",
@@ -305,7 +303,7 @@ PP_hasAddr(
         return nullptr;
 
     // pre_call
-    bool in = PyObject_IsTrue(SHPy_in);
+    in = PyObject_IsTrue(SHPy_in);
 
     bool SHCXX_rv = self->obj->hasAddr(in);
 

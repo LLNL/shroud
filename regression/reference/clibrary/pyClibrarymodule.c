@@ -99,12 +99,10 @@ PY_PassByValue(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * arg1 +intent(in)
-// Requested: py_native_*_in
-// Match:     py_default
+// Exact:     py_native_*_in
 // ----------------------------------------
 // Argument:  int * arg2 +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_PassByReference__doc__[] =
 "documentation"
 ;
@@ -117,6 +115,7 @@ PY_PassByReference(
 {
 // splicer begin function.pass_by_reference
     double arg1;
+    int arg2;
     char *SHT_kwlist[] = {
         "arg1",
         NULL };
@@ -125,9 +124,6 @@ PY_PassByReference(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "d:PassByReference",
         SHT_kwlist, &arg1))
         return NULL;
-
-    // pre_call
-    int arg2;  // intent(out)
 
     PassByReference(&arg1, &arg2);
 
@@ -189,12 +185,10 @@ PY_PassByValueMacro(
 // Match:     py_bool_in
 // ----------------------------------------
 // Argument:  bool * arg2 +intent(out)
-// Requested: py_bool_*_out
-// Match:     py_bool_out
+// Exact:     py_bool_*_out
 // ----------------------------------------
 // Argument:  bool * arg3 +intent(inout)
-// Requested: py_bool_*_inout
-// Match:     py_bool_inout
+// Exact:     py_bool_*_inout
 static char PY_checkBool__doc__[] =
 "documentation"
 ;
@@ -210,8 +204,11 @@ PY_checkBool(
   PyObject *kwds)
 {
 // splicer begin function.check_bool
+    bool arg1;
     PyObject * SHPy_arg1;
+    bool arg2;
     PyObject * SHPy_arg2 = NULL;
+    bool arg3;
     PyObject * SHPy_arg3;
     char *SHT_kwlist[] = {
         "arg1",
@@ -224,9 +221,8 @@ PY_checkBool(
         return NULL;
 
     // pre_call
-    bool arg1 = PyObject_IsTrue(SHPy_arg1);
-    bool arg2;  // intent(out)
-    bool arg3 = PyObject_IsTrue(SHPy_arg3);
+    arg1 = PyObject_IsTrue(SHPy_arg1);
+    arg3 = PyObject_IsTrue(SHPy_arg3);
 
     checkBool(arg1, &arg2, &arg3);
 
@@ -248,8 +244,7 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +deref(result-as-arg)+len(30)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 // ----------------------------------------
 // Argument:  const char * arg1 +intent(in)
 // Exact:     py_char_*_in
@@ -267,8 +262,8 @@ PY_Function4a(
   PyObject *kwds)
 {
 // splicer begin function.function4a
-    const char * arg1;
-    const char * arg2;
+    char * arg1;
+    char * arg2;
     char *SHT_kwlist[] = {
         "arg1",
         "arg2",
@@ -305,7 +300,7 @@ PY_acceptName(
   PyObject *kwds)
 {
 // splicer begin function.accept_name
-    const char * name;
+    char * name;
     char *SHT_kwlist[] = {
         "name",
         NULL };
@@ -385,10 +380,8 @@ PY_returnOneName(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_one_name
-    PyObject * SHPy_name1 = NULL;
-
-    // pre_call
     char name1[MAXNAME];  // intent(out)
+    PyObject * SHPy_name1 = NULL;
 
     returnOneName(name1);
 
@@ -426,11 +419,9 @@ PY_returnTwoNames(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.return_two_names
-    PyObject *SHTPy_rv = NULL;  // return value object
-
-    // pre_call
     char name1[MAXNAME];  // intent(out)
     char name2[MAXNAME];  // intent(out)
+    PyObject *SHTPy_rv = NULL;  // return value object
 
     returnTwoNames(name1, name2);
 
@@ -447,6 +438,9 @@ PY_returnTwoNames(
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
+// ----------------------------------------
+// Argument:  int ltext +implied(len(text))+intent(in)+value
+// Exact:     py_default
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
 ;
@@ -462,11 +456,12 @@ PY_ImpliedTextLen(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.implied_text_len
+    char text[MAXNAME];  // intent(out)
+    int ltext;
     PyObject * SHPy_text = NULL;
 
     // pre_call
-    char text[MAXNAME];  // intent(out)
-    int ltext = MAXNAME;
+    ltext = MAXNAME;
 
     ImpliedTextLen(text, ltext);
 
@@ -484,6 +479,12 @@ PY_ImpliedTextLen(
 // ----------------------------------------
 // Argument:  const char * text +intent(in)
 // Exact:     py_char_*_in
+// ----------------------------------------
+// Argument:  int ltext +implied(len(text))+intent(in)+value
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  bool flag +implied(false)+intent(in)+value
+// Exact:     py_default
 static char PY_ImpliedLen__doc__[] =
 "documentation"
 ;
@@ -501,7 +502,9 @@ PY_ImpliedLen(
   PyObject *kwds)
 {
 // splicer begin function.implied_len
-    const char * text;
+    char * text;
+    int ltext;
+    bool flag;
     char *SHT_kwlist[] = {
         "text",
         NULL };
@@ -512,8 +515,8 @@ PY_ImpliedLen(
         return NULL;
 
     // pre_call
-    int ltext = strlen(text);
-    bool flag = false;
+    ltext = strlen(text);
+    flag = false;
 
     int SHCXX_rv = ImpliedLen(text, ltext, flag);
 
@@ -531,6 +534,12 @@ PY_ImpliedLen(
 // ----------------------------------------
 // Argument:  const char * text +intent(in)
 // Exact:     py_char_*_in
+// ----------------------------------------
+// Argument:  int ltext +implied(len_trim(text))+intent(in)+value
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  bool flag +implied(true)+intent(in)+value
+// Exact:     py_default
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
 ;
@@ -548,7 +557,9 @@ PY_ImpliedLenTrim(
   PyObject *kwds)
 {
 // splicer begin function.implied_len_trim
-    const char * text;
+    char * text;
+    int ltext;
+    bool flag;
     char *SHT_kwlist[] = {
         "text",
         NULL };
@@ -559,8 +570,8 @@ PY_ImpliedLenTrim(
         return NULL;
 
     // pre_call
-    int ltext = strlen(text);
-    bool flag = true;
+    ltext = strlen(text);
+    flag = true;
 
     int SHCXX_rv = ImpliedLenTrim(text, ltext, flag);
 
@@ -574,6 +585,9 @@ PY_ImpliedLenTrim(
 // ----------------------------------------
 // Function:  bool ImpliedBoolTrue
 // Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  bool flag +implied(true)+intent(in)+value
+// Exact:     py_default
 static char PY_ImpliedBoolTrue__doc__[] =
 "documentation"
 ;
@@ -589,10 +603,11 @@ PY_ImpliedBoolTrue(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.implied_bool_true
+    bool flag;
     PyObject * SHTPy_rv = NULL;
 
     // pre_call
-    bool flag = true;
+    flag = true;
 
     bool SHCXX_rv = ImpliedBoolTrue(flag);
 
@@ -611,6 +626,9 @@ fail:
 // ----------------------------------------
 // Function:  bool ImpliedBoolFalse
 // Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  bool flag +implied(false)+intent(in)+value
+// Exact:     py_default
 static char PY_ImpliedBoolFalse__doc__[] =
 "documentation"
 ;
@@ -626,10 +644,11 @@ PY_ImpliedBoolFalse(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.implied_bool_false
+    bool flag;
     PyObject * SHTPy_rv = NULL;
 
     // pre_call
-    bool flag = false;
+    flag = false;
 
     bool SHCXX_rv = ImpliedBoolFalse(flag);
 

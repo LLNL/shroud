@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystringsmodule.hpp"
+#include <cstdlib>
 
 // splicer begin include
 // splicer end include
@@ -24,6 +25,37 @@
 #define PyString_FromString PyUnicode_FromString
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
+
+// helper create_from_PyObject_int
+// Convert obj into an array of type int
+// Return -1 on error.
+static int SHROUD_create_from_PyObject_int(PyObject *obj,
+    const char *name, int **pin, Py_ssize_t *psize)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int", name, (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    *pin = in;
+    *psize = size;
+    return 0;
+}
 
 // splicer begin C_definition
 // splicer end C_definition
@@ -124,7 +156,8 @@ PY_passCharPtr(
   PyObject *kwds)
 {
 // splicer begin function.pass_char_ptr
-    const char * src;
+    char dest[40];  // intent(out)
+    char * src;
     const char *SHT_kwlist[] = {
         "src",
         nullptr };
@@ -133,9 +166,6 @@ PY_passCharPtr(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharPtr",
         const_cast<char **>(SHT_kwlist), &src))
         return nullptr;
-
-    // pre_call
-    char dest[40];  // intent(out)
 
     passCharPtr(dest, src);
 
@@ -190,8 +220,7 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr1 +deref(allocatable)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
@@ -220,8 +249,7 @@ PY_getCharPtr1(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -250,8 +278,7 @@ PY_getCharPtr2(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr3 +deref(result-as-arg)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;
@@ -280,8 +307,7 @@ PY_getCharPtr3(
 
 // ----------------------------------------
 // Function:  const string getConstStringResult +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringResult__doc__[] =
 "documentation"
 ;
@@ -311,8 +337,7 @@ PY_getConstStringResult(
 
 // ----------------------------------------
 // Function:  const string getConstStringLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringLen__doc__[] =
 "documentation"
 ;
@@ -342,8 +367,7 @@ PY_getConstStringLen(
 
 // ----------------------------------------
 // Function:  const string getConstStringAsArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringAsArg__doc__[] =
 "documentation"
 ;
@@ -373,8 +397,7 @@ PY_getConstStringAsArg(
 
 // ----------------------------------------
 // Function:  const std::string getConstStringAlloc +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringAlloc__doc__[] =
 "documentation"
 ;
@@ -400,8 +423,7 @@ PY_getConstStringAlloc(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefPure__doc__[] =
 "documentation"
 ;
@@ -431,8 +453,7 @@ PY_getConstStringRefPure(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefLen__doc__[] =
 "documentation"
 ;
@@ -465,8 +486,7 @@ PY_getConstStringRefLen(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefAsArg__doc__[] =
 "documentation"
 ;
@@ -498,8 +518,7 @@ PY_getConstStringRefAsArg(
 
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefLenEmpty__doc__[] =
 "documentation"
 ;
@@ -529,8 +548,7 @@ PY_getConstStringRefLenEmpty(
 
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringRefAlloc__doc__[] =
 "documentation"
 ;
@@ -556,8 +574,7 @@ PY_getConstStringRefAlloc(
 
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrLen__doc__[] =
 "documentation"
 ;
@@ -591,8 +608,7 @@ PY_getConstStringPtrLen(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrAlloc__doc__[] =
 "documentation"
 ;
@@ -618,8 +634,7 @@ PY_getConstStringPtrAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
 "documentation"
 ;
@@ -652,8 +667,7 @@ PY_getConstStringPtrOwnsAlloc(
 
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-// Requested: py_string_result
-// Match:     py_default
+// Exact:     py_string_result
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =
 "documentation"
 ;
@@ -705,7 +719,7 @@ PY_acceptStringConstReference(
   PyObject *kwds)
 {
 // splicer begin function.accept_string_const_reference
-    const char * arg1;
+    char * arg1;
     const char *SHT_kwlist[] = {
         "arg1",
         nullptr };
@@ -715,7 +729,7 @@ PY_acceptStringConstReference(
         const_cast<char **>(SHT_kwlist), &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     const std::string SH_arg1(arg1);
 
     acceptStringConstReference(SH_arg1);
@@ -750,7 +764,7 @@ PY_acceptStringReferenceOut(
 // splicer begin function.accept_string_reference_out
     PyObject * SHPy_arg1 = nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1;
 
     acceptStringReferenceOut(SH_arg1);
@@ -799,7 +813,7 @@ PY_acceptStringReference(
         &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1(arg1);
 
     acceptStringReference(SH_arg1);
@@ -817,8 +831,7 @@ PY_acceptStringReference(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(inout)
-// Requested: py_string_*_inout
-// Match:     py_string_inout
+// Exact:     py_string_*_inout
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
 ;
@@ -845,7 +858,7 @@ PY_acceptStringPointer(
         &arg1))
         return nullptr;
 
-    // post_parse
+    // post_declare
     std::string SH_arg1(arg1);
 
     acceptStringPointer(&SH_arg1);
@@ -886,7 +899,7 @@ PY_returnStrings(
 // splicer begin function.return_strings
     PyObject *SHTPy_rv = nullptr;  // return value object
 
-    // post_parse
+    // post_declare
     std::string SH_arg1;
     std::string SH_arg2;
 
@@ -996,6 +1009,67 @@ PY_CreturnChar(
     return (PyObject *) SHTPy_rv;
 // splicer end function.creturn_char
 }
+
+// ----------------------------------------
+// Function:  void PostDeclare
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * count +intent(in)+rank(1)
+// Exact:     py_native_*_in_pointer_list
+// ----------------------------------------
+// Argument:  std::string & name +intent(inout)
+// Requested: py_string_&_inout
+// Match:     py_string_inout
+static char PY_PostDeclare__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_PostDeclare(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.post_declare
+    int * count = nullptr;
+    PyObject *SHTPy_count = nullptr;
+    char * name;
+    const char *SHT_kwlist[] = {
+        "count",
+        "name",
+        nullptr };
+    PyObject * SHPy_name = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "Os:PostDeclare",
+        const_cast<char **>(SHT_kwlist), &SHTPy_count, &name))
+        return nullptr;
+
+    // post_declare
+    std::string SH_name(name);
+
+    // post_parse
+    Py_ssize_t SHSize_count;
+    if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
+        &SHSize_count) == -1)
+        goto fail;
+    {
+        PostDeclare(count, SH_name);
+
+        // post_call
+        SHPy_name = PyString_FromStringAndSize(SH_name.data(),
+            SH_name.size());
+
+        // cleanup
+        std::free(count);
+
+        return (PyObject *) SHPy_name;
+    }
+
+fail:
+    if (count != nullptr) std::free(count);
+    return nullptr;
+// splicer end function.post_declare
+}
 static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_passChar, METH_VARARGS|METH_KEYWORDS,
     PY_passChar__doc__},
@@ -1056,6 +1130,8 @@ static PyMethodDef PY_methods[] = {
     PY_CpassChar__doc__},
 {"CreturnChar", (PyCFunction)PY_CreturnChar, METH_NOARGS,
     PY_CreturnChar__doc__},
+{"PostDeclare", (PyCFunction)PY_PostDeclare, METH_VARARGS|METH_KEYWORDS,
+    PY_PostDeclare__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

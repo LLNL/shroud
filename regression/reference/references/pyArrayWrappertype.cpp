@@ -123,8 +123,7 @@ PY_getSize(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int & size +intent(out)
-// Requested: py_native_&_out
-// Match:     py_default
+// Exact:     py_native_&_out
 static char PY_fillSize__doc__[] =
 "documentation"
 ;
@@ -136,10 +135,8 @@ PY_fillSize(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin class.ArrayWrapper.method.fill_size
+    int size;
     PyObject * SHPy_size = nullptr;
-
-    // pre_call
-    int size;  // intent(out)
 
     self->obj->fillSize(size);
 
@@ -309,8 +306,7 @@ fail:
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden+intent(in)
-// Requested: py_native_*_in
-// Match:     py_default
+// Exact:     py_native_*_in
 static char PY_fetchArrayPtr__doc__[] =
 "documentation"
 ;
@@ -353,8 +349,7 @@ fail:
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden+intent(in)
-// Requested: py_native_&_in
-// Match:     py_default
+// Exact:     py_native_&_in
 static char PY_fetchArrayRef__doc__[] =
 "documentation"
 ;
@@ -397,8 +392,7 @@ fail:
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
 // Argument:  int * isize +hidden+intent(in)
-// Requested: py_native_*_in
-// Match:     py_default
+// Exact:     py_native_*_in
 static char PY_fetchArrayPtrConst__doc__[] =
 "documentation"
 ;
@@ -441,8 +435,7 @@ fail:
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
 // Argument:  int & isize +hidden+intent(in)
-// Requested: py_native_&_in
-// Match:     py_default
+// Exact:     py_native_&_in
 static char PY_fetchArrayRefConst__doc__[] =
 "documentation"
 ;
@@ -552,7 +545,7 @@ PY_checkPtr(
   PyObject *kwds)
 {
 // splicer begin class.ArrayWrapper.method.check_ptr
-    void *array;
+    void * array;
     PyObject *SHPy_array;
     const char *SHT_kwlist[] = {
         "array",

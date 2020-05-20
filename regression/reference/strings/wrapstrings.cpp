@@ -1126,6 +1126,49 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     // splicer end function.cpass_char_ptr_bufferify
 }
 
+// ----------------------------------------
+// Function:  void PostDeclare
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * count +intent(in)+rank(1)
+// Requested: c_native_*_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(inout)
+// Requested: c_string_&_inout
+// Match:     c_string_inout
+void STR_post_declare(int * count, char * name)
+{
+    // splicer begin function.post_declare
+    std::string SHCXX_name(name);
+    PostDeclare(count, SHCXX_name);
+    strcpy(name, SHCXX_name.c_str());
+    // splicer end function.post_declare
+}
+
+// ----------------------------------------
+// Function:  void PostDeclare
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * count +intent(in)+rank(1)
+// Requested: c_native_*_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+// Requested: c_string_&_inout_buf
+// Match:     c_string_inout_buf
+void STR_post_declare_bufferify(int * count, char * name, int Lname,
+    int Nname)
+{
+    // splicer begin function.post_declare_bufferify
+    std::string SHCXX_name(name, Lname);
+    PostDeclare(count, SHCXX_name);
+    ShroudStrCopy(name, Nname, SHCXX_name.data(), SHCXX_name.size());
+    // splicer end function.post_declare_bufferify
+}
+
 // start release allocated memory
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)

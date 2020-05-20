@@ -158,12 +158,10 @@ PyObject *PY_error_obj;
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
-// Requested: py_native_*_inout
-// Match:     py_default
+// Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * argout +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_intargs__doc__[] =
 "documentation"
 ;
@@ -177,6 +175,7 @@ PY_intargs(
 // splicer begin function.intargs
     int argin;
     int arginout;
+    int argout;
     char *SHT_kwlist[] = {
         "argin",
         "arginout",
@@ -186,9 +185,6 @@ PY_intargs(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "ii:intargs",
         SHT_kwlist, &argin, &arginout))
         return NULL;
-
-    // pre_call
-    int argout;  // intent(out)
 
     intargs(argin, &arginout, &argout);
 
@@ -208,6 +204,9 @@ PY_intargs(
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Exact:     py_native_*_out_allocatable_list
+// ----------------------------------------
+// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Exact:     py_default
 static char PY_cos_doubles__doc__[] =
 "documentation"
 ;
@@ -224,10 +223,11 @@ PY_cos_doubles(
   PyObject *kwds)
 {
 // splicer begin function.cos_doubles
-    PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyObject *SHPy_out = NULL;
+    PyObject *SHTPy_in = NULL;
     double * out = NULL;
+    PyObject *SHPy_out = NULL;
+    int sizein;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -248,7 +248,7 @@ PY_cos_doubles(
         PyErr_NoMemory();
         goto fail;
     }
-    int sizein = SHSize_in;
+    sizein = SHSize_in;
 
     cos_doubles(in, out, sizein);
 
@@ -280,6 +280,9 @@ fail:
 // ----------------------------------------
 // Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Exact:     py_native_*_out_allocatable_list
+// ----------------------------------------
+// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Exact:     py_default
 static char PY_truncate_to_int__doc__[] =
 "documentation"
 ;
@@ -297,10 +300,11 @@ PY_truncate_to_int(
   PyObject *kwds)
 {
 // splicer begin function.truncate_to_int
-    PyObject *SHTPy_in = NULL;
     double * in = NULL;
-    PyObject *SHPy_out = NULL;
+    PyObject *SHTPy_in = NULL;
     int * out = NULL;
+    PyObject *SHPy_out = NULL;
+    int sizein;
     char *SHT_kwlist[] = {
         "in",
         NULL };
@@ -321,7 +325,7 @@ PY_truncate_to_int(
         PyErr_NoMemory();
         goto fail;
     }
-    int sizein = SHSize_in;
+    sizein = SHSize_in;
 
     truncate_to_int(in, out, sizein);
 
@@ -349,8 +353,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * nvalues +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
 // Exact:     py_native_*_out_pointer_list
@@ -373,12 +376,12 @@ PY_get_values(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values
-    PyObject *SHPy_values = NULL;
+    int nvalues;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
 
     // pre_call
-    int nvalues;  // intent(out)
     values = malloc(sizeof(int) * (3));
     if (values == NULL) {
         PyErr_NoMemory();
@@ -431,10 +434,10 @@ PY_get_values2(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.get_values2
-    PyObject *SHPy_arg1 = NULL;
     int * arg1 = NULL;
-    PyObject *SHPy_arg2 = NULL;
+    PyObject *SHPy_arg1 = NULL;
     int * arg2 = NULL;
+    PyObject *SHPy_arg2 = NULL;
     PyObject *SHTPy_rv = NULL;  // return value object
 
     // pre_call
@@ -497,8 +500,8 @@ PY_iota_allocatable(
 {
 // splicer begin function.iota_allocatable
     int nvar;
-    PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     char *SHT_kwlist[] = {
         "nvar",
         NULL };
@@ -555,8 +558,8 @@ PY_iota_dimension(
 {
 // splicer begin function.iota_dimension
     int nvar;
-    PyObject *SHPy_values = NULL;
     int * values = NULL;
+    PyObject *SHPy_values = NULL;
     char *SHT_kwlist[] = {
         "nvar",
         NULL };
@@ -595,12 +598,14 @@ fail:
 // Function:  void Sum
 // Exact:     py_default
 // ----------------------------------------
+// Argument:  int len +implied(size(values))+intent(in)+value
+// Exact:     py_default
+// ----------------------------------------
 // Argument:  int * values +intent(in)+rank(1)
 // Exact:     py_native_*_in_pointer_list
 // ----------------------------------------
 // Argument:  int * result +intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_Sum__doc__[] =
 "documentation"
 ;
@@ -612,8 +617,10 @@ PY_Sum(
   PyObject *kwds)
 {
 // splicer begin function.sum
-    PyObject *SHTPy_values = NULL;
+    int len;
     int * values = NULL;
+    PyObject *SHTPy_values = NULL;
+    int result;
     char *SHT_kwlist[] = {
         "values",
         NULL };
@@ -630,8 +637,7 @@ PY_Sum(
         goto fail;
 
     // pre_call
-    int result;  // intent(out)
-    int len = SHSize_values;
+    len = SHSize_values;
 
     Sum(len, values, &result);
 
@@ -669,8 +675,8 @@ PY_fillIntArray(
   PyObject *SHROUD_UNUSED(kwds))
 {
 // splicer begin function.fill_int_array
-    PyObject *SHPy_out = NULL;
     int * out = NULL;
+    PyObject *SHPy_out = NULL;
 
     // pre_call
     out = malloc(sizeof(int) * (3));
@@ -704,6 +710,9 @@ fail:
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
 // Exact:     py_native_*_inout_pointer_list
+// ----------------------------------------
+// Argument:  int sizein +implied(size(array))+intent(in)+value
+// Exact:     py_default
 static char PY_incrementIntArray__doc__[] =
 "documentation"
 ;
@@ -718,8 +727,9 @@ PY_incrementIntArray(
   PyObject *kwds)
 {
 // splicer begin function.increment_int_array
-    PyObject *SHTPy_array = NULL;
     int * array = NULL;
+    PyObject *SHTPy_array = NULL;
+    int sizein;
     char *SHT_kwlist[] = {
         "array",
         NULL };
@@ -735,7 +745,7 @@ PY_incrementIntArray(
         goto fail;
 
     // pre_call
-    int sizein = SHSize_array;
+    sizein = SHSize_array;
 
     incrementIntArray(array, sizein);
 
@@ -909,8 +919,7 @@ fail:
 // Exact:     py_native_**_out_pointer_list
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_getPtrToDynamicArray__doc__[] =
 "documentation"
 ;
@@ -928,9 +937,7 @@ PY_getPtrToDynamicArray(
 // splicer begin function.get_ptr_to_dynamic_array
     int *count;
     PyObject *SHPy_count = NULL;
-
-    // pre_call
-    int ncount;  // intent(out)
+    int ncount;
 
     getPtrToDynamicArray(&count, &ncount);
 
@@ -1027,8 +1034,7 @@ fail:
 // Exact:     py_native_**_out_pointer_list
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
-// Requested: py_native_*_out
-// Match:     py_default
+// Exact:     py_native_*_out
 static char PY_getPtrToDynamicConstArray__doc__[] =
 "documentation"
 ;
@@ -1042,9 +1048,7 @@ PY_getPtrToDynamicConstArray(
 // splicer begin function.get_ptr_to_dynamic_const_array
     const int *count;
     PyObject *SHPy_count = NULL;
-
-    // pre_call
-    int ncount;  // intent(out)
+    int ncount;
 
     getPtrToDynamicConstArray(&count, &ncount);
 
@@ -1128,8 +1132,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Requested: py_unknown_result
-// Match:     py_default
+// Exact:     py_unknown_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1166,8 +1169,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Requested: py_unknown_result
-// Match:     py_default
+// Exact:     py_unknown_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
