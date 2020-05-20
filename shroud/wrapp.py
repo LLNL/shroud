@@ -1052,10 +1052,7 @@ return 1;""",
         fmt.PY_error_return - 'NULL' for all wrappers except constructors
                               which are called via tp_init and require -1.
 
-        c_local_var is the "scalar" or "pointer" for the c variable,
-        which always exist.  It is the result of PyArg_Parse.
-        c_local_var has been converted into a cxx variable when
-        cxx_local_var is defined.
+        A cxx local variable exists when cxx_local_var is defined.
         """
 
         # need_rv - need Return Value declaration.
@@ -1293,7 +1290,6 @@ return 1;""",
 
             self.set_fmt_hnamefunc(intent_blk, fmt_arg)
             
-            # local_var - 'funcptr', 'pointer', or 'scalar'
             if intent_blk.fmtdict is not None:
                 for key, value in intent_blk.fmtdict.items():
                     setattr(fmt_arg, key, wformat(value, fmt_arg))
@@ -1309,24 +1305,11 @@ return 1;""",
                 junk = arg.gen_arg_as_c(remove_const=True, continuation=True)
                 declare_code.append(junk + ";")
             
-            if arg.is_function_pointer():
-                # not sure how function pointers work with Python.
-                c_local_var = "funcptr"
-            else:
-                # non-strings should be scalars.
-                # This allows PyArg to fill in their values.
-#                fmt_arg.c_deref = ""
-#                fmt_arg.ctor_expr = fmt_arg.c_var
-                #                fmt_arg.cxx_addr = '&'
-                #                fmt_arg.cxx_member = '.'
-                c_local_var = "scalar"
-
             cxx_local_var = intent_blk.cxx_local_var
             if cxx_local_var:
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
                     fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-#                c_local_var = cxx_local_var
                 pass_var = fmt_arg.cxx_var
                 # cxx_member used with typemap fields like PY_ctor.
                 if cxx_local_var == "scalar":
