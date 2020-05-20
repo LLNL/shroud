@@ -1295,6 +1295,10 @@ return 1;""",
             
             cxx_local_var = intent_blk.cxx_local_var
             if cxx_local_var:
+                # cxx_local_var is used when explicitly converting
+                # to a C++ var in post_declare code.
+                # For example, char * to std::string or
+                # extracting a class/struct pointer out of a PyObject.
                 # With PY_PyTypeObject, there is no c_var, only cxx_var
                 if not arg_typemap.PY_PyTypeObject:
                     fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
@@ -1304,6 +1308,19 @@ return 1;""",
                     fmt_arg.cxx_member = "."
                 elif cxx_local_var == "pointer":
                     fmt_arg.cxx_member = "->"
+            elif intent != "out" and arg_typemap.c_to_cxx:
+                # Make intermediate C++ variable
+                # Needed to pass address of variable.
+                # Convert type like with enums or MPI_Comm.
+                # Helpful with debugging.
+                fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
+                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
+                    name=fmt_arg.cxx_var, params=None, continuation=True
+                )
+                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                append_format(post_declare_code,
+                              "{cxx_decl} =\t {cxx_val};", fmt_arg)
+                pass_var = fmt_arg.cxx_var
 
             if intent_blk.fmtdict is not None:
                 for key, value in intent_blk.fmtdict.items():
@@ -1397,19 +1414,6 @@ return 1;""",
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
             self.add_statements_headers(intent_blk)
-
-            if intent != "out" and not cxx_local_var and arg_typemap.c_to_cxx:
-                # Make intermediate C++ variable
-                # Needed to pass address of variable.
-                # Convert type like with enums or MPI_Comm.
-                # Helpful with debugging.
-                fmt_arg.cxx_var = "SH_" + fmt_arg.c_var
-                fmt_arg.cxx_decl = arg.gen_arg_as_cxx(
-                    name=fmt_arg.cxx_var, params=None, continuation=True
-                )
-                fmt_arg.cxx_val = wformat(arg_typemap.c_to_cxx, fmt_arg)
-                append_format(post_declare_code, "{cxx_decl} =\t {cxx_val};", fmt_arg)
-                pass_var = fmt_arg.cxx_var
 
             # Pass correct value to wrapped function.
             if intent_blk.arg_call:
@@ -4218,7 +4222,6 @@ py_statements = [
         need_numpy=True,
         parse_format="O",
         parse_args=["&{pytmp_var}"],
-        cxx_local_var="pointer",
         arg_declare=[ # Must be a pointer.
             "{cxx_type} *{cxx_var};",
         ],
@@ -4252,7 +4255,6 @@ py_statements = [
         # XXX - expand to array of struct
         need_numpy=True,
 #        allocate_local_var=True,  # needed to release memory
-        cxx_local_var="pointer",
         arg_declare=[
             "{cxx_type} *{cxx_var};", 
         ],
@@ -4477,13 +4479,13 @@ py_statements = [
         # Pass to C++ function.
         # cxx_var is released by the compiler.
         c_helper="create_from_PyObject_vector_{cxx_T}",
-        cxx_local_var="scalar",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[],
         declare=[
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
         ],
+        cxx_local_var="scalar",
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
         ],
@@ -4500,11 +4502,11 @@ py_statements = [
         # Create a Python list with the std::vector.
         # cxx_var is released by the compiler.
         c_helper="to_PyList_vector_{cxx_T}",
-        cxx_local_var="scalar",
         arg_declare=[],
         declare=[
             "PyObject * {py_var} = {nullptr};",
         ],
+        cxx_local_var="scalar",
         post_declare=[
             "std::vector<{cxx_T}> {cxx_var};",
         ],

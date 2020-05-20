@@ -321,6 +321,12 @@ parse_args
 A list of wrapper variables that are passed to ``PyArg_ParseTupleAndKeywords``.
 Used with *parse_format*.
 
+cxx_local_var
+^^^^^^^^^^^^^
+
+Set to *scalar* or *pointer* depending on the declaration in *post_declare*
+*post_parse* or *pre_call*.
+
 post_declare
 ^^^^^^^^^^^^
 
@@ -338,11 +344,6 @@ bypasses declarations with initialization. A program that jumps from a
 point where a local variable with automatic storage duration is not in
 scope to a point where it is in scope is ill-formed unless the
 variable has POD type (3.9) and is declared without an initializer."
-
-cxx_local_var
-^^^^^^^^^^^^^
-
-Set to *scalar* or *pointer* depending on the declaration in *post_declare*.
 
 post_parse
 ^^^^^^^^^^
