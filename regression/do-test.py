@@ -379,7 +379,7 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
 
-        TestDesc("references"),
+        TestDesc("arrayclass"),
 
         # struct
         TestDesc("struct-c", yaml="struct",
