@@ -266,7 +266,7 @@
             "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TSTRING",
             "PYN_typenum": "NPY_INTP",
-            "PY_ctor": "PyString_FromString({c_var})",
+            "PY_ctor": "PyString_FromString({ctor_expr})",
             "PY_format": "s",
             "base": "string",
             "c_type": "char",

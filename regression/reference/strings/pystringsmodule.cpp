@@ -220,8 +220,7 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr1 +deref(allocatable)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr1__doc__[] =
 "documentation"
 ;
@@ -250,8 +249,7 @@ PY_getCharPtr1(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr2__doc__[] =
 "documentation"
 ;
@@ -280,8 +278,7 @@ PY_getCharPtr2(
 
 // ----------------------------------------
 // Function:  const char * getCharPtr3 +deref(result-as-arg)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 static char PY_getCharPtr3__doc__[] =
 "documentation"
 ;

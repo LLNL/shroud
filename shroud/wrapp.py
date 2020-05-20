@@ -1138,6 +1138,9 @@ return 1;""",
             self.document_stmts(
                 stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
+        if result_blk.fmtdict is not None:
+            for key, value in result_blk.fmtdict.items():
+                setattr(fmt_result, key, wformat(value, fmt_result))
 
         PY_code = []
 
@@ -4013,6 +4016,12 @@ py_statements = [
 ########################################
 # char *
     dict(
+        name="py_char_result",
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
+    ),
+    dict(
         name="py_char_*_in",
         arg_call=["{c_var}"],
     ),
@@ -4022,10 +4031,16 @@ py_statements = [
             "{c_const}char {c_var}[{charlen}];  // intent(out)",
         ],
         arg_call=["{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
     ),
     dict(
         name="py_char_*_inout",
         arg_call=["{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
     ),
 
     dict(

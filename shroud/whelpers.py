@@ -234,7 +234,7 @@ array->rank = 0;  // scalar
     fmt.c_type = "char *"
     fmt.Py_get = "PyString_AsString(item)"
 #    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-    fmt.Py_ctor = ntypemap.PY_ctor.format(c_deref="", c_var="in[i]")
+    fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
     fmt.hname = "create_from_PyObject_char"
     CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
     fmt.c_const=""  # XXX issues with struct.yaml test, remove const.

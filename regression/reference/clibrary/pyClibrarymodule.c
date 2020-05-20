@@ -244,8 +244,7 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +deref(result-as-arg)+len(30)
-// Requested: py_char_result
-// Match:     py_default
+// Exact:     py_char_result
 // ----------------------------------------
 // Argument:  const char * arg1 +intent(in)
 // Exact:     py_char_*_in

@@ -328,7 +328,7 @@
                             "c_type": "char",
                             "c_var": "dest",
                             "charlen": "40",
-                            "ctor_expr": "*dest",
+                            "ctor_expr": "dest",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "dest",
@@ -626,7 +626,7 @@
                             "c_deref": "*",
                             "c_type": "char",
                             "c_var": "s",
-                            "ctor_expr": "*s",
+                            "ctor_expr": "s",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "s",
@@ -825,7 +825,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -836,7 +836,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
@@ -1025,7 +1025,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1036,7 +1036,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
@@ -1216,7 +1216,7 @@
                         "array_size": "1",
                         "c_deref": "*",
                         "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_rv)",
@@ -1227,7 +1227,7 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_char_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_char_result"
                     }
                 },
                 "ast": {
