@@ -81,6 +81,21 @@ class Pointers(unittest.TestCase):
         self.assertEqual('int32', arg2.dtype.name)
         self.assertTrue(np.equal(arg2, [11,12,13]).all())
 
+    def test_iota_allocatable(self):
+        # out - created list.
+        out = pointers.iota_allocatable(3)
+        self.assertIsInstance(out, np.ndarray)
+        self.assertEqual('int32', out.dtype.name)
+        self.assertEqual(3, len(out))
+        self.assertTrue(np.equal(out, [1,2,3]).all())
+
+    def XXXtest_iota_dimension(self):
+        # out - created list.
+        out = pointers.iota_dimension(3)
+        self.assertIsInstance(out, list)
+        self.assertEqual(3, len(out))
+        self.assertEqual([1,2,3], out)
+
     def test_Sum(self):
         self.assertEqual(15, pointers.Sum([1, 2, 3, 4, 5]))
 
