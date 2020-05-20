@@ -69,6 +69,102 @@ PyObject *PY_error_obj;
 // splicer end additional_functions
 
 // ----------------------------------------
+// Function:  void intargs_in
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const int * arg +intent(in)
+// Exact:     py_native_*_in
+static char PY_intargs_in__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_in(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.intargs_in
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:intargs_in",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return nullptr;
+
+    intargs_in(&arg);
+    Py_RETURN_NONE;
+// splicer end function.intargs_in
+}
+
+// ----------------------------------------
+// Function:  void intargs_inout
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(inout)
+// Exact:     py_native_*_inout
+static char PY_intargs_inout__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_inout(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.intargs_inout
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHPy_arg = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:intargs_inout",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return nullptr;
+
+    intargs_inout(&arg);
+
+    // post_call
+    SHPy_arg = PyInt_FromLong(arg);
+
+    return (PyObject *) SHPy_arg;
+// splicer end function.intargs_inout
+}
+
+// ----------------------------------------
+// Function:  void intargs_out
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(out)
+// Exact:     py_native_*_out
+static char PY_intargs_out__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_out(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.intargs_out
+    int arg;
+    PyObject * SHPy_arg = nullptr;
+
+    intargs_out(&arg);
+
+    // post_call
+    SHPy_arg = PyInt_FromLong(arg);
+
+    return (PyObject *) SHPy_arg;
+// splicer end function.intargs_out
+}
+
+// ----------------------------------------
 // Function:  void intargs
 // Exact:     py_default
 // ----------------------------------------
@@ -1338,6 +1434,12 @@ PY_returnIntScalar(
 // splicer end function.return_int_scalar
 }
 static PyMethodDef PY_methods[] = {
+{"intargs_in", (PyCFunction)PY_intargs_in, METH_VARARGS|METH_KEYWORDS,
+    PY_intargs_in__doc__},
+{"intargs_inout", (PyCFunction)PY_intargs_inout,
+    METH_VARARGS|METH_KEYWORDS, PY_intargs_inout__doc__},
+{"intargs_out", (PyCFunction)PY_intargs_out, METH_NOARGS,
+    PY_intargs_out__doc__},
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
 {"cos_doubles", (PyCFunction)PY_cos_doubles, METH_VARARGS|METH_KEYWORDS,

@@ -1,4 +1,7 @@
 Read yaml pointers.yaml
+C function void intargs_in(const int * arg +intent(in))
+C function void intargs_inout(int * arg +intent(inout))
+C function void intargs_out(int * arg +intent(out))
 C function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 C function void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C function void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
@@ -44,6 +47,9 @@ C function int * returnIntScalar() +deref(scalar)
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
+C-interface, Fortran function void intargs_in(const int * arg +intent(in))
+C-interface, Fortran function void intargs_inout(int * arg +intent(inout))
+C-interface, Fortran function void intargs_out(int * arg +intent(out))
 C-interface, Fortran function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 C-interface, Fortran function void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 C-interface, Fortran function void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)

@@ -9,6 +9,9 @@
 #ifndef POINTERS_HPP
 #define POINTERS_HPP
 
+void  intargs_in(const int *arg);
+void  intargs_inout(int *arg);
+void  intargs_out(int *arg);
 void intargs(const int argin, int * argout, int * arginout);
 
 void cos_doubles(double * in, double * out, int sizein);

@@ -36,6 +36,14 @@ class Pointers(unittest.TestCase):
         print("FooTest:tearDown_:end")
      
     def test_intargs(self):
+        pointers.intargs_in(5)            # set global_int.
+        iargout = pointers.intargs_out()  # get global_int
+        self.assertEqual(5, iargout)
+    
+        iarginout = pointers.intargs_inout(6)  # set global_int
+        self.assertEqual(6, pointers.intargs_out())
+        self.assertEqual(7, iarginout)
+        
         self.assertEqual((1, 2), pointers.intargs(1, 2))
 
     def test_cos_doubles(self):

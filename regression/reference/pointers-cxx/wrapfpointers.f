@@ -47,6 +47,63 @@ module pointers_mod
     ! end array_context
 
     ! ----------------------------------------
+    ! Function:  void intargs_in
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * arg +intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! start intargs_in
+    interface
+        subroutine intargs_in(arg) &
+                bind(C, name="POI_intargs_in")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg
+        end subroutine intargs_in
+    end interface
+    ! end intargs_in
+
+    ! ----------------------------------------
+    ! Function:  void intargs_inout
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * arg +intent(inout)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! start intargs_inout
+    interface
+        subroutine intargs_inout(arg) &
+                bind(C, name="POI_intargs_inout")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(INOUT) :: arg
+        end subroutine intargs_inout
+    end interface
+    ! end intargs_inout
+
+    ! ----------------------------------------
+    ! Function:  void intargs_out
+    ! Requested: c_unknown_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * arg +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! start intargs_out
+    interface
+        subroutine intargs_out(arg) &
+                bind(C, name="POI_intargs_out")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(OUT) :: arg
+        end subroutine intargs_out
+    end interface
+    ! end intargs_out
+
+    ! ----------------------------------------
     ! Function:  void intargs
     ! Requested: c_unknown_scalar_result
     ! Match:     c_default

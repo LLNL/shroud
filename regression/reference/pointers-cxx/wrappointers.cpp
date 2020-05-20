@@ -66,6 +66,57 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // splicer end C_definitions
 
 // ----------------------------------------
+// Function:  void intargs_in
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * arg +intent(in)
+// Requested: c_native_*_in
+// Match:     c_default
+// start POI_intargs_in
+void POI_intargs_in(const int * arg)
+{
+    // splicer begin function.intargs_in
+    intargs_in(arg);
+    // splicer end function.intargs_in
+}
+// end POI_intargs_in
+
+// ----------------------------------------
+// Function:  void intargs_inout
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * arg +intent(inout)
+// Requested: c_native_*_inout
+// Match:     c_default
+// start POI_intargs_inout
+void POI_intargs_inout(int * arg)
+{
+    // splicer begin function.intargs_inout
+    intargs_inout(arg);
+    // splicer end function.intargs_inout
+}
+// end POI_intargs_inout
+
+// ----------------------------------------
+// Function:  void intargs_out
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * arg +intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+// start POI_intargs_out
+void POI_intargs_out(int * arg)
+{
+    // splicer begin function.intargs_out
+    intargs_out(arg);
+    // splicer end function.intargs_out
+}
+// end POI_intargs_out
+
+// ----------------------------------------
 // Function:  void intargs
 // Requested: c
 // Match:     c_default

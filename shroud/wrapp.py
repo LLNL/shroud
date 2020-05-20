@@ -3725,6 +3725,9 @@ py_statements = [
         name="py_native_*_inout",
         arg_declare=["{c_type} {c_var};"],
         arg_call=["&{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
     ),
     dict(
         name="py_native_*_out",
