@@ -43,6 +43,7 @@ test-fortran : \
   test-fortran-preprocess \
   test-fortran-strings \
   test-fortran-clibrary \
+  test-fortran-cxxlibrary \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
@@ -137,6 +138,7 @@ test-python : \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
+  test-python-cxxlibrary \
   test-python-ownership \
   test-python-templates
 
@@ -193,6 +195,8 @@ phony_explicit:
     $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/cxxlibrary/.. \
+    $(tempdir)/run/cxxlibrary/python/.. \
     $(tempdir)/run/enum-c/.. \
     $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \

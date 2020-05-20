@@ -4318,6 +4318,11 @@ py_statements = [
     ),
 
     dict(
+        name="py_struct_&_in_numpy",
+        base="py_struct_*_in_numpy",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
         name="py_struct_scalar_in_numpy",
         base="py_struct_*_in_numpy",
         arg_call=["*{cxx_var}"],

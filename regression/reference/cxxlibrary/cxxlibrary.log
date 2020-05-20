@@ -1,0 +1,14 @@
+Read yaml cxxlibrary.yaml
+Close cxxlibrary_types.yaml
+struct Cstruct1
+C function int passStructByReference(Cstruct1 & arg +intent(in))
+Close wrapcxxlibrary.h
+Close wrapcxxlibrary.cpp
+Close typescxxlibrary.h
+class Cstruct1
+C-interface, Fortran function int passStructByReference(Cstruct1 & arg +intent(in))
+Close wrapfcxxlibrary.f
+Python function int passStructByReference(Cstruct1 & arg +intent(in))
+Close pycxxlibrarymodule.cpp
+Close pycxxlibrarymodule.hpp
+Close setup.py
