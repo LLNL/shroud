@@ -69,3 +69,14 @@ void passStructByReferenceOutCls(Cstruct1_cls &arg)
 {
     arg = global_Cstruct1_cls;
 }
+
+//----------------------------------------------------------------------
+// pointers
+// default value
+
+bool defaultPtrIsNULL(double *data)
+{
+    if (data == nullptr)
+        return true;
+    return false;
+}

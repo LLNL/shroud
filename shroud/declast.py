@@ -572,6 +572,9 @@ class Parser(ExprParser):
             self.mustbe("RBRACKET")
         self.attribute(node.attrs)  # variable attributes
 
+        # Attribute are parsed before default value since
+        # default value may have a +.
+        # (int value = 1+size)
         if self.have("EQUALS"):
             node.init = self.initializer()
         self.exit("declaration", str(node))

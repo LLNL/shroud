@@ -34,5 +34,11 @@ int passStructByReferenceInCls(const Cstruct1_cls &arg);
 void passStructByReferenceInoutCls(Cstruct1_cls &arg);
 void passStructByReferenceOutCls(Cstruct1_cls &arg);
 
+//----------------------------------------------------------------------
+// pointers
+// default value
+
+bool defaultPtrIsNULL(double *data = nullptr);
+
 #endif // CXXLIBRARY_H
 
