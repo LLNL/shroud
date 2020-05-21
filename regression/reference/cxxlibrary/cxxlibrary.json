@@ -466,6 +466,383 @@
             {
                 "_fmtargs": {
                     "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(SHCXX_arg)",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_struct_&_in",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct1)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_struct_&_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_&_in",
+                            "stmtc1": "c_struct"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_const": "const ",
+                            "c_deref": "",
+                            "c_type": "CXX_cstruct1",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(&arg)",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_struct_&_in_numpy",
+                            "stmt1": "py_struct_&_in_numpy"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    },
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_scalar_result",
+                        "stmt1": "py_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStructByReferenceIn",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int passStructByReferenceIn(const Cstruct1 &arg)",
+                "declgen": "int passStructByReferenceIn(const Cstruct1 & arg +intent(in))",
+                "doxygen": {
+                    "description": "const defaults to intent(in)\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "CXX_pass_struct_by_reference_in",
+                    "C_prototype": "const CXX_cstruct1 * arg",
+                    "C_return_type": "int",
+                    "F_C_call": "c_pass_struct_by_reference_in",
+                    "F_C_name": "pass_struct_by_reference_in",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "pass_struct_by_reference_in",
+                    "F_name_generic": "pass_struct_by_reference_in",
+                    "F_name_impl": "pass_struct_by_reference_in",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_passStructByReferenceIn",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passStructByReferenceIn",
+                    "underscore_name": "pass_struct_by_reference_in"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_struct_&_inout",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "INOUT",
+                            "f_type": "type(cstruct1)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_struct_&_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_&_inout",
+                            "stmtc1": "c_struct"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "CXX_cstruct1",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "pytmp_var": "SHTPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_struct_&_inout_numpy",
+                            "stmt1": "py_struct_&_inout_numpy"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStructByReferenceInout",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passStructByReferenceInout(Cstruct1 &arg +intent(inout))",
+                "declgen": "void passStructByReferenceInout(Cstruct1 & arg +intent(inout))",
+                "fmtdict": {
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "CXX_pass_struct_by_reference_inout",
+                    "C_prototype": "CXX_cstruct1 * arg",
+                    "C_return_type": "void",
+                    "F_C_call": "c_pass_struct_by_reference_inout",
+                    "F_C_name": "pass_struct_by_reference_inout",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "pass_struct_by_reference_inout",
+                    "F_name_generic": "pass_struct_by_reference_inout",
+                    "F_name_impl": "pass_struct_by_reference_inout",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_passStructByReferenceInout",
+                    "function_name": "passStructByReferenceInout",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "pass_struct_by_reference_inout"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "c_struct_&_out",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "OUT",
+                            "f_type": "type(cstruct1)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_struct_&_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_&_out",
+                            "stmtc1": "c_struct"
+                        },
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "CXX_cstruct1",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_struct_&_out_numpy",
+                            "stmt1": "py_struct_&_out_numpy"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStructByReferenceOut",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passStructByReferenceOut(Cstruct1 &arg +intent(out))",
+                "declgen": "void passStructByReferenceOut(Cstruct1 & arg +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "CXX_pass_struct_by_reference_out",
+                    "C_prototype": "CXX_cstruct1 * arg",
+                    "C_return_type": "void",
+                    "F_C_call": "c_pass_struct_by_reference_out",
+                    "F_C_name": "pass_struct_by_reference_out",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "pass_struct_by_reference_out",
+                    "F_name_generic": "pass_struct_by_reference_out",
+                    "F_name_impl": "pass_struct_by_reference_out",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_passStructByReferenceOut",
+                    "function_name": "passStructByReferenceOut",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "pass_struct_by_reference_out"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
                         "fmtpy": {
                             "PYN_descr": "PY_Cstruct1_cls_array_descr",
                             "PY_to_object_idtor_func": "PP_Cstruct1_cls_to_Object_idtor",

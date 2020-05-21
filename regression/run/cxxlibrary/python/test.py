@@ -30,8 +30,22 @@ class Struct(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_passStructByValue(self):
+        # test with NumPy
         i = cxxlibrary.passStructByReference((2, 2.0))
         self.assertEqual(4, i)
+
+        # Create struct via numpy
+        dt = cxxlibrary.Cstruct1_dtype
+        str1 = np.array((3, 2.0), dtype=dt)
+        
+        rvi = cxxlibrary.passStructByReferenceIn(str1) # assign global_Cstruct1
+        self.assertEqual(6, rvi)
+        str2 = cxxlibrary.passStructByReferenceOut()   # fetch global_Cstruct1
+        self.assertEqual(str1, str2)
+
+        # Change str1 in place.
+        str3 = cxxlibrary.passStructByReferenceInout(str1)
+        self.assertEqual(4, str1["ifield"])
 
 
 # creating a new test suite

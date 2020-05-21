@@ -2,16 +2,25 @@ Read yaml cxxlibrary.yaml
 Close cxxlibrary_types.yaml
 struct Cstruct1
 C function int passStructByReference(Cstruct1 & arg +intent(in))
+C function int passStructByReferenceIn(const Cstruct1 & arg +intent(in))
+C function void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
+C function void passStructByReferenceOut(Cstruct1 & arg +intent(out))
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
 Close typescxxlibrary.h
 class Cstruct1
 C-interface, Fortran function int passStructByReference(Cstruct1 & arg +intent(in))
+C-interface, Fortran function int passStructByReferenceIn(const Cstruct1 & arg +intent(in))
+C-interface, Fortran function void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
+C-interface, Fortran function void passStructByReferenceOut(Cstruct1 & arg +intent(out))
 Close wrapfcxxlibrary.f
 class Cstruct1_cls
 Python method Cstruct1_cls(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_cls_ctor)
 Close pyCstruct1_clstype.cpp
 Python function int passStructByReference(Cstruct1 & arg +intent(in))
+Python function int passStructByReferenceIn(const Cstruct1 & arg +intent(in))
+Python function void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
+Python function void passStructByReferenceOut(Cstruct1 & arg +intent(out))
 Python function int passStructByReferenceCls(Cstruct1_cls & arg +intent(in))
 Close pycxxlibrarymodule.cpp
 Close pycxxlibraryutil.cpp

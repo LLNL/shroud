@@ -29,7 +29,7 @@ program tester
 contains
 
   subroutine test_struct
-    type(cstruct1) str1
+    type(cstruct1) str1, str2
     integer(C_INT) rvi
 
     call set_case_name("test_struct")
@@ -40,10 +40,20 @@ contains
     
     str1%dfield = 2.0_C_DOUBLE
     rvi = pass_struct_by_reference(str1)
-    call assert_equals(4, rvi, "pass_struct_by_reference")
+    call assert_equals(4, rvi, "passStructByReference")
     ! Make sure str1 was passed by value.
 !    call assert_equals(2_C_INT, str1%ifield, "pass_struct_by_value ifield")
 !    call assert_equals(2.0_C_DOUBLE, str1%dfield, "pass_struct_by_value dfield")
+
+    rvi = pass_struct_by_reference_in(str1) ! assign global_Cstruct1
+    call assert_equals(6, rvi, "passStructByReferenceIn")
+    call pass_struct_by_reference_out(str2) ! fetch global_Cstruct1
+    call assert_equals(str1%ifield, str2%ifield, "passStructByReferenceOut")
+    call assert_equals(str1%dfield, str2%dfield, "passStructByReferenceOut")
+
+    ! Change str1 in place.
+    call pass_struct_by_reference_inout(str1)
+    call assert_equals(4, str1%ifield, "passStructByReferenceInOut")
 
   end subroutine test_struct
 

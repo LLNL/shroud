@@ -37,6 +37,61 @@ int CXX_pass_struct_by_reference(CXX_cstruct1 * arg)
     // splicer end function.pass_struct_by_reference
 }
 
+/**
+ * const defaults to intent(in)
+ */
+// ----------------------------------------
+// Function:  int passStructByReferenceIn
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const Cstruct1 & arg +intent(in)
+// Requested: c_struct_&_in
+// Match:     c_struct
+int CXX_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
+{
+    // splicer begin function.pass_struct_by_reference_in
+    const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>
+        (static_cast<const void *>(arg));
+    int SHC_rv = passStructByReferenceIn(*SHCXX_arg);
+    return SHC_rv;
+    // splicer end function.pass_struct_by_reference_in
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceInout
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  Cstruct1 & arg +intent(inout)
+// Requested: c_struct_&_inout
+// Match:     c_struct
+void CXX_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
+{
+    // splicer begin function.pass_struct_by_reference_inout
+    Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
+        arg));
+    passStructByReferenceInout(*SHCXX_arg);
+    // splicer end function.pass_struct_by_reference_inout
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceOut
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  Cstruct1 & arg +intent(out)
+// Requested: c_struct_&_out
+// Match:     c_struct
+void CXX_pass_struct_by_reference_out(CXX_cstruct1 * arg)
+{
+    // splicer begin function.pass_struct_by_reference_out
+    Cstruct1 * SHCXX_arg = static_cast<Cstruct1 *>(static_cast<void *>(
+        arg));
+    passStructByReferenceOut(*SHCXX_arg);
+    // splicer end function.pass_struct_by_reference_out
+}
+
 // Release library allocated memory.
 void CXX_SHROUD_memory_destructor(CXX_SHROUD_capsule_data *cap)
 {

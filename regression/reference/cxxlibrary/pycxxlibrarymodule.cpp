@@ -98,6 +98,168 @@ fail:
 }
 
 // ----------------------------------------
+// Function:  int passStructByReferenceIn
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const Cstruct1 & arg +intent(in)
+// Exact:     py_struct_&_in_numpy
+static char PY_passStructByReferenceIn__doc__[] =
+"documentation"
+;
+
+/**
+ * const defaults to intent(in)
+ */
+static PyObject *
+PY_passStructByReferenceIn(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_struct_by_reference_in
+    Cstruct1 *arg;
+    PyObject * SHTPy_arg = nullptr;
+    PyArrayObject * SHPy_arg = nullptr;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O:passStructByReferenceIn", const_cast<char **>(SHT_kwlist), 
+        &SHTPy_arg))
+        return nullptr;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FromAny(
+        SHTPy_arg, PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY,
+        nullptr));
+    if (SHPy_arg == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of CXX_cstruct1");
+        goto fail;
+    }
+    {
+        // pre_call
+        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+        int SHCXX_rv = passStructByReferenceIn(*arg);
+
+        // post_call
+        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+        // cleanup
+        Py_DECREF(SHPy_arg);
+
+        return (PyObject *) SHTPy_rv;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return nullptr;
+// splicer end function.pass_struct_by_reference_in
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceInout
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 & arg +intent(inout)
+// Exact:     py_struct_&_inout_numpy
+static char PY_passStructByReferenceInout__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByReferenceInout(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_struct_by_reference_inout
+    Cstruct1 *arg;
+    PyObject * SHTPy_arg = nullptr;
+    PyArrayObject * SHPy_arg = nullptr;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O:passStructByReferenceInout",
+        const_cast<char **>(SHT_kwlist), &SHTPy_arg))
+        return nullptr;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FromAny(
+        SHTPy_arg, PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY,
+        nullptr));
+    if (SHPy_arg == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of CXX_cstruct1");
+        goto fail;
+    }
+    {
+        // pre_call
+        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+        passStructByReferenceInout(*arg);
+        return (PyObject *) SHPy_arg;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return nullptr;
+// splicer end function.pass_struct_by_reference_inout
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceOut
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 & arg +intent(out)
+// Exact:     py_struct_&_out_numpy
+static char PY_passStructByReferenceOut__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByReferenceOut(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.pass_struct_by_reference_out
+    Cstruct1 *arg;
+    PyArrayObject * SHPy_arg = nullptr;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_NewFromDescr(
+        &PyArray_Type, PY_Cstruct1_array_descr, 0, nullptr, nullptr,
+        nullptr, 0, nullptr));
+    if (SHPy_arg == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of CXX_cstruct1");
+        goto fail;
+    }
+    {
+        // pre_call
+        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+        passStructByReferenceOut(*arg);
+        return (PyObject *) SHPy_arg;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return nullptr;
+// splicer end function.pass_struct_by_reference_out
+}
+
+// ----------------------------------------
 // Function:  int passStructByReferenceCls
 // Requested: py_native_scalar_result
 // Match:     py_default
@@ -140,6 +302,13 @@ PY_passStructByReferenceCls(
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReference__doc__},
+{"passStructByReferenceIn", (PyCFunction)PY_passStructByReferenceIn,
+    METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceIn__doc__},
+{"passStructByReferenceInout",
+    (PyCFunction)PY_passStructByReferenceInout,
+    METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceInout__doc__},
+{"passStructByReferenceOut", (PyCFunction)PY_passStructByReferenceOut,
+    METH_NOARGS, PY_passStructByReferenceOut__doc__},
 {"passStructByReferenceCls", (PyCFunction)PY_passStructByReferenceCls,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceCls__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */

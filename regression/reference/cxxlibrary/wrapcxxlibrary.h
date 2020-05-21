@@ -36,6 +36,12 @@ typedef struct s_CXX_cstruct1 CXX_cstruct1;
 
 int CXX_pass_struct_by_reference(CXX_cstruct1 * arg);
 
+int CXX_pass_struct_by_reference_in(const CXX_cstruct1 * arg);
+
+void CXX_pass_struct_by_reference_inout(CXX_cstruct1 * arg);
+
+void CXX_pass_struct_by_reference_out(CXX_cstruct1 * arg);
+
 #ifdef __cplusplus
 }
 #endif
