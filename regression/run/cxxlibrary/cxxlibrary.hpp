@@ -30,6 +30,9 @@ struct Cstruct1_cls {
 };
 
 int passStructByReferenceCls(Cstruct1_cls &arg);
+int passStructByReferenceInCls(const Cstruct1_cls &arg);
+void passStructByReferenceInoutCls(Cstruct1_cls &arg);
+void passStructByReferenceOutCls(Cstruct1_cls &arg);
 
 #endif // CXXLIBRARY_H
 

@@ -299,6 +299,126 @@ PY_passStructByReferenceCls(
     return (PyObject *) SHTPy_rv;
 // splicer end function.pass_struct_by_reference_cls
 }
+
+// ----------------------------------------
+// Function:  int passStructByReferenceInCls
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const Cstruct1_cls & arg +intent(in)
+// Exact:     py_struct_&_in_class
+static char PY_passStructByReferenceInCls__doc__[] =
+"documentation"
+;
+
+/**
+ * const defaults to intent(in)
+ */
+static PyObject *
+PY_passStructByReferenceInCls(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_struct_by_reference_in_cls
+    PY_Cstruct1_cls * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!:passStructByReferenceInCls",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_cls_Type,
+        &SHPy_arg))
+        return nullptr;
+
+    // post_declare
+    const Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+
+    int SHCXX_rv = passStructByReferenceInCls(*arg);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.pass_struct_by_reference_in_cls
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceInoutCls
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1_cls & arg +intent(inout)
+// Exact:     py_struct_&_inout_class
+static char PY_passStructByReferenceInoutCls__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByReferenceInoutCls(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_struct_by_reference_inout_cls
+    PY_Cstruct1_cls * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!:passStructByReferenceInoutCls",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_cls_Type,
+        &SHPy_arg))
+        return nullptr;
+
+    // post_declare
+    Cstruct1_cls * arg = SHPy_arg ? SHPy_arg->obj : nullptr;
+
+    passStructByReferenceInoutCls(*arg);
+    return (PyObject *) SHPy_arg;
+// splicer end function.pass_struct_by_reference_inout_cls
+}
+
+// ----------------------------------------
+// Function:  void passStructByReferenceOutCls
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1_cls & arg +intent(out)
+// Exact:     py_struct_&_out_class
+static char PY_passStructByReferenceOutCls__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_passStructByReferenceOutCls(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.pass_struct_by_reference_out_cls
+    Cstruct1_cls *arg = nullptr;
+    PyObject *SHPy_arg = nullptr;
+
+    {
+        // pre_call
+        arg = new Cstruct1_cls;
+
+        passStructByReferenceOutCls(*arg);
+
+        // post_call
+        SHPy_arg = PP_Cstruct1_cls_to_Object_idtor(arg, 0);
+        if (SHPy_arg == nullptr) goto fail;
+
+        return (PyObject *) SHPy_arg;
+    }
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return nullptr;
+// splicer end function.pass_struct_by_reference_out_cls
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReference__doc__},
@@ -311,6 +431,16 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_passStructByReferenceOut__doc__},
 {"passStructByReferenceCls", (PyCFunction)PY_passStructByReferenceCls,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceCls__doc__},
+{"passStructByReferenceInCls",
+    (PyCFunction)PY_passStructByReferenceInCls,
+    METH_VARARGS|METH_KEYWORDS, PY_passStructByReferenceInCls__doc__},
+{"passStructByReferenceInoutCls",
+    (PyCFunction)PY_passStructByReferenceInoutCls,
+    METH_VARARGS|METH_KEYWORDS,
+    PY_passStructByReferenceInoutCls__doc__},
+{"passStructByReferenceOutCls",
+    (PyCFunction)PY_passStructByReferenceOutCls, METH_NOARGS,
+    PY_passStructByReferenceOutCls__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

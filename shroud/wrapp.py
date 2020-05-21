@@ -4427,6 +4427,21 @@ py_statements = [
         base="py_struct_*_in_class",
         arg_call=["*{cxx_var}"],
     ),
+    dict(
+        name="py_struct_&_inout_class",
+        base="py_struct_*_inout_class",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        # XXX - this memory will leak
+        name="py_struct_&_out_class",
+        base="py_struct_*_out_class",
+        arg_call=["*{cxx_var}"],
+        post_call=[
+            "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+    ),
 
 ########################################
 # shadow a.k.a class

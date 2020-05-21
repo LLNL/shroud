@@ -12,6 +12,7 @@
 #include "cxxlibrary.hpp"
 
 static Cstruct1 global_Cstruct1;
+static Cstruct1_cls global_Cstruct1_cls;
 
 //----------------------------------------------------------------------
 // Test Fortran.
@@ -50,4 +51,21 @@ int passStructByReferenceCls(Cstruct1_cls &arg)
   int rv = arg.ifield * 2;
   arg.ifield += 1;
   return rv;
+}
+
+int passStructByReferenceInCls(const Cstruct1_cls &arg)
+{
+  int rv = arg.ifield * 2;
+  global_Cstruct1_cls = arg;
+  return rv;
+}
+
+void passStructByReferenceInoutCls(Cstruct1_cls &arg)
+{
+  arg.ifield += 1;
+}
+
+void passStructByReferenceOutCls(Cstruct1_cls &arg)
+{
+    arg = global_Cstruct1_cls;
 }
