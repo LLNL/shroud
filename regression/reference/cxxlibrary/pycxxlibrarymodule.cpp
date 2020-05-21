@@ -59,6 +59,7 @@ PY_passStructByReference(
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -80,7 +81,7 @@ PY_passStructByReference(
         // pre_call
         arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        int SHCXX_rv = passStructByReference(*arg);
+        SHCXX_rv = passStructByReference(*arg);
 
         // post_call
         SHTPy_rv = PyInt_FromLong(SHCXX_rv);
@@ -124,6 +125,7 @@ PY_passStructByReferenceIn(
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -145,7 +147,7 @@ PY_passStructByReferenceIn(
         // pre_call
         arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        int SHCXX_rv = passStructByReferenceIn(*arg);
+        SHCXX_rv = passStructByReferenceIn(*arg);
 
         // post_call
         SHTPy_rv = PyInt_FromLong(SHCXX_rv);

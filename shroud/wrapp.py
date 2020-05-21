@@ -1055,10 +1055,12 @@ return 1;""",
         A cxx local variable exists when cxx_local_var is defined.
         """
 
-        # need_rv - need Return Value declaration.
-        #           The simplest case is to assign to rv as part of calling function.
-        #           When default arguments are present, a switch statement is create
-        #           so set need_rv = True to declare variable once, then call several time
+        # need_rv_decl - need Return Value declaration.
+        #  The simplest case is to assign to rv as part of calling function.
+        #  When default arguments are present, a switch statement is create
+        #  so set need_rv_decl = True to declare variable once,
+        #  then call wrapped function several times.
+        #  If goto_fail, set to True to avoid "crosses initialization" error.
         options = node.options
         if not options.wrap_python:
             return
@@ -1495,16 +1497,23 @@ return 1;""",
 
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
+        need_rv_decl = False
         if CXX_subprogram == "function":
-            if found_default:
+            if is_ctor:
+                pass
+            elif found_default or goto_fail:
                 fmt.PY_rv_asgn = pre_call_deref + fmt_result.cxx_var + " =\t "
+                need_rv_decl = True
             elif allocate_result_blk:
                 fmt.PY_rv_asgn = "*" + fmt_result.cxx_var + " =\t "
             else:
                 fmt.PY_rv_asgn = fmt.C_rv_decl + " =\t "
+            if result_typemap.sgroup == "struct":
+                # Avoid unused variable.
+                # XXX - major kludge.  struct only access declaration via self->obj.
+                need_rv_decl = False
         if found_default:
             PY_code.append("switch (SH_nargs) {")
-        need_rv = False
 
         # build up code for a function
         for nargs, post_declare_len,  post_parse_len, pre_call_len, call_list in default_calls:
@@ -1572,7 +1581,6 @@ return 1;""",
                     fmt,
                 )
             else:
-                need_rv = True
                 append_format(
                     PY_code,
                     "{PY_rv_asgn}{PY_this_call}{function_name}"
@@ -1608,10 +1616,8 @@ return 1;""",
                 fmt)
 # XXX - need to add a extra scope to deal with goto in C++
 #            goto_fail = True;
-        else:
-            need_rv = False
 
-        if need_rv:
+        if need_rv_decl:
             declare_code.append(fmt.C_rv_decl + ";")
 
         # Compute return value
@@ -1974,7 +1980,7 @@ return 1;""",
     def add_stmt_capsule(self, ast, stmts, fmt):
         """Create code to allocate/release memory.
 
-        For example, std::vector intent(out) must allocate an vector
+        For example, std::vector intent(out) must allocate a vector
         instance and eventually release it via a capsule owned by the
         NumPy array.
 

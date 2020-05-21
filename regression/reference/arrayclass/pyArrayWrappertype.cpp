@@ -550,6 +550,7 @@ PY_checkPtr(
     const char *SHT_kwlist[] = {
         "array",
         nullptr };
+    bool SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:checkPtr",
@@ -561,7 +562,7 @@ PY_checkPtr(
     if (PyErr_Occurred())
         goto fail;
     {
-        bool SHCXX_rv = self->obj->checkPtr(array);
+        SHCXX_rv = self->obj->checkPtr(array);
 
         // post_call
         SHTPy_rv = PyBool_FromLong(SHCXX_rv);

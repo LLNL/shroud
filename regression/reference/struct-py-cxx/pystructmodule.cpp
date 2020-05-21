@@ -64,6 +64,7 @@ PY_acceptBothStructs(
         "s1",
         "s2",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -88,7 +89,7 @@ PY_acceptBothStructs(
         // pre_call
         s2 = static_cast<Cstruct_as_numpy *>(PyArray_DATA(SHPy_s2));
 
-        int SHCXX_rv = acceptBothStructs(s1, s2);
+        SHCXX_rv = acceptBothStructs(s1, s2);
 
         // post_call
         SHTPy_rv = PyInt_FromLong(SHCXX_rv);

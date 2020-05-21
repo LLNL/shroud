@@ -57,6 +57,7 @@ PY_vector_sum(
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
@@ -77,7 +78,7 @@ PY_vector_sum(
         std::vector<int> SH_arg(SHData_arg,
             SHData_arg+PyArray_SIZE(SHPy_arg));
 
-        int SHCXX_rv = vector_sum(SH_arg);
+        SHCXX_rv = vector_sum(SH_arg);
 
         // post_call
         SHTPy_rv = PyInt_FromLong(SHCXX_rv);
