@@ -47,7 +47,15 @@ void acceptStringReferenceOut(std::string & arg1);
 
 void acceptStringReference(std::string & arg1);
 
+void acceptStringPointerConst(const std::string * arg1);
+
 void acceptStringPointer(std::string * arg1);
+
+void fetchStringPointer(std::string * arg1);
+
+void acceptStringPointerLen(std::string * arg1, int *len);
+
+void fetchStringPointerLen(std::string * arg1, int *len);
 
 void returnStrings(std::string & arg1, std::string & arg2);
 

@@ -202,18 +202,17 @@ PY_acceptStructOutPtr(
         "id:acceptStructOutPtr", const_cast<char **>(SHT_kwlist), &i,
         &d))
         return nullptr;
-    {
-        // pre_call
-        arg = new Cstruct1;
 
-        acceptStructOutPtr(arg, i, d);
+    // pre_call
+    arg = new Cstruct1;
 
-        // post_call
-        SHPy_arg = PP_Cstruct1_to_Object_idtor(arg, 0);
-        if (SHPy_arg == nullptr) goto fail;
+    acceptStructOutPtr(arg, i, d);
 
-        return (PyObject *) SHPy_arg;
-    }
+    // post_call
+    SHPy_arg = PP_Cstruct1_to_Object_idtor(arg, 0);
+    if (SHPy_arg == nullptr) goto fail;
+
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);

@@ -35,7 +35,7 @@ test-fortran : \
   test-fortran-namespace \
   test-fortran-pointers-c \
   test-fortran-pointers-cxx \
-  test-fortran-references \
+  test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
@@ -43,6 +43,7 @@ test-fortran : \
   test-fortran-preprocess \
   test-fortran-strings \
   test-fortran-clibrary \
+  test-fortran-cxxlibrary \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
@@ -127,7 +128,7 @@ test-python : \
   test-python-pointers-list-cxx \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
-  test-python-references \
+  test-python-arrayclass \
   test-python-struct-numpy-c \
   test-python-struct-numpy-cxx \
   test-python-struct-class-c \
@@ -137,6 +138,7 @@ test-python : \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
+  test-python-cxxlibrary \
   test-python-ownership \
   test-python-templates
 
@@ -193,6 +195,8 @@ phony_explicit:
     $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/cxxlibrary/.. \
+    $(tempdir)/run/cxxlibrary/python/.. \
     $(tempdir)/run/enum-c/.. \
     $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \
@@ -210,8 +214,8 @@ phony_explicit:
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
-    $(tempdir)/run/references/.. \
-    $(tempdir)/run/references/python/.. \
+    $(tempdir)/run/arrayclass/.. \
+    $(tempdir)/run/arrayclass/python/.. \
     $(tempdir)/run/scope/.. \
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \

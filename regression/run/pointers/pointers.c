@@ -24,6 +24,20 @@ static int global_fixed_array[10];
 
 //----------------------------------------------------------------------
 
+void  intargs_in(const int *arg)
+{
+    global_int = *arg;
+}
+void  intargs_inout(int *arg)
+{
+    global_int = *arg;
+    (*arg)++;
+}
+void  intargs_out(int *arg)
+{
+    *arg = global_int;
+}
+
 void intargs(const int argin, int * arginout, int * argout)
 {
   *argout = *arginout;

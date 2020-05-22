@@ -6,30 +6,30 @@
 #
 # #######################################################################
 #
-#  Compile the python references module
+#  Compile the python arrayclass module
 #
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/references \
-    -I$(top)/regression/run/references \
+    -I$(top)/regression/reference/arrayclass \
+    -I$(top)/regression/run/arrayclass \
     $(PYTHON_INC)
 
 VPATH = \
-    $(top)/regression/reference/references \
-    $(top)/regression/run/references
+    $(top)/regression/reference/arrayclass \
+    $(top)/regression/run/arrayclass
 
-#    references.o 
+#    arrayclass.o 
 OBJS = \
-    pyreferencesmodule.o \
-    pyreferencesutil.o \
+    pyarrayclassmodule.o \
+    pyarrayclassutil.o \
     pyArrayWrappertype.o
 
 CXXFLAGS += $(SHARED)
 
-all : references.so
+all : arrayclass.so
 
-references.so : $(OBJS)
+arrayclass.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 clean :

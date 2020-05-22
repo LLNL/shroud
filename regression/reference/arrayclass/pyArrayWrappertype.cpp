@@ -6,9 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include "pyreferencesmodule.hpp"
+#include "pyarrayclassmodule.hpp"
 #define NO_IMPORT_ARRAY
-#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_REFERENCES_ARRAY_API
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_ARRAYCLASS_ARRAY_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
 // splicer begin class.ArrayWrapper.impl.include
@@ -323,17 +323,15 @@ PY_fetchArrayPtr(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayPtr(&array, &isize);
+    self->obj->fetchArrayPtr(&array, &isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            array);
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        array);
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -366,17 +364,15 @@ PY_fetchArrayRef(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayRef(array, isize);
+    self->obj->fetchArrayRef(array, isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            array);
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        array);
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -409,17 +405,15 @@ PY_fetchArrayPtrConst(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayPtrConst(&array, &isize);
+    self->obj->fetchArrayPtrConst(&array, &isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            const_cast<double *>(array));
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        const_cast<double *>(array));
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -452,17 +446,15 @@ PY_fetchArrayRefConst(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayRefConst(array, isize);
+    self->obj->fetchArrayRefConst(array, isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            const_cast<double *>(array));
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        const_cast<double *>(array));
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -550,6 +542,7 @@ PY_checkPtr(
     const char *SHT_kwlist[] = {
         "array",
         nullptr };
+    bool SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:checkPtr",
@@ -560,15 +553,14 @@ PY_checkPtr(
     array = PyCapsule_GetPointer(SHPy_array, NULL);
     if (PyErr_Occurred())
         goto fail;
-    {
-        bool SHCXX_rv = self->obj->checkPtr(array);
 
-        // post_call
-        SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-        if (SHTPy_rv == nullptr) goto fail;
+    SHCXX_rv = self->obj->checkPtr(array);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);
@@ -648,7 +640,7 @@ static char ArrayWrapper__doc__[] =
 /* static */
 PyTypeObject PY_ArrayWrapper_Type = {
     PyVarObject_HEAD_INIT(nullptr, 0)
-    "references.ArrayWrapper",                       /* tp_name */
+    "arrayclass.ArrayWrapper",                       /* tp_name */
     sizeof(PY_ArrayWrapper),         /* tp_basicsize */
     0,                              /* tp_itemsize */
     /* Methods to implement standard operations */

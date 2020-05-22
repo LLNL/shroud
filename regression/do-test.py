@@ -379,7 +379,7 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
 
-        TestDesc("references"),
+        TestDesc("arrayclass"),
 
         # struct
         TestDesc("struct-c", yaml="struct",
@@ -478,6 +478,7 @@ if __name__ == "__main__":
         TestDesc("namespacedoc"),
         TestDesc("strings"),
         TestDesc("clibrary"),
+        TestDesc("cxxlibrary"),
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),

@@ -57,11 +57,16 @@ PY_vector_sum(
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:vector_sum",
         const_cast<char **>(SHT_kwlist), &SHTPy_arg))
         return nullptr;
+
+    // post_declare
+    std::vector<int> SH_arg;
+    int * SHData_arg;
 
     // post_parse
     SHPy_arg = reinterpret_cast<PyArrayObject *>(PyArray_FROM_OTF(
@@ -71,19 +76,17 @@ PY_vector_sum(
             "arg must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        int * SHData_arg = static_cast<int *>(PyArray_DATA(SHPy_arg));
-        std::vector<int> SH_arg(SHData_arg,
-            SHData_arg+PyArray_SIZE(SHPy_arg));
 
-        int SHCXX_rv = vector_sum(SH_arg);
+    // pre_call
+    SHData_arg = static_cast<int *>(PyArray_DATA(SHPy_arg));
+    SH_arg.assign(SHData_arg, SHData_arg+PyArray_SIZE(SHPy_arg));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = vector_sum(SH_arg);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -117,30 +120,28 @@ PY_vector_iota_out(
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
 
-    {
-        // pre_call
-        SH_arg = new std::vector<int>;
-        if (SH_arg == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-
-        vector_iota_out(*SH_arg);
-
-        // post_call
-        SHD_arg[0] = SH_arg->size();
-        SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
-            SH_arg->data());
-        if (SHPy_arg == nullptr) goto fail;
-        SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
-            PY_SHROUD_capsule_destructor);
-        if (SHC_arg == nullptr) goto fail;
-        PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(1));
-        if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-            (SHPy_arg), SHC_arg) < 0) goto fail;
-
-        return (PyObject *) SHPy_arg;
+    // pre_call
+    SH_arg = new std::vector<int>;
+    if (SH_arg == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    vector_iota_out(*SH_arg);
+
+    // post_call
+    SHD_arg[0] = SH_arg->size();
+    SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_INT,
+        SH_arg->data());
+    if (SHPy_arg == nullptr) goto fail;
+    SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
+        PY_SHROUD_capsule_destructor);
+    if (SHC_arg == nullptr) goto fail;
+    PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(1));
+    if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
+        (SHPy_arg), SHC_arg) < 0) goto fail;
+
+    return (PyObject *) SHPy_arg;
 
 fail:
     if (SH_arg != nullptr) {
@@ -178,30 +179,28 @@ PY_vector_iota_out_d(
     PyObject * SHPy_arg = nullptr;
     PyObject *SHC_arg = nullptr;
 
-    {
-        // pre_call
-        SH_arg = new std::vector<double>;
-        if (SH_arg == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-
-        vector_iota_out_d(*SH_arg);
-
-        // post_call
-        SHD_arg[0] = SH_arg->size();
-        SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_DOUBLE,
-            SH_arg->data());
-        if (SHPy_arg == nullptr) goto fail;
-        SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
-            PY_SHROUD_capsule_destructor);
-        if (SHC_arg == nullptr) goto fail;
-        PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(2));
-        if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
-            (SHPy_arg), SHC_arg) < 0) goto fail;
-
-        return (PyObject *) SHPy_arg;
+    // pre_call
+    SH_arg = new std::vector<double>;
+    if (SH_arg == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    vector_iota_out_d(*SH_arg);
+
+    // post_call
+    SHD_arg[0] = SH_arg->size();
+    SHPy_arg = PyArray_SimpleNewFromData(1, SHD_arg, NPY_DOUBLE,
+        SH_arg->data());
+    if (SHPy_arg == nullptr) goto fail;
+    SHC_arg = PyCapsule_New(SH_arg, "PY_array_dtor", 
+        PY_SHROUD_capsule_destructor);
+    if (SHC_arg == nullptr) goto fail;
+    PyCapsule_SetContext(SHC_arg, PY_SHROUD_fetch_context(2));
+    if (PyArray_SetBaseObject(reinterpret_cast<PyArrayObject *>
+        (SHPy_arg), SHC_arg) < 0) goto fail;
+
+    return (PyObject *) SHPy_arg;
 
 fail:
     if (SH_arg != nullptr) {

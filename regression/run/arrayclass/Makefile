@@ -11,26 +11,26 @@
 include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
-    -I$(top)/regression/reference/references \
-    -I$(top)/regression/run/references
+    -I$(top)/regression/reference/arrayclass \
+    -I$(top)/regression/run/arrayclass
 
 VPATH = \
-    $(top)/regression/reference/references \
-    $(top)/regression/run/references \
+    $(top)/regression/reference/arrayclass \
+    $(top)/regression/run/arrayclass \
     $(top)/regression/run/fruit
 
-#    references.o   # This file is not created
+#    arrayclass.o   # This file is not created
 OBJS = \
-    wrapfreferences.o \
-    wrapreferences.o \
+    wrapfarrayclass.o \
+    wraparrayclass.o \
     wrapArrayWrapper.o \
     fruit.o \
     main.o
 
-references : $(OBJS)
+arrayclass : $(OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(CLIBS)
 
 clean :
-	rm -f $(OBJS) *.mod references
+	rm -f $(OBJS) *.mod arrayclass
 
-main.o : wrapfreferences.o
+main.o : wrapfarrayclass.o

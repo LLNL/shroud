@@ -10,7 +10,7 @@
 program tester
   use fruit
   use iso_c_binding
-  use references_mod
+  use arrayclass_mod
   implicit none
   logical ok
 

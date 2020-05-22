@@ -64,6 +64,7 @@ PY_acceptBothStructs(
         "s1",
         "s2",
         nullptr };
+    int SHCXX_rv;
     PyObject * SHTPy_rv = nullptr;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
@@ -84,20 +85,19 @@ PY_acceptBothStructs(
             "s2 must be a 1-D array of STR_cstruct_as_numpy");
         goto fail;
     }
-    {
-        // pre_call
-        s2 = static_cast<Cstruct_as_numpy *>(PyArray_DATA(SHPy_s2));
 
-        int SHCXX_rv = acceptBothStructs(s1, s2);
+    // pre_call
+    s2 = static_cast<Cstruct_as_numpy *>(PyArray_DATA(SHPy_s2));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = acceptBothStructs(s1, s2);
 
-        // cleanup
-        Py_DECREF(SHPy_s2);
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_s2);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_s2);

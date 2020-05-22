@@ -4613,6 +4613,196 @@
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_in",
+                            "stmt1": "c_string_in"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
+                            "cxx_addr": "",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_string_*_in",
+                            "stmt1": "py_string_*_in"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "acceptStringPointerConst",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptStringPointerConst(const std::string * arg1)",
+                "declgen": "void acceptStringPointerConst(const std::string * arg1 +intent(in))",
+                "doxygen": {
+                    "brief": "Accept a const string pointer - intent(in)"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1",
+                    "C_name": "STR_accept_string_pointer_const",
+                    "C_prototype": "const char * arg1",
+                    "C_return_type": "void",
+                    "F_C_call": "c_accept_string_pointer_const_bufferify",
+                    "F_C_name": "c_accept_string_pointer_const",
+                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
+                    "F_arguments": "arg1",
+                    "F_name_function": "accept_string_pointer_const",
+                    "F_name_generic": "accept_string_pointer_const",
+                    "F_name_impl": "accept_string_pointer_const",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_acceptStringPointerConst",
+                    "function_name": "acceptStringPointerConst",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "accept_string_pointer_const"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "c_var_trim": "Larg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg1)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_in_buf",
+                            "stmt1": "c_string_in_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
+                            "c_var": "arg1",
+                            "c_var_trim": "Larg1",
+                            "f_intent": "IN",
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_*_in_buf",
+                            "stmtc1": "c_string_in_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptStringPointerConst",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "len_trim": "Larg1"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptStringPointerConst(const std::string * arg1)",
+                "declgen": "void acceptStringPointerConst(const std::string * arg1 +intent(in)+len_trim(Larg1))",
+                "doxygen": {
+                    "brief": "Accept a const string pointer - intent(in)"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1",
+                    "C_name": "STR_accept_string_pointer_const_bufferify",
+                    "C_prototype": "const char * arg1,\t int Larg1",
+                    "C_return_type": "void",
+                    "F_C_name": "c_accept_string_pointer_const_bufferify",
+                    "function_name": "acceptStringPointerConst",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "accept_string_pointer_const"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -4680,7 +4870,7 @@
                 "decl": "void acceptStringPointer(std::string * arg1)",
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))",
                 "doxygen": {
-                    "brief": "Accept a string pointer"
+                    "brief": "Accept a string pointer - intent(inout)"
                 },
                 "fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
@@ -4778,7 +4968,7 @@
                 "decl": "void acceptStringPointer(std::string * arg1)",
                 "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1))",
                 "doxygen": {
-                    "brief": "Accept a string pointer"
+                    "brief": "Accept a string pointer - intent(inout)"
                 },
                 "fmtdict": {
                     "C_call_list": "&SHCXX_arg1",
@@ -4791,6 +4981,783 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_pointer"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_out",
+                            "stmt1": "c_string_out"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
+                            "cxx_addr": "",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_string_*_out",
+                            "stmt1": "py_string_*_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fetchStringPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchStringPointer(std::string * arg1 +intent(out))",
+                "declgen": "void fetchStringPointer(std::string * arg1 +intent(out))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(out)",
+                    "description": "Return global_str.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1",
+                    "C_name": "STR_fetch_string_pointer",
+                    "C_prototype": "char * arg1",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fetch_string_pointer_bufferify",
+                    "F_C_name": "c_fetch_string_pointer",
+                    "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT)",
+                    "F_arguments": "arg1",
+                    "F_name_function": "fetch_string_pointer",
+                    "F_name_generic": "fetch_string_pointer",
+                    "F_name_impl": "fetch_string_pointer",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_fetchStringPointer",
+                    "function_name": "fetchStringPointer",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "fetch_string_pointer"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_out_buf",
+                            "stmt1": "c_string_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "f_intent": "OUT",
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_*_out_buf",
+                            "stmtc1": "c_string_out_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "fetchStringPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "len": "Narg1"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchStringPointer(std::string * arg1 +intent(out))",
+                "declgen": "void fetchStringPointer(std::string * arg1 +intent(out)+len(Narg1))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(out)",
+                    "description": "Return global_str.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1",
+                    "C_name": "STR_fetch_string_pointer_bufferify",
+                    "C_prototype": "char * arg1,\t int Narg1",
+                    "C_return_type": "void",
+                    "F_C_name": "c_fetch_string_pointer_bufferify",
+                    "function_name": "fetchStringPointer",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "fetch_string_pointer"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_inout",
+                            "stmt1": "c_string_inout"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
+                            "cxx_addr": "",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_string_*_inout",
+                            "stmt1": "py_string_*_inout"
+                        }
+                    },
+                    "nlen": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "nlen",
+                            "ctor_expr": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "data_var": "SHData_nlen",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_nlen",
+                            "size_var": "SHSize_nlen",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "acceptStringPointerLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nlen",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string * arg1 +intent(inout), int * nlen +intent(out))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(inout)",
+                    "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1,\t nlen",
+                    "C_name": "STR_accept_string_pointer_len",
+                    "C_prototype": "char * arg1,\t int * nlen",
+                    "C_return_type": "void",
+                    "F_C_call": "c_accept_string_pointer_len_bufferify",
+                    "F_C_name": "c_accept_string_pointer_len",
+                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t len(arg1, kind=C_INT),\t nlen",
+                    "F_arguments": "arg1,\t nlen",
+                    "F_name_function": "accept_string_pointer_len",
+                    "F_name_generic": "accept_string_pointer_len",
+                    "F_name_impl": "accept_string_pointer_len",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_acceptStringPointerLen",
+                    "function_name": "acceptStringPointerLen",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "accept_string_pointer_len"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "c_var_trim": "Larg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_inout_buf",
+                            "stmt1": "c_string_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "c_var_trim": "Larg1",
+                            "f_intent": "INOUT",
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_*_inout_buf",
+                            "stmtc1": "c_string_inout_buf"
+                        }
+                    },
+                    "nlen": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nlen",
+                            "c_var": "nlen",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nlen",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptStringPointerLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "len": "Narg1",
+                                "len_trim": "Larg1"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nlen",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1), int * nlen +intent(out))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(inout)",
+                    "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1,\t nlen",
+                    "C_name": "STR_accept_string_pointer_len_bufferify",
+                    "C_prototype": "char * arg1,\t int Larg1,\t int Narg1,\t int * nlen",
+                    "C_return_type": "void",
+                    "F_C_name": "c_accept_string_pointer_len_bufferify",
+                    "function_name": "acceptStringPointerLen",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "accept_string_pointer_len"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_out",
+                            "stmt1": "c_string_out"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "arg1",
+                            "ctor_expr": "SH_arg1.data(),\t SH_arg1.size()",
+                            "cxx_addr": "",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SH_arg1",
+                            "data_var": "SHData_arg1",
+                            "numpy_type": null,
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_string_*_out",
+                            "stmt1": "py_string_*_out"
+                        }
+                    },
+                    "nlen": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "nlen",
+                            "ctor_expr": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "data_var": "SHData_nlen",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_nlen",
+                            "size_var": "SHSize_nlen",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fetchStringPointerLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nlen",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchStringPointerLen(std::string * arg1 +intent(out), int *nlen+intent(out))",
+                "declgen": "void fetchStringPointerLen(std::string * arg1 +intent(out), int * nlen +intent(out))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(out)",
+                    "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1,\t nlen",
+                    "C_name": "STR_fetch_string_pointer_len",
+                    "C_prototype": "char * arg1,\t int * nlen",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fetch_string_pointer_len_bufferify",
+                    "F_C_name": "c_fetch_string_pointer_len",
+                    "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT),\t nlen",
+                    "F_arguments": "arg1,\t nlen",
+                    "F_name_function": "fetch_string_pointer_len",
+                    "F_name_generic": "fetch_string_pointer_len",
+                    "F_name_impl": "fetch_string_pointer_len",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_fetchStringPointerLen",
+                    "function_name": "fetchStringPointerLen",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "fetch_string_pointer_len"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_arg1",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_string_*_out_buf",
+                            "stmt1": "c_string_out_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg1",
+                            "c_var": "arg1",
+                            "c_var_len": "Narg1",
+                            "f_intent": "OUT",
+                            "f_type": "character(*)",
+                            "f_var": "arg1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_*_out_buf",
+                            "stmtc1": "c_string_out_buf"
+                        }
+                    },
+                    "nlen": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "nlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "nlen",
+                            "cxx_type": "int",
+                            "cxx_var": "nlen",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_nlen",
+                            "c_var": "nlen",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nlen",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "fetchStringPointerLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out",
+                                "len": "Narg1"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nlen",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fetchStringPointerLen(std::string * arg1 +intent(out), int *nlen+intent(out))",
+                "declgen": "void fetchStringPointerLen(std::string * arg1 +intent(out)+len(Narg1), int * nlen +intent(out))",
+                "doxygen": {
+                    "brief": "Accept a string pointer - intent(out)",
+                    "description": "Return global_str.\nTest return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "&SHCXX_arg1,\t nlen",
+                    "C_name": "STR_fetch_string_pointer_len_bufferify",
+                    "C_prototype": "char * arg1,\t int Narg1,\t int * nlen",
+                    "C_return_type": "void",
+                    "F_C_name": "c_fetch_string_pointer_len_bufferify",
+                    "function_name": "fetchStringPointerLen",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "fetch_string_pointer_len"
                 },
                 "options": {
                     "wrap_c": true,

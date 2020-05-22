@@ -10,11 +10,11 @@ from setuptools import setup, Extension
 import numpy
 
 module = Extension(
-    'references',
+    'arrayclass',
     sources=[
          'pyArrayWrappertype.cpp',
-         'pyreferencesmodule.cpp',
-         'pyreferencesutil.cpp'
+         'pyarrayclassmodule.cpp',
+         'pyarrayclassutil.cpp'
     ],
     language='c++',
     include_dirs = [numpy.get_include()],
@@ -25,6 +25,6 @@ module = Extension(
 )
 
 setup(
-    name='references',
+    name='arrayclass',
     ext_modules = [module],
 )

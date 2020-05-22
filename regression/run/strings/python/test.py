@@ -94,7 +94,22 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('catdog', strings.acceptStringReference('cat'))
 
     def testacceptStringPointer(self):
+        # Store in global_str.
+        strings.acceptStringPointerConst('from Python')
+
+        # Fetch from global_str.
+        self.assertEqual('from Python', strings.fetchStringPointer())
+
+        s, nlen = strings.fetchStringPointerLen()
+        self.assertEqual('from Python', s)
+        self.assertEqual(len(s), nlen)
+
+        # append "dog".
         self.assertEqual('birddog', strings.acceptStringPointer('bird'))
+
+        s, nlen = strings.acceptStringPointerLen('bird')
+        self.assertEqual('birddog', s)
+        self.assertEqual(len(s), nlen)
 
     def testreturnStrings(self):
         self.assertEqual(('up', 'down'), strings.returnStrings())

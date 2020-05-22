@@ -128,6 +128,7 @@ class Wrapp(util.WrapperMixin):
             fmt_library.PY_header_filename_suffix = "hpp"
             fmt_library.PY_impl_filename_suffix = "cpp"
             fmt_library.PY_extern_C_begin = 'extern "C" '
+        fmt_library.PY_cleanup_decref = "Py_DECREF"
 
         # Format variables
         newlibrary.eval_template("PY_header_filename")
@@ -1055,10 +1056,12 @@ return 1;""",
         A cxx local variable exists when cxx_local_var is defined.
         """
 
-        # need_rv - need Return Value declaration.
-        #           The simplest case is to assign to rv as part of calling function.
-        #           When default arguments are present, a switch statement is create
-        #           so set need_rv = True to declare variable once, then call several time
+        # need_rv_decl - need Return Value declaration.
+        #  The simplest case is to assign to rv as part of calling function.
+        #  When default arguments are present, a switch statement is create
+        #  so set need_rv_decl = True to declare variable once,
+        #  then call wrapped function several times.
+        #  If goto_fail, set to True to avoid "crosses initialization" error.
         options = node.options
         if not options.wrap_python:
             return
@@ -1353,6 +1356,10 @@ return 1;""",
                         parse_format.append("|")  # add once
                         found_optional = True
                     found_default = True
+                    # Cleanup should always do Py_XDECREF instead of
+                    # Py_DECREF since PyObject pointers may be NULL due
+                    # to different paths of execution in switch statement.
+                    fmt_func.PY_cleanup_decref = "Py_XDECREF"
                     # call for default arguments  (num args, arg string)
                     default_calls.append(
                         (
@@ -1495,16 +1502,23 @@ return 1;""",
 
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
+        need_rv_decl = False
         if CXX_subprogram == "function":
-            if found_default:
+            if is_ctor:
+                pass
+            elif found_default or goto_fail:
                 fmt.PY_rv_asgn = pre_call_deref + fmt_result.cxx_var + " =\t "
+                need_rv_decl = True
             elif allocate_result_blk:
                 fmt.PY_rv_asgn = "*" + fmt_result.cxx_var + " =\t "
             else:
                 fmt.PY_rv_asgn = fmt.C_rv_decl + " =\t "
+            if result_typemap.sgroup == "struct":
+                # Avoid unused variable.
+                # XXX - major kludge.  struct only access declaration via self->obj.
+                need_rv_decl = False
         if found_default:
             PY_code.append("switch (SH_nargs) {")
-        need_rv = False
 
         # build up code for a function
         for nargs, post_declare_len,  post_parse_len, pre_call_len, call_list in default_calls:
@@ -1539,16 +1553,6 @@ return 1;""",
                 PY_code.extend(post_parse_code[:post_parse_len])
                 need_blank = True
 
-            if self.language == "cxx" and goto_fail:
-                # Need an extra scope to deal with C++ error
-                # error: jump to label 'fail' crosses initialization of ...
-                PY_code.append("{")
-                PY_code.append(1)
-                fail_scope = True
-                need_blank = False
-            else:
-                fail_scope = False
-
             if pre_call_len:
                 if options.debug:
                     if need_blank:
@@ -1572,7 +1576,6 @@ return 1;""",
                     fmt,
                 )
             else:
-                need_rv = True
                 append_format(
                     PY_code,
                     "{PY_rv_asgn}{PY_this_call}{function_name}"
@@ -1608,10 +1611,8 @@ return 1;""",
                 fmt)
 # XXX - need to add a extra scope to deal with goto in C++
 #            goto_fail = True;
-        else:
-            need_rv = False
 
-        if need_rv:
+        if need_rv_decl:
             declare_code.append(fmt.C_rv_decl + ";")
 
         # Compute return value
@@ -1692,9 +1693,6 @@ return 1;""",
             PY_code.append("")
         PY_code.append(return_code)
 
-        if fail_scope:
-            PY_code.append(-1)
-            PY_code.append("}")
         if goto_fail:
             PY_code.extend(["", "^fail:"])
             PY_code.extend(fail_code)
@@ -1974,7 +1972,7 @@ return 1;""",
     def add_stmt_capsule(self, ast, stmts, fmt):
         """Create code to allocate/release memory.
 
-        For example, std::vector intent(out) must allocate an vector
+        For example, std::vector intent(out) must allocate a vector
         instance and eventually release it via a capsule owned by the
         NumPy array.
 
@@ -3725,6 +3723,9 @@ py_statements = [
         name="py_native_*_inout",
         arg_declare=["{c_type} {c_var};"],
         arg_call=["&{c_var}"],
+        fmtdict=dict(
+            ctor_expr="{c_var}",
+        ),
     ),
     dict(
         name="py_native_*_out",
@@ -3766,7 +3767,7 @@ py_statements = [
         ],
         arg_call=["{c_var}"],
         cleanup=[
-            "Py_DECREF({py_var});",
+            "{PY_cleanup_decref}({py_var});",
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -3934,6 +3935,7 @@ py_statements = [
             "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         declare=[
+            "PyObject *{py_var};",
             "PyObject *{pytmp_var} = {nullptr};",
         ],
         post_parse=[
@@ -3945,7 +3947,7 @@ py_statements = [
         arg_call=["{cxx_var}"],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "PyObject *{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
+            "{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4135,6 +4137,11 @@ py_statements = [
         base="py_string_inout",
         arg_call=["&{cxx_var}"],
     ),
+    dict(
+        name="py_string_*_out",
+        base="py_string_out",
+        arg_call=["&{cxx_var}"],
+    ),
 
 ########################################
 # struct
@@ -4211,7 +4218,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
-            "Py_DECREF({py_var});",
+            "{PY_cleanup_decref}({py_var});",
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -4310,6 +4317,21 @@ py_statements = [
     ),
 
     dict(
+        name="py_struct_&_in_numpy",
+        base="py_struct_*_in_numpy",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        name="py_struct_&_inout_numpy",
+        base="py_struct_*_inout_numpy",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        name="py_struct_&_out_numpy",
+        base="py_struct_*_out_numpy",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
         name="py_struct_scalar_in_numpy",
         base="py_struct_*_in_numpy",
         arg_call=["*{cxx_var}"],
@@ -4399,6 +4421,26 @@ py_statements = [
 # cannot support inout/out with call-by-value
 #        name="py_struct_scalar_inout_class",
 #        name="py_struct_scalar_out_class",
+    dict(
+        name="py_struct_&_in_class",
+        base="py_struct_*_in_class",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        name="py_struct_&_inout_class",
+        base="py_struct_*_inout_class",
+        arg_call=["*{cxx_var}"],
+    ),
+    dict(
+        # XXX - this memory will leak
+        name="py_struct_&_out_class",
+        base="py_struct_*_out_class",
+        arg_call=["*{cxx_var}"],
+        post_call=[
+            "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});",
+            "if ({py_var} == {nullptr}) goto fail;",
+        ],
+    ),
 
 ########################################
 # shadow a.k.a class
@@ -4556,14 +4598,17 @@ py_statements = [
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
+        post_declare=[
+            "std::vector<{cxx_T}> {cxx_var};",
+            "{cxx_T} * {data_var};",
+        ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + template_array_error,
         pre_call=[
-            "{cxx_T} * {data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
-            "std::vector<{cxx_T}> {cxx_var}\t(\t{data_var},\t "
-            "{data_var}+PyArray_SIZE({py_var}));",
+            "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
+            "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
         ],
         fail=[
             "Py_XDECREF({py_var});",

@@ -11,9 +11,9 @@ from __future__ import print_function
 
 import numpy as np
 import unittest
-import references
+import arrayclass
 
-class References(unittest.TestCase):
+class Arrayclass(unittest.TestCase):
     """Test struct problem"""
      
     def XXsetUp(self):
@@ -29,7 +29,7 @@ class References(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_ArrayWrapper(self):
-        arrinst = references.ArrayWrapper()
+        arrinst = arrayclass.ArrayWrapper()
         arrinst.setSize(10)
         self.assertEqual(10, arrinst.getSize())
 
@@ -125,7 +125,7 @@ class References(unittest.TestCase):
 newSuite = unittest.TestSuite()
  
 # adding a test case
-newSuite.addTest(unittest.makeSuite(References))
+newSuite.addTest(unittest.makeSuite(Arrayclass))
 
 if __name__ == "__main__":
     unittest.main()

@@ -827,6 +827,45 @@ PY_acceptStringReference(
 }
 
 // ----------------------------------------
+// Function:  void acceptStringPointerConst
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const std::string * arg1 +intent(in)
+// Exact:     py_string_*_in
+static char PY_acceptStringPointerConst__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Accept a const string pointer - intent(in)
+ *
+ */
+static PyObject *
+PY_acceptStringPointerConst(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_string_pointer_const
+    char * arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringPointerConst", const_cast<char **>(SHT_kwlist), 
+        &arg1))
+        return nullptr;
+
+    // post_declare
+    const std::string SH_arg1(arg1);
+
+    acceptStringPointerConst(&SH_arg1);
+    Py_RETURN_NONE;
+// splicer end function.accept_string_pointer_const
+}
+
+// ----------------------------------------
 // Function:  void acceptStringPointer
 // Exact:     py_default
 // ----------------------------------------
@@ -837,7 +876,7 @@ static char PY_acceptStringPointer__doc__[] =
 ;
 
 /**
- * \brief Accept a string pointer
+ * \brief Accept a string pointer - intent(inout)
  *
  */
 static PyObject *
@@ -869,6 +908,137 @@ PY_acceptStringPointer(
 
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_string_pointer
+}
+
+// ----------------------------------------
+// Function:  void fetchStringPointer
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)
+// Exact:     py_string_*_out
+static char PY_fetchStringPointer__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ */
+static PyObject *
+PY_fetchStringPointer(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.fetch_string_pointer
+    PyObject * SHPy_arg1 = nullptr;
+
+    // post_declare
+    std::string SH_arg1;
+
+    fetchStringPointer(&SH_arg1);
+
+    // post_call
+    SHPy_arg1 = PyString_FromStringAndSize(SH_arg1.data(),
+        SH_arg1.size());
+
+    return (PyObject *) SHPy_arg1;
+// splicer end function.fetch_string_pointer
+}
+
+// ----------------------------------------
+// Function:  void acceptStringPointerLen
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(inout)
+// Exact:     py_string_*_inout
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Exact:     py_native_*_out
+static char PY_acceptStringPointerLen__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Accept a string pointer - intent(inout)
+ *
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+static PyObject *
+PY_acceptStringPointerLen(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_string_pointer_len
+    char * arg1;
+    int nlen;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        nullptr };
+    PyObject *SHTPy_rv = nullptr;  // return value object
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringPointerLen", const_cast<char **>(SHT_kwlist), 
+        &arg1))
+        return nullptr;
+
+    // post_declare
+    std::string SH_arg1(arg1);
+
+    acceptStringPointerLen(&SH_arg1, &nlen);
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(), SH_arg1.size(),
+        nlen);
+
+    return SHTPy_rv;
+// splicer end function.accept_string_pointer_len
+}
+
+// ----------------------------------------
+// Function:  void fetchStringPointerLen
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  std::string * arg1 +intent(out)
+// Exact:     py_string_*_out
+// ----------------------------------------
+// Argument:  int * nlen +intent(out)
+// Exact:     py_native_*_out
+static char PY_fetchStringPointerLen__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Accept a string pointer - intent(out)
+ *
+ * Return global_str.
+ * Test return tuple with two arguments.
+ * Must rename argument to nlen to avoid conflict with intrinsic len.
+ */
+static PyObject *
+PY_fetchStringPointerLen(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.fetch_string_pointer_len
+    int nlen;
+    PyObject *SHTPy_rv = nullptr;  // return value object
+
+    // post_declare
+    std::string SH_arg1;
+
+    fetchStringPointerLen(&SH_arg1, &nlen);
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("s#i", SH_arg1.data(), SH_arg1.size(),
+        nlen);
+
+    return SHTPy_rv;
+// splicer end function.fetch_string_pointer_len
 }
 
 // ----------------------------------------
@@ -1052,18 +1222,17 @@ PY_PostDeclare(
     if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
         &SHSize_count) == -1)
         goto fail;
-    {
-        PostDeclare(count, SH_name);
 
-        // post_call
-        SHPy_name = PyString_FromStringAndSize(SH_name.data(),
-            SH_name.size());
+    PostDeclare(count, SH_name);
 
-        // cleanup
-        std::free(count);
+    // post_call
+    SHPy_name = PyString_FromStringAndSize(SH_name.data(),
+        SH_name.size());
 
-        return (PyObject *) SHPy_name;
-    }
+    // cleanup
+    std::free(count);
+
+    return (PyObject *) SHPy_name;
 
 fail:
     if (count != nullptr) std::free(count);
@@ -1120,8 +1289,16 @@ static PyMethodDef PY_methods[] = {
     METH_NOARGS, PY_acceptStringReferenceOut__doc__},
 {"acceptStringReference", (PyCFunction)PY_acceptStringReference,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringReference__doc__},
+{"acceptStringPointerConst", (PyCFunction)PY_acceptStringPointerConst,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringPointerConst__doc__},
 {"acceptStringPointer", (PyCFunction)PY_acceptStringPointer,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringPointer__doc__},
+{"fetchStringPointer", (PyCFunction)PY_fetchStringPointer, METH_NOARGS,
+    PY_fetchStringPointer__doc__},
+{"acceptStringPointerLen", (PyCFunction)PY_acceptStringPointerLen,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringPointerLen__doc__},
+{"fetchStringPointerLen", (PyCFunction)PY_fetchStringPointerLen,
+    METH_NOARGS, PY_fetchStringPointerLen__doc__},
 {"returnStrings", (PyCFunction)PY_returnStrings, METH_NOARGS,
     PY_returnStrings__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,

@@ -711,19 +711,18 @@ PP_cos_doubles(
             "out must be a 1-D array of double");
         goto fail;
     }
-    {
-        // pre_call
-        in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        out = static_cast<double *>(PyArray_DATA(SHPy_out));
-        sizein = PyArray_SIZE(SHPy_in);
 
-        example::nested::cos_doubles(in, out, sizein);
+    // pre_call
+    in = static_cast<double *>(PyArray_DATA(SHPy_in));
+    out = static_cast<double *>(PyArray_DATA(SHPy_out));
+    sizein = PyArray_SIZE(SHPy_in);
 
-        // cleanup
-        Py_DECREF(SHPy_in);
+    example::nested::cos_doubles(in, out, sizein);
 
-        return (PyObject *) SHPy_out;
-    }
+    // cleanup
+    Py_DECREF(SHPy_in);
+
+    return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_in);

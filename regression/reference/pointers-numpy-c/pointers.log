@@ -1,4 +1,7 @@
 Read yaml pointers.yaml
+Python function void intargs_in(const int * arg +intent(in))
+Python function void intargs_inout(int * arg +intent(inout))
+Python function void intargs_out(int * arg +intent(out))
 Python function void intargs(const int argin +intent(in)+value, int * arginout +intent(inout), int * argout +intent(out))
 Python function void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Python function void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)

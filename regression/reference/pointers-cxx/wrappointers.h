@@ -27,6 +27,12 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void POI_intargs_in(const int * arg);
+
+void POI_intargs_inout(int * arg);
+
+void POI_intargs_out(int * arg);
+
 void POI_intargs(const int argin, int * arginout, int * argout);
 
 void POI_cos_doubles(double * in, double * out, int sizein);

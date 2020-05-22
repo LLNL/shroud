@@ -15,6 +15,193 @@
         "functions": [
             {
                 "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "ctor_expr": "*arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(arg)",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_native_*_in",
+                            "stmt1": "py_native_*_in"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "intargs_in",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void  intargs_in(const int *arg)",
+                "declgen": "void intargs_in(const int * arg +intent(in))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_intargs_in",
+                    "function_name": "intargs_in",
+                    "underscore_name": "intargs_in"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_native_*_inout",
+                            "stmt1": "py_native_*_inout"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "intargs_inout",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void  intargs_inout(int *arg +intent(inout))",
+                "declgen": "void intargs_inout(int * arg +intent(inout))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_intargs_inout",
+                    "function_name": "intargs_inout",
+                    "underscore_name": "intargs_inout"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "arg",
+                            "ctor_expr": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "intargs_out",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void  intargs_out(int *arg +intent(out))",
+                "declgen": "void intargs_out(int * arg +intent(out))",
+                "fmtdict": {
+                    "PY_name_impl": "PY_intargs_out",
+                    "function_name": "intargs_out",
+                    "underscore_name": "intargs_out"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
                     "argin": {
                         "fmtpy": {
                             "c_const": "const ",
@@ -42,7 +229,7 @@
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "arginout",
-                            "ctor_expr": "*arginout",
+                            "ctor_expr": "arginout",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "arginout",

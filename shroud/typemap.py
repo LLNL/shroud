@@ -718,6 +718,7 @@ def initialize():
             PY_format="s",
             PY_ctor="PyString_FromStringAndSize({ctor_expr})",
             PY_build_format="s#",
+            # XXX need cast after PY_SSIZE_T_CLEAN
             PY_build_arg="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",

@@ -42,6 +42,19 @@ contains
 
     call set_case_name("test_functions")
 
+    ! set global_int.
+    call intargs_in(5)
+
+    iargout = 0
+    call intargs_out(iargout)
+    call assert_equals(5, iargout) ! get global_int
+    
+    iarginout = 6
+    call intargs_inout(iarginout)  ! set global_int
+    call intargs_out(iargout)      ! get global_int
+    call assert_equals(6, iargout)
+    call assert_equals(7, iarginout) ! incremented iarginout
+    
     iargin    = 1
     iarginout = 2
     iargout   = -1

@@ -152,6 +152,102 @@ PyObject *PY_error_obj;
 // splicer end additional_functions
 
 // ----------------------------------------
+// Function:  void intargs_in
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  const int * arg +intent(in)
+// Exact:     py_native_*_in
+static char PY_intargs_in__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_in(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.intargs_in
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:intargs_in",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return nullptr;
+
+    intargs_in(&arg);
+    Py_RETURN_NONE;
+// splicer end function.intargs_in
+}
+
+// ----------------------------------------
+// Function:  void intargs_inout
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(inout)
+// Exact:     py_native_*_inout
+static char PY_intargs_inout__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_inout(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.intargs_inout
+    int arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHPy_arg = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:intargs_inout",
+        const_cast<char **>(SHT_kwlist), &arg))
+        return nullptr;
+
+    intargs_inout(&arg);
+
+    // post_call
+    SHPy_arg = PyInt_FromLong(arg);
+
+    return (PyObject *) SHPy_arg;
+// splicer end function.intargs_inout
+}
+
+// ----------------------------------------
+// Function:  void intargs_out
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int * arg +intent(out)
+// Exact:     py_native_*_out
+static char PY_intargs_out__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_intargs_out(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.intargs_out
+    int arg;
+    PyObject * SHPy_arg = nullptr;
+
+    intargs_out(&arg);
+
+    // post_call
+    SHPy_arg = PyInt_FromLong(arg);
+
+    return (PyObject *) SHPy_arg;
+// splicer end function.intargs_out
+}
+
+// ----------------------------------------
 // Function:  void intargs
 // Exact:     py_default
 // ----------------------------------------
@@ -243,29 +339,28 @@ PY_cos_doubles(
     if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
         &SHSize_in) == -1)
         goto fail;
-    {
-        // pre_call
-        out = static_cast<double *>(std::malloc(
-            sizeof(double) * (SHSize_in)));
-        if (out == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-        sizein = SHSize_in;
 
-        cos_doubles(in, out, sizein);
-
-        // post_call
-        SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
-        if (SHPy_out == nullptr) goto fail;
-
-        // cleanup
-        std::free(in);
-        std::free(out);
-        out = nullptr;
-
-        return (PyObject *) SHPy_out;
+    // pre_call
+    out = static_cast<double *>(std::malloc(
+        sizeof(double) * (SHSize_in)));
+    if (out == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+    sizein = SHSize_in;
+
+    cos_doubles(in, out, sizein);
+
+    // post_call
+    SHPy_out = SHROUD_to_PyList_double(out, SHSize_in);
+    if (SHPy_out == nullptr) goto fail;
+
+    // cleanup
+    std::free(in);
+    std::free(out);
+    out = nullptr;
+
+    return (PyObject *) SHPy_out;
 
 fail:
     if (in != nullptr) std::free(in);
@@ -322,29 +417,27 @@ PY_truncate_to_int(
     if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
         &SHSize_in) == -1)
         goto fail;
-    {
-        // pre_call
-        out = static_cast<int *>(std::malloc(
-            sizeof(int) * (SHSize_in)));
-        if (out == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-        sizein = SHSize_in;
 
-        truncate_to_int(in, out, sizein);
-
-        // post_call
-        SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
-        if (SHPy_out == nullptr) goto fail;
-
-        // cleanup
-        std::free(in);
-        std::free(out);
-        out = nullptr;
-
-        return (PyObject *) SHPy_out;
+    // pre_call
+    out = static_cast<int *>(std::malloc(sizeof(int) * (SHSize_in)));
+    if (out == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+    sizein = SHSize_in;
+
+    truncate_to_int(in, out, sizein);
+
+    // post_call
+    SHPy_out = SHROUD_to_PyList_int(out, SHSize_in);
+    if (SHPy_out == nullptr) goto fail;
+
+    // cleanup
+    std::free(in);
+    std::free(out);
+    out = nullptr;
+
+    return (PyObject *) SHPy_out;
 
 fail:
     if (in != nullptr) std::free(in);
@@ -387,27 +480,25 @@ PY_get_values(
     PyObject *SHPy_values = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
-    {
-        // pre_call
-        values = static_cast<int *>(std::malloc(sizeof(int) * (3)));
-        if (values == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-
-        get_values(&nvalues, values);
-
-        // post_call
-        SHPy_values = SHROUD_to_PyList_int(values, 3);
-        if (SHPy_values == nullptr) goto fail;
-        SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
-
-        // cleanup
-        std::free(values);
-        values = nullptr;
-
-        return SHTPy_rv;
+    // pre_call
+    values = static_cast<int *>(std::malloc(sizeof(int) * (3)));
+    if (values == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    get_values(&nvalues, values);
+
+    // post_call
+    SHPy_values = SHROUD_to_PyList_int(values, 3);
+    if (SHPy_values == nullptr) goto fail;
+    SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+
+    // cleanup
+    std::free(values);
+    values = nullptr;
+
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -448,36 +539,34 @@ PY_get_values2(
     PyObject *SHPy_arg2 = nullptr;
     PyObject *SHTPy_rv = nullptr;  // return value object
 
-    {
-        // pre_call
-        arg1 = static_cast<int *>(std::malloc(sizeof(int) * (3)));
-        if (arg1 == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-        arg2 = static_cast<int *>(std::malloc(sizeof(int) * (3)));
-        if (arg2 == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-
-        get_values2(arg1, arg2);
-
-        // post_call
-        SHPy_arg1 = SHROUD_to_PyList_int(arg1, 3);
-        if (SHPy_arg1 == nullptr) goto fail;
-        SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
-        if (SHPy_arg2 == nullptr) goto fail;
-        SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
-
-        // cleanup
-        std::free(arg1);
-        arg1 = nullptr;
-        std::free(arg2);
-        arg2 = nullptr;
-
-        return SHTPy_rv;
+    // pre_call
+    arg1 = static_cast<int *>(std::malloc(sizeof(int) * (3)));
+    if (arg1 == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+    arg2 = static_cast<int *>(std::malloc(sizeof(int) * (3)));
+    if (arg2 == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
+    }
+
+    get_values2(arg1, arg2);
+
+    // post_call
+    SHPy_arg1 = SHROUD_to_PyList_int(arg1, 3);
+    if (SHPy_arg1 == nullptr) goto fail;
+    SHPy_arg2 = SHROUD_to_PyList_int(arg2, 3);
+    if (SHPy_arg2 == nullptr) goto fail;
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+
+    // cleanup
+    std::free(arg1);
+    arg1 = nullptr;
+    std::free(arg2);
+    arg2 = nullptr;
+
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg1);
@@ -519,26 +608,25 @@ PY_iota_allocatable(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_allocatable",
         const_cast<char **>(SHT_kwlist), &nvar))
         return nullptr;
-    {
-        // pre_call
-        values = static_cast<int *>(std::malloc(sizeof(int) * (nvar)));
-        if (values == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
 
-        iota_allocatable(nvar, values);
-
-        // post_call
-        SHPy_values = SHROUD_to_PyList_int(values, nvar);
-        if (SHPy_values == nullptr) goto fail;
-
-        // cleanup
-        std::free(values);
-        values = nullptr;
-
-        return (PyObject *) SHPy_values;
+    // pre_call
+    values = static_cast<int *>(std::malloc(sizeof(int) * (nvar)));
+    if (values == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    iota_allocatable(nvar, values);
+
+    // post_call
+    SHPy_values = SHROUD_to_PyList_int(values, nvar);
+    if (SHPy_values == nullptr) goto fail;
+
+    // cleanup
+    std::free(values);
+    values = nullptr;
+
+    return (PyObject *) SHPy_values;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -578,26 +666,25 @@ PY_iota_dimension(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:iota_dimension",
         const_cast<char **>(SHT_kwlist), &nvar))
         return nullptr;
-    {
-        // pre_call
-        values = static_cast<int *>(std::malloc(sizeof(int) * (nvar)));
-        if (values == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
 
-        iota_dimension(nvar, values);
-
-        // post_call
-        SHPy_values = SHROUD_to_PyList_int(values, nvar);
-        if (SHPy_values == nullptr) goto fail;
-
-        // cleanup
-        std::free(values);
-        values = nullptr;
-
-        return (PyObject *) SHPy_values;
+    // pre_call
+    values = static_cast<int *>(std::malloc(sizeof(int) * (nvar)));
+    if (values == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    iota_dimension(nvar, values);
+
+    // post_call
+    SHPy_values = SHROUD_to_PyList_int(values, nvar);
+    if (SHPy_values == nullptr) goto fail;
+
+    // cleanup
+    std::free(values);
+    values = nullptr;
+
+    return (PyObject *) SHPy_values;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -647,20 +734,19 @@ PY_Sum(
     if (SHROUD_create_from_PyObject_int(SHTPy_values, "values",
         &values,  &SHSize_values) == -1)
         goto fail;
-    {
-        // pre_call
-        len = SHSize_values;
 
-        Sum(len, values, &result);
+    // pre_call
+    len = SHSize_values;
 
-        // post_call
-        SHPy_result = PyInt_FromLong(result);
+    Sum(len, values, &result);
 
-        // cleanup
-        std::free(values);
+    // post_call
+    SHPy_result = PyInt_FromLong(result);
 
-        return (PyObject *) SHPy_result;
-    }
+    // cleanup
+    std::free(values);
+
+    return (PyObject *) SHPy_result;
 
 fail:
     if (values != nullptr) std::free(values);
@@ -691,26 +777,24 @@ PY_fillIntArray(
     int * out = nullptr;
     PyObject *SHPy_out = nullptr;
 
-    {
-        // pre_call
-        out = static_cast<int *>(std::malloc(sizeof(int) * (3)));
-        if (out == nullptr) {
-            PyErr_NoMemory();
-            goto fail;
-        }
-
-        fillIntArray(out);
-
-        // post_call
-        SHPy_out = SHROUD_to_PyList_int(out, 3);
-        if (SHPy_out == nullptr) goto fail;
-
-        // cleanup
-        std::free(out);
-        out = nullptr;
-
-        return (PyObject *) SHPy_out;
+    // pre_call
+    out = static_cast<int *>(std::malloc(sizeof(int) * (3)));
+    if (out == nullptr) {
+        PyErr_NoMemory();
+        goto fail;
     }
+
+    fillIntArray(out);
+
+    // post_call
+    SHPy_out = SHROUD_to_PyList_int(out, 3);
+    if (SHPy_out == nullptr) goto fail;
+
+    // cleanup
+    std::free(out);
+    out = nullptr;
+
+    return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_out);
@@ -743,6 +827,7 @@ PY_incrementIntArray(
 {
 // splicer begin function.increment_int_array
     int * array = nullptr;
+    PyObject *SHPy_array;
     PyObject *SHTPy_array = nullptr;
     int sizein;
     const char *SHT_kwlist[] = {
@@ -758,22 +843,20 @@ PY_incrementIntArray(
     if (SHROUD_create_from_PyObject_int(SHTPy_array, "array", &array, 
         &SHSize_array) == -1)
         goto fail;
-    {
-        // pre_call
-        sizein = SHSize_array;
 
-        incrementIntArray(array, sizein);
+    // pre_call
+    sizein = SHSize_array;
 
-        // post_call
-        PyObject *SHPy_array = SHROUD_to_PyList_int(array,
-            SHSize_array);
-        if (SHPy_array == nullptr) goto fail;
+    incrementIntArray(array, sizein);
 
-        // cleanup
-        std::free(array);
+    // post_call
+    SHPy_array = SHROUD_to_PyList_int(array, SHSize_array);
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    // cleanup
+    std::free(array);
+
+    return (PyObject *) SHPy_array;
 
 fail:
     if (array != nullptr) std::free(array);
@@ -807,21 +890,20 @@ PY_acceptCharArrayIn(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptCharArrayIn",
         const_cast<char **>(SHT_kwlist), &SHTPy_names))
         return nullptr;
-    {
-        // pre_call
-        Py_ssize_t SHSize_names;
-        if (SHROUD_create_from_PyObject_char(SHTPy_names, "names",
-            &names,  &SHSize_names) == -1)
-            goto fail;
 
-        acceptCharArrayIn(names);
+    // pre_call
+    Py_ssize_t SHSize_names;
+    if (SHROUD_create_from_PyObject_char(SHTPy_names, "names", &names, 
+        &SHSize_names) == -1)
+        goto fail;
 
-        // post_call
-        std::free(names);
-        names = nullptr;
+    acceptCharArrayIn(names);
 
-        Py_RETURN_NONE;
-    }
+    // post_call
+    std::free(names);
+    names = nullptr;
+
+    Py_RETURN_NONE;
 
 fail:
     if (names != nullptr) {
@@ -915,15 +997,13 @@ PY_getPtrToFixedArray(
     int *count;
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFixedArray(&count);
+    getPtrToFixedArray(&count);
 
-        // post_call
-        SHPy_count = SHROUD_to_PyList_int(count, 10);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHPy_count = SHROUD_to_PyList_int(count, 10);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -959,15 +1039,13 @@ PY_getPtrToDynamicArray(
     PyObject *SHPy_count = nullptr;
     int ncount;
 
-    {
-        getPtrToDynamicArray(&count, &ncount);
+    getPtrToDynamicArray(&count, &ncount);
 
-        // post_call
-        SHPy_count = SHROUD_to_PyList_int(count, ncount);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHPy_count = SHROUD_to_PyList_int(count, ncount);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1000,15 +1078,13 @@ PY_getPtrToFuncArray(
     int *count;
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFuncArray(&count);
+    getPtrToFuncArray(&count);
 
-        // post_call
-        SHPy_count = SHROUD_to_PyList_int(count, getLen());
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHPy_count = SHROUD_to_PyList_int(count, getLen());
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1036,15 +1112,13 @@ PY_getPtrToFixedConstArray(
     const int *count;
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFixedConstArray(&count);
+    getPtrToFixedConstArray(&count);
 
-        // post_call
-        SHPy_count = SHROUD_to_PyList_int(count, 10);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHPy_count = SHROUD_to_PyList_int(count, 10);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1076,15 +1150,13 @@ PY_getPtrToDynamicConstArray(
     PyObject *SHPy_count = nullptr;
     int ncount;
 
-    {
-        getPtrToDynamicConstArray(&count, &ncount);
+    getPtrToDynamicConstArray(&count, &ncount);
 
-        // post_call
-        SHPy_count = SHROUD_to_PyList_int(count, ncount);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHPy_count = SHROUD_to_PyList_int(count, ncount);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1407,6 +1479,12 @@ PY_returnIntScalar(
 // splicer end function.return_int_scalar
 }
 static PyMethodDef PY_methods[] = {
+{"intargs_in", (PyCFunction)PY_intargs_in, METH_VARARGS|METH_KEYWORDS,
+    PY_intargs_in__doc__},
+{"intargs_inout", (PyCFunction)PY_intargs_inout,
+    METH_VARARGS|METH_KEYWORDS, PY_intargs_inout__doc__},
+{"intargs_out", (PyCFunction)PY_intargs_out, METH_NOARGS,
+    PY_intargs_out__doc__},
 {"intargs", (PyCFunction)PY_intargs, METH_VARARGS|METH_KEYWORDS,
     PY_intargs__doc__},
 {"cos_doubles", (PyCFunction)PY_cos_doubles, METH_VARARGS|METH_KEYWORDS,
