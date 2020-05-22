@@ -256,6 +256,7 @@
                             "F_name_generic": "method3def",
                             "F_name_impl": "user1_method3def_1",
                             "F_subprogram": "subroutine",
+                            "PY_cleanup_decref": "Py_XDECREF",
                             "PY_name_impl": "PY_method3def_1",
                             "c_const": "",
                             "c_deref": "*",

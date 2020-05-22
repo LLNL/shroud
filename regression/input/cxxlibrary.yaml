@@ -62,4 +62,4 @@ declarations:
 
 
 ##################################################
-#- decl: bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )
+- decl: bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )

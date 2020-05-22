@@ -128,6 +128,7 @@ class Wrapp(util.WrapperMixin):
             fmt_library.PY_header_filename_suffix = "hpp"
             fmt_library.PY_impl_filename_suffix = "cpp"
             fmt_library.PY_extern_C_begin = 'extern "C" '
+        fmt_library.PY_cleanup_decref = "Py_DECREF"
 
         # Format variables
         newlibrary.eval_template("PY_header_filename")
@@ -1355,6 +1356,10 @@ return 1;""",
                         parse_format.append("|")  # add once
                         found_optional = True
                     found_default = True
+                    # Cleanup should always do Py_XDECREF instead of
+                    # Py_DECREF since PyObject pointers may be NULL due
+                    # to different paths of execution in switch statement.
+                    fmt_func.PY_cleanup_decref = "Py_XDECREF"
                     # call for default arguments  (num args, arg string)
                     default_calls.append(
                         (
@@ -3762,7 +3767,7 @@ py_statements = [
         ],
         arg_call=["{c_var}"],
         cleanup=[
-            "Py_DECREF({py_var});",
+            "{PY_cleanup_decref}({py_var});",
         ],
         fail=[
             "Py_XDECREF({py_var});",
@@ -4213,7 +4218,7 @@ py_statements = [
             "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));",
         ],
         cleanup=[
-            "Py_DECREF({py_var});",
+            "{PY_cleanup_decref}({py_var});",
         ],
         fail=[
             "Py_XDECREF({py_var});",

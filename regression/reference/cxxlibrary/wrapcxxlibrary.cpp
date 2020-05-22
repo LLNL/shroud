@@ -92,6 +92,34 @@ void CXX_pass_struct_by_reference_out(CXX_cstruct1 * arg)
     // splicer end function.pass_struct_by_reference_out
 }
 
+// ----------------------------------------
+// Function:  bool defaultPtrIsNULL
+// Requested: c_bool_scalar_result
+// Match:     c_default
+bool CXX_default_ptr_is_null_0(void)
+{
+    // splicer begin function.default_ptr_is_null_0
+    bool SHC_rv = defaultPtrIsNULL();
+    return SHC_rv;
+    // splicer end function.default_ptr_is_null_0
+}
+
+// ----------------------------------------
+// Function:  bool defaultPtrIsNULL
+// Requested: c_bool_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * data=nullptr +intent(in)+rank(1)
+// Requested: c_native_*_in
+// Match:     c_default
+bool CXX_default_ptr_is_null_1(double * data)
+{
+    // splicer begin function.default_ptr_is_null_1
+    bool SHC_rv = defaultPtrIsNULL(data);
+    return SHC_rv;
+    // splicer end function.default_ptr_is_null_1
+}
+
 // Release library allocated memory.
 void CXX_SHROUD_memory_destructor(CXX_SHROUD_capsule_data *cap)
 {

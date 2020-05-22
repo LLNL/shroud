@@ -415,6 +415,81 @@ fail:
     return nullptr;
 // splicer end function.pass_struct_by_reference_out_cls
 }
+
+// ----------------------------------------
+// Function:  bool defaultPtrIsNULL
+// Exact:     py_bool_result
+// ----------------------------------------
+// Argument:  double * data=nullptr +intent(in)+rank(1)
+// Exact:     py_native_*_in_pointer_numpy
+static char PY_defaultPtrIsNULL_1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_defaultPtrIsNULL_1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.default_ptr_is_null
+    Py_ssize_t SH_nargs = 0;
+    double * data;
+    PyObject * SHTPy_data;
+    PyArrayObject * SHPy_data = nullptr;
+    const char *SHT_kwlist[] = {
+        "data",
+        nullptr };
+    bool SHCXX_rv;
+    PyObject * SHTPy_rv = nullptr;
+
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "|O:defaultPtrIsNULL",
+        const_cast<char **>(SHT_kwlist), &SHTPy_data))
+        return nullptr;
+    switch (SH_nargs) {
+    case 0:
+        SHCXX_rv = defaultPtrIsNULL();
+        break;
+    case 1:
+        {
+            // post_parse
+            SHPy_data = reinterpret_cast<PyArrayObject *>
+                (PyArray_FROM_OTF(SHTPy_data, NPY_DOUBLE,
+                NPY_ARRAY_IN_ARRAY));
+            if (SHPy_data == nullptr) {
+                PyErr_SetString(PyExc_ValueError,
+                    "data must be a 1-D array of double");
+                goto fail;
+            }
+
+            // pre_call
+            data = static_cast<double *>(PyArray_DATA(SHPy_data));
+
+            SHCXX_rv = defaultPtrIsNULL(data);
+            break;
+        }
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return nullptr;
+    }
+
+    // post_call
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+    if (SHTPy_rv == nullptr) goto fail;
+
+    // cleanup
+    Py_XDECREF(SHPy_data);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_data);
+    Py_XDECREF(SHTPy_rv);
+    return nullptr;
+// splicer end function.default_ptr_is_null
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReference__doc__},
@@ -437,6 +512,8 @@ static PyMethodDef PY_methods[] = {
 {"passStructByReferenceOutCls",
     (PyCFunction)PY_passStructByReferenceOutCls, METH_NOARGS,
     PY_passStructByReferenceOutCls__doc__},
+{"defaultPtrIsNULL", (PyCFunction)PY_defaultPtrIsNULL_1,
+    METH_VARARGS|METH_KEYWORDS, PY_defaultPtrIsNULL_1__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

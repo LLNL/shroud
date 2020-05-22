@@ -1146,6 +1146,238 @@
                     "underscore_name": "pass_struct_by_reference_out_cls"
                 },
                 "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "bool",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "c_bool_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "f_bool_scalar_result",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "_generated": "has_default_arg",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "defaultPtrIsNULL",
+                        "pointer": []
+                    },
+                    "params": [],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
+                "declgen": "bool defaultPtrIsNULL()",
+                "fmtdict": {
+                    "C_name": "CXX_default_ptr_is_null_0",
+                    "C_prototype": "void",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_default_ptr_is_null_0",
+                    "F_C_name": "c_default_ptr_is_null_0",
+                    "F_arguments": "",
+                    "F_name_function": "default_ptr_is_null_0",
+                    "F_name_generic": "default_ptr_is_null",
+                    "F_name_impl": "default_ptr_is_null_0",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "defaultPtrIsNULL",
+                    "function_suffix": "_0",
+                    "underscore_name": "default_ptr_is_null"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_default_funcs": [
+                    9
+                ],
+                "_fmtargs": {
+                    "data": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "data",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "double",
+                            "cxx_var": "data",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_data",
+                            "c_var": "data",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "data",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(data)",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "double",
+                            "c_var": "data",
+                            "ctor_expr": "*data",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "data",
+                            "cxx_type": "double",
+                            "cxx_var": "data",
+                            "data_var": "SHData_data",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_var": "SHPy_data",
+                            "pytmp_var": "SHTPy_data",
+                            "size_var": "SHSize_data",
+                            "stmt0": "py_native_*_in_pointer_numpy",
+                            "stmt1": "py_native_*_in_pointer_numpy"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "bool",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "c_bool_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "bool",
+                        "f_type": "logical",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_BOOL",
+                        "stmt0": "f_bool_scalar_result",
+                        "stmt1": "f_bool_result",
+                        "stmtc0": "c_bool_scalar_result",
+                        "stmtc1": "c_default"
+                    },
+                    "fmtpy": {
+                        "PyTypeObject": "PyBool_Type",
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "bool",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_BOOL",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_bool_result",
+                        "stmt1": "py_bool_result"
+                    }
+                },
+                "_has_default_arg": true,
+                "_nargs": [
+                    0,
+                    1
+                ],
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "defaultPtrIsNULL",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "data",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "init": "nullptr",
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "bool"
+                    ],
+                    "typemap_name": "bool"
+                },
+                "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
+                "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(in)+rank(1))",
+                "fmtdict": {
+                    "C_call_list": "data",
+                    "C_name": "CXX_default_ptr_is_null_1",
+                    "C_prototype": "double * data",
+                    "C_return_type": "bool",
+                    "F_C_call": "c_default_ptr_is_null_1",
+                    "F_C_name": "c_default_ptr_is_null_1",
+                    "F_arg_c_call": "data",
+                    "F_arguments": "data",
+                    "F_name_function": "default_ptr_is_null_1",
+                    "F_name_generic": "default_ptr_is_null",
+                    "F_name_impl": "default_ptr_is_null_1",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_cleanup_decref": "Py_XDECREF",
+                    "PY_name_impl": "PY_defaultPtrIsNULL_1",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "defaultPtrIsNULL",
+                    "function_suffix": "_1",
+                    "underscore_name": "default_ptr_is_null"
+                },
+                "options": {}
             }
         ],
         "language": "cxx",

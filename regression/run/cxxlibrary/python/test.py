@@ -62,6 +62,9 @@ class Struct(unittest.TestCase):
         str3 = cxxlibrary.passStructByReferenceInoutCls(str1)
         self.assertEqual(4, str1.ifield)
 
+    def test_DefaultArgs(self):
+        self.assertTrue(cxxlibrary.defaultPtrIsNULL())
+        self.assertFalse(cxxlibrary.defaultPtrIsNULL([1., 2.]))
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

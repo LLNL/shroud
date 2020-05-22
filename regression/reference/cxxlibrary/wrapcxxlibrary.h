@@ -16,6 +16,9 @@
 #define WRAPCXXLIBRARY_H
 
 #include "typescxxlibrary.h"
+#ifndef __cplusplus
+#include <stdbool.h>
+#endif
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -41,6 +44,10 @@ int CXX_pass_struct_by_reference_in(const CXX_cstruct1 * arg);
 void CXX_pass_struct_by_reference_inout(CXX_cstruct1 * arg);
 
 void CXX_pass_struct_by_reference_out(CXX_cstruct1 * arg);
+
+bool CXX_default_ptr_is_null_0(void);
+
+bool CXX_default_ptr_is_null_1(double * data);
 
 #ifdef __cplusplus
 }

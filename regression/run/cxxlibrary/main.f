@@ -17,6 +17,7 @@ program tester
   call init_fruit
 
   call test_struct
+  call test_default_args
 
   call fruit_summary
   call fruit_finalize
@@ -57,4 +58,12 @@ contains
 
   end subroutine test_struct
 
+  subroutine test_default_args
+    real(C_DOUBLE) :: some_var(2)
+    
+    call assert_true(default_ptr_is_null())
+    call assert_false(default_ptr_is_null(some_var))
+    
+  end subroutine test_default_args
+  
 end program tester
