@@ -77,20 +77,19 @@ PY_passStructByReference(
             "arg must be a 1-D array of CXX_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        SHCXX_rv = passStructByReference(*arg);
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = passStructByReference(*arg);
 
-        // cleanup
-        Py_DECREF(SHPy_arg);
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -143,20 +142,19 @@ PY_passStructByReferenceIn(
             "arg must be a 1-D array of CXX_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        SHCXX_rv = passStructByReferenceIn(*arg);
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = passStructByReferenceIn(*arg);
 
-        // cleanup
-        Py_DECREF(SHPy_arg);
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -203,13 +201,12 @@ PY_passStructByReferenceInout(
             "arg must be a 1-D array of CXX_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        passStructByReferenceInout(*arg);
-        return (PyObject *) SHPy_arg;
-    }
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+    passStructByReferenceInout(*arg);
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -247,13 +244,12 @@ PY_passStructByReferenceOut(
             "arg must be a 1-D array of CXX_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        passStructByReferenceOut(*arg);
-        return (PyObject *) SHPy_arg;
-    }
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+    passStructByReferenceOut(*arg);
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -403,18 +399,16 @@ PY_passStructByReferenceOutCls(
     Cstruct1_cls *arg = nullptr;
     PyObject *SHPy_arg = nullptr;
 
-    {
-        // pre_call
-        arg = new Cstruct1_cls;
+    // pre_call
+    arg = new Cstruct1_cls;
 
-        passStructByReferenceOutCls(*arg);
+    passStructByReferenceOutCls(*arg);
 
-        // post_call
-        SHPy_arg = PP_Cstruct1_cls_to_Object_idtor(arg, 0);
-        if (SHPy_arg == nullptr) goto fail;
+    // post_call
+    SHPy_arg = PP_Cstruct1_cls_to_Object_idtor(arg, 0);
+    if (SHPy_arg == nullptr) goto fail;
 
-        return (PyObject *) SHPy_arg;
-    }
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);

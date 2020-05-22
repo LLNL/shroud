@@ -269,19 +269,18 @@ PY_cos_doubles(
             "out must be a 1-D array of double");
         goto fail;
     }
-    {
-        // pre_call
-        in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        out = static_cast<double *>(PyArray_DATA(SHPy_out));
-        sizein = PyArray_SIZE(SHPy_in);
 
-        cos_doubles(in, out, sizein);
+    // pre_call
+    in = static_cast<double *>(PyArray_DATA(SHPy_in));
+    out = static_cast<double *>(PyArray_DATA(SHPy_out));
+    sizein = PyArray_SIZE(SHPy_in);
 
-        // cleanup
-        Py_DECREF(SHPy_in);
+    cos_doubles(in, out, sizein);
 
-        return (PyObject *) SHPy_out;
-    }
+    // cleanup
+    Py_DECREF(SHPy_in);
+
+    return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_in);
@@ -350,19 +349,18 @@ PY_truncate_to_int(
             "out must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        in = static_cast<double *>(PyArray_DATA(SHPy_in));
-        out = static_cast<int *>(PyArray_DATA(SHPy_out));
-        sizein = PyArray_SIZE(SHPy_in);
 
-        truncate_to_int(in, out, sizein);
+    // pre_call
+    in = static_cast<double *>(PyArray_DATA(SHPy_in));
+    out = static_cast<int *>(PyArray_DATA(SHPy_out));
+    sizein = PyArray_SIZE(SHPy_in);
 
-        // cleanup
-        Py_DECREF(SHPy_in);
+    truncate_to_int(in, out, sizein);
 
-        return (PyObject *) SHPy_out;
-    }
+    // cleanup
+    Py_DECREF(SHPy_in);
+
+    return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_in);
@@ -414,17 +412,16 @@ PY_get_values(
             "values must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        values = static_cast<int *>(PyArray_DATA(SHPy_values));
 
-        get_values(&nvalues, values);
+    // pre_call
+    values = static_cast<int *>(PyArray_DATA(SHPy_values));
 
-        // post_call
-        SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+    get_values(&nvalues, values);
 
-        return SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = Py_BuildValue("iO", nvalues, SHPy_values);
+
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -483,18 +480,17 @@ PY_get_values2(
             "arg2 must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        arg1 = static_cast<int *>(PyArray_DATA(SHPy_arg1));
-        arg2 = static_cast<int *>(PyArray_DATA(SHPy_arg2));
 
-        get_values2(arg1, arg2);
+    // pre_call
+    arg1 = static_cast<int *>(PyArray_DATA(SHPy_arg1));
+    arg2 = static_cast<int *>(PyArray_DATA(SHPy_arg2));
 
-        // post_call
-        SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+    get_values2(arg1, arg2);
 
-        return SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = Py_BuildValue("OO", SHPy_arg1, SHPy_arg2);
+
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg1);
@@ -545,13 +541,12 @@ PY_iota_allocatable(
             "values must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        values = static_cast<int *>(PyArray_DATA(SHPy_values));
 
-        iota_allocatable(nvar, values);
-        return (PyObject *) SHPy_values;
-    }
+    // pre_call
+    values = static_cast<int *>(PyArray_DATA(SHPy_values));
+
+    iota_allocatable(nvar, values);
+    return (PyObject *) SHPy_values;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -601,13 +596,12 @@ PY_iota_dimension(
             "values must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        values = static_cast<int *>(PyArray_DATA(SHPy_values));
 
-        iota_dimension(nvar, values);
-        return (PyObject *) SHPy_values;
-    }
+    // pre_call
+    values = static_cast<int *>(PyArray_DATA(SHPy_values));
+
+    iota_dimension(nvar, values);
+    return (PyObject *) SHPy_values;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -660,21 +654,20 @@ PY_Sum(
             "values must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        values = static_cast<int *>(PyArray_DATA(SHPy_values));
-        len = PyArray_SIZE(SHPy_values);
 
-        Sum(len, values, &result);
+    // pre_call
+    values = static_cast<int *>(PyArray_DATA(SHPy_values));
+    len = PyArray_SIZE(SHPy_values);
 
-        // post_call
-        SHPy_result = PyInt_FromLong(result);
+    Sum(len, values, &result);
 
-        // cleanup
-        Py_DECREF(SHPy_values);
+    // post_call
+    SHPy_result = PyInt_FromLong(result);
 
-        return (PyObject *) SHPy_result;
-    }
+    // cleanup
+    Py_DECREF(SHPy_values);
+
+    return (PyObject *) SHPy_result;
 
 fail:
     Py_XDECREF(SHPy_values);
@@ -715,13 +708,12 @@ PY_fillIntArray(
             "out must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        out = static_cast<int *>(PyArray_DATA(SHPy_out));
 
-        fillIntArray(out);
-        return (PyObject *) SHPy_out;
-    }
+    // pre_call
+    out = static_cast<int *>(PyArray_DATA(SHPy_out));
+
+    fillIntArray(out);
+    return (PyObject *) SHPy_out;
 
 fail:
     Py_XDECREF(SHPy_out);
@@ -772,14 +764,13 @@ PY_incrementIntArray(
             "array must be a 1-D array of int");
         goto fail;
     }
-    {
-        // pre_call
-        array = static_cast<int *>(PyArray_DATA(SHPy_array));
-        sizein = PyArray_SIZE(SHPy_array);
 
-        incrementIntArray(array, sizein);
-        return (PyObject *) SHPy_array;
-    }
+    // pre_call
+    array = static_cast<int *>(PyArray_DATA(SHPy_array));
+    sizein = PyArray_SIZE(SHPy_array);
+
+    incrementIntArray(array, sizein);
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -813,21 +804,20 @@ PY_acceptCharArrayIn(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptCharArrayIn",
         const_cast<char **>(SHT_kwlist), &SHTPy_names))
         return nullptr;
-    {
-        // pre_call
-        Py_ssize_t SHSize_names;
-        if (SHROUD_create_from_PyObject_char(SHTPy_names, "names",
-            &names,  &SHSize_names) == -1)
-            goto fail;
 
-        acceptCharArrayIn(names);
+    // pre_call
+    Py_ssize_t SHSize_names;
+    if (SHROUD_create_from_PyObject_char(SHTPy_names, "names", &names, 
+        &SHSize_names) == -1)
+        goto fail;
 
-        // post_call
-        std::free(names);
-        names = nullptr;
+    acceptCharArrayIn(names);
 
-        Py_RETURN_NONE;
-    }
+    // post_call
+    std::free(names);
+    names = nullptr;
+
+    Py_RETURN_NONE;
 
 fail:
     if (names != nullptr) {
@@ -922,17 +912,15 @@ PY_getPtrToFixedArray(
     npy_intp SHD_count[1];
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFixedArray(&count);
+    getPtrToFixedArray(&count);
 
-        // post_call
-        SHD_count[0] = 10;
-        SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
-            count);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHD_count[0] = 10;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -969,17 +957,15 @@ PY_getPtrToDynamicArray(
     PyObject *SHPy_count = nullptr;
     int ncount;
 
-    {
-        getPtrToDynamicArray(&count, &ncount);
+    getPtrToDynamicArray(&count, &ncount);
 
-        // post_call
-        SHD_count[0] = ncount;
-        SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
-            count);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHD_count[0] = ncount;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1013,17 +999,15 @@ PY_getPtrToFuncArray(
     npy_intp SHD_count[1];
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFuncArray(&count);
+    getPtrToFuncArray(&count);
 
-        // post_call
-        SHD_count[0] = getLen();
-        SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
-            count);
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHD_count[0] = getLen();
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        count);
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1052,17 +1036,15 @@ PY_getPtrToFixedConstArray(
     npy_intp SHD_count[1];
     PyObject *SHPy_count = nullptr;
 
-    {
-        getPtrToFixedConstArray(&count);
+    getPtrToFixedConstArray(&count);
 
-        // post_call
-        SHD_count[0] = 10;
-        SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
-            const_cast<int *>(count));
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHD_count[0] = 10;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        const_cast<int *>(count));
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);
@@ -1095,17 +1077,15 @@ PY_getPtrToDynamicConstArray(
     PyObject *SHPy_count = nullptr;
     int ncount;
 
-    {
-        getPtrToDynamicConstArray(&count, &ncount);
+    getPtrToDynamicConstArray(&count, &ncount);
 
-        // post_call
-        SHD_count[0] = ncount;
-        SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
-            const_cast<int *>(count));
-        if (SHPy_count == nullptr) goto fail;
+    // post_call
+    SHD_count[0] = ncount;
+    SHPy_count = PyArray_SimpleNewFromData(1, SHD_count, NPY_INT,
+        const_cast<int *>(count));
+    if (SHPy_count == nullptr) goto fail;
 
-        return (PyObject *) SHPy_count;
-    }
+    return (PyObject *) SHPy_count;
 
 fail:
     Py_XDECREF(SHPy_count);

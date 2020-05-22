@@ -1222,18 +1222,17 @@ PY_PostDeclare(
     if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
         &SHSize_count) == -1)
         goto fail;
-    {
-        PostDeclare(count, SH_name);
 
-        // post_call
-        SHPy_name = PyString_FromStringAndSize(SH_name.data(),
-            SH_name.size());
+    PostDeclare(count, SH_name);
 
-        // cleanup
-        std::free(count);
+    // post_call
+    SHPy_name = PyString_FromStringAndSize(SH_name.data(),
+        SH_name.size());
 
-        return (PyObject *) SHPy_name;
-    }
+    // cleanup
+    std::free(count);
+
+    return (PyObject *) SHPy_name;
 
 fail:
     if (count != nullptr) std::free(count);

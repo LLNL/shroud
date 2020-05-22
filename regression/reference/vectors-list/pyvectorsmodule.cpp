@@ -112,19 +112,18 @@ PY_vector_sum(
 
     // post_declare
     std::vector<int> SH_arg;
-    {
-        // pre_call
-        if (SHROUD_create_from_PyObject_vector_int(SHTPy_arg, "arg",
-            SH_arg) == -1)
-            goto fail;
 
-        SHCXX_rv = vector_sum(SH_arg);
+    // pre_call
+    if (SHROUD_create_from_PyObject_vector_int(SHTPy_arg, "arg",
+        SH_arg) == -1)
+        goto fail;
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = vector_sum(SH_arg);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     return nullptr;
@@ -156,15 +155,14 @@ PY_vector_iota_out(
 
     // post_declare
     std::vector<int> SH_arg;
-    {
-        vector_iota_out(SH_arg);
 
-        // post_call
-        SHPy_arg = SHROUD_to_PyList_vector_int(SH_arg);
-        if (SHPy_arg == nullptr) goto fail;
+    vector_iota_out(SH_arg);
 
-        return (PyObject *) SHPy_arg;
-    }
+    // post_call
+    SHPy_arg = SHROUD_to_PyList_vector_int(SH_arg);
+    if (SHPy_arg == nullptr) goto fail;
+
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -197,15 +195,14 @@ PY_vector_iota_out_d(
 
     // post_declare
     std::vector<double> SH_arg;
-    {
-        vector_iota_out_d(SH_arg);
 
-        // post_call
-        SHPy_arg = SHROUD_to_PyList_vector_double(SH_arg);
-        if (SHPy_arg == nullptr) goto fail;
+    vector_iota_out_d(SH_arg);
 
-        return (PyObject *) SHPy_arg;
-    }
+    // post_call
+    SHPy_arg = SHROUD_to_PyList_vector_double(SH_arg);
+    if (SHPy_arg == nullptr) goto fail;
+
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);

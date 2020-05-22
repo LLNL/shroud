@@ -323,17 +323,15 @@ PY_fetchArrayPtr(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayPtr(&array, &isize);
+    self->obj->fetchArrayPtr(&array, &isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            array);
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        array);
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -366,17 +364,15 @@ PY_fetchArrayRef(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayRef(array, isize);
+    self->obj->fetchArrayRef(array, isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            array);
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        array);
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -409,17 +405,15 @@ PY_fetchArrayPtrConst(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayPtrConst(&array, &isize);
+    self->obj->fetchArrayPtrConst(&array, &isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            const_cast<double *>(array));
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        const_cast<double *>(array));
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -452,17 +446,15 @@ PY_fetchArrayRefConst(
     PyObject *SHPy_array = nullptr;
     int isize;
 
-    {
-        self->obj->fetchArrayRefConst(array, isize);
+    self->obj->fetchArrayRefConst(array, isize);
 
-        // post_call
-        SHD_array[0] = isize;
-        SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
-            const_cast<double *>(array));
-        if (SHPy_array == nullptr) goto fail;
+    // post_call
+    SHD_array[0] = isize;
+    SHPy_array = PyArray_SimpleNewFromData(1, SHD_array, NPY_DOUBLE,
+        const_cast<double *>(array));
+    if (SHPy_array == nullptr) goto fail;
 
-        return (PyObject *) SHPy_array;
-    }
+    return (PyObject *) SHPy_array;
 
 fail:
     Py_XDECREF(SHPy_array);
@@ -561,15 +553,14 @@ PY_checkPtr(
     array = PyCapsule_GetPointer(SHPy_array, NULL);
     if (PyErr_Occurred())
         goto fail;
-    {
-        SHCXX_rv = self->obj->checkPtr(array);
 
-        // post_call
-        SHTPy_rv = PyBool_FromLong(SHCXX_rv);
-        if (SHTPy_rv == nullptr) goto fail;
+    SHCXX_rv = self->obj->checkPtr(array);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // post_call
+    SHTPy_rv = PyBool_FromLong(SHCXX_rv);
+    if (SHTPy_rv == nullptr) goto fail;
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHTPy_rv);

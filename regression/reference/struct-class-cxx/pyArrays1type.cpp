@@ -71,31 +71,30 @@ PY_Arrays1_tp_init(
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "|OO:Arrays1_ctor",
         const_cast<char **>(SHT_kwlist), &SHPy_name, &SHPy_count))
         return -1;
-    {
-        self->obj = new Arrays1;
-        if (self->obj == nullptr) {
-            PyErr_NoMemory();
-            return -1;
-        }
-        self->idtor = 5;
 
-        // post_call - initialize fields
-        Arrays1 *SH_obj = self->obj;
-        if (SHPy_name != nullptr) {
-            if (STR_SHROUD_fill_from_PyObject_char(SHPy_name, "name",
-                SH_obj->name, 20) == -1)
-                goto fail;
-            self->name_obj = nullptr;
-        }
-        if (SHPy_count != nullptr) {
-            if (STR_SHROUD_fill_from_PyObject_int_numpy(SHPy_count,
-                "count", SH_obj->count, 10) == -1)
-                goto fail;
-            self->count_obj = nullptr;
-        }
-
-        return 0;
+    self->obj = new Arrays1;
+    if (self->obj == nullptr) {
+        PyErr_NoMemory();
+        return -1;
     }
+    self->idtor = 5;
+
+    // post_call - initialize fields
+    Arrays1 *SH_obj = self->obj;
+    if (SHPy_name != nullptr) {
+        if (STR_SHROUD_fill_from_PyObject_char(SHPy_name, "name",
+            SH_obj->name, 20) == -1)
+            goto fail;
+        self->name_obj = nullptr;
+    }
+    if (SHPy_count != nullptr) {
+        if (STR_SHROUD_fill_from_PyObject_int_numpy(SHPy_count, "count",
+            SH_obj->count, 10) == -1)
+            goto fail;
+        self->count_obj = nullptr;
+    }
+
+    return 0;
 
 fail:
     return -1;

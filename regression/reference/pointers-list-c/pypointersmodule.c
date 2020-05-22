@@ -824,6 +824,7 @@ PY_incrementIntArray(
 {
 // splicer begin function.increment_int_array
     int * array = NULL;
+    PyObject *SHPy_array;
     PyObject *SHTPy_array = NULL;
     int sizein;
     char *SHT_kwlist[] = {
@@ -846,7 +847,7 @@ PY_incrementIntArray(
     incrementIntArray(array, sizein);
 
     // post_call
-    PyObject *SHPy_array = SHROUD_to_PyList_int(array, SHSize_array);
+    SHPy_array = SHROUD_to_PyList_int(array, SHSize_array);
     if (SHPy_array == NULL) goto fail;
 
     // cleanup

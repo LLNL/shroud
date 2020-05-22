@@ -80,20 +80,19 @@ PY_passStructByValue(
             "arg must be a 1-D array of STR_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        SHCXX_rv = passStructByValue(*arg);
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = passStructByValue(*arg);
 
-        // cleanup
-        Py_DECREF(SHPy_arg);
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -142,20 +141,19 @@ PY_passStruct1(
             "arg must be a 1-D array of STR_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        SHCXX_rv = passStruct1(arg);
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        // post_call
-        SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHCXX_rv = passStruct1(arg);
 
-        // cleanup
-        Py_DECREF(SHPy_arg);
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-        return (PyObject *) SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -211,20 +209,19 @@ PY_passStruct2(
             "s1 must be a 1-D array of STR_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        s1 = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_s1));
 
-        SHCXX_rv = passStruct2(s1, outbuf);
+    // pre_call
+    s1 = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_s1));
 
-        // post_call
-        SHTPy_rv = Py_BuildValue("is", SHCXX_rv, outbuf);
+    SHCXX_rv = passStruct2(s1, outbuf);
 
-        // cleanup
-        Py_DECREF(SHPy_s1);
+    // post_call
+    SHTPy_rv = Py_BuildValue("is", SHCXX_rv, outbuf);
 
-        return SHTPy_rv;
-    }
+    // cleanup
+    Py_DECREF(SHPy_s1);
+
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_s1);
@@ -284,13 +281,12 @@ PY_acceptStructOutPtr(
             "arg must be a 1-D array of STR_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        acceptStructOutPtr(arg, i, d);
-        return (PyObject *) SHPy_arg;
-    }
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+    acceptStructOutPtr(arg, i, d);
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -337,13 +333,12 @@ PY_acceptStructInOutPtr(
             "arg must be a 1-D array of STR_cstruct1");
         goto fail;
     }
-    {
-        // pre_call
-        arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
 
-        acceptStructInOutPtr(arg);
-        return (PyObject *) SHPy_arg;
-    }
+    // pre_call
+    arg = static_cast<Cstruct1 *>(PyArray_DATA(SHPy_arg));
+
+    acceptStructInOutPtr(arg);
+    return (PyObject *) SHPy_arg;
 
 fail:
     Py_XDECREF(SHPy_arg);

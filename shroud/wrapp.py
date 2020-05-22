@@ -1548,16 +1548,6 @@ return 1;""",
                 PY_code.extend(post_parse_code[:post_parse_len])
                 need_blank = True
 
-            if self.language == "cxx" and goto_fail:
-                # Need an extra scope to deal with C++ error
-                # error: jump to label 'fail' crosses initialization of ...
-                PY_code.append("{")
-                PY_code.append(1)
-                fail_scope = True
-                need_blank = False
-            else:
-                fail_scope = False
-
             if pre_call_len:
                 if options.debug:
                     if need_blank:
@@ -1698,9 +1688,6 @@ return 1;""",
             PY_code.append("")
         PY_code.append(return_code)
 
-        if fail_scope:
-            PY_code.append(-1)
-            PY_code.append("}")
         if goto_fail:
             PY_code.extend(["", "^fail:"])
             PY_code.extend(fail_code)
@@ -3943,6 +3930,7 @@ py_statements = [
             "{cxx_type} * {cxx_var} = {nullptr};",
         ],
         declare=[
+            "PyObject *{py_var};",
             "PyObject *{pytmp_var} = {nullptr};",
         ],
         post_parse=[
@@ -3954,7 +3942,7 @@ py_statements = [
         arg_call=["{cxx_var}"],
         post_call=[
 #            "SHROUD_update_PyList_{cxx_type}({pytmp_var}, {cxx_var}, {size_var});",
-            "PyObject *{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
+            "{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});",
             "if ({py_var} == {nullptr}) goto fail;",
         ],
         object_created=True,
@@ -4605,14 +4593,17 @@ py_statements = [
             "PyObject * {pytmp_var};",  # Object set by ParseTupleAndKeywords.
             "PyArrayObject * {py_var} = {nullptr};",
         ],
+        post_declare=[
+            "std::vector<{cxx_T}> {cxx_var};",
+            "{cxx_T} * {data_var};",
+        ],
         post_parse=[
             "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF("
             "\t{pytmp_var},\t {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};",
         ] + template_array_error,
         pre_call=[
-            "{cxx_T} * {data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
-            "std::vector<{cxx_T}> {cxx_var}\t(\t{data_var},\t "
-            "{data_var}+PyArray_SIZE({py_var}));",
+            "{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));",
+            "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));",
         ],
         fail=[
             "Py_XDECREF({py_var});",
