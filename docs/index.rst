@@ -36,6 +36,7 @@ Contents
    tutorial
    input
    pointers
+   types
    namespaces
    struct
    templates

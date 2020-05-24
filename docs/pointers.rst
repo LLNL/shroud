@@ -4,11 +4,79 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+
+Pointers and Arrays
+===================
+
+When a function returns a pointer to a POD type several Fortran
+interfaces are possible. When a function returns an ``int *`` the
+simplest result is to return a ``type(C_PTR)``.  This is just the raw
+pointer returned by C++.  It's also the least useful to the caller
+since it cannot be used directly.
+
+If the C++ library function can also provide the length of the
+pointer, then its possible to return a Fortran ``POINTER`` or
+``ALLOCATABLE`` variable.  This allows the caller to directly use the
+returned value of the C++ function.  However, there is a price; the
+user will have to release the memory if *owner(caller)* is set.  To
+accomplish this with ``POINTER`` arguments, an additional argument is
+added to the function which contains information about how to delete
+the array.  If the argument is declared Fortran ``ALLOCATABLE``, then
+the value of the C++ pointer are copied into a newly allocated Fortran
+array. The C++ memory is deleted by the wrapper and it is the callers
+responsibility to ``deallocate`` the Fortran array. However, Fortran
+will release the array automatically under some conditions when the
+caller function returns. If *owner(library)* is set, the Fortran
+caller never needs to release the memory.
+
+See :ref:`MemoryManagementAnchor` for details of the implementation.
+
+Functions with ``void *`` arguments are treated differently.  A
+``type(C_PTR)`` will be passed by value.  For a ``void **`` argument,
+the ``type(C_PTR)`` will be passed by reference (the default).  This
+will allow the C wrapper to assign a value to the argument.
+
+.. See clibrary.yaml  passVoidStarStar test
+
+.. code-block:: yaml
+
+    - decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
+
+Creates the Fortran interface:
+
+.. code-block:: fortran
+
+        subroutine pass_void_star_star(in, out) &
+                bind(C, name="passVoidStarStar")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), value, intent(IN) :: in
+            type(C_PTR), intent(OUT) :: out
+        end subroutine pass_void_star_star
+
+A void pointer may also be used in a C function when any type may be
+passed in.  The attribute *assumedtype* can be used to declare a
+Fortran argument as assumed-type: ``type(*)``.
+
+.. code-block:: yaml
+
+    - decl: int passAssumedType(void *arg+assumedtype)
+
+.. code-block:: fortran
+
+        function pass_assumed_type(arg) &
+                result(SHT_rv) &
+                bind(C, name="passAssumedType")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(*) :: arg
+            integer(C_INT) :: SHT_rv
+        end function pass_assumed_type
+
 .. _MemoryManagementAnchor:
 
-
 Memory Management
-=================
+-----------------
 
 Shroud will maintain ownership of memory via the **owner** attribute.
 It uses the value of the attribute to decided when to release memory.
