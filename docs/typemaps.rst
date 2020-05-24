@@ -4,322 +4,335 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. _TypemapsAnchor:
 
-Statements
-==========
+Typemaps
+========
 
-Typemaps are used to add code to the generated wrappers
-to replace the default code.
+A typemap is created for each type to describe to Shroud how it should
+convert a type between languages for each wrapper.  Native types are
+predefined and a Shroud typemap is created for each ``struct`` and
+``class`` declaration.
 
-The statements work together to pass variables and metadata between
-Fortran and C.
-
-
-Fortran
--------
-
-A Fortran wrapper is created out of several segments.
-
-.. code-block:: text
-
-      {F_subprogram} {F_name_impl}({F_arguments}){F_result_clause}
-        arg_f_use
-        arg_f_decl
-        ! splicer begin
-        declare
-        pre_call
-        call
-        post_call
-        ! splicer end
-      end {F_subprogram} {F_name_impl}
-
-buf_arg
-^^^^^^^
-
-arg
-
-    default.
-
-shadow
-size
-capsule
-context
-len_trim
-len
-
-c_local_var
-^^^^^^^^^^^
-
-If true, generate a local variable using the C declaration for the argument.
-This variable can be used by the pre_call and post_call statements.
-A single declaration will be added even if with ``intent(inout)``.
-
-call
-^^^^
-
-Code used to call the function.
-Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
-
-declare
-^^^^^^^
-
-A list of declarations needed by *pre_call* or *post_call*.
-Usually a *c_local_var* is sufficient.
-
-f_helper
-^^^^^^^^
-
-Blank delimited list of helper function names to add to generated
-Fortran code.
-These functions are defined in whelper.py.
-There is no current way to add additional functions.
-
-f_module
-^^^^^^^^
-
-``USE`` statements to add to Fortran wrapper.
-A dictionary of list of ``ONLY`` names:
+The general form is:
 
 .. code-block:: yaml
 
-        f_module:
-          iso_c_binding:
-          - C_SIZE_T
+    declarations:
+    - type: type-name
+      fields:
+         field1:
+         field2:
 
+*type-name* is the name used by C++.  There are some fields which are
+used by all wrappers and other fields which are used by language
+specific wrappers.
 
-post_call
+type fields
+-----------
+
+These fields are common to all wrapper languages.
+
+base
+^^^^
+
+The base type of *type-name*.
+This is used to generalize operations for several types.
+The base types that Shroud uses are **string**, **vector**, 
+or **shadow**.
+
+cpp_if
+^^^^^^
+
+A c preprocessor test which is used to conditionally use
+other fields of the type such as *c_header* and *cxx_header*:
+
+.. code-block:: yaml
+
+  - type: MPI_Comm
+    fields:
+      cpp_if: ifdef USE_MPI
+
+flat_name
 ^^^^^^^^^
 
-Statement to execute after call.
-Can be use to cleanup after *pre_call* or to coerce the return value.
+A flattened version of **cxx_type** which allows the name to be 
+used as a legal identifier in C, Fortran and Python.
+By default any scope separators are converted to underscores
+i.e. ``internal::Worker`` becomes ``internal_Worker``.
+Imbedded blanks are converted to underscores
+i.e. ``unsigned int`` becomes ``unsigned_int``.
+And template arguments are converted to underscores with the trailing
+``>`` being replaced
+i.e. ``std::vector<int>`` becomes ``std_vector_int``.
 
-pre_call
-^^^^^^^^
+One use of this name is as the **function_suffix** for templated functions.
 
-Statement to execute before call, often to coerce types when *f_cast*
-cannot be used.
+idtor
+^^^^^
 
-need_wrapper
-^^^^^^^^^^^^
+Index of ``capsule_data`` destructor in the function
+*C_memory_dtor_function*.
+This value is computed by Shroud and should not be set.
+It can be used when formatting statements as ``{idtor}``.
+Defaults to *0* indicating no destructor.
 
-If true, the Fortran wrapper will always be created.
-This is used when an assignment is needed to do a type coercion;
-for example, with logical types.
+.. format field
 
+C and C++
+---------
 
-C
--
+c_type
+^^^^^^
 
-The *C_code* field has a default value of:
-
-.. code-block:: text
-
-    {C_return_type} {C_name}({C_prototype})
-    {
-        {pre_call}
-        {call_code}
-        {post_call_pattern}
-        {post_call}
-        {final}
-        {ret}
-    }
-
-
-buf_args
-^^^^^^^^^
-
-*buf_args* lists the arguments which are used by the wrapper.
-The default is to provide a one-for-one correspondance with the 
-arguments of the function which is being wrapped.
-However, often an additional function is created which will pass 
-additional or different arguments to provide meta-data about the argument.
-
-The Fortran wrapper will call the generated 'bufferified' function
-and provide the meta-data to the C wrapper.
-
-arg
-
-    Use the library argument as the wrapper argument.
-    This is the default when *buf_args* is not explicit.
-
-capsule
-
-    An argument of type *C_capsule_data_type*/*F_capsule_data_type*.
-    It provides a pointer to the C++ memory as well as information
-    to release the memory.
-
-context
-
-    An argument of *C_context_type*/*F_context_type*.
-    For example, used with ``std::vector`` to hold
-    address and size of data contained in the argument
-    in a form which may be used directly by Fortran.
-
-    *c_var_context*
-
-len
-
-    Result of Fortran intrinsic ``LEN`` for string arguments.
-    Type ``int``.
-
-len_trim
-
-    Result of Fortran intrinsic ``LEN_TRIM`` for string arguments.
-    Type ``int``.
-
-size
-
-    Result of Fortran intrinsic ``SIZE`` for array arguments.
-    Type ``long``.
-
-shadow
-
-    Argument will be of type *C_capsule_data_type*.
-
+Name of type in C.
+Default to *None*.
 
 
 c_header
 ^^^^^^^^
 
-List of blank delimited header files which will be included by the generated header
-for the C wrapper.  These headers must be C only.
-For example, ``size_t`` requires stddef.h:
+Name of C header file required for type.
+This file is included in the interface header.
+Only used with *language=c*.
+Defaults to *None*.
 
-.. code-block:: yaml
-
-    type: size_t
-    fields:
-        c_type: size_t 
-        cxx_type: size_t
-        c_header: <stddef.h>
+See also *cxx_header*.
 
 
-c_helper
+c_to_cxx
 ^^^^^^^^
 
-A blank delimited list of helper functions which will be added to the wrapper file.
-The list will be formatted to allow for additional flexibility::
+Expression to convert from C to C++.
+Defaults to *None* which implies *{c_var}*.
+i.e. no conversion required.
 
-    c_helper: capsule_data_helper vector_context vector_copy_{cxx_T}
 
-These functions are defined in whelper.py.
-There is no current way to add additional functions.
-
-c_local_var
+c_templates
 ^^^^^^^^^^^
 
-If a local C variable is created for the return value by post_call, *c_local_var*
-indicates if the local variable is a **pointer** or **scalar**.
-For example, when a structure is returned by a C++ function, the C wrapper creates
-a local variable which contains a pointer to the C type of the struct.
+c_statements for cxx_T
 
-The local variable can be passed in when buf_args is *shadow*.
+A dictionary indexed by type of specialized *c_statements* When an
+argument has a *template* field, such as type ``vector<string>``, some
+additional specialization of c_statements may be required::
 
-call
-^^^^
+        c_templates:
+            string:
+               intent_in_buf:
+               - code to copy CHARACTER to vector<string>
 
-Code to call function.  This is usually generated.
-An exception which require explicit call code are constructors
-and destructors for shadow types.
+
+
+c_return_code
+^^^^^^^^^^^^^
+
+None
+
+c_union
+^^^^^^^
+
+None
+# Union of C++ and C type (used with structs and complex)
+
+cxx_type
+^^^^^^^^
+
+Name of type in C++.
+Defaults to *None*.
+
+
+cxx_to_c
+^^^^^^^^
+
+Expression to convert from C++ to C.
+Defaults to *None* which implies *{cxx_var}*.
+i.e. no conversion required.
 
 cxx_header
 ^^^^^^^^^^
 
-A blank delimited list of header files which will be added to the C
-wrapper implementation.
-These headers may include C++ code.
+Name of C++ header file required for implementation.
+For example, if cxx_to_c was a function.
+Only used with *language=c++*.
+Defaults to *None*.
+Note the use of *stdlib* which adds ``std::`` with *language=c++*:
 
-cxx_local_var
-^^^^^^^^^^^^^
+.. code-block:: yaml
 
-If a local C++ variable is created for an argument by pre_call,
-*cxx_local_var*
-indicates if the local variable is a **pointer** or **scalar**.
-.. This sets *cxx_var* is set to ``SH_{c_var}``.
-This in turns will set the format fields *cxx_member*.
-For example, a ``std::string`` argument is created for the C++ function
-from the ``char *`` argument passed into the C API wrapper.
+    c_header='<stdlib.h>',
+    cxx_header='<cstdlib>',
+    pre_call=[
+        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
+    ],
 
-destructor
+See also *c_header*.
+
+A C ``int`` is represented as:
+
+.. code-block:: yaml
+
+    type: int
+    fields:
+        c_type: int 
+        cxx_type: int
+
+
+Fortran
+-------
+
+f_c_module
 ^^^^^^^^^^
 
-A list of lines of code used to delete memory. Usually allocated by a *pre_call*
-statement.  The code is inserted into *C_memory_dtor_function* which will provide
-the address of the memory to destroy in the variable ``void *ptr``.
+Fortran modules needed for type in the interface.
+A dictionary keyed on the module name with the value being a list of symbols.
+Similar to **f_module**.
+Defaults to *None*.
+
+f_c_type
+^^^^^^^^
+
+Type declaration for ``bind(C)`` interface.
+Defaults to *None* which will then use *f_type*.
+
+f_cast
+^^^^^^
+
+Expression to convert Fortran type to C type.
+This is used when creating a Fortran generic functions which
+accept several type but call a single C function which expects
+a specific type.
+For example, type ``int`` is defined as ``int({f_var}, C_INT)``.
+This expression converts *f_var* to a ``integer(C_INT)``.
+Defaults to *{f_var}*  i.e. no conversion.
+
+..  See tutorial function9 for example.  f_cast is only used if the types are different.
+
+
+f_derived_type
+^^^^^^^^^^^^^^
+
+Fortran derived type name.
+Defaults to *None* which will use the C++ class name
+for the Fortran derived type name.
+
+
+f_kind
+^^^^^^
+
+Fortran kind of type. For example, ``C_INT`` or ``C_LONG``.
+Defaults to *None*.
+
+
+f_module
+^^^^^^^^
+
+Fortran modules needed for type in the implementation wrapper.  A
+dictionary keyed on the module name with the value being a list of
+symbols.
+Defaults to *None*.:
+
+.. code-block:: yaml
+
+    f_module:
+       iso_c_binding:
+       - C_INT
+
+f_type
+^^^^^^
+
+Name of type in Fortran.  ( ``integer(C_INT)`` )
+Defaults to *None*.
+
+f_to_c
+^^^^^^
+
+None
+Expression to convert from Fortran to C.
+
+
+
+example
+
+An ``int`` argument is converted to Fortran with the typemap:
+
+.. code-block:: yaml
+
+    type: int
+    fields:
+        f_type: integer(C_INT)
+        f_kind: C_INT
+        f_module:
+            iso_c_binding:
+            - C_INT
+        f_cast: int({f_var}, C_INT)
+
+
+
+
+
+   
+
+Statements
+----------
+
+Each language also provides a section that is used 
+to insert language specific statements into the wrapper.
+These are named **c_statements**, **f_statements**, and
+**py_statements**.
+
+The are broken down into several resolutions.  The first is the
+intent of the argument.  *result* is used as the intent for 
+function results.
+
+in
+    Code to add for argument with ``intent(IN)``.
+    Can be used to convert types or copy-in semantics.
+    For example, ``char *`` to ``std::string``.
+
+out
+    Code to add after call when ``intent(OUT)``.
+    Used to implement copy-out semantics.
+
+inout
+    Code to add after call when ``intent(INOUT)``.
+    Used to implement copy-out semantics.
+
+result
+    Result of function.
+    Including when it is passed as an argument, *F_string_result_as_arg*.
+
+
+Each intent is then broken down into code to be added into
+specific sections of the wrapper.  For example, **declaration**,
+**pre_call** and **post_call**.
+
+Each statement is formatted using the format dictionary for the argument.
+This will define several variables.
+
+c_var
+    The C name of the argument.
+
+cxx_var
+    Name of the C++ variable.
+
+f_var
+    Fortran variable name for argument.
+
 For example:
 
 .. code-block:: yaml
 
-    destructor:
-    -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
-    -  delete cxx_ptr;
+    f_statements:
+      intent_in:
+      - '{c_var} = {f_var}  ! coerce to C_BOOL'
+      intent_out:
+      - '{f_var} = {c_var}  ! coerce to logical'
+
+Note that the code lines are quoted since they begin with a curly brace.
+Otherwise YAML would interpret them as a dictionary.
+
+See the language specific sections for details.
 
 
-destructor_name
-^^^^^^^^^^^^^^^
 
-A name for the destructor code in *destructor*.
-Must be unique.  May include format strings:
-
-.. code-block:: yaml
-
-    destructor_name: std_vector_{cxx_T}
-
-final
-^^^^^
-
-Inserted after *post_call* and before *ret*.
-Can be used to release intermediate memory in the C wrapper.
-
-.. evaluated in context of fmt_result
-
-pre_call
-^^^^^^^^
-
-Code used with *intent(in)* arguments to convert from C to C++.
-
-.. the typemap.c_to_cxx field will not be used.
-
-.. * **C_call_code** code used to call the function.
-   Constructor and destructor will use ``new`` and ``delete``.
-
-.. * **C_post_call_pattern** code from the *C_error_pattern*.
-   Can be used to deal with error values.
-
-post_call
-^^^^^^^^^
-
-Code used with *intent(out)* arguments and function results.
-Can be used to convert results from C++ to C.
-
-ret
----
-
-Code for return statement.
-Usually generated but can be replaced.
-For example, with constructors.
-
-.. return is a reserved word so it's not possible to do dict(return=[])
-
-return_type
------------
-
-Explicit return type when it is different than the
-functions return type.
-For example, with shadow types.
-
-return_cptr
------------
-
-If *true*, the function will return a C pointer. This will be
-used by the Fortran interface to declare the function as
-``type(C_PTR)``.
-
-
-How typemaps are found
-----------------------
-
-alias
-^^^^^
-
-Names another node which will be used for its contents.

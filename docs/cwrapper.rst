@@ -29,9 +29,6 @@ It defaults to the first three letters of the
 Wrapper
 -------
 
-
-
-
 As each function declaration is parsed a format dictionary is created
 with fields to describe the function and its arguments.
 The fields are then expanded into the function wrapper.
@@ -67,118 +64,7 @@ C and Fortran convert the vector into an array.
 
 .. wrapc.py   Wrapc.write_header
 
-Types
------
-
-The typemap provides several fields used to convert between C and C++.
-
-type fields
------------
-
-c_type
-^^^^^^
-
-Name of type in C.
-Default to *None*.
-
-
-c_header
-^^^^^^^^
-
-Name of C header file required for type.
-This file is included in the interface header.
-Only used with *language=c*.
-Defaults to *None*.
-
-See also *cxx_header*.
-
-
-c_to_cxx
-^^^^^^^^
-
-Expression to convert from C to C++.
-Defaults to *None* which implies *{c_var}*.
-i.e. no conversion required.
-
-
-c_templates
-^^^^^^^^^^^
-
-c_statements for cxx_T
-
-A dictionary indexed by type of specialized *c_statements* When an
-argument has a *template* field, such as type ``vector<string>``, some
-additional specialization of c_statements may be required::
-
-        c_templates:
-            string:
-               intent_in_buf:
-               - code to copy CHARACTER to vector<string>
-
-
-
-c_return_code
-^^^^^^^^^^^^^
-
-None
-
-c_union
-^^^^^^^
-
-None
-# Union of C++ and C type (used with structs and complex)
-
-cxx_type
-^^^^^^^^
-
-Name of type in C++.
-Defaults to *None*.
-
-
-cxx_to_c
-^^^^^^^^
-
-Expression to convert from C++ to C.
-Defaults to *None* which implies *{cxx_var}*.
-i.e. no conversion required.
-
-cxx_header
-^^^^^^^^^^
-
-Name of C++ header file required for implementation.
-For example, if cxx_to_c was a function.
-Only used with *language=c++*.
-Defaults to *None*.
-Note the use of *stdlib* which adds ``std::`` with *language=c++*:
-
-.. code-block:: yaml
-
-    c_header='<stdlib.h>',
-    cxx_header='<cstdlib>',
-    pre_call=[
-        'char * {cxx_var} = (char *) {stdlib}malloc({c_var_len} + 1);',
-    ],
-
-See also *c_header*.
-
   
-Predefined types
-----------------
-
-
-Int
-^^^
-
-A C ``int`` is represented as:
-
-.. code-block:: yaml
-
-    type: int
-    fields:
-        c_type: int 
-        cxx_type: int
-
-
 Struct Type
 -----------
 

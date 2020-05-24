@@ -111,9 +111,9 @@ splicer
 
 types
    A dictionary of user define types.
-   Each type is a dictionary for members describing how to
+   Each type is a dictionary of members describing how to
    map a type between languages.
-   Described in :ref:`TypesAnchor` and `Types Map`_.
+   Described in :ref:`TypemapsAnchor` and `Types Map`_.
 
 .. _ClassFields:
 
