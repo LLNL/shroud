@@ -35,16 +35,18 @@ Contents
    installing
    tutorial
    input
+   pointers
    namespaces
    struct
+   templates
    declarations
-   types
-   typemaps
-   functions
+   output
    cwrapper
    fortran
    python
    cookbook
+   typemaps
+   fstatements
    reference
    previouswork
    pypreviouswork
