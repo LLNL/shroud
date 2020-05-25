@@ -790,7 +790,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -983,7 +983,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -2161,7 +2161,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -2369,7 +2369,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -2575,7 +2575,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -2780,7 +2780,7 @@
                                                 "cxx_var": "SHCXX_rv",
                                                 "idtor": "0",
                                                 "sh_type": "SH_TYPE_CPTR",
-                                                "stmt0": "c_unknown_scalar_result_buf",
+                                                "stmt0": "c_void_scalar_result_buf",
                                                 "stmt1": "c_default"
                                             }
                                         },
@@ -6684,7 +6684,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt0": "c_unknown_scalar_in",
+                                            "stmt0": "c_void_scalar_in",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
@@ -7188,7 +7188,7 @@
                                             "cxx_var": "get",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_CPTR",
-                                            "stmt0": "c_unknown_scalar_in",
+                                            "stmt0": "c_void_scalar_in",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {

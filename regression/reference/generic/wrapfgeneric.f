@@ -73,7 +73,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void GenericReal
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg +intent(in)+value
@@ -117,11 +117,11 @@ module generic_mod
 #if 1
     ! ----------------------------------------
     ! Function:  void SavePointer
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +intent(in)+value
@@ -145,11 +145,11 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void SavePointer2
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +implied(type(addr))+intent(in)+value
@@ -172,11 +172,11 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void GetPointer
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
@@ -200,11 +200,11 @@ module generic_mod
 #if 0
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +context(FIXME)+intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
@@ -410,7 +410,7 @@ contains
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -438,7 +438,7 @@ contains
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -465,7 +465,7 @@ contains
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -491,7 +491,7 @@ contains
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -519,7 +519,7 @@ contains
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +context(FIXME)+intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
@@ -559,7 +559,7 @@ contains
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +context(FIXME)+intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)

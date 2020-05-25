@@ -102,7 +102,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void setSize
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int size +intent(in)+value
@@ -133,7 +133,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fillSize
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int & size +intent(out)
@@ -150,7 +150,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void allocate
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_arraywrapper_allocate(self) &
                 bind(C, name="ARR_ArrayWrapper_allocate")
@@ -274,7 +274,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
@@ -296,7 +296,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
@@ -319,7 +319,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
@@ -341,7 +341,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
@@ -364,7 +364,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
@@ -387,7 +387,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
@@ -410,7 +410,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
@@ -433,7 +433,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
@@ -456,11 +456,11 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidPtr
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
-        ! Requested: c_unknown_**_out
+        ! Requested: c_void_**_out
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_void_ptr(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetch_void_ptr")
@@ -473,11 +473,11 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidRef
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void * & array +intent(out)
-        ! Requested: c_unknown_*&_out
+        ! Requested: c_void_*&_out
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_void_ref(self, array) &
                 bind(C, name="ARR_ArrayWrapper_fetch_void_ref")
@@ -494,7 +494,7 @@ module arrayclass_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void * array +intent(in)+value
-        ! Requested: c_unknown_*_in
+        ! Requested: c_void_*_in
         ! Match:     c_default
         function c_arraywrapper_check_ptr(self, array) &
                 result(SHT_rv) &
@@ -845,8 +845,8 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * array +intent(out)
-    ! Exact:     f_unknown_**_out
-    ! Requested: c_unknown_**_out
+    ! Exact:     f_void_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     subroutine arraywrapper_fetch_void_ptr(obj, array)
         use iso_c_binding, only : C_PTR
@@ -866,9 +866,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * & array +intent(out)
-    ! Requested: f_unknown_*&_out
+    ! Requested: f_void_*&_out
     ! Match:     f_default
-    ! Requested: c_unknown_*&_out
+    ! Requested: c_void_*&_out
     ! Match:     c_default
     subroutine arraywrapper_fetch_void_ref(obj, array)
         class(arraywrapper) :: obj
@@ -887,8 +887,8 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * array +intent(in)+value
-    ! Exact:     f_unknown_*_in
-    ! Requested: c_unknown_*_in
+    ! Exact:     f_void_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     function arraywrapper_check_ptr(obj, array) &
             result(SHT_rv)

@@ -64,7 +64,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! start no_return_no_arguments
     interface
@@ -101,7 +101,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void ConcatenateStrings
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
@@ -195,7 +195,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)
@@ -212,7 +212,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
@@ -231,7 +231,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int indx +intent(in)+value
@@ -248,7 +248,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void TemplateArgument
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int arg +intent(in)+value
@@ -265,7 +265,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void TemplateArgument
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg +intent(in)+value
@@ -310,7 +310,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     interface
         subroutine c_fortran_generic_overloaded_0() &
@@ -321,7 +321,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)
@@ -343,7 +343,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
@@ -584,7 +584,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void getMinMax
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
@@ -649,7 +649,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)

@@ -97,7 +97,7 @@ double TUT_pass_by_value(double arg1, int arg2)
  */
 // ----------------------------------------
 // Function:  void ConcatenateStrings
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
@@ -584,7 +584,7 @@ const char * TUT_last_function_called(void)
 
 // ----------------------------------------
 // Function:  void LastFunctionCalled +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)

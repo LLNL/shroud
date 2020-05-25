@@ -24,7 +24,7 @@ module testnames_ns1_mod
 
         ! ----------------------------------------
         ! Function:  void init_ns1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_init_ns1() &
                 bind(C, name="TES_ns1_init_ns1")

@@ -88,7 +88,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
@@ -99,7 +99,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  void push_back
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
@@ -151,7 +151,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
@@ -162,7 +162,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  void push_back
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)

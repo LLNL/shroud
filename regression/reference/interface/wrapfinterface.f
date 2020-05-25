@@ -24,7 +24,7 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  void Function1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine function1() &
                 bind(C, name="Function1")

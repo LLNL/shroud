@@ -52,7 +52,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
@@ -63,7 +63,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")

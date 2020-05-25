@@ -73,7 +73,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void nested
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg1 +intent(in)+value
@@ -98,7 +98,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg1 +intent(in)+value
@@ -118,7 +118,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  float arg1 +intent(in)+value

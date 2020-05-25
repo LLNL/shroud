@@ -103,7 +103,7 @@ module preprocess_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_user1_method1(self) &
                 bind(C, name="PRE_User1_method1")
@@ -115,7 +115,7 @@ module preprocess_mod
 #if defined(USE_TWO)
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_User1_method2")
@@ -128,7 +128,7 @@ module preprocess_mod
 #if defined(USE_THREE)
         ! ----------------------------------------
         ! Function:  void method3def
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_user1_method3def_0(self) &
                 bind(C, name="PRE_User1_method3def_0")
@@ -141,7 +141,7 @@ module preprocess_mod
 #if defined(USE_THREE)
         ! ----------------------------------------
         ! Function:  void method3def
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int i=0 +intent(in)+value
@@ -164,7 +164,7 @@ module preprocess_mod
 #ifdef USE_CLASS3_A
         ! ----------------------------------------
         ! Function:  void exfunc
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_user2_exfunc_0(self) &
                 bind(C, name="PRE_User2_exfunc_0")
@@ -177,7 +177,7 @@ module preprocess_mod
 #ifndef USE_CLASS3_A
         ! ----------------------------------------
         ! Function:  void exfunc
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int flag +intent(in)+value

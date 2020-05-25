@@ -67,7 +67,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceInout
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
@@ -82,7 +82,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceOut
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)

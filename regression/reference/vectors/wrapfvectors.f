@@ -70,7 +70,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -89,7 +89,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -111,7 +111,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -130,7 +130,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
@@ -149,7 +149,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
@@ -171,7 +171,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_increment
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg)
@@ -191,7 +191,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
@@ -229,7 +229,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void ReturnVectorAlloc +rank(1)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int n +intent(in)+value

@@ -51,7 +51,7 @@ module testnames_capi_mod
 
         ! ----------------------------------------
         ! Function:  void Member1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class1_member1(self) &
                 bind(C, name="TES_capi_class1_member1")
@@ -65,7 +65,7 @@ module testnames_capi_mod
 
         ! ----------------------------------------
         ! Function:  void Worker1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_worker1() &
                 bind(C, name="TES_capi_worker1")

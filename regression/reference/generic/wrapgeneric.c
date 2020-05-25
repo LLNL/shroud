@@ -21,7 +21,7 @@
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * addr +intent(in)+value
-// Requested: c_unknown_*_in
+// Requested: c_void_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+intent(in)+value

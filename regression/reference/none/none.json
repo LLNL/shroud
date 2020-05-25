@@ -805,6 +805,7 @@
         },
         "void": {
             "PY_ctor": "PyCapsule_New({ctor_expr}, NULL, NULL)",
+            "base": "void",
             "c_type": "void",
             "cxx_type": "void",
             "f_c_module": {
@@ -814,6 +815,7 @@
             },
             "f_type": "type(C_PTR)",
             "flat_name": "void",
+            "sgroup": "void",
             "sh_type": "SH_TYPE_CPTR"
         }
     }

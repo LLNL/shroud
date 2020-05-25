@@ -435,7 +435,7 @@ void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
-// Requested: c_unknown_**_out
+// Requested: c_void_**_out
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
     void * * array)
@@ -452,7 +452,7 @@ void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
-// Requested: c_unknown_*&_out
+// Requested: c_void_*&_out
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
     void * * array)
@@ -469,7 +469,7 @@ void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * array +intent(in)+value
-// Requested: c_unknown_*_in
+// Requested: c_void_*_in
 // Match:     c_default
 bool ARR_ArrayWrapper_check_ptr(ARR_ArrayWrapper * self, void * array)
 {

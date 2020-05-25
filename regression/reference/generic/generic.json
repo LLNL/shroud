@@ -701,7 +701,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_*_in",
+                            "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -716,7 +716,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_unknown_*_in",
+                            "stmtc0": "c_void_*_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1158,7 +1158,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_*_in",
+                            "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1173,7 +1173,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_unknown_*_in",
+                            "stmtc0": "c_void_*_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1646,7 +1646,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_**_out",
+                            "stmt0": "c_void_**_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1656,9 +1656,9 @@
                             "f_type": "type(C_PTR)",
                             "f_var": "addr",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "f_unknown_**_out",
-                            "stmt1": "f_unknown_**_out",
-                            "stmtc0": "c_unknown_**_out",
+                            "stmt0": "f_void_**_out",
+                            "stmt1": "f_void_**_out",
+                            "stmtc0": "c_void_**_out",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1830,7 +1830,7 @@
                             "cxx_var": "addr",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
-                            "stmt0": "c_unknown_**_out",
+                            "stmt0": "c_void_**_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1846,7 +1846,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_**_out_pointer",
                             "stmt1": "f_native_**_out",
-                            "stmtc0": "c_unknown_**_out",
+                            "stmtc0": "c_void_**_out",
                             "stmtc1": "c_default"
                         }
                     },

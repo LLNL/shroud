@@ -89,7 +89,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  void LastFunctionCalled
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -104,7 +104,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  void One
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine one() &
                 bind(C, name="NS_one")

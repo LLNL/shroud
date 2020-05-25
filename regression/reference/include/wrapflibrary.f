@@ -42,7 +42,7 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +intent(in)+value
@@ -59,7 +59,7 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2 +intent(in)

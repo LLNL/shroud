@@ -874,7 +874,7 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Requested: c_unknown_*_result
+// Requested: c_void_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
@@ -892,7 +892,7 @@ void * POI_return_address1(int flag)
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Requested: c_unknown_*_result
+// Requested: c_void_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
@@ -914,7 +914,7 @@ void * POI_return_address2(int flag)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
-// Requested: c_unknown_**_out
+// Requested: c_void_**_out
 // Match:     c_default
 // start POI_fetch_void_ptr
 void POI_fetch_void_ptr(void * * addr)

@@ -88,7 +88,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  ~Class2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
@@ -99,7 +99,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void func1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
@@ -116,7 +116,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void acceptClass3
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)

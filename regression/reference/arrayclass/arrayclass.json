@@ -2539,7 +2539,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "c_unknown_**_out",
+                                    "stmt0": "c_void_**_out",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2549,9 +2549,9 @@
                                     "f_type": "type(C_PTR)",
                                     "f_var": "array",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "f_unknown_**_out",
-                                    "stmt1": "f_unknown_**_out",
-                                    "stmtc0": "c_unknown_**_out",
+                                    "stmt0": "f_void_**_out",
+                                    "stmt1": "f_void_**_out",
+                                    "stmtc0": "c_void_**_out",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -2570,8 +2570,8 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt0": "py_unknown_**_out",
-                                    "stmt1": "py_unknown_**_out"
+                                    "stmt0": "py_void_**_out",
+                                    "stmt1": "py_void_**_out"
                                 }
                             }
                         },
@@ -2652,7 +2652,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "c_unknown_*&_out",
+                                    "stmt0": "c_void_*&_out",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2662,9 +2662,9 @@
                                     "f_type": "type(C_PTR)",
                                     "f_var": "array",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "f_unknown_*&_out",
+                                    "stmt0": "f_void_*&_out",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_unknown_*&_out",
+                                    "stmtc0": "c_void_*&_out",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -2683,8 +2683,8 @@
                                     "numpy_type": null,
                                     "py_var": "SHPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt0": "py_unknown_*&_out",
-                                    "stmt1": "py_unknown_*&_out"
+                                    "stmt0": "py_void_*&_out",
+                                    "stmt1": "py_void_*&_out"
                                 }
                             }
                         },
@@ -2765,7 +2765,7 @@
                                     "cxx_var": "array",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "c_unknown_*_in",
+                                    "stmt0": "c_void_*_in",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2775,9 +2775,9 @@
                                     "f_type": "type(C_PTR)",
                                     "f_var": "array",
                                     "sh_type": "SH_TYPE_CPTR",
-                                    "stmt0": "f_unknown_*_in",
-                                    "stmt1": "f_unknown_*_in",
-                                    "stmtc0": "c_unknown_*_in",
+                                    "stmt0": "f_void_*_in",
+                                    "stmt1": "f_void_*_in",
+                                    "stmtc0": "c_void_*_in",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -2797,8 +2797,8 @@
                                     "py_var": "SHPy_array",
                                     "pytmp_var": "SHTPy_array",
                                     "size_var": "SHSize_array",
-                                    "stmt0": "py_unknown_*_in",
-                                    "stmt1": "py_unknown_*_in"
+                                    "stmt0": "py_void_*_in",
+                                    "stmt1": "py_void_*_in"
                                 }
                             }
                         },

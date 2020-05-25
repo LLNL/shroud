@@ -283,6 +283,8 @@ def initialize():
             f_c_module=dict(iso_c_binding=["C_PTR"]),
             PY_ctor="PyCapsule_New({ctor_expr}, NULL, NULL)",
             sh_type="SH_TYPE_CPTR",
+            base="void",
+            sgroup="void",
         ),
         short=Typemap(
             "short",
@@ -1416,7 +1418,7 @@ fc_statements = [
     dict(
         # A C function with a 'int *' argument passes address of array
         name="f_native_*_in_raw",
-        # same as "f_unknown_*",
+        # same as "f_void_*",
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
         ],
@@ -1556,7 +1558,7 @@ fc_statements = [
 ########################################
 # void *
     dict(
-        name="f_unknown_*_in",
+        name="f_void_*_in",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
             "type(C_PTR), intent(IN) :: {f_var}",
@@ -1564,14 +1566,14 @@ fc_statements = [
     ),
     dict(
         # return a type(C_PTR)
-        name="f_unknown_*_result",
+        name="f_void_*_result",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
             "type(C_PTR) :: {f_var}",
         ],
     ),
     dict(
-        name="f_unknown_**_out",
+        name="f_void_**_out",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
             "type(C_PTR), intent(OUT) :: {f_var}",
@@ -1579,11 +1581,11 @@ fc_statements = [
     ),
     
     dict(
-        name="c_unknown_*_cdesc",
+        name="c_void_*_cdesc",
         base="c_native_*_cdesc",
     ),
     dict(
-        name="f_unknown_*_cdesc",
+        name="f_void_*_cdesc",
         base="f_native_*_cdesc",
     ),    
 
