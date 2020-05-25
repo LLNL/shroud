@@ -41,7 +41,7 @@ module library_outer1_mod
 
         ! ----------------------------------------
         ! Function:  void method
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class0_method(self) &
                 bind(C, name="LIB_outer1_class0_method")
@@ -53,7 +53,7 @@ module library_outer1_mod
 
         ! ----------------------------------------
         ! Function:  void outer_func
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine outer_func() &
                 bind(C, name="LIB_outer1_outer_func")

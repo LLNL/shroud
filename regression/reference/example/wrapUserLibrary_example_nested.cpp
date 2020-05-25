@@ -243,7 +243,7 @@ void AA_example_nested_testmpi_serial(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void ( * get)() +intent(in)+value
-// Requested: c_unknown_scalar_in
+// Requested: c_void_scalar_in
 // Match:     c_default
 void AA_example_nested_func_ptr1(void ( * get)())
 {
@@ -315,7 +315,7 @@ void AA_example_nested_func_ptr4(double ( * get)(double, int))
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
-// Requested: c_unknown_scalar_in
+// Requested: c_void_scalar_in
 // Match:     c_default
 void AA_example_nested_func_ptr5(void ( * get)(int verylongname1,
     int verylongname2, int verylongname3, int verylongname4,

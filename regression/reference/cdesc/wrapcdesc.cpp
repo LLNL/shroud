@@ -55,8 +55,8 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
 // Match:     c_string_in
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-// Requested: c_unknown_*_out_cdesc
-// Match:     c_unknown_*_cdesc
+// Requested: c_void_*_out_cdesc
+// Match:     c_void_*_cdesc
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 {
     // splicer begin function.get_scalar1
@@ -83,8 +83,8 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // Match:     c_string_in_buf
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-// Requested: c_unknown_*_out_buf_cdesc
-// Match:     c_unknown_*_cdesc
+// Requested: c_void_*_out_buf_cdesc
+// Match:     c_void_*_cdesc
 void CDE_get_scalar1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {

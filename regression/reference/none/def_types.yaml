@@ -594,7 +594,7 @@ typemap:
   - type: void
     fields:
       flat_name: void
-      base: unknown
+      base: void
       idtor: 0
       cxx_type: void
       c_type: void
@@ -608,5 +608,5 @@ typemap:
       LUA_type: LUA_TNONE
       LUA_pop: POP
       LUA_push: PUSH
-      sgroup: unknown
+      sgroup: void
       sh_type: SH_TYPE_CPTR

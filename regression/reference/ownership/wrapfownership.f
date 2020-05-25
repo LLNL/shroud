@@ -75,7 +75,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  ~Class1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
@@ -367,7 +367,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  void createClassStatic
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int flag +intent(in)+value

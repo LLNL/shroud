@@ -63,7 +63,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! start no_return_no_arguments
     interface
@@ -102,7 +102,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void PassByReference
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * arg1 +intent(in)
@@ -145,7 +145,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void checkBool
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const bool arg1 +intent(in)+value
@@ -198,7 +198,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void Function4a +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * arg1 +intent(in)
@@ -226,7 +226,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void acceptName
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * name +intent(in)
@@ -245,7 +245,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
@@ -262,7 +262,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
@@ -281,7 +281,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void returnOneName
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
@@ -300,7 +300,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void returnOneName
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
@@ -320,7 +320,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void returnTwoNames
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
@@ -342,7 +342,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void returnTwoNames
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
@@ -367,7 +367,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
@@ -391,7 +391,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void ImpliedTextLen
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
@@ -512,7 +512,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void bindC1
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     interface
         subroutine Fortran_bindC1a() &
@@ -523,7 +523,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void bindC2
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -540,7 +540,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void bindC2
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -558,15 +558,15 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void passVoidStarStar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * in +intent(in)+value
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * out +intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! start pass_void_star_star
     interface
@@ -586,7 +586,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! start pass_assumed_type
     interface
@@ -603,11 +603,11 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void passAssumedTypeDim
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype+intent(in)+rank(1)
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! start pass_assumed_type_dim
     interface
@@ -625,7 +625,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -649,7 +649,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in_buf
+    ! Requested: c_void_*_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -678,7 +678,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void ( * incr)() +external+intent(in)+value
-    ! Requested: c_unknown_scalar_in
+    ! Requested: c_void_scalar_in
     ! Match:     c_default
     ! start c_callback1
     interface
@@ -697,7 +697,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void callback2
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +intent(in)+value
@@ -705,11 +705,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+intent(in)+value
-    ! Requested: c_unknown_scalar_in
+    ! Requested: c_void_scalar_in
     ! Match:     c_default
     interface
         subroutine c_callback2(type, in, incr) &
@@ -725,7 +725,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void callback3
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * type +intent(in)
@@ -733,11 +733,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+intent(in)+value
-    ! Requested: c_unknown_scalar_in
+    ! Requested: c_void_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
@@ -758,7 +758,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void callback3
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * type +intent(in)
@@ -766,11 +766,11 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype+intent(in)
-    ! Requested: c_unknown_*_in_buf
+    ! Requested: c_void_*_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+intent(in)+value
-    ! Requested: c_unknown_scalar_in_buf
+    ! Requested: c_void_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -793,7 +793,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void callback_set_alloc
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int tc +intent(in)+value
@@ -805,7 +805,7 @@ module clibrary_mod
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value
-    ! Requested: c_unknown_scalar_in
+    ! Requested: c_void_scalar_in
     ! Match:     c_default
     interface
         subroutine callback_set_alloc(tc, arr, alloc) &

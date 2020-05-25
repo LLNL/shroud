@@ -81,7 +81,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void Rank2In
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
@@ -96,7 +96,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
@@ -104,8 +104,8 @@ module cdesc_mod
         ! Match:     c_string_in
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-        ! Requested: c_unknown_*_out_cdesc
-        ! Match:     c_unknown_*_cdesc
+        ! Requested: c_void_*_out_cdesc
+        ! Match:     c_void_*_cdesc
         subroutine c_get_scalar1(name, Dvalue) &
                 bind(C, name="CDE_get_scalar1")
             use iso_c_binding, only : C_CHAR
@@ -117,7 +117,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar1
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -125,8 +125,8 @@ module cdesc_mod
         ! Match:     c_string_in_buf
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-        ! Requested: c_unknown_*_out_buf_cdesc
-        ! Match:     c_unknown_*_cdesc
+        ! Requested: c_void_*_out_buf_cdesc
+        ! Match:     c_void_*_cdesc
         subroutine c_get_scalar1_bufferify(name, Lname, Dvalue) &
                 bind(C, name="CDE_get_scalar1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -223,8 +223,8 @@ contains
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-    ! Requested: c_unknown_*_out_buf_cdesc
-    ! Match:     c_unknown_*_cdesc
+    ! Requested: c_void_*_out_buf_cdesc
+    ! Match:     c_void_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -270,8 +270,8 @@ contains
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
-    ! Requested: c_unknown_*_out_buf_cdesc
-    ! Match:     c_unknown_*_cdesc
+    ! Requested: c_void_*_out_buf_cdesc
+    ! Match:     c_void_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -357,7 +357,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Argument:  void * value +intent(out)+value
-    ! Requested: c_unknown_*_out
+    ! Requested: c_void_*_out
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.
@@ -394,7 +394,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Argument:  void * value +intent(out)+value
-    ! Requested: c_unknown_*_out
+    ! Requested: c_void_*_out
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.

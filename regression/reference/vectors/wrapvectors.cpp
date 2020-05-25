@@ -302,7 +302,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
  */
 // ----------------------------------------
 // Function:  void ReturnVectorAlloc +rank(1)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int n +intent(in)+value

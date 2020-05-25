@@ -41,7 +41,7 @@ module library_three_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +intent(in)+value

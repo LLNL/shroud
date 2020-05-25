@@ -24,7 +24,7 @@ module worker_names
 
         ! ----------------------------------------
         ! Function:  void AFunction
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine afunction() &
                 bind(C, name="NAM_afunction")

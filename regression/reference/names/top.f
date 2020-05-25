@@ -102,7 +102,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine yyy_tes_function1() &
                 bind(C, name="YYY_TES_function1")
@@ -111,7 +111,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine f_c_name_special() &
                 bind(C, name="c_name_special")
@@ -120,7 +120,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function3a
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int i +intent(in)+value
@@ -135,7 +135,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function3a
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long i +intent(in)+value
@@ -185,7 +185,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function5 +name(fiveplus)
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine yyy_tes_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
@@ -194,7 +194,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)
@@ -214,7 +214,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
@@ -237,7 +237,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg1 +intent(in)+value
@@ -257,7 +257,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  float arg1 +intent(in)+value

@@ -174,7 +174,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStructOutPtr
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
@@ -202,7 +202,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStructInOutPtr
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)

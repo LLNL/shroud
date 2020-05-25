@@ -3604,7 +3604,7 @@ py_statements = [
 # void
     dict(
         # Accept a capsule and extract address.
-        name="py_unknown_*_in",
+        name="py_void_*_in",
         declare=[
             "PyObject *{py_var};",
         ],
@@ -3621,7 +3621,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_unknown_**_out",
+        name="py_void_**_out",
         arg_declare=[
             "void *{c_var};",
         ],
@@ -3633,14 +3633,14 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_unknown_*&_out",
-        base="py_unknown_**_out",
+        name="py_void_*&_out",
+        base="py_void_**_out",
         arg_call=[
             "{c_var}",
         ]
     ),
     dict(
-        name="py_unknown_result",
+        name="py_void_result",
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),

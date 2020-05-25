@@ -467,7 +467,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
-// Exact:     py_unknown_**_out
+// Exact:     py_void_**_out
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
 ;
@@ -496,7 +496,7 @@ PY_fetchVoidPtr(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
-// Exact:     py_unknown_*&_out
+// Exact:     py_void_*&_out
 static char PY_fetchVoidRef__doc__[] =
 "documentation"
 ;
@@ -525,7 +525,7 @@ PY_fetchVoidRef(
 // Exact:     py_bool_result
 // ----------------------------------------
 // Argument:  void * array +intent(in)+value
-// Exact:     py_unknown_*_in
+// Exact:     py_void_*_in
 static char PY_checkPtr__doc__[] =
 "documentation"
 ;

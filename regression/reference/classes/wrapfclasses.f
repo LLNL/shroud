@@ -171,7 +171,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! start c_class1_delete
     interface
@@ -227,7 +227,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThis
-    ! Requested: c_unknown_*_result
+    ! Requested: c_void_*_result
     ! Match:     c_default
     ! start c_class1_return_this
     interface
@@ -339,7 +339,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void getName
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -418,7 +418,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void setTest
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
@@ -458,7 +458,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void getName
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -517,7 +517,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void passClassByValue
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Class1 arg +intent(in)+value
@@ -637,7 +637,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void set_global_flag
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int arg +intent(in)+value
@@ -682,7 +682,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)

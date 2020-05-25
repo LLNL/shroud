@@ -1161,7 +1161,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Exact:     py_unknown_result
+// Exact:     py_void_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1198,7 +1198,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Exact:     py_unknown_result
+// Exact:     py_void_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1238,7 +1238,7 @@ PY_returnAddress2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
-// Exact:     py_unknown_**_out
+// Exact:     py_void_**_out
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
 ;

@@ -80,7 +80,7 @@ double CLI_pass_by_value_macro(int arg2)
 
 // ----------------------------------------
 // Function:  void Function4a +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * arg1 +intent(in)
@@ -241,7 +241,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * arg +assumedtype+intent(in)
-// Requested: c_unknown_*_in_buf
+// Requested: c_void_*_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -272,11 +272,11 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * in +assumedtype+intent(in)
-// Requested: c_unknown_*_in_buf
+// Requested: c_void_*_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void ( * incr)(int *) +external+intent(in)+value
-// Requested: c_unknown_scalar_in_buf
+// Requested: c_void_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)

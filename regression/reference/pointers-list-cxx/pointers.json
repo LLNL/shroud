@@ -2372,8 +2372,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_unknown_result",
-                        "stmt1": "py_unknown_result"
+                        "stmt0": "py_void_result",
+                        "stmt1": "py_void_result"
                     }
                 },
                 "ast": {
@@ -2453,8 +2453,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_unknown_result",
-                        "stmt1": "py_unknown_result"
+                        "stmt0": "py_void_result",
+                        "stmt1": "py_void_result"
                     }
                 },
                 "ast": {
@@ -2517,8 +2517,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_addr",
                             "size_var": "SHSize_addr",
-                            "stmt0": "py_unknown_**_out",
-                            "stmt1": "py_unknown_**_out"
+                            "stmt0": "py_void_**_out",
+                            "stmt1": "py_void_**_out"
                         }
                     }
                 },

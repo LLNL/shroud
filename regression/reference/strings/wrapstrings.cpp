@@ -126,7 +126,7 @@ char STR_return_char(void)
  */
 // ----------------------------------------
 // Function:  void returnChar
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
@@ -268,7 +268,7 @@ const char * STR_get_char_ptr1(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr1
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -314,7 +314,7 @@ const char * STR_get_char_ptr2(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr2 +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
@@ -354,7 +354,7 @@ const char * STR_get_char_ptr3(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr3
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * output +intent(out)+len(Noutput)
@@ -376,7 +376,7 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
  */
 // ----------------------------------------
 // Function:  void getConstStringResult
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -396,7 +396,7 @@ void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Function:  void getConstStringLen +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
@@ -420,7 +420,7 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
  */
 // ----------------------------------------
 // Function:  void getConstStringAsArg
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * output +intent(out)+len(Noutput)
@@ -440,7 +440,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 
 // ----------------------------------------
 // Function:  void getConstStringAlloc
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -479,7 +479,7 @@ const char * STR_get_const_string_ref_pure(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefPure
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -529,7 +529,7 @@ const char * STR_get_const_string_ref_len(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefLen +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -580,7 +580,7 @@ const char * STR_get_const_string_ref_as_arg(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefAsArg
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & output +intent(out)+len(Noutput)
@@ -628,7 +628,7 @@ const char * STR_get_const_string_ref_len_empty(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefLenEmpty +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -663,7 +663,7 @@ const char * STR_get_const_string_ref_alloc(void)
 
 // ----------------------------------------
 // Function:  void getConstStringRefAlloc
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -708,7 +708,7 @@ const char * STR_get_const_string_ptr_len(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringPtrLen +len(30)
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
@@ -746,7 +746,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 
 // ----------------------------------------
 // Function:  void getConstStringPtrAlloc
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
@@ -789,7 +789,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringPtrOwnsAlloc
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
@@ -825,7 +825,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringPtrOwnsAllocPattern
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
@@ -1280,7 +1280,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
  */
 // ----------------------------------------
 // Function:  void CreturnChar
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)

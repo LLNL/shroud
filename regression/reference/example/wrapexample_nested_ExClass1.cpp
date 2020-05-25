@@ -182,7 +182,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 
 // ----------------------------------------
 // Function:  void getNameErrorCheck
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -217,7 +217,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 
 // ----------------------------------------
 // Function:  void getNameArg
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & name +intent(out)+len(Nname)

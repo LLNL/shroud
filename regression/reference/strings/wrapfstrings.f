@@ -48,7 +48,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passChar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char status +intent(in)+value
@@ -79,7 +79,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void returnChar
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
@@ -97,7 +97,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtr
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
@@ -121,7 +121,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtr
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
@@ -146,7 +146,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
@@ -163,7 +163,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
@@ -198,7 +198,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getCharPtr1
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -233,7 +233,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getCharPtr2 +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
@@ -269,7 +269,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getCharPtr3
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * output +intent(out)+len(Noutput)
@@ -289,7 +289,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringResult
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -306,7 +306,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringLen +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
@@ -324,7 +324,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringAsArg
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * output +intent(out)+len(Noutput)
@@ -342,7 +342,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringAlloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -375,7 +375,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefPure
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -408,7 +408,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefLen +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -440,7 +440,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefAsArg
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & output +intent(out)+len(Noutput)
@@ -473,7 +473,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefLenEmpty +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -506,7 +506,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefAlloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -537,7 +537,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringPtrLen +len(30)
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
@@ -569,7 +569,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringPtrAlloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
@@ -600,7 +600,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringPtrOwnsAlloc
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
@@ -631,7 +631,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringPtrOwnsAllocPattern
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
@@ -649,7 +649,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringConstReference
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)
@@ -666,7 +666,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringConstReference
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
@@ -685,7 +685,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReferenceOut
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
@@ -702,7 +702,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReferenceOut
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
@@ -720,7 +720,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReference
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(inout)
@@ -739,7 +739,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReference
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
@@ -761,7 +761,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerConst
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * arg1 +intent(in)
@@ -778,7 +778,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerConst
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
@@ -796,7 +796,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointer
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)
@@ -813,7 +813,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointer
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
@@ -832,7 +832,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointer
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
@@ -849,7 +849,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointer
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
@@ -867,7 +867,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerLen
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)
@@ -889,7 +889,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerLen
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
@@ -914,7 +914,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointerLen
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
@@ -936,7 +936,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointerLen
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
@@ -960,7 +960,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void explicit1
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name +intent(in)+len_trim(AAlen)
@@ -977,7 +977,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void explicit2
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
@@ -994,7 +994,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void explicit2
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
@@ -1012,7 +1012,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void CpassChar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char status +intent(in)+value
@@ -1043,7 +1043,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void CreturnChar
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
@@ -1061,7 +1061,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
@@ -1083,7 +1083,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)+len(Ndest)
@@ -1106,7 +1106,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void PostDeclare
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
@@ -1128,7 +1128,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void PostDeclare
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)

@@ -141,7 +141,7 @@ const char * AA_example_nested_ExClass2_get_name(
 
 // ----------------------------------------
 // Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -181,7 +181,7 @@ const char * AA_example_nested_ExClass2_get_name2(
 
 // ----------------------------------------
 // Function:  void getName2
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -216,7 +216,7 @@ char * AA_example_nested_ExClass2_get_name3(
 
 // ----------------------------------------
 // Function:  void getName3
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -251,7 +251,7 @@ char * AA_example_nested_ExClass2_get_name4(
 
 // ----------------------------------------
 // Function:  void getName4
-// Requested: c_unknown_scalar_result_buf
+// Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)

@@ -48,7 +48,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_in
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * arg +intent(in)
@@ -67,7 +67,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_inout
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg +intent(inout)
@@ -86,7 +86,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs_out
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg +intent(out)
@@ -105,7 +105,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void intargs
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int argin +intent(in)+value
@@ -134,7 +134,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void cos_doubles
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
@@ -163,7 +163,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void truncate_to_int
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(1)
@@ -192,7 +192,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void get_values
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * nvalues +intent(out)
@@ -216,7 +216,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void get_values2
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg1 +dimension(3)+intent(out)
@@ -240,7 +240,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void iota_allocatable
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvar +intent(in)+value
@@ -264,7 +264,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void iota_dimension
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvar +intent(in)+value
@@ -288,7 +288,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void Sum
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int len +implied(size(values))+intent(in)+value
@@ -317,7 +317,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void fillIntArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out +dimension(3)+intent(out)
@@ -336,7 +336,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void incrementIntArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * array +intent(inout)+rank(1)
@@ -360,7 +360,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void acceptCharArrayIn
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
@@ -378,7 +378,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void acceptCharArrayIn
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
@@ -399,7 +399,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void setGlobalInt
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int value +intent(in)+value
@@ -434,7 +434,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(pointer)+intent(out)
@@ -453,7 +453,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToScalar
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
@@ -472,7 +472,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
@@ -491,7 +491,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
@@ -510,7 +510,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
@@ -534,7 +534,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
@@ -559,7 +559,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
@@ -578,7 +578,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFuncArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
@@ -597,7 +597,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * nitems +deref(pointer)+intent(out)
@@ -616,7 +616,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToConstScalar
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
@@ -635,7 +635,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
@@ -654,7 +654,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToFixedConstArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
@@ -673,7 +673,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
@@ -697,7 +697,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getPtrToDynamicConstArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
@@ -723,7 +723,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
@@ -742,7 +742,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalar
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
@@ -761,7 +761,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
@@ -780,7 +780,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
-    ! Requested: c_unknown_scalar_result_buf
+    ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
@@ -799,7 +799,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress1
-    ! Requested: c_unknown_*_result
+    ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
@@ -820,7 +820,7 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2
-    ! Requested: c_unknown_*_result
+    ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
@@ -841,11 +841,11 @@ module pointers_mod
 
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
-    ! Requested: c_unknown_scalar_result
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
-    ! Requested: c_unknown_**_out
+    ! Requested: c_void_**_out
     ! Match:     c_default
     ! start fetch_void_ptr
     interface
@@ -1381,8 +1381,8 @@ contains
     ! ----------------------------------------
     ! Function:  void * returnAddress2
     ! void * returnAddress2
-    ! Exact:     f_unknown_*_result
-    ! Requested: c_unknown_*_result
+    ! Exact:     f_void_*_result
+    ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value

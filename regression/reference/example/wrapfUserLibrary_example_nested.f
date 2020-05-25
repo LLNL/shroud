@@ -224,7 +224,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ~ExClass1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
@@ -268,7 +268,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getNameErrorCheck
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -299,7 +299,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getNameArg
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & name +intent(out)+len(Nname)
@@ -374,7 +374,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void SplicerSpecial
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_splicer_special")
@@ -426,7 +426,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ~ExClass2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_exclass2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
@@ -451,7 +451,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
@@ -483,7 +483,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getName2
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -513,7 +513,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getName3
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -543,7 +543,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void getName4
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
@@ -593,7 +593,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void * declare
-        ! Requested: c_unknown_*_result
+        ! Requested: c_void_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  TypeID type +intent(in)+value
@@ -610,7 +610,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void * declare
-        ! Requested: c_unknown_*_result
+        ! Requested: c_void_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  TypeID type +intent(in)+value
@@ -632,7 +632,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void destroyall
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_exclass2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
@@ -657,7 +657,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int value +intent(in)+value
@@ -674,7 +674,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long value +intent(in)+value
@@ -691,7 +691,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  float value +intent(in)+value
@@ -708,7 +708,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double value +intent(in)+value
@@ -756,7 +756,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void local_function1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine local_function1() &
                 bind(C, name="AA_example_nested_local_function1")
@@ -812,7 +812,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)
@@ -827,7 +827,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
@@ -843,7 +843,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)
@@ -863,7 +863,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_unknown_scalar_result_buf
+        ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
@@ -884,7 +884,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_testoptional_0() &
                 bind(C, name="AA_example_nested_testoptional_0")
@@ -893,7 +893,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int i=1 +intent(in)+value
@@ -908,7 +908,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int i=1 +intent(in)+value
@@ -941,7 +941,7 @@ module userlibrary_example_nested_mod
 #ifdef HAVE_MPI
         ! ----------------------------------------
         ! Function:  void testmpi
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +intent(in)+value
@@ -958,7 +958,7 @@ module userlibrary_example_nested_mod
 #ifndef HAVE_MPI
         ! ----------------------------------------
         ! Function:  void testmpi
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_example_nested_testmpi_serial")
@@ -968,11 +968,11 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void ( * get)() +intent(in)+value
-        ! Requested: c_unknown_scalar_in
+        ! Requested: c_void_scalar_in
         ! Match:     c_default
         subroutine func_ptr1(get) &
                 bind(C, name="AA_example_nested_func_ptr1")
@@ -983,7 +983,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr2
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * ( * get)() +intent(in)
@@ -998,7 +998,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr3
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
@@ -1013,7 +1013,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr4
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double ( * get)(double +value, int +value) +intent(in)+value
@@ -1028,11 +1028,11 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr5
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
-        ! Requested: c_unknown_scalar_in
+        ! Requested: c_void_scalar_in
         ! Match:     c_default
         subroutine func_ptr5(get) &
                 bind(C, name="AA_example_nested_func_ptr5")
@@ -1043,7 +1043,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void verylongfunctionname1
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname1 +intent(inout)
@@ -1171,7 +1171,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void cos_doubles
-        ! Requested: c_unknown_scalar_result
+        ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * in +intent(in)+rank(2)
