@@ -309,7 +309,7 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * values +intent(in)+rank(1)
+// Argument:  const int * values +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
@@ -317,7 +317,7 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_sum
-void POI_sum(int len, int * values, int * result)
+void POI_sum(int len, const int * values, int * result)
 {
     // splicer begin function.sum
     Sum(len, values, result);

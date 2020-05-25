@@ -295,7 +295,7 @@ module pointers_mod
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
@@ -1093,7 +1093,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Requested: c_native_*_in

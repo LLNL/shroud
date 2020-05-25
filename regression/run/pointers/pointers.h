@@ -25,7 +25,7 @@ void get_values2(int *arg1, int *arg2);
 void iota_allocatable(int nvar, int *values);
 void iota_dimension(int nvar, int *values);
 
-void Sum(int len, int * values, int *result);
+void Sum(int len, const int * values, int *result);
 void fillIntArray(int *out);
 void incrementIntArray(int *array, int size);
 

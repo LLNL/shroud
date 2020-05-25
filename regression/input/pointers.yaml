@@ -77,7 +77,7 @@ declarations:
 ######################################################################
 
 - decl: void Sum(int len +implied(size(values)),
-                 int *values +rank(1)+intent(in),
+                 const int *values +rank(1),
                  int *result +intent(out))
   options:
     # unable to deal with dimension

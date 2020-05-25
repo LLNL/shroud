@@ -1509,13 +1509,13 @@
                     "values": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "values",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "values",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(values)",
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "idtor": "0",
@@ -1566,6 +1566,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "values",
                                 "pointer": [
@@ -1602,12 +1603,12 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, const int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "C_call_list": "len,\t values,\t result",
                     "C_name": "POI_sum",
-                    "C_prototype": "int len,\t int * values,\t int * result",
+                    "C_prototype": "int len,\t const int * values,\t int * result",
                     "C_return_type": "void",
                     "F_C_call": "c_sum",
                     "F_C_name": "c_sum",

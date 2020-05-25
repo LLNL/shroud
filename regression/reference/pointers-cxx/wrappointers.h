@@ -47,7 +47,7 @@ void POI_iota_allocatable(int nvar, int * values);
 
 void POI_iota_dimension(int nvar, int * values);
 
-void POI_sum(int len, int * values, int * result);
+void POI_sum(int len, const int * values, int * result);
 
 void POI_fill_int_array(int * out);
 

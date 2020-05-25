@@ -120,7 +120,7 @@ void iota_dimension(int nvar, int *values)
 //----------------------------------------------------------------------
 
 // start Sum
-void Sum(int len, int *values, int *result)
+void Sum(int len, const int *values, int *result)
 {
     int sum = 0;
     for (int i=0; i < len; i++) {

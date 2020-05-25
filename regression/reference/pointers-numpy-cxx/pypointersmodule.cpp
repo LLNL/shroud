@@ -616,7 +616,7 @@ fail:
 // Argument:  int len +implied(size(values))+intent(in)+value
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int * values +intent(in)+rank(1)
+// Argument:  const int * values +intent(in)+rank(1)
 // Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  int * result +intent(out)
