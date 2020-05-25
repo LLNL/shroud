@@ -42,8 +42,8 @@ declarations:
   declarations:
   - decl: Class2()
   - decl: ~Class2()
-  - decl: void func1(tutorial::Class1 *arg)
-  - decl: void acceptClass3(Class3 *arg)
+  - decl: void func1(tutorial::Class1 *arg +intent(in))
+  - decl: void acceptClass3(Class3 *arg +intent(in))
 
 - decl: class Class3
 # need declarations to fully declare the class

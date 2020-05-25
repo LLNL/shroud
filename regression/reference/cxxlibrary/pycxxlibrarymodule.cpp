@@ -40,12 +40,15 @@ PyArray_Descr *PY_Cstruct1_array_descr;
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(in)
-// Exact:     py_struct_&_in_numpy
+// Argument:  Cstruct1 & arg +intent(inout)
+// Exact:     py_struct_&_inout_numpy
 static char PY_passStructByReference__doc__[] =
 "documentation"
 ;
 
+/**
+ * Argument is modified by library, defaults to intent(inout).
+ */
 static PyObject *
 PY_passStructByReference(
   PyObject *SHROUD_UNUSED(self),
@@ -60,7 +63,7 @@ PY_passStructByReference(
         "arg",
         nullptr };
     int SHCXX_rv;
-    PyObject * SHTPy_rv = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "O:passStructByReference", const_cast<char **>(SHT_kwlist), 
@@ -84,12 +87,9 @@ PY_passStructByReference(
     SHCXX_rv = passStructByReference(*arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
 
-    // cleanup
-    Py_DECREF(SHPy_arg);
-
-    return (PyObject *) SHTPy_rv;
+    return SHTPy_rv;
 
 fail:
     Py_XDECREF(SHPy_arg);
@@ -262,8 +262,8 @@ fail:
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1_cls & arg +intent(in)
-// Exact:     py_struct_&_in_class
+// Argument:  Cstruct1_cls & arg +intent(inout)
+// Exact:     py_struct_&_inout_class
 static char PY_passStructByReferenceCls__doc__[] =
 "documentation"
 ;
@@ -279,7 +279,7 @@ PY_passStructByReferenceCls(
     const char *SHT_kwlist[] = {
         "arg",
         nullptr };
-    PyObject * SHTPy_rv = nullptr;
+    PyObject *SHTPy_rv = nullptr;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "O!:passStructByReferenceCls", const_cast<char **>(SHT_kwlist), 
@@ -292,9 +292,9 @@ PY_passStructByReferenceCls(
     int SHCXX_rv = passStructByReferenceCls(*arg);
 
     // post_call
-    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+    SHTPy_rv = Py_BuildValue("iO", SHCXX_rv, SHPy_arg);
 
-    return (PyObject *) SHTPy_rv;
+    return SHTPy_rv;
 // splicer end function.pass_struct_by_reference_cls
 }
 

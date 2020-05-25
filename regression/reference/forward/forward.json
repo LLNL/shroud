@@ -299,7 +299,7 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void func1(tutorial::Class1 *arg)",
+                        "decl": "void func1(tutorial::Class1 *arg +intent(in))",
                         "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
                         "fmtdict": {
                             "C_call_list": "SHCXX_arg",
@@ -426,7 +426,7 @@
                             ],
                             "typemap_name": "void"
                         },
-                        "decl": "void acceptClass3(Class3 *arg)",
+                        "decl": "void acceptClass3(Class3 *arg +intent(in))",
                         "declgen": "void acceptClass3(Class3 * arg +intent(in))",
                         "fmtdict": {
                             "C_call_list": "SHCXX_arg",

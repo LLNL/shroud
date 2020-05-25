@@ -64,7 +64,8 @@ class Struct(unittest.TestCase):
         self.assertEqual("passStruct2", name)
 
     def test_acceptStructInPtr(self):
-        pass
+        s = cstruct.Cstruct1(3, 3.0)
+        cstruct.acceptStructInPtr(s)
 
     def test_acceptStructOutPtr(self):
         str = cstruct.acceptStructOutPtr(4, 4.5)

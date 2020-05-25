@@ -3740,6 +3740,10 @@ py_statements = [
         arg_declare=["{c_type} {c_var};"],
     ),
     dict(
+        name="py_native_&_inout",
+        arg_declare=["{c_type} {c_var};"],
+    ),
+    dict(
         name="py_native_&_out",
         arg_declare=["{c_const}{c_type} {c_var};"],
     ),
@@ -4457,7 +4461,7 @@ py_statements = [
         name="py_shadow_inout",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
-        post_parse=[
+        post_declare=[
             "{c_const}{cxx_type} * {cxx_var} ="
             "\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
         ],

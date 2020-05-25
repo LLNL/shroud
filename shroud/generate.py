@@ -290,18 +290,19 @@ class VerifyAttrs(object):
             if node is None:
                 # do not default intent for function pointers
                 pass
+            elif arg.is_function_pointer():
+                intent = "in"
             elif not is_ptr:
-                attrs["intent"] = "in"
+                intent = "in"
             elif arg.const:
-                attrs["intent"] = "in"
-            elif arg_typemap.base == "string":
-                attrs["intent"] = "inout"
-            elif arg_typemap.base == "vector":
-                attrs["intent"] = "inout"
-            else:
+                intent = "in"
+            elif arg_typemap.sgroup == "void":
                 # void *
-                attrs["intent"] = "in"  # XXX must coordinate with VALUE
-            intent = attrs["intent"]
+                intent = "in"  # XXX must coordinate with VALUE
+            else:
+                intent = "inout"
+            attrs["intent"] = intent
+            # XXX - Do hidden arguments need intent?
         else:
             intent = intent.lower()
             if intent in ["in", "out", "inout"]:

@@ -32,28 +32,29 @@ int passStructByValue(Cstruct1 arg)
 // end passStructByValue
 
 // start passStruct1
-int passStruct1(Cstruct1 *s1)
+int passStruct1(const Cstruct1 *s1)
 {
     strncpy(last_function_called, "passStruct1", MAXLAST);
     return s1->ifield;
 }
 // end passStruct1
 
-int passStruct2(Cstruct1 *s1, char *outbuf)
+int passStruct2(const Cstruct1 *s1, char *outbuf)
 {
     strncpy(outbuf, "passStruct2", LENOUTBUF);
     strncpy(last_function_called, "passStruct2", MAXLAST);
     return s1->ifield;
 }
 
+// +intent(in)
 // return sum of fields as a check
 int acceptStructInPtr(Cstruct1 *arg)
 {
   int rv = arg->ifield + arg->dfield;
-  arg->ifield += 1;
   return rv;
 }
 
+// +intent(out)
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d)
 {
   arg->ifield = i;
@@ -61,6 +62,7 @@ void acceptStructOutPtr(Cstruct1 *arg, int i, double d)
   return;
 }
 
+// +intent(inout)
 void acceptStructInOutPtr(Cstruct1 *arg)
 {
   arg->ifield += 1;

@@ -43,4 +43,6 @@ declarations:
   options:
     PY_struct_arg: numpy
 
-- decl: int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)
+- decl: int acceptBothStructs(
+           Cstruct_as_class *s1 +intent(in),
+           Cstruct_as_numpy *s2 +intent(in))

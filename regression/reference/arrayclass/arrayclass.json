@@ -1250,7 +1250,7 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_*_in",
+                                    "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
                                 },
                                 "fmtpy": {
@@ -1259,7 +1259,7 @@
                                     "c_deref": "*",
                                     "c_type": "int",
                                     "c_var": "isize",
-                                    "ctor_expr": "*isize",
+                                    "ctor_expr": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "isize",
@@ -1269,8 +1269,8 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt0": "py_native_*_in",
-                                    "stmt1": "py_native_*_in"
+                                    "stmt0": "py_native_*_inout",
+                                    "stmt1": "py_native_*_inout"
                                 }
                             }
                         },
@@ -1312,7 +1312,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -1334,7 +1334,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr",
@@ -1418,19 +1418,19 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_*_in_buf",
+                                    "stmt0": "c_native_*_inout_buf",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_*_in",
+                                    "stmt0": "f_native_*_inout",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_*_in_buf",
+                                    "stmtc0": "c_native_*_inout_buf",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -1476,7 +1476,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -1499,7 +1499,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
@@ -1582,7 +1582,7 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_&_in",
+                                    "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
                                 },
                                 "fmtpy": {
@@ -1601,8 +1601,8 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt0": "py_native_&_in",
-                                    "stmt1": "py_native_&_in"
+                                    "stmt0": "py_native_&_inout",
+                                    "stmt1": "py_native_&_inout"
                                 }
                             }
                         },
@@ -1644,7 +1644,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -1666,7 +1666,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref",
@@ -1750,19 +1750,19 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_&_in_buf",
+                                    "stmt0": "c_native_&_inout_buf",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_&_in",
+                                    "stmt0": "f_native_&_inout",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_&_in_buf",
+                                    "stmtc0": "c_native_&_inout_buf",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -1808,7 +1808,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -1831,7 +1831,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
@@ -1914,7 +1914,7 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_*_in",
+                                    "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
                                 },
                                 "fmtpy": {
@@ -1923,7 +1923,7 @@
                                     "c_deref": "*",
                                     "c_type": "int",
                                     "c_var": "isize",
-                                    "ctor_expr": "*isize",
+                                    "ctor_expr": "isize",
                                     "cxx_addr": "",
                                     "cxx_member": "->",
                                     "cxx_nonconst_ptr": "isize",
@@ -1933,8 +1933,8 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt0": "py_native_*_in",
-                                    "stmt1": "py_native_*_in"
+                                    "stmt0": "py_native_*_inout",
+                                    "stmt1": "py_native_*_inout"
                                 }
                             }
                         },
@@ -1977,7 +1977,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -1999,7 +1999,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const",
@@ -2083,19 +2083,19 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_*_in_buf",
+                                    "stmt0": "c_native_*_inout_buf",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_*_in",
+                                    "stmt0": "f_native_*_inout",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_*_in_buf",
+                                    "stmtc0": "c_native_*_inout_buf",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -2142,7 +2142,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -2165,7 +2165,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
@@ -2248,7 +2248,7 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_&_in",
+                                    "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
                                 },
                                 "fmtpy": {
@@ -2267,8 +2267,8 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_isize",
                                     "size_var": "SHSize_isize",
-                                    "stmt0": "py_native_&_in",
-                                    "stmt1": "py_native_&_in"
+                                    "stmt0": "py_native_&_inout",
+                                    "stmt1": "py_native_&_inout"
                                 }
                             }
                         },
@@ -2311,7 +2311,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -2333,7 +2333,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayRefConst(const double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const",
@@ -2417,19 +2417,19 @@
                                     "cxx_var": "isize",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "c_native_&_in_buf",
+                                    "stmt0": "c_native_&_inout_buf",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "integer(C_INT)",
                                     "f_var": "isize",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_&_in",
+                                    "stmt0": "f_native_&_inout",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_&_in_buf",
+                                    "stmtc0": "c_native_&_inout_buf",
                                     "stmtc1": "c_default"
                                 }
                             }
@@ -2476,7 +2476,7 @@
                                 {
                                     "attrs": {
                                         "hidden": true,
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "isize",
@@ -2499,7 +2499,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(in))",
+                        "declgen": "void fetchArrayRefConst(const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",

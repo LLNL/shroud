@@ -281,8 +281,8 @@ module arrayclass_mod
         ! Requested: c_native_**_out_pointer
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(in)
-        ! Requested: c_native_*_in
+        ! Argument:  int * isize +hidden+intent(inout)
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ptr")
@@ -291,7 +291,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(C_PTR), intent(OUT) :: array
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr
 
         ! ----------------------------------------
@@ -303,8 +303,8 @@ module arrayclass_mod
         ! Requested: c_native_**_out_buf_pointer
         ! Match:     c_native_**_out_buf
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(in)
-        ! Requested: c_native_*_in_buf
+        ! Argument:  int * isize +hidden+intent(inout)
+        ! Requested: c_native_*_inout_buf
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
                 Darray, isize) &
@@ -314,7 +314,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: Darray
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_bufferify
 
         ! ----------------------------------------
@@ -326,8 +326,8 @@ module arrayclass_mod
         ! Requested: c_native_*&_out_pointer
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in
+        ! Argument:  int & isize +hidden+intent(inout)
+        ! Requested: c_native_&_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref(self, array, isize) &
                 bind(C, name="ARR_ArrayWrapper_fetch_array_ref")
@@ -336,7 +336,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(C_PTR), intent(OUT) :: array
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref
 
         ! ----------------------------------------
@@ -348,8 +348,8 @@ module arrayclass_mod
         ! Requested: c_native_*&_out_buf_pointer
         ! Match:     c_native_*&_out_buf
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in_buf
+        ! Argument:  int & isize +hidden+intent(inout)
+        ! Requested: c_native_&_inout_buf
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
                 Darray, isize) &
@@ -359,7 +359,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: Darray
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_bufferify
 
         ! ----------------------------------------
@@ -371,8 +371,8 @@ module arrayclass_mod
         ! Requested: c_native_**_out_pointer
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(in)
-        ! Requested: c_native_*_in
+        ! Argument:  int * isize +hidden+intent(inout)
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const(self, array, &
                 isize) &
@@ -382,7 +382,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(C_PTR), intent(OUT) :: array
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_const
 
         ! ----------------------------------------
@@ -394,8 +394,8 @@ module arrayclass_mod
         ! Requested: c_native_**_out_buf_pointer
         ! Match:     c_native_**_out_buf
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(in)
-        ! Requested: c_native_*_in_buf
+        ! Argument:  int * isize +hidden+intent(inout)
+        ! Requested: c_native_*_inout_buf
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
                 Darray, isize) &
@@ -405,7 +405,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: Darray
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ptr_const_bufferify
 
         ! ----------------------------------------
@@ -417,8 +417,8 @@ module arrayclass_mod
         ! Requested: c_native_*&_out_pointer
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in
+        ! Argument:  int & isize +hidden+intent(inout)
+        ! Requested: c_native_&_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const(self, array, &
                 isize) &
@@ -428,7 +428,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(C_PTR), intent(OUT) :: array
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_const
 
         ! ----------------------------------------
@@ -440,8 +440,8 @@ module arrayclass_mod
         ! Requested: c_native_*&_out_buf_pointer
         ! Match:     c_native_*&_out_buf
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(in)
-        ! Requested: c_native_&_in_buf
+        ! Argument:  int & isize +hidden+intent(inout)
+        ! Requested: c_native_&_inout_buf
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
                 Darray, isize) &
@@ -451,7 +451,7 @@ module arrayclass_mod
             implicit none
             type(SHROUD_arraywrapper_capsule), intent(IN) :: self
             type(SHROUD_array), intent(INOUT) :: Darray
-            integer(C_INT), intent(IN) :: isize
+            integer(C_INT), intent(INOUT) :: isize
         end subroutine c_arraywrapper_fetch_array_ref_const_bufferify
 
         ! ----------------------------------------
@@ -719,10 +719,10 @@ contains
     ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  int * isize +hidden+intent(in)
-    ! Requested: f_native_*_in
+    ! Argument:  int * isize +hidden+intent(inout)
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_*_in_buf
+    ! Requested: c_native_*_inout_buf
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -752,10 +752,10 @@ contains
     ! Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_*&_out_buf
     ! ----------------------------------------
-    ! Argument:  int & isize +hidden+intent(in)
-    ! Requested: f_native_&_in
+    ! Argument:  int & isize +hidden+intent(inout)
+    ! Requested: f_native_&_inout
     ! Match:     f_default
-    ! Requested: c_native_&_in_buf
+    ! Requested: c_native_&_inout_buf
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -785,10 +785,10 @@ contains
     ! Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  int * isize +hidden+intent(in)
-    ! Requested: f_native_*_in
+    ! Argument:  int * isize +hidden+intent(inout)
+    ! Requested: f_native_*_inout
     ! Match:     f_default
-    ! Requested: c_native_*_in_buf
+    ! Requested: c_native_*_inout_buf
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -818,10 +818,10 @@ contains
     ! Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_*&_out_buf
     ! ----------------------------------------
-    ! Argument:  int & isize +hidden+intent(in)
-    ! Requested: f_native_&_in
+    ! Argument:  int & isize +hidden+intent(inout)
+    ! Requested: f_native_&_inout
     ! Match:     f_default
-    ! Requested: c_native_&_in_buf
+    ! Requested: c_native_&_inout_buf
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer

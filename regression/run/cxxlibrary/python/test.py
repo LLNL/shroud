@@ -30,8 +30,11 @@ class Struct(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_StructNumpy(self):
-        i = cxxlibrary.passStructByReference((2, 2.0))
+        # NumPy creates a struct out of the tuple
+        # which is returned since the argument is intent(inout)
+        i, str1out = cxxlibrary.passStructByReference((2, 2.0))
         self.assertEqual(4, i)
+        self.assertEqual(3, str1out["ifield"])
 
         # Create struct via numpy
         dt = cxxlibrary.Cstruct1_dtype
@@ -48,9 +51,12 @@ class Struct(unittest.TestCase):
 
     def test_StructClass(self):
         str1 = cxxlibrary.Cstruct1_cls(2, 2.0)
-        
-        i = cxxlibrary.passStructByReferenceCls(str1)
+
+        # Argument is intent(inout), return input struct as output.
+        i, str1out = cxxlibrary.passStructByReferenceCls(str1)
         self.assertEqual(4, i)
+        self.assertEqual(3, str1.ifield)
+        self.assertIs(str1, str1out)
 
         rvi = cxxlibrary.passStructByReferenceInCls(str1) # assign global_Cstruct1
         self.assertEqual(6, rvi)

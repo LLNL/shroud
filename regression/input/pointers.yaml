@@ -23,7 +23,10 @@ declarations:
 
 # Test individual argument to check PyBuild_Value
 - decl: void  intargs_in(const int *arg)
-- decl: void  intargs_inout(int *arg +intent(inout))
+- decl: void  intargs_inout(int *arg)
+  doxygen:
+    description: |
+       Argument is modified by library, defaults to intent(inout).
 - decl: void  intargs_out(int *arg +intent(out))
 
 - decl: void  intargs(const int argin      +intent(in),

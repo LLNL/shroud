@@ -31,14 +31,14 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Cstruct1 * s1 +intent(in)
+// Argument:  const Cstruct1 * s1 +intent(in)
 // Requested: c_struct_*_in_buf
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
 // Requested: c_char_*_out_buf
 // Match:     c_char_out_buf
-int STR_pass_struct2_bufferify(Cstruct1 * s1, char * outbuf,
+int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
     // splicer begin function.pass_struct2_bufferify

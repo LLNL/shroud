@@ -124,20 +124,20 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "c_shadow_*_in",
-                                    "stmt1": "c_shadow_in"
+                                    "stmt0": "c_shadow_*_inout",
+                                    "stmt1": "c_shadow_inout"
                                 },
                                 "fmtf": {
                                     "F_pointer": "SHPTR_c2",
                                     "c_var": "c2",
-                                    "f_intent": "IN",
+                                    "f_intent": "INOUT",
                                     "f_type": "type(class1)",
                                     "f_var": "c2",
                                     "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_shadow_*_in",
+                                    "stmt0": "f_shadow_*_inout",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_shadow_*_in",
-                                    "stmtc1": "c_shadow_in"
+                                    "stmtc0": "c_shadow_*_inout",
+                                    "stmtc1": "c_shadow_inout"
                                 }
                             }
                         },
@@ -149,7 +149,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in"
+                                        "intent": "inout"
                                     },
                                     "declarator": {
                                         "name": "c2",
@@ -171,7 +171,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method2(three::Class1 * c2)",
-                        "declgen": "void method2(three::Class1 * c2 +intent(in))",
+                        "declgen": "void method2(three::Class1 * c2 +intent(inout))",
                         "fmtdict": {
                             "C_call_list": "SHCXX_c2",
                             "C_name": "LIB_Class2_method2",

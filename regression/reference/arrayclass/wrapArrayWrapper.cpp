@@ -238,8 +238,8 @@ const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in
+// Argument:  int * isize +hidden+intent(inout)
+// Requested: c_native_*_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
     double * * array, int * isize)
@@ -258,8 +258,8 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
 // Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in_buf
+// Argument:  int * isize +hidden+intent(inout)
+// Requested: c_native_*_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *Darray, int * isize)
@@ -288,8 +288,8 @@ void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
 // Requested: c_native_*&_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in
+// Argument:  int & isize +hidden+intent(inout)
+// Requested: c_native_&_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
     double * * array, int * isize)
@@ -308,8 +308,8 @@ void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
 // Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_*&_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in_buf
+// Argument:  int & isize +hidden+intent(inout)
+// Requested: c_native_&_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *Darray, int * isize)
@@ -338,8 +338,8 @@ void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in
+// Argument:  int * isize +hidden+intent(inout)
+// Requested: c_native_*_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
@@ -358,8 +358,8 @@ void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
 // Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(in)
-// Requested: c_native_*_in_buf
+// Argument:  int * isize +hidden+intent(inout)
+// Requested: c_native_*_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *Darray, int * isize)
@@ -388,8 +388,8 @@ void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
 // Requested: c_native_*&_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in
+// Argument:  int & isize +hidden+intent(inout)
+// Requested: c_native_&_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
     const double * * array, int * isize)
@@ -408,8 +408,8 @@ void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
 // Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
 // Exact:     c_native_*&_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(in)
-// Requested: c_native_&_in_buf
+// Argument:  int & isize +hidden+intent(inout)
+// Requested: c_native_&_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *Darray, int * isize)

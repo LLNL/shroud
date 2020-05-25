@@ -902,7 +902,7 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1)+deref(raw),    int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(1)+deref(raw)+intent(in),    int type+implied(T_FLOAT))"
                     },
                     {
                         "decls": [
@@ -957,7 +957,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2)+deref(raw),  int type+implied(T_FLOAT))"
+                        "generic": "(float *addr+rank(2)+deref(raw)+intent(in),  int type+implied(T_FLOAT))"
                     }
                 ],
                 "options": {
@@ -1360,7 +1360,7 @@
                             }
                         ],
                         "function_suffix": "_float1d",
-                        "generic": "(float *addr+rank(1)+deref(raw))"
+                        "generic": "(float *addr+rank(1)+deref(raw)+intent(in))"
                     },
                     {
                         "decls": [
@@ -1415,7 +1415,7 @@
                             }
                         ],
                         "function_suffix": "_float2d",
-                        "generic": "(float *addr+rank(2)+deref(raw))"
+                        "generic": "(float *addr+rank(2)+deref(raw)+intent(in))"
                     }
                 ],
                 "fstatements": {

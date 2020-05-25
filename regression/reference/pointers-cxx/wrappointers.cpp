@@ -82,6 +82,9 @@ void POI_intargs_in(const int * arg)
 }
 // end POI_intargs_in
 
+/**
+ * Argument is modified by library, defaults to intent(inout).
+ */
 // ----------------------------------------
 // Function:  void intargs_inout
 // Requested: c

@@ -42,18 +42,16 @@ declarations:
   options:
     literalinclude: True
 
-- decl: int passStruct1(Cstruct1 *arg)
+- decl: int passStruct1(const Cstruct1 *arg)
   options:
     literalinclude: True
 
-- decl: int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))
+- decl: int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))
   doxygen:
     description: |
       Pass name argument which will build a bufferify function.
 
-- decl: int acceptStructInPtr(Cstruct1 *arg+intent(in))
-  options:
-    wrap_python: False
+- decl: int acceptStructInPtr(Cstruct1 *arg +intent(in))
 
 - decl: void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)
   doxygen:

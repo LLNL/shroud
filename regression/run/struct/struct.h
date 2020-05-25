@@ -24,8 +24,8 @@ struct Cstruct1 {
 typedef struct Cstruct1 Cstruct1;
 
 int passStructByValue(Cstruct1 arg);
-int passStruct1(Cstruct1 *s1);
-int passStruct2(Cstruct1 *s1, char *outbuf);
+int passStruct1(const Cstruct1 *s1);
+int passStruct2(const Cstruct1 *s1, char *outbuf);
 int acceptStructInPtr(Cstruct1 *arg);
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d);
 void acceptStructInOutPtr(Cstruct1 *arg);

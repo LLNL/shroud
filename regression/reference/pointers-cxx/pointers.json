@@ -162,8 +162,11 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void  intargs_inout(int *arg +intent(inout))",
+                "decl": "void  intargs_inout(int *arg)",
                 "declgen": "void intargs_inout(int * arg +intent(inout))",
+                "doxygen": {
+                    "description": "Argument is modified by library, defaults to intent(inout).\n"
+                },
                 "fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "POI_intargs_inout",

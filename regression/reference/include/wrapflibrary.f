@@ -62,15 +62,15 @@ module library_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  three::Class1 * c2 +intent(in)
-        ! Requested: c_shadow_*_in
-        ! Match:     c_shadow_in
+        ! Argument:  three::Class1 * c2 +intent(inout)
+        ! Requested: c_shadow_*_inout
+        ! Match:     c_shadow_inout
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: SHROUD_class1_capsule, SHROUD_class2_capsule
             implicit none
             type(SHROUD_class2_capsule), intent(IN) :: self
-            type(SHROUD_class1_capsule), intent(IN) :: c2
+            type(SHROUD_class1_capsule), intent(INOUT) :: c2
         end subroutine c_class2_method2
 
 
@@ -105,15 +105,15 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  three::Class1 * c2 +intent(in)
-    ! Requested: f_shadow_*_in
+    ! Argument:  three::Class1 * c2 +intent(inout)
+    ! Requested: f_shadow_*_inout
     ! Match:     f_default
-    ! Requested: c_shadow_*_in
-    ! Match:     c_shadow_in
+    ! Requested: c_shadow_*_inout
+    ! Match:     c_shadow_inout
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj
-        type(class1), intent(IN) :: c2
+        type(class1), intent(INOUT) :: c2
         call c_class2_method2(obj%cxxmem, c2%cxxmem)
     end subroutine class2_method2
 

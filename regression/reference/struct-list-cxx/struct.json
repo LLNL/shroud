@@ -660,14 +660,14 @@
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "array_size": "1",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "STR_cstruct1",
                             "c_var": "arg",
                             "ctor_expr": "*arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(arg)",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "data_var": "SHData_arg",
@@ -708,6 +708,7 @@
                             "attrs": {
                                 "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "arg",
                                 "pointer": [
@@ -727,8 +728,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct1(Cstruct1 *arg)",
-                "declgen": "int passStruct1(Cstruct1 * arg +intent(in))",
+                "decl": "int passStruct1(const Cstruct1 *arg)",
+                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
                 "fmtdict": {
                     "PY_name_impl": "PY_passStruct1",
                     "function_name": "passStruct1",
@@ -769,14 +770,14 @@
                             "PyObject": "PY_Cstruct1",
                             "PyTypeObject": "PY_Cstruct1_Type",
                             "array_size": "1",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "STR_cstruct1",
                             "c_var": "s1",
                             "ctor_expr": "*s1",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s1",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(s1)",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "data_var": "SHData_s1",
@@ -817,6 +818,7 @@
                             "attrs": {
                                 "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "s1",
                                 "pointer": [
@@ -854,8 +856,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -867,6 +869,52 @@
                 "options": {}
             },
             {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct1_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PyObject": "PY_Cstruct1",
+                            "PyTypeObject": "PY_Cstruct1_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "STR_cstruct1",
+                            "c_var": "arg",
+                            "ctor_expr": "*arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "arg",
+                            "data_var": "SHData_arg",
+                            "numpy_type": null,
+                            "py_type": "PY_Cstruct1",
+                            "py_var": "SHPy_arg",
+                            "size_var": "SHSize_arg",
+                            "stmt0": "py_struct_*_in_list",
+                            "stmt1": "py_struct_*_in_list"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_scalar_result",
+                        "stmt1": "py_default"
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "acceptStructInPtr",
@@ -896,15 +944,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
+                "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
+                    "PY_name_impl": "PY_acceptStructInPtr",
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

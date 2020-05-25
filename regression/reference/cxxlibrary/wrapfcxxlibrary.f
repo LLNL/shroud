@@ -34,8 +34,8 @@ module cxxlibrary_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(in)
-        ! Requested: c_struct_&_in
+        ! Argument:  Cstruct1 & arg +intent(inout)
+        ! Requested: c_struct_&_inout
         ! Match:     c_struct
         function pass_struct_by_reference(arg) &
                 result(SHT_rv) &
@@ -43,7 +43,7 @@ module cxxlibrary_mod
             use iso_c_binding, only : C_INT
             import :: cstruct1
             implicit none
-            type(cstruct1), intent(IN) :: arg
+            type(cstruct1), intent(INOUT) :: arg
             integer(C_INT) :: SHT_rv
         end function pass_struct_by_reference
 

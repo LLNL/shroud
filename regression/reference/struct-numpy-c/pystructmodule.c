@@ -104,7 +104,7 @@ fail:
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * arg +intent(in)
+// Argument:  const Cstruct1 * arg +intent(in)
 // Exact:     py_struct_*_in_numpy
 static char PY_passStruct1__doc__[] =
 "documentation"
@@ -164,7 +164,7 @@ fail:
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * s1 +intent(in)
+// Argument:  const Cstruct1 * s1 +intent(in)
 // Exact:     py_struct_*_in_numpy
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -224,6 +224,66 @@ fail:
     Py_XDECREF(SHPy_s1);
     return NULL;
 // splicer end function.pass_struct2
+}
+
+// ----------------------------------------
+// Function:  int acceptStructInPtr
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * arg +intent(in)
+// Exact:     py_struct_*_in_numpy
+static char PY_acceptStructInPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptStructInPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_struct_in_ptr
+    Cstruct1 *arg;
+    PyObject * SHTPy_arg = NULL;
+    PyArrayObject * SHPy_arg = NULL;
+    char *SHT_kwlist[] = {
+        "arg",
+        NULL };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptStructInPtr",
+        SHT_kwlist, &SHTPy_arg))
+        return NULL;
+
+    // post_parse
+    Py_INCREF(PY_Cstruct1_array_descr);
+    SHPy_arg = (PyArrayObject *) PyArray_FromAny(SHTPy_arg,
+        PY_Cstruct1_array_descr, 0, 1, NPY_ARRAY_IN_ARRAY, NULL);
+    if (SHPy_arg == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arg must be a 1-D array of Cstruct1");
+        goto fail;
+    }
+
+    // pre_call
+    arg = PyArray_DATA(SHPy_arg);
+
+    SHCXX_rv = acceptStructInPtr(arg);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_arg);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arg);
+    return NULL;
+// splicer end function.accept_struct_in_ptr
 }
 
 // ----------------------------------------
@@ -631,6 +691,8 @@ static PyMethodDef PY_methods[] = {
     PY_passStruct1__doc__},
 {"passStruct2", (PyCFunction)PY_passStruct2, METH_VARARGS|METH_KEYWORDS,
     PY_passStruct2__doc__},
+{"acceptStructInPtr", (PyCFunction)PY_acceptStructInPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStructInPtr__doc__},
 {"acceptStructOutPtr", (PyCFunction)PY_acceptStructOutPtr,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructOutPtr__doc__},
 {"acceptStructInOutPtr", (PyCFunction)PY_acceptStructInOutPtr,
