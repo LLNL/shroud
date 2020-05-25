@@ -52,9 +52,9 @@ declarations:
   # for the C interface.
   cpp_if: if 1
   fortran_generic:
-  - decl: (float *addr+rank(1)+deref(raw),    int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(1)+deref(raw)+intent(in),    int type+implied(T_FLOAT))
     function_suffix: _float1d
-  - decl: (float *addr+rank(2)+deref(raw),  int type+implied(T_FLOAT))
+  - decl: (float *addr+rank(2)+deref(raw)+intent(in),  int type+implied(T_FLOAT))
     function_suffix: _float2d
 
 #  - decl: (double *addr+rank(1),   int type+implied(T_DOUBLE))
@@ -70,9 +70,9 @@ declarations:
       -
       - type = convert_type(type);
   fortran_generic:
-  - decl: (float *addr+rank(1)+deref(raw))
+  - decl: (float *addr+rank(1)+deref(raw)+intent(in))
     function_suffix: _float1d
-  - decl: (float *addr+rank(2)+deref(raw))
+  - decl: (float *addr+rank(2)+deref(raw)+intent(in))
     function_suffix: _float2d
 
 #  - decl: (double *addr+rank(1), int type+implied(T_DOUBLE))

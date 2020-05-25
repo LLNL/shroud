@@ -29,6 +29,9 @@ declarations:
     PY_struct_arg: numpy
 
 - decl: int passStructByReference(Cstruct1 &arg)
+  doxygen:
+    description: |
+       Argument is modified by library, defaults to intent(inout).
 - decl: int passStructByReferenceIn(const Cstruct1 &arg)
   doxygen:
     description: |

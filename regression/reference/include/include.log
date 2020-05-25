@@ -23,14 +23,14 @@ Close wraplibrary_outer2.h
 Close wraplibrary_outer2.cpp
 class Class2
 C method void method1(MPI_Comm comm +intent(in)+value)
-C method void method2(three::Class1 * c2 +intent(in))
+C method void method2(three::Class1 * c2 +intent(inout))
 Close wrapClass2.h
 Close wrapClass2.cpp
 Close wraplibrary.cpp
 Close typeslibrary.h
 class Class2
 C-interface, Fortran method void method1(MPI_Comm comm +intent(in)+value)
-C-interface, Fortran method void method2(three::Class1 * c2 +intent(in))
+C-interface, Fortran method void method2(three::Class1 * c2 +intent(inout))
 C-interface, Fortran function void function1()
 Close wrapflibrary_one_two.f
 Close wrapflibrary_one.f

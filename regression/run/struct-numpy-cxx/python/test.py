@@ -78,7 +78,8 @@ class Struct(unittest.TestCase):
         self.assertEqual("passStruct2", name)
 
     def test_acceptStructInPtr(self):
-        pass
+        s = np.array((3,3.0), dtype=cstruct.Cstruct1_dtype)
+        cstruct.acceptStructInPtr(s)
 
     def test_acceptStructOutPtr(self):
         str = cstruct.acceptStructOutPtr(4, 4.5)

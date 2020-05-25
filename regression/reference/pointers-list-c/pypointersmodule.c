@@ -190,6 +190,9 @@ static char PY_intargs_inout__doc__[] =
 "documentation"
 ;
 
+/**
+ * Argument is modified by library, defaults to intent(inout).
+ */
 static PyObject *
 PY_intargs_inout(
   PyObject *SHROUD_UNUSED(self),

@@ -658,13 +658,13 @@
                     "arg": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "arg",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
+                            "cxx_nonconst_ptr": "(Cstruct1 *) arg",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
                             "idtor": "0",
@@ -723,6 +723,7 @@
                             "attrs": {
                                 "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "arg",
                                 "pointer": [
@@ -742,12 +743,12 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct1(Cstruct1 *arg)",
-                "declgen": "int passStruct1(Cstruct1 * arg +intent(in))",
+                "decl": "int passStruct1(const Cstruct1 *arg)",
+                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
                 "fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "passStruct1",
-                    "C_prototype": "Cstruct1 * arg",
+                    "C_prototype": "const Cstruct1 * arg",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct1",
                     "F_C_name": "pass_struct1",
@@ -789,13 +790,13 @@
                     "s1": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s1",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s1",
+                            "cxx_nonconst_ptr": "(Cstruct1 *) s1",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "idtor": "0",
@@ -842,6 +843,7 @@
                             "attrs": {
                                 "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "s1",
                                 "pointer": [
@@ -879,15 +881,15 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "passStruct2",
-                    "C_prototype": "Cstruct1 * s1,\t char * outbuf",
+                    "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
                     "C_return_type": "int",
                     "F_C_call": "c_pass_struct2_bufferify",
                     "F_C_name": "c_pass_struct2",
@@ -941,13 +943,13 @@
                     "s1": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s1",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s1",
+                            "cxx_nonconst_ptr": "(Cstruct1 *) s1",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "s1",
                             "idtor": "0",
@@ -997,6 +999,7 @@
                             "attrs": {
                                 "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "s1",
                                 "pointer": [
@@ -1037,15 +1040,15 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int passStruct2(Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
+                "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
+                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "s1,\t outbuf",
                     "C_name": "STR_pass_struct2_bufferify",
-                    "C_prototype": "Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
+                    "C_prototype": "const Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
                     "F_C_name": "c_pass_struct2_bufferify",
                     "cxx_rv_decl": "int SHC_rv",
@@ -1149,7 +1152,7 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int acceptStructInPtr(Cstruct1 *arg+intent(in))",
+                "decl": "int acceptStructInPtr(Cstruct1 *arg +intent(in))",
                 "declgen": "int acceptStructInPtr(Cstruct1 * arg +intent(in))",
                 "fmtdict": {
                     "C_call_list": "arg",
@@ -1169,9 +1172,7 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "options": {
-                    "wrap_python": false
-                }
+                "options": {}
             },
             {
                 "_fmtargs": {

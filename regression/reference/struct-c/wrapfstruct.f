@@ -84,7 +84,7 @@ module struct_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * arg +intent(in)
+    ! Argument:  const Cstruct1 * arg +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! start pass_struct1
@@ -106,7 +106,7 @@ module struct_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1 +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! ----------------------------------------
@@ -131,7 +131,7 @@ module struct_mod
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1 +intent(in)
     ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
@@ -380,7 +380,7 @@ contains
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1 +intent(in)
     ! Requested: f_struct_*_in
     ! Match:     f_default
     ! Requested: c_struct_*_in_buf

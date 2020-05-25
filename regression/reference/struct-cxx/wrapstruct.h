@@ -67,11 +67,11 @@ typedef struct s_STR_arrays1 STR_arrays1;
 
 int STR_pass_struct_by_value(STR_cstruct1 arg);
 
-int STR_pass_struct1(STR_cstruct1 * arg);
+int STR_pass_struct1(const STR_cstruct1 * arg);
 
-int STR_pass_struct2(STR_cstruct1 * s1, char * outbuf);
+int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf);
 
-int STR_pass_struct2_bufferify(STR_cstruct1 * s1, char * outbuf,
+int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
     int Noutbuf);
 
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg);

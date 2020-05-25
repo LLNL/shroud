@@ -129,8 +129,11 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void  intargs_inout(int *arg +intent(inout))",
+                "decl": "void  intargs_inout(int *arg)",
                 "declgen": "void intargs_inout(int * arg +intent(inout))",
+                "doxygen": {
+                    "description": "Argument is modified by library, defaults to intent(inout).\n"
+                },
                 "fmtdict": {
                     "PY_name_impl": "PY_intargs_inout",
                     "function_name": "intargs_inout",

@@ -44,10 +44,10 @@ contains
     
     str1%dfield = 2.0_C_DOUBLE
     rvi = pass_struct_by_value(str1)
-    call assert_equals(4, rvi, "pass_struct_by_value")
+    call assert_equals(4, rvi, "passStructByValue")
     ! Make sure str1 was passed by value.
-    call assert_equals(2_C_INT, str1%ifield, "pass_struct_by_value ifield")
-    call assert_equals(2.0_C_DOUBLE, str1%dfield, "pass_struct_by_value dfield")
+    call assert_equals(2_C_INT, str1%ifield, "passStructByValue ifield")
+    call assert_equals(2.0_C_DOUBLE, str1%dfield, "passStructByValue dfield")
 
     str1%ifield = 12
     str1%dfield = 12.6
@@ -60,21 +60,19 @@ contains
     str1%ifield = 3_C_INT
     str1%dfield = 3.0_C_DOUBLE
     rvi = accept_struct_in_ptr(str1)
-    call assert_equals(6, rvi, "accept_struct_in_ptr")
-    ! ifield changed by routine.
-    call assert_equals(4, str1%ifield, "accept_struct_in_ptr ifield")
+    call assert_equals(6, rvi, "acceptStructInPtr")
 
     str1%ifield = 0
     str1%dfield = 0.0
     call accept_struct_out_ptr(str1, 4_C_INT, 4.5_C_DOUBLE)
-    call assert_equals(4_C_INT,      str1%ifield, "accept_struct_out_ptr i field")
-    call assert_equals(4.5_C_DOUBLE, str1%dfield, "accept_struct_out_ptr d field")
+    call assert_equals(4_C_INT,      str1%ifield, "acceptStructOutPtr i field")
+    call assert_equals(4.5_C_DOUBLE, str1%dfield, "acceptStructOutPtr d field")
 
     str1%ifield = 4_C_INT
     str1%dfield = 4.0_C_DOUBLE
     call accept_struct_in_out_ptr(str1)
-    call assert_equals(5_C_INT,      str1%ifield, "accept_struct_in_out_ptr i field")
-    call assert_equals(5.0_C_DOUBLE, str1%dfield, "accept_struct_in_out_ptr d field")
+    call assert_equals(5_C_INT,      str1%ifield, "acceptStructInOutPtr i field")
+    call assert_equals(5.0_C_DOUBLE, str1%dfield, "acceptStructInOutPtr d field")
 
   end subroutine test_struct
 
@@ -88,12 +86,12 @@ contains
     call set_case_name("test_struct2")
 
     str1 = return_struct_by_value(1_C_INT, 2.5_C_DOUBLE)
-    call assert_equals(1_C_INT,      str1%ifield, "return_struct_by_value i field")
-    call assert_equals(2.5_C_DOUBLE, str1%dfield, "return_struct_by_value d field")
+    call assert_equals(1_C_INT,      str1%ifield, "returnStructByValue i field")
+    call assert_equals(2.5_C_DOUBLE, str1%dfield, "returnStructByValue d field")
 
     str1 = return_const_struct_by_value(10_C_INT, 20.5_C_DOUBLE)
-    call assert_equals(10_C_INT,      str1%ifield, "return_const_struct_by_value i field")
-    call assert_equals(20.5_C_DOUBLE, str1%dfield, "return_const_struct_by_value d field")
+    call assert_equals(10_C_INT,      str1%ifield, "return_constStructByValue i field")
+    call assert_equals(20.5_C_DOUBLE, str1%dfield, "return_constStructByValue d field")
 
     nullify(str2)
     str2 => return_struct_ptr1(33, 33.5d0)

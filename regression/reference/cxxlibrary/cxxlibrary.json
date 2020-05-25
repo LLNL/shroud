@@ -327,19 +327,19 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "c_struct_&_in",
+                            "stmt0": "c_struct_&_inout",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "f_intent": "IN",
+                            "f_intent": "INOUT",
                             "f_type": "type(cstruct1)",
                             "f_var": "arg",
                             "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_&_in",
+                            "stmt0": "f_struct_&_inout",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_&_in",
+                            "stmtc0": "c_struct_&_inout",
                             "stmtc1": "c_struct"
                         },
                         "fmtpy": {
@@ -354,7 +354,7 @@
                             "c_var": "arg",
                             "ctor_expr": "arg",
                             "cxx_addr": "&",
-                            "cxx_member": "->",
+                            "cxx_member": ".",
                             "cxx_nonconst_ptr": "&arg",
                             "cxx_type": "Cstruct1",
                             "cxx_var": "arg",
@@ -363,8 +363,8 @@
                             "py_var": "SHPy_arg",
                             "pytmp_var": "SHTPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_in_numpy",
-                            "stmt1": "py_struct_&_in_numpy"
+                            "stmt0": "py_struct_&_inout_numpy",
+                            "stmt1": "py_struct_&_inout_numpy"
                         }
                     }
                 },
@@ -419,7 +419,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in"
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -441,7 +441,10 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReference(Cstruct1 &arg)",
-                "declgen": "int passStructByReference(Cstruct1 & arg +intent(in))",
+                "declgen": "int passStructByReference(Cstruct1 & arg +intent(inout))",
+                "doxygen": {
+                    "description": "Argument is modified by library, defaults to intent(inout).\n"
+                },
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "CXX_pass_struct_by_reference",
@@ -864,8 +867,8 @@
                             "py_type": "PY_Cstruct1_cls",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_&_in_class",
-                            "stmt1": "py_struct_&_in_class"
+                            "stmt0": "py_struct_&_inout_class",
+                            "stmt1": "py_struct_&_inout_class"
                         }
                     }
                 },
@@ -895,7 +898,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in"
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "arg",
@@ -917,7 +920,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg +intent(in))",
+                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg +intent(inout))",
                 "fmtdict": {
                     "PY_name_impl": "PY_passStructByReferenceCls",
                     "function_name": "passStructByReferenceCls",

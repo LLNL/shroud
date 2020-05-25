@@ -81,7 +81,7 @@ PY_passStructByValue(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * arg +intent(in)
+// Argument:  const Cstruct1 * arg +intent(in)
 // Exact:     py_struct_*_in_list
 static char PY_passStruct1__doc__[] =
 "documentation"
@@ -118,7 +118,7 @@ PY_passStruct1(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 * s1 +intent(in)
+// Argument:  const Cstruct1 * s1 +intent(in)
 // Exact:     py_struct_*_in_list
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
@@ -155,6 +155,43 @@ PY_passStruct2(
 
     return SHTPy_rv;
 // splicer end function.pass_struct2
+}
+
+// ----------------------------------------
+// Function:  int acceptStructInPtr
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  Cstruct1 * arg +intent(in)
+// Exact:     py_struct_*_in_list
+static char PY_acceptStructInPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptStructInPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_struct_in_ptr
+    PY_Cstruct1 * SHPy_arg;
+    const char *SHT_kwlist[] = {
+        "arg",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O!:acceptStructInPtr",
+        const_cast<char **>(SHT_kwlist), &PY_Cstruct1_Type, &SHPy_arg))
+        return nullptr;
+
+    int SHCXX_rv = acceptStructInPtr(&arg);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.accept_struct_in_ptr
 }
 
 // ----------------------------------------
@@ -471,6 +508,8 @@ static PyMethodDef PY_methods[] = {
     PY_passStruct1__doc__},
 {"passStruct2", (PyCFunction)PY_passStruct2, METH_VARARGS|METH_KEYWORDS,
     PY_passStruct2__doc__},
+{"acceptStructInPtr", (PyCFunction)PY_acceptStructInPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStructInPtr__doc__},
 {"acceptStructOutPtr", (PyCFunction)PY_acceptStructOutPtr,
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructOutPtr__doc__},
 {"acceptStructInOutPtr", (PyCFunction)PY_acceptStructInOutPtr,

@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   ex. ``dimension(:,:)`` should be ``rank(2)``.
   The dimension attribute must be a list of expressions and should not
   be assumed-shape or assumed-length and are used with *intent(out)* arguments.
+- Pointer arguments default to ``intent(inout)`` instead of ``intent(in)``.
 
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a

@@ -2247,6 +2247,10 @@ fc_statements = [
         ],
     ),
     dict(
+        name="c_shadow_inout",
+        base="c_shadow_in",
+    ),
+    dict(
         name="c_shadow_scalar_in",
         base="c_shadow_in",
     ),
