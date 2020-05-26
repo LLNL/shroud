@@ -182,21 +182,25 @@ int sumFixedArray(void)
 
 /**** Return a Fortran pointer */
 /* Return pointer to a scalar in the argument. */
+// start getPtrToScalar
 void getPtrToScalar(int **nitems)
 {
     *nitems = &global_int;
 }
+// end getPtrToScalar
 
 void getPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
 }
 
+// start getPtrToDynamicArray
 void getPtrToDynamicArray(int **count, int *len)
 {
     *count = (int *) &global_fixed_array;
     *len = sizeof(global_fixed_array)/sizeof(int);
 }
+// end getPtrToDynamicArray
 
 // Return length of global_fixed_array.
 int getLen(void)
@@ -234,10 +238,12 @@ void getRawPtrToScalar(int **nitems)
     *nitems = &global_int;
 }
 
+// start getRawPtrToFixedArray
 void getRawPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
 }
+// end getRawPtrToFixedArray
 
 //----------------------------------------------------------------------
 
