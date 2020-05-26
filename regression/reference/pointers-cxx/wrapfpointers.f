@@ -798,6 +798,45 @@ module pointers_mod
     ! end c_get_raw_ptr_to_fixed_array_bufferify
 
     ! ----------------------------------------
+    ! Function:  void getRawPtrToInt2d
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * * arg +intent(out)
+    ! Requested: c_native_***_out
+    ! Match:     c_default
+    ! start get_raw_ptr_to_int2d
+    interface
+        subroutine get_raw_ptr_to_int2d(arg) &
+                bind(C, name="POI_get_raw_ptr_to_int2d")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: arg
+        end subroutine get_raw_ptr_to_int2d
+    end interface
+    ! end get_raw_ptr_to_int2d
+
+    ! ----------------------------------------
+    ! Function:  int checkInt2d
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * arg +intent(in)
+    ! Exact:     c_native_**_in
+    ! start check_int2d
+    interface
+        function check_int2d(arg) &
+                result(SHT_rv) &
+                bind(C, name="POI_check_int2d")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(IN), value :: arg
+            integer(C_INT) :: SHT_rv
+        end function check_int2d
+    end interface
+    ! end check_int2d
+
+    ! ----------------------------------------
     ! Function:  void * returnAddress1
     ! Requested: c_void_*_result
     ! Match:     c_default

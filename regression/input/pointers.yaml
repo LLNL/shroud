@@ -156,6 +156,21 @@ declarations:
       Called directly via an interface in Fortran.
       # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
 
+- decl: void getRawPtrToInt2d(int ***arg +intent(out))
+  doxygen:
+    description: |
+      Test multiple layers of indirection.
+  options:
+    wrap_python: False
+- decl: int checkInt2d(int **arg +intent(in))
+  doxygen:
+    description: |
+      Check results of getRawPtrToInt2d.
+  options:
+    wrap_python: False
+# XXX - These two functions need to return PyCapsule for
+#       py_native_***_out
+
 ######################################################################
 # Return a pointer directly.
 

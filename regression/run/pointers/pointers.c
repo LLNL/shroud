@@ -22,6 +22,11 @@ static int global_int = 0;
 static int global_fixed_array[10];
 //static double global_double;
 
+// Variables to test multiple layers of indirection.
+static int global_int2d_1[] = {1,2,3};
+static int global_int2d_2[] = {4,5};
+static int *global_int2d[] = {global_int2d_1, global_int2d_2};
+
 //----------------------------------------------------------------------
 
 void  intargs_in(const int *arg)
@@ -244,6 +249,24 @@ void getRawPtrToFixedArray(int **count)
     *count = (int *) &global_fixed_array;
 }
 // end getRawPtrToFixedArray
+
+// Test multiple layers of indirection.
+void getRawPtrToInt2d(int ***arg)
+{
+    *arg = (int **) global_int2d;
+}
+
+// Verify contents of arg
+int checkInt2d(int **arg)
+{
+    int sum =
+        arg[0][0] + 
+        arg[0][1] + 
+        arg[0][2] + 
+        arg[1][0] + 
+        arg[1][1];
+    return sum;
+}
 
 //----------------------------------------------------------------------
 

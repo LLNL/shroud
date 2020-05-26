@@ -4055,6 +4055,222 @@
             },
             {
                 "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_***_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_***_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_***_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToInt2d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToInt2d(int ***arg +intent(out))",
+                "declgen": "void getRawPtrToInt2d(int * * * arg +intent(out))",
+                "doxygen": {
+                    "description": "Test multiple layers of indirection.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "POI_get_raw_ptr_to_int2d",
+                    "C_prototype": "int * * * arg",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_raw_ptr_to_int2d",
+                    "F_C_name": "get_raw_ptr_to_int2d",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "get_raw_ptr_to_int2d",
+                    "F_name_generic": "get_raw_ptr_to_int2d",
+                    "F_name_impl": "get_raw_ptr_to_int2d",
+                    "F_subprogram": "subroutine",
+                    "function_name": "getRawPtrToInt2d",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_raw_ptr_to_int2d"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_**_in",
+                            "stmt1": "c_native_**_in"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_**_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_**_in",
+                            "stmtc1": "c_native_**_in"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "checkInt2d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int checkInt2d(int **arg +intent(in))",
+                "declgen": "int checkInt2d(int * * arg +intent(in))",
+                "doxygen": {
+                    "description": "Check results of getRawPtrToInt2d.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "POI_check_int2d",
+                    "C_prototype": "int **arg",
+                    "C_return_type": "int",
+                    "F_C_call": "c_check_int2d",
+                    "F_C_name": "check_int2d",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "check_int2d",
+                    "F_name_generic": "check_int2d",
+                    "F_name_impl": "check_int2d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "checkInt2d",
+                    "underscore_name": "check_int2d"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",

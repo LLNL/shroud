@@ -48,6 +48,8 @@ void getPtrToDynamicConstArray(const int **count, int *len);
 
 void getRawPtrToScalar(int **nitems);
 void getRawPtrToFixedArray(int **count);
+void getRawPtrToInt2d(int ***arg);
+int checkInt2d(int **arg);
 
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);

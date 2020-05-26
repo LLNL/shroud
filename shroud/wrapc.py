@@ -648,7 +648,6 @@ class Wrapc(util.WrapperMixin):
         i.e. No wrapper if the C function can be called directly.
         """
         attrs = ast.attrs
-
         for buf_arg in buf_args:
             if buf_arg == "arg":
                 # vector<int> -> int *
@@ -662,10 +661,15 @@ class Wrapc(util.WrapperMixin):
                     name or ast.name))
                 continue
             elif buf_arg == "arg_decl":
+                if name is None:
+                    fmttmp = fmt
+                else:
+                    # Update argument name if requested.
+                    fmttmp = util.Scope(fmt)
+                    fmttmp.c_var = name
+                    fmttmp.cxx_var = name
                 for arg in intent_blk.c_arg_decl:
-                    proto_list.append(arg.format(
-                        c_var=name or ast.name,
-                    ))
+                    append_format(proto_list, arg, fmttmp)
                 continue
 
             need_wrapper = True
