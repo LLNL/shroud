@@ -1176,14 +1176,14 @@
                     "values": {
                         "fmtpy": {
                             "array_size": "1",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_type": "int",
                             "c_var": "values",
                             "ctor_expr": "*values",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "values",
+                            "cxx_nonconst_ptr": "(int *) values",
                             "cxx_type": "int",
                             "cxx_var": "values",
                             "data_var": "SHData_values",
@@ -1223,6 +1223,7 @@
                                 "intent": "in",
                                 "rank": 1
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "values",
                                 "pointer": [
@@ -1259,8 +1260,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void Sum(int len +implied(size(values)), int *values +rank(1)+intent(in), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, int * values +intent(in)+rank(1), int * result +intent(out))",
+                "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, const int * values +intent(in)+rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum",
@@ -2336,6 +2337,101 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToInt2d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToInt2d(int ***arg +intent(out))",
+                "declgen": "void getRawPtrToInt2d(int * * * arg +intent(out))",
+                "doxygen": {
+                    "description": "Test multiple layers of indirection.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToInt2d",
+                    "underscore_name": "get_raw_ptr_to_int2d"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "checkInt2d",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int checkInt2d(int **arg +intent(in))",
+                "declgen": "int checkInt2d(int * * arg +intent(in))",
+                "doxygen": {
+                    "description": "Check results of getRawPtrToInt2d.\n"
+                },
+                "fmtdict": {
+                    "function_name": "checkInt2d",
+                    "underscore_name": "check_int2d"
+                },
+                "options": {
+                    "wrap_python": false
+                }
             },
             {
                 "_fmtargs": {

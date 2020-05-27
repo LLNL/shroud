@@ -312,7 +312,7 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * values +intent(in)+rank(1)
+// Argument:  const int * values +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
@@ -320,7 +320,7 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_sum
-void POI_sum(int len, int * values, int * result)
+void POI_sum(int len, const int * values, int * result)
 {
     // splicer begin function.sum
     Sum(len, values, result);
@@ -874,6 +874,46 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
     // splicer end function.get_raw_ptr_to_fixed_array_bufferify
 }
 // end POI_get_raw_ptr_to_fixed_array_bufferify
+
+/**
+ * Test multiple layers of indirection.
+ */
+// ----------------------------------------
+// Function:  void getRawPtrToInt2d
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * * * arg +intent(out)
+// Requested: c_native_***_out
+// Match:     c_default
+// start POI_get_raw_ptr_to_int2d
+void POI_get_raw_ptr_to_int2d(int * * * arg)
+{
+    // splicer begin function.get_raw_ptr_to_int2d
+    getRawPtrToInt2d(arg);
+    // splicer end function.get_raw_ptr_to_int2d
+}
+// end POI_get_raw_ptr_to_int2d
+
+/**
+ * Check results of getRawPtrToInt2d.
+ */
+// ----------------------------------------
+// Function:  int checkInt2d
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int * * arg +intent(in)
+// Exact:     c_native_**_in
+// start POI_check_int2d
+int POI_check_int2d(int **arg)
+{
+    // splicer begin function.check_int2d
+    int SHC_rv = checkInt2d(arg);
+    return SHC_rv;
+    // splicer end function.check_int2d
+}
+// end POI_check_int2d
 
 // ----------------------------------------
 // Function:  void * returnAddress1

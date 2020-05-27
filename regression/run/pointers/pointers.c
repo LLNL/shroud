@@ -22,6 +22,11 @@ static int global_int = 0;
 static int global_fixed_array[10];
 //static double global_double;
 
+// Variables to test multiple layers of indirection.
+static int global_int2d_1[] = {1,2,3};
+static int global_int2d_2[] = {4,5};
+static int *global_int2d[] = {global_int2d_1, global_int2d_2};
+
 //----------------------------------------------------------------------
 
 void  intargs_in(const int *arg)
@@ -61,6 +66,7 @@ void cos_doubles(double *in, double *out, int size)
 //----------------------------------------------------------------------
 // convert from double to int.
 
+// start truncate_to_int
 void truncate_to_int(double *in, int *out, int size)
 {
     int i;
@@ -68,6 +74,7 @@ void truncate_to_int(double *in, int *out, int size)
         out[i] = in[i];
     }
 }
+// end truncate_to_int
 
 //----------------------------------------------------------------------
 // values +intent(out)
@@ -120,7 +127,7 @@ void iota_dimension(int nvar, int *values)
 //----------------------------------------------------------------------
 
 // start Sum
-void Sum(int len, int *values, int *result)
+void Sum(int len, const int *values, int *result)
 {
     int sum = 0;
     for (int i=0; i < len; i++) {
@@ -182,21 +189,25 @@ int sumFixedArray(void)
 
 /**** Return a Fortran pointer */
 /* Return pointer to a scalar in the argument. */
+// start getPtrToScalar
 void getPtrToScalar(int **nitems)
 {
     *nitems = &global_int;
 }
+// end getPtrToScalar
 
 void getPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
 }
 
+// start getPtrToDynamicArray
 void getPtrToDynamicArray(int **count, int *len)
 {
     *count = (int *) &global_fixed_array;
     *len = sizeof(global_fixed_array)/sizeof(int);
 }
+// end getPtrToDynamicArray
 
 // Return length of global_fixed_array.
 int getLen(void)
@@ -234,9 +245,29 @@ void getRawPtrToScalar(int **nitems)
     *nitems = &global_int;
 }
 
+// start getRawPtrToFixedArray
 void getRawPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
+}
+// end getRawPtrToFixedArray
+
+// Test multiple layers of indirection.
+void getRawPtrToInt2d(int ***arg)
+{
+    *arg = (int **) global_int2d;
+}
+
+// Verify contents of arg
+int checkInt2d(int **arg)
+{
+    int sum =
+        arg[0][0] + 
+        arg[0][1] + 
+        arg[0][2] + 
+        arg[1][0] + 
+        arg[1][1];
+    return sum;
 }
 
 //----------------------------------------------------------------------

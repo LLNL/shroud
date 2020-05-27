@@ -914,7 +914,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     #    ntypemap.f_module={fmt_class.F_module_name:[unname]}
 
     # return from C function
-    # f_c_return_decl='type(CPTR)' % unname,
+    # f_c_return_decl='type(C_PTR)' % unname,
 
     # The import is added in wrapf.py
     #    ntypemap.f_c_module={ '-import-': ['F_capsule_data_type']}
@@ -1438,6 +1438,19 @@ fc_statements = [
         ],
     ),
     
+    dict(
+        # Any array of pointers.  Assumed to be non-contiguous memory.
+        # All Fortran can do is treat as a type(C_PTR).
+        name="c_native_**_in",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{cxx_type} **{cxx_var}",
+        ],
+        f_arg_decl=[
+            "type(C_PTR), intent(IN), value :: {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
     dict(
         # double **count _intent(out)+dimension(ncount)
         name="c_native_**_out_buf",

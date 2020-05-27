@@ -47,7 +47,7 @@ void POI_iota_allocatable(int nvar, int * values);
 
 void POI_iota_dimension(int nvar, int * values);
 
-void POI_sum(int len, int * values, int * result);
+void POI_sum(int len, const int * values, int * result);
 
 void POI_fill_int_array(int * out);
 
@@ -101,6 +101,10 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems);
 void POI_get_raw_ptr_to_fixed_array(int * * count);
 
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount);
+
+void POI_get_raw_ptr_to_int2d(int * * * arg);
+
+int POI_check_int2d(int **arg);
 
 void * POI_return_address1(int flag);
 

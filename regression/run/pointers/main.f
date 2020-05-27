@@ -192,6 +192,10 @@ contains
     ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
 
+    void = C_NULL_PTR
+    call get_raw_ptr_to_int2d(void)
+    call assert_equals(15, check_int2d(void))
+
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface
     void = C_NULL_PTR

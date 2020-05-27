@@ -25,7 +25,7 @@ void get_values2(int *arg1, int *arg2);
 void iota_allocatable(int nvar, int *values);
 void iota_dimension(int nvar, int *values);
 
-void Sum(int len, int * values, int *result);
+void Sum(int len, const int * values, int *result);
 void fillIntArray(int *out);
 void incrementIntArray(int *array, int size);
 
@@ -48,6 +48,8 @@ void getPtrToDynamicConstArray(const int **count, int *len);
 
 void getRawPtrToScalar(int **nitems);
 void getRawPtrToFixedArray(int **count);
+void getRawPtrToInt2d(int ***arg);
+int checkInt2d(int **arg);
 
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
