@@ -22,6 +22,7 @@ program tester
   call test_functions2
   call test_char_arrays
   call test_out_ptrs
+  call test_nested_ptrs
 
   call fruit_summary
   call fruit_finalize
@@ -192,10 +193,6 @@ contains
     ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
 
-    void = C_NULL_PTR
-    call get_raw_ptr_to_int2d(void)
-    call assert_equals(15, check_int2d(void))
-
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface
     void = C_NULL_PTR
@@ -246,5 +243,24 @@ contains
     ivalue = return_int_scalar()
     
   end subroutine test_out_ptrs
+
+  subroutine test_nested_ptrs
+    type(C_PTR) void
+    type(C_PTR), pointer :: array2d(:)
+    integer(C_INT), pointer :: row1(:), row2(:)
+    integer total
+    
+    void = C_NULL_PTR
+    call get_raw_ptr_to_int2d(void)
+    call assert_equals(15, check_int2d(void))
+
+    call c_f_pointer(void, array2d, [2])
+    call c_f_pointer(array2d(1), row1, [3])
+    call c_f_pointer(array2d(2), row2, [2])
+
+    total = row1(1) + row1(2) + row1(3) + row2(1) + row2(2)
+    call assert_equals(15, total)
+
+  end subroutine test_nested_ptrs
   
 end program tester
