@@ -66,6 +66,7 @@ void cos_doubles(double *in, double *out, int size)
 //----------------------------------------------------------------------
 // convert from double to int.
 
+// start truncate_to_int
 void truncate_to_int(double *in, int *out, int size)
 {
     int i;
@@ -73,6 +74,7 @@ void truncate_to_int(double *in, int *out, int size)
         out[i] = in[i];
     }
 }
+// end truncate_to_int
 
 //----------------------------------------------------------------------
 // values +intent(out)
