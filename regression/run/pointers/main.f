@@ -245,16 +245,16 @@ contains
   end subroutine test_out_ptrs
 
   subroutine test_nested_ptrs
-    type(C_PTR) void
+    type(C_PTR) addr
     type(C_PTR), pointer :: array2d(:)
     integer(C_INT), pointer :: row1(:), row2(:)
     integer total
     
-    void = C_NULL_PTR
-    call get_raw_ptr_to_int2d(void)
-    call assert_equals(15, check_int2d(void))
+    addr = C_NULL_PTR
+    call get_raw_ptr_to_int2d(addr)
+    call assert_equals(15, check_int2d(addr))
 
-    call c_f_pointer(void, array2d, [2])
+    call c_f_pointer(addr, array2d, [2])
     call c_f_pointer(array2d(1), row1, [3])
     call c_f_pointer(array2d(2), row2, [2])
 
