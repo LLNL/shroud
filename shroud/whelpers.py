@@ -121,13 +121,11 @@ def add_external_helpers():
 interface+
 ! helper {hname}
 ! Delete memory in a capsule.
-subroutine SHROUD_capsule_dtor(ptr, gc)\tbind(C, name="{C_memory_dtor_function}")+
-use iso_c_binding, only : C_BOOL
+subroutine SHROUD_capsule_dtor(ptr)\tbind(C, name="{C_memory_dtor_function}")+
 import {F_capsule_data_type}
 implicit none
 type({F_capsule_data_type}), intent(INOUT) :: ptr
-logical(C_BOOL), value, intent(IN) :: gc
--end subroutine array_destructor
+-end subroutine SHROUD_capsule_dtor
 -end interface""",
             fmt,
         ),
@@ -512,7 +510,7 @@ type({F_capsule_data_type}) :: mem
 subroutine {F_capsule_final_function}(cap)+
 use iso_c_binding, only : C_BOOL
 type({F_capsule_type}), intent(INOUT) :: cap
-call SHROUD_capsule_dtor(cap%mem, .false._C_BOOL)
+call SHROUD_capsule_dtor(cap%mem)
 -end subroutine {F_capsule_final_function}""",
             fmt,
         ),

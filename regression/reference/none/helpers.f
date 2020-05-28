@@ -69,14 +69,12 @@ end type SHROUD_capsule_data
 interface
     ! helper capsule_dtor
     ! Delete memory in a capsule.
-    subroutine SHROUD_capsule_dtor(ptr, gc)&
+    subroutine SHROUD_capsule_dtor(ptr)&
         bind(C, name="LIB_SHROUD_memory_destructor")
-        use iso_c_binding, only : C_BOOL
         import SHROUD_capsule_data
         implicit none
         type(SHROUD_capsule_data), intent(INOUT) :: ptr
-        logical(C_BOOL), value, intent(IN) :: gc
-    end subroutine array_destructor
+    end subroutine SHROUD_capsule_dtor
 end interface
 ##### end capsule_dtor interface
 
@@ -98,7 +96,7 @@ end type SHROUD_capsule
 subroutine SHROUD_capsule_final(cap)
     use iso_c_binding, only : C_BOOL
     type(SHROUD_capsule), intent(INOUT) :: cap
-    call SHROUD_capsule_dtor(cap%mem, .false._C_BOOL)
+    call SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_final
 ##### end capsule_helper source
 
