@@ -1103,6 +1103,20 @@ int POI_return_int_scalar(void)
 }
 // end POI_return_int_scalar
 
+// ----------------------------------------
+// Function:  int * returnIntRaw +deref(raw)
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_raw
+int * POI_return_int_raw(void)
+{
+    // splicer begin function.return_int_raw
+    int * SHC_rv = returnIntRaw();
+    return SHC_rv;
+    // splicer end function.return_int_raw
+}
+// end POI_return_int_raw
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

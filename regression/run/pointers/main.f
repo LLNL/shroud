@@ -241,7 +241,13 @@ contains
     call assert_true(size(irvarray) == 10)
     call assert_true(associated(irvscalar, iscalar))
 
+    ! +deref(scalar)
     ivalue = return_int_scalar()
+
+    ! Return pointer to global_int.
+    void = return_int_raw()
+    call assert_true(c_associated(void, c_loc(irvscalar)))
+    call assert_true(c_associated(void, c_loc(iscalar)))
     
   end subroutine test_out_ptrs
 

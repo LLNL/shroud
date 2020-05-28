@@ -208,3 +208,7 @@ declarations:
 
 - decl: int *returnIntScalar(void) +deref(scalar)
   # Fortran: return scalar w/o POINTER attribute.
+- decl: int *returnIntRaw(void) +deref(raw)
+  options:
+    # XXX create statement py_native_*_result_raw
+    wrap_python: False

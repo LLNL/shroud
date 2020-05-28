@@ -1665,6 +1665,10 @@ fc_statements = [
             "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
         ],
     ),
+    dict(
+        # Needed to avoid finding f_native_*_result.
+        name="f_native_*_result_raw",
+    ),
     
     dict(
         name="f_native_*_result",

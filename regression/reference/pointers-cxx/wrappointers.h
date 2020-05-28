@@ -130,6 +130,8 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 
 int POI_return_int_scalar(void);
 
+int * POI_return_int_raw(void);
+
 #ifdef __cplusplus
 }
 #endif

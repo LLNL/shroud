@@ -1031,6 +1031,22 @@ module pointers_mod
     end interface
     ! end return_int_scalar
 
+    ! ----------------------------------------
+    ! Function:  int * returnIntRaw +deref(raw)
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_raw
+    interface
+        function return_int_raw() &
+                result(SHT_rv) &
+                bind(C, name="POI_return_int_raw")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function return_int_raw
+    end interface
+    ! end return_int_raw
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

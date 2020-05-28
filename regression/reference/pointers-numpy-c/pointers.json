@@ -2962,6 +2962,35 @@
                     "underscore_name": "return_int_scalar"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "attrs": {
+                        "deref": "raw"
+                    },
+                    "declarator": {
+                        "name": "returnIntRaw",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntRaw(void) +deref(raw)",
+                "declgen": "int * returnIntRaw() +deref(raw)",
+                "fmtdict": {
+                    "function_name": "returnIntRaw",
+                    "underscore_name": "return_int_raw"
+                },
+                "options": {
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",
