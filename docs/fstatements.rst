@@ -33,6 +33,13 @@ A Fortran wrapper is created out of several segments.
         ! splicer end
       end {F_subprogram} {F_name_impl}
 
+arg_decl
+^^^^^^^^
+
+Argument or result declaration.
+Usually constructed from YAML decl but sometimes needs to be explicit
+to add Fortran attributes such as ``TARGET`` or ``POINTER``.
+
 buf_arg
 ^^^^^^^
 
@@ -46,6 +53,10 @@ capsule
 context
 len_trim
 len
+
+c_helper
+^^^^^^^^
+
 
 c_local_var
 ^^^^^^^^^^^
@@ -69,10 +80,10 @@ Usually a *c_local_var* is sufficient.
 f_helper
 ^^^^^^^^
 
-Blank delimited list of helper function names to add to generated
+Blank delimited list of Fortran helper function names to add to generated
 Fortran code.
 These functions are defined in whelper.py.
-There is no current way to add additional functions.
+There is no current way to add user defined helper functions.
 
 f_module
 ^^^^^^^^
@@ -128,7 +139,7 @@ The *C_code* field has a default value of:
 buf_args
 ^^^^^^^^^
 
-*buf_args* lists the arguments which are used by the wrapper.
+*buf_args* lists the arguments which are used by the C wrapper.
 The default is to provide a one-for-one correspondance with the 
 arguments of the function which is being wrapped.
 However, often an additional function is created which will pass 
@@ -148,14 +159,17 @@ capsule
     It provides a pointer to the C++ memory as well as information
     to release the memory.
 
+    .. XXX need to add helper automatically
+
 context
 
-    An argument of *C_context_type*/*F_context_type*.
+    An argument of *C_array_type*/*F_array_type*.
     For example, used with ``std::vector`` to hold
     address and size of data contained in the argument
     in a form which may be used directly by Fortran.
 
     *c_var_context*
+    options.C_var_context_template
 
 len
 

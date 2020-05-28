@@ -46,6 +46,15 @@ Cython
 * http://cython.org
 * https://cython.readthedocs.io/en/latest/
 
+
+http://blog.kevmod.com/2020/05/python-performance-its-not-just-the-interpreter/
+
+I ran Cython (a Python->C converter) on the previous benchmark, and it
+runs in exactly the same amount of time: 2.11s. I wrote a simplified C
+extension in 36 lines compared to Cython's 3600, and it too runs in
+2.11s.
+  
+
 SIP
 ---
 

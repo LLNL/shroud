@@ -697,22 +697,20 @@ A C++ function which initialized a struct can be written as:
 
 .. code-block:: yaml
 
-    - decl: struct1 returnStruct(int i, double d);
+    - decl: struct1 returnStructByValue(int i, double d);
 
-The C wrapper creates a union type of the C and C++ types which is
-used instead of a type cast:
+The C wrapper casts the C++ struct to the C struct by using
+pointers to the struct then returns the value by dereferencing
+the C struct pointer.
 
 .. code-block:: c++
 
-    typedef union {
-      tutorial::struct1 cxx;
-      TUT_struct1 c;
-    } SH_union_0_t;
-    
-    TUT_struct1 TUT_return_struct(int i, double d)
+    TUT_struct1 TUT_return_struct_by_value(int i, double d)
     {
-        SH_union_0_t SHC_rv = {tutorial::returnStruct(i, d)};
-        return SHC_rv.c;
+        Cstruct1 SHCXX_rv = returnStructByValue(i, d);
+        TUT_cstruct1 * SHC_rv = static_cast<TUT_cstruct1 *>(
+            static_cast<void *>(&SHCXX_rv));
+        return *SHC_rv;
     }
 
 This function can be called directly by Fortran using the generated
@@ -720,9 +718,9 @@ interface:
 
 .. code-block:: fortran
 
-        function return_struct(i, d) &
+        function return_struct_by_value(i, d) &
                 result(SHT_rv) &
-                bind(C, name="TUT_return_struct")
+                bind(C, name="TUT_return_struct_by_value")
             use iso_c_binding, only : C_DOUBLE, C_INT
             import :: struct1
             implicit none
