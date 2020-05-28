@@ -132,6 +132,8 @@ int POI_return_int_scalar(void);
 
 int * POI_return_int_raw(void);
 
+int * POI_return_int_raw_with_args(const char * name);
+
 #ifdef __cplusplus
 }
 #endif

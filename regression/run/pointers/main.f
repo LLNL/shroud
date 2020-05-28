@@ -248,6 +248,10 @@ contains
     void = return_int_raw()
     call assert_true(c_associated(void, c_loc(irvscalar)))
     call assert_true(c_associated(void, c_loc(iscalar)))
+
+    void = return_int_raw_with_args("with args")
+    call assert_true(c_associated(void, c_loc(irvscalar)))
+    call assert_true(c_associated(void, c_loc(iscalar)))
     
   end subroutine test_out_ptrs
 

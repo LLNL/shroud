@@ -1365,7 +1365,7 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
-        self.arg_decl = arg_decl        # argument declaration
+        self.arg_decl = arg_decl        # argument/result declaration
         self.arg_c_call = arg_c_call    # argument to C function.
         self.declare = declare          # local declaration
         self.pre_call = pre_call
@@ -1666,14 +1666,12 @@ fc_statements = [
         ],
     ),
     dict(
-        # Needed to avoid finding f_native_*_result.
         name="f_native_*_result_raw",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
     ),
     
-    dict(
-        name="f_native_*_result",
-        base="f_native_*_result_pointer",
-    ),
     dict(
         name="f_native_&_result",
         base="f_native_*_result_pointer",   # XXX - change base to &?

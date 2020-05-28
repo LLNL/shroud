@@ -5245,6 +5245,9 @@
                 },
                 "decl": "int *returnIntRaw(void) +deref(raw)",
                 "declgen": "int * returnIntRaw() +deref(raw)",
+                "doxygen": {
+                    "description": "Call directly via interface.\n"
+                },
                 "fmtdict": {
                     "C_name": "POI_return_int_raw",
                     "C_prototype": "void",
@@ -5260,6 +5263,127 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntRaw",
                     "underscore_name": "return_int_raw"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<char *>\t(name)",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "f_intent": "IN",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_*_result_raw",
+                        "stmt1": "f_native_*_result_raw",
+                        "stmtc0": "c_native_*_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "deref": "raw"
+                    },
+                    "declarator": {
+                        "name": "returnIntRawWithArgs",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "ftrim_char_in": true,
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
+                "declgen": "int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)",
+                "doxygen": {
+                    "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_native_*_result_raw.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "name",
+                    "C_name": "POI_return_int_raw_with_args",
+                    "C_prototype": "const char * name",
+                    "C_return_type": "int *",
+                    "F_C_call": "c_return_int_raw_with_args",
+                    "F_C_name": "c_return_int_raw_with_args",
+                    "F_arg_c_call": "trim(name)//C_NULL_CHAR",
+                    "F_arguments": "name",
+                    "F_name_function": "return_int_raw_with_args",
+                    "F_name_generic": "return_int_raw_with_args",
+                    "F_name_impl": "return_int_raw_with_args",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntRawWithArgs",
+                    "underscore_name": "return_int_raw_with_args"
                 },
                 "options": {
                     "wrap_python": false

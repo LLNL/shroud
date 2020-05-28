@@ -324,6 +324,11 @@ int *returnIntRaw(void)
 {
     return &global_int;
 }
+// Fortran wrapper has +deref(raw)
+int *returnIntRawWithArgs(const char *name)
+{
+    return &global_int;
+}
 
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)

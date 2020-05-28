@@ -209,6 +209,16 @@ declarations:
 - decl: int *returnIntScalar(void) +deref(scalar)
   # Fortran: return scalar w/o POINTER attribute.
 - decl: int *returnIntRaw(void) +deref(raw)
+  doxygen:
+    description: |
+      Call directly via interface.
   options:
     # XXX create statement py_native_*_result_raw
+    wrap_python: False
+- decl: int *returnIntRawWithArgs(const char *name) +deref(raw)
+  doxygen:
+    description: |
+      Like returnIntRaw but with another argument to force a wrapper.
+      Uses fc_statements f_native_*_result_raw.
+  options:
     wrap_python: False

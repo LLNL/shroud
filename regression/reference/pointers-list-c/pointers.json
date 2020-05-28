@@ -3006,9 +3006,64 @@
                 },
                 "decl": "int *returnIntRaw(void) +deref(raw)",
                 "declgen": "int * returnIntRaw() +deref(raw)",
+                "doxygen": {
+                    "description": "Call directly via interface.\n"
+                },
                 "fmtdict": {
                     "function_name": "returnIntRaw",
                     "underscore_name": "return_int_raw"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "attrs": {
+                        "deref": "raw"
+                    },
+                    "declarator": {
+                        "name": "returnIntRawWithArgs",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "ftrim_char_in": true,
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
+                "declgen": "int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)",
+                "doxygen": {
+                    "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_native_*_result_raw.\n"
+                },
+                "fmtdict": {
+                    "function_name": "returnIntRawWithArgs",
+                    "underscore_name": "return_int_raw_with_args"
                 },
                 "options": {
                     "wrap_python": false

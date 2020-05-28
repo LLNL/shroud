@@ -48,6 +48,7 @@ C function const int * returnIntPtrToFixedConstArray() +dimension(10)
 C function const int * returnIntPtrToFixedConstArray() +context(DSHC_rv)+dimension(10)
 C function int * returnIntScalar() +deref(scalar)
 C function int * returnIntRaw() +deref(raw)
+C function int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)
 Close wrappointers.h
 Close wrappointers.cpp
 Close typespointers.h
@@ -100,4 +101,5 @@ C-interface, Fortran function const int * returnIntPtrToFixedConstArray() +dimen
 C-interface function const int * returnIntPtrToFixedConstArray() +context(DSHC_rv)+dimension(10)
 C-interface, Fortran function int * returnIntScalar() +deref(scalar)
 C-interface, Fortran function int * returnIntRaw() +deref(raw)
+C-interface, Fortran function int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)
 Close wrapfpointers.f

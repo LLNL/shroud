@@ -1103,6 +1103,9 @@ int POI_return_int_scalar(void)
 }
 // end POI_return_int_scalar
 
+/**
+ * Call directly via interface.
+ */
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
 // Requested: c_native_*_result
@@ -1116,6 +1119,28 @@ int * POI_return_int_raw(void)
     // splicer end function.return_int_raw
 }
 // end POI_return_int_raw
+
+/**
+ * Like returnIntRaw but with another argument to force a wrapper.
+ * Uses fc_statements f_native_*_result_raw.
+ */
+// ----------------------------------------
+// Function:  int * returnIntRawWithArgs +deref(raw)
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * name +intent(in)
+// Requested: c_char_*_in
+// Match:     c_default
+// start POI_return_int_raw_with_args
+int * POI_return_int_raw_with_args(const char * name)
+{
+    // splicer begin function.return_int_raw_with_args
+    int * SHC_rv = returnIntRawWithArgs(name);
+    return SHC_rv;
+    // splicer end function.return_int_raw_with_args
+}
+// end POI_return_int_raw_with_args
 
 // start release allocated memory
 // Release library allocated memory.

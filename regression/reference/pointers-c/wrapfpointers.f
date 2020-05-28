@@ -1047,6 +1047,27 @@ module pointers_mod
     end interface
     ! end return_int_raw
 
+    ! ----------------------------------------
+    ! Function:  int * returnIntRawWithArgs +deref(raw)
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * name +intent(in)
+    ! Requested: c_char_*_in
+    ! Match:     c_default
+    ! start c_return_int_raw_with_args
+    interface
+        function c_return_int_raw_with_args(name) &
+                result(SHT_rv) &
+                bind(C, name="returnIntRawWithArgs")
+            use iso_c_binding, only : C_CHAR, C_PTR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            type(C_PTR) SHT_rv
+        end function c_return_int_raw_with_args
+    end interface
+    ! end c_return_int_raw_with_args
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -1582,6 +1603,28 @@ contains
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntRawWithArgs +deref(raw)
+    ! int * returnIntRawWithArgs +deref(raw)
+    ! Exact:     f_native_*_result_raw
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    !>
+    !! Like returnIntRaw but with another argument to force a wrapper.
+    !! Uses fc_statements f_native_*_result_raw.
+    !<
+    ! start return_int_raw_with_args
+    function return_int_raw_with_args(name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_int_raw_with_args
+        SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
+        ! splicer end function.return_int_raw_with_args
+    end function return_int_raw_with_args
+    ! end return_int_raw_with_args
 
     ! splicer begin additional_functions
     ! splicer end additional_functions
