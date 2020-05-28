@@ -1239,7 +1239,10 @@ class GenFunctions(object):
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
 
-        if result_typemap.base == "string":
+        if attrs["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif result_typemap.base == "string":
             if result_typemap.name == "char" and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 ast.set_type(typemap.lookup_type("char_scalar"))

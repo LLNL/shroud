@@ -73,6 +73,14 @@ const char * getCharPtr3()
 }
 // end getCharPtr3
 
+// +deref(raw)
+// start getCharPtr4
+const char * getCharPtr4()
+{
+    return static_char;
+}
+// end getCharPtr4
+
 //----------------------------------------
 
 // start getConstStringRefPure

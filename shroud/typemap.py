@@ -1760,6 +1760,13 @@ fc_statements = [
         ],
     ),
 
+    dict(
+        # char *func() +deref(raw)
+        name="f_char_*_result_raw",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+    ),
     #####
     dict(
         # Treat as an assumed length array in Fortran interface.
@@ -1797,7 +1804,7 @@ fc_statements = [
     ),
     #####
     dict(
-        name="f_char_result_allocatable",
+        name="f_char_*_result_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -1809,6 +1816,10 @@ fc_statements = [
             "call SHROUD_copy_string_and_free"
             "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
+    ),
+    dict(
+        name="f_char_scalar_result_allocatable",
+        base="f_char_*_result_allocatable",
     ),
 
     dict(
