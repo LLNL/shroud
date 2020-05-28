@@ -837,6 +837,25 @@ module pointers_mod
     ! end check_int2d
 
     ! ----------------------------------------
+    ! Function:  void DimensionIn
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! start c_dimension_in
+    interface
+        subroutine c_dimension_in(arg) &
+                bind(C, name="DimensionIn")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg(*)
+        end subroutine c_dimension_in
+    end interface
+    ! end c_dimension_in
+
+    ! ----------------------------------------
     ! Function:  void * returnAddress1
     ! Requested: c_void_*_result
     ! Match:     c_default
@@ -1011,6 +1030,59 @@ module pointers_mod
         end function return_int_scalar
     end interface
     ! end return_int_scalar
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntRaw +deref(raw)
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! start return_int_raw
+    interface
+        function return_int_raw() &
+                result(SHT_rv) &
+                bind(C, name="returnIntRaw")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function return_int_raw
+    end interface
+    ! end return_int_raw
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntRawWithArgs +deref(raw)
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const char * name +intent(in)
+    ! Requested: c_char_*_in
+    ! Match:     c_default
+    ! start c_return_int_raw_with_args
+    interface
+        function c_return_int_raw_with_args(name) &
+                result(SHT_rv) &
+                bind(C, name="returnIntRawWithArgs")
+            use iso_c_binding, only : C_CHAR, C_PTR
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            type(C_PTR) SHT_rv
+        end function c_return_int_raw_with_args
+    end interface
+    ! end c_return_int_raw_with_args
+
+    ! ----------------------------------------
+    ! Function:  int * * returnRawPtrToInt2d +deref(pointer)
+    ! Requested: c_native_**_result
+    ! Match:     c_default
+    ! start c_return_raw_ptr_to_int2d
+    interface
+        function c_return_raw_ptr_to_int2d() &
+                result(SHT_rv) &
+                bind(C, name="returnRawPtrToInt2d")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_raw_ptr_to_int2d
+    end interface
+    ! end c_return_raw_ptr_to_int2d
 
     interface
         ! splicer begin additional_interfaces
@@ -1418,6 +1490,33 @@ contains
     ! end get_ptr_to_dynamic_const_array
 
     ! ----------------------------------------
+    ! Function:  void DimensionIn
+    ! void DimensionIn
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    !>
+    !! Test +dimension(10,20) +intent(in) together.
+    !! This will not use assumed-shape in the Fortran wrapper.
+    !<
+    ! start dimension_in
+    subroutine dimension_in(arg)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: arg(10,20)
+        ! splicer begin function.dimension_in
+        call c_dimension_in(arg)
+        ! splicer end function.dimension_in
+    end subroutine dimension_in
+    ! end dimension_in
+
+    ! ----------------------------------------
     ! Function:  void * returnAddress2
     ! void * returnAddress2
     ! Exact:     f_void_*_result
@@ -1520,6 +1619,50 @@ contains
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
+
+    ! ----------------------------------------
+    ! Function:  int * returnIntRawWithArgs +deref(raw)
+    ! int * returnIntRawWithArgs +deref(raw)
+    ! Exact:     f_native_*_result_raw
+    ! Requested: c_native_*_result
+    ! Match:     c_default
+    !>
+    !! Like returnIntRaw but with another argument to force a wrapper.
+    !! Uses fc_statements f_native_*_result_raw.
+    !<
+    ! start return_int_raw_with_args
+    function return_int_raw_with_args(name) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_NULL_CHAR
+        character(len=*), intent(IN) :: name
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_int_raw_with_args
+        SHT_rv = c_return_int_raw_with_args(trim(name)//C_NULL_CHAR)
+        ! splicer end function.return_int_raw_with_args
+    end function return_int_raw_with_args
+    ! end return_int_raw_with_args
+
+    ! ----------------------------------------
+    ! Function:  int * * returnRawPtrToInt2d +deref(pointer)
+    ! int * * returnRawPtrToInt2d +deref(pointer)
+    ! Requested: f_native_**_result_pointer
+    ! Match:     f_native_**_result
+    ! Requested: c_native_**_result
+    ! Match:     c_default
+    !>
+    !! Test multiple layers of indirection.
+    !! # getRawPtrToInt2d
+    !<
+    ! start return_raw_ptr_to_int2d
+    function return_raw_ptr_to_int2d() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_raw_ptr_to_int2d
+        SHT_rv = c_return_raw_ptr_to_int2d()
+        ! splicer end function.return_raw_ptr_to_int2d
+    end function return_raw_ptr_to_int2d
+    ! end return_raw_ptr_to_int2d
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

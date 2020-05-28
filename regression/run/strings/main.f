@@ -95,9 +95,11 @@ contains
 
   subroutine test_functions
 
+    type(C_PTR) :: strptr
     character(len=:), allocatable :: astr
     character(30) str
     character(30), parameter :: static_str = "dog                         "
+    character, pointer :: raw_str(:)
     integer(C_INT) :: nlen
 
     call set_case_name("test_functions")
@@ -117,6 +119,14 @@ contains
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     call get_char_ptr3(str)
     call assert_true( str == "bird")
+
+    strptr = get_char_ptr4()
+    call c_f_pointer(strptr, raw_str, [4])
+    call assert_true( &
+         raw_str(1) == "b" .and. &
+         raw_str(2) == "i" .and. &
+         raw_str(3) == "r" .and. &
+         raw_str(4) == "d")
  
 !--------------------------------------------------
 

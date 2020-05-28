@@ -51,6 +51,8 @@ void getRawPtrToFixedArray(int **count);
 void getRawPtrToInt2d(int ***arg);
 int checkInt2d(int **arg);
 
+void DimensionIn(const int *arg);
+
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
 void fetchVoidPtr(void **addr);
@@ -60,6 +62,9 @@ int *returnIntPtrToFixedArray(void);
 const int *returnIntPtrToConstScalar(void);
 const int *returnIntPtrToFixedConstArray(void);
 int *returnIntScalar(void);
+int *returnIntRaw(void);
+int *returnIntRawWithArgs(const char *name);
+int **returnRawPtrToInt2d(void);
 
 //void getPtrToArray(int **count+intent(out));
 

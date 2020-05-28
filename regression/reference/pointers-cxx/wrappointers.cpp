@@ -915,6 +915,27 @@ int POI_check_int2d(int **arg)
 }
 // end POI_check_int2d
 
+/**
+ * Test +dimension(10,20) +intent(in) together.
+ * This will not use assumed-shape in the Fortran wrapper.
+ */
+// ----------------------------------------
+// Function:  void DimensionIn
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * arg +dimension(10,20)+intent(in)
+// Requested: c_native_*_in
+// Match:     c_default
+// start POI_dimension_in
+void POI_dimension_in(const int * arg)
+{
+    // splicer begin function.dimension_in
+    DimensionIn(arg);
+    // splicer end function.dimension_in
+}
+// end POI_dimension_in
+
 // ----------------------------------------
 // Function:  void * returnAddress1
 // Requested: c_void_*_result
@@ -1081,6 +1102,63 @@ int POI_return_int_scalar(void)
     // splicer end function.return_int_scalar
 }
 // end POI_return_int_scalar
+
+/**
+ * Call directly via interface.
+ */
+// ----------------------------------------
+// Function:  int * returnIntRaw +deref(raw)
+// Requested: c_native_*_result
+// Match:     c_default
+// start POI_return_int_raw
+int * POI_return_int_raw(void)
+{
+    // splicer begin function.return_int_raw
+    int * SHC_rv = returnIntRaw();
+    return SHC_rv;
+    // splicer end function.return_int_raw
+}
+// end POI_return_int_raw
+
+/**
+ * Like returnIntRaw but with another argument to force a wrapper.
+ * Uses fc_statements f_native_*_result_raw.
+ */
+// ----------------------------------------
+// Function:  int * returnIntRawWithArgs +deref(raw)
+// Requested: c_native_*_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const char * name +intent(in)
+// Requested: c_char_*_in
+// Match:     c_default
+// start POI_return_int_raw_with_args
+int * POI_return_int_raw_with_args(const char * name)
+{
+    // splicer begin function.return_int_raw_with_args
+    int * SHC_rv = returnIntRawWithArgs(name);
+    return SHC_rv;
+    // splicer end function.return_int_raw_with_args
+}
+// end POI_return_int_raw_with_args
+
+/**
+ * Test multiple layers of indirection.
+ * # getRawPtrToInt2d
+ */
+// ----------------------------------------
+// Function:  int * * returnRawPtrToInt2d +deref(pointer)
+// Requested: c_native_**_result
+// Match:     c_default
+// start POI_return_raw_ptr_to_int2d
+int * * POI_return_raw_ptr_to_int2d(void)
+{
+    // splicer begin function.return_raw_ptr_to_int2d
+    int * * SHC_rv = returnRawPtrToInt2d();
+    return SHC_rv;
+    // splicer end function.return_raw_ptr_to_int2d
+}
+// end POI_return_raw_ptr_to_int2d
 
 // start release allocated memory
 // Release library allocated memory.

@@ -288,6 +288,20 @@ module strings_mod
     ! end c_get_char_ptr3_bufferify
 
     ! ----------------------------------------
+    ! Function:  const char * getCharPtr4 +deref(raw)
+    ! Requested: c_char_*_result
+    ! Match:     c_char_result
+    interface
+        function get_char_ptr4() &
+                result(SHT_rv) &
+                bind(C, name="STR_get_char_ptr4")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function get_char_ptr4
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void getConstStringResult
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
@@ -1266,15 +1280,13 @@ contains
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1 +deref(allocatable)
     ! const char * getCharPtr1 +deref(allocatable)
-    ! Requested: f_char_scalar_result_allocatable
-    ! Match:     f_char_result_allocatable
+    ! Exact:     f_char_scalar_result_allocatable
     ! Function:  void getCharPtr1
     ! Requested: c_char_scalar_result_buf
     ! Match:     c_char_result_buf
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_char_*_result_allocatable
-    ! Match:     f_char_result_allocatable
+    ! Exact:     f_char_*_result_allocatable
     ! Requested: c_char_*_result_buf_allocatable
     ! Match:     c_char_result_buf_allocatable
     !>

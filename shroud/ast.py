@@ -676,6 +676,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var="XXXc_var",
                 c_var_context="XXXc_var_context",
                 c_var_dimension="XXXc_var_dimension",
+                c_var_len="XXXc_var_len",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",

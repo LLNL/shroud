@@ -106,6 +106,8 @@ void POI_get_raw_ptr_to_int2d(int * * * arg);
 
 int POI_check_int2d(int **arg);
 
+void POI_dimension_in(const int * arg);
+
 void * POI_return_address1(int flag);
 
 void * POI_return_address2(int flag);
@@ -127,6 +129,12 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
 int POI_return_int_scalar(void);
+
+int * POI_return_int_raw(void);
+
+int * POI_return_int_raw_with_args(const char * name);
+
+int * * POI_return_raw_ptr_to_int2d(void);
 
 #ifdef __cplusplus
 }

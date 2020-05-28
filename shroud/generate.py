@@ -181,6 +181,11 @@ class VerifyAttrs(object):
                     "'rank' attribute must be 0-7, not '{}'"
                     .format(attrs["rank"])
                 )
+            if not is_ptr:
+                raise RuntimeError(
+                    "rank attribute can only be "
+                    "used on pointer and references"
+                )
         if dimension:
             if attrs["value"]:
                 raise RuntimeError(
@@ -309,6 +314,9 @@ class VerifyAttrs(object):
                 attrs["intent"] = intent
             else:
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
+            if not is_ptr and intent != "in":
+                # Nonpointers can only be intent(in).
+                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
 
         # assumedtype
         assumedtype = attrs["assumedtype"]
@@ -424,7 +432,7 @@ class VerifyAttrs(object):
                 self.check_arg_attrs(None, arg1, options)
 
     def parse_attrs(self, node, ast):
-        """Parse attributes and save the AST.
+        """Parse dimension attributes and save the AST.
         This tree will be traversed by the wrapping classes
         to convert to language specific code.
 
@@ -1231,7 +1239,10 @@ class GenFunctions(object):
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
 
-        if result_typemap.base == "string":
+        if attrs["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif result_typemap.base == "string":
             if result_typemap.name == "char" and not result_is_ptr:
                 # char functions cannot be wrapped directly in intel 15.
                 ast.set_type(typemap.lookup_type("char_scalar"))
@@ -1732,7 +1743,7 @@ def check_implied_attrs(decls):
     The implied attribute may reference other arguments in decls.
     Only call on the full Fortran decls.
     If fortran_generic, call for each decls member.
-    Otherwise, call on FunctionAst.ast.params
+    Otherwise, call on FunctionNode.ast.params
 
     Args:
         decls - list of Declarations

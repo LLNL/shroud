@@ -76,6 +76,12 @@ declarations:
   format:
     F_string_result_as_arg: output
 
+- decl: const char * getCharPtr4() +deref(raw)
+  doxygen:
+    brief: return a 'const char *' as type(C_PTR)
+  options:
+    wrap_python: False
+
 ########################################
 # return std::string
 

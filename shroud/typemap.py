@@ -1365,7 +1365,7 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
-        self.arg_decl = arg_decl        # argument declaration
+        self.arg_decl = arg_decl        # argument/result declaration
         self.arg_c_call = arg_c_call    # argument to C function.
         self.declare = declare          # local declaration
         self.pre_call = pre_call
@@ -1665,11 +1665,21 @@ fc_statements = [
             "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
         ],
     ),
-    
     dict(
-        name="f_native_*_result",
-        base="f_native_*_result_pointer",
+        name="f_native_*_result_raw",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
     ),
+    dict(
+        # int **func(void)
+        # regardless of deref value.
+        name="f_native_**_result",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+    ),
+    
     dict(
         name="f_native_&_result",
         base="f_native_*_result_pointer",   # XXX - change base to &?
@@ -1750,6 +1760,13 @@ fc_statements = [
         ],
     ),
 
+    dict(
+        # char *func() +deref(raw)
+        name="f_char_*_result_raw",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+    ),
     #####
     dict(
         # Treat as an assumed length array in Fortran interface.
@@ -1787,7 +1804,7 @@ fc_statements = [
     ),
     #####
     dict(
-        name="f_char_result_allocatable",
+        name="f_char_*_result_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -1799,6 +1816,10 @@ fc_statements = [
             "call SHROUD_copy_string_and_free"
             "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
+    ),
+    dict(
+        name="f_char_scalar_result_allocatable",
+        base="f_char_*_result_allocatable",
     ),
 
     dict(

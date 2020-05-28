@@ -272,6 +272,13 @@ int checkInt2d(int **arg)
 
 //----------------------------------------------------------------------
 
+void DimensionIn(const int *arg)
+{
+}
+
+
+//----------------------------------------------------------------------
+
 // Return a raw pointer to global_int.
 void *returnAddress1(int flag)
 {
@@ -310,6 +317,23 @@ const int *returnIntPtrToFixedConstArray(void)
 int *returnIntScalar(void)
 {
     return &global_int;
+}
+
+// Fortran wrapper has +deref(raw)
+int *returnIntRaw(void)
+{
+    return &global_int;
+}
+// Fortran wrapper has +deref(raw)
+int *returnIntRawWithArgs(const char *name)
+{
+    return &global_int;
+}
+
+// Test multiple layers of indirection.
+int **returnRawPtrToInt2d(void)
+{
+    return (int **) global_int2d;
 }
 
 //----------------------------------------------------------------------

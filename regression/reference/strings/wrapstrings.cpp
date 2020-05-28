@@ -371,6 +371,22 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
 // end STR_get_char_ptr3_bufferify
 
 /**
+ * \brief return a 'const char *' as type(C_PTR)
+ *
+ */
+// ----------------------------------------
+// Function:  const char * getCharPtr4 +deref(raw)
+// Requested: c_char_*_result
+// Match:     c_char_result
+const char * STR_get_char_ptr4(void)
+{
+    // splicer begin function.get_char_ptr4
+    const char * SHC_rv = getCharPtr4();
+    return SHC_rv;
+    // splicer end function.get_char_ptr4
+}
+
+/**
  * \brief return an ALLOCATABLE CHARACTER from std::string
  *
  */

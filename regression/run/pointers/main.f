@@ -22,6 +22,8 @@ program tester
   call test_functions2
   call test_char_arrays
   call test_out_ptrs
+  call test_nested_ptrs
+  call test_dimension
 
   call fruit_summary
   call fruit_finalize
@@ -192,10 +194,6 @@ contains
     ! associated with global_fixed_array in pointers.c
     call assert_true(c_associated(cptr_array, c_loc(iarray)))
 
-    void = C_NULL_PTR
-    call get_raw_ptr_to_int2d(void)
-    call assert_equals(15, check_int2d(void))
-
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface
     void = C_NULL_PTR
@@ -243,8 +241,56 @@ contains
     call assert_true(size(irvarray) == 10)
     call assert_true(associated(irvscalar, iscalar))
 
+    ! +deref(scalar)
     ivalue = return_int_scalar()
+
+    ! Return pointer to global_int.
+    void = return_int_raw()
+    call assert_true(c_associated(void, c_loc(irvscalar)))
+    call assert_true(c_associated(void, c_loc(iscalar)))
+
+    void = return_int_raw_with_args("with args")
+    call assert_true(c_associated(void, c_loc(irvscalar)))
+    call assert_true(c_associated(void, c_loc(iscalar)))
     
   end subroutine test_out_ptrs
+
+  subroutine test_nested_ptrs
+    type(C_PTR) addr, rvaddr
+    type(C_PTR), pointer :: array2d(:)
+    integer(C_INT), pointer :: row1(:), row2(:)
+    integer total
+    
+    addr = C_NULL_PTR
+    call get_raw_ptr_to_int2d(addr)
+    call assert_equals(15, check_int2d(addr), "getRawPtrToInt2d")
+
+    call c_f_pointer(addr, array2d, [2])
+    call c_f_pointer(array2d(1), row1, [3])
+    call c_f_pointer(array2d(2), row2, [2])
+
+    total = row1(1) + row1(2) + row1(3) + row2(1) + row2(2)
+    call assert_equals(15, total)
+
+    ! function result
+    rvaddr = return_raw_ptr_to_int2d()
+    call assert_true(c_associated(rvaddr, addr), "returnRawPtrToInt2d")
+
+  end subroutine test_nested_ptrs
+
+  subroutine test_dimension
+    ! Test +dimension(10,20) +intent(in)  together.
+!    integer(C_INT) arg(2,3)
+    integer(C_INT) arg2(20,30)
+
+    ! gcc Warning: Actual argument contains too few elements for dummy argument 'arg'
+    ! intel error #7983: The storage extent of the dummy argument exceeds that of the actual argument.   [ARG]
+
+!    call dimension_in(arg)
+
+    ! compilers seem ok with too much space
+    call dimension_in(arg2)
+
+  end subroutine test_dimension
   
 end program tester
