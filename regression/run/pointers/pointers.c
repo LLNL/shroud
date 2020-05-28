@@ -330,6 +330,12 @@ int *returnIntRawWithArgs(const char *name)
     return &global_int;
 }
 
+// Test multiple layers of indirection.
+int **returnRawPtrToInt2d(void)
+{
+    return (int **) global_int2d;
+}
+
 //----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {

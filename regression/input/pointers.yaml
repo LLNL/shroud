@@ -222,3 +222,12 @@ declarations:
       Uses fc_statements f_native_*_result_raw.
   options:
     wrap_python: False
+- decl: int **returnRawPtrToInt2d(void)
+  doxygen:
+    description: |
+      Test multiple layers of indirection.
+      # getRawPtrToInt2d
+  options:
+    F_force_wrapper: True
+    wrap_python: False
+    

@@ -5388,6 +5388,81 @@
                 "options": {
                     "wrap_python": false
                 }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_**_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_**_result_pointer",
+                        "stmt1": "f_native_**_result",
+                        "stmtc0": "c_native_**_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
+                    "declarator": {
+                        "name": "returnRawPtrToInt2d",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            },
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int **returnRawPtrToInt2d(void)",
+                "declgen": "int * * returnRawPtrToInt2d()",
+                "doxygen": {
+                    "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
+                },
+                "fmtdict": {
+                    "C_name": "POI_return_raw_ptr_to_int2d",
+                    "C_prototype": "void",
+                    "C_return_type": "int * *",
+                    "F_C_call": "c_return_raw_ptr_to_int2d",
+                    "F_C_name": "c_return_raw_ptr_to_int2d",
+                    "F_arguments": "",
+                    "F_name_function": "return_raw_ptr_to_int2d",
+                    "F_name_generic": "return_raw_ptr_to_int2d",
+                    "F_name_impl": "return_raw_ptr_to_int2d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int * * SHC_rv",
+                    "function_name": "returnRawPtrToInt2d",
+                    "underscore_name": "return_raw_ptr_to_int2d"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

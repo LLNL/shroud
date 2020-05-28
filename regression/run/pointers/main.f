@@ -256,14 +256,14 @@ contains
   end subroutine test_out_ptrs
 
   subroutine test_nested_ptrs
-    type(C_PTR) addr
+    type(C_PTR) addr, rvaddr
     type(C_PTR), pointer :: array2d(:)
     integer(C_INT), pointer :: row1(:), row2(:)
     integer total
     
     addr = C_NULL_PTR
     call get_raw_ptr_to_int2d(addr)
-    call assert_equals(15, check_int2d(addr))
+    call assert_equals(15, check_int2d(addr), "getRawPtrToInt2d")
 
     call c_f_pointer(addr, array2d, [2])
     call c_f_pointer(array2d(1), row1, [3])
@@ -271,6 +271,10 @@ contains
 
     total = row1(1) + row1(2) + row1(3) + row2(1) + row2(2)
     call assert_equals(15, total)
+
+    ! function result
+    rvaddr = return_raw_ptr_to_int2d()
+    call assert_true(c_associated(rvaddr, addr), "returnRawPtrToInt2d")
 
   end subroutine test_nested_ptrs
 

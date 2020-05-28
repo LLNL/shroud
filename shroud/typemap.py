@@ -1671,6 +1671,14 @@ fc_statements = [
             "type(C_PTR) :: {f_var}",
         ],
     ),
+    dict(
+        # int **func(void)
+        # regardless of deref value.
+        name="f_native_**_result",
+        arg_decl=[
+            "type(C_PTR) :: {f_var}",
+        ],
+    ),
     
     dict(
         name="f_native_&_result",

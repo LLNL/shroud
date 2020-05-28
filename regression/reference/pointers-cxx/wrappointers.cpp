@@ -1142,6 +1142,24 @@ int * POI_return_int_raw_with_args(const char * name)
 }
 // end POI_return_int_raw_with_args
 
+/**
+ * Test multiple layers of indirection.
+ * # getRawPtrToInt2d
+ */
+// ----------------------------------------
+// Function:  int * * returnRawPtrToInt2d +deref(pointer)
+// Requested: c_native_**_result
+// Match:     c_default
+// start POI_return_raw_ptr_to_int2d
+int * * POI_return_raw_ptr_to_int2d(void)
+{
+    // splicer begin function.return_raw_ptr_to_int2d
+    int * * SHC_rv = returnRawPtrToInt2d();
+    return SHC_rv;
+    // splicer end function.return_raw_ptr_to_int2d
+}
+// end POI_return_raw_ptr_to_int2d
+
 // start release allocated memory
 // Release library allocated memory.
 void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)

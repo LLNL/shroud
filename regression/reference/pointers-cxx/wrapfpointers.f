@@ -1068,6 +1068,22 @@ module pointers_mod
     end interface
     ! end c_return_int_raw_with_args
 
+    ! ----------------------------------------
+    ! Function:  int * * returnRawPtrToInt2d +deref(pointer)
+    ! Requested: c_native_**_result
+    ! Match:     c_default
+    ! start c_return_raw_ptr_to_int2d
+    interface
+        function c_return_raw_ptr_to_int2d() &
+                result(SHT_rv) &
+                bind(C, name="POI_return_raw_ptr_to_int2d")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_return_raw_ptr_to_int2d
+    end interface
+    ! end c_return_raw_ptr_to_int2d
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -1625,6 +1641,28 @@ contains
         ! splicer end function.return_int_raw_with_args
     end function return_int_raw_with_args
     ! end return_int_raw_with_args
+
+    ! ----------------------------------------
+    ! Function:  int * * returnRawPtrToInt2d +deref(pointer)
+    ! int * * returnRawPtrToInt2d +deref(pointer)
+    ! Requested: f_native_**_result_pointer
+    ! Match:     f_native_**_result
+    ! Requested: c_native_**_result
+    ! Match:     c_default
+    !>
+    !! Test multiple layers of indirection.
+    !! # getRawPtrToInt2d
+    !<
+    ! start return_raw_ptr_to_int2d
+    function return_raw_ptr_to_int2d() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(C_PTR) :: SHT_rv
+        ! splicer begin function.return_raw_ptr_to_int2d
+        SHT_rv = c_return_raw_ptr_to_int2d()
+        ! splicer end function.return_raw_ptr_to_int2d
+    end function return_raw_ptr_to_int2d
+    ! end return_raw_ptr_to_int2d
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

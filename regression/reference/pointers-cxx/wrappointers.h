@@ -134,6 +134,8 @@ int * POI_return_int_raw(void);
 
 int * POI_return_int_raw_with_args(const char * name);
 
+int * * POI_return_raw_ptr_to_int2d(void);
+
 #ifdef __cplusplus
 }
 #endif

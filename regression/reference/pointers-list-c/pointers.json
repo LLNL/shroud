@@ -3068,6 +3068,42 @@
                 "options": {
                     "wrap_python": false
                 }
+            },
+            {
+                "ast": {
+                    "attrs": {
+                        "deref": "pointer"
+                    },
+                    "declarator": {
+                        "name": "returnRawPtrToInt2d",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            },
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int **returnRawPtrToInt2d(void)",
+                "declgen": "int * * returnRawPtrToInt2d()",
+                "doxygen": {
+                    "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
+                },
+                "fmtdict": {
+                    "function_name": "returnRawPtrToInt2d",
+                    "underscore_name": "return_raw_ptr_to_int2d"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",
