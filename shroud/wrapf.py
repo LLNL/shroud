@@ -950,6 +950,7 @@ rv = .false.
                     "type(%s), intent(INOUT) :: %s"
                     % (fmt.F_capsule_data_type, buf_arg_name)
                 )
+                fileinfo.add_f_helper("capsule_data_helper", fmt)
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
                 if ast.attrs["_is_result"]:
@@ -1285,6 +1286,7 @@ rv = .false.
                 )
                 # Pass F_capsule_data_type field to C++.
                 arg_c_call.append(fmt.c_var_capsule + "%mem")
+                fileinfo.add_f_helper("capsule_data_helper", fmt)
             elif buf_arg == "context":
                 append_format(
                     arg_f_decl, "type({F_array_type}) :: {c_var_context}", fmt

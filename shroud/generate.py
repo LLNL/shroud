@@ -213,7 +213,7 @@ class VerifyAttrs(object):
             if owner not in ["caller", "library"]:
                 raise RuntimeError(
                     "Illegal value '{}' for owner attribute. "
-                    "Must be 'caller' or 'library'.".format(deref)
+                    "Must be 'caller' or 'library'.".format(owner)
                 )
 
         free_pattern = attrs["free_pattern"]
