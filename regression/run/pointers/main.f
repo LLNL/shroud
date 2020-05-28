@@ -23,6 +23,7 @@ program tester
   call test_char_arrays
   call test_out_ptrs
   call test_nested_ptrs
+  call test_dimension
 
   call fruit_summary
   call fruit_finalize
@@ -262,5 +263,20 @@ contains
     call assert_equals(15, total)
 
   end subroutine test_nested_ptrs
+
+  subroutine test_dimension
+    ! Test +dimension(10,20) +intent(in)  together.
+!    integer(C_INT) arg(2,3)
+    integer(C_INT) arg2(20,30)
+
+    ! gcc Warning: Actual argument contains too few elements for dummy argument 'arg'
+    ! intel error #7983: The storage extent of the dummy argument exceeds that of the actual argument.   [ARG]
+
+!    call dimension_in(arg)
+
+    ! compilers seem ok with too much space
+    call dimension_in(arg2)
+
+  end subroutine test_dimension
   
 end program tester

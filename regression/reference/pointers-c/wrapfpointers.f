@@ -837,6 +837,25 @@ module pointers_mod
     ! end check_int2d
 
     ! ----------------------------------------
+    ! Function:  void DimensionIn
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! start c_dimension_in
+    interface
+        subroutine c_dimension_in(arg) &
+                bind(C, name="DimensionIn")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: arg(*)
+        end subroutine c_dimension_in
+    end interface
+    ! end c_dimension_in
+
+    ! ----------------------------------------
     ! Function:  void * returnAddress1
     ! Requested: c_void_*_result
     ! Match:     c_default
@@ -1416,6 +1435,33 @@ contains
         ! splicer end function.get_ptr_to_dynamic_const_array
     end subroutine get_ptr_to_dynamic_const_array
     ! end get_ptr_to_dynamic_const_array
+
+    ! ----------------------------------------
+    ! Function:  void DimensionIn
+    ! void DimensionIn
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    !>
+    !! Test +dimension(10,20) +intent(in) together.
+    !! This will not use assumed-shape in the Fortran wrapper.
+    !<
+    ! start dimension_in
+    subroutine dimension_in(arg)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: arg(10,20)
+        ! splicer begin function.dimension_in
+        call c_dimension_in(arg)
+        ! splicer end function.dimension_in
+    end subroutine dimension_in
+    ! end dimension_in
 
     ! ----------------------------------------
     ! Function:  void * returnAddress2

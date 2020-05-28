@@ -915,6 +915,27 @@ int POI_check_int2d(int **arg)
 }
 // end POI_check_int2d
 
+/**
+ * Test +dimension(10,20) +intent(in) together.
+ * This will not use assumed-shape in the Fortran wrapper.
+ */
+// ----------------------------------------
+// Function:  void DimensionIn
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * arg +dimension(10,20)+intent(in)
+// Requested: c_native_*_in
+// Match:     c_default
+// start POI_dimension_in
+void POI_dimension_in(const int * arg)
+{
+    // splicer begin function.dimension_in
+    DimensionIn(arg);
+    // splicer end function.dimension_in
+}
+// end POI_dimension_in
+
 // ----------------------------------------
 // Function:  void * returnAddress1
 // Requested: c_void_*_result

@@ -272,6 +272,13 @@ int checkInt2d(int **arg)
 
 //----------------------------------------------------------------------
 
+void DimensionIn(const int *arg)
+{
+}
+
+
+//----------------------------------------------------------------------
+
 // Return a raw pointer to global_int.
 void *returnAddress1(int flag)
 {

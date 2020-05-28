@@ -2416,6 +2416,62 @@
                 }
             },
             {
+                "ast": {
+                    "declarator": {
+                        "name": "DimensionIn",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "dimension": "10,20",
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "dimension": [
+                                    {
+                                        "constant": "10"
+                                    },
+                                    {
+                                        "constant": "20"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void DimensionIn(const int *arg +dimension(10,20))",
+                "declgen": "void DimensionIn(const int * arg +dimension(10,20)+intent(in))",
+                "doxygen": {
+                    "description": "Test +dimension(10,20) +intent(in) together.\nThis will not use assumed-shape in the Fortran wrapper.\n"
+                },
+                "fmtdict": {
+                    "function_name": "DimensionIn",
+                    "underscore_name": "dimension_in"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
+            },
+            {
                 "_fmtargs": {
                     "flag": {
                         "fmtpy": {
