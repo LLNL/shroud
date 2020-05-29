@@ -709,7 +709,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim(Larg1), const std::string & arg2 +intent(in)+len_trim(Larg2), const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim, const std::string & arg2 +intent(in)+len_trim, const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -1365,7 +1365,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim(Lname))",
+                "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
@@ -2680,7 +2680,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim(Lname), double arg2 +intent(in)+value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim, double arg2 +intent(in)+value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_bufferify",

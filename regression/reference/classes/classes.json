@@ -951,7 +951,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)",
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },

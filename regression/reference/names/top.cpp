@@ -20,6 +20,18 @@
 extern "C" {
 
 
+// helper ShroudStrAlloc
+// Copy src into new memory and null terminate.
+static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
+{
+   char *rv = (char *) std::malloc(nsrc + 1);
+   if (ntrim > 0) {
+     std::memcpy(rv, src, ntrim);
+   }
+   rv[ntrim] = '\0';
+   return rv;
+}
+
 // helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
 // Truncate if dest is too short.
@@ -35,8 +47,48 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
      if(ndest > nm) std::memset(dest+nm,' ',ndest-nm); // blank fill
    }
 }
+
+// helper ShroudStrFree
+// Release memory allocated by ShroudStrAlloc
+static void ShroudStrFree(char *src)
+{
+   free(src);
+}
 // splicer begin C_definitions
 // splicer end C_definitions
+
+// ----------------------------------------
+// Function:  void getName
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Requested: c_char_*_inout
+// Match:     c_default
+void TES_get_name(char * name)
+{
+    // splicer begin function.get_name
+    getName(name);
+    // splicer end function.get_name
+}
+
+// ----------------------------------------
+// Function:  void getName
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Requested: c_char_*_inout_buf
+// Match:     c_char_inout_buf
+void TES_get_name_bufferify(char * name, int worktrim, int worklen)
+{
+    // splicer begin function.get_name_bufferify
+    char * ARG_name = ShroudStrAlloc(name, worklen, worktrim);
+    getName(ARG_name);
+    ShroudStrCopy(name, worklen, ARG_name, -1);
+    ShroudStrFree(ARG_name);
+    // splicer end function.get_name_bufferify
+}
 
 // ----------------------------------------
 // Function:  void function1

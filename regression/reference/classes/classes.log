@@ -8,7 +8,7 @@ C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)) const
 C method Class1 * returnThis()
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C method Class1 * getclass3() const
 C method const std::string & getName() +deref(allocatable)
 C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
@@ -50,7 +50,7 @@ C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)) const
 C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C-interface, Fortran method Class1 * getclass3() const
 C-interface, Fortran method const std::string & getName() +deref(allocatable)
 C-interface method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))

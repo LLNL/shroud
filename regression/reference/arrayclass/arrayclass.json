@@ -1499,7 +1499,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
+                        "declgen": "void fetchArrayPtr(double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
@@ -1831,7 +1831,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
+                        "declgen": "void fetchArrayRef(double * & array +context+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
@@ -2165,7 +2165,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
@@ -2499,7 +2499,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
+                        "declgen": "void fetchArrayRefConst(const double * & array +context+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",

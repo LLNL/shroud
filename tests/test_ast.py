@@ -352,7 +352,7 @@ class CheckAst(unittest.TestCase):
         )
         self.assertEqual(
             library.functions[1].declgen,
-            "void func1(char * arg +intent(inout)+len(Narg)+len_trim(Larg))",
+            "void func1(char * arg +intent(inout)+len+len_trim)",
         )
 
     def test_function_template1(self):

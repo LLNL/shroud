@@ -409,7 +409,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1( const string *name )",
-                                        "declgen": "ExClass1(const string * name +intent(in)+len_trim(Lname))",
+                                        "declgen": "ExClass1(const string * name +intent(in)+len_trim)",
                                         "doxygen": {
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
@@ -5471,7 +5471,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
-                                "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))",
+                                "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
@@ -5766,7 +5766,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name)",
-                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname))",
+                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
@@ -6070,7 +6070,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)",
+                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim, int flag +intent(in)+value)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",

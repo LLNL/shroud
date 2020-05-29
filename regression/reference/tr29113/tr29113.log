@@ -1,0 +1,12 @@
+Read yaml tr29113.yaml
+Read splicer ctr29113splicer.c
+Read splicer ftr29113splicer.f
+C function const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
+C function void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
+Close wraptr29113.h
+Close wraptr29113.cpp
+Close typestr29113.h
+C-interface, Fortran function const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)
+C-interface function void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))
+Close wrapftr29113.f
+Close utiltr29113.cpp

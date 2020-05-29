@@ -33,6 +33,21 @@ A Fortran wrapper is created out of several segments.
         ! splicer end
       end {F_subprogram} {F_name_impl}
 
+arg_name
+^^^^^^^^
+
+List of name of arguments for Fortran subprogram.
+Will be formated before use to allow ``{f_var}``.
+
+Any function result arguments will be added at the end.
+Only added if *arg_decl* is also defined.
+
+arg_decl
+^^^^^^^^
+
+Declarations for arguments.
+Added before splicer.
+
 buf_arg
 ^^^^^^^
 

@@ -185,7 +185,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
@@ -352,7 +352,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out(std::vector<int> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -549,7 +549,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
@@ -763,7 +763,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))",
-                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context(Darg)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
                     "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
@@ -954,7 +954,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_alloc(std::vector<int> &arg+intent(out)+deref(allocatable))",
-                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1131,7 +1131,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_inout_alloc(std::vector<int> &arg+intent(inout)+deref(allocatable))",
-                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg))",
+                "declgen": "void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(inout)+rank(1)+size)",
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
@@ -1302,7 +1302,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg))",
+                "declgen": "void vector_increment(std::vector<int> & arg +context+intent(inout)+rank(1)+size)",
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
@@ -1468,7 +1468,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_iota_out_d(std::vector<double> &arg+intent(out))",
-                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context(Darg)+intent(out)+rank(1))",
+                "declgen": "void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
@@ -1670,7 +1670,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+len+rank(1)+size)",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"

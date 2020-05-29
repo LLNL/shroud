@@ -674,6 +674,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.update(dict(
                 c_val="XXXc_val",
                 c_var="XXXc_var",
+                c_var_capsule="XXXc_var_capsule",
                 c_var_context="XXXc_var_context",
                 c_var_dimension="XXXc_var_dimension",
                 c_var_len="XXXc_var_len",
