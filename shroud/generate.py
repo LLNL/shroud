@@ -380,30 +380,6 @@ class VerifyAttrs(object):
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
 
-        # compute argument names for some attributes
-        # XXX make sure they don't conflict with other names
-        capsule_name = attrs["capsule"]
-        if capsule_name is True:
-            attrs["capsule"] = options.C_var_capsule_template.format(
-                c_var=argname
-            )
-        context_name = attrs["context"] or attrs["cdesc"]
-        if context_name is True:
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=argname
-            )
-        len_name = attrs["len"]
-        if len_name is True:
-            attrs["len"] = options.C_var_len_template.format(c_var=argname)
-        len_name = attrs["len_trim"]
-        if len_name is True:
-            attrs["len_trim"] = options.C_var_trim_template.format(
-                c_var=argname
-            )
-        size_name = attrs["size"]
-        if size_name is True:
-            attrs["size"] = options.C_var_size_template.format(c_var=argname)
-
         # Check template attribute
         temp = arg.template_arguments
         if arg_typemap and arg_typemap.base == "vector":

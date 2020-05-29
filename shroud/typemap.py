@@ -1082,6 +1082,7 @@ def create_buf_variable_names(options, blk, attrs):
 
 def set_buf_variable_names(options, attrs, c_var):
     """Set attribute name from option template.
+    XXX - make sure they don't conflict with other names.
     """
     if attrs["size"] is True:
         attrs["size"] = options.C_var_size_template.format(
@@ -1092,6 +1093,11 @@ def set_buf_variable_names(options, attrs, c_var):
             c_var=c_var
         )
     if attrs["context"] is True:
+        attrs["context"] = options.C_var_context_template.format(
+            c_var=c_var
+        )
+    if attrs["cdesc"] is True:
+        # XXX - not sure about future of cdesc and difference with context.
         attrs["context"] = options.C_var_context_template.format(
             c_var=c_var
         )
