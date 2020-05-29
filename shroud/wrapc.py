@@ -727,15 +727,31 @@ class Wrapc(util.WrapperMixin):
             self.add_c_helper(intent_blk.c_helper, fmt)
         return need_wrapper
 
-    def set_fmt_fields(self, cls, fcn, ast, fmt):
+    def set_fmt_fields(self, cls, fcn, ast, ntypemap, fmt, is_func):
         """
         Set format fields for ast.
         Used with arguments and results.
 
         Args:
-            cls   - ast.ClassNode or None of enclosing class.
-            fcn   - ast.FunctionNode of calling function.
+            cls      - ast.ClassNode or None of enclosing class.
+            fcn      - ast.FunctionNode of calling function.
+            ast      -
+            ntypemap -
+            fmt      -
+            is_func  - True if function.
         """
+
+        if not is_func:
+            fmt.c_var = ast.name
+            if ast.const:
+                fmt.c_const = "const "
+            else:
+                fmt.c_const = ""
+            compute_c_deref(ast, None, fmt)
+            fmt.cxx_type = ntypemap.cxx_type
+            fmt.sh_type = ntypemap.sh_type
+            fmt.idtor = "0"
+        
         attrs = ast.attrs
         typemap.assign_buf_variable_names(attrs, fmt)
         
@@ -969,7 +985,7 @@ class Wrapc(util.WrapperMixin):
 
         self.find_idtor(node.ast, result_typemap, fmt_result, result_blk)
 
-        self.set_fmt_fields(cls, node, ast, fmt_result)
+        self.set_fmt_fields(cls, node, ast, result_typemap, fmt_result, True)
 
         need_wrapper = self.build_proto_list(
             fmt_result,
@@ -1004,20 +1020,9 @@ class Wrapc(util.WrapperMixin):
                     self.header_impl_include[hdr] = True
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
-
-            fmt_arg.c_var = arg_name
-
-            if arg.const:
-                fmt_arg.c_const = "const "
-            else:
-                fmt_arg.c_const = ""
-            compute_c_deref(arg, None, fmt_arg)
-            fmt_arg.cxx_type = arg_typemap.cxx_type
-            fmt_arg.sh_type = arg_typemap.sh_type
-            fmt_arg.idtor = "0"
             cxx_local_var = ""
 
-            self.set_fmt_fields(cls, node, arg, fmt_arg)
+            self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
             
             is_result = c_attrs["_is_result"]
             if is_result:
@@ -1442,7 +1447,7 @@ class Wrapc(util.WrapperMixin):
             idtor = self.capsule_code[name][0]
         return idtor
 
-    def find_idtor(self, ast, atypemap, fmt, intent_blk):
+    def find_idtor(self, ast, ntypemap, fmt, intent_blk):
         """Find the destructor based on the typemap.
         idtor = index of destructor.
 
@@ -1454,7 +1459,7 @@ class Wrapc(util.WrapperMixin):
 
         Args:
             ast -
-            atypemap - typemap.Typemap
+            ntypemap - typemap.Typemap
             fmt -
             intent_blk -
         """
@@ -1471,7 +1476,7 @@ class Wrapc(util.WrapperMixin):
                     del_lines, intent_blk, "destructor", fmt
                 )
                 fmt.idtor = self.add_capsule_code(
-                    destructor_name, atypemap, del_lines
+                    destructor_name, ntypemap, del_lines
                 )
             else:
                 fmt.idtor = self.capsule_code[destructor_name][0]
@@ -1498,34 +1503,34 @@ class Wrapc(util.WrapperMixin):
             fmt.idtor = self.add_destructor(
                 fmt, free_pattern, [self.patterns[free_pattern]], None
             )
-        elif atypemap.idtor != "0":
+        elif ntypemap.idtor != "0":
             # Return cached value.
-            fmt.idtor = atypemap.idtor
-        elif atypemap.cxx_to_c:
+            fmt.idtor = ntypemap.idtor
+        elif ntypemap.cxx_to_c:
             # A C++ native type (std::string, std::vector)
             # XXX - vector does not assign cxx_to_c
             fmt.idtor = self.add_destructor(
                 fmt,
-                atypemap.cxx_type,
+                ntypemap.cxx_type,
                 [
                     "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
                     "delete cxx_ptr;",
                 ],
-                atypemap,
+                ntypemap,
             )
-            atypemap.idtor = fmt.idtor
+            ntypemap.idtor = fmt.idtor
         else:
             # A POD type
             fmt.idtor = self.add_destructor(
                 fmt,
-                atypemap.cxx_type,
+                ntypemap.cxx_type,
                 [
                     "{cxx_type} *cxx_ptr =\t reinterpret_cast<{cxx_type} *>(ptr);",
                     "free(cxx_ptr);",
                 ],
-                atypemap,
+                ntypemap,
             )
-            atypemap.idtor = fmt.idtor
+            ntypemap.idtor = fmt.idtor
 
 ######################################################################
 
