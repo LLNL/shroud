@@ -1315,7 +1315,7 @@ class GenFunctions(object):
             spointer = arg.get_indirect_stmt()
             c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
             intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
+            typemap.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
         if has_string_result:
@@ -1573,6 +1573,14 @@ class Preprocess(object):
         if not node.cxx_template:
             self.process_xxx(cls, node)
             self.check_return_pointer(node, node.ast)
+
+        options = self.newlibrary.options
+        # XXX - not sure if result uses any of these attributes.
+#        typemap.set_buf_variable_names(
+#            options, node.ast.attrs, "aaa")
+        for arg in node.ast.params:
+            typemap.set_buf_variable_names(
+                options, arg.attrs, arg.name)
 
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper languages.

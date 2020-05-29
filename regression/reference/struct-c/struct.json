@@ -1041,7 +1041,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
+                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -2263,7 +2263,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"

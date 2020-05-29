@@ -37,6 +37,42 @@ PyObject *PY_init_testnames_std(void);
 // splicer end additional_functions
 
 // ----------------------------------------
+// Function:  void getName
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Exact:     py_char_*_inout
+static char PY_getName__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_getName(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.get_name
+    char * name;
+    const char *SHT_kwlist[] = {
+        "name",
+        nullptr };
+    PyObject * SHPy_name = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:getName",
+        const_cast<char **>(SHT_kwlist), &name))
+        return nullptr;
+
+    getName(name);
+
+    // post_call
+    SHPy_name = PyString_FromString(name);
+
+    return (PyObject *) SHPy_name;
+// splicer end function.get_name
+}
+
+// ----------------------------------------
 // Function:  void function1
 // Exact:     py_default
 static char PY_function1__doc__[] =
@@ -400,6 +436,8 @@ PY_FunctionTU(
 // splicer end function.function_tu
 }
 static PyMethodDef PY_methods[] = {
+{"getName", (PyCFunction)PY_getName, METH_VARARGS|METH_KEYWORDS,
+    PY_getName__doc__},
 {"function1", (PyCFunction)PY_function1, METH_NOARGS,
     PY_function1__doc__},
 {"function2", (PyCFunction)PY_function2, METH_NOARGS,

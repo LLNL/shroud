@@ -668,7 +668,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
-                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim(Lname), void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value)",
+                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value)",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },

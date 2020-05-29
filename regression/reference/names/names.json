@@ -243,6 +243,195 @@
         ],
         "functions": [
             {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_len": "worklen",
+                            "c_var_trim": "worktrim",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "char",
+                            "c_var": "name",
+                            "ctor_expr": "name",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name",
+                            "cxx_type": "char",
+                            "cxx_var": "name",
+                            "data_var": "SHData_name",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_name",
+                            "size_var": "SHSize_name",
+                            "stmt0": "py_char_*_inout",
+                            "stmt1": "py_char_*_inout"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "getName",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "len": "worklen",
+                                "len_trim": "worktrim"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
+                "declgen": "void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))",
+                "fmtdict": {
+                    "C_call_list": "name",
+                    "C_name": "TES_get_name",
+                    "C_prototype": "char * name",
+                    "C_return_type": "void",
+                    "F_C_call": "c_get_name_bufferify",
+                    "F_C_name": "c_get_name",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT)",
+                    "F_arguments": "name",
+                    "F_name_function": "get_name",
+                    "F_name_generic": "get_name",
+                    "F_name_impl": "get_name",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_getName",
+                    "function_name": "getName",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "get_name"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_len": "worklen",
+                            "c_var_trim": "worktrim",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "ARG_name",
+                            "cxx_type": "char",
+                            "cxx_var": "ARG_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_*_inout_buf",
+                            "stmt1": "c_char_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_len": "worklen",
+                            "c_var_trim": "worktrim",
+                            "f_intent": "INOUT",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_inout_buf",
+                            "stmtc1": "c_char_inout_buf"
+                        }
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "getName",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "len": "worklen",
+                                "len_trim": "worktrim"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
+                "declgen": "void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))",
+                "fmtdict": {
+                    "C_call_list": "ARG_name",
+                    "C_name": "TES_get_name_bufferify",
+                    "C_prototype": "char * name,\t int worktrim,\t int worklen",
+                    "C_return_type": "void",
+                    "F_C_name": "c_get_name_bufferify",
+                    "function_name": "getName",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_name"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
                 "ast": {
                     "declarator": {
                         "name": "function1",
@@ -742,7 +931,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv +intent(in)+len_trim(Lrv))",
+                "declgen": "int function4(const std::string & rv +intent(in)+len_trim)",
                 "fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
@@ -1087,7 +1276,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout)+len(Nname)+len_trim(Lname), int * value +intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },

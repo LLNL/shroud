@@ -1067,9 +1067,8 @@ def lookup_local_stmts(path, parent, node):
             return blk
     return parent
 
-def create_buf_variable_names(options, blk, attrs, c_var):
-    """Define variable names for buffer arguments.
-    If user has not explicitly set, then compute from option template.
+def create_buf_variable_names(options, blk, attrs):
+    """Turn on attribute for buf_arg if defined in blk.
     """
     for buf_arg in blk.buf_args:
         if attrs[buf_arg] is not None and \
@@ -1077,26 +1076,33 @@ def create_buf_variable_names(options, blk, attrs, c_var):
             # None - Not set.
             # True - Do not override user specified variable name.
             pass
-        elif buf_arg == "size":
-            attrs["size"] = options.C_var_size_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "capsule":
-            attrs["capsule"] = options.C_var_capsule_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "context":
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "len_trim":
-            attrs["len_trim"] = options.C_var_trim_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "len":
-            attrs["len"] = options.C_var_len_template.format(
-                c_var=c_var
-            )
+        elif buf_arg in ["size", "capsule", "context",
+                         "len_trim", "len"]:
+            attrs[buf_arg] = True
+
+def set_buf_variable_names(options, attrs, c_var):
+    """Set attribute name from option template.
+    """
+    if attrs["size"] is True:
+        attrs["size"] = options.C_var_size_template.format(
+            c_var=c_var
+        )
+    if attrs["capsule"] is True:
+        attrs["capsule"] = options.C_var_capsule_template.format(
+            c_var=c_var
+        )
+    if attrs["context"] is True:
+        attrs["context"] = options.C_var_context_template.format(
+            c_var=c_var
+        )
+    if attrs["len_trim"] is True:
+        attrs["len_trim"] = options.C_var_trim_template.format(
+            c_var=c_var
+        )
+    if attrs["len"] is True:
+        attrs["len"] = options.C_var_len_template.format(
+            c_var=c_var
+        )
 
 def assign_buf_variable_names(attrs, fmt):
     """
