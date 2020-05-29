@@ -499,6 +499,7 @@ private
 type({F_capsule_data_type}) :: mem
 -contains
 +final :: {F_capsule_final_function}
+procedure :: delete => {F_capsule_delete_function}
 -end type {F_capsule_type}""",
             fmt,
         ),
@@ -510,7 +511,12 @@ type({F_capsule_data_type}) :: mem
 subroutine {F_capsule_final_function}(cap)+
 type({F_capsule_type}), intent(INOUT) :: cap
 call SHROUD_capsule_dtor(cap%mem)
--end subroutine {F_capsule_final_function}""",
+-end subroutine {F_capsule_final_function}
+
+subroutine {F_capsule_delete_function}(cap)+
+class({F_capsule_type}) :: cap
+call SHROUD_capsule_dtor(cap%mem)
+-end subroutine {F_capsule_delete_function}""",
             fmt,
         ),
     )

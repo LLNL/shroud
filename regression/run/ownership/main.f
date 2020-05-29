@@ -100,6 +100,8 @@ contains
     call assert_equals(5 , size(intp1))
     call assert_true( all(intp1 == [30,31,32,33,34]), &
          "return_int_ptr_dim_default_new value")
+    call cap%delete()
+    call SHROUD_capsule_final(cap)  ! no-op
 
   end subroutine test_pod
 

@@ -50,6 +50,7 @@ module ownership_mod
         type(SHROUD_capsule_data) :: mem
     contains
         final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
     end type SHROUD_capsule
 
     type, bind(C) :: SHROUD_class1_capsule
@@ -737,5 +738,10 @@ contains
         type(SHROUD_capsule), intent(INOUT) :: cap
         call SHROUD_capsule_dtor(cap%mem)
     end subroutine SHROUD_capsule_final
+
+    subroutine SHROUD_capsule_delete(cap)
+        class(SHROUD_capsule) :: cap
+        call SHROUD_capsule_dtor(cap%mem)
+    end subroutine SHROUD_capsule_delete
 
 end module ownership_mod
