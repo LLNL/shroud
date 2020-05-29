@@ -622,6 +622,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_data_type="SHROUD_capsule_data",
             F_capsule_type="SHROUD_capsule",
             F_capsule_final_function="SHROUD_capsule_final",
+            F_capsule_delete_function="SHROUD_capsule_delete",
             F_array_type="SHROUD_array",
 
             c_array_shape="",
@@ -674,6 +675,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.update(dict(
                 c_val="XXXc_val",
                 c_var="XXXc_var",
+                c_var_capsule="XXXc_var_capsule",
                 c_var_context="XXXc_var_context",
                 c_var_dimension="XXXc_var_dimension",
                 c_var_len="XXXc_var_len",

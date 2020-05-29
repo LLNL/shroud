@@ -112,6 +112,26 @@ def add_external_helpers():
     fmt.lstart = ""
     fmt.lend = ""
 
+    name = "capsule_dtor"
+    fmt.hname = name
+    FHelpers[name] = dict(
+        dependent_helpers=["capsule_data_helper"],
+        interface=wformat(
+            """
+interface+
+! helper {hname}
+! Delete memory in a capsule.
+subroutine SHROUD_capsule_dtor(ptr)\tbind(C, name="{C_memory_dtor_function}")+
+import {F_capsule_data_type}
+implicit none
+type({F_capsule_data_type}), intent(INOUT) :: ptr
+-end subroutine SHROUD_capsule_dtor
+-end interface""",
+            fmt,
+        ),
+    )
+    
+    ##########
     # Only used with std::vector and thus C++.
     name = "copy_array"
     fmt.hname = name
@@ -470,7 +490,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     fmt.hname = name
     # XXX split helper into to parts, one for each derived type
     helper = dict(
-        dependent_helpers=["capsule_data_helper"],
+        dependent_helpers=["capsule_data_helper", "capsule_dtor"],
         derived_type=wformat(
             """
 ! helper {hname}
@@ -479,6 +499,7 @@ private
 type({F_capsule_data_type}) :: mem
 -contains
 +final :: {F_capsule_final_function}
+procedure :: delete => {F_capsule_delete_function}
 -end type {F_capsule_type}""",
             fmt,
         ),
@@ -488,19 +509,14 @@ type({F_capsule_data_type}) :: mem
 ! helper {hname}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
-use iso_c_binding, only : C_BOOL
 type({F_capsule_type}), intent(INOUT) :: cap
-interface+
-subroutine array_destructor(ptr, gc)\tbind(C, name="{C_memory_dtor_function}")+
-use iso_c_binding, only : C_BOOL
-import {F_capsule_data_type}
-implicit none
-type({F_capsule_data_type}), intent(INOUT) :: ptr
-logical(C_BOOL), value, intent(IN) :: gc
--end subroutine array_destructor
--end interface
-call array_destructor(cap%mem, .false._C_BOOL)
--end subroutine {F_capsule_final_function}""",
+call SHROUD_capsule_dtor(cap%mem)
+-end subroutine {F_capsule_final_function}
+
+subroutine {F_capsule_delete_function}(cap)+
+class({F_capsule_type}) :: cap
+call SHROUD_capsule_dtor(cap%mem)
+-end subroutine {F_capsule_delete_function}""",
             fmt,
         ),
     )

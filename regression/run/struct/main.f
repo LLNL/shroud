@@ -20,6 +20,7 @@ program tester
 
   call test_struct
   call test_struct2
+  call test_struct_array
 
   call fruit_summary
   call fruit_finalize

@@ -192,7 +192,7 @@ int * OWN_return_int_ptr_dim_default_bufferify(
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimRawNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
@@ -208,7 +208,7 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
@@ -224,7 +224,7 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimPointerNew +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
@@ -264,7 +264,7 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
@@ -280,7 +280,7 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)

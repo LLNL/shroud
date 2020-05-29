@@ -1552,7 +1552,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len(Ns)+len_trim(Ls))",
+                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len+len_trim)",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
@@ -1747,7 +1747,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1))",
+                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out)+len)",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2049,7 +2049,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1), char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2))",
+                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len, char * name2 +charlen(MAXNAME)+intent(out)+len)",
                 "doxygen": {
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
@@ -2336,7 +2336,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len(Ntext), int ltext +implied(len(text))+intent(in)+value)",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len, int ltext +implied(len(text))+intent(in)+value)",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -3378,7 +3378,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindC2(char *outbuf+intent(out))",
-                "declgen": "void bindC2(char * outbuf +intent(out)+len(Noutbuf))",
+                "declgen": "void bindC2(char * outbuf +intent(out)+len)",
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
@@ -4026,7 +4026,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len(Noutbuf))",
+                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len)",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4840,7 +4840,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len(Noutbuf))",
+                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len)",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"

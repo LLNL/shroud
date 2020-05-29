@@ -64,6 +64,20 @@ type, bind(C) :: SHROUD_capsule_data
 end type SHROUD_capsule_data
 ##### end capsule_data_helper derived_type
 
+##### start capsule_dtor interface
+
+interface
+    ! helper capsule_dtor
+    ! Delete memory in a capsule.
+    subroutine SHROUD_capsule_dtor(ptr)&
+        bind(C, name="LIB_SHROUD_memory_destructor")
+        import SHROUD_capsule_data
+        implicit none
+        type(SHROUD_capsule_data), intent(INOUT) :: ptr
+    end subroutine SHROUD_capsule_dtor
+end interface
+##### end capsule_dtor interface
+
 ##### start capsule_helper derived_type
 
 ! helper capsule_helper
@@ -72,6 +86,7 @@ type SHROUD_capsule
     type(SHROUD_capsule_data) :: mem
 contains
     final :: SHROUD_capsule_final
+    procedure :: delete => SHROUD_capsule_delete
 end type SHROUD_capsule
 ##### end capsule_helper derived_type
 
@@ -80,20 +95,14 @@ end type SHROUD_capsule
 ! helper capsule_helper
 ! finalize a static SHROUD_capsule_data
 subroutine SHROUD_capsule_final(cap)
-    use iso_c_binding, only : C_BOOL
     type(SHROUD_capsule), intent(INOUT) :: cap
-    interface
-        subroutine array_destructor(ptr, gc)&
-            bind(C, name="LIB_SHROUD_memory_destructor")
-            use iso_c_binding, only : C_BOOL
-            import SHROUD_capsule_data
-            implicit none
-            type(SHROUD_capsule_data), intent(INOUT) :: ptr
-            logical(C_BOOL), value, intent(IN) :: gc
-        end subroutine array_destructor
-    end interface
-    call array_destructor(cap%mem, .false._C_BOOL)
+    call SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_final
+
+subroutine SHROUD_capsule_delete(cap)
+    class(SHROUD_capsule) :: cap
+    call SHROUD_capsule_dtor(cap%mem)
+end subroutine SHROUD_capsule_delete
 ##### end capsule_helper source
 
 ##### start copy_array_double interface

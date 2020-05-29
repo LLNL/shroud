@@ -34,6 +34,10 @@ enum TES_Color {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+void TES_get_name(char * name);
+
+void TES_get_name_bufferify(char * name, int worktrim, int worklen);
+
 void YYY_TES_function1(void);
 
 void c_name_special(void);

@@ -9,6 +9,9 @@
             "SPDX-License-Identifier: (BSD-3-Clause)",
             ""
         ],
+        "cxx_header": [
+            "tr29113.hpp"
+        ],
         "functions": [
             {
                 "_fmtresult": {
@@ -33,7 +36,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable_library",
+                        "stmt0": "f_string_scalar_result_allocatable",
                         "stmt1": "f_string_result_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -62,7 +65,7 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
+                    "C_name": "TR2_get_const_string_ptr_alloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
@@ -168,8 +171,8 @@
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "TR2_get_const_string_ptr_alloc_bufferify",
+                    "C_prototype": "TR2_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
@@ -187,7 +190,7 @@
         ],
         "language": "cxx",
         "scope_file": [
-            "memdoc"
+            "tr29113"
         ]
     }
 }

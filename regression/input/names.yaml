@@ -44,7 +44,10 @@ declarations:
   options:
      bar: 4
   format:
-     baz: 4  
+     baz: 4
+
+# Override attr names.
+- decl: void getName(char *name +len(worklen) +len_trim(worktrim))
 
 
 - decl: namespace ns0

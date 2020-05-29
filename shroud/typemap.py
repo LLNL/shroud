@@ -1067,9 +1067,8 @@ def lookup_local_stmts(path, parent, node):
             return blk
     return parent
 
-def create_buf_variable_names(options, blk, attrs, c_var):
-    """Define variable names for buffer arguments.
-    If user has not explicitly set, then compute from option template.
+def create_buf_variable_names(options, blk, attrs):
+    """Turn on attribute for buf_arg if defined in blk.
     """
     for buf_arg in blk.buf_args:
         if attrs[buf_arg] is not None and \
@@ -1077,26 +1076,45 @@ def create_buf_variable_names(options, blk, attrs, c_var):
             # None - Not set.
             # True - Do not override user specified variable name.
             pass
-        elif buf_arg == "size":
-            attrs["size"] = options.C_var_size_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "capsule":
-            attrs["capsule"] = options.C_var_capsule_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "context":
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "len_trim":
-            attrs["len_trim"] = options.C_var_trim_template.format(
-                c_var=c_var
-            )
-        elif buf_arg == "len":
-            attrs["len"] = options.C_var_len_template.format(
-                c_var=c_var
-            )
+        elif buf_arg in ["size", "capsule", "context",
+                         "len_trim", "len"]:
+            attrs[buf_arg] = True
+
+def set_buf_variable_names(options, attrs, c_var):
+    """Set attribute name from option template.
+    XXX - make sure they don't conflict with other names.
+    """
+    if attrs["size"] is True:
+        attrs["size"] = options.C_var_size_template.format(
+            c_var=c_var
+        )
+    if attrs["capsule"] is True:
+        attrs["capsule"] = options.C_var_capsule_template.format(
+            c_var=c_var
+        )
+    if attrs["owner"] == "caller" and \
+       attrs["deref"] == "pointer" \
+              and attrs["capsule"] is None:
+        attrs["capsule"] = options.C_var_capsule_template.format(
+            c_var=c_var
+        )
+    if attrs["context"] is True:
+        attrs["context"] = options.C_var_context_template.format(
+            c_var=c_var
+        )
+    if attrs["cdesc"] is True:
+        # XXX - not sure about future of cdesc and difference with context.
+        attrs["context"] = options.C_var_context_template.format(
+            c_var=c_var
+        )
+    if attrs["len_trim"] is True:
+        attrs["len_trim"] = options.C_var_trim_template.format(
+            c_var=c_var
+        )
+    if attrs["len"] is True:
+        attrs["len"] = options.C_var_len_template.format(
+            c_var=c_var
+        )
 
 def assign_buf_variable_names(attrs, fmt):
     """
@@ -1353,6 +1371,7 @@ class FStmts(object):
         c_local_var=None,
         f_helper="", f_module=None,
         need_wrapper=False,
+        arg_name=None,
         arg_decl=None,
         arg_c_call=None,
         declare=[], pre_call=[], call=[], post_call=[],
@@ -1365,6 +1384,7 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
+        self.arg_name = arg_name        # Names in subprogram list.
         self.arg_decl = arg_decl        # argument/result declaration
         self.arg_c_call = arg_c_call    # argument to C function.
         self.declare = declare          # local declaration
@@ -1663,6 +1683,27 @@ fc_statements = [
         ],
         post_call=[
             "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+        ],
+    ),
+    dict(
+        # +deref(pointer) +owner(caller)
+        name="f_native_*_result_pointer_caller",
+        f_helper="capsule_helper",
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        arg_name=["{c_var_capsule}"],
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+            "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
+        ],
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+            "{c_var_capsule}%mem = {c_var_context}%cxx",
         ],
     ),
     dict(

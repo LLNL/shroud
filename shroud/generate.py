@@ -213,7 +213,7 @@ class VerifyAttrs(object):
             if owner not in ["caller", "library"]:
                 raise RuntimeError(
                     "Illegal value '{}' for owner attribute. "
-                    "Must be 'caller' or 'library'.".format(deref)
+                    "Must be 'caller' or 'library'.".format(owner)
                 )
 
         free_pattern = attrs["free_pattern"]
@@ -379,30 +379,6 @@ class VerifyAttrs(object):
                 node._has_default_arg = True
             elif node._has_found_default is True:
                 raise RuntimeError("Expected default value for %s" % argname)
-
-        # compute argument names for some attributes
-        # XXX make sure they don't conflict with other names
-        capsule_name = attrs["capsule"]
-        if capsule_name is True:
-            attrs["capsule"] = options.C_var_capsule_template.format(
-                c_var=argname
-            )
-        context_name = attrs["context"] or attrs["cdesc"]
-        if context_name is True:
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=argname
-            )
-        len_name = attrs["len"]
-        if len_name is True:
-            attrs["len"] = options.C_var_len_template.format(c_var=argname)
-        len_name = attrs["len_trim"]
-        if len_name is True:
-            attrs["len_trim"] = options.C_var_trim_template.format(
-                c_var=argname
-            )
-        size_name = attrs["size"]
-        if size_name is True:
-            attrs["size"] = options.C_var_size_template.format(c_var=argname)
 
         # Check template attribute
         temp = arg.template_arguments
@@ -1315,7 +1291,7 @@ class GenFunctions(object):
             spointer = arg.get_indirect_stmt()
             c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
             intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            typemap.create_buf_variable_names(options, intent_blk, attrs, arg.name)
+            typemap.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
         if has_string_result:
@@ -1573,6 +1549,23 @@ class Preprocess(object):
         if not node.cxx_template:
             self.process_xxx(cls, node)
             self.check_return_pointer(node, node.ast)
+
+        options = self.newlibrary.options
+        # XXX - not sure if result uses any of these attributes.
+#        typemap.set_buf_variable_names(
+#            options, node.ast.attrs, "aaa")
+
+        attrs = node.ast.attrs
+        if attrs["owner"] == "caller" and \
+           attrs["deref"] == "pointer" and \
+           attrs["capsule"] is None:
+            attrs["capsule"] = options.C_var_capsule_template.format(
+                c_var=node.fmtdict.C_result
+            )
+
+        for arg in node.ast.params:
+            typemap.set_buf_variable_names(
+                options, arg.attrs, arg.name)
 
     def process_xxx(self, cls, node):
         """Compute information common to all wrapper languages.
