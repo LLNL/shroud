@@ -86,6 +86,7 @@ type SHROUD_capsule
     type(SHROUD_capsule_data) :: mem
 contains
     final :: SHROUD_capsule_final
+    procedure :: delete => SHROUD_capsule_delete
 end type SHROUD_capsule
 ##### end capsule_helper derived_type
 
@@ -97,6 +98,11 @@ subroutine SHROUD_capsule_final(cap)
     type(SHROUD_capsule), intent(INOUT) :: cap
     call SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_final
+
+subroutine SHROUD_capsule_delete(cap)
+    class(SHROUD_capsule) :: cap
+    call SHROUD_capsule_dtor(cap%mem)
+end subroutine SHROUD_capsule_delete
 ##### end capsule_helper source
 
 ##### start copy_array_double interface

@@ -41,6 +41,7 @@
             "F_arg_c_call": "",
             "F_array_type": "SHROUD_array",
             "F_capsule_data_type": "SHROUD_capsule_data",
+            "F_capsule_delete_function": "SHROUD_capsule_delete",
             "F_capsule_final_function": "SHROUD_capsule_final",
             "F_capsule_type": "SHROUD_capsule",
             "F_derived_member": "cxxmem",
