@@ -2,7 +2,7 @@
 ! splicer begin additional_interfaces
 
 subroutine c_get_const_string_ptr_alloc_bufferify_tr(SHT_rv) &
-     bind(C, name="aaa")
+     bind(C, name="TR2_get_const_string_ptr_alloc_tr_bufferify")
     implicit none
     character(len=:), allocatable :: SHT_rv
 end subroutine c_get_const_string_ptr_alloc_bufferify_tr

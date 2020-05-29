@@ -34,7 +34,10 @@ contains
     call set_case_name("test_tr29113")
 
     astr = get_const_string_ptr_alloc_tr()
+    call assert_true( allocated(astr), "getConstStringPtrAlloc")
+    call assert_true( len(astr) == 3, "getConstStringPtrAlloc")
     call assert_true( astr == "dog", "getConstStringPtrAlloc")
+    deallocate(astr)
 
   end subroutine test_tr29113
 
