@@ -94,7 +94,6 @@ end type SHROUD_capsule
 ! helper capsule_helper
 ! finalize a static SHROUD_capsule_data
 subroutine SHROUD_capsule_final(cap)
-    use iso_c_binding, only : C_BOOL
     type(SHROUD_capsule), intent(INOUT) :: cap
     call SHROUD_capsule_dtor(cap%mem)
 end subroutine SHROUD_capsule_final

@@ -1554,6 +1554,15 @@ class Preprocess(object):
         # XXX - not sure if result uses any of these attributes.
 #        typemap.set_buf_variable_names(
 #            options, node.ast.attrs, "aaa")
+
+        attrs = node.ast.attrs
+        if attrs["owner"] == "caller" and \
+           attrs["deref"] == "pointer" and \
+           attrs["capsule"] is None:
+            attrs["capsule"] = options.C_var_capsule_template.format(
+                c_var=node.fmtdict.C_result
+            )
+
         for arg in node.ast.params:
             typemap.set_buf_variable_names(
                 options, arg.attrs, arg.name)

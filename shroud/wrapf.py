@@ -1503,7 +1503,8 @@ rv = .false.
                 c_stmts = ["c", "shadow", "ctor"]
             else:
                 sintent = "result"
-                f_stmts = ["f", sgroup, spointer, "result", return_deref_attr]
+                f_stmts = ["f", sgroup, spointer, "result", return_deref_attr,
+                           ast.attrs["owner"]]
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
@@ -1711,7 +1712,11 @@ rv = .false.
                     # Explicit declarations from fc_statements.
                     for line in f_intent_blk.arg_decl:
                         append_format(arg_f_decl, line, fmt_arg)
-                    arg_f_names.append(fmt_arg.f_var)
+                    if f_result_blk.arg_name:
+                        for aname in f_result_blk.arg_name:
+                            append_format(arg_f_names, aname, fmt_result)
+                    else:
+                        arg_f_names.append(fmt_arg.f_var)
                 else:
                     # Generate declaration from argument.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran())
@@ -1799,13 +1804,6 @@ rv = .false.
                 need_wrapper,
             )
 
-        # use tabs to insert continuations
-        if arg_c_call:
-            fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
-        fmt_func.F_arguments = options.get(
-            "F_arguments", ",\t ".join(arg_f_names)
-        )
-
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
@@ -1817,6 +1815,9 @@ rv = .false.
                 # Explicit declarations from fc_statements.
                 for line in f_result_blk.arg_decl:
                     append_format(arg_f_decl, line, fmt_result)
+                if f_result_blk.arg_name:
+                    for aname in f_result_blk.arg_name:
+                        append_format(arg_f_names, aname, fmt_result)
             elif return_deref_attr in ["allocatable", "pointer"]:
                 if result_typemap.base == "vector":
                     ntypemap = ast.template_arguments[0].typemap
@@ -1865,6 +1866,13 @@ rv = .false.
                 )
             if node.cpp_if:
                 type_bound_part.append("#endif")
+
+        # use tabs to insert continuations
+        if arg_c_call:
+            fmt_func.F_arg_c_call = ",\t ".join(arg_c_call)
+        fmt_func.F_arguments = options.get(
+            "F_arguments", ",\t ".join(arg_f_names)
+        )
 
         # body of function
         # XXX sname = fmt_func.F_name_impl

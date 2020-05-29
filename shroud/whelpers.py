@@ -508,7 +508,6 @@ type({F_capsule_data_type}) :: mem
 ! helper {hname}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
-use iso_c_binding, only : C_BOOL
 type({F_capsule_type}), intent(INOUT) :: cap
 call SHROUD_capsule_dtor(cap%mem)
 -end subroutine {F_capsule_final_function}""",

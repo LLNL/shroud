@@ -1092,6 +1092,12 @@ def set_buf_variable_names(options, attrs, c_var):
         attrs["capsule"] = options.C_var_capsule_template.format(
             c_var=c_var
         )
+    if attrs["owner"] == "caller" and \
+       attrs["deref"] == "pointer" \
+              and attrs["capsule"] is None:
+        attrs["capsule"] = options.C_var_capsule_template.format(
+            c_var=c_var
+        )
     if attrs["context"] is True:
         attrs["context"] = options.C_var_context_template.format(
             c_var=c_var
@@ -1365,6 +1371,7 @@ class FStmts(object):
         c_local_var=None,
         f_helper="", f_module=None,
         need_wrapper=False,
+        arg_name=None,
         arg_decl=None,
         arg_c_call=None,
         declare=[], pre_call=[], call=[], post_call=[],
@@ -1377,6 +1384,7 @@ class FStmts(object):
         self.f_module = f_module
 
         self.need_wrapper = need_wrapper
+        self.arg_name = arg_name        # Names in subprogram list.
         self.arg_decl = arg_decl        # argument/result declaration
         self.arg_c_call = arg_c_call    # argument to C function.
         self.declare = declare          # local declaration
@@ -1675,6 +1683,27 @@ fc_statements = [
         ],
         post_call=[
             "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+        ],
+    ),
+    dict(
+        # +deref(pointer) +owner(caller)
+        name="f_native_*_result_pointer_caller",
+        f_helper="capsule_helper",
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        arg_name=["{c_var_capsule}"],
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+            "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
+        ],
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+            "{c_var_capsule}%mem = {c_var_context}%cxx",
         ],
     ),
     dict(

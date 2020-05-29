@@ -1653,7 +1653,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-    ! Requested: f_string_scalar_result_allocatable
+    ! Requested: f_string_scalar_result_allocatable_library
     ! Match:     f_string_result_allocatable
     ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_buf
@@ -1678,7 +1678,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
     ! const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
-    ! Requested: f_string_scalar_result_allocatable
+    ! Requested: f_string_scalar_result_allocatable_caller
     ! Match:     f_string_result_allocatable
     ! Function:  void getConstStringPtrOwnsAlloc
     ! Exact:     c_string_scalar_result_buf
@@ -1710,7 +1710,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! Requested: f_string_scalar_result_allocatable
+    ! Requested: f_string_scalar_result_allocatable_caller
     ! Match:     f_string_result_allocatable
     ! Function:  void getConstStringPtrOwnsAllocPattern
     ! Exact:     c_string_scalar_result_buf

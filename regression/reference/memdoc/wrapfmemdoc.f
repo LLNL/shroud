@@ -105,7 +105,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-    ! Requested: f_string_scalar_result_allocatable
+    ! Requested: f_string_scalar_result_allocatable_library
     ! Match:     f_string_result_allocatable
     ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_buf
