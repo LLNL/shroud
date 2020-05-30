@@ -1497,6 +1497,8 @@ class Wrapc(util.WrapperMixin):
             pass
         elif not ast.is_pointer() and not from_stmt:
             # Non-pointers do not return dynamic memory.
+            # Unless it is a function which returns memory
+            # by value. (like a class instance.)
             pass
         elif free_pattern is not None:
             # free_pattern attribute.
