@@ -125,6 +125,11 @@ the ``type(C_PTR)`` will be passed by reference (the default).  This
 will allow the C wrapper to assign a value to the argument.
 See example :ref:`passVoidStarStar <example_passVoidStarStar>`.
 
+
+.. +size
+   +len
+   +len_trim
+
 .. ------------
    
 
@@ -192,6 +197,8 @@ be used to release the memory.
 
 The *c_statements* may also define a way to destroy memory.
 For example, ``std::vector`` provides the lines:
+
+.. c_vector_out_buf
 
 .. code-block:: yaml
 
