@@ -40,7 +40,8 @@ declarations:
   doxygen:
     brief: Copy vector into Fortran input array
     description: |
-      Return the number of items copied into argument
+      Convert subroutine in to a function and
+      return the number of items copied into argument
       by setting fstatements for both C and Fortran.
   options:
     wrap_python: False
@@ -64,6 +65,7 @@ declarations:
   doxygen:
     brief: Copy vector into Fortran input array
     description: |
+      Convert subroutine in to a function.
       Return the number of items copied into argument
       by setting fstatements for the Fortran wrapper only.
   options:

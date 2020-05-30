@@ -87,7 +87,8 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 /**
  * \brief Copy vector into Fortran input array
  *
- * Return the number of items copied into argument
+ * Convert subroutine in to a function and
+ * return the number of items copied into argument
  * by setting fstatements for both C and Fortran.
  */
 // ----------------------------------------
@@ -120,6 +121,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 /**
  * \brief Copy vector into Fortran input array
  *
+ * Convert subroutine in to a function.
  * Return the number of items copied into argument
  * by setting fstatements for the Fortran wrapper only.
  */
