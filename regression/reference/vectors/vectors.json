@@ -419,7 +419,7 @@
                 "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
-                    "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
+                    "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fmtdict": {
                     "F_C_call": "c_vector_iota_out_with_num_bufferify",
@@ -552,7 +552,7 @@
                 "declgen": "void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
-                    "description": "Return the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
+                    "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
@@ -639,7 +639,7 @@
                 "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
-                    "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
+                    "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
                 },
                 "fmtdict": {
                     "F_C_call": "c_vector_iota_out_with_num2_bufferify",
@@ -766,7 +766,7 @@
                 "declgen": "void vector_iota_out_with_num2(std::vector<int> & arg +context+intent(out)+rank(1))",
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array",
-                    "description": "Return the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
+                    "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
