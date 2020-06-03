@@ -7,6 +7,12 @@ subroutine c_get_const_string_ptr_alloc_bufferify_tr(SHT_rv) &
     character(len=:), allocatable :: SHT_rv
 end subroutine c_get_const_string_ptr_alloc_bufferify_tr
 
+subroutine get_const_string_ptr_alloc_bufferify_tr_zerolength(SHT_rv) &
+     bind(C, name="TR2_get_const_string_ptr_alloc_tr_bufferify_zerolength")
+    implicit none
+    character(len=:), allocatable :: SHT_rv
+end subroutine get_const_string_ptr_alloc_bufferify_tr_zerolength
+
 ! splicer end additional_interfaces
 
 

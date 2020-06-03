@@ -44,8 +44,7 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
-                        "owner": "library"
+                        "deref": "allocatable"
                     },
                     "const": true,
                     "declarator": {
@@ -62,8 +61,8 @@
                     ],
                     "typemap_name": "std::string"
                 },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
+                "decl": "const std::string * getConstStringPtrAlloc()",
+                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "TR2_get_const_string_ptr_alloc",
                     "C_prototype": "void",
@@ -145,8 +144,7 @@
                                 "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
-                                "intent": "out",
-                                "owner": "library"
+                                "intent": "out"
                             },
                             "const": true,
                             "declarator": {
@@ -168,8 +166,8 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
+                "decl": "const std::string * getConstStringPtrAlloc()",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
                 "fmtdict": {
                     "C_name": "TR2_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "TR2_SHROUD_array *DSHF_rv",
