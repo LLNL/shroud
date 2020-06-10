@@ -1,0 +1,39 @@
+# Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+# other Shroud Project Developers.
+# See the top-level COPYRIGHT file for details.
+#
+# SPDX-License-Identifier: (BSD-3-Clause)
+#
+
+include ../../defaults.mk
+
+INCLUDE = \
+    -I$(rundir)/pointers \
+    -I$(rundir)/fruit
+
+VPATH = \
+    $(rundir)/pointers \
+    $(rundir)/fruit
+
+OBJS = \
+    pointers.o \
+    pointers_f.o \
+    pointers_wrap.o \
+    fruit.o \
+    main.o
+
+pointers : $(OBJS)
+	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
+
+swig:
+#	swig -fortran -o swigpointers_module.c pointers.i
+	$(swig-fortran)  -fortran pointers.i
+	mv pointers.f90 pointers_f.f90
+
+test:
+	./pointers
+
+clean :
+	rm -f $(OBJS) *.mod pointers *~
+
+.PHONY : swig test clean

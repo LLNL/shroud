@@ -134,9 +134,9 @@ class VerifyAttrs(object):
                 for garg in generic.decls:
                     generic._has_found_default = False
                     self.check_arg_attrs(generic, garg, node.options)
-                check_implied_attrs(generic.decls)
+                check_implied_attrs(node, generic.decls)
         else:
-            check_implied_attrs(ast.params)
+            check_implied_attrs(node, ast.params)
 
         self.parse_attrs(node, ast)
             
@@ -1678,8 +1678,9 @@ class CheckImplied(todict.PrintNode):
     """Check arguments in the implied attribute.
     """
 
-    def __init__(self, expr, decls):
+    def __init__(self, context, expr, decls):
         super(CheckImplied, self).__init__()
+        self.context = context
         self.expr = expr
         self.decls = decls
 
@@ -1696,26 +1697,30 @@ class CheckImplied(todict.PrintNode):
             # size(arg)
             if len(node.args) != 1:
                 raise RuntimeError(
-                    "Too many arguments to 'size': ".format(self.expr)
+                    "{}:Too many arguments to 'size': ".format(
+                        self.context.linenumber, self.expr)
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
-                    "Unknown argument '{}': {}".format(argname, self.expr)
+                    "{}:Unknown argument '{}': {}".format(
+                        self.context.linenumber, argname, self.expr)
                 )
             return "size"
         elif node.name in ["len", "len_trim"]:
             # len(arg)  len_trim(arg)
             if len(node.args) != 1:
                 raise RuntimeError(
-                    "Too many arguments to '{}': {}".format(node.name, self.expr)
+                    "{}:Too many arguments to '{}': {}".format(
+                        self.context.linenumber, node.name, self.expr)
                 )
             argname = node.args[0].name
             arg = declast.find_arg_by_name(self.decls, argname)
             if arg is None:
                 raise RuntimeError(
-                    "Unknown argument '{}': {}".format(argname, self.expr)
+                    "{}:Unknown argument '{}': {}".format(
+                        self.context.linenumber, argname, self.expr)
                 )
             # XXX - Make sure character
 #            if arg.attrs["dimension"] is None:
@@ -1730,7 +1735,7 @@ class CheckImplied(todict.PrintNode):
             return self.param_list(node)
 
 
-def check_implied_attrs(decls):
+def check_implied_attrs(context, decls):
     """Check all parameters for implied arguments.
 
     The implied attribute may reference other arguments in decls.
@@ -1739,15 +1744,16 @@ def check_implied_attrs(decls):
     Otherwise, call on FunctionNode.ast.params
 
     Args:
+        context  - contains node.linenumber
         decls - list of Declarations
     """
     for decl in decls:
         expr = decl.attrs["implied"]
         if expr:
-            check_implied(expr, decls)
+            check_implied(context, expr, decls)
 
 
-def check_implied(expr, decls):
+def check_implied(context, expr, decls):
     """Check implied attribute expression for errors.
     expr may reference other arguments in decls.
 
@@ -1756,5 +1762,5 @@ def check_implied(expr, decls):
         decls - list of Declarations
     """
     node = declast.ExprParser(expr).expression()
-    visitor = CheckImplied(expr, decls)
+    visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)

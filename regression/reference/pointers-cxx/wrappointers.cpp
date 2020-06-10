@@ -373,6 +373,49 @@ void POI_increment_int_array(int * array, int sizein)
 // end POI_increment_int_array
 
 // ----------------------------------------
+// Function:  void fill_with_zeros
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double * x +intent(inout)+rank(1)
+// Requested: c_native_*_inout
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int x_length +implied(size(x))+intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// start POI_fill_with_zeros
+void POI_fill_with_zeros(double * x, int x_length)
+{
+    // splicer begin function.fill_with_zeros
+    fill_with_zeros(x, x_length);
+    // splicer end function.fill_with_zeros
+}
+// end POI_fill_with_zeros
+
+// ----------------------------------------
+// Function:  int accumulate
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const int * arr +intent(in)+rank(1)
+// Requested: c_native_*_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  size_t len +implied(size(arr))+intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// start POI_accumulate
+int POI_accumulate(const int * arr, size_t len)
+{
+    // splicer begin function.accumulate
+    int SHC_rv = accumulate(arr, len);
+    return SHC_rv;
+    // splicer end function.accumulate
+}
+// end POI_accumulate
+
+// ----------------------------------------
 // Function:  void acceptCharArrayIn
 // Requested: c
 // Match:     c_default
