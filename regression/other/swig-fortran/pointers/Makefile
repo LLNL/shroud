@@ -17,7 +17,7 @@ VPATH = \
 
 OBJS = \
     pointers.o \
-    pointers_f.o \
+    pointers_mod.o \
     pointers_wrap.o \
     fruit.o \
     main.o
@@ -28,7 +28,6 @@ pointers : $(OBJS)
 swig:
 #	swig -fortran -o swigpointers_module.c pointers.i
 	$(swig-fortran)  -fortran pointers.i
-	mv pointers.f90 pointers_f.f90
 
 test:
 	./pointers

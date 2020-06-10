@@ -11,7 +11,7 @@
 program tester
   use fruit
   use iso_c_binding
-  use pointers
+  use pointers_mod
   real(C_DOUBLE), parameter :: pi = 3.1415926_C_DOUBLE
   logical ok
 

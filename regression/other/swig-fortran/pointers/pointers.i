@@ -1,5 +1,5 @@
 
-%module pointers
+%module pointers_mod
 %{
 #include "pointers.h"
 %}
