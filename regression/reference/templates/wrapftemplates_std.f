@@ -203,6 +203,14 @@ module templates_std_mod
         ! splicer end namespace.std.additional_interfaces
     end interface
 
+    interface vector_double
+        module procedure vector_double_ctor
+    end interface vector_double
+
+    interface vector_int
+        module procedure vector_int_ctor
+    end interface vector_int
+
 contains
 
     ! ----------------------------------------

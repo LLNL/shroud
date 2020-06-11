@@ -703,12 +703,12 @@ module classes_mod
         ! splicer end additional_interfaces
     end interface
 
-    ! start interface class1_new
-    interface class1_new
+    ! start interface class1
+    interface class1
         module procedure class1_new_default
         module procedure class1_new_flag
-    end interface class1_new
-    ! end interface class1_new
+    end interface class1
+    ! end interface class1
 
     interface
         ! helper copy_string

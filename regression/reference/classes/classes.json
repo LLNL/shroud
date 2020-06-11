@@ -172,7 +172,7 @@
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "new_default",
-                            "F_name_generic": "new",
+                            "F_name_generic": "class1",
                             "F_name_impl": "class1_new_default",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
@@ -184,7 +184,9 @@
                             "function_suffix": "_default",
                             "underscore_name": "new"
                         },
-                        "options": {}
+                        "options": {
+                            "F_create_generic": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -323,7 +325,7 @@
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                             "F_arguments": "flag",
                             "F_name_function": "new_flag",
-                            "F_name_generic": "new",
+                            "F_name_generic": "class1",
                             "F_name_impl": "class1_new_flag",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
@@ -335,7 +337,9 @@
                             "function_suffix": "_flag",
                             "underscore_name": "new"
                         },
-                        "options": {}
+                        "options": {
+                            "F_create_generic": true
+                        }
                     },
                     {
                         "ast": {

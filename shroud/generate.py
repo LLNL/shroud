@@ -791,9 +791,18 @@ class GenFunctions(object):
                 # Stuff like push_back which is in a templated class, is not an overload
                 # C_name_scope is used to distigunish the functions, not function_suffix.
                 continue
-            overloaded_functions.setdefault(function.ast.name, []).append(
-                function
-            )
+            if function.ast.is_ctor():
+                # Always create generic interface for class derived type.
+                fmt = function.fmtdict
+                name = fmt.F_derived_name
+                overloaded_functions.setdefault(name, []).append(
+                    function)
+                function.options.F_create_generic = True
+                fmt.F_name_generic = name
+                function._overloaded = True
+            else:
+                overloaded_functions.setdefault(function.ast.name, []).append(
+                    function)
 
         # look for function overload and compute function_suffix
         for overloads in overloaded_functions.values():

@@ -1198,10 +1198,14 @@ module userlibrary_example_nested_mod
         ! splicer end namespace.example::nested.additional_interfaces
     end interface
 
-    interface exclass1_ctor
+    interface exclass1
         module procedure exclass1_ctor_0
         module procedure exclass1_ctor_1
-    end interface exclass1_ctor
+    end interface exclass1
+
+    interface exclass2
+        module procedure exclass2_ctor
+    end interface exclass2
 
     interface test_names
         module procedure test_names
