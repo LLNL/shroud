@@ -40,7 +40,7 @@ contains
 
     call set_case_name("test_vector_int")
 
-    v1 = vector_int_ctor()
+    v1 = vector_int()
 
     call v1%push_back(1)
 
@@ -59,7 +59,7 @@ contains
 
     call set_case_name("test_vector_double")
 
-    v1 = vector_double_ctor()
+    v1 = vector_double()
 
     call v1%push_back(1.5_C_DOUBLE)
 
