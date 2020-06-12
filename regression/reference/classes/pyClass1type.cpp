@@ -37,7 +37,7 @@ PY_Class1_tp_del (PY_Class1 *self)
 }
 
 // ----------------------------------------
-// Function:  Class1 +name(new)
+// Function:  Class1
 // Exact:     py_default
 static int
 PY_Class1_tp_init_default(
@@ -45,7 +45,7 @@ PY_Class1_tp_init_default(
   PyObject *SHROUD_UNUSED(args),
   PyObject *SHROUD_UNUSED(kwds))
 {
-// splicer begin class.Class1.method.new_default
+// splicer begin class.Class1.method.ctor_default
     self->obj = new classes::Class1();
     if (self->obj == nullptr) {
         PyErr_NoMemory();
@@ -53,11 +53,11 @@ PY_Class1_tp_init_default(
     }
     self->idtor = 1;
     return 0;
-// splicer end class.Class1.method.new_default
+// splicer end class.Class1.method.ctor_default
 }
 
 // ----------------------------------------
-// Function:  Class1 +name(new)
+// Function:  Class1
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
@@ -69,13 +69,13 @@ PY_Class1_tp_init_flag(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Class1.method.new_flag
+// splicer begin class.Class1.method.ctor_flag
     int flag;
     const char *SHT_kwlist[] = {
         "flag",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:new",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "i:ctor",
         const_cast<char **>(SHT_kwlist), &flag))
         return -1;
 
@@ -86,7 +86,7 @@ PY_Class1_tp_init_flag(
     }
     self->idtor = 1;
     return 0;
-// splicer end class.Class1.method.new_flag
+// splicer end class.Class1.method.ctor_flag
 }
 
 // ----------------------------------------
@@ -274,7 +274,7 @@ PY_Class1_tp_init(
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin class.Class1.method.new
+// splicer begin class.Class1.method.ctor
     Py_ssize_t SHT_nargs = 0;
     if (args != nullptr) SHT_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SHT_nargs += PyDict_Size(args);
@@ -299,7 +299,7 @@ PY_Class1_tp_init(
     }
     PyErr_SetString(PyExc_TypeError, "wrong arguments multi-dispatch");
     return -1;
-// splicer end class.Class1.method.new
+// splicer end class.Class1.method.ctor
 }
 // splicer begin class.Class1.impl.after_methods
 // splicer end class.Class1.impl.after_methods

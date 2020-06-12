@@ -131,43 +131,43 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  Class1 +name(new)
+    ! Function:  Class1
     ! Exact:     c_shadow_scalar_result
-    ! start c_class1_new_default
+    ! start c_class1_ctor_default
     interface
-        function c_class1_new_default(SHT_crv) &
+        function c_class1_ctor_default(SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class1_new_default")
+                bind(C, name="CLA_Class1_ctor_default")
             use iso_c_binding, only : C_PTR
             import :: SHROUD_class1_capsule
             implicit none
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
-        end function c_class1_new_default
+        end function c_class1_ctor_default
     end interface
-    ! end c_class1_new_default
+    ! end c_class1_ctor_default
 
     ! ----------------------------------------
-    ! Function:  Class1 +name(new)
+    ! Function:  Class1
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    ! start c_class1_new_flag
+    ! start c_class1_ctor_flag
     interface
-        function c_class1_new_flag(flag, SHT_crv) &
+        function c_class1_ctor_flag(flag, SHT_crv) &
                 result(SHT_rv) &
-                bind(C, name="CLA_Class1_new_flag")
+                bind(C, name="CLA_Class1_ctor_flag")
             use iso_c_binding, only : C_INT, C_PTR
             import :: SHROUD_class1_capsule
             implicit none
             integer(C_INT), value, intent(IN) :: flag
             type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
-        end function c_class1_new_flag
+        end function c_class1_ctor_flag
     end interface
-    ! end c_class1_new_flag
+    ! end c_class1_ctor_flag
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
@@ -705,8 +705,8 @@ module classes_mod
 
     ! start interface class1
     interface class1
-        module procedure class1_new_default
-        module procedure class1_new_flag
+        module procedure class1_ctor_default
+        module procedure class1_ctor_flag
     end interface class1
     ! end interface class1
 
@@ -726,25 +726,25 @@ module classes_mod
 contains
 
     ! ----------------------------------------
-    ! Function:  Class1 +name(new)
-    ! Class1 +name(new)
+    ! Function:  Class1
+    ! Class1
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
-    ! start class1_new_default
-    function class1_new_default() &
+    ! start class1_ctor_default
+    function class1_ctor_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
         type(class1) :: SHT_rv
-        ! splicer begin class.Class1.method.new_default
+        ! splicer begin class.Class1.method.ctor_default
         type(C_PTR) :: SHT_prv
-        SHT_prv = c_class1_new_default(SHT_rv%cxxmem)
-        ! splicer end class.Class1.method.new_default
-    end function class1_new_default
-    ! end class1_new_default
+        SHT_prv = c_class1_ctor_default(SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.ctor_default
+    end function class1_ctor_default
+    ! end class1_ctor_default
 
     ! ----------------------------------------
-    ! Function:  Class1 +name(new)
-    ! Class1 +name(new)
+    ! Function:  Class1
+    ! Class1
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
@@ -753,18 +753,18 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    ! start class1_new_flag
-    function class1_new_flag(flag) &
+    ! start class1_ctor_flag
+    function class1_ctor_flag(flag) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         integer(C_INT), value, intent(IN) :: flag
         type(class1) :: SHT_rv
-        ! splicer begin class.Class1.method.new_flag
+        ! splicer begin class.Class1.method.ctor_flag
         type(C_PTR) :: SHT_prv
-        SHT_prv = c_class1_new_flag(flag, SHT_rv%cxxmem)
-        ! splicer end class.Class1.method.new_flag
-    end function class1_new_flag
-    ! end class1_new_flag
+        SHT_prv = c_class1_ctor_flag(flag, SHT_rv%cxxmem)
+        ! splicer end class.Class1.method.ctor_flag
+    end function class1_ctor_flag
+    ! end class1_ctor_flag
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)

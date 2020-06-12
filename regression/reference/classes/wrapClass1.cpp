@@ -41,38 +41,38 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // splicer end class.Class1.C_definitions
 
 // ----------------------------------------
-// Function:  Class1 +name(new)
+// Function:  Class1
 // Exact:     c_shadow_scalar_ctor
-// start CLA_Class1_new_default
-CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv)
+// start CLA_Class1_ctor_default
+CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
 {
-    // splicer begin class.Class1.method.new_default
+    // splicer begin class.Class1.method.ctor_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end class.Class1.method.new_default
+    // splicer end class.Class1.method.ctor_default
 }
-// end CLA_Class1_new_default
+// end CLA_Class1_ctor_default
 
 // ----------------------------------------
-// Function:  Class1 +name(new)
+// Function:  Class1
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
-// start CLA_Class1_new_flag
-CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv)
+// start CLA_Class1_ctor_flag
+CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
 {
-    // splicer begin class.Class1.method.new_flag
+    // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
     SHC_rv->idtor = 0;
     return SHC_rv;
-    // splicer end class.Class1.method.new_flag
+    // splicer end class.Class1.method.ctor_flag
 }
-// end CLA_Class1_new_flag
+// end CLA_Class1_ctor_flag
 
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)

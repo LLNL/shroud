@@ -23,10 +23,10 @@ declarations:
   declarations:
   - decl: int m_flag +readonly;
   - decl: int m_test +name(test);
-  - decl: Class1()         +name(new)
+  - decl: Class1()
     format:
       function_suffix: _default
-  - decl: Class1(int flag) +name(new)
+  - decl: Class1(int flag)
     format:
       function_suffix: _flag
   - decl: ~Class1()        +name(delete)

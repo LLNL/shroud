@@ -1,8 +1,8 @@
 Read yaml classes.yaml
 Close classes_types.yaml
 class Class1
-C method Class1() +name(new)
-C method Class1(int flag +intent(in)+value) +name(new)
+C method Class1()
+C method Class1(int flag +intent(in)+value)
 C method ~Class1() +name(delete)
 C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)) const
@@ -43,8 +43,8 @@ Close wrapclasses.h
 Close wrapclasses.cpp
 Close typesclasses.h
 class Class1
-C-interface, Fortran method Class1() +name(new)
-C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
+C-interface, Fortran method Class1()
+C-interface, Fortran method Class1(int flag +intent(in)+value)
 C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)) const
@@ -78,8 +78,8 @@ C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+l
 Close wrapfclasses.f
 Close utilclasses.cpp
 class Class1
-Python method Class1() +name(new)
-Python method Class1(int flag +intent(in)+value) +name(new)
+Python method Class1()
+Python method Class1(int flag +intent(in)+value)
 Python method ~Class1() +name(delete)
 Python method int Method1()
 Python method bool equivalent(const Class1 & obj2 +intent(in)) const
