@@ -38,9 +38,9 @@ enum CLA_Class1_DIRECTION {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-CLA_Class1 * CLA_Class1_new_default(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv);
 
-CLA_Class1 * CLA_Class1_new_flag(int flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv);
 
 void CLA_Class1_delete(CLA_Class1 * self);
 

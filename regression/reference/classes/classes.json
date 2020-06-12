@@ -152,8 +152,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true,
-                                "_name": "ctor",
-                                "name": "new"
+                                "_name": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -161,28 +160,28 @@
                             ],
                             "typemap_name": "classes::Class1"
                         },
-                        "decl": "Class1()         +name(new)",
-                        "declgen": "Class1() +name(new)",
+                        "decl": "Class1()",
+                        "declgen": "Class1()",
                         "fmtdict": {
-                            "C_name": "CLA_Class1_new_default",
+                            "C_name": "CLA_Class1_ctor_default",
                             "C_prototype": "CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
-                            "F_C_call": "c_class1_new_default",
-                            "F_C_name": "c_class1_new_default",
+                            "F_C_call": "c_class1_ctor_default",
+                            "F_C_name": "c_class1_ctor_default",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
-                            "F_name_function": "new_default",
+                            "F_name_function": "ctor_default",
                             "F_name_generic": "class1",
-                            "F_name_impl": "class1_new_default",
+                            "F_name_impl": "class1_ctor_default",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
-                            "function_name": "new",
+                            "function_name": "ctor",
                             "function_suffix": "_default",
-                            "underscore_name": "new"
+                            "underscore_name": "ctor"
                         },
                         "options": {
                             "F_create_generic": true
@@ -289,8 +288,7 @@
                         "ast": {
                             "attrs": {
                                 "_constructor": true,
-                                "_name": "ctor",
-                                "name": "new"
+                                "_name": "ctor"
                             },
                             "params": [
                                 {
@@ -313,29 +311,29 @@
                             ],
                             "typemap_name": "classes::Class1"
                         },
-                        "decl": "Class1(int flag) +name(new)",
-                        "declgen": "Class1(int flag +intent(in)+value) +name(new)",
+                        "decl": "Class1(int flag)",
+                        "declgen": "Class1(int flag +intent(in)+value)",
                         "fmtdict": {
                             "C_call_list": "flag",
-                            "C_name": "CLA_Class1_new_flag",
+                            "C_name": "CLA_Class1_ctor_flag",
                             "C_prototype": "int flag,\t CLA_Class1 * SHC_rv",
                             "C_return_type": "CLA_Class1 *",
-                            "F_C_call": "c_class1_new_flag",
-                            "F_C_name": "c_class1_new_flag",
+                            "F_C_call": "c_class1_ctor_flag",
+                            "F_C_name": "c_class1_ctor_flag",
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                             "F_arguments": "flag",
-                            "F_name_function": "new_flag",
+                            "F_name_function": "ctor_flag",
                             "F_name_generic": "class1",
-                            "F_name_impl": "class1_new_flag",
+                            "F_name_impl": "class1_ctor_flag",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
                             "PY_name_impl": "PY_Class1_tp_init_flag",
                             "PY_type_impl": "PY_Class1_tp_init_flag",
                             "PY_type_method": "tp_init",
                             "cxx_rv_decl": "classes::Class1 SHCXX_rv",
-                            "function_name": "new",
+                            "function_name": "ctor",
                             "function_suffix": "_flag",
-                            "underscore_name": "new"
+                            "underscore_name": "ctor"
                         },
                         "options": {
                             "F_create_generic": true

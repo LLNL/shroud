@@ -70,6 +70,7 @@ declarations:
       F_derived_name: FNames
   
     declarations:
+    - decl: Names()         +name(defaultctor)
     - decl: void method1()
       format:
         F_name_function: type_method1
@@ -211,7 +212,7 @@ declarations:
       template_suffix: _instantiation4
 
 ########################################
-# Teset option C_API_case
+# Test option C_API_case
 #
 - decl: namespace CAPI
   options:

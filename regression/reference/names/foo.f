@@ -51,6 +51,19 @@ module name_module
     interface
 
         ! ----------------------------------------
+        ! Function:  Names +name(defaultctor)
+        ! Exact:     c_shadow_scalar_result
+        function xxx_tes_names_defaultctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="XXX_TES_ns0_Names_defaultctor")
+            use iso_c_binding, only : C_PTR
+            import :: SHROUD_names_capsule
+            implicit none
+            type(SHROUD_names_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function xxx_tes_names_defaultctor
+
+        ! ----------------------------------------
         ! Function:  void method1
         ! Requested: c_void_scalar_result
         ! Match:     c_default
@@ -79,7 +92,26 @@ module name_module
         ! splicer end namespace.ns0.additional_interfaces
     end interface
 
+    interface FNames
+        module procedure names_defaultctor
+    end interface FNames
+
 contains
+
+    ! ----------------------------------------
+    ! Function:  Names +name(defaultctor)
+    ! Names +name(defaultctor)
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    function names_defaultctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(FNames) :: SHT_rv
+        ! splicer begin namespace.ns0.class.Names.method.defaultctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = xxx_tes_names_defaultctor(SHT_rv%cxxmem)
+        ! splicer end namespace.ns0.class.Names.method.defaultctor
+    end function names_defaultctor
 
     ! ----------------------------------------
     ! Function:  void method1

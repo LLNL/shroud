@@ -18,6 +18,19 @@ extern "C" {
 // splicer end namespace.ns0.class.Names.C_definitions
 
 // ----------------------------------------
+// Function:  Names +name(defaultctor)
+// Exact:     c_shadow_scalar_ctor
+TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHC_rv)
+{
+    // splicer begin namespace.ns0.class.Names.method.defaultctor
+    ns0::Names *ARG_rv = new ns0::Names();
+    SHC_rv->addr = static_cast<void *>(ARG_rv);
+    SHC_rv->idtor = 0;
+    return SHC_rv;
+    // splicer end namespace.ns0.class.Names.method.defaultctor
+}
+
+// ----------------------------------------
 // Function:  void method1
 // Requested: c
 // Match:     c_default

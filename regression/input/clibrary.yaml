@@ -405,7 +405,7 @@ declarations:
 ##-
 ##-- class: Class1
 ##-  declarations:
-##-  - decl: Class1()  +name(new)
+##-  - decl: Class1()
 ##-  - decl: ~Class1() +name(delete)
 ##-  - decl: void Method1()
 
