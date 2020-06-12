@@ -16,6 +16,11 @@
 #define WRAPPOINTERS_H
 
 #include "typespointers.h"
+#ifdef __cplusplus
+#include <cstddef>
+#else
+#include <stddef.h>
+#endif
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations
@@ -52,6 +57,10 @@ void POI_sum(int len, const int * values, int * result);
 void POI_fill_int_array(int * out);
 
 void POI_increment_int_array(int * array, int sizein);
+
+void POI_fill_with_zeros(double * x, int x_length);
+
+int POI_accumulate(const int * arr, size_t len);
 
 void POI_accept_char_array_in(char **names);
 

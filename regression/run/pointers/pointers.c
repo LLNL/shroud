@@ -155,6 +155,23 @@ void incrementIntArray(int *array, int size)
     return;
 }
 
+
+void fill_with_zeros(double* x, int x_length)
+{
+    for (int i=0; i < x_length; i++) {
+        x[i] = 0.0;
+    }
+}
+
+int accumulate(const int *arr, size_t len)
+{
+    int acc = 0;
+    for (size_t i=0; i < len; i++) {
+        acc += arr[i];
+    }
+    return acc;
+}
+
 //----------------------------------------------------------------------
 
 void Rank2Input(int *arg)

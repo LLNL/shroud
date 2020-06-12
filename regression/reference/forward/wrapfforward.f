@@ -137,6 +137,10 @@ module forward_mod
         ! splicer end additional_interfaces
     end interface
 
+    interface class2
+        module procedure class2_ctor
+    end interface class2
+
 contains
 
     ! Return pointer to C++ memory.

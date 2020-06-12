@@ -773,6 +773,124 @@ fail:
 }
 
 // ----------------------------------------
+// Function:  void fill_with_zeros
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * x +intent(inout)+rank(1)
+// Exact:     py_native_*_inout_pointer_numpy
+// ----------------------------------------
+// Argument:  int x_length +implied(size(x))+intent(in)+value
+// Exact:     py_default
+static char PY_fill_with_zeros__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fill_with_zeros(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.fill_with_zeros
+    double * x;
+    PyObject * SHTPy_x;
+    PyArrayObject * SHPy_x = NULL;
+    int x_length;
+    char *SHT_kwlist[] = {
+        "x",
+        NULL };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:fill_with_zeros",
+        SHT_kwlist, &SHTPy_x))
+        return NULL;
+
+    // post_parse
+    SHPy_x = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_x, NPY_DOUBLE,
+        NPY_ARRAY_INOUT_ARRAY);
+    if (SHPy_x == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "x must be a 1-D array of double");
+        goto fail;
+    }
+
+    // pre_call
+    x = PyArray_DATA(SHPy_x);
+    x_length = PyArray_SIZE(SHPy_x);
+
+    fill_with_zeros(x, x_length);
+    return (PyObject *) SHPy_x;
+
+fail:
+    Py_XDECREF(SHPy_x);
+    return NULL;
+// splicer end function.fill_with_zeros
+}
+
+// ----------------------------------------
+// Function:  int accumulate
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const int * arr +intent(in)+rank(1)
+// Exact:     py_native_*_in_pointer_numpy
+// ----------------------------------------
+// Argument:  size_t len +implied(size(arr))+intent(in)+value
+// Exact:     py_default
+static char PY_accumulate__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_accumulate(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accumulate
+    int * arr;
+    PyObject * SHTPy_arr;
+    PyArrayObject * SHPy_arr = NULL;
+    size_t len;
+    char *SHT_kwlist[] = {
+        "arr",
+        NULL };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = NULL;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:accumulate",
+        SHT_kwlist, &SHTPy_arr))
+        return NULL;
+
+    // post_parse
+    SHPy_arr = (PyArrayObject *) PyArray_FROM_OTF(SHTPy_arr, NPY_INT,
+        NPY_ARRAY_IN_ARRAY);
+    if (SHPy_arr == NULL) {
+        PyErr_SetString(PyExc_ValueError,
+            "arr must be a 1-D array of int");
+        goto fail;
+    }
+
+    // pre_call
+    arr = PyArray_DATA(SHPy_arr);
+    len = PyArray_SIZE(SHPy_arr);
+
+    SHCXX_rv = accumulate(arr, len);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    Py_DECREF(SHPy_arr);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    Py_XDECREF(SHPy_arr);
+    return NULL;
+// splicer end function.accumulate
+}
+
+// ----------------------------------------
 // Function:  void acceptCharArrayIn
 // Exact:     py_default
 // ----------------------------------------
@@ -1433,6 +1551,10 @@ static PyMethodDef PY_methods[] = {
     PY_fillIntArray__doc__},
 {"incrementIntArray", (PyCFunction)PY_incrementIntArray,
     METH_VARARGS|METH_KEYWORDS, PY_incrementIntArray__doc__},
+{"fill_with_zeros", (PyCFunction)PY_fill_with_zeros,
+    METH_VARARGS|METH_KEYWORDS, PY_fill_with_zeros__doc__},
+{"accumulate", (PyCFunction)PY_accumulate, METH_VARARGS|METH_KEYWORDS,
+    PY_accumulate__doc__},
 {"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {"setGlobalInt", (PyCFunction)PY_setGlobalInt,

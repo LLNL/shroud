@@ -120,6 +120,18 @@ class Pointers(unittest.TestCase):
             out = pointers.incrementIntArray(array)
         self.assertTrue('array must be' in str(context.exception))
 
+    def test_fill_with_zeros(self):
+        # swig test
+        array = np.array([2,4,6,8], dtype=np.double)
+        pointers.fill_with_zeros(array)
+        self.assertTrue(np.equal(array, 0.0).all())
+
+    def test_accumulate(self):
+        # swig test
+        array = np.array([1,2,3,4,5], dtype=np.intc)  # int32
+        sum = pointers.accumulate(array)
+        self.assertEqual(15, sum)
+        
     def test_acceptCharArrayIn(self):
         pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
 

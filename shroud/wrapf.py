@@ -16,6 +16,7 @@ SHAPE_ Array variable with shape for use with c_f_pointer.
 from __future__ import print_function
 from __future__ import absolute_import
 
+import collections
 import copy
 import os
 import re
@@ -38,6 +39,8 @@ fortran_ranks = [
     "(:,:,:,:,:,:)",
     "(:,:,:,:,:,:,:)",
 ]
+
+GenericFunction = collections.namedtuple("GenericTuple", ["force", "functions"])
 
 class Wrapf(util.WrapperMixin):
     """Generate Fortran bindings.
@@ -272,8 +275,8 @@ class Wrapf(util.WrapperMixin):
         # splicer to extend generic
         #        self._push_splicer('generic')
         for key in sorted(fileinfo.f_type_generic.keys()):
-            methods = fileinfo.f_type_generic[key]
-            if len(methods) > 1:
+            force, methods = fileinfo.f_type_generic[key]
+            if force or len(methods) > 1:
 
                 # Look for any cpp_if declarations
                 any_cpp_if = False
@@ -687,8 +690,8 @@ rv = .false.
         iface = fileinfo.generic_interface
         f_function_generic = fileinfo.f_function_generic
         for key in sorted(f_function_generic.keys()):
-            generics = f_function_generic[key]
-            if len(generics) > 1:
+            force, generics = f_function_generic[key]
+            if force or len(generics) > 1:
                 self._push_splicer(key)
 
                 # Promote cpp_if to interface scope if all are identical.
@@ -1841,14 +1844,20 @@ rv = .false.
             # if return type is templated in C++,
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
-            if cls and not is_ctor:
+            if is_ctor:
+                # ctor generic do not get added as derived type generic.
+                # Always create a generic, even if only one function.
+                fileinfo.f_function_generic.setdefault(
+                    fmt_func.F_name_generic, GenericFunction(True, [])
+                ).functions.append(node)
+            elif cls:
                 fileinfo.f_type_generic.setdefault(
-                    fmt_func.F_name_generic, []
-                ).append(node)
+                    fmt_func.F_name_generic, GenericFunction(False, [])
+                ).functions.append(node)
             else:
                 fileinfo.f_function_generic.setdefault(
-                    fmt_func.F_name_scope + fmt_func.F_name_generic, []
-                ).append(node)
+                    fmt_func.F_name_scope + fmt_func.F_name_generic,
+                    GenericFunction(False, [])).functions.append(node)
         if cls:
             # Add procedure to derived type
             type_bound_part = fileinfo.type_bound_part

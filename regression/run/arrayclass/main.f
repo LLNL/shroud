@@ -36,7 +36,8 @@ contains
          arr7(:), arr8(:)
     type(C_PTR) :: voidptr
 
-    arrinst = ArrayWrapper_ctor()
+!   generic calls ArrayWrapper_ctor()
+    arrinst = ArrayWrapper()
     call arrinst%set_size(10)
     call assert_equals(10, arrinst%get_size())
 

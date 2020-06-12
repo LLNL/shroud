@@ -12,6 +12,8 @@ Python function void iota_dimension(int nvar +intent(in)+value, int * values +di
 Python function void Sum(int len +implied(size(values))+intent(in)+value, const int * values +intent(in)+rank(1), int * result +intent(out))
 Python function void fillIntArray(int * out +dimension(3)+intent(out))
 Python function void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)
+Python function void fill_with_zeros(double * x +intent(inout)+rank(1), int x_length +implied(size(x))+intent(in)+value)
+Python function int accumulate(const int * arr +intent(in)+rank(1), size_t len +implied(size(arr))+intent(in)+value)
 Python function void acceptCharArrayIn(char * * names +intent(in)+rank(1))
 Python function void setGlobalInt(int value +intent(in)+value)
 Python function int sumFixedArray()

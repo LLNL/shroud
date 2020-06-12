@@ -528,6 +528,10 @@ module arrayclass_mod
         ! splicer end additional_interfaces
     end interface
 
+    interface arraywrapper
+        module procedure arraywrapper_ctor
+    end interface arraywrapper
+
 contains
 
     ! ----------------------------------------

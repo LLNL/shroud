@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   The dimension attribute must be a list of expressions and should not
   be assumed-shape or assumed-length and are used with *intent(out)* arguments.
 - Pointer arguments default to ``intent(inout)`` instead of ``intent(in)``.
+- C++ class constructors create a generic interface in Fortran with the same name
+  as the derived-type name.  Before it used the +name attribute in the generic name.
+  This attribute is still used to create the actual function name.
 
 ### Fixed
 - Inline splicers (defined as part of a decl) will be used before a

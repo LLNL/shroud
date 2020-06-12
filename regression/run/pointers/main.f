@@ -20,6 +20,7 @@ program tester
 
   call test_functions
   call test_functions2
+  call test_swig
   call test_char_arrays
   call test_out_ptrs
   call test_nested_ptrs
@@ -119,6 +120,19 @@ contains
 
   end subroutine test_functions2
 
+  subroutine test_swig
+
+    real(C_DOUBLE) zero(10)
+    integer(C_INT) sum, count(5)
+
+    call fill_with_zeros(zero)
+
+    count = [1, 2, 3, 4, 5]
+    sum = accumulate(count)
+    call assert_equals(15, sum)
+    
+  end subroutine test_swig
+  
   subroutine test_char_arrays
     character(10) :: in(3) = [ &
          "dog       ", &

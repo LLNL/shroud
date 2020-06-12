@@ -1870,6 +1870,296 @@
             },
             {
                 "_fmtargs": {
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "x",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "x",
+                            "cxx_type": "double",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_x",
+                            "c_var": "x",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "INOUT",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "x",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(x)",
+                            "stmt0": "f_native_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_inout",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "x_length": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "x_length",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x_length",
+                            "cxx_type": "int",
+                            "cxx_var": "x_length",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_x_length",
+                            "c_var": "SH_x_length",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "x_length",
+                            "pre_call_intent": "size(x,kind=C_INT)",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "fill_with_zeros",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(x)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x_length",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
+                "declgen": "void fill_with_zeros(double * x +intent(inout)+rank(1), int x_length +implied(size(x))+intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "x,\t x_length",
+                    "C_name": "fill_with_zeros",
+                    "C_prototype": "double * x,\t int x_length",
+                    "C_return_type": "void",
+                    "F_C_call": "c_fill_with_zeros",
+                    "F_C_name": "c_fill_with_zeros",
+                    "F_arg_c_call": "x,\t SH_x_length",
+                    "F_arguments": "x",
+                    "F_name_function": "fill_with_zeros",
+                    "F_name_generic": "fill_with_zeros",
+                    "F_name_impl": "fill_with_zeros",
+                    "F_subprogram": "subroutine",
+                    "function_name": "fill_with_zeros",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "fill_with_zeros"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "arr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) arr",
+                            "cxx_type": "int",
+                            "cxx_var": "arr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arr",
+                            "c_var": "arr",
+                            "f_assumed_shape": "(:)",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arr)",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "len",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&len",
+                            "cxx_type": "size_t",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_len",
+                            "c_var": "SH_len",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "len",
+                            "pre_call_intent": "size(arr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "accumulate",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "size(arr)",
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
+                "declgen": "int accumulate(const int * arr +intent(in)+rank(1), size_t len +implied(size(arr))+intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "arr,\t len",
+                    "C_name": "accumulate",
+                    "C_prototype": "const int * arr,\t size_t len",
+                    "C_return_type": "int",
+                    "F_C_call": "c_accumulate",
+                    "F_C_name": "c_accumulate",
+                    "F_arg_c_call": "arr,\t SH_len",
+                    "F_arguments": "arr",
+                    "F_name_function": "accumulate",
+                    "F_name_generic": "accumulate",
+                    "F_name_impl": "accumulate",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "accumulate",
+                    "underscore_name": "accumulate"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
                     "names": {
                         "fmtc": {
                             "c_addr": "",
