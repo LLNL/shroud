@@ -18,7 +18,7 @@ void test_class(void)
   int flag;
   CLA_Class1 c1_buf, *c1;
 
-  c1 = CLA_Class1_new_default(&c1_buf);
+  c1 = CLA_Class1_ctor_default(&c1_buf);
   assert(c1 == &c1_buf && "CLA_class1_new_default");
 
   flag = CLA_Class1_method1(c1);

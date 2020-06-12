@@ -37,6 +37,26 @@ PY_Names_tp_del (PY_Names *self)
 }
 
 // ----------------------------------------
+// Function:  Names +name(defaultctor)
+// Exact:     py_default
+static int
+PY_Names_tp_init(
+  PY_Names *self,
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin namespace.ns0.class.Names.method.defaultctor
+    self->myobj = new ns0::Names();
+    if (self->myobj == nullptr) {
+        PyErr_NoMemory();
+        return -1;
+    }
+    self->mydtor = 1;
+    return 0;
+// splicer end namespace.ns0.class.Names.method.defaultctor
+}
+
+// ----------------------------------------
 // Function:  void method1
 // Exact:     py_default
 static char PY_method1__doc__[] =
@@ -144,7 +164,7 @@ PyTypeObject PY_Names_Type = {
     (descrgetfunc)nullptr,                /* tp_descr_get */
     (descrsetfunc)nullptr,                /* tp_descr_set */
     0,                              /* tp_dictoffset */
-    (initproc)0,                   /* tp_init */
+    (initproc)PY_Names_tp_init,                   /* tp_init */
     (allocfunc)nullptr,                  /* tp_alloc */
     (newfunc)nullptr,                    /* tp_new */
     (freefunc)nullptr,                   /* tp_free */

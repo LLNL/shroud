@@ -2,6 +2,7 @@ Read yaml names.yaml
 Close testnames_types.yaml
 Close wraptestnames_ns0_inner.cc
 class Names
+C method Names() +name(defaultctor)
 C method void method1()
 C method void method2()
 Close foo.h
@@ -61,6 +62,7 @@ C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long a
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 C-interface, Fortran function int UseImplWorker()
 class Names
+C-interface, Fortran method Names() +name(defaultctor)
 C-interface, Fortran method void method1()
 C-interface, Fortran method void method2()
 Close wrapftestnames_ns0_inner.F
@@ -80,6 +82,7 @@ Close wrapftestnames_CAPI.F
 Close top.f
 Close pytestnames_ns0_innermodule.cpp
 class Names
+Python method Names() +name(defaultctor)
 Python method void method1()
 Python method void method2()
 Close pyns0_Namestype.cpp
