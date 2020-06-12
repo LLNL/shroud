@@ -49,7 +49,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv)
     // splicer begin class.Class1.method.ctor_default
     classes::Class1 *SHCXX_rv = new classes::Class1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end class.Class1.method.ctor_default
 }
@@ -68,7 +68,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv)
     // splicer begin class.Class1.method.ctor_flag
     classes::Class1 *SHCXX_rv = new classes::Class1(flag);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end class.Class1.method.ctor_flag
 }

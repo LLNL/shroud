@@ -65,7 +65,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_0
 }
@@ -93,7 +93,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1
 }
@@ -122,7 +122,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     example::nested::ExClass1 *SHCXX_rv =
         new example::nested::ExClass1(&SHCXX_name);
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end namespace.example::nested.class.ExClass1.method.ctor_1_bufferify
 }

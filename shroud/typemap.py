@@ -2393,6 +2393,7 @@ fc_statements = [
             "return {c_var};",
         ],
         return_type="{c_type} *",
+        owner="caller",
     ),
     dict(
         name="c_shadow_scalar_ctor",

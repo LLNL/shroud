@@ -26,7 +26,7 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
     // splicer begin namespace.std.class.vector.method.ctor
     std::vector<int> *SHCXX_rv = new std::vector<int>();
     SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
+    SHC_rv->idtor = 1;
     return SHC_rv;
     // splicer end namespace.std.class.vector.method.ctor
 }
