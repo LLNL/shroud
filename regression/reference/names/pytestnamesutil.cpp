@@ -390,11 +390,19 @@ static void PY_SHROUD_capsule_destructor_0(void *ptr)
     // Do not release
 }
 
+// 1 - cxx ns0::Names *
+static void PY_SHROUD_capsule_destructor_1(void *ptr)
+{
+    ns0::Names * cxx_ptr = static_cast<ns0::Names *>(ptr);
+    delete cxx_ptr;
+}
+
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
 static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
+    {"cxx ns0::Names *", PY_SHROUD_capsule_destructor_1},
     {nullptr, nullptr},
 };
 

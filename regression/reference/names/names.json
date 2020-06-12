@@ -2077,6 +2077,92 @@
                         },
                         "functions": [
                             {
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_type": "TES_ns0_Names",
+                                        "c_var": "SHC_rv",
+                                        "cxx_addr": "",
+                                        "cxx_member": "->",
+                                        "cxx_type": "ns0::Names",
+                                        "cxx_var": "ARG_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt0": "c_shadow_scalar_ctor",
+                                        "stmt1": "c_shadow_scalar_ctor"
+                                    },
+                                    "fmtf": {
+                                        "cxx_type": "ns0::Names",
+                                        "f_type": "type(FNames)",
+                                        "f_var": "SHT_rv",
+                                        "sh_type": "SH_TYPE_OTHER",
+                                        "stmt0": "f_shadow_ctor",
+                                        "stmt1": "f_shadow_ctor",
+                                        "stmtc0": "c_shadow_ctor",
+                                        "stmtc1": "c_shadow_ctor"
+                                    },
+                                    "fmtpy": {
+                                        "PY_build_format": "O",
+                                        "PY_to_object_idtor_func": "PP_Names_to_Object_idtor",
+                                        "PyObject": "PY_Names",
+                                        "PyTypeObject": "PY_Names_Type",
+                                        "c_deref": "",
+                                        "c_var": "ARG_rv",
+                                        "ctor_expr": "ARG_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&ARG_rv",
+                                        "cxx_type": "ns0::Names",
+                                        "cxx_var": "ARG_rv",
+                                        "data_var": "SHData_rv",
+                                        "numpy_type": null,
+                                        "py_var": "SHTPy_rv",
+                                        "size_var": "SHSize_rv",
+                                        "stmt0": "py_default",
+                                        "stmt1": "py_default",
+                                        "vargs": "ARG_rv"
+                                    }
+                                },
+                                "_overloaded": true,
+                                "ast": {
+                                    "attrs": {
+                                        "_constructor": true,
+                                        "_name": "ctor",
+                                        "name": "defaultctor"
+                                    },
+                                    "params": [],
+                                    "specifier": [
+                                        "Names"
+                                    ],
+                                    "typemap_name": "ns0::Names"
+                                },
+                                "decl": "Names()         +name(defaultctor)",
+                                "declgen": "Names() +name(defaultctor)",
+                                "fmtdict": {
+                                    "C_name": "XXX_TES_ns0_Names_defaultctor",
+                                    "C_prototype": "TES_ns0_Names * SHC_rv",
+                                    "C_return_type": "TES_ns0_Names *",
+                                    "F_C_call": "xxx_tes_names_defaultctor",
+                                    "F_C_name": "xxx_tes_names_defaultctor",
+                                    "F_arg_c_call": "SHT_rv%cxxmem",
+                                    "F_arguments": "",
+                                    "F_name_function": "defaultctor",
+                                    "F_name_generic": "FNames",
+                                    "F_name_impl": "names_defaultctor",
+                                    "F_result_clause": "\fresult(SHT_rv)",
+                                    "F_subprogram": "function",
+                                    "PY_name_impl": "PY_Names_tp_init",
+                                    "PY_type_impl": "PY_Names_tp_init",
+                                    "PY_type_method": "tp_init",
+                                    "cxx_rv_decl": "ns0::Names ARG_rv",
+                                    "function_name": "defaultctor",
+                                    "underscore_name": "defaultctor"
+                                },
+                                "options": {
+                                    "F_create_generic": true
+                                }
+                            },
+                            {
                                 "ast": {
                                     "declarator": {
                                         "name": "method1",
