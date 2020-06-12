@@ -1255,7 +1255,7 @@
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<int>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0",
+                                        "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"
@@ -1822,7 +1822,7 @@
                                         "cxx_member": "->",
                                         "cxx_type": "std::vector<double>",
                                         "cxx_var": "SHCXX_rv",
-                                        "idtor": "0",
+                                        "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"

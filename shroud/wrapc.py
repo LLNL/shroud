@@ -1509,6 +1509,7 @@ class Wrapc(util.WrapperMixin):
             # Return cached value.
             fmt.idtor = ntypemap.idtor
         elif ntypemap.cxx_to_c:
+            # Class instance.
             # A C++ native type (std::string, std::vector)
             # XXX - vector does not assign cxx_to_c
             fmt.idtor = self.add_destructor(

@@ -686,6 +686,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_var="XXXcxx_var",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
+                idtor="XXXidtor",
                 PY_member_object="XXXPY_member_object",
                 PY_to_object_func="XXXPY_to_object_func",
             ))

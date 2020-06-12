@@ -2086,7 +2086,7 @@
                                         "cxx_member": "->",
                                         "cxx_type": "ns0::Names",
                                         "cxx_var": "ARG_rv",
-                                        "idtor": "0",
+                                        "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"

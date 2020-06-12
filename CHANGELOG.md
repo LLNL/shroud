@@ -71,6 +71,8 @@ splicer:
 - Prevent duplicate helpers from being created. Helpers which are implemented
   in C but called from Fortran are written to a new file define by format
   *C_impl_utility*.
+- Set idtor properly for constructors. Memory was not being released since
+  idtor was 0.
 
 ## v0.11.0 - 2020-01-08
 ### Added

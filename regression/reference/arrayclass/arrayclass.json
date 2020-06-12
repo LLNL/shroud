@@ -37,7 +37,7 @@
                                 "cxx_member": "->",
                                 "cxx_type": "ArrayWrapper",
                                 "cxx_var": "SHCXX_rv",
-                                "idtor": "0",
+                                "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
