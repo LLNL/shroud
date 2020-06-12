@@ -113,6 +113,26 @@ Can be use to cleanup after *pre_call* or to coerce the return value.
 result
 ^^^^^^
 
+Name of result variable.
+Added as the ``RESULT`` clause of the subprogram statement.
+Can be used to change a subroutine into a function.
+
+In this example, the subroutine is converted into a function
+which will return the number of items copied into the result argument.
+
+.. code-block:: yaml
+
+    - decl: void vector_iota_out_with_num2(std::vector<int> &arg+intent(out))
+      fstatements:
+        f:
+          result: num
+          f_module:
+            iso_c_binding: ["C_LONG"]
+          declare:
+          -  "integer(C_LONG) :: num"
+          post_call:
+          -  "num = Darg%size"
+
 
 How typemaps are found
 ----------------------

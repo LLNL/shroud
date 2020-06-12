@@ -89,6 +89,16 @@ interface/prototype for the C wrapper function allows it to be used in
 expressions similar to the way that ``strcpy`` returns its destination
 argument.
 
+A generic interface with the same name as the class is created to call
+the constructors for the class.  The constructor will initialize the
+Fortran derived type.
+
+.. code-block:: fortran
+
+   type(class1) var     ! Create Fortran variable.
+   var = class1()       ! Allocate C++ class instance.
+
+
 A full example is at 
 :ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 

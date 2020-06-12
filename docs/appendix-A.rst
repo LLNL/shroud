@@ -1992,10 +1992,10 @@ The C++ header file from :file:`classes.hpp`.
     declarations:
     - decl: class Class1
       declarations:
-      - decl: Class1()         +name(new)
+      - decl: Class1()
         format:
           function_suffix: _default
-      - decl: Class1(int flag) +name(new)
+      - decl: Class1(int flag)
         format:
         function_suffix: _flag
       - decl: ~Class1() +name(delete)
@@ -2006,13 +2006,13 @@ The C wrappers:
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start CLA_Class1_new_default
-   :end-before: end CLA_Class1_new_default
+   :start-after: start CLA_Class1_ctor_default
+   :end-before: end CLA_Class1_ctor_default
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start CLA_Class1_new_flag
-   :end-before: end CLA_Class1_new_flag
+   :start-after: start CLA_Class1_ctor_flag
+   :end-before: end CLA_Class1_ctor_flag
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
@@ -2023,14 +2023,14 @@ The corresponding Fortran interfaces:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start c_class1_new_default
-   :end-before: end c_class1_new_default
+   :start-after: start c_class1_ctor_default
+   :end-before: end c_class1_ctor_default
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start c_class1_new_flag
-   :end-before: end c_class1_new_flag
+   :start-after: start c_class1_ctor_flag
+   :end-before: end c_class1_ctor_flag
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
@@ -2043,14 +2043,14 @@ And the Fortran wrappers:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start class1_new_default
-   :end-before: end class1_new_default
+   :start-after: start class1_ctor_default
+   :end-before: end class1_ctor_default
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start class1_new_flag
-   :end-before: end class1_new_flag
+   :start-after: start class1_ctor_flag
+   :end-before: end class1_ctor_flag
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f

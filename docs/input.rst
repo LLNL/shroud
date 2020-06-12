@@ -559,7 +559,13 @@ name
 ^^^^
 
 Name of the method.
-Useful for constructor and destructor methods which have no names.
+Useful for constructor and destructor methods which have default names
+``ctor`` and ``dtor``.  Also useful when class member variables use a
+convention such as ``m_variable``.  The *name* can be set to
+*variable* to avoid polluting the Fortran interface with the ``m_``
+prefix.  Fortran and Python both have an explicit scope of
+``self%variable`` and ``self.variable`` instead of an implied
+``this``.
 
 owner
 ^^^^^
@@ -636,6 +642,57 @@ a value.
 
           Shroud preserves the names of the arguments since Fortran
           allows them to be used in function calls - ``call worker(len=10)``
+
+Statements
+----------
+
+The code generated for each argument and return value can be
+controlled by statement dictionaries.
+Shroud has many entries built in which are used for most arguments.
+But it is possible to add custom code to the wrapper by providing
+additional fields.  Most wrappers will not need to provide this
+information.
+
+
+
+An example from strings.yaml:
+
+.. code-block:: yaml
+
+    - decl: const string * getConstStringPtrLen() +len=30
+      doxygen:
+        brief: return a 'const string *' as character(30)
+        description: |
+          It is the caller's responsibility to release the string
+          created by the C++ library.
+          This is accomplished with C_finalize_buf which is possible
+          because +len(30) so the contents are copied before returning.
+      fstatements:
+        c_buf:
+          final:
+          - delete {cxx_var};
+
+An example from vectors.yaml:
+
+.. code-block:: yaml
+
+    - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
+      fstatements:
+        c_buf:
+          return_type: long
+          ret:
+          - return Darg->size;
+        f:
+          result: num
+          f_module:
+            iso_c_binding: ["C_LONG"]
+          declare:
+          -  "integer(C_LONG) :: {F_result}"
+          call:
+          -  "{F_result} = {F_C_call}({F_arg_c_call})"
+               
+
+          
 
 Patterns
 --------

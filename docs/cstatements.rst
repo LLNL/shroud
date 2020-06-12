@@ -99,6 +99,9 @@ len
 buf_extra
 ^^^^^^^^^
 
+Used to add argument for return values.
+For example, function which return class instance.
+
 
 c_header
 ^^^^^^^^
@@ -218,6 +221,10 @@ Code for return statement.
 Usually generated but can be replaced.
 For example, with constructors.
 
+Useful to convert a subroutine into a function.
+For example, convert a ``void`` function which fills a ``std::vector``
+to return the number of items.
+
 .. return is a reserved word so it's not possible to do dict(return=[])
 
 return_type
@@ -226,6 +233,14 @@ return_type
 Explicit return type when it is different than the
 functions return type.
 For example, with shadow types.
+
+.. code-block:: yaml
+
+      return_type: long
+      ret:
+      - return Darg->size;
+
+.. from vectors.yaml
 
 return_cptr
 ^^^^^^^^^^^
@@ -259,4 +274,17 @@ For example:
     -  std::vector<{cxx_T}> *cxx_ptr = reinterpret_cast<std::vector<{cxx_T}> *>(ptr);
     -  delete cxx_ptr;
 
-..        owner="library",
+owner
+^^^^^
+
+Set *owner* of the memory.
+Similar to attribute *owner*.
+
+.. c_shadow_scalar_result
+
+Used in the case where a class is returned by value.  The C wrapper
+must explicitly allocate a class instance which will hold the value
+from the C++ library function.  The Fortran shadow class must keep
+this copy until the shadow class is deleted.
+
+Defaults to *library*.
