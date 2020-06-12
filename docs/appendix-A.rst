@@ -2079,8 +2079,8 @@ are combined into a generic interface.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: ! start interface class1_new
-   :end-before: ! end interface class1_new
+   :start-after: ! start interface class1
+   :end-before: ! end interface class1
    :dedent: 4
 
 A class instance is created and destroy from Fortran as:
@@ -2090,7 +2090,7 @@ A class instance is created and destroy from Fortran as:
     use classes_mod
     type(class1) obj
 
-    obj = class1_new()
+    obj = class1()
     call obj%delete
 
 Corresponding C++ code:
@@ -2213,7 +2213,7 @@ The class variables can be used as:
     type(class1) obj
     integer iflag
 
-    obj = class1_new()
+    obj = class1()
     call obj%set_test(4)
     iflag = obj%get_test()
 

@@ -32,6 +32,10 @@ F_OBJS = \
     fruit.o \
     main.o
 
+ifeq ($(compiler),gcc)
+FFLAGS += -std=f2008ts
+endif
+
 tr29113 : $(C_OBJS) $(F_OBJS)
 	$(FC) $(FFLAGS) $^ -o $@ $(FLIBS)
 

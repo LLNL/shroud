@@ -20,6 +20,7 @@ program tester
 
   call test_vector_int
   call test_vector_double
+  call function_generic
   call function_templates
 
   call fruit_summary
@@ -39,7 +40,7 @@ contains
 
     call set_case_name("test_vector_int")
 
-    v1 = vector_int_ctor()
+    v1 = vector_int()
 
     call v1%push_back(1)
 
@@ -58,7 +59,7 @@ contains
 
     call set_case_name("test_vector_double")
 
-    v1 = vector_double_ctor()
+    v1 = vector_double()
 
     call v1%push_back(1.5_C_DOUBLE)
 
@@ -70,6 +71,11 @@ contains
 
   end subroutine test_vector_double
 
+  subroutine function_generic
+    call function_tu(1_C_INT, 2_C_LONG)
+    call function_tu(1.5_C_FLOAT, 2.5_C_DOUBLE)
+  end subroutine function_generic
+  
   subroutine function_templates
 
     integer(C_INT) rv_int

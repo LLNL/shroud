@@ -52,7 +52,7 @@ contains
     call set_case_name("test_class1_final")
 
     ! Test generic constructor
-    obj0 = class1_new()
+    obj0 = class1()
 !    call assert_equals(1, obj0%cxxmem%refcount, "reference count after new")
 
     obj1 = obj0
@@ -96,7 +96,7 @@ contains
     call set_case_name("test_class1")
 
     ! Test generic constructor
-    obj0 = class1_new()
+    obj0 = class1()
     ptr = obj0%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj0")
 
@@ -107,7 +107,7 @@ contains
     mtest = obj0%get_test()
     call assert_equals(4, mtest, "get_test 2")
 
-    obj1 = class1_new(1)
+    obj1 = class1(1)
     ptr = obj1%get_instance()
     call assert_true(c_associated(ptr), "class1_new obj1")
 

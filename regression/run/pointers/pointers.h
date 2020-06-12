@@ -9,6 +9,8 @@
 #ifndef POINTERS_HPP
 #define POINTERS_HPP
 
+#include <stddef.h>
+
 void  intargs_in(const int *arg);
 void  intargs_inout(int *arg);
 void  intargs_out(int *arg);
@@ -28,6 +30,10 @@ void iota_dimension(int nvar, int *values);
 void Sum(int len, const int * values, int *result);
 void fillIntArray(int *out);
 void incrementIntArray(int *array, int size);
+
+void fill_with_zeros(double* x, int x_length);
+int accumulate(const int *arr, size_t len);
+
 
 void Rank2Input(int *arg);
 

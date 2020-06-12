@@ -1292,6 +1292,7 @@
                                         "vargs": "SHCXX_rv"
                                     }
                                 },
+                                "_overloaded": true,
                                 "ast": {
                                     "attrs": {
                                         "_constructor": true,
@@ -1314,7 +1315,7 @@
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
-                                    "F_name_generic": "ctor",
+                                    "F_name_generic": "vector_int",
                                     "F_name_impl": "vector_int_ctor",
                                     "F_result_clause": "\fresult(SHT_rv)",
                                     "F_subprogram": "function",
@@ -1325,7 +1326,9 @@
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
                                 },
-                                "options": {}
+                                "options": {
+                                    "F_create_generic": true
+                                }
                             },
                             {
                                 "ast": {
@@ -1856,6 +1859,7 @@
                                         "vargs": "SHCXX_rv"
                                     }
                                 },
+                                "_overloaded": true,
                                 "ast": {
                                     "attrs": {
                                         "_constructor": true,
@@ -1878,7 +1882,7 @@
                                     "F_arg_c_call": "SHT_rv%cxxmem",
                                     "F_arguments": "",
                                     "F_name_function": "ctor",
-                                    "F_name_generic": "ctor",
+                                    "F_name_generic": "vector_double",
                                     "F_name_impl": "vector_double_ctor",
                                     "F_result_clause": "\fresult(SHT_rv)",
                                     "F_subprogram": "function",
@@ -1889,7 +1893,9 @@
                                     "function_name": "ctor",
                                     "underscore_name": "ctor"
                                 },
-                                "options": {}
+                                "options": {
+                                    "F_create_generic": true
+                                }
                             },
                             {
                                 "ast": {

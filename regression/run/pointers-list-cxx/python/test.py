@@ -131,6 +131,19 @@ class Pointers(unittest.TestCase):
         self.assertIsInstance(out, list)
         self.assertEqual([3,5,7,9], out)
 
+    def XXXtest_fill_with_zeros(self):
+        # swig test
+        # XXXX - needs to update existing list
+        array = [2,4,6,8]
+        pointers.fill_with_zeros(array)
+        self.assertEqual(array, [0,0,0,0])
+
+    def test_accumulate(self):
+        # swig test
+        array = [1,2,3,4,5]
+        sum = pointers.accumulate(array)
+        self.assertEqual(15, sum)
+        
     def test_acceptCharArrayIn(self):
         pointers.acceptCharArrayIn(["dog", "cat", "monkey"])
 

@@ -97,6 +97,13 @@ declarations:
     description: |
       Increment array in place using intent(INOUT).
 
+#####
+# From regression/other/swig-fortran/pointers
+- decl: void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));
+# XXX - python wants intent(inout) to fill existing array
+# XXX - fortran prefers intent(out)
+- decl: int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));
+
 ######################################################################
 # Deal with 'char **' arguments
 # Python: treat as list of string, even with numpy.

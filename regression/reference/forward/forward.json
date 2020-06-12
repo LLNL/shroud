@@ -127,6 +127,7 @@
                                 "vargs": "SHCXX_rv"
                             }
                         },
+                        "_overloaded": true,
                         "ast": {
                             "attrs": {
                                 "_constructor": true,
@@ -149,7 +150,7 @@
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
-                            "F_name_generic": "ctor",
+                            "F_name_generic": "class2",
                             "F_name_impl": "class2_ctor",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
@@ -162,7 +163,9 @@
                             "function_name": "ctor",
                             "underscore_name": "ctor"
                         },
-                        "options": {}
+                        "options": {
+                            "F_create_generic": true
+                        }
                     },
                     {
                         "ast": {

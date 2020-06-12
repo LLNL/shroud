@@ -143,7 +143,7 @@
                                             "F_arg_c_call": "SHT_rv%cxxmem",
                                             "F_arguments": "",
                                             "F_name_function": "ctor_0",
-                                            "F_name_generic": "ctor",
+                                            "F_name_generic": "exclass1",
                                             "F_name_impl": "exclass1_ctor_0",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
@@ -157,7 +157,9 @@
                                             "function_suffix": "_0",
                                             "underscore_name": "ctor"
                                         },
-                                        "options": {}
+                                        "options": {
+                                            "F_create_generic": true
+                                        }
                                     },
                                     {
                                         "_fmtargs": {
@@ -310,7 +312,7 @@
                                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
-                                            "F_name_generic": "ctor",
+                                            "F_name_generic": "exclass1",
                                             "F_name_impl": "exclass1_ctor_1",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
@@ -322,7 +324,9 @@
                                             "function_suffix": "_1",
                                             "underscore_name": "ctor"
                                         },
-                                        "options": {}
+                                        "options": {
+                                            "F_create_generic": true
+                                        }
                                     },
                                     {
                                         "_fmtargs": {
@@ -421,12 +425,14 @@
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
+                                            "F_name_generic": "exclass1",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_1_bufferify",
                                             "underscore_name": "ctor"
                                         },
                                         "options": {
+                                            "F_create_generic": true,
                                             "wrap_c": true,
                                             "wrap_fortran": false,
                                             "wrap_lua": false,
@@ -1800,6 +1806,7 @@
                                                 "vargs": "SHCXX_rv"
                                             }
                                         },
+                                        "_overloaded": true,
                                         "ast": {
                                             "attrs": {
                                                 "_constructor": true,
@@ -1846,7 +1853,7 @@
                                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
-                                            "F_name_generic": "ctor",
+                                            "F_name_generic": "exclass2",
                                             "F_name_impl": "exclass2_ctor",
                                             "F_result_clause": "\fresult(SHT_rv)",
                                             "F_subprogram": "function",
@@ -1859,7 +1866,9 @@
                                             "function_name": "ctor",
                                             "underscore_name": "ctor"
                                         },
-                                        "options": {}
+                                        "options": {
+                                            "F_create_generic": true
+                                        }
                                     },
                                     {
                                         "_fmtargs": {
@@ -1912,6 +1921,7 @@
                                             }
                                         },
                                         "_generated": "arg_to_buffer",
+                                        "_overloaded": true,
                                         "ast": {
                                             "attrs": {
                                                 "_constructor": true,
@@ -1955,12 +1965,14 @@
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHC_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
+                                            "F_name_generic": "exclass2",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "ctor"
                                         },
                                         "options": {
+                                            "F_create_generic": true,
                                             "wrap_c": true,
                                             "wrap_fortran": false,
                                             "wrap_lua": false,

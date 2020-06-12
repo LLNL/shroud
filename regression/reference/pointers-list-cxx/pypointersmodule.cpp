@@ -868,6 +868,123 @@ fail:
 }
 
 // ----------------------------------------
+// Function:  void fill_with_zeros
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double * x +intent(inout)+rank(1)
+// Exact:     py_native_*_inout_pointer_list
+// ----------------------------------------
+// Argument:  int x_length +implied(size(x))+intent(in)+value
+// Exact:     py_default
+static char PY_fill_with_zeros__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_fill_with_zeros(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.fill_with_zeros
+    double * x = nullptr;
+    PyObject *SHPy_x;
+    PyObject *SHTPy_x = nullptr;
+    int x_length;
+    const char *SHT_kwlist[] = {
+        "x",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:fill_with_zeros",
+        const_cast<char **>(SHT_kwlist), &SHTPy_x))
+        return nullptr;
+
+    // post_parse
+    Py_ssize_t SHSize_x;
+    if (SHROUD_create_from_PyObject_double(SHTPy_x, "x", &x, 
+        &SHSize_x) == -1)
+        goto fail;
+
+    // pre_call
+    x_length = SHSize_x;
+
+    fill_with_zeros(x, x_length);
+
+    // post_call
+    SHPy_x = SHROUD_to_PyList_double(x, SHSize_x);
+    if (SHPy_x == nullptr) goto fail;
+
+    // cleanup
+    std::free(x);
+
+    return (PyObject *) SHPy_x;
+
+fail:
+    if (x != nullptr) std::free(x);
+    return nullptr;
+// splicer end function.fill_with_zeros
+}
+
+// ----------------------------------------
+// Function:  int accumulate
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const int * arr +intent(in)+rank(1)
+// Exact:     py_native_*_in_pointer_list
+// ----------------------------------------
+// Argument:  size_t len +implied(size(arr))+intent(in)+value
+// Exact:     py_default
+static char PY_accumulate__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_accumulate(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accumulate
+    int * arr = nullptr;
+    PyObject *SHTPy_arr = nullptr;
+    size_t len;
+    const char *SHT_kwlist[] = {
+        "arr",
+        nullptr };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:accumulate",
+        const_cast<char **>(SHT_kwlist), &SHTPy_arr))
+        return nullptr;
+
+    // post_parse
+    Py_ssize_t SHSize_arr;
+    if (SHROUD_create_from_PyObject_int(SHTPy_arr, "arr", &arr, 
+        &SHSize_arr) == -1)
+        goto fail;
+
+    // pre_call
+    len = SHSize_arr;
+
+    SHCXX_rv = accumulate(arr, len);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    // cleanup
+    std::free(arr);
+
+    return (PyObject *) SHTPy_rv;
+
+fail:
+    if (arr != nullptr) std::free(arr);
+    return nullptr;
+// splicer end function.accumulate
+}
+
+// ----------------------------------------
 // Function:  void acceptCharArrayIn
 // Exact:     py_default
 // ----------------------------------------
@@ -1507,6 +1624,10 @@ static PyMethodDef PY_methods[] = {
     PY_fillIntArray__doc__},
 {"incrementIntArray", (PyCFunction)PY_incrementIntArray,
     METH_VARARGS|METH_KEYWORDS, PY_incrementIntArray__doc__},
+{"fill_with_zeros", (PyCFunction)PY_fill_with_zeros,
+    METH_VARARGS|METH_KEYWORDS, PY_fill_with_zeros__doc__},
+{"accumulate", (PyCFunction)PY_accumulate, METH_VARARGS|METH_KEYWORDS,
+    PY_accumulate__doc__},
 {"acceptCharArrayIn", (PyCFunction)PY_acceptCharArrayIn,
     METH_VARARGS|METH_KEYWORDS, PY_acceptCharArrayIn__doc__},
 {"setGlobalInt", (PyCFunction)PY_setGlobalInt,

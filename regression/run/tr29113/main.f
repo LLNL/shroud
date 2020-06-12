@@ -17,6 +17,7 @@ program tester
   call init_fruit
 
   call test_tr29113
+  call test_tr29113_empty
 
   call fruit_summary
   call fruit_finalize
@@ -40,5 +41,21 @@ contains
     deallocate(astr)
 
   end subroutine test_tr29113
+
+  subroutine test_tr29113_empty
+    ! Test zero length array and empty strings
+    character(len=:), allocatable :: astr
+
+    call set_case_name("test_tr29113_empty")
+
+    call assert_false( allocated(astr), "unallocated astr")
+    call assert_true( len(astr) == 0, "len of unallocated")
+    
+    call get_const_string_ptr_alloc_bufferify_tr_zerolength(astr)
+    call assert_true( allocated(astr), "getConstStringPtrAlloc")
+    call assert_true( len(astr) == 0, "getConstStringPtrAlloc")
+    deallocate(astr)
+
+  end subroutine test_tr29113_empty
 
 end program tester

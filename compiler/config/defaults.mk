@@ -6,7 +6,7 @@
 #
 ########################################################################
 #
-# shroud/regression/run/defaults.mk
+# compiler/config/defaults.mk
 
 # The fortran flags turn on preprocessing.
 
@@ -33,6 +33,7 @@ FC = gfortran
 ##-FLIBS = -lstdc++
 ##-SHARED = -fPIC
 ##-LD_SHARED = -shared
+VERSION = --version
 endif
 
 ifeq ($(compiler),intel)
@@ -47,6 +48,7 @@ FFLAGS = -g -free -check all
 ##-FLIBS = -lstdc++
 ##-SHARED = -fPIC
 ##-LD_SHARED = -shared
+VERSION = --version
 endif
 
 ifeq ($(compiler),pgi)
