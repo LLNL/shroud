@@ -282,7 +282,9 @@ Similar to attribute *owner*.
 
 .. c_shadow_scalar_result
 
-Used in the case where a class is returned by value.  The C wrapper
+Used where the ``new``` operator is part of the generated code.
+For example where a class is returned by value or a constructor.
+The C wrapper
 must explicitly allocate a class instance which will hold the value
 from the C++ library function.  The Fortran shadow class must keep
 this copy until the shadow class is deleted.

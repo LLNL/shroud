@@ -95,8 +95,40 @@ Fortran derived type.
 
 .. code-block:: fortran
 
-   type(class1) var     ! Create Fortran variable.
-   var = class1()       ! Allocate C++ class instance.
+    type(class1) var     ! Create Fortran variable.
+    var = class1()       ! Allocate C++ class instance.
+
+When the constructor is wrapped the destructor should also be wrapper or
+some other method is provided to release the memory.
+
+Some other type-bound precedures are created to allow the user
+to get and set the address of the C++ memory directly.
+This can be used when the address of the instance is created in some
+other manner (perhaps a C++ module in the application) and it
+needs to be used in Fortran without being created in Fortran.
+There is no way to free this memory and must be released outside of Fortran.
+
+.. XXX unless idtor is set properly
+
+.. code-block:: fortran
+
+    type(class1) var
+    type(C_PTR) addr
+
+    addr = var%get_instance()
+    ! addr will not be c_associated
+    call var%set_instance(caddr)    ! caddr contains address of an instance
+   
+Two instances of the class can be compared using the ``associated`` method.
+
+.. code-block:: fortran
+
+    type(class1) var1, var2
+    var1 = get_class(1)    ! A library function to fetch an instance
+    var2 = get_class(2)
+    if (var1%associated(var2) then
+        print *, "Identical instances"
+    endif
 
 
 A full example is at 
