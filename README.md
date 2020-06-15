@@ -24,7 +24,9 @@ http://shroud.readthedocs.io/en/develop
 
 ## Mailing List
 
-shroud-users@llnl.gov
+shroud-users@groups.io
+
+https://groups.io/g/shroud-users
 
 ## Required Packages
 
