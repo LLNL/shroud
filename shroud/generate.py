@@ -187,6 +187,10 @@ class VerifyAttrs(object):
                     "used on pointer and references"
                 )
         if dimension:
+            if dimension is True:
+                raise RuntimeError(
+                    "dimension attribute must have a value."
+                )
             if attrs["value"]:
                 raise RuntimeError(
                     "argument may not have 'value' and 'dimension' attribute."
