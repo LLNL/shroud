@@ -11,6 +11,10 @@ from shroud import generate
 
 import unittest
 
+class Config(object):
+    def __init__(self):
+        pass
+
 
 class CheckImplied(unittest.TestCase):
     def setUp(self):
@@ -23,6 +27,34 @@ class CheckImplied(unittest.TestCase):
             ")"
         )
         self.func1 = node
+
+    def test_dimension_1(self):
+        # Check missing dimension value
+        # (:) used to be accepted as assumed shape -- now rank(1).
+        library = ast.LibraryNode()
+        node = self.library.add_function(
+            "void func1(const int *array  +dimension)"
+        )
+        config = Config()
+        vfy = generate.VerifyAttrs(library, config)
+
+        with self.assertRaises(RuntimeError) as context:
+            vfy.check_fcn_attrs(node)
+        self.assertTrue("dimension attribute must have a value" in str(context.exception))
+
+    def test_dimension_2(self):
+        # Check bad dimension
+        # (:) used to be accepted as assumed shape -- now rank(1).
+        library = ast.LibraryNode()
+        node = self.library.add_function(
+            "void func1(const int *array  +dimension(:))"
+        )
+        config = Config()
+        vfy = generate.VerifyAttrs(library, config)
+
+        with self.assertRaises(RuntimeError) as context:
+            vfy.check_fcn_attrs(node)
+        self.assertTrue("Unable to parse dimension" in str(context.exception))
 
     def test_implied_attrs(self):
         func = self.func1
