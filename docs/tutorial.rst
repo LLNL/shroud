@@ -156,7 +156,7 @@ In this example, ``len`` and ``values`` are an input array and
 
 .. code-block:: c++
 
-    void Sum(size_t len, int *values, int *result)
+    void Sum(size_t len, const int *values, int *result)
     {
         int sum = 0;
         for (size_t i=0; i < len; i++) {
@@ -173,13 +173,13 @@ Fortran:
 .. code-block:: yaml
 
   - decl: void Sum(size_t len  +implied(size(values)),
-                   int *values +dimension(:)+intent(in),
+                   const int *values +rank(1),
                    int *result +intent(out))
 
 In the ``BIND(C)`` interface only *len* uses the ``value`` attribute.
 Without the attribute Fortran defaults to pass-by-reference
 i.e. passes a pointer.
-The ``dimension`` attribute defines the variable as a one dimensional,
+The ``rank`` attribute defines the variable as a one dimensional,
 assumed-shape array.  In the C interface this maps to an 
 assumed-length array.  C pointers, like assumed-length arrays, have no
 idea how many values they point to.  This information is passed

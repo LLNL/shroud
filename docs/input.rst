@@ -72,7 +72,7 @@ Strings may be split across several lines by indenting the continued line:
 
 .. code-block:: yaml
 
-    - decl: void Sum(int len, int *values+dimension+intent(in),
+    - decl: void Sum(int len, const int *values+rank(1),
                      int *result+intent(out))
 
 Some values consist of blocks of code.  The pipe, ``|``, is used to indicate that
@@ -262,18 +262,18 @@ it may have a value in parens:
 .. code-block:: yaml
 
     - decl: Class1()  +name(new)
-    - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: void Sum(int len, const int *values+rank(1)+intent(in))
     - decl: const std::string getName() +len(30)
 
 Attributes may also be added external to *decl*:
 
 .. code-block:: yaml
 
-    - decl: void Sum(int len, int *values)
+    - decl: void Sum(int len, const int *values)
       attrs:
           values:
-              dimension: True
               intent: in  
+              rank: 1
     - decl: const std::string getName()
       fattrs:
           len: 30
@@ -283,7 +283,7 @@ a default argument may include a plus symbol:
 
 .. code-block:: yaml
 
-    - decl: void Sum(int len, int *values+dimension+intent(in) =nullptr)
+    - decl: void Sum(int len, const int *values+rank(1)+intent(in) =nullptr)
 
 .. While parsing, attribute values are saved by finding a balanced paren.
 
@@ -419,6 +419,7 @@ All arrays use the language's default lower-bound
 (1 for Fortran and 0 for Python).
 Used to define the dimension of pointer arguments with *intent(out)*
 and function results.
+A dimension without any value is an error -- ``+dimension``.
 
 The expression is evaluated in a C/C++ context.
 
@@ -499,7 +500,7 @@ to Fortran or Python wrapper.  Useful with array sizes:
 
 .. code-block:: text
 
-      int Sum(int * array +intent(in), int len +implied(size(array))
+      int Sum(const int * array, int len +implied(size(array))
 
 Several functions will be converted to the corresponding code for
 Python wrappers: ``size``, ``len`` and ``len_trim``.
@@ -613,7 +614,7 @@ Creates the declaration:
     real(C_DOUBLE) :: array(:,:)
 
 Use with ``+intent(in)`` arguments when the wrapper should accept any
-extent instead of using Fortran's assumed-shape with ``+dimension(:)``.
+extent instead of using Fortran's assumed-shape with ``dimension(:)``.
     
 This can be simpler than the *dimension* attribute for multidimension arrays.
 *rank* and *dimension* can not be specified together.
