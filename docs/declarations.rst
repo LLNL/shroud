@@ -48,7 +48,7 @@ In the following examples, ``int`` can be replaced by any numeric type.
     See example :ref:`PassByValue <example_PassByValue>`.
 
 ``const int *arg``
-    Treated as call-by-reference.
+    Scalar call-by-reference.
     ``const`` pointers are defaulted to ``+intent(in)``.
 
 ``int *arg  +intent(out)``

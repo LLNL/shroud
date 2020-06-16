@@ -142,7 +142,7 @@ The generated code will require
 
 * Python 2.7 or Python 3.4+
 * NumPy can be used when using pointers with
-  *dimension* or *allocatable*, attributes.
+  *rank*, *dimension* or *allocatable*, attributes.
 
 XKCD
 ----

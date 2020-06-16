@@ -1680,7 +1680,7 @@ C library function in :file:`clibrary.c`:
 
 .. code-block:: yaml
 
-    - decl: int passAssumedTypeDim(void *arg+assumedtype+dimension)
+    - decl: int passAssumedTypeDim(void *arg+assumedtype+rank(1))
 
 Fortran calls C via the following interface:
 
