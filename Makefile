@@ -13,7 +13,7 @@
 top := $(CURDIR)
 
 PYTHONEXE := python2
-#PYTHONEXE := python3
+PYTHONEXE := python3
 
 PYTHON := $(shell which $(PYTHONEXE))
 python.dir := $(dir $(PYTHON))
@@ -28,7 +28,7 @@ tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
 testsdir := $(top)/tests
 venv.dir := $(top)/$(tempdir)/venv
 
-# if virtualenv is created us it, else depend on python in path
+# If venv.dir is created then use it, else depend on python in path.
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
 PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
@@ -43,6 +43,9 @@ include $(top)/regression/run/Makefile
 # For development:
 # make virtualenv
 # make develop
+
+# LC - necessary to load module to get Python3 version of virtualenv
+# module load python/3.7.2
 
 # Create a virtual environment.
 # Include system site-packages to get numpy
@@ -89,6 +92,24 @@ isort:
 install-pybindgen:
 	$(python.dir)/pip install pybindgen
 
+########################################################################
+# Distributing at pypi
+# make install-twine   (needs python3)
+
+install-twine :
+	$(python.dir)/pip install twine
+sdist :
+	$(python.dir)/python setup.py sdist bdist_wheel
+twine-check:
+	$(python.dir)/twine check dist/shroud-*.tar.gz
+testpypi:
+	$(python.dir)/twine upload -r testpypi dist/*
+pypi:
+	$(python.dir)/twine upload dist/*
+
+.PHONY : install-twine sdist testpypi pypi
+
+########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
