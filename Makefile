@@ -110,6 +110,16 @@ pypi:
 .PHONY : install-twine sdist testpypi pypi
 
 ########################################################################
+# Creating shiv executable
+# This puts all of shroud into a single file.
+
+install-shiv :
+	$(python.dir)/pip install shiv
+
+shiv-file :
+	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud -o dist/shroud.pyz .
+
+########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
