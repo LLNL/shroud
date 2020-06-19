@@ -118,8 +118,10 @@ pypi:
 install-shiv :
 	$(python.dir)/pip install shiv
 
+# Use version in output file name.
 shiv-file :
-	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud -o dist/shroud.pyz .
+	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud \
+          -o dist/shroud-`grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}'`.pyz .
 
 # Test shiv created executable
 do-test-shiv :
