@@ -16,6 +16,10 @@ options:
   wrap_python: True
   wrap_lua: False
 
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: cenum
+
 declarations:
 
 - decl: |

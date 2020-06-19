@@ -11,7 +11,7 @@
 from __future__ import print_function
 
 import unittest
-import enum
+import cenum
 
 class NotTrue:
     """Test bool arguments errors"""
@@ -34,19 +34,19 @@ class Enum(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_enum_Color(self):
-        self.assertEqual(10, enum.RED)
-        self.assertEqual(11, enum.BLUE)
-        self.assertEqual(12, enum.WHITE)
+        self.assertEqual(10, cenum.RED)
+        self.assertEqual(11, cenum.BLUE)
+        self.assertEqual(12, cenum.WHITE)
 
     def test_enum_val(self):
-        self.assertEqual(0, enum.a1)
-        self.assertEqual(3, enum.b1)
-        self.assertEqual(4, enum.c1)
-        self.assertEqual(3, enum.d1)
-        self.assertEqual(3, enum.e1)
-        self.assertEqual(4, enum.f1)
-        self.assertEqual(5, enum.g1)
-        self.assertEqual(100, enum.h1)
+        self.assertEqual(0, cenum.a1)
+        self.assertEqual(3, cenum.b1)
+        self.assertEqual(4, cenum.c1)
+        self.assertEqual(3, cenum.d1)
+        self.assertEqual(3, cenum.e1)
+        self.assertEqual(4, cenum.f1)
+        self.assertEqual(5, cenum.g1)
+        self.assertEqual(100, cenum.h1)
 
 
 # creating a new test suite

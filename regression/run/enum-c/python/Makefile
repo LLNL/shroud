@@ -24,9 +24,9 @@ OBJS = \
 
 CFLAGS += $(SHARED)
 
-all : enum.so
+all : cenum.so
 
-enum.so : $(OBJS)
+cenum.so : $(OBJS)
 	$(CXX) $(LD_SHARED) -o $@ $^ $(LIBS)
 
 simple : testpython.o $(OBJS)
