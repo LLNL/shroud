@@ -48,10 +48,10 @@ Shroud can be installed using pip
 pip install llnl-shroud
 ```
 
-In addition a file created by
+In addition, a file created by
 [shiv](https://github.com/linkedin/shiv)
 is available from the github release.
-Allof Shroud and PyYAML are bundled into a single executable which uses
+Shroud and PyYAML are bundled into a single executable which uses
 the Python3 on your path.
 
 ```
