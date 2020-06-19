@@ -114,6 +114,7 @@ pypi:
 ########################################################################
 # Creating shiv executable
 # This puts all of shroud into a single file.
+# https://github.com/linkedin/shiv
 
 install-shiv :
 	$(python.dir)/pip install shiv

@@ -7,6 +7,20 @@
 Installing
 ==========
 
+The easiest way to install Shroud is via pip which will fetch a file from
+`pypi <https://pypi.org>`_
+
+.. code-block:: sh
+
+    pip install llnl-shroud
+
+This will install Shroud into the same directory as pip.
+A virtual environment can be created if another destination directory
+is desired.
+For details see the
+`python docs <https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments>`_
+    
+
 The source is available from `github.com/LLNL/shroud <https://github.com/LLNL/shroud>`_
 
 **Shroud** is written in Python and has been tested with version 2.7 and 3.4+.
@@ -28,34 +42,26 @@ a virtual environment to try it out:
 
 .. code-block:: sh
 
-   $ cd my_project_folder
-   $ virtualenv my_project
-   $ source my_project/bin/activate
-   $ cd path/to/shroud/source
-   $ python setup.py install
+    $ cd my_project_folder
+    $ virtualenv my_project
+    $ source my_project/bin/activate
+    $ cd path/to/shroud/source
+    $ python setup.py install
 
 This will create an executable at ``my_project/bin/shroud``.
 This version requires the virtual environment to run and 
 may be difficult to share with others.
 
 It's possible to create a standalone executable with
-`pex <https://github.com/pantsbuild/pex>`_:
+`shiv <https://github.com/linkedin/shiv>`_:
 
 .. code-block:: sh
 
-	$(pex.root)/bin/pex -f $(dist)
-	  --python-shebang=$(python.root)/bin/python
-	  shroud==$(version) -e shroud.main:main
-	  -o shroud
+    $ cd path/to/shroud/source
+    $shiv --python '/usr/bin/env python3' -c shroud -o dist/shroud.pyz .
 
-*pex.root* is the path to the pex executable, *dist* is a directory
-where the shroud distribution file is ( ``shroud.0.9.9.tar.gz`` ),
-*python.root* is the path to the path executable, and version is
-shroud version ( ``0.9.0`` ).  This will create a single file, shroud,
-which can be installed anywhere on the system.  It will even work on
-other machines, assuming *python.root* is the same.  Or leaving off
-the ``--python-shebang`` option, it will use the version of Python in
-your path.
+A file *shroud.pyz* is created which bundles all of shroud and pyYAML into
+a single file.  It uses the python on your path to run.
 
 Building wrappers with CMake
 ----------------------------

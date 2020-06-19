@@ -40,6 +40,25 @@ The generated Fortran requires a Fortran 2003 compiler.
 
 The generated Python requires Python 2.7 or 3.4+.
 
+## Getting started
+
+Shroud can be installed using pip
+
+```
+pip install llnl-shroud
+```
+
+In addition a file created by
+[shiv](https://github.com/linkedin/shiv)
+is available from the github release.
+Allof Shroud and PyYAML are bundled into a single executable which uses
+the Python3 on your path.
+
+```
+wget https://github.com/LLNL/shroud/archive/shroud-0.11.0.pyz
+```
+
+
 ## License
 
 Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC.
