@@ -232,20 +232,20 @@ class Tester:
         if mismatch:
             status = False
             for file in mismatch:
-                logging.warn("Does not compare: " + file)
+                logging.warning("Does not compare: " + file)
         if errors:
             status = False
             for file in errors:
-                logging.warn("Unable to compare: " + file)
+                logging.warning("Unable to compare: " + file)
 
         if cmp.left_only:
             status = False
             for file in cmp.left_only:
-                logging.warn("Only in reference: " + file)
+                logging.warning("Only in reference: " + file)
         if cmp.right_only:
             status = False
             for file in cmp.right_only:
-                logging.warn("Only in result: " + file)
+                logging.warning("Only in result: " + file)
 
         if status:
             logging.info("Test {} pass".format(self.testname))
