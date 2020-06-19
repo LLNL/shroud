@@ -44,13 +44,15 @@ include $(top)/regression/run/Makefile
 # make virtualenv
 # make develop
 
-# LC - necessary to load module to get Python3 version of virtualenv
-# module load python/3.7.2
+# For Python3 use venv module.  This solves the problem where virtualenv
+# in the path does not match the python (like toss3).
 
 # Create a virtual environment.
 # Include system site-packages to get numpy
 virtualenv : $(venv.dir)
 $(venv.dir) :
+	$(PYTHON) -m venv --system-site-packages $(venv.dir)
+virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
 develop :
