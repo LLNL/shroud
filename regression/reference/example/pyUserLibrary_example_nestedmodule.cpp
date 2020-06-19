@@ -843,6 +843,14 @@ static PyMethodDef PP_methods[] = {
 };
 
 #if PY_MAJOR_VERSION >= 3
+static char PP__doc__[] =
+"XXX submodule doc"  //"library documentation"
+;
+
+struct module_state {
+    PyObject *error;
+};
+
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
     "userlibrary.example.nested", /* m_name */
@@ -865,7 +873,7 @@ PyObject *PP_init_userlibrary_example_nested(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "userlibrary.example.nested", PP_methods, nullptr);
+    m = Py_InitModule3((char *) "nested", PP_methods, nullptr);
 #endif
     if (m == nullptr)
         return nullptr;

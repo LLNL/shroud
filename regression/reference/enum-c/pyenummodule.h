@@ -19,9 +19,9 @@
 extern PyObject *PY_error_obj;
 
 #if PY_MAJOR_VERSION >= 3
-PyMODINIT_FUNC PyInit_enum(void);
+PyMODINIT_FUNC PyInit_cenum(void);
 #else
-PyMODINIT_FUNC initenum(void);
+PyMODINIT_FUNC initcenum(void);
 #endif
 
 #endif  /* PYENUMMODULE_H */

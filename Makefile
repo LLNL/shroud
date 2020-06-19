@@ -13,7 +13,7 @@
 top := $(CURDIR)
 
 PYTHONEXE := python2
-#PYTHONEXE := python3
+PYTHONEXE := python3
 
 PYTHON := $(shell which $(PYTHONEXE))
 python.dir := $(dir $(PYTHON))
@@ -28,7 +28,7 @@ tempdir := build/temp.$(PLATFORM)-$(PYTHON_VER)
 testsdir := $(top)/tests
 venv.dir := $(top)/$(tempdir)/venv
 
-# if virtualenv is created us it, else depend on python in path
+# If venv.dir is created then use it, else depend on python in path.
 ifneq ($(wildcard $(venv.dir)),)
 python.dir := $(venv.dir)/bin
 PYTHON := $(venv.dir)/bin/$(PYTHONEXE)
@@ -44,10 +44,15 @@ include $(top)/regression/run/Makefile
 # make virtualenv
 # make develop
 
+# For Python3 use venv module.  This solves the problem where virtualenv
+# in the path does not match the python (like toss3).
+
 # Create a virtual environment.
 # Include system site-packages to get numpy
 virtualenv : $(venv.dir)
 $(venv.dir) :
+	$(PYTHON) -m venv --system-site-packages $(venv.dir)
+virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
 develop :
@@ -89,6 +94,41 @@ isort:
 install-pybindgen:
 	$(python.dir)/pip install pybindgen
 
+########################################################################
+# Distributing at pypi
+# make install-twine   (needs python3)
+
+install-twine :
+	$(python.dir)/pip install twine
+sdist :
+	$(python.dir)/python setup.py sdist bdist_wheel
+twine-check:
+	$(python.dir)/twine check dist/shroud-*.tar.gz
+testpypi:
+	$(python.dir)/twine upload -r testpypi dist/*
+pypi:
+	$(python.dir)/twine upload dist/*
+
+.PHONY : install-twine sdist testpypi pypi
+
+########################################################################
+# Creating shiv executable
+# This puts all of shroud into a single file.
+
+install-shiv :
+	$(python.dir)/pip install shiv
+
+shiv-file :
+	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud -o dist/shroud.pyz .
+
+# Test shiv created executable
+do-test-shiv :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(top)/dist/shroud.pyz; \
+	$(PYTHON) regression/do-test.py $(do-test-args)
+
+########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
@@ -123,14 +163,14 @@ test-clean :
 do-test :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
 	export TEST_INPUT_DIR=$(top)/regression; \
-	export EXECUTABLE_DIR=$(python.dir); \
+	export EXECUTABLE_DIR=$(python.dir)/shroud; \
 	$(PYTHON) regression/do-test.py $(do-test-args)
 
 # replace test answers
 do-test-replace :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
 	export TEST_INPUT_DIR=$(top)/regression; \
-	export EXECUTABLE_DIR=$(python.dir); \
+	export EXECUTABLE_DIR=$(python.dir)/shroud; \
 	$(PYTHON) regression/do-test.py -r $(do-test-args)
 
 ########################################################################

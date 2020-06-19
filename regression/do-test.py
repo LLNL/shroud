@@ -77,10 +77,10 @@ class Tester:
             status = False
             print("Missing source directory:", input)
         if executable:
-            if not os.path.isdir(executable):
+            if not os.path.exists(executable):
                 status = False
-                print("Missing executable directory:", executable)
-            self.code_path = os.path.join(executable, "shroud")
+                print("Missing executable:", executable)
+            self.code_path = executable
         makedirs(output)
         return status
 
@@ -232,20 +232,20 @@ class Tester:
         if mismatch:
             status = False
             for file in mismatch:
-                logging.warn("Does not compare: " + file)
+                logging.warning("Does not compare: " + file)
         if errors:
             status = False
             for file in errors:
-                logging.warn("Unable to compare: " + file)
+                logging.warning("Unable to compare: " + file)
 
         if cmp.left_only:
             status = False
             for file in cmp.left_only:
-                logging.warn("Only in reference: " + file)
+                logging.warning("Only in reference: " + file)
         if cmp.right_only:
             status = False
             for file in cmp.right_only:
-                logging.warn("Only in result: " + file)
+                logging.warning("Only in result: " + file)
 
         if status:
             logging.info("Test {} pass".format(self.testname))
