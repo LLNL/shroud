@@ -77,10 +77,10 @@ class Tester:
             status = False
             print("Missing source directory:", input)
         if executable:
-            if not os.path.isdir(executable):
+            if not os.path.exists(executable):
                 status = False
-                print("Missing executable directory:", executable)
-            self.code_path = os.path.join(executable, "shroud")
+                print("Missing executable:", executable)
+            self.code_path = executable
         makedirs(output)
         return status
 

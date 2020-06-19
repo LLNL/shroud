@@ -29,7 +29,7 @@ with codecs.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='shroud',
+    name='llnl-shroud',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -38,16 +38,23 @@ setup(
 
     description='Generate Fortran and Python wrappers for C and C++ Libraries',
     long_description=long_description,
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
     url='http://github.gov/llnl/shroud',
 
     # Author details
     author='Lawrence Livermore National Laboratory',
-    author_email='axom-users@llnl.gov',
+    author_email='shroud-users@groups.io',
+
+    download_url = 'https://github.com/LLNL/shroud/archive/v0.11.0.tar.gz',
+    project_urls={
+        'Documentation': 'http://shroud.readthedocs.io/en/develop',
+        'Source': 'https://github.com/LLNL/shroud',
+    },
 
     # Choose your license
-    license='BSD-3-Clause',
+#    license='BSD License',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -55,14 +62,15 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
+        'Topic :: Software Development :: Code Generators',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: OSI Approved :: BSD-3-Clause',
+        'License :: OSI Approved :: BSD License',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
