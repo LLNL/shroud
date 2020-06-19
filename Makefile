@@ -121,6 +121,13 @@ install-shiv :
 shiv-file :
 	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud -o dist/shroud.pyz .
 
+# Test shiv created executable
+do-test-shiv :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(top)/dist/shroud.pyz; \
+	$(PYTHON) regression/do-test.py $(do-test-args)
+
 ########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
@@ -156,7 +163,7 @@ test-clean :
 do-test :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
 	export TEST_INPUT_DIR=$(top)/regression; \
-	export EXECUTABLE_DIR=$(python.dir); \
+	export EXECUTABLE_DIR=$(python.dir)/shroud; \
 	$(PYTHON) regression/do-test.py $(do-test-args)
 
 # replace test answers
