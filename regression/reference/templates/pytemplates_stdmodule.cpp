@@ -38,6 +38,14 @@ static PyMethodDef PY_methods[] = {
 };
 
 #if PY_MAJOR_VERSION >= 3
+static char PY__doc__[] =
+"XXX submodule doc"  //"library documentation"
+;
+
+struct module_state {
+    PyObject *error;
+};
+
 static struct PyModuleDef moduledef = {
     PyModuleDef_HEAD_INIT,
     "templates", /* m_name */
@@ -60,7 +68,7 @@ PyObject *PY_init_templates_std(void)
 #if PY_MAJOR_VERSION >= 3
     m = PyModule_Create(&moduledef);
 #else
-    m = Py_InitModule3((char *) "templates", PY_methods, nullptr);
+    m = Py_InitModule3((char *) "std", PY_methods, nullptr);
 #endif
     if (m == nullptr)
         return nullptr;

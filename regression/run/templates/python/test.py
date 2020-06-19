@@ -29,8 +29,8 @@ class Templates(unittest.TestCase):
         print("FooTest:tearDown_:end")
 
     def test_vector_int(self):
-        v1 = templates.vector_int()
-        self.assertIsInstance(v1, templates.vector_int)
+        v1 = templates.std.vector_int()
+        self.assertIsInstance(v1, templates.std.vector_int)
 
         v1.push_back(1)
 
@@ -38,8 +38,8 @@ class Templates(unittest.TestCase):
         self.assertEqual(ivalue, 1)
 
     def test_vector_double(self):
-        v1 = templates.vector_double()
-        self.assertIsInstance(v1, templates.vector_double)
+        v1 = templates.std.vector_double()
+        self.assertIsInstance(v1, templates.std.vector_double)
 
         v1.push_back(1.5)
 

@@ -3144,6 +3144,14 @@ return RETVAL;
 # A submodule always returns a PyObject.
 submodule_begin = """
 #if PY_MAJOR_VERSION >= 3
+static char {PY_prefix}_doc__[] =
+"XXX submodule doc"  //"{PY_library_doc}"
+;
+
+struct module_state {{
+    PyObject *error;
+}};
+
 static struct PyModuleDef moduledef = {{
     PyModuleDef_HEAD_INIT,
     "{PY_module_scope}", /* m_name */
@@ -3166,7 +3174,7 @@ PyObject *m;
 #if PY_MAJOR_VERSION >= 3
 m = PyModule_Create(&moduledef);
 #else
-m = Py_InitModule3((char *) "{PY_module_scope}", {PY_prefix}methods, {nullptr});
+m = Py_InitModule3((char *) "{PY_module_name}", {PY_prefix}methods, {nullptr});
 #endif
 if (m == {nullptr})
 +return {nullptr};-
