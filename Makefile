@@ -170,7 +170,7 @@ do-test :
 do-test-replace :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
 	export TEST_INPUT_DIR=$(top)/regression; \
-	export EXECUTABLE_DIR=$(python.dir); \
+	export EXECUTABLE_DIR=$(python.dir)/shroud; \
 	$(PYTHON) regression/do-test.py -r $(do-test-args)
 
 ########################################################################
