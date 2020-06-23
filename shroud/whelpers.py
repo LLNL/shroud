@@ -243,76 +243,8 @@ array->size = 1;
 array->rank = 0;  // scalar
 -}}{lend}""", fmt),
     )
-    ##########
-    # Generate C or C++ version of helper.
-    ##########
-    # 'char *' needs a custom handler because of the nature
-    # of NULL terminated strings.
-    ntypemap = typemap.lookup_type("char")
-    fmt.fcn_suffix = "char"
-    fmt.fcn_type = "string"
-    fmt.c_type = "char *"
-    fmt.Py_get = "PyString_AsString(item)"
-#    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-    fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
-    fmt.hname = "create_from_PyObject_char"
-    CHelpers["create_from_PyObject_char"] = create_from_PyObject_charptr(fmt)
-    fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
-    fmt.hname = "to_PyList_char"
-    CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
-    name = "fill_from_PyObject_char"
-    fmt.hname = name
-    fmt.hnamefunc = fmt.PY_helper_prefix + name
-    fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
-    CHelpers[name] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=["get_from_object_char"],
-        c_include="<string.h>",
-        cxx_include="<cstring>",
-        proto=fmt.hnameproto + ";",
-        source=wformat("""
-// helper {hname}
-// Copy PyObject to char array.
-// Return 0 on success, -1 on error.
-{PY_helper_static}{hnameproto}
-{{+
-{PY_typedef_converter} value;
-int i = {PY_helper_prefix}get_from_object_char(obj, &value);
-if (i == 0) {{+
-Py_DECREF(obj);
-return -1;
--}}
-if (value.data == {nullptr}) {{+
-in[0] = '\\0';
--}} else {{+
-{stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
-Py_DECREF(value.obj);
--}}
-return 0;
--}}""", fmt),
-    )
-
-    ########################################
-    # char **
-    name = "get_from_object_charptr"
-    fmt.size_var="size"
-    fmt.c_var="in"
-    fmt.hname = name
-    fmt.hnamefunc = fmt.PY_helper_prefix + name
-    CHelpers[name] = create_get_from_object_list(fmt)
-    # There are no 'list' or 'numpy' version of these functions.
-    # Use the one-true-version SHROUD_get_from_object_charptr.
-    CHelpers['get_from_object_charptr_list'] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=[name],
-    )
-    CHelpers['get_from_object_charptr_numpy'] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=[name],
-    )
-
+    
     ########################################
     # char *
     name = "get_from_object_char"
@@ -379,6 +311,76 @@ return 1;
         dependent_helpers=[name],
     )
     CHelpers['get_from_object_char_numpy'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+
+    ##########
+    # Generate C or C++ version of helper.
+    ##########
+    # 'char *' needs a custom handler because of the nature
+    # of NULL terminated strings.
+    ntypemap = typemap.lookup_type("char")
+    fmt.fcn_suffix = "char"
+    fmt.fcn_type = "string"
+    fmt.c_type = "char *"
+    fmt.Py_get = "PyString_AsString(item)"
+#    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+    fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
+    fmt.hname = "create_from_PyObject_char"
+    CHelpers["create_from_PyObject_char"] = create_from_PyObject_charptr(fmt)
+    fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
+    fmt.hname = "to_PyList_char"
+    CHelpers["to_PyList_char"] = create_to_PyList(fmt)
+
+    name = "fill_from_PyObject_char"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char *in,\t Py_ssize_t insize)", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["get_from_object_char"],
+        c_include="<string.h>",
+        cxx_include="<cstring>",
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+// helper {hname}
+// Copy PyObject to char array.
+// Return 0 on success, -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+{PY_typedef_converter} value;
+int i = {PY_helper_prefix}get_from_object_char(obj, &value);
+if (i == 0) {{+
+Py_DECREF(obj);
+return -1;
+-}}
+if (value.data == {nullptr}) {{+
+in[0] = '\\0';
+-}} else {{+
+{stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
+Py_DECREF(value.obj);
+-}}
+return 0;
+-}}""", fmt),
+    )
+
+    ########################################
+    # char **
+    name = "get_from_object_charptr"
+    fmt.size_var="size"
+    fmt.c_var="in"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    CHelpers[name] = create_get_from_object_list(fmt)
+    # There are no 'list' or 'numpy' version of these functions.
+    # Use the one-true-version SHROUD_get_from_object_charptr.
+    CHelpers['get_from_object_charptr_list'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+    CHelpers['get_from_object_charptr_numpy'] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[name],
     )
