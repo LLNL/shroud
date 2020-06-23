@@ -869,7 +869,8 @@ PY_size_func(
 
 // ----------------------------------------
 // Function:  bool bool_func
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  bool arg +intent(in)+value
 // Requested: py_bool_scalar_in
@@ -915,7 +916,8 @@ fail:
 
 // ----------------------------------------
 // Function:  bool returnBoolAndOthers
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Exact:     py_native_*_out

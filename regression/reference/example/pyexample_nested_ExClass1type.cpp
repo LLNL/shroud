@@ -155,7 +155,7 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
 ;
@@ -181,7 +181,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg +deref(result-as-arg)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getNameArg__doc__[] =
 "documentation"
 ;
@@ -275,7 +275,8 @@ PP_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  bool in +intent(in)+value
 // Requested: py_bool_scalar_in

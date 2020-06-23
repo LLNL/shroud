@@ -359,7 +359,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "c_char_*_inout_buf",
-                            "stmt1": "c_char_inout_buf"
+                            "stmt1": "c_char_*_inout_buf"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_name",
@@ -373,7 +373,7 @@
                             "stmt0": "f_char_*_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_inout_buf",
-                            "stmtc1": "c_char_inout_buf"
+                            "stmtc1": "c_char_*_inout_buf"
                         }
                     }
                 },
@@ -745,7 +745,7 @@
                             "py_var": "SHPy_rv",
                             "size_var": "SHSize_rv",
                             "stmt0": "py_string_&_in",
-                            "stmt1": "py_string_in"
+                            "stmt1": "py_string_&_in"
                         }
                     }
                 },
@@ -1024,7 +1024,7 @@
                             "py_var": "SHPy_name",
                             "size_var": "SHSize_name",
                             "stmt0": "py_string_&_inout",
-                            "stmt1": "py_string_inout"
+                            "stmt1": "py_string_&_inout"
                         }
                     },
                     "value": {

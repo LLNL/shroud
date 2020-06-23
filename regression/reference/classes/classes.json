@@ -559,7 +559,7 @@
                                 "numpy_type": "NPY_BOOL",
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_bool_result",
+                                "stmt0": "py_bool_scalar_result",
                                 "stmt1": "py_bool_result"
                             }
                         },
@@ -1022,8 +1022,8 @@
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_shadow_result",
-                                "stmt1": "py_shadow_result"
+                                "stmt0": "py_shadow_*_result",
+                                "stmt1": "py_shadow_*_result"
                             }
                         },
                         "ast": {
@@ -1115,8 +1115,8 @@
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_string_result",
-                                "stmt1": "py_string_result"
+                                "stmt0": "py_string_&_result",
+                                "stmt1": "py_string_&_result"
                             }
                         },
                         "ast": {
@@ -1803,8 +1803,8 @@
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_string_result",
-                                "stmt1": "py_string_result"
+                                "stmt0": "py_string_&_result",
+                                "stmt1": "py_string_&_result"
                             }
                         },
                         "ast": {
@@ -2039,8 +2039,8 @@
                                 "numpy_type": null,
                                 "py_var": "SHTPy_rv",
                                 "size_var": "SHSize_rv",
-                                "stmt0": "py_shadow_result",
-                                "stmt1": "py_shadow_result"
+                                "stmt0": "py_shadow_&_result",
+                                "stmt1": "py_shadow_&_result"
                             }
                         },
                         "ast": {
@@ -2422,7 +2422,7 @@
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_shadow_*_in",
-                            "stmt1": "py_shadow_in"
+                            "stmt1": "py_shadow_*_in"
                         }
                     }
                 },
@@ -2634,8 +2634,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_shadow_result",
-                        "stmt1": "py_shadow_result"
+                        "stmt0": "py_shadow_*_result",
+                        "stmt1": "py_shadow_*_result"
                     }
                 },
                 "ast": {
@@ -2787,8 +2787,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_shadow_result",
-                        "stmt1": "py_shadow_result"
+                        "stmt0": "py_shadow_&_result",
+                        "stmt1": "py_shadow_&_result"
                     }
                 },
                 "ast": {
@@ -3165,8 +3165,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_string_result",
-                        "stmt1": "py_string_result"
+                        "stmt0": "py_string_&_result",
+                        "stmt1": "py_string_&_result"
                     }
                 },
                 "ast": {

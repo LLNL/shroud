@@ -55,11 +55,11 @@ PP_local_function1(
 
 // ----------------------------------------
 // Function:  bool isNameValid
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 static char PP_isNameValid__doc__[] =
 "documentation"
 ;
@@ -100,7 +100,8 @@ fail:
 
 // ----------------------------------------
 // Function:  bool isInitialized
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 static char PP_isInitialized__doc__[] =
 "documentation"
 ;
@@ -133,8 +134,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 static PyObject *
 PP_test_names(
   PyObject *SHROUD_UNUSED(self),
@@ -164,8 +164,7 @@ PP_test_names(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in

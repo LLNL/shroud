@@ -8,6 +8,20 @@
 //
 #include "pyclassesmodule.hpp"
 
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
+#define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromSize_t PyLong_FromSize_t
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
+
 const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Class2_capsule_name = "Class2";
 const char *PY_Singleton_capsule_name = "Singleton";

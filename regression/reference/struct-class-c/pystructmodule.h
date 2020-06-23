@@ -29,7 +29,7 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
 int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize);
 int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize);
+    const char *name, char ***pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     STR_SHROUD_converter_value *value);
 int STR_SHROUD_create_from_PyObject_double(PyObject *obj,

@@ -30,10 +30,10 @@
 #endif
 
 // helper create_from_PyObject_char
-// Convert obj into an array of type char *
+// Convert obj into an array of type char *.
 // Return -1 on error.
 static int SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
+    const char *name, char ***pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -42,7 +42,7 @@ static int SHROUD_create_from_PyObject_char(PyObject *obj,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = (char * *) malloc(size * sizeof(char *));
+    char **in = (char **) calloc(size, sizeof(char *));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyString_AsString(item);
@@ -1273,7 +1273,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Exact:     py_void_result
+// Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1310,7 +1310,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Exact:     py_void_result
+// Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in

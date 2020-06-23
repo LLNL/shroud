@@ -118,8 +118,7 @@ PY_passClassByValue(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Class1 * arg +intent(in)
-// Requested: py_shadow_*_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_*_in
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -155,7 +154,7 @@ PY_useclass(
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Exact:     py_shadow_result
+// Exact:     py_shadow_*_result
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -179,7 +178,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
-// Exact:     py_shadow_result
+// Exact:     py_shadow_&_result
 static char PY_getClassReference__doc__[] =
 "documentation"
 ;
@@ -261,7 +260,7 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

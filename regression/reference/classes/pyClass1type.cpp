@@ -121,7 +121,8 @@ PY_Method1(
 
 // ----------------------------------------
 // Function:  bool equivalent
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  const Class1 & obj2 +intent(in)
 // Exact:     py_shadow_&_in
@@ -169,7 +170,7 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Exact:     py_shadow_result
+// Exact:     py_shadow_*_result
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -197,7 +198,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PY_getName__doc__[] =
 "documentation"
 ;

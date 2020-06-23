@@ -14,6 +14,20 @@
 #include <cstdlib>
 #include <cstring>
 
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
+#define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromSize_t PyLong_FromSize_t
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
+
 // helper get_from_object_char
 // Converter to PyObject to char *.
 // The returned status will be 1 for a successful conversion
@@ -27,7 +41,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
-        size = PyString_Size(obj);
+        size = PyBytes_GET_SIZE(strobj);
         value->obj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
@@ -123,10 +137,10 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 }
 
 // helper create_from_PyObject_char
-// Convert obj into an array of type char *
+// Convert obj into an array of type char *.
 // Return -1 on error.
 int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
+    const char *name, char ***pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -135,8 +149,7 @@ int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyString_AsString(item);

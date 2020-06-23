@@ -283,26 +283,6 @@
             "flat_name": "char",
             "sgroup": "char"
         },
-        "char_scalar": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "(int) {cxx_var}",
-            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
-            "PY_format": "c",
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character",
-            "flat_name": "char",
-            "sgroup": "schar"
-        },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",

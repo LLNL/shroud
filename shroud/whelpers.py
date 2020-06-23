@@ -243,6 +243,78 @@ array->size = 1;
 array->rank = 0;  // scalar
 -}}{lend}""", fmt),
     )
+
+    
+    ########################################
+    # char *
+    name = "get_from_object_char"
+    fmt.hname = name
+    fmt.hnamefunc = fmt.PY_helper_prefix + name
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=["PY_converter_type"],
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+// helper {hname}
+// Converter to PyObject to char *.
+// The returned status will be 1 for a successful conversion
+// and 0 if the conversion has failed.
+{PY_helper_static}{hnameproto}
+{{+
+size_t size = 0;
+char *out;
+if (PyUnicode_Check(obj)) {{+
+^#if PY_MAJOR_VERSION >= 3
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyBytes_AS_STRING(strobj);
+size = PyBytes_GET_SIZE(strobj);
+value->obj = strobj;  // steal reference
+^#else
+PyObject *strobj = PyUnicode_AsUTF8String(obj);
+out = PyString_AsString(strobj);
+size = PyString_Size(obj);
+value->obj = strobj;  // steal reference
+^#endif
+^#if PY_MAJOR_VERSION >= 3
+-}} else if (PyByteArray_Check(obj)) {{+
+out = PyBytes_AS_STRING(obj);
+size = PyBytes_GET_SIZE(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#else
+-}} else if (PyString_Check(obj)) {{+
+out = PyString_AsString(obj);
+size = PyString_Size(obj);
+value->obj = obj;
+Py_INCREF(obj);
+^#endif
+-}} else if (obj == Py_None) {{+
+out = NULL;
+size = 0;
+value->obj = NULL;
+-}} else {{+
+PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
+return 0;
+-}}
+value->data = out;
+value->size = size;
+return 1;
+-}}
+""", fmt),
+    )
+    # There are no 'list' or 'numpy' version of these functions.
+    # Use the one-true-version get_from_object_char.
+    CHelpers['get_from_object_char_list'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+    CHelpers['get_from_object_char_numpy'] = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[name],
+    )
+
     ##########
     # Generate C or C++ version of helper.
     ##########
@@ -256,7 +328,7 @@ array->rank = 0;  // scalar
 #    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
     fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
     fmt.hname = "create_from_PyObject_char"
-    CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
+    CHelpers["create_from_PyObject_char"] = create_from_PyObject_charptr(fmt)
     fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
@@ -309,76 +381,6 @@ return 0;
         dependent_helpers=[name],
     )
     CHelpers['get_from_object_charptr_numpy'] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=[name],
-    )
-
-    ########################################
-    # char *
-    name = "get_from_object_char"
-    fmt.hname = name
-    fmt.hnamefunc = fmt.PY_helper_prefix + name
-    fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
-    CHelpers[name] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=["PY_converter_type"],
-        proto=fmt.hnameproto + ";",
-        source=wformat("""
-// helper {hname}
-// Converter to PyObject to char *.
-// The returned status will be 1 for a successful conversion
-// and 0 if the conversion has failed.
-{PY_helper_static}{hnameproto}
-{{+
-size_t size = 0;
-char *out;
-if (PyUnicode_Check(obj)) {{+
-^#if PY_MAJOR_VERSION >= 3
-PyObject *strobj = PyUnicode_AsUTF8String(obj);
-out = PyBytes_AS_STRING(strobj);
-size = PyString_Size(obj);
-value->obj = strobj;  // steal reference
-^#else
-PyObject *strobj = PyUnicode_AsUTF8String(obj);
-out = PyString_AsString(strobj);
-size = PyString_Size(obj);
-value->obj = strobj;  // steal reference
-^#endif
-^#if PY_MAJOR_VERSION >= 3
--}} else if (PyByteArray_Check(obj)) {{+
-out = PyBytes_AS_STRING(obj);
-size = PyBytes_GET_SIZE(obj);
-value->obj = obj;
-Py_INCREF(obj);
-^#else
--}} else if (PyString_Check(obj)) {{+
-out = PyString_AsString(obj);
-size = PyString_Size(obj);
-value->obj = obj;
-Py_INCREF(obj);
-^#endif
--}} else if (obj == Py_None) {{+
-out = NULL;
-size = 0;
-value->obj = NULL;
--}} else {{+
-PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
-return 0;
--}}
-value->data = out;
-value->size = size;
-return 1;
--}}
-""", fmt),
-    )
-    # There are no 'list' or 'numpy' version of these functions.
-    # Use the one-true-version get_from_object_char.
-    CHelpers['get_from_object_char_list'] = dict(
-        name=fmt.hnamefunc,
-        dependent_helpers=[name],
-    )
-    CHelpers['get_from_object_char_numpy'] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[name],
     )
@@ -890,6 +892,50 @@ return -1;
 -}}
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 {c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+{stdlib}free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""", fmt),
+    )
+    return helper
+    
+def create_from_PyObject_charptr(fmt):
+    """Create helper to convert list of PyObjects to C array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char ***pin,\t Py_ssize_t *psize)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type char *.
+// Return -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};

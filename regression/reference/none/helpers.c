@@ -335,10 +335,10 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var, size_t c_v
 ##### start create_from_PyObject_char source
 
 // helper create_from_PyObject_char
-// Convert obj into an array of type char *
+// Convert obj into an array of type char *.
 // Return -1 on error.
 static int SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
+    const char *name, char ***pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -347,8 +347,7 @@ static int SHROUD_create_from_PyObject_char(PyObject *obj,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyString_AsString(item);
@@ -2921,7 +2920,7 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
-        size = PyString_Size(obj);
+        size = PyBytes_GET_SIZE(strobj);
         value->obj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);

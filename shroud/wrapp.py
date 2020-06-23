@@ -1931,7 +1931,8 @@ return 1;""",
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)
         else:
-            stmts = ["py", sgroup, "result"]
+            spointer = ast.get_indirect_stmt()
+            stmts = ["py", sgroup, spointer, "result"]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
@@ -2623,6 +2624,7 @@ extern PyObject *{PY_prefix}error_obj;
         if need_numpy:
             self.add_numpy_includes(output)
         self.write_headers(hinclude, output)
+        output.append(cpp_boilerplate)
 
         if hsource:
             output.extend(hsource)
@@ -3648,7 +3650,7 @@ py_statements = [
         ]
     ),
     dict(
-        name="py_void_result",
+        name="py_void_*_result",
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),
@@ -4047,9 +4049,31 @@ py_statements = [
         object_created=True,
     ),
 ########################################
-# char *
+# char
     dict(
-        name="py_char_result",
+        # Get a string from argument but only pass first character to C++.
+        # Since char is a scalar, need to actually get a char * - parse_format, parse_args.
+        # XXX - make sure c_var is only 1 long?
+        name="py_char_scalar_in",
+        arg_declare=[
+            "char *{c_var};",
+        ],
+        parse_format="s",
+        parse_args=["&{c_var}"],
+        arg_call=["{c_var}[0]"],
+    ),
+    dict(
+        name="py_char_scalar_result",
+        declare=[
+            "{PyObject} * {py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);",
+        ],
+        object_created=True,
+    ),
+    dict(
+        name="py_char_*_result",
         fmtdict=dict(
             ctor_expr="{c_var}",
         ),
@@ -4108,8 +4132,9 @@ py_statements = [
     
 ########################################
 # string
+# ctor_expr is arguments to PyString_FromStringAndSize.
     dict(
-        name="py_string_in",
+        name="py_string_scalar_in",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
@@ -4117,7 +4142,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_inout",
+        name="py_string_&_in",
+        base="py_string_scalar_in",
+    ),
+    dict(
+        name="py_string_scalar_inout",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
@@ -4125,7 +4154,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_out",
+        name="py_string_&_inout",
+        base="py_string_scalar_inout",
+    ),
+    dict(
+        name="py_string_scalar_out",
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
@@ -4134,24 +4167,38 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_result",
+        name="py_string_&_out",
+        base="py_string_scalar_out",
+    ),
+    dict(
+        name="py_string_scalar_result",
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
+        name="py_string_*_result",
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
+    ),
+    dict(
+        name="py_string_&_result",
+        base="py_string_*_result",
+    ),
+    dict(
         name="py_string_*_in",
-        base="py_string_in",
+        base="py_string_scalar_in",
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_string_*_inout",
-        base="py_string_inout",
+        base="py_string_scalar_inout",
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_string_*_out",
-        base="py_string_out",
+        base="py_string_scalar_out",
         arg_call=["&{cxx_var}"],
     ),
 
@@ -4457,7 +4504,7 @@ py_statements = [
 ########################################
 # shadow a.k.a class
     dict(
-        name="py_shadow_in",
+        name="py_shadow_*_in",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4466,7 +4513,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_inout",
+        name="py_shadow_*_inout",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4475,7 +4522,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_out",
+        name="py_shadow_*_out",
         declare=[
             "{PyObject} *{py_var} = {nullptr};"
         ],
@@ -4495,7 +4542,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_shadow_result",
+        name="py_shadow_*_result",
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
 #            ],
@@ -4515,13 +4562,17 @@ py_statements = [
 #            goto_fail=True,
     ),
     dict(
+        name="py_shadow_&_result",
+        base="py_shadow_*_result",
+    ),
+    dict(
         name="py_shadow_scalar_in",
-        base="py_shadow_in",
+        base="py_shadow_*_in",
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_shadow_&_in",
-        base="py_shadow_in",
+        base="py_shadow_*_in",
         arg_call=["*{cxx_var}"],
     ),
     

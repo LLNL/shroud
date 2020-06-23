@@ -96,15 +96,13 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_scalar_result
 // ----------------------------------------
 // Argument:  const std::string & arg1 +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 // ----------------------------------------
 // Argument:  const std::string & arg2 +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
 ;
@@ -220,8 +218,7 @@ PY_UseDefaultArguments_arg1_arg2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 static PyObject *
 PY_OverloadedFunction_from_name(
   PyObject *SHROUD_UNUSED(self),
@@ -350,8 +347,7 @@ PY_FortranGenericOverloaded_0(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: py_native_scalar_in
@@ -676,7 +672,7 @@ PY_getMinMax(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

@@ -1209,8 +1209,6 @@ class GenFunctions(object):
                     pass
                 elif arg.is_indirect():
                     has_buf_arg = True
-                else:
-                    arg.set_type(typemap.lookup_type("char_scalar"))
             elif arg_typemap.base == "vector":
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
@@ -1232,9 +1230,6 @@ class GenFunctions(object):
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.base == "string":
-            if result_typemap.name == "char" and not result_is_ptr:
-                # char functions cannot be wrapped directly in intel 15.
-                ast.set_type(typemap.lookup_type("char_scalar"))
             has_string_result = True
             result_as_arg = fmt.F_string_result_as_arg
             result_name = result_as_arg or fmt.C_string_result_as_arg
