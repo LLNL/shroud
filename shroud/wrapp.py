@@ -2624,6 +2624,7 @@ extern PyObject *{PY_prefix}error_obj;
         if need_numpy:
             self.add_numpy_includes(output)
         self.write_headers(hinclude, output)
+        output.append(cpp_boilerplate)
 
         if hsource:
             output.extend(hsource)

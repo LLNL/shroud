@@ -337,7 +337,7 @@ if (PyUnicode_Check(obj)) {{+
 ^#if PY_MAJOR_VERSION >= 3
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyBytes_AS_STRING(strobj);
-size = PyString_Size(obj);
+size = PyBytes_GET_SIZE(strobj);
 value->obj = strobj;  // steal reference
 ^#else
 PyObject *strobj = PyUnicode_AsUTF8String(obj);

@@ -14,6 +14,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
+#define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromSize_t PyLong_FromSize_t
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
+
 // helper get_from_object_char
 // Converter to PyObject to char *.
 // The returned status will be 1 for a successful conversion
@@ -27,7 +41,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
-        size = PyString_Size(obj);
+        size = PyBytes_GET_SIZE(strobj);
         value->obj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
