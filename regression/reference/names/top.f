@@ -121,8 +121,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
-        ! Requested: c_char_*_inout_buf
-        ! Match:     c_char_inout_buf
+        ! Exact:     c_char_*_inout_buf
         subroutine c_get_name_bufferify(name, worktrim, worklen) &
                 bind(C, name="TES_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -425,8 +424,7 @@ contains
     ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
     ! Requested: f_char_*_inout
     ! Match:     f_default
-    ! Requested: c_char_*_inout_buf
-    ! Match:     c_char_inout_buf
+    ! Exact:     c_char_*_inout_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(INOUT) :: name

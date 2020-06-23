@@ -182,8 +182,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 // ----------------------------------------
 // Argument:  const char * src +intent(in)
 // Requested: c_char_*_in
@@ -232,8 +231,7 @@ void STR_pass_char_ptr_in_out(char * s)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-// Requested: c_char_*_inout_buf
-// Match:     c_char_inout_buf
+// Exact:     c_char_*_inout_buf
 void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
@@ -250,8 +248,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr1 +deref(allocatable)
-// Requested: c_char_*_result
-// Match:     c_char_result
+// Exact:     c_char_*_result
 // start STR_get_char_ptr1
 const char * STR_get_char_ptr1(void)
 {
@@ -272,8 +269,7 @@ const char * STR_get_char_ptr1(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_char_*_result_buf_allocatable
-// Match:     c_char_result_buf_allocatable
+// Exact:     c_char_*_result_buf_allocatable
 // start STR_get_char_ptr1_bufferify
 void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
 {
@@ -296,8 +292,7 @@ void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
-// Requested: c_char_*_result
-// Match:     c_char_result
+// Exact:     c_char_*_result
 // start STR_get_char_ptr2
 const char * STR_get_char_ptr2(void)
 {
@@ -318,8 +313,7 @@ const char * STR_get_char_ptr2(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_char_*_result_buf
-// Match:     c_char_result_buf
+// Exact:     c_char_*_result_buf
 // start STR_get_char_ptr2_bufferify
 void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
 {
@@ -336,8 +330,7 @@ void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr3 +deref(result-as-arg)
-// Requested: c_char_*_result
-// Match:     c_char_result
+// Exact:     c_char_*_result
 // start STR_get_char_ptr3
 const char * STR_get_char_ptr3(void)
 {
@@ -358,8 +351,7 @@ const char * STR_get_char_ptr3(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * output +intent(out)+len(Noutput)
-// Requested: c_char_*_result_buf
-// Match:     c_char_result_buf
+// Exact:     c_char_*_result_buf
 // start STR_get_char_ptr3_bufferify
 void STR_get_char_ptr3_bufferify(char * output, int Noutput)
 {
@@ -376,8 +368,7 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput)
  */
 // ----------------------------------------
 // Function:  const char * getCharPtr4 +deref(raw)
-// Requested: c_char_*_result
-// Match:     c_char_result
+// Exact:     c_char_*_result
 const char * STR_get_char_ptr4(void)
 {
     // splicer begin function.get_char_ptr4
@@ -1280,8 +1271,7 @@ void STR_explicit2(char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 void STR_explicit2_bufferify(char * name, int AAtrim)
 {
     // splicer begin function.explicit2_bufferify
@@ -1324,8 +1314,7 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * dest +intent(out)+len(Ndest)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 // ----------------------------------------
 // Argument:  const char * src +intent(in)
 // Requested: c_char_*_in

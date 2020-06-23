@@ -78,8 +78,7 @@ void TES_get_name(char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
-// Requested: c_char_*_inout_buf
-// Match:     c_char_inout_buf
+// Exact:     c_char_*_inout_buf
 void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 {
     // splicer begin function.get_name_bufferify

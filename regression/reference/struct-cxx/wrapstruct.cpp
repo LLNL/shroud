@@ -106,8 +106,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
@@ -304,8 +303,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
 {

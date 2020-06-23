@@ -1732,11 +1732,11 @@ fc_statements = [
     ),
 
     dict(
-        name="c_char_result",
+        name="c_char_*_result",
         return_cptr=True,
     ),
     dict(
-        name="c_char_in_buf",
+        name="c_char_*_in_buf",
         buf_args=["arg", "len_trim"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrFree",
@@ -1749,7 +1749,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_char_out_buf",
+        name="c_char_*_out_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrBlankFill",
         post_call=[
@@ -1757,7 +1757,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_char_inout_buf",
+        name="c_char_*_inout_buf",
         buf_args=["arg", "len_trim", "len"],
         cxx_local_var="pointer",
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -1773,7 +1773,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_char_result_buf",
+        name="c_char_*_result_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         post_call=[
@@ -1783,7 +1783,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_char_result_buf_allocatable",
+        name="c_char_*_result_buf_allocatable",
         buf_args=["context"],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
