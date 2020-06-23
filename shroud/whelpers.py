@@ -256,7 +256,7 @@ array->rank = 0;  // scalar
 #    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
     fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
     fmt.hname = "create_from_PyObject_char"
-    CHelpers["create_from_PyObject_char"] = create_from_PyObject(fmt)
+    CHelpers["create_from_PyObject_char"] = create_from_PyObject_charptr(fmt)
     fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
@@ -865,6 +865,50 @@ return 0;
     return helper
     
 def create_from_PyObject(fmt):
+    """Create helper to convert list of PyObjects to C array.
+    """
+    fmt.hnamefunc = wformat(
+        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
+    helper = dict(
+        name=fmt.hnamefunc,
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
+        source=wformat(
+                """
+// helper {hname}
+// Convert obj into an array of type {c_type}
+// Return -1 on error.
+{PY_helper_static}{hnameproto}
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+{stdlib}free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
+return -1;
+-}}
+-}}
+Py_DECREF(seq);
+*pin = in;
+*psize = size;
+return 0;
+-}}""", fmt),
+    )
+    return helper
+    
+def create_from_PyObject_charptr(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
     fmt.hnamefunc = wformat(
