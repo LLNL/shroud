@@ -68,8 +68,7 @@ PyObject *PY_error_obj;
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char status +intent(in)+value
-// Requested: py_schar_scalar_in
-// Match:     py_default
+// Exact:     py_char_scalar_in
 static char PY_passChar__doc__[] =
 "documentation"
 ;
@@ -85,24 +84,23 @@ PY_passChar(
   PyObject *kwds)
 {
 // splicer begin function.pass_char
-    char status;
+    char *status;
     const char *SHT_kwlist[] = {
         "status",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:passChar",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passChar",
         const_cast<char **>(SHT_kwlist), &status))
         return nullptr;
 
-    passChar(status);
+    passChar(status[0]);
     Py_RETURN_NONE;
 // splicer end function.pass_char
 }
 
 // ----------------------------------------
 // Function:  char returnChar
-// Requested: py_schar_scalar_result
-// Match:     py_default
+// Exact:     py_char_scalar_result
 static char PY_returnChar__doc__[] =
 "documentation"
 ;
@@ -1114,8 +1112,7 @@ PY_explicit1(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char status +intent(in)+value
-// Requested: py_schar_scalar_in
-// Match:     py_default
+// Exact:     py_char_scalar_in
 static char PY_CpassChar__doc__[] =
 "documentation"
 ;
@@ -1131,24 +1128,23 @@ PY_CpassChar(
   PyObject *kwds)
 {
 // splicer begin function.cpass_char
-    char status;
+    char *status;
     const char *SHT_kwlist[] = {
         "status",
         nullptr };
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwds, "c:CpassChar",
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:CpassChar",
         const_cast<char **>(SHT_kwlist), &status))
         return nullptr;
 
-    CpassChar(status);
+    CpassChar(status[0]);
     Py_RETURN_NONE;
 // splicer end function.cpass_char
 }
 
 // ----------------------------------------
 // Function:  char CreturnChar
-// Requested: py_schar_scalar_result
-// Match:     py_default
+// Exact:     py_char_scalar_result
 static char PY_CreturnChar__doc__[] =
 "documentation"
 ;

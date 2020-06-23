@@ -95,8 +95,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char status +intent(in)+value
-// Requested: c_schar_scalar_in
-// Match:     c_default
+// Exact:     c_char_scalar_in
 void STR_pass_char(char status)
 {
     // splicer begin function.pass_char
@@ -110,8 +109,7 @@ void STR_pass_char(char status)
  */
 // ----------------------------------------
 // Function:  char returnChar
-// Requested: c_schar_scalar_result
-// Match:     c_default
+// Exact:     c_char_scalar_result
 char STR_return_char(void)
 {
     // splicer begin function.return_char
@@ -130,8 +128,7 @@ char STR_return_char(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_schar_scalar_result_buf
-// Match:     c_schar_result_buf
+// Exact:     c_char_scalar_result_buf
 void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.return_char_bufferify
@@ -1290,8 +1287,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_schar_scalar_result_buf
-// Match:     c_schar_result_buf
+// Exact:     c_char_scalar_result_buf
 void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.creturn_char_bufferify

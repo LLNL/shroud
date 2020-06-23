@@ -29,20 +29,20 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_in",
-                            "stmt1": "c_default"
+                            "stmt0": "c_char_scalar_in",
+                            "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
-                            "f_type": "character",
+                            "f_type": "character(*)",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_schar_scalar_in",
+                            "stmt0": "f_char_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_scalar_in",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_char_scalar_in",
+                            "stmtc1": "c_char_scalar_in"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -56,11 +56,12 @@
                             "cxx_type": "char",
                             "cxx_var": "status",
                             "data_var": "SHData_status",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_status",
+                            "pytmp_var": "SHTPy_status",
                             "size_var": "SHSize_status",
-                            "stmt0": "py_schar_scalar_in",
-                            "stmt1": "py_default"
+                            "stmt0": "py_char_scalar_in",
+                            "stmt1": "py_char_scalar_in"
                         }
                     }
                 },
@@ -82,7 +83,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "typemap_name": "char_scalar"
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
@@ -132,18 +133,18 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_schar_scalar_result",
-                        "stmt1": "c_default"
+                        "stmt0": "c_char_scalar_result",
+                        "stmt1": "c_char_scalar_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_type": "character",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_schar_scalar_result",
+                        "stmt0": "f_char_scalar_result",
                         "stmt1": "f_default",
-                        "stmtc0": "c_schar_scalar_result_buf",
-                        "stmtc1": "c_schar_result_buf"
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -155,11 +156,11 @@
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
-                        "numpy_type": null,
+                        "numpy_type": "NPY_INTP",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_schar_scalar_result",
-                        "stmt1": "py_default"
+                        "stmt0": "py_char_scalar_result",
+                        "stmt1": "py_char_scalar_result"
                     }
                 },
                 "ast": {
@@ -171,7 +172,7 @@
                     "specifier": [
                         "char"
                     ],
-                    "typemap_name": "char_scalar"
+                    "typemap_name": "char"
                 },
                 "decl": "char returnChar()",
                 "declgen": "char returnChar()",
@@ -215,21 +216,21 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_result_buf",
-                            "stmt1": "c_schar_result_buf"
+                            "stmt0": "c_char_scalar_result_buf",
+                            "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
-                            "f_type": "character",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_schar_*_result",
+                            "stmt0": "f_char_*_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_*_result_buf",
-                            "stmtc1": "c_schar_result_buf"
+                            "stmtc0": "c_char_*_result_buf",
+                            "stmtc1": "c_char_*_result_buf"
                         }
                     }
                 },
@@ -272,7 +273,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "typemap_name": "char_scalar"
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
@@ -819,7 +820,7 @@
                         "stmt0": "f_char_scalar_result_allocatable",
                         "stmt1": "f_char_scalar_result_allocatable",
                         "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1019,7 +1020,7 @@
                         "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -6280,20 +6281,20 @@
                             "cxx_var": "status",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_in",
-                            "stmt1": "c_default"
+                            "stmt0": "c_char_scalar_in",
+                            "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
-                            "f_type": "character",
+                            "f_type": "character(*)",
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_schar_scalar_in",
+                            "stmt0": "f_char_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_scalar_in",
-                            "stmtc1": "c_default"
+                            "stmtc0": "c_char_scalar_in",
+                            "stmtc1": "c_char_scalar_in"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6307,11 +6308,12 @@
                             "cxx_type": "char",
                             "cxx_var": "status",
                             "data_var": "SHData_status",
-                            "numpy_type": null,
+                            "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_status",
+                            "pytmp_var": "SHTPy_status",
                             "size_var": "SHSize_status",
-                            "stmt0": "py_schar_scalar_in",
-                            "stmt1": "py_default"
+                            "stmt0": "py_char_scalar_in",
+                            "stmt1": "py_char_scalar_in"
                         }
                     }
                 },
@@ -6333,7 +6335,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "typemap_name": "char_scalar"
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
@@ -6385,18 +6387,18 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "c_schar_scalar_result",
-                        "stmt1": "c_default"
+                        "stmt0": "c_char_scalar_result",
+                        "stmt1": "c_char_scalar_result"
                     },
                     "fmtf": {
                         "cxx_type": "char",
-                        "f_type": "character",
+                        "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_schar_scalar_result",
+                        "stmt0": "f_char_scalar_result",
                         "stmt1": "f_default",
-                        "stmtc0": "c_schar_scalar_result_buf",
-                        "stmtc1": "c_schar_result_buf"
+                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -6408,11 +6410,11 @@
                         "cxx_type": "char",
                         "cxx_var": "SHCXX_rv",
                         "data_var": "SHData_rv",
-                        "numpy_type": null,
+                        "numpy_type": "NPY_INTP",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_schar_scalar_result",
-                        "stmt1": "py_default"
+                        "stmt0": "py_char_scalar_result",
+                        "stmt1": "py_char_scalar_result"
                     }
                 },
                 "ast": {
@@ -6424,7 +6426,7 @@
                     "specifier": [
                         "char"
                     ],
-                    "typemap_name": "char_scalar"
+                    "typemap_name": "char"
                 },
                 "decl": "char CreturnChar()",
                 "declgen": "char CreturnChar()",
@@ -6470,21 +6472,21 @@
                             "cxx_var": "SHC_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "c_schar_scalar_result_buf",
-                            "stmt1": "c_schar_result_buf"
+                            "stmt0": "c_char_scalar_result_buf",
+                            "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
-                            "f_type": "character",
+                            "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_schar_*_result",
+                            "stmt0": "f_char_*_result",
                             "stmt1": "f_default",
-                            "stmtc0": "c_schar_*_result_buf",
-                            "stmtc1": "c_schar_result_buf"
+                            "stmtc0": "c_char_*_result_buf",
+                            "stmtc1": "c_char_*_result_buf"
                         }
                     }
                 },
@@ -6527,7 +6529,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "typemap_name": "char_scalar"
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [

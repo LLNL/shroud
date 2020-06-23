@@ -980,7 +980,7 @@
                         "stmt0": "f_char_scalar_result_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
                         "array_size": "1",

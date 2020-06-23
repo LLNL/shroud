@@ -52,8 +52,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char status +intent(in)+value
-    ! Requested: c_schar_scalar_in
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_in
     interface
         subroutine pass_char(status) &
                 bind(C, name="STR_pass_char")
@@ -65,8 +64,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  char returnChar
-    ! Requested: c_schar_scalar_result
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_result
     interface
         function c_return_char() &
                 result(SHT_rv) &
@@ -83,14 +81,13 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_schar_*_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_*_result_buf
     interface
         subroutine c_return_char_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_return_char_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_return_char_bufferify
     end interface
@@ -1020,8 +1017,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char status +intent(in)+value
-    ! Requested: c_schar_scalar_in
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_in
     interface
         subroutine cpass_char(status) &
                 bind(C, name="CpassChar")
@@ -1033,8 +1029,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  char CreturnChar
-    ! Requested: c_schar_scalar_result
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_result
     interface
         function c_creturn_char() &
                 result(SHT_rv) &
@@ -1051,14 +1046,13 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_schar_*_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_*_result_buf
     interface
         subroutine c_creturn_char_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_creturn_char_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: SHF_rv
+            character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_creturn_char_bufferify
     end interface
@@ -1177,17 +1171,15 @@ contains
     ! ----------------------------------------
     ! Function:  char returnChar
     ! char returnChar
-    ! Requested: f_schar_scalar_result
+    ! Requested: f_char_scalar_result
     ! Match:     f_default
     ! Function:  void returnChar
-    ! Requested: c_schar_scalar_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: f_schar_*_result
+    ! Requested: f_char_*_result
     ! Match:     f_default
-    ! Requested: c_schar_*_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_*_result_buf
     !>
     !! \brief return a char argument (non-pointer)
     !!
@@ -1269,8 +1261,7 @@ contains
     ! const char * getCharPtr1 +deref(allocatable)
     ! Exact:     f_char_scalar_result_allocatable
     ! Function:  void getCharPtr1
-    ! Requested: c_char_scalar_result_buf
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_char_*_result_allocatable
@@ -1299,8 +1290,7 @@ contains
     ! Requested: f_char_scalar_result_result-as-arg
     ! Match:     f_default
     ! Function:  void getCharPtr2 +len(30)
-    ! Requested: c_char_scalar_result_buf
-    ! Match:     c_default
+    ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_char_*_result
@@ -2013,17 +2003,15 @@ contains
     ! ----------------------------------------
     ! Function:  char CreturnChar
     ! char CreturnChar
-    ! Requested: f_schar_scalar_result
+    ! Requested: f_char_scalar_result
     ! Match:     f_default
     ! Function:  void CreturnChar
-    ! Requested: c_schar_scalar_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: f_schar_*_result
+    ! Requested: f_char_*_result
     ! Match:     f_default
-    ! Requested: c_schar_*_result_buf
-    ! Match:     c_schar_result_buf
+    ! Exact:     c_char_*_result_buf
     !>
     !! \brief return a char argument (non-pointer), extern "C"
     !!

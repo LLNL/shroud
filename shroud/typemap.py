@@ -679,32 +679,12 @@ def initialize():
             PY_format="s",
             PY_ctor="PyString_FromString({ctor_expr})",
 #            PY_get="PyString_AsString({py_var})",
-            PYN_typenum="NPY_INTP",  # void *
+            PYN_typenum="NPY_INTP",  # void *    # XXX - 
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
             LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
             base="string",
             sgroup="char",
-        ),
-        # char scalar
-        char_scalar=Typemap(
-            "char_scalar",
-            cxx_type="char",
-            c_type="char",  # XXX - char *
-            f_type="character",
-            f_kind="C_CHAR",
-            f_c_type="character(kind=C_CHAR)",
-            f_c_module=dict(iso_c_binding=["C_CHAR"]),
-            PY_format="c",
-            # #-  PY_ctor='Py_BuildValue("c", (int) {c_var})',
-            PY_ctor="PyString_FromStringAndSize(&{c_var}, 1)",
-            # #- PY_build_format='c',
-            PY_build_arg="(int) {cxx_var}",
-            LUA_type="LUA_TSTRING",
-            LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
-            # # base='string',
-            sgroup='schar',
         ),
         # C++ std::string
         string=Typemap(
@@ -1319,8 +1299,10 @@ class CStmts(object):
     arg_call    - List of arguments passed to C function.
 
     Used with buf_args = "arg_decl".
-    c_arg_decl  - Add C declaration to C wrapper.
-    f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block.
+    c_arg_decl  - Add C declaration to C wrapper with buf_args=arg_decl
+    f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
+                  with buf_args=arg_decl.
+    f_result_decl - Declaration for function result.
     f_module    - Add module info to interface block.
     """
     def __init__(self,
@@ -1335,6 +1317,7 @@ class CStmts(object):
         return_type=None, return_cptr=False,
         c_arg_decl=[],
         f_arg_decl=[],
+        f_result_decl=[],
         f_module=None,
     ):
         self.name = name
@@ -1359,6 +1342,7 @@ class CStmts(object):
         self.return_cptr = return_cptr
         self.c_arg_decl = c_arg_decl
         self.f_arg_decl = f_arg_decl
+        self.f_result_decl = f_result_decl
         self.f_module = f_module
 
 class FStmts(object):
@@ -1731,6 +1715,38 @@ fc_statements = [
         # avoid catching f_native_*_result
     ),
 
+
+    ########################################
+    # char arg
+    dict(
+        name="c_char_scalar_in",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "char {c_var}",
+        ],
+        f_arg_decl=[
+            "character(kind=C_CHAR), value, intent(IN) :: {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR"]),
+    ),
+    dict(
+        name="c_char_scalar_result",
+        f_result_decl=[
+            "character(kind=C_CHAR) :: {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR"]),
+    ),
+    dict(
+        name="c_char_scalar_result_buf",
+        buf_args=["arg", "len"],
+        c_header=["<string.h>"],
+        cxx_header=["<cstring>"],
+        post_call=[
+            "{stdlib}memset({c_var}, ' ', {c_var_len});",
+            "{c_var}[0] = {cxx_var};",
+        ],
+    ),
+    
     dict(
         name="c_char_*_result",
         return_cptr=True,
@@ -1861,17 +1877,6 @@ fc_statements = [
     dict(
         name="f_char_scalar_result_allocatable",
         base="f_char_*_result_allocatable",
-    ),
-
-    dict(
-        name="c_schar_result_buf",
-        buf_args=["arg", "len"],
-        c_header=["<string.h>"],
-        cxx_header=["<cstring>"],
-        post_call=[
-            "{stdlib}memset({c_var}, ' ', {c_var_len});",
-            "{c_var}[0] = {cxx_var};",
-        ],
     ),
 
     dict(

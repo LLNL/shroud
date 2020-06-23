@@ -4048,7 +4048,29 @@ py_statements = [
         object_created=True,
     ),
 ########################################
-# char *
+# char
+    dict(
+        # Get a string from argument but only pass first character to C++.
+        # Since char is a scalar, need to actually get a char * - parse_format, parse_args.
+        # XXX - make sure c_var is only 1 long?
+        name="py_char_scalar_in",
+        arg_declare=[
+            "char *{c_var};",
+        ],
+        parse_format="s",
+        parse_args=["&{c_var}"],
+        arg_call=["{c_var}[0]"],
+    ),
+    dict(
+        name="py_char_scalar_result",
+        declare=[
+            "{PyObject} * {py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);",
+        ],
+        object_created=True,
+    ),
     dict(
         name="py_char_*_result",
         fmtdict=dict(
