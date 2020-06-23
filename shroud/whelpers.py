@@ -916,7 +916,7 @@ def create_from_PyObject_charptr(fmt):
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
     fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char ***pin,\t Py_ssize_t *psize)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         c_include="<stdlib.h>",   # malloc/free
@@ -925,7 +925,7 @@ def create_from_PyObject_charptr(fmt):
         source=wformat(
                 """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Convert obj into an array of type char *.
 // Return -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -935,7 +935,7 @@ PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
 return -1;
 -}}
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
+char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
 in[i] = {Py_get};

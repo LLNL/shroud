@@ -137,10 +137,10 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 }
 
 // helper create_from_PyObject_char
-// Convert obj into an array of type char *
+// Convert obj into an array of type char *.
 // Return -1 on error.
 int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
+    const char *name, char ***pin, Py_ssize_t *psize)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
@@ -149,8 +149,7 @@ int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
         in[i] = PyString_AsString(item);
