@@ -189,7 +189,7 @@ PP_ExClass2_tp_init(
 
 // ----------------------------------------
 // Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getName__doc__[] =
 "documentation"
 ;
@@ -215,7 +215,7 @@ PP_getName(
 
 // ----------------------------------------
 // Function:  const string & getName2 +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getName2__doc__[] =
 "documentation"
 ;
@@ -241,7 +241,7 @@ PP_getName2(
 
 // ----------------------------------------
 // Function:  string & getName3 +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getName3__doc__[] =
 "documentation"
 ;
@@ -267,7 +267,7 @@ PP_getName3(
 
 // ----------------------------------------
 // Function:  string & getName4 +deref(allocatable)
-// Exact:     py_string_result
+// Exact:     py_string_&_result
 static char PP_getName4__doc__[] =
 "documentation"
 ;
@@ -323,11 +323,10 @@ PP_GetNameLength(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
-// Exact:     py_shadow_result
+// Exact:     py_shadow_*_result
 // ----------------------------------------
 // Argument:  const ExClass1 * in +intent(in)
-// Requested: py_shadow_*_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_*_in
 static char PP_get_class1__doc__[] =
 "documentation"
 ;

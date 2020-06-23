@@ -269,7 +269,7 @@
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
                                     "stmt0": "py_shadow_*_in",
-                                    "stmt1": "py_shadow_in"
+                                    "stmt1": "py_shadow_*_in"
                                 }
                             }
                         },
@@ -396,7 +396,7 @@
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
                                     "stmt0": "py_shadow_*_in",
-                                    "stmt1": "py_shadow_in"
+                                    "stmt1": "py_shadow_*_in"
                                 }
                             }
                         },

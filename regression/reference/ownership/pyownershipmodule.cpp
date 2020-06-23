@@ -340,7 +340,7 @@ PY_createClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
-// Exact:     py_shadow_result
+// Exact:     py_shadow_*_result
 static char PY_getClassStatic__doc__[] =
 "documentation"
 ;
@@ -364,7 +364,7 @@ PY_getClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
-// Exact:     py_shadow_result
+// Exact:     py_shadow_*_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in

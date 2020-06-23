@@ -418,7 +418,8 @@ fail:
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(in)+rank(1)
 // Exact:     py_native_*_in_pointer_numpy

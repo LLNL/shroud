@@ -996,8 +996,8 @@
                         "numpy_type": "NPY_INTP",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_char_result",
-                        "stmt1": "py_char_result"
+                        "stmt0": "py_char_*_result",
+                        "stmt1": "py_char_*_result"
                     }
                 },
                 "ast": {
@@ -2988,7 +2988,7 @@
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_bool_result",
+                        "stmt0": "py_bool_scalar_result",
                         "stmt1": "py_bool_result"
                     }
                 },
@@ -3133,7 +3133,7 @@
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_bool_result",
+                        "stmt0": "py_bool_scalar_result",
                         "stmt1": "py_bool_result"
                     }
                 },

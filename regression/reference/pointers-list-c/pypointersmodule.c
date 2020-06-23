@@ -1349,7 +1349,7 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Exact:     py_void_result
+// Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in
@@ -1386,7 +1386,7 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Exact:     py_void_result
+// Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: py_native_scalar_in

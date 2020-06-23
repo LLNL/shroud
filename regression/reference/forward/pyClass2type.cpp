@@ -61,8 +61,7 @@ PY_Class2_tp_init(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
-// Requested: py_shadow_*_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_*_in
 static char PY_func1__doc__[] =
 "documentation"
 ;
@@ -96,8 +95,7 @@ PY_func1(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
-// Requested: py_shadow_*_in
-// Match:     py_shadow_in
+// Exact:     py_shadow_*_in
 static char PY_acceptClass3__doc__[] =
 "documentation"
 ;

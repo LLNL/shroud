@@ -2940,8 +2940,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_shadow_result",
-                        "stmt1": "py_shadow_result"
+                        "stmt0": "py_shadow_*_result",
+                        "stmt1": "py_shadow_*_result"
                     }
                 },
                 "ast": {
@@ -3079,8 +3079,8 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_shadow_result",
-                        "stmt1": "py_shadow_result"
+                        "stmt0": "py_shadow_*_result",
+                        "stmt1": "py_shadow_*_result"
                     }
                 },
                 "ast": {

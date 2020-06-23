@@ -3282,7 +3282,7 @@
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_bool_result",
+                        "stmt0": "py_bool_scalar_result",
                         "stmt1": "py_bool_result"
                     }
                 },
@@ -3427,7 +3427,7 @@
                         "numpy_type": "NPY_BOOL",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_bool_result",
+                        "stmt0": "py_bool_scalar_result",
                         "stmt1": "py_bool_result"
                     }
                 },

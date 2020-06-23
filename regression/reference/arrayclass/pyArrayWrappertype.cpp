@@ -522,7 +522,8 @@ PY_fetchVoidRef(
 
 // ----------------------------------------
 // Function:  bool checkPtr
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  void * array +intent(in)+value
 // Exact:     py_void_*_in
