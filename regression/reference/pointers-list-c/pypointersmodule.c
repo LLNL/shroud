@@ -357,7 +357,8 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     double * in = NULL;
     PyObject *SHTPy_in = NULL;
-    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, NULL, NULL, 0};
+    SHValue_in.name = "in";
     Py_ssize_t SHSize_in;
     double * out = NULL;
     PyObject *SHPy_out = NULL;
@@ -436,7 +437,8 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     double * in = NULL;
     PyObject *SHTPy_in = NULL;
-    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, NULL, NULL, 0};
+    SHValue_in.name = "in";
     Py_ssize_t SHSize_in;
     int * out = NULL;
     PyObject *SHPy_out = NULL;
@@ -756,7 +758,8 @@ PY_Sum(
     int len;
     int * values = NULL;
     PyObject *SHTPy_values = NULL;
-    POI_SHROUD_converter_value SHValue_values = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_values = {NULL, NULL, NULL, NULL, 0};
+    SHValue_values.name = "values";
     Py_ssize_t SHSize_values;
     int result;
     char *SHT_kwlist[] = {
@@ -869,7 +872,8 @@ PY_incrementIntArray(
     int * array = NULL;
     PyObject *SHPy_array;
     PyObject *SHTPy_array = NULL;
-    POI_SHROUD_converter_value SHValue_array = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_array = {NULL, NULL, NULL, NULL, 0};
+    SHValue_array.name = "array";
     Py_ssize_t SHSize_array;
     int sizein;
     char *SHT_kwlist[] = {
@@ -930,7 +934,8 @@ PY_fill_with_zeros(
     double * x = NULL;
     PyObject *SHPy_x;
     PyObject *SHTPy_x = NULL;
-    POI_SHROUD_converter_value SHValue_x = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_x = {NULL, NULL, NULL, NULL, 0};
+    SHValue_x.name = "x";
     Py_ssize_t SHSize_x;
     int x_length;
     char *SHT_kwlist[] = {
@@ -990,7 +995,8 @@ PY_accumulate(
 // splicer begin function.accumulate
     int * arr = NULL;
     PyObject *SHTPy_arr = NULL;
-    POI_SHROUD_converter_value SHValue_arr = {NULL, NULL, 0};
+    POI_SHROUD_converter_value SHValue_arr = {NULL, NULL, NULL, NULL, 0};
+    SHValue_arr.name = "arr";
     Py_ssize_t SHSize_arr;
     size_t len;
     char *SHT_kwlist[] = {

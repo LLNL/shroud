@@ -3926,6 +3926,7 @@ py_statements = [
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
             "Py_ssize_t {size_var};",
         ],
         post_parse=[
@@ -3957,6 +3958,7 @@ py_statements = [
             "PyObject *{py_var};",
             "PyObject *{pytmp_var} = {nullptr};",
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
             "Py_ssize_t {size_var};",
         ],
         post_parse=[
@@ -4749,6 +4751,7 @@ py_statements = [
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
             "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{field_name}\";",
             ],
         parse_format="O&",
         parse_args=["{hnamefunc0}", "&{value_var}"],

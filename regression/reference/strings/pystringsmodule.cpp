@@ -1209,7 +1209,8 @@ PY_PostDeclare(
 // splicer begin function.post_declare
     int * count = nullptr;
     PyObject *SHTPy_count = nullptr;
-    STR_SHROUD_converter_value SHValue_count = {NULL, NULL, 0};
+    STR_SHROUD_converter_value SHValue_count = {NULL, NULL, NULL, NULL, 0};
+    SHValue_count.name = "count";
     Py_ssize_t SHSize_count;
     char * name;
     const char *SHT_kwlist[] = {

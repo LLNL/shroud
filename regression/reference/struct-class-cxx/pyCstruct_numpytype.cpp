@@ -66,8 +66,10 @@ PY_Cstruct_numpy_tp_init(
 {
 // splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
     int nitems = 0;
-    STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, 0};
-    STR_SHROUD_converter_value SHValue_dvalue = {NULL, NULL, 0};
+    STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_ivalue.name = "ivalue";
+    STR_SHROUD_converter_value SHValue_dvalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_dvalue.name = "dvalue";
     const char *SHT_kwlist[] = {
         "nitems",
         "ivalue",

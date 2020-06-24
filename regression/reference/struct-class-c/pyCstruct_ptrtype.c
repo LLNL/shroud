@@ -61,8 +61,10 @@ PY_Cstruct_ptr_tp_init(
   PyObject *kwds)
 {
 // splicer begin class.Cstruct_ptr.method.cstruct_ptr_ctor
-    STR_SHROUD_converter_value SHValue_cfield = {NULL, NULL, 0};
-    STR_SHROUD_converter_value SHValue_const_dvalue = {NULL, NULL, 0};
+    STR_SHROUD_converter_value SHValue_cfield = {NULL, NULL, NULL, NULL, 0};
+    SHValue_cfield.name = "cfield";
+    STR_SHROUD_converter_value SHValue_const_dvalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_const_dvalue.name = "const_dvalue";
     char *SHT_kwlist[] = {
         "cfield",
         "const_dvalue",
