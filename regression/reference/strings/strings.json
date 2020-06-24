@@ -6886,7 +6886,7 @@
                             "cxx_type": "int",
                             "cxx_var": "count",
                             "data_var": "SHData_count",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_int",
+                            "hnamefunc0": "SHROUD_get_from_object_int_list",
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_count",
                             "pytmp_var": "SHTPy_count",

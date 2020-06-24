@@ -13,6 +13,14 @@
 // splicer begin header.include
 // splicer end header.include
 
+// helper PY_converter_type
+// Store PyObject and pointer to the data it contains.
+typedef struct {
+    PyObject *obj;
+    void *data;   // points into obj.
+    size_t size;
+} POI_SHROUD_converter_value;
+
 // splicer begin header.C_declaration
 // splicer end header.C_declaration
 

@@ -90,6 +90,23 @@ static int SHROUD_create_from_PyObject_double(PyObject *obj,
     return 0;
 }
 
+// helper get_from_object_double_list
+// Convert PyObject to double pointer.
+static int SHROUD_get_from_object_double_list(PyObject *obj,
+    POI_SHROUD_converter_value *value)
+{
+    double *in;
+    Py_ssize_t size;
+    if (SHROUD_create_from_PyObject_double(obj, "in", &in, 
+        &size) == -1) {
+        return 0;
+    }
+    value->obj = NULL;
+    value->data = (double *) in;
+    value->size = size;
+    return 1;
+}
+
 // helper create_from_PyObject_int
 // Convert obj into an array of type int
 // Return -1 on error.
@@ -119,6 +136,22 @@ static int SHROUD_create_from_PyObject_int(PyObject *obj,
     *pin = in;
     *psize = size;
     return 0;
+}
+
+// helper get_from_object_int_list
+// Convert PyObject to int pointer.
+static int SHROUD_get_from_object_int_list(PyObject *obj,
+    POI_SHROUD_converter_value *value)
+{
+    int *in;
+    Py_ssize_t size;
+    if (SHROUD_create_from_PyObject_int(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = NULL;
+    value->data = (int *) in;
+    value->size = size;
+    return 1;
 }
 
 // helper to_PyList_double
@@ -324,6 +357,8 @@ PY_cos_doubles(
 // splicer begin function.cos_doubles
     double * in = NULL;
     PyObject *SHTPy_in = NULL;
+    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, 0};
+    Py_ssize_t SHSize_in;
     double * out = NULL;
     PyObject *SHPy_out = NULL;
     int sizein;
@@ -336,10 +371,10 @@ PY_cos_doubles(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_in;
-    if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
-        &SHSize_in) == -1)
+    if (SHROUD_get_from_object_double_list(SHTPy_in, &SHValue_in) == 0)
         goto fail;
+    in = (double *) SHValue_in.data;
+    SHSize_in = SHValue_in.size;
 
     // pre_call
     out = malloc(sizeof(double) * (SHSize_in));
@@ -356,14 +391,14 @@ PY_cos_doubles(
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
-    free(in);
+    Py_XDECREF(SHValue_in.obj);
     free(out);
     out = NULL;
 
     return (PyObject *) SHPy_out;
 
 fail:
-    if (in != NULL) free(in);
+    Py_XDECREF(SHValue_in.obj);
     Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
@@ -401,6 +436,8 @@ PY_truncate_to_int(
 // splicer begin function.truncate_to_int
     double * in = NULL;
     PyObject *SHTPy_in = NULL;
+    POI_SHROUD_converter_value SHValue_in = {NULL, NULL, 0};
+    Py_ssize_t SHSize_in;
     int * out = NULL;
     PyObject *SHPy_out = NULL;
     int sizein;
@@ -413,10 +450,10 @@ PY_truncate_to_int(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_in;
-    if (SHROUD_create_from_PyObject_double(SHTPy_in, "in", &in, 
-        &SHSize_in) == -1)
+    if (SHROUD_get_from_object_double_list(SHTPy_in, &SHValue_in) == 0)
         goto fail;
+    in = (double *) SHValue_in.data;
+    SHSize_in = SHValue_in.size;
 
     // pre_call
     out = malloc(sizeof(int) * (SHSize_in));
@@ -433,14 +470,14 @@ PY_truncate_to_int(
     if (SHPy_out == NULL) goto fail;
 
     // cleanup
-    free(in);
+    Py_XDECREF(SHValue_in.obj);
     free(out);
     out = NULL;
 
     return (PyObject *) SHPy_out;
 
 fail:
-    if (in != NULL) free(in);
+    Py_XDECREF(SHValue_in.obj);
     Py_XDECREF(SHPy_out);
     if (out != NULL) free(out);
     return NULL;
@@ -719,6 +756,8 @@ PY_Sum(
     int len;
     int * values = NULL;
     PyObject *SHTPy_values = NULL;
+    POI_SHROUD_converter_value SHValue_values = {NULL, NULL, 0};
+    Py_ssize_t SHSize_values;
     int result;
     char *SHT_kwlist[] = {
         "values",
@@ -730,10 +769,11 @@ PY_Sum(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_values;
-    if (SHROUD_create_from_PyObject_int(SHTPy_values, "values",
-        &values,  &SHSize_values) == -1)
+    if (SHROUD_get_from_object_int_list
+        (SHTPy_values, &SHValue_values) == 0)
         goto fail;
+    values = (int *) SHValue_values.data;
+    SHSize_values = SHValue_values.size;
 
     // pre_call
     len = SHSize_values;
@@ -744,12 +784,12 @@ PY_Sum(
     SHPy_result = PyInt_FromLong(result);
 
     // cleanup
-    free(values);
+    Py_XDECREF(SHValue_values.obj);
 
     return (PyObject *) SHPy_result;
 
 fail:
-    if (values != NULL) free(values);
+    Py_XDECREF(SHValue_values.obj);
     return NULL;
 // splicer end function.sum
 }
@@ -829,6 +869,8 @@ PY_incrementIntArray(
     int * array = NULL;
     PyObject *SHPy_array;
     PyObject *SHTPy_array = NULL;
+    POI_SHROUD_converter_value SHValue_array = {NULL, NULL, 0};
+    Py_ssize_t SHSize_array;
     int sizein;
     char *SHT_kwlist[] = {
         "array",
@@ -839,10 +881,11 @@ PY_incrementIntArray(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_array;
-    if (SHROUD_create_from_PyObject_int(SHTPy_array, "array", &array, 
-        &SHSize_array) == -1)
+    if (SHROUD_get_from_object_int_list
+        (SHTPy_array, &SHValue_array) == 0)
         goto fail;
+    array = (int *) SHValue_array.data;
+    SHSize_array = SHValue_array.size;
 
     // pre_call
     sizein = SHSize_array;
@@ -854,12 +897,12 @@ PY_incrementIntArray(
     if (SHPy_array == NULL) goto fail;
 
     // cleanup
-    free(array);
+    Py_XDECREF(SHValue_array.obj);
 
     return (PyObject *) SHPy_array;
 
 fail:
-    if (array != NULL) free(array);
+    Py_XDECREF(SHValue_array.obj);
     return NULL;
 // splicer end function.increment_int_array
 }
@@ -887,6 +930,8 @@ PY_fill_with_zeros(
     double * x = NULL;
     PyObject *SHPy_x;
     PyObject *SHTPy_x = NULL;
+    POI_SHROUD_converter_value SHValue_x = {NULL, NULL, 0};
+    Py_ssize_t SHSize_x;
     int x_length;
     char *SHT_kwlist[] = {
         "x",
@@ -897,10 +942,10 @@ PY_fill_with_zeros(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_x;
-    if (SHROUD_create_from_PyObject_double(SHTPy_x, "x", &x, 
-        &SHSize_x) == -1)
+    if (SHROUD_get_from_object_double_list(SHTPy_x, &SHValue_x) == 0)
         goto fail;
+    x = (double *) SHValue_x.data;
+    SHSize_x = SHValue_x.size;
 
     // pre_call
     x_length = SHSize_x;
@@ -912,12 +957,12 @@ PY_fill_with_zeros(
     if (SHPy_x == NULL) goto fail;
 
     // cleanup
-    free(x);
+    Py_XDECREF(SHValue_x.obj);
 
     return (PyObject *) SHPy_x;
 
 fail:
-    if (x != NULL) free(x);
+    Py_XDECREF(SHValue_x.obj);
     return NULL;
 // splicer end function.fill_with_zeros
 }
@@ -945,6 +990,8 @@ PY_accumulate(
 // splicer begin function.accumulate
     int * arr = NULL;
     PyObject *SHTPy_arr = NULL;
+    POI_SHROUD_converter_value SHValue_arr = {NULL, NULL, 0};
+    Py_ssize_t SHSize_arr;
     size_t len;
     char *SHT_kwlist[] = {
         "arr",
@@ -957,10 +1004,10 @@ PY_accumulate(
         return NULL;
 
     // post_parse
-    Py_ssize_t SHSize_arr;
-    if (SHROUD_create_from_PyObject_int(SHTPy_arr, "arr", &arr, 
-        &SHSize_arr) == -1)
+    if (SHROUD_get_from_object_int_list(SHTPy_arr, &SHValue_arr) == 0)
         goto fail;
+    arr = (int *) SHValue_arr.data;
+    SHSize_arr = SHValue_arr.size;
 
     // pre_call
     len = SHSize_arr;
@@ -971,12 +1018,12 @@ PY_accumulate(
     SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
     // cleanup
-    free(arr);
+    Py_XDECREF(SHValue_arr.obj);
 
     return (PyObject *) SHTPy_rv;
 
 fail:
-    if (arr != NULL) free(arr);
+    Py_XDECREF(SHValue_arr.obj);
     return NULL;
 // splicer end function.accumulate
 }

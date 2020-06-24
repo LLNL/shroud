@@ -57,6 +57,22 @@ static int SHROUD_create_from_PyObject_int(PyObject *obj,
     return 0;
 }
 
+// helper get_from_object_int_list
+// Convert PyObject to int pointer.
+static int SHROUD_get_from_object_int_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
+{
+    int *in;
+    Py_ssize_t size;
+    if (SHROUD_create_from_PyObject_int(obj, "in", &in,  &size) == -1) {
+        return 0;
+    }
+    value->obj = nullptr;
+    value->data = static_cast<int *>(in);
+    value->size = size;
+    return 1;
+}
+
 // splicer begin C_definition
 // splicer end C_definition
 PyObject *PY_error_obj;
@@ -1193,6 +1209,8 @@ PY_PostDeclare(
 // splicer begin function.post_declare
     int * count = nullptr;
     PyObject *SHTPy_count = nullptr;
+    STR_SHROUD_converter_value SHValue_count = {NULL, NULL, 0};
+    Py_ssize_t SHSize_count;
     char * name;
     const char *SHT_kwlist[] = {
         "count",
@@ -1208,10 +1226,11 @@ PY_PostDeclare(
     std::string SH_name(name);
 
     // post_parse
-    Py_ssize_t SHSize_count;
-    if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
-        &SHSize_count) == -1)
+    if (SHROUD_get_from_object_int_list
+        (SHTPy_count, &SHValue_count) == 0)
         goto fail;
+    count = static_cast<int *>(SHValue_count.data);
+    SHSize_count = SHValue_count.size;
 
     PostDeclare(count, SH_name);
 
@@ -1220,12 +1239,12 @@ PY_PostDeclare(
         SH_name.size());
 
     // cleanup
-    std::free(count);
+    Py_XDECREF(SHValue_count.obj);
 
     return (PyObject *) SHPy_name;
 
 fail:
-    if (count != nullptr) std::free(count);
+    Py_XDECREF(SHValue_count.obj);
     return nullptr;
 // splicer end function.post_declare
 }

@@ -3917,7 +3917,7 @@ py_statements = [
 ## list
     dict(
         name="py_native_*_in_pointer_list",
-        c_helper="create_from_PyObject_{cxx_type}",
+        c_helper="get_from_object_{cxx_type}_{PY_array_arg}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[ # initialize
@@ -3925,19 +3925,21 @@ py_statements = [
         ],
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
+            "{size_var} = {value_var}.size;",
         ],
         arg_call=["{cxx_var}"],
         cleanup=[
-            "{stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.obj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr}) {stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.obj);",
         ],
         goto_fail=True,
     ),
@@ -3945,7 +3947,7 @@ py_statements = [
     dict(
         name="py_native_*_inout_pointer_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
+        c_helper="get_from_object_{cxx_type}_{PY_array_arg} to_PyList_{cxx_type}",##
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -3954,12 +3956,14 @@ py_statements = [
         declare=[
             "PyObject *{py_var};",
             "PyObject *{pytmp_var} = {nullptr};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
+            "{size_var} = {value_var}.size;",
         ],
         arg_call=["{cxx_var}"],
         post_call=[
@@ -3969,10 +3973,10 @@ py_statements = [
         ],
         object_created=True,
         cleanup=[
-            "{stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.obj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.obj);",
         ],
         goto_fail=True,
     ),

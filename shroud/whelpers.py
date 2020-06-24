@@ -392,6 +392,8 @@ return 0;
         scope="pwrap_impl",
         c_include="<stddef.h>",
         cxx_include="<cstddef>",
+        # obj may be the argument passed into a function or
+        # it may be a PyCapsule for locally allocated memory.
         source=wformat("""
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
