@@ -1524,7 +1524,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
 ##### start fill_from_PyObject_char source
 
 // helper fill_from_PyObject_char
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_char(PyObject *obj,
     const char *name, char *in, Py_ssize_t insize)
@@ -1548,7 +1548,8 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 ##### start fill_from_PyObject_double_list source
 
 // helper fill_from_PyObject_double_list
-// Convert obj into an array of type double
+// Fill double array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
@@ -1593,7 +1594,8 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
 ##### start fill_from_PyObject_double_numpy source
 
 // helper fill_from_PyObject_double_numpy
-// Convert obj into an array of type double
+// Fill double array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
@@ -1633,7 +1635,8 @@ static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
 ##### start fill_from_PyObject_float_list source
 
 // helper fill_from_PyObject_float_list
-// Convert obj into an array of type float
+// Fill float array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
@@ -1677,7 +1680,8 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
 ##### start fill_from_PyObject_float_numpy source
 
 // helper fill_from_PyObject_float_numpy
-// Convert obj into an array of type float
+// Fill float array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
@@ -1717,7 +1721,8 @@ static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int16_t_list source
 
 // helper fill_from_PyObject_int16_t_list
-// Convert obj into an array of type int16_t
+// Fill int16_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
@@ -1762,7 +1767,8 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int16_t_numpy source
 
 // helper fill_from_PyObject_int16_t_numpy
-// Convert obj into an array of type int16_t
+// Fill int16_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
@@ -1802,7 +1808,8 @@ static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int32_t_list source
 
 // helper fill_from_PyObject_int32_t_list
-// Convert obj into an array of type int32_t
+// Fill int32_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
@@ -1847,7 +1854,8 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int32_t_numpy source
 
 // helper fill_from_PyObject_int32_t_numpy
-// Convert obj into an array of type int32_t
+// Fill int32_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
@@ -1887,7 +1895,8 @@ static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int64_t_list source
 
 // helper fill_from_PyObject_int64_t_list
-// Convert obj into an array of type int64_t
+// Fill int64_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
@@ -1932,7 +1941,8 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int64_t_numpy source
 
 // helper fill_from_PyObject_int64_t_numpy
-// Convert obj into an array of type int64_t
+// Fill int64_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
@@ -1972,7 +1982,8 @@ static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int8_t_list source
 
 // helper fill_from_PyObject_int8_t_list
-// Convert obj into an array of type int8_t
+// Fill int8_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
@@ -2017,7 +2028,8 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int8_t_numpy source
 
 // helper fill_from_PyObject_int8_t_numpy
-// Convert obj into an array of type int8_t
+// Fill int8_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
@@ -2057,7 +2069,8 @@ static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int_list source
 
 // helper fill_from_PyObject_int_list
-// Convert obj into an array of type int
+// Fill int array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -2101,7 +2114,8 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
 ##### start fill_from_PyObject_int_numpy source
 
 // helper fill_from_PyObject_int_numpy
-// Convert obj into an array of type int
+// Fill int array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -2141,7 +2155,8 @@ static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 ##### start fill_from_PyObject_long_list source
 
 // helper fill_from_PyObject_long_list
-// Convert obj into an array of type long
+// Fill long array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
@@ -2185,7 +2200,8 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
 ##### start fill_from_PyObject_long_numpy source
 
 // helper fill_from_PyObject_long_numpy
-// Convert obj into an array of type long
+// Fill long array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
@@ -2225,7 +2241,8 @@ static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
 ##### start fill_from_PyObject_short_list source
 
 // helper fill_from_PyObject_short_list
-// Convert obj into an array of type short
+// Fill short array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
@@ -2269,7 +2286,8 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
 ##### start fill_from_PyObject_short_numpy source
 
 // helper fill_from_PyObject_short_numpy
-// Convert obj into an array of type short
+// Fill short array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
@@ -2309,7 +2327,8 @@ static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint16_t_list source
 
 // helper fill_from_PyObject_uint16_t_list
-// Convert obj into an array of type uint16_t
+// Fill uint16_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
@@ -2354,7 +2373,8 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint16_t_numpy source
 
 // helper fill_from_PyObject_uint16_t_numpy
-// Convert obj into an array of type uint16_t
+// Fill uint16_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
@@ -2394,7 +2414,8 @@ static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint32_t_list source
 
 // helper fill_from_PyObject_uint32_t_list
-// Convert obj into an array of type uint32_t
+// Fill uint32_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
@@ -2439,7 +2460,8 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint32_t_numpy source
 
 // helper fill_from_PyObject_uint32_t_numpy
-// Convert obj into an array of type uint32_t
+// Fill uint32_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
@@ -2479,7 +2501,8 @@ static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint64_t_list source
 
 // helper fill_from_PyObject_uint64_t_list
-// Convert obj into an array of type uint64_t
+// Fill uint64_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
@@ -2524,7 +2547,8 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint64_t_numpy source
 
 // helper fill_from_PyObject_uint64_t_numpy
-// Convert obj into an array of type uint64_t
+// Fill uint64_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
@@ -2564,7 +2588,8 @@ static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint8_t_list source
 
 // helper fill_from_PyObject_uint8_t_list
-// Convert obj into an array of type uint8_t
+// Fill uint8_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
@@ -2609,7 +2634,8 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint8_t_numpy source
 
 // helper fill_from_PyObject_uint8_t_numpy
-// Convert obj into an array of type uint8_t
+// Fill uint8_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
@@ -2649,7 +2675,8 @@ static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_int_list source
 
 // helper fill_from_PyObject_unsigned_int_list
-// Convert obj into an array of type unsigned int
+// Fill unsigned int array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
@@ -2694,7 +2721,8 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_int_numpy source
 
 // helper fill_from_PyObject_unsigned_int_numpy
-// Convert obj into an array of type unsigned int
+// Fill unsigned int array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
@@ -2735,7 +2763,8 @@ static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_long_list source
 
 // helper fill_from_PyObject_unsigned_long_list
-// Convert obj into an array of type unsigned long
+// Fill unsigned long array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
@@ -2780,7 +2809,8 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_long_numpy source
 
 // helper fill_from_PyObject_unsigned_long_numpy
-// Convert obj into an array of type unsigned long
+// Fill unsigned long array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
@@ -2821,7 +2851,8 @@ static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_short_list source
 
 // helper fill_from_PyObject_unsigned_short_list
-// Convert obj into an array of type unsigned short
+// Fill unsigned short array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
@@ -2866,7 +2897,8 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_short_numpy source
 
 // helper fill_from_PyObject_unsigned_short_numpy
-// Convert obj into an array of type unsigned short
+// Fill unsigned short array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)

@@ -112,6 +112,7 @@ def add_external_helpers():
     fmt.lstart = ""
     fmt.lend = ""
 
+    ########################################
     name = "capsule_dtor"
     fmt.hname = name
     FHelpers[name] = dict(
@@ -131,7 +132,7 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
         ),
     )
     
-    ##########
+    ########################################
     # Only used with std::vector and thus C++.
     name = "copy_array"
     fmt.hname = name
@@ -162,8 +163,8 @@ n *= data->elem_len;
             fmt,
         ),
     )
-    ##########
     
+    ########################################
     # Only used with std::string and thus C++.
     name = "copy_string"
     fmt.hname = name
@@ -213,8 +214,8 @@ integer(C_SIZE_T), value :: c_var_size
             fmt,
         ),
     )
-    ##########
 
+    ########################################
     name = "ShroudStrToArray"
     fmt.hname = name
     if literalinclude:
@@ -333,6 +334,7 @@ return 1;
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
+    ########################################
     name = "fill_from_PyObject_char"
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
@@ -346,7 +348,7 @@ return 1;
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -774,7 +776,8 @@ def fill_from_PyObject_list(fmt):
         source=wformat(
                 """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Fill {c_type} array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -831,7 +834,8 @@ def fill_from_PyObject_numpy(fmt):
         source=wformat(
                 """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Fill {c_type} array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -1437,6 +1441,8 @@ integer, parameter, private :: &
 )  # end FHelpers
 
 
+
+########################################
 # Routines to dump helper routines to a file.
 
 def gather_helpers(helpers, keys):
