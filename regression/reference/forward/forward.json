@@ -124,6 +124,7 @@
                                 "size_var": "SHSize_rv",
                                 "stmt0": "py_default",
                                 "stmt1": "py_default",
+                                "value_var": "SHValue_rv",
                                 "vargs": "SHCXX_rv"
                             }
                         },
@@ -269,7 +270,8 @@
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
                                     "stmt0": "py_shadow_*_in",
-                                    "stmt1": "py_shadow_*_in"
+                                    "stmt1": "py_shadow_*_in",
+                                    "value_var": "SHValue_arg"
                                 }
                             }
                         },
@@ -396,7 +398,8 @@
                                     "py_var": "SHPy_arg",
                                     "size_var": "SHSize_arg",
                                     "stmt0": "py_shadow_*_in",
-                                    "stmt1": "py_shadow_*_in"
+                                    "stmt1": "py_shadow_*_in",
+                                    "value_var": "SHValue_arg"
                                 }
                             }
                         },

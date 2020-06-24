@@ -86,6 +86,7 @@
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
             "PY_typedef_converter": "LIB_SHROUD_converter_value",
+            "PY_value_init": "{NULL, NULL, 0}",
             "YAML_type_filename": "library_types.yaml",
             "c_array_shape": "",
             "c_array_size": "1",

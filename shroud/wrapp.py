@@ -22,7 +22,8 @@ SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims_var}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
-SHSize_ Size of dimension argument (fmt.size_var}
+SHSize_ Size of dimension argument {fmt.size_var}
+SHValue PY_typedef_converter variable {fmt.value_var}
 SHPyResult Return Python object.
         Necessary when a return object is combined with others by Py_BuildValue.
 """
@@ -1196,6 +1197,7 @@ return 1;""",
             fmt_arg.py_var = "SHPy_" + arg_name
             fmt_arg.data_var = "SHData_" + arg_name
             fmt_arg.size_var = "SHSize_" + arg_name
+            fmt_arg.value_var = "SHValue_" + arg_name
 
             arg_typemap = arg.typemap
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
@@ -1905,6 +1907,7 @@ return 1;""",
         fmt_result.py_var = fmt.PY_result
         fmt_result.data_var = "SHData_" + fmt_result.C_result
         fmt_result.size_var = "SHSize_" + fmt_result.C_result
+        fmt_result.value_var = "SHValue_" + fmt_result.C_result
         fmt_result.numpy_type = result_typemap.PYN_typenum
         #            fmt_pattern = fmt_result
         update_fmt_from_typemap(fmt_result, result_typemap)
@@ -4741,20 +4744,20 @@ py_statements = [
         name="base_py_ctor_array",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
-            "{PY_typedef_converter} {py_var}"
-            " = {{ {nullptr}, {nullptr}, 0 }};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
             ],
         parse_format="O&",
-        parse_args=["{hnamefunc0}", "&{py_var}"],
+        parse_args=["{hnamefunc0}", "&{value_var}"],
         post_call=[
             "SH_obj->{field_name} = "
-            "{cast_static}{c_type} *{cast1}{py_var}.data{cast2};",
-            "self->{PY_member_object} = {py_var}.obj;"
+            "{cast_static}{c_type} *{cast1}{value_var}.data{cast2};",
+            "self->{PY_member_object} = {value_var}.obj;"
             "  // steal reference",
         ],
     ),
     dict(
         # Fill an array struct member.
+        # helper is set by groups which use this as base.
         name="base_py_ctor_array_fill",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
@@ -4812,8 +4815,8 @@ py_statements = [
         # Need explicit post_call to change cast to char **.
         post_call=[
             "SH_obj->{field_name} = "
-            "{cast_static}char **{cast1}{py_var}.data{cast2};",
-            "self->{PY_member_object} = {py_var}.obj;"
+            "{cast_static}char **{cast1}{value_var}.data{cast2};",
+            "self->{PY_member_object} = {value_var}.obj;"
             "  // steal reference",
         ],
     ),
@@ -4844,7 +4847,7 @@ py_statements = [
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
             "{c_var_obj} = {nullptr};",
-            "// XXXX set error",
+            "// XXX - set error",
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",

@@ -654,6 +654,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_this_call="",
             PY_type_obj="obj",  # name of cpp class pointer in PyObject
             PY_type_dtor="idtor",  # name of destructor capsule infomation
+            PY_value_init="{NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
             library=self.library,
             library_lower=self.library.lower(),

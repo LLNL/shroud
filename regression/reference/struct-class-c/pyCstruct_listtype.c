@@ -71,9 +71,9 @@ PY_Cstruct_list_tp_init(
 {
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems = 0;
-    STR_SHROUD_converter_value SHPy_ivalue = { NULL, NULL, 0 };
-    STR_SHROUD_converter_value SHPy_dvalue = { NULL, NULL, 0 };
-    STR_SHROUD_converter_value SHPy_svalue = { NULL, NULL, 0 };
+    STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, 0};
+    STR_SHROUD_converter_value SHValue_dvalue = {NULL, NULL, 0};
+    STR_SHROUD_converter_value SHValue_svalue = {NULL, NULL, 0};
     char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -83,9 +83,9 @@ PY_Cstruct_list_tp_init(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&O&:Cstruct_list_ctor", SHT_kwlist, &nitems,
-        STR_SHROUD_get_from_object_int_list, &SHPy_ivalue,
-        STR_SHROUD_get_from_object_double_list, &SHPy_dvalue,
-        STR_SHROUD_get_from_object_charptr, &SHPy_svalue))
+        STR_SHROUD_get_from_object_int_list, &SHValue_ivalue,
+        STR_SHROUD_get_from_object_double_list, &SHValue_dvalue,
+        STR_SHROUD_get_from_object_charptr, &SHValue_svalue))
         return -1;
 
     self->obj = malloc(sizeof(Cstruct_list));
@@ -98,12 +98,12 @@ PY_Cstruct_list_tp_init(
     // post_call - initialize fields
     Cstruct_list *SH_obj = self->obj;
     SH_obj->nitems = nitems;
-    SH_obj->ivalue = (int *) SHPy_ivalue.data;
-    self->ivalue_obj = SHPy_ivalue.obj;  // steal reference
-    SH_obj->dvalue = (double *) SHPy_dvalue.data;
-    self->dvalue_obj = SHPy_dvalue.obj;  // steal reference
-    SH_obj->svalue = (char **) SHPy_svalue.data;
-    self->svalue_obj = SHPy_svalue.obj;  // steal reference
+    SH_obj->ivalue = (int *) SHValue_ivalue.data;
+    self->ivalue_obj = SHValue_ivalue.obj;  // steal reference
+    SH_obj->dvalue = (double *) SHValue_dvalue.data;
+    self->dvalue_obj = SHValue_dvalue.obj;  // steal reference
+    SH_obj->svalue = (char **) SHValue_svalue.data;
+    self->svalue_obj = SHValue_svalue.obj;  // steal reference
 
     return 0;
 // splicer end class.Cstruct_list.method.cstruct_list_ctor
@@ -157,7 +157,7 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
         self->obj->ivalue = NULL;
         self->ivalue_obj = NULL;
-        // XXXX set error
+        // XXX - set error
         return -1;
     }
     self->obj->ivalue = (int *) cvalue.data;
@@ -189,7 +189,7 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
         self->obj->dvalue = NULL;
         self->dvalue_obj = NULL;
-        // XXXX set error
+        // XXX - set error
         return -1;
     }
     self->obj->dvalue = (double *) cvalue.data;
