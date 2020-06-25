@@ -343,41 +343,6 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var, size_t c_v
 
 ##### end copy_string source
 
-##### start create_from_PyObject_char source
-
-// helper create_from_PyObject_char
-// Convert obj into an array of type char *.
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char ***pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_char source
-
 ##### start create_from_PyObject_double source
 
 // helper create_from_PyObject_double
