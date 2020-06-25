@@ -415,37 +415,45 @@ int POI_accumulate(const int * arr, size_t len)
 }
 // end POI_accumulate
 
+/**
+ * Return strlen of the first index as a check.
+ */
 // ----------------------------------------
-// Function:  void acceptCharArrayIn
-// Requested: c
+// Function:  int acceptCharArrayIn
+// Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Exact:     c_char_**_in
 // start POI_accept_char_array_in
-void POI_accept_char_array_in(char **names)
+int POI_accept_char_array_in(char **names)
 {
     // splicer begin function.accept_char_array_in
-    acceptCharArrayIn(names);
+    int SHC_rv = acceptCharArrayIn(names);
+    return SHC_rv;
     // splicer end function.accept_char_array_in
 }
 // end POI_accept_char_array_in
 
+/**
+ * Return strlen of the first index as a check.
+ */
 // ----------------------------------------
-// Function:  void acceptCharArrayIn
-// Requested: c
+// Function:  int acceptCharArrayIn
+// Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
 // Exact:     c_char_**_in_buf
 // start POI_accept_char_array_in_bufferify
-void POI_accept_char_array_in_bufferify(char *names, long Snames,
+int POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames)
 {
     // splicer begin function.accept_char_array_in_bufferify
     char **SHCXX_names = ShroudStrArrayAlloc(names, Snames, Nnames);
-    acceptCharArrayIn(SHCXX_names);
+    int SHC_rv = acceptCharArrayIn(SHCXX_names);
     ShroudStrArrayFree(SHCXX_names, Snames);
+    return SHC_rv;
     // splicer end function.accept_char_array_in_bufferify
 }
 // end POI_accept_char_array_in_bufferify

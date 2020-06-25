@@ -969,8 +969,9 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  void acceptCharArrayIn
-// Exact:     py_default
+// Function:  int acceptCharArrayIn
+// Requested: py_native_scalar_result
+// Match:     py_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Exact:     py_char_**_in
@@ -978,6 +979,9 @@ static char PY_acceptCharArrayIn__doc__[] =
 "documentation"
 ;
 
+/**
+ * Return strlen of the first index as a check.
+ */
 static PyObject *
 PY_acceptCharArrayIn(
   PyObject *SHROUD_UNUSED(self),
@@ -993,6 +997,8 @@ PY_acceptCharArrayIn(
     char *SHT_kwlist[] = {
         "names",
         NULL };
+    int SHCXX_rv;
+    PyObject * SHTPy_rv = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds, "O:acceptCharArrayIn",
         SHT_kwlist, &SHTPy_names))
@@ -1002,13 +1008,15 @@ PY_acceptCharArrayIn(
     if (SHROUD_get_from_object_charptr
         (SHTPy_names, &SHValue_names) == 0)
         goto fail;
+    names = (char **) SHValue_names.data;
 
-    acceptCharArrayIn(names);
+    SHCXX_rv = acceptCharArrayIn(names);
 
     // post_call
     Py_XDECREF(SHValue_names.dataobj);
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
 
-    Py_RETURN_NONE;
+    return (PyObject *) SHTPy_rv;
 
 fail:
     Py_XDECREF(SHValue_names.dataobj);

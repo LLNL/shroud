@@ -4140,6 +4140,7 @@ py_statements = [
         pre_call=[
             "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};",
         ],
         arg_call=["{cxx_var}"],
         post_call=[

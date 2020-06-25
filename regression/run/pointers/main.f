@@ -90,9 +90,9 @@ contains
 
     call assert_false(allocated(out_int), "iot_allocatable")
     call iota_allocatable(nvalues, out_int)
-    call assert_equals(3, nvalues, "iot_allocatable")
-    call assert_true(allocated(out_int), "iot_allocatable")
-    call assert_true(all(out_int(1:3) == [1, 2, 3]), "iot_allocatable")
+    call assert_equals(3, nvalues, "iota_allocatable")
+    call assert_true(allocated(out_int), "iota_allocatable")
+    call assert_true(all(out_int(1:3) == [1, 2, 3]), "iota_allocatable")
     deallocate(out_int)
 
     values1 = 0
@@ -134,6 +134,7 @@ contains
   end subroutine test_swig
   
   subroutine test_char_arrays
+    integer nchar
     character(10) :: in(3) = [ &
          "dog       ", &
          "cat       ", &
@@ -146,7 +147,8 @@ contains
 
     ! Call the bufferify function.
     ! It will copy strings to create char ** variable.
-    call accept_char_array_in(in)
+    nchar = accept_char_array_in(in)
+    call assert_equals(len_trim(in(1)), nchar, "acceptCharArrayIn")
 
     ! Build up a native char ** variable and pass to C.
     ! Caller is responsibile for explicilty NULL terminating.
@@ -157,7 +159,8 @@ contains
     cin(2) = c_loc(word2)
     cin(3) = c_loc(word3)
     cin(4) = C_NULL_PTR
-    call c_accept_char_array_in(cin)
+    nchar = c_accept_char_array_in(cin)
+    call assert_equals(5, nchar, "acceptCharArrayIn") ! 5 = len(word1) - trailing NULL
     
   end subroutine test_char_arrays
 
