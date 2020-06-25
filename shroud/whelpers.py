@@ -283,19 +283,23 @@ out = PyString_AsString(strobj);
 size = PyString_Size(obj);
 value->dataobj = strobj;  // steal reference
 ^#endif
-^#if PY_MAJOR_VERSION >= 3
--}} else if (PyByteArray_Check(obj)) {{+
-out = PyBytes_AS_STRING(obj);
-size = PyBytes_GET_SIZE(obj);
-value->dataobj = obj;
-Py_INCREF(obj);
-^#else
+^#if PY_MAJOR_VERSION < 3
 -}} else if (PyString_Check(obj)) {{+
 out = PyString_AsString(obj);
 size = PyString_Size(obj);
 value->dataobj = obj;
 Py_INCREF(obj);
 ^#endif
+-}} else if (PyBytes_Check(obj)) {{+
+out = PyBytes_AS_STRING(obj);
+size = PyBytes_GET_SIZE(obj);
+value->dataobj = obj;
+Py_INCREF(obj);
+-}} else if (PyByteArray_Check(obj)) {{+
+out = PyByteArray_AS_STRING(obj);
+size = PyByteArray_GET_SIZE(obj);
+value->dataobj = obj;
+Py_INCREF(obj);
 -}} else if (obj == Py_None) {{+
 out = NULL;
 size = 0;
