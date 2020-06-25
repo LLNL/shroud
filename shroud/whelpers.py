@@ -262,10 +262,11 @@ array->rank = 0;  // scalar
 // Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
-// value.obj = Final object used.
+// value.obj is unused.
+// value.dataobj - object which holds the data.
 // If same as obj argument, its refcount is incremented.
-// value.data is owned by value.obj and must be copied to be preserved.
-// Caller must use Py_XDECREF(value.obj).
+// value.data is owned by value.dataobj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.dataobj).
 {PY_helper_static}{hnameproto}
 {{+
 size_t size = 0;
@@ -275,35 +276,35 @@ if (PyUnicode_Check(obj)) {{+
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyBytes_AS_STRING(strobj);
 size = PyBytes_GET_SIZE(strobj);
-value->obj = strobj;  // steal reference
+value->dataobj = strobj;  // steal reference
 ^#else
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyString_AsString(strobj);
 size = PyString_Size(obj);
-value->obj = strobj;  // steal reference
+value->dataobj = strobj;  // steal reference
 ^#endif
 ^#if PY_MAJOR_VERSION >= 3
 -}} else if (PyByteArray_Check(obj)) {{+
 out = PyBytes_AS_STRING(obj);
 size = PyBytes_GET_SIZE(obj);
-value->obj = obj;
+value->dataobj = obj;
 Py_INCREF(obj);
 ^#else
 -}} else if (PyString_Check(obj)) {{+
 out = PyString_AsString(obj);
 size = PyString_Size(obj);
-value->obj = obj;
+value->dataobj = obj;
 Py_INCREF(obj);
 ^#endif
 -}} else if (obj == Py_None) {{+
 out = NULL;
 size = 0;
-value->obj = NULL;
+value->dataobj = NULL;
 -}} else {{+
 PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
 return 0;
 -}}
-value->dataobj = {nullptr};
+value->obj = {nullptr};
 value->data = out;
 value->size = size;
 return 1;
@@ -363,7 +364,7 @@ if (value.data == {nullptr}) {{+
 in[0] = '\\0';
 -}} else {{+
 {stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
-Py_DECREF(value.obj);
+Py_DECREF(value.dataobj);
 -}}
 return 0;
 -}}""", fmt),
@@ -1035,11 +1036,12 @@ Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
 PyObject *dataobj = PyCapsule_New(in, {nullptr}, FREE_{hname});
 // int PyCapsule_SetContext(datavalue, void * context);
+{PY_typedef_converter} itemvalue = {PY_value_init};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-{PY_typedef_converter} itemvalue;
 int ierr = {__helper}(item, &itemvalue);
 if (ierr == 0) {{+
+Py_XDECREF(itemvalue.dataobj);
 Py_DECREF(dataobj);
 Py_DECREF(seq);
 PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
@@ -1048,7 +1050,7 @@ return 0;
 if (itemvalue.data != {nullptr}) {{+
 in[i] = strdup({cast_static}char *{cast1}itemvalue.data{cast2});
 -}}
-Py_XDECREF(itemvalue.obj);
+Py_XDECREF(itemvalue.dataobj);
 -}}
 Py_DECREF(seq);
 
