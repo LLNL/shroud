@@ -424,6 +424,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_cfield_getter",
+                            "PY_member_data": "cfield_dataobj",
                             "PY_member_object": "cfield_obj",
                             "PY_setter": "PY_Cstruct_ptr_cfield_setter",
                             "PY_struct_context": "self->obj->",
@@ -456,6 +457,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_ptr_const_dvalue_getter",
+                            "PY_member_data": "const_dvalue_dataobj",
                             "PY_member_object": "const_dvalue_obj",
                             "PY_setter": "PY_Cstruct_ptr_const_dvalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -847,6 +849,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_list_ivalue_getter",
+                            "PY_member_data": "ivalue_dataobj",
                             "PY_member_object": "ivalue_obj",
                             "PY_setter": "PY_Cstruct_list_ivalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -894,6 +897,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_list_dvalue_getter",
+                            "PY_member_data": "dvalue_dataobj",
                             "PY_member_object": "dvalue_obj",
                             "PY_setter": "PY_Cstruct_list_dvalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -938,6 +942,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_list_svalue_getter",
+                            "PY_member_data": "svalue_dataobj",
                             "PY_member_object": "svalue_obj",
                             "PY_setter": "PY_Cstruct_list_svalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -1251,6 +1256,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_numpy_ivalue_getter",
+                            "PY_member_data": "ivalue_dataobj",
                             "PY_member_object": "ivalue_obj",
                             "PY_setter": "PY_Cstruct_numpy_ivalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -1292,6 +1298,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Cstruct_numpy_dvalue_getter",
+                            "PY_member_data": "dvalue_dataobj",
                             "PY_member_object": "dvalue_obj",
                             "PY_setter": "PY_Cstruct_numpy_dvalue_setter",
                             "PY_struct_context": "self->obj->",
@@ -1512,6 +1519,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Arrays1_name_getter",
+                            "PY_member_data": "name_dataobj",
                             "PY_member_object": "name_obj",
                             "PY_setter": "PY_Arrays1_name_setter",
                             "PY_struct_context": "self->obj->",
@@ -1544,6 +1552,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Arrays1_count_getter",
+                            "PY_member_data": "count_dataobj",
                             "PY_member_object": "count_obj",
                             "PY_setter": "PY_Arrays1_count_setter",
                             "PY_struct_context": "self->obj->",

@@ -58,6 +58,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *name_obj;
     PyObject *count_obj;
+    // Python objects for members.
+    PyObject *name_dataobj;
+    PyObject *count_dataobj;
     // splicer begin class.Arrays1.C_object
     // splicer end class.Arrays1.C_object
 } PY_Arrays1;

@@ -207,6 +207,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Arrays1_name_getter",
+                            "PY_member_data": "name_dataobj",
                             "PY_member_object": "name_obj",
                             "PY_setter": "PY_Arrays1_name_setter",
                             "PY_struct_context": "self->obj->",
@@ -239,6 +240,7 @@
                         },
                         "fmtdict": {
                             "PY_getter": "PY_Arrays1_count_getter",
+                            "PY_member_data": "count_dataobj",
                             "PY_member_object": "count_obj",
                             "PY_setter": "PY_Arrays1_count_setter",
                             "PY_struct_context": "self->obj->",

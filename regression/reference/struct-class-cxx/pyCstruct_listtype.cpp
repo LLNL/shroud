@@ -207,10 +207,6 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     if (self->obj->svalue == nullptr) {
         Py_RETURN_NONE;
     }
-    if (self->svalue_obj != nullptr) {
-        Py_INCREF(self->svalue_obj);
-        return self->svalue_obj;
-    }
     PyObject *rv = STR_SHROUD_to_PyList_char(self->obj->svalue, self->obj->nitems);
     return rv;
 }
@@ -220,15 +216,15 @@ static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     STR_SHROUD_converter_value cvalue;
-    Py_XDECREF(self->svalue_obj);
+    Py_XDECREF(self->svalue_dataobj);
     if (STR_SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
         self->obj->svalue = nullptr;
-        self->svalue_obj = nullptr;
+        self->svalue_dataobj = nullptr;
         // XXXX set error
         return -1;
     }
     self->obj->svalue = static_cast<char **>(cvalue.data);
-    self->svalue_obj = cvalue.obj;  // steal reference
+    self->svalue_dataobj = cvalue.dataobj;  // steal reference
     return 0;
 }
 

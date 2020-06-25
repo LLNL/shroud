@@ -105,10 +105,6 @@ static PyObject *PY_Cstruct_ptr_cfield_getter(PY_Cstruct_ptr *self,
     if (self->obj->cfield == nullptr) {
         Py_RETURN_NONE;
     }
-    if (self->cfield_obj != nullptr) {
-        Py_INCREF(self->cfield_obj);
-        return self->cfield_obj;
-    }
     PyObject * rv = PyString_FromString(self->obj->cfield);
     return rv;
 }
@@ -119,15 +115,15 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     STR_SHROUD_converter_value cvalue;
-    Py_XDECREF(self->cfield_obj);
+    Py_XDECREF(self->cfield_dataobj);
     if (STR_SHROUD_get_from_object_char(value, &cvalue) == 0) {
         self->obj->cfield = nullptr;
-        self->cfield_obj = nullptr;
+        self->cfield_dataobj = nullptr;
         // XXXX set error
         return -1;
     }
     self->obj->cfield = static_cast<char *>(cvalue.data);
-    self->cfield_obj = cvalue.obj;  // steal reference
+    self->cfield_dataobj = cvalue.dataobj;  // steal reference
     return 0;
 }
 

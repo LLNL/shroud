@@ -143,6 +143,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
         fmt_library.PY_member_object = "XXXPY_member_object"
+        fmt_library.PY_member_data = "XXXPY_member_data"
 
         fmt_library.npy_rank = "0"   # number of dimensions
         fmt_library.npy_dims_var = fmt_library.nullptr # shape variable
@@ -397,8 +398,14 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         # Create a PyObject pointer for each pointer member
         # to contain the actual data.
         self.init_member_obj(node)
+        # object which holds data - NumPy array
+        # Returned by getter
         self.process_member_obj(
             node, "PyObject *{PY_member_object};", output)
+        # object which hold data - PyCapsule
+        # Used to release memory
+        self.process_member_obj(
+            node, "PyObject *{PY_member_data};", output)
 
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
@@ -721,7 +728,9 @@ return 1;""",
         fmt.cxx_var = fmt.c_var
         fmt.c_var_non_const = fmt.c_var
         fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
+        fmt.c_var_data = wformat("{PY_param_self}->{PY_member_data}", fmt)
         fmt.cxx_var_obj = fmt.c_var_obj
+        fmt.cxx_var_data = fmt.c_var_data
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
@@ -2875,6 +2884,7 @@ setup(
             if var.ast.is_array():
                 fmt.py_var = "SHPy_" + fmt.variable_name
                 var.eval_template("PY_member_object")
+                var.eval_template("PY_member_data")
 
     def process_member_obj(self, node, text, output):
         """Loop over variables in the struct-as-class and add
@@ -4878,25 +4888,26 @@ py_statements = [
         setter_helper="get_from_object_{c_type}_list",
         setter=[
             "{PY_typedef_converter} cvalue;",
-            "Py_XDECREF({c_var_obj});",
+            "Py_XDECREF({c_var_data});",
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
-            "{c_var_obj} = {nullptr};",
+            "{c_var_data} = {nullptr};",
             "// XXXX set error",
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
-            "{c_var_obj} = cvalue.obj;  // steal reference",
+            "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
 #        getter_helper="to_PyList_{c_type}",
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
             "-}}",
-            "if ({c_var_obj} != {nullptr}) {{+",
-            "Py_INCREF({c_var_obj});",
-            "return {c_var_obj};",
-            "-}}",
+            # Always create a new object since the struct may change value.
+#            "if ({c_var_obj} != {nullptr}) {{+",
+#            "Py_INCREF({c_var_obj});",
+#            "return {c_var_obj};",
+#            "-}}",
             "PyObject * rv = {ctor};", # difference from py_descr_native_*_list
             "return rv;",
         ],
@@ -4907,25 +4918,26 @@ py_statements = [
         setter_helper="get_from_object_charptr",
         setter=[
             "{PY_typedef_converter} cvalue;",
-            "Py_XDECREF({c_var_obj});",
+            "Py_XDECREF({c_var_data});",
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
-            "{c_var_obj} = {nullptr};",
+            "{c_var_data} = {nullptr};",
             "// XXXX set error",
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
-            "{c_var_obj} = cvalue.obj;  // steal reference",
+            "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
         getter_helper="to_PyList_char",
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
             "-}}",
-            "if ({c_var_obj} != {nullptr}) {{+",
-            "Py_INCREF({c_var_obj});",
-            "return {c_var_obj};",
-            "-}}",
+            # Always create a new object since the struct may change value.
+#            "if ({c_var_obj} != {nullptr}) {{+",
+#            "Py_INCREF({c_var_obj});",
+#            "return {c_var_obj};",
+#            "-}}",
             "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],

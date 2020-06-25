@@ -96,6 +96,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *cfield_obj;
     PyObject *const_dvalue_obj;
+    // Python objects for members.
+    PyObject *cfield_dataobj;
+    PyObject *const_dvalue_dataobj;
     // splicer begin class.Cstruct_ptr.C_object
     // splicer end class.Cstruct_ptr.C_object
 } PY_Cstruct_ptr;
@@ -118,6 +121,10 @@ PyObject_HEAD
     PyObject *ivalue_obj;
     PyObject *dvalue_obj;
     PyObject *svalue_obj;
+    // Python objects for members.
+    PyObject *ivalue_dataobj;
+    PyObject *dvalue_dataobj;
+    PyObject *svalue_dataobj;
     // splicer begin class.Cstruct_list.C_object
     // splicer end class.Cstruct_list.C_object
 } PY_Cstruct_list;
@@ -140,6 +147,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *ivalue_obj;
     PyObject *dvalue_obj;
+    // Python objects for members.
+    PyObject *ivalue_dataobj;
+    PyObject *dvalue_dataobj;
     // splicer begin class.Cstruct_numpy.C_object
     // splicer end class.Cstruct_numpy.C_object
 } PY_Cstruct_numpy;
@@ -162,6 +172,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *name_obj;
     PyObject *count_obj;
+    // Python objects for members.
+    PyObject *name_dataobj;
+    PyObject *count_dataobj;
     // splicer begin class.Arrays1.C_object
     // splicer end class.Arrays1.C_object
 } PY_Arrays1;
