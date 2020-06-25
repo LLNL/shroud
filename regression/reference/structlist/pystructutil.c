@@ -24,9 +24,13 @@
 #endif
 
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj = Final object used.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.obj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.obj).
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -67,6 +71,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->dataobj = NULL;
     value->data = out;
     value->size = size;
     return 1;

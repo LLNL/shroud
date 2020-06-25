@@ -29,9 +29,13 @@
 #endif
 
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj = Final object used.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.obj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.obj).
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -72,6 +76,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->dataobj = nullptr;
     value->data = out;
     value->size = size;
     return 1;
@@ -181,6 +186,7 @@ int STR_SHROUD_get_from_object_charptr(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<char * *>(in);
     value->size = size;
     return 1;
@@ -231,6 +237,7 @@ int STR_SHROUD_get_from_object_double_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<double *>(in);
     value->size = size;
     return 1;
@@ -249,6 +256,7 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -299,6 +307,7 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int *>(in);
     value->size = size;
     return 1;
@@ -316,6 +325,7 @@ int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>

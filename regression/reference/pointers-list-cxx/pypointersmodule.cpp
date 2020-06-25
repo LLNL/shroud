@@ -103,6 +103,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<double *>(in);
     value->size = size;
     return 1;
@@ -150,6 +151,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int *>(in);
     value->size = size;
     return 1;

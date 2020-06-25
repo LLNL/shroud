@@ -259,9 +259,13 @@ array->rank = 0;  // scalar
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj = Final object used.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.obj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.obj).
 {PY_helper_static}{hnameproto}
 {{+
 size_t size = 0;
@@ -299,6 +303,7 @@ value->obj = NULL;
 PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
 return 0;
 -}}
+value->dataobj = {nullptr};
 value->data = out;
 value->size = size;
 return 1;
@@ -757,6 +762,7 @@ PyErr_SetString(PyExc_ValueError,\t "must be a 1-D array of {c_type}");
 return 0;
 -}}
 value->obj = {py_tmp};
+value->dataobj = {nullptr};
 value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 value->size = PyArray_SIZE({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
@@ -998,6 +1004,7 @@ return out;
 
 def create_get_from_object_list(fmt):
     """ Convert PyObject to {c_type} pointer.
+    Used with native types.
 
     format fields:
        fcn_suffix - 
@@ -1022,6 +1029,7 @@ if ({PY_helper_prefix}create_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t 
 return 0;
 -}}
 value->obj = {nullptr};
+value->dataobj = {nullptr};
 value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
 value->size = {size_var};
 return 1;

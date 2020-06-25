@@ -2951,9 +2951,13 @@ static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
 ##### start get_from_object_char source
 
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj = Final object used.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.obj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.obj).
 static int SHROUD_get_from_object_char(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
@@ -2994,6 +2998,7 @@ static int SHROUD_get_from_object_char(PyObject *obj,
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->dataobj = nullptr;
     value->data = out;
     value->size = size;
     return 1;
@@ -3015,6 +3020,7 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<char * *>(in);
     value->size = size;
     return 1;
@@ -3035,6 +3041,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<double *>(in);
     value->size = size;
     return 1;
@@ -3056,6 +3063,7 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3078,6 +3086,7 @@ static int SHROUD_get_from_object_float_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<float *>(in);
     value->size = size;
     return 1;
@@ -3099,6 +3108,7 @@ static int SHROUD_get_from_object_float_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3121,6 +3131,7 @@ static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int16_t *>(in);
     value->size = size;
     return 1;
@@ -3142,6 +3153,7 @@ static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3164,6 +3176,7 @@ static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int32_t *>(in);
     value->size = size;
     return 1;
@@ -3185,6 +3198,7 @@ static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3207,6 +3221,7 @@ static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int64_t *>(in);
     value->size = size;
     return 1;
@@ -3228,6 +3243,7 @@ static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3250,6 +3266,7 @@ static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int8_t *>(in);
     value->size = size;
     return 1;
@@ -3271,6 +3288,7 @@ static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3292,6 +3310,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<int *>(in);
     value->size = size;
     return 1;
@@ -3312,6 +3331,7 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3334,6 +3354,7 @@ static int SHROUD_get_from_object_long_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<long *>(in);
     value->size = size;
     return 1;
@@ -3354,6 +3375,7 @@ static int SHROUD_get_from_object_long_long_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<long long *>(in);
     value->size = size;
     return 1;
@@ -3375,6 +3397,7 @@ static int SHROUD_get_from_object_long_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3398,6 +3421,7 @@ static int SHROUD_get_from_object_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3420,6 +3444,7 @@ static int SHROUD_get_from_object_short_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<short *>(in);
     value->size = size;
     return 1;
@@ -3441,6 +3466,7 @@ static int SHROUD_get_from_object_short_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3463,6 +3489,7 @@ static int SHROUD_get_from_object_size_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<size_t *>(in);
     value->size = size;
     return 1;
@@ -3483,6 +3510,7 @@ static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3505,6 +3533,7 @@ static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<uint16_t *>(in);
     value->size = size;
     return 1;
@@ -3526,6 +3555,7 @@ static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3548,6 +3578,7 @@ static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<uint32_t *>(in);
     value->size = size;
     return 1;
@@ -3569,6 +3600,7 @@ static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3591,6 +3623,7 @@ static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<uint64_t *>(in);
     value->size = size;
     return 1;
@@ -3612,6 +3645,7 @@ static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3634,6 +3668,7 @@ static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<uint8_t *>(in);
     value->size = size;
     return 1;
@@ -3655,6 +3690,7 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3677,6 +3713,7 @@ static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<unsigned int *>(in);
     value->size = size;
     return 1;
@@ -3698,6 +3735,7 @@ static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3720,6 +3758,7 @@ static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<unsigned long *>(in);
     value->size = size;
     return 1;
@@ -3740,6 +3779,7 @@ static int SHROUD_get_from_object_unsigned_long_long_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<unsigned long long *>(in);
     value->size = size;
     return 1;
@@ -3761,6 +3801,7 @@ static int SHROUD_get_from_object_unsigned_long_long_numpy
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3784,6 +3825,7 @@ static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3806,6 +3848,7 @@ static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
         return 0;
     }
     value->obj = nullptr;
+    value->dataobj = nullptr;
     value->data = static_cast<unsigned short *>(in);
     value->size = size;
     return 1;
@@ -3827,6 +3870,7 @@ static int SHROUD_get_from_object_unsigned_short_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
