@@ -41,6 +41,10 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
     Py_XDECREF(self->ivalue_obj);
     Py_XDECREF(self->dvalue_obj);
     Py_XDECREF(self->svalue_obj);
+    // Python objects for members.
+    Py_XDECREF(self->ivalue_dataobj);
+    Py_XDECREF(self->dvalue_dataobj);
+    Py_XDECREF(self->svalue_dataobj);
 // splicer end class.Cstruct_list.type.del
 }
 

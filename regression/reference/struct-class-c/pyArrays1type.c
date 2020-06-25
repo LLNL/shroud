@@ -40,6 +40,9 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
     // Python objects for members.
     Py_XDECREF(self->name_obj);
     Py_XDECREF(self->count_obj);
+    // Python objects for members.
+    Py_XDECREF(self->name_dataobj);
+    Py_XDECREF(self->count_dataobj);
 // splicer end class.Arrays1.type.del
 }
 

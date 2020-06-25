@@ -472,6 +472,8 @@ obj->{PY_type_dtor} = idtor;""",
         to_object = to_object.split("\n")
         self.process_member_obj(
             node, "obj->{PY_member_object} = {nullptr};", to_object)
+        self.process_member_obj(
+            node, "obj->{PY_member_data} = {nullptr};", to_object)
         append_format(
             to_object,
             "return {cast_reinterpret}PyObject *{cast1}obj{cast2};",
@@ -2874,6 +2876,8 @@ setup(
         ]
         self.process_member_obj(
             node, "Py_XDECREF(self->{PY_member_object});", output)
+        self.process_member_obj(
+            node, "Py_XDECREF(self->{PY_member_data});", output)
         return output
 
     def init_member_obj(self, node):
@@ -4121,7 +4125,7 @@ py_statements = [
 
     dict(
         name="py_char_**_in",
-        c_helper="create_from_PyObject_char",
+        c_helper="get_from_object_charptr",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -4129,22 +4133,20 @@ py_statements = [
         ],
         declare=[
             "PyObject * {pytmp_var};", # set by PyArg_Parse
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
+            "Py_ssize_t {size_var};",
         ],
         pre_call=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
         ],
         arg_call=["{cxx_var}"],
         post_call=[
-            "{stdlib}free({cxx_var});",
-            "{cxx_var} = {nullptr};",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr}) {{+",
-            "{stdlib}free({cxx_var});",
-            "-}}",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
     ),

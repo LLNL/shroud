@@ -40,6 +40,9 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
     // Python objects for members.
     Py_XDECREF(self->ivalue_obj);
     Py_XDECREF(self->dvalue_obj);
+    // Python objects for members.
+    Py_XDECREF(self->ivalue_dataobj);
+    Py_XDECREF(self->dvalue_dataobj);
 // splicer end class.Cstruct_numpy.type.del
 }
 

@@ -142,52 +142,51 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     return 0;
 }
 
-// helper create_from_PyObject_char
-// Convert obj into an array of type char *.
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char ***pin, Py_ssize_t *psize)
+
+static void FREE_get_from_object_charptr(PyObject *obj)
+{
+    void *addr = PyCapsule_GetPointer(obj, NULL);
+    // XXX - Loop over array and delete each element.
+    free(addr);
+}
+
+// helper get_from_object_charptr
+// Convert obj into an array of char * (i.e. char **).
+int STR_SHROUD_get_from_object_charptr(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+            value->name);
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     char **in = (char **) calloc(size, sizeof(char *));
+    PyObject *dataobj = PyCapsule_New(in, NULL, FREE_get_from_object_charptr);
+    // int PyCapsule_SetContext(datavalue, void * context);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            free(in);
+        STR_SHROUD_converter_value itemvalue;
+        int ierr = STR_SHROUD_get_from_object_char(item, &itemvalue);
+        if (ierr == 0) {
+            Py_DECREF(dataobj);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", name,
+                "argument '%s', index %d must be string", value->name,
                 (int) i);
-            return -1;
+            return 0;
         }
+        if (itemvalue.data != NULL) {
+            in[i] = strdup((char *) itemvalue.data);
+        }
+        Py_XDECREF(itemvalue.obj);
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_charptr
-// Convert PyObject to char * pointer.
-int STR_SHROUD_get_from_object_charptr(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    char * *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_char(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
     value->obj = NULL;
-    value->dataobj = NULL;
-    value->data = (char * *) in;
+    value->dataobj = dataobj;
+    value->data = in;
     value->size = size;
     return 1;
 }
@@ -425,6 +424,9 @@ PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
     // Python objects for members.
     obj->cfield_obj = NULL;
     obj->const_dvalue_obj = NULL;
+    // Python objects for members.
+    obj->cfield_dataobj = NULL;
+    obj->const_dvalue_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_ptr.utility.to_object
 }
@@ -474,6 +476,10 @@ PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr, int idtor)
     obj->ivalue_obj = NULL;
     obj->dvalue_obj = NULL;
     obj->svalue_obj = NULL;
+    // Python objects for members.
+    obj->ivalue_dataobj = NULL;
+    obj->dvalue_dataobj = NULL;
+    obj->svalue_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_list.utility.to_object
 }
@@ -523,6 +529,9 @@ PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
     // Python objects for members.
     obj->ivalue_obj = NULL;
     obj->dvalue_obj = NULL;
+    // Python objects for members.
+    obj->ivalue_dataobj = NULL;
+    obj->dvalue_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Cstruct_numpy.utility.to_object
 }
@@ -570,6 +579,9 @@ PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
     // Python objects for members.
     obj->name_obj = NULL;
     obj->count_obj = NULL;
+    // Python objects for members.
+    obj->name_dataobj = NULL;
+    obj->count_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Arrays1.utility.to_object
 }

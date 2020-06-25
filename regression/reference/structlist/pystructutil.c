@@ -167,6 +167,9 @@ PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
     // Python objects for members.
     obj->name_obj = NULL;
     obj->count_obj = NULL;
+    // Python objects for members.
+    obj->name_dataobj = NULL;
+    obj->count_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Arrays1.utility.to_object
 }

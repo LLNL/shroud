@@ -3008,20 +3008,51 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 
 ##### start get_from_object_charptr source
 
+
+static void FREE_get_from_object_charptr(PyObject *obj)
+{
+    void *addr = PyCapsule_GetPointer(obj, nullptr);
+    // XXX - Loop over array and delete each element.
+    std::free(addr);
+}
+
 // helper get_from_object_charptr
-// Convert PyObject to char * pointer.
+// Convert obj into an array of char * (i.e. char **).
 static int SHROUD_get_from_object_charptr(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    char * *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_char(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return -1;
     }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
+    PyObject *dataobj = PyCapsule_New(in, nullptr, FREE_get_from_object_charptr);
+    // int PyCapsule_SetContext(datavalue, void * context);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        LIB_SHROUD_converter_value itemvalue;
+        int ierr = SHROUD_get_from_object_char(item, &itemvalue);
+        if (ierr == 0) {
+            Py_DECREF(dataobj);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be string", value->name,
+                (int) i);
+            return 0;
+        }
+        if (itemvalue.data != nullptr) {
+            in[i] = strdup(static_cast<char *>(itemvalue.data));
+        }
+        Py_XDECREF(itemvalue.obj);
+    }
+    Py_DECREF(seq);
+
     value->obj = nullptr;
-    value->dataobj = nullptr;
-    value->data = static_cast<char * *>(in);
+    value->dataobj = dataobj;
+    value->data = in;
     value->size = size;
     return 1;
 }

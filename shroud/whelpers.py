@@ -380,7 +380,7 @@ return 0;
     fmt.c_var="in"
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
-    CHelpers[name] = create_get_from_object_list(fmt)
+    CHelpers[name] = create_get_from_object_list_charptr(fmt)
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
     CHelpers['get_from_object_charptr_list'] = dict(
@@ -932,7 +932,7 @@ return 0;
 -}}""", fmt),
     )
     return helper
-    
+
 def create_from_PyObject_charptr(fmt):
     """Create helper to convert list of PyObjects to C array.
     """
@@ -1031,6 +1031,78 @@ return 0;
 value->obj = {nullptr};
 value->dataobj = {nullptr};
 value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+value->size = {size_var};
+return 1;
+-}}""", fmt),
+    )
+    return helper
+
+def create_get_from_object_list_charptr(fmt):
+    """ Convert PyObject to an char **.
+    ["one", "two"]
+
+    Loop over all strings in the sequence object and
+    convert using get_from_object_char helper
+    which deals with unicode.
+    All string values are copied into new memory.
+
+    format fields:
+       fcn_suffix - 
+    """
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    fmt.__helper = CHelpers["get_from_object_char"]["name"]
+    helper = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[
+            "PY_converter_type",
+            "get_from_object_char",
+        ],
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+
+static void FREE_{hname}(PyObject *obj)
+{{+
+void *addr = PyCapsule_GetPointer(obj, {nullptr});
+// XXX - Loop over array and delete each element.
+{stdlib}free(addr);
+-}}
+
+// helper {hname}
+// Convert obj into an array of char * (i.e. char **).
+{PY_helper_static}{hnameproto}
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t value->name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
+PyObject *dataobj = PyCapsule_New(in, {nullptr}, FREE_{hname});
+// int PyCapsule_SetContext(datavalue, void * context);
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+{PY_typedef_converter} itemvalue;
+int ierr = {__helper}(item, &itemvalue);
+if (ierr == 0) {{+
+Py_DECREF(dataobj);
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
+return 0;
+-}}
+if (itemvalue.data != {nullptr}) {{+
+in[i] = strdup({cast_static}char *{cast1}itemvalue.data{cast2});
+-}}
+Py_XDECREF(itemvalue.obj);
+-}}
+Py_DECREF(seq);
+
+value->obj = {nullptr};
+value->dataobj = dataobj;
+value->data = in;
 value->size = {size_var};
 return 1;
 -}}""", fmt),

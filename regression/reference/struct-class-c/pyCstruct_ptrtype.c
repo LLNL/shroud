@@ -40,6 +40,9 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
     // Python objects for members.
     Py_XDECREF(self->cfield_obj);
     Py_XDECREF(self->const_dvalue_obj);
+    // Python objects for members.
+    Py_XDECREF(self->cfield_dataobj);
+    Py_XDECREF(self->const_dvalue_dataobj);
 // splicer end class.Cstruct_ptr.type.del
 }
 

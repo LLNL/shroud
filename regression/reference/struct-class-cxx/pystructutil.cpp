@@ -142,52 +142,51 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     return 0;
 }
 
-// helper create_from_PyObject_char
-// Convert obj into an array of type char *.
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char ***pin, Py_ssize_t *psize)
+
+static void FREE_get_from_object_charptr(PyObject *obj)
+{
+    void *addr = PyCapsule_GetPointer(obj, nullptr);
+    // XXX - Loop over array and delete each element.
+    std::free(addr);
+}
+
+// helper get_from_object_charptr
+// Convert obj into an array of char * (i.e. char **).
+int STR_SHROUD_get_from_object_charptr(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+            value->name);
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
+    PyObject *dataobj = PyCapsule_New(in, nullptr, FREE_get_from_object_charptr);
+    // int PyCapsule_SetContext(datavalue, void * context);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
+        STR_SHROUD_converter_value itemvalue;
+        int ierr = STR_SHROUD_get_from_object_char(item, &itemvalue);
+        if (ierr == 0) {
+            Py_DECREF(dataobj);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", name,
+                "argument '%s', index %d must be string", value->name,
                 (int) i);
-            return -1;
+            return 0;
         }
+        if (itemvalue.data != nullptr) {
+            in[i] = strdup(static_cast<char *>(itemvalue.data));
+        }
+        Py_XDECREF(itemvalue.obj);
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_charptr
-// Convert PyObject to char * pointer.
-int STR_SHROUD_get_from_object_charptr(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    char * *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_char(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
     value->obj = nullptr;
-    value->dataobj = nullptr;
-    value->data = static_cast<char * *>(in);
+    value->dataobj = dataobj;
+    value->data = in;
     value->size = size;
     return 1;
 }
@@ -430,6 +429,9 @@ PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
     // Python objects for members.
     obj->cfield_obj = nullptr;
     obj->const_dvalue_obj = nullptr;
+    // Python objects for members.
+    obj->cfield_dataobj = nullptr;
+    obj->const_dvalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_ptr.utility.to_object
 }
@@ -479,6 +481,10 @@ PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr, int idtor)
     obj->ivalue_obj = nullptr;
     obj->dvalue_obj = nullptr;
     obj->svalue_obj = nullptr;
+    // Python objects for members.
+    obj->ivalue_dataobj = nullptr;
+    obj->dvalue_dataobj = nullptr;
+    obj->svalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_list.utility.to_object
 }
@@ -528,6 +534,9 @@ PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
     // Python objects for members.
     obj->ivalue_obj = nullptr;
     obj->dvalue_obj = nullptr;
+    // Python objects for members.
+    obj->ivalue_dataobj = nullptr;
+    obj->dvalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_numpy.utility.to_object
 }
@@ -575,6 +584,9 @@ PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
     // Python objects for members.
     obj->name_obj = nullptr;
     obj->count_obj = nullptr;
+    // Python objects for members.
+    obj->name_dataobj = nullptr;
+    obj->count_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Arrays1.utility.to_object
 }

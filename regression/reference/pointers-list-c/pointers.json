@@ -1718,7 +1718,7 @@
                             "cxx_type": "char",
                             "cxx_var": "names",
                             "data_var": "SHData_names",
-                            "hnamefunc0": "SHROUD_create_from_PyObject_char",
+                            "hnamefunc0": "SHROUD_get_from_object_charptr",
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_names",
                             "pytmp_var": "SHTPy_names",
