@@ -20,8 +20,11 @@ is desired.
 For details see the
 `python docs <https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments>`_
     
-
 The source is available from `github.com/LLNL/shroud <https://github.com/LLNL/shroud>`_
+A `shiv <https://github.com/linkedin/shiv>`_ packaged executable is also available
+at `github releases <https://github.com/LLNL/shroud/releases>`_.
+This is an executable file which contains Shroud and PyYAML and uses the Python3 in
+the user's path.
 
 **Shroud** is written in Python and has been tested with version 2.7 and 3.4+.
 It requires the module:

@@ -7,15 +7,17 @@
 C Statements
 ============
 
+.. note:: Work in progress
+
 
 .. code-block:: text
 
     extern "C" {
 
-    {C_return_type} {C_name}({C_prototype})
+    {C_return_type} {C_name}({C_prototype})    buf_args
     {
         {pre_call}
-        {call_code}
+        {call_code}    arg_call
         {post_call_pattern}
         {post_call}
         {final}
@@ -44,6 +46,10 @@ arg
     Use the library argument as the wrapper argument.
     This is the default when *buf_args* is not explicit.
 
+arg_decl
+    The explicit declarations will be provided in the fields
+    c_arg_decl and f_arg_decl.
+    
 capsule
 
     An argument of type *C_capsule_data_type*/*F_capsule_data_type*.
@@ -169,11 +175,32 @@ from the ``char *`` argument passed into the C API wrapper.
 c_arg_decl
 ^^^^^^^^^^
 
+A list of declarations in the C wrapper when buf_arg includes "arg_decl".
+
 f_arg_decl
 ^^^^^^^^^^
 
+A list of declarations in the Fortran interface when buf_arg includes "arg_decl".
+
+.. c_var
+
+
+f_result_decl
+^^^^^^^^^^^^^
+
+A list of declarations in the Fortran interface for a function result value.
+
+.. c_var is set to fmt.F_result
+
 f_module
 ^^^^^^^^
+
+Fortran modules used in the Fortran interface:
+
+.. code-block:: yaml
+
+        f_module=dict(iso_c_binding=["C_PTR"]),
+
 
 
 arg_call

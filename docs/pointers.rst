@@ -419,9 +419,6 @@ leak memory when called:
         return SHC_rv;
     }
 
-.. note:: Reference counting and garbage collection are still a work in progress
-
-
 
 
 .. rubric:: Footnotes
