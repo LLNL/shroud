@@ -20,7 +20,7 @@
 // splicer begin C_declarations
 // splicer end C_declarations
 
-void POI_accept_char_array_in_bufferify(char *names, long Snames,
+int POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames);
 
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems);

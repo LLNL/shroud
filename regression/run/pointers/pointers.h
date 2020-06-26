@@ -37,7 +37,7 @@ int accumulate(const int *arr, size_t len);
 
 void Rank2Input(int *arg);
 
-void acceptCharArrayIn(char **names);
+int acceptCharArrayIn(char **names);
 
 void setGlobalInt(int value);
 int sumFixedArray(void);

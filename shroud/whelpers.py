@@ -112,6 +112,7 @@ def add_external_helpers():
     fmt.lstart = ""
     fmt.lend = ""
 
+    ########################################
     name = "capsule_dtor"
     fmt.hname = name
     FHelpers[name] = dict(
@@ -131,7 +132,7 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
         ),
     )
     
-    ##########
+    ########################################
     # Only used with std::vector and thus C++.
     name = "copy_array"
     fmt.hname = name
@@ -162,8 +163,8 @@ n *= data->elem_len;
             fmt,
         ),
     )
-    ##########
     
+    ########################################
     # Only used with std::string and thus C++.
     name = "copy_string"
     fmt.hname = name
@@ -213,8 +214,8 @@ integer(C_SIZE_T), value :: c_var_size
             fmt,
         ),
     )
-    ##########
 
+    ########################################
     name = "ShroudStrToArray"
     fmt.hname = name
     if literalinclude:
@@ -246,6 +247,30 @@ array->rank = 0;  // scalar
 
     
     ########################################
+    # Python
+    ########################################
+    name = "py_capsule_dtor"
+    fmt.hname = name
+    fmt.hnamefunc = wformat("FREE_{hname}", fmt)
+    CHelpers[name] = dict(
+        name=fmt.hnamefunc,
+        source=wformat(
+            """
+// helper {hname}
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void {hnamefunc}(PyObject *obj)
+{{+
+void *in = PyCapsule_GetPointer(obj, {nullptr});
+if (in != {nullptr}) {{+
+{stdlib}free(in);
+-}}
+-}}""",
+            fmt,
+        ),
+    )
+    
+    ########################################
     # char *
     name = "get_from_object_char"
     fmt.hname = name
@@ -258,9 +283,14 @@ array->rank = 0;  // scalar
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj is unused.
+// value.dataobj - object which holds the data.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.dataobj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.dataobj).
 {PY_helper_static}{hnameproto}
 {{+
 size_t size = 0;
@@ -270,34 +300,39 @@ if (PyUnicode_Check(obj)) {{+
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyBytes_AS_STRING(strobj);
 size = PyBytes_GET_SIZE(strobj);
-value->obj = strobj;  // steal reference
+value->dataobj = strobj;  // steal reference
 ^#else
 PyObject *strobj = PyUnicode_AsUTF8String(obj);
 out = PyString_AsString(strobj);
 size = PyString_Size(obj);
-value->obj = strobj;  // steal reference
+value->dataobj = strobj;  // steal reference
 ^#endif
-^#if PY_MAJOR_VERSION >= 3
--}} else if (PyByteArray_Check(obj)) {{+
-out = PyBytes_AS_STRING(obj);
-size = PyBytes_GET_SIZE(obj);
-value->obj = obj;
-Py_INCREF(obj);
-^#else
+^#if PY_MAJOR_VERSION < 3
 -}} else if (PyString_Check(obj)) {{+
 out = PyString_AsString(obj);
 size = PyString_Size(obj);
-value->obj = obj;
+value->dataobj = obj;
 Py_INCREF(obj);
 ^#endif
+-}} else if (PyBytes_Check(obj)) {{+
+out = PyBytes_AS_STRING(obj);
+size = PyBytes_GET_SIZE(obj);
+value->dataobj = obj;
+Py_INCREF(obj);
+-}} else if (PyByteArray_Check(obj)) {{+
+out = PyByteArray_AS_STRING(obj);
+size = PyByteArray_GET_SIZE(obj);
+value->dataobj = obj;
+Py_INCREF(obj);
 -}} else if (obj == Py_None) {{+
 out = NULL;
 size = 0;
-value->obj = NULL;
+value->dataobj = NULL;
 -}} else {{+
 PyErr_Format(PyExc_TypeError,\t "argument should be string or None, not %.200s",\t Py_TYPE(obj)->tp_name);
 return 0;
 -}}
+value->obj = {nullptr};
 value->data = out;
 value->size = size;
 return 1;
@@ -324,15 +359,12 @@ return 1;
     fmt.fcn_suffix = "char"
     fmt.fcn_type = "string"
     fmt.c_type = "char *"
-    fmt.Py_get = "PyString_AsString(item)"
-#    fmt.Py_get = ntypemap.PY_get.format(py_var="item")
     fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
-    fmt.hname = "create_from_PyObject_char"
-    CHelpers["create_from_PyObject_char"] = create_from_PyObject_charptr(fmt)
     fmt.c_const=""  # XXX issues with struct.yaml test, remove const.
     fmt.hname = "to_PyList_char"
     CHelpers["to_PyList_char"] = create_to_PyList(fmt)
 
+    ########################################
     name = "fill_from_PyObject_char"
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
@@ -346,7 +378,7 @@ return 1;
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -360,7 +392,7 @@ if (value.data == {nullptr}) {{+
 in[0] = '\\0';
 -}} else {{+
 {stdlib}strncpy\t(in,\t {cast_static}char *{cast1}value.data{cast2},\t insize);
-Py_DECREF(value.obj);
+Py_DECREF(value.dataobj);
 -}}
 return 0;
 -}}""", fmt),
@@ -373,7 +405,7 @@ return 0;
     fmt.c_var="in"
     fmt.hname = name
     fmt.hnamefunc = fmt.PY_helper_prefix + name
-    CHelpers[name] = create_get_from_object_list(fmt)
+    CHelpers[name] = create_get_from_object_list_charptr(fmt)
     # There are no 'list' or 'numpy' version of these functions.
     # Use the one-true-version SHROUD_get_from_object_charptr.
     CHelpers['get_from_object_charptr_list'] = dict(
@@ -390,11 +422,24 @@ return 0;
         scope="pwrap_impl",
         c_include="<stddef.h>",
         cxx_include="<cstddef>",
+        # obj may be the argument passed into a function or
+        # it may be a PyCapsule for locally allocated memory.
         source=wformat("""
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
+// name - used in error messages
+// obj  - A mutable object which holds the data.
+//        For example, a NumPy array, Python array.
+//        But not a list or str object.
+// dataobj - converter allocated memory.
+//           Decrement dataobj to release memory.
+//           For example, extracted from a list or str.
+// data  - C accessable pointer to data which is in obj or dataobj.
+// size  - number of items in data (not number of bytes).
 typedef struct {{+
+const char *name;
 PyObject *obj;
+PyObject *dataobj;
 void *data;   // points into obj.
 size_t size;
 -}} {PY_typedef_converter};""", fmt)
@@ -703,20 +748,6 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         CHelpers[name] = fill_from_PyObject_numpy(fmt)
 
     ########################################
-    # Used with intent(in), setter.
-    # Return -1 on error.
-    # Convert an empty list into a NULL pointer.
-    # Use a fixed text in PySequence_Fast.
-    # If an error occurs, replace message with one which includes argument name.
-    name = "create_from_PyObject_" + flat_name
-    if ntypemap.PY_get:
-        fmt.hname = name
-        fmt.fcn_suffix = flat_name
-        fmt.fcn_type = ntypemap.c_type
-        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        CHelpers[name] = create_from_PyObject(fmt)
-
-    ########################################
     # Function called by typemap.PY_get_converter for NumPy.
     name = "get_from_object_{}_numpy".format(flat_name)
     fmt.py_tmp = "array"
@@ -742,6 +773,7 @@ PyErr_SetString(PyExc_ValueError,\t "must be a 1-D array of {c_type}");
 return 0;
 -}}
 value->obj = {py_tmp};
+value->dataobj = {nullptr};
 value->data = PyArray_DATA({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 value->size = PyArray_SIZE({cast_reinterpret}PyArrayObject *{cast1}{py_tmp}{cast2});
 return 1;
@@ -751,13 +783,15 @@ return 1;
 
     ########################################
     # Function called by typemap.PY_get_converter for list.
-    name = "get_from_object_{}_list".format(flat_name)
-    fmt.size_var = "size"
-    fmt.c_var = "in"
-    fmt.fcn_suffix = flat_name
-    fmt.hname = name
-    fmt.hnamefunc = fmt.PY_helper_prefix + name
-    CHelpers[name] = create_get_from_object_list(fmt)
+    if ntypemap.PY_get:
+        name = "get_from_object_{}_list".format(flat_name)
+        fmt.size_var = "size"
+        fmt.c_var = "in"
+        fmt.fcn_suffix = flat_name
+        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
+        fmt.hname = name
+        fmt.hnamefunc = fmt.PY_helper_prefix + name
+        CHelpers[name] = create_get_from_object_list(fmt)
 
 def fill_from_PyObject_list(fmt):
     """Create helper to convert list of PyObjects to existing C array.
@@ -774,7 +808,8 @@ def fill_from_PyObject_list(fmt):
         source=wformat(
                 """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Fill {c_type} array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -831,7 +866,8 @@ def fill_from_PyObject_numpy(fmt):
         source=wformat(
                 """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Fill {c_type} array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -866,94 +902,6 @@ return 0;
         )
     return helper
     
-def create_from_PyObject(fmt):
-    """Create helper to convert list of PyObjects to C array.
-    """
-    fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
-    fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
-    helper = dict(
-        name=fmt.hnamefunc,
-        c_include="<stdlib.h>",   # malloc/free
-        cxx_include="<cstdlib>",  # malloc/free
-        proto=fmt.hnameproto + ";",
-        source=wformat(
-                """
-// helper {hname}
-// Convert obj into an array of type {c_type}
-// Return -1 on error.
-{PY_helper_static}{hnameproto}
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-{stdlib}free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-    )
-    return helper
-    
-def create_from_PyObject_charptr(fmt):
-    """Create helper to convert list of PyObjects to C array.
-    """
-    fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
-    fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t char ***pin,\t Py_ssize_t *psize)", fmt)
-    helper = dict(
-        name=fmt.hnamefunc,
-        c_include="<stdlib.h>",   # malloc/free
-        cxx_include="<cstdlib>",  # malloc/free
-        proto=fmt.hnameproto + ";",
-        source=wformat(
-                """
-// helper {hname}
-// Convert obj into an array of type char *.
-// Return -1 on error.
-{PY_helper_static}{hnameproto}
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-{stdlib}free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-    )
-    return helper
-    
 def create_to_PyList(fmt):
     """Create helper to convert C array to PyList of PyObjects.
     """
@@ -981,31 +929,141 @@ return out;
 
 def create_get_from_object_list(fmt):
     """ Convert PyObject to {c_type} pointer.
+    Used with native types.
+# XXX - convert empty list to NULL pointer.
 
     format fields:
        fcn_suffix - 
     """
     fmt.hnameproto = wformat(
             "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    fmt.dtor_helper = CHelpers["py_capsule_dtor"]["name"]
     helper = dict(
         name=fmt.hnamefunc,
         dependent_helpers=[
             "PY_converter_type",
-            "create_from_PyObject_" + fmt.fcn_suffix,  #ntypemap.c_type,
+            "py_capsule_dtor",
         ],
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
-// Convert PyObject to {c_type} pointer.
+// Convert list of PyObject to array of {c_type}.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 {PY_helper_static}{hnameproto}
 {{+
-{c_type} *{c_var};
-Py_ssize_t {size_var};
-if ({PY_helper_prefix}create_from_PyObject_{fcn_suffix}\t(obj,\t \"{c_var}\",\t &{c_var}, \t &{size_var}) == -1) {{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t value->name);
 return 0;
 -}}
-value->obj = {nullptr};
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+in[i] = {Py_get};
+if (PyErr_Occurred()) {{+
+{stdlib}free(in);
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
+return 0;
+-}}
+-}}
+Py_DECREF(seq);
+
+value->obj = {nullptr};  // Do not save list object.
+value->dataobj = PyCapsule_New(in, {nullptr}, {dtor_helper});
 value->data = {cast_static}{c_type} *{cast1}{c_var}{cast2};
+value->size = size;
+return 1;
+-}}""", fmt),
+    )
+    return helper
+
+def create_get_from_object_list_charptr(fmt):
+    """ Convert PyObject to an char **.
+    ["one", "two"]
+    helper get_from_object_charptr
+
+    Loop over all strings in the sequence object and
+    convert using get_from_object_char helper
+    which deals with unicode.
+    All string values are copied into new memory.
+
+    format fields:
+       fcn_suffix - 
+    """
+    fmt.hnameproto = wformat(
+            "int {hnamefunc}\t(PyObject *obj,\t {PY_typedef_converter} *value)", fmt)
+    fmt.__helper = CHelpers["get_from_object_char"]["name"]
+    helper = dict(
+        name=fmt.hnamefunc,
+        dependent_helpers=[
+            "PY_converter_type",
+            "get_from_object_char",
+        ],
+        c_include="<stdlib.h>",   # malloc/free
+        cxx_include="<cstdlib>",  # malloc/free
+        proto=fmt.hnameproto + ";",
+        source=wformat("""
+
+// helper FREE_{hname}
+static void FREE_{hname}(PyObject *obj)
+{{+
+char **in = {cast_static}char **{cast1}PyCapsule_GetPointer(obj, {nullptr}){cast2};
+if (in == {nullptr})
++return;-
+size_t *size = {cast_static}size_t *{cast1}PyCapsule_GetContext(obj){cast2};
+if (size == {nullptr})
++return;-
+for (size_t i=0; i < *size; ++i) {{+
+if (in[i] == {nullptr})
++continue;-
+{stdlib}free(in[i]);
+-}}
+{stdlib}free(in);
+{stdlib}free(size);
+-}}
+
+// helper {hname}
+// Convert obj into an array of char * (i.e. char **).
+{PY_helper_static}{hnameproto}
+{{+
+PyObject *seq = PySequence_Fast(obj, "holder");
+if (seq == NULL) {{+
+PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t value->name);
+return -1;
+-}}
+Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
+PyObject *dataobj = PyCapsule_New(in, {nullptr}, FREE_{hname});
+size_t *size_context = {cast_static}size_t *{cast1}malloc(sizeof(size_t)){cast2};
+*size_context = size;
+int ierr = PyCapsule_SetContext(dataobj, size_context);
+// XXX - check error
+{PY_typedef_converter} itemvalue = {PY_value_init};
+for (Py_ssize_t i = 0; i < size; i++) {{+
+PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+ierr = {__helper}(item, &itemvalue);
+if (ierr == 0) {{+
+Py_XDECREF(itemvalue.dataobj);
+Py_DECREF(dataobj);
+Py_DECREF(seq);
+PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
+return 0;
+-}}
+if (itemvalue.data != {nullptr}) {{+
+in[i] = strdup({cast_static}char *{cast1}itemvalue.data{cast2});
+-}}
+Py_XDECREF(itemvalue.dataobj);
+-}}
+Py_DECREF(seq);
+
+value->obj = {nullptr};
+value->dataobj = dataobj;
+value->data = in;
 value->size = {size_var};
 return 1;
 -}}""", fmt),
@@ -1437,6 +1495,8 @@ integer, parameter, private :: &
 )  # end FHelpers
 
 
+
+########################################
 # Routines to dump helper routines to a file.
 
 def gather_helpers(helpers, keys):

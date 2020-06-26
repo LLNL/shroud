@@ -41,6 +41,10 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
     Py_XDECREF(self->ivalue_obj);
     Py_XDECREF(self->dvalue_obj);
     Py_XDECREF(self->svalue_obj);
+    // Python objects for members.
+    Py_XDECREF(self->ivalue_dataobj);
+    Py_XDECREF(self->dvalue_dataobj);
+    Py_XDECREF(self->svalue_dataobj);
 // splicer end class.Cstruct_list.type.del
 }
 
@@ -71,9 +75,12 @@ PY_Cstruct_list_tp_init(
 {
 // splicer begin class.Cstruct_list.method.cstruct_list_ctor
     int nitems = 0;
-    STR_SHROUD_converter_value SHPy_ivalue = { nullptr, nullptr, 0 };
-    STR_SHROUD_converter_value SHPy_dvalue = { nullptr, nullptr, 0 };
-    STR_SHROUD_converter_value SHPy_svalue = { nullptr, nullptr, 0 };
+    STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_ivalue.name = "ivalue";
+    STR_SHROUD_converter_value SHValue_dvalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_dvalue.name = "dvalue";
+    STR_SHROUD_converter_value SHValue_svalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_svalue.name = "svalue";
     const char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -83,9 +90,9 @@ PY_Cstruct_list_tp_init(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&O&:Cstruct_list_ctor", const_cast<char **>(SHT_kwlist), 
-        &nitems, STR_SHROUD_get_from_object_int_list, &SHPy_ivalue,
-        STR_SHROUD_get_from_object_double_list, &SHPy_dvalue,
-        STR_SHROUD_get_from_object_charptr, &SHPy_svalue))
+        &nitems, STR_SHROUD_get_from_object_int_list, &SHValue_ivalue,
+        STR_SHROUD_get_from_object_double_list, &SHValue_dvalue,
+        STR_SHROUD_get_from_object_charptr, &SHValue_svalue))
         return -1;
 
     self->obj = new Cstruct_list;
@@ -98,12 +105,12 @@ PY_Cstruct_list_tp_init(
     // post_call - initialize fields
     Cstruct_list *SH_obj = self->obj;
     SH_obj->nitems = nitems;
-    SH_obj->ivalue = static_cast<int *>(SHPy_ivalue.data);
-    self->ivalue_obj = SHPy_ivalue.obj;  // steal reference
-    SH_obj->dvalue = static_cast<double *>(SHPy_dvalue.data);
-    self->dvalue_obj = SHPy_dvalue.obj;  // steal reference
-    SH_obj->svalue = static_cast<char **>(SHPy_svalue.data);
-    self->svalue_obj = SHPy_svalue.obj;  // steal reference
+    SH_obj->ivalue = static_cast<int *>(SHValue_ivalue.data);
+    self->ivalue_obj = SHValue_ivalue.obj;  // steal reference
+    SH_obj->dvalue = static_cast<double *>(SHValue_dvalue.data);
+    self->dvalue_obj = SHValue_dvalue.obj;  // steal reference
+    SH_obj->svalue = static_cast<char **>(SHValue_svalue.data);
+    self->svalue_obj = SHValue_svalue.obj;  // steal reference
 
     return 0;
 // splicer end class.Cstruct_list.method.cstruct_list_ctor
@@ -157,7 +164,6 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
         self->obj->ivalue = nullptr;
         self->ivalue_obj = nullptr;
-        // XXXX set error
         return -1;
     }
     self->obj->ivalue = static_cast<int *>(cvalue.data);
@@ -189,7 +195,6 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
         self->obj->dvalue = nullptr;
         self->dvalue_obj = nullptr;
-        // XXXX set error
         return -1;
     }
     self->obj->dvalue = static_cast<double *>(cvalue.data);
@@ -204,10 +209,6 @@ static PyObject *PY_Cstruct_list_svalue_getter(PY_Cstruct_list *self,
     if (self->obj->svalue == nullptr) {
         Py_RETURN_NONE;
     }
-    if (self->svalue_obj != nullptr) {
-        Py_INCREF(self->svalue_obj);
-        return self->svalue_obj;
-    }
     PyObject *rv = STR_SHROUD_to_PyList_char(self->obj->svalue, self->obj->nitems);
     return rv;
 }
@@ -217,15 +218,15 @@ static int PY_Cstruct_list_svalue_setter(PY_Cstruct_list *self, PyObject *value,
     void *SHROUD_UNUSED(closure))
 {
     STR_SHROUD_converter_value cvalue;
-    Py_XDECREF(self->svalue_obj);
+    Py_XDECREF(self->svalue_dataobj);
     if (STR_SHROUD_get_from_object_charptr(value, &cvalue) == 0) {
         self->obj->svalue = nullptr;
-        self->svalue_obj = nullptr;
+        self->svalue_dataobj = nullptr;
         // XXXX set error
         return -1;
     }
     self->obj->svalue = static_cast<char **>(cvalue.data);
-    self->svalue_obj = cvalue.obj;  // steal reference
+    self->svalue_dataobj = cvalue.dataobj;  // steal reference
     return 0;
 }
 

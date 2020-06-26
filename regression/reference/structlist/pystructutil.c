@@ -24,9 +24,14 @@
 #endif
 
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj is unused.
+// value.dataobj - object which holds the data.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.dataobj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.dataobj).
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -37,36 +42,41 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
         size = PyBytes_GET_SIZE(strobj);
-        value->obj = strobj;  // steal reference
+        value->dataobj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyString_AsString(strobj);
         size = PyString_Size(obj);
-        value->obj = strobj;  // steal reference
+        value->dataobj = strobj;  // steal reference
 #endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        size = PyBytes_GET_SIZE(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
+#if PY_MAJOR_VERSION < 3
     } else if (PyString_Check(obj)) {
         out = PyString_AsString(obj);
         size = PyString_Size(obj);
-        value->obj = obj;
+        value->dataobj = obj;
         Py_INCREF(obj);
 #endif
+    } else if (PyBytes_Check(obj)) {
+        out = PyBytes_AS_STRING(obj);
+        size = PyBytes_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
+    } else if (PyByteArray_Check(obj)) {
+        out = PyByteArray_AS_STRING(obj);
+        size = PyByteArray_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
     } else if (obj == Py_None) {
         out = NULL;
         size = 0;
-        value->obj = NULL;
+        value->dataobj = NULL;
     } else {
         PyErr_Format(PyExc_TypeError,
             "argument should be string or None, not %.200s",
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->obj = NULL;
     value->data = out;
     value->size = size;
     return 1;
@@ -74,7 +84,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 
 
 // helper fill_from_PyObject_char
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     char *in, Py_ssize_t insize)
@@ -89,13 +99,14 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
         in[0] = '\0';
     } else {
         strncpy(in, (char *) value.data, insize);
-        Py_DECREF(value.obj);
+        Py_DECREF(value.dataobj);
     }
     return 0;
 }
 
 // helper fill_from_PyObject_int_list
-// Convert obj into an array of type int
+// Fill int array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -161,6 +172,9 @@ PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
     // Python objects for members.
     obj->name_obj = NULL;
     obj->count_obj = NULL;
+    // Python objects for members.
+    obj->name_dataobj = NULL;
+    obj->count_dataobj = NULL;
     return (PyObject *) obj;
     // splicer end class.Arrays1.utility.to_object
 }

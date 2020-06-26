@@ -26,17 +26,29 @@
 #define PyString_FromStringAndSize PyUnicode_FromStringAndSize
 #endif
 
-// helper create_from_PyObject_int
-// Convert obj into an array of type int
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int(PyObject *obj,
-    const char *name, int **pin, Py_ssize_t *psize)
+// helper py_capsule_dtor
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void FREE_py_capsule_dtor(PyObject *obj)
+{
+    void *in = PyCapsule_GetPointer(obj, nullptr);
+    if (in != nullptr) {
+        std::free(in);
+    }
+}
+
+// helper get_from_object_int_list
+// Convert list of PyObject to array of int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+static int SHROUD_get_from_object_int_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
+            value->name);
+        return 0;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
@@ -47,14 +59,18 @@ static int SHROUD_create_from_PyObject_int(PyObject *obj,
             std::free(in);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
+                "argument '%s', index %d must be int", value->name,
+                (int) i);
+            return 0;
         }
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
+    value->data = static_cast<int *>(in);
+    value->size = size;
+    return 1;
 }
 
 // splicer begin C_definition
@@ -1193,6 +1209,9 @@ PY_PostDeclare(
 // splicer begin function.post_declare
     int * count = nullptr;
     PyObject *SHTPy_count = nullptr;
+    STR_SHROUD_converter_value SHValue_count = {NULL, NULL, NULL, NULL, 0};
+    SHValue_count.name = "count";
+    Py_ssize_t SHSize_count;
     char * name;
     const char *SHT_kwlist[] = {
         "count",
@@ -1208,10 +1227,11 @@ PY_PostDeclare(
     std::string SH_name(name);
 
     // post_parse
-    Py_ssize_t SHSize_count;
-    if (SHROUD_create_from_PyObject_int(SHTPy_count, "count", &count, 
-        &SHSize_count) == -1)
+    if (SHROUD_get_from_object_int_list
+        (SHTPy_count, &SHValue_count) == 0)
         goto fail;
+    count = static_cast<int *>(SHValue_count.data);
+    SHSize_count = SHValue_count.size;
 
     PostDeclare(count, SH_name);
 
@@ -1220,12 +1240,12 @@ PY_PostDeclare(
         SH_name.size());
 
     // cleanup
-    std::free(count);
+    Py_XDECREF(SHValue_count.dataobj);
 
     return (PyObject *) SHPy_name;
 
 fail:
-    if (count != nullptr) std::free(count);
+    Py_XDECREF(SHValue_count.dataobj);
     return nullptr;
 // splicer end function.post_declare
 }
