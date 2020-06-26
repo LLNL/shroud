@@ -141,7 +141,6 @@ C-interface function void PostDeclare(int * count +intent(in)+rank(1), std::stri
 Close wrapfstrings.f
 Close utilstrings.cpp
 Python function void passChar(char status +intent(in)+value)
-Python function void passCharForce(char status +intent(in)+value)
 Python function char returnChar()
 Python function void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 Python function void passCharPtrInOut(char * s +intent(inout))

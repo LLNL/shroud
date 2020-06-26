@@ -39,9 +39,12 @@ contains
     call set_case_name("test_charargs")
 
     call pass_char("w")
-
     ch = return_char()
-    call assert_true( ch == "w")
+    call assert_true(ch == "w", "passChar/returnChar")
+
+    call pass_char_force("x")
+    ch = return_char()
+    call assert_true(ch == "x", "passCharForce/returnChar")
 
     ! character(*) function
     str = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

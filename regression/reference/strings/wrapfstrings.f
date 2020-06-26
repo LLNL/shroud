@@ -1192,15 +1192,14 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char status +intent(in)+value
-    ! Requested: f_char_scalar_in
-    ! Match:     f_default
+    ! Exact:     f_char_scalar_in
     ! Exact:     c_char_scalar_in
     !>
     !! By default no Fortran wrapper is created.
     !! Force one so it can be tested.
     !<
     subroutine pass_char_force(status)
-        character(len=*), value, intent(IN) :: status
+        character, value, intent(IN) :: status
         ! splicer begin function.pass_char_force
         call c_pass_char_force(status)
         ! splicer end function.pass_char_force

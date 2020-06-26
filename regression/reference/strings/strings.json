@@ -40,7 +40,7 @@
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_scalar_in",
-                            "stmt1": "f_default",
+                            "stmt1": "f_char_scalar_in",
                             "stmtc0": "c_char_scalar_in",
                             "stmtc1": "c_char_scalar_in"
                         },
@@ -147,29 +147,9 @@
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_scalar_in",
-                            "stmt1": "f_default",
+                            "stmt1": "f_char_scalar_in",
                             "stmtc0": "c_char_scalar_in",
                             "stmtc1": "c_char_scalar_in"
-                        },
-                        "fmtpy": {
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_type": "char",
-                            "c_var": "status",
-                            "ctor_expr": "status",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&status",
-                            "cxx_type": "char",
-                            "cxx_var": "status",
-                            "data_var": "SHData_status",
-                            "numpy_type": "NPY_INTP",
-                            "py_var": "SHPy_status",
-                            "pytmp_var": "SHTPy_status",
-                            "size_var": "SHSize_status",
-                            "stmt0": "py_char_scalar_in",
-                            "stmt1": "py_char_scalar_in",
-                            "value_var": "SHValue_status"
                         }
                     }
                 },
@@ -217,7 +197,6 @@
                     "F_name_generic": "pass_char_force",
                     "F_name_impl": "pass_char_force",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_passCharForce",
                     "function_name": "passCharForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
@@ -226,7 +205,8 @@
                     "underscore_name": "pass_char_force"
                 },
                 "options": {
-                    "F_force_wrapper": true
+                    "F_force_wrapper": true,
+                    "wrap_python": false
                 }
             },
             {
@@ -6435,7 +6415,7 @@
                             "f_var": "status",
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_scalar_in",
-                            "stmt1": "f_default",
+                            "stmt1": "f_char_scalar_in",
                             "stmtc0": "c_char_scalar_in",
                             "stmtc1": "c_char_scalar_in"
                         },

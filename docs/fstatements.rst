@@ -45,8 +45,16 @@ Only added if *arg_decl* is also defined.
 arg_decl
 ^^^^^^^^
 
-Declarations for arguments.
+List of declarations for arguments.
 Added before splicer.
+Used to replace the default declaration created by Shroud.
+
+.. code-block:: text
+
+        arg_decl=[
+            "character, value, intent(IN) :: {f_var}",
+        ],
+                
 
 buf_arg
 ^^^^^^^

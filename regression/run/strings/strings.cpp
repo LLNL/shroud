@@ -12,6 +12,7 @@
 #include <cstring>
 
 static std::string last_function_called;
+static char global_char = ' ';
 
 // These variables exist to avoid warning errors
 static const char * static_char = "bird";
@@ -23,6 +24,7 @@ static std::string static_str_empty;
 
 void passChar(char status)
 {
+    global_char = status;
     if (status == 'w') {
 	global_str = "w";
     }
@@ -30,6 +32,7 @@ void passChar(char status)
 
 void passCharForce(char status)
 {
+    global_char = status;
     if (status == 'w') {
 	global_str = "w";
     }
@@ -37,7 +40,7 @@ void passCharForce(char status)
 
 char returnChar()
 {
-    return 'w';
+    return global_char;
 }
 
 //----------------------------------------
