@@ -984,12 +984,12 @@ PY_incrementIntArray(
     if (SHPy_array == nullptr) goto fail;
 
     // cleanup
-    Py_XDECREF(SHValue_array.obj);
+    Py_XDECREF(SHValue_array.dataobj);
 
     return (PyObject *) SHPy_array;
 
 fail:
-    Py_XDECREF(SHValue_array.obj);
+    Py_XDECREF(SHValue_array.dataobj);
     return nullptr;
 // splicer end function.increment_int_array
 }
@@ -1045,12 +1045,12 @@ PY_fill_with_zeros(
     if (SHPy_x == nullptr) goto fail;
 
     // cleanup
-    Py_XDECREF(SHValue_x.obj);
+    Py_XDECREF(SHValue_x.dataobj);
 
     return (PyObject *) SHPy_x;
 
 fail:
-    Py_XDECREF(SHValue_x.obj);
+    Py_XDECREF(SHValue_x.dataobj);
     return nullptr;
 // splicer end function.fill_with_zeros
 }

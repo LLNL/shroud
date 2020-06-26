@@ -748,20 +748,6 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         CHelpers[name] = fill_from_PyObject_numpy(fmt)
 
     ########################################
-    # Used with intent(in), setter.
-    # Return -1 on error.
-    # Convert an empty list into a NULL pointer.
-    # Use a fixed text in PySequence_Fast.
-    # If an error occurs, replace message with one which includes argument name.
-    name = "create_from_PyObject_" + flat_name
-    if ntypemap.PY_get:
-        fmt.hname = name
-        fmt.fcn_suffix = flat_name
-        fmt.fcn_type = ntypemap.c_type
-        fmt.Py_get = ntypemap.PY_get.format(py_var="item")
-        CHelpers[name] = create_from_PyObject(fmt)
-
-    ########################################
     # Function called by typemap.PY_get_converter for NumPy.
     name = "get_from_object_{}_numpy".format(flat_name)
     fmt.py_tmp = "array"
@@ -916,50 +902,6 @@ return 0;
         )
     return helper
     
-def create_from_PyObject(fmt):
-    """Create helper to convert list of PyObjects to C array.
-    """
-    fmt.hnamefunc = wformat(
-        "{PY_helper_prefix}create_from_PyObject_{fcn_suffix}", fmt)
-    fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} **pin,\t Py_ssize_t *psize)", fmt)
-    helper = dict(
-        name=fmt.hnamefunc,
-        c_include="<stdlib.h>",   # malloc/free
-        cxx_include="<cstdlib>",  # malloc/free
-        proto=fmt.hnameproto + ";",
-        source=wformat(
-                """
-// helper {hname}
-// Convert obj into an array of type {c_type}
-// Return -1 on error.
-{PY_helper_static}{hnameproto}
-{{+
-PyObject *seq = PySequence_Fast(obj, "holder");
-if (seq == NULL) {{+
-PyErr_Format(PyExc_TypeError,\t "argument '%s' must be iterable",\t name);
-return -1;
--}}
-Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-{c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
-for (Py_ssize_t i = 0; i < size; i++) {{+
-PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
-if (PyErr_Occurred()) {{+
-{stdlib}free(in);
-Py_DECREF(seq);
-PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
-return -1;
--}}
--}}
-Py_DECREF(seq);
-*pin = in;
-*psize = size;
-return 0;
--}}""", fmt),
-    )
-    return helper
-
 def create_to_PyList(fmt):
     """Create helper to convert C array to PyList of PyObjects.
     """
@@ -988,6 +930,7 @@ return out;
 def create_get_from_object_list(fmt):
     """ Convert PyObject to {c_type} pointer.
     Used with native types.
+# XXX - convert empty list to NULL pointer.
 
     format fields:
        fcn_suffix - 
