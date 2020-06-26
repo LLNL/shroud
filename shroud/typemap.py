@@ -1730,6 +1730,13 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
+        name="f_char_scalar_in",
+        # By default the declaration is character(LEN=*).
+        arg_decl=[
+            "character, value, intent(IN) :: {f_var}",
+        ],
+    ),
+    dict(
         name="c_char_scalar_result",
         f_result_decl=[
             "character(kind=C_CHAR) :: {c_var}",

@@ -79,10 +79,16 @@ Only added if *arg_decl* is also defined.
 arg_decl
 ^^^^^^^^
 
-Argument or result declaration.
-Usually constructed from YAML decl but sometimes needs to be explicit
+List of argument or result declarations.
+Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
 Added before splicer.
+
+.. code-block:: text
+
+        arg_decl=[
+            "character, value, intent(IN) :: {f_var}",
+        ],
 
 arg_c_call
 ^^^^^^^^^^

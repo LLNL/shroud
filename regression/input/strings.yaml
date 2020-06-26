@@ -23,6 +23,15 @@ declarations:
   doxygen:
     brief: pass a single char argument as a scalar.
 
+- decl: void passCharForce(char status)
+  options:
+    F_force_wrapper: True
+    wrap_python: False
+  doxygen:
+    description: |
+      By default no Fortran wrapper is created.
+      Force one so it can be tested.
+
 - decl: char returnChar()
   doxygen:
     brief: return a char argument (non-pointer)
