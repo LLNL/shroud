@@ -40,6 +40,9 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
     // Python objects for members.
     Py_XDECREF(self->ivalue_obj);
     Py_XDECREF(self->dvalue_obj);
+    // Python objects for members.
+    Py_XDECREF(self->ivalue_dataobj);
+    Py_XDECREF(self->dvalue_dataobj);
 // splicer end class.Cstruct_numpy.type.del
 }
 
@@ -66,8 +69,10 @@ PY_Cstruct_numpy_tp_init(
 {
 // splicer begin class.Cstruct_numpy.method.cstruct_numpy_ctor
     int nitems = 0;
-    STR_SHROUD_converter_value SHPy_ivalue = { nullptr, nullptr, 0 };
-    STR_SHROUD_converter_value SHPy_dvalue = { nullptr, nullptr, 0 };
+    STR_SHROUD_converter_value SHValue_ivalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_ivalue.name = "ivalue";
+    STR_SHROUD_converter_value SHValue_dvalue = {NULL, NULL, NULL, NULL, 0};
+    SHValue_dvalue.name = "dvalue";
     const char *SHT_kwlist[] = {
         "nitems",
         "ivalue",
@@ -76,8 +81,8 @@ PY_Cstruct_numpy_tp_init(
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
         "|iO&O&:Cstruct_numpy_ctor", const_cast<char **>(SHT_kwlist), 
-        &nitems, STR_SHROUD_get_from_object_int_numpy, &SHPy_ivalue,
-        STR_SHROUD_get_from_object_double_numpy, &SHPy_dvalue))
+        &nitems, STR_SHROUD_get_from_object_int_numpy, &SHValue_ivalue,
+        STR_SHROUD_get_from_object_double_numpy, &SHValue_dvalue))
         return -1;
 
     self->obj = new Cstruct_numpy;
@@ -90,10 +95,10 @@ PY_Cstruct_numpy_tp_init(
     // post_call - initialize fields
     Cstruct_numpy *SH_obj = self->obj;
     SH_obj->nitems = nitems;
-    SH_obj->ivalue = static_cast<int *>(SHPy_ivalue.data);
-    self->ivalue_obj = SHPy_ivalue.obj;  // steal reference
-    SH_obj->dvalue = static_cast<double *>(SHPy_dvalue.data);
-    self->dvalue_obj = SHPy_dvalue.obj;  // steal reference
+    SH_obj->ivalue = static_cast<int *>(SHValue_ivalue.data);
+    self->ivalue_obj = SHValue_ivalue.obj;  // steal reference
+    SH_obj->dvalue = static_cast<double *>(SHValue_dvalue.data);
+    self->dvalue_obj = SHValue_dvalue.obj;  // steal reference
 
     return 0;
 // splicer end class.Cstruct_numpy.method.cstruct_numpy_ctor

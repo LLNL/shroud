@@ -244,7 +244,7 @@ fail:
 
 // ----------------------------------------
 // Function:  char * Function4a +deref(result-as-arg)+len(30)
-// Exact:     py_char_result
+// Exact:     py_char_*_result
 // ----------------------------------------
 // Argument:  const char * arg1 +intent(in)
 // Exact:     py_char_*_in
@@ -584,7 +584,8 @@ PY_ImpliedLenTrim(
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolTrue
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  bool flag +implied(true)+intent(in)+value
 // Exact:     py_default
@@ -625,7 +626,8 @@ fail:
 
 // ----------------------------------------
 // Function:  bool ImpliedBoolFalse
-// Exact:     py_bool_result
+// Requested: py_bool_scalar_result
+// Match:     py_bool_result
 // ----------------------------------------
 // Argument:  bool flag +implied(false)+intent(in)+value
 // Exact:     py_default

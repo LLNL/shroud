@@ -171,8 +171,7 @@ PY_function3a_1(
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)
-// Requested: py_string_&_in
-// Match:     py_string_in
+// Exact:     py_string_&_in
 static char PY_function4__doc__[] =
 "documentation"
 ;
@@ -230,8 +229,7 @@ PY_fiveplus(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string & name +intent(inout)
-// Requested: py_string_&_inout
-// Match:     py_string_inout
+// Exact:     py_string_&_inout
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Exact:     py_native_*_out

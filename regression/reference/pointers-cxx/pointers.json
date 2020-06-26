@@ -2179,6 +2179,33 @@
                         }
                     }
                 },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "acceptCharArrayIn",
@@ -2208,17 +2235,20 @@
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+rank(1))",
+                "decl": "int acceptCharArrayIn(char **names +intent(in))",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+rank(1))",
+                "doxygen": {
+                    "description": "Return strlen of the first index as a check.\n"
+                },
                 "fmtdict": {
                     "C_call_list": "names",
                     "C_name": "POI_accept_char_array_in",
                     "C_prototype": "char **names",
-                    "C_return_type": "void",
+                    "C_return_type": "int",
                     "F_C_call": "c_accept_char_array_in_bufferify",
                     "F_C_name": "c_accept_char_array_in",
                     "F_arg_c_call": "names,\t size(names, kind=C_LONG),\t len(names, kind=C_INT)",
@@ -2226,12 +2256,10 @@
                     "F_name_function": "accept_char_array_in",
                     "F_name_generic": "accept_char_array_in",
                     "F_name_impl": "accept_char_array_in",
-                    "F_subprogram": "subroutine",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptCharArrayIn",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
                     "underscore_name": "accept_char_array_in"
                 },
                 "options": {}
@@ -2276,6 +2304,23 @@
                         }
                     }
                 },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
+                },
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -2309,22 +2354,24 @@
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void acceptCharArrayIn(char **names +intent(in))",
-                "declgen": "void acceptCharArrayIn(char * * names +intent(in)+len+rank(1)+size)",
+                "decl": "int acceptCharArrayIn(char **names +intent(in))",
+                "declgen": "int acceptCharArrayIn(char * * names +intent(in)+len+rank(1)+size)",
+                "doxygen": {
+                    "description": "Return strlen of the first index as a check.\n"
+                },
                 "fmtdict": {
                     "C_call_list": "SHCXX_names",
                     "C_name": "POI_accept_char_array_in_bufferify",
                     "C_prototype": "char *names,\t long Snames,\t int Nnames",
-                    "C_return_type": "void",
+                    "C_return_type": "int",
                     "F_C_name": "c_accept_char_array_in_bufferify",
+                    "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptCharArrayIn",
                     "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
                     "underscore_name": "accept_char_array_in"
                 },
                 "options": {

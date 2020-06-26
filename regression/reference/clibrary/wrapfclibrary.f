@@ -174,8 +174,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
-    ! Requested: c_char_*_result
-    ! Match:     c_char_result
+    ! Exact:     c_char_*_result
     ! ----------------------------------------
     ! Argument:  const char * arg1 +intent(in)
     ! Requested: c_char_*_in
@@ -210,8 +209,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_char_*_result_buf
-    ! Match:     c_char_result_buf
+    ! Exact:     c_char_*_result_buf
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHF_rv, NSHF_rv) &
                 bind(C, name="CLI_function4a_bufferify")
@@ -266,8 +264,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-    ! Requested: c_char_*_inout_buf
-    ! Match:     c_char_inout_buf
+    ! Exact:     c_char_*_inout_buf
     interface
         subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
                 bind(C, name="CLI_pass_char_ptr_in_out_bufferify")
@@ -304,8 +301,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     ! start c_return_one_name_bufferify
     interface
         subroutine c_return_one_name_bufferify(name1, Nname1) &
@@ -346,12 +342,10 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     interface
         subroutine c_return_two_names_bufferify(name1, Nname1, name2, &
                 Nname2) &
@@ -395,8 +389,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+intent(in)+value
     ! Requested: c_native_scalar_in_buf
@@ -544,8 +537,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     interface
         subroutine c_bind_c2_bufferify(outbuf, Noutbuf) &
                 bind(C, name="CLI_bind_c2_bufferify")
@@ -653,8 +645,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     interface
         function c_pass_assumed_type_buf_bufferify(arg, outbuf, Noutbuf) &
                 result(SHT_rv) &
@@ -774,8 +765,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     interface
         subroutine c_callback3_bufferify(type, in, incr, outbuf, &
                 Noutbuf) &
@@ -881,14 +871,12 @@ contains
     ! Requested: f_char_scalar_result_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
-    ! Requested: c_char_scalar_result_buf
-    ! Match:     c_char_result_buf
+    ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_char_*_result
     ! Match:     f_default
-    ! Requested: c_char_*_result_buf
-    ! Match:     c_char_result_buf
+    ! Exact:     c_char_*_result_buf
     function function4a(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_NULL_CHAR
@@ -931,8 +919,7 @@ contains
     ! Requested: f_char_*_inout
     ! Match:     f_default
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-    ! Requested: c_char_*_inout_buf
-    ! Match:     c_char_inout_buf
+    ! Exact:     c_char_*_inout_buf
     !>
     !! \brief toupper
     !!
@@ -961,8 +948,7 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Test charlen attribute
     !!
@@ -993,15 +979,13 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Test charlen attribute
     !!
@@ -1032,8 +1016,7 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Fill text, at most ltext characters.
     !!
@@ -1164,8 +1147,7 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Rename Fortran name for interface only function
     !!
@@ -1192,8 +1174,7 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Test assumed-type
     !!
@@ -1283,8 +1264,7 @@ contains
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
-    ! Requested: c_char_*_out_buf
-    ! Match:     c_char_out_buf
+    ! Exact:     c_char_*_out_buf
     !>
     !! \brief Test function pointer
     !!

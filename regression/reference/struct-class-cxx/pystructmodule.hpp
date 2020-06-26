@@ -15,8 +15,19 @@
 
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
+// name - used in error messages
+// obj  - A mutable object which holds the data.
+//        For example, a NumPy array, Python array.
+//        But not a list or str object.
+// dataobj - converter allocated memory.
+//           Decrement dataobj to release memory.
+//           For example, extracted from a list or str.
+// data  - C accessable pointer to data which is in obj or dataobj.
+// size  - number of items in data (not number of bytes).
 typedef struct {
+    const char *name;
     PyObject *obj;
+    PyObject *dataobj;
     void *data;   // points into obj.
     size_t size;
 } STR_SHROUD_converter_value;
@@ -28,18 +39,12 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     char *in, Py_ssize_t insize);
 int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize);
-int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     STR_SHROUD_converter_value *value);
-int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
-    const char *name, double **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_double_list(PyObject *obj,
     STR_SHROUD_converter_value *value);
 int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     STR_SHROUD_converter_value *value);
-int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_int_list(PyObject *obj,
     STR_SHROUD_converter_value *value);
 int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
@@ -85,6 +90,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *cfield_obj;
     PyObject *const_dvalue_obj;
+    // Python objects for members.
+    PyObject *cfield_dataobj;
+    PyObject *const_dvalue_dataobj;
     // splicer begin class.Cstruct_ptr.C_object
     // splicer end class.Cstruct_ptr.C_object
 } PY_Cstruct_ptr;
@@ -107,6 +115,10 @@ PyObject_HEAD
     PyObject *ivalue_obj;
     PyObject *dvalue_obj;
     PyObject *svalue_obj;
+    // Python objects for members.
+    PyObject *ivalue_dataobj;
+    PyObject *dvalue_dataobj;
+    PyObject *svalue_dataobj;
     // splicer begin class.Cstruct_list.C_object
     // splicer end class.Cstruct_list.C_object
 } PY_Cstruct_list;
@@ -129,6 +141,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *ivalue_obj;
     PyObject *dvalue_obj;
+    // Python objects for members.
+    PyObject *ivalue_dataobj;
+    PyObject *dvalue_dataobj;
     // splicer begin class.Cstruct_numpy.C_object
     // splicer end class.Cstruct_numpy.C_object
 } PY_Cstruct_numpy;
@@ -151,6 +166,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *name_obj;
     PyObject *count_obj;
+    // Python objects for members.
+    PyObject *name_dataobj;
+    PyObject *count_dataobj;
     // splicer begin class.Arrays1.C_object
     // splicer end class.Arrays1.C_object
 } PY_Arrays1;

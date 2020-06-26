@@ -1150,7 +1150,13 @@ rv = .false.
 
         if fmt.F_C_subprogram == "function":
             return_deref_attr = ast.attrs["deref"]
-            if c_result_blk.return_cptr:
+            if c_result_blk.f_result_decl:
+                for arg in c_result_blk.f_result_decl:
+                    arg_c_decl.append(arg.format(c_var=fmt.F_result))
+                if c_result_blk.f_module:
+                    self.update_f_module(
+                        modules, imports, c_result_blk.f_module)
+            elif c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:

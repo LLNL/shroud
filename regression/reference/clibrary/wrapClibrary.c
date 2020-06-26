@@ -92,8 +92,7 @@ double CLI_pass_by_value_macro(int arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_char_*_result_buf
-// Match:     c_char_result_buf
+// Exact:     c_char_*_result_buf
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv)
 {
@@ -115,8 +114,7 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-// Requested: c_char_*_inout_buf
-// Match:     c_char_inout_buf
+// Exact:     c_char_*_inout_buf
 void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 {
     // splicer begin function.pass_char_ptr_in_out_bufferify
@@ -140,8 +138,7 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 // start CLI_return_one_name_bufferify
 void CLI_return_one_name_bufferify(char * name1, int Nname1)
 {
@@ -165,12 +162,10 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 // ----------------------------------------
 // Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 void CLI_return_two_names_bufferify(char * name1, int Nname1,
     char * name2, int Nname2)
 {
@@ -191,8 +186,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 // ----------------------------------------
 // Argument:  int ltext +implied(len(text))+intent(in)+value
 // Requested: c_native_scalar_in_buf
@@ -218,8 +212,7 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 {
     // splicer begin function.bind_c2_bufferify
@@ -245,8 +238,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     int Noutbuf)
 {
@@ -280,8 +272,7 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
-// Requested: c_char_*_out_buf
-// Match:     c_char_out_buf
+// Exact:     c_char_*_out_buf
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf)
 {

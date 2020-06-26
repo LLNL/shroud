@@ -3,8 +3,19 @@
 
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
+// name - used in error messages
+// obj  - A mutable object which holds the data.
+//        For example, a NumPy array, Python array.
+//        But not a list or str object.
+// dataobj - converter allocated memory.
+//           Decrement dataobj to release memory.
+//           For example, extracted from a list or str.
+// data  - C accessable pointer to data which is in obj or dataobj.
+// size  - number of items in data (not number of bytes).
 typedef struct {
+    const char *name;
     PyObject *obj;
+    PyObject *dataobj;
     void *data;   // points into obj.
     size_t size;
 } LIB_SHROUD_converter_value;
@@ -331,610 +342,6 @@ void LIB_ShroudCopyStringAndFree(LIB_SHROUD_array *data, char *c_var, size_t c_v
 }
 
 ##### end copy_string source
-
-##### start create_from_PyObject_char source
-
-// helper create_from_PyObject_char
-// Convert obj into an array of type char *
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_char source
-
-##### start create_from_PyObject_double source
-
-// helper create_from_PyObject_double
-// Convert obj into an array of type double
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_double(PyObject *obj,
-    const char *name, double **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    double *in = static_cast<double *>
-        (std::malloc(size * sizeof(double)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be double", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_double source
-
-##### start create_from_PyObject_float source
-
-// helper create_from_PyObject_float
-// Convert obj into an array of type float
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_float(PyObject *obj,
-    const char *name, float **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    float *in = static_cast<float *>(std::malloc(size * sizeof(float)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be float", name, (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_float source
-
-##### start create_from_PyObject_int source
-
-// helper create_from_PyObject_int
-// Convert obj into an array of type int
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int(PyObject *obj,
-    const char *name, int **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_int source
-
-##### start create_from_PyObject_int16_t source
-
-// helper create_from_PyObject_int16_t
-// Convert obj into an array of type int16_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int16_t(PyObject *obj,
-    const char *name, int16_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int16_t *in = static_cast<int16_t *>
-        (std::malloc(size * sizeof(int16_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int16_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_int16_t source
-
-##### start create_from_PyObject_int32_t source
-
-// helper create_from_PyObject_int32_t
-// Convert obj into an array of type int32_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int32_t(PyObject *obj,
-    const char *name, int32_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int32_t *in = static_cast<int32_t *>
-        (std::malloc(size * sizeof(int32_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int32_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_int32_t source
-
-##### start create_from_PyObject_int64_t source
-
-// helper create_from_PyObject_int64_t
-// Convert obj into an array of type int64_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int64_t(PyObject *obj,
-    const char *name, int64_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int64_t *in = static_cast<int64_t *>
-        (std::malloc(size * sizeof(int64_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int64_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_int64_t source
-
-##### start create_from_PyObject_int8_t source
-
-// helper create_from_PyObject_int8_t
-// Convert obj into an array of type int8_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_int8_t(PyObject *obj,
-    const char *name, int8_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    int8_t *in = static_cast<int8_t *>
-        (std::malloc(size * sizeof(int8_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int8_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_int8_t source
-
-##### start create_from_PyObject_long source
-
-// helper create_from_PyObject_long
-// Convert obj into an array of type long
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_long(PyObject *obj,
-    const char *name, long **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    long *in = static_cast<long *>(std::malloc(size * sizeof(long)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be long", name, (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_long source
-
-##### start create_from_PyObject_short source
-
-// helper create_from_PyObject_short
-// Convert obj into an array of type short
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_short(PyObject *obj,
-    const char *name, short **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    short *in = static_cast<short *>(std::malloc(size * sizeof(short)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be short", name, (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_short source
-
-##### start create_from_PyObject_uint16_t source
-
-// helper create_from_PyObject_uint16_t
-// Convert obj into an array of type uint16_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_uint16_t(PyObject *obj,
-    const char *name, uint16_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    uint16_t *in = static_cast<uint16_t *>
-        (std::malloc(size * sizeof(uint16_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be uint16_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_uint16_t source
-
-##### start create_from_PyObject_uint32_t source
-
-// helper create_from_PyObject_uint32_t
-// Convert obj into an array of type uint32_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_uint32_t(PyObject *obj,
-    const char *name, uint32_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    uint32_t *in = static_cast<uint32_t *>
-        (std::malloc(size * sizeof(uint32_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be uint32_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_uint32_t source
-
-##### start create_from_PyObject_uint64_t source
-
-// helper create_from_PyObject_uint64_t
-// Convert obj into an array of type uint64_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_uint64_t(PyObject *obj,
-    const char *name, uint64_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    uint64_t *in = static_cast<uint64_t *>
-        (std::malloc(size * sizeof(uint64_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be uint64_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_uint64_t source
-
-##### start create_from_PyObject_uint8_t source
-
-// helper create_from_PyObject_uint8_t
-// Convert obj into an array of type uint8_t
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_uint8_t(PyObject *obj,
-    const char *name, uint8_t **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    uint8_t *in = static_cast<uint8_t *>
-        (std::malloc(size * sizeof(uint8_t)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be uint8_t", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_uint8_t source
-
-##### start create_from_PyObject_unsigned_int source
-
-// helper create_from_PyObject_unsigned_int
-// Convert obj into an array of type unsigned int
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_unsigned_int(PyObject *obj,
-    const char *name, unsigned int **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    unsigned int *in = static_cast<unsigned int *>
-        (std::malloc(size * sizeof(unsigned int)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be unsigned int", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_unsigned_int source
-
-##### start create_from_PyObject_unsigned_long source
-
-// helper create_from_PyObject_unsigned_long
-// Convert obj into an array of type unsigned long
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_unsigned_long(PyObject *obj,
-    const char *name, unsigned long **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    unsigned long *in = static_cast<unsigned long *>
-        (std::malloc(size * sizeof(unsigned long)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be unsigned long", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_unsigned_long source
-
-##### start create_from_PyObject_unsigned_short source
-
-// helper create_from_PyObject_unsigned_short
-// Convert obj into an array of type unsigned short
-// Return -1 on error.
-static int SHROUD_create_from_PyObject_unsigned_short(PyObject *obj,
-    const char *name, unsigned short **pin, Py_ssize_t *psize)
-{
-    PyObject *seq = PySequence_Fast(obj, "holder");
-    if (seq == NULL) {
-        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
-    }
-    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    unsigned short *in = static_cast<unsigned short *>
-        (std::malloc(size * sizeof(unsigned short)));
-    for (Py_ssize_t i = 0; i < size; i++) {
-        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
-            Py_DECREF(seq);
-            PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be unsigned short", name,
-                (int) i);
-            return -1;
-        }
-    }
-    Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
-##### end create_from_PyObject_unsigned_short source
 
 ##### start create_from_PyObject_vector_double cxx_source
 
@@ -1525,7 +932,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
 ##### start fill_from_PyObject_char source
 
 // helper fill_from_PyObject_char
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_char(PyObject *obj,
     const char *name, char *in, Py_ssize_t insize)
@@ -1540,7 +947,7 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
         in[0] = '\0';
     } else {
         std::strncpy(in, static_cast<char *>(value.data), insize);
-        Py_DECREF(value.obj);
+        Py_DECREF(value.dataobj);
     }
     return 0;
 }
@@ -1549,7 +956,8 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 ##### start fill_from_PyObject_double_list source
 
 // helper fill_from_PyObject_double_list
-// Convert obj into an array of type double
+// Fill double array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
@@ -1594,7 +1002,8 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
 ##### start fill_from_PyObject_double_numpy source
 
 // helper fill_from_PyObject_double_numpy
-// Convert obj into an array of type double
+// Fill double array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
@@ -1634,7 +1043,8 @@ static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
 ##### start fill_from_PyObject_float_list source
 
 // helper fill_from_PyObject_float_list
-// Convert obj into an array of type float
+// Fill float array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
@@ -1678,7 +1088,8 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
 ##### start fill_from_PyObject_float_numpy source
 
 // helper fill_from_PyObject_float_numpy
-// Convert obj into an array of type float
+// Fill float array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
@@ -1718,7 +1129,8 @@ static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int16_t_list source
 
 // helper fill_from_PyObject_int16_t_list
-// Convert obj into an array of type int16_t
+// Fill int16_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
@@ -1763,7 +1175,8 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int16_t_numpy source
 
 // helper fill_from_PyObject_int16_t_numpy
-// Convert obj into an array of type int16_t
+// Fill int16_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
@@ -1803,7 +1216,8 @@ static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int32_t_list source
 
 // helper fill_from_PyObject_int32_t_list
-// Convert obj into an array of type int32_t
+// Fill int32_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
@@ -1848,7 +1262,8 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int32_t_numpy source
 
 // helper fill_from_PyObject_int32_t_numpy
-// Convert obj into an array of type int32_t
+// Fill int32_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
@@ -1888,7 +1303,8 @@ static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int64_t_list source
 
 // helper fill_from_PyObject_int64_t_list
-// Convert obj into an array of type int64_t
+// Fill int64_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
@@ -1933,7 +1349,8 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int64_t_numpy source
 
 // helper fill_from_PyObject_int64_t_numpy
-// Convert obj into an array of type int64_t
+// Fill int64_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
@@ -1973,7 +1390,8 @@ static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int8_t_list source
 
 // helper fill_from_PyObject_int8_t_list
-// Convert obj into an array of type int8_t
+// Fill int8_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
@@ -2018,7 +1436,8 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
 ##### start fill_from_PyObject_int8_t_numpy source
 
 // helper fill_from_PyObject_int8_t_numpy
-// Convert obj into an array of type int8_t
+// Fill int8_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
@@ -2058,7 +1477,8 @@ static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_int_list source
 
 // helper fill_from_PyObject_int_list
-// Convert obj into an array of type int
+// Fill int array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -2102,7 +1522,8 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
 ##### start fill_from_PyObject_int_numpy source
 
 // helper fill_from_PyObject_int_numpy
-// Convert obj into an array of type int
+// Fill int array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -2142,7 +1563,8 @@ static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 ##### start fill_from_PyObject_long_list source
 
 // helper fill_from_PyObject_long_list
-// Convert obj into an array of type long
+// Fill long array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
@@ -2186,7 +1608,8 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
 ##### start fill_from_PyObject_long_numpy source
 
 // helper fill_from_PyObject_long_numpy
-// Convert obj into an array of type long
+// Fill long array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
@@ -2226,7 +1649,8 @@ static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
 ##### start fill_from_PyObject_short_list source
 
 // helper fill_from_PyObject_short_list
-// Convert obj into an array of type short
+// Fill short array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
@@ -2270,7 +1694,8 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
 ##### start fill_from_PyObject_short_numpy source
 
 // helper fill_from_PyObject_short_numpy
-// Convert obj into an array of type short
+// Fill short array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
@@ -2310,7 +1735,8 @@ static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint16_t_list source
 
 // helper fill_from_PyObject_uint16_t_list
-// Convert obj into an array of type uint16_t
+// Fill uint16_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
@@ -2355,7 +1781,8 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint16_t_numpy source
 
 // helper fill_from_PyObject_uint16_t_numpy
-// Convert obj into an array of type uint16_t
+// Fill uint16_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
@@ -2395,7 +1822,8 @@ static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint32_t_list source
 
 // helper fill_from_PyObject_uint32_t_list
-// Convert obj into an array of type uint32_t
+// Fill uint32_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
@@ -2440,7 +1868,8 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint32_t_numpy source
 
 // helper fill_from_PyObject_uint32_t_numpy
-// Convert obj into an array of type uint32_t
+// Fill uint32_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
@@ -2480,7 +1909,8 @@ static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint64_t_list source
 
 // helper fill_from_PyObject_uint64_t_list
-// Convert obj into an array of type uint64_t
+// Fill uint64_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
@@ -2525,7 +1955,8 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint64_t_numpy source
 
 // helper fill_from_PyObject_uint64_t_numpy
-// Convert obj into an array of type uint64_t
+// Fill uint64_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
@@ -2565,7 +1996,8 @@ static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_uint8_t_list source
 
 // helper fill_from_PyObject_uint8_t_list
-// Convert obj into an array of type uint8_t
+// Fill uint8_t array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
@@ -2610,7 +2042,8 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
 ##### start fill_from_PyObject_uint8_t_numpy source
 
 // helper fill_from_PyObject_uint8_t_numpy
-// Convert obj into an array of type uint8_t
+// Fill uint8_t array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
@@ -2650,7 +2083,8 @@ static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_int_list source
 
 // helper fill_from_PyObject_unsigned_int_list
-// Convert obj into an array of type unsigned int
+// Fill unsigned int array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
@@ -2695,7 +2129,8 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_int_numpy source
 
 // helper fill_from_PyObject_unsigned_int_numpy
-// Convert obj into an array of type unsigned int
+// Fill unsigned int array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
@@ -2736,7 +2171,8 @@ static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_long_list source
 
 // helper fill_from_PyObject_unsigned_long_list
-// Convert obj into an array of type unsigned long
+// Fill unsigned long array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
@@ -2781,7 +2217,8 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_long_numpy source
 
 // helper fill_from_PyObject_unsigned_long_numpy
-// Convert obj into an array of type unsigned long
+// Fill unsigned long array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
@@ -2822,7 +2259,8 @@ static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_short_list source
 
 // helper fill_from_PyObject_unsigned_short_list
-// Convert obj into an array of type unsigned short
+// Fill unsigned short array from Python sequence object.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
@@ -2867,7 +2305,8 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
 ##### start fill_from_PyObject_unsigned_short_numpy source
 
 // helper fill_from_PyObject_unsigned_short_numpy
-// Convert obj into an array of type unsigned short
+// Fill unsigned short array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
@@ -2909,9 +2348,14 @@ static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
 ##### start get_from_object_char source
 
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj is unused.
+// value.dataobj - object which holds the data.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.dataobj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.dataobj).
 static int SHROUD_get_from_object_char(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
@@ -2921,37 +2365,42 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
-        size = PyString_Size(obj);
-        value->obj = strobj;  // steal reference
+        size = PyBytes_GET_SIZE(strobj);
+        value->dataobj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyString_AsString(strobj);
         size = PyString_Size(obj);
-        value->obj = strobj;  // steal reference
+        value->dataobj = strobj;  // steal reference
 #endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        size = PyBytes_GET_SIZE(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
+#if PY_MAJOR_VERSION < 3
     } else if (PyString_Check(obj)) {
         out = PyString_AsString(obj);
         size = PyString_Size(obj);
-        value->obj = obj;
+        value->dataobj = obj;
         Py_INCREF(obj);
 #endif
+    } else if (PyBytes_Check(obj)) {
+        out = PyBytes_AS_STRING(obj);
+        size = PyBytes_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
+    } else if (PyByteArray_Check(obj)) {
+        out = PyByteArray_AS_STRING(obj);
+        size = PyByteArray_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
     } else if (obj == Py_None) {
         out = NULL;
         size = 0;
-        value->obj = NULL;
+        value->dataobj = NULL;
     } else {
         PyErr_Format(PyExc_TypeError,
             "argument should be string or None, not %.200s",
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->obj = nullptr;
     value->data = out;
     value->size = size;
     return 1;
@@ -2961,19 +2410,68 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 
 ##### start get_from_object_charptr source
 
+
+// helper FREE_get_from_object_charptr
+static void FREE_get_from_object_charptr(PyObject *obj)
+{
+    char **in = static_cast<char **>
+        (PyCapsule_GetPointer(obj, nullptr));
+    if (in == nullptr)
+        return;
+    size_t *size = static_cast<size_t *>(PyCapsule_GetContext(obj));
+    if (size == nullptr)
+        return;
+    for (size_t i=0; i < *size; ++i) {
+        if (in[i] == nullptr)
+            continue;
+        std::free(in[i]);
+    }
+    std::free(in);
+    std::free(size);
+}
+
 // helper get_from_object_charptr
-// Convert PyObject to char * pointer.
+// Convert obj into an array of char * (i.e. char **).
 static int SHROUD_get_from_object_charptr(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    char * *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_char(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return -1;
     }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
+    PyObject *dataobj = PyCapsule_New(in, nullptr, FREE_get_from_object_charptr);
+    size_t *size_context = static_cast<size_t *>
+        (malloc(sizeof(size_t)));
+    *size_context = size;
+    int ierr = PyCapsule_SetContext(dataobj, size_context);
+    // XXX - check error
+    LIB_SHROUD_converter_value itemvalue = {NULL, NULL, NULL, NULL, 0};
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        ierr = SHROUD_get_from_object_char(item, &itemvalue);
+        if (ierr == 0) {
+            Py_XDECREF(itemvalue.dataobj);
+            Py_DECREF(dataobj);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be string", value->name,
+                (int) i);
+            return 0;
+        }
+        if (itemvalue.data != nullptr) {
+            in[i] = strdup(static_cast<char *>(itemvalue.data));
+        }
+        Py_XDECREF(itemvalue.dataobj);
+    }
+    Py_DECREF(seq);
+
     value->obj = nullptr;
-    value->data = static_cast<char * *>(in);
+    value->dataobj = dataobj;
+    value->data = in;
     value->size = size;
     return 1;
 }
@@ -2982,17 +2480,37 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
 ##### start get_from_object_double_list source
 
 // helper get_from_object_double_list
-// Convert PyObject to double pointer.
+// Convert list of PyObject to array of double.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_double_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    double *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_double(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    double *in = static_cast<double *>
+        (std::malloc(size * sizeof(double)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be double", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<double *>(in);
     value->size = size;
     return 1;
@@ -3014,6 +2532,7 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3025,17 +2544,36 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
 ##### start get_from_object_float_list source
 
 // helper get_from_object_float_list
-// Convert PyObject to float pointer.
+// Convert list of PyObject to array of float.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_float_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    float *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_float(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    float *in = static_cast<float *>(std::malloc(size * sizeof(float)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be float", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<float *>(in);
     value->size = size;
     return 1;
@@ -3057,6 +2595,7 @@ static int SHROUD_get_from_object_float_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3068,17 +2607,37 @@ static int SHROUD_get_from_object_float_numpy(PyObject *obj,
 ##### start get_from_object_int16_t_list source
 
 // helper get_from_object_int16_t_list
-// Convert PyObject to int16_t pointer.
+// Convert list of PyObject to array of int16_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    int16_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_int16_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int16_t *in = static_cast<int16_t *>
+        (std::malloc(size * sizeof(int16_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int16_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int16_t *>(in);
     value->size = size;
     return 1;
@@ -3100,6 +2659,7 @@ static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3111,17 +2671,37 @@ static int SHROUD_get_from_object_int16_t_numpy(PyObject *obj,
 ##### start get_from_object_int32_t_list source
 
 // helper get_from_object_int32_t_list
-// Convert PyObject to int32_t pointer.
+// Convert list of PyObject to array of int32_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    int32_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_int32_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int32_t *in = static_cast<int32_t *>
+        (std::malloc(size * sizeof(int32_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int32_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int32_t *>(in);
     value->size = size;
     return 1;
@@ -3143,6 +2723,7 @@ static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3154,17 +2735,37 @@ static int SHROUD_get_from_object_int32_t_numpy(PyObject *obj,
 ##### start get_from_object_int64_t_list source
 
 // helper get_from_object_int64_t_list
-// Convert PyObject to int64_t pointer.
+// Convert list of PyObject to array of int64_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    int64_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_int64_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int64_t *in = static_cast<int64_t *>
+        (std::malloc(size * sizeof(int64_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int64_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int64_t *>(in);
     value->size = size;
     return 1;
@@ -3186,6 +2787,7 @@ static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3197,17 +2799,37 @@ static int SHROUD_get_from_object_int64_t_numpy(PyObject *obj,
 ##### start get_from_object_int8_t_list source
 
 // helper get_from_object_int8_t_list
-// Convert PyObject to int8_t pointer.
+// Convert list of PyObject to array of int8_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    int8_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_int8_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int8_t *in = static_cast<int8_t *>
+        (std::malloc(size * sizeof(int8_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int8_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int8_t *>(in);
     value->size = size;
     return 1;
@@ -3229,6 +2851,7 @@ static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3240,16 +2863,36 @@ static int SHROUD_get_from_object_int8_t_numpy(PyObject *obj,
 ##### start get_from_object_int_list source
 
 // helper get_from_object_int_list
-// Convert PyObject to int pointer.
+// Convert list of PyObject to array of int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_int_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    int *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_int(obj, "in", &in,  &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be int", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int *>(in);
     value->size = size;
     return 1;
@@ -3270,6 +2913,7 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3281,42 +2925,41 @@ static int SHROUD_get_from_object_int_numpy(PyObject *obj,
 ##### start get_from_object_long_list source
 
 // helper get_from_object_long_list
-// Convert PyObject to long pointer.
+// Convert list of PyObject to array of long.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_long_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    long *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_long(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    long *in = static_cast<long *>(std::malloc(size * sizeof(long)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be long", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<long *>(in);
     value->size = size;
     return 1;
 }
 ##### end get_from_object_long_list source
-
-##### start get_from_object_long_long_list source
-
-// helper get_from_object_long_long_list
-// Convert PyObject to long long pointer.
-static int SHROUD_get_from_object_long_long_list(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    long long *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_long_long(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<long long *>(in);
-    value->size = size;
-    return 1;
-}
-##### end get_from_object_long_long_list source
 
 ##### start get_from_object_long_long_numpy source
 
@@ -3333,6 +2976,7 @@ static int SHROUD_get_from_object_long_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3356,6 +3000,7 @@ static int SHROUD_get_from_object_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3367,17 +3012,36 @@ static int SHROUD_get_from_object_long_numpy(PyObject *obj,
 ##### start get_from_object_short_list source
 
 // helper get_from_object_short_list
-// Convert PyObject to short pointer.
+// Convert list of PyObject to array of short.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_short_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    short *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_short(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    short *in = static_cast<short *>(std::malloc(size * sizeof(short)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be short", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<short *>(in);
     value->size = size;
     return 1;
@@ -3399,6 +3063,7 @@ static int SHROUD_get_from_object_short_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3406,26 +3071,6 @@ static int SHROUD_get_from_object_short_numpy(PyObject *obj,
     return 1;
 }
 ##### end get_from_object_short_numpy source
-
-##### start get_from_object_size_t_list source
-
-// helper get_from_object_size_t_list
-// Convert PyObject to size_t pointer.
-static int SHROUD_get_from_object_size_t_list(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    size_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_size_t(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<size_t *>(in);
-    value->size = size;
-    return 1;
-}
-##### end get_from_object_size_t_list source
 
 ##### start get_from_object_size_t_numpy source
 
@@ -3441,6 +3086,7 @@ static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3452,17 +3098,37 @@ static int SHROUD_get_from_object_size_t_numpy(PyObject *obj,
 ##### start get_from_object_uint16_t_list source
 
 // helper get_from_object_uint16_t_list
-// Convert PyObject to uint16_t pointer.
+// Convert list of PyObject to array of uint16_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    uint16_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_uint16_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint16_t *in = static_cast<uint16_t *>
+        (std::malloc(size * sizeof(uint16_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be uint16_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<uint16_t *>(in);
     value->size = size;
     return 1;
@@ -3484,6 +3150,7 @@ static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3495,17 +3162,37 @@ static int SHROUD_get_from_object_uint16_t_numpy(PyObject *obj,
 ##### start get_from_object_uint32_t_list source
 
 // helper get_from_object_uint32_t_list
-// Convert PyObject to uint32_t pointer.
+// Convert list of PyObject to array of uint32_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    uint32_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_uint32_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint32_t *in = static_cast<uint32_t *>
+        (std::malloc(size * sizeof(uint32_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be uint32_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<uint32_t *>(in);
     value->size = size;
     return 1;
@@ -3527,6 +3214,7 @@ static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3538,17 +3226,37 @@ static int SHROUD_get_from_object_uint32_t_numpy(PyObject *obj,
 ##### start get_from_object_uint64_t_list source
 
 // helper get_from_object_uint64_t_list
-// Convert PyObject to uint64_t pointer.
+// Convert list of PyObject to array of uint64_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    uint64_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_uint64_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint64_t *in = static_cast<uint64_t *>
+        (std::malloc(size * sizeof(uint64_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be uint64_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<uint64_t *>(in);
     value->size = size;
     return 1;
@@ -3570,6 +3278,7 @@ static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3581,17 +3290,37 @@ static int SHROUD_get_from_object_uint64_t_numpy(PyObject *obj,
 ##### start get_from_object_uint8_t_list source
 
 // helper get_from_object_uint8_t_list
-// Convert PyObject to uint8_t pointer.
+// Convert list of PyObject to array of uint8_t.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    uint8_t *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_uint8_t(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    uint8_t *in = static_cast<uint8_t *>
+        (std::malloc(size * sizeof(uint8_t)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be uint8_t", value->name,
+                (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<uint8_t *>(in);
     value->size = size;
     return 1;
@@ -3613,6 +3342,7 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3624,17 +3354,37 @@ static int SHROUD_get_from_object_uint8_t_numpy(PyObject *obj,
 ##### start get_from_object_unsigned_int_list source
 
 // helper get_from_object_unsigned_int_list
-// Convert PyObject to unsigned int pointer.
+// Convert list of PyObject to array of unsigned int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    unsigned int *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_unsigned_int(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned int *in = static_cast<unsigned int *>
+        (std::malloc(size * sizeof(unsigned int)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be unsigned int",
+                value->name, (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<unsigned int *>(in);
     value->size = size;
     return 1;
@@ -3656,6 +3406,7 @@ static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3667,42 +3418,42 @@ static int SHROUD_get_from_object_unsigned_int_numpy(PyObject *obj,
 ##### start get_from_object_unsigned_long_list source
 
 // helper get_from_object_unsigned_long_list
-// Convert PyObject to unsigned long pointer.
+// Convert list of PyObject to array of unsigned long.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    unsigned long *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_unsigned_long(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned long *in = static_cast<unsigned long *>
+        (std::malloc(size * sizeof(unsigned long)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be unsigned long",
+                value->name, (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<unsigned long *>(in);
     value->size = size;
     return 1;
 }
 ##### end get_from_object_unsigned_long_list source
-
-##### start get_from_object_unsigned_long_long_list source
-
-// helper get_from_object_unsigned_long_long_list
-// Convert PyObject to unsigned long long pointer.
-static int SHROUD_get_from_object_unsigned_long_long_list(PyObject *obj,
-    LIB_SHROUD_converter_value *value)
-{
-    unsigned long long *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_unsigned_long_long(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
-    value->data = static_cast<unsigned long long *>(in);
-    value->size = size;
-    return 1;
-}
-##### end get_from_object_unsigned_long_long_list source
 
 ##### start get_from_object_unsigned_long_long_numpy source
 
@@ -3719,6 +3470,7 @@ static int SHROUD_get_from_object_unsigned_long_long_numpy
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3742,6 +3494,7 @@ static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3753,17 +3506,37 @@ static int SHROUD_get_from_object_unsigned_long_numpy(PyObject *obj,
 ##### start get_from_object_unsigned_short_list source
 
 // helper get_from_object_unsigned_short_list
-// Convert PyObject to unsigned short pointer.
+// Convert list of PyObject to array of unsigned short.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
 static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
     LIB_SHROUD_converter_value *value)
 {
-    unsigned short *in;
-    Py_ssize_t size;
-    if (SHROUD_create_from_PyObject_unsigned_short(obj, "in", &in, 
-        &size) == -1) {
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
         return 0;
     }
-    value->obj = nullptr;
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    unsigned short *in = static_cast<unsigned short *>
+        (std::malloc(size * sizeof(unsigned short)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyInt_AsLong(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be unsigned short",
+                value->name, (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<unsigned short *>(in);
     value->size = size;
     return 1;
@@ -3785,6 +3558,7 @@ static int SHROUD_get_from_object_unsigned_short_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -3792,6 +3566,20 @@ static int SHROUD_get_from_object_unsigned_short_numpy(PyObject *obj,
     return 1;
 }
 ##### end get_from_object_unsigned_short_numpy source
+
+##### start py_capsule_dtor source
+
+// helper py_capsule_dtor
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void FREE_py_capsule_dtor(PyObject *obj)
+{
+    void *in = PyCapsule_GetPointer(obj, nullptr);
+    if (in != nullptr) {
+        std::free(in);
+    }
+}
+##### end py_capsule_dtor source
 
 ##### start to_PyList_char source
 

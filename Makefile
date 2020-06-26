@@ -120,15 +120,17 @@ install-shiv :
 	$(python.dir)/pip install shiv
 
 # Use version in output file name.
-shiv-file :
+shiv-file : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+shiv-file : dist-shiv/..
 	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud \
-          -o dist/shroud-`grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}'`.pyz .
+          -o dist-shiv/shroud-$(vernum).pyz .
+	cd dist-shiv && ln -s shroud-$(vernum).pyz shroud.pyz
 
 # Test shiv created executable
 do-test-shiv :
 	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
 	export TEST_INPUT_DIR=$(top)/regression; \
-	export EXECUTABLE_DIR=$(top)/dist/shroud.pyz; \
+	export EXECUTABLE_DIR=$(top)/dist-shiv/shroud.pyz; \
 	$(PYTHON) regression/do-test.py $(do-test-args)
 
 ########################################################################

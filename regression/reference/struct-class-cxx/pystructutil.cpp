@@ -14,10 +14,29 @@
 #include <cstdlib>
 #include <cstring>
 
+#ifdef __cplusplus
+#define SHROUD_UNUSED(param)
+#else
+#define SHROUD_UNUSED(param) param
+#endif
+
+#if PY_MAJOR_VERSION >= 3
+#define PyInt_AsLong PyLong_AsLong
+#define PyInt_FromLong PyLong_FromLong
+#define PyInt_FromSize_t PyLong_FromSize_t
+#define PyString_FromString PyUnicode_FromString
+#define PyString_FromStringAndSize PyUnicode_FromStringAndSize
+#endif
+
 // helper get_from_object_char
-// Converter to PyObject to char *.
+// Converter from PyObject to char *.
 // The returned status will be 1 for a successful conversion
 // and 0 if the conversion has failed.
+// value.obj is unused.
+// value.dataobj - object which holds the data.
+// If same as obj argument, its refcount is incremented.
+// value.data is owned by value.dataobj and must be copied to be preserved.
+// Caller must use Py_XDECREF(value.dataobj).
 int STR_SHROUD_get_from_object_char(PyObject *obj,
     STR_SHROUD_converter_value *value)
 {
@@ -27,37 +46,42 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 #if PY_MAJOR_VERSION >= 3
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyBytes_AS_STRING(strobj);
-        size = PyString_Size(obj);
-        value->obj = strobj;  // steal reference
+        size = PyBytes_GET_SIZE(strobj);
+        value->dataobj = strobj;  // steal reference
 #else
         PyObject *strobj = PyUnicode_AsUTF8String(obj);
         out = PyString_AsString(strobj);
         size = PyString_Size(obj);
-        value->obj = strobj;  // steal reference
+        value->dataobj = strobj;  // steal reference
 #endif
-#if PY_MAJOR_VERSION >= 3
-    } else if (PyByteArray_Check(obj)) {
-        out = PyBytes_AS_STRING(obj);
-        size = PyBytes_GET_SIZE(obj);
-        value->obj = obj;
-        Py_INCREF(obj);
-#else
+#if PY_MAJOR_VERSION < 3
     } else if (PyString_Check(obj)) {
         out = PyString_AsString(obj);
         size = PyString_Size(obj);
-        value->obj = obj;
+        value->dataobj = obj;
         Py_INCREF(obj);
 #endif
+    } else if (PyBytes_Check(obj)) {
+        out = PyBytes_AS_STRING(obj);
+        size = PyBytes_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
+    } else if (PyByteArray_Check(obj)) {
+        out = PyByteArray_AS_STRING(obj);
+        size = PyByteArray_GET_SIZE(obj);
+        value->dataobj = obj;
+        Py_INCREF(obj);
     } else if (obj == Py_None) {
         out = NULL;
         size = 0;
-        value->obj = NULL;
+        value->dataobj = NULL;
     } else {
         PyErr_Format(PyExc_TypeError,
             "argument should be string or None, not %.200s",
             Py_TYPE(obj)->tp_name);
         return 0;
     }
+    value->obj = nullptr;
     value->data = out;
     value->size = size;
     return 1;
@@ -65,7 +89,7 @@ int STR_SHROUD_get_from_object_char(PyObject *obj,
 
 
 // helper fill_from_PyObject_char
-// Copy PyObject to char array.
+// Fill existing char array from PyObject.
 // Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
     char *in, Py_ssize_t insize)
@@ -80,13 +104,14 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
         in[0] = '\0';
     } else {
         std::strncpy(in, static_cast<char *>(value.data), insize);
-        Py_DECREF(value.obj);
+        Py_DECREF(value.dataobj);
     }
     return 0;
 }
 
 // helper fill_from_PyObject_int_numpy
-// Convert obj into an array of type int
+// Fill int array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
 int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
@@ -122,67 +147,95 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     return 0;
 }
 
-// helper create_from_PyObject_char
-// Convert obj into an array of type char *
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_char(PyObject *obj,
-    const char *name, char * **pin, Py_ssize_t *psize)
+
+// helper FREE_get_from_object_charptr
+static void FREE_get_from_object_charptr(PyObject *obj)
+{
+    char **in = static_cast<char **>
+        (PyCapsule_GetPointer(obj, nullptr));
+    if (in == nullptr)
+        return;
+    size_t *size = static_cast<size_t *>(PyCapsule_GetContext(obj));
+    if (size == nullptr)
+        return;
+    for (size_t i=0; i < *size; ++i) {
+        if (in[i] == nullptr)
+            continue;
+        std::free(in[i]);
+    }
+    std::free(in);
+    std::free(size);
+}
+
+// helper get_from_object_charptr
+// Convert obj into an array of char * (i.e. char **).
+int STR_SHROUD_get_from_object_charptr(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
+            value->name);
         return -1;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
-    char * *in = static_cast<char * *>
-        (std::malloc(size * sizeof(char *)));
+    char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
+    PyObject *dataobj = PyCapsule_New(in, nullptr, FREE_get_from_object_charptr);
+    size_t *size_context = static_cast<size_t *>
+        (malloc(sizeof(size_t)));
+    *size_context = size;
+    int ierr = PyCapsule_SetContext(dataobj, size_context);
+    // XXX - check error
+    STR_SHROUD_converter_value itemvalue = {NULL, NULL, NULL, NULL, 0};
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyString_AsString(item);
-        if (PyErr_Occurred()) {
-            std::free(in);
+        ierr = STR_SHROUD_get_from_object_char(item, &itemvalue);
+        if (ierr == 0) {
+            Py_XDECREF(itemvalue.dataobj);
+            Py_DECREF(dataobj);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be string", name,
+                "argument '%s', index %d must be string", value->name,
                 (int) i);
-            return -1;
+            return 0;
         }
+        if (itemvalue.data != nullptr) {
+            in[i] = strdup(static_cast<char *>(itemvalue.data));
+        }
+        Py_XDECREF(itemvalue.dataobj);
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_charptr
-// Convert PyObject to char * pointer.
-int STR_SHROUD_get_from_object_charptr(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    char * *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_char(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
     value->obj = nullptr;
-    value->data = static_cast<char * *>(in);
+    value->dataobj = dataobj;
+    value->data = in;
     value->size = size;
     return 1;
 }
 
-// helper create_from_PyObject_double
-// Convert obj into an array of type double
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
-    const char *name, double **pin, Py_ssize_t *psize)
+// helper py_capsule_dtor
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void FREE_py_capsule_dtor(PyObject *obj)
+{
+    void *in = PyCapsule_GetPointer(obj, nullptr);
+    if (in != nullptr) {
+        std::free(in);
+    }
+}
+
+// helper get_from_object_double_list
+// Convert list of PyObject to array of double.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+int STR_SHROUD_get_from_object_double_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
+            value->name);
+        return 0;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     double *in = static_cast<double *>
@@ -194,29 +247,15 @@ int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
             std::free(in);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be double", name,
+                "argument '%s', index %d must be double", value->name,
                 (int) i);
-            return -1;
+            return 0;
         }
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_double_list
-// Convert PyObject to double pointer.
-int STR_SHROUD_get_from_object_double_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    double *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_double(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<double *>(in);
     value->size = size;
     return 1;
@@ -235,6 +274,7 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -242,17 +282,18 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     return 1;
 }
 
-// helper create_from_PyObject_int
-// Convert obj into an array of type int
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize)
+// helper get_from_object_int_list
+// Convert list of PyObject to array of int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+int STR_SHROUD_get_from_object_int_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
+            value->name);
+        return 0;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
@@ -263,28 +304,15 @@ int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
             std::free(in);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
+                "argument '%s', index %d must be int", value->name,
+                (int) i);
+            return 0;
         }
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_int_list
-// Convert PyObject to int pointer.
-int STR_SHROUD_get_from_object_int_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    int *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_int(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = nullptr;
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
     value->data = static_cast<int *>(in);
     value->size = size;
     return 1;
@@ -302,6 +330,7 @@ int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,
         return 0;
     }
     value->obj = array;
+    value->dataobj = nullptr;
     value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
         (array));
     value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
@@ -406,6 +435,9 @@ PyObject *PP_Cstruct_ptr_to_Object_idtor(Cstruct_ptr *addr, int idtor)
     // Python objects for members.
     obj->cfield_obj = nullptr;
     obj->const_dvalue_obj = nullptr;
+    // Python objects for members.
+    obj->cfield_dataobj = nullptr;
+    obj->const_dvalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_ptr.utility.to_object
 }
@@ -455,6 +487,10 @@ PyObject *PP_Cstruct_list_to_Object_idtor(Cstruct_list *addr, int idtor)
     obj->ivalue_obj = nullptr;
     obj->dvalue_obj = nullptr;
     obj->svalue_obj = nullptr;
+    // Python objects for members.
+    obj->ivalue_dataobj = nullptr;
+    obj->dvalue_dataobj = nullptr;
+    obj->svalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_list.utility.to_object
 }
@@ -504,6 +540,9 @@ PyObject *PP_Cstruct_numpy_to_Object_idtor(Cstruct_numpy *addr,
     // Python objects for members.
     obj->ivalue_obj = nullptr;
     obj->dvalue_obj = nullptr;
+    // Python objects for members.
+    obj->ivalue_dataobj = nullptr;
+    obj->dvalue_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Cstruct_numpy.utility.to_object
 }
@@ -551,6 +590,9 @@ PyObject *PP_Arrays1_to_Object_idtor(Arrays1 *addr, int idtor)
     // Python objects for members.
     obj->name_obj = nullptr;
     obj->count_obj = nullptr;
+    // Python objects for members.
+    obj->name_dataobj = nullptr;
+    obj->count_dataobj = nullptr;
     return reinterpret_cast<PyObject *>(obj);
     // splicer end class.Arrays1.utility.to_object
 }

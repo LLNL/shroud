@@ -51,7 +51,8 @@
                                     "py_var": "SHPy_x1",
                                     "size_var": "SHSize_x1",
                                     "stmt0": "py_ctor_native_scalar_numpy",
-                                    "stmt1": "py_ctor_native"
+                                    "stmt1": "py_ctor_native",
+                                    "value_var": "SHValue_x1"
                                 }
                             },
                             "y1": {
@@ -73,7 +74,8 @@
                                     "py_var": "SHPy_y1",
                                     "size_var": "SHSize_y1",
                                     "stmt0": "py_ctor_native_scalar_numpy",
-                                    "stmt1": "py_ctor_native"
+                                    "stmt1": "py_ctor_native",
+                                    "value_var": "SHValue_y1"
                                 }
                             }
                         },
@@ -98,6 +100,7 @@
                                 "size_var": "SHSize_rv",
                                 "stmt0": "py_default",
                                 "stmt1": "py_default",
+                                "value_var": "SHValue_rv",
                                 "vargs": "SHCXX_rv"
                             }
                         },
@@ -336,7 +339,8 @@
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
                             "stmt0": "py_struct_*_in_class",
-                            "stmt1": "py_struct_*_in_class"
+                            "stmt1": "py_struct_*_in_class",
+                            "value_var": "SHValue_s1"
                         }
                     },
                     "s2": {
@@ -362,7 +366,8 @@
                             "pytmp_var": "SHTPy_s2",
                             "size_var": "SHSize_s2",
                             "stmt0": "py_struct_*_in_numpy",
-                            "stmt1": "py_struct_*_in_numpy"
+                            "stmt1": "py_struct_*_in_numpy",
+                            "value_var": "SHValue_s2"
                         }
                     }
                 },
@@ -381,7 +386,8 @@
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
                         "stmt0": "py_native_scalar_result",
-                        "stmt1": "py_default"
+                        "stmt1": "py_default",
+                        "value_var": "SHValue_rv"
                     }
                 },
                 "ast": {

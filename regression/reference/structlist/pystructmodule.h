@@ -15,8 +15,19 @@
 
 // helper PY_converter_type
 // Store PyObject and pointer to the data it contains.
+// name - used in error messages
+// obj  - A mutable object which holds the data.
+//        For example, a NumPy array, Python array.
+//        But not a list or str object.
+// dataobj - converter allocated memory.
+//           Decrement dataobj to release memory.
+//           For example, extracted from a list or str.
+// data  - C accessable pointer to data which is in obj or dataobj.
+// size  - number of items in data (not number of bytes).
 typedef struct {
+    const char *name;
     PyObject *obj;
+    PyObject *dataobj;
     void *data;   // points into obj.
     size_t size;
 } STR_SHROUD_converter_value;
@@ -47,6 +58,9 @@ PyObject_HEAD
     // Python objects for members.
     PyObject *name_obj;
     PyObject *count_obj;
+    // Python objects for members.
+    PyObject *name_dataobj;
+    PyObject *count_dataobj;
     // splicer begin class.Arrays1.C_object
     // splicer end class.Arrays1.C_object
 } PY_Arrays1;

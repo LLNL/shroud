@@ -549,6 +549,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 "{PY_prefix}{cxx_class}_{variable_name}_setter"
             ),
             PY_member_object_template="{variable_name}_obj",
+            PY_member_data_template="{variable_name}_dataobj",
             PY_struct_array_descr_create_template=(
                 "{PY_prefix}{cxx_class}_create_array_descr"
             ),
@@ -654,6 +655,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_this_call="",
             PY_type_obj="obj",  # name of cpp class pointer in PyObject
             PY_type_dtor="idtor",  # name of destructor capsule infomation
+            PY_value_init="{NULL, NULL, NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
             library=self.library,
             library_lower=self.library.lower(),

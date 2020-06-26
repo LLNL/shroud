@@ -55,8 +55,9 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_string_result",
-                        "stmt1": "py_string_result"
+                        "stmt0": "py_string_&_result",
+                        "stmt1": "py_string_&_result",
+                        "value_var": "SHValue_rv"
                     }
                 },
                 "ast": {
@@ -363,7 +364,8 @@
                                             "py_var": "SHPy_dfield",
                                             "size_var": "SHSize_dfield",
                                             "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native"
+                                            "stmt1": "py_ctor_native",
+                                            "value_var": "SHValue_dfield"
                                         }
                                     },
                                     "ifield": {
@@ -385,7 +387,8 @@
                                             "py_var": "SHPy_ifield",
                                             "size_var": "SHSize_ifield",
                                             "stmt0": "py_ctor_native_scalar_numpy",
-                                            "stmt1": "py_ctor_native"
+                                            "stmt1": "py_ctor_native",
+                                            "value_var": "SHValue_ifield"
                                         }
                                     }
                                 },
@@ -410,6 +413,7 @@
                                         "size_var": "SHSize_rv",
                                         "stmt0": "py_default",
                                         "stmt1": "py_default",
+                                        "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     }
                                 },

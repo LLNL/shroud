@@ -62,9 +62,9 @@ void POI_fill_with_zeros(double * x, int x_length);
 
 int POI_accumulate(const int * arr, size_t len);
 
-void POI_accept_char_array_in(char **names);
+int POI_accept_char_array_in(char **names);
 
-void POI_accept_char_array_in_bufferify(char *names, long Snames,
+int POI_accept_char_array_in_bufferify(char *names, long Snames,
     int Nnames);
 
 void POI_set_global_int(int value);

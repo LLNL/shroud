@@ -80,28 +80,6 @@ typemap:
       LUA_push: lua_pushstring({LUA_state_var}, {c_var})
       sgroup: char
       sh_type: SH_TYPE_OTHER
-  - type: char_scalar
-    fields:
-      flat_name: char
-      base: unknown
-      idtor: 0
-      cxx_type: char
-      c_type: char
-      f_c_module:
-        iso_c_binding:
-        - C_CHAR
-      f_type: character
-      f_kind: C_CHAR
-      f_c_type: character(kind=C_CHAR)
-      f_cast: "{f_var}"
-      PY_format: c
-      PY_ctor: PyString_FromStringAndSize(&{c_var}, 1)
-      PY_build_arg: (int) {cxx_var}
-      LUA_type: LUA_TSTRING
-      LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
-      sgroup: schar
-      sh_type: SH_TYPE_OTHER
   - type: double
     fields:
       flat_name: double

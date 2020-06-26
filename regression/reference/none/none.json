@@ -86,6 +86,7 @@
             "PY_type_dtor": "idtor",
             "PY_type_obj": "obj",
             "PY_typedef_converter": "LIB_SHROUD_converter_value",
+            "PY_value_init": "{NULL, NULL, NULL, NULL, 0}",
             "YAML_type_filename": "library_types.yaml",
             "c_array_shape": "",
             "c_array_size": "1",
@@ -182,6 +183,7 @@
             "PY_dtor_context_typedef_template": "{PY_prefix}SHROUD_dtor_context",
             "PY_fetch_context_function_template": "{PY_prefix}SHROUD_fetch_context",
             "PY_header_filename_template": "py{library}module.{PY_header_filename_suffix}",
+            "PY_member_data_template": "{variable_name}_dataobj",
             "PY_member_getter_template": "{PY_prefix}{cxx_class}_{variable_name}_getter",
             "PY_member_object_template": "{variable_name}_obj",
             "PY_member_setter_template": "{PY_prefix}{cxx_class}_{variable_name}_setter",
@@ -282,26 +284,6 @@
             "f_type": "character(*)",
             "flat_name": "char",
             "sgroup": "char"
-        },
-        "char_scalar": {
-            "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
-            "LUA_type": "LUA_TSTRING",
-            "PY_build_arg": "(int) {cxx_var}",
-            "PY_ctor": "PyString_FromStringAndSize(&{c_var}, 1)",
-            "PY_format": "c",
-            "c_type": "char",
-            "cxx_type": "char",
-            "f_c_module": {
-                "iso_c_binding": [
-                    "C_CHAR"
-                ]
-            },
-            "f_c_type": "character(kind=C_CHAR)",
-            "f_kind": "C_CHAR",
-            "f_type": "character",
-            "flat_name": "char",
-            "sgroup": "schar"
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",

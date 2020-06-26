@@ -22,7 +22,8 @@ SHDPy_  PyArray_Descr object  {pydescr_var}
 SHD_    npy_intp array for shape, {npy_dims_var}
 SHC_    PyCapsule owner of memory of NumPy array. {py_capsule}
         Used to deallocate memory.
-SHSize_ Size of dimension argument (fmt.size_var}
+SHSize_ Size of dimension argument {fmt.size_var}
+SHValue PY_typedef_converter variable {fmt.value_var}
 SHPyResult Return Python object.
         Necessary when a return object is combined with others by Py_BuildValue.
 """
@@ -142,6 +143,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_args = False
         fmt_library.PY_used_param_kwds = False
         fmt_library.PY_member_object = "XXXPY_member_object"
+        fmt_library.PY_member_data = "XXXPY_member_data"
 
         fmt_library.npy_rank = "0"   # number of dimensions
         fmt_library.npy_dims_var = fmt_library.nullptr # shape variable
@@ -396,8 +398,14 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         # Create a PyObject pointer for each pointer member
         # to contain the actual data.
         self.init_member_obj(node)
+        # object which holds data - NumPy array
+        # Returned by getter
         self.process_member_obj(
             node, "PyObject *{PY_member_object};", output)
+        # object which hold data - PyCapsule
+        # Used to release memory
+        self.process_member_obj(
+            node, "PyObject *{PY_member_data};", output)
 
         self._create_splicer("C_object", output)
         append_format(output, "-}} {PY_PyObject};", fmt_class)
@@ -464,6 +472,8 @@ obj->{PY_type_dtor} = idtor;""",
         to_object = to_object.split("\n")
         self.process_member_obj(
             node, "obj->{PY_member_object} = {nullptr};", to_object)
+        self.process_member_obj(
+            node, "obj->{PY_member_data} = {nullptr};", to_object)
         append_format(
             to_object,
             "return {cast_reinterpret}PyObject *{cast1}obj{cast2};",
@@ -720,7 +730,9 @@ return 1;""",
         fmt.cxx_var = fmt.c_var
         fmt.c_var_non_const = fmt.c_var
         fmt.c_var_obj = wformat("{PY_param_self}->{PY_member_object}", fmt)
+        fmt.c_var_data = wformat("{PY_param_self}->{PY_member_data}", fmt)
         fmt.cxx_var_obj = fmt.c_var_obj
+        fmt.cxx_var_data = fmt.c_var_data
         fmt.c_deref = ""  # XXX needed for PY_ctor
         fmt.py_var = "value"  # Used with PY_get
         fmt.PY_array_arg = options.PY_array_arg
@@ -1196,6 +1208,7 @@ return 1;""",
             fmt_arg.py_var = "SHPy_" + arg_name
             fmt_arg.data_var = "SHData_" + arg_name
             fmt_arg.size_var = "SHSize_" + arg_name
+            fmt_arg.value_var = "SHValue_" + arg_name
 
             arg_typemap = arg.typemap
             fmt_arg.numpy_type = arg_typemap.PYN_typenum
@@ -1905,6 +1918,7 @@ return 1;""",
         fmt_result.py_var = fmt.PY_result
         fmt_result.data_var = "SHData_" + fmt_result.C_result
         fmt_result.size_var = "SHSize_" + fmt_result.C_result
+        fmt_result.value_var = "SHValue_" + fmt_result.C_result
         fmt_result.numpy_type = result_typemap.PYN_typenum
         #            fmt_pattern = fmt_result
         update_fmt_from_typemap(fmt_result, result_typemap)
@@ -1931,7 +1945,8 @@ return 1;""",
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)
         else:
-            stmts = ["py", sgroup, "result"]
+            spointer = ast.get_indirect_stmt()
+            stmts = ["py", sgroup, spointer, "result"]
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
@@ -2623,6 +2638,7 @@ extern PyObject *{PY_prefix}error_obj;
         if need_numpy:
             self.add_numpy_includes(output)
         self.write_headers(hinclude, output)
+        output.append(cpp_boilerplate)
 
         if hsource:
             output.extend(hsource)
@@ -2860,6 +2876,8 @@ setup(
         ]
         self.process_member_obj(
             node, "Py_XDECREF(self->{PY_member_object});", output)
+        self.process_member_obj(
+            node, "Py_XDECREF(self->{PY_member_data});", output)
         return output
 
     def init_member_obj(self, node):
@@ -2870,6 +2888,7 @@ setup(
             if var.ast.is_array():
                 fmt.py_var = "SHPy_" + fmt.variable_name
                 var.eval_template("PY_member_object")
+                var.eval_template("PY_member_data")
 
     def process_member_obj(self, node, text, output):
         """Loop over variables in the struct-as-class and add
@@ -3648,7 +3667,7 @@ py_statements = [
         ]
     ),
     dict(
-        name="py_void_result",
+        name="py_void_*_result",
         fmtdict=dict(
             ctor_expr="{cxx_var}",
         ),
@@ -3912,7 +3931,7 @@ py_statements = [
 ## list
     dict(
         name="py_native_*_in_pointer_list",
-        c_helper="create_from_PyObject_{cxx_type}",
+        c_helper="get_from_object_{cxx_type}_list",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[ # initialize
@@ -3920,19 +3939,22 @@ py_statements = [
         ],
         declare=[
             "PyObject *{pytmp_var} = {nullptr};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
+            "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
+            "{size_var} = {value_var}.size;",
         ],
         arg_call=["{cxx_var}"],
         cleanup=[
-            "{stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr}) {stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
     ),
@@ -3940,7 +3962,7 @@ py_statements = [
     dict(
         name="py_native_*_inout_pointer_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="create_from_PyObject_{cxx_type} to_PyList_{cxx_type}",
+        c_helper="get_from_object_{cxx_type}_list to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -3949,12 +3971,15 @@ py_statements = [
         declare=[
             "PyObject *{py_var};",
             "PyObject *{pytmp_var} = {nullptr};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
+            "Py_ssize_t {size_var};",
         ],
         post_parse=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};",
+            "{size_var} = {value_var}.size;",
         ],
         arg_call=["{cxx_var}"],
         post_call=[
@@ -3964,10 +3989,10 @@ py_statements = [
         ],
         object_created=True,
         cleanup=[
-            "{stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
     ),
@@ -4047,9 +4072,31 @@ py_statements = [
         object_created=True,
     ),
 ########################################
-# char *
+# char
     dict(
-        name="py_char_result",
+        # Get a string from argument but only pass first character to C++.
+        # Since char is a scalar, need to actually get a char * - parse_format, parse_args.
+        # XXX - make sure c_var is only 1 long?
+        name="py_char_scalar_in",
+        arg_declare=[
+            "char *{c_var};",
+        ],
+        parse_format="s",
+        parse_args=["&{c_var}"],
+        arg_call=["{c_var}[0]"],
+    ),
+    dict(
+        name="py_char_scalar_result",
+        declare=[
+            "{PyObject} * {py_var} = {nullptr};",
+        ],
+        post_call=[
+            "{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);",
+        ],
+        object_created=True,
+    ),
+    dict(
+        name="py_char_*_result",
         fmtdict=dict(
             ctor_expr="{c_var}",
         ),
@@ -4078,7 +4125,7 @@ py_statements = [
 
     dict(
         name="py_char_**_in",
-        c_helper="create_from_PyObject_char",
+        c_helper="get_from_object_charptr",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -4086,30 +4133,30 @@ py_statements = [
         ],
         declare=[
             "PyObject * {pytmp_var};", # set by PyArg_Parse
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{c_var}\";",
+            "Py_ssize_t {size_var};",
         ],
         pre_call=[
-            "Py_ssize_t {size_var};",
-            "if ({hnamefunc0}\t({pytmp_var}"
-            ",\t \"{c_var}\",\t &{cxx_var}, \t &{size_var}) == -1)",
+            "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)",
             "+goto fail;-",
+            "{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};",
         ],
         arg_call=["{cxx_var}"],
         post_call=[
-            "{stdlib}free({cxx_var});",
-            "{cxx_var} = {nullptr};",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         fail=[
-            "if ({cxx_var} != {nullptr}) {{+",
-            "{stdlib}free({cxx_var});",
-            "-}}",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
     ),
     
 ########################################
 # string
+# ctor_expr is arguments to PyString_FromStringAndSize.
     dict(
-        name="py_string_in",
+        name="py_string_scalar_in",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
@@ -4117,7 +4164,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_inout",
+        name="py_string_&_in",
+        base="py_string_scalar_in",
+    ),
+    dict(
+        name="py_string_scalar_inout",
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
@@ -4125,7 +4176,11 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_out",
+        name="py_string_&_inout",
+        base="py_string_scalar_inout",
+    ),
+    dict(
+        name="py_string_scalar_out",
         arg_declare=[],
         cxx_local_var="scalar",
         post_declare=["{c_const}std::string {cxx_var};"],
@@ -4134,24 +4189,38 @@ py_statements = [
         ),
     ),
     dict(
-        name="py_string_result",
+        name="py_string_&_out",
+        base="py_string_scalar_out",
+    ),
+    dict(
+        name="py_string_scalar_result",
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
         ),
     ),
     dict(
+        name="py_string_*_result",
+        fmtdict=dict(
+            ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
+        ),
+    ),
+    dict(
+        name="py_string_&_result",
+        base="py_string_*_result",
+    ),
+    dict(
         name="py_string_*_in",
-        base="py_string_in",
+        base="py_string_scalar_in",
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_string_*_inout",
-        base="py_string_inout",
+        base="py_string_scalar_inout",
         arg_call=["&{cxx_var}"],
     ),
     dict(
         name="py_string_*_out",
-        base="py_string_out",
+        base="py_string_scalar_out",
         arg_call=["&{cxx_var}"],
     ),
 
@@ -4457,7 +4526,7 @@ py_statements = [
 ########################################
 # shadow a.k.a class
     dict(
-        name="py_shadow_in",
+        name="py_shadow_*_in",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4466,7 +4535,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_inout",
+        name="py_shadow_*_inout",
         arg_declare=[], # No C variable, the pointer is extracted from PyObject.
         cxx_local_var="pointer",
         post_declare=[
@@ -4475,7 +4544,7 @@ py_statements = [
         ],
     ),
     dict(
-        name="py_shadow_out",
+        name="py_shadow_*_out",
         declare=[
             "{PyObject} *{py_var} = {nullptr};"
         ],
@@ -4495,7 +4564,7 @@ py_statements = [
         goto_fail=True,
     ),
     dict(
-        name="py_shadow_result",
+        name="py_shadow_*_result",
 #            declare=[
 #                "{PyObject} *{py_var} = {nullptr};"
 #            ],
@@ -4515,13 +4584,17 @@ py_statements = [
 #            goto_fail=True,
     ),
     dict(
+        name="py_shadow_&_result",
+        base="py_shadow_*_result",
+    ),
+    dict(
         name="py_shadow_scalar_in",
-        base="py_shadow_in",
+        base="py_shadow_*_in",
         arg_call=["*{cxx_var}"],
     ),
     dict(
         name="py_shadow_&_in",
-        base="py_shadow_in",
+        base="py_shadow_*_in",
         arg_call=["*{cxx_var}"],
     ),
     
@@ -4690,20 +4763,21 @@ py_statements = [
         name="base_py_ctor_array",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
-            "{PY_typedef_converter} {py_var}"
-            " = {{ {nullptr}, {nullptr}, 0 }};",
+            "{PY_typedef_converter} {value_var} = {PY_value_init};",
+            "{value_var}.name = \"{field_name}\";",
             ],
         parse_format="O&",
-        parse_args=["{hnamefunc0}", "&{py_var}"],
+        parse_args=["{hnamefunc0}", "&{value_var}"],
         post_call=[
             "SH_obj->{field_name} = "
-            "{cast_static}{c_type} *{cast1}{py_var}.data{cast2};",
-            "self->{PY_member_object} = {py_var}.obj;"
+            "{cast_static}{c_type} *{cast1}{value_var}.data{cast2};",
+            "self->{PY_member_object} = {value_var}.obj;"
             "  // steal reference",
         ],
     ),
     dict(
         # Fill an array struct member.
+        # helper is set by groups which use this as base.
         name="base_py_ctor_array_fill",
         arg_declare=[],  # No local variable, filled into struct directly.
         declare=[
@@ -4761,8 +4835,8 @@ py_statements = [
         # Need explicit post_call to change cast to char **.
         post_call=[
             "SH_obj->{field_name} = "
-            "{cast_static}char **{cast1}{py_var}.data{cast2};",
-            "self->{PY_member_object} = {py_var}.obj;"
+            "{cast_static}char **{cast1}{value_var}.data{cast2};",
+            "self->{PY_member_object} = {value_var}.obj;"
             "  // steal reference",
         ],
     ),
@@ -4793,7 +4867,7 @@ py_statements = [
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
             "{c_var_obj} = {nullptr};",
-            "// XXXX set error",
+            # Exception is set by hnamefunc0
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
@@ -4817,25 +4891,26 @@ py_statements = [
         setter_helper="get_from_object_{c_type}_list",
         setter=[
             "{PY_typedef_converter} cvalue;",
-            "Py_XDECREF({c_var_obj});",
+            "Py_XDECREF({c_var_data});",
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
-            "{c_var_obj} = {nullptr};",
-            "// XXXX set error",
+            "{c_var_data} = {nullptr};",
+            # Exception is set by hnamefunc0
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
-            "{c_var_obj} = cvalue.obj;  // steal reference",
+            "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
 #        getter_helper="to_PyList_{c_type}",
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
             "-}}",
-            "if ({c_var_obj} != {nullptr}) {{+",
-            "Py_INCREF({c_var_obj});",
-            "return {c_var_obj};",
-            "-}}",
+            # Always create a new object since the struct may change value.
+#            "if ({c_var_obj} != {nullptr}) {{+",
+#            "Py_INCREF({c_var_obj});",
+#            "return {c_var_obj};",
+#            "-}}",
             "PyObject * rv = {ctor};", # difference from py_descr_native_*_list
             "return rv;",
         ],
@@ -4846,25 +4921,26 @@ py_statements = [
         setter_helper="get_from_object_charptr",
         setter=[
             "{PY_typedef_converter} cvalue;",
-            "Py_XDECREF({c_var_obj});",
+            "Py_XDECREF({c_var_data});",
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
-            "{c_var_obj} = {nullptr};",
+            "{c_var_data} = {nullptr};",
             "// XXXX set error",
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
-            "{c_var_obj} = cvalue.obj;  // steal reference",
+            "{c_var_data} = cvalue.dataobj;  // steal reference",
         ],
         getter_helper="to_PyList_char",
         getter=[
             "if ({c_var} == {nullptr}) {{+",
             "Py_RETURN_NONE;",
             "-}}",
-            "if ({c_var_obj} != {nullptr}) {{+",
-            "Py_INCREF({c_var_obj});",
-            "return {c_var_obj};",
-            "-}}",
+            # Always create a new object since the struct may change value.
+#            "if ({c_var_obj} != {nullptr}) {{+",
+#            "Py_INCREF({c_var_obj});",
+#            "return {c_var_obj};",
+#            "-}}",
             "PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});",
             "return rv;",
         ],

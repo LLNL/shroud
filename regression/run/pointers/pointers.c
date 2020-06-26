@@ -179,9 +179,13 @@ void Rank2Input(int *arg)
 }
 
 //----------------------------------------------------------------------
+// Return the strlen of the first index as a check
 
-void acceptCharArrayIn(char **names)
+int acceptCharArrayIn(char **names)
 {
+    if (names == NULL)
+        return 0;
+    return strlen(names[0]);
 }
 
 //----------------------------------------------------------------------
