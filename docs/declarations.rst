@@ -23,15 +23,15 @@ be called directly.
 
 An example is detailed at :ref:`NoReturnNoArguments <example_NoReturnNoArguments>`.
 
-Numeric Types
--------------
+Numeric Arguments
+-----------------
 
 Integer and floating point numbers are supported by the
 *interoperabilty with C* feature of Fortran 2003.  This includes the
 integer types ``short``, ``int``, ``long`` and ``long long``.
 Size specific types ``int8_t``, ``int16_t``, ``int32_t``, and
-``int64_t`` are supported.
-Floating point types ``float`` and ``double``.
+``int64_t`` are also supported.
+Floating point types are ``float`` and ``double``.
 
 .. note::  Fortran has no support for unsigned types.
            ``size_t`` will be the correct number of bytes, but
@@ -47,25 +47,88 @@ In the following examples, ``int`` can be replaced by any numeric type.
     necessary.
     See example :ref:`PassByValue <example_PassByValue>`.
 
-``int *arg``
+``const int *arg``
+    Scalar call-by-reference.
+    ``const`` pointers are defaulted to ``+intent(in)``.
+
+``int *arg  +intent(out)``
     If the intent is to return a scalar value from a function,
     add the ``intent(out)`` attribute.
     See example :ref:`PassByReference <example_PassByReference>`.
 
-``int *arg``
-    If ``arg`` is an array, add the ``dimension(:)`` attribute.
-    This will create an assumed-shape attribute for ``arg``.
-    The C array needs to have some way to determine the length of the
-    array.  One option is to add another argument which will pass
+``const int *arg +rank(1)``
+    The ``rank(1)`` attribute will create an assumed-shape
+    Fortran dimension for the argument as ``arg(:)``.
+    The C library function needs to have some way to determine the length of the
+    array.  The length could be assumed by the library function.
+    A better option is to add another argument which will explicitly pass
     the length of the array from Fortran - ``int larg+implied(size(arg))``.
+    An *implied* argument will not be part of the wrapped API but will still
+    be passed to the C++ function.
     See example :ref:`Sum <example_Sum>`.
 
-.. XXX pointers should result to inout
+``int *arg  +intent(out)+deref(allocatable)+dimension(n)``
+    Adds the Fortran attribute ``ALLOCATABLE`` to the argument, then
+    use the ``ALLOCATE`` statment to allocate memory using *dimension* attribute
+    as the shape.
+    See example :ref:`truncate_to_int <example_truncate_to_int>`.
 
+``intent **arg +intent(out)``
+    Return a pointer in an argument. This is converted into a Fortran
+    ``POINTER`` to a scalar.
+    See example :ref:`getPtrToScalar <example_getPtrToScalar>`.
+
+``intent **arg +intent(out)+dimension(ncount)``
+    Return a pointer in an argument. This is converted into a Fortran
+    ``POINTER`` to an array by the *dimension* attribute.
+    See example :ref:`getPtrToDynamicArray <example_getPtrToDynamicArray>`.
+
+``intent **arg +intent(out)+deref(raw)``
+    Return a pointer in an argument.  The Fortran argument will be
+    a ``type(C_PTR)``.  This gives the caller the flexibility to
+    dereference the pointer themselves using ``c_f_pointer``.
+    This is useful when the shape is not know when the function is called.
+    See example :ref:`getRawPtrToFixedArray <example_getRawPtrToFixedArray>`.
+
+``int ***arg +intent(out)``
+    Pointers nested to a deeper level are treated as a Fortran ``type(C_PTR)``
+    argument.  This gives the user the most flexibility.  The ``type(C_PTR)``
+    can be passed back to to library which should know how to cast it.
+    There is no checks on the pointer before passing it to the library
+    so it's very easy to pass bad values.
+    The user can also explicitly dereferences the pointers using ``c_f_pointer``.
+    See example :ref:`getRawPtrToInt2d <example_getRawPtrToInt2d>`.
+
+``int **arg +intent(in)``
+    Multiple levels of indirection are converted into a ``type(C_PTR)`` argument.
+    See below for an exception for ``char **``.
+    See example :ref:`checkInt2d <example_checkInt2d>`.
+    
 ``int &min +intent(out)``
     A declaration to a scalar gets converted into pointers in the
     C wrapper.
     See example :ref:`getMinMax <example_getMinMax>`.
+
+``int *&arg``
+   Return a pointer in an argument.  From Fortran, this is the same
+   as ``int **arg``.  See above examples.
+
+
+Numeric Functions
+-----------------
+
+``int *func()``
+    Return a Fortran ``POINTER`` to a scalar.
+    See example :ref:`returnIntPtrToScalar <example_returnIntPtrToScalar>`.
+
+``int *func() +dimension(10)``
+    Return a Fortran ``POINTER`` to a array.
+    See example :ref:`returnIntPtrToFixedArray <example_returnIntPtrToFixedArray>`.
+
+``int *func() +deref(scalar)``
+    Return a scalar.
+    See example :ref:`returnIntScalar <example_returnIntScalar>`.
+
 
 Bool
 ----
@@ -140,10 +203,11 @@ is to account for blank filled vs ``NULL`` terminated.
     ``char *arg+intent(out), int larg+implied(len(arg))``.
     See example :ref:`ImpliedTextLen <example_ImpliedTextLen>`.
 
-``char **arg``
-   This is treated as an array of ``NULL`` terminated strings.
-
-   ``CHARACTER(len=*) arg(:)``
+``char **names +intent(in)``
+    This is a standard C idiom for an array of ``NULL`` terminated strings.
+    Shroud takes an array of ``CHARACTER(len=*) arg(:)`` and creates the
+    C data structure by copying the data and adding the terminating ``NULL``.
+    See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
 
 .. XXX 
 
@@ -185,31 +249,25 @@ Each of these declaration call identical C++ functions but they are
 wrapped differently.
 
 ``char *getCharPtr1``
-
     Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
     variable.  Fortran 2003 is required. The Fortran application is
     responsible to release the memory.  However, this may be done
     automatically by the Fortran runtime.
-
     See example :ref:`getCharPtr1 <example_getCharPtr1>`.
 
 ``char *getCharPtr2``
-
     Create a Fortran function which returns a predefined ``CHARACTER`` 
     value.  The size is determined by the *len* argument on the function.
     This is useful when the maximum size is already known.
     Works with Fortran 90.
-
     See example :ref:`getCharPtr2 <example_getCharPtr2>`.
 
 ``char *getCharPtr3``
-
     Create a Fortran subroutine in an additional ``CHARACTER``
     argument for the C function result. Any size character string can
     be returned limited by the size of the Fortran argument.  The
     argument is defined by the *F_string_result_as_arg* format string.
     Works with Fortran 90.
-
     See example :ref:`getCharPtr3 <example_getCharPtr3>`.
 
 string functions
@@ -217,7 +275,6 @@ string functions
 
 Functions which return ``std::string`` values are similar but must provide the
 extra step of converting the result into a ``char *``.
-
 
 ``const string &``
     See example :ref:`getConstStringRefPure <example_getConstStringRefPure>`.

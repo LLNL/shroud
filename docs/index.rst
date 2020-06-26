@@ -47,6 +47,7 @@ Contents
    python
    cookbook
    typemaps
+   cstatements
    fstatements
    reference
    previouswork

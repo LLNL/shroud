@@ -4,15 +4,134 @@
 
    SPDX-License-Identifier: (BSD-3-Clause)
 
+.. _PointersAndArraysAnchor:
 
 Pointers and Arrays
 ===================
 
-When a function returns a pointer to a POD type several Fortran
-interfaces are possible. When a function returns an ``int *`` the
-simplest result is to return a ``type(C_PTR)``.  This is just the raw
-pointer returned by C++.  It's also the least useful to the caller
-since it cannot be used directly.
+Shroud will create code to map between C and Fortran pointers.  The
+*interoperability with C* features of Fortran 2003 and the
+call-by-reference feature of Fortran provides most of the features
+necessary to pass arrays to C++ libraries. Shroud can also provide
+additional semantic information.  Adding the ``+rank(n)`` attribute
+will declare the argument as an assumed-shape array with the given
+rank: ``+rank(2)`` creates ``arg(:,:)``.  The ``+dimension(n)`` attribute
+will instead give an explicit dimension: ``+dimension(10,20)`` creates
+``arg(10,20)``.
+
+Using *dimension* on *intent(in)* arguments will use the dimension
+shape in the Fortran wrapper instead of assumed-shape. This adds some
+additional safety since many compiler will warn if the actual argument
+is too small.  This is useful when the C++ function has an assumed shape.
+For example, it expects a pointer to 16 elements.
+The Fortran wrapper will pass a pointer to contiguous memory with
+no explicit shape information.
+
+.. shape must be known on entry to the routine.
+
+When a function returns a pointer, the default behavior of Shroud
+is to convert it into a Fortran variable with the ``POINTER`` attribute
+using ``c_f_pointer``. This can be made explicit by adding
+``+deref(pointer)`` to the function declaration in the YAML file.
+For example, ``int *getData(void) +deref(pointer)`` creates the Fortran
+function interface
+
+.. code-block:: fortran
+
+    function get_data() result(rv)
+        integer(C_INT), pointer :: rv
+    end function get_data
+
+The result of the the Fortran function directly accesses the memory
+returned from the C++ library.
+
+An array can be returned by adding the attribute ``+dimension(n)`` to
+the function.  The dimension expression will be used to provide the
+``shape`` argument to ``c_f_pointer``.  The arguments to *dimension*
+are C++ expressions which are evaluated after the C++ function is
+called and can be the name of another argument to the function or call
+another C++ function.  As a simple example, this declaration returns a
+pointer to a constant sized array.
+
+.. code-block:: yaml
+
+    - decl: int *returnIntPtrToFixedArray(void) +dimension(10)
+
+If the dimension is unknown when the function returns, a ``type(C_PTR)``
+can be returned with ``+deref(raw)``.  This will allow the user
+to call ``c_f_pointer`` once the shape is known.
+Instead of a Fortran pointer to a scalar, a scalar can be returned
+by adding ``+deref(scalar)``.
+
+A common idiom for C++ is to return pointers to memory via arguments.
+This would be declared as ``int **arg +intent(out)``.  By default,
+Shroud treats the argument similar to a function which returns a
+pointer: it adds the *deref(pointer)* attribute to treats it as a
+``POINTER`` to a scalar.  The *dimension* attribute can be used to
+create an array similar to a function result.
+
+Function which return multiple layers of indirection will return
+a ``type(C_PTR)``.  This is also true for function arguments beyond
+``int **arg +intent(out)``.
+This pointer can represent non-contiguous memory and Shroud
+has no way to know the extend of each pointer in the array.
+
+A special case is provided for arrays of `NULL` terminated strings,
+``char **``.  While this also represents non-contiguous memory, it is a
+common idiom and can be processed since the length of each string can
+be found with ``strlen``.
+See example :ref:`acceptCharArrayIn <example_acceptCharArrayIn>`.
+
+Shroud can be made to allocate an array before the C++ library is
+called using ``deref(allocatable)``.  For example, ``int **arg
++intent(out)+deref(allocatable)+dimension(n)``.  The value of the
+*dimension* attribute is used to define the shape of the array and
+must be know before the library function is called.  The *dimension*
+attribute can include the Fortran intrinsic ``size`` to define the
+shape in terms of another array.  This is more useful in Python since
+*intent(out)* arguments are not used in the function call and instead
+they are returned by the function.  In Fortran, it is easier to pass
+in the array and allow the C++ library function to fill it directly.
+
+Python wrappers add some additional requirements on attributes.
+Python will create NumPy arrays for *intent(out)* arguments but
+require an explicit shape using *dimension* attribute. Fortran passes
+in an argument for *intent(out)* arguments which will be filled by the
+C++ library.  However, Python will need to create the NumPy array
+before calling the C++ function.
+For example, using ``+intent(out)+rank(1)`` will have problems.
+
+``char *`` functions are treated differently.  By default *deref*
+attribute will be set to *allocatable*.  After the C++ function
+returns, a ``CHARACTER`` variable will be allocated and the contents
+copied.  This will convert a ``NULL`` terminated string into the
+proper length of Fortran variable.
+For very long strings or strings with embedded ``NULL``, ``deref(raw)``
+will return a ``type(C_PTR)``.
+
+.. deref(allocatable) allocate before or after call...
+
+.. string, vector
+   Pointers to characters will default to *deref(allocatable)*.
+   This is useful for short strings.
+
+.. Python  - option.PY_array_arg but not with deref(scalar).
+
+
+``void *`` functions return a ``type(C_PTR)`` argument and cannot
+have *deref*, *dimension*, or *rank* attributes.
+A ``type(C_PTR)`` argument will be passed by value.  For a ``void **`` argument,
+the ``type(C_PTR)`` will be passed by reference (the default).  This
+will allow the C wrapper to assign a value to the argument.
+See example :ref:`passVoidStarStar <example_passVoidStarStar>`.
+
+
+.. +size
+   +len
+   +len_trim
+
+.. ------------
+   
 
 If the C++ library function can also provide the length of the
 pointer, then its possible to return a Fortran ``POINTER`` or
@@ -31,28 +150,6 @@ caller never needs to release the memory.
 
 See :ref:`MemoryManagementAnchor` for details of the implementation.
 
-Functions with ``void *`` arguments are treated differently.  A
-``type(C_PTR)`` will be passed by value.  For a ``void **`` argument,
-the ``type(C_PTR)`` will be passed by reference (the default).  This
-will allow the C wrapper to assign a value to the argument.
-
-.. See clibrary.yaml  passVoidStarStar test
-
-.. code-block:: yaml
-
-    - decl: void passVoidStarStar(void *in+intent(in), void **out+intent(out))
-
-Creates the Fortran interface:
-
-.. code-block:: fortran
-
-        subroutine pass_void_star_star(in, out) &
-                bind(C, name="passVoidStarStar")
-            use iso_c_binding, only : C_PTR
-            implicit none
-            type(C_PTR), value, intent(IN) :: in
-            type(C_PTR), intent(OUT) :: out
-        end subroutine pass_void_star_star
 
 A void pointer may also be used in a C function when any type may be
 passed in.  The attribute *assumedtype* can be used to declare a
@@ -100,6 +197,8 @@ be used to release the memory.
 
 The *c_statements* may also define a way to destroy memory.
 For example, ``std::vector`` provides the lines:
+
+.. c_vector_out_buf
 
 .. code-block:: yaml
 
@@ -319,9 +418,6 @@ leak memory when called:
         const char * SHC_rv = SHCXX_rv->c_str();
         return SHC_rv;
     }
-
-.. note:: Reference counting and garbage collection are still a work in progress
-
 
 
 

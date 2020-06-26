@@ -7,7 +7,16 @@
 Introduction
 ============
 
-Input is read from a YAML file which describes the types, variables,
+**Shroud** is a tool for creating a Fortran or Python interface to a C
+or C++ library.  It can also create a C API for a C++ library.
+
+The user creates a YAML file with the C/C++ declarations to be wrapped
+along with some annotations to provide semantic information and code
+generation options.  Shroud produces a wrapper for the library.
+The generated code is highly-readable and intended to be similar to code
+that would be hand-written to create the bindings.
+
+Input is read from the YAML file which describes the types, variables,
 enumerations, functions, structures and classes to wrap.  This file
 must be created by the user.  Shroud does not parse C++ code to
 extract the API. That was considered a large task and not needed for
@@ -29,7 +38,7 @@ as the requirements of C++ and Fortran syntax.
 
 Each declaration can have annotations which provide semantic
 information.  This information is used to create more idiomatic
-wrappers.  **Shroud** started as a tool for creating a Fortran wrapper
+wrappers.  Shroud started as a tool for creating a Fortran wrapper
 for a C++ library.  The declarations and annotations in the input file
 also provide enough information to create a Python wrapper.
 
@@ -86,7 +95,7 @@ The 2003 Fortran standard added several features for interoperability with C:
   * ``BIND`` keyword to control name mangling of externals.
   * ``VALUE`` attribute to allow pass-by-value.
 
-In addition, Fortran 2003 provides some object oriented programming facilities:
+In addition, Fortran 2003 provides object oriented programming facilities:
 
    * Type extension
    * Procedure Polymorphism with Type-Bound Procedures
@@ -132,8 +141,8 @@ Requirements
 The generated code will require
 
 * Python 2.7 or Python 3.4+
-* NumPy will be required when using pointers with
-  *dimension*, *allocatable*, or *mold* attributes.
+* NumPy can be used when using pointers with
+  *rank*, *dimension* or *allocatable*, attributes.
 
 XKCD
 ----
