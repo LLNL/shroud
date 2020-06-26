@@ -997,6 +997,7 @@ return 1;
 def create_get_from_object_list_charptr(fmt):
     """ Convert PyObject to an char **.
     ["one", "two"]
+    helper get_from_object_charptr
 
     Loop over all strings in the sequence object and
     convert using get_from_object_char helper
@@ -1020,11 +1021,22 @@ def create_get_from_object_list_charptr(fmt):
         proto=fmt.hnameproto + ";",
         source=wformat("""
 
+// helper FREE_{hname}
 static void FREE_{hname}(PyObject *obj)
 {{+
-void *addr = PyCapsule_GetPointer(obj, {nullptr});
-// XXX - Loop over array and delete each element.
-{stdlib}free(addr);
+char **in = {cast_static}char **{cast1}PyCapsule_GetPointer(obj, {nullptr}){cast2};
+if (in == {nullptr})
++return;-
+size_t *size = {cast_static}size_t *{cast1}PyCapsule_GetContext(obj){cast2};
+if (size == {nullptr})
++return;-
+for (size_t i=0; i < *size; ++i) {{+
+if (in[i] == {nullptr})
++continue;-
+{stdlib}free(in[i]);
+-}}
+{stdlib}free(in);
+{stdlib}free(size);
 -}}
 
 // helper {hname}
@@ -1039,11 +1051,14 @@ return -1;
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 char **in = {cast_static}char **{cast1}{stdlib}calloc(size, sizeof(char *)){cast2};
 PyObject *dataobj = PyCapsule_New(in, {nullptr}, FREE_{hname});
-// int PyCapsule_SetContext(datavalue, void * context);
+size_t *size_context = {cast_static}size_t *{cast1}malloc(sizeof(size_t)){cast2};
+*size_context = size;
+int ierr = PyCapsule_SetContext(dataobj, size_context);
+// XXX - check error
 {PY_typedef_converter} itemvalue = {PY_value_init};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-int ierr = {__helper}(item, &itemvalue);
+ierr = {__helper}(item, &itemvalue);
 if (ierr == 0) {{+
 Py_XDECREF(itemvalue.dataobj);
 Py_DECREF(dataobj);

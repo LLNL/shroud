@@ -2979,11 +2979,23 @@ static int SHROUD_get_from_object_char(PyObject *obj,
 ##### start get_from_object_charptr source
 
 
+// helper FREE_get_from_object_charptr
 static void FREE_get_from_object_charptr(PyObject *obj)
 {
-    void *addr = PyCapsule_GetPointer(obj, nullptr);
-    // XXX - Loop over array and delete each element.
-    std::free(addr);
+    char **in = static_cast<char **>
+        (PyCapsule_GetPointer(obj, nullptr));
+    if (in == nullptr)
+        return;
+    size_t *size = static_cast<size_t *>(PyCapsule_GetContext(obj));
+    if (size == nullptr)
+        return;
+    for (size_t i=0; i < *size; ++i) {
+        if (in[i] == nullptr)
+            continue;
+        std::free(in[i]);
+    }
+    std::free(in);
+    std::free(size);
 }
 
 // helper get_from_object_charptr
@@ -3000,11 +3012,15 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     char **in = static_cast<char **>(std::calloc(size, sizeof(char *)));
     PyObject *dataobj = PyCapsule_New(in, nullptr, FREE_get_from_object_charptr);
-    // int PyCapsule_SetContext(datavalue, void * context);
+    size_t *size_context = static_cast<size_t *>
+        (malloc(sizeof(size_t)));
+    *size_context = size;
+    int ierr = PyCapsule_SetContext(dataobj, size_context);
+    // XXX - check error
     LIB_SHROUD_converter_value itemvalue = {NULL, NULL, NULL, NULL, 0};
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        int ierr = SHROUD_get_from_object_char(item, &itemvalue);
+        ierr = SHROUD_get_from_object_char(item, &itemvalue);
         if (ierr == 0) {
             Py_XDECREF(itemvalue.dataobj);
             Py_DECREF(dataobj);

@@ -164,7 +164,6 @@ static int PY_Cstruct_list_ivalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_int_list(value, &cvalue) == 0) {
         self->obj->ivalue = nullptr;
         self->ivalue_obj = nullptr;
-        // XXX - set error
         return -1;
     }
     self->obj->ivalue = static_cast<int *>(cvalue.data);
@@ -196,7 +195,6 @@ static int PY_Cstruct_list_dvalue_setter(PY_Cstruct_list *self, PyObject *value,
     if (STR_SHROUD_get_from_object_double_list(value, &cvalue) == 0) {
         self->obj->dvalue = nullptr;
         self->dvalue_obj = nullptr;
-        // XXX - set error
         return -1;
     }
     self->obj->dvalue = static_cast<double *>(cvalue.data);

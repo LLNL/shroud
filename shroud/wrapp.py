@@ -3962,7 +3962,7 @@ py_statements = [
     dict(
         name="py_native_*_inout_pointer_list",
 #        c_helper="update_PyList_{cxx_type}",
-        c_helper="get_from_object_{cxx_type}_{PY_array_arg} to_PyList_{cxx_type}",##
+        c_helper="get_from_object_{cxx_type}_{PY_array_arg} to_PyList_{cxx_type}",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[
@@ -4867,7 +4867,7 @@ py_statements = [
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
             "{c_var_obj} = {nullptr};",
-            "// XXX - set error",
+            # Exception is set by hnamefunc0
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",
@@ -4895,7 +4895,7 @@ py_statements = [
             "if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+",
             "{c_var} = {nullptr};",
             "{c_var_data} = {nullptr};",
-            "// XXXX set error",
+            # Exception is set by hnamefunc0
             "return -1;",
             "-}}",
             "{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};",

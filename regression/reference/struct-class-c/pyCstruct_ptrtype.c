@@ -121,7 +121,6 @@ static int PY_Cstruct_ptr_cfield_setter(PY_Cstruct_ptr *self, PyObject *value,
     if (STR_SHROUD_get_from_object_char(value, &cvalue) == 0) {
         self->obj->cfield = NULL;
         self->cfield_dataobj = NULL;
-        // XXXX set error
         return -1;
     }
     self->obj->cfield = (char *) cvalue.data;
