@@ -115,6 +115,41 @@ PY_passChar(
 }
 
 // ----------------------------------------
+// Function:  void passCharForce
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  char status +intent(in)+value
+// Exact:     py_char_scalar_in
+static char PY_passCharForce__doc__[] =
+"documentation"
+;
+
+/**
+ * By default no Fortran wrapper is created.
+ * Force one so it can be tested.
+ */
+static PyObject *
+PY_passCharForce(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.pass_char_force
+    char *status;
+    const char *SHT_kwlist[] = {
+        "status",
+        nullptr };
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds, "s:passCharForce",
+        const_cast<char **>(SHT_kwlist), &status))
+        return nullptr;
+
+    passCharForce(status[0]);
+    Py_RETURN_NONE;
+// splicer end function.pass_char_force
+}
+
+// ----------------------------------------
 // Function:  char returnChar
 // Exact:     py_char_scalar_result
 static char PY_returnChar__doc__[] =
@@ -1252,6 +1287,8 @@ fail:
 static PyMethodDef PY_methods[] = {
 {"passChar", (PyCFunction)PY_passChar, METH_VARARGS|METH_KEYWORDS,
     PY_passChar__doc__},
+{"passCharForce", (PyCFunction)PY_passCharForce,
+    METH_VARARGS|METH_KEYWORDS, PY_passCharForce__doc__},
 {"returnChar", (PyCFunction)PY_returnChar, METH_NOARGS,
     PY_returnChar__doc__},
 {"passCharPtr", (PyCFunction)PY_passCharPtr, METH_VARARGS|METH_KEYWORDS,

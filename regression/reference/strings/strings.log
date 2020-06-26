@@ -4,6 +4,7 @@ Skipping std::string, unable to create C wrapper for function returning getConst
 Skipping std::string, unable to create C wrapper for function returning getConstStringAsArg instance (must return a pointer or reference). Bufferify version will still be created.
 Skipping std::string, unable to create C wrapper for function returning getConstStringAlloc instance (must return a pointer or reference). Bufferify version will still be created.
 C function void passChar(char status +intent(in)+value)
+C function void passCharForce(char status +intent(in)+value)
 C function char returnChar()
 C function void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 C function void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
@@ -69,6 +70,7 @@ Close wrapstrings.h
 Close wrapstrings.cpp
 Close typesstrings.h
 C-interface, Fortran function void passChar(char status +intent(in)+value)
+C-interface, Fortran function void passCharForce(char status +intent(in)+value)
 C-interface, Fortran function char returnChar()
 C-interface function void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))
 C-interface, Fortran function void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
@@ -139,6 +141,7 @@ C-interface function void PostDeclare(int * count +intent(in)+rank(1), std::stri
 Close wrapfstrings.f
 Close utilstrings.cpp
 Python function void passChar(char status +intent(in)+value)
+Python function void passCharForce(char status +intent(in)+value)
 Python function char returnChar()
 Python function void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))
 Python function void passCharPtrInOut(char * s +intent(inout))

@@ -121,6 +121,115 @@
                 "options": {}
             },
             {
+                "_fmtargs": {
+                    "status": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "status",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&status",
+                            "cxx_type": "char",
+                            "cxx_var": "status",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "c_char_scalar_in",
+                            "stmt1": "c_char_scalar_in"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_status",
+                            "c_var": "status",
+                            "f_intent": "IN",
+                            "f_type": "character(*)",
+                            "f_var": "status",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_scalar_in",
+                            "stmtc1": "c_char_scalar_in"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "char",
+                            "c_var": "status",
+                            "ctor_expr": "status",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&status",
+                            "cxx_type": "char",
+                            "cxx_var": "status",
+                            "data_var": "SHData_status",
+                            "numpy_type": "NPY_INTP",
+                            "py_var": "SHPy_status",
+                            "pytmp_var": "SHTPy_status",
+                            "size_var": "SHSize_status",
+                            "stmt0": "py_char_scalar_in",
+                            "stmt1": "py_char_scalar_in",
+                            "value_var": "SHValue_status"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passCharForce",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "status",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passCharForce(char status)",
+                "declgen": "void passCharForce(char status +intent(in)+value)",
+                "doxygen": {
+                    "description": "By default no Fortran wrapper is created.\nForce one so it can be tested.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "status",
+                    "C_name": "STR_pass_char_force",
+                    "C_prototype": "char status",
+                    "C_return_type": "void",
+                    "F_C_call": "c_pass_char_force",
+                    "F_C_name": "c_pass_char_force",
+                    "F_arg_c_call": "status",
+                    "F_arguments": "status",
+                    "F_name_function": "pass_char_force",
+                    "F_name_generic": "pass_char_force",
+                    "F_name_impl": "pass_char_force",
+                    "F_subprogram": "subroutine",
+                    "PY_name_impl": "PY_passCharForce",
+                    "function_name": "passCharForce",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "pass_char_force"
+                },
+                "options": {
+                    "F_force_wrapper": true
+                }
+            },
+            {
                 "_fmtresult": {
                     "fmtc": {
                         "c_const": "",

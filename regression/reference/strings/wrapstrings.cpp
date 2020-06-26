@@ -104,6 +104,24 @@ void STR_pass_char(char status)
 }
 
 /**
+ * By default no Fortran wrapper is created.
+ * Force one so it can be tested.
+ */
+// ----------------------------------------
+// Function:  void passCharForce
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  char status +intent(in)+value
+// Exact:     c_char_scalar_in
+void STR_pass_char_force(char status)
+{
+    // splicer begin function.pass_char_force
+    passCharForce(status);
+    // splicer end function.pass_char_force
+}
+
+/**
  * \brief return a char argument (non-pointer)
  *
  */

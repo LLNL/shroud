@@ -14,6 +14,7 @@
 #include <string>
 
 void passChar(char status);
+void passCharForce(char status);
 char returnChar();
 
 void passCharPtr(char * dest, const char *src);

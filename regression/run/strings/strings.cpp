@@ -28,6 +28,13 @@ void passChar(char status)
     }
 }
 
+void passCharForce(char status)
+{
+    if (status == 'w') {
+	global_str = "w";
+    }
+}
+
 char returnChar()
 {
     return 'w';

@@ -29,6 +29,8 @@ extern "C" {
 
 void STR_pass_char(char status);
 
+void STR_pass_char_force(char status);
+
 char STR_return_char(void);
 
 void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv);
