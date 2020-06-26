@@ -288,7 +288,7 @@ In this example, ``len`` and ``values`` are an input array and
 
 .. code-block:: c++
 
-    void Sum(int len, int *values, int *result)
+    void Sum(int len, const int *values, int *result)
     {
         int sum = 0;
         for (int i=0; i < len; i++) {
@@ -305,10 +305,10 @@ Python:
 .. code-block:: c++
 
   - decl: void Sum(int  len,   +implied(size(values)),
-                   int *values +dimension(:)+intent(in),
+                   const int *values +rank(1),
                    int *result +intent(out))
 
-The ``dimension`` attribute defines the variable as a one dimensional
+The ``rank`` attribute defines the variable as a one dimensional
 array.  NumPy is used to create an array from the argument
 to the Python function. C pointers have no
 idea how many values they point to.  This information is passed

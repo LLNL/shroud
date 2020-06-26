@@ -105,26 +105,7 @@ GTK
 gtk-fortran uses a python script which grep the C source to generate the Fortran.
 
 https://github.com/jerryd/gtk-fortran/blob/master/src/cfwrapper.py
-
-EOS8
-----
-
-EOS8 is written in C++ and plans to provide a Fortran binding.
-
-    We pass around handles when possible, basically an integer id that maps to
-    an actual C++ object underneath the covers. The handles are the first
-    argument. There are a few places where pointers get passed around and
-    reinterpret_cast'ed in the C++ layer.
-
-    We looked at Babel but decided not to use it since it wasn't really being
-    supported any longer, it was a bit heavyweight, and there was some
-    run-time support needed.
-
-    Right now the C++ headers are converted to C via a perl script with
-    regexes with some hand-rolling when necessary. I tried to use clang and
-    parse the headers, but never quite got it to work. The fortran is
-    generated off the C wrappers. I'd like to take better advantage of native
-    fortran datatypes, but aren't quite there yet.
+https://github.com/vmagnin/gtk-fortran/wiki
 
 CDI
 ---

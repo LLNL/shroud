@@ -7,7 +7,28 @@
 Python
 =======
 
+.. note:: Work in progress
+
 This section discusses Python specific wrapper details.
+
+
+.. struct-as-class
+   Each struct extension type will have some additional PyObjects added to control memory
+   PY_member_object - An object which caches the user visible object and contains
+     a pointer to the data.  For example, NumPy, array, struct
+   PY_member_data - An object which contains the memory and how to destroy it.
+        PyCapsule - memory converted by a list
+        Byte, String (python2) - String object.
+   In addition, the memory can be modified by library so do not
+   cache PY_member_object. Instead recreate it each time.
+
+   With NumPy ``struct.array is struct.array``.  Each time the getter is called, the same
+   cached object is returned. This works because the object contains a pointer to the C memory.
+   Modifiying the NumPy array also changes the C memory and vice versa.
+   Should also work with Python array, bytesarray, struct types.
+   A field like `char *` does not use value.obj since C can change the memory and the object
+   will not be changed since strings are not mutable.
+     
 
 Wrapper
 -------
@@ -217,8 +238,11 @@ fmtdict
 Update format dictionary to override generated values.
 Each field will be evaluated before assigment.
 
-ctor_expr - expression passed to Typemap.PY_ctor
+
+ctor_expr - Expression passed to Typemap.PY_ctor
 ``PyInt_FromLong({ctor_expr})``.
+Useful to add dereferencing if necessary.
+``PyInt_FromLong`` is from typemap.PY_ctor.
 
 .. code-block:: python
 
@@ -377,6 +401,7 @@ post_call
 ^^^^^^^^^
 
 Convert result and *intent(out)* into ``PyObject``.
+Set *object_created* to True if a ``PyObject`` is created.
 
 
 cleanup

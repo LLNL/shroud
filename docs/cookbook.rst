@@ -54,3 +54,7 @@ Will generate the Fortran code
         module procedure change_int
         module procedure change_long
     end interface change
+
+
+.. XXX warn about dimension(1)
+   

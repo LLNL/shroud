@@ -354,12 +354,14 @@ PY_write_helper_in_util
    
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
-  (it does not have the *dimension* attribute).
+  (it does not have the *dimension* or *rank* attribute).
   **scalar** return as a scalar or **pointer** to return as a pointer.
   This option does not effect the C or Fortran wrapper.
   For Python, **pointer** will return a NumPy scalar.
   Defaults to *pointer*.
 
+.. default_attr_deref
+  
 .. bufferify
 
 show_splicer_comments
@@ -1169,6 +1171,10 @@ c_var_trim
 cxx_addr
     Syntax to take address of argument.
     ``&`` or blank.
+
+cxx_nonconst_ptr
+    A non-const pointer to *cxx_addr* using `const_cast` in C++ or
+    a cast for C.
 
 cxx_member
     Syntax to access members of *cxx_var*.
