@@ -781,7 +781,7 @@ return 1;
     )
     CHelpers[name] = helper
 
-    ######################################## XX
+    ########################################
     # Function called by typemap.PY_get_converter for list.
     if ntypemap.PY_get:
         name = "get_from_object_{}_list".format(flat_name)
