@@ -3931,7 +3931,7 @@ py_statements = [
 ## list
     dict(
         name="py_native_*_in_pointer_list",
-        c_helper="get_from_object_{cxx_type}_{PY_array_arg}",
+        c_helper="get_from_object_{cxx_type}_list",
         parse_format="O",
         parse_args=["&{pytmp_var}"],
         arg_declare=[ # initialize
@@ -3951,10 +3951,10 @@ py_statements = [
         ],
         arg_call=["{cxx_var}"],
         cleanup=[
-            "Py_XDECREF({value_var}.obj);",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         fail=[
-            "Py_XDECREF({value_var}.obj);",
+            "Py_XDECREF({value_var}.dataobj);",
         ],
         goto_fail=True,
     ),

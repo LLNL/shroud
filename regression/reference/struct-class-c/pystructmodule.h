@@ -41,14 +41,10 @@ int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize);
 int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     STR_SHROUD_converter_value *value);
-int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
-    const char *name, double **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_double_list(PyObject *obj,
     STR_SHROUD_converter_value *value);
 int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     STR_SHROUD_converter_value *value);
-int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize);
 int STR_SHROUD_get_from_object_int_list(PyObject *obj,
     STR_SHROUD_converter_value *value);
 int STR_SHROUD_get_from_object_int_numpy(PyObject *obj,

@@ -211,17 +211,29 @@ int STR_SHROUD_get_from_object_charptr(PyObject *obj,
     return 1;
 }
 
-// helper create_from_PyObject_double
-// Convert obj into an array of type double
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
-    const char *name, double **pin, Py_ssize_t *psize)
+// helper py_capsule_dtor
+// Release memory in PyCapsule.
+// Used with native arrays.
+static void FREE_py_capsule_dtor(PyObject *obj)
+{
+    void *in = PyCapsule_GetPointer(obj, NULL);
+    if (in != NULL) {
+        free(in);
+    }
+}
+
+// helper get_from_object_double_list
+// Convert list of PyObject to array of double.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+int STR_SHROUD_get_from_object_double_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
+            value->name);
+        return 0;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     double *in = (double *) malloc(size * sizeof(double));
@@ -232,30 +244,15 @@ int STR_SHROUD_create_from_PyObject_double(PyObject *obj,
             free(in);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be double", name,
+                "argument '%s', index %d must be double", value->name,
                 (int) i);
-            return -1;
+            return 0;
         }
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_double_list
-// Convert PyObject to double pointer.
-int STR_SHROUD_get_from_object_double_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    double *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_double(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = NULL;
-    value->dataobj = NULL;
+    value->obj = NULL;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, NULL, FREE_py_capsule_dtor);
     value->data = (double *) in;
     value->size = size;
     return 1;
@@ -280,17 +277,18 @@ int STR_SHROUD_get_from_object_double_numpy(PyObject *obj,
     return 1;
 }
 
-// helper create_from_PyObject_int
-// Convert obj into an array of type int
-// Return -1 on error.
-int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
-    int **pin, Py_ssize_t *psize)
+// helper get_from_object_int_list
+// Convert list of PyObject to array of int.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+int STR_SHROUD_get_from_object_int_list(PyObject *obj,
+    STR_SHROUD_converter_value *value)
 {
     PyObject *seq = PySequence_Fast(obj, "holder");
     if (seq == NULL) {
         PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
-            name);
-        return -1;
+            value->name);
+        return 0;
     }
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     int *in = (int *) malloc(size * sizeof(int));
@@ -301,29 +299,15 @@ int STR_SHROUD_create_from_PyObject_int(PyObject *obj, const char *name,
             free(in);
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
-                "argument '%s', index %d must be int", name, (int) i);
-            return -1;
+                "argument '%s', index %d must be int", value->name,
+                (int) i);
+            return 0;
         }
     }
     Py_DECREF(seq);
-    *pin = in;
-    *psize = size;
-    return 0;
-}
 
-// helper get_from_object_int_list
-// Convert PyObject to int pointer.
-int STR_SHROUD_get_from_object_int_list(PyObject *obj,
-    STR_SHROUD_converter_value *value)
-{
-    int *in;
-    Py_ssize_t size;
-    if (STR_SHROUD_create_from_PyObject_int(obj, "in", &in, 
-        &size) == -1) {
-        return 0;
-    }
-    value->obj = NULL;
-    value->dataobj = NULL;
+    value->obj = NULL;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, NULL, FREE_py_capsule_dtor);
     value->data = (int *) in;
     value->size = size;
     return 1;
