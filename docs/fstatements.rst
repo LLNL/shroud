@@ -99,12 +99,14 @@ declare
 
 A list of declarations needed by *pre_call* or *post_call*.
 Usually a *c_local_var* is sufficient.
+Implies *need_wrapper*.
    
 pre_call
 ^^^^^^^^
 
 Statement to execute before call, often to coerce types when *f_cast*
 cannot be used.
+Implies *need_wrapper*.
    
 call
 ^^^^
@@ -117,6 +119,7 @@ post_call
 
 Statement to execute after call.
 Can be use to cleanup after *pre_call* or to coerce the return value.
+Implies *need_wrapper*.
    
 result
 ^^^^^^

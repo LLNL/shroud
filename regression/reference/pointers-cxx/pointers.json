@@ -4106,8 +4106,8 @@
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_scalar_bufferify",
-                    "F_C_name": "get_raw_ptr_to_scalar",
-                    "F_arg_c_call": "nitems",
+                    "F_C_name": "c_get_raw_ptr_to_scalar",
+                    "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_raw_ptr_to_scalar",
                     "F_name_generic": "get_raw_ptr_to_scalar",
@@ -4282,8 +4282,8 @@
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_scalar_force_bufferify",
-                    "F_C_name": "get_raw_ptr_to_scalar_force",
-                    "F_arg_c_call": "nitems",
+                    "F_C_name": "c_get_raw_ptr_to_scalar_force",
+                    "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_raw_ptr_to_scalar_force",
                     "F_name_generic": "get_raw_ptr_to_scalar_force",
@@ -4297,6 +4297,7 @@
                     "underscore_name": "get_raw_ptr_to_scalar_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },
@@ -4389,6 +4390,7 @@
                     "underscore_name": "get_raw_ptr_to_scalar_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -4460,8 +4462,8 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_fixed_array_bufferify",
-                    "F_C_name": "get_raw_ptr_to_fixed_array",
-                    "F_arg_c_call": "count",
+                    "F_C_name": "c_get_raw_ptr_to_fixed_array",
+                    "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_raw_ptr_to_fixed_array",
                     "F_name_generic": "get_raw_ptr_to_fixed_array",
@@ -4636,8 +4638,8 @@
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
                     "F_C_call": "c_get_raw_ptr_to_fixed_array_force_bufferify",
-                    "F_C_name": "get_raw_ptr_to_fixed_array_force",
-                    "F_arg_c_call": "count",
+                    "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
+                    "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_raw_ptr_to_fixed_array_force",
                     "F_name_generic": "get_raw_ptr_to_fixed_array_force",
@@ -4651,6 +4653,7 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },
@@ -4743,6 +4746,7 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
