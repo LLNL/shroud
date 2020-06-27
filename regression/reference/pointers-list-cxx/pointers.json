@@ -2595,6 +2595,7 @@
                     "underscore_name": "get_raw_ptr_to_scalar_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },
@@ -2712,6 +2713,7 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array_force"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },
