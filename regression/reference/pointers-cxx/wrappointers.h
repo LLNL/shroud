@@ -107,9 +107,19 @@ void POI_get_raw_ptr_to_scalar(int * * nitems);
 
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems);
 
+void POI_get_raw_ptr_to_scalar_force(int * * nitems);
+
+void POI_get_raw_ptr_to_scalar_force_bufferify(
+    POI_SHROUD_array *Dnitems);
+
 void POI_get_raw_ptr_to_fixed_array(int * * count);
 
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount);
+
+void POI_get_raw_ptr_to_fixed_array_force(int * * count);
+
+void POI_get_raw_ptr_to_fixed_array_force_bufferify(
+    POI_SHROUD_array *Dcount);
 
 void POI_get_raw_ptr_to_int2d(int * * * arg);
 

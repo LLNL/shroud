@@ -813,6 +813,44 @@ module pointers_mod
     ! end c_get_raw_ptr_to_scalar_bufferify
 
     ! ----------------------------------------
+    ! Function:  void getRawPtrToScalarForce
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * nitems +deref(raw)+intent(out)
+    ! Requested: c_native_**_out_raw
+    ! Match:     c_default
+    ! start get_raw_ptr_to_scalar_force
+    interface
+        subroutine get_raw_ptr_to_scalar_force(nitems) &
+                bind(C, name="getRawPtrToScalarForce")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: nitems
+        end subroutine get_raw_ptr_to_scalar_force
+    end interface
+    ! end get_raw_ptr_to_scalar_force
+
+    ! ----------------------------------------
+    ! Function:  void getRawPtrToScalarForce
+    ! Requested: c_void_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
+    ! Requested: c_native_**_out_buf_raw
+    ! Match:     c_native_**_out_buf
+    ! start c_get_raw_ptr_to_scalar_force_bufferify
+    interface
+        subroutine c_get_raw_ptr_to_scalar_force_bufferify(Dnitems) &
+                bind(C, name="POI_get_raw_ptr_to_scalar_force_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dnitems
+        end subroutine c_get_raw_ptr_to_scalar_force_bufferify
+    end interface
+    ! end c_get_raw_ptr_to_scalar_force_bufferify
+
+    ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
     ! Requested: c_void_scalar_result
     ! Match:     c_default
@@ -849,6 +887,44 @@ module pointers_mod
         end subroutine c_get_raw_ptr_to_fixed_array_bufferify
     end interface
     ! end c_get_raw_ptr_to_fixed_array_bufferify
+
+    ! ----------------------------------------
+    ! Function:  void getRawPtrToFixedArrayForce
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * count +deref(raw)+intent(out)
+    ! Requested: c_native_**_out_raw
+    ! Match:     c_default
+    ! start get_raw_ptr_to_fixed_array_force
+    interface
+        subroutine get_raw_ptr_to_fixed_array_force(count) &
+                bind(C, name="getRawPtrToFixedArrayForce")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR), intent(OUT) :: count
+        end subroutine get_raw_ptr_to_fixed_array_force
+    end interface
+    ! end get_raw_ptr_to_fixed_array_force
+
+    ! ----------------------------------------
+    ! Function:  void getRawPtrToFixedArrayForce
+    ! Requested: c_void_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
+    ! Requested: c_native_**_out_buf_raw
+    ! Match:     c_native_**_out_buf
+    ! start c_get_raw_ptr_to_fixed_array_force_bufferify
+    interface
+        subroutine c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount) &
+                bind(C, name="POI_get_raw_ptr_to_fixed_array_force_bufferify")
+            import :: SHROUD_array
+            implicit none
+            type(SHROUD_array), intent(INOUT) :: Dcount
+        end subroutine c_get_raw_ptr_to_fixed_array_force_bufferify
+    end interface
+    ! end c_get_raw_ptr_to_fixed_array_force_bufferify
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d

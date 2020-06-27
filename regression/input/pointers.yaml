@@ -162,12 +162,29 @@ declarations:
     description: |
       Called directly via an interface in Fortran.
 
+- decl: void getRawPtrToScalarForce(int **nitems+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Create a Fortran wrapper.
+  options:
+#    F_force_wrapper: True
+    wrap_python: False
+
 - decl: void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))
   doxygen:
     description: |
       Return a type(C_PTR) to an array which is always the same length.
       Called directly via an interface in Fortran.
       # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+
+- decl: void getRawPtrToFixedArrayForce(int **count+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Return a type(C_PTR) to an array which is always the same length.
+      Create a Fortran wrapper.
+  options:
+#    F_force_wrapper: True
+    wrap_python: False
 
 - decl: void getRawPtrToInt2d(int ***arg +intent(out))
   doxygen:
