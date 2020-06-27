@@ -1517,8 +1517,18 @@ fc_statements = [
         arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
         ],
+        declare=[
+            "type({F_array_type}) {c_var_context}",
+        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_c_call=["{f_var}"],
+        arg_c_call=["{c_var_context}"],
+        # This post_call block will set need_wrapper=True
+        # No real need for F_array_type since C_PTR can be passed directly
+        # but c_native_**_out_buf uses buf_args=context.
+        # XXX - maybe use c_native_**_out_buf_raw
+        post_call=[
+            "{f_var} = {c_var_context}%base_addr",
+        ],
     ),
     dict(
         name="f_native_*&_out",

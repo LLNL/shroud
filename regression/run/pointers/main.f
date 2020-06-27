@@ -202,14 +202,24 @@ contains
     call assert_true(size(iarray) == 10)
 
     call get_raw_ptr_to_scalar(cptr_scalar)
-    call assert_true(c_associated(cptr_scalar))
+    call assert_true(c_associated(cptr_scalar), "getRawPtrToScalar")
     ! associated with global_int in pointers.c
-    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)))
+    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), "getRawPtrToScalar")
+
+    call get_raw_ptr_to_scalar_force(cptr_scalar)
+    call assert_true(c_associated(cptr_scalar), "getRawPtrToScalarForce")
+    ! associated with global_int in pointers.c
+    call assert_true(c_associated(cptr_scalar, c_loc(iscalar)), "getRawPtrToScalarForce")
 
     call get_raw_ptr_to_fixed_array(cptr_array)
-    call assert_true(c_associated(cptr_array))
+    call assert_true(c_associated(cptr_array), "getRawPtrToFixedArray")
     ! associated with global_fixed_array in pointers.c
-    call assert_true(c_associated(cptr_array, c_loc(iarray)))
+    call assert_true(c_associated(cptr_array, c_loc(iarray)), "getRawPtrToFixedArray")
+
+    call get_raw_ptr_to_fixed_array_force(cptr_array)
+    call assert_true(c_associated(cptr_array), "getRawPtrToFixedArrayForce")
+    ! associated with global_fixed_array in pointers.c
+    call assert_true(c_associated(cptr_array, c_loc(iarray)), "getRawPtrToFixedArrayForce")
 
     ! Return pointer to global_int as a type(C_PTR).
     ! via interface

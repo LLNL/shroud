@@ -266,12 +266,24 @@ void getRawPtrToScalar(int **nitems)
     *nitems = &global_int;
 }
 
+// F_force_wrapper: True
+void getRawPtrToScalarForce(int **nitems)
+{
+    *nitems = &global_int;
+}
+
 // start getRawPtrToFixedArray
 void getRawPtrToFixedArray(int **count)
 {
     *count = (int *) &global_fixed_array;
 }
 // end getRawPtrToFixedArray
+
+// F_force_wrapper: True
+void getRawPtrToFixedArrayForce(int **count)
+{
+    *count = (int *) &global_fixed_array;
+}
 
 // Test multiple layers of indirection.
 void getRawPtrToInt2d(int ***arg)

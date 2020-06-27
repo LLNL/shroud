@@ -53,7 +53,9 @@ void getPtrToFixedConstArray(const int **count);
 void getPtrToDynamicConstArray(const int **count, int *len);
 
 void getRawPtrToScalar(int **nitems);
+void getRawPtrToScalarForce(int **nitems);
 void getRawPtrToFixedArray(int **count);
+void getRawPtrToFixedArrayForce(int **count);
 void getRawPtrToInt2d(int ***arg);
 int checkInt2d(int **arg);
 

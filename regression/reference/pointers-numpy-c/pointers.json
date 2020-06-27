@@ -2531,6 +2531,54 @@
                 "options": {}
             },
             {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToScalarForce",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "nitems",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToScalarForce(int **nitems+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToScalarForce(int * * nitems +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Create a Fortran wrapper.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToScalarForce",
+                    "underscore_name": "get_raw_ptr_to_scalar_force"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
+            },
+            {
                 "_fmtargs": {
                     "count": {
                         "fmtpy": {
@@ -2599,6 +2647,54 @@
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "getRawPtrToFixedArrayForce",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "count",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void getRawPtrToFixedArrayForce(int **count+intent(out)+deref(raw))",
+                "declgen": "void getRawPtrToFixedArrayForce(int * * count +deref(raw)+intent(out))",
+                "doxygen": {
+                    "description": "Return a type(C_PTR) to an array which is always the same length.\nCreate a Fortran wrapper.\n"
+                },
+                "fmtdict": {
+                    "function_name": "getRawPtrToFixedArrayForce",
+                    "underscore_name": "get_raw_ptr_to_fixed_array_force"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
             },
             {
                 "ast": {
