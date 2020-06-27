@@ -22,39 +22,6 @@ from .util import wformat
 class AstNode(object):
     is_class = False
 
-    def option_to_fmt(self):
-        """Set fmt based on options dictionary.
-        """
-        for name in [
-            "C_prefix",
-            "F_C_prefix",
-            "C_result",
-            "F_result",
-            "F_derived_member",
-            "PY_result",
-            "LUA_result",
-            "C_this",
-            "CXX_this",
-            "F_this",
-            "C_string_result_as_arg",
-            "F_string_result_as_arg",
-            "C_header_filename_suffix",
-            "C_impl_filename_suffix",
-            "F_filename_suffix",
-            "PY_prefix",
-            "PY_header_filename_suffix",
-            "PY_impl_filename_suffix",
-            "LUA_prefix",
-            "LUA_header_filename_suffix",
-            "LUA_impl_filename_suffix",
-        ]:
-            if self.options.inlocal(name):
-                raise DeprecationWarning(
-                    "Setting option {} for {}, change to format group".format(
-                        name, self.__class__.__name__
-                    )
-                )
-
     def eval_template(self, name, tname="", fmt=None):
         """If a format has not been explicitly set, set from template."""
         if fmt is None:
@@ -762,8 +729,6 @@ class LibraryNode(AstNode, NamespaceMixin):
                         name
                     )
                 )
-
-        self.option_to_fmt()
 
         if fmtdict:
             fmt_library.update(fmtdict, replace=True)
@@ -1476,7 +1441,6 @@ class FunctionNode(AstNode):
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
-        self.option_to_fmt()
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
 
