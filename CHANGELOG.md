@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+	
+## v0.12.0 - 2020-06-29
 ### Added
 - Option `C_force_wrapper` to create a C wrapper.
   This can be used when the function is actually a macro or function pointer.
