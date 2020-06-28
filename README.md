@@ -100,7 +100,7 @@ Shroud and PyYAML are bundled into a single executable which uses
 the Python3 on your path.
 
 ```
-wget https://github.com/LLNL/shroud/archive/shroud-0.12.0.pyz
+wget https://github.com/LLNL/shroud/archive/shroud-0.12.1.pyz
 ```
 
 
