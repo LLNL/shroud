@@ -5,6 +5,6 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 ########################################################################
 
-__version__ = "0.12.0"
-__version_info__ = (0, 12, 0, "final", 0)
+__version__ = "0.12.1"
+__version_info__ = (0, 12, 1, "final", 0)
 # 'alpha', 'beta', 'candidate', or 'final'.
