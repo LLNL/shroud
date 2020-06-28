@@ -24,6 +24,7 @@ OBJS = \
     classes.o \
     pyclassesmodule.o \
     pyClass1type.o \
+    pyClass2type.o \
     pySingletontype.o \
     pyclassesutil.o
 

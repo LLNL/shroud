@@ -9,86 +9,16 @@
 Structs and Classes
 ===================
 
-Shroud supports both structs and classes. But it treats them much
-differently.  Whereas in C++ a struct and class are essentially the
-same thing, Shroud treats structs as a C style struct.  They do not
-have associated methods.  This allows them to be mapped to a Fortran
-derived type with the ``bind(C)`` attribute and a Python NumPy array.
+    All problems in computer science can be solved by
+    another level of indirection.
+    --- David Wheeler
+
 Classes are wrapped by a shadow derived-type with methods implemented
 as type-bound procedures in Fortran and an extension type in Python.
-
-Struct
-------
-
-A struct is defined in a single ``decl`` in the YAML file.
-
-.. code-block:: yaml
-
-    - decl: struct Cstruct1 {
-              int ifield;
-              double dfield;
-            };
-
-.. _struct_fortran:
-
-Fortran
-^^^^^^^
-
-This is translated directly into a Fortran derived type with the
-``bind(C)`` attribute.
-
-.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
-   :language: fortran
-   :start-after: start derived-type cstruct1
-   :end-before: end derived-type cstruct1
-   :dedent: 4
-
-All creation and access of members can be done using Fortran.
-
-.. code-block:: fortran
-
-    type(cstruct1) st(2)
-
-    st(1)%ifield = 1_C_INT
-    st(1)%dfield = 1.5_C_DOUBLE
-    st(2)%ifield = 2_C_INT
-    st(2)%dfield = 2.6_C_DOUBLE
-
-
-Python
-^^^^^^
-
-Python can treat struct in several different ways.
-First, treat it the same as a class.  An extension type is created with
-descriptors for the field methods. Second, as a numpy descriptor.
-This allows an array of structs to be used easily.
-Finally, as a tuple of Python types.
-
-PY_struct_arg *class*, *numpy*, *list*
-
-
-.. regression/run/struct-c/python/test.py
-
-When treated as a NumPy array no memory will be copied since the
-NumPy array contains a pointer to the C++ memory.
-
-.. code-block:: python
-
-    import cstruct
-    dt = cstruct.Cstruct1_dtype
-    a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
-
-The descriptor is created in the wrapper
-:ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
-
 
 
 Class
 -----
-
-    All problems in computer science can be solved by
-    another level of indirection.
-    --- David Wheeler
 
 Each class in the input file will create a struct which acts as a
 shadow class for the C++ class.  A pointer to an instance is saved in
@@ -124,20 +54,20 @@ wrapper creates a corresponding struct.  It contains a pointer to an
 instance of the class and index used to release the instance.
 The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
 
-:file:`wrapftutorial.f`
+:file:`wrapfclasses.f`
 
-.. literalinclude:: ../regression/reference/tutorial/wrapftutorial.f
+.. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
    :start-after: start derived-type SHROUD_class1_capsule
    :end-before: end derived-type SHROUD_class1_capsule
    :dedent: 4
 
-:file:`typesTutorial.h`
+:file:`typeclasses.h`
 
-.. literalinclude:: ../regression/reference/tutorial/typesTutorial.h
+.. literalinclude:: ../regression/reference/classes/typesclasses.h
    :language: c
-   :start-after: start struct TUT_Class1
-   :end-before: end struct TUT_Class1
+   :start-after: start struct CLA_Class1
+   :end-before: end struct CLA_Class1
 
 The capsule is added to the Fortran shadow class.  This derived type
 can contain type-bound procedures and may not use the ``bind(C)``
@@ -159,6 +89,48 @@ interface/prototype for the C wrapper function allows it to be used in
 expressions similar to the way that ``strcpy`` returns its destination
 argument.
 
+A generic interface with the same name as the class is created to call
+the constructors for the class.  The constructor will initialize the
+Fortran derived type.
+
+.. code-block:: fortran
+
+    type(class1) var     ! Create Fortran variable.
+    var = class1()       ! Allocate C++ class instance.
+
+When the constructor is wrapped the destructor should also be wrapper or
+some other method is provided to release the memory.
+
+Some other type-bound precedures are created to allow the user
+to get and set the address of the C++ memory directly.
+This can be used when the address of the instance is created in some
+other manner (perhaps a C++ module in the application) and it
+needs to be used in Fortran without being created in Fortran.
+There is no way to free this memory and must be released outside of Fortran.
+
+.. XXX unless idtor is set properly
+
+.. code-block:: fortran
+
+    type(class1) var
+    type(C_PTR) addr
+
+    addr = var%get_instance()
+    ! addr will not be c_associated
+    call var%set_instance(caddr)    ! caddr contains address of an instance
+   
+Two instances of the class can be compared using the ``associated`` method.
+
+.. code-block:: fortran
+
+    type(class1) var1, var2
+    var1 = get_class(1)    ! A library function to fetch an instance
+    var2 = get_class(2)
+    if (var1%associated(var2) then
+        print *, "Identical instances"
+    endif
+
+
 A full example is at 
 :ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 
@@ -179,12 +151,12 @@ Python
 
 An struct is created for each C++ class.
 
-.. literalinclude:: ../regression/reference/tutorial/pyTutorialmodule.hpp
+.. literalinclude:: ../regression/reference/classes/pyclassesmodule.hpp
    :language: c
    :start-after: start object PY_Class1
    :end-before: end object PY_Class1
 
-The ``idtor`` aregument is used to release memory and described at
+The ``idtor`` argument is used to release memory and described at
 :ref:`MemoryManagementAnchor`.  The splicer allows additional fields
 to be added by the developer which may be used in function wrappers.
 
@@ -324,3 +296,89 @@ descriptors.  This is helpful when using a naming convention like
 
 For wrapping details see 
 :ref:`Getter and Setter <example_getter_and_setter>`.
+
+Struct
+------
+
+Shroud supports both structs and classes. But it treats them much
+differently.  Whereas in C++ a struct and class are essentially the
+same thing, Shroud treats structs as a C style struct.  They do not
+have associated methods.  This allows them to be mapped to a Fortran
+derived type with the ``bind(C)`` attribute and a Python NumPy array.
+
+A struct is defined in a single ``decl`` in the YAML file.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct1 {
+              int ifield;
+              double dfield;
+            };
+
+.. _struct_fortran:
+
+Fortran
+^^^^^^^
+
+This is translated directly into a Fortran derived type with the
+``bind(C)`` attribute.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start derived-type cstruct1
+   :end-before: end derived-type cstruct1
+   :dedent: 4
+
+All creation and access of members can be done using Fortran.
+
+.. code-block:: fortran
+
+    type(cstruct1) st(2)
+
+    st(1)%ifield = 1_C_INT
+    st(1)%dfield = 1.5_C_DOUBLE
+    st(2)%ifield = 2_C_INT
+    st(2)%dfield = 2.6_C_DOUBLE
+
+
+Python
+^^^^^^
+
+Python can treat a struct in several different ways by setting option
+*PY_struct_arg*.
+First, treat it the same as a class.  An extension type is created with
+descriptors for the field methods. Second, as a numpy descriptor.
+This allows an array of structs to be used easily.
+Finally, as a tuple of Python types.
+
+.. PY_struct_arg *class*, *numpy*, *list*
+
+When treated as a class, a constructor is created which will
+create an instance of the class.  This is similar to the
+default constructor for structs in C++ but will also work
+with a C struct.
+
+.. code-block:: python
+
+    import cstruct
+    a = cstruct.Cstruct1(1, 2.5)
+    a = cstruct.Cstruct1()
+
+.. regression/run/struct-c/python/test.py
+
+When treated as a NumPy array no memory will be copied since the
+NumPy array contains a pointer to the C++ memory.
+
+.. code-block:: python
+
+    import cstruct
+    dt = cstruct.Cstruct1_dtype
+    a = np.array([(1, 1.5), (2, 2.6)], dtype=dt) 
+
+The descriptor is created in the wrapper
+:ref:`NumPy Struct Descriptor <pyexample_Numpy Struct Descriptor>`.
+
+
+.. XXX array members in struct
+   char name[20]    s.name = None   will add set to '\0'
+   int  count[10]   s.count = 0     will broadcast

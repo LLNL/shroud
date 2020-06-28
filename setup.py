@@ -19,7 +19,7 @@ import re
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-with codecs.open(os.path.join(here, 'shroud', '__init__.py'),
+with codecs.open(os.path.join(here, 'shroud', 'metadata.py'),
                  encoding='utf8') as version_file:
     metadata = dict(re.findall(r"""__([a-z]+)__ = "([^"]+)""", version_file.read()))
 
@@ -29,25 +29,32 @@ with codecs.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='shroud',
+    name='llnl-shroud',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
     version=metadata['version'],
 
-    description='Generate Fortran wrappers for C++ Libraries',
+    description='Generate Fortran and Python wrappers for C and C++ Libraries',
     long_description=long_description,
+    long_description_content_type='text/markdown',
 
     # The project's main homepage.
-    url='http://lc.llnl.gov/toolkit',
+    url='http://github.gov/llnl/shroud',
 
     # Author details
     author='Lawrence Livermore National Laboratory',
-    author_email='axom-users@llnl.gov',
+    author_email='shroud-users@groups.io',
+
+    download_url = 'https://github.com/LLNL/shroud/archive/v0.12.0.tar.gz',
+    project_urls={
+        'Documentation': 'http://shroud.readthedocs.io/en/develop',
+        'Source': 'https://github.com/LLNL/shroud',
+    },
 
     # Choose your license
-#    license='MIT',
+#    license='BSD License',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
@@ -55,14 +62,15 @@ setup(
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
 
         # Indicate who your project is intended for
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
+        'Topic :: Software Development :: Code Generators',
 
         # Pick your license as you wish (should match "license" above)
-#        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: BSD License',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
@@ -70,6 +78,8 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
 
     # What does your project relate to?

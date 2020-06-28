@@ -22,19 +22,14 @@ VPATH = \
 
 OBJS = \
     pointers.o \
-    pypointersmodule.o \
-    pypointersutil.o
+    pypointersmodule.o
 
 CFLAGS += $(SHARED)
 
 all : pointers.so
 
-# Convert C++ file to C
-pointers.c : $(top)/regression/run/pointers/pointers.cpp
-	cp $^ $@
-
 pointers.so : $(OBJS)
-	$(CC) $(LD_SHARED) -o $@ $^ $(LIBS)
+	$(CC) $(LD_SHARED) $^ -o $@ $(LIBS)
 
 simple : testpython.o $(OBJS)
 	$(CC) -pthread -o $@ $^ $(PYTHON_LIB)

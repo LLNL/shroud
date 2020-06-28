@@ -5,9 +5,11 @@ Wrote wrapownership.h
 Wrote wrapownership.cpp
 Wrote typesownership.h
 Wrote wrapfownership.f
+Wrote utilownership.cpp
 Wrote pyClass1type.cpp
 Wrote pyownershipmodule.cpp
 Wrote pyownershiputil.cpp
 Wrote pyownershipmodule.hpp
+Wrote setup.py
 Wrote luaownershipmodule.hpp
 Wrote luaownershipmodule.cpp

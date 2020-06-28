@@ -1,21 +1,28 @@
 Read yaml classes.yaml
 Close classes_types.yaml
 class Class1
-C method Class1() +name(new)
-C method Class1(int flag +intent(in)+value) +name(new)
+C method Class1()
+C method Class1(int flag +intent(in)+value)
 C method ~Class1() +name(delete)
 C method int Method1()
 C method bool equivalent(const Class1 & obj2 +intent(in)) const
 C method Class1 * returnThis()
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C method Class1 * getclass3() const
+C method const std::string & getName() +deref(allocatable)
+C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C method int getM_flag()
 C method int getTest()
 C method void setTest(int val +intent(in)+value)
 Close wrapClass1.h
 Close wrapClass1.cpp
+class Class2
+C method const std::string & getName() +deref(allocatable)
+C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+Close wrapClass2.h
+Close wrapClass2.cpp
 class Singleton
 C method static Singleton & getReference()
 Close wrapSingleton.h
@@ -30,25 +37,30 @@ C function Class1 & getClassReference()
 C function Class1 getClassCopy(int flag +intent(in)+value)
 C function void set_global_flag(int arg +intent(in)+value)
 C function int get_global_flag()
-C function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
 Close typesclasses.h
 class Class1
-C-interface, Fortran method Class1() +name(new)
-C-interface, Fortran method Class1(int flag +intent(in)+value) +name(new)
+C-interface, Fortran method Class1()
+C-interface, Fortran method Class1(int flag +intent(in)+value)
 C-interface, Fortran method ~Class1() +name(delete)
 C-interface, Fortran method int Method1()
 C-interface, Fortran method bool equivalent(const Class1 & obj2 +intent(in)) const
 C-interface, Fortran method Class1 * returnThis()
 C-interface, Fortran method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim(Lname), bool flag +intent(in)+value)
+C-interface method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C-interface, Fortran method Class1 * getclass3() const
+C-interface, Fortran method const std::string & getName() +deref(allocatable)
+C-interface method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 C-interface, Fortran method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 C-interface, Fortran method int getM_flag()
 C-interface, Fortran method int getTest()
 C-interface, Fortran method void setTest(int val +intent(in)+value)
+class Class2
+C-interface, Fortran method const std::string & getName() +deref(allocatable)
+C-interface method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 class Singleton
 C-interface, Fortran method static Singleton & getReference()
 C-interface, Fortran function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
@@ -61,18 +73,23 @@ C-interface, Fortran function Class1 & getClassReference()
 C-interface, Fortran function Class1 getClassCopy(int flag +intent(in)+value)
 C-interface, Fortran function void set_global_flag(int arg +intent(in)+value)
 C-interface, Fortran function int get_global_flag()
-C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+C-interface, Fortran function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 C-interface function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
 Close wrapfclasses.f
+Close utilclasses.cpp
 class Class1
-Python method Class1() +name(new)
-Python method Class1(int flag +intent(in)+value) +name(new)
+Python method Class1()
+Python method Class1(int flag +intent(in)+value)
 Python method ~Class1() +name(delete)
 Python method int Method1()
 Python method bool equivalent(const Class1 & obj2 +intent(in)) const
 Python method Class1 * getclass3() const
+Python method const std::string & getName() +deref(allocatable)
 Python method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
 Close pyClass1type.cpp
+class Class2
+Python method const std::string & getName() +deref(allocatable)
+Close pyClass2type.cpp
 class Singleton
 Python method static Singleton & getReference()
 Close pySingletontype.cpp
@@ -83,7 +100,8 @@ Python function Class1 * getclass3()
 Python function Class1 & getClassReference()
 Python function void set_global_flag(int arg +intent(in)+value)
 Python function int get_global_flag()
-Python function const std::string & LastFunctionCalled() +deref(result_as_arg)+len(30)
+Python function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
 Close pyclassesmodule.cpp
 Close pyclassesutil.cpp
 Close pyclassesmodule.hpp
+Close setup.py

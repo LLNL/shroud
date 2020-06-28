@@ -1,0 +1,25 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+#
+# Example for documentation.
+# Keep small to avoid cluttering routines.
+# There is no regression/run directory for this test.
+#
+
+library: memdoc
+
+format:
+  C_prefix: STR_
+options:
+  debug: True
+  literalinclude: True
+
+declarations:
+- decl: const std::string * getConstStringPtrAlloc() +owner(library)
+  # from strings.yaml

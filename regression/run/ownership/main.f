@@ -4,7 +4,9 @@
 !
 ! SPDX-License-Identifier: (BSD-3-Clause)
 ! #######################################################################
-
+!
+! Test Fortran API generated from ownership.yaml.
+!
 program tester
   use fruit
   use iso_c_binding
@@ -38,6 +40,7 @@ contains
     integer(C_INT), allocatable :: inta1(:)
 !    integer(C_INT) :: lencptr
 !    type(C_PTR) cptr
+    type(SHROUD_capsule) cap
 
     !----------------------------------------
     ! return scalar
@@ -85,18 +88,20 @@ contains
 
     ! deref(pointer)
     nullify(intp1)
-    intp1 => return_int_ptr_dim_pointer_new()
+    intp1 => return_int_ptr_dim_pointer_new(cap)
     call assert_true(associated(intp1))
     call assert_equals(5 , size(intp1))
     call assert_true( all(intp1 == [10,11,12,13,14]), &
          "return_int_ptr_dim_pointer_new value")
 
     nullify(intp1)
-    intp1 => return_int_ptr_dim_default_new()
+    intp1 => return_int_ptr_dim_default_new(cap)
     call assert_true(associated(intp1))
     call assert_equals(5 , size(intp1))
     call assert_true( all(intp1 == [30,31,32,33,34]), &
          "return_int_ptr_dim_default_new value")
+    call cap%delete()
+    call SHROUD_capsule_final(cap)  ! no-op
 
   end subroutine test_pod
 

@@ -14,6 +14,7 @@
 #include <string>
 
 void passChar(char status);
+void passCharForce(char status);
 char returnChar();
 
 void passCharPtr(char * dest, const char *src);
@@ -22,6 +23,7 @@ void passCharPtrInOut(char * s);
 const char * getCharPtr1();
 const char * getCharPtr2();
 const char * getCharPtr3();
+const char * getCharPtr4();
 
 const std::string getConstStringResult();
 const std::string getConstStringLen();
@@ -47,7 +49,15 @@ void acceptStringReferenceOut(std::string & arg1);
 
 void acceptStringReference(std::string & arg1);
 
+void acceptStringPointerConst(const std::string * arg1);
+
 void acceptStringPointer(std::string * arg1);
+
+void fetchStringPointer(std::string * arg1);
+
+void acceptStringPointerLen(std::string * arg1, int *len);
+
+void fetchStringPointerLen(std::string * arg1, int *len);
 
 void returnStrings(std::string & arg1, std::string & arg2);
 
@@ -62,6 +72,8 @@ extern "C" {
 
   void CpassCharPtr(char * dest, const char *src);
 }
+
+void PostDeclare(int *count, std::string &name);
 
 
 #endif // STRINGS_HPP

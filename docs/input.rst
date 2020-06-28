@@ -72,7 +72,7 @@ Strings may be split across several lines by indenting the continued line:
 
 .. code-block:: yaml
 
-    - decl: void Sum(int len, int *values+dimension+intent(in),
+    - decl: void Sum(int len, const int *values+rank(1),
                      int *result+intent(out))
 
 Some values consist of blocks of code.  The pipe, ``|``, is used to indicate that
@@ -88,6 +88,8 @@ the string will span several lines and that newlines should be preserved:
 Note that to insert a literal ``{``, a double brace, ``{{``, is
 required since single braces are used for variable expansion.
 ``{cxx_var}`` in this example.
+However, using the pipe, it is not necessary to quote lines that
+contain other YAML meta characters such as colon and curly braces.
 
 Literal newlines, ``/n``, are respected.  Format strings can use a
 tab, ``/t``, to hint where it would be convenient to add a
@@ -135,11 +137,14 @@ the library name.
         declarations:
         -  decl: void method1
 
+
+.. XXX cxx_header is 'inherited' in a sense.
+
 Options
 ^^^^^^^
 
 Options are used to customize the behavior of Shroud.
-They are defined in the YAML files as a dictionary.
+They are defined in the YAML file as a dictionary.
 Options can be defined at the global, class, or function level.
 Each level creates a new scope which can access all upper level options.
 This allows the user to modify behavior for all functions or just a single one:
@@ -257,82 +262,30 @@ it may have a value in parens:
 .. code-block:: yaml
 
     - decl: Class1()  +name(new)
-    - decl: void Sum(int len, int *values+dimension+intent(in))
+    - decl: void Sum(int len, const int *values+rank(1)+intent(in))
     - decl: const std::string getName() +len(30)
 
 Attributes may also be added external to *decl*:
 
 .. code-block:: yaml
 
-    - decl: void Sum(int len, int *values)
+    - decl: void Sum(int len, const int *values)
       attrs:
           values:
-              dimension: True
               intent: in  
+              rank: 1
     - decl: const std::string getName()
       fattrs:
           len: 30
-  
 
-allocatable
-^^^^^^^^^^^
-
-Sometimes it is more convenient to have the wrapper allocate an
-``intent(out)`` array before passing it to the C++ function.  This can
-be accomplished by adding the *allocatable* attribute.  For example the
-C++ function ``cos_doubles`` takes the cosine of an ``intent(in)``
-argument and assigns it to an ``intent(out)`` argument:
-
-.. code-block:: c++
-
-    void cos_doubles(double *in, double *out, int size)
-    {
-        for(int i = 0; i < size; i++) {
-            out[i] = cos(in[i]);
-        }
-    }
-
-This is wrapped as:
+Attributes must be added before default arguments since
+a default argument may include a plus symbol:
 
 .. code-block:: yaml
 
-    decl: void cos_doubles(double * in     +intent(in)  +dimension(:),
-                           double * out    +intent(out) +allocatable(mold=in),
-                           int      sizein +implied(size(in)))
+    - decl: void Sum(int len, const int *values+rank(1)+intent(in) =nullptr)
 
-The *mold* argument is similar to the *mold* argument in the Fortran
-``allocate`` statement, it will allocate ``out`` as the same shape as
-``in``.  Also notice the use of the *implied* attribute on the
-``size`` argument.  This argument is not added to the Fortran API
-since its value is *implied* to be the size of argument ``in``.
-``size`` is the Fortran intrinsic which returns the number of items
-allocated by its argument.
-
-The Fortran wrapper produced is:
-
-.. code-block:: fortran
-
-    subroutine cos_doubles(in, out)
-        use iso_c_binding, only : C_DOUBLE, C_INT
-        real(C_DOUBLE), intent(IN) :: in(:)
-        real(C_DOUBLE), intent(OUT), allocatable :: out(:)
-        integer(C_INT) :: sizein
-        allocate(out, mold=in)
-        sizein = size(in)
-        call c_cos_doubles(in, out, sizein)
-    end subroutine cos_doubles
-
-The mold argument was added to the Fortran 2008 standard.  If the
-option **F_standard** is not 2008 then the allocate statement will be:
-
-.. code-block:: fortran
-
-        allocate(out(lbound(in,1):ubound(in,1)))
-
-
-For Python, a similar NumPy array object will be constructed using 
-``PyArray_NewLikeArray``.
-
+.. While parsing, attribute values are saved by finding a balanced paren.
 
 assumedtype
 ^^^^^^^^^^^
@@ -343,6 +296,20 @@ defaults to pass-by-reference, the argument will be passed to C as a
 ``void *`` argument.  The C function will need some other mechanism to
 determine the type of the argument before dereferencing the pointer.
 Note that *assumed-type* is part of Fortran 2018.
+
+capsule
+^^^^^^^
+
+Name of capsule argument.
+Defaults to C_var_capsule_template.
+
+cdesc
+^^^^^
+
+Pass argument from Fortran to C wrapper as a pointer to a context type.
+This struct contains the address, type, rank and size of the argument.
+
+.. XXX argument is named by context
 
 charlen
 ^^^^^^^
@@ -388,30 +355,45 @@ deref
 ^^^^^
 
 List how to dereference pointer arguments or function results.
-This is used in conjunction with *dimension* to create arrays.
-
-scalar
-
-    Treat the pointee as a scalar.
-    For Python, this will not create a NumPy object.
-
-pointer
-
-    For Fortran, add ``POINTER`` attribute to argument and is associated
-    with the argument using ``c_f_pointer``.
-    If *owner(caller)* is also defined, add an additional argument
-    which is used to release the memory.
-
-    For Python, create a NumPy array.
+This may be used in conjunction with *dimension* to create arrays.
 
 allocatable
 
     For Fortran, add ``ALLOCATABLE`` attribute to argument.
-    An ``ALLOCATE`` is added and the contents of the C++ argument
+    An ``ALLOCATE`` statement is added and the contents of the C++ argument
     is copied.  If *owner(caller)* is also defined, the C++ argument
     is released.  The caller is responsible to ``DEALLOCATE`` the array.
 
-    For Python, create a NumPy array (same as *pointer*)
+    For Python, create a NumPy array (same as *pointer* attribute)
+
+pointer
+
+    For *intent(in)* arguments, a ``POINTER`` Fortran attribute will be added.
+    This allows a dynamic memory address to be passs to the library.
+
+    .. code-block:: yaml
+
+        void giveMemory(arg *data +intent(in)+deref(pointer))
+    
+    For *intent(out)* arguments this indicates that memory from the
+    library is being passed back to the user and will be assigned using
+    ``c_f_pointer``.
+
+    If *owner(caller)* is also defined, an additional argument is added
+    which is used to release the memory.
+
+    For Python, create a list or NumPy array.
+
+    .. code-block:: yaml
+
+        - decl: double *ReturnPtrFun() +dimension(10)
+        - decl: void ReturnPtrArg(double **arg +intent(out)+dimension(10))
+
+        - decl: double *ReturnScalar() +deref(pointer)
+
+    A *pointer* to scalar will also return a NumPy array in Python.
+    Use *+deref(scalar)* to get a scalar.
+          
 
 raw
 
@@ -419,18 +401,55 @@ raw
 
     For Python, return a ``PyCapsule``.
 
+scalar
+
+    Treat the pointee as a scalar.
+    For Fortran, return a scalar and not a pointer to the scalar.
+    For Python, this will not create a NumPy object.
+
+.. XXX copy
+   Fortran, copy into existing argument.
+   Python, useful for *intent(inout)*.
+
 dimension
 ^^^^^^^^^
 
-Sets the Fortran DIMENSION attribute.
-Pointer argument should be passed through since it is an array.
-*value* attribute must not be *True*.
-If set without a value, it defaults to ``(*)``:
+A list of array extents for pointer or reference variables.
+All arrays use the language's default lower-bound
+(1 for Fortran and 0 for Python).
+Used to define the dimension of pointer arguments with *intent(out)*
+and function results.
+A dimension without any value is an error -- ``+dimension``.
+
+The expression is evaluated in a C/C++ context.
+
+.. Sets the Fortran DIMENSION attribute.
+   Pointer argument should be passed through since it is an array.
+   *value* attribute must not be *True*.
+   If set without a value, it defaults to ``(*)``:
 
 .. code-block:: text
 
-    double *array +dimension
-    double *array +dimension(len)
+    struct {
+      int len;
+      double *array +dimension(len);
+    };
+
+An expression can also contain a *intent(out)* argument of the function
+being wrapped.
+
+.. code-block:: text
+
+    int * get_array(int **count +intent(out)+hidden) +dimension(count)
+
+Argument ``count`` will be used to define the shape of the function result
+but will not be part of the wrapped API since it is *hidden*.
+
+*rank* and *dimension* can not be specified together.
+
+.. XXX ``+dimension(size(in))`` is similar to ``mold(in)``, but works
+   better with multiple dimensions to avoid ``+dimension(size(in,1), size(in,2))
+
 
 external
 ^^^^^^^^
@@ -481,7 +500,7 @@ to Fortran or Python wrapper.  Useful with array sizes:
 
 .. code-block:: text
 
-      int Sum(int * array +intent(in), int len +implied(size(array))
+      int Sum(const int * array, int len +implied(size(array))
 
 Several functions will be converted to the corresponding code for
 Python wrappers: ``size``, ``len`` and ``len_trim``.
@@ -489,9 +508,21 @@ Python wrappers: ``size``, ``len`` and ``len_trim``.
 intent
 ^^^^^^
 
-Valid valid values are ``in``, ``out``, ``inout``.
+The Fortran intent of the argument.
+Valid values are ``in``, ``out``, ``inout``.
+
+  in
+    The argument will only be read from.
+  inout
+    The argument will be read from and written to.
+  out
+    The argument will be written to.
+
+Nonpointer arguments can only be *intent(in)*.
 If the argument is ``const``, the default is ``in``.
 
+In Python, *intent(out)* arguments are not used as
+input arguments to the function but are returned as values.
 
 len
 ^^^
@@ -518,11 +549,24 @@ If a value for the attribute is provided it will be the name
 of the extra argument.  If no value is provided then the
 argument name defaults to option *C_var_trim_template*.
 
+.. mold - The *mold* argument is similar to the *mold* argument in the Fortran
+   ``allocate`` statement, it will allocate the argument as the same shape as
+   value of old   - int *out +mold(in)
+   Use instead of *dimension*.
+   ``PyArray_NewLikeArray``.
+   
+
 name
 ^^^^
 
 Name of the method.
-Useful for constructor and destructor methods which have no names.
+Useful for constructor and destructor methods which have default names
+``ctor`` and ``dtor``.  Also useful when class member variables use a
+convention such as ``m_variable``.  The *name* can be set to
+*variable* to avoid polluting the Fortran interface with the ``m_``
+prefix.  Fortran and Python both have an explicit scope of
+``self%variable`` and ``self.variable`` instead of an implied
+``this``.
 
 owner
 ^^^^^
@@ -535,6 +579,8 @@ The default is set by option *default_owner* which is initialized to *borrow*.
 .. new   The caller is responsible to release the memory.
 
 .. borrow  The memory belongs to the C++ library.  Do not release.
+
+.. XXX fix terms
 
 caller
 
@@ -549,6 +595,38 @@ library
    This is the default value.
 
 .. steal  intent(in)
+
+rank
+^^^^
+
+Add an assumed-shape dimension with the given rank.
+*rank* must be 0-7.
+A rank of 0 implies a scalar argument.
+
+.. code-block:: yaml
+
+    double *array +rank(2)
+
+Creates the declaration:
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) :: array(:,:)
+
+Use with ``+intent(in)`` arguments when the wrapper should accept any
+extent instead of using Fortran's assumed-shape with ``dimension(:)``.
+    
+This can be simpler than the *dimension* attribute for multidimension arrays.
+*rank* and *dimension* can not be specified together.
+
+.. XXX to be used with fortran_generic and formatting  +rank({generic_rank})
+
+
+readonly
+^^^^^^^^
+
+May be added to struct or class member to avoid creating a setter function.
+If the member is `const`, this attribute is added by Shroud.
 
 value
 ^^^^^
@@ -566,8 +644,61 @@ a value.
           Shroud preserves the names of the arguments since Fortran
           allows them to be used in function calls - ``call worker(len=10)``
 
+Statements
+----------
+
+The code generated for each argument and return value can be
+controlled by statement dictionaries.
+Shroud has many entries built in which are used for most arguments.
+But it is possible to add custom code to the wrapper by providing
+additional fields.  Most wrappers will not need to provide this
+information.
+
+
+
+An example from strings.yaml:
+
+.. code-block:: yaml
+
+    - decl: const string * getConstStringPtrLen() +len=30
+      doxygen:
+        brief: return a 'const string *' as character(30)
+        description: |
+          It is the caller's responsibility to release the string
+          created by the C++ library.
+          This is accomplished with C_finalize_buf which is possible
+          because +len(30) so the contents are copied before returning.
+      fstatements:
+        c_buf:
+          final:
+          - delete {cxx_var};
+
+An example from vectors.yaml:
+
+.. code-block:: yaml
+
+    - decl: void vector_iota_out_with_num(std::vector<int> &arg+intent(out))
+      fstatements:
+        c_buf:
+          return_type: long
+          ret:
+          - return Darg->size;
+        f:
+          result: num
+          f_module:
+            iso_c_binding: ["C_LONG"]
+          declare:
+          -  "integer(C_LONG) :: {F_result}"
+          call:
+          -  "{F_result} = {F_C_call}({F_arg_c_call})"
+               
+
+          
+
 Patterns
 --------
+
+.. XXX still used?
 
 To address the issue of semantic differences between Fortran and C++,
 *patterns* may be used to insert additional code.  A *pattern* is a 
@@ -676,6 +807,7 @@ generated by some other process.
 
 The second method is to add the splicer code directly into the YAML file.
 A splicer can be added after the ``decl`` line.
+This splicer takes priority over other ways of defining splicers.
 
 .. code-block:: yaml
 

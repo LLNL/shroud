@@ -12,6 +12,7 @@
 #include <cstring>
 
 static std::string last_function_called;
+static char global_char = ' ';
 
 // These variables exist to avoid warning errors
 static const char * static_char = "bird";
@@ -23,6 +24,15 @@ static std::string static_str_empty;
 
 void passChar(char status)
 {
+    global_char = status;
+    if (status == 'w') {
+	global_str = "w";
+    }
+}
+
+void passCharForce(char status)
+{
+    global_char = status;
     if (status == 'w') {
 	global_str = "w";
     }
@@ -30,7 +40,7 @@ void passChar(char status)
 
 char returnChar()
 {
-    return 'w';
+    return global_char;
 }
 
 //----------------------------------------
@@ -72,6 +82,14 @@ const char * getCharPtr3()
     return static_char;
 }
 // end getCharPtr3
+
+// +deref(raw)
+// start getCharPtr4
+const char * getCharPtr4()
+{
+    return static_char;
+}
+// end getCharPtr4
 
 //----------------------------------------
 
@@ -174,9 +192,31 @@ void acceptStringReference(std::string & arg1)
 }
 // end acceptStringReference
 
+void acceptStringPointerConst(const std::string * arg1)
+{
+    global_str = *arg1;
+}
+
 void acceptStringPointer(std::string * arg1)
 {
     arg1->append("dog");
+}
+
+void fetchStringPointer(std::string * arg1)
+{
+    *arg1 = global_str;
+}
+
+void acceptStringPointerLen(std::string * arg1, int *len)
+{
+    arg1->append("dog");
+    *len = arg1->size();
+}
+
+void fetchStringPointerLen(std::string * arg1, int *len)
+{
+    *arg1 = global_str;
+    *len = arg1->size();
 }
 
 void returnStrings(std::string & arg1, std::string & arg2)
@@ -224,6 +264,12 @@ extern "C" char CreturnChar()
 extern "C" void CpassCharPtr(char *dest, const char *src)
 {
     std::strcpy(dest, src);
+}
+
+//----------------------------------------
+
+void PostDeclare(int *count, std::string &name)
+{
 }
 
 //----------------------------------------

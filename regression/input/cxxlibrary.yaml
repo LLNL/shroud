@@ -1,0 +1,68 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test C++ features
+
+library: cxxlibrary
+cxx_header: cxxlibrary.hpp
+
+language: c++
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: False
+
+declarations:
+
+# Struct from struct.yaml, but will be passed via a reference
+- decl: struct Cstruct1 {
+          int ifield;
+          double dfield;
+        };
+  options:
+    PY_struct_arg: numpy
+
+- decl: int passStructByReference(Cstruct1 &arg)
+  doxygen:
+    description: |
+       Argument is modified by library, defaults to intent(inout).
+- decl: int passStructByReferenceIn(const Cstruct1 &arg)
+  doxygen:
+    description: |
+       const defaults to intent(in)
+- decl: void passStructByReferenceInout(Cstruct1 &arg +intent(inout))
+- decl: void passStructByReferenceOut(Cstruct1 &arg +intent(out))
+
+
+##################################################
+# Add struct again as Python class
+- block: true
+  options:
+    wrap_fortran: false
+    wrap_c: false
+
+  declarations:
+  - decl: struct Cstruct1_cls {
+            int ifield;
+            double dfield;
+          };
+    options:
+      PY_struct_arg: class
+
+  - decl: int passStructByReferenceCls(Cstruct1_cls &arg)
+  - decl: int passStructByReferenceInCls(const Cstruct1_cls &arg)
+    doxygen:
+      description: |
+         const defaults to intent(in)
+  - decl: void passStructByReferenceInoutCls(Cstruct1_cls &arg +intent(inout))
+  - decl: void passStructByReferenceOutCls(Cstruct1_cls &arg +intent(out))
+
+
+##################################################
+- decl: bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )

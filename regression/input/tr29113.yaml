@@ -1,0 +1,30 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+#
+# Test futher interoperability with C
+#
+
+library: tr29113
+cxx_header: tr29113.hpp
+
+options:
+  debug: True
+
+
+declarations:
+
+- decl: const std::string * getConstStringPtrAlloc()
+
+
+##################################################
+# Files which contain code to be inserted into generated code
+splicer:
+  c:
+  -  ctr29113splicer.c
+  f:
+  -  ftr29113splicer.f

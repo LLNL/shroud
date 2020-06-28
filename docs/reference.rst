@@ -50,6 +50,14 @@ sitedir
        Return the installation directory of shroud and exit.
        This path can be used to find cmake/SetupShroud.cmake.
 
+write-helpers BASE
+       Write files which contain the available helper functions
+       into the files BASE.c and BASE.f.
+
+yaml-types FILE
+       Write a YAML file with the default types.
+
+
 Global Fields
 -------------
 
@@ -103,9 +111,9 @@ splicer
 
 types
    A dictionary of user define types.
-   Each type is a dictionary for members describing how to
+   Each type is a dictionary of members describing how to
    map a type between languages.
-   Described in :ref:`TypesAnchor` and `Types Map`_.
+   Described in :ref:`TypemapsAnchor` and `Types Map`_.
 
 .. _ClassFields:
 
@@ -211,12 +219,25 @@ C_extern_C
    Set to *true* when the C++ routine is ``extern "C"``.
    Defaults to *false*.
 
+C_force_wrapper
+  If *true*, always create an explicit C wrapper.
+  When *language* is c++ a C wrapper is always created.
+  When wrapping C, the wrapper is automatically created if there is work for it to do.
+  For example, pre_call or post_call is defined.
+  The user should set this option when wrapping C and the function is really
+  a macro or a function pointer variable. This forces a function to be created
+  allowing Fortran to use the macro or function pointer.
+
 C_line_length
   Control length of output line for generated C.
   This is not an exact line width, but is instead a hint of where
   to break lines.
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
+
+CXX_standard
+  C++ standard. Defaults to *2011*.
+  See *nullptr*.
 
 debug
   Print additional comments in generated files that may 
@@ -251,7 +272,7 @@ F_create_generic
   return type (similar to overloaded functions based on return type in
   C++).
 
-.. should also be set to false when the templated argument in
+.. XXX should also be set to false when the templated argument in
    cxx_template is part of the implementation and not the interface.
 
 F_line_length
@@ -311,14 +332,36 @@ literalinclude2
   This is to provide the interface context when code is added to the
   documentation.
 
+PY_create_generic
+  Controls creation of a multi-dispatch function with
+  overloaded/templated functions.
+  It defaults to *true* for
+  most cases but will be set to *False* if a function is templated on
+  the return type since Fortran does not distiuguish generics based on
+  return type (similar to overloaded functions based on return type in
+  C++).
+
+.. XXX should also be set to false when the templated argument in
+   cxx_template is part of the implementation and not the interface.
+
+PY_write_helper_in_util
+   When *True* helper functions will be written into the utility file
+   *PY_utility_filename*. Useful when there are lots of classes since
+   helper functions may be duplicated in several files.
+   The value of format *PY_helper_prefix* will have *C_prefix* append
+   to create names that are unique to the library.
+   Defaults to *False*.
+   
 return_scalar_pointer
   Determines how to treat a function which returns a pointer to a scalar
-  (it does not have the *dimension* attribute).
+  (it does not have the *dimension* or *rank* attribute).
   **scalar** return as a scalar or **pointer** to return as a pointer.
   This option does not effect the C or Fortran wrapper.
   For Python, **pointer** will return a NumPy scalar.
   Defaults to *pointer*.
 
+.. default_attr_deref
+  
 .. bufferify
 
 show_splicer_comments
@@ -483,7 +526,15 @@ LUA_userdata_member_template
 
 PY_array_arg
     How to wrap arrays - numpy or list.
+    Applies to function arguments and to structs when
+    **PY_struct_arg** is *class* (struct-as-class).
     Defaults to *numpy*.
+    Added to fmt for functions.
+    Useful for *c_helpers* in statements.
+
+.. code-block:: text
+
+        c_helper="get_from_object_{c_type}_{PY_array_arg}",
 
 PY_module_filename_template
     ``py{library}module.{PY_impl_filename_suffix}``
@@ -507,6 +558,11 @@ PY_member_getter_template
 PY_member_setter_template
     Name of descriptor setter method for a class variable.
     ``{PY_prefix}{cxx_class}_{variable_name}_setter``
+
+PY_member_object_template
+    Name of struct member of type `PyObject *` which
+    contains the data for member pointer fields.
+    ``{variable_name}_obj``.
 
 PY_name_impl_template
     ``{PY_prefix}{function_name}{function_suffix}{template_suffix}``
@@ -552,6 +608,9 @@ PY_type_impl_template
     Names of functions for type methods such as ``tp_init``.
     ``{PY_prefix}{cxx_class}_{PY_type_method}{function_suffix}{template_suffix}``
 
+PY_use_numpy
+    Allow NumPy arrays to be used in the module.
+    For example, when assigning to a struct-as-class member.
 
 YAML_type_filename_template
     Default value for global field YAML_type_filename
@@ -593,6 +652,7 @@ C_header_filename_suffix
 
 C_header_utility
    A header file with shared Shroud internal typedefs for the library.
+   Default is ``types{library}.{C_header_filename_suffix}``.
 
 C_impl_filename
     Name of generated C++ implementation file for the library.
@@ -602,6 +662,12 @@ C_impl_filename_suffix:
    Suffix added to C implementation files.
    Defaults to ``cpp``.
    Other useful values might be ``cc`` or ``cxx``.
+
+C_impl_utility
+   A implementation file with shared Shroud helper functions.
+   Typically routines which are implemented in C but called from
+   Fortran via ``BIND(C)``.  The must have global scope.
+   Default is ``util{library}.{C_header_filename_suffix}``.
 
 C_local
     Prefix for C compatible local variable.
@@ -655,6 +721,11 @@ F_capsule_data_type
     Name of derived type used to share memory information with C or C++.
     Defaults to *SHROUD_capsule_data*.
 
+F_capsule_delete_function
+    Name of type-bound function of *F_capsule_type* which will
+    delete the memory in the capsule.
+    Defaults to *SHROUD_capsule_delete*.
+
 F_capsule_final_function
     Name of function used was ``FINAL`` of *F_capsule_type*.
     The function is used to release memory allocated by C or C++.
@@ -695,6 +766,9 @@ F_pointer
     The pointer is then set in ``F_result`` using ``c_f_pointer``.
     It must not be the same as any of the routines arguments.
     It defaults to *SHT_ptr*
+    It is defined for each argument in case it is used by the
+    fc_statements. Set to *SHPTR_arg_name*, where *arg_name* is the
+    argument name.
 
 F_result
     The name of the Fortran wrapper's result variable.
@@ -765,6 +839,14 @@ namespace_scope
     The current C++ namespace delimited with ``::`` and a trailing ``::``.
     Used when referencing identifiers: ``{namespace_scope}id``.
 
+nullptr
+    Set to `NULL` or `nullptr` based on option *CXX_standard*.
+    Always `NULL` when *language* is C.
+
+PY_ARRAY_UNIQUE_SYMBOL
+   C preprocessor define used by NumPy to allow NumPy to be
+   imported by several source files.
+    
 PY_header_filename_suffix
    Suffix added to Python header files.
    Defaults to ``h``.
@@ -931,8 +1013,17 @@ C_prefix
     The prefix helps to ensure unique global names.
     Defaults to the first three letters of *library_upper*.
 
+PY_helper_prefix
+    Prefix added to helper functions for the Python wrapper.
+    This allows the helper functions to have names which will not conflict
+    with any wrapped routines.
+    When option *PY_write_helper_in_util* is *True*, *C_prefix* will
+    be prefixed to the value to ensure the helper functions will not
+    conflict with any routines in other wrapped libraries.
+
 PY_type_obj
     Name variable which points to C or C++ memory.
+    Defaults to *obj*.
 
 PY_type_dtor
     Pointer to information used to release memory.
@@ -1081,6 +1172,10 @@ cxx_addr
     Syntax to take address of argument.
     ``&`` or blank.
 
+cxx_nonconst_ptr
+    A non-const pointer to *cxx_addr* using `const_cast` in C++ or
+    a cast for C.
+
 cxx_member
     Syntax to access members of *cxx_var*.
     If *cxx_local_var* is *object*, then set to ``.``;
@@ -1104,12 +1199,21 @@ size_var
     Python wrapper.
 
 Result
-------
+^^^^^^
 
 cxx_rv_decl
     Declaration of variable to hold return value for function.
 
 
+Variable
+^^^^^^^^
+
+PY_struct_context
+   Prefix used to to access struct/class variables.
+   Includes trailing syntax to access member in a struct
+   i.e. ``.`` or ``->``.
+   ``self->obj->``.
+    
 
 Types Map
 ---------

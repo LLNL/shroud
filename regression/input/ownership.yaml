@@ -1,0 +1,272 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+
+library: ownership
+cxx_header: ownership.hpp
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: True
+
+declarations:
+- decl: class Class1
+  declarations:
+  - decl: int m_flag +readonly +name(flag)
+  - decl: ~Class1()
+
+########################################
+# Fortran treats ReturnIntPtr and ReturnIntPtrScalar the same
+# Python returns a NumPy array for ReturnIntPtr and
+# a scalar for ReturnIntPtrScalar
+
+########################################
+# return int scalar
+
+- decl: int * ReturnIntPtrRaw()
+  fattrs:
+    # value of options.return_scalar_pointer
+    deref: raw
+  options:
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: int * ReturnIntPtrScalar()
+  fattrs:
+    deref: scalar
+  options:
+#    return_scalar_pointer: scalar
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrPointer()
+  fattrs:
+    # value of options.return_scalar_pointer
+    deref: pointer
+  options:
+#    return_scalar_pointer: pointer
+    wrap_lua: False
+
+########################################
+# Function which return an array pointer
+########################################
+# return dimension(len) owner(library)
+
+- decl: int * ReturnIntPtrDimRaw(int *len+intent(out))
+  fattrs:
+    deref: raw
+#    dimension: len
+  options:
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)
+  fattrs:
+    deref: pointer
+    dimension: len
+  options:
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)
+  fattrs:
+    deref: allocatable
+    dimension: len
+  options:
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
+  options:
+    wrap_lua: False
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
+
+########################################
+# return dimension(len) owner(caller)
+
+- decl: int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)
+  fattrs:
+#    deref: pointer
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)
+  fattrs:
+    deref: pointer
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)
+  fattrs:
+    deref: allocatable
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_fortran: False
+    wrap_lua: False
+
+- decl: int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)
+  fattrs:
+    dimension: len
+    owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_lua: False
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
+
+########################################
+# Function which return an array pointer via an argument
+########################################
+# intent(out) dimension(len) owner(library)
+
+- decl: void IntPtrDimRaw(int **array, int *len+intent(out))
+  attrs:
+    array:
+      intent: out
+      deref: raw
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: pointer
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: allocatable
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      dimension: len
+      owner: library
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+  # deref("pointer") will be defaulted, return as a Fortran POINTER.
+
+########################################
+# intent(out) dimension(len) owner(caller)
+
+- decl: void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: raw
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: pointer
+      dimension: len
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      deref: allocatable
+      dimension: len
+      owner: caller
+#    C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+- decl: void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)
+  attrs:
+    array:
+      intent: out
+      dimension: len
+      owner: caller
+#     C_free_pattern: delete_int_array
+  options:
+    wrap_c: False
+    wrap_fortran: False
+    wrap_lua: False
+    wrap_python: False
+
+########################################
+# class 
+
+- decl: void createClassStatic(int flag)
+  options:
+#    wrap_python: False
+    wrap_lua: False
+
+- decl: Class1 * getClassStatic() +owner(library)
+  options:
+#    wrap_python: False
+    wrap_lua: False
+
+- decl: Class1 * getClassNew(int flag) +owner(caller)
+  doxygen:
+    brief: Return pointer to new Class1 instance.
+  options:
+#    wrap_python: False
+    wrap_lua: False
+  
+
+
+
+patterns:
+   delete_int_array: |
+       int * cxx_ptr = reinterpret_cast<int *>(ptr);
+       delete [] cxx_ptr;

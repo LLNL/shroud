@@ -22,8 +22,7 @@ VPATH = \
 
 OBJS = \
     tutorial.o \
-    pyTutorialmodule.o \
-    pyTutorialutil.o
+    pyTutorialmodule.o
 
 CXXFLAGS += $(SHARED)
 

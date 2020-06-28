@@ -6,7 +6,7 @@
 #
 # #######################################################################
 #
-# test the types module
+# Test Python API generated from types.yaml.
 #
 from __future__ import print_function
 

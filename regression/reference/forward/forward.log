@@ -28,6 +28,7 @@ Close pyClass2type.cpp
 Close pyforwardmodule.cpp
 Close pyforwardutil.cpp
 Close pyforwardmodule.hpp
+Close setup.py
 Lua method Class2()
 Lua method ~Class2()
 Lua method void func1(tutorial::Class1 * arg +intent(in))

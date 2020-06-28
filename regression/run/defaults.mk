@@ -60,7 +60,7 @@ CLIBS = -lstdc++
 CXX = pgc++
 CXXFLAGS = -g -std=c++11
 FC = pgf90
-FFLAGS = -g -Mfree -Mstandard
+FFLAGS = -g -Mfree -Mstandard -cpp
 FLIBS = -lstdc++
 SHARED = -fPIC
 LD_SHARED = -shared
@@ -71,7 +71,8 @@ ifeq ($(compiler),ibm)
 TCE = /usr/tce/packages/xl/xl-2019.08.20/
 CC = xlc
 CFLAGS = -g
-CXX = xlc
+CLIBS = -lstdc++
+CXX = xlC
 CXXFLAGS = -g -std=c++0x 
 FC = xlf2003
 FFLAGS = -g -qfree=f90 -qsuffix=cpp=f

@@ -12,12 +12,12 @@ include $(top)/regression/run/defaults.mk
 
 INCLUDE = \
     -I$(top)/regression/reference/struct-c \
-    -I$(top)/regression/run/struct-c \
+    -I$(top)/regression/run/struct \
     -I$(top)/regression/run/fruit
 
 VPATH = \
     $(top)/regression/reference/struct-c \
-    $(top)/regression/run/struct-c \
+    $(top)/regression/run/struct \
     $(top)/regression/run/fruit
 
 OBJS = \

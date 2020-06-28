@@ -10,6 +10,7 @@ Shroud - generate language bindings
 from __future__ import absolute_import
 
 from .main import create_wrapper
+from .metadata import (__version__, __version_info__)
 
 # from ast import LibraryNode, ClassNode, FunctionNode
 
@@ -20,7 +21,3 @@ def print_as_json(node, fp):
 
     json.dump(node, fp, cls=util.ExpandedEncoder, sort_keys=True, indent=4)
 
-
-__version__ = "0.11.0"
-version_info = (0, 11, 0, "beta", 0)
-# 'alpha', 'beta', 'candidate', or 'final'.

@@ -16,6 +16,45 @@ verb
 [![Build Status](https://travis-ci.org/LLNL/shroud.svg?branch=develop)](https://travis-ci.org/LLNL/shroud)
 [![Documentation Status](https://readthedocs.org/projects/shroud/badge/?version=develop)](http://shroud.readthedocs.io/en/latest/?badge=develop)
 
+## Goals
+
+- Simplify the creating of wrapper for a C++ library.
+- Preserves the object-oriented style of C++ classes.
+- Create an idiomatic wrapper API from the C++ API.
+- Generate code which is easy to understand.
+- No dependent runtime library.
+
+## Example
+
+The user creates a YAML file which includes declarations from `zoo.hpp`.
+
+```
+library: zoo
+cxx_header: zoo.hpp
+
+declarations:
+- decl: class Animal
+  declarations:
+  - decl: Animal()
+  - decl: void speak(const std::string &word)
+```
+This creates a Fortran interface which can be used as:
+
+```
+use zoo_mod
+type(Animal) dog
+dog = Animal()
+dog%speak("woof")
+```
+
+And from Python
+
+```
+import zoo
+dog = zoo.Animal()
+dog.speak("woof")
+```
+
 ## Documentation
 
 To get started using Shroud, check out the full documentation:
@@ -24,7 +63,9 @@ http://shroud.readthedocs.io/en/develop
 
 ## Mailing List
 
-shroud-users@llnl.gov
+shroud-users@groups.io
+
+https://groups.io/g/shroud-users
 
 ## Required Packages
 
@@ -37,6 +78,31 @@ The generated Fortran requires a Fortran 2003 compiler.
 ## C++ or C to Python
 
 The generated Python requires Python 2.7 or 3.4+.
+
+Python features:
+
+- Uses NumPy for arrays. Also able to use Python lists if NumPy is overkill.
+- Uses extension type for classes.
+- Creates readable source.
+
+## Getting started
+
+Shroud can be installed using pip
+
+```
+pip install llnl-shroud
+```
+
+In addition, a file created by
+[shiv](https://github.com/linkedin/shiv)
+is available from the github release.
+Shroud and PyYAML are bundled into a single executable which uses
+the Python3 on your path.
+
+```
+wget https://github.com/LLNL/shroud/archive/shroud-0.12.0.pyz
+```
+
 
 ## License
 

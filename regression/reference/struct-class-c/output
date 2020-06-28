@@ -1,0 +1,10 @@
+Wrote struct_types.yaml
+Wrote pyCstruct1type.c
+Wrote pyCstruct_ptrtype.c
+Wrote pyCstruct_listtype.c
+Wrote pyCstruct_numpytype.c
+Wrote pyArrays1type.c
+Wrote pystructmodule.c
+Wrote pystructutil.c
+Wrote pystructmodule.h
+Wrote setup.py

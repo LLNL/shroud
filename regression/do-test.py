@@ -12,8 +12,8 @@
 # run input file, compare results to reference files
 #
 # Directory structure
-#  src-dir/name.yaml
-#  src-dir/ref/name/      reference results
+#  src-dir/input/name.yaml
+#  src-dir/reference/name/      reference results
 #
 #  bin-dir/test/name/     generated files
 
@@ -66,7 +66,7 @@ class Tester:
     def close_log(self):
         logging.shutdown()
 
-    def set_environment(self, input, output, executable=None):
+    def setup_environment(self, input, output, executable=None):
         """Set environment for all tests.
         """
         self.test_input_dir = input
@@ -77,14 +77,14 @@ class Tester:
             status = False
             print("Missing source directory:", input)
         if executable:
-            if not os.path.isdir(executable):
+            if not os.path.exists(executable):
                 status = False
-                print("Missing executable directory:", executable)
-            self.code_path = os.path.join(executable, "shroud")
+                print("Missing executable:", executable)
+            self.code_path = executable
         makedirs(output)
         return status
 
-    def set_test(self, desc, replace_ref=False):
+    def setup_test(self, desc, replace_ref=False):
         """Setup for a single test.
 
         Args:
@@ -96,7 +96,7 @@ class Tester:
         logging.info("--------------------------------------------------")
         logging.info("Testing " + name)
 
-        self.testyaml = os.path.join(self.test_input_dir, desc.yaml)
+        self.testyaml = os.path.join(self.test_input_dir, "input", desc.yaml)
         logging.info("Input file: " + self.testyaml)
         if not os.path.isfile(self.testyaml):
             logging.error("Input file does not exist")
@@ -179,11 +179,14 @@ class Tester:
         cmd = [
             self.code_path,
             "--path",
-            self.test_input_dir,
+            os.path.join(self.test_input_dir, "input"),
             "--logdir",
             self.result_dir,
             "--outdir",
             self.result_dir,
+            # Avoid printing things which may vary (path, date, time).
+            "--option",
+            "debug_testsuite=true",
         ]
 
         # test specific flags
@@ -229,20 +232,20 @@ class Tester:
         if mismatch:
             status = False
             for file in mismatch:
-                logging.warn("Does not compare: " + file)
+                logging.warning("Does not compare: " + file)
         if errors:
             status = False
             for file in errors:
-                logging.warn("Unable to compare: " + file)
+                logging.warning("Unable to compare: " + file)
 
         if cmp.left_only:
             status = False
             for file in cmp.left_only:
-                logging.warn("Only in reference: " + file)
+                logging.warning("Only in reference: " + file)
         if cmp.right_only:
             status = False
             for file in cmp.right_only:
-                logging.warn("Only in result: " + file)
+                logging.warning("Only in result: " + file)
 
         if status:
             logging.info("Test {} pass".format(self.testname))
@@ -303,7 +306,7 @@ if __name__ == "__main__":
 
     tester = Tester()
 
-    status = tester.set_environment(
+    status = tester.setup_environment(
         os.environ["TEST_INPUT_DIR"],
         os.environ["TEST_OUTPUT_DIR"],
         os.environ["EXECUTABLE_DIR"],
@@ -314,8 +317,15 @@ if __name__ == "__main__":
 
     availTests = [
         TestDesc("none",
-                 cmdline=["--yaml-types", "def_types.yaml"]),
+                 cmdline=[
+                     "--write-helpers", "helpers",
+                     "--yaml-types", "def_types.yaml",
+                 ]),
         TestDesc("tutorial"),
+        TestDesc("debugfalse", yaml="tutorial",
+                 cmdline=[
+                     "--option", "debug=False",
+                 ]),
         TestDesc("types"),
         TestDesc("classes"),
 
@@ -330,12 +340,25 @@ if __name__ == "__main__":
                  ]),
 
         # pointers
-        TestDesc("pointers-numpy-cpp", yaml="pointers",
+        TestDesc("pointers-c", yaml="pointers",
                  cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_python=false",
+                 ]),
+        TestDesc("pointers-cxx", yaml="pointers",
+                 cmdline=[
+                     "--option", "wrap_python=false",
                      # Create literal blocks for documentation
                      "--option", "literalinclude2=true",
                  ]),
-        TestDesc("pointers-list-cpp", yaml="pointers",
+        TestDesc("pointers-numpy-cxx", yaml="pointers",
+                 cmdline=[
+                     # Create literal blocks for documentation
+                     "--option", "literalinclude2=true",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                 ]),
+        TestDesc("pointers-list-cxx", yaml="pointers",
                  cmdline=[
                      "--option", "PY_array_arg=list",
                      "--option", "wrap_fortran=false",
@@ -356,17 +379,74 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
 
+        TestDesc("arrayclass"),
+
         # struct
         TestDesc("struct-c", yaml="struct",
                  cmdline=[
                      "--language", "c",
                      "--option", "literalinclude2=true",
-                     "--option", "PY_struct_arg=numpy",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=true",
+                     "--option", "wrap_python=false",
                  ]),
         TestDesc("struct-cxx", yaml="struct",
                  cmdline=[
                      "--language", "c++",
+                     "--option", "wrap_fortran=true",
+                     "--option", "wrap_c=true",
+                     "--option", "wrap_python=false",
+                 ]),
+        TestDesc("struct-numpy-c", yaml="struct",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=numpy",
+                 ]),
+        TestDesc("struct-numpy-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=numpy",
+                 ]),
+        TestDesc("struct-class-c", yaml="struct",
+                 cmdline=[
+                     "--language", "c",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
                      "--option", "PY_struct_arg=class",
+                 ]),
+        TestDesc("struct-class-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=class",
+                 ]),
+        TestDesc("struct-list-cxx", yaml="struct",
+                 cmdline=[
+                     "--language", "c++",
+                     "--option", "wrap_fortran=false",
+                     "--option", "wrap_c=false",
+                     "--option", "wrap_python=true",
+                     "--option", "PY_struct_arg=list",
+                 ]),
+
+        TestDesc("structlist"),
+
+        TestDesc("struct-py-c", yaml="struct-py",
+                 cmdline=[
+                     "--language", "c",
+                 ]),
+        TestDesc("struct-py-cxx", yaml="struct-py",
+                 cmdline=[
+                     "--language", "c++",
                  ]),
 
         # vectors
@@ -386,6 +466,7 @@ if __name__ == "__main__":
                      "--option", "wrap_c=false",
                  ]),
         
+        TestDesc("cdesc"),
         TestDesc("forward"),
         TestDesc("example"),
         TestDesc("include"),
@@ -397,6 +478,7 @@ if __name__ == "__main__":
         TestDesc("namespacedoc"),
         TestDesc("strings"),
         TestDesc("clibrary"),
+        TestDesc("cxxlibrary"),
         TestDesc("interface"),
         TestDesc("statement"),
         TestDesc("templates"),
@@ -429,7 +511,7 @@ if __name__ == "__main__":
     pass_names = []
     fail_names = []
     for test in runTests:
-        status = tester.set_test(test, replace_ref)
+        status = tester.setup_test(test, replace_ref)
 
         if status:
             status = tester.do_test()

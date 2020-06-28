@@ -6,17 +6,15 @@ Close userlibrary_types.yaml
 class ExClass1
 C method ExClass1()
 C method ExClass1(const string * name +intent(in))
-C method ExClass1(const string * name +intent(in)+len_trim(Lname))
+C method ExClass1(const string * name +intent(in)+len_trim)
 C method ~ExClass1()
 C method int incrementCount(int incr +intent(in)+value)
 C method const string & getNameErrorCheck() const +deref(allocatable)
 C method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
-C method const string & getNameArg() const +deref(result_as_arg)
+C method const string & getNameArg() const +deref(result-as-arg)
 C method void getNameArg(string & name +intent(out)+len(Nname)) const
-C method void * getRoot()
 C method int getValue(int value +intent(in)+value)
 C method long getValue(long value +intent(in)+value)
-C method void * getAddr()
 C method bool hasAddr(bool in +intent(in)+value)
 C method void SplicerSpecial()
 Close wrapexample_nested_ExClass1.h
@@ -25,7 +23,7 @@ class ExClass2
 C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C method ~ExClass2()
-C method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+C method const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C method const string & getName2() +deref(allocatable)
 C method void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
@@ -49,12 +47,12 @@ Close wrapexample_nested_ExClass2.h
 Close wrapexample_nested_ExClass2.cpp
 C function void local_function1()
 C function bool isNameValid(const std::string & name +intent(in))
-C function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
+C function bool isNameValid(const std::string & name +intent(in)+len_trim)
 C function bool isInitialized()
 C function void test_names(const std::string & name +intent(in))
-C function void test_names(const std::string & name +intent(in)+len_trim(Lname))
+C function void test_names(const std::string & name +intent(in)+len_trim)
 C function void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
-C function void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
+C function void test_names(const std::string & name +intent(in)+len_trim, int flag +intent(in)+value)
 C function void testoptional()
 C function void testoptional(int i=1 +intent(in)+value)
 C function void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
@@ -68,7 +66,7 @@ C function void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+
 C function void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 C function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 C function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-C function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C function void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.cpp
@@ -76,25 +74,23 @@ Close typesUserLibrary.h
 class ExClass1
 C-interface, Fortran method ExClass1()
 C-interface, Fortran method ExClass1(const string * name +intent(in))
-C-interface method ExClass1(const string * name +intent(in)+len_trim(Lname))
+C-interface method ExClass1(const string * name +intent(in)+len_trim)
 C-interface, Fortran method ~ExClass1()
 C-interface, Fortran method int incrementCount(int incr +intent(in)+value)
 C-interface, Fortran method const string & getNameErrorCheck() const +deref(allocatable)
 C-interface method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const
-C-interface method const string & getNameArg() const +deref(result_as_arg)
+C-interface method const string & getNameArg() const +deref(result-as-arg)
 C-interface method void getNameArg(string & name +intent(out)+len(Nname)) const
 Fortran method void getNameArg(string & name +intent(out)+len(Nname)) const
-C-interface, Fortran method void * getRoot()
 C-interface, Fortran method int getValue(int value +intent(in)+value)
 C-interface, Fortran method long getValue(long value +intent(in)+value)
-C-interface, Fortran method void * getAddr()
 C-interface, Fortran method bool hasAddr(bool in +intent(in)+value)
 C-interface, Fortran method void SplicerSpecial()
 class ExClass2
 C-interface, Fortran method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C-interface method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 C-interface, Fortran method ~ExClass2()
-C-interface, Fortran method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+C-interface, Fortran method const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C-interface method void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C-interface, Fortran method const string & getName2() +deref(allocatable)
 C-interface method void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
@@ -120,12 +116,12 @@ C-interface, Fortran method int getValue()
 C-interface, Fortran method double getValue()
 C-interface, Fortran function void local_function1()
 C-interface, Fortran function bool isNameValid(const std::string & name +intent(in))
-C-interface function bool isNameValid(const std::string & name +intent(in)+len_trim(Lname))
+C-interface function bool isNameValid(const std::string & name +intent(in)+len_trim)
 C-interface, Fortran function bool isInitialized()
 C-interface, Fortran function void test_names(const std::string & name +intent(in))
-C-interface function void test_names(const std::string & name +intent(in)+len_trim(Lname))
+C-interface function void test_names(const std::string & name +intent(in)+len_trim)
 C-interface, Fortran function void test_names(const std::string & name +intent(in), int flag +intent(in)+value)
-C-interface function void test_names(const std::string & name +intent(in)+len_trim(Lname), int flag +intent(in)+value)
+C-interface function void test_names(const std::string & name +intent(in)+len_trim, int flag +intent(in)+value)
 C-interface, Fortran function void testoptional()
 C-interface, Fortran function void testoptional(int i=1 +intent(in)+value)
 C-interface, Fortran function void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)
@@ -139,28 +135,27 @@ C-interface, Fortran function void FuncPtr4(double ( * get)(double +value, int +
 C-interface, Fortran function void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 C-interface, Fortran function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 C-interface, Fortran function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-C-interface, Fortran function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+C-interface, Fortran function void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close wrapfUserLibrary_example_nested.f
 Close wrapfUserLibrary_example.f
 Close wrapfuserlibrary.f
+Close utilUserLibrary.cpp
 class ExClass1
 Python method ExClass1()
 Python method ExClass1(const string * name +intent(in))
 Python method ~ExClass1()
 Python method int incrementCount(int incr +intent(in)+value)
 Python method const string & getNameErrorCheck() const +deref(allocatable)
-Python method const string & getNameArg() const +deref(result_as_arg)
-Python method void * getRoot()
+Python method const string & getNameArg() const +deref(result-as-arg)
 Python method int getValue(int value +intent(in)+value)
 Python method long getValue(long value +intent(in)+value)
-Python method void * getAddr()
 Python method bool hasAddr(bool in +intent(in)+value)
 Python method void SplicerSpecial()
 Close pyexample_nested_ExClass1type.cpp
 class ExClass2
 Python method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Python method ~ExClass2()
-Python method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+Python method const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 Python method const string & getName2() +deref(allocatable)
 Python method string & getName3() const +deref(allocatable)
 Python method string & getName4() +deref(allocatable)
@@ -191,27 +186,26 @@ Python function void FuncPtr3(double ( * get)(int i +value, int +value) +intent(
 Python function void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 Python function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 Python function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-Python function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Python function void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close pyUserLibrary_example_nestedmodule.cpp
 Close pyUserLibrary_examplemodule.cpp
 Close pyUserLibrarymodule.cpp
 Close pyUserLibraryutil.cpp
 Close pyUserLibrarymodule.hpp
+Close setup.py
 Lua method ExClass1()
 Lua method ExClass1(const string * name +intent(in))
 Lua method ~ExClass1()
 Lua method int incrementCount(int incr +intent(in)+value)
 Lua method const string & getNameErrorCheck() const +deref(allocatable)
-Lua method const string & getNameArg() const +deref(result_as_arg)
-Lua method void * getRoot()
+Lua method const string & getNameArg() const +deref(result-as-arg)
 Lua method int getValue(int value +intent(in)+value)
 Lua method long getValue(long value +intent(in)+value)
-Lua method void * getAddr()
 Lua method bool hasAddr(bool in +intent(in)+value)
 Lua method void SplicerSpecial()
 Lua method ExClass2(const string * name +intent(in)+len_trim(trim_name))
 Lua method ~ExClass2()
-Lua method const string & getName() const +deref(result_as_arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+Lua method const string & getName() const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 Lua method const string & getName2() +deref(allocatable)
 Lua method string & getName3() const +deref(allocatable)
 Lua method string & getName4() +deref(allocatable)
@@ -244,6 +238,6 @@ Lua function void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)
 Lua function void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)
 Lua function void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 Lua function int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)
-Lua function void cos_doubles(double * in +dimension(:,:)+intent(in), double * out +allocatable(mold=in)+dimension(:,:)+intent(out), int sizein +implied(size(in))+intent(in)+value)
+Lua function void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)
 Close luaUserLibrarymodule.hpp
 Close luaUserLibrarymodule.cpp

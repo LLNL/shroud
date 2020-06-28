@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: (BSD-3-Clause)
 # #######################################################################
 #
-# test the preprocess module
+# Test Python API generated from preprocess.yaml.
 #
 from __future__ import print_function
 

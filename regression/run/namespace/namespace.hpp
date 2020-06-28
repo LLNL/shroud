@@ -17,3 +17,8 @@ namespace outer {
 };
 
 void One();
+
+namespace nswork {
+  class ClassWork {
+  };
+};

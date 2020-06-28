@@ -6,6 +6,75 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+	
+## v0.12.0 - 2020-06-29
+### Added
+- Option `C_force_wrapper` to create a C wrapper.
+  This can be used when the function is actually a macro or function pointer.
+- Added option CXX_standard.
+  If *2011* or greater then `nullptr` is used instead of `NULL`.
+  This makes clang-tidy happy.
+- Create a setup.py for Python wrappers.
+- Wrap pointer members in structs when PY_struct_arg="class".
+- Use py_statements 'py_ctor' to create a struct-as-class constructor
+  for Python which will assign to struct members.
+- Add option *PY_write_helper_in_util* to write all helper functions
+  into the file defined by format PY_utility_filename.  Useful when there
+  are a lot of classes which may create lots of duplicate helpers.
+- Parse array syntax for variables and struct members.
+- Change Python setter and getter functions to be driven by py_statements.
+- Parse `(void)` C prototype to indicate no parameters.	
+
+### Changed
+- *intent(in)* pointer arguments now use the *rank* attribute instead of
+  using the *dimension* attribute to defined Fortran assumed-shape.
+  ex. ``dimension(:,:)`` should be ``rank(2)``.
+  The dimension attribute must be a list of expressions and should not
+  be assumed-shape or assumed-length and are used with *intent(out)* arguments.
+- Pointer arguments default to ``intent(inout)`` instead of ``intent(in)``.
+- C++ class constructors create a generic interface in Fortran with the same name
+  as the derived-type name.  Before it used the +name attribute in the generic name.
+  This attribute is still used to create the actual function name.
+
+### Fixed
+- Inline splicers (defined as part of a decl) will be used before a
+  splicer with the same name defined in a *splicer_code* or file splicer.
+- C splicers were not looked up using the C wrapper name properly.
+  They were using the C++ function name. This was a problem since a
+  C++ function may produce several wrapper via overloading or
+  adding bufferify arguments.
+- Update fortran_generic generated functions to use the format statement
+  in the fortran_generic clause. This allows the format values to be used
+  in fstatement clauses.
+````
+fortran_generic:
+- decl: (int *value)
+  format:
+    stype: int
+````
+- Allow multi-line scalar values to be used in YAML for inline splicers
+  and fstatements. Convert empty lines from the YAML inserted None into
+  an empty string in inline splicers and fstatements.
+```
+splicer:
+  c: |
+    ! lines of code
+  c_buf:
+  -  Next line is blank, not None
+  -
+```
+- Allow wrap_c=False and wrap_fortran=True. Useful when the Fortran
+  wrapper is defined by a splicer and the C wrapper is not needed.
+- Improved support for templates in the Python wrappers.
+- Added define for PyInt_FromSize_t for Python 3.
+- Do not write Python utility file if it is empty.
+- PY_struct_arg now applies to the struct. This allows two structs to use
+  "class" and "numpy" in the same YAML file.
+- Prevent duplicate helpers from being created. Helpers which are implemented
+  in C but called from Fortran are written to a new file define by format
+  *C_impl_utility*.
+- Set idtor properly for constructors. Memory was not being released since
+  idtor was 0.
 
 ## v0.11.0 - 2020-01-08
 ### Added

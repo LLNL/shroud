@@ -10,13 +10,17 @@ C function int * ReturnIntPtrScalar() +deref(scalar)
 C function int * ReturnIntPtrPointer() +deref(pointer)
 C function int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
 C function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
+C function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)
 C function int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 C function int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
 C function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+C function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)
 C function int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
+C function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
 C function int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+C function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)
 C function void createClassStatic(int flag +intent(in)+value)
 C function Class1 * getClassStatic() +owner(library)
 C function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
@@ -31,17 +35,22 @@ C-interface, Fortran function int * ReturnIntPtrScalar() +deref(scalar)
 C-interface, Fortran function int * ReturnIntPtrPointer() +deref(pointer)
 C-interface function int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)
 C-interface, Fortran function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)
+C-interface function int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)
 C-interface, Fortran function int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)
 C-interface function int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)
 C-interface, Fortran function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
+C-interface function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)
 C-interface function int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C-interface, Fortran function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
+C-interface function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
 C-interface function int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C-interface, Fortran function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
+C-interface function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)
 C-interface, Fortran function void createClassStatic(int flag +intent(in)+value)
 C-interface, Fortran function Class1 * getClassStatic() +owner(library)
 C-interface, Fortran function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close wrapfownership.f
+Close utilownership.cpp
 class Class1
 Python method ~Class1()
 Close pyClass1type.cpp
@@ -59,6 +68,7 @@ Python function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
 Close pyownershipmodule.cpp
 Close pyownershiputil.cpp
 Close pyownershipmodule.hpp
+Close setup.py
 Lua method ~Class1()
 Close luaownershipmodule.hpp
 Close luaownershipmodule.cpp

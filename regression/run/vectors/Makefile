@@ -23,6 +23,7 @@ VPATH = \
 OBJS = \
     vectors.o \
     wrapfvectors.o \
+    utilvectors.o \
     wrapvectors.o \
     fruit.o \
     main.o

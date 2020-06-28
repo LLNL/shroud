@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: (BSD-3-Clause)
  * #######################################################################
  *
- * Tests for clibrary.c
+ * Test C API generated from clibrary.yaml.
  */
 
 #include "clibrary.h"

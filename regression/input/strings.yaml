@@ -1,0 +1,352 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+#
+# Test the many variations of strings
+#
+
+library: strings
+cxx_header: strings.hpp
+
+options:
+  debug: True
+  wrap_python: True
+  literalinclude2: True
+
+declarations:
+
+- decl: void passChar(char status)
+  doxygen:
+    brief: pass a single char argument as a scalar.
+
+- decl: void passCharForce(char status)
+  options:
+    F_force_wrapper: True
+    wrap_python: False
+  doxygen:
+    description: |
+      By default no Fortran wrapper is created.
+      Force one so it can be tested.
+
+- decl: char returnChar()
+  doxygen:
+    brief: return a char argument (non-pointer)
+
+########################################
+# char * argument
+
+- decl: void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)
+  # XXX - maybe charlen(strlen(src)+1)
+  doxygen:
+    brief: strcpy like behavior
+    description: |
+      dest is marked intent(OUT) to override the intent(INOUT) default
+      This avoid a copy-in on dest.
+      In Python, src must not be over 40 characters, defined by charlen.
+  options:
+    # This copies into 'dest' which must be allocated first
+    # and does not work with Python
+    wrap_Lua: False
+    literalinclude: True
+
+- decl: void passCharPtrInOut(char * s+intent(inout))
+  doxygen:
+    brief: toupper
+    description: |
+      Change a string in-place.
+      For Python, return a new string since strings are immutable.
+
+########################################
+
+- decl: const char * getCharPtr1()
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const char *' as character(*)
+  options:
+    literalinclude: True
+
+- decl: const char * getCharPtr2() +len(30)
+#  C_error_pattern: C_char_invalid_name
+  doxygen:
+    brief: return 'const char *' with fixed size (len=30)
+  options:
+    literalinclude: True
+
+- decl: const char * getCharPtr3()
+#  C_error_pattern: C_char_invalid_name
+  doxygen:
+    brief: return a 'const char *' as argument
+  options:
+    literalinclude: True
+  format:
+    F_string_result_as_arg: output
+
+- decl: const char * getCharPtr4() +deref(raw)
+  doxygen:
+    brief: return a 'const char *' as type(C_PTR)
+  options:
+    wrap_python: False
+
+########################################
+# return std::string
+
+- decl: const string getConstStringResult()
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return an ALLOCATABLE CHARACTER from std::string
+
+- decl: const string getConstStringLen() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string' as argument
+
+- decl: const string getConstStringAsArg()
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string' as argument
+  format:
+    F_string_result_as_arg: output
+
+- decl: const std::string getConstStringAlloc()
+
+########################################
+# return std::string reference
+
+- decl: const string& getConstStringRefPure()
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string&' as ALLOCATABLE character
+  options:
+    literalinclude: True
+
+- decl: const string& getConstStringRefLen() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return 'const string&' with fixed size (len=30)
+    description: |
+       Since +len(30) is provided, the result of the function
+       will be copied directly into memory provided by Fortran.
+       The function will not be ALLOCATABLE.
+#  attrs:
+#    result:
+#      len: 30
+
+- decl: const string& getConstStringRefAsArg()
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string&' as argument
+    description: |
+      Pass an additional argument which wil be used as the return value.
+      The length of the output variable is declared by the caller.
+  format:
+    F_string_result_as_arg: output
+
+- decl: const string& getConstStringRefLenEmpty() +len=30
+  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: Test returning empty string reference
+
+- decl: const std::string& getConstStringRefAlloc()
+
+########################################
+# return std::string pointer
+
+- decl: const string * getConstStringPtrLen() +len=30
+# XXX? +owner=caller
+#  C_error_pattern: C_invalid_name
+  doxygen:
+    brief: return a 'const string *' as character(30)
+    description: |
+      It is the caller's responsibility to release the string
+      created by the C++ library.
+      This is accomplished with C_finalize_buf which is possible
+      because +len(30) so the contents are copied before returning.
+  fstatements:
+    c_buf:
+      final:
+      - delete {cxx_var};
+
+- decl: const std::string * getConstStringPtrAlloc() +owner(library)
+
+- decl: const std::string * getConstStringPtrOwnsAlloc() +owner(caller)
+  doxygen:
+    description: |
+      It is the caller's responsibility to release the string
+      created by the C++ library.
+      This is accomplished +owner(caller) which sets idtor.
+      The contents are copied by Fortran so they must outlast
+      the return from the C wrapper.
+
+- decl: const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)
+  doxygen:
+    description: |
+      Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
+  fattrs:
+    free_pattern: C_string_free
+
+
+########################################
+
+- decl: void acceptStringConstReference(const std::string & arg1)
+  doxygen:
+    brief: Accept a const string reference
+    description: |
+       Save contents of arg1.
+       arg1 is assumed to be intent(IN) since it is const
+       Will copy in.
+
+- decl: void acceptStringReferenceOut(std::string & arg1+intent(out))
+  doxygen:
+    brief: Accept a string reference
+    description: |
+       Set out to a constant string.
+       arg1 is intent(OUT)
+       Must copy out.
+
+- decl: void acceptStringReference(std::string & arg1)
+  doxygen:
+    brief: Accept a string reference
+    description: |
+       Append "dog" to the end of arg1.
+       arg1 is assumed to be intent(INOUT)
+       Must copy in and copy out.
+  options:
+    literalinclude: True
+
+- decl: void acceptStringPointerConst(const std::string * arg1)
+  doxygen:
+    brief: Accept a const string pointer - intent(in)
+
+- decl: void acceptStringPointer(std::string * arg1)
+  doxygen:
+    brief: Accept a string pointer - intent(inout)
+
+- decl: void fetchStringPointer(std::string * arg1 +intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(out)
+    description: |
+      Return global_str.
+
+- decl: void acceptStringPointerLen(std::string * arg1,
+                                    int *nlen+intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(inout)
+    description: |
+      Test return tuple with two arguments.
+      Must rename argument to nlen to avoid conflict with intrinsic len.
+
+- decl: void fetchStringPointerLen(std::string * arg1 +intent(out),
+                                   int *nlen+intent(out))
+  doxygen:
+    brief: Accept a string pointer - intent(out)
+    description: |
+      Return global_str.
+      Test return tuple with two arguments.
+      Must rename argument to nlen to avoid conflict with intrinsic len.
+
+#- decl: void acceptStringInstance(std::string arg1)
+#  doxygen:
+#    brief: Accept a string instance
+
+- decl: void returnStrings(std::string & arg1 +intent(out),
+                           std::string & arg2 +intent(out))
+  doxygen:
+    brief: Test Python returning multiple std::string arguments.
+  options:
+    wrap_c: false
+    wrap_fortran: false
+
+- decl: char returnMany(int *arg1 +intent(out))
+  doxygen:
+    description: |
+       Test Py_BuildValue with multiple values.
+  options:
+    wrap_python: false
+    wrap_c: false
+    wrap_fortran: false
+
+########################################
+# explicit annotations
+# Currently explicit len/len_trim conflict with auto generated one and do not compile
+# local declarations shadow parameter
+
+- decl: void explicit1(char * name+len_trim(AAlen)+intent(in))
+  format:
+    C_bufferify_suffix: _BUFFER
+# len_trim is added for free because intent(in)
+
+- decl: void explicit2(char * name+len(AAtrim)+intent(out))
+# len is added for free because intent(out)
+  options:
+    # This copies into 'name' which must be allocated first
+    # and does not work with Python
+    wrap_python: False
+    wrap_Lua: False
+
+#- decl: void explicit3(char * name+len(AAlen)+len_trim(AAtrim))
+# set names for len/len_trim annotations
+
+################################################################################
+# extern "C"  C++ functions
+
+- decl: void CpassChar(char status)
+  doxygen:
+    brief: pass a single char argument as a scalar, extern "C"
+  options:
+    C_extern_C: true
+
+- decl: char CreturnChar()
+  doxygen:
+    brief: return a char argument (non-pointer), extern "C"
+  options:
+    C_extern_C: true
+
+########################################
+# char * argument
+
+- decl: void CpassCharPtr(char * dest+intent(out), const char *src)
+  options:
+    C_extern_C: true
+    # This copies into 'dest' which must be allocated first
+    # and does not work with Python
+    wrap_python: False
+    wrap_Lua: False
+  doxygen:
+    brief: strcpy like behavior
+    description: |
+      dest is marked intent(OUT) to override the intent(INOUT) default
+      This avoid a copy-in on dest.
+      extern "C"
+
+- decl: void PostDeclare(int *count +rank(1)+intent(in), std::string &name)
+  options:
+    PY_array_arg: list
+    description: |
+      Test post_declare.
+      The std::string in py_string_inout must be declared before the
+      goto added by py_native_*_in_pointer_list to avoid
+      "jump to label 'fail' crosses initialization of" error.
+
+########################################
+patterns:
+    C_invalid_name: |
+        if ({cxx_var}.empty()) {{
+            return NULL;
+        }}
+    # return a blank field string if an error occurs
+#    C_invalid_name_buf: |
+#        if ({cxx_var}.empty()) {{
+#            std::memset({c_var}, ' ', {c_var_len});
+#            return;
+#        }}
+
+     # This pattern is added to C_memory_dtor_function
+     # XXX - \t is not dealt with properly
+    C_string_free: |
+        // Used with +free_pattern(C_string_free)
+        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
+        delete cxx_ptr;

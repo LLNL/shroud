@@ -20,6 +20,7 @@ C-interface, Fortran function void One()
 Close wrapfns_outer.f
 class ClassWork
 Close wrapfns.f
+Close utilns.cpp
 class Cstruct1
 Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
 Close pyouter_Cstruct1type.cpp
@@ -33,3 +34,4 @@ Python function void One()
 Close pynsmodule.cpp
 Close pynsutil.cpp
 Close pynsmodule.hpp
+Close setup.py

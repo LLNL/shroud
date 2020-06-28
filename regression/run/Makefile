@@ -33,13 +33,17 @@ test-fortran : \
   test-fortran-forward \
   test-fortran-enum-c \
   test-fortran-namespace \
-  test-fortran-pointers \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cxx \
+  test-fortran-arrayclass \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-fortran-vectors \
+  test-fortran-cdesc \
   test-fortran-preprocess \
   test-fortran-strings \
   test-fortran-clibrary \
+  test-fortran-cxxlibrary \
   test-fortran-ownership \
   test-fortran-generic \
   test-fortran-statement \
@@ -120,15 +124,23 @@ test-python : \
   test-python-enum-c \
   test-python-namespace \
   test-python-strings \
-  test-python-pointers-numpy-cpp \
-  test-python-pointers-list-cpp \
+  test-python-pointers-numpy-cxx \
+  test-python-pointers-list-cxx \
   test-python-pointers-numpy-c \
   test-python-pointers-list-c \
+  test-python-arrayclass \
+  test-python-struct-numpy-c \
+  test-python-struct-numpy-cxx \
+  test-python-struct-class-c \
+  test-python-struct-class-cxx \
+  test-python-structlist \
+  test-python-struct-py-c \
+  test-python-struct-py-cxx \
   test-python-vectors-numpy \
   test-python-clibrary \
-  test-python-struct-c \
-  test-python-struct-cxx \
-  test-python-ownership
+  test-python-cxxlibrary \
+  test-python-ownership \
+  test-python-templates
 
 # test-python-templates
 
@@ -149,11 +161,28 @@ test-lua : lua-tutorial
 ######################################################################
 test-all : test-c test-fortran test-python test-lua
 
+# test specific yaml files
+test-pointers : \
+  test-fortran-pointers-c \
+  test-fortran-pointers-cxx \
+  test-python-pointers-numpy-c \
+  test-python-pointers-numpy-cxx \
+  test-python-pointers-list-c \
+  test-python-pointers-list-cxx
+
+test-struct : \
+  test-fortran-struct-c \
+  test-fortran-struct-cxx \
+  test-python-struct-numpy-c \
+  test-python-struct-numpy-cxx \
+  test-python-struct-class-c \
+  test-python-struct-class-cxx
 
 .PHONY : test-c
 .PHONY : test-python
 .PHONY : test-lua lua-tutorial
 .PHONY : test-all
+.PHONY : test-struct
 
 .PHONY: phony_explicit
 phony_explicit: 
@@ -161,10 +190,13 @@ phony_explicit:
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
 .SECONDARY: \
+    $(tempdir)/run/cdesc/.. \
     $(tempdir)/run/classes/.. \
     $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
+    $(tempdir)/run/cxxlibrary/.. \
+    $(tempdir)/run/cxxlibrary/python/.. \
     $(tempdir)/run/enum-c/.. \
     $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \
@@ -173,23 +205,33 @@ phony_explicit:
     $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \
     $(tempdir)/run/ownership/python/.. \
-    $(tempdir)/run/pointers/..\
-    $(tempdir)/run/pointers-numpy-cpp/python/.. \
-    $(tempdir)/run/pointers-list-cpp/python/.. \
+    $(tempdir)/run/pointers-c/..\
+    $(tempdir)/run/pointers-cxx/..\
+    $(tempdir)/run/pointers-numpy-cxx/python/.. \
+    $(tempdir)/run/pointers-list-cxx/python/.. \
     $(tempdir)/run/pointers-numpy-c/python/.. \
     $(tempdir)/run/pointers-list-c/python/.. \
     $(tempdir)/run/preprocess/..\
     $(tempdir)/run/preprocess/python/.. \
     $(tempdir)/run/preprocess/.. \
+    $(tempdir)/run/arrayclass/.. \
+    $(tempdir)/run/arrayclass/python/.. \
     $(tempdir)/run/scope/.. \
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
     $(tempdir)/run/struct-c/.. \
-    $(tempdir)/run/struct-c/python/.. \
     $(tempdir)/run/struct-cxx/.. \
-    $(tempdir)/run/struct-cxx/python/.. \
+    $(tempdir)/run/struct-numpy-c/python/.. \
+    $(tempdir)/run/struct-numpy-cxx/python/.. \
+    $(tempdir)/run/struct-class-c/python/.. \
+    $(tempdir)/run/struct-class-cxx/python/.. \
+    $(tempdir)/run/struct-list-c/python/.. \
+    $(tempdir)/run/structlist/python/.. \
+    $(tempdir)/run/struct-py-c/python/.. \
+    $(tempdir)/run/struct-py-cxx/python/.. \
     $(tempdir)/run/templates/.. \
+    $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\
     $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \

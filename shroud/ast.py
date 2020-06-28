@@ -22,39 +22,6 @@ from .util import wformat
 class AstNode(object):
     is_class = False
 
-    def option_to_fmt(self):
-        """Set fmt based on options dictionary.
-        """
-        for name in [
-            "C_prefix",
-            "F_C_prefix",
-            "C_result",
-            "F_result",
-            "F_derived_member",
-            "PY_result",
-            "LUA_result",
-            "C_this",
-            "CXX_this",
-            "F_this",
-            "C_string_result_as_arg",
-            "F_string_result_as_arg",
-            "C_header_filename_suffix",
-            "C_impl_filename_suffix",
-            "F_filename_suffix",
-            "PY_prefix",
-            "PY_header_filename_suffix",
-            "PY_impl_filename_suffix",
-            "LUA_prefix",
-            "LUA_header_filename_suffix",
-            "LUA_impl_filename_suffix",
-        ]:
-            if self.options.inlocal(name):
-                raise DeprecationWarning(
-                    "Setting option {} for {}, change to format group".format(
-                        name, self.__class__.__name__
-                    )
-                )
-
     def eval_template(self, name, tname="", fmt=None):
         """If a format has not been explicitly set, set from template."""
         if fmt is None:
@@ -74,6 +41,18 @@ class AstNode(object):
         """Return top of AST tree."""
         return self.parent.get_LibraryNode()
 
+    def find_header(self):
+        """Return most recent cxx_header"""
+        if self.cxx_header:
+            return self.cxx_header
+        elif self.parent is not None:
+            return self.parent.find_header()
+        else:
+            return ""
+
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return False
 
 ######################################################################
 
@@ -216,6 +195,8 @@ class NamespaceMixin(object):
         A struct is exactly like a class to the C++ compiler.
         From the YAML, a struct is a single ast and a class is broken into parts.
         """
+        if ast is None:
+            ast = declast.check_decl(decl, namespace=self)
         name = ast.name
         node = ClassNode(name, self, as_struct=True, **kwargs)
         for member in ast.members:
@@ -345,7 +326,12 @@ class LibraryNode(AstNode, NamespaceMixin):
             create_std_namespace(self)  # add 'std::' to library
             self.using_directive("std")
 
+        # Create typemaps once.
+        if not typemap.get_global_types():
+            typemap.initialize()
         typemap.update_typemap_for_language(self.language)
+
+        self.setup = kwargs.get("setup", {}) # for setup.py
 
     def get_LibraryNode(self):
         """Return top of AST tree."""
@@ -414,8 +400,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             parent=None,
             debug=False,  # print additional debug info
             debug_index=False,  # print function indexes. debug must also be True.
+            debug_testsuite=False,
             # They change when a function is inserted.
             flatten_namespace=False,
+            C_force_wrapper=False,
             C_line_length=72,
             F_flatten_namespace=False,
             F_line_length=72,
@@ -449,6 +437,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_impl_filename_class_template="wrap{file_scope}.{C_impl_filename_suffix}",
 
             C_header_utility_template="types{library}.{C_header_filename_suffix}",
+            C_impl_utility_template="util{library}.{C_impl_filename_suffix}",
             C_enum_template="{C_prefix}{C_name_scope}{enum_name}",
             C_enum_member_template="{C_prefix}{C_name_scope}{enum_member_name}",
             C_name_template=(
@@ -462,6 +451,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_var_len_template="N{c_var}",  # argument for result of len(arg)
             C_var_trim_template="L{c_var}",  # argument for result of len_trim(arg)
             C_var_size_template="S{c_var}",  # argument for result of size(arg)
+            CXX_standard=2011,
             # Fortran's names for C functions
             F_C_name_template=(
                 "{F_C_prefix}{F_name_scope}{underscore_name}{function_suffix}{template_suffix}"
@@ -496,6 +486,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             LUA_name_template="{function_name}",
             LUA_name_impl_template="{LUA_prefix}{C_name_scope}{underscore_name}",
 
+            PY_create_generic=True,
             PY_module_filename_template=(
                 "py{file_scope}module.{PY_impl_filename_suffix}"
             ),
@@ -505,6 +496,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_utility_filename_template=(
                 "py{library}util.{PY_impl_filename_suffix}"
             ),
+            PY_write_helper_in_util=False,
             PY_PyTypeObject_template="{PY_prefix}{cxx_class}_Type",
             PY_PyObject_template="{PY_prefix}{cxx_class}",
             PY_type_filename_template=(
@@ -523,6 +515,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_member_setter_template=(
                 "{PY_prefix}{cxx_class}_{variable_name}_setter"
             ),
+            PY_member_object_template="{variable_name}_obj",
+            PY_member_data_template="{variable_name}_dataobj",
             PY_struct_array_descr_create_template=(
                 "{PY_prefix}{cxx_class}_create_array_descr"
             ),
@@ -578,6 +572,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             file_scope = "_".join(self.scope_file),
             F_arg_c_call="",
             F_C_prefix="c_",
+            F_C_name="-F_C_name-",
             F_derived_member="cxxmem",
             F_name_assign="assign",
             F_name_associated="associated",
@@ -595,28 +590,44 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_capsule_data_type="SHROUD_capsule_data",
             F_capsule_type="SHROUD_capsule",
             F_capsule_final_function="SHROUD_capsule_final",
+            F_capsule_delete_function="SHROUD_capsule_delete",
             F_array_type="SHROUD_array",
 
+            c_array_shape="",
+            c_array_size="1",
+
+            f_array_allocate="",
+            f_array_shape="",
+            f_assumed_shape="",  # scalar
+            f_declare_shape_prefix="SHAPE_",
+            f_declare_shape_array="",
+            f_get_shape_array="",
             f_pointer_shape="",  # scalar
+            f_shape_var="",
             f_var_shape="",      # scalar
 
+            rank="0",            # scalar
+            
             LUA_result="rv",
             LUA_prefix="l_",
             LUA_state_var="L",
             LUA_this_call="",
 
+            PY_ARRAY_UNIQUE_SYMBOL="SHROUD_{}_ARRAY_API".format(
+                self.library.upper()),
+            PY_helper_prefix="SHROUD_",
             PY_prefix="PY_",
             PY_module_name=self.library.lower(),
             PY_result="SHTPy_rv",  # Create PyObject for result
             PY_this_call="",
             PY_type_obj="obj",  # name of cpp class pointer in PyObject
             PY_type_dtor="idtor",  # name of destructor capsule infomation
+            PY_value_init="{NULL, NULL, NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
             # set default values for fields which may be unset.
-            # c_ptr='',
             # c_const='',
             CXX_this_call="",
             CXX_template="",
@@ -633,14 +644,20 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.update(dict(
                 c_val="XXXc_val",
                 c_var="XXXc_var",
+                c_var_capsule="XXXc_var_capsule",
                 c_var_context="XXXc_var_context",
                 c_var_dimension="XXXc_var_dimension",
+                c_var_len="XXXc_var_len",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
+                cxx_nonconst_ptr="XXXcxx_nonconst_ptr",
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
+                idtor="XXXidtor",
+                PY_member_object="XXXPY_member_object",
+                PY_to_object_func="XXXPY_to_object_func",
             ))
 
         fmt_library.F_filename_suffix = "f"
@@ -660,6 +677,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.cast_static = "("
             fmt_library.cast1 = ") "
             fmt_library.cast2 = ""
+            fmt_library.nullptr = "NULL"
         else:
             fmt_library.C_header_filename_suffix = "h"
             fmt_library.C_impl_filename_suffix = "cpp"
@@ -675,6 +693,21 @@ class LibraryNode(AstNode, NamespaceMixin):
             fmt_library.cast_static = "static_cast<"
             fmt_library.cast1 = ">\t("
             fmt_library.cast2 = ")"
+            if self.options.CXX_standard >= 2011:
+                fmt_library.nullptr = "nullptr"
+            else:
+                fmt_library.nullptr = "NULL"
+
+        # Update format based on options
+        options = self.options
+        if options.PY_write_helper_in_util:
+            fmt_library.PY_helper_static = ""
+            fmt_library.PY_helper_prefix = (
+                fmt_library.C_prefix + fmt_library.PY_helper_prefix )
+        else:        
+            fmt_library.PY_helper_static = "static "
+        fmt_library.PY_typedef_converter = (
+                fmt_library.C_prefix + "SHROUD_converter_value")
 
         for name in [
             "C_header_filename",
@@ -697,8 +730,6 @@ class LibraryNode(AstNode, NamespaceMixin):
                     )
                 )
 
-        self.option_to_fmt()
-
         if fmtdict:
             fmt_library.update(fmtdict, replace=True)
 
@@ -713,6 +744,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.eval_template("C_header_filename", "_library")
         self.eval_template("C_impl_filename", "_library")
         self.eval_template("C_header_utility")
+        self.eval_template("C_impl_utility")
 
         self.eval_template("C_memory_dtor_function")
 
@@ -757,6 +789,10 @@ class BlockNode(AstNode, NamespaceMixin):
         self.functions = parent.functions
         self.namespaces = parent.namespaces
         self.variables = parent.variables
+        self.scope = parent.scope
+        self.scope_file = parent.scope_file
+        self.symbols = parent.symbols
+        self.cxx_header = parent.cxx_header
 
         self.options = util.Scope(parent=parent.options)
         if options:
@@ -1147,6 +1183,15 @@ class ClassNode(AstNode, NamespaceMixin):
 
         return new
 
+    def create_node_map(self):
+        """Create a map from the name to Node for declarations in 
+        the class.
+        """
+        self.map_name_to_node = {}
+        for var in self.variables:
+            self.map_name_to_node[var.name] = var
+        for node in self.functions:
+            self.map_name_to_node[node.ast.name] = node
 
 ######################################################################
 
@@ -1234,6 +1279,7 @@ class FunctionNode(AstNode):
         # working variables
         self._PTR_C_CXX_index = None
         self._PTR_F_C_index = None
+        self.cxx_header = []
         self._cxx_overload = None
         self.declgen = None  # generated declaration.
         self._default_funcs = []  # generated default value functions  (unused?)
@@ -1395,7 +1441,6 @@ class FunctionNode(AstNode):
 
         self.fmtdict = util.Scope(parent.fmtdict)
 
-        self.option_to_fmt()
         if fmtdict:
             self.fmtdict.update(fmtdict, replace=True)
 
@@ -1421,6 +1466,9 @@ class FunctionNode(AstNode):
         """Look for symbols within parent. """
         return self.parent.unqualified_lookup(name)
 
+    def may_have_args(self):
+        # only FunctionNode may have args
+        return True
 
 ######################################################################
 
@@ -1623,6 +1671,10 @@ class VariableNode(AstNode):
         fmt_var.variable_lower = fmt_var.variable_name.lower()
         fmt_var.variable_upper = fmt_var.variable_name.upper()
 
+        ntypemap = ast.typemap
+        fmt_var.c_type = ntypemap.c_type
+        fmt_var.cxx_type = ntypemap.cxx_type
+
         # Add to namespace
 
 
@@ -1800,6 +1852,53 @@ def clean_list(lst):
         if line is None:
             lst[i] = ""
 
+def listify(entry, names):
+    """
+    Convert newline delimited strings into a list of strings.
+    Remove trailing newline which will generate a blank line.
+    Or replace None with "" in a list.
+    Accept a dictionary and return a new dictionary.
+
+    splicer:
+      c: |
+        // line 1
+        // line 2
+      c_buf:
+        - // Test adding a blank line below.
+        -
+
+    fstatements:
+      f:
+        local_var: pointer
+        call: |
+           blah blah
+           yada yada yada
+
+    Args:
+        entry - dictionary
+        names - key names which must be lists.
+    """
+    new = {}
+    for key, value in entry.items():
+        if isinstance(value, dict):
+            new[key] = listify(value, names)
+        elif key in names:
+            if isinstance(value, str):
+#              if value[-1] == "\n":
+#                  new[key] = [ value[:-1] ]
+#              else:
+#                  new[key] = [ value ]
+                new[key] = value.split("\n")
+                if value[-1] == "\n":
+                    new[key].pop()
+            elif isinstance(value, list):
+                new[key] = ["" if v is None else v for v in value]
+            else:
+                new[key] = [ str(value) ]
+        else:
+            new[key] = value
+    return new
+
 
 def add_declarations(parent, node):
     if "declarations" not in node:
@@ -1819,6 +1918,20 @@ def add_declarations(parent, node):
             clean_dictionary(dct)
             decl = dct["decl"]
             del dct["decl"]
+
+            if "fstatements" in dct:
+                dct["fstatements"] = listify(dct["fstatements"], [
+                    "pre_call", "call", "post_call", "final", "ret",
+                    "declare",
+                    "post_parse",
+                    "declare_capsule", "post_call_capsule", "fail_capsule",
+                    "declare_keep", "post_call_keep", "fail_keep",
+                    "cleanup", "fail",
+                ])
+            if "splicer" in dct:
+                dct["splicer"] = listify(
+                    dct["splicer"],["c", "c_buf", "f", "py"]
+                )
             declnode = parent.add_declaration(decl, **dct)
             add_declarations(declnode, subnode)
         else:

@@ -162,7 +162,7 @@ Sum
 
 C++ library function from :file:`pointers.cpp`:
 
-.. literalinclude:: ../regression/run/pointers/pointers.cpp
+.. literalinclude:: ../regression/run/pointers/pointers.c
    :language: c
    :start-after: start Sum
    :end-before: end Sum
@@ -172,7 +172,7 @@ C++ library function from :file:`pointers.cpp`:
 .. code-block:: yaml
 
    - decl: void Sum(int len +implied(size(values)),
-                    int *values +dimension(:)+intent(in),
+                    int *values +rank(1)+intent(in),
                     int *result +intent(out))
 
 The ``POI`` prefix to the function names is derived from 
@@ -182,14 +182,14 @@ This is a C++ file which provides a C API via ``extern "C"``.
 
 :file:`wrappointers.cpp`:
 
-.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrappointers.cpp
+.. literalinclude:: ../regression/reference/pointers-cxx/wrappointers.cpp
    :language: c
    :start-after: start POI_sum
    :end-before: end POI_sum
 
 Fortran calls C via the following interface:
 
-.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-cxx/wrapfpointers.f
    :language: fortran
    :start-after: start c_sum
    :end-before: end c_sum
@@ -197,7 +197,7 @@ Fortran calls C via the following interface:
 
 The Fortran wrapper:
 
-.. literalinclude:: ../regression/reference/pointers-numpy-cpp/wrapfpointers.f
+.. literalinclude:: ../regression/reference/pointers-cxx/wrapfpointers.f
    :language: fortran
    :start-after: start sum
    :end-before: end sum
@@ -210,6 +210,295 @@ Example usage:
     integer(C_INT) rv_int
     call sum([1,2,3,4,5], rv_int)
     call assert_true(rv_int .eq. 15, "sum")
+
+.. ############################################################
+
+.. _example_truncate_to_int:
+
+truncate_to_int
+^^^^^^^^^^^^^^^
+Sometimes it is more convenient to have the wrapper allocate an
+``intent(out)`` array before passing it to the C++ function.  This can
+be accomplished by adding the *deref(allocatable)* attribute.
+
+C++ library function from :file:`pointers.c`:
+
+.. literalinclude:: ../regression/run/pointers/pointers.c
+   :language: c
+   :start-after: start truncate_to_int
+   :end-before: end truncate_to_int
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
+                                 int *    out    +intent(out)
+                                                 +deref(allocatable)+dimension(size(in)),
+                                 int      sizein +implied(size(in)))
+      
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_truncate_to_int
+   :end-before: end c_truncate_to_int
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start truncate_to_int
+   :end-before: end truncate_to_int
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    integer(c_int), allocatable :: out_int(:)
+    call truncate_to_int([1.2d0, 2.3d0, 3.4d0, 4.5d0], out_int)
+
+.. ############################################################
+
+.. _example_getRawPtrToFixedArray:
+
+getRawPtrToFixedArray
+^^^^^^^^^^^^^^^^^^^^^
+
+C++ library function from :file:`pointers.c`:
+
+.. literalinclude:: ../regression/run/pointers/pointers.c
+   :language: c
+   :start-after: start getRawPtrToFixedArray
+   :end-before: end getRawPtrToFixedArray
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start get_raw_ptr_to_fixed_array
+   :end-before: end get_raw_ptr_to_fixed_array
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    type(C_PTR) :: cptr_array
+    call get_raw_ptr_to_fixed_array(cptr_array)
+
+    
+.. ############################################################
+
+.. _example_getPtrToScalar:
+
+getPtrToScalar
+^^^^^^^^^^^^^^
+
+C++ library function from :file:`pointers.c`:
+
+.. literalinclude:: ../regression/run/pointers/pointers.c
+   :language: c
+   :start-after: start getPtrToScalar
+   :end-before: end getPtrToScalar
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void getPtrToScalar(int **nitems+intent(out))
+
+This is a C file which provides the bufferify function.
+
+:file:`wrappointers.c`:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
+   :language: c
+   :start-after: start POI_get_ptr_to_scalar_bufferify
+   :end-before: end POI_get_ptr_to_scalar_bufferify
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_get_ptr_to_scalar
+   :end-before: end c_get_ptr_to_scalar
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start get_ptr_to_scalar
+   :end-before: end get_ptr_to_scalar
+   :dedent: 4
+
+Assigning to ``iscalar`` will modify the C++ variable.
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: iscalar
+    call get_ptr_to_scalar(iscalar)
+    iscalar = 0
+
+.. ############################################################
+
+.. _example_getPtrToDynamicArray:
+
+getPtrToDynamicArray
+^^^^^^^^^^^^^^^^^^^^
+
+C++ library function from :file:`pointers.c`:
+
+.. literalinclude:: ../regression/run/pointers/pointers.c
+   :language: c
+   :start-after: start getPtrToDynamicArray
+   :end-before: end getPtrToDynamicArray
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount),
+                                      int *ncount+intent(out)+hidden)
+
+This is a C file which provides the bufferify function.
+
+:file:`wrappointers.c`:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
+   :language: c
+   :start-after: start POI_get_ptr_to_dynamic_array_bufferify
+   :end-before: end POI_get_ptr_to_dynamic_array_bufferify
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_get_ptr_to_dynamic_array
+   :end-before: end c_get_ptr_to_dynamic_array
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start get_ptr_to_dynamic_array
+   :end-before: end get_ptr_to_dynamic_array
+   :dedent: 4
+
+Assigning to ``iarray`` will modify the C++ variable.
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: iarray(:)
+    call get_ptr_to_dynamic_array(iarray)
+    iarray = 0
+
+.. ############################################################
+
+.. _example_getRawPtrToInt2d:
+
+getRawPtrToInt2d
+^^^^^^^^^^^^^^^^
+
+`global_int2d` is a two dimensional array of non-contiguous rows.
+C stores the address of each row.
+Shroud can only deal with this as a ``type(C_PTR)`` and expects the
+user to dereference the address.
+
+C++ library function from :file:`pointers.c`:
+
+.. code-block:: yaml
+
+    static int global_int2d_1[] = {1,2,3};
+    static int global_int2d_2[] = {4,5};
+    static int *global_int2d[] = {global_int2d_1, global_int2d_2};
+
+    void getRawPtrToInt2d(int ***arg)
+    {
+        *arg = (int **) global_int2d;
+    }
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void getRawPtrToInt2d(int ***arg +intent(out))
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start get_raw_ptr_to_int2d
+   :end-before: end get_raw_ptr_to_int2d
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    type(C_PTR) :: addr
+    type(C_PTR), pointer :: array2d(:)
+    integer(C_INT), pointer :: row1(:), row2(:)
+    integer total
+
+    call get_raw_ptr_to_int2d(addr)
+
+    ! Dereference the pointers into two 1d arrays.
+    call c_f_pointer(addr, array2d, [2])
+    call c_f_pointer(array2d(1), row1, [3])
+    call c_f_pointer(array2d(2), row2, [2])
+
+    total = row1(1) + row1(2) + row1(3) + row2(1) + row2(2)
+    call assert_equals(15, total)
+
+.. ############################################################
+
+.. _example_checkInt2d:
+
+checkInt2d
+^^^^^^^^^^
+
+Example of using the ``type(C_PTR)`` returned 
+:ref:`getRawPtrToInt2d <example_getRawPtrToInt2d>`.
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: int checkInt2d(int **arg +intent(in))
+
+Fortran calls C via the following interface.
+Note the use of ``VALUE`` attribute.
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start check_int2d
+   :end-before: end check_int2d
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    type(C_PTR) :: addr
+    integer total
+
+    call get_raw_ptr_to_int2d(addr)
+    total = check_int2d(addr)
+    call assert_equals(15, total)
 
 
 .. ############################################################
@@ -257,6 +546,125 @@ Fortran usage:
     call get_min_max(minout, maxout)
     call assert_equals(-1, minout, "get_min_max minout")
     call assert_equals(100, maxout, "get_min_max maxout")
+
+.. ############################################################
+
+.. _example_returnIntPtrToScalar:
+
+returnIntPtrToScalar
+^^^^^^^^^^^^^^^^^^^^
+
+.. fc_statememnt f_native_*_result_pointer
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: int *returnIntPtrToScalar(void)
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_return_int_ptr_to_scalar
+   :end-before: end c_return_int_ptr_to_scalar
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start return_int_ptr_to_scalar
+   :end-before: end return_int_ptr_to_scalar
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: irvscalar
+    irvscalar => return_int_ptr_to_scalar()
+
+.. ############################################################
+
+.. _example_returnIntPtrToFixedArray:
+
+returnIntPtrToFixedArray
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: int *returnIntPtrToFixedArray(void) +dimension(10)
+
+This is a C file which provides the bufferify function.
+
+:file:`wrappointers.c`:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
+   :language: c
+   :start-after: start POI_return_int_ptr_to_fixed_array_bufferify
+   :end-before: end POI_return_int_ptr_to_fixed_array_bufferify
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_return_int_ptr_to_fixed_array_bufferify
+   :end-before: end c_return_int_ptr_to_fixed_array_bufferify
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start return_int_ptr_to_fixed_array
+   :end-before: end return_int_ptr_to_fixed_array
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    integer(C_INT), pointer :: irvarray(:)
+    irvarray => return_int_ptr_to_fixed_array()
+
+.. ############################################################
+
+.. _example_returnIntScalar:
+
+returnIntScalar
+^^^^^^^^^^^^^^^
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: int *returnIntScalar(void) +deref(scalar)
+
+This is a C file which provides the bufferify function.
+
+:file:`wrappointers.c`:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
+   :language: c
+   :start-after: start POI_return_int_scalar
+   :end-before: end POI_return_int_scalar
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start return_int_scalar
+   :end-before: end return_int_scalar
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    ivalue = return_int_scalar()
 
 Bool
 ----
@@ -563,6 +971,68 @@ Fortran usage:
     call implied_text_len(name1)
     call assert_equals("ImpliedTextLen", name1)
 
+.. ############################################################
+
+.. _example_acceptCharArrayIn:
+
+acceptCharArrayIn
+^^^^^^^^^^^^^^^^^
+
+Arguments of type ``char **`` are assumed to be a list of ``NULL``
+terminated strings.  In Fortran this pattern would be an array of
+``CHARACTER`` where all strings are the same length.  The Fortran
+variable is converted into the the C version by copying the data then
+releasing it at the end of the wrapper.
+
+:file:`pointers.yaml`:
+
+.. code-block:: yaml
+
+    - decl: void acceptCharArrayIn(char **names +intent(in))
+
+This is a C file which provides the bufferify function.
+
+:file:`wrappointers.c`:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrappointers.c
+   :language: c
+   :start-after: start POI_accept_char_array_in_bufferify
+   :end-before: end POI_accept_char_array_in_bufferify
+
+Most of the work is done by the helper function:
+
+.. literalinclude:: ../regression/reference/none/helpers.c
+   :language: c
+   :start-after: start ShroudStrArrayAlloc c_source
+   :end-before: end ShroudStrArrayAlloc c_source
+
+Fortran calls C via the following interface:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start c_accept_char_array_in
+   :end-before: end c_accept_char_array_in
+   :dedent: 4
+
+The Fortran wrapper:
+
+.. literalinclude:: ../regression/reference/pointers-c/wrapfpointers.f
+   :language: fortran
+   :start-after: start accept_char_array_in
+   :end-before: end accept_char_array_in
+   :dedent: 4
+
+Example usage:
+
+.. code-block:: fortran
+
+    character(10) :: in(3) = [ &
+         "dog       ", &
+         "cat       ", &
+         "monkey    "  &
+         ]
+    call accept_char_array_in(in)
+
 
 std::string
 -----------
@@ -656,6 +1126,8 @@ char functions
 
 getCharPtr1
 ^^^^^^^^^^^
+
+.. fc_statememnt f_char_scalar_result_allocatable
 
 Return a pointer and convert into an ``ALLOCATABLE`` ``CHARACTER``
 variable.  The Fortran application is responsible to release the
@@ -997,7 +1469,7 @@ into the user's argument.
 If the argument is too short, not all values returned by
 the library function will be copied.
 
-.. literalinclude:: ../regression/reference/vectors/wrapvectors.cpp
+.. literalinclude:: ../regression/reference/vectors/utilvectors.cpp
    :language: c
    :start-after: start helper copy_array
    :end-before: end helper copy_array
@@ -1208,7 +1680,7 @@ C library function in :file:`clibrary.c`:
 
 .. code-block:: yaml
 
-    - decl: int passAssumedTypeDim(void *arg+assumedtype+dimension)
+    - decl: int passAssumedTypeDim(void *arg+assumedtype+rank(1))
 
 Fortran calls C via the following interface:
 
@@ -1419,7 +1891,7 @@ passStruct1
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct-c/struct.c
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStruct1
    :end-before: end passStruct1
@@ -1457,7 +1929,7 @@ passStructByValue
 
 C library function in :file:`struct.c`:
 
-.. literalinclude:: ../regression/run/struct-c/struct.c
+.. literalinclude:: ../regression/run/struct/struct.c
    :language: c
    :start-after: start passStructByValue
    :end-before: end passStructByValue
@@ -1520,10 +1992,10 @@ The C++ header file from :file:`classes.hpp`.
     declarations:
     - decl: class Class1
       declarations:
-      - decl: Class1()         +name(new)
+      - decl: Class1()
         format:
           function_suffix: _default
-      - decl: Class1(int flag) +name(new)
+      - decl: Class1(int flag)
         format:
         function_suffix: _flag
       - decl: ~Class1() +name(delete)
@@ -1534,13 +2006,13 @@ The C wrappers:
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start CLA_Class1_new_default
-   :end-before: end CLA_Class1_new_default
+   :start-after: start CLA_Class1_ctor_default
+   :end-before: end CLA_Class1_ctor_default
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
-   :start-after: start CLA_Class1_new_flag
-   :end-before: end CLA_Class1_new_flag
+   :start-after: start CLA_Class1_ctor_flag
+   :end-before: end CLA_Class1_ctor_flag
 
 .. literalinclude:: ../regression/reference/classes/wrapClass1.cpp
    :language: c
@@ -1551,14 +2023,14 @@ The corresponding Fortran interfaces:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start c_class1_new_default
-   :end-before: end c_class1_new_default
+   :start-after: start c_class1_ctor_default
+   :end-before: end c_class1_ctor_default
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start c_class1_new_flag
-   :end-before: end c_class1_new_flag
+   :start-after: start c_class1_ctor_flag
+   :end-before: end c_class1_ctor_flag
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
@@ -1571,14 +2043,14 @@ And the Fortran wrappers:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start class1_new_default
-   :end-before: end class1_new_default
+   :start-after: start class1_ctor_default
+   :end-before: end class1_ctor_default
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start class1_new_flag
-   :end-before: end class1_new_flag
+   :start-after: start class1_ctor_flag
+   :end-before: end class1_ctor_flag
    :dedent: 4
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
@@ -1607,8 +2079,8 @@ are combined into a generic interface.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: ! start interface class1_new
-   :end-before: ! end interface class1_new
+   :start-after: ! start interface class1
+   :end-before: ! end interface class1
    :dedent: 4
 
 A class instance is created and destroy from Fortran as:
@@ -1618,7 +2090,7 @@ A class instance is created and destroy from Fortran as:
     use classes_mod
     type(class1) obj
 
-    obj = class1_new()
+    obj = class1()
     call obj%delete
 
 Corresponding C++ code:
@@ -1741,7 +2213,7 @@ The class variables can be used as:
     type(class1) obj
     integer iflag
 
-    obj = class1_new()
+    obj = class1()
     call obj%set_test(4)
     iflag = obj%get_test()
 

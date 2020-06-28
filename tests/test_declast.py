@@ -18,14 +18,15 @@ from shroud import util
 import unittest
 import copy
 
+# Useful to format reference output of to_dict
+#import pprint
+#pp = pprint.PrettyPrinter(indent=4)
+#        print(pp.pprint(todict.to_dict(r)))
 
 class CheckParse(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
-        typemap.initialize()
-        #        declast.create_global_namespace()  # also done in LibraryNode
-
         self.library = ast.LibraryNode(library="cc")
         self.class1 = self.library.add_class("Class1")
 
@@ -39,6 +40,8 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(0, r.is_pointer())
         s = r.gen_decl()
         self.assertEqual("int", s)
+        self.assertEqual("scalar", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
 
         r = declast.check_decl("int var1")
         self.assertIsNone(r.get_subprogram())
@@ -64,11 +67,29 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             "int * var1", r.gen_arg_as_cxx(asgn_value=True, force_ptr=True)
         )
+        self.assertEqual("int", r.as_cast())
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': []},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("scalar", r.get_indirect_stmt())
 
         r = declast.check_decl("int const var1")
         s = r.gen_decl()
         self.assertEqual("const int var1", s)
-
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': []},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("scalar", r.get_indirect_stmt())
         r = declast.check_decl("int *var1 +dimension(:)")
         self.assertIsNone(r.get_subprogram())
         self.assertEqual(1, r.is_pointer())
@@ -78,35 +99,79 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("int var1", r.gen_arg_as_c(as_scalar=True))
         self.assertEqual("int * var1", r.gen_arg_as_cxx())
         self.assertEqual("integer(C_INT) :: var1(:)", r.gen_arg_as_fortran())
-        self.assertEqual(
-            "integer(C_INT), pointer :: var1(:)",
-            r.gen_arg_as_fortran(attributes=["pointer"]),
-        )
-        self.assertEqual(
-            "integer(C_INT), pointer :: var1(:)",
-            r.gen_arg_as_fortran(is_pointer=True),
-        )
         self.assertEqual("integer(C_INT) :: var1(*)", r.bind_c())
 
         r = declast.check_decl("const int * var1")
         s = r.gen_decl()
         self.assertEqual("const int * var1", s)
-        self.assertEqual("const int * var1", r.gen_arg_as_c())
-        self.assertEqual("const int * var1", r.gen_arg_as_c(asgn_value=True))
-        self.assertEqual("const int * var1", r.gen_arg_as_cxx())
-        self.assertEqual("const int * var1", r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_c())
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_c(asgn_value=True))
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_cxx())
+        self.assertEqual("const int * var1",
+                         r.gen_arg_as_cxx(asgn_value=True))
+        self.assertEqual("int *", r.as_cast())
 
         r = declast.check_decl("int * const var1")
         s = r.gen_decl()
         self.assertEqual("int * const var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1', 'pointer': [
+                        {'const': True, 'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'})
+        self.assertEqual("*", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
 
         r = declast.check_decl("int **var1")
         s = r.gen_decl()
         self.assertEqual("int * * var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1', 'pointer': [
+                        {'ptr': '*'}, {'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("**", r.get_indirect_stmt())
+        self.assertEqual(None, r.get_array_size())
+
+        r = declast.check_decl("int &*var1")
+        s = r.gen_decl()
+        self.assertEqual("int & * var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'declarator': {
+                    'name': 'var1',
+                    'pointer': [{   'ptr': '&'}, {   'ptr': '*'}]
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("&*", r.get_indirect_stmt())
+        self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("const int * const * const var1")
         s = r.gen_decl()
         self.assertEqual("const int * const * const var1", s)
+        self.assertEqual(
+            todict.to_dict(r), {
+                'const': True,
+                'declarator': {
+                    'name': 'var1',
+                      'pointer': [
+                          {   'const': True, 'ptr': '*'},
+                          {   'const': True, 'ptr': '*'}]},
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        self.assertEqual("**", r.get_indirect_stmt())
+        self.assertEqual("int **", r.as_cast())
 
         r = declast.check_decl("long long var2")
         s = r.gen_decl()
@@ -124,6 +189,72 @@ class CheckParse(unittest.TestCase):
             },
         )
 
+    def test_type_int_array(self):
+        r = declast.check_decl("int var1[20]")
+        self.assertEqual("int var1[20]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var1[20]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var1', 'pointer': []},
+             'array': [{ 'constant': '20'}],
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+        self.assertEqual("int *", r.as_cast())
+        self.assertEqual(
+            "int var1[20]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var1(20)",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("int var2[20][10]")
+        self.assertEqual("int var2[20][10]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var2[20][10]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var2', 'pointer': []},
+             'array': [
+                 { 'constant': '20'},
+                 { 'constant': '10'},
+             ],
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+        self.assertEqual("int *", r.as_cast())
+        self.assertEqual(
+            "int var2[20][10]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var2(10,20)",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("int var3[DEFINE + 3]")
+        self.assertEqual("int var3[DEFINE+3]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("int var3[DEFINE+3]", s)
+        self.assertEqual(
+            {'array': [
+                {'left': {   'name': 'DEFINE'},
+                 'op': '+',
+                 'right': {   'constant': '3'}}],
+             'declarator': {   'name': 'var3', 'pointer': []},
+             'specifier': ['int'],
+             'typemap_name': 'int'},
+            todict.to_dict(r)
+        )
+        self.assertEqual("int *", r.as_cast())
+        self.assertEqual(
+            "int var3[DEFINE+3]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "integer(C_INT) :: var3(DEFINE+3)",
+            r.gen_arg_as_fortran())
+       
     def test_type_string(self):
         """Test string declarations
         """
@@ -132,8 +263,10 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("char var1")
         s = r.gen_decl()
         self.assertEqual("char var1", s)
+        self.assertEqual("char", r.as_cast())
 
         r = declast.check_decl("char *var1")
+        self.assertEqual("char *", r.as_cast())
         s = r.gen_decl()
         self.assertEqual("char * var1", s)
         s = r.gen_arg_as_fortran()
@@ -158,6 +291,10 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("character(len=:), allocatable :: var1", s)
 
         r = declast.check_decl("char **var1")
+        self.assertEqual(2, r.is_indirect())
+        self.assertEqual(2, r.is_array())
+        self.assertEqual('**', r.get_indirect_stmt())
+        self.assertEqual("char **", r.as_cast())
         s = r.gen_decl()
         self.assertEqual("char * * var1", s)
 
@@ -172,6 +309,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("std::string * var1", s)
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
+        self.assertEqual("char *", r.as_cast())
 
         r = declast.check_decl("std::string &var1")
         s = r.gen_decl()
@@ -183,6 +321,110 @@ class CheckParse(unittest.TestCase):
         s = r.gen_arg_as_c()
         self.assertEqual("char * var1", s)
 
+    def test_type_char_array(self):
+        # convert first dimension to Fortran CHARACTER(LEN=)
+        r = declast.check_decl("char var1[20]")
+        self.assertEqual("char var1[20]", str(r))
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
+        self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("20", r.get_array_size())
+        s = r.gen_decl()
+        self.assertEqual("char var1[20]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var1', 'pointer': []},
+             'array': [{ 'constant': '20'}],
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var1[20]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(kind=C_CHAR) :: var1(20)",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("char var2[20][10][5]")
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
+        self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("(20)*(10)*(5)", r.get_array_size())
+        self.assertEqual("char var2[20][10][5]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("char var2[20][10][5]", s)
+        self.assertEqual(
+            {'declarator': {
+                'name': 'var2', 'pointer': []},
+             'array': [
+                 { 'constant': '20'},
+                 { 'constant': '10'},
+                 { 'constant': '5'},
+             ],
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var2[20][10][5]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(kind=C_CHAR) :: var2(5,10,20)",
+            r.gen_arg_as_fortran())
+        
+        r = declast.check_decl("char var3[DEFINE + 3]")
+        self.assertEqual(0, r.is_indirect())
+        self.assertEqual(1, r.is_array())
+        self.assertEqual("char *", r.as_cast())
+        self.assertEqual('[]', r.get_indirect_stmt())
+        self.assertEqual("DEFINE+3", r.get_array_size())
+        self.assertEqual("char var3[DEFINE+3]", str(r))
+        s = r.gen_decl()
+        self.assertEqual("char var3[DEFINE+3]", s)
+        self.assertEqual(
+            {'array': [
+                {'left': {   'name': 'DEFINE'},
+                 'op': '+',
+                 'right': {   'constant': '3'}}],
+             'declarator': {   'name': 'var3', 'pointer': []},
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char var3[DEFINE+3]",
+            r.gen_arg_as_c())
+        self.assertEqual(
+            "character(kind=C_CHAR) :: var3(DEFINE+3)",
+            r.gen_arg_as_fortran())
+    
+        r = declast.check_decl("char *var4[44]")
+        self.assertEqual("char * var4[44]", str(r))
+        self.assertEqual(1, r.is_indirect())
+        self.assertEqual(2, r.is_array())
+        self.assertEqual("char **", r.as_cast())
+        self.assertEqual('*[]', r.get_indirect_stmt())
+        self.assertEqual("44", r.get_array_size())
+        s = r.gen_decl()
+        self.assertEqual("char * var4[44]", s)
+        self.assertEqual(
+            {'array': [{'constant': '44'}],
+             'declarator': {   'name': 'var4',
+                               'pointer': [{'ptr': '*'}]},
+             'specifier': ['char'],
+             'typemap_name': 'char'},
+            todict.to_dict(r)
+        )
+        self.assertEqual(
+            "char * var4[44]",
+            r.gen_arg_as_c())
+        self.assertEqual(  # XXX - fixme
+            "character(kind=C_CHAR) :: var4(44)",
+            r.gen_arg_as_fortran())
+    
     def test_type_vector(self):
         """Test vector declarations
         """
@@ -535,7 +777,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("const std::string & getName() const", s)
         self.assertFalse(r.is_pointer())
         self.assertTrue(r.is_reference())
-        self.assertTrue(r.is_indirect())
+        self.assertEqual(1, r.is_indirect())
 
         self.assertEqual(
             todict.to_dict(r),
@@ -637,7 +879,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("new", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
-        self.assertFalse(r.is_indirect())
+        self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 new", r.gen_arg_as_cxx(params=None))
         self.assertEqual("CC_Class1 new()", r.gen_arg_as_c())
 
@@ -661,7 +903,7 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("dtor", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
-        self.assertFalse(r.is_indirect())
+        self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 dtor()", r.gen_arg_as_cxx())
         self.assertEqual("CC_Class1 dtor()", r.gen_arg_as_c())
 
@@ -875,54 +1117,95 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(r.name, "Function4b")  # first is unchanged
         self.assertEqual(r2.name, "newname")
 
+    def test_struct(self):
+        struct = self.library.add_struct("""
+struct Cstruct_list {
+    int nitems;
+    int *ivalue;
+};
+""")
+        self.assertEqual(2, len(struct.variables))
+        ast = struct.variables[0].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'nitems',
+                    'pointer': []
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+        ast = struct.variables[1].ast
+        self.assertEqual(
+            todict.to_dict(ast), {
+                'declarator': {
+                    'name': 'ivalue',
+                    'pointer': [{   'ptr': '*'}]
+                },
+                'specifier': ['int'],
+                'typemap_name': 'int'
+            })
+
 
 class CheckExpr(unittest.TestCase):
     # No need for namespace
 
+    def test_constant1(self):
+        r = declast.check_expr("20")
+        self.assertEqual("20", todict.print_node(r))
+        self.assertEqual(
+            {"constant": "20"},
+            todict.to_dict(r))
+
     def test_identifier1(self):
         r = declast.check_expr("id")
         self.assertEqual("id", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "id"})
+        self.assertEqual(
+            {"name": "id"},
+            todict.to_dict(r))
 
     def test_identifier_no_args(self):
         r = declast.check_expr("id()")
         self.assertEqual("id()", todict.print_node(r))
-        self.assertEqual(todict.to_dict(r), {"name": "id", "args": []})
+        self.assertEqual(
+            {"name": "id", "args": []},
+            todict.to_dict(r))
 
     def test_identifier_with_arg(self):
         r = declast.check_expr("id(arg1)")
         self.assertEqual("id(arg1)", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r), {"name": "id", "args": [{"name": "arg1"}]}
+            {"name": "id", "args": [{"name": "arg1"}]},
+            todict.to_dict(r)
         )
 
     def test_identifier_with_args(self):
         r = declast.check_expr("id(arg1,1)")
         self.assertEqual("id(arg1,1)", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r), {"name": "id", "args": [
+            {"name": "id", "args": [
                 {"name": "arg1"},
                 {"constant": "1"},
-            ]}
+            ]},
+            todict.to_dict(r)
         )
 
     def test_constant(self):
         r = declast.check_expr("1 + 2.345")
         self.assertEqual("1+2.345", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {"constant": "1"},
                 "op": "+",
                 "right": {"constant": "2.345"},
             },
+            todict.to_dict(r)
         )
 
     def test_binary(self):
         r = declast.check_expr("a + b * c")
         self.assertEqual("a+b*c", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {"name": "a"},
                 "op": "+",
@@ -932,12 +1215,12 @@ class CheckExpr(unittest.TestCase):
                     "right": {"name": "c"},
                 },
             },
+            todict.to_dict(r),
         )
 
         r = declast.check_expr("(a + b) * c")
         self.assertEqual("(a+b)*c", todict.print_node(r))
         self.assertEqual(
-            todict.to_dict(r),
             {
                 "left": {
                     "node": {
@@ -949,6 +1232,7 @@ class CheckExpr(unittest.TestCase):
                 "op": "*",
                 "right": {"name": "c"},
             },
+            todict.to_dict(r),
         )
 
     def test_others(self):

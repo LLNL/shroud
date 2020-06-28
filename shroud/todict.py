@@ -53,7 +53,25 @@ class ToDict(visitor.Visitor):
             # #- node.array,
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
         )
-        add_true_fields(node, d, ["attrs", "const", "func_const", "volatile"])
+        attrs = {key: value
+                 for (key, value) in node.attrs.items()
+                 if value is not None}
+        if attrs:
+            d["attrs"] = attrs
+
+        metaattrs = {key: value
+                 for (key, value) in node.metaattrs.items()
+                 if value is not None}
+        if metaattrs:
+            if "struct_member" in metaattrs:
+                # struct_member is a ast.VariableNode, add name instead
+                # to avoid huge dump.
+                metaattrs["struct_member"] = metaattrs["struct_member"].name
+            if "dimension" in metaattrs:
+                metaattrs["dimension"] = self.visit(metaattrs["dimension"])
+            d["metaattrs"] = metaattrs
+        
+        add_true_fields(node, d, ["const", "func_const", "volatile"])
         if node.declarator:
             # ctor and dtor have no declarator
             d["declarator"] = self.visit(node.declarator)
@@ -61,6 +79,8 @@ class ToDict(visitor.Visitor):
             d["storage"] = node.storage
         if node.params is not None:
             d["params"] = self.visit(node.params)
+        if node.array:
+            d["array"] = self.visit(node.array)
         if node.init is not None:
             d["init"] = node.init
         if node.template_arguments:
@@ -70,8 +90,6 @@ class ToDict(visitor.Visitor):
             d["template_arguments"] = lst
         if node.stmts_suffix:
             d["stmts_suffix"] = node.stmts_suffix
-        if node.return_pointer_as is not None:
-            d["return_pointer_as"] = node.return_pointer_as
         if node.ftrim_char_in:
             d["ftrim_char_in"] = node.ftrim_char_in
         return d
@@ -259,7 +277,6 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
-                # #- 'return_pointer_as',
                 "statements",
                 # #- 'CXX_subprogram', 'C_subprogram', 'F_subprogram',
                 # #- 'CXX_return_type', 'C_return_type', 'F_return_type',
@@ -368,11 +385,14 @@ class PrintNode(visitor.Visitor):
     """
 
     def param_list(self, node):
-        n = [node.name, "("]
-        for arg in node.args:
-            n.append(self.visit(arg))
-            n.append(",")
-        n[-1] = ")"
+        if node.args:
+            n = [node.name, "("]
+            for arg in node.args:
+                n.append(self.visit(arg))
+                n.append(",")
+            n[-1] = ")"
+        else:
+            n = [node.name, "()"]
         return "".join(n)
 
     def comma_list(self, lst):

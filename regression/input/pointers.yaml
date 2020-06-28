@@ -1,0 +1,259 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test pointers to POD and use of NumPy/list
+
+library: pointers
+cxx_header: pointers.h
+
+#language: c
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: False
+  literalinclude: True
+
+declarations:
+
+# Test individual argument to check PyBuild_Value
+- decl: void  intargs_in(const int *arg)
+- decl: void  intargs_inout(int *arg)
+  doxygen:
+    description: |
+       Argument is modified by library, defaults to intent(inout).
+- decl: void  intargs_out(int *arg +intent(out))
+
+- decl: void  intargs(const int argin      +intent(in),
+                            int * arginout +intent(inout),
+                            int * argout   +intent(out))
+
+- decl: void cos_doubles(double * in     +intent(in)  +rank(1),
+                         double * out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                         int      sizein +implied(size(in)))
+  doxygen:
+    brief: compute cos of IN and save in OUT
+    description:
+      allocate OUT same type as IN
+      implied size of array
+
+- decl: void truncate_to_int(double * in     +intent(in)  +rank(1),
+                             int *    out    +intent(out) +deref(allocatable)+dimension(size(in)),
+                             int      sizein +implied(size(in)))
+  doxygen:
+    brief: truncate IN argument and save in OUT
+    description: |
+      allocate OUT different type as IN
+      implied size of array
+
+- decl: void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))
+  doxygen:
+    brief: fill values into array
+    description: |
+       The function knows how long the array must be.
+       Fortran will treat the dimension as assumed-length.
+       The Python wrapper will create a NumPy array or list so it must
+       have an explicit dimension (not assumed-length).
+
+- decl: void get_values2(int *arg1 +intent(out)+dimension(3),
+                         int *arg2 +intent(out)+dimension(3))
+  doxygen:
+    brief: fill values into two arrays
+    description: |
+       Test two intent(out) arguments.
+       Make sure error handling works with C++.
+ 
+## test +allocatable(3)
+## test +allocatable(nvar)
+
+- decl: void iota_allocatable
+            (int nvar,
+             int *values+intent(out)+deref(allocatable)+dimension(nvar))
+- decl: void iota_dimension
+            (int nvar, int *values+intent(out)+dimension(nvar))
+
+######################################################################
+
+- decl: void Sum(int len +implied(size(values)),
+                 const int *values +rank(1),
+                 int *result +intent(out))
+  options:
+    # unable to deal with dimension
+    wrap_lua: False
+
+- decl: void fillIntArray(int *out +intent(out)+dimension(3))
+  doxygen:
+    description: |
+      Return three values into memory the user provides.
+
+- decl: void incrementIntArray(int * array  +rank(1)+intent(inout),
+                               int   sizein +implied(size(array)))
+  doxygen:
+    description: |
+      Increment array in place using intent(INOUT).
+
+#####
+# From regression/other/swig-fortran/pointers
+- decl: void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));
+# XXX - python wants intent(inout) to fill existing array
+# XXX - fortran prefers intent(out)
+- decl: int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));
+
+######################################################################
+# Deal with 'char **' arguments
+# Python: treat as list of string, even with numpy.
+
+- decl: int acceptCharArrayIn(char **names +intent(in))
+  doxygen:
+    description: |
+      Return strlen of the first index as a check.
+
+######################################################################
+# Routine which return pointers in arguments.
+
+- decl: void setGlobalInt(int value)
+- decl: int sumFixedArray(void)
+  doxygen:
+    description: |
+      Used to test values global_array.
+
+- decl: void getPtrToScalar(int **nitems+intent(out))
+  options:
+    wrap_python: False
+
+- decl: void getPtrToFixedArray(int **count+intent(out)+dimension(10))
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is always the same length.
+
+- decl: void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount),
+                                  int *ncount+intent(out)+hidden)
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is the length of
+      the argument ncount.
+
+- decl: void getPtrToFuncArray(int **count+intent(out)
+                                          +dimension(getLen()))
+  doxygen:
+    description: |
+      Return a Fortran pointer to an array which is the length
+      is computed by C++ function getLen.
+      getLen will be called from C/C++ to compute the shape.
+
+- decl: void getPtrToConstScalar(
+             const int **nitems+intent(out))
+  options:
+    wrap_python: False
+#   XXX - Python as an array
+- decl: void getPtrToFixedConstArray(
+             const int **count+intent(out)+dimension(10));
+- decl: void getPtrToDynamicConstArray(
+             const int **count+intent(out)+dimension(ncount),
+             int *ncount+intent(out)+hidden)
+
+- decl: void getRawPtrToScalar(int **nitems+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Called directly via an interface in Fortran.
+
+- decl: void getRawPtrToScalarForce(int **nitems+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Create a Fortran wrapper.
+  options:
+    F_force_wrapper: True
+    wrap_python: False
+
+- decl: void getRawPtrToFixedArray(int **count+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Return a type(C_PTR) to an array which is always the same length.
+      Called directly via an interface in Fortran.
+      # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
+
+- decl: void getRawPtrToFixedArrayForce(int **count+intent(out)+deref(raw))
+  doxygen:
+    description: |
+      Return a type(C_PTR) to an array which is always the same length.
+      Create a Fortran wrapper.
+  options:
+    F_force_wrapper: True
+    wrap_python: False
+
+- decl: void getRawPtrToInt2d(int ***arg +intent(out))
+  doxygen:
+    description: |
+      Test multiple layers of indirection.
+  options:
+    wrap_python: False
+- decl: int checkInt2d(int **arg +intent(in))
+  doxygen:
+    description: |
+      Check results of getRawPtrToInt2d.
+  options:
+    wrap_python: False
+# XXX - These two functions need to return PyCapsule for
+#       py_native_***_out
+
+- decl: void DimensionIn(const int *arg +dimension(10,20))
+  doxygen:
+    description: |
+      Test +dimension(10,20) +intent(in) together.
+      This will not use assumed-shape in the Fortran wrapper.
+  options:
+    # Normally no wrapper would be created.
+    # But want to test dimension in Fortran wrapper.
+    # XXX - should F_force_wrapper be true with +dimension?
+    F_force_wrapper: True
+    wrap_python: False
+
+######################################################################
+# Return a pointer directly.
+
+- decl: void *returnAddress1(int flag)
+  # Fortran: type(C_PTR)
+  # Python: PyCapsule
+- decl: void *returnAddress2(int flag)
+  options:
+    F_force_wrapper: True
+- decl: void fetchVoidPtr(void **addr+intent(out))
+
+- decl: int *returnIntPtrToScalar(void)
+  # Fortran: return pointer to scalar
+  # Python: [scalar]
+- decl: int *returnIntPtrToFixedArray(void) +dimension(10)
+  # Fortran: return pointer to array
+  # Python: [1,2,3,4,5,6,7,8,9,10]
+- decl: const int *returnIntPtrToConstScalar(void)
+- decl: const int *returnIntPtrToFixedConstArray(void) +dimension(10)
+
+- decl: int *returnIntScalar(void) +deref(scalar)
+  # Fortran: return scalar w/o POINTER attribute.
+- decl: int *returnIntRaw(void) +deref(raw)
+  doxygen:
+    description: |
+      Call directly via interface.
+  options:
+    # XXX create statement py_native_*_result_raw
+    wrap_python: False
+- decl: int *returnIntRawWithArgs(const char *name) +deref(raw)
+  doxygen:
+    description: |
+      Like returnIntRaw but with another argument to force a wrapper.
+      Uses fc_statements f_native_*_result_raw.
+  options:
+    wrap_python: False
+- decl: int **returnRawPtrToInt2d(void)
+  doxygen:
+    description: |
+      Test multiple layers of indirection.
+      # getRawPtrToInt2d
+  options:
+    F_force_wrapper: True
+    wrap_python: False

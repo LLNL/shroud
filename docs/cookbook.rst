@@ -7,6 +7,18 @@
 Cookbook
 ========
 
+Function is really a macro or function pointer
+----------------------------------------------
+
+When wrapping a C library, a function which is really a macro may not
+create a C wrapper.  It is necessary to use the option
+``C_force_wrapper: true`` to create a wrapper which will expand the
+macro and create a function which the Fortran wrapper may call.  This
+same issue occurs when the function is really a function pointer.
+
+When wrapping C++, a C wrapper is always created to create a extern C
+symbol that Fortran can call.  So this problem does not occur.
+
 F_name_impl with fortran_generic
 --------------------------------
 
@@ -42,3 +54,7 @@ Will generate the Fortran code
         module procedure change_int
         module procedure change_long
     end interface change
+
+
+.. XXX warn about dimension(1)
+   

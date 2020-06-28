@@ -1,0 +1,45 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test references
+# and pointers with classes.
+
+library: arrayclass
+cxx_header: arrayclass.hpp
+
+options:
+  debug: True
+  wrap_python: True
+
+declarations:
+##################################################
+- decl: class ArrayWrapper
+  declarations:
+  - decl: ArrayWrapper()
+  - decl: void setSize(int size)
+  - decl: int getSize() const
+  - decl: void fillSize(int &size +intent(out))
+  - decl: void allocate()
+  - decl: double* getArray() +dimension(getSize())
+  - decl: double* getArrayConst() const +dimension(getSize())
+  - decl: const double *getArrayC() +dimension(getSize())
+  - decl: const double *getArrayConstC() const +dimension(getSize())
+  - decl: void fetchArrayPtr(double **array +intent(out)+dimension(isize),
+                             int *isize     +hidden)
+  - decl: void fetchArrayRef(double *&array +intent(out)+dimension(isize),
+                             int &isize     +hidden)
+  - decl: void fetchArrayPtrConst(
+                             const double **array +intent(out)+dimension(isize),
+                             int *isize     +hidden)
+  - decl: void fetchArrayRefConst(
+                             const double *&array +intent(out)+dimension(isize),
+                             int &isize     +hidden)
+  - decl: void fetchVoidPtr(void **array +intent(out))
+  - decl: void fetchVoidRef(void *&array +intent(out))
+  - decl: bool checkPtr(void *array)
+  - decl: double sumArray()

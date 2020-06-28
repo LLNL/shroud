@@ -22,8 +22,7 @@ VPATH = \
 
 OBJS = \
     vectors.o \
-    pyvectorsmodule.o \
-    pyvectorsutil.o
+    pyvectorsmodule.o
 
 CXXFLAGS += $(SHARED)
 

@@ -35,9 +35,19 @@ Running a single test
     make do-test test-args=tutorial
 
 
-Running a single Python test
+Running a single Python test.
 
-    python -m unittest test_ast.CheckAst.test_d_generate1
+    # Use the Python in the virtual environment
+    setenv WORK  .../build/temp.linux-x86_64-2.7
+    setenv PYTHONEXE $WORK/venv/bin/python
+
+    cd tests
+    $PYTHONEXE -m unittest test_ast.CheckAst.test_d_generate1
+
+    # Run a regression test
+    setenv PYTHONPATH $WORK/run/struct-class-c/python
+    cd regression/run/struct-class-c/python
+    $PYTHONEXE -m unittest test.Struct.test_Arrays1
 
 Test generated code
 -------------------
@@ -72,7 +82,7 @@ typemap.py
 todict.py
 whelpers.py
 util.py visitor.py  # no dependencies
-
+metadata.py
 
 
 
@@ -91,6 +101,17 @@ ast.py LibraryNode.create_std_names()
 declast.py  get_canonical_typemap()
   Convert 'long int' into 'long'
 
+
+formatting generated code
+-------------------------
+
+Always use `{nullptr}` instead of `NULL`.  Helps C++.
+
+error checking
+--------------
+
+Write a `#error` line instead of generating bad code so the
+compiler will point out the error.
 
 debugging
 ---------

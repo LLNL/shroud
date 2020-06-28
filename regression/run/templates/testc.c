@@ -5,7 +5,7 @@
  *
  * SPDX-License-Identifier: (BSD-3-Clause)
  *
- * Test C interface for templates.yaml
+ * Test C API generated from templates.yaml.
  */
 
 #include <wrapstd_vector_int.h>

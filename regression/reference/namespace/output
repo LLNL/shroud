@@ -7,6 +7,7 @@ Wrote wrapns.cpp
 Wrote typesns.h
 Wrote wrapfns_outer.f
 Wrote wrapfns.f
+Wrote utilns.cpp
 Wrote pyouter_Cstruct1type.cpp
 Wrote pyns_outermodule.cpp
 Wrote pynswork_ClassWorktype.cpp
@@ -14,3 +15,4 @@ Wrote pyns_nsworkmodule.cpp
 Wrote pynsmodule.cpp
 Wrote pynsutil.cpp
 Wrote pynsmodule.hpp
+Wrote setup.py

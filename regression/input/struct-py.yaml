@@ -1,0 +1,48 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Test some Python specific wrapping features
+
+library: struct
+cxx_header: struct.h
+
+language: c
+
+options:
+  debug: True
+  wrap_fortran: false
+  wrap_c: false
+  wrap_python: True
+
+format:
+  # Avoid conflict with builtin module
+  PY_module_name: cstruct
+
+declarations:
+
+######################################################################
+# Define a struct as both PY_struct_arg
+# No pointers in structs
+
+- decl: struct Cstruct_as_class {
+          int x1;
+          int y1;
+        };
+  options:
+    PY_struct_arg: class
+
+- decl: struct Cstruct_as_numpy {
+          int x2;
+          int y2;
+        };
+  options:
+    PY_struct_arg: numpy
+
+- decl: int acceptBothStructs(
+           Cstruct_as_class *s1 +intent(in),
+           Cstruct_as_numpy *s2 +intent(in))
