@@ -258,27 +258,27 @@ module vectors_mod
     interface
         ! helper copy_array_double
         ! Copy contents of context into c_var.
-        subroutine SHROUD_copy_array_double(context, c_var, c_var_size) &
+        subroutine VEC_SHROUD_copy_array_double(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")
             use iso_c_binding, only : C_DOUBLE, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             real(C_DOUBLE), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_array_double
+        end subroutine VEC_SHROUD_copy_array_double
     end interface
 
     interface
         ! helper copy_array_int
         ! Copy contents of context into c_var.
-        subroutine SHROUD_copy_array_int(context, c_var, c_var_size) &
+        subroutine VEC_SHROUD_copy_array_int(context, c_var, c_var_size) &
             bind(C, name="VEC_ShroudCopyArray")
             use iso_c_binding, only : C_INT, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_array_int
+        end subroutine VEC_SHROUD_copy_array_int
     end interface
 
 contains
@@ -336,7 +336,8 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota_out
         call c_vector_iota_out_bufferify(Darg)
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out
     end subroutine vector_iota_out
     ! end vector_iota_out
@@ -372,7 +373,8 @@ contains
         ! splicer begin function.vector_iota_out_with_num
         integer(C_LONG) :: num
         num = c_vector_iota_out_with_num_bufferify(Darg)
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_with_num
     end function vector_iota_out_with_num
     ! end vector_iota_out_with_num
@@ -408,7 +410,8 @@ contains
         ! splicer begin function.vector_iota_out_with_num2
         integer(C_LONG) :: num
         call c_vector_iota_out_with_num2_bufferify(Darg)
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         num = Darg%size
         ! splicer end function.vector_iota_out_with_num2
     end function vector_iota_out_with_num2
@@ -441,7 +444,8 @@ contains
         ! splicer begin function.vector_iota_out_alloc
         call c_vector_iota_out_alloc_bufferify(Darg)
         allocate(arg(Darg%size))
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_alloc
     end subroutine vector_iota_out_alloc
     ! end vector_iota_out_alloc
@@ -475,7 +479,8 @@ contains
             size(arg, kind=C_LONG), Darg)
         if (allocated(arg)) deallocate(arg)
         allocate(arg(Darg%size))
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_inout_alloc
     end subroutine vector_iota_inout_alloc
     ! end vector_iota_inout_alloc
@@ -502,7 +507,8 @@ contains
         ! splicer begin function.vector_increment
         call c_vector_increment_bufferify(arg, size(arg, kind=C_LONG), &
             Darg)
-        call SHROUD_copy_array_int(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_increment
     end subroutine vector_increment
 
@@ -531,7 +537,8 @@ contains
         type(SHROUD_array) :: Darg
         ! splicer begin function.vector_iota_out_d
         call c_vector_iota_out_d_bufferify(Darg)
-        call SHROUD_copy_array_double(Darg, arg, size(arg,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_double(Darg, arg, &
+            size(arg,kind=C_SIZE_T))
         ! splicer end function.vector_iota_out_d
     end subroutine vector_iota_out_d
 
@@ -600,7 +607,8 @@ contains
         ! splicer begin function.return_vector_alloc
         call c_return_vector_alloc_bufferify(n, DSHF_rv)
         allocate(SHT_rv(DSHF_rv%size))
-        call SHROUD_copy_array_int(DSHF_rv, SHT_rv, size(SHT_rv,kind=C_SIZE_T))
+        call VEC_SHROUD_copy_array_int(DSHF_rv, SHT_rv, &
+            size(SHT_rv,kind=C_SIZE_T))
         ! splicer end function.return_vector_alloc
     end function return_vector_alloc
 

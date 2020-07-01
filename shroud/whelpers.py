@@ -129,18 +129,20 @@ def add_external_helpers():
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
+    fmt.hnamefunc = wformat("SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Delete memory in a capsule.
-subroutine SHROUD_capsule_dtor(ptr)\tbind(C, name="{C_memory_dtor_function}")+
+subroutine {hnamefunc}(ptr)\tbind(C, name="{C_memory_dtor_function}")+
 import {F_capsule_data_type}
 implicit none
 type({F_capsule_data_type}), intent(INOUT) :: ptr
--end subroutine SHROUD_capsule_dtor
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -672,23 +674,24 @@ def add_copy_array_helper(fmt, ntypemap):
 
     name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
-    fmt.hnamefunc = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
     helper = dict(
         # XXX when f_kind == C_SIZE_T
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine SHROUD_{hnamefunc}(context, c_var, c_var_size) &+
+subroutine {hnamefunc}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_{hnamefunc}
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
