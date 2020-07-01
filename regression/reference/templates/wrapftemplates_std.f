@@ -21,13 +21,13 @@ module templates_std_mod
     ! splicer begin namespace.std.module_top
     ! splicer end namespace.std.module_top
 
-    type, bind(C) :: SHROUD_vector_int_capsule
+    type, bind(C) :: TEM_SHROUD_vector_int_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_vector_int_capsule
+    end type TEM_SHROUD_vector_int_capsule
 
     type vector_int
-        type(SHROUD_vector_int_capsule) :: cxxmem
+        type(TEM_SHROUD_vector_int_capsule) :: cxxmem
         ! splicer begin namespace.std.class.vector_int.component_part
         ! splicer end namespace.std.class.vector_int.component_part
     contains
@@ -41,13 +41,13 @@ module templates_std_mod
         ! splicer end namespace.std.class.vector_int.type_bound_procedure_part
     end type vector_int
 
-    type, bind(C) :: SHROUD_vector_double_capsule
+    type, bind(C) :: TEM_SHROUD_vector_double_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_vector_double_capsule
+    end type TEM_SHROUD_vector_double_capsule
 
     type vector_double
-        type(SHROUD_vector_double_capsule) :: cxxmem
+        type(TEM_SHROUD_vector_double_capsule) :: cxxmem
         ! splicer begin namespace.std.class.vector_double.component_part
         ! splicer end namespace.std.class.vector_double.component_part
     contains
@@ -80,9 +80,9 @@ module templates_std_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_vector_int_capsule
+            import :: TEM_SHROUD_vector_int_capsule
             implicit none
-            type(SHROUD_vector_int_capsule), intent(OUT) :: SHT_crv
+            type(TEM_SHROUD_vector_int_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_vector_int_ctor
 
@@ -92,9 +92,9 @@ module templates_std_mod
         ! Match:     c_default
         subroutine c_vector_int_dtor(self) &
                 bind(C, name="TEM_vector_int_dtor")
-            import :: SHROUD_vector_int_capsule
+            import :: TEM_SHROUD_vector_int_capsule
             implicit none
-            type(SHROUD_vector_int_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_int_capsule), intent(IN) :: self
         end subroutine c_vector_int_dtor
 
         ! ----------------------------------------
@@ -108,9 +108,9 @@ module templates_std_mod
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_vector_int_capsule
+            import :: TEM_SHROUD_vector_int_capsule
             implicit none
-            type(SHROUD_vector_int_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_int_capsule), intent(IN) :: self
             integer(C_INT), intent(IN) :: value
         end subroutine c_vector_int_push_back
 
@@ -126,9 +126,9 @@ module templates_std_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
             use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: SHROUD_vector_int_capsule
+            import :: TEM_SHROUD_vector_int_capsule
             implicit none
-            type(SHROUD_vector_int_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_int_capsule), intent(IN) :: self
             integer(C_SIZE_T), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_int_at
@@ -143,9 +143,9 @@ module templates_std_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_ctor")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_vector_double_capsule
+            import :: TEM_SHROUD_vector_double_capsule
             implicit none
-            type(SHROUD_vector_double_capsule), intent(OUT) :: SHT_crv
+            type(TEM_SHROUD_vector_double_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_vector_double_ctor
 
@@ -155,9 +155,9 @@ module templates_std_mod
         ! Match:     c_default
         subroutine c_vector_double_dtor(self) &
                 bind(C, name="TEM_vector_double_dtor")
-            import :: SHROUD_vector_double_capsule
+            import :: TEM_SHROUD_vector_double_capsule
             implicit none
-            type(SHROUD_vector_double_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_double_capsule), intent(IN) :: self
         end subroutine c_vector_double_dtor
 
         ! ----------------------------------------
@@ -171,9 +171,9 @@ module templates_std_mod
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
-            import :: SHROUD_vector_double_capsule
+            import :: TEM_SHROUD_vector_double_capsule
             implicit none
-            type(SHROUD_vector_double_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_double_capsule), intent(IN) :: self
             real(C_DOUBLE), intent(IN) :: value
         end subroutine c_vector_double_push_back
 
@@ -189,9 +189,9 @@ module templates_std_mod
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
             use iso_c_binding, only : C_PTR, C_SIZE_T
-            import :: SHROUD_vector_double_capsule
+            import :: TEM_SHROUD_vector_double_capsule
             implicit none
-            type(SHROUD_vector_double_capsule), intent(IN) :: self
+            type(TEM_SHROUD_vector_double_capsule), intent(IN) :: self
             integer(C_SIZE_T), value, intent(IN) :: n
             type(C_PTR) SHT_rv
         end function c_vector_double_at

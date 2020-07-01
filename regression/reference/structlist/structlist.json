@@ -10,7 +10,7 @@
                     "C_impl_filename": "wrapArrays1.c",
                     "C_name_scope": "Arrays1_",
                     "C_type_name": "Arrays1",
-                    "F_capsule_data_type": "SHROUD_arrays1_capsule",
+                    "F_capsule_data_type": "STR_SHROUD_arrays1_capsule",
                     "F_derived_name": "arrays1",
                     "F_name_scope": "arrays1_",
                     "PY_PyObject": "PY_Arrays1",

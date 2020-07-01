@@ -28,7 +28,7 @@ module ns_mod
     end type SHROUD_capsule_data
 
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: NS_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -42,19 +42,19 @@ module ns_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type NS_SHROUD_array
 
     !  enum upper::Color
     integer(C_INT), parameter :: upper_error = 0
     integer(C_INT), parameter :: upper_warn = 1
 
-    type, bind(C) :: SHROUD_nswork_classwork_capsule
+    type, bind(C) :: NS_SHROUD_nswork_classwork_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_nswork_classwork_capsule
+    end type NS_SHROUD_nswork_classwork_capsule
 
     type classwork
-        type(SHROUD_nswork_classwork_capsule) :: cxxmem
+        type(NS_SHROUD_nswork_classwork_capsule) :: cxxmem
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains
@@ -97,9 +97,9 @@ module ns_mod
         ! Match:     c_string_result_buf_allocatable
         subroutine c_last_function_called_bufferify(DSHF_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
-            import :: SHROUD_array
+            import :: NS_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(NS_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_last_function_called_bufferify
 
         ! ----------------------------------------
@@ -124,8 +124,8 @@ module ns_mod
         subroutine NS_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="NS_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
+            import NS_SHROUD_array
+            type(NS_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine NS_SHROUD_copy_string_and_free
@@ -149,7 +149,7 @@ contains
     ! Match:     c_string_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
+        type(NS_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.last_function_called
         call c_last_function_called_bufferify(DSHF_rv)

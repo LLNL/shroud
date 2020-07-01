@@ -15,13 +15,13 @@ module library_three_mod
     implicit none
 
 
-    type, bind(C) :: SHROUD_class1_capsule
+    type, bind(C) :: LIB_SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_class1_capsule
+    end type LIB_SHROUD_class1_capsule
 
     type class1
-        type(SHROUD_class1_capsule) :: cxxmem
+        type(LIB_SHROUD_class1_capsule) :: cxxmem
     contains
         procedure :: method1 => class1_method1
         procedure :: get_instance => class1_get_instance
@@ -50,9 +50,9 @@ module library_three_mod
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_class1_capsule
+            import :: LIB_SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), intent(IN) :: self
+            type(LIB_SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
         end subroutine c_class1_method1
 

@@ -29,7 +29,7 @@ module memdoc_mod
 
     ! start array_context
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: STR_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -43,7 +43,7 @@ module memdoc_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type STR_SHROUD_array
     ! end array_context
 
     ! ----------------------------------------
@@ -74,9 +74,9 @@ module memdoc_mod
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
-            import :: SHROUD_array
+            import :: STR_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(STR_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
     ! end c_get_const_string_ptr_alloc_bufferify
@@ -92,8 +92,8 @@ module memdoc_mod
         subroutine STR_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="STR_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
+            import STR_SHROUD_array
+            type(STR_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine STR_SHROUD_copy_string_and_free
@@ -118,7 +118,7 @@ contains
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
-        type(SHROUD_array) :: DSHF_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)

@@ -29,7 +29,7 @@ module userlibrary_example_nested_mod
     end type SHROUD_capsule_data
 
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: AA_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -43,15 +43,15 @@ module userlibrary_example_nested_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type AA_SHROUD_array
 
-    type, bind(C) :: SHROUD_exclass1_capsule
+    type, bind(C) :: AA_SHROUD_exclass1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_exclass1_capsule
+    end type AA_SHROUD_exclass1_capsule
 
     type exclass1
-        type(SHROUD_exclass1_capsule) :: cxxmem
+        type(AA_SHROUD_exclass1_capsule) :: cxxmem
         ! splicer begin namespace.example::nested.class.ExClass1.component_part
           component part 1a
           component part 1b
@@ -73,13 +73,13 @@ module userlibrary_example_nested_mod
         ! splicer end namespace.example::nested.class.ExClass1.type_bound_procedure_part
     end type exclass1
 
-    type, bind(C) :: SHROUD_exclass2_capsule
+    type, bind(C) :: AA_SHROUD_exclass2_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_exclass2_capsule
+    end type AA_SHROUD_exclass2_capsule
 
     type exclass2
-        type(SHROUD_exclass2_capsule) :: cxxmem
+        type(AA_SHROUD_exclass2_capsule) :: cxxmem
         ! splicer begin namespace.example::nested.class.ExClass2.component_part
         ! splicer end namespace.example::nested.class.ExClass2.component_part
     contains
@@ -178,9 +178,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_0")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_0
 
@@ -195,10 +195,10 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
             use iso_c_binding, only : C_CHAR, C_PTR
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1
 
@@ -214,11 +214,11 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
-            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass1_ctor_1_bufferify
 
@@ -228,9 +228,9 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
         end subroutine c_exclass1_dtor
 
         ! ----------------------------------------
@@ -245,9 +245,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_increment_count")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: incr
             integer(C_INT) :: SHT_rv
         end function c_exclass1_increment_count
@@ -260,9 +260,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_error_check
 
@@ -277,10 +277,10 @@ module userlibrary_example_nested_mod
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
-            import :: SHROUD_array, SHROUD_exclass1_capsule
+            import :: AA_SHROUD_array, AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         ! ----------------------------------------
@@ -291,9 +291,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass1_get_name_arg
 
@@ -308,9 +308,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: name(*)
             integer(C_INT), value, intent(IN) :: Nname
         end subroutine c_exclass1_get_name_arg_bufferify
@@ -327,9 +327,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_value_from_int")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
             integer(C_INT) :: SHT_rv
         end function c_exclass1_get_value_from_int
@@ -346,9 +346,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_value_1")
             use iso_c_binding, only : C_LONG
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
             integer(C_LONG) :: SHT_rv
         end function c_exclass1_get_value_1
@@ -365,9 +365,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_has_addr")
             use iso_c_binding, only : C_BOOL
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
             logical(C_BOOL), value, intent(IN) :: in
             logical(C_BOOL) :: SHT_rv
         end function c_exclass1_has_addr
@@ -378,9 +378,9 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_splicer_special")
-            import :: SHROUD_exclass1_capsule
+            import :: AA_SHROUD_exclass1_capsule
             implicit none
-            type(SHROUD_exclass1_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: self
         end subroutine c_exclass1_splicer_special
 
         ! splicer begin namespace.example::nested.class.ExClass1.additional_interfaces
@@ -397,10 +397,10 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
             use iso_c_binding, only : C_CHAR, C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
-            type(SHROUD_exclass2_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass2_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor
 
@@ -416,11 +416,11 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT, C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: trim_name
-            type(SHROUD_exclass2_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass2_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_ctor_bufferify
 
@@ -430,9 +430,9 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
         end subroutine c_exclass2_dtor
 
         ! ----------------------------------------
@@ -443,9 +443,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name
 
@@ -460,9 +460,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             character(kind=C_CHAR), intent(OUT) :: SHF_rv(*)
             integer(C_INT), value, intent(IN) :: NSHF_rv
         end subroutine c_exclass2_get_name_bufferify
@@ -475,9 +475,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name2
 
@@ -491,10 +491,10 @@ module userlibrary_example_nested_mod
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
-            import :: SHROUD_array, SHROUD_exclass2_capsule
+            import :: AA_SHROUD_array, AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name2_bufferify
 
         ! ----------------------------------------
@@ -505,9 +505,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name3
 
@@ -521,10 +521,10 @@ module userlibrary_example_nested_mod
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
-            import :: SHROUD_array, SHROUD_exclass2_capsule
+            import :: AA_SHROUD_array, AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name3_bufferify
 
         ! ----------------------------------------
@@ -535,9 +535,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_exclass2_get_name4
 
@@ -551,10 +551,10 @@ module userlibrary_example_nested_mod
         ! Match:     c_string_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
-            import :: SHROUD_array, SHROUD_exclass2_capsule
+            import :: AA_SHROUD_array, AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_exclass2_get_name4_bufferify
 
         ! ----------------------------------------
@@ -565,9 +565,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_length")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_name_length
 
@@ -583,11 +583,11 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_class1")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_exclass1_capsule, SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass1_capsule, AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
-            type(SHROUD_exclass1_capsule), intent(IN) :: in
-            type(SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass1_capsule), intent(IN) :: in
+            type(AA_SHROUD_exclass1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_exclass2_get_class1
 
@@ -602,9 +602,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_declare_0(self, type) &
                 bind(C, name="AA_example_nested_ExClass2_declare_0")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: type
         end subroutine c_exclass2_declare_0
 
@@ -623,9 +623,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_declare_1(self, type, len) &
                 bind(C, name="AA_example_nested_ExClass2_declare_1")
             use iso_c_binding, only : C_INT, C_LONG
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: type
             integer(C_LONG), value, intent(IN) :: len
         end subroutine c_exclass2_declare_1
@@ -636,9 +636,9 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         subroutine c_exclass2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
         end subroutine c_exclass2_destroyall
 
         ! ----------------------------------------
@@ -649,9 +649,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_type_id")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_type_id
 
@@ -666,9 +666,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_set_value_int(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_int")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_int
 
@@ -683,9 +683,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_set_value_long(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_long")
             use iso_c_binding, only : C_LONG
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_LONG), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_long
 
@@ -700,9 +700,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_set_value_float(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_float")
             use iso_c_binding, only : C_FLOAT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             real(C_FLOAT), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_float
 
@@ -717,9 +717,9 @@ module userlibrary_example_nested_mod
         subroutine c_exclass2_set_value_double(self, value) &
                 bind(C, name="AA_example_nested_ExClass2_set_value_double")
             use iso_c_binding, only : C_DOUBLE
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             real(C_DOUBLE), value, intent(IN) :: value
         end subroutine c_exclass2_set_value_double
 
@@ -731,9 +731,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_value_int")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_exclass2_get_value_int
 
@@ -745,9 +745,9 @@ module userlibrary_example_nested_mod
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_value_double")
             use iso_c_binding, only : C_DOUBLE
-            import :: SHROUD_exclass2_capsule
+            import :: AA_SHROUD_exclass2_capsule
             implicit none
-            type(SHROUD_exclass2_capsule), intent(IN) :: self
+            type(AA_SHROUD_exclass2_capsule), intent(IN) :: self
             real(C_DOUBLE) :: SHT_rv
         end function c_exclass2_get_value_double
 
@@ -1233,8 +1233,8 @@ module userlibrary_example_nested_mod
         subroutine AA_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="AA_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
+            import AA_SHROUD_array
+            type(AA_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine AA_SHROUD_copy_string_and_free
@@ -1349,7 +1349,7 @@ contains
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
-        type(SHROUD_array) :: DSHF_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
@@ -1577,7 +1577,7 @@ contains
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(SHROUD_array) :: DSHF_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
@@ -1603,7 +1603,7 @@ contains
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(SHROUD_array) :: DSHF_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
@@ -1629,7 +1629,7 @@ contains
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(SHROUD_array) :: DSHF_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)

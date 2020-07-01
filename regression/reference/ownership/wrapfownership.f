@@ -28,7 +28,7 @@ module ownership_mod
     end type SHROUD_capsule_data
 
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: OWN_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -42,24 +42,24 @@ module ownership_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type OWN_SHROUD_array
 
     ! helper capsule_helper
-    type SHROUD_capsule
+    type :: OWN_SHROUD_capsule
         private
         type(SHROUD_capsule_data) :: mem
     contains
         final :: SHROUD_capsule_final
         procedure :: delete => SHROUD_capsule_delete
-    end type SHROUD_capsule
+    end type OWN_SHROUD_capsule
 
-    type, bind(C) :: SHROUD_class1_capsule
+    type, bind(C) :: OWN_SHROUD_class1_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_class1_capsule
+    end type OWN_SHROUD_class1_capsule
 
     type class1
-        type(SHROUD_class1_capsule) :: cxxmem
+        type(OWN_SHROUD_class1_capsule) :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -88,9 +88,9 @@ module ownership_mod
         ! Match:     c_default
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
-            import :: SHROUD_class1_capsule
+            import :: OWN_SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), intent(IN) :: self
+            type(OWN_SHROUD_class1_capsule), intent(IN) :: self
         end subroutine c_class1_dtor
 
         ! ----------------------------------------
@@ -101,9 +101,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_Class1_get_flag")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_class1_capsule
+            import :: OWN_SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), intent(IN) :: self
+            type(OWN_SHROUD_class1_capsule), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_flag
 
@@ -191,9 +191,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_array
+            import :: OWN_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_pointer_bufferify
@@ -226,9 +226,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_array
+            import :: OWN_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_alloc_bufferify
@@ -261,9 +261,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_array
+            import :: OWN_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_default_bufferify
@@ -314,9 +314,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_new_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_array
+            import :: OWN_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_pointer_new_bufferify
@@ -367,9 +367,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_new_bufferify")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_array
+            import :: OWN_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
             integer(C_INT), intent(OUT) :: len
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_dim_default_new_bufferify
@@ -397,9 +397,9 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_static")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_class1_capsule
+            import :: OWN_SHROUD_class1_capsule
             implicit none
-            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(OWN_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_static
 
@@ -415,10 +415,10 @@ module ownership_mod
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_new")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: SHROUD_class1_capsule
+            import :: OWN_SHROUD_class1_capsule
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(OWN_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_new
 
@@ -443,8 +443,8 @@ module ownership_mod
         subroutine OWN_SHROUD_copy_array_int(context, c_var, c_var_size) &
             bind(C, name="OWN_ShroudCopyArray")
             use iso_c_binding, only : C_INT, C_SIZE_T
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
+            import OWN_SHROUD_array
+            type(OWN_SHROUD_array), intent(IN) :: context
             integer(C_INT), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine OWN_SHROUD_copy_array_int
@@ -541,7 +541,7 @@ contains
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(OWN_SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_pointer
@@ -567,7 +567,7 @@ contains
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
-        type(SHROUD_array) :: DSHC_rv
+        type(OWN_SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_alloc
@@ -594,7 +594,7 @@ contains
     function return_int_ptr_dim_default() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(OWN_SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_dim_default
@@ -620,10 +620,10 @@ contains
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(OWN_SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(SHROUD_capsule), intent(OUT) :: Crv
+        type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         ! splicer begin function.return_int_ptr_dim_pointer_new
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
@@ -649,10 +649,10 @@ contains
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(OWN_SHROUD_array) :: DSHC_rv
         integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
-        type(SHROUD_capsule), intent(OUT) :: Crv
+        type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         ! splicer begin function.return_int_ptr_dim_default_new
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
@@ -735,12 +735,12 @@ contains
     ! helper capsule_helper
     ! finalize a static SHROUD_capsule_data
     subroutine SHROUD_capsule_final(cap)
-        type(SHROUD_capsule), intent(INOUT) :: cap
+        type(OWN_SHROUD_capsule), intent(INOUT) :: cap
         call OWN_SHROUD_capsule_dtor(cap%mem)
     end subroutine SHROUD_capsule_final
 
     subroutine SHROUD_capsule_delete(cap)
-        class(SHROUD_capsule) :: cap
+        class(OWN_SHROUD_capsule) :: cap
         call OWN_SHROUD_capsule_dtor(cap%mem)
     end subroutine SHROUD_capsule_delete
 

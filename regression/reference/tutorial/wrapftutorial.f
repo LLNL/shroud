@@ -29,7 +29,7 @@ module tutorial_mod
 
     ! start array_context
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: TUT_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -43,7 +43,7 @@ module tutorial_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type TUT_SHROUD_array
     ! end array_context
 
     !  enum tutorial::Color
@@ -120,13 +120,13 @@ module tutorial_mod
                 Larg2, DSHF_rv) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
-            import :: SHROUD_array
+            import :: TUT_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            type(SHROUD_array), intent(OUT) :: DSHF_rv
+            type(TUT_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -713,8 +713,8 @@ module tutorial_mod
         subroutine TUT_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="TUT_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
-            import SHROUD_array
-            type(SHROUD_array), intent(IN) :: context
+            import TUT_SHROUD_array
+            type(TUT_SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
         end subroutine TUT_SHROUD_copy_string_and_free
@@ -759,7 +759,7 @@ contains
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
-        type(SHROUD_array) :: DSHF_rv
+        type(TUT_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.concatenate_strings
         call c_concatenate_strings_bufferify(arg1, &
