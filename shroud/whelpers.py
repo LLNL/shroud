@@ -129,7 +129,7 @@ def add_external_helpers():
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
-    fmt.hnamefunc = wformat("SHROUD_capsule_dtor", fmt)
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],
         name=fmt.hnamefunc,
@@ -553,6 +553,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     ########################################
     name = "capsule_helper"
     fmt.hname = name
+    fmt.__helper = FHelpers["capsule_dtor"]["name"]
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         dependent_helpers=["capsule_data_helper", "capsule_dtor"],
@@ -575,12 +576,12 @@ procedure :: delete => {F_capsule_delete_function}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 type({F_capsule_type}), intent(INOUT) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_final_function}
 
 subroutine {F_capsule_delete_function}(cap)+
 class({F_capsule_type}) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_delete_function}""",
             fmt,
         ),

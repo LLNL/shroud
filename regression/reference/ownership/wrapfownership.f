@@ -429,12 +429,12 @@ module ownership_mod
     interface
         ! helper capsule_dtor
         ! Delete memory in a capsule.
-        subroutine SHROUD_capsule_dtor(ptr) &
+        subroutine OWN_SHROUD_capsule_dtor(ptr) &
             bind(C, name="OWN_SHROUD_memory_destructor")
             import SHROUD_capsule_data
             implicit none
             type(SHROUD_capsule_data), intent(INOUT) :: ptr
-        end subroutine SHROUD_capsule_dtor
+        end subroutine OWN_SHROUD_capsule_dtor
     end interface
 
     interface
@@ -736,12 +736,12 @@ contains
     ! finalize a static SHROUD_capsule_data
     subroutine SHROUD_capsule_final(cap)
         type(SHROUD_capsule), intent(INOUT) :: cap
-        call SHROUD_capsule_dtor(cap%mem)
+        call OWN_SHROUD_capsule_dtor(cap%mem)
     end subroutine SHROUD_capsule_final
 
     subroutine SHROUD_capsule_delete(cap)
         class(SHROUD_capsule) :: cap
-        call SHROUD_capsule_dtor(cap%mem)
+        call OWN_SHROUD_capsule_dtor(cap%mem)
     end subroutine SHROUD_capsule_delete
 
 end module ownership_mod
