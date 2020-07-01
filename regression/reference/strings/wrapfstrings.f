@@ -1171,14 +1171,14 @@ module strings_mod
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+        subroutine STR_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="STR_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_string_and_free
+        end subroutine STR_SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -1316,7 +1316,7 @@ contains
         ! splicer begin function.get_char_ptr1
         call c_get_char_ptr1_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
@@ -1401,7 +1401,7 @@ contains
         ! splicer begin function.get_const_string_result
         call c_get_const_string_result_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1481,7 +1481,7 @@ contains
         ! splicer begin function.get_const_string_alloc
         call c_get_const_string_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1511,7 +1511,7 @@ contains
         ! splicer begin function.get_const_string_ref_pure
         call c_get_const_string_ref_pure_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1625,7 +1625,7 @@ contains
         ! splicer begin function.get_const_string_ref_alloc
         call c_get_const_string_ref_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1682,7 +1682,7 @@ contains
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -1714,7 +1714,7 @@ contains
         ! splicer begin function.get_const_string_ptr_owns_alloc
         call c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -1742,7 +1742,7 @@ contains
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
         call c_get_const_string_ptr_owns_alloc_pattern_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 

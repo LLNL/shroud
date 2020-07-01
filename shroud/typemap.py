@@ -1659,8 +1659,7 @@ fc_statements = [
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}({c_var_dimension}))",
-            "call SHROUD_copy_array_{cxx_type}"
-            "({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+            "call {hnamefunc0}({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
         ],
     ),
 
@@ -1887,8 +1886,7 @@ fc_statements = [
         ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call SHROUD_copy_string_and_free"
-            "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     dict(
@@ -2052,8 +2050,7 @@ fc_statements = [
         ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call SHROUD_copy_string_and_free("
-            "{c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     
@@ -2269,8 +2266,7 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2279,8 +2275,7 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2289,8 +2284,7 @@ fc_statements = [
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))"
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
         ],
     ),
     # copy into allocated array
@@ -2301,8 +2295,7 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     dict(
@@ -2313,8 +2306,7 @@ fc_statements = [
         post_call=[
             "if (allocated({f_var})) deallocate({f_var})",
             "allocate({f_var}({c_var_context}%size))",
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
     # Similar to f_vector_out_allocatable but must declare result variable.
@@ -2326,8 +2318,7 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
-            "call SHROUD_copy_array_{cxx_T}({c_var_context}, "
-            "{f_var}, size({f_var},kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
     ),
 

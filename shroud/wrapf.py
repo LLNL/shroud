@@ -1349,6 +1349,11 @@ rv = .false.
         """
         self.update_f_module(modules, imports, intent_blk.f_module)
 
+        if intent_blk.c_helper:
+            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
+        if intent_blk.f_helper:
+            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
+
         if declare is not None and intent_blk.declare:
             need_wrapper = True
             for line in intent_blk.declare:
@@ -1364,10 +1369,6 @@ rv = .false.
             for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
-        if intent_blk.c_helper:
-            fileinfo.add_c_helper(intent_blk.c_helper, fmt)
-        if intent_blk.f_helper:
-            fileinfo.add_f_helper(intent_blk.f_helper, fmt)
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
@@ -2322,8 +2323,13 @@ class ModuleInfo(object):
             self.c_helper[helper] = True
 
     def add_f_helper(self, helpers, fmt):
-        """Add a list of Fortran helpers."""
+        """Add a list of Fortran helpers.
+        Add fmt.hnamefuncX for use by pre_call and post_call.
+        """
         f_helper = wformat(helpers, fmt)
-        for helper in f_helper.split():
+        for i, helper in enumerate(f_helper.split()):
             self.f_helper[helper] = True
+            setattr(fmt, "hnamefunc" + str(i),
+                    whelpers.FHelpers[helper].get("name", helper))
+            
         

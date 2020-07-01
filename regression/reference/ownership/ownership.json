@@ -582,6 +582,7 @@
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer",
@@ -796,6 +797,7 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "function_suffix": "_bufferify",
+                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
                 "options": {
@@ -872,6 +874,7 @@
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "OWN_SHROUD_copy_array_int",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_allocatable",
@@ -1086,6 +1089,7 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "function_suffix": "_bufferify",
+                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
                 "options": {
@@ -1162,6 +1166,7 @@
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer",
@@ -1376,6 +1381,7 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "function_suffix": "_bufferify",
+                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_default"
                 },
                 "options": {
@@ -1559,6 +1565,7 @@
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "capsule_helper",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer_caller",
@@ -1778,6 +1785,7 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "function_suffix": "_bufferify",
+                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 },
                 "options": {
@@ -2002,6 +2010,7 @@
                         "f_assumed_shape": "(:)",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "capsule_helper",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_pointer_caller",
@@ -2221,6 +2230,7 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "function_suffix": "_bufferify",
+                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
                 "options": {

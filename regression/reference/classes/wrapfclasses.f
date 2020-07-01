@@ -713,14 +713,14 @@ module classes_mod
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+        subroutine CLA_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="CLA_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_string_and_free
+        end subroutine CLA_SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -948,7 +948,7 @@ contains
         ! splicer begin class.Class1.method.get_name
         call c_class1_get_name_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call CLA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
@@ -1093,7 +1093,7 @@ contains
         ! splicer begin class.Class2.method.get_name
         call c_class2_get_name_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call CLA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end class.Class2.method.get_name
     end function class2_get_name
 

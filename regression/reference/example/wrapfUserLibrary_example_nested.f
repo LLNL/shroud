@@ -1230,14 +1230,14 @@ module userlibrary_example_nested_mod
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+        subroutine AA_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="AA_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_string_and_free
+        end subroutine AA_SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -1355,7 +1355,7 @@ contains
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
             DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
@@ -1582,7 +1582,7 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function exclass2_get_name2
 
@@ -1608,7 +1608,7 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function exclass2_get_name3
 
@@ -1634,7 +1634,7 @@ contains
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function exclass2_get_name4
 

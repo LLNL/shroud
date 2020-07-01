@@ -60,6 +60,20 @@ the conversion has failed.
 
 """
 
+# Note about PRIVATE Fortran helpers
+# If a single subroutine uses multiple modules created by Shroud
+# some compilers will rightly complain that they each define this function.
+#  "Procedure shroud_copy_string_and_free has more than one interface accessible
+#  by use association. The interfaces are assumed to be the same."
+# It should be marked PRIVATE to prevent users from calling it directly.
+# However, gfortran does not like that.
+#  "Symbol 'shroud_copy_string_and_free' at (1) is marked PRIVATE but has been given
+#  the binding label 'ShroudCopyStringAndFree'"
+# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49111
+# Instead, mangle the name with C_prefix.
+# See FHelpers copy_string
+
+
 from . import typemap
 from . import util
 
@@ -115,18 +129,20 @@ def add_external_helpers():
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Delete memory in a capsule.
-subroutine SHROUD_capsule_dtor(ptr)\tbind(C, name="{C_memory_dtor_function}")+
+subroutine {hnamefunc}(ptr)\tbind(C, name="{C_memory_dtor_function}")+
 import {F_capsule_data_type}
 implicit none
 type({F_capsule_data_type}), intent(INOUT) :: ptr
--end subroutine SHROUD_capsule_dtor
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -195,21 +211,23 @@ if (data->elem_len < n) n = data->elem_len;
 
     # Fortran interface for above function.
     # Deal with allocatable character
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+subroutine {hnamefunc}(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_string_and_free
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -535,6 +553,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     ########################################
     name = "capsule_helper"
     fmt.hname = name
+    fmt.__helper = FHelpers["capsule_dtor"]["name"]
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         dependent_helpers=["capsule_data_helper", "capsule_dtor"],
@@ -557,12 +576,12 @@ procedure :: delete => {F_capsule_delete_function}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 type({F_capsule_type}), intent(INOUT) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_final_function}
 
 subroutine {F_capsule_delete_function}(cap)+
 class({F_capsule_type}) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_delete_function}""",
             fmt,
         ),
@@ -656,23 +675,24 @@ def add_copy_array_helper(fmt, ntypemap):
 
     name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
-    fmt.hnamefunc = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
     helper = dict(
         # XXX when f_kind == C_SIZE_T
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine SHROUD_{hnamefunc}(context, c_var, c_var_size) &+
+subroutine {hnamefunc}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_{hnamefunc}
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
