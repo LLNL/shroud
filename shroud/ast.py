@@ -466,7 +466,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_module_name_namespace_template="{file_scope}_mod",
             F_impl_filename_library_template="wrapf{library_lower}.{F_filename_suffix}",
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
-            F_capsule_data_type_class_template="SHROUD_{F_name_scope}capsule",
+            F_array_type_template="{C_prefix}SHROUD_array",
+            F_capsule_type_template="{C_prefix}SHROUD_capsule",
+            F_capsule_data_type_class_template="{C_prefix}SHROUD_{F_name_scope}capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
 
@@ -588,10 +590,9 @@ class LibraryNode(AstNode, NamespaceMixin):
             C_string_result_as_arg="SHF_rv",
             F_string_result_as_arg="",
             F_capsule_data_type="SHROUD_capsule_data",
-            F_capsule_type="SHROUD_capsule",
+#            F_capsule_type="SHROUD_capsule",
             F_capsule_final_function="SHROUD_capsule_final",
             F_capsule_delete_function="SHROUD_capsule_delete",
-            F_array_type="SHROUD_array",
 
             c_array_shape="",
             c_array_size="1",
@@ -748,6 +749,8 @@ class LibraryNode(AstNode, NamespaceMixin):
 
         self.eval_template("C_memory_dtor_function")
 
+        self.eval_template("F_array_type")
+        self.eval_template("F_capsule_type")
         # All class/methods and functions may go into this file or
         # just functions.
         self.eval_template("F_module_name", "_library")

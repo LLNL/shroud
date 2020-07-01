@@ -10,7 +10,7 @@
                     "C_impl_filename": "wrapArrayWrapper.cpp",
                     "C_name_scope": "ArrayWrapper_",
                     "C_type_name": "ARR_ArrayWrapper",
-                    "F_capsule_data_type": "SHROUD_arraywrapper_capsule",
+                    "F_capsule_data_type": "ARR_SHROUD_arraywrapper_capsule",
                     "F_derived_name": "arraywrapper",
                     "F_name_scope": "arraywrapper_",
                     "PY_PyObject": "PY_ArrayWrapper",

@@ -21,13 +21,13 @@ module name_module
     ! splicer begin namespace.ns0.module_top
     ! splicer end namespace.ns0.module_top
 
-    type, bind(C) :: SHROUD_names_capsule
+    type, bind(C) :: TES_SHROUD_names_capsule
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_names_capsule
+    end type TES_SHROUD_names_capsule
 
     type FNames
-        type(SHROUD_names_capsule) :: cxxmem
+        type(TES_SHROUD_names_capsule) :: cxxmem
         ! splicer begin namespace.ns0.class.Names.component_part
         ! splicer end namespace.ns0.class.Names.component_part
     contains
@@ -57,9 +57,9 @@ module name_module
                 result(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_names_capsule
+            import :: TES_SHROUD_names_capsule
             implicit none
-            type(SHROUD_names_capsule), intent(OUT) :: SHT_crv
+            type(TES_SHROUD_names_capsule), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function xxx_tes_names_defaultctor
 
@@ -69,9 +69,9 @@ module name_module
         ! Match:     c_default
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
-            import :: SHROUD_names_capsule
+            import :: TES_SHROUD_names_capsule
             implicit none
-            type(SHROUD_names_capsule), intent(IN) :: self
+            type(TES_SHROUD_names_capsule), intent(IN) :: self
         end subroutine xxx_tes_names_method1
 
         ! ----------------------------------------
@@ -80,9 +80,9 @@ module name_module
         ! Match:     c_default
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
-            import :: SHROUD_names_capsule
+            import :: TES_SHROUD_names_capsule
             implicit none
-            type(SHROUD_names_capsule), intent(IN) :: self2
+            type(TES_SHROUD_names_capsule), intent(IN) :: self2
         end subroutine xxx_tes_names_method2
 
         ! splicer begin namespace.ns0.class.Names.additional_interfaces

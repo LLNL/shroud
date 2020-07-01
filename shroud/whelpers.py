@@ -72,6 +72,8 @@ the conversion has failed.
 # See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49111
 # Instead, mangle the name with C_prefix.
 # See FHelpers copy_string
+#
+# This also applies to derived types which are bind(C).
 
 
 from . import typemap
@@ -560,7 +562,7 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
         derived_type=wformat(
             """
 ! helper {hname}
-type {F_capsule_type}+
+type :: {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
 -contains

@@ -29,7 +29,7 @@ module pointers_mod
 
     ! start array_context
     ! helper array_context
-    type, bind(C) :: SHROUD_array
+    type, bind(C) :: POI_SHROUD_array
         ! address of C++ memory
         type(SHROUD_capsule_data) :: cxx
         ! address of data in cxx
@@ -43,7 +43,7 @@ module pointers_mod
         ! number of dimensions
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
-    end type SHROUD_array
+    end type POI_SHROUD_array
     ! end array_context
 
     ! ----------------------------------------
@@ -516,9 +516,9 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_scalar_bufferify(Dnitems) &
                 bind(C, name="POI_get_ptr_to_scalar_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
         end subroutine c_get_ptr_to_scalar_bufferify
     end interface
     ! end c_get_ptr_to_scalar_bufferify
@@ -554,9 +554,9 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_fixed_array_bufferify(Dcount) &
                 bind(C, name="POI_get_ptr_to_fixed_array_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
         end subroutine c_get_ptr_to_fixed_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_array_bufferify
@@ -602,9 +602,9 @@ module pointers_mod
         subroutine c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount) &
                 bind(C, name="POI_get_ptr_to_dynamic_array_bufferify")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
             integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_array_bufferify
     end interface
@@ -641,9 +641,9 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_func_array_bufferify(Dcount) &
                 bind(C, name="POI_get_ptr_to_func_array_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
         end subroutine c_get_ptr_to_func_array_bufferify
     end interface
     ! end c_get_ptr_to_func_array_bufferify
@@ -679,9 +679,9 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_const_scalar_bufferify(Dnitems) &
                 bind(C, name="POI_get_ptr_to_const_scalar_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
         end subroutine c_get_ptr_to_const_scalar_bufferify
     end interface
     ! end c_get_ptr_to_const_scalar_bufferify
@@ -717,9 +717,9 @@ module pointers_mod
     interface
         subroutine c_get_ptr_to_fixed_const_array_bufferify(Dcount) &
                 bind(C, name="POI_get_ptr_to_fixed_const_array_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
         end subroutine c_get_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_get_ptr_to_fixed_const_array_bufferify
@@ -766,9 +766,9 @@ module pointers_mod
                 ncount) &
                 bind(C, name="POI_get_ptr_to_dynamic_const_array_bufferify")
             use iso_c_binding, only : C_INT
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
             integer(C_INT), intent(OUT) :: ncount
         end subroutine c_get_ptr_to_dynamic_const_array_bufferify
     end interface
@@ -805,9 +805,9 @@ module pointers_mod
     interface
         subroutine c_get_raw_ptr_to_scalar_bufferify(Dnitems) &
                 bind(C, name="POI_get_raw_ptr_to_scalar_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
         end subroutine c_get_raw_ptr_to_scalar_bufferify
     end interface
     ! end c_get_raw_ptr_to_scalar_bufferify
@@ -843,9 +843,9 @@ module pointers_mod
     interface
         subroutine c_get_raw_ptr_to_scalar_force_bufferify(Dnitems) &
                 bind(C, name="POI_get_raw_ptr_to_scalar_force_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dnitems
+            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
         end subroutine c_get_raw_ptr_to_scalar_force_bufferify
     end interface
     ! end c_get_raw_ptr_to_scalar_force_bufferify
@@ -881,9 +881,9 @@ module pointers_mod
     interface
         subroutine c_get_raw_ptr_to_fixed_array_bufferify(Dcount) &
                 bind(C, name="POI_get_raw_ptr_to_fixed_array_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
         end subroutine c_get_raw_ptr_to_fixed_array_bufferify
     end interface
     ! end c_get_raw_ptr_to_fixed_array_bufferify
@@ -919,9 +919,9 @@ module pointers_mod
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount) &
                 bind(C, name="POI_get_raw_ptr_to_fixed_array_force_bufferify")
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: Dcount
+            type(POI_SHROUD_array), intent(INOUT) :: Dcount
         end subroutine c_get_raw_ptr_to_fixed_array_force_bufferify
     end interface
     ! end c_get_raw_ptr_to_fixed_array_force_bufferify
@@ -1086,9 +1086,9 @@ module pointers_mod
                 result(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_array_bufferify")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_to_fixed_array_bufferify
     end interface
@@ -1136,9 +1136,9 @@ module pointers_mod
                 result(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_const_array_bufferify")
             use iso_c_binding, only : C_PTR
-            import :: SHROUD_array
+            import :: POI_SHROUD_array
             implicit none
-            type(SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
             type(C_PTR) SHT_rv
         end function c_return_int_ptr_to_fixed_const_array_bufferify
     end interface
@@ -1485,7 +1485,7 @@ contains
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
-        type(SHROUD_array) :: Dnitems
+        type(POI_SHROUD_array) :: Dnitems
         ! splicer begin function.get_ptr_to_scalar
         call c_get_ptr_to_scalar_bufferify(Dnitems)
         call c_f_pointer(Dnitems%base_addr, nitems)
@@ -1514,7 +1514,7 @@ contains
     subroutine get_ptr_to_fixed_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(SHROUD_array) :: Dcount
+        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_fixed_array
         call c_get_ptr_to_fixed_array_bufferify(Dcount)
         call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
@@ -1550,7 +1550,7 @@ contains
     subroutine get_ptr_to_dynamic_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(SHROUD_array) :: Dcount
+        type(POI_SHROUD_array) :: Dcount
         integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_array
         call c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount)
@@ -1582,7 +1582,7 @@ contains
     subroutine get_ptr_to_func_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(SHROUD_array) :: Dcount
+        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_func_array
         call c_get_ptr_to_func_array_bufferify(Dcount)
         call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
@@ -1608,7 +1608,7 @@ contains
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: nitems
-        type(SHROUD_array) :: Dnitems
+        type(POI_SHROUD_array) :: Dnitems
         ! splicer begin function.get_ptr_to_const_scalar
         call c_get_ptr_to_const_scalar_bufferify(Dnitems)
         call c_f_pointer(Dnitems%base_addr, nitems)
@@ -1634,7 +1634,7 @@ contains
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(SHROUD_array) :: Dcount
+        type(POI_SHROUD_array) :: Dcount
         ! splicer begin function.get_ptr_to_fixed_const_array
         call c_get_ptr_to_fixed_const_array_bufferify(Dcount)
         call c_f_pointer(Dcount%base_addr, count, Dcount%shape(1:1))
@@ -1666,7 +1666,7 @@ contains
     subroutine get_ptr_to_dynamic_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), intent(OUT), pointer :: count(:)
-        type(SHROUD_array) :: Dcount
+        type(POI_SHROUD_array) :: Dcount
         integer(C_INT) :: ncount
         ! splicer begin function.get_ptr_to_dynamic_const_array
         call c_get_ptr_to_dynamic_const_array_bufferify(Dcount, ncount)
@@ -1696,7 +1696,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar
-        type(SHROUD_array) Dnitems
+        type(POI_SHROUD_array) Dnitems
         call c_get_raw_ptr_to_scalar_bufferify(Dnitems)
         nitems = Dnitems%base_addr
         ! splicer end function.get_raw_ptr_to_scalar
@@ -1724,7 +1724,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar_force
-        type(SHROUD_array) Dnitems
+        type(POI_SHROUD_array) Dnitems
         call c_get_raw_ptr_to_scalar_force_bufferify(Dnitems)
         nitems = Dnitems%base_addr
         ! splicer end function.get_raw_ptr_to_scalar_force
@@ -1754,7 +1754,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array
-        type(SHROUD_array) Dcount
+        type(POI_SHROUD_array) Dcount
         call c_get_raw_ptr_to_fixed_array_bufferify(Dcount)
         count = Dcount%base_addr
         ! splicer end function.get_raw_ptr_to_fixed_array
@@ -1783,7 +1783,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array_force
-        type(SHROUD_array) Dcount
+        type(POI_SHROUD_array) Dcount
         call c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount)
         count = Dcount%base_addr
         ! splicer end function.get_raw_ptr_to_fixed_array_force
@@ -1871,7 +1871,7 @@ contains
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(POI_SHROUD_array) :: DSHC_rv
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_array
         type(C_PTR) :: SHT_ptr
@@ -1911,7 +1911,7 @@ contains
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(SHROUD_array) :: DSHC_rv
+        type(POI_SHROUD_array) :: DSHC_rv
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_const_array
         type(C_PTR) :: SHT_ptr
