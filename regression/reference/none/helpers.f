@@ -414,13 +414,13 @@ end interface
 interface
     ! helper copy_string
     ! Copy the char* or std::string in context into c_var.
-    subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+    subroutine LIB_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
          bind(c,name="LIB_ShroudCopyStringAndFree")
         use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
         import SHROUD_array
         type(SHROUD_array), intent(IN) :: context
         character(kind=C_CHAR), intent(OUT) :: c_var(*)
         integer(C_SIZE_T), value :: c_var_size
-    end subroutine SHROUD_copy_string_and_free
+    end subroutine LIB_SHROUD_copy_string_and_free
 end interface
 ##### end copy_string interface

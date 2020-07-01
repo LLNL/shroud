@@ -60,6 +60,20 @@ the conversion has failed.
 
 """
 
+# Note about PRIVATE Fortran helpers
+# If a single subroutine uses multiple modules created by Shroud
+# some compilers will rightly complain that they each define this function.
+#  "Procedure shroud_copy_string_and_free has more than one interface accessible
+#  by use association. The interfaces are assumed to be the same."
+# It should be marked PRIVATE to prevent users from calling it directly.
+# However, gfortran does not like that.
+#  "Symbol 'shroud_copy_string_and_free' at (1) is marked PRIVATE but has been given
+#  the binding label 'ShroudCopyStringAndFree'"
+# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49111
+# Instead, mangle the name with C_prefix.
+# See FHelpers copy_string
+
+
 from . import typemap
 from . import util
 
@@ -195,21 +209,23 @@ if (data->elem_len < n) n = data->elem_len;
 
     # Fortran interface for above function.
     # Deal with allocatable character
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+subroutine {hnamefunc}(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_string_and_free
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),

@@ -1887,8 +1887,7 @@ fc_statements = [
         ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call SHROUD_copy_string_and_free"
-            "({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     dict(
@@ -2052,8 +2051,7 @@ fc_statements = [
         ],
         post_call=[
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call SHROUD_copy_string_and_free("
-            "{c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
     

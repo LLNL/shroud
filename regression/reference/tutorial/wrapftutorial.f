@@ -710,14 +710,14 @@ module tutorial_mod
     interface
         ! helper copy_string
         ! Copy the char* or std::string in context into c_var.
-        subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+        subroutine TUT_SHROUD_copy_string_and_free(context, c_var, c_var_size) &
              bind(c,name="TUT_ShroudCopyStringAndFree")
             use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
             import SHROUD_array
             type(SHROUD_array), intent(IN) :: context
             character(kind=C_CHAR), intent(OUT) :: c_var(*)
             integer(C_SIZE_T), value :: c_var_size
-        end subroutine SHROUD_copy_string_and_free
+        end subroutine TUT_SHROUD_copy_string_and_free
     end interface
 
 contains
@@ -766,7 +766,7 @@ contains
             len_trim(arg1, kind=C_INT), arg2, &
             len_trim(arg2, kind=C_INT), DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        call TUT_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
         ! splicer end function.concatenate_strings
     end function concatenate_strings
 

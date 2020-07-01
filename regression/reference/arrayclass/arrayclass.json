@@ -481,6 +481,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_pointer",
@@ -630,6 +631,7 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
                             "function_suffix": "_bufferify",
+                            "hnamefunc0": "array_context",
                             "underscore_name": "get_array"
                         },
                         "options": {
@@ -666,6 +668,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_pointer",
@@ -817,6 +820,7 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
                             "function_suffix": "_bufferify",
+                            "hnamefunc0": "array_context",
                             "underscore_name": "get_array_const"
                         },
                         "options": {
@@ -853,6 +857,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_pointer",
@@ -1004,6 +1009,7 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
                             "function_suffix": "_bufferify",
+                            "hnamefunc0": "array_context",
                             "underscore_name": "get_array_c"
                         },
                         "options": {
@@ -1040,6 +1046,7 @@
                                 "f_assumed_shape": "(:)",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "array_context",
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_pointer",
@@ -1193,6 +1200,7 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
                             "function_suffix": "_bufferify",
+                            "hnamefunc0": "array_context",
                             "underscore_name": "get_array_const_c"
                         },
                         "options": {
@@ -1409,6 +1417,7 @@
                                     "f_intent": "OUT",
                                     "f_type": "real(C_DOUBLE)",
                                     "f_var": "array",
+                                    "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_pointer",
@@ -1743,6 +1752,7 @@
                                     "f_intent": "OUT",
                                     "f_type": "real(C_DOUBLE)",
                                     "f_var": "array",
+                                    "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_pointer",
@@ -2078,6 +2088,7 @@
                                     "f_intent": "OUT",
                                     "f_type": "real(C_DOUBLE)",
                                     "f_var": "array",
+                                    "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_pointer",
@@ -2414,6 +2425,7 @@
                                     "f_intent": "OUT",
                                     "f_type": "real(C_DOUBLE)",
                                     "f_var": "array",
+                                    "hnamefunc0": "array_context",
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_pointer",
