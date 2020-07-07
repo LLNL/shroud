@@ -663,12 +663,6 @@ static void PY_SHROUD_capsule_destructor_5(void *ptr)
     free(ptr);
 }
 
-// 6 - c const Cstruct1 *
-static void PY_SHROUD_capsule_destructor_6(void *ptr)
-{
-    free(ptr);
-}
-
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
@@ -679,7 +673,6 @@ static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"c Cstruct_list *", PY_SHROUD_capsule_destructor_3},
     {"c Cstruct_numpy *", PY_SHROUD_capsule_destructor_4},
     {"c Arrays1 *", PY_SHROUD_capsule_destructor_5},
-    {"c const Cstruct1 *", PY_SHROUD_capsule_destructor_6},
     {NULL, NULL},
 };
 

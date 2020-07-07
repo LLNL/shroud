@@ -242,31 +242,6 @@ module struct_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const Cstruct1 returnConstStructByValue
-    ! Requested: c_struct_scalar_result
-    ! Match:     c_struct_result
-    ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
-    ! Requested: c_native_scalar_in
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
-    ! Requested: c_native_scalar_in
-    ! Match:     c_default
-    interface
-        function return_const_struct_by_value(i, d) &
-                result(SHT_rv) &
-                bind(C, name="returnConstStructByValue")
-            use iso_c_binding, only : C_DOUBLE, C_INT
-            import :: cstruct1
-            implicit none
-            integer(C_INT), value, intent(IN) :: i
-            real(C_DOUBLE), value, intent(IN) :: d
-            type(cstruct1) :: SHT_rv
-        end function return_const_struct_by_value
-    end interface
-
-    ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result

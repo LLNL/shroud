@@ -204,28 +204,6 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
     // splicer end function.return_struct_by_value
 }
 
-// ----------------------------------------
-// Function:  const Cstruct1 returnConstStructByValue
-// Requested: c_struct_scalar_result
-// Match:     c_struct_result
-// ----------------------------------------
-// Argument:  int i +intent(in)+value
-// Requested: c_native_scalar_in
-// Match:     c_default
-// ----------------------------------------
-// Argument:  double d +intent(in)+value
-// Requested: c_native_scalar_in
-// Match:     c_default
-const STR_cstruct1 STR_return_const_struct_by_value(int i, double d)
-{
-    // splicer begin function.return_const_struct_by_value
-    const Cstruct1 SHCXX_rv = returnConstStructByValue(i, d);
-    const STR_cstruct1 * SHC_rv = static_cast<const STR_cstruct1 *>(
-        static_cast<const void *>(&SHCXX_rv));
-    return *SHC_rv;
-    // splicer end function.return_const_struct_by_value
-}
-
 /**
  * \brief Return a pointer to a struct
  *

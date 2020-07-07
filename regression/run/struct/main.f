@@ -90,10 +90,6 @@ contains
     call assert_equals(1_C_INT,      str1%ifield, "returnStructByValue i field")
     call assert_equals(2.5_C_DOUBLE, str1%dfield, "returnStructByValue d field")
 
-    str1 = return_const_struct_by_value(10_C_INT, 20.5_C_DOUBLE)
-    call assert_equals(10_C_INT,      str1%ifield, "return_constStructByValue i field")
-    call assert_equals(20.5_C_DOUBLE, str1%dfield, "return_constStructByValue d field")
-
     nullify(str2)
     str2 => return_struct_ptr1(33, 33.5d0)
     call assert_true(associated(str2), "returnStructPtr1")

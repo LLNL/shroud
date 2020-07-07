@@ -6,7 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-	
+### Fixed
+- Mangle names of Fortran helper functions with *C_prefix*.  This
+  fixes a conflict when two Shroud generated wrappers are used in the
+  same subprogram.  Ideally these helpers would be `PRIVATE`, but
+  gfortran does not allow `PRIVATE` and `BIND(C)` together.
+
 ## v0.12.0 - 2020-06-29
 ### Added
 - Option `C_force_wrapper` to create a C wrapper.
@@ -23,7 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   are a lot of classes which may create lots of duplicate helpers.
 - Parse array syntax for variables and struct members.
 - Change Python setter and getter functions to be driven by py_statements.
-- Parse `(void)` C prototype to indicate no parameters.	
+- Parse `(void)` C prototype to indicate no parameters.
 
 ### Changed
 - *intent(in)* pointer arguments now use the *rank* attribute instead of

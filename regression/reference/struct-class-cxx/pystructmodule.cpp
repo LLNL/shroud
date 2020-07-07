@@ -356,66 +356,6 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const Cstruct1 returnConstStructByValue
-// Exact:     py_struct_result_class
-// ----------------------------------------
-// Argument:  int i +intent(in)+value
-// Requested: py_native_scalar_in
-// Match:     py_default
-// ----------------------------------------
-// Argument:  double d +intent(in)+value
-// Requested: py_native_scalar_in
-// Match:     py_default
-static char PY_returnConstStructByValue__doc__[] =
-"documentation"
-;
-
-static PyObject *
-PY_returnConstStructByValue(
-  PyObject *SHROUD_UNUSED(self),
-  PyObject *args,
-  PyObject *kwds)
-{
-// splicer begin function.return_const_struct_by_value
-    int i;
-    double d;
-    const char *SHT_kwlist[] = {
-        "i",
-        "d",
-        nullptr };
-    Cstruct1 * SHCXX_rv = nullptr;
-    PyObject *SHTPy_rv = nullptr;  // struct_result_class
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "id:returnConstStructByValue", const_cast<char **>(SHT_kwlist), 
-        &i, &d))
-        return nullptr;
-
-    // result pre_call
-    SHCXX_rv = new Cstruct1;
-    if (SHCXX_rv == nullptr) {
-        PyErr_NoMemory();
-        goto fail;
-    }
-
-    *SHCXX_rv = returnConstStructByValue(i, d);
-
-    // post_call
-    SHTPy_rv = PP_Cstruct1_to_Object_idtor(SHCXX_rv, 6);
-    if (SHTPy_rv == nullptr) goto fail;
-
-    return (PyObject *) SHTPy_rv;
-
-fail:
-    if (SHCXX_rv != nullptr) {
-        PY_SHROUD_release_memory(6, SHCXX_rv);
-    }
-    Py_XDECREF(SHTPy_rv);
-    return nullptr;
-// splicer end function.return_const_struct_by_value
-}
-
-// ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Exact:     py_struct_result_class
 // ----------------------------------------
@@ -571,8 +511,6 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptStructInOutPtr__doc__},
 {"returnStructByValue", (PyCFunction)PY_returnStructByValue,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructByValue__doc__},
-{"returnConstStructByValue", (PyCFunction)PY_returnConstStructByValue,
-    METH_VARARGS|METH_KEYWORDS, PY_returnConstStructByValue__doc__},
 {"returnStructPtr1", (PyCFunction)PY_returnStructPtr1,
     METH_VARARGS|METH_KEYWORDS, PY_returnStructPtr1__doc__},
 {"returnStructPtr2", (PyCFunction)PY_returnStructPtr2,
