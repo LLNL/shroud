@@ -539,10 +539,10 @@ PY_defaultArgsInOut_1(
         &PyBool_Type, &SHPy_flag))
         return nullptr;
     switch (SH_nargs) {
-    case 3:
+    case 1:
         defaultArgsInOut(in1, &out1, &out2);
         break;
-    case 4:
+    case 2:
         {
             // pre_call
             flag = PyObject_IsTrue(SHPy_flag);

@@ -1195,10 +1195,11 @@ return 1;""",
 
         goto_fail = False
         args = ast.params
-        arg_names = []
+        arg_names = []    # Arguments to function, intent in or inout.
         arg_offsets = []
         arg_implied = []  # Collect implied arguments
         offset = 0
+        npyargs = 0       # Number of intent in or inout arguments.
         for arg in args:
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1369,6 +1370,8 @@ return 1;""",
                         parse_format.append("|")  # add once
                         found_optional = True
                     found_default = True
+                    # Since this argument is optional, save current state
+                    # so we can process without this argument.
                     # Cleanup should always do Py_XDECREF instead of
                     # Py_DECREF since PyObject pointers may be NULL due
                     # to different paths of execution in switch statement.
@@ -1376,13 +1379,14 @@ return 1;""",
                     # call for default arguments  (num args, arg string)
                     default_calls.append(
                         (
-                            len(cxx_call_list),
+                            npyargs,
                             len(post_declare_code),
                             len(post_parse_code),
                             len(pre_call_code),
                             ",\t ".join(cxx_call_list),
                         )
                     )
+                npyargs = npyargs + 1
 
                 # Declare C variable - may be PyObject.
                 # add argument to call to PyArg_ParseTypleAndKeywords
@@ -1489,7 +1493,7 @@ return 1;""",
         # call with all arguments
         default_calls.append(
             (
-                len(cxx_call_list),
+                npyargs,
                 len(post_declare_code),
                 len(post_parse_code),
                 len(pre_call_code),
@@ -1534,9 +1538,9 @@ return 1;""",
             PY_code.append("switch (SH_nargs) {")
 
         # build up code for a function
-        for nargs, post_declare_len,  post_parse_len, pre_call_len, call_list in default_calls:
+        for npyargs, post_declare_len, post_parse_len, pre_call_len, call_list in default_calls:
             if found_default:
-                PY_code.append("case %d:" % nargs)
+                PY_code.append("case %d:" % npyargs)
                 PY_code.append(1)
                 need_blank = False
                 if post_declare_len or post_parse_len or pre_call_len:

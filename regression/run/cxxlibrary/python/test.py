@@ -80,6 +80,7 @@ class Struct(unittest.TestCase):
         self.assertEqual(1, out1)
         self.assertEqual(20, out2)
 
+        # XXX - this segfaults with Python3
 #        cxxlibrary.defaultArgsInOut(1, True, 5)
         
 
