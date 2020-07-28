@@ -491,6 +491,76 @@ fail:
     return nullptr;
 // splicer end function.default_ptr_is_null
 }
+
+// ----------------------------------------
+// Function:  void defaultArgsInOut
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  int in1 +intent(in)+value
+// Requested: py_native_scalar_in
+// Match:     py_default
+// ----------------------------------------
+// Argument:  int * out1 +intent(out)
+// Exact:     py_native_*_out
+// ----------------------------------------
+// Argument:  int * out2 +intent(out)
+// Exact:     py_native_*_out
+// ----------------------------------------
+// Argument:  bool flag=false +intent(in)+value
+// Requested: py_bool_scalar_in
+// Match:     py_bool_in
+static char PY_defaultArgsInOut_1__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_defaultArgsInOut_1(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.default_args_in_out
+    Py_ssize_t SH_nargs = 0;
+    int in1;
+    int out1;
+    int out2;
+    bool flag;
+    PyObject * SHPy_flag;
+    const char *SHT_kwlist[] = {
+        "in1",
+        "flag",
+        nullptr };
+    PyObject *SHTPy_rv = nullptr;  // return value object
+
+    if (args != nullptr) SH_nargs += PyTuple_Size(args);
+    if (kwds != nullptr) SH_nargs += PyDict_Size(args);
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "i|O!:defaultArgsInOut", const_cast<char **>(SHT_kwlist), &in1,
+        &PyBool_Type, &SHPy_flag))
+        return nullptr;
+    switch (SH_nargs) {
+    case 3:
+        defaultArgsInOut(in1, &out1, &out2);
+        break;
+    case 4:
+        {
+            // pre_call
+            flag = PyObject_IsTrue(SHPy_flag);
+
+            defaultArgsInOut(in1, &out1, &out2, flag);
+            break;
+        }
+    default:
+        PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
+        return nullptr;
+    }
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("ii", out1, out2);
+
+    return SHTPy_rv;
+// splicer end function.default_args_in_out
+}
 static PyMethodDef PY_methods[] = {
 {"passStructByReference", (PyCFunction)PY_passStructByReference,
     METH_VARARGS|METH_KEYWORDS, PY_passStructByReference__doc__},
@@ -515,6 +585,8 @@ static PyMethodDef PY_methods[] = {
     PY_passStructByReferenceOutCls__doc__},
 {"defaultPtrIsNULL", (PyCFunction)PY_defaultPtrIsNULL_1,
     METH_VARARGS|METH_KEYWORDS, PY_defaultPtrIsNULL_1__doc__},
+{"defaultArgsInOut", (PyCFunction)PY_defaultArgsInOut_1,
+    METH_VARARGS|METH_KEYWORDS, PY_defaultArgsInOut_1__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 

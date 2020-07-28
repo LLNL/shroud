@@ -80,3 +80,15 @@ bool defaultPtrIsNULL(double *data)
         return true;
     return false;
 }
+
+//----------------------------------------------------------------------
+
+void defaultArgsInOut(int in1, int *out1, int *out2, bool flag)
+{
+    *out1 = 1;
+    if (flag) {
+        *out2 = 20;
+    } else {
+        *out2 = 2;
+    }
+}

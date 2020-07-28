@@ -60,9 +60,18 @@ contains
 
   subroutine test_default_args
     real(C_DOUBLE) :: some_var(2)
+    integer(C_INT) :: out1, out2
     
     call assert_true(default_ptr_is_null())
     call assert_false(default_ptr_is_null(some_var))
+
+    ! flag defaults to false
+    call default_args_in_out(1, out1, out2)
+    call assert_equals(1, out1, "defaultArgsInOut")
+    call assert_equals(2, out2, "defaultArgsInOut")
+    call default_args_in_out(1, out1, out2, .true.)
+    call assert_equals(1, out1, "defaultArgsInOut")
+    call assert_equals(20, out2, "defaultArgsInOut")
     
   end subroutine test_default_args
   
