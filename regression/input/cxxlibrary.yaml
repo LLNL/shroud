@@ -66,3 +66,8 @@ declarations:
 
 ##################################################
 - decl: bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )
+
+- decl: void defaultArgsInOut(int in1,
+           int *out1+intent(out),
+           int *out2+intent(out),
+           bool flag = false)

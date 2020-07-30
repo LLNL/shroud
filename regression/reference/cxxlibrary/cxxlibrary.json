@@ -1234,7 +1234,7 @@
             },
             {
                 "_default_funcs": [
-                    9
+                    10
                 ],
                 "_fmtargs": {
                     "data": {
@@ -1396,6 +1396,505 @@
                     "function_name": "defaultPtrIsNULL",
                     "function_suffix": "_1",
                     "underscore_name": "default_ptr_is_null"
+                },
+                "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "in1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "in1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in1",
+                            "cxx_type": "int",
+                            "cxx_var": "in1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_in1",
+                            "c_var": "in1",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "in1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "out1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out1",
+                            "cxx_type": "int",
+                            "cxx_var": "out1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_out1",
+                            "c_var": "out1",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "out1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "out2": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out2",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out2",
+                            "cxx_type": "int",
+                            "cxx_var": "out2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_out2",
+                            "c_var": "out2",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "out2",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "has_default_arg",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "defaultArgsInOut",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
+                "declgen": "void defaultArgsInOut(int in1 +intent(in)+value, int * out1 +intent(out), int * out2 +intent(out))",
+                "fmtdict": {
+                    "C_call_list": "in1,\t out1,\t out2",
+                    "C_name": "CXX_default_args_in_out_0",
+                    "C_prototype": "int in1,\t int * out1,\t int * out2",
+                    "C_return_type": "void",
+                    "F_C_call": "c_default_args_in_out_0",
+                    "F_C_name": "c_default_args_in_out_0",
+                    "F_arg_c_call": "in1,\t out1,\t out2",
+                    "F_arguments": "in1,\t out1,\t out2",
+                    "F_name_function": "default_args_in_out_0",
+                    "F_name_generic": "default_args_in_out",
+                    "F_name_impl": "default_args_in_out_0",
+                    "F_subprogram": "subroutine",
+                    "function_name": "defaultArgsInOut",
+                    "function_suffix": "_0",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "default_args_in_out"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_default_funcs": [
+                    11
+                ],
+                "_fmtargs": {
+                    "flag": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "flag",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&flag",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt0": "c_bool_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_flag",
+                            "c_var": "SH_flag",
+                            "f_intent": "IN",
+                            "f_type": "logical",
+                            "f_var": "flag",
+                            "sh_type": "SH_TYPE_BOOL",
+                            "stmt0": "f_bool_scalar_in",
+                            "stmt1": "f_bool_in",
+                            "stmtc0": "c_bool_scalar_in",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "PyTypeObject": "PyBool_Type",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "bool",
+                            "c_var": "flag",
+                            "ctor_expr": "flag",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&flag",
+                            "cxx_type": "bool",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_BOOL",
+                            "py_type": "PyObject",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_bool_scalar_in",
+                            "stmt1": "py_bool_in",
+                            "value_var": "SHValue_flag"
+                        }
+                    },
+                    "in1": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "in1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in1",
+                            "cxx_type": "int",
+                            "cxx_var": "in1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_in1",
+                            "c_var": "in1",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "in1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_type": "int",
+                            "c_var": "in1",
+                            "ctor_expr": "in1",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&in1",
+                            "cxx_type": "int",
+                            "cxx_var": "in1",
+                            "data_var": "SHData_in1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_in1",
+                            "size_var": "SHSize_in1",
+                            "stmt0": "py_native_scalar_in",
+                            "stmt1": "py_default",
+                            "value_var": "SHValue_in1"
+                        }
+                    },
+                    "out1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out1",
+                            "cxx_type": "int",
+                            "cxx_var": "out1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_out1",
+                            "c_var": "out1",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "out1",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "out1",
+                            "ctor_expr": "out1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out1",
+                            "cxx_type": "int",
+                            "cxx_var": "out1",
+                            "data_var": "SHData_out1",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_out1",
+                            "size_var": "SHSize_out1",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out",
+                            "value_var": "SHValue_out1"
+                        }
+                    },
+                    "out2": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "out2",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out2",
+                            "cxx_type": "int",
+                            "cxx_var": "out2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_out2",
+                            "c_var": "out2",
+                            "f_intent": "OUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "out2",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "out2",
+                            "ctor_expr": "out2",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "out2",
+                            "cxx_type": "int",
+                            "cxx_var": "out2",
+                            "data_var": "SHData_out2",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_out2",
+                            "size_var": "SHSize_out2",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out",
+                            "value_var": "SHValue_out2"
+                        }
+                    }
+                },
+                "_has_default_arg": true,
+                "_nargs": [
+                    3,
+                    4
+                ],
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "defaultArgsInOut",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "init": "false",
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
+                "declgen": "void defaultArgsInOut(int in1 +intent(in)+value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "in1,\t out1,\t out2,\t flag",
+                    "C_name": "CXX_default_args_in_out_1",
+                    "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
+                    "C_return_type": "void",
+                    "F_C_call": "c_default_args_in_out_1",
+                    "F_C_name": "c_default_args_in_out_1",
+                    "F_arg_c_call": "in1,\t out1,\t out2,\t SH_flag",
+                    "F_arguments": "in1,\t out1,\t out2,\t flag",
+                    "F_name_function": "default_args_in_out_1",
+                    "F_name_generic": "default_args_in_out",
+                    "F_name_impl": "default_args_in_out_1",
+                    "F_subprogram": "subroutine",
+                    "PY_cleanup_decref": "Py_XDECREF",
+                    "PY_name_impl": "PY_defaultArgsInOut_1",
+                    "function_name": "defaultArgsInOut",
+                    "function_suffix": "_1",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "default_args_in_out"
                 },
                 "options": {}
             }

@@ -40,5 +40,9 @@ void passStructByReferenceOutCls(Cstruct1_cls &arg);
 
 bool defaultPtrIsNULL(double *data = nullptr);
 
+//----------------------------------------------------------------------
+
+void defaultArgsInOut(int in1, int *out1, int *out2, bool flag = false);
+
 #endif // CXXLIBRARY_H
 

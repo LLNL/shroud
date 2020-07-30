@@ -49,6 +49,11 @@ bool CXX_default_ptr_is_null_0(void);
 
 bool CXX_default_ptr_is_null_1(double * data);
 
+void CXX_default_args_in_out_0(int in1, int * out1, int * out2);
+
+void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
+    bool flag);
+
 #ifdef __cplusplus
 }
 #endif

@@ -72,6 +72,18 @@ class Struct(unittest.TestCase):
         self.assertTrue(cxxlibrary.defaultPtrIsNULL())
         self.assertFalse(cxxlibrary.defaultPtrIsNULL([1., 2.]))
 
+    def test_defaultArgsInOut(self):
+        out1, out2 = cxxlibrary.defaultArgsInOut(1)
+        self.assertEqual(1, out1)
+        self.assertEqual(2, out2)
+        out1, out2 = cxxlibrary.defaultArgsInOut(1, True)
+        self.assertEqual(1, out1)
+        self.assertEqual(20, out2)
+
+        # XXX - this segfaults with Python3
+#        cxxlibrary.defaultArgsInOut(1, True, 5)
+        
+
 # creating a new test suite
 newSuite = unittest.TestSuite()
  
