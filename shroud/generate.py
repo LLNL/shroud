@@ -1204,12 +1204,14 @@ class GenFunctions(object):
         has_buf_arg = False
         for arg in ast.params:
             arg_typemap = arg.typemap
-            if arg_typemap.base == "string":
+            if arg_typemap.sgroup == "string":
+                has_buf_arg = True
+            elif arg_typemap.sgroup == "char":
                 if arg.ftrim_char_in:
                     pass
                 elif arg.is_indirect():
                     has_buf_arg = True
-            elif arg_typemap.base == "vector":
+            elif arg_typemap.sgroup == "vector":
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
                   arg.attrs["intent"] == "out" and

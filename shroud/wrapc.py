@@ -735,9 +735,9 @@ class Wrapc(util.WrapperMixin):
         Args:
             cls      - ast.ClassNode or None of enclosing class.
             fcn      - ast.FunctionNode of calling function.
-            ast      -
-            ntypemap -
-            fmt      -
+            ast      - declast.Declaration
+            ntypemap - typemap.Typemap
+            fmt      - scope.Util
             is_func  - True if function.
         """
 
