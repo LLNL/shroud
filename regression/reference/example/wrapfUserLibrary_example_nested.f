@@ -1336,14 +1336,12 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck +deref(allocatable)
     ! const string & getNameErrorCheck +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getNameErrorCheck
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
@@ -1564,14 +1562,12 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2 +deref(allocatable)
     ! const string & getName2 +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getName2
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name2(obj) &
@@ -1590,14 +1586,12 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3 +deref(allocatable)
     ! string & getName3 +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getName3
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name3(obj) &
@@ -1616,14 +1610,12 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4 +deref(allocatable)
     ! string & getName4 +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getName4
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function exclass2_get_name4(obj) &

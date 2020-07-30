@@ -2039,9 +2039,9 @@ fc_statements = [
         ],
     ),
     
-    # similar to f_char_result_allocatable
+    # similar to f_char_scalar_result_allocatable
     dict(
-        name="f_string_result_allocatable",
+        name="f_string_scalar_result_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -2052,6 +2052,14 @@ fc_statements = [
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
+    ),
+    dict(
+        name="f_string_*_result_allocatable",
+        base="f_string_scalar_result_allocatable",
+    ),
+    dict(
+        name="f_string_&_result_allocatable",
+        base="f_string_scalar_result_allocatable",
     ),
     
     

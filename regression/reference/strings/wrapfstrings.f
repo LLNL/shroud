@@ -1380,14 +1380,12 @@ contains
     ! ----------------------------------------
     ! Function:  const string getConstStringResult +deref(allocatable)
     ! const string getConstStringResult +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringResult
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>
@@ -1464,14 +1462,12 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string getConstStringAlloc +deref(allocatable)
     ! const std::string getConstStringAlloc +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function get_const_string_alloc() &
@@ -1489,14 +1485,12 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure +deref(allocatable)
     ! const string & getConstStringRefPure +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringRefPure
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>
@@ -1608,14 +1602,12 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
     ! const std::string & getConstStringRefAlloc +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringRefAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function get_const_string_ref_alloc() &
@@ -1666,13 +1658,12 @@ contains
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! Requested: f_string_scalar_result_allocatable_library
-    ! Match:     f_string_result_allocatable
+    ! Match:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function get_const_string_ptr_alloc() &
@@ -1691,13 +1682,12 @@ contains
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
     ! const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
     ! Requested: f_string_scalar_result_allocatable_caller
-    ! Match:     f_string_result_allocatable
+    ! Match:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringPtrOwnsAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>
@@ -1723,13 +1713,12 @@ contains
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
     ! Requested: f_string_scalar_result_allocatable_caller
-    ! Match:     f_string_result_allocatable
+    ! Match:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringPtrOwnsAllocPattern
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>

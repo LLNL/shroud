@@ -137,14 +137,12 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(allocatable)
     ! const std::string & LastFunctionCalled +deref(allocatable)
-    ! Requested: f_string_scalar_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_scalar_result_allocatable
     ! Function:  void LastFunctionCalled
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: f_string_&_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_&_result_allocatable
     ! Requested: c_string_&_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     function last_function_called() &
