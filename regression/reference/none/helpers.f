@@ -153,6 +153,22 @@ interface
 end interface
 ##### end copy_array_float interface
 
+##### start copy_array_float_complex interface
+
+interface
+    ! helper copy_array_float_complex
+    ! Copy contents of context into c_var.
+    subroutine LIB_SHROUD_copy_array_float_complex(context, c_var, c_var_size) &
+        bind(C, name="LIB_ShroudCopyArray")
+        use iso_c_binding, only : C_FLOAT_COMPLEX, C_SIZE_T
+        import LIB_SHROUD_array
+        type(LIB_SHROUD_array), intent(IN) :: context
+        complex(C_FLOAT_COMPLEX), intent(OUT) :: c_var(*)
+        integer(C_SIZE_T), value :: c_var_size
+    end subroutine LIB_SHROUD_copy_array_float_complex
+end interface
+##### end copy_array_float_complex interface
+
 ##### start copy_array_int interface
 
 interface
