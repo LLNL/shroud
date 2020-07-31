@@ -102,6 +102,28 @@ typemap:
       LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
       sgroup: native
       sh_type: SH_TYPE_DOUBLE
+  - type: double_complex
+    fields:
+      flat_name: double_complex
+      base: unknown
+      idtor: 0
+      cxx_type: double complex
+      c_type: double complex
+      f_type: complex(C_DOUBLE_COMPLEX)
+      f_kind: C_DOUBLE_COMPLEX
+      f_module:
+        iso_c_binding:
+        - C_DOUBLE_COMPLEX
+      f_cast: cmplx({f_var}, C_DOUBLE_COMPLEX)
+      PY_format: d
+      PY_ctor: PyFloat_FromDouble({ctor_expr})
+      PY_get: PyFloat_AsDouble({py_var})
+      PYN_typenum: NPY_DOUBLE
+      LUA_type: LUA_TNUMBER
+      LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
+      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      sgroup: native
+      sh_type: SH_TYPE_DOUBLE_COMPLEX
   - type: float
     fields:
       flat_name: float

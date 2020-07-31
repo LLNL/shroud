@@ -32,6 +32,7 @@ type_specifier = {
     "double",
     "signed",
     "unsigned",
+    "complex",    # C _Complex
 }
 type_qualifier = {"const", "volatile"}
 storage_class = {"auto", "register", "static", "extern", "typedef"}
@@ -83,6 +84,8 @@ canonical_typemap = dict(
     unsigned_long_long_int="unsigned_long_long",
     # implied 'int'
     unsigned="unsigned_int",
+    complex_double="double_complex",
+    complex_float="float_complex",
 )
 
 def tokenize(s):

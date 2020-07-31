@@ -374,6 +374,37 @@ static int SHROUD_create_from_PyObject_vector_double(PyObject *obj,
 }
 ##### end create_from_PyObject_vector_double cxx_source
 
+##### start create_from_PyObject_vector_double_complex cxx_source
+
+// helper create_from_PyObject_vector_double_complex
+// Convert obj into an array of type double complex
+// Return -1 on error.
+static int SHROUD_create_from_PyObject_vector_double_complex
+    (PyObject *obj, const char *name, std::vector<double complex> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in.push_back(PyFloat_AsDouble(item));
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double complex", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end create_from_PyObject_vector_double_complex cxx_source
+
 ##### start create_from_PyObject_vector_float cxx_source
 
 // helper create_from_PyObject_vector_float
@@ -952,6 +983,95 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
     return 0;
 }
 ##### end fill_from_PyObject_char source
+
+##### start fill_from_PyObject_double_complex_list source
+
+// helper fill_from_PyObject_double_complex_list
+// Fill double complex array from Python sequence object.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_double_complex_list(PyObject *obj,
+    const char *name, double complex *in, Py_ssize_t insize)
+{
+    double complex value = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be double complex", name,
+                (int) i);
+            return -1;
+        }
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_double_complex_list source
+
+##### start fill_from_PyObject_double_complex_numpy source
+
+// helper fill_from_PyObject_double_complex_numpy
+// Fill double complex array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_double_complex_numpy(PyObject *obj,
+    const char *name, double complex *in, Py_ssize_t insize)
+{
+    double complex value = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = value;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of double complex",
+            name);
+        return -1;
+    }
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    double complex *data = static_cast<double complex *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        in[i] = data[i];
+    }
+    Py_DECREF(pyarray);
+    return 0;
+}
+##### end fill_from_PyObject_double_complex_numpy source
 
 ##### start fill_from_PyObject_double_list source
 
@@ -2477,6 +2597,70 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
 }
 ##### end get_from_object_charptr source
 
+##### start get_from_object_double_complex_list source
+
+// helper get_from_object_double_complex_list
+// Convert list of PyObject to array of double complex.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+static int SHROUD_get_from_object_double_complex_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return 0;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    double complex *in = static_cast<double complex *>
+        (std::malloc(size * sizeof(double complex)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        in[i] = PyFloat_AsDouble(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be double complex",
+                value->name, (int) i);
+            return 0;
+        }
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
+    value->data = static_cast<double complex *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_double_complex_list source
+
+##### start get_from_object_double_complex_numpy source
+
+// helper get_from_object_double_complex_numpy
+// Convert PyObject to double complex pointer.
+static int SHROUD_get_from_object_double_complex_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of double complex");
+        return 0;
+    }
+    value->obj = array;
+    value->dataobj = nullptr;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_double_complex_numpy source
+
 ##### start get_from_object_double_list source
 
 // helper get_from_object_double_list
@@ -3609,6 +3793,21 @@ static PyObject *SHROUD_to_PyList_double(const double *in, size_t size)
 }
 ##### end to_PyList_double source
 
+##### start to_PyList_double_complex source
+
+// helper to_PyList_double_complex
+// Convert double complex pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_double_complex
+    (const double complex *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_double_complex source
+
 ##### start to_PyList_float source
 
 // helper to_PyList_float
@@ -3857,6 +4056,21 @@ static PyObject *SHROUD_to_PyList_vector_double
     return out;
 }
 ##### end to_PyList_vector_double source
+
+##### start to_PyList_vector_double_complex source
+
+// helper to_PyList_vector_double_complex
+static PyObject *SHROUD_to_PyList_vector_double_complex
+    (std::vector<double complex> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+    return out;
+}
+##### end to_PyList_vector_double_complex source
 
 ##### start to_PyList_vector_float source
 
@@ -4140,6 +4354,22 @@ static void SHROUD_update_PyList_double
 }
 ##### end update_PyList_double source
 
+##### start update_PyList_double_complex source
+
+// helper update_PyList_double_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_double_complex
+    (PyObject *out, double complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_double_complex source
+
 ##### start update_PyList_float source
 
 // helper update_PyList_float
@@ -4411,6 +4641,22 @@ static void SHROUD_update_PyList_vector_double
     }
 }
 ##### end update_PyList_vector_double source
+
+##### start update_PyList_vector_double_complex source
+
+// helper update_PyList_vector_double_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_vector_double_complex
+    (PyObject *out, double complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyFloat_FromDouble(in[i]));
+    }
+}
+##### end update_PyList_vector_double_complex source
 
 ##### start update_PyList_vector_float source
 

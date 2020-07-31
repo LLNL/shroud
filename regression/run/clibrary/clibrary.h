@@ -110,6 +110,6 @@ void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
 
-void accept_complex(double complex *arg1);
+void accept_double_complex(double complex *arg1);
 
 #endif // CLIBRARY_HPP

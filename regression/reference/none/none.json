@@ -309,6 +309,28 @@
             "sgroup": "native",
             "sh_type": "SH_TYPE_DOUBLE"
         },
+        "double_complex": {
+            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_DOUBLE",
+            "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
+            "PY_format": "d",
+            "PY_get": "PyFloat_AsDouble({py_var})",
+            "c_type": "double complex",
+            "cxx_type": "double complex",
+            "f_cast": "cmplx({f_var}, C_DOUBLE_COMPLEX)",
+            "f_kind": "C_DOUBLE_COMPLEX",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_DOUBLE_COMPLEX"
+                ]
+            },
+            "f_type": "complex(C_DOUBLE_COMPLEX)",
+            "flat_name": "double_complex",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_DOUBLE_COMPLEX"
+        },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",

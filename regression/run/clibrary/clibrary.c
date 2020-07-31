@@ -445,8 +445,9 @@ void get_values(int *nvalues, int *values)
 
 //----------------------------------------------------------------------
 
-void accept_complex(double complex *arg1)
+void accept_double_complex(double complex *arg1)
 {
+    *arg1 = 3.0 + 4.0 * I;
 }
 
 //----------------------------------------------------------------------
