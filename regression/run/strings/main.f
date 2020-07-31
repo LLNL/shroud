@@ -226,21 +226,34 @@ contains
 
     ! Fetch from global_str.
     call fetch_string_pointer(str)
-    call assert_true( str == "from Fortran")
+    call assert_true( str == "from Fortran", "fetchStringPointer")
 
     call fetch_string_pointer_len(str, nlen)
-    call assert_true( str == "from Fortran")
-    call assert_equals(len_trim(str), nlen)
+    call assert_true( str == "from Fortran", "FetchStringPointerLen")
+    call assert_equals(len_trim(str), nlen, "FetchStringPointerLen")
+
+    ! Return length of string
+    nlen = accept_string_instance("from Fortran")
+    call assert_equals(12, nlen, "acceptStringInstance")
+    str = "from Fortran"
+    nlen = accept_string_instance(str) ! Returns trimmed length
+    call assert_equals(12, nlen, "acceptStringInstance")
+    ! argument is passed by value to C++ so changes will not effect argument.
+    call assert_equals("from Fortran", str)
+
+    ! Call C++ function directly by adding trailing NULL.
+    nlen = c_accept_string_instance("from Fortran" // C_NULL_CHAR)
+    call assert_equals(12, nlen, "acceptStringInstance")
 
     ! append "dog".
     str = "bird"
     call accept_string_pointer(str)
-    call assert_true( str == "birddog")
+    call assert_true( str == "birddog", "acceptStringPointer")
 
     str = "bird"
     call accept_string_pointer_len(str, nlen)
-    call assert_true( str == "birddog")
-    call assert_equals(len_trim(str), nlen)
+    call assert_true( str == "birddog", "acceptStringPointerLen")
+    call assert_equals(len_trim(str), nlen, "acceptStringPointerLen")
 
   end subroutine test_functions
 

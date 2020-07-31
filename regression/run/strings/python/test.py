@@ -111,6 +111,11 @@ class Tutorial(unittest.TestCase):
         self.assertEqual('birddog', s)
         self.assertEqual(len(s), nlen)
 
+    def testacceptStringInstance(self):
+        s = "acceptStringInstance"
+        nlen = strings.acceptStringInstance(s)
+        self.assertEqual(len(s), nlen)
+        
     def testreturnStrings(self):
         self.assertEqual(('up', 'down'), strings.returnStrings())
 

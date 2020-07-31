@@ -269,6 +269,7 @@ Assign a blank list will not add any declarations.
 This is used when only an output ``std::string`` or ``std::vector``
 is created after parsing arguments.
 
+This variables is used with ``PyArg_ParseTupleAndKeywords``.
 
 The argument will be non-const to allow it to be assigned later.
 

@@ -146,6 +146,10 @@ void STR_fetch_string_pointer_len(char * arg1, int * nlen);
 void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
     int * nlen);
 
+int STR_accept_string_instance(char *arg1);
+
+int STR_accept_string_instance_bufferify(char *arg1, int Larg1);
+
 void STR_explicit1(char * name);
 
 void STR_explicit2(char * name);

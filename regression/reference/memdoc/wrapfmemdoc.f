@@ -106,13 +106,12 @@ contains
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
     ! Requested: f_string_scalar_result_allocatable_library
-    ! Match:     f_string_result_allocatable
+    ! Match:     f_string_scalar_result_allocatable
     ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
-    ! Requested: f_string_*_result_allocatable
-    ! Match:     f_string_result_allocatable
+    ! Exact:     f_string_*_result_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     ! start get_const_string_ptr_alloc

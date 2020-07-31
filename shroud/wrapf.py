@@ -1369,6 +1369,9 @@ rv = .false.
             for line in intent_blk.post_call:
                 append_format(post_call, line, fmt)
 
+        # this catches stuff like a bool to logical conversion which
+        # requires the wrapper
+        need_wrapper = need_wrapper or intent_blk.need_wrapper
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
@@ -1549,10 +1552,6 @@ rv = .false.
             fmt_func.F_subprogram = "function"
             fmt_func.F_result = f_result_blk.result
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-        
-        # this catches stuff like a bool to logical conversion which
-        # requires the wrapper
-        need_wrapper = need_wrapper or f_result_blk.need_wrapper
         
         if cls:
             need_wrapper = True

@@ -1250,6 +1250,45 @@ void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
     // splicer end function.fetch_string_pointer_len_bufferify
 }
 
+/**
+ * \brief Accept a string instance
+ *
+ */
+// ----------------------------------------
+// Function:  int acceptStringInstance
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string arg1 +intent(in)+value
+// Exact:     c_string_scalar_in
+int STR_accept_string_instance(char *arg1)
+{
+    // splicer begin function.accept_string_instance
+    int SHC_rv = acceptStringInstance(arg1);
+    return SHC_rv;
+    // splicer end function.accept_string_instance
+}
+
+/**
+ * \brief Accept a string instance
+ *
+ */
+// ----------------------------------------
+// Function:  int acceptStringInstance
+// Requested: c_native_scalar_result_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string arg1 +intent(in)+len_trim(Larg1)+value
+// Exact:     c_string_scalar_in_buf
+int STR_accept_string_instance_bufferify(char *arg1, int Larg1)
+{
+    // splicer begin function.accept_string_instance_bufferify
+    std::string SHCXX_arg1(arg1, Larg1);
+    int SHC_rv = acceptStringInstance(SHCXX_arg1);
+    return SHC_rv;
+    // splicer end function.accept_string_instance_bufferify
+}
+
 // ----------------------------------------
 // Function:  void explicit1
 // Requested: c
