@@ -177,8 +177,11 @@ class Typemap(object):
         such as after clone_as.
 
         cxx_type will not be set for template arguments.
+        Only set if None. Complex is set explicitly since
+        C and C++ have totally different names  (double complex vs complex<double>)
         """
-        self.flat_name = flatten_name(self.cxx_type)
+        if self.flat_name is None:
+            self.flat_name = flatten_name(self.cxx_type)
 
     def _to_dict(self):
         """Convert instance to a dictionary for json.
@@ -647,7 +650,10 @@ def initialize():
         float_complex=Typemap(   # _Complex
             "float_complex",
             c_type="float complex",
-            cxx_type="float complex", # Used to compute flat_name, but not C++.
+            cxx_type="std::complex<float>",
+            flat_name="float_complex",
+            c_header="<complex.h>",
+            cxx_header="<complex>",
             f_cast="cmplx({f_var}, C_FLOAT_COMPLEX)",
             f_type="complex(C_FLOAT_COMPLEX)",
             f_kind="C_FLOAT_COMPLEX",
@@ -665,7 +671,10 @@ def initialize():
         double_complex=Typemap(   # _Complex
             "double_complex",
             c_type="double complex",
-            cxx_type="double complex", # Used to compute flat_name, but not C++.
+            cxx_type="std::complex<double>",
+            flat_name="double_complex",
+            c_header="<complex.h>",
+            cxx_header="<complex>",
             f_cast="cmplx({f_var}, C_DOUBLE_COMPLEX)",
             f_type="complex(C_DOUBLE_COMPLEX)",
             f_kind="C_DOUBLE_COMPLEX",

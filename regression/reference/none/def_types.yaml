@@ -107,8 +107,12 @@ typemap:
       flat_name: double_complex
       base: unknown
       idtor: 0
-      cxx_type: double complex
+      cxx_type: std::complex<double>
+      cxx_header:
+      - <complex>
       c_type: double complex
+      c_header:
+      - <complex.h>
       f_type: complex(C_DOUBLE_COMPLEX)
       f_kind: C_DOUBLE_COMPLEX
       f_module:
@@ -151,8 +155,12 @@ typemap:
       flat_name: float_complex
       base: unknown
       idtor: 0
-      cxx_type: float complex
+      cxx_type: std::complex<float>
+      cxx_header:
+      - <complex>
       c_type: float complex
+      c_header:
+      - <complex.h>
       f_type: complex(C_FLOAT_COMPLEX)
       f_kind: C_FLOAT_COMPLEX
       f_module:

@@ -317,8 +317,14 @@
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
+            "c_header": [
+                "<complex.h>"
+            ],
             "c_type": "double complex",
-            "cxx_type": "double complex",
+            "cxx_header": [
+                "<complex>"
+            ],
+            "cxx_type": "std::complex<double>",
             "f_cast": "cmplx({f_var}, C_DOUBLE_COMPLEX)",
             "f_kind": "C_DOUBLE_COMPLEX",
             "f_module": {
@@ -361,8 +367,14 @@
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
             "PY_format": "d",
             "PY_get": "PyFloat_AsDouble({py_var})",
+            "c_header": [
+                "<complex.h>"
+            ],
             "c_type": "float complex",
-            "cxx_type": "float complex",
+            "cxx_header": [
+                "<complex>"
+            ],
+            "cxx_type": "std::complex<float>",
             "f_cast": "cmplx({f_var}, C_FLOAT_COMPLEX)",
             "f_kind": "C_FLOAT_COMPLEX",
             "f_module": {
