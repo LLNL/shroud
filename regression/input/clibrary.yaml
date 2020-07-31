@@ -253,6 +253,9 @@ declarations:
     wrap_python: False
 
 ######################################################################
+- decl: void accept_float_complex(float complex *arg1)
+  options:
+    wrap_python: False
 - decl: void accept_double_complex(double complex *arg1)
   options:
     wrap_python: False

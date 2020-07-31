@@ -810,6 +810,23 @@ module clibrary_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void accept_float_complex
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float complex * arg1 +intent(inout)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    interface
+        subroutine accept_float_complex(arg1) &
+                bind(C, name="accept_float_complex")
+            use iso_c_binding, only : C_FLOAT_COMPLEX
+            implicit none
+            complex(C_FLOAT_COMPLEX), intent(INOUT) :: arg1
+        end subroutine accept_float_complex
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void accept_double_complex
     ! Requested: c_void_scalar_result
     ! Match:     c_default
