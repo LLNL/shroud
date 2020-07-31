@@ -248,9 +248,9 @@ declarations:
       Test return tuple with two arguments.
       Must rename argument to nlen to avoid conflict with intrinsic len.
 
-#- decl: void acceptStringInstance(std::string arg1)
-#  doxygen:
-#    brief: Accept a string instance
+- decl: int acceptStringInstance(std::string arg1)
+  doxygen:
+    brief: Accept a string instance
 
 - decl: void returnStrings(std::string & arg1 +intent(out),
                            std::string & arg2 +intent(out))

@@ -1053,6 +1053,51 @@ PY_fetchStringPointerLen(
 }
 
 // ----------------------------------------
+// Function:  int acceptStringInstance
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  std::string arg1 +intent(in)+value
+// Exact:     py_string_scalar_in
+static char PY_acceptStringInstance__doc__[] =
+"documentation"
+;
+
+/**
+ * \brief Accept a string instance
+ *
+ */
+static PyObject *
+PY_acceptStringInstance(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_string_instance
+    char * arg1;
+    const char *SHT_kwlist[] = {
+        "arg1",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "s:acceptStringInstance", const_cast<char **>(SHT_kwlist), 
+        &arg1))
+        return nullptr;
+
+    // post_declare
+    std::string SH_arg1(arg1);
+
+    int SHCXX_rv = acceptStringInstance(SH_arg1);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(SHCXX_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.accept_string_instance
+}
+
+// ----------------------------------------
 // Function:  void returnStrings
 // Exact:     py_default
 // ----------------------------------------
@@ -1309,6 +1354,8 @@ static PyMethodDef PY_methods[] = {
     METH_VARARGS|METH_KEYWORDS, PY_acceptStringPointerLen__doc__},
 {"fetchStringPointerLen", (PyCFunction)PY_fetchStringPointerLen,
     METH_NOARGS, PY_fetchStringPointerLen__doc__},
+{"acceptStringInstance", (PyCFunction)PY_acceptStringInstance,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptStringInstance__doc__},
 {"returnStrings", (PyCFunction)PY_returnStrings, METH_NOARGS,
     PY_returnStrings__doc__},
 {"explicit1", (PyCFunction)PY_explicit1, METH_VARARGS|METH_KEYWORDS,

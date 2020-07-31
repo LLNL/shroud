@@ -4162,6 +4162,10 @@ py_statements = [
     dict(
         name="py_string_scalar_in",
         cxx_local_var="scalar",
+        arg_declare=[
+            # std::string defaults to making this scalar. Make sure it is pointer.
+            "char * {c_var};",
+        ],
         post_declare=["{c_const}std::string {cxx_var}({c_var});"],
         fmtdict=dict(
             ctor_expr="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",

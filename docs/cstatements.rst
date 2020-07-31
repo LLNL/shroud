@@ -48,7 +48,7 @@ arg
 
 arg_decl
     The explicit declarations will be provided in the fields
-    c_arg_decl and f_arg_decl.
+    *c_arg_decl* and *f_arg_decl*.
     
 capsule
 
@@ -181,6 +181,8 @@ f_arg_decl
 ^^^^^^^^^^
 
 A list of declarations in the Fortran interface when buf_arg includes "arg_decl".
+The variable to be declared is *c_var*.
+*f_module* can be used to add ``USE`` statements.
 
 .. c_var
 

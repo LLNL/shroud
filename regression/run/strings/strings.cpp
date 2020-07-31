@@ -219,6 +219,13 @@ void fetchStringPointerLen(std::string * arg1, int *len)
     *len = arg1->size();
 }
 
+// Return length of string
+int acceptStringInstance(std::string arg1)
+{
+    arg1[0] = 'X';
+    return arg1.length();
+}
+
 void returnStrings(std::string & arg1, std::string & arg2)
 {
     arg1 = "up";

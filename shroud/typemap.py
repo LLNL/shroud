@@ -1981,6 +1981,43 @@ fc_statements = [
             "-}}",
         ],
     ),
+
+    # std::string
+    dict(
+        name="c_string_scalar_in",
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            # Argument is a pointer while std::string is a scalar.
+            # C++ compiler will convert to std::string when calling function.
+            "char *{c_var}",
+        ],
+        f_arg_decl=[
+            # Remove VALUE added by c_default
+            "character(kind=C_CHAR), intent(IN) :: {c_var}(*)",
+        ],
+        f_module=dict(iso_c_binding=["C_CHAR"]),
+    ),
+    dict(
+        name="c_string_scalar_in_buf",
+        base="c_string_scalar_in",
+        buf_args=["arg_decl", "len_trim"],
+        cxx_local_var="scalar",
+        pre_call=[
+            "std::string {cxx_var}({c_var}, {c_var_trim});",
+        ],
+        call=[
+            "{cxx_var}",
+        ],
+    ),
+    dict(
+        name="f_string_scalar_in",  # pairs with c_string_scalar_in_buf
+        need_wrapper=True,
+        buf_args=["arg", "len"],
+        arg_decl=[
+            # Remove VALUE added by f_default
+            "character(len=*), intent(IN) :: {f_var}",
+        ],
+    ),
     
     # Uses a two part call to copy results of std::string into a
     # allocatable Fortran array.
