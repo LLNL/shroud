@@ -444,6 +444,12 @@ void get_values(int *nvalues, int *values)
 }
 
 //----------------------------------------------------------------------
+
+void accept_complex(double complex *arg1)
+{
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

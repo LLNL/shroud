@@ -12,6 +12,7 @@
 #define CLIBRARY_HPP
 
 #include <stdbool.h>
+#include <complex.h>
 
 /* Size of buffer passed from Fortran */
 #define LENOUTBUF 40
@@ -108,5 +109,7 @@ void truncate_to_int(double *in, int *out, int size);
 void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
+
+void accept_complex(double complex *arg1);
 
 #endif // CLIBRARY_HPP
