@@ -116,11 +116,11 @@ int STR_SHROUD_fill_from_PyObject_char(PyObject *obj, const char *name,
 int STR_SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
 {
-    int value = PyInt_AsLong(obj);
+    int cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -239,7 +239,7 @@ int STR_SHROUD_get_from_object_double_list(PyObject *obj,
     double *in = (double *) malloc(size * sizeof(double));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        double cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             free(in);
             Py_DECREF(seq);
@@ -248,6 +248,7 @@ int STR_SHROUD_get_from_object_double_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -294,7 +295,7 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
     int *in = (int *) malloc(size * sizeof(int));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             free(in);
             Py_DECREF(seq);
@@ -303,6 +304,7 @@ int STR_SHROUD_get_from_object_int_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 

@@ -823,7 +823,8 @@ def fill_from_PyObject_list(fmt):
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}fill_from_PyObject_{flat_name}_list", fmt)
     fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t "
+            "{c_type} *in,\t Py_ssize_t insize)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
@@ -835,11 +836,11 @@ def fill_from_PyObject_list(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{c_type} value = {Py_get_obj};
+{c_type} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
-in[i] = value;
+in[i] = cvalue;
 -}}
 return 0;
 -}}
@@ -857,12 +858,13 @@ size = insize;
 -}}
 for (Py_ssize_t i = 0; i < size; ++i) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
+cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
 return -1;
 -}}
+in[i] = cvalue;
 -}}
 Py_DECREF(seq);
 return 0;
@@ -893,11 +895,11 @@ def fill_from_PyObject_numpy(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{c_type} value = {Py_get_obj};
+{c_type} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
-in[i] = value;
+in[i] = cvalue;
 -}}
 return 0;
 -}}
@@ -985,13 +987,14 @@ Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 {c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
+{c_type} cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 {stdlib}free(in);
 Py_DECREF(seq);
 PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
 return 0;
 -}}
+in[i] = cvalue;
 -}}
 Py_DECREF(seq);
 
@@ -1198,12 +1201,13 @@ return -1;
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in.push_back({Py_get});
+{c_type} cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
 return -1;
 -}}
+in.push_back(cvalue);
 -}}
 Py_DECREF(seq);
 return 0;

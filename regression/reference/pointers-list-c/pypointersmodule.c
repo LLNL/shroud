@@ -178,7 +178,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
     double *in = (double *) malloc(size * sizeof(double));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        double cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             free(in);
             Py_DECREF(seq);
@@ -187,6 +187,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -214,7 +215,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
     int *in = (int *) malloc(size * sizeof(int));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             free(in);
             Py_DECREF(seq);
@@ -223,6 +224,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
