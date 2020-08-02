@@ -314,9 +314,9 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_DOUBLE",
-            "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
-            "PY_format": "d",
-            "PY_get": "PyFloat_AsDouble({py_var})",
+            "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
+            "PY_format": "D",
+            "PY_get": "PyComplex_AsCComplex({py_var})",
             "c_header": [
                 "<complex.h>"
             ],
@@ -334,6 +334,9 @@
             },
             "f_type": "complex(C_DOUBLE_COMPLEX)",
             "flat_name": "double_complex",
+            "py_type": "Py_complex",
+            "pytype_to_cxx": "{work_var}.real + {work_var}.imag * I",
+            "pytype_to_pyctor": "creal({ctor_expr}), cimag({ctor_expr})",
             "sgroup": "native",
             "sh_type": "SH_TYPE_DOUBLE_COMPLEX"
         },
@@ -364,9 +367,9 @@
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_DOUBLE",
-            "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
-            "PY_format": "d",
-            "PY_get": "PyFloat_AsDouble({py_var})",
+            "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
+            "PY_format": "D",
+            "PY_get": "PyComplex_AsCComplex({py_var})",
             "c_header": [
                 "<complex.h>"
             ],
@@ -384,6 +387,9 @@
             },
             "f_type": "complex(C_FLOAT_COMPLEX)",
             "flat_name": "float_complex",
+            "py_type": "Py_complex",
+            "pytype_to_cxx": "{work_var}.real + {work_var}.imag * I",
+            "pytype_to_pyctor": "creal({ctor_expr}), cimag({ctor_expr})",
             "sgroup": "native",
             "sh_type": "SH_TYPE_FLOAT_COMPLEX"
         },

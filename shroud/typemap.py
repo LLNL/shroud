@@ -96,6 +96,9 @@ class Typemap(object):
         # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
         # ex. PyFloat_AsDouble({py_var})
+        ("py_type", None),        # returned by Py_get ex. "Py_complex"
+        ("pytype_to_pyctor", None),  # Used with py_type, passed to PY_ctor
+        ("pytype_to_cxx", None),  # Used with py_type
         # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
@@ -658,9 +661,12 @@ def initialize():
             f_type="complex(C_FLOAT_COMPLEX)",
             f_kind="C_FLOAT_COMPLEX",
             f_module=dict(iso_c_binding=["C_FLOAT_COMPLEX"]),
-            PY_format="d",
-            PY_ctor="PyFloat_FromDouble({ctor_expr})",
-            PY_get="PyFloat_AsDouble({py_var})",
+            PY_format="D",
+            py_type="Py_complex",
+            pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
+            pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})",
+            PY_get="PyComplex_AsCComplex({py_var})",
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -679,9 +685,16 @@ def initialize():
             f_type="complex(C_DOUBLE_COMPLEX)",
             f_kind="C_DOUBLE_COMPLEX",
             f_module=dict(iso_c_binding=["C_DOUBLE_COMPLEX"]),
-            PY_format="d",
-            PY_ctor="PyFloat_FromDouble({ctor_expr})",
-            PY_get="PyFloat_AsDouble({py_var})",
+            PY_format="D",
+            PY_get="PyComplex_AsCComplex({py_var})",
+            py_type="Py_complex",
+            pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
+            pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            # fmt.work_ctor = "std::complex(\tcvalue.real, cvalue.imag)"
+            # creal(), cimag()
+            # std::real(), std::imag()
+            # xx.real(), xx.imag()
+            PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})", # double real, double imag
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",

@@ -119,9 +119,12 @@ typemap:
         iso_c_binding:
         - C_DOUBLE_COMPLEX
       f_cast: cmplx({f_var}, C_DOUBLE_COMPLEX)
-      PY_format: d
-      PY_ctor: PyFloat_FromDouble({ctor_expr})
-      PY_get: PyFloat_AsDouble({py_var})
+      PY_format: D
+      PY_ctor: PyComplex_FromDoubles({ctor_expr})
+      PY_get: PyComplex_AsCComplex({py_var})
+      py_type: Py_complex
+      pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
+      pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
@@ -167,9 +170,12 @@ typemap:
         iso_c_binding:
         - C_FLOAT_COMPLEX
       f_cast: cmplx({f_var}, C_FLOAT_COMPLEX)
-      PY_format: d
-      PY_ctor: PyFloat_FromDouble({ctor_expr})
-      PY_get: PyFloat_AsDouble({py_var})
+      PY_format: D
+      PY_ctor: PyComplex_FromDoubles({ctor_expr})
+      PY_get: PyComplex_AsCComplex({py_var})
+      py_type: Py_complex
+      pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
+      pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})

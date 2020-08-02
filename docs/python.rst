@@ -111,6 +111,40 @@ PY_from_object
 PyArg_Parse - ``status = converter(object, address)``.
 Defaults to *None*.
 
+py_type
+^^^^^^^
+
+The type returned by *PY_get* function.
+Defaults to ``None`` which implies it is the same as the typemap.
+i.e. ``PyInt_AsLong`` returns a ``long``.
+
+Defined for complex types because ``PyComplex_AsCComplex`` returns
+type ``Py_complex``.
+See also *pytype_to_pyctor* and *pytype_to_cxx*.
+
+pytype_to_pyctor
+^^^^^^^^^^^^^^^^
+
+Expression to use with *PY_ctor*.
+Defaults to ``None`` which indicates no additional processing of the argument
+is required.
+Only needs to be defined when *py_type* is defined.
+
+With complex types, it is used to extract the real and imaginary parts from
+``Py_complex`` (defined with *py_type*)
+with ``creal({ctor_expr}), cimag({ctor_expr})``.
+*ctor_expr* is the expression used with *Py_ctor*.
+
+pytype_to_cxx
+^^^^^^^^^^^^^
+
+Expression to convert *py_type* into a C++ value.
+Only needs to be defined when *py_type* is defined.
+
+Used with complex to convert ``Py_complex``  (defined with *py_type*)
+to C using ``{work_var}.real + {work_var}.imag * I``
+or C++ with ``std::complex(\tcvalue.real, cvalue.imag)``.
+
 PYN_descr
 ^^^^^^^^^
 
