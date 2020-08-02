@@ -1400,8 +1400,8 @@ return 1;""",
                 elif arg_typemap.PY_PyTypeObject:
                     # Expect object of given type
                     # cxx_var is declared by py_statements.intent_out.post_parse.
-                    fmt_arg.py_type = arg_typemap.PY_PyObject or "PyObject"
-                    append_format(declare_code, "{py_type} * {py_var};", fmt_arg)
+                    fmt_arg.py_object = arg_typemap.PY_PyObject or "PyObject"
+                    append_format(declare_code, "{py_object} * {py_var};", fmt_arg)
                     pass_var = fmt_arg.cxx_var
                     parse_format.append(arg_typemap.PY_format)
                     parse_format.append("!")
