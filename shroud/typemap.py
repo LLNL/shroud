@@ -96,9 +96,9 @@ class Typemap(object):
         # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
         # ex. PyFloat_AsDouble({py_var})
-        ("py_type", None),        # returned by Py_get ex. "Py_complex"
-        ("pytype_to_pyctor", None),  # Used with py_type, passed to PY_ctor
-        ("pytype_to_cxx", None),  # Used with py_type
+        ("py_ctype", None),        # returned by Py_get ex. "Py_complex"
+        ("pytype_to_pyctor", None),  # Used with py_ctype, passed to PY_ctor
+        ("pytype_to_cxx", None),  # Used with py_ctype
         # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
@@ -662,7 +662,7 @@ def initialize():
             f_kind="C_FLOAT_COMPLEX",
             f_module=dict(iso_c_binding=["C_FLOAT_COMPLEX"]),
             PY_format="D",
-            py_type="Py_complex",
+            py_ctype="Py_complex",
             pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
             pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
             PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})",
@@ -687,7 +687,7 @@ def initialize():
             f_module=dict(iso_c_binding=["C_DOUBLE_COMPLEX"]),
             PY_format="D",
             PY_get="PyComplex_AsCComplex({py_var})",
-            py_type="Py_complex",
+            py_ctype="Py_complex",
             pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
             pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
             # fmt.work_ctor = "std::complex(\tcvalue.real, cvalue.imag)"

@@ -723,7 +723,7 @@ def add_to_PyList_helper(fmt, ntypemap):
         fmt.hname = name
         fmt.fcn_suffix = flat_name
         ctor_expr = "in[i]"
-        if ntypemap.py_type is not None:
+        if ntypemap.py_ctype is not None:
             ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
         fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr=ctor_expr)
         fmt.c_const="const "
@@ -735,7 +735,7 @@ def add_to_PyList_helper(fmt, ntypemap):
     name = "update_PyList_" + flat_name
     if ntypemap.PY_ctor is not None:
         ctor_expr = "in[i]"
-        if ntypemap.py_type is not None:
+        if ntypemap.py_ctype is not None:
             ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
         fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr=ctor_expr)
         fmt.hname = name
@@ -769,10 +769,10 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.hname = name
         fmt.flat_name = flat_name
         fmt.fcn_type = ntypemap.c_type
-        fmt.work_type = fmt.c_type
+        fmt.py_ctype = fmt.c_type
         fmt.work_ctor = "cvalue"
-        if ntypemap.py_type is not None:
-            fmt.work_type = ntypemap.py_type
+        if ntypemap.py_ctype is not None:
+            fmt.py_ctype = ntypemap.py_ctype
             fmt.work_ctor = ntypemap.pytype_to_cxx.format(work_var=fmt.work_ctor)
         fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
@@ -849,7 +849,7 @@ def fill_from_PyObject_list(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{work_type} cvalue = {Py_get_obj};
+{py_ctype} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
@@ -908,7 +908,7 @@ def fill_from_PyObject_numpy(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{work_type} cvalue = {Py_get_obj};
+{py_ctype} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
@@ -1127,7 +1127,7 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     if ctor is None:
         ctor = "XXXPy_ctor"
     ctor_expr = "in[i]"
-    if ntypemap.py_type is not None:
+    if ntypemap.py_ctype is not None:
         ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
     fmt.Py_ctor = ctor.format(ctor_expr=ctor_expr)
     fmt.hname = name
@@ -1159,7 +1159,7 @@ return out;
     if ctor is None:
         ctor = "XXXPy_ctor"
     ctor_expr = "in[i]"
-    if ntypemap.py_type is not None:
+    if ntypemap.py_ctype is not None:
         ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
     fmt.Py_ctor = ctor.format(ctor_expr=ctor_expr)
     fmt.hname = name
@@ -1199,10 +1199,10 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         get = "XXXPy_get"
     py_var = "item"
     fmt.Py_get = get.format(py_var=py_var)
-    fmt.work_type = fmt.c_type;
+    fmt.py_ctype = fmt.c_type;
     fmt.work_ctor = "cvalue"
-    if ntypemap.py_type is not None:
-        fmt.work_type = ntypemap.py_type
+    if ntypemap.py_ctype is not None:
+        fmt.py_ctype = ntypemap.py_ctype
         fmt.work_ctor = ntypemap.pytype_to_cxx.format(work_var=fmt.work_ctor)
     fmt.hname = name
     fmt.hnamefunc= wformat(
@@ -1228,7 +1228,7 @@ return -1;
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-{work_type} cvalue = {Py_get};
+{py_ctype} cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
