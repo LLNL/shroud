@@ -8,11 +8,10 @@
  * clibrary.h - wrapped routines
  */
 
-#ifndef CLIBRARY_HPP
-#define CLIBRARY_HPP
+#ifndef CLIBRARY_H
+#define CLIBRARY_H
 
 #include <stdbool.h>
-#include <complex.h>
 
 /* Size of buffer passed from Fortran */
 #define LENOUTBUF 40
@@ -110,7 +109,4 @@ void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
 
-void accept_float_complex(float complex *arg1);
-void accept_double_complex(double complex *arg1);
-
-#endif // CLIBRARY_HPP
+#endif // CLIBRARY_H

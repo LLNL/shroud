@@ -95,7 +95,6 @@ program tester
 
   call test_functions
   call test_callback
-  call test_complex
 
 !  call test_vector
 
@@ -298,23 +297,6 @@ contains
     
 
   end subroutine test_callback
-
-  subroutine test_complex
-    complex(C_FLOAT_COMPLEX) c4
-    complex(C_DOUBLE_COMPLEX) c8
-
-    ! intent(INOUT) argument
-    c4 = (1.0, 2.0)
-    call accept_float_complex(c4)
-    call assert_equals(3.0, real(c4), "accept_float_complex")
-    call assert_equals(4.0, imag(c4), "accept_float_complex")
-
-    ! intent(INOUT) argument
-    c8 = (1.0d0, 2.0d0)
-    call accept_double_complex(c8)
-    call assert_equals(3.0d0, real(c8), "accept_double_complex")
-    call assert_equals(4.0d0, imag(c8), "accept_double_complex")
-  end subroutine test_complex
 
 !  subroutine test_vector
 !    integer(C_INT) intv(5)

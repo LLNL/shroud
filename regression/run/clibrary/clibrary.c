@@ -444,17 +444,6 @@ void get_values(int *nvalues, int *values)
 }
 
 //----------------------------------------------------------------------
-
-void accept_float_complex(float complex *arg1)
-{
-    *arg1 = 3.0 + 4.0 * I;
-}
-void accept_double_complex(double complex *arg1)
-{
-    *arg1 = 3.0 + 4.0 * I;
-}
-
-//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;

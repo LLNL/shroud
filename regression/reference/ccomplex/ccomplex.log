@@ -1,0 +1,12 @@
+Read yaml ccomplex.yaml
+C function void accept_float_complex(float complex * arg1 +intent(inout))
+C function void accept_double_complex(double complex * arg1 +intent(inout))
+Close wrapccomplex.c
+Close typesccomplex.h
+C-interface, Fortran function void accept_float_complex(float complex * arg1 +intent(inout))
+C-interface, Fortran function void accept_double_complex(double complex * arg1 +intent(inout))
+Close wrapfccomplex.f
+Python function void accept_double_complex(double complex * arg1 +intent(inout))
+Close pyccomplexmodule.c
+Close pyccomplexmodule.h
+Close setup.py

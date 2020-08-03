@@ -1,0 +1,36 @@
+copyright:
+- Copyright (c) 2017-2020, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+# Wrap complex in a C library
+# Many of the same function as Tutorial, but for C.
+
+# Several tests have a 'char *outbuf+intent(out)' argument
+# which will force a C bufferify wrapper to be created.
+# The size of this buffer is controlled by lenoutbuf.
+# This feature is helpful for the C tests since a C wrapper is not required
+# for each function since we do not need to deal with name mangling
+# like in C++.
+
+library: ccomplex
+cxx_header: ccomplex.h
+
+language: c
+
+options:
+  debug: True
+  wrap_python: True
+  wrap_lua: False
+  literalinclude2: True
+
+declarations:
+
+######################################################################
+- decl: void accept_float_complex(float complex *arg1)
+  options:
+    wrap_python: False
+- decl: void accept_double_complex(double complex *arg1)

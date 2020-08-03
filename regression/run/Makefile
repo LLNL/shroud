@@ -42,6 +42,7 @@ test-fortran : \
   test-fortran-cdesc \
   test-fortran-preprocess \
   test-fortran-strings \
+  test-fortran-ccomplex \
   test-fortran-clibrary \
   test-fortran-cxxlibrary \
   test-fortran-ownership \
@@ -190,6 +191,8 @@ phony_explicit:
 # Avoid deleting directories created to run tests.
 # They are created via pattern rules.
 .SECONDARY: \
+    $(tempdir)/run/ccomplex/.. \
+    $(tempdir)/run/ccomplex/python/.. \
     $(tempdir)/run/cdesc/.. \
     $(tempdir)/run/classes/.. \
     $(tempdir)/run/classes/python/.. \
