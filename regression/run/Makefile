@@ -138,6 +138,7 @@ test-python : \
   test-python-struct-py-c \
   test-python-struct-py-cxx \
   test-python-vectors-numpy \
+  test-python-ccomplex \
   test-python-clibrary \
   test-python-cxxlibrary \
   test-python-ownership \

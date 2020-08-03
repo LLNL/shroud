@@ -37,6 +37,7 @@ class CComplex(unittest.TestCase):
      
     def test_complex_inout_scalar(self):
         rv = ccomplex.accept_double_complex(complex(1.0, 2.0))
+        self.assertIsInstance(rv, complex)
         self.assertEqual(complex(3., 4.), rv)
 
 
@@ -44,7 +45,7 @@ class CComplex(unittest.TestCase):
 newSuite = unittest.TestSuite()
  
 # adding a test case
-newSuite.addTest(unittest.makeSuite(Ccomplex))
+newSuite.addTest(unittest.makeSuite(CComplex))
 
 if __name__ == "__main__":
     unittest.main()

@@ -14,6 +14,8 @@ One Extension module per class
 Variables prefixes used by generated code:
 SH_     C or C++ version of argument
 SHPy_   Python object which corresponds to the argument {py_var}
+SHCPy_  Python API variable which corresponds to the argument's py_ctype {ctype_var}
+        Used with Py_complex.
 SHTPy_  A temporary object, usually from PyArg_Parse
         to be converted to SHPy_ object. {pytmp_var}
 SHData_ Data of NumPy object (fmt.data_var} - intermediate variable
@@ -1010,6 +1012,8 @@ return 1;""",
 
             if typemap.PY_ctor:
                 declare = "{PyObject} * {py_var} = {nullptr};"
+                if typemap.py_ctype:
+                    fmt.ctor_expr = typemap.pytype_to_pyctor.format(ctor_expr=fmt.ctor_expr)
                 ctor = typemap.PY_ctor.format(ctor_expr=fmt.ctor_expr)
                 post_call = "{py_var} = " + ctor + ";"
             else:
@@ -1422,6 +1426,16 @@ return 1;""",
                     parse_format.append("&")
                     parse_vargs.append(arg_typemap.PY_from_object)
                     parse_vargs.append("&" + fmt_arg.cxx_var)
+                elif arg_typemap.py_ctype:
+                    # Python object uses a API type for contents (ex. Py_complex)
+                    fmt_arg.py_ctype = arg_typemap.py_ctype
+                    fmt_arg.ctype_var = "SHCPY_" + fmt_arg.c_var
+                    append_format(declare_code, "{py_ctype} {ctype_var};", fmt_arg)
+                    parse_format.append(arg_typemap.PY_format)
+                    parse_vargs.append("&" + fmt_arg.ctype_var)
+                    fmt_arg.ctype_expr = arg_typemap.pytype_to_cxx.format(
+                        work_var=fmt_arg.ctype_var)
+                    append_format(post_parse_code, "{c_var} = {ctype_expr};", fmt_arg)
                 else:
                     parse_format.append(arg_typemap.PY_format)
                     parse_vargs.append("&" + fmt_arg.c_var)

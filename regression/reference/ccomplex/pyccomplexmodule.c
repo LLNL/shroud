@@ -49,19 +49,23 @@ PY_accept_double_complex(
 {
 // splicer begin function.accept_double_complex
     double complex arg1;
+    Py_complex SHCPY_arg1;
     char *SHT_kwlist[] = {
         "arg1",
         NULL };
     PyObject * SHPy_arg1 = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "D:accept_double_complex", SHT_kwlist, &arg1))
+        "D:accept_double_complex", SHT_kwlist, &SHCPY_arg1))
         return NULL;
+
+    // post_parse
+    arg1 = SHCPY_arg1.real + SHCPY_arg1.imag * I;
 
     accept_double_complex(&arg1);
 
     // post_call
-    SHPy_arg1 = PyComplex_FromDoubles(arg1);
+    SHPy_arg1 = PyComplex_FromDoubles(creal(arg1), cimag(arg1));
 
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_double_complex
