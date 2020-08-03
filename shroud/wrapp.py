@@ -986,16 +986,20 @@ return 1;""",
             intent_blk -
             fmt - format dictionary
 
-        NumPy intent(OUT) arguments will create a Python object as part of pre-call.
+        Create code to return out argument as a PyObject.
+        If there are multiple out arguments, then Py_BuildValue
+        will be used to create a tuple of values, so the
+        code in blk may not be used in the wrapper.
+
         Return a BuildTuple instance.
         """
         if intent_blk.object_created:
             # Explicit code exists to create object.
+            # For example, NumPy intent(OUT) arguments as part of pre-call.
             # If post_call is None, the Object has already been created
             build_format = "O"
             vargs = fmt.py_var
             blk = None
-            ctorvar = fmt.py_var
         else:
             # Decide values for Py_BuildValue
             build_format = typemap.PY_build_format or typemap.PY_format
@@ -1006,21 +1010,20 @@ return 1;""",
 
             if typemap.PY_ctor:
                 declare = "{PyObject} * {py_var} = {nullptr};"
-                post_call = "{py_var} = " + typemap.PY_ctor + ";"
-                ctorvar = fmt.py_var
+                ctor = typemap.PY_ctor.format(ctor_expr=fmt.ctor_expr)
+                post_call = "{py_var} = " + ctor + ";"
             else:
                 # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
                 declare = "{PyObject} * {py_var} = {nullptr};"
                 post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
-                ctorvar = fmt.py_var
             blk = PyStmts(
                 declare=[wformat(declare, fmt)],
                 post_call=[wformat(post_call, fmt)],
             )
 
-        return BuildTuple(build_format, vargs, blk, ctorvar)
+        return BuildTuple(build_format, vargs, blk, fmt.py_var)
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
