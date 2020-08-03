@@ -122,7 +122,7 @@ typemap:
       PY_format: D
       PY_ctor: PyComplex_FromDoubles({ctor_expr})
       PY_get: PyComplex_AsCComplex({py_var})
-      py_type: Py_complex
+      py_ctype: Py_complex
       pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
       pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
       PYN_typenum: NPY_DOUBLE
@@ -173,7 +173,7 @@ typemap:
       PY_format: D
       PY_ctor: PyComplex_FromDoubles({ctor_expr})
       PY_get: PyComplex_AsCComplex({py_var})
-      py_type: Py_complex
+      py_ctype: Py_complex
       pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
       pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
       PYN_typenum: NPY_DOUBLE
