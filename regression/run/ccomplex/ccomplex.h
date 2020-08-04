@@ -16,4 +16,6 @@
 void accept_float_complex(float complex *arg1);
 void accept_double_complex(double complex *arg1);
 
+void accept_double_complex_flag(double complex *arg1, int *flag);
+
 #endif // CCOMPLEX_H

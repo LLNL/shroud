@@ -70,9 +70,59 @@ PY_accept_double_complex(
     return (PyObject *) SHPy_arg1;
 // splicer end function.accept_double_complex
 }
+
+// ----------------------------------------
+// Function:  void accept_double_complex_flag
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double complex * arg1 +intent(inout)
+// Exact:     py_native_*_inout
+// ----------------------------------------
+// Argument:  int * flag +intent(out)
+// Exact:     py_native_*_out
+static char PY_accept_double_complex_flag__doc__[] =
+"documentation"
+;
+
+/**
+ * Return two values so Py_BuildValue is used.
+ */
+static PyObject *
+PY_accept_double_complex_flag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.accept_double_complex_flag
+    double complex arg1;
+    Py_complex SHCPY_arg1;
+    int flag;
+    char *SHT_kwlist[] = {
+        "arg1",
+        NULL };
+    PyObject *SHTPy_rv = NULL;  // return value object
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "D:accept_double_complex_flag", SHT_kwlist, &SHCPY_arg1))
+        return NULL;
+
+    // post_parse
+    arg1 = SHCPY_arg1.real + SHCPY_arg1.imag * I;
+
+    accept_double_complex_flag(&arg1, &flag);
+
+    // post_call
+    SHTPy_rv = Py_BuildValue("Di", arg1, flag);
+
+    return SHTPy_rv;
+// splicer end function.accept_double_complex_flag
+}
 static PyMethodDef PY_methods[] = {
 {"accept_double_complex", (PyCFunction)PY_accept_double_complex,
     METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex__doc__},
+{"accept_double_complex_flag",
+    (PyCFunction)PY_accept_double_complex_flag,
+    METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex_flag__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

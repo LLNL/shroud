@@ -40,6 +40,12 @@ class CComplex(unittest.TestCase):
         self.assertIsInstance(rv, complex)
         self.assertEqual(complex(3., 4.), rv)
 
+    def Xtest_complex_inout_scalar_flag(self):
+        rv, flag = ccomplex.accept_double_complex_flag(complex(1.0, 2.0))
+        self.assertIsInstance(rv, complex)
+        self.assertEqual(complex(3., 4.), rv)
+        self.assertEqual(0, flag)
+
 
 # creating a new test suite
 newSuite = unittest.TestSuite()

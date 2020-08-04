@@ -7,6 +7,7 @@ C-interface, Fortran function void accept_float_complex(float complex * arg1 +in
 C-interface, Fortran function void accept_double_complex(double complex * arg1 +intent(inout))
 Close wrapfccomplex.f
 Python function void accept_double_complex(double complex * arg1 +intent(inout))
+Python function void accept_double_complex_flag(double complex * arg1 +intent(inout), int * flag +intent(out))
 Close pyccomplexmodule.c
 Close pyccomplexmodule.h
 Close setup.py

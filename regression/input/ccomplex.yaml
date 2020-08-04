@@ -34,3 +34,12 @@ declarations:
   options:
     wrap_python: False
 - decl: void accept_double_complex(double complex *arg1)
+
+- decl: void accept_double_complex_flag(double complex *arg1, int *flag +intent(out))
+  options:
+    wrap_c: False
+    wrap_fortran: False
+  doxygen:
+   description: |
+     Return two values so Py_BuildValue is used.
+
