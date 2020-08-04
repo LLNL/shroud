@@ -54,6 +54,45 @@ module ccomplex_mod
         end subroutine accept_double_complex
     end interface
 
+    ! ----------------------------------------
+    ! Function:  void acceptDoubleComplexOutPtr
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double complex * arg1 +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    interface
+        subroutine accept_double_complex_out_ptr(arg1) &
+                bind(C, name="acceptDoubleComplexOutPtr")
+            use iso_c_binding, only : C_DOUBLE_COMPLEX
+            implicit none
+            complex(C_DOUBLE_COMPLEX), intent(OUT) :: arg1
+        end subroutine accept_double_complex_out_ptr
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void acceptDoubleComplexOutPtrFlag
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double complex * arg1 +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * flag +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    interface
+        subroutine accept_double_complex_out_ptr_flag(arg1, flag) &
+                bind(C, name="acceptDoubleComplexOutPtrFlag")
+            use iso_c_binding, only : C_DOUBLE_COMPLEX, C_INT
+            implicit none
+            complex(C_DOUBLE_COMPLEX), intent(OUT) :: arg1
+            integer(C_INT), intent(OUT) :: flag
+        end subroutine accept_double_complex_out_ptr_flag
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces

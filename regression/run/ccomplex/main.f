@@ -30,6 +30,7 @@ program tester
 contains
 
   subroutine test_complex
+    integer(C_INT) flag
     complex(C_FLOAT_COMPLEX) c4
     complex(C_DOUBLE_COMPLEX) c8
 
@@ -44,6 +45,16 @@ contains
     call accept_double_complex(c8)
     call assert_equals(3.0d0, real(c8), "accept_double_complex")
     call assert_equals(4.0d0, imag(c8), "accept_double_complex")
+
+    call accept_double_complex_out_ptr(c8)
+    call assert_equals(3.0d0, real(c8), "acceptDoubleComplexOutPtr")
+    call assert_equals(4.0d0, imag(c8), "acceptDoubleComplexOutPtr")
+
+    call accept_double_complex_out_ptr_flag(c8, flag)
+    call assert_equals(3.0d0, real(c8), "acceptDoubleComplexOutPtr")
+    call assert_equals(4.0d0, imag(c8), "acceptDoubleComplexOutPtr")
+    call assert_equals(0, flag, "acceptDoubleComplexOutPtr")
+    
   end subroutine test_complex
 
 end program tester

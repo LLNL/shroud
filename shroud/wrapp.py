@@ -149,6 +149,7 @@ class Wrapp(util.WrapperMixin):
         fmt_library.PY_used_param_kwds = False
         fmt_library.PY_member_object = "XXXPY_member_object"
         fmt_library.PY_member_data = "XXXPY_member_data"
+        fmt_library.py_ctype = None
 
         fmt_library.npy_rank = "0"   # number of dimensions
         fmt_library.npy_dims_var = fmt_library.nullptr # shape variable
@@ -1013,24 +1014,30 @@ return 1;""",
             vargs = typemap.PY_build_arg
             if not vargs:
                 vargs = "{cxx_var}"
-            vargs = wformat(vargs, fmt)
 
             if typemap.PY_ctor:
-                declare0 = "{PyObject} * {py_var} = {nullptr};"
                 if typemap.py_ctype:
                     fmt.ctor_expr = typemap.pytype_to_pyctor.format(ctor_expr=fmt.ctor_expr)
-
-                    # pointer to build_value
+                    if fmt.py_ctype is None:
+                        # Declare variable unless already declared by intent(inout)
+                        fmt.py_ctype = typemap.py_ctype
+                        fmt.ctype_var = "SHCPY_" + fmt.c_var
+                        declare = [wformat("{py_ctype} {ctype_var};", fmt)]
+                    else:
+                        declare = []
                     blk = PyStmts(
+                        declare=declare,
                         post_call=[
                             wformat(typemap.cxx_to_pytype, fmt),
                         ]
                     )
-                    #  fmt_arg.ctype_var = "SHCPY_" + fmt_arg.c_var
+                vargs = wformat(vargs, fmt)
                 ctor = typemap.PY_ctor.format(ctor_expr=fmt.ctor_expr)
+                declare0 = "{PyObject} * {py_var} = {nullptr};"
                 post_call0 = "{py_var} = " + ctor + ";"
             else:
                 # ex. long long does not define PY_ctor.
+                vargs = wformat(vargs, fmt)
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
                 declare0 = "{PyObject} * {py_var} = {nullptr};"

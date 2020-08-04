@@ -72,6 +72,35 @@ PY_accept_double_complex(
 }
 
 // ----------------------------------------
+// Function:  void acceptDoubleComplexOutPtr
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double complex * arg1 +intent(out)
+// Exact:     py_native_*_out
+static char PY_acceptDoubleComplexOutPtr__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_acceptDoubleComplexOutPtr(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.accept_double_complex_out_ptr
+    double complex arg1;
+    PyObject * SHPy_arg1 = NULL;
+
+    acceptDoubleComplexOutPtr(&arg1);
+
+    // post_call
+    SHPy_arg1 = PyComplex_FromDoubles(creal(arg1), cimag(arg1));
+
+    return (PyObject *) SHPy_arg1;
+// splicer end function.accept_double_complex_out_ptr
+}
+
+// ----------------------------------------
 // Function:  void accept_double_complex_flag
 // Exact:     py_default
 // ----------------------------------------
@@ -119,12 +148,57 @@ PY_accept_double_complex_flag(
     return SHTPy_rv;
 // splicer end function.accept_double_complex_flag
 }
+
+// ----------------------------------------
+// Function:  void acceptDoubleComplexOutPtrFlag
+// Exact:     py_default
+// ----------------------------------------
+// Argument:  double complex * arg1 +intent(out)
+// Exact:     py_native_*_out
+// ----------------------------------------
+// Argument:  int * flag +intent(out)
+// Exact:     py_native_*_out
+static char PY_acceptDoubleComplexOutPtrFlag__doc__[] =
+"documentation"
+;
+
+/**
+ * Return two values so Py_BuildValue is used.
+ * Creates a Py_complex for intent(out)
+ */
+static PyObject *
+PY_acceptDoubleComplexOutPtrFlag(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *SHROUD_UNUSED(args),
+  PyObject *SHROUD_UNUSED(kwds))
+{
+// splicer begin function.accept_double_complex_out_ptr_flag
+    double complex arg1;
+    int flag;
+    Py_complex SHCPY_arg1;
+    PyObject *SHTPy_rv = NULL;  // return value object
+
+    acceptDoubleComplexOutPtrFlag(&arg1, &flag);
+
+    // post_call
+    SHCPY_arg1.real = creal(arg1);
+    SHCPY_arg1.imag = cimag(arg1);
+    SHTPy_rv = Py_BuildValue("Di", &SHCPY_arg1, flag);
+
+    return SHTPy_rv;
+// splicer end function.accept_double_complex_out_ptr_flag
+}
 static PyMethodDef PY_methods[] = {
 {"accept_double_complex", (PyCFunction)PY_accept_double_complex,
     METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex__doc__},
+{"acceptDoubleComplexOutPtr", (PyCFunction)PY_acceptDoubleComplexOutPtr,
+    METH_NOARGS, PY_acceptDoubleComplexOutPtr__doc__},
 {"accept_double_complex_flag",
     (PyCFunction)PY_accept_double_complex_flag,
     METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex_flag__doc__},
+{"acceptDoubleComplexOutPtrFlag",
+    (PyCFunction)PY_acceptDoubleComplexOutPtrFlag, METH_NOARGS,
+    PY_acceptDoubleComplexOutPtrFlag__doc__},
 {NULL,   (PyCFunction)NULL, 0, NULL}            /* sentinel */
 };
 

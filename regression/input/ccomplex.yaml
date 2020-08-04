@@ -34,6 +34,7 @@ declarations:
   options:
     wrap_python: False
 - decl: void accept_double_complex(double complex *arg1)
+- decl: void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))
 
 - decl: void accept_double_complex_flag(double complex *arg1, int *flag +intent(out))
   options:
@@ -43,3 +44,10 @@ declarations:
    description: |
      Return two values so Py_BuildValue is used.
 
+- decl: void acceptDoubleComplexOutPtrFlag(
+            double complex *arg1 +intent(out),
+            int *flag +intent(out))
+  doxygen:
+   description: |
+     Return two values so Py_BuildValue is used.
+     Creates a Py_complex for intent(out)
