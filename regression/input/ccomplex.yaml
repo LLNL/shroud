@@ -51,3 +51,11 @@ declarations:
    description: |
      Return two values so Py_BuildValue is used.
      Creates a Py_complex for intent(out)
+
+######################################################################
+
+#- decl: void acceptDoubleComplexInoutArrayList(
+#            double complex *arg1 +rank(1),
+#            int narg +implied(size(arg1)))
+#  options:
+#    PY_array_arg: list

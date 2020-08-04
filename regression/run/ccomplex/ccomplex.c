@@ -42,6 +42,13 @@ void acceptDoubleComplexOutPtrFlag(double complex *arg1, int *flag)
 }
 
 //----------------------------------------------------------------------
+
+void acceptDoubleComplexInoutArrayList(double complex *arg1, int narg)
+{
+    *arg1 = 3.0 + 4.0 * I;
+}
+
+//----------------------------------------------------------------------
 const char *LastFunctionCalled(void)
 {
     return last_function_called;
