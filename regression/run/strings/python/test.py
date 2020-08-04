@@ -21,7 +21,7 @@ class NotTrue:
     def __bool__(self):
         raise NotImplementedError
  
-class Tutorial(unittest.TestCase):
+class Strings(unittest.TestCase):
     """Test tutorial problem"""
      
     def XXsetUp(self):
@@ -132,7 +132,7 @@ class Tutorial(unittest.TestCase):
 newSuite = unittest.TestSuite()
  
 # adding a test case
-newSuite.addTest(unittest.makeSuite(Tutorial))
+newSuite.addTest(unittest.makeSuite(Strings))
 
 if __name__ == "__main__":
     unittest.main()
