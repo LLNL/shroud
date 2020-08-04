@@ -53,9 +53,11 @@ default_scope = None  # for statements
 # The value may be built earlier (bool, array), if so ctor will be None.
 # format   - Format arg to PyBuild_Tuple
 # vargs    - Variable for PyBuild_Tuple
-# ctor     - Code to construct a Python object
-# ctorvar  - Variable created by ctor
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk ctorvar")
+# blk0     - PyStmts when there is only one return value
+# ctorvar  - Variable created by blk0
+#            This may not be the function return value but may be
+#            from a single intent(out) argument.
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 ctorvar")
 
 # type_object_creation - code to add variables to module.
 ModuleTuple = collections.namedtuple(
@@ -1001,7 +1003,7 @@ return 1;""",
             # If post_call is None, the Object has already been created
             build_format = "O"
             vargs = fmt.py_var
-            blk = None
+            blk0 = None
         else:
             # Decide values for Py_BuildValue
             build_format = typemap.PY_build_format or typemap.PY_format
@@ -1022,12 +1024,12 @@ return 1;""",
                 fmt.vargs = vargs
                 declare = "{PyObject} * {py_var} = {nullptr};"
                 post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
-            blk = PyStmts(
+            blk0 = PyStmts(
                 declare=[wformat(declare, fmt)],
                 post_call=[wformat(post_call, fmt)],
             )
 
-        return BuildTuple(build_format, vargs, blk, fmt.py_var)
+        return BuildTuple(build_format, vargs, blk0, fmt.py_var)
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
@@ -1671,11 +1673,12 @@ return 1;""",
         elif not build_tuples:
             return_code = "Py_RETURN_NONE;"
         elif len(build_tuples) == 1:
-            # return a single object already created in build_stmts
-            blk = build_tuples[0].blk
-            if blk is not None:
-                declare_code.extend(blk.declare)
-                post_call_code.extend(blk.post_call)
+            # Return a single object already created in build_tuples
+            blk0 = build_tuples[0].blk0
+            if blk0 is not None:
+                # Format variables are already expanded in intent_out.
+                declare_code.extend(blk0.declare)
+                post_call_code.extend(blk0.post_call)
             fmt.py_var = build_tuples[0].ctorvar
             return_code = wformat("return (PyObject *) {py_var};", fmt)
         else:
