@@ -145,6 +145,19 @@ Used with complex to convert ``Py_complex``  (defined with *py_ctype*)
 to C using ``{work_var}.real + {work_var}.imag * I``
 or C++ with ``std::complex(\tcvalue.real, cvalue.imag)``.
 
+cxx_to_pytype
+^^^^^^^^^^^^^
+
+Statements to convert *cxx_var* to *py_ctype*/
+Only needs to be defined when *py_ctype* is defined.
+
+.. code-block:: yaml
+
+    cxx_to_pytype: |
+        {ctype_var}.real = creal({cxx_var});
+        {ctype_var}.imag = cimag({cxx_var});
+
+
 PYN_descr
 ^^^^^^^^^
 

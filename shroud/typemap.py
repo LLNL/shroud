@@ -99,6 +99,7 @@ class Typemap(object):
         ("py_ctype", None),        # returned by Py_get ex. "Py_complex"
         ("pytype_to_pyctor", None),  # Used with py_ctype, passed to PY_ctor
         ("pytype_to_cxx", None),  # Used with py_ctype
+        ("cxx_to_pytype", None),  # Used with py_ctype
         # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
@@ -665,8 +666,10 @@ def initialize():
             py_ctype="Py_complex",
             pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
             pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            cxx_to_pytype="{py_var}.real = creal({cxx_var});\n{py_var}.imag = cimag({cxx_var});",
             PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})",
             PY_get="PyComplex_AsCComplex({py_var})",
+            PY_build_arg="&{ctype_var}",
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
@@ -690,11 +693,13 @@ def initialize():
             py_ctype="Py_complex",
             pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
             pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            cxx_to_pytype="{ctype_var}.real = creal({cxx_var});\n{ctype_var}.imag = cimag({cxx_var});",
             # fmt.work_ctor = "std::complex(\tcvalue.real, cvalue.imag)"
             # creal(), cimag()
             # std::real(), std::imag()
             # xx.real(), xx.imag()
             PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})", # double real, double imag
+            PY_build_arg="&{ctype_var}",
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",

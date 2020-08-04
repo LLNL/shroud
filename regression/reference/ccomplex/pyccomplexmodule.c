@@ -112,7 +112,9 @@ PY_accept_double_complex_flag(
     accept_double_complex_flag(&arg1, &flag);
 
     // post_call
-    SHTPy_rv = Py_BuildValue("Di", arg1, flag);
+    SHCPY_arg1.real = creal(arg1);
+    SHCPY_arg1.imag = cimag(arg1);
+    SHTPy_rv = Py_BuildValue("Di", &SHCPY_arg1, flag);
 
     return SHTPy_rv;
 // splicer end function.accept_double_complex_flag

@@ -50,14 +50,15 @@ default_scope = None  # for statements
 
 # If multiple values are returned, save up into to build a tuple to return.
 # else build value from ctor, then return ctorvar.
-# The value may be built earlier (bool, array), if so ctor will be None.
-# format   - Format arg to PyBuild_Tuple
-# vargs    - Variable for PyBuild_Tuple
-# blk0     - PyStmts when there is only one return value
-# ctorvar  - Variable created by blk0
+# The value may be built earlier (bool, array), if so blk0 will be None.
+# format   - Format arg to PyBuild_Tuple.
+# vargs    - Variable for PyBuild_Tuple.
+# blk0     - PyStmts when there is only one return value.
+# blk      - PyStmts when there are more than one return value.
+# ctorvar  - Variable created by blk0.
 #            This may not be the function return value but may be
 #            from a single intent(out) argument.
-BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 ctorvar")
+BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar")
 
 # type_object_creation - code to add variables to module.
 ModuleTuple = collections.namedtuple(
@@ -997,6 +998,8 @@ return 1;""",
 
         Return a BuildTuple instance.
         """
+        blk = None
+        
         if intent_blk.object_created:
             # Explicit code exists to create object.
             # For example, NumPy intent(OUT) arguments as part of pre-call.
@@ -1013,23 +1016,31 @@ return 1;""",
             vargs = wformat(vargs, fmt)
 
             if typemap.PY_ctor:
-                declare = "{PyObject} * {py_var} = {nullptr};"
+                declare0 = "{PyObject} * {py_var} = {nullptr};"
                 if typemap.py_ctype:
                     fmt.ctor_expr = typemap.pytype_to_pyctor.format(ctor_expr=fmt.ctor_expr)
+
+                    # pointer to build_value
+                    blk = PyStmts(
+                        post_call=[
+                            wformat(typemap.cxx_to_pytype, fmt),
+                        ]
+                    )
+                    #  fmt_arg.ctype_var = "SHCPY_" + fmt_arg.c_var
                 ctor = typemap.PY_ctor.format(ctor_expr=fmt.ctor_expr)
-                post_call = "{py_var} = " + ctor + ";"
+                post_call0 = "{py_var} = " + ctor + ";"
             else:
                 # ex. long long does not define PY_ctor.
                 fmt.PY_build_format = build_format
                 fmt.vargs = vargs
-                declare = "{PyObject} * {py_var} = {nullptr};"
-                post_call = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
+                declare0 = "{PyObject} * {py_var} = {nullptr};"
+                post_call0 = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
             blk0 = PyStmts(
-                declare=[wformat(declare, fmt)],
-                post_call=[wformat(post_call, fmt)],
+                declare=[wformat(declare0, fmt)],
+                post_call=[wformat(post_call0, fmt)],
             )
 
-        return BuildTuple(build_format, vargs, blk0, fmt.py_var)
+        return BuildTuple(build_format, vargs, blk0, blk, fmt.py_var)
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions for a library or class.
@@ -1685,6 +1696,12 @@ return 1;""",
             # fmt=format for function. Do not use fmt_result here.
             # There may be no return value, only intent(OUT) arguments.
             # create tuple object
+            for blk in build_tuples:
+                if blk.blk is None:
+                    continue
+                # Format variables are already expanded in intent_out.
+                declare_code.extend(blk.blk.declare)
+                post_call_code.extend(blk.blk.post_call)
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
             rv_blk = PyStmts(

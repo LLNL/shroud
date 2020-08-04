@@ -125,6 +125,9 @@ typemap:
       py_ctype: Py_complex
       pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
       pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
+      cxx_to_pytype: "{ctype_var}.real = creal({cxx_var});
+      {ctype_var}.imag = cimag({cxx_var});"
+      PY_build_arg: &{ctype_var}
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
@@ -176,6 +179,9 @@ typemap:
       py_ctype: Py_complex
       pytype_to_pyctor: creal({ctor_expr}), cimag({ctor_expr})
       pytype_to_cxx: "{work_var}.real + {work_var}.imag * I"
+      cxx_to_pytype: "{py_var}.real = creal({cxx_var});
+      {py_var}.imag = cimag({cxx_var});"
+      PY_build_arg: &{ctype_var}
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
