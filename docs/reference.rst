@@ -54,6 +54,12 @@ write-helpers BASE
        Write files which contain the available helper functions
        into the files BASE.c and BASE.f.
 
+write-version
+       Write Shroud version into generated files.
+       ``--nowrite-version`` will not write the version and is used
+       by the testsuite to avoid changing every reference file when
+       the version changes.
+
 yaml-types FILE
        Write a YAML file with the default types.
 
