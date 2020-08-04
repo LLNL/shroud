@@ -3278,7 +3278,7 @@
                             "cxx_var": "arg",
                             "data_var": "SHData_arg",
                             "numpy_type": "NPY_BOOL",
-                            "py_type": "PyObject",
+                            "py_object": "PyObject",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
                             "stmt0": "py_bool_scalar_in",

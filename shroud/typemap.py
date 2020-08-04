@@ -96,6 +96,10 @@ class Typemap(object):
         # ex. PyFloat_FromDouble({c_deref}{c_var})
         ("PY_get", None),  # expression to create type from PyObject.
         # ex. PyFloat_AsDouble({py_var})
+        ("py_ctype", None),        # returned by Py_get ex. "Py_complex"
+        ("pytype_to_pyctor", None),  # Used with py_ctype, passed to PY_ctor
+        ("pytype_to_cxx", None),  # Used with py_ctype
+        ("cxx_to_pytype", None),  # Used with py_ctype
         # Name of converter function with prototype (PyObject *, void *).
         ("PY_to_object", None),  # PyBuild - object=converter(address)
         (
@@ -177,8 +181,11 @@ class Typemap(object):
         such as after clone_as.
 
         cxx_type will not be set for template arguments.
+        Only set if None. Complex is set explicitly since
+        C and C++ have totally different names  (double complex vs complex<double>)
         """
-        self.flat_name = flatten_name(self.cxx_type)
+        if self.flat_name is None:
+            self.flat_name = flatten_name(self.cxx_type)
 
     def _to_dict(self):
         """Convert instance to a dictionary for json.
@@ -643,6 +650,62 @@ def initialize():
             LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
             sgroup="native",
             sh_type="SH_TYPE_DOUBLE",
+        ),
+        float_complex=Typemap(   # _Complex
+            "float_complex",
+            c_type="float complex",
+            cxx_type="std::complex<float>",
+            flat_name="float_complex",
+            c_header="<complex.h>",
+            cxx_header="<complex>",
+            f_cast="cmplx({f_var}, C_FLOAT_COMPLEX)",
+            f_type="complex(C_FLOAT_COMPLEX)",
+            f_kind="C_FLOAT_COMPLEX",
+            f_module=dict(iso_c_binding=["C_FLOAT_COMPLEX"]),
+            PY_format="D",
+            py_ctype="Py_complex",
+            pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
+            pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            cxx_to_pytype="{py_var}.real = creal({cxx_var});\n{py_var}.imag = cimag({cxx_var});",
+            PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})",
+            PY_get="PyComplex_AsCComplex({py_var})",
+            PY_build_arg="&{ctype_var}",
+            PYN_typenum="NPY_DOUBLE",
+            LUA_type="LUA_TNUMBER",
+            LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            sgroup="native",
+            sh_type="SH_TYPE_FLOAT_COMPLEX",
+        ),
+        double_complex=Typemap(   # _Complex
+            "double_complex",
+            c_type="double complex",
+            cxx_type="std::complex<double>",
+            flat_name="double_complex",
+            c_header="<complex.h>",
+            cxx_header="<complex>",
+            f_cast="cmplx({f_var}, C_DOUBLE_COMPLEX)",
+            f_type="complex(C_DOUBLE_COMPLEX)",
+            f_kind="C_DOUBLE_COMPLEX",
+            f_module=dict(iso_c_binding=["C_DOUBLE_COMPLEX"]),
+            PY_format="D",
+            PY_get="PyComplex_AsCComplex({py_var})",
+            py_ctype="Py_complex",
+            pytype_to_pyctor="creal({ctor_expr}), cimag({ctor_expr})",
+            pytype_to_cxx="{work_var}.real + {work_var}.imag * I",
+            cxx_to_pytype="{ctype_var}.real = creal({cxx_var});\n{ctype_var}.imag = cimag({cxx_var});",
+            # fmt.work_ctor = "std::complex(\tcvalue.real, cvalue.imag)"
+            # creal(), cimag()
+            # std::real(), std::imag()
+            # xx.real(), xx.imag()
+            PY_ctor="PyComplex_FromDoubles(\t{ctor_expr})", # double real, double imag
+            PY_build_arg="&{ctype_var}",
+            PYN_typenum="NPY_DOUBLE",
+            LUA_type="LUA_TNUMBER",
+            LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            sgroup="native",
+            sh_type="SH_TYPE_DOUBLE_COMPLEX",
         ),
         bool=Typemap(
             "bool",

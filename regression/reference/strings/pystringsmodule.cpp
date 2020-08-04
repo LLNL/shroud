@@ -54,7 +54,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
     int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -63,6 +63,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 

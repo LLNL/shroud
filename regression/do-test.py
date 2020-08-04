@@ -477,6 +477,7 @@ if __name__ == "__main__":
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
         TestDesc("strings"),
+        TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
         TestDesc("interface"),

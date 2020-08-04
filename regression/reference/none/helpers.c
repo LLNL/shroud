@@ -360,7 +360,7 @@ static int SHROUD_create_from_PyObject_vector_double(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyFloat_AsDouble(item));
+        double cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -368,11 +368,45 @@ static int SHROUD_create_from_PyObject_vector_double(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
 }
 ##### end create_from_PyObject_vector_double cxx_source
+
+##### start create_from_PyObject_vector_double_complex cxx_source
+
+// helper create_from_PyObject_vector_double_complex
+// Convert obj into an array of type std::complex<double>
+// Return -1 on error.
+static int SHROUD_create_from_PyObject_vector_double_complex
+    (PyObject *obj, const char *name,
+    std::vector<std::complex<double>> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        Py_complex cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be double complex", name,
+                (int) i);
+            return -1;
+        }
+        in.push_back(cvalue.real + cvalue.imag * I);
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end create_from_PyObject_vector_double_complex cxx_source
 
 ##### start create_from_PyObject_vector_float cxx_source
 
@@ -391,18 +425,52 @@ static int SHROUD_create_from_PyObject_vector_float(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyFloat_AsDouble(item));
+        float cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be float", name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
 }
 ##### end create_from_PyObject_vector_float cxx_source
+
+##### start create_from_PyObject_vector_float_complex cxx_source
+
+// helper create_from_PyObject_vector_float_complex
+// Convert obj into an array of type std::complex<float>
+// Return -1 on error.
+static int SHROUD_create_from_PyObject_vector_float_complex
+    (PyObject *obj, const char *name,
+    std::vector<std::complex<float>> & in)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        Py_complex cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_ValueError,
+                "argument '%s', index %d must be float complex", name,
+                (int) i);
+            return -1;
+        }
+        in.push_back(cvalue.real + cvalue.imag * I);
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end create_from_PyObject_vector_float_complex cxx_source
 
 ##### start create_from_PyObject_vector_int cxx_source
 
@@ -421,13 +489,14 @@ static int SHROUD_create_from_PyObject_vector_int(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -451,7 +520,7 @@ static int SHROUD_create_from_PyObject_vector_int16_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int16_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -459,6 +528,7 @@ static int SHROUD_create_from_PyObject_vector_int16_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -482,7 +552,7 @@ static int SHROUD_create_from_PyObject_vector_int32_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int32_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -490,6 +560,7 @@ static int SHROUD_create_from_PyObject_vector_int32_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -513,7 +584,7 @@ static int SHROUD_create_from_PyObject_vector_int64_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int64_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -521,6 +592,7 @@ static int SHROUD_create_from_PyObject_vector_int64_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -544,7 +616,7 @@ static int SHROUD_create_from_PyObject_vector_int8_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int8_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -552,6 +624,7 @@ static int SHROUD_create_from_PyObject_vector_int8_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -575,13 +648,14 @@ static int SHROUD_create_from_PyObject_vector_long(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        long cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be long", name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -605,7 +679,7 @@ static int SHROUD_create_from_PyObject_vector_long_long(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(XXXPy_get);
+        long long cvalue = XXXPy_get;
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -613,6 +687,7 @@ static int SHROUD_create_from_PyObject_vector_long_long(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -636,13 +711,14 @@ static int SHROUD_create_from_PyObject_vector_short(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        short cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be short", name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -666,7 +742,7 @@ static int SHROUD_create_from_PyObject_vector_size_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(XXXPy_get);
+        size_t cvalue = XXXPy_get;
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -674,6 +750,7 @@ static int SHROUD_create_from_PyObject_vector_size_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -697,7 +774,7 @@ static int SHROUD_create_from_PyObject_vector_uint16_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        uint16_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -705,6 +782,7 @@ static int SHROUD_create_from_PyObject_vector_uint16_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -728,7 +806,7 @@ static int SHROUD_create_from_PyObject_vector_uint32_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        uint32_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -736,6 +814,7 @@ static int SHROUD_create_from_PyObject_vector_uint32_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -759,7 +838,7 @@ static int SHROUD_create_from_PyObject_vector_uint64_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        uint64_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -767,6 +846,7 @@ static int SHROUD_create_from_PyObject_vector_uint64_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -790,7 +870,7 @@ static int SHROUD_create_from_PyObject_vector_uint8_t(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        uint8_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -798,6 +878,7 @@ static int SHROUD_create_from_PyObject_vector_uint8_t(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -821,7 +902,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_int
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        unsigned int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -829,6 +910,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_int
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -852,7 +934,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        unsigned long cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -860,6 +942,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -884,7 +967,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long_long
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(XXXPy_get);
+        unsigned long long cvalue = XXXPy_get;
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -892,6 +975,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_long_long
                 name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -915,7 +999,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        unsigned short cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
@@ -923,6 +1007,7 @@ static int SHROUD_create_from_PyObject_vector_unsigned_short
                 (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;
@@ -953,20 +1038,20 @@ static int SHROUD_fill_from_PyObject_char(PyObject *obj,
 }
 ##### end fill_from_PyObject_char source
 
-##### start fill_from_PyObject_double_list source
+##### start fill_from_PyObject_double_complex_list source
 
-// helper fill_from_PyObject_double_list
-// Fill double array from Python sequence object.
+// helper fill_from_PyObject_double_complex_list
+// Fill double complex array from Python sequence object.
 // If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
-    const char *name, double *in, Py_ssize_t insize)
+static int SHROUD_fill_from_PyObject_double_complex_list(PyObject *obj,
+    const char *name, double complex *in, Py_ssize_t insize)
 {
-    double value = PyFloat_AsDouble(obj);
+    Py_complex cvalue = PyComplex_AsCComplex(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue.real + cvalue.imag * I;
         }
         return 0;
     }
@@ -985,7 +1070,97 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be double complex", name,
+                (int) i);
+            return -1;
+        }
+        in[i] = cvalue.real + cvalue.imag * I;
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_double_complex_list source
+
+##### start fill_from_PyObject_double_complex_numpy source
+
+// helper fill_from_PyObject_double_complex_numpy
+// Fill double complex array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_double_complex_numpy(PyObject *obj,
+    const char *name, double complex *in, Py_ssize_t insize)
+{
+    Py_complex cvalue = PyComplex_AsCComplex(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = cvalue.real + cvalue.imag * I;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of double complex",
+            name);
+        return -1;
+    }
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    double complex *data = static_cast<double complex *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        in[i] = data[i];
+    }
+    Py_DECREF(pyarray);
+    return 0;
+}
+##### end fill_from_PyObject_double_complex_numpy source
+
+##### start fill_from_PyObject_double_list source
+
+// helper fill_from_PyObject_double_list
+// Fill double array from Python sequence object.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
+    const char *name, double *in, Py_ssize_t insize)
+{
+    double cvalue = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = cvalue;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -993,6 +1168,7 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1008,11 +1184,11 @@ static int SHROUD_fill_from_PyObject_double_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
     const char *name, double *in, Py_ssize_t insize)
 {
-    double value = PyFloat_AsDouble(obj);
+    double cvalue = PyFloat_AsDouble(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1040,20 +1216,20 @@ static int SHROUD_fill_from_PyObject_double_numpy(PyObject *obj,
 }
 ##### end fill_from_PyObject_double_numpy source
 
-##### start fill_from_PyObject_float_list source
+##### start fill_from_PyObject_float_complex_list source
 
-// helper fill_from_PyObject_float_list
-// Fill float array from Python sequence object.
+// helper fill_from_PyObject_float_complex_list
+// Fill float complex array from Python sequence object.
 // If obj is a scalar, broadcast to array.
 // Return 0 on success, -1 on error.
-static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
-    const char *name, float *in, Py_ssize_t insize)
+static int SHROUD_fill_from_PyObject_float_complex_list(PyObject *obj,
+    const char *name, float complex *in, Py_ssize_t insize)
 {
-    float value = PyFloat_AsDouble(obj);
+    Py_complex cvalue = PyComplex_AsCComplex(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue.real + cvalue.imag * I;
         }
         return 0;
     }
@@ -1072,13 +1248,103 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be float complex", name,
+                (int) i);
+            return -1;
+        }
+        in[i] = cvalue.real + cvalue.imag * I;
+    }
+    Py_DECREF(seq);
+    return 0;
+}
+##### end fill_from_PyObject_float_complex_list source
+
+##### start fill_from_PyObject_float_complex_numpy source
+
+// helper fill_from_PyObject_float_complex_numpy
+// Fill float complex array from Python object using NumPy.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_float_complex_numpy(PyObject *obj,
+    const char *name, float complex *in, Py_ssize_t insize)
+{
+    Py_complex cvalue = PyComplex_AsCComplex(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = cvalue.real + cvalue.imag * I;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_Format(PyExc_TypeError,
+            "argument '%s' must be a 1-D array of float complex", name);
+        return -1;
+    }
+    PyArrayObject *pyarray = reinterpret_cast<PyArrayObject *>(array);
+
+    float complex *data = static_cast<float complex *>
+        (PyArray_DATA(pyarray));
+    npy_intp size = PyArray_SIZE(pyarray);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        in[i] = data[i];
+    }
+    Py_DECREF(pyarray);
+    return 0;
+}
+##### end fill_from_PyObject_float_complex_numpy source
+
+##### start fill_from_PyObject_float_list source
+
+// helper fill_from_PyObject_float_list
+// Fill float array from Python sequence object.
+// If obj is a scalar, broadcast to array.
+// Return 0 on success, -1 on error.
+static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
+    const char *name, float *in, Py_ssize_t insize)
+{
+    float cvalue = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+        // Broadcast scalar.
+        for (Py_ssize_t i = 0; i < insize; ++i) {
+            in[i] = cvalue;
+        }
+        return 0;
+    }
+    PyErr_Clear();
+
+    // Look for sequence.
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            name);
+        return -1;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    if (size > insize) {
+        size = insize;
+    }
+    for (Py_ssize_t i = 0; i < size; ++i) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be float", name, (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1094,11 +1360,11 @@ static int SHROUD_fill_from_PyObject_float_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
     const char *name, float *in, Py_ssize_t insize)
 {
-    float value = PyFloat_AsDouble(obj);
+    float cvalue = PyFloat_AsDouble(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1135,11 +1401,11 @@ static int SHROUD_fill_from_PyObject_float_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
 {
-    int16_t value = PyInt_AsLong(obj);
+    int16_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1158,7 +1424,7 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1166,6 +1432,7 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1181,11 +1448,11 @@ static int SHROUD_fill_from_PyObject_int16_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
     const char *name, int16_t *in, Py_ssize_t insize)
 {
-    int16_t value = PyInt_AsLong(obj);
+    int16_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1222,11 +1489,11 @@ static int SHROUD_fill_from_PyObject_int16_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
 {
-    int32_t value = PyInt_AsLong(obj);
+    int32_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1245,7 +1512,7 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1253,6 +1520,7 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1268,11 +1536,11 @@ static int SHROUD_fill_from_PyObject_int32_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
     const char *name, int32_t *in, Py_ssize_t insize)
 {
-    int32_t value = PyInt_AsLong(obj);
+    int32_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1309,11 +1577,11 @@ static int SHROUD_fill_from_PyObject_int32_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
 {
-    int64_t value = PyInt_AsLong(obj);
+    int64_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1332,7 +1600,7 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1340,6 +1608,7 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1355,11 +1624,11 @@ static int SHROUD_fill_from_PyObject_int64_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
     const char *name, int64_t *in, Py_ssize_t insize)
 {
-    int64_t value = PyInt_AsLong(obj);
+    int64_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1396,11 +1665,11 @@ static int SHROUD_fill_from_PyObject_int64_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
 {
-    int8_t value = PyInt_AsLong(obj);
+    int8_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1419,7 +1688,7 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1427,6 +1696,7 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1442,11 +1712,11 @@ static int SHROUD_fill_from_PyObject_int8_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
     const char *name, int8_t *in, Py_ssize_t insize)
 {
-    int8_t value = PyInt_AsLong(obj);
+    int8_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1483,11 +1753,11 @@ static int SHROUD_fill_from_PyObject_int8_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
 {
-    int value = PyInt_AsLong(obj);
+    int cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1506,13 +1776,14 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1528,11 +1799,11 @@ static int SHROUD_fill_from_PyObject_int_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
     const char *name, int *in, Py_ssize_t insize)
 {
-    int value = PyInt_AsLong(obj);
+    int cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1569,11 +1840,11 @@ static int SHROUD_fill_from_PyObject_int_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
 {
-    long value = PyInt_AsLong(obj);
+    long cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1592,13 +1863,14 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be long", name, (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1614,11 +1886,11 @@ static int SHROUD_fill_from_PyObject_long_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
     const char *name, long *in, Py_ssize_t insize)
 {
-    long value = PyInt_AsLong(obj);
+    long cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1655,11 +1927,11 @@ static int SHROUD_fill_from_PyObject_long_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
 {
-    short value = PyInt_AsLong(obj);
+    short cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1678,13 +1950,14 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
                 "argument '%s', index %d must be short", name, (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1700,11 +1973,11 @@ static int SHROUD_fill_from_PyObject_short_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
     const char *name, short *in, Py_ssize_t insize)
 {
-    short value = PyInt_AsLong(obj);
+    short cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1741,11 +2014,11 @@ static int SHROUD_fill_from_PyObject_short_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
 {
-    uint16_t value = PyInt_AsLong(obj);
+    uint16_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1764,7 +2037,7 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1772,6 +2045,7 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1787,11 +2061,11 @@ static int SHROUD_fill_from_PyObject_uint16_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
     const char *name, uint16_t *in, Py_ssize_t insize)
 {
-    uint16_t value = PyInt_AsLong(obj);
+    uint16_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1828,11 +2102,11 @@ static int SHROUD_fill_from_PyObject_uint16_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
 {
-    uint32_t value = PyInt_AsLong(obj);
+    uint32_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1851,7 +2125,7 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1859,6 +2133,7 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1874,11 +2149,11 @@ static int SHROUD_fill_from_PyObject_uint32_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
     const char *name, uint32_t *in, Py_ssize_t insize)
 {
-    uint32_t value = PyInt_AsLong(obj);
+    uint32_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1915,11 +2190,11 @@ static int SHROUD_fill_from_PyObject_uint32_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
 {
-    uint64_t value = PyInt_AsLong(obj);
+    uint64_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -1938,7 +2213,7 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -1946,6 +2221,7 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -1961,11 +2237,11 @@ static int SHROUD_fill_from_PyObject_uint64_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
     const char *name, uint64_t *in, Py_ssize_t insize)
 {
-    uint64_t value = PyInt_AsLong(obj);
+    uint64_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2002,11 +2278,11 @@ static int SHROUD_fill_from_PyObject_uint64_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
 {
-    uint8_t value = PyInt_AsLong(obj);
+    uint8_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2025,7 +2301,7 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -2033,6 +2309,7 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -2048,11 +2325,11 @@ static int SHROUD_fill_from_PyObject_uint8_t_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
     const char *name, uint8_t *in, Py_ssize_t insize)
 {
-    uint8_t value = PyInt_AsLong(obj);
+    uint8_t cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2089,11 +2366,11 @@ static int SHROUD_fill_from_PyObject_uint8_t_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
 {
-    unsigned int value = PyInt_AsLong(obj);
+    unsigned int cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2112,7 +2389,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -2120,6 +2397,7 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -2135,11 +2413,11 @@ static int SHROUD_fill_from_PyObject_unsigned_int_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
     const char *name, unsigned int *in, Py_ssize_t insize)
 {
-    unsigned int value = PyInt_AsLong(obj);
+    unsigned int cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2177,11 +2455,11 @@ static int SHROUD_fill_from_PyObject_unsigned_int_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
 {
-    unsigned long value = PyInt_AsLong(obj);
+    unsigned long cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2200,7 +2478,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -2208,6 +2486,7 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -2223,11 +2502,11 @@ static int SHROUD_fill_from_PyObject_unsigned_long_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
     const char *name, unsigned long *in, Py_ssize_t insize)
 {
-    unsigned long value = PyInt_AsLong(obj);
+    unsigned long cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2265,11 +2544,11 @@ static int SHROUD_fill_from_PyObject_unsigned_long_numpy(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
 {
-    unsigned short value = PyInt_AsLong(obj);
+    unsigned short cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2288,7 +2567,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
     }
     for (Py_ssize_t i = 0; i < size; ++i) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_TypeError,
@@ -2296,6 +2575,7 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
                 (int) i);
             return -1;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
     return 0;
@@ -2311,11 +2591,11 @@ static int SHROUD_fill_from_PyObject_unsigned_short_list(PyObject *obj,
 static int SHROUD_fill_from_PyObject_unsigned_short_numpy(PyObject *obj,
     const char *name, unsigned short *in, Py_ssize_t insize)
 {
-    unsigned short value = PyInt_AsLong(obj);
+    unsigned short cvalue = PyInt_AsLong(obj);
     if (!PyErr_Occurred()) {
         // Broadcast scalar.
         for (Py_ssize_t i = 0; i < insize; ++i) {
-            in[i] = value;
+            in[i] = cvalue;
         }
         return 0;
     }
@@ -2477,6 +2757,71 @@ static int SHROUD_get_from_object_charptr(PyObject *obj,
 }
 ##### end get_from_object_charptr source
 
+##### start get_from_object_double_complex_list source
+
+// helper get_from_object_double_complex_list
+// Convert list of PyObject to array of double complex.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+static int SHROUD_get_from_object_double_complex_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return 0;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    double complex *in = static_cast<double complex *>
+        (std::malloc(size * sizeof(double complex)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        double complex cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be double complex",
+                value->name, (int) i);
+            return 0;
+        }
+        in[i] = cvalue.real + cvalue.imag * I;
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
+    value->data = static_cast<double complex *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_double_complex_list source
+
+##### start get_from_object_double_complex_numpy source
+
+// helper get_from_object_double_complex_numpy
+// Convert PyObject to double complex pointer.
+static int SHROUD_get_from_object_double_complex_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of double complex");
+        return 0;
+    }
+    value->obj = array;
+    value->dataobj = nullptr;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_double_complex_numpy source
+
 ##### start get_from_object_double_list source
 
 // helper get_from_object_double_list
@@ -2497,7 +2842,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
         (std::malloc(size * sizeof(double)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        double cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2506,6 +2851,7 @@ static int SHROUD_get_from_object_double_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2541,6 +2887,71 @@ static int SHROUD_get_from_object_double_numpy(PyObject *obj,
 }
 ##### end get_from_object_double_numpy source
 
+##### start get_from_object_float_complex_list source
+
+// helper get_from_object_float_complex_list
+// Convert list of PyObject to array of float complex.
+// Return 0 on error, 1 on success.
+// Set Python exception on error.
+static int SHROUD_get_from_object_float_complex_list(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *seq = PySequence_Fast(obj, "holder");
+    if (seq == NULL) {
+        PyErr_Format(PyExc_TypeError, "argument '%s' must be iterable",
+            value->name);
+        return 0;
+    }
+    Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
+    float complex *in = static_cast<float complex *>
+        (std::malloc(size * sizeof(float complex)));
+    for (Py_ssize_t i = 0; i < size; i++) {
+        PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
+        float complex cvalue = PyComplex_AsCComplex(item);
+        if (PyErr_Occurred()) {
+            std::free(in);
+            Py_DECREF(seq);
+            PyErr_Format(PyExc_TypeError,
+                "argument '%s', index %d must be float complex",
+                value->name, (int) i);
+            return 0;
+        }
+        in[i] = cvalue.real + cvalue.imag * I;
+    }
+    Py_DECREF(seq);
+
+    value->obj = nullptr;  // Do not save list object.
+    value->dataobj = PyCapsule_New(in, nullptr, FREE_py_capsule_dtor);
+    value->data = static_cast<float complex *>(in);
+    value->size = size;
+    return 1;
+}
+##### end get_from_object_float_complex_list source
+
+##### start get_from_object_float_complex_numpy source
+
+// helper get_from_object_float_complex_numpy
+// Convert PyObject to float complex pointer.
+static int SHROUD_get_from_object_float_complex_numpy(PyObject *obj,
+    LIB_SHROUD_converter_value *value)
+{
+    PyObject *array = PyArray_FROM_OTF(obj, NPY_DOUBLE,
+        NPY_ARRAY_IN_ARRAY);
+    if (array == nullptr) {
+        PyErr_SetString(PyExc_ValueError,
+            "must be a 1-D array of float complex");
+        return 0;
+    }
+    value->obj = array;
+    value->dataobj = nullptr;
+    value->data = PyArray_DATA(reinterpret_cast<PyArrayObject *>
+        (array));
+    value->size = PyArray_SIZE(reinterpret_cast<PyArrayObject *>
+        (array));
+    return 1;
+}
+##### end get_from_object_float_complex_numpy source
+
 ##### start get_from_object_float_list source
 
 // helper get_from_object_float_list
@@ -2560,7 +2971,7 @@ static int SHROUD_get_from_object_float_list(PyObject *obj,
     float *in = static_cast<float *>(std::malloc(size * sizeof(float)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyFloat_AsDouble(item);
+        float cvalue = PyFloat_AsDouble(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2569,6 +2980,7 @@ static int SHROUD_get_from_object_float_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2624,7 +3036,7 @@ static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
         (std::malloc(size * sizeof(int16_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int16_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2633,6 +3045,7 @@ static int SHROUD_get_from_object_int16_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2688,7 +3101,7 @@ static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
         (std::malloc(size * sizeof(int32_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int32_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2697,6 +3110,7 @@ static int SHROUD_get_from_object_int32_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2752,7 +3166,7 @@ static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
         (std::malloc(size * sizeof(int64_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int64_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2761,6 +3175,7 @@ static int SHROUD_get_from_object_int64_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2816,7 +3231,7 @@ static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
         (std::malloc(size * sizeof(int8_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int8_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2825,6 +3240,7 @@ static int SHROUD_get_from_object_int8_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2879,7 +3295,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
     int *in = static_cast<int *>(std::malloc(size * sizeof(int)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2888,6 +3304,7 @@ static int SHROUD_get_from_object_int_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -2941,7 +3358,7 @@ static int SHROUD_get_from_object_long_list(PyObject *obj,
     long *in = static_cast<long *>(std::malloc(size * sizeof(long)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        long cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -2950,6 +3367,7 @@ static int SHROUD_get_from_object_long_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3028,7 +3446,7 @@ static int SHROUD_get_from_object_short_list(PyObject *obj,
     short *in = static_cast<short *>(std::malloc(size * sizeof(short)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        short cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3037,6 +3455,7 @@ static int SHROUD_get_from_object_short_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3115,7 +3534,7 @@ static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
         (std::malloc(size * sizeof(uint16_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        uint16_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3124,6 +3543,7 @@ static int SHROUD_get_from_object_uint16_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3179,7 +3599,7 @@ static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
         (std::malloc(size * sizeof(uint32_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        uint32_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3188,6 +3608,7 @@ static int SHROUD_get_from_object_uint32_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3243,7 +3664,7 @@ static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
         (std::malloc(size * sizeof(uint64_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        uint64_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3252,6 +3673,7 @@ static int SHROUD_get_from_object_uint64_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3307,7 +3729,7 @@ static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
         (std::malloc(size * sizeof(uint8_t)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        uint8_t cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3316,6 +3738,7 @@ static int SHROUD_get_from_object_uint8_t_list(PyObject *obj,
                 (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3371,7 +3794,7 @@ static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
         (std::malloc(size * sizeof(unsigned int)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        unsigned int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3380,6 +3803,7 @@ static int SHROUD_get_from_object_unsigned_int_list(PyObject *obj,
                 value->name, (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3435,7 +3859,7 @@ static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
         (std::malloc(size * sizeof(unsigned long)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        unsigned long cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3444,6 +3868,7 @@ static int SHROUD_get_from_object_unsigned_long_list(PyObject *obj,
                 value->name, (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3523,7 +3948,7 @@ static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
         (std::malloc(size * sizeof(unsigned short)));
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in[i] = PyInt_AsLong(item);
+        unsigned short cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             std::free(in);
             Py_DECREF(seq);
@@ -3532,6 +3957,7 @@ static int SHROUD_get_from_object_unsigned_short_list(PyObject *obj,
                 value->name, (int) i);
             return 0;
         }
+        in[i] = cvalue;
     }
     Py_DECREF(seq);
 
@@ -3609,6 +4035,22 @@ static PyObject *SHROUD_to_PyList_double(const double *in, size_t size)
 }
 ##### end to_PyList_double source
 
+##### start to_PyList_double_complex source
+
+// helper to_PyList_double_complex
+// Convert double complex pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_double_complex
+    (const double complex *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+    return out;
+}
+##### end to_PyList_double_complex source
+
 ##### start to_PyList_float source
 
 // helper to_PyList_float
@@ -3622,6 +4064,22 @@ static PyObject *SHROUD_to_PyList_float(const float *in, size_t size)
     return out;
 }
 ##### end to_PyList_float source
+
+##### start to_PyList_float_complex source
+
+// helper to_PyList_float_complex
+// Convert float complex pointer to PyList of PyObjects.
+static PyObject *SHROUD_to_PyList_float_complex
+    (const float complex *in, size_t size)
+{
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+    return out;
+}
+##### end to_PyList_float_complex source
 
 ##### start to_PyList_int source
 
@@ -3858,6 +4316,22 @@ static PyObject *SHROUD_to_PyList_vector_double
 }
 ##### end to_PyList_vector_double source
 
+##### start to_PyList_vector_double_complex source
+
+// helper to_PyList_vector_double_complex
+static PyObject *SHROUD_to_PyList_vector_double_complex
+    (std::vector<double complex> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+    return out;
+}
+##### end to_PyList_vector_double_complex source
+
 ##### start to_PyList_vector_float source
 
 // helper to_PyList_vector_float
@@ -3871,6 +4345,22 @@ static PyObject *SHROUD_to_PyList_vector_float(std::vector<float> & in)
     return out;
 }
 ##### end to_PyList_vector_float source
+
+##### start to_PyList_vector_float_complex source
+
+// helper to_PyList_vector_float_complex
+static PyObject *SHROUD_to_PyList_vector_float_complex
+    (std::vector<float complex> & in)
+{
+    size_t size = in.size();
+    PyObject *out = PyList_New(size);
+    for (size_t i = 0; i < size; ++i) {
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+    return out;
+}
+##### end to_PyList_vector_float_complex source
 
 ##### start to_PyList_vector_int source
 
@@ -4140,6 +4630,23 @@ static void SHROUD_update_PyList_double
 }
 ##### end update_PyList_double source
 
+##### start update_PyList_double_complex source
+
+// helper update_PyList_double_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_double_complex
+    (PyObject *out, double complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+}
+##### end update_PyList_double_complex source
+
 ##### start update_PyList_float source
 
 // helper update_PyList_float
@@ -4155,6 +4662,23 @@ static void SHROUD_update_PyList_float
     }
 }
 ##### end update_PyList_float source
+
+##### start update_PyList_float_complex source
+
+// helper update_PyList_float_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_float_complex
+    (PyObject *out, float complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+}
+##### end update_PyList_float_complex source
 
 ##### start update_PyList_int source
 
@@ -4412,6 +4936,23 @@ static void SHROUD_update_PyList_vector_double
 }
 ##### end update_PyList_vector_double source
 
+##### start update_PyList_vector_double_complex source
+
+// helper update_PyList_vector_double_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_vector_double_complex
+    (PyObject *out, double complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+}
+##### end update_PyList_vector_double_complex source
+
 ##### start update_PyList_vector_float source
 
 // helper update_PyList_vector_float
@@ -4427,6 +4968,23 @@ static void SHROUD_update_PyList_vector_float
     }
 }
 ##### end update_PyList_vector_float source
+
+##### start update_PyList_vector_float_complex source
+
+// helper update_PyList_vector_float_complex
+// Replace members of existing list with new values.
+// out is known to be a PyList of the correct length.
+static void SHROUD_update_PyList_vector_float_complex
+    (PyObject *out, float complex *in, size_t size)
+{
+    for (size_t i = 0; i < size; ++i) {
+        PyObject *item = PyList_GET_ITEM(out, i);
+        Py_DECREF(item);
+        PyList_SET_ITEM(out, i, PyComplex_FromDoubles(
+            creal(in[i]), cimag(in[i])));
+    }
+}
+##### end update_PyList_vector_float_complex source
 
 ##### start update_PyList_vector_int source
 

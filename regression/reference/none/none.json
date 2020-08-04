@@ -309,6 +309,39 @@
             "sgroup": "native",
             "sh_type": "SH_TYPE_DOUBLE"
         },
+        "double_complex": {
+            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_DOUBLE",
+            "PY_build_arg": "&{ctype_var}",
+            "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
+            "PY_format": "D",
+            "PY_get": "PyComplex_AsCComplex({py_var})",
+            "c_header": [
+                "<complex.h>"
+            ],
+            "c_type": "double complex",
+            "cxx_header": [
+                "<complex>"
+            ],
+            "cxx_to_pytype": "{ctype_var}.real = creal({cxx_var});\n{ctype_var}.imag = cimag({cxx_var});",
+            "cxx_type": "std::complex<double>",
+            "f_cast": "cmplx({f_var}, C_DOUBLE_COMPLEX)",
+            "f_kind": "C_DOUBLE_COMPLEX",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_DOUBLE_COMPLEX"
+                ]
+            },
+            "f_type": "complex(C_DOUBLE_COMPLEX)",
+            "flat_name": "double_complex",
+            "py_ctype": "Py_complex",
+            "pytype_to_cxx": "{work_var}.real + {work_var}.imag * I",
+            "pytype_to_pyctor": "creal({ctor_expr}), cimag({ctor_expr})",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_DOUBLE_COMPLEX"
+        },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
             "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
@@ -330,6 +363,39 @@
             "flat_name": "float",
             "sgroup": "native",
             "sh_type": "SH_TYPE_FLOAT"
+        },
+        "float_complex": {
+            "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_type": "LUA_TNUMBER",
+            "PYN_typenum": "NPY_DOUBLE",
+            "PY_build_arg": "&{ctype_var}",
+            "PY_ctor": "PyComplex_FromDoubles(\t{ctor_expr})",
+            "PY_format": "D",
+            "PY_get": "PyComplex_AsCComplex({py_var})",
+            "c_header": [
+                "<complex.h>"
+            ],
+            "c_type": "float complex",
+            "cxx_header": [
+                "<complex>"
+            ],
+            "cxx_to_pytype": "{py_var}.real = creal({cxx_var});\n{py_var}.imag = cimag({cxx_var});",
+            "cxx_type": "std::complex<float>",
+            "f_cast": "cmplx({f_var}, C_FLOAT_COMPLEX)",
+            "f_kind": "C_FLOAT_COMPLEX",
+            "f_module": {
+                "iso_c_binding": [
+                    "C_FLOAT_COMPLEX"
+                ]
+            },
+            "f_type": "complex(C_FLOAT_COMPLEX)",
+            "flat_name": "float_complex",
+            "py_ctype": "Py_complex",
+            "pytype_to_cxx": "{work_var}.real + {work_var}.imag * I",
+            "pytype_to_pyctor": "creal({ctor_expr}), cimag({ctor_expr})",
+            "sgroup": "native",
+            "sh_type": "SH_TYPE_FLOAT_COMPLEX"
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",

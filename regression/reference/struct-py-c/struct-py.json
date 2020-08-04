@@ -335,7 +335,7 @@
                             "cxx_var": "s1",
                             "data_var": "SHData_s1",
                             "numpy_type": null,
-                            "py_type": "PY_Cstruct_as_class",
+                            "py_object": "PY_Cstruct_as_class",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
                             "stmt0": "py_struct_*_in_class",

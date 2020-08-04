@@ -40,13 +40,14 @@ static int SHROUD_create_from_PyObject_vector_int(PyObject *obj,
     Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
     for (Py_ssize_t i = 0; i < size; i++) {
         PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-        in.push_back(PyInt_AsLong(item));
+        int cvalue = PyInt_AsLong(item);
         if (PyErr_Occurred()) {
             Py_DECREF(seq);
             PyErr_Format(PyExc_ValueError,
                 "argument '%s', index %d must be int", name, (int) i);
             return -1;
         }
+        in.push_back(cvalue);
     }
     Py_DECREF(seq);
     return 0;

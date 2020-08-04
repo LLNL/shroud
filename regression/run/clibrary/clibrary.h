@@ -8,8 +8,8 @@
  * clibrary.h - wrapped routines
  */
 
-#ifndef CLIBRARY_HPP
-#define CLIBRARY_HPP
+#ifndef CLIBRARY_H
+#define CLIBRARY_H
 
 #include <stdbool.h>
 
@@ -109,4 +109,4 @@ void increment(int *array, int size);
 
 void get_values(int *nvalues, int *values);
 
-#endif // CLIBRARY_HPP
+#endif // CLIBRARY_H

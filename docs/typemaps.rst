@@ -66,6 +66,11 @@ And template arguments are converted to underscores with the trailing
 ``>`` being replaced
 i.e. ``std::vector<int>`` becomes ``std_vector_int``.
 
+Complex types set this explicitly since C and C++ have much different
+type names. The *flat_name* is always ``double_complex`` while
+*c_type* is ``double complex`` and *cxx_type* is ``complex<double>``.
+
+
 One use of this name is as the **function_suffix** for templated functions.
 
 idtor

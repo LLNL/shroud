@@ -111,6 +111,53 @@ PY_from_object
 PyArg_Parse - ``status = converter(object, address)``.
 Defaults to *None*.
 
+py_ctype
+^^^^^^^^
+
+The type returned by *PY_get* function.
+Defaults to ``None`` which implies it is the same as the typemap.
+i.e. ``PyInt_AsLong`` returns a ``long``.
+
+Defined for complex types because ``PyComplex_AsCComplex`` returns
+type ``Py_complex``.
+See also *pytype_to_pyctor* and *pytype_to_cxx*.
+
+pytype_to_pyctor
+^^^^^^^^^^^^^^^^
+
+Expression to use with *PY_ctor*.
+Defaults to ``None`` which indicates no additional processing of the argument
+is required.
+Only needs to be defined when *py_ctype* is defined.
+
+With complex types, it is used to extract the real and imaginary parts from
+``Py_complex`` (defined with *py_ctype*)
+with ``creal({ctor_expr}), cimag({ctor_expr})``.
+*ctor_expr* is the expression used with *Py_ctor*.
+
+pytype_to_cxx
+^^^^^^^^^^^^^
+
+Expression to convert *py_ctype* into a C++ value.
+Only needs to be defined when *py_ctype* is defined.
+
+Used with complex to convert ``Py_complex``  (defined with *py_ctype*)
+to C using ``{work_var}.real + {work_var}.imag * I``
+or C++ with ``std::complex(\tcvalue.real, cvalue.imag)``.
+
+cxx_to_pytype
+^^^^^^^^^^^^^
+
+Statements to convert *cxx_var* to *py_ctype*/
+Only needs to be defined when *py_ctype* is defined.
+
+.. code-block:: yaml
+
+    cxx_to_pytype: |
+        {ctype_var}.real = creal({cxx_var});
+        {ctype_var}.imag = cimag({cxx_var});
+
+
 PYN_descr
 ^^^^^^^^^
 

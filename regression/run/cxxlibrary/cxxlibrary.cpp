@@ -92,3 +92,9 @@ void defaultArgsInOut(int in1, int *out1, int *out2, bool flag)
         *out2 = 2;
     }
 }
+
+//----------------------------------------------------------------------
+
+void accept_complex(std::complex<double> *arg1)
+{
+}
