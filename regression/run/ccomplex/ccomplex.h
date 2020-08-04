@@ -13,12 +13,12 @@
 
 #include <complex.h>
 
-void accept_float_complex(float complex *arg1);
+void acceptFloatComplexInoutPtr(float complex *arg1);
 
-void accept_double_complex(double complex *arg1);
+void acceptDoubleComplexInoutPtr(double complex *arg1);
 void acceptDoubleComplexOutPtr(double complex *arg1);
 
-void accept_double_complex_flag(double complex *arg1, int *flag);
+void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag);
 void acceptDoubleComplexOutPtrFlag(double complex *arg1, int *flag);
 
 #endif // CCOMPLEX_H

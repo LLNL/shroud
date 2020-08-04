@@ -48,7 +48,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "accept_float_complex",
+                        "name": "acceptFloatComplexInoutPtr",
                         "pointer": []
                     },
                     "params": [
@@ -76,27 +76,27 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void accept_float_complex(float complex *arg1)",
-                "declgen": "void accept_float_complex(float complex * arg1 +intent(inout))",
+                "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
+                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))",
                 "fmtdict": {
                     "C_call_list": "arg1",
-                    "C_name": "accept_float_complex",
+                    "C_name": "acceptFloatComplexInoutPtr",
                     "C_prototype": "float complex * arg1",
                     "C_return_type": "void",
-                    "F_C_call": "c_accept_float_complex",
-                    "F_C_name": "accept_float_complex",
+                    "F_C_call": "c_accept_float_complex_inout_ptr",
+                    "F_C_name": "accept_float_complex_inout_ptr",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
-                    "F_name_function": "accept_float_complex",
-                    "F_name_generic": "accept_float_complex",
-                    "F_name_impl": "accept_float_complex",
+                    "F_name_function": "accept_float_complex_inout_ptr",
+                    "F_name_generic": "accept_float_complex_inout_ptr",
+                    "F_name_impl": "accept_float_complex_inout_ptr",
                     "F_subprogram": "subroutine",
-                    "function_name": "accept_float_complex",
+                    "function_name": "acceptFloatComplexInoutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
-                    "underscore_name": "accept_float_complex"
+                    "underscore_name": "accept_float_complex_inout_ptr"
                 },
                 "options": {
                     "wrap_python": false
@@ -160,7 +160,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "accept_double_complex",
+                        "name": "acceptDoubleComplexInoutPtr",
                         "pointer": []
                     },
                     "params": [
@@ -188,28 +188,28 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void accept_double_complex(double complex *arg1)",
-                "declgen": "void accept_double_complex(double complex * arg1 +intent(inout))",
+                "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
+                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))",
                 "fmtdict": {
                     "C_call_list": "arg1",
-                    "C_name": "accept_double_complex",
+                    "C_name": "acceptDoubleComplexInoutPtr",
                     "C_prototype": "double complex * arg1",
                     "C_return_type": "void",
-                    "F_C_call": "c_accept_double_complex",
-                    "F_C_name": "accept_double_complex",
+                    "F_C_call": "c_accept_double_complex_inout_ptr",
+                    "F_C_name": "accept_double_complex_inout_ptr",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
-                    "F_name_function": "accept_double_complex",
-                    "F_name_generic": "accept_double_complex",
-                    "F_name_impl": "accept_double_complex",
+                    "F_name_function": "accept_double_complex_inout_ptr",
+                    "F_name_generic": "accept_double_complex_inout_ptr",
+                    "F_name_impl": "accept_double_complex_inout_ptr",
                     "F_subprogram": "subroutine",
-                    "PY_name_impl": "PY_accept_double_complex",
-                    "function_name": "accept_double_complex",
+                    "PY_name_impl": "PY_acceptDoubleComplexInoutPtr",
+                    "function_name": "acceptDoubleComplexInoutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_default",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
-                    "underscore_name": "accept_double_complex"
+                    "underscore_name": "accept_double_complex_inout_ptr"
                 },
                 "options": {}
             },
@@ -375,7 +375,7 @@
                 },
                 "ast": {
                     "declarator": {
-                        "name": "accept_double_complex_flag",
+                        "name": "acceptDoubleComplexInoutPtrFlag",
                         "pointer": []
                     },
                     "params": [
@@ -420,15 +420,15 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "void accept_double_complex_flag(double complex *arg1, int *flag +intent(out))",
-                "declgen": "void accept_double_complex_flag(double complex * arg1 +intent(inout), int * flag +intent(out))",
+                "decl": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
+                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex * arg1 +intent(inout), int * flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
                 "fmtdict": {
-                    "PY_name_impl": "PY_accept_double_complex_flag",
-                    "function_name": "accept_double_complex_flag",
-                    "underscore_name": "accept_double_complex_flag"
+                    "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
+                    "function_name": "acceptDoubleComplexInoutPtrFlag",
+                    "underscore_name": "accept_double_complex_inout_ptr_flag"
                 },
                 "options": {
                     "wrap_c": false,

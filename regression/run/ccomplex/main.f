@@ -36,15 +36,15 @@ contains
 
     ! intent(INOUT) argument
     c4 = (1.0, 2.0)
-    call accept_float_complex(c4)
-    call assert_equals(3.0, real(c4), "accept_float_complex")
-    call assert_equals(4.0, imag(c4), "accept_float_complex")
+    call accept_float_complex_inout_ptr(c4)
+    call assert_equals(3.0, real(c4), "acceptFloatComplexInoutPtr")
+    call assert_equals(4.0, imag(c4), "acceptFloatComplexInoutPtr")
 
     ! intent(INOUT) argument
     c8 = (1.0d0, 2.0d0)
-    call accept_double_complex(c8)
-    call assert_equals(3.0d0, real(c8), "accept_double_complex")
-    call assert_equals(4.0d0, imag(c8), "accept_double_complex")
+    call accept_double_complex_inout_ptr(c8)
+    call assert_equals(3.0d0, real(c8), "acceptDoubleComplexInoutPtr")
+    call assert_equals(4.0d0, imag(c8), "acceptDoubleComplexInoutPtr")
 
     call accept_double_complex_out_ptr(c8)
     call assert_equals(3.0d0, real(c8), "acceptDoubleComplexOutPtr")

@@ -30,13 +30,13 @@ options:
 declarations:
 
 ######################################################################
-- decl: void accept_float_complex(float complex *arg1)
+- decl: void acceptFloatComplexInoutPtr(float complex *arg1)
   options:
     wrap_python: False
-- decl: void accept_double_complex(double complex *arg1)
+- decl: void acceptDoubleComplexInoutPtr(double complex *arg1)
 - decl: void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))
 
-- decl: void accept_double_complex_flag(double complex *arg1, int *flag +intent(out))
+- decl: void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))
   options:
     wrap_c: False
     wrap_fortran: False

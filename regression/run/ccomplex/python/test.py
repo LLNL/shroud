@@ -35,8 +35,8 @@ class CComplex(unittest.TestCase):
         ## do something...
         print("FooTest:tearDown_:end")
      
-    def test_complex_inout_scalar(self):
-        rv = ccomplex.accept_double_complex(complex(1.0, 2.0))
+    def test_acceptDoubleComplexInoutPtr(self):
+        rv = ccomplex.acceptDoubleComplexInoutPtr(complex(1.0, 2.0))
         self.assertIsInstance(rv, complex)
         self.assertEqual(complex(3., 4.), rv)
 
@@ -45,8 +45,8 @@ class CComplex(unittest.TestCase):
         self.assertIsInstance(rv, complex)
         self.assertEqual(complex(3., 4.), rv)
 
-    def test_complex_inout_scalar_flag(self):
-        rv, flag = ccomplex.accept_double_complex_flag(complex(1.0, 2.0))
+    def test_acceptDoubleComplexInoutPtrFlag(self):
+        rv, flag = ccomplex.acceptDoubleComplexInoutPtrFlag(complex(1.0, 2.0))
         self.assertIsInstance(rv, complex)
         self.assertEqual(complex(3., 4.), rv)
         self.assertEqual(0, flag)

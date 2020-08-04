@@ -15,11 +15,11 @@ static char last_function_called[MAXLAST];
 
 //----------------------------------------------------------------------
 
-void accept_float_complex(float complex *arg1)
+void acceptFloatComplexInoutPtr(float complex *arg1)
 {
     *arg1 = 3.0 + 4.0 * I;
 }
-void accept_double_complex(double complex *arg1)
+void acceptDoubleComplexInoutPtr(double complex *arg1)
 {
     *arg1 = 3.0 + 4.0 * I;
 }
@@ -30,7 +30,7 @@ void acceptDoubleComplexOutPtr(double complex *arg1)
 }
 
 // Return two values so Py_BuildValue is used.
-void accept_double_complex_flag(double complex *arg1, int *flag)
+void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag)
 {
     *arg1 = 3.0 + 4.0 * I;
     *flag = 0;

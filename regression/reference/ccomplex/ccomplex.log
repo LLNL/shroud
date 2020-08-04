@@ -1,18 +1,18 @@
 Read yaml ccomplex.yaml
-C function void accept_float_complex(float complex * arg1 +intent(inout))
-C function void accept_double_complex(double complex * arg1 +intent(inout))
+C function void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))
+C function void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
 C function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 C function void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close wrapccomplex.c
 Close typesccomplex.h
-C-interface, Fortran function void accept_float_complex(float complex * arg1 +intent(inout))
-C-interface, Fortran function void accept_double_complex(double complex * arg1 +intent(inout))
+C-interface, Fortran function void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))
+C-interface, Fortran function void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
 C-interface, Fortran function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 C-interface, Fortran function void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close wrapfccomplex.f
-Python function void accept_double_complex(double complex * arg1 +intent(inout))
+Python function void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
 Python function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
-Python function void accept_double_complex_flag(double complex * arg1 +intent(inout), int * flag +intent(out))
+Python function void acceptDoubleComplexInoutPtrFlag(double complex * arg1 +intent(inout), int * flag +intent(out))
 Python function void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close pyccomplexmodule.c
 Close pyccomplexmodule.h

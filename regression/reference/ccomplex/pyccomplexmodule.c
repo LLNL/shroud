@@ -32,22 +32,22 @@ PyObject *PY_error_obj;
 // splicer end additional_functions
 
 // ----------------------------------------
-// Function:  void accept_double_complex
+// Function:  void acceptDoubleComplexInoutPtr
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(inout)
 // Exact:     py_native_*_inout
-static char PY_accept_double_complex__doc__[] =
+static char PY_acceptDoubleComplexInoutPtr__doc__[] =
 "documentation"
 ;
 
 static PyObject *
-PY_accept_double_complex(
+PY_acceptDoubleComplexInoutPtr(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_double_complex
+// splicer begin function.accept_double_complex_inout_ptr
     double complex arg1;
     Py_complex SHCPY_arg1;
     char *SHT_kwlist[] = {
@@ -56,19 +56,19 @@ PY_accept_double_complex(
     PyObject * SHPy_arg1 = NULL;
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "D:accept_double_complex", SHT_kwlist, &SHCPY_arg1))
+        "D:acceptDoubleComplexInoutPtr", SHT_kwlist, &SHCPY_arg1))
         return NULL;
 
     // post_parse
     arg1 = SHCPY_arg1.real + SHCPY_arg1.imag * I;
 
-    accept_double_complex(&arg1);
+    acceptDoubleComplexInoutPtr(&arg1);
 
     // post_call
     SHPy_arg1 = PyComplex_FromDoubles(creal(arg1), cimag(arg1));
 
     return (PyObject *) SHPy_arg1;
-// splicer end function.accept_double_complex
+// splicer end function.accept_double_complex_inout_ptr
 }
 
 // ----------------------------------------
@@ -101,7 +101,7 @@ PY_acceptDoubleComplexOutPtr(
 }
 
 // ----------------------------------------
-// Function:  void accept_double_complex_flag
+// Function:  void acceptDoubleComplexInoutPtrFlag
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(inout)
@@ -109,7 +109,7 @@ PY_acceptDoubleComplexOutPtr(
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Exact:     py_native_*_out
-static char PY_accept_double_complex_flag__doc__[] =
+static char PY_acceptDoubleComplexInoutPtrFlag__doc__[] =
 "documentation"
 ;
 
@@ -117,12 +117,12 @@ static char PY_accept_double_complex_flag__doc__[] =
  * Return two values so Py_BuildValue is used.
  */
 static PyObject *
-PY_accept_double_complex_flag(
+PY_acceptDoubleComplexInoutPtrFlag(
   PyObject *SHROUD_UNUSED(self),
   PyObject *args,
   PyObject *kwds)
 {
-// splicer begin function.accept_double_complex_flag
+// splicer begin function.accept_double_complex_inout_ptr_flag
     double complex arg1;
     Py_complex SHCPY_arg1;
     int flag;
@@ -132,13 +132,13 @@ PY_accept_double_complex_flag(
     PyObject *SHTPy_rv = NULL;  // return value object
 
     if (!PyArg_ParseTupleAndKeywords(args, kwds,
-        "D:accept_double_complex_flag", SHT_kwlist, &SHCPY_arg1))
+        "D:acceptDoubleComplexInoutPtrFlag", SHT_kwlist, &SHCPY_arg1))
         return NULL;
 
     // post_parse
     arg1 = SHCPY_arg1.real + SHCPY_arg1.imag * I;
 
-    accept_double_complex_flag(&arg1, &flag);
+    acceptDoubleComplexInoutPtrFlag(&arg1, &flag);
 
     // post_call
     SHCPY_arg1.real = creal(arg1);
@@ -146,7 +146,7 @@ PY_accept_double_complex_flag(
     SHTPy_rv = Py_BuildValue("Di", &SHCPY_arg1, flag);
 
     return SHTPy_rv;
-// splicer end function.accept_double_complex_flag
+// splicer end function.accept_double_complex_inout_ptr_flag
 }
 
 // ----------------------------------------
@@ -189,13 +189,15 @@ PY_acceptDoubleComplexOutPtrFlag(
 // splicer end function.accept_double_complex_out_ptr_flag
 }
 static PyMethodDef PY_methods[] = {
-{"accept_double_complex", (PyCFunction)PY_accept_double_complex,
-    METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex__doc__},
+{"acceptDoubleComplexInoutPtr",
+    (PyCFunction)PY_acceptDoubleComplexInoutPtr,
+    METH_VARARGS|METH_KEYWORDS, PY_acceptDoubleComplexInoutPtr__doc__},
 {"acceptDoubleComplexOutPtr", (PyCFunction)PY_acceptDoubleComplexOutPtr,
     METH_NOARGS, PY_acceptDoubleComplexOutPtr__doc__},
-{"accept_double_complex_flag",
-    (PyCFunction)PY_accept_double_complex_flag,
-    METH_VARARGS|METH_KEYWORDS, PY_accept_double_complex_flag__doc__},
+{"acceptDoubleComplexInoutPtrFlag",
+    (PyCFunction)PY_acceptDoubleComplexInoutPtrFlag,
+    METH_VARARGS|METH_KEYWORDS,
+    PY_acceptDoubleComplexInoutPtrFlag__doc__},
 {"acceptDoubleComplexOutPtrFlag",
     (PyCFunction)PY_acceptDoubleComplexOutPtrFlag, METH_NOARGS,
     PY_acceptDoubleComplexOutPtrFlag__doc__},
