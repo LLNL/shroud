@@ -22,16 +22,16 @@ module pointers_mod
     ! splicer end module_top
 
     ! helper capsule_data_helper
-    type, bind(C) :: SHROUD_capsule_data
+    type, bind(C) :: POI_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
+    end type POI_SHROUD_capsule_data
 
     ! start array_context
     ! helper array_context
     type, bind(C) :: POI_SHROUD_array
         ! address of C++ memory
-        type(SHROUD_capsule_data) :: cxx
+        type(POI_SHROUD_capsule_data) :: cxx
         ! address of data in cxx
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
