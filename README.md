@@ -98,9 +98,10 @@ In addition, a file created by
 is available from the github release.
 Shroud and PyYAML are bundled into a single executable which uses
 the Python3 on your path.
+Shiv requires Python 3.6+.
 
 ```
-wget https://github.com/LLNL/shroud/archive/shroud-0.12.1.pyz
+wget https://github.com/LLNL/shroud/archive/shroud-0.12.2.pyz
 ```
 
 
