@@ -52,6 +52,7 @@ include $(top)/regression/run/Makefile
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(PYTHON) -m venv --system-site-packages $(venv.dir)
+	$(python.dir)/pip install --upgrade pip
 virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
@@ -112,9 +113,32 @@ pypi:
 .PHONY : install-twine sdist testpypi pypi
 
 ########################################################################
+# Creating pex executable
+# This puts all of shroud into a single file.
+# https://github.com/pantsbuild/pex
+
+install-pex :
+	$(python.dir)/pip install pex
+
+# Use version in output file name.
+pex-file : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+pex-file : dist-pex/..
+	$(python.dir)/pex . -r requirements.txt --python-shebang="/usr/bin/env python3" \
+          -e shroud.main:main -o dist-pex/shroud-$(vernum).pex
+	cd dist-pex && ln --force --symbolic shroud-$(vernum).pex shroud.pex
+
+# Test pex created executable
+do-test-pex :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(top)/dist-pex/shroud.pex; \
+	$(PYTHON) regression/do-test.py $(do-test-args)
+
+########################################################################
 # Creating shiv executable
 # This puts all of shroud into a single file.
 # https://github.com/linkedin/shiv
+# Note: Python 3.6+
 
 install-shiv :
 	$(python.dir)/pip install shiv
@@ -124,7 +148,7 @@ shiv-file : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{
 shiv-file : dist-shiv/..
 	$(python.dir)/shiv --python '/usr/bin/env python3' -c shroud \
           -o dist-shiv/shroud-$(vernum).pyz .
-	cd dist-shiv && ln -s shroud-$(vernum).pyz shroud.pyz
+	cd dist-shiv && ln --force --symbolic shroud-$(vernum).pyz shroud.pyz
 
 # Test shiv created executable
 do-test-shiv :

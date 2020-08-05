@@ -112,15 +112,6 @@ class Struct(unittest.TestCase):
         self.assertEqual(1,   out["ifield"])
         self.assertEqual(2.5, out["dfield"])
 
-    def test_returnConstStructByValue(self):
-        out = cstruct.returnConstStructByValue(1, 2.5)
-        self.assertIsInstance(out, np.ndarray)
-        self.assertIs(out.dtype, cstruct.Cstruct1_dtype)
-        self.assertEqual(0, out.ndim)
-        self.assertEqual(1, out.size)
-        self.assertEqual(1,   out["ifield"])
-        self.assertEqual(2.5, out["dfield"])
-
     def test_returnStructPtr1(self):
         out = cstruct.returnStructPtr1(33, 33.5)
         self.assertIsInstance(out, np.ndarray)

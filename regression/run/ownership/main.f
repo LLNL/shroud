@@ -40,7 +40,7 @@ contains
     integer(C_INT), allocatable :: inta1(:)
 !    integer(C_INT) :: lencptr
 !    type(C_PTR) cptr
-    type(SHROUD_capsule) cap
+    type(OWN_SHROUD_capsule) cap
 
     !----------------------------------------
     ! return scalar

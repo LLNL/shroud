@@ -59,6 +59,8 @@ void acceptStringPointerLen(std::string * arg1, int *len);
 
 void fetchStringPointerLen(std::string * arg1, int *len);
 
+int acceptStringInstance(std::string arg1);
+
 void returnStrings(std::string & arg1, std::string & arg2);
 
 char returnMany(int * arg1);

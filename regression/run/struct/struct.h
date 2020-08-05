@@ -30,7 +30,6 @@ int acceptStructInPtr(Cstruct1 *arg);
 void acceptStructOutPtr(Cstruct1 *arg, int i, double d);
 void acceptStructInOutPtr(Cstruct1 *arg);
 Cstruct1 returnStructByValue(int i, double d);
-const Cstruct1 returnConstStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 

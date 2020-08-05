@@ -187,6 +187,8 @@ class Tester:
             # Avoid printing things which may vary (path, date, time).
             "--option",
             "debug_testsuite=true",
+            # Avoid printing version number in reference files
+            "--nowrite-version",
         ]
 
         # test specific flags
@@ -320,6 +322,7 @@ if __name__ == "__main__":
                  cmdline=[
                      "--write-helpers", "helpers",
                      "--yaml-types", "def_types.yaml",
+                     "--write-version",  # Test writing vesion
                  ]),
         TestDesc("tutorial"),
         TestDesc("debugfalse", yaml="tutorial",
@@ -477,6 +480,7 @@ if __name__ == "__main__":
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
         TestDesc("strings"),
+        TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),
         TestDesc("interface"),

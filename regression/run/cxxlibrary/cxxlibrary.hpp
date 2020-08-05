@@ -12,6 +12,8 @@
 #ifndef CXXLIBRARY_H
 #define CXXLIBRARY_H
 
+#include <complex>
+
 struct Cstruct1 {
     int ifield;
     double dfield;
@@ -39,6 +41,14 @@ void passStructByReferenceOutCls(Cstruct1_cls &arg);
 // default value
 
 bool defaultPtrIsNULL(double *data = nullptr);
+
+//----------------------------------------------------------------------
+
+void defaultArgsInOut(int in1, int *out1, int *out2, bool flag = false);
+
+//----------------------------------------------------------------------
+
+void accept_complex(std::complex<double> *arg1);
 
 #endif // CXXLIBRARY_H
 

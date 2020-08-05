@@ -67,6 +67,8 @@ If true, the Fortran wrapper will always be created.
 This is used when an assignment is needed to do a type coercion;
 for example, with logical types.
 
+.. XXX tends to call bufferify version
+
 arg_name
 ^^^^^^^^
 
@@ -93,6 +95,12 @@ Added before splicer.
 arg_c_call
 ^^^^^^^^^^
 
+List of arguments to pass to C wrapper.
+This can include an expression or additional arguments if required. 
+
+.. code-block:: text
+
+        arg_c_call=["C_LOC({f_var})"],
 
 declare
 ^^^^^^^
@@ -113,6 +121,18 @@ call
 
 Code used to call the function.
 Defaults to ``{F_result} = {F_C_call}({F_arg_c_call})``
+
+For example, to assign to an intermediate variable:
+
+.. code-block:: text
+
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
+                
    
 post_call
 ^^^^^^^^^

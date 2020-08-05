@@ -60,6 +60,22 @@ the conversion has failed.
 
 """
 
+# Note about PRIVATE Fortran helpers
+# If a single subroutine uses multiple modules created by Shroud
+# some compilers will rightly complain that they each define this function.
+#  "Procedure shroud_copy_string_and_free has more than one interface accessible
+#  by use association. The interfaces are assumed to be the same."
+# It should be marked PRIVATE to prevent users from calling it directly.
+# However, gfortran does not like that.
+#  "Symbol 'shroud_copy_string_and_free' at (1) is marked PRIVATE but has been given
+#  the binding label 'ShroudCopyStringAndFree'"
+# See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=49111
+# Instead, mangle the name with C_prefix.
+# See FHelpers copy_string
+#
+# This also applies to derived types which are bind(C).
+
+
 from . import typemap
 from . import util
 
@@ -115,18 +131,20 @@ def add_external_helpers():
     ########################################
     name = "capsule_dtor"
     fmt.hname = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_capsule_dtor", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["capsule_data_helper"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Delete memory in a capsule.
-subroutine SHROUD_capsule_dtor(ptr)\tbind(C, name="{C_memory_dtor_function}")+
+subroutine {hnamefunc}(ptr)\tbind(C, name="{C_memory_dtor_function}")+
 import {F_capsule_data_type}
 implicit none
 type({F_capsule_data_type}), intent(INOUT) :: ptr
--end subroutine SHROUD_capsule_dtor
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -195,21 +213,23 @@ if (data->elem_len < n) n = data->elem_len;
 
     # Fortran interface for above function.
     # Deal with allocatable character
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_copy_string_and_free", fmt)
     FHelpers[name] = dict(
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy the char* or std::string in context into c_var.
-subroutine SHROUD_copy_string_and_free(context, c_var, c_var_size) &
+subroutine {hnamefunc}(context, c_var, c_var_size) &
      bind(c,name="{C_prefix}ShroudCopyStringAndFree")+
 use, intrinsic :: iso_c_binding, only : C_CHAR, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 character(kind=C_CHAR), intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_copy_string_and_free
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -535,13 +555,14 @@ typedef struct s_{C_capsule_data_type} {C_capsule_data_type};""",
     ########################################
     name = "capsule_helper"
     fmt.hname = name
+    fmt.__helper = FHelpers["capsule_dtor"]["name"]
     # XXX split helper into to parts, one for each derived type
     helper = dict(
         dependent_helpers=["capsule_data_helper", "capsule_dtor"],
         derived_type=wformat(
             """
 ! helper {hname}
-type {F_capsule_type}+
+type :: {F_capsule_type}+
 private
 type({F_capsule_data_type}) :: mem
 -contains
@@ -557,12 +578,12 @@ procedure :: delete => {F_capsule_delete_function}
 ! finalize a static {F_capsule_data_type}
 subroutine {F_capsule_final_function}(cap)+
 type({F_capsule_type}), intent(INOUT) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_final_function}
 
 subroutine {F_capsule_delete_function}(cap)+
 class({F_capsule_type}) :: cap
-call SHROUD_capsule_dtor(cap%mem)
+call {__helper}(cap%mem)
 -end subroutine {F_capsule_delete_function}""",
             fmt,
         ),
@@ -641,6 +662,7 @@ def add_copy_array_helper(fmt, ntypemap):
     """Create Fortran interface to helper function
     which copies an array based on c_type.
     Each interface calls the same C helper.
+    Used with sgroup="native" types.
 
     The function has C_prefix in the name since it is not file static.
     This allows multiple wrapped libraries to coexist.
@@ -656,23 +678,24 @@ def add_copy_array_helper(fmt, ntypemap):
 
     name = wformat("copy_array_{flat_name}", fmt)
     fmt.hname = name
-    fmt.hnamefunc = name
+    fmt.hnamefunc = wformat("{C_prefix}SHROUD_{hname}", fmt)
     helper = dict(
         # XXX when f_kind == C_SIZE_T
         dependent_helpers=["array_context"],
+        name=fmt.hnamefunc,
         interface=wformat(
             """
 interface+
 ! helper {hname}
 ! Copy contents of context into c_var.
-subroutine SHROUD_{hnamefunc}(context, c_var, c_var_size) &+
+subroutine {hnamefunc}(context, c_var, c_var_size) &+
 bind(C, name="{C_prefix}ShroudCopyArray")
 use iso_c_binding, only : {f_kind}, C_SIZE_T
 import {F_array_type}
 type({F_array_type}), intent(IN) :: context
 {f_type}, intent(OUT) :: c_var(*)
 integer(C_SIZE_T), value :: c_var_size
--end subroutine SHROUD_{hnamefunc}
+-end subroutine {hnamefunc}
 -end interface""",
             fmt,
         ),
@@ -683,9 +706,10 @@ integer(C_SIZE_T), value :: c_var_size
 def add_to_PyList_helper(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
+    Used with sgroup="native" types.
 
     Args:
-        fmt      - util.Scope
+        fmt      - util.Scope, parent is newlibrary
         ntypemap - typemap.Typemap
     """
     flat_name = ntypemap.flat_name
@@ -698,7 +722,10 @@ def add_to_PyList_helper(fmt, ntypemap):
     if ntypemap.PY_ctor is not None:
         fmt.hname = name
         fmt.fcn_suffix = flat_name
-        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
+        ctor_expr = "in[i]"
+        if ntypemap.py_ctype is not None:
+            ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
+        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr=ctor_expr)
         fmt.c_const="const "
         helper = create_to_PyList(fmt)
         CHelpers[name] = create_to_PyList(fmt)
@@ -707,7 +734,10 @@ def add_to_PyList_helper(fmt, ntypemap):
     # Used with intent(inout)
     name = "update_PyList_" + flat_name
     if ntypemap.PY_ctor is not None:
-        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr="in[i]")
+        ctor_expr = "in[i]"
+        if ntypemap.py_ctype is not None:
+            ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
+        fmt.Py_ctor = ntypemap.PY_ctor.format(ctor_expr=ctor_expr)
         fmt.hname = name
         fmt.hnameproto = wformat(
             "void {PY_helper_prefix}{hname}\t(PyObject *out, {c_type} *in, size_t size)", fmt)
@@ -739,6 +769,11 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         fmt.hname = name
         fmt.flat_name = flat_name
         fmt.fcn_type = ntypemap.c_type
+        fmt.py_ctype = fmt.c_type
+        fmt.work_ctor = "cvalue"
+        if ntypemap.py_ctype is not None:
+            fmt.py_ctype = ntypemap.py_ctype
+            fmt.work_ctor = ntypemap.pytype_to_cxx.format(work_var=fmt.work_ctor)
         fmt.Py_get_obj = ntypemap.PY_get.format(py_var="obj")
         fmt.Py_get = ntypemap.PY_get.format(py_var="item")
         CHelpers[name] = fill_from_PyObject_list(fmt)
@@ -801,7 +836,8 @@ def fill_from_PyObject_list(fmt):
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}fill_from_PyObject_{flat_name}_list", fmt)
     fmt.hnameproto = wformat(
-            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t {c_type} *in,\t Py_ssize_t insize)", fmt)
+            "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t "
+            "{c_type} *in,\t Py_ssize_t insize)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
         proto=fmt.hnameproto + ";",
@@ -813,11 +849,11 @@ def fill_from_PyObject_list(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{c_type} value = {Py_get_obj};
+{py_ctype} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
-in[i] = value;
+in[i] = {work_ctor};
 -}}
 return 0;
 -}}
@@ -835,12 +871,13 @@ size = insize;
 -}}
 for (Py_ssize_t i = 0; i < size; ++i) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
+cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t name,\t (int) i);
 return -1;
 -}}
+in[i] = {work_ctor};
 -}}
 Py_DECREF(seq);
 return 0;
@@ -871,11 +908,11 @@ def fill_from_PyObject_numpy(fmt):
 // Return 0 on success, -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
-{c_type} value = {Py_get_obj};
+{py_ctype} cvalue = {Py_get_obj};
 if (!PyErr_Occurred()) {{+
 // Broadcast scalar.
 for (Py_ssize_t i = 0; i < insize; ++i) {{+
-in[i] = value;
+in[i] = {work_ctor};
 -}}
 return 0;
 -}}
@@ -963,13 +1000,14 @@ Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 {c_type} *in = {cast_static}{c_type} *{cast1}{stdlib}malloc(size * sizeof({c_type})){cast2};
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in[i] = {Py_get};
+{c_type} cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 {stdlib}free(in);
 Py_DECREF(seq);
 PyErr_Format(PyExc_TypeError,\t "argument '%s', index %d must be {fcn_type}",\t value->name,\t (int) i);
 return 0;
 -}}
+in[i] = {work_ctor};
 -}}
 Py_DECREF(seq);
 
@@ -1073,6 +1111,7 @@ return 1;
 def add_to_PyList_helper_vector(fmt, ntypemap):
     """Add helpers to work with Python lists.
     Several helpers are created based on the type of arg.
+    Used with sgroup="native" types.
 
     Args:
         fmt      - util.Scope
@@ -1080,13 +1119,17 @@ def add_to_PyList_helper_vector(fmt, ntypemap):
     """
     flat_name = ntypemap.flat_name
     fmt.c_type = ntypemap.c_type
+    fmt.cxx_type = ntypemap.cxx_type
     
     # Used with intent(out)
     name = "to_PyList_vector_" + flat_name
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
-    fmt.Py_ctor = ctor.format(ctor_expr="in[i]")
+    ctor_expr = "in[i]"
+    if ntypemap.py_ctype is not None:
+        ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
+    fmt.Py_ctor = ctor.format(ctor_expr=ctor_expr)
     fmt.hname = name
     fmt.hnamefunc = wformat("{PY_helper_prefix}{hname}", fmt)
     fmt.hnameproto = wformat("PyObject *{hnamefunc}\t(std::vector<{c_type}> & in)", fmt)
@@ -1115,7 +1158,10 @@ return out;
     ctor = ntypemap.PY_ctor
     if ctor is None:
         ctor = "XXXPy_ctor"
-    fmt.Py_ctor = ctor.format(ctor_expr="in[i]")
+    ctor_expr = "in[i]"
+    if ntypemap.py_ctype is not None:
+        ctor_expr = ntypemap.pytype_to_pyctor.format(ctor_expr=ctor_expr)
+    fmt.Py_ctor = ctor.format(ctor_expr=ctor_expr)
     fmt.hname = name
     fmt.hnamefunc = wformat(
         "{PY_helper_prefix}{hname}", fmt)
@@ -1151,12 +1197,18 @@ PyList_SET_ITEM(out, i, {Py_ctor});
     get = ntypemap.PY_get
     if get is None:
         get = "XXXPy_get"
-    fmt.Py_get = get.format(py_var="item")
+    py_var = "item"
+    fmt.Py_get = get.format(py_var=py_var)
+    fmt.py_ctype = fmt.c_type;
+    fmt.work_ctor = "cvalue"
+    if ntypemap.py_ctype is not None:
+        fmt.py_ctype = ntypemap.py_ctype
+        fmt.work_ctor = ntypemap.pytype_to_cxx.format(work_var=fmt.work_ctor)
     fmt.hname = name
     fmt.hnamefunc= wformat(
         "{PY_helper_prefix}{hname}", fmt)
     fmt.hnameproto = wformat(
-        "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{c_type}> & in)", fmt)
+        "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{cxx_type}> & in)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
 ##-        cxx_include="<cstdlib>",  # malloc/free
@@ -1164,7 +1216,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         cxx_source=wformat(
             """
 // helper {hname}
-// Convert obj into an array of type {c_type}
+// Convert obj into an array of type {cxx_type}
 // Return -1 on error.
 {PY_helper_static}{hnameproto}
 {{+
@@ -1176,12 +1228,13 @@ return -1;
 Py_ssize_t size = PySequence_Fast_GET_SIZE(seq);
 for (Py_ssize_t i = 0; i < size; i++) {{+
 PyObject *item = PySequence_Fast_GET_ITEM(seq, i);
-in.push_back({Py_get});
+{py_ctype} cvalue = {Py_get};
 if (PyErr_Occurred()) {{+
 Py_DECREF(seq);
 PyErr_Format(PyExc_ValueError,\t "argument '%s', index %d must be {c_type}",\t name,\t (int) i);
 return -1;
 -}}
+in.push_back({work_ctor});
 -}}
 Py_DECREF(seq);
 return 0;
