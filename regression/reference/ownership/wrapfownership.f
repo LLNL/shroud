@@ -22,15 +22,15 @@ module ownership_mod
     ! splicer end module_top
 
     ! helper capsule_data_helper
-    type, bind(C) :: SHROUD_capsule_data
+    type, bind(C) :: OWN_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
+    end type OWN_SHROUD_capsule_data
 
     ! helper array_context
     type, bind(C) :: OWN_SHROUD_array
         ! address of C++ memory
-        type(SHROUD_capsule_data) :: cxx
+        type(OWN_SHROUD_capsule_data) :: cxx
         ! address of data in cxx
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
@@ -47,7 +47,7 @@ module ownership_mod
     ! helper capsule_helper
     type :: OWN_SHROUD_capsule
         private
-        type(SHROUD_capsule_data) :: mem
+        type(OWN_SHROUD_capsule_data) :: mem
     contains
         final :: SHROUD_capsule_final
         procedure :: delete => SHROUD_capsule_delete
@@ -431,9 +431,9 @@ module ownership_mod
         ! Delete memory in a capsule.
         subroutine OWN_SHROUD_capsule_dtor(ptr) &
             bind(C, name="OWN_SHROUD_memory_destructor")
-            import SHROUD_capsule_data
+            import OWN_SHROUD_capsule_data
             implicit none
-            type(SHROUD_capsule_data), intent(INOUT) :: ptr
+            type(OWN_SHROUD_capsule_data), intent(INOUT) :: ptr
         end subroutine OWN_SHROUD_capsule_dtor
     end interface
 
@@ -733,7 +733,7 @@ contains
     end function class1_ne
 
     ! helper capsule_helper
-    ! finalize a static SHROUD_capsule_data
+    ! finalize a static OWN_SHROUD_capsule_data
     subroutine SHROUD_capsule_final(cap)
         type(OWN_SHROUD_capsule), intent(INOUT) :: cap
         call OWN_SHROUD_capsule_dtor(cap%mem)

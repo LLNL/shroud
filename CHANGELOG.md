@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   fixes a conflict when two Shroud generated wrappers are used in the
   same subprogram.  Ideally these helpers would be `PRIVATE`, but
   gfortran does not allow `PRIVATE` and `BIND(C)` together.
+- Mangle names of Fortran derived types for capsules with *C_prefix* to avoid
+  name conflicts.
 - Correctly count Python arguments when there are default arguments.
   Do not include *intent(out)* arguments.
 

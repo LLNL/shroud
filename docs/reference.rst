@@ -458,11 +458,21 @@ F_abstract_interface_subprogram_template
    Defaults to ``arg{index}`` where *index* is the 0-based argument index.
    see :ref:`DeclAnchor_Function_Pointers`.
 
+F_array_type_template
+   ``{C_prefix}SHROUD_array``
+   
+F_capsule_data_type_template
+   ``{C_prefix}SHROUD_capsule_data``
+
 F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
     struct used to implement a shadow class.
     Each class must have a unique name.
-    Defaults to ``SHROUD_{F_name_scope}capsule``.
+    Defaults to ``{C_prefix}SHROUD_{F_name_scope}capsule``.
+
+F_capsule_type_template
+    ``{C_prefix}SHROUD_capsule``
+  
 
 F_enum_member_template
     Name of enumeration member in Fortran wrapper.
@@ -717,7 +727,8 @@ CXX_this
 F_array_type
     Name of derived type used to store information about an array
     such as its address and size.
-    Defaults to *SHROUD_array*.
+    Default value from option *F_array_type_template* which 
+    defaults to *{C_prefix}SHROUD_array*.
 
 F_C_prefix
     Prefix added to name of generated Fortran interface for C routines.
@@ -725,7 +736,12 @@ F_C_prefix
 
 F_capsule_data_type
     Name of derived type used to share memory information with C or C++.
-    Defaults to *SHROUD_capsule_data*.
+    Member of *F_array_type*.
+    Default value from option *F_capsule_data_type_template* which 
+    defaults to *{C_prefix}SHROUD_capsule_data*.
+
+    Each class has a similar derived type, but with a different name
+    to enforce type safety.
 
 F_capsule_delete_function
     Name of type-bound function of *F_capsule_type* which will
@@ -739,7 +755,8 @@ F_capsule_final_function
 
 F_capsule_type
     Name of derived type used to release memory allocated by C or C++.
-    Defaults to *SHROUD_capsule*.
+    Default value from option *F_capsule_type_template* which 
+    defaults to *{C_prefix}SHROUD_capsule*.
     Contains a *F_capsule_data_type*.
 
 F_derived_member

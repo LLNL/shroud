@@ -23,6 +23,6 @@ void acceptDoubleComplexOutPtrFlag(double complex *arg1, int *flag);
 
 //----------------------------------------------------------------------
 
-void acceptDoubleComplexInoutArrayList(double complex *arg1, int narg)
+void acceptDoubleComplexInoutArrayList(double complex *arg1, int narg);
 
 #endif // CCOMPLEX_H

@@ -23,15 +23,15 @@ module userlibrary_example_nested_mod
     ! splicer end namespace.example::nested.module_top
 
     ! helper capsule_data_helper
-    type, bind(C) :: SHROUD_capsule_data
+    type, bind(C) :: AA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SHROUD_capsule_data
+    end type AA_SHROUD_capsule_data
 
     ! helper array_context
     type, bind(C) :: AA_SHROUD_array
         ! address of C++ memory
-        type(SHROUD_capsule_data) :: cxx
+        type(AA_SHROUD_capsule_data) :: cxx
         ! address of data in cxx
         type(C_PTR) :: base_addr = C_NULL_PTR
         ! type of element
