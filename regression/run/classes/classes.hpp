@@ -98,6 +98,22 @@ void set_global_flag(int arg);
 int get_global_flag();
 const std::string& LastFunctionCalled();
 
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Test inheritance
+
+class Shape {
+private:
+    int m_ivar;
+public:
+    int get_ivar() const { return m_ivar; }
+};
+
+class Circle : public Shape {
+public:
+    double m_radius;
+};
+
 } /* end namespace classes */
 
 

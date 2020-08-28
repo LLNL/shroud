@@ -99,6 +99,13 @@ struct s_CLA_Class2 {
 };
 typedef struct s_CLA_Class2 CLA_Class2;
 
+// helper capsule_CLA_Shape
+struct s_CLA_Shape {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Shape CLA_Shape;
+
 // helper capsule_CLA_Singleton
 struct s_CLA_Singleton {
     void *addr;     /* address of C++ memory */

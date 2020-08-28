@@ -118,16 +118,36 @@ module classes_mod
         ! splicer end class.Singleton.type_bound_procedure_part
     end type singleton
 
+    type, bind(C) :: CLA_SHROUD_shape_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type CLA_SHROUD_shape_capsule
+
+    type shape
+        type(CLA_SHROUD_shape_capsule) :: cxxmem
+        ! splicer begin class.Shape.component_part
+        ! splicer end class.Shape.component_part
+    contains
+        procedure :: get_ivar => shape_get_ivar
+        procedure :: get_instance => shape_get_instance
+        procedure :: set_instance => shape_set_instance
+        procedure :: associated => shape_associated
+        ! splicer begin class.Shape.type_bound_procedure_part
+        ! splicer end class.Shape.type_bound_procedure_part
+    end type shape
+
     interface operator (.eq.)
         module procedure class1_eq
         module procedure class2_eq
         module procedure singleton_eq
+        module procedure shape_eq
     end interface
 
     interface operator (.ne.)
         module procedure class1_ne
         module procedure class2_ne
         module procedure singleton_ne
+        module procedure shape_ne
     end interface
 
     ! ----------------------------------------
@@ -497,6 +517,40 @@ module classes_mod
     ! splicer end class.Singleton.additional_interfaces
 
     ! ----------------------------------------
+    ! Function:  Shape
+    ! Exact:     c_shadow_scalar_result
+    interface
+        function c_shape_ctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Shape_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: CLA_SHROUD_shape_capsule
+            implicit none
+            type(CLA_SHROUD_shape_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_shape_ctor
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int get_ivar
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        pure function c_shape_get_ivar(self) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Shape_get_ivar")
+            use iso_c_binding, only : C_INT
+            import :: CLA_SHROUD_shape_capsule
+            implicit none
+            type(CLA_SHROUD_shape_capsule), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_shape_get_ivar
+    end interface
+
+    ! splicer begin class.Shape.additional_interfaces
+    ! splicer end class.Shape.additional_interfaces
+
+    ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Requested: c_native_scalar_result
     ! Match:     c_default
@@ -709,6 +763,10 @@ module classes_mod
         module procedure class1_ctor_flag
     end interface class1
     ! end interface class1
+
+    interface shape
+        module procedure shape_ctor
+    end interface shape
 
     interface
         ! helper copy_string
@@ -1163,6 +1221,64 @@ contains
     ! splicer end class.Singleton.additional_functions
 
     ! ----------------------------------------
+    ! Function:  Shape
+    ! Shape
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    function shape_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(shape) :: SHT_rv
+        ! splicer begin class.Shape.method.ctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_shape_ctor(SHT_rv%cxxmem)
+        ! splicer end class.Shape.method.ctor
+    end function shape_ctor
+
+    ! ----------------------------------------
+    ! Function:  int get_ivar
+    ! int get_ivar
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function shape_get_ivar(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(shape) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Shape.method.get_ivar
+        SHT_rv = c_shape_get_ivar(obj%cxxmem)
+        ! splicer end class.Shape.method.get_ivar
+    end function shape_get_ivar
+
+    ! Return pointer to C++ memory.
+    function shape_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(shape), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function shape_get_instance
+
+    subroutine shape_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(shape), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine shape_set_instance
+
+    function shape_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(shape), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function shape_associated
+
+    ! splicer begin class.Shape.additional_functions
+    ! splicer end class.Shape.additional_functions
+
+    ! ----------------------------------------
     ! Function:  void passClassByValue
     ! void passClassByValue
     ! Requested: f_subroutine
@@ -1395,5 +1511,27 @@ contains
             rv = .false.
         endif
     end function singleton_ne
+
+    function shape_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(shape), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function shape_eq
+
+    function shape_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(shape), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function shape_ne
 
 end module classes_mod

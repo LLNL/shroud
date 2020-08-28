@@ -27,6 +27,11 @@ class Singleton
 C method static Singleton & getReference()
 Close wrapSingleton.h
 Close wrapSingleton.cpp
+class Shape
+C method Shape()
+C method int get_ivar() const
+Close wrapShape.h
+Close wrapShape.cpp
 C function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 C function void passClassByValue(Class1 arg +intent(in)+value)
 C function int useclass(const Class1 * arg +intent(in))
@@ -63,6 +68,9 @@ C-interface, Fortran method const std::string & getName() +deref(allocatable)
 C-interface method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
 class Singleton
 C-interface, Fortran method static Singleton & getReference()
+class Shape
+C-interface, Fortran method Shape()
+C-interface, Fortran method int get_ivar() const
 C-interface, Fortran function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 C-interface, Fortran function void passClassByValue(Class1 arg +intent(in)+value)
 C-interface, Fortran function int useclass(const Class1 * arg +intent(in))
@@ -93,6 +101,10 @@ Close pyClass2type.cpp
 class Singleton
 Python method static Singleton & getReference()
 Close pySingletontype.cpp
+class Shape
+Python method Shape()
+Python method int get_ivar() const
+Close pyShapetype.cpp
 Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
 Python function void passClassByValue(Class1 arg +intent(in)+value)
 Python function int useclass(const Class1 * arg +intent(in))

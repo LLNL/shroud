@@ -5,6 +5,8 @@ Wrote wrapClass2.h
 Wrote wrapClass2.cpp
 Wrote wrapSingleton.h
 Wrote wrapSingleton.cpp
+Wrote wrapShape.h
+Wrote wrapShape.cpp
 Wrote wrapclasses.h
 Wrote wrapclasses.cpp
 Wrote typesclasses.h
@@ -13,6 +15,7 @@ Wrote utilclasses.cpp
 Wrote pyClass1type.cpp
 Wrote pyClass2type.cpp
 Wrote pySingletontype.cpp
+Wrote pyShapetype.cpp
 Wrote pyclassesmodule.cpp
 Wrote pyclassesutil.cpp
 Wrote pyclassesmodule.hpp

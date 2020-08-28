@@ -22,6 +22,7 @@ program tester
   call test_class1_new_by_value
   call test_class1
   call test_singleton
+  call test_subclass
 
   call fruit_summary
   call fruit_finalize
@@ -193,5 +194,14 @@ contains
     call assert_true(obj0 .eq. obj1, "obj0 .eq obj1")
 
   end subroutine test_singleton
+
+  subroutine test_subclass
+    type(Shape) base
+    integer ivar
+
+    base = Shape()
+    ivar = base%get_ivar()
+    
+  end subroutine test_subclass
 
 end program tester

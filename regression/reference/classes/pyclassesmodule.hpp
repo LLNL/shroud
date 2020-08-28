@@ -74,6 +74,24 @@ PyObject *PP_Singleton_to_Object_idtor(classes::Singleton *addr,
     int idtor);
 PyObject *PP_Singleton_to_Object(classes::Singleton *addr);
 int PP_Singleton_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+extern PyTypeObject PY_Shape_Type;
+// splicer begin class.Shape.C_declaration
+// splicer end class.Shape.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    classes::Shape * obj;
+    int idtor;
+    // splicer begin class.Shape.C_object
+    // splicer end class.Shape.C_object
+} PY_Shape;
+
+extern const char *PY_Shape_capsule_name;
+PyObject *PP_Shape_to_Object_idtor(classes::Shape *addr, int idtor);
+PyObject *PP_Shape_to_Object(classes::Shape *addr);
+int PP_Shape_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

@@ -148,6 +148,13 @@ declarations:
   - decl: static Singleton& getReference()
 
 ##################################################
+
+- decl: class Shape
+  declarations:
+  - decl: Shape()
+  - decl: int get_ivar() const
+
+##################################################
 # Used with testing
 - decl: void set_global_flag(int arg)
 - decl: int get_global_flag()
