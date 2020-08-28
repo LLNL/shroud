@@ -136,11 +136,29 @@ module classes_mod
         ! splicer end class.Shape.type_bound_procedure_part
     end type shape
 
+    type, bind(C) :: CLA_SHROUD_circle_capsule
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type CLA_SHROUD_circle_capsule
+
+    type circle
+        type(CLA_SHROUD_circle_capsule) :: cxxmem
+        ! splicer begin class.Circle.component_part
+        ! splicer end class.Circle.component_part
+    contains
+        procedure :: get_instance => circle_get_instance
+        procedure :: set_instance => circle_set_instance
+        procedure :: associated => circle_associated
+        ! splicer begin class.Circle.type_bound_procedure_part
+        ! splicer end class.Circle.type_bound_procedure_part
+    end type circle
+
     interface operator (.eq.)
         module procedure class1_eq
         module procedure class2_eq
         module procedure singleton_eq
         module procedure shape_eq
+        module procedure circle_eq
     end interface
 
     interface operator (.ne.)
@@ -148,6 +166,7 @@ module classes_mod
         module procedure class2_ne
         module procedure singleton_ne
         module procedure shape_ne
+        module procedure circle_ne
     end interface
 
     ! ----------------------------------------
@@ -551,6 +570,24 @@ module classes_mod
     ! splicer end class.Shape.additional_interfaces
 
     ! ----------------------------------------
+    ! Function:  Circle
+    ! Exact:     c_shadow_scalar_result
+    interface
+        function c_circle_ctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="CLA_Circle_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: CLA_SHROUD_circle_capsule
+            implicit none
+            type(CLA_SHROUD_circle_capsule), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_circle_ctor
+    end interface
+
+    ! splicer begin class.Circle.additional_interfaces
+    ! splicer end class.Circle.additional_interfaces
+
+    ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
     ! Requested: c_native_scalar_result
     ! Match:     c_default
@@ -756,6 +793,10 @@ module classes_mod
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
+
+    interface circle
+        module procedure circle_ctor
+    end interface circle
 
     ! start interface class1
     interface class1
@@ -1279,6 +1320,47 @@ contains
     ! splicer end class.Shape.additional_functions
 
     ! ----------------------------------------
+    ! Function:  Circle
+    ! Circle
+    ! Exact:     f_shadow_ctor
+    ! Exact:     c_shadow_ctor
+    function circle_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(circle) :: SHT_rv
+        ! splicer begin class.Circle.method.ctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_circle_ctor(SHT_rv%cxxmem)
+        ! splicer end class.Circle.method.ctor
+    end function circle_ctor
+
+    ! Return pointer to C++ memory.
+    function circle_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(circle), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function circle_get_instance
+
+    subroutine circle_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(circle), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine circle_set_instance
+
+    function circle_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(circle), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function circle_associated
+
+    ! splicer begin class.Circle.additional_functions
+    ! splicer end class.Circle.additional_functions
+
+    ! ----------------------------------------
     ! Function:  void passClassByValue
     ! void passClassByValue
     ! Requested: f_subroutine
@@ -1533,5 +1615,27 @@ contains
             rv = .false.
         endif
     end function shape_ne
+
+    function circle_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(circle), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function circle_eq
+
+    function circle_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(circle), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function circle_ne
 
 end module classes_mod

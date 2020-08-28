@@ -260,6 +260,13 @@ void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
+    case 3:   // classes::Circle
+    {
+        classes::Circle *cxx_ptr =
+            reinterpret_cast<classes::Circle *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
     default:
     {
         // Unexpected case in destructor

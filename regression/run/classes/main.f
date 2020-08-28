@@ -197,10 +197,13 @@ contains
 
   subroutine test_subclass
     type(Shape) base
+    type(Circle) circle1
     integer ivar
 
     base = Shape()
     ivar = base%get_ivar()
+
+    circle1 = Circle()
     
   end subroutine test_subclass
 

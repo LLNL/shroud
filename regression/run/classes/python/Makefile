@@ -27,6 +27,7 @@ OBJS = \
     pyClass2type.o \
     pySingletontype.o \
     pyShapetype.o \
+    pyCircletype.o \
     pyclassesutil.o
 
 CXXFLAGS += $(SHARED)

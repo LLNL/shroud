@@ -92,6 +92,24 @@ extern const char *PY_Shape_capsule_name;
 PyObject *PP_Shape_to_Object_idtor(classes::Shape *addr, int idtor);
 PyObject *PP_Shape_to_Object(classes::Shape *addr);
 int PP_Shape_from_Object(PyObject *obj, void **addr);
+
+// ------------------------------
+extern PyTypeObject PY_Circle_Type;
+// splicer begin class.Circle.C_declaration
+// splicer end class.Circle.C_declaration
+
+typedef struct {
+PyObject_HEAD
+    classes::Circle * obj;
+    int idtor;
+    // splicer begin class.Circle.C_object
+    // splicer end class.Circle.C_object
+} PY_Circle;
+
+extern const char *PY_Circle_capsule_name;
+PyObject *PP_Circle_to_Object_idtor(classes::Circle *addr, int idtor);
+PyObject *PP_Circle_to_Object(classes::Circle *addr);
+int PP_Circle_from_Object(PyObject *obj, void **addr);
 // ------------------------------
 
 // splicer begin header.C_declaration

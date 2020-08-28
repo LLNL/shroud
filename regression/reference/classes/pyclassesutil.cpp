@@ -26,6 +26,7 @@ const char *PY_Class1_capsule_name = "Class1";
 const char *PY_Class2_capsule_name = "Class2";
 const char *PY_Singleton_capsule_name = "Singleton";
 const char *PY_Shape_capsule_name = "Shape";
+const char *PY_Circle_capsule_name = "Circle";
 
 
 // Wrap pointer to struct/class.
@@ -205,6 +206,50 @@ int PP_Shape_from_Object(PyObject *obj, void **addr)
     // splicer end class.Shape.utility.from_object
 }
 
+// Wrap pointer to struct/class.
+PyObject *PP_Circle_to_Object_idtor(classes::Circle *addr, int idtor)
+{
+    // splicer begin class.Circle.utility.to_object
+    PY_Circle *obj = PyObject_New(PY_Circle, &PY_Circle_Type);
+    if (obj == nullptr)
+        return nullptr;
+    obj->obj = addr;
+    obj->idtor = idtor;
+    return reinterpret_cast<PyObject *>(obj);
+    // splicer end class.Circle.utility.to_object
+}
+
+// converter which may be used with PyBuild.
+PyObject *PP_Circle_to_Object(classes::Circle *addr)
+{
+    // splicer begin class.Circle.utility.to_object
+    PyObject *voidobj;
+    PyObject *args;
+    PyObject *rv;
+
+    voidobj = PyCapsule_New(addr, PY_Circle_capsule_name, nullptr);
+    args = PyTuple_New(1);
+    PyTuple_SET_ITEM(args, 0, voidobj);
+    rv = PyObject_Call((PyObject *) &PY_Circle_Type, args, nullptr);
+    Py_DECREF(args);
+    return rv;
+    // splicer end class.Circle.utility.to_object
+}
+
+// converter which may be used with PyArg_Parse.
+int PP_Circle_from_Object(PyObject *obj, void **addr)
+{
+    // splicer begin class.Circle.utility.from_object
+    if (obj->ob_type != &PY_Circle_Type) {
+        // raise exception
+        return 0;
+    }
+    PY_Circle * self = (PY_Circle *) obj;
+    *addr = self->obj;
+    return 1;
+    // splicer end class.Circle.utility.from_object
+}
+
 // ----------------------------------------
 typedef struct {
     const char *name;
@@ -231,6 +276,13 @@ static void PY_SHROUD_capsule_destructor_2(void *ptr)
     delete cxx_ptr;
 }
 
+// 3 - cxx classes::Circle *
+static void PY_SHROUD_capsule_destructor_3(void *ptr)
+{
+    classes::Circle * cxx_ptr = static_cast<classes::Circle *>(ptr);
+    delete cxx_ptr;
+}
+
 // Code used to release arrays for NumPy objects
 // via a Capsule base object with a destructor.
 // Context strings
@@ -238,6 +290,7 @@ static PY_SHROUD_dtor_context PY_SHROUD_capsule_context[] = {
     {"--none--", PY_SHROUD_capsule_destructor_0},
     {"cxx classes::Class1 *", PY_SHROUD_capsule_destructor_1},
     {"cxx classes::Shape *", PY_SHROUD_capsule_destructor_2},
+    {"cxx classes::Circle *", PY_SHROUD_capsule_destructor_3},
     {nullptr, nullptr},
 };
 

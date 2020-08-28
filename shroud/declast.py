@@ -37,7 +37,10 @@ type_specifier = {
 type_qualifier = {"const", "volatile"}
 storage_class = {"auto", "register", "static", "extern", "typedef"}
 
-cxx_keywords = {"class", "enum", "namespace", "struct", "template", "typename"}
+cxx_keywords = {
+    "class", "enum", "namespace", "struct", "template", "typename",
+    "public", "private", "protected",
+}
 
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
@@ -65,6 +68,7 @@ token_specification = [
     ("GT", r">"),
     ("TILDE", r"\~"),
     ("NAMESPACE", r"::"),
+    ("COLON", r":"),
     ("VARARG", r"\.\.\."),
     ("ID", r"[A-Za-z_][A-Za-z0-9_]*"),  # Identifiers
     ("NEWLINE", r"[\n]"),  # Line endings
@@ -720,6 +724,17 @@ class Parser(ExprParser):
         self.mustbe("CLASS")
         name = self.mustbe("ID")
         node = CXXClass(name.value)
+        if self.have("COLON"):
+            if self.token.typ not in ["PUBLIC", "PRIVATE", "PROTECTED"]:
+                self.error_msg("expected 'public', 'private', or 'protected'")
+            self.next()
+            if self.token.typ == "ID":
+                ns = self.namespace.unqualified_lookup(self.token.value)
+                if ns:
+                    ns, ns_name = self.nested_namespace(ns)
+                else:
+                    self.error_msg("unknown class '{}'", self.token.value)
+                    
         self.exit("class_statement")
         return node
 

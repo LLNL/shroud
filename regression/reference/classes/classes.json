@@ -2310,6 +2310,123 @@
                 "options": {},
                 "scope": "classes::Shape::",
                 "typemap_name": "classes::Shape"
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCircle.h",
+                    "C_impl_filename": "wrapCircle.cpp",
+                    "C_name_scope": "Circle_",
+                    "C_type_name": "CLA_Circle",
+                    "F_capsule_data_type": "CLA_SHROUD_circle_capsule",
+                    "F_derived_name": "circle",
+                    "F_name_scope": "circle_",
+                    "PY_PyObject": "PY_Circle",
+                    "PY_PyTypeObject": "PY_Circle_Type",
+                    "PY_capsule_name": "PY_Circle_capsule_name",
+                    "PY_from_object_func": "PP_Circle_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Circle_to_Object",
+                    "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
+                    "PY_type_filename": "pyCircletype.cpp",
+                    "class_scope": "Circle::",
+                    "cxx_class": "Circle",
+                    "cxx_type": "Circle",
+                    "file_scope": "Circle"
+                },
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_type": "CLA_Circle",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "classes::Circle",
+                                "cxx_var": "SHCXX_rv",
+                                "idtor": "3",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "c_shadow_scalar_ctor",
+                                "stmt1": "c_shadow_scalar_ctor"
+                            },
+                            "fmtf": {
+                                "cxx_type": "classes::Circle",
+                                "f_type": "type(circle)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "f_shadow_ctor",
+                                "stmt1": "f_shadow_ctor",
+                                "stmtc0": "c_shadow_ctor",
+                                "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtpy": {
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
+                                "PyObject": "PY_Circle",
+                                "PyTypeObject": "PY_Circle_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "classes::Circle",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_default",
+                                "stmt1": "py_default",
+                                "value_var": "SHValue_rv",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "Circle"
+                            ],
+                            "typemap_name": "classes::Circle"
+                        },
+                        "decl": "Circle()",
+                        "declgen": "Circle()",
+                        "fmtdict": {
+                            "C_name": "CLA_Circle_ctor",
+                            "C_prototype": "CLA_Circle * SHC_rv",
+                            "C_return_type": "CLA_Circle *",
+                            "F_C_call": "c_circle_ctor",
+                            "F_C_name": "c_circle_ctor",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "circle",
+                            "F_name_impl": "circle_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "PY_name_impl": "PY_Circle_tp_init",
+                            "PY_type_impl": "PY_Circle_tp_init",
+                            "PY_type_method": "tp_init",
+                            "cxx_rv_decl": "classes::Circle SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "options": {
+                            "F_create_generic": true
+                        }
+                    }
+                ],
+                "name": "Circle",
+                "options": {},
+                "scope": "classes::Circle::",
+                "typemap_name": "classes::Circle"
             }
         ],
         "copyright": [

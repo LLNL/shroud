@@ -15,6 +15,7 @@ module = Extension(
          'pyClass2type.cpp',
          'pySingletontype.cpp',
          'pyShapetype.cpp',
+         'pyCircletype.cpp',
          'pyclassesmodule.cpp',
          'pyclassesutil.cpp'
     ],

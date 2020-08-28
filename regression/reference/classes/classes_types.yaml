@@ -10,6 +10,16 @@
 typemap:
   - namespace: classes
     declarations: classes
+    - type: Circle
+      fields:
+        base: shadow
+        wrap_header:
+        - typesclasses.h
+        c_type: CLA_Circle
+        f_module_name: classes_mod
+        f_derived_type: circle
+        f_capsule_data_type: CLA_SHROUD_circle_capsule
+        f_to_c: "{f_var}%cxxmem"
     - type: Class1
       fields:
         base: shadow

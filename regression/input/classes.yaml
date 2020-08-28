@@ -154,6 +154,10 @@ declarations:
   - decl: Shape()
   - decl: int get_ivar() const
 
+- decl: "class Circle : public Shape"
+  declarations:
+  - decl: Circle()
+
 ##################################################
 # Used with testing
 - decl: void set_global_flag(int arg)
