@@ -198,6 +198,8 @@ enum AssignmentType {
 }
 
 #define SWIGPOLICY_classes_Class1 swig::ASSIGNMENT_DEFAULT
+#define SWIGPOLICY_classes_Shape swig::ASSIGNMENT_DEFAULT
+#define SWIGPOLICY_classes_Circle swig::ASSIGNMENT_DEFAULT
 
 #include <stdexcept>
 
@@ -453,6 +455,103 @@ SWIGEXPORT void _wrap_Class1_op_assign__(SwigClassWrapper *farg1, SwigClassWrapp
   (void)sizeof(arg1);
   (void)sizeof(arg2);
   SWIG_assign<classes::Class1, SWIGPOLICY_classes_Class1>(farg1, *farg2);
+  
+}
+
+
+SWIGEXPORT int _wrap_Shape_get_ivar(SwigClassWrapper *farg1) {
+  int fresult ;
+  classes::Shape *arg1 = (classes::Shape *) 0 ;
+  int result;
+  
+  SWIG_check_nonnull(farg1->cptr, "classes::Shape const *", "Shape", "classes::Shape::get_ivar() const", return 0);
+  arg1 = (classes::Shape *)farg1->cptr;
+  result = (int)((classes::Shape const *)arg1)->get_ivar();
+  fresult = (int)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT SwigClassWrapper _wrap_new_Shape() {
+  SwigClassWrapper fresult ;
+  classes::Shape *result = 0 ;
+  
+  result = (classes::Shape *)new classes::Shape();
+  fresult.cptr = (void*)result;
+  fresult.cmemflags = SWIG_MEM_RVALUE | (1 ? SWIG_MEM_OWN : 0);
+  return fresult;
+}
+
+
+SWIGEXPORT void _wrap_delete_Shape(SwigClassWrapper *farg1) {
+  classes::Shape *arg1 = (classes::Shape *) 0 ;
+  
+  arg1 = (classes::Shape *)farg1->cptr;
+  delete arg1;
+}
+
+
+SWIGEXPORT void _wrap_Shape_op_assign__(SwigClassWrapper *farg1, SwigClassWrapper *farg2) {
+  classes::Shape *arg1 = (classes::Shape *) 0 ;
+  classes::Shape *arg2 = 0 ;
+  
+  (void)sizeof(arg1);
+  (void)sizeof(arg2);
+  SWIG_assign<classes::Shape, SWIGPOLICY_classes_Shape>(farg1, *farg2);
+  
+}
+
+
+SWIGEXPORT void _wrap_Circle_m_radius_set(SwigClassWrapper *farg1, double const *farg2) {
+  classes::Circle *arg1 = (classes::Circle *) 0 ;
+  double arg2 ;
+  
+  SWIG_check_nonnull(farg1->cptr, "classes::Circle *", "Circle", "classes::Circle::m_radius", return );
+  arg1 = (classes::Circle *)farg1->cptr;
+  arg2 = (double)(*farg2);
+  if (arg1) (arg1)->m_radius = arg2;
+}
+
+
+SWIGEXPORT double _wrap_Circle_m_radius_get(SwigClassWrapper *farg1) {
+  double fresult ;
+  classes::Circle *arg1 = (classes::Circle *) 0 ;
+  double result;
+  
+  SWIG_check_nonnull(farg1->cptr, "classes::Circle *", "Circle", "classes::Circle::m_radius", return 0);
+  arg1 = (classes::Circle *)farg1->cptr;
+  result = (double) ((arg1)->m_radius);
+  fresult = (double)(result);
+  return fresult;
+}
+
+
+SWIGEXPORT SwigClassWrapper _wrap_new_Circle() {
+  SwigClassWrapper fresult ;
+  classes::Circle *result = 0 ;
+  
+  result = (classes::Circle *)new classes::Circle();
+  fresult.cptr = (void*)result;
+  fresult.cmemflags = SWIG_MEM_RVALUE | (1 ? SWIG_MEM_OWN : 0);
+  return fresult;
+}
+
+
+SWIGEXPORT void _wrap_delete_Circle(SwigClassWrapper *farg1) {
+  classes::Circle *arg1 = (classes::Circle *) 0 ;
+  
+  arg1 = (classes::Circle *)farg1->cptr;
+  delete arg1;
+}
+
+
+SWIGEXPORT void _wrap_Circle_op_assign__(SwigClassWrapper *farg1, SwigClassWrapper *farg2) {
+  classes::Circle *arg1 = (classes::Circle *) 0 ;
+  classes::Circle *arg2 = 0 ;
+  
+  (void)sizeof(arg1);
+  (void)sizeof(arg2);
+  SWIG_assign<classes::Circle, SWIGPOLICY_classes_Circle>(farg1, *farg2);
   
 }
 
