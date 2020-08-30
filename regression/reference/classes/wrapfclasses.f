@@ -21,11 +21,13 @@ module classes_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: CLA_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type CLA_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
     ! start array_context
     ! helper array_context
@@ -52,15 +54,8 @@ module classes_mod
     integer(C_INT), parameter :: class1_left = 100
     integer(C_INT), parameter :: class1_right = 101
 
-    ! start derived-type CLA_SHROUD_class1_capsule
-    type, bind(C) :: CLA_SHROUD_class1_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type CLA_SHROUD_class1_capsule
-    ! end derived-type CLA_SHROUD_class1_capsule
-
     type class1
-        type(CLA_SHROUD_class1_capsule) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -82,13 +77,8 @@ module classes_mod
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
 
-    type, bind(C) :: CLA_SHROUD_class2_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type CLA_SHROUD_class2_capsule
-
     type class2
-        type(CLA_SHROUD_class2_capsule) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains
@@ -100,13 +90,8 @@ module classes_mod
         ! splicer end class.Class2.type_bound_procedure_part
     end type class2
 
-    type, bind(C) :: CLA_SHROUD_singleton_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type CLA_SHROUD_singleton_capsule
-
     type singleton
-        type(CLA_SHROUD_singleton_capsule) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Singleton.component_part
         ! splicer end class.Singleton.component_part
     contains
@@ -178,9 +163,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_ctor_default")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_ctor_default
     end interface
@@ -199,10 +184,10 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_ctor_flag")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_ctor_flag
     end interface
@@ -216,9 +201,9 @@ module classes_mod
     interface
         subroutine c_class1_delete(self) &
                 bind(C, name="CLA_Class1_delete")
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class1_delete
     end interface
     ! end c_class1_delete
@@ -233,9 +218,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_method1")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_method1
     end interface
@@ -255,10 +240,10 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_equivalent")
             use iso_c_binding, only : C_BOOL
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: obj2
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: obj2
             logical(C_BOOL) :: SHT_rv
         end function c_class1_equivalent
     end interface
@@ -272,9 +257,9 @@ module classes_mod
     interface
         subroutine c_class1_return_this(self) &
                 bind(C, name="CLA_Class1_return_this")
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class1_return_this
     end interface
     ! end c_class1_return_this
@@ -297,12 +282,12 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_return_this_buffer")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             logical(C_BOOL), value, intent(IN) :: flag
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer
     end interface
@@ -327,13 +312,13 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_return_this_buffer_bufferify")
             use iso_c_binding, only : C_BOOL, C_CHAR, C_INT, C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             logical(C_BOOL), value, intent(IN) :: flag
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_return_this_buffer_bufferify
     end interface
@@ -349,10 +334,10 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_getclass3")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_class1_getclass3
     end interface
@@ -368,9 +353,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_get_name")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_class1_get_name
     end interface
@@ -388,9 +373,9 @@ module classes_mod
     interface
         subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
                 bind(C, name="CLA_Class1_get_name_bufferify")
-            import :: CLA_SHROUD_array, CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_class1_get_name_bufferify
     end interface
@@ -410,9 +395,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_direction_func")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_class1_direction_func
@@ -429,9 +414,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_get_m_flag")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_m_flag
     end interface
@@ -447,9 +432,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class1_get_test")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_class1_get_test
     end interface
@@ -468,9 +453,9 @@ module classes_mod
         subroutine c_class1_set_test(self, val) &
                 bind(C, name="CLA_Class1_set_test")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_class1_set_test
     end interface
@@ -488,9 +473,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Class2_get_name")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class2_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class2_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(C_PTR) SHT_rv
         end function c_class2_get_name
     end interface
@@ -506,9 +491,9 @@ module classes_mod
     interface
         subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
-            import :: CLA_SHROUD_array, CLA_SHROUD_class2_capsule
+            import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class2_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             type(CLA_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_class2_get_name_bufferify
     end interface
@@ -525,9 +510,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Singleton_get_reference")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_singleton_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_singleton_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_singleton_get_reference
     end interface
@@ -616,9 +601,9 @@ module classes_mod
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN), value :: arg
+            type(CLA_SHROUD_capsule_data), intent(IN), value :: arg
         end subroutine c_pass_class_by_value
     end interface
 
@@ -635,9 +620,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_useclass")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(IN) :: arg
+            type(CLA_SHROUD_capsule_data), intent(IN) :: arg
             integer(C_INT) :: SHT_rv
         end function c_useclass
     end interface
@@ -651,9 +636,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_getclass2")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass2
     end interface
@@ -667,9 +652,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_getclass3")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_getclass3
     end interface
@@ -683,9 +668,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_get_const_class_reference")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_const_class_reference
     end interface
@@ -699,9 +684,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_get_class_reference")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_reference
     end interface
@@ -718,10 +703,10 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_get_class_copy")
             use iso_c_binding, only : C_INT, C_PTR
-            import :: CLA_SHROUD_class1_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
             integer(C_INT), value, intent(IN) :: flag
-            type(CLA_SHROUD_class1_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_get_class_copy
     end interface

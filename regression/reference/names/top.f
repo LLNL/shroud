@@ -21,18 +21,19 @@ module top_module
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper capsule_data_helper
+    type, bind(C) :: TES_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type TES_SHROUD_capsule_data
+
     !  enum Color
     integer(C_INT), parameter :: red = 0
     integer(C_INT), parameter :: blue = 1
     integer(C_INT), parameter :: white = 2
 
-    type, bind(C) :: TES_SHROUD_names2_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_names2_capsule
-
     type names2
-        type(TES_SHROUD_names2_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Names2.component_part
         ! splicer end class.Names2.component_part
     contains
@@ -43,13 +44,8 @@ module top_module
         ! splicer end class.Names2.type_bound_procedure_part
     end type names2
 
-    type, bind(C) :: TES_SHROUD_twots_0_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_twots_0_capsule
-
     type twots_0
-        type(TES_SHROUD_twots_0_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_0.component_part
         ! splicer end class.twoTs_0.component_part
     contains
@@ -60,13 +56,8 @@ module top_module
         ! splicer end class.twoTs_0.type_bound_procedure_part
     end type twots_0
 
-    type, bind(C) :: TES_SHROUD_twots_instantiation4_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_twots_instantiation4_capsule
-
     type twots_instantiation4
-        type(TES_SHROUD_twots_instantiation4_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.twoTs_instantiation4.component_part
         ! splicer end class.twoTs_instantiation4.component_part
     contains

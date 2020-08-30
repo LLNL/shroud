@@ -10,7 +10,6 @@
                     "C_impl_filename": "wrapUser1.cpp",
                     "C_name_scope": "User1_",
                     "C_type_name": "PRE_User1",
-                    "F_capsule_data_type": "PRE_SHROUD_user1_capsule",
                     "F_derived_name": "user1",
                     "F_name_scope": "user1_",
                     "PY_PyObject": "PY_User1",
@@ -24,7 +23,8 @@
                     "class_scope": "User1::",
                     "cxx_class": "User1",
                     "cxx_type": "User1",
-                    "file_scope": "User1"
+                    "file_scope": "User1",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {
@@ -289,7 +289,6 @@
                     "C_impl_filename": "wrapUser2.cpp",
                     "C_name_scope": "User2_",
                     "C_type_name": "PRE_User2",
-                    "F_capsule_data_type": "PRE_SHROUD_user2_capsule",
                     "F_derived_name": "user2",
                     "F_name_scope": "user2_",
                     "PY_PyObject": "PY_User2",
@@ -303,7 +302,8 @@
                     "class_scope": "User2::",
                     "cxx_class": "User2",
                     "cxx_type": "User2",
-                    "file_scope": "User2"
+                    "file_scope": "User2",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {

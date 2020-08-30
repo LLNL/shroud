@@ -20,7 +20,7 @@ typemap:
           c_type: AA_example_nested_ExClass1
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass1
-          f_capsule_data_type: AA_SHROUD_exclass1_capsule
+          f_capsule_data_type: AA_SHROUD_capsule_data
           f_to_c: "{f_var}%cxxmem"
       - type: ExClass2
         fields:
@@ -30,5 +30,5 @@ typemap:
           c_type: AA_example_nested_ExClass2
           f_module_name: userlibrary_example_nested_mod
           f_derived_type: exclass2
-          f_capsule_data_type: AA_SHROUD_exclass2_capsule
+          f_capsule_data_type: AA_SHROUD_capsule_data
           f_to_c: "{f_var}%cxxmem"

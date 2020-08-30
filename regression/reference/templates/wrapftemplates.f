@@ -21,13 +21,14 @@ module templates_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: TEM_SHROUD_worker_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: TEM_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TEM_SHROUD_worker_capsule
+    end type TEM_SHROUD_capsule_data
 
     type worker
-        type(TEM_SHROUD_worker_capsule) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Worker.component_part
         ! splicer end class.Worker.component_part
     contains
@@ -38,13 +39,8 @@ module templates_mod
         ! splicer end class.Worker.type_bound_procedure_part
     end type worker
 
-    type, bind(C) :: TEM_SHROUD_user_int_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TEM_SHROUD_user_int_capsule
-
     type user_int
-        type(TEM_SHROUD_user_int_capsule) :: cxxmem
+        type(TEM_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.user_int.component_part
         ! splicer end class.user_int.component_part
     contains
@@ -86,9 +82,9 @@ module templates_mod
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
-            import :: TEM_SHROUD_user_int_capsule
+            import :: TEM_SHROUD_capsule_data
             implicit none
-            type(TEM_SHROUD_user_int_capsule), intent(IN) :: self
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: arg1
             real(C_DOUBLE), value, intent(IN) :: arg2
         end subroutine c_user_int_nested_double

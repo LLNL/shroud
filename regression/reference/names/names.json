@@ -10,7 +10,6 @@
                     "C_impl_filename": "wrapNames2.cc",
                     "C_name_scope": "Names2_",
                     "C_type_name": "TES_Names2",
-                    "F_capsule_data_type": "TES_SHROUD_names2_capsule",
                     "F_derived_name": "names2",
                     "F_name_scope": "names2_",
                     "PY_PyObject": "PY_Names2",
@@ -24,7 +23,8 @@
                     "class_scope": "Names2::",
                     "cxx_class": "Names2",
                     "cxx_type": "Names2",
-                    "file_scope": "Names2"
+                    "file_scope": "Names2",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "name": "Names2",
                 "options": {},
@@ -39,7 +39,6 @@
                     "C_impl_filename": "wraptwoTs_0.cc",
                     "C_name_scope": "twoTs_0_",
                     "C_type_name": "TES_twoTs_0",
-                    "F_capsule_data_type": "TES_SHROUD_twots_0_capsule",
                     "F_derived_name": "twots_0",
                     "F_name_scope": "twots_0_",
                     "PY_PyObject": "PY_twoTs_0",
@@ -53,7 +52,8 @@
                     "class_scope": "twoTs_0::",
                     "cxx_class": "twoTs_0",
                     "cxx_type": "twoTs<int, long>",
-                    "file_scope": "twoTs_0"
+                    "file_scope": "twoTs_0",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "name": "twoTs",
                 "options": {},
@@ -111,7 +111,6 @@
                     "C_impl_filename": "wraptwoTs_instantiation4.cc",
                     "C_name_scope": "twoTs_instantiation4_",
                     "C_type_name": "TES_twoTs_instantiation4",
-                    "F_capsule_data_type": "TES_SHROUD_twots_instantiation4_capsule",
                     "F_derived_name": "twots_instantiation4",
                     "F_name_scope": "twots_instantiation4_",
                     "PY_PyObject": "PY_twoTs_instantiation4",
@@ -126,6 +125,7 @@
                     "cxx_class": "twoTs_instantiation4",
                     "cxx_type": "twoTs<float, double>",
                     "file_scope": "twoTs_instantiation4",
+                    "hnamefunc0": "capsule_data_helper",
                     "template_suffix": "_instantiation4"
                 },
                 "name": "twoTs",
@@ -2071,7 +2071,6 @@
                             "C_impl_filename": "foo.cpp",
                             "C_name_scope": "ns0_Names_",
                             "C_type_name": "TES_ns0_Names",
-                            "F_capsule_data_type": "TES_SHROUD_names_capsule",
                             "F_derived_name": "FNames",
                             "F_name_scope": "names_",
                             "PY_PyObject": "PY_Names",
@@ -2085,7 +2084,8 @@
                             "class_scope": "Names::",
                             "cxx_class": "Names",
                             "cxx_type": "Names",
-                            "file_scope": "ns0_Names"
+                            "file_scope": "ns0_Names",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "functions": [
                             {
@@ -2398,7 +2398,6 @@
                             "C_impl_filename": "wrapinternal_ImplWorker1.cc",
                             "C_name_scope": "internal_ImplWorker1_",
                             "C_type_name": "TES_internal_ImplWorker1",
-                            "F_capsule_data_type": "TES_SHROUD_implworker1_capsule",
                             "F_derived_name": "implworker1",
                             "F_name_scope": "implworker1_",
                             "class_scope": "ImplWorker1::",
@@ -2453,7 +2452,6 @@
                             "C_impl_filename": "wrapstd_vector_int.cc",
                             "C_name_scope": "std_Vvv1_",
                             "C_type_name": "TES_std_Vvv1",
-                            "F_capsule_data_type": "TES_SHROUD_vvv1_capsule",
                             "F_derived_name": "FFvvv1",
                             "F_name_scope": "vvv1_",
                             "PY_PyObject": "PY_Vvv1",
@@ -2467,7 +2465,8 @@
                             "class_scope": "Vvv1::",
                             "cxx_class": "Vvv1",
                             "cxx_type": "vector<int>",
-                            "file_scope": "std_vector_int"
+                            "file_scope": "std_vector_int",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "name": "vector",
                         "options": {},
@@ -2540,7 +2539,6 @@
                             "C_impl_filename": "wrapstd_vector_double.cc",
                             "C_name_scope": "std_vector_double_",
                             "C_type_name": "TES_std_vector_double",
-                            "F_capsule_data_type": "TES_SHROUD_vector_double_capsule",
                             "F_derived_name": "vector_double",
                             "F_name_scope": "vector_double_",
                             "PY_PyObject": "PY_vector_double",
@@ -2554,7 +2552,8 @@
                             "class_scope": "vector_double::",
                             "cxx_class": "vector_double",
                             "cxx_type": "vector<double>",
-                            "file_scope": "std_vector_double"
+                            "file_scope": "std_vector_double",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "name": "vector",
                         "options": {},
@@ -2627,7 +2626,6 @@
                             "C_impl_filename": "wrapstd_vector_instantiation5.cc",
                             "C_name_scope": "std_vector_instantiation5_",
                             "C_type_name": "TES_std_vector_instantiation5",
-                            "F_capsule_data_type": "TES_SHROUD_vector_instantiation5_capsule",
                             "F_derived_name": "vector_instantiation5",
                             "F_name_scope": "vector_instantiation5_",
                             "PY_PyObject": "PY_vector_instantiation5",
@@ -2642,6 +2640,7 @@
                             "cxx_class": "vector_instantiation5",
                             "cxx_type": "vector<long>",
                             "file_scope": "std_vector_instantiation5",
+                            "hnamefunc0": "capsule_data_helper",
                             "template_suffix": "_instantiation5"
                         },
                         "name": "vector",
@@ -2715,7 +2714,6 @@
                             "C_impl_filename": "wrapstd_vector_instantiation3.cc",
                             "C_name_scope": "std_vector_instantiation3_",
                             "C_type_name": "TES_std_vector_instantiation3",
-                            "F_capsule_data_type": "TES_SHROUD_vector_instantiation3_capsule",
                             "F_derived_name": "vector_instantiation3",
                             "F_name_scope": "vector_instantiation3_",
                             "PY_PyObject": "PY_vector_instantiation3",
@@ -2729,7 +2727,8 @@
                             "class_scope": "vector_instantiation3::",
                             "cxx_class": "vector_instantiation3",
                             "cxx_type": "vector<internal::ImplWorker1>",
-                            "file_scope": "std_vector_instantiation3"
+                            "file_scope": "std_vector_instantiation3",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "name": "vector",
                         "options": {},
@@ -2828,13 +2827,13 @@
                             "C_impl_filename": "wrapCAPI_Class1.cc",
                             "C_name_scope": "capi_class1_",
                             "C_type_name": "TES_capi_class1",
-                            "F_capsule_data_type": "TES_SHROUD_class1_capsule",
                             "F_derived_name": "class1",
                             "F_name_scope": "class1_",
                             "class_scope": "Class1::",
                             "cxx_class": "Class1",
                             "cxx_type": "Class1",
-                            "file_scope": "CAPI_Class1"
+                            "file_scope": "CAPI_Class1",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "functions": [
                             {
