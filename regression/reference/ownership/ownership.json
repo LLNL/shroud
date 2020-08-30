@@ -10,7 +10,6 @@
                     "C_impl_filename": "wrapClass1.cpp",
                     "C_name_scope": "Class1_",
                     "C_type_name": "OWN_Class1",
-                    "F_capsule_data_type": "OWN_SHROUD_class1_capsule",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
                     "LUA_class_reg": "l_Class1_Reg",
@@ -31,7 +30,8 @@
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
-                    "file_scope": "Class1"
+                    "file_scope": "Class1",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {

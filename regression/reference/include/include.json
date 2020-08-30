@@ -10,13 +10,13 @@
                     "C_impl_filename": "wrapClass2.cpp",
                     "C_name_scope": "Class2_",
                     "C_type_name": "LIB_Class2",
-                    "F_capsule_data_type": "LIB_SHROUD_class2_capsule",
                     "F_derived_name": "class2",
                     "F_name_scope": "class2_",
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
-                    "file_scope": "Class2"
+                    "file_scope": "Class2",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {
@@ -317,13 +317,13 @@
                             "C_impl_filename": "wrapthree_Class1.cpp",
                             "C_name_scope": "three_Class1_",
                             "C_type_name": "LIB_three_Class1",
-                            "F_capsule_data_type": "LIB_SHROUD_class1_capsule",
                             "F_derived_name": "class1",
                             "F_name_scope": "class1_",
                             "class_scope": "Class1::",
                             "cxx_class": "Class1",
                             "cxx_type": "Class1",
-                            "file_scope": "three_Class1"
+                            "file_scope": "three_Class1",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "functions": [
                             {
@@ -453,13 +453,13 @@
                             "C_impl_filename": "wrapouter1_class0.cpp",
                             "C_name_scope": "outer1_class0_",
                             "C_type_name": "LIB_outer1_class0",
-                            "F_capsule_data_type": "LIB_SHROUD_class0_capsule",
                             "F_derived_name": "class0",
                             "F_name_scope": "class0_",
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
-                            "file_scope": "outer1_class0"
+                            "file_scope": "outer1_class0",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "functions": [
                             {
@@ -580,13 +580,13 @@
                             "C_impl_filename": "wrapouter2_class0.cpp",
                             "C_name_scope": "outer2_class0_",
                             "C_type_name": "LIB_outer2_class0",
-                            "F_capsule_data_type": "LIB_SHROUD_class0_capsule",
                             "F_derived_name": "class0",
                             "F_name_scope": "class0_",
                             "class_scope": "class0::",
                             "cxx_class": "class0",
                             "cxx_type": "class0",
-                            "file_scope": "outer2_class0"
+                            "file_scope": "outer2_class0",
+                            "hnamefunc0": "capsule_data_helper"
                         },
                         "functions": [
                             {

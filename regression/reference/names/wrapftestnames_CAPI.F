@@ -21,13 +21,14 @@ module testnames_capi_mod
     ! splicer begin namespace.CAPI.module_top
     ! splicer end namespace.CAPI.module_top
 
-    type, bind(C) :: TES_SHROUD_class1_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_class1_capsule
+    end type TES_SHROUD_capsule_data
 
     type class1
-        type(TES_SHROUD_class1_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.CAPI.class.Class1.component_part
         ! splicer end namespace.CAPI.class.Class1.component_part
     contains
@@ -55,9 +56,9 @@ module testnames_capi_mod
         ! Match:     c_default
         subroutine c_class1_member1(self) &
                 bind(C, name="TES_capi_class1_member1")
-            import :: TES_SHROUD_class1_capsule
+            import :: TES_SHROUD_capsule_data
             implicit none
-            type(TES_SHROUD_class1_capsule), intent(IN) :: self
+            type(TES_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class1_member1
 
         ! splicer begin namespace.CAPI.class.Class1.additional_interfaces

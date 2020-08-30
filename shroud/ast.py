@@ -468,7 +468,6 @@ class LibraryNode(AstNode, NamespaceMixin):
             F_impl_filename_namespace_template="wrapf{file_scope}.{F_filename_suffix}",
             F_array_type_template="{C_prefix}SHROUD_array",
             F_capsule_data_type_template="{C_prefix}SHROUD_capsule_data",
-            F_capsule_data_type_class_template="{C_prefix}SHROUD_{F_name_scope}capsule",
             F_capsule_type_template="{C_prefix}SHROUD_capsule",
             F_abstract_interface_subprogram_template="{underscore_name}_{argname}",
             F_abstract_interface_argument_template="arg{index}",
@@ -1129,8 +1128,6 @@ class ClassNode(AstNode, NamespaceMixin):
         # Only one file per class for C.
         self.eval_template("C_header_filename", "_class")
         self.eval_template("C_impl_filename", "_class")
-
-        self.eval_template("F_capsule_data_type", "_class")
 
         # As PyArray_Descr
         if self.as_struct:

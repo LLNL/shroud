@@ -69,13 +69,13 @@
                     "C_impl_filename": "wrapClass1.cpp",
                     "C_name_scope": "Class1_",
                     "C_type_name": "SCO_Class1",
-                    "F_capsule_data_type": "SCO_SHROUD_class1_capsule",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
                     "class_scope": "Class1::",
                     "cxx_class": "Class1",
                     "cxx_type": "Class1",
-                    "file_scope": "Class1"
+                    "file_scope": "Class1",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "name": "Class1",
                 "options": {},
@@ -149,13 +149,13 @@
                     "C_impl_filename": "wrapClass2.cpp",
                     "C_name_scope": "Class2_",
                     "C_type_name": "SCO_Class2",
-                    "F_capsule_data_type": "SCO_SHROUD_class2_capsule",
                     "F_derived_name": "class2",
                     "F_name_scope": "class2_",
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
-                    "file_scope": "Class2"
+                    "file_scope": "Class2",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "name": "Class2",
                 "options": {},

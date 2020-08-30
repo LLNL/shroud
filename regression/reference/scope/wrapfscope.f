@@ -21,6 +21,12 @@ module scope_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! helper capsule_data_helper
+    type, bind(C) :: SCO_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type SCO_SHROUD_capsule_data
+
     !  enum Class1::Color
     integer(C_INT), parameter :: class1_red = 40
     integer(C_INT), parameter :: class1_blue = 41
@@ -46,13 +52,8 @@ module scope_mod
     integer(C_INT), parameter :: colorenum_blue = 61
     integer(C_INT), parameter :: colorenum_white = 62
 
-    type, bind(C) :: SCO_SHROUD_class1_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SCO_SHROUD_class1_capsule
-
     type class1
-        type(SCO_SHROUD_class1_capsule) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Class1.component_part
         ! splicer end class.Class1.component_part
     contains
@@ -63,13 +64,8 @@ module scope_mod
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
 
-    type, bind(C) :: SCO_SHROUD_class2_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type SCO_SHROUD_class2_capsule
-
     type class2
-        type(SCO_SHROUD_class2_capsule) :: cxxmem
+        type(SCO_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Class2.component_part
         ! splicer end class.Class2.component_part
     contains

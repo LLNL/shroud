@@ -15,13 +15,14 @@ module library_mod
     implicit none
 
 
-    type, bind(C) :: LIB_SHROUD_class2_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type LIB_SHROUD_class2_capsule
+    end type LIB_SHROUD_capsule_data
 
     type class2
-        type(LIB_SHROUD_class2_capsule) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem
     contains
         procedure :: method1 => class2_method1
         procedure :: method2 => class2_method2
@@ -51,9 +52,9 @@ module library_mod
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
             use iso_c_binding, only : C_INT
-            import :: LIB_SHROUD_class2_capsule
+            import :: LIB_SHROUD_capsule_data
             implicit none
-            type(LIB_SHROUD_class2_capsule), intent(IN) :: self
+            type(LIB_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: comm
         end subroutine c_class2_method1
 
@@ -67,10 +68,10 @@ module library_mod
         ! Match:     c_shadow_inout
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
-            import :: LIB_SHROUD_class1_capsule, LIB_SHROUD_class2_capsule
+            import :: LIB_SHROUD_capsule_data
             implicit none
-            type(LIB_SHROUD_class2_capsule), intent(IN) :: self
-            type(LIB_SHROUD_class1_capsule), intent(INOUT) :: c2
+            type(LIB_SHROUD_capsule_data), intent(IN) :: self
+            type(LIB_SHROUD_capsule_data), intent(INOUT) :: c2
         end subroutine c_class2_method2
 
 

@@ -10,7 +10,6 @@
                     "C_impl_filename": "wraparray_info.c",
                     "C_name_scope": "array_info_",
                     "C_type_name": "array_info",
-                    "F_capsule_data_type": "CLI_SHROUD_array_info_capsule",
                     "F_derived_name": "array_info",
                     "F_name_scope": "array_info_",
                     "PY_struct_array_descr_create": "PY_array_info_create_array_descr",

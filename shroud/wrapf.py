@@ -239,27 +239,10 @@ class Wrapf(util.WrapperMixin):
         f_type_decl.append("")
         if node.cpp_if:
             f_type_decl.append("#" + node.cpp_if)
-        if options.literalinclude:
-            f_type_decl.append("! start derived-type " +
-                               fmt_class.F_capsule_data_type)
-        append_format(
-            f_type_decl,
-            "type, bind(C) :: {F_capsule_data_type}\n+"
-            "type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory\n"
-            "integer(C_INT) :: idtor = 0       ! index of destructor\n"
-            "-end type {F_capsule_data_type}",
-            fmt_class,
-        )
-        if options.literalinclude:
-            f_type_decl.append("! end derived-type " +
-                               fmt_class.F_capsule_data_type)
-        self.set_f_module(
-            fileinfo.module_use, "iso_c_binding", "C_PTR", "C_INT", "C_NULL_PTR"
-        )
+        fileinfo.add_f_helper("capsule_data_helper", fmt_class)
 
         append_format(
             f_type_decl,
-            "\n"
             "type {F_derived_name}\n+"
             "type({F_capsule_data_type}) :: {F_derived_member}",
             fmt_class,

@@ -14,7 +14,6 @@
                     "C_impl_filename": "wrapClass3.cpp",
                     "C_name_scope": "Class3_",
                     "C_type_name": "FOR_Class3",
-                    "F_capsule_data_type": "FOR_SHROUD_class3_capsule",
                     "F_derived_name": "class3",
                     "F_name_scope": "class3_",
                     "LUA_class_reg": "l_Class3_Reg",
@@ -35,7 +34,8 @@
                     "class_scope": "Class3::",
                     "cxx_class": "Class3",
                     "cxx_type": "Class3",
-                    "file_scope": "Class3"
+                    "file_scope": "Class3",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "name": "Class3",
                 "options": {},
@@ -50,7 +50,6 @@
                     "C_impl_filename": "wrapClass2.cpp",
                     "C_name_scope": "Class2_",
                     "C_type_name": "FOR_Class2",
-                    "F_capsule_data_type": "FOR_SHROUD_class2_capsule",
                     "F_derived_name": "class2",
                     "F_name_scope": "class2_",
                     "LUA_class_reg": "l_Class2_Reg",
@@ -71,7 +70,8 @@
                     "class_scope": "Class2::",
                     "cxx_class": "Class2",
                     "cxx_type": "Class2",
-                    "file_scope": "Class2"
+                    "file_scope": "Class2",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {

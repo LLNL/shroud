@@ -15,13 +15,14 @@ module library_outer2_mod
     implicit none
 
 
-    type, bind(C) :: LIB_SHROUD_class0_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: LIB_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type LIB_SHROUD_class0_capsule
+    end type LIB_SHROUD_capsule_data
 
     type class0
-        type(LIB_SHROUD_class0_capsule) :: cxxmem
+        type(LIB_SHROUD_capsule_data) :: cxxmem
     contains
         procedure :: method => class0_method
         procedure :: get_instance => class0_get_instance
@@ -45,9 +46,9 @@ module library_outer2_mod
         ! Match:     c_default
         subroutine c_class0_method(self) &
                 bind(C, name="LIB_outer2_class0_method")
-            import :: LIB_SHROUD_class0_capsule
+            import :: LIB_SHROUD_capsule_data
             implicit none
-            type(LIB_SHROUD_class0_capsule), intent(IN) :: self
+            type(LIB_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_class0_method
 
 

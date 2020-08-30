@@ -518,19 +518,23 @@ def add_capsule_helper():
     literalinclude = _newlibrary.options.literalinclude2
     # Add some format strings
     fmt = util.Scope(fmtin)
-    fmt.lstart = ""
-    fmt.lend = ""
-
     name = "capsule_data_helper"
     fmt.hname = name
+    if literalinclude:
+        fmt.lstart = "{}helper {}\n".format(fstart, name)
+        fmt.lend = "\n{}helper {}".format(fend, name)
+    else:
+        fmt.lstart = ""
+        fmt.lend = ""
+
     helper = dict(
         derived_type=wformat(
             """
-! helper {hname}
+{lstart}! helper {hname}
 type, bind(C) :: {F_capsule_data_type}+
 type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
 integer(C_INT) :: idtor = 0       ! index of destructor
--end type {F_capsule_data_type}""",
+-end type {F_capsule_data_type}{lend}""",
             fmt,
         ),
         modules=dict(iso_c_binding=["C_PTR", "C_INT", "C_NULL_PTR"]),

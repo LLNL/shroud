@@ -21,13 +21,14 @@ module preprocess_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-    type, bind(C) :: PRE_SHROUD_user1_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: PRE_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type PRE_SHROUD_user1_capsule
+    end type PRE_SHROUD_capsule_data
 
     type user1
-        type(PRE_SHROUD_user1_capsule) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.User1.component_part
         ! splicer end class.User1.component_part
     contains
@@ -55,13 +56,8 @@ module preprocess_mod
     end type user1
 
 #ifdef USE_USER2
-    type, bind(C) :: PRE_SHROUD_user2_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type PRE_SHROUD_user2_capsule
-
     type user2
-        type(PRE_SHROUD_user2_capsule) :: cxxmem
+        type(PRE_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.User2.component_part
         ! splicer end class.User2.component_part
     contains
@@ -107,9 +103,9 @@ module preprocess_mod
         ! Match:     c_default
         subroutine c_user1_method1(self) &
                 bind(C, name="PRE_User1_method1")
-            import :: PRE_SHROUD_user1_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user1_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_user1_method1
 
 #if defined(USE_TWO)
@@ -119,9 +115,9 @@ module preprocess_mod
         ! Match:     c_default
         subroutine c_user1_method2(self) &
                 bind(C, name="PRE_User1_method2")
-            import :: PRE_SHROUD_user1_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user1_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_user1_method2
 #endif
 
@@ -132,9 +128,9 @@ module preprocess_mod
         ! Match:     c_default
         subroutine c_user1_method3def_0(self) &
                 bind(C, name="PRE_User1_method3def_0")
-            import :: PRE_SHROUD_user1_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user1_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_user1_method3def_0
 #endif
 
@@ -150,9 +146,9 @@ module preprocess_mod
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
-            import :: PRE_SHROUD_user1_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user1_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: i
         end subroutine c_user1_method3def_1
 #endif
@@ -168,9 +164,9 @@ module preprocess_mod
         ! Match:     c_default
         subroutine c_user2_exfunc_0(self) &
                 bind(C, name="PRE_User2_exfunc_0")
-            import :: PRE_SHROUD_user2_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user2_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
         end subroutine c_user2_exfunc_0
 #endif
 
@@ -186,9 +182,9 @@ module preprocess_mod
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT
-            import :: PRE_SHROUD_user2_capsule
+            import :: PRE_SHROUD_capsule_data
             implicit none
-            type(PRE_SHROUD_user2_capsule), intent(IN) :: self
+            type(PRE_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT), value, intent(IN) :: flag
         end subroutine c_user2_exfunc_1
 #endif
