@@ -21,11 +21,13 @@ module tutorial_mod
     ! splicer begin module_top
     ! splicer end module_top
 
+    ! start helper capsule_data_helper
     ! helper capsule_data_helper
     type, bind(C) :: TUT_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type TUT_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
     ! start array_context
     ! helper array_context

@@ -21,13 +21,14 @@ module testnames_std_mod
     ! splicer begin namespace.std.module_top
     ! splicer end namespace.std.module_top
 
-    type, bind(C) :: TES_SHROUD_vvv1_capsule
+    ! helper capsule_data_helper
+    type, bind(C) :: TES_SHROUD_capsule_data
         type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
         integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_vvv1_capsule
+    end type TES_SHROUD_capsule_data
 
     type FFvvv1
-        type(TES_SHROUD_vvv1_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.std.class.Vvv1.component_part
         ! splicer end namespace.std.class.Vvv1.component_part
     contains
@@ -38,13 +39,8 @@ module testnames_std_mod
         ! splicer end namespace.std.class.Vvv1.type_bound_procedure_part
     end type FFvvv1
 
-    type, bind(C) :: TES_SHROUD_vector_double_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_vector_double_capsule
-
     type vector_double
-        type(TES_SHROUD_vector_double_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.std.class.vector_double.component_part
         ! splicer end namespace.std.class.vector_double.component_part
     contains
@@ -55,13 +51,8 @@ module testnames_std_mod
         ! splicer end namespace.std.class.vector_double.type_bound_procedure_part
     end type vector_double
 
-    type, bind(C) :: TES_SHROUD_vector_instantiation5_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_vector_instantiation5_capsule
-
     type vector_instantiation5
-        type(TES_SHROUD_vector_instantiation5_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.std.class.vector_instantiation5.component_part
         ! splicer end namespace.std.class.vector_instantiation5.component_part
     contains
@@ -72,13 +63,8 @@ module testnames_std_mod
         ! splicer end namespace.std.class.vector_instantiation5.type_bound_procedure_part
     end type vector_instantiation5
 
-    type, bind(C) :: TES_SHROUD_vector_instantiation3_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type TES_SHROUD_vector_instantiation3_capsule
-
     type vector_instantiation3
-        type(TES_SHROUD_vector_instantiation3_capsule) :: cxxmem
+        type(TES_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.std.class.vector_instantiation3.component_part
         ! splicer end namespace.std.class.vector_instantiation3.component_part
     contains

@@ -48,13 +48,8 @@ module ns_mod
     integer(C_INT), parameter :: upper_error = 0
     integer(C_INT), parameter :: upper_warn = 1
 
-    type, bind(C) :: NS_SHROUD_nswork_classwork_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type NS_SHROUD_nswork_classwork_capsule
-
     type classwork
-        type(NS_SHROUD_nswork_classwork_capsule) :: cxxmem
+        type(NS_SHROUD_capsule_data) :: cxxmem
         ! splicer begin namespace.outer.class.ClassWork.component_part
         ! splicer end namespace.outer.class.ClassWork.component_part
     contains

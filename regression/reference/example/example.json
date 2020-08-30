@@ -43,7 +43,6 @@
                                     "C_impl_filename": "wrapexample_nested_ExClass1.cpp",
                                     "C_name_scope": "example_nested_ExClass1_",
                                     "C_type_name": "AA_example_nested_ExClass1",
-                                    "F_capsule_data_type": "AA_SHROUD_exclass1_capsule",
                                     "F_derived_name": "exclass1",
                                     "F_name_scope": "exclass1_",
                                     "LUA_class_reg": "l_ExClass1_Reg",
@@ -64,7 +63,8 @@
                                     "class_scope": "ExClass1::",
                                     "cxx_class": "ExClass1",
                                     "cxx_type": "ExClass1",
-                                    "file_scope": "example_nested_ExClass1"
+                                    "file_scope": "example_nested_ExClass1",
+                                    "hnamefunc0": "capsule_data_helper"
                                 },
                                 "functions": [
                                     {
@@ -1692,7 +1692,6 @@
                                     "C_impl_filename": "wrapexample_nested_ExClass2.cpp",
                                     "C_name_scope": "example_nested_ExClass2_",
                                     "C_type_name": "AA_example_nested_ExClass2",
-                                    "F_capsule_data_type": "AA_SHROUD_exclass2_capsule",
                                     "F_derived_name": "exclass2",
                                     "F_name_scope": "exclass2_",
                                     "LUA_class_reg": "l_ExClass2_Reg",
@@ -1713,7 +1712,8 @@
                                     "class_scope": "ExClass2::",
                                     "cxx_class": "ExClass2",
                                     "cxx_type": "ExClass2",
-                                    "file_scope": "example_nested_ExClass2"
+                                    "file_scope": "example_nested_ExClass2",
+                                    "hnamefunc0": "capsule_data_helper"
                                 },
                                 "functions": [
                                     {

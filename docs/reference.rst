@@ -462,13 +462,10 @@ F_array_type_template
    ``{C_prefix}SHROUD_array``
    
 F_capsule_data_type_template
-   ``{C_prefix}SHROUD_capsule_data``
-
-F_capsule_data_type_class_template
     Name of the derived type which is the ``BIND(C)`` equivalent of the
-    struct used to implement a shadow class.
-    Each class must have a unique name.
-    Defaults to ``{C_prefix}SHROUD_{F_name_scope}capsule``.
+    struct used to implement a shadow class (**C_capsule_data_type**).
+    All classes use the same derived type.
+    Defaults to ``{C_prefix}SHROUD_capsule_data``.
 
 F_capsule_type_template
     ``{C_prefix}SHROUD_capsule``

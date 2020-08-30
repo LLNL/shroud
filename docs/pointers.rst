@@ -233,8 +233,8 @@ C and Fortran
 
 Fortran keeps track of C++ objects with the struct
 **C_capsule_data_type** and the ``bind(C)`` equivalent
-**F_capsule_data_type**. Their names default to
-``{C_prefix}SHROUD_capsule_data`` and ``SHROUD_{F_name_scope}capsule``.
+**F_capsule_data_type**. Their names in the format dictionary default to
+``{C_prefix}SHROUD_capsule_data`` and ``{C_prefix}SHROUD_capsule_data``.
 In the Tutorial these types are defined in :file:`typesTutorial.h` as:
 
 .. literalinclude:: ../regression/reference/classes/typesclasses.h
@@ -246,8 +246,8 @@ And :file:`wrapftutorial.f`:
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start derived-type SHROUD_class1_capsule
-   :end-before: end derived-type SHROUD_class1_capsule
+   :start-after: start helper capsule_data_helper
+   :end-before: end helper capsule_data_helper
    :dedent: 4
 
 *addr* is the address of the C or C++ variable, such as a ``char *``
@@ -255,8 +255,14 @@ or ``std::string *``.  *idtor* is a Shroud generated index of the
 destructor code defined by *destructor_name* or the *free_pattern* attribute.
 These code segments are collected and written to function
 *C_memory_dtor_function*.  A value of 0 indicated the memory will not
-be released and is used with the **owner(library)** attribute. A
-typical function would look like:
+be released and is used with the **owner(library)** attribute.
+
+Each class creates its own capsule struct for the C wrapper.
+This is to provide a measure of type safety in the C API.
+All Fortran classes use the same derived type since the
+user does not directly access the derived type.
+
+A typical destructor function would look like:
 
 .. literalinclude:: ../regression/reference/tutorial/wrapTutorial.cpp
    :language: c++
@@ -289,7 +295,8 @@ and the ``bind(C)`` equivalent **F_array_type**.:
    :start-after: start array_context
    :end-before: end array_context
 
-The union for ``addr`` makes some assignments easier and also aids debugging.
+The union for ``addr`` makes some assignments easier by removing
+the need for casts and also aids debugging.
 The union is replaced with a single ``type(C_PTR)`` for Fortran:
 
 .. literalinclude:: ../regression/reference/memdoc/wrapfmemdoc.f

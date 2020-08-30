@@ -147,7 +147,6 @@
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_array_type_template": "{C_prefix}SHROUD_array",
             "F_auto_reference_count": false,
-            "F_capsule_data_type_class_template": "{C_prefix}SHROUD_{F_name_scope}capsule",
             "F_capsule_data_type_template": "{C_prefix}SHROUD_capsule_data",
             "F_capsule_type_template": "{C_prefix}SHROUD_capsule",
             "F_create_bufferify_function": true,

@@ -58,8 +58,8 @@ The ``idtor`` argument is described in :ref:`MemoryManagementAnchor`.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: start derived-type SHROUD_class1_capsule
-   :end-before: end derived-type SHROUD_class1_capsule
+   :start-after: start helper capsule_data_helper
+   :end-before: end helper capsule_data_helper
    :dedent: 4
 
 :file:`typeclasses.h`

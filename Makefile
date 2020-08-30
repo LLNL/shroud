@@ -52,7 +52,7 @@ include $(top)/regression/run/Makefile
 virtualenv : $(venv.dir)
 $(venv.dir) :
 	$(PYTHON) -m venv --system-site-packages $(venv.dir)
-	$(python.dir)/pip install --upgrade pip
+	$(venv.dir)/bin/pip install --upgrade pip
 virtualenv2 :
 	$(venv) --system-site-packages $(venv.dir)
 
