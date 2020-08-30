@@ -2119,7 +2119,6 @@
                     "C_impl_filename": "wrapShape.cpp",
                     "C_name_scope": "Shape_",
                     "C_type_name": "CLA_Shape",
-                    "F_capsule_data_type": "CLA_SHROUD_shape_capsule",
                     "F_derived_name": "shape",
                     "F_name_scope": "shape_",
                     "PY_PyObject": "PY_Shape",
@@ -2133,7 +2132,8 @@
                     "class_scope": "Shape::",
                     "cxx_class": "Shape",
                     "cxx_type": "Shape",
-                    "file_scope": "Shape"
+                    "file_scope": "Shape",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {
@@ -2319,7 +2319,6 @@
                     "C_impl_filename": "wrapCircle.cpp",
                     "C_name_scope": "Circle_",
                     "C_type_name": "CLA_Circle",
-                    "F_capsule_data_type": "CLA_SHROUD_circle_capsule",
                     "F_derived_name": "circle",
                     "F_name_scope": "circle_",
                     "PY_PyObject": "PY_Circle",
@@ -2333,7 +2332,8 @@
                     "class_scope": "Circle::",
                     "cxx_class": "Circle",
                     "cxx_type": "Circle",
-                    "file_scope": "Circle"
+                    "file_scope": "Circle",
+                    "hnamefunc0": "capsule_data_helper"
                 },
                 "functions": [
                     {

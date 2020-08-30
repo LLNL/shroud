@@ -18,7 +18,7 @@ typemap:
         c_type: CLA_Circle
         f_module_name: classes_mod
         f_derived_type: circle
-        f_capsule_data_type: CLA_SHROUD_circle_capsule
+        f_capsule_data_type: CLA_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
     - type: Class1
       fields:
@@ -48,7 +48,7 @@ typemap:
         c_type: CLA_Shape
         f_module_name: classes_mod
         f_derived_type: shape
-        f_capsule_data_type: CLA_SHROUD_shape_capsule
+        f_capsule_data_type: CLA_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
     - type: Singleton
       fields:

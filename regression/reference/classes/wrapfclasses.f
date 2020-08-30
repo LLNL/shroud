@@ -103,13 +103,8 @@ module classes_mod
         ! splicer end class.Singleton.type_bound_procedure_part
     end type singleton
 
-    type, bind(C) :: CLA_SHROUD_shape_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type CLA_SHROUD_shape_capsule
-
     type shape
-        type(CLA_SHROUD_shape_capsule) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Shape.component_part
         ! splicer end class.Shape.component_part
     contains
@@ -121,13 +116,8 @@ module classes_mod
         ! splicer end class.Shape.type_bound_procedure_part
     end type shape
 
-    type, bind(C) :: CLA_SHROUD_circle_capsule
-        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
-        integer(C_INT) :: idtor = 0       ! index of destructor
-    end type CLA_SHROUD_circle_capsule
-
     type circle
-        type(CLA_SHROUD_circle_capsule) :: cxxmem
+        type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Circle.component_part
         ! splicer end class.Circle.component_part
     contains
@@ -528,9 +518,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Shape_ctor")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_shape_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_shape_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_shape_ctor
     end interface
@@ -544,9 +534,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Shape_get_ivar")
             use iso_c_binding, only : C_INT
-            import :: CLA_SHROUD_shape_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_shape_capsule), intent(IN) :: self
+            type(CLA_SHROUD_capsule_data), intent(IN) :: self
             integer(C_INT) :: SHT_rv
         end function c_shape_get_ivar
     end interface
@@ -562,9 +552,9 @@ module classes_mod
                 result(SHT_rv) &
                 bind(C, name="CLA_Circle_ctor")
             use iso_c_binding, only : C_PTR
-            import :: CLA_SHROUD_circle_capsule
+            import :: CLA_SHROUD_capsule_data
             implicit none
-            type(CLA_SHROUD_circle_capsule), intent(OUT) :: SHT_crv
+            type(CLA_SHROUD_capsule_data), intent(OUT) :: SHT_crv
             type(C_PTR) SHT_rv
         end function c_circle_ctor
     end interface
