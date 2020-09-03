@@ -198,6 +198,7 @@ contains
   subroutine test_subclass
     type(Shape) base
     type(Circle) circle1
+    type(C_PTR) cxxptr
     integer ivar
 
     base = Shape()
@@ -207,6 +208,11 @@ contains
     circle1 = Circle()
     ivar = circle1%get_ivar()
     call assert_equals(ivar, 0, "get_ivar subclass")
+
+    ! Test inherited Shroud generated methods.
+    cxxptr = circle1%get_instance()
+    call assert_true(c_associated(cxxptr), "subclass instance c_associated")
+    call assert_true(circle1%associated(), "subclass instance associated")
     
   end subroutine test_subclass
 

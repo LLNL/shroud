@@ -224,7 +224,9 @@ class Wrapf(util.WrapperMixin):
         if node.cpp_if:
             fileinfo.c_interface.append("#endif")
 
-        self.write_object_get_set(node, fileinfo)
+        if not node.baseclass:
+            # subclasses share these functions.
+            self.write_object_get_set(node, fileinfo)
         fileinfo.impl.append("")
         self._create_splicer("additional_functions", fileinfo.impl)
         self._pop_splicer(fmt_class.cxx_class)

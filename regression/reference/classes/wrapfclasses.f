@@ -120,9 +120,6 @@ module classes_mod
         ! splicer begin class.Circle.component_part
         ! splicer end class.Circle.component_part
     contains
-        procedure :: get_instance => circle_get_instance
-        procedure :: set_instance => circle_set_instance
-        procedure :: associated => circle_associated
         ! splicer begin class.Circle.type_bound_procedure_part
         ! splicer end class.Circle.type_bound_procedure_part
     end type circle
@@ -1307,29 +1304,6 @@ contains
         SHT_prv = c_circle_ctor(SHT_rv%cxxmem)
         ! splicer end class.Circle.method.ctor
     end function circle_ctor
-
-    ! Return pointer to C++ memory.
-    function circle_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(circle), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function circle_get_instance
-
-    subroutine circle_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(circle), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine circle_set_instance
-
-    function circle_associated(obj) result (rv)
-        use iso_c_binding, only: c_associated
-        class(circle), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function circle_associated
 
     ! splicer begin class.Circle.additional_functions
     ! splicer end class.Circle.additional_functions
