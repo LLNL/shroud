@@ -2331,6 +2331,7 @@
                     "F_name_scope": "circle_",
                     "PY_PyObject": "PY_Circle",
                     "PY_PyTypeObject": "PY_Circle_Type",
+                    "PY_PyTypeObject_base": "PY_Shape_Type",
                     "PY_capsule_name": "PY_Circle_capsule_name",
                     "PY_from_object_func": "PP_Circle_from_Object",
                     "PY_this_call": "self->obj->",

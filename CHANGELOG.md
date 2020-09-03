@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Added
 - Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
+  Python uses `PyTypeObject.tp_base` field.
 
 ### Changed
 

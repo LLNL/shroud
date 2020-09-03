@@ -411,8 +411,7 @@ initclasses(void)
     PyModule_AddObject(m, "Shape", (PyObject *)&PY_Shape_Type);
 
     // Circle
-    PY_Circle_Type.tp_new   = PyType_GenericNew;
-    PY_Circle_Type.tp_alloc = PyType_GenericAlloc;
+    PY_Circle_Type.tp_base = &PY_Shape_Type;
     if (PyType_Ready(&PY_Circle_Type) < 0)
         return RETVAL;
     Py_INCREF(&PY_Circle_Type);

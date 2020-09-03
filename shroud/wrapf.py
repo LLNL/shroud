@@ -244,7 +244,7 @@ class Wrapf(util.WrapperMixin):
         fileinfo.add_f_helper("capsule_data_helper", fmt_class)
 
         if node.baseclass:
-            # Only single inheritance supported
+            # Only single inheritance supported.
             # Base class already contains F_derived_member.
             fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
             append_format(

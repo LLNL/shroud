@@ -1052,6 +1052,14 @@ PY_type_obj
 PY_type_dtor
     Pointer to information used to release memory.
 
+PY_PyTypeObject
+    Name of `PyTypeObject` variable for a C++ class.
+    Computed from option *PY_PyTypeObject*.
+
+PY_PyTypeObject_base
+    The name of `PyTypeObject` variable for base class of C++ class.
+    Only single inheritance is support via the tp_base field of `PyTypeObject` struct.
+    
 Function
 ^^^^^^^^
 
