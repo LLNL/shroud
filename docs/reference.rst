@@ -760,6 +760,10 @@ F_derived_member
     A *F_capsule_data_type* use to reference C++ memory.
     Defaults to *cxxmem*.
 
+F_derived_member_base
+    The *F_derived_member* for the base class of a class.
+    Only single inheritance is support via the ``EXTENDS`` keyword in Fortran.
+
 F_filename_suffix
     Suffix added to Fortran files.
     Defaults to ``f``.

@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
+
+### Changed
+
+### Removed
+- Removed format field *F_capsule_data_type_class*.
+  Create a single capsule derived type in Fortran instead of one per class.
 
 ## v0.12.2 - 2020-08-04
 ### Added

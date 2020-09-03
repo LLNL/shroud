@@ -202,8 +202,11 @@ contains
 
     base = Shape()
     ivar = base%get_ivar()
+    call assert_equals(ivar, 0, "get_ivar")
 
     circle1 = Circle()
+    ivar = circle1%get_ivar()
+    call assert_equals(ivar, 0, "get_ivar subclass")
     
   end subroutine test_subclass
 

@@ -13,6 +13,17 @@ import json
 
 from . import visitor
 
+
+def stringify_baseclass(baseclass):
+    """Convert baseclass into printable form by converting typemap object"""
+    # Replace typename instance with its name.
+    pbase = []
+    for basetuple in baseclass:
+        (access_specifier, ns_name, baseclass) = basetuple
+        pbase.append((access_specifier, ns_name, baseclass.typemap.name))
+    return pbase
+
+
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
     """
@@ -119,7 +130,10 @@ class ToDict(visitor.Visitor):
         return d
 
     def visit_CXXClass(self, node):
-        return dict(name=node.name)
+        d = dict(name=node.name)
+        if node.baseclass:
+            d["baseclass"] = stringify_baseclass(node.baseclass)
+        return d
 
     def visit_Namespace(self, node):
         return dict(name=node.name)
@@ -208,6 +222,8 @@ class ToDict(visitor.Visitor):
         add_true_fields(
             node, d, ["as_struct", "python", "scope", "template_parameters"]
         )
+        if node.baseclass:
+            d["baseclass"] = stringify_baseclass(node.baseclass)
         self.add_visit_fields(
             node,
             d,
@@ -435,7 +451,16 @@ class PrintNode(visitor.Visitor):
         return node.value
 
     def visit_CXXClass(self, node):
-        return "class {};".format(node.name)
+        s = ["class {}".format(node.name)]
+        if node.baseclass:
+            s.append(": ")
+            for basetuple in node.baseclass:
+                s.append("{} {}".format(basetuple[0], basetuple[1]))
+                s.append(", ")
+            s[-1] = ";"
+        else:
+            s.append(";")
+        return "".join(s)
 
     def visit_Namespace(self, node):
         return "namespace {}".format(node.name)

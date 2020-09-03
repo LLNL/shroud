@@ -346,8 +346,13 @@ class Parser(ExprParser):
     """
 
     def __init__(self, decl, namespace, trace=False):
-        self.decl = decl  # declaration to parse
-        self.namespace = namespace  # An ast.AstNode subclass.
+        """
+        Args:
+            decl - str, declaration to parse.
+            namespace - ast.NamespaceNode, ast.ClassNode
+        """
+        self.decl = decl
+        self.namespace = namespace
         self.trace = trace
         self.indent = 0
         self.token = None
@@ -387,9 +392,16 @@ class Parser(ExprParser):
         return params
 
     def nested_namespace(self, namespace):
-        """Found start of namespace.
+        """Look for qualified name.
+        Current token.typ is an ID.
 
         <nested-namespace> ::= { namespace :: }* identifier
+
+        Return namespace which owns qualified name and
+        the fully qualified name (aa:bb:cc)
+
+        Args:
+            namespace - ast.NamespaceNode, ast.ClassNode
         """
         self.enter("nested_namespace")
         nested = [self.token.value]
@@ -421,6 +433,8 @@ class Parser(ExprParser):
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
                                   | ~ ID
+        Args:
+            node - declast.Declaration
         """
         self.enter("declaration_specifier")
         found_type = False
@@ -725,15 +739,21 @@ class Parser(ExprParser):
         name = self.mustbe("ID")
         node = CXXClass(name.value)
         if self.have("COLON"):
-            if self.token.typ not in ["PUBLIC", "PRIVATE", "PROTECTED"]:
-                self.error_msg("expected 'public', 'private', or 'protected'")
-            self.next()
+            if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
+                access_specifier = self.token.value
+                self.next()
+            else:
+                access_specifier = 'private'
             if self.token.typ == "ID":
                 ns = self.namespace.unqualified_lookup(self.token.value)
                 if ns:
                     ns, ns_name = self.nested_namespace(ns)
+                    # XXX - make sure ns is a ast.ClassNode (and not a namespace)
+                    node.baseclass.append((access_specifier, ns_name, ns))
                 else:
                     self.error_msg("unknown class '{}'", self.token.value)
+            else:
+                self.mustbe("ID")
                     
         self.exit("class_statement")
         return node
@@ -1625,6 +1645,8 @@ class CXXClass(Node):
 
     def __init__(self, name):
         self.name = name
+        self.baseclass = []
+
 
 
 class Namespace(Node):

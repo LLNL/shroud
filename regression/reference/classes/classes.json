@@ -2312,6 +2312,13 @@
                 "typemap_name": "classes::Shape"
             },
             {
+                "baseclass": [
+                    [
+                        "public",
+                        "Shape",
+                        "classes::Shape"
+                    ]
+                ],
                 "cxx_header": [],
                 "fmtdict": {
                     "CXX_this_call": "SH_this->",
@@ -2319,6 +2326,7 @@
                     "C_impl_filename": "wrapCircle.cpp",
                     "C_name_scope": "Circle_",
                     "C_type_name": "CLA_Circle",
+                    "F_derived_member_base": "shape",
                     "F_derived_name": "circle",
                     "F_name_scope": "circle_",
                     "PY_PyObject": "PY_Circle",

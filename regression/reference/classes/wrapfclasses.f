@@ -116,8 +116,7 @@ module classes_mod
         ! splicer end class.Shape.type_bound_procedure_part
     end type shape
 
-    type circle
-        type(CLA_SHROUD_capsule_data) :: cxxmem
+    type, extends(shape) :: circle
         ! splicer begin class.Circle.component_part
         ! splicer end class.Circle.component_part
     contains
