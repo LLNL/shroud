@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
+  Python uses `PyTypeObject.tp_base` field.
+
+### Changed
+
+### Removed
+- Removed format field *F_capsule_data_type_class*.
+  Create a single capsule derived type in Fortran instead of one per class.
 
 ## v0.12.2 - 2020-08-04
 ### Added
@@ -46,6 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   The dimension attribute must be a list of expressions and should not
   be assumed-shape or assumed-length and are used with *intent(out)* arguments.
 - Pointer arguments default to ``intent(inout)`` instead of ``intent(in)``.
+  ``const`` pointers remain ``intent(in)``.
 - C++ class constructors create a generic interface in Fortran with the same name
   as the derived-type name.  Before it used the +name attribute in the generic name.
   This attribute is still used to create the actual function name.

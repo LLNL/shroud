@@ -17,6 +17,22 @@ class Class1
     int Method1();
 };
 
+//----------------------------------------------------------------------
+//----------------------------------------------------------------------
+// Test inheritance
+
+class Shape {
+private:
+    int m_ivar;
+public:
+    int get_ivar() const { return m_ivar; }
+};
+
+class Circle : public Shape {
+public:
+    double m_radius;
+};
+ 
 } /* end namespace classes */
 
 

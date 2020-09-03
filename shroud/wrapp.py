@@ -362,17 +362,21 @@ PyModule_AddObject(m, (char *) "{PY_module_name}", submodule);
         output.append("")
         if node.cpp_if:
             output.append("#" + node.cpp_if)
-        output.append(
-            wformat(
-                """// {cxx_class}
-{PY_PyTypeObject}.tp_new   = PyType_GenericNew;
-{PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;
-if (PyType_Ready(&{PY_PyTypeObject}) < 0)
+        append_format(output, "// {cxx_class}", fmt_class)
+        if node.baseclass:
+            # Only single inheritance supported.
+            fmt_class.PY_PyTypeObject_base  = node.baseclass[0][2].typemap.PY_PyTypeObject
+            append_format(output, "{PY_PyTypeObject}.tp_base = &{PY_PyTypeObject_base};", fmt_class)
+        else:
+            append_format(output,
+"""{PY_PyTypeObject}.tp_new   = PyType_GenericNew;
+{PY_PyTypeObject}.tp_alloc = PyType_GenericAlloc;""", fmt_class)
+        append_format(output,
+"""if (PyType_Ready(&{PY_PyTypeObject}) < 0)
 +return RETVAL;-
 Py_INCREF(&{PY_PyTypeObject});
 PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
-                fmt_class,
-            )
+                fmt_class
         )
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)

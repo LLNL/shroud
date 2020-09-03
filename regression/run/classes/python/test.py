@@ -112,6 +112,20 @@ class Classes(unittest.TestCase):
 
         obj2 = obj0.getReference()
 
+    def test_subclass(self):
+        base = classes.Shape()
+        self.assertEqual(0, base.get_ivar())
+
+        circle1 = classes.Circle()
+        self.assertEqual(0, base.get_ivar())
+
+        self.assertIsInstance(base, classes.Shape)
+        self.assertIsInstance(circle1, classes.Shape)
+
+        self.assertNotIsInstance(base, classes.Circle)
+        self.assertIsInstance(circle1, classes.Circle)
+        
+
 # creating a new test suite
 newSuite = unittest.TestSuite()
  

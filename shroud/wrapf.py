@@ -224,7 +224,9 @@ class Wrapf(util.WrapperMixin):
         if node.cpp_if:
             fileinfo.c_interface.append("#endif")
 
-        self.write_object_get_set(node, fileinfo)
+        if not node.baseclass:
+            # subclasses share these functions.
+            self.write_object_get_set(node, fileinfo)
         fileinfo.impl.append("")
         self._create_splicer("additional_functions", fileinfo.impl)
         self._pop_splicer(fmt_class.cxx_class)
@@ -241,12 +243,22 @@ class Wrapf(util.WrapperMixin):
             f_type_decl.append("#" + node.cpp_if)
         fileinfo.add_f_helper("capsule_data_helper", fmt_class)
 
-        append_format(
-            f_type_decl,
-            "type {F_derived_name}\n+"
-            "type({F_capsule_data_type}) :: {F_derived_member}",
-            fmt_class,
-        )
+        if node.baseclass:
+            # Only single inheritance supported.
+            # Base class already contains F_derived_member.
+            fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
+            append_format(
+                f_type_decl,
+                "type, extends({F_derived_member_base}) :: {F_derived_name}+",
+                fmt_class,
+            )
+        else:
+            append_format(
+                f_type_decl,
+                "type {F_derived_name}\n+"
+                "type({F_capsule_data_type}) :: {F_derived_member}",
+                fmt_class,
+            )
         self.set_f_module(
             fileinfo.module_use, "iso_c_binding", "C_PTR", "C_NULL_PTR"
         )

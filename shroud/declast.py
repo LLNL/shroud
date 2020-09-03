@@ -37,7 +37,10 @@ type_specifier = {
 type_qualifier = {"const", "volatile"}
 storage_class = {"auto", "register", "static", "extern", "typedef"}
 
-cxx_keywords = {"class", "enum", "namespace", "struct", "template", "typename"}
+cxx_keywords = {
+    "class", "enum", "namespace", "struct", "template", "typename",
+    "public", "private", "protected",
+}
 
 # Just to avoid passing it into each call to check_decl
 global_namespace = None
@@ -65,6 +68,7 @@ token_specification = [
     ("GT", r">"),
     ("TILDE", r"\~"),
     ("NAMESPACE", r"::"),
+    ("COLON", r":"),
     ("VARARG", r"\.\.\."),
     ("ID", r"[A-Za-z_][A-Za-z0-9_]*"),  # Identifiers
     ("NEWLINE", r"[\n]"),  # Line endings
@@ -342,8 +346,13 @@ class Parser(ExprParser):
     """
 
     def __init__(self, decl, namespace, trace=False):
-        self.decl = decl  # declaration to parse
-        self.namespace = namespace  # An ast.AstNode subclass.
+        """
+        Args:
+            decl - str, declaration to parse.
+            namespace - ast.NamespaceNode, ast.ClassNode
+        """
+        self.decl = decl
+        self.namespace = namespace
         self.trace = trace
         self.indent = 0
         self.token = None
@@ -383,9 +392,16 @@ class Parser(ExprParser):
         return params
 
     def nested_namespace(self, namespace):
-        """Found start of namespace.
+        """Look for qualified name.
+        Current token.typ is an ID.
 
         <nested-namespace> ::= { namespace :: }* identifier
+
+        Return namespace which owns qualified name and
+        the fully qualified name (aa:bb:cc)
+
+        Args:
+            namespace - ast.NamespaceNode, ast.ClassNode
         """
         self.enter("nested_namespace")
         nested = [self.token.value]
@@ -417,6 +433,8 @@ class Parser(ExprParser):
                                   | (ns_name :: )+ name
                                   | :: (ns_name :: )+ name    # XXX - todo
                                   | ~ ID
+        Args:
+            node - declast.Declaration
         """
         self.enter("declaration_specifier")
         found_type = False
@@ -720,6 +738,23 @@ class Parser(ExprParser):
         self.mustbe("CLASS")
         name = self.mustbe("ID")
         node = CXXClass(name.value)
+        if self.have("COLON"):
+            if self.token.typ in ["PUBLIC", "PRIVATE", "PROTECTED"]:
+                access_specifier = self.token.value
+                self.next()
+            else:
+                access_specifier = 'private'
+            if self.token.typ == "ID":
+                ns = self.namespace.unqualified_lookup(self.token.value)
+                if ns:
+                    ns, ns_name = self.nested_namespace(ns)
+                    # XXX - make sure ns is a ast.ClassNode (and not a namespace)
+                    node.baseclass.append((access_specifier, ns_name, ns))
+                else:
+                    self.error_msg("unknown class '{}'", self.token.value)
+            else:
+                self.mustbe("ID")
+                    
         self.exit("class_statement")
         return node
 
@@ -1610,6 +1645,8 @@ class CXXClass(Node):
 
     def __init__(self, name):
         self.name = name
+        self.baseclass = []
+
 
 
 class Namespace(Node):

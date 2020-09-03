@@ -83,6 +83,13 @@ struct s_CLA_SHROUD_array {
 typedef struct s_CLA_SHROUD_array CLA_SHROUD_array;
 // end array_context
 
+// helper capsule_CLA_Circle
+struct s_CLA_Circle {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Circle CLA_Circle;
+
 // start struct CLA_Class1
 // helper capsule_CLA_Class1
 struct s_CLA_Class1 {
@@ -98,6 +105,13 @@ struct s_CLA_Class2 {
     int idtor;      /* index of destructor */
 };
 typedef struct s_CLA_Class2 CLA_Class2;
+
+// helper capsule_CLA_Shape
+struct s_CLA_Shape {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_CLA_Shape CLA_Shape;
 
 // helper capsule_CLA_Singleton
 struct s_CLA_Singleton {

@@ -76,7 +76,7 @@ attribute.
 .. code-block:: fortran
 
     type class1
-        type(SHROUD_class1_capsule) :: cxxmem
+        type(SHROUD_CLA_capsule_data) :: cxxmem
     contains
         procedure :: method1 => class1_method1
     end type class1
@@ -134,6 +134,20 @@ Two instances of the class can be compared using the ``associated`` method.
 A full example is at 
 :ref:`Constructor and Destructor <example_constructor_and_destructor>`.
 
+Inheritance is implemented using the ``EXTENDS`` Fortran keyword.
+Only single inheritance is supported.
+
+.. code-block:: fortran
+
+    type shape
+        type(CLA_SHROUD_capsule_data) :: cxxmem
+    contains
+        procedure :: get_ivar => shape_get_ivar
+    end type shape
+
+    type, extends(shape) :: circle
+    end type circle
+                
 ..
  The *f_to_c* field uses the
  generated ``get_instance`` function to return the pointer which will

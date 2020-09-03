@@ -54,18 +54,45 @@ class AstNode(object):
         # only FunctionNode may have args
         return False
 
+
+    def qualified_lookup(self, name):
+        """Look for symbols within a scope.
+
+        A qualified name is a name that appears on the right hand side
+        of the scope resulution operator '::'.  A qualified name may
+        refer to a
+        * class member
+        * namespace member
+        * enumerator
+        """
+        raise NotImplemented  # virtual function
+
+    def unqualified_lookup(self, name):
+        """Look for symbols within a scope.
+
+        An unqualified lookup is a name that does not appear to the
+        right of a scope resolution operator '::'.  This is the current
+        scope, self.symbols, and any scopes added via a 'using' statement.
+        """
+        raise NotImplemented  # virtual function
+    
+
 ######################################################################
 
 
 class NamespaceMixin(object):
-    def add_class(self, name, template_parameters=None, **kwargs):
+    def add_class(self, name, base=[], template_parameters=None, **kwargs):
         """Add a class.
 
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
+
+        Args:
+            name -
+            base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
         """
         node = ClassNode(
-            name, self, template_parameters=template_parameters, **kwargs
+            name, self, base, template_parameters=template_parameters, **kwargs
         )
         self.classes.append(node)
         self.symbols[name] = node
@@ -98,12 +125,13 @@ class NamespaceMixin(object):
             else:
                 node = self.add_function(decl, ast=fullast, **kwargs)
         elif isinstance(ast, declast.CXXClass):
-            # A Class may already be forwared defined.
+            # A Class may already be forward defined.
             # If so, just return it.
             node = self.symbols.get(ast.name, None)
             if not node:
                 node = self.add_class(
-                    ast.name, template_parameters=template_parameters, **kwargs
+                    ast.name, base=ast.baseclass,
+                    template_parameters=template_parameters, **kwargs
                 )
         elif isinstance(ast, declast.Namespace):
             node = self.add_namespace(ast.name, **kwargs)
@@ -198,6 +226,7 @@ class NamespaceMixin(object):
         if ast is None:
             ast = declast.check_decl(decl, namespace=self)
         name = ast.name
+        # XXX - base=... for inheritance
         node = ClassNode(name, self, as_struct=True, **kwargs)
         for member in ast.members:
             node.add_variable(str(member), member)
@@ -958,6 +987,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self,
         name,
         parent,
+        base=[],
         cxx_header="",
         format=None,
         options=None,
@@ -974,10 +1004,14 @@ class ClassNode(AstNode, NamespaceMixin):
         Added to symbol table.
 
         cxx_template - list of TemplateArgument instances
+
+        Args:
+            base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
         """
         # From arguments
         self.name = name
         self.parent = parent
+        self.baseclass = base
         self.cxx_header = cxx_header.split()
         self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
@@ -1630,6 +1664,9 @@ class VariableNode(AstNode):
              bar: 4
           format:
              baz: 4
+
+    Args:
+        ast - If None, compute from decl.
     """
 
     def __init__(
@@ -1901,6 +1938,10 @@ def listify(entry, names):
 
 
 def add_declarations(parent, node):
+    """Add "declarations" from node dictionary.
+
+    node is from a YAML file.
+    """
     if "declarations" not in node:
         return
     if not node["declarations"]:

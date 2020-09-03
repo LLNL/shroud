@@ -29,6 +29,8 @@ C_OBJS = \
     wrapClass1.o \
     wrapClass2.o \
     wrapSingleton.o \
+    wrapShape.o \
+    wrapCircle.o \
     utilclasses.o
 F_OBJS = \
     wrapfclasses.o \

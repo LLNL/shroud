@@ -2110,6 +2110,332 @@
                 },
                 "scope": "classes::Singleton::",
                 "typemap_name": "classes::Singleton"
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapShape.h",
+                    "C_impl_filename": "wrapShape.cpp",
+                    "C_name_scope": "Shape_",
+                    "C_type_name": "CLA_Shape",
+                    "F_derived_name": "shape",
+                    "F_name_scope": "shape_",
+                    "PY_PyObject": "PY_Shape",
+                    "PY_PyTypeObject": "PY_Shape_Type",
+                    "PY_capsule_name": "PY_Shape_capsule_name",
+                    "PY_from_object_func": "PP_Shape_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Shape_to_Object",
+                    "PY_to_object_idtor_func": "PP_Shape_to_Object_idtor",
+                    "PY_type_filename": "pyShapetype.cpp",
+                    "class_scope": "Shape::",
+                    "cxx_class": "Shape",
+                    "cxx_type": "Shape",
+                    "file_scope": "Shape",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_type": "CLA_Shape",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "classes::Shape",
+                                "cxx_var": "SHCXX_rv",
+                                "idtor": "2",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "c_shadow_scalar_ctor",
+                                "stmt1": "c_shadow_scalar_ctor"
+                            },
+                            "fmtf": {
+                                "cxx_type": "classes::Shape",
+                                "f_type": "type(shape)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "f_shadow_ctor",
+                                "stmt1": "f_shadow_ctor",
+                                "stmtc0": "c_shadow_ctor",
+                                "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtpy": {
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Shape_to_Object_idtor",
+                                "PyObject": "PY_Shape",
+                                "PyTypeObject": "PY_Shape_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "classes::Shape",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_default",
+                                "stmt1": "py_default",
+                                "value_var": "SHValue_rv",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "Shape"
+                            ],
+                            "typemap_name": "classes::Shape"
+                        },
+                        "decl": "Shape()",
+                        "declgen": "Shape()",
+                        "fmtdict": {
+                            "C_name": "CLA_Shape_ctor",
+                            "C_prototype": "CLA_Shape * SHC_rv",
+                            "C_return_type": "CLA_Shape *",
+                            "F_C_call": "c_shape_ctor",
+                            "F_C_name": "c_shape_ctor",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "shape",
+                            "F_name_impl": "shape_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "PY_name_impl": "PY_Shape_tp_init",
+                            "PY_type_impl": "PY_Shape_tp_init",
+                            "PY_type_method": "tp_init",
+                            "cxx_rv_decl": "classes::Shape SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "options": {
+                            "F_create_generic": true
+                        }
+                    },
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            },
+                            "fmtpy": {
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": "NPY_INT",
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_native_scalar_result",
+                                "stmt1": "py_default",
+                                "value_var": "SHValue_rv"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "get_ivar",
+                                "pointer": []
+                            },
+                            "func_const": true,
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int get_ivar() const",
+                        "declgen": "int get_ivar() const",
+                        "fmtdict": {
+                            "C_name": "CLA_Shape_get_ivar",
+                            "C_prototype": "const CLA_Shape * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_shape_get_ivar",
+                            "F_C_name": "c_shape_get_ivar",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_ivar",
+                            "F_name_generic": "get_ivar",
+                            "F_name_impl": "shape_get_ivar",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "PY_name_impl": "PY_get_ivar",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "get_ivar",
+                            "underscore_name": "get_ivar"
+                        },
+                        "options": {}
+                    }
+                ],
+                "name": "Shape",
+                "options": {},
+                "scope": "classes::Shape::",
+                "typemap_name": "classes::Shape"
+            },
+            {
+                "baseclass": [
+                    [
+                        "public",
+                        "Shape",
+                        "classes::Shape"
+                    ]
+                ],
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCircle.h",
+                    "C_impl_filename": "wrapCircle.cpp",
+                    "C_name_scope": "Circle_",
+                    "C_type_name": "CLA_Circle",
+                    "F_derived_member_base": "shape",
+                    "F_derived_name": "circle",
+                    "F_name_scope": "circle_",
+                    "PY_PyObject": "PY_Circle",
+                    "PY_PyTypeObject": "PY_Circle_Type",
+                    "PY_PyTypeObject_base": "PY_Shape_Type",
+                    "PY_capsule_name": "PY_Circle_capsule_name",
+                    "PY_from_object_func": "PP_Circle_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Circle_to_Object",
+                    "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
+                    "PY_type_filename": "pyCircletype.cpp",
+                    "class_scope": "Circle::",
+                    "cxx_class": "Circle",
+                    "cxx_type": "Circle",
+                    "file_scope": "Circle",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_type": "CLA_Circle",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "classes::Circle",
+                                "cxx_var": "SHCXX_rv",
+                                "idtor": "3",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "c_shadow_scalar_ctor",
+                                "stmt1": "c_shadow_scalar_ctor"
+                            },
+                            "fmtf": {
+                                "cxx_type": "classes::Circle",
+                                "f_type": "type(circle)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "f_shadow_ctor",
+                                "stmt1": "f_shadow_ctor",
+                                "stmtc0": "c_shadow_ctor",
+                                "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtpy": {
+                                "PY_build_format": "O",
+                                "PY_to_object_idtor_func": "PP_Circle_to_Object_idtor",
+                                "PyObject": "PY_Circle",
+                                "PyTypeObject": "PY_Circle_Type",
+                                "c_deref": "",
+                                "c_var": "SHCXX_rv",
+                                "ctor_expr": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHCXX_rv",
+                                "cxx_type": "classes::Circle",
+                                "cxx_var": "SHCXX_rv",
+                                "data_var": "SHData_rv",
+                                "numpy_type": null,
+                                "py_var": "SHTPy_rv",
+                                "size_var": "SHSize_rv",
+                                "stmt0": "py_default",
+                                "stmt1": "py_default",
+                                "value_var": "SHValue_rv",
+                                "vargs": "SHCXX_rv"
+                            }
+                        },
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "Circle"
+                            ],
+                            "typemap_name": "classes::Circle"
+                        },
+                        "decl": "Circle()",
+                        "declgen": "Circle()",
+                        "fmtdict": {
+                            "C_name": "CLA_Circle_ctor",
+                            "C_prototype": "CLA_Circle * SHC_rv",
+                            "C_return_type": "CLA_Circle *",
+                            "F_C_call": "c_circle_ctor",
+                            "F_C_name": "c_circle_ctor",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "circle",
+                            "F_name_impl": "circle_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "PY_name_impl": "PY_Circle_tp_init",
+                            "PY_type_impl": "PY_Circle_tp_init",
+                            "PY_type_method": "tp_init",
+                            "cxx_rv_decl": "classes::Circle SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "options": {
+                            "F_create_generic": true
+                        }
+                    }
+                ],
+                "name": "Circle",
+                "options": {},
+                "scope": "classes::Circle::",
+                "typemap_name": "classes::Circle"
             }
         ],
         "copyright": [

@@ -907,6 +907,32 @@ class CheckParse(unittest.TestCase):
         self.assertEqual("Class1 dtor()", r.gen_arg_as_cxx())
         self.assertEqual("CC_Class1 dtor()", r.gen_arg_as_c())
 
+    def test_inheritance0(self):
+        self.library = ast.LibraryNode(library="cc")
+        self.library.add_class("Class1")
+        r2 = declast.check_decl("class Class2 : public Class1", namespace=self.library)
+        self.assertIsInstance(r2, declast.CXXClass)
+        self.assertEqual("class Class2: public Class1;", todict.print_node(r2))
+        self.assertEqual(todict.to_dict(r2), {
+            "name": "Class2",
+            "baseclass": [ ("public", "Class1", "Class1") ],
+        })
+
+        with self.assertRaises(RuntimeError) as context:
+            r2 = declast.check_decl("class Class3 : public public", namespace=self.library)
+        self.assertTrue("Expected ID, found PUBLIC" in str(context.exception))
+        with self.assertRaises(RuntimeError) as context:
+            r2 = declast.check_decl("class Class3 : public int", namespace=self.library)
+        self.assertTrue("Expected ID, found TYPE_SPECIFIER" in str(context.exception))
+        
+    def test_inheritance(self):
+        self.library = ast.LibraryNode(library="cc")
+        class1 = self.library.add_class("Class1")
+        self.assertIsInstance(class1, ast.ClassNode)
+        # XXX - base needs a typemap as the 3rd member.
+        class2 = self.library.add_class("Class2", base=[("public", "Class1")])
+        self.assertIsInstance(class2, ast.ClassNode)
+
     def test_decl09d(self):
         """Return pointer to Class instance
         """

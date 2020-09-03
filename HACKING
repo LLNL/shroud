@@ -2,6 +2,8 @@
 Create development environment
 ------------------------------
 
+Defaults to Python 3.
+
     make virtualenv
     make develop
 
@@ -16,6 +18,25 @@ Run unittest
     make test
 
 The tests are in the ``tests`` directory.
+
+Run a single unittest:
+
+    ../build/temp.linux-x86_64-3.7/venv/bin/python test_declast.py CheckParse.test_inheritance
+
+Running a single Python regression test.
+
+    # Use the Python in the virtual environment
+    setenv WORK  .../build/temp.linux-x86_64-2.7
+    setenv PYTHONEXE $WORK/venv/bin/python
+
+    cd tests
+    $PYTHONEXE -m unittest test_ast.CheckAst.test_d_generate1
+
+    # Run a regression test
+    setenv PYTHONPATH $WORK/run/struct-class-c/python
+    cd regression/run/struct-class-c/python
+    $PYTHONEXE -m unittest test.Struct.test_Arrays1
+
 
 Regression tests
 ----------------
@@ -35,19 +56,13 @@ Running a single test
     make do-test test-args=tutorial
 
 
-Running a single Python test.
+Running a test manually (with pdb).
+Run the test via do-test.  Extract run line from test.log
+cd $WORK/build/temp.linux-x86_64-3.7/regression/classes
+$WORK/build/temp.linux-x86_64-3.7/venv/bin/shroud ...  $WORK/regression/input/classes.yaml
 
-    # Use the Python in the virtual environment
-    setenv WORK  .../build/temp.linux-x86_64-2.7
-    setenv PYTHONEXE $WORK/venv/bin/python
 
-    cd tests
-    $PYTHONEXE -m unittest test_ast.CheckAst.test_d_generate1
 
-    # Run a regression test
-    setenv PYTHONPATH $WORK/run/struct-class-c/python
-    cd regression/run/struct-class-c/python
-    $PYTHONEXE -m unittest test.Struct.test_Arrays1
 
 Test generated code
 -------------------
