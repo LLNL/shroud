@@ -115,6 +115,18 @@ declarations:
     PY_array_arg: numpy
 
 ######################################################################
+- decl: struct Cstruct_as_class {
+          int x1;
+          int y1;
+        };
+  options:
+    F_struct: class
+    wrap_python: False  # tested in struct-py.yaml
+  doxygen:
+    description: |
+      Treat a struct as a class, i.e. create a shadow derived type.
+
+######################################################################
 splicer_code:
   f:
     module_top:

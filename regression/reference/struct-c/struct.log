@@ -20,6 +20,7 @@ class Cstruct_ptr
 class Cstruct_list
 class Cstruct_numpy
 class Arrays1
+class Cstruct_as_class
 C-interface, Fortran function int passStructByValue(Cstruct1 arg +intent(in)+value)
 C-interface, Fortran function int passStruct1(const Cstruct1 * arg +intent(in))
 C-interface, Fortran function int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))

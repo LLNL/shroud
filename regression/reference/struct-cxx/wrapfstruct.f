@@ -57,6 +57,12 @@ module struct_mod
         integer(C_INT) :: count(10)
     end type arrays1
 
+
+    type, bind(C) :: cstruct_as_class
+        integer(C_INT) :: x1
+        integer(C_INT) :: y1
+    end type cstruct_as_class
+
     interface
 
         ! ----------------------------------------

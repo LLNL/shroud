@@ -549,6 +549,77 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "as_struct": true,
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_as_class.h",
+                    "C_impl_filename": "wrapCstruct_as_class.cpp",
+                    "C_name_scope": "Cstruct_as_class_",
+                    "C_type_name": "STR_cstruct_as_class",
+                    "F_derived_name": "cstruct_as_class",
+                    "F_name_scope": "cstruct_as_class_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
+                    "class_scope": "Cstruct_as_class::",
+                    "cxx_class": "Cstruct_as_class",
+                    "cxx_type": "Cstruct_as_class",
+                    "file_scope": "Cstruct_as_class"
+                },
+                "name": "Cstruct_as_class",
+                "options": {
+                    "wrap_python": false
+                },
+                "scope": "Cstruct_as_class::",
+                "typemap_name": "Cstruct_as_class",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "x1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "x1",
+                            "variable_lower": "x1",
+                            "variable_name": "x1",
+                            "variable_upper": "X1"
+                        },
+                        "name": "x1",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "y1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "y1",
+                            "variable_lower": "y1",
+                            "variable_name": "y1",
+                            "variable_upper": "Y1"
+                        },
+                        "name": "y1",
+                        "options": {}
+                    }
+                ]
             }
         ],
         "copyright": [

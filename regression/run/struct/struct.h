@@ -67,6 +67,8 @@ struct Arrays1 {
 typedef struct Arrays1 Arrays1;
 
 /*----------------------------------------------------------------------*/
+// Used in struct-py.yaml
+// Test similar structs with PY_struct_arg as both "class" and "numpy"
 
 struct Cstruct_as_class {
     int x1;
