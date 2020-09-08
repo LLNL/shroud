@@ -276,6 +276,7 @@
                 ],
                 "name": "User1",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "User1::",
                 "typemap_name": "User1"
             },
@@ -460,6 +461,7 @@
                 ],
                 "name": "User2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "User2::",
                 "typemap_name": "User2"
             }

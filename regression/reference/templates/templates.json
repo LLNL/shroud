@@ -28,6 +28,7 @@
                 },
                 "name": "Worker",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Worker::",
                 "typemap_name": "Worker"
             },
@@ -335,6 +336,7 @@
                 ],
                 "name": "user",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "user::",
                 "template_arguments": [
                     {
@@ -1760,6 +1762,7 @@
                         "options": {
                             "optsample": "two"
                         },
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2329,6 +2332,7 @@
                         ],
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2423,6 +2427,7 @@
                         "options": {
                             "wrap_fortran": false
                         },
+                        "parse_keyword": "class",
                         "scope": "internal::ImplWorker1::",
                         "typemap_name": "internal::ImplWorker1"
                     },
@@ -2455,6 +2460,7 @@
                         "options": {
                             "wrap_fortran": false
                         },
+                        "parse_keyword": "class",
                         "scope": "internal::ImplWorker2::",
                         "typemap_name": "internal::ImplWorker2"
                     }

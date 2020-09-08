@@ -3023,6 +3023,7 @@
                 ],
                 "name": "ArrayWrapper",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "ArrayWrapper::",
                 "typemap_name": "ArrayWrapper"
             }

@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
@@ -24,6 +23,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct1::",
                 "typemap_name": "Cstruct1",
                 "variables": [
@@ -74,7 +74,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_ptr.h",
@@ -93,6 +92,7 @@
                 },
                 "name": "Cstruct_ptr",
                 "options": {},
+                "parse_keyword": "struct",
                 "scope": "Cstruct_ptr::",
                 "typemap_name": "Cstruct_ptr",
                 "variables": [
@@ -152,7 +152,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_list.h",
@@ -173,6 +172,7 @@
                 "options": {
                     "PY_array_arg": "list"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_list::",
                 "typemap_name": "Cstruct_list",
                 "variables": [
@@ -324,7 +324,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_numpy.h",
@@ -345,6 +344,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_numpy::",
                 "typemap_name": "Cstruct_numpy",
                 "variables": [
@@ -445,7 +445,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapArrays1.h",
@@ -466,6 +465,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [
@@ -526,7 +526,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_as_class.h",
@@ -545,8 +544,10 @@
                 },
                 "name": "Cstruct_as_class",
                 "options": {
+                    "F_struct": "class",
                     "wrap_python": false
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_as_class::",
                 "typemap_name": "Cstruct_as_class",
                 "variables": [

@@ -39,6 +39,7 @@
                 },
                 "name": "Class3",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "forward::Class3::",
                 "typemap_name": "forward::Class3"
             },
@@ -466,6 +467,7 @@
                 ],
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "forward::Class2::",
                 "typemap_name": "forward::Class2"
             }

@@ -1686,6 +1686,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "parse_keyword": "class",
                 "scope": "classes::Class1::",
                 "typemap_name": "classes::Class1",
                 "variables": [
@@ -1981,6 +1982,7 @@
                 ],
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "classes::Class2::",
                 "typemap_name": "classes::Class2"
             },
@@ -2108,6 +2110,7 @@
                 "options": {
                     "wrap_lua": false
                 },
+                "parse_keyword": "class",
                 "scope": "classes::Singleton::",
                 "typemap_name": "classes::Singleton"
             },
@@ -2308,6 +2311,7 @@
                 ],
                 "name": "Shape",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "classes::Shape::",
                 "typemap_name": "classes::Shape"
             },
@@ -2434,6 +2438,7 @@
                 ],
                 "name": "Circle",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "classes::Circle::",
                 "typemap_name": "classes::Circle"
             }

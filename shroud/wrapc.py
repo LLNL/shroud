@@ -115,7 +115,7 @@ class Wrapc(util.WrapperMixin):
         for cls in node.classes:
             if not node.options.wrap_c:
                 continue
-            if cls.as_struct:
+            if cls.parse_keyword == "struct":
                 structs.append(cls)
             else:
                 self._push_splicer(cls.name)
@@ -142,7 +142,7 @@ class Wrapc(util.WrapperMixin):
                 self.wrap_struct(struct)
 
         if cls:
-            if not cls.as_struct:
+            if cls.parse_keyword == "class":
                 self.wrap_class(cls)
         else:
             self.wrap_enums(ns)

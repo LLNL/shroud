@@ -227,7 +227,7 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, namespace=self)
         name = ast.name
         # XXX - base=... for inheritance
-        node = ClassNode(name, self, as_struct=True, **kwargs)
+        node = ClassNode(name, self, parse_keyword="struct", **kwargs)
         for member in ast.members:
             node.add_variable(str(member), member)
         self.classes.append(node)
@@ -991,13 +991,13 @@ class ClassNode(AstNode, NamespaceMixin):
         cxx_header="",
         format=None,
         options=None,
-        as_struct=False,
+        parse_keyword="class",
         template_parameters=None,
         ntypemap=None,
         **kwargs
     ):
         """Create ClassNode.
-        Used with class or struct if as_struct==True.
+        Used with classes and structs.
 
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
@@ -1007,11 +1007,13 @@ class ClassNode(AstNode, NamespaceMixin):
 
         Args:
             base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
+            parse_keyword - keyword from decl - "class" or "struct".
         """
         # From arguments
         self.name = name
         self.parent = parent
         self.baseclass = base
+        self.parse_keyword = parse_keyword
         self.cxx_header = cxx_header.split()
         self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
@@ -1021,9 +1023,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.functions = []
         self.namespaces = []
         self.variables = []
-        self.as_struct = (
-            as_struct
-        )  # if True, treat as struct, else as shadow class
 
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
@@ -1047,10 +1046,12 @@ class ClassNode(AstNode, NamespaceMixin):
         if ntypemap is not None:
             # From YAML typemap
             self.typemap = ntypemap
-        elif as_struct:
+        elif parse_keyword == "struct":
             self.typemap = typemap.create_struct_typemap(self, fields)
-        else:
+        elif parse_keyword == "class":
             self.typemap = typemap.create_class_typemap(self, fields)
+        else:
+            raise TypeError("parse_keyword must be 'class' or 'struct'")
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
             # when in the format dictionary is passed in.
@@ -1164,7 +1165,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_impl_filename", "_class")
 
         # As PyArray_Descr
-        if self.as_struct:
+        if self.parse_keyword == "struct":
             self.eval_template("PY_struct_array_descr_create")
             self.eval_template("PY_struct_array_descr_variable")
             self.eval_template("PY_struct_array_descr_name")

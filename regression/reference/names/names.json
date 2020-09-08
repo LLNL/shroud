@@ -28,6 +28,7 @@
                 },
                 "name": "Names2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Names2::",
                 "typemap_name": "Names2"
             },
@@ -57,6 +58,7 @@
                 },
                 "name": "twoTs",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "twoTs::",
                 "template_arguments": [
                     {
@@ -130,6 +132,7 @@
                 },
                 "name": "twoTs",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "twoTs::",
                 "template_arguments": [
                     {
@@ -2265,6 +2268,7 @@
                             "F_C_name_template": "XXX_{C_prefix}{F_name_scope}{underscore_name}{function_suffix}",
                             "none": "foo"
                         },
+                        "parse_keyword": "class",
                         "scope": "ns0::Names::",
                         "typemap_name": "ns0::Names"
                     }
@@ -2411,6 +2415,7 @@
                             "wrap_fortran": false,
                             "wrap_python": false
                         },
+                        "parse_keyword": "class",
                         "scope": "internal::ImplWorker1::",
                         "typemap_name": "internal::ImplWorker1"
                     }
@@ -2470,6 +2475,7 @@
                         },
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2557,6 +2563,7 @@
                         },
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2645,6 +2652,7 @@
                         },
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2732,6 +2740,7 @@
                         },
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2878,6 +2887,7 @@
                         ],
                         "name": "Class1",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "CAPI::Class1::",
                         "typemap_name": "CAPI::Class1"
                     }

@@ -201,6 +201,7 @@
                 ],
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Class2::",
                 "typemap_name": "Class2"
             }
@@ -416,6 +417,7 @@
                         ],
                         "name": "Class1",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "three::Class1::",
                         "typemap_name": "three::Class1"
                     }
@@ -504,6 +506,7 @@
                         ],
                         "name": "class0",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "outer1::class0::",
                         "typemap_name": "outer1::class0"
                     }
@@ -631,6 +634,7 @@
                         ],
                         "name": "class0",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "outer2::class0::",
                         "typemap_name": "outer2::class0"
                     }

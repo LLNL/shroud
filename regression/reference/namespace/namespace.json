@@ -317,7 +317,6 @@
             {
                 "classes": [
                     {
-                        "as_struct": true,
                         "cxx_header": [],
                         "fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
@@ -480,6 +479,7 @@
                         ],
                         "name": "Cstruct1",
                         "options": {},
+                        "parse_keyword": "struct",
                         "scope": "outer::Cstruct1::",
                         "typemap_name": "outer::Cstruct1",
                         "variables": [
@@ -626,6 +626,7 @@
                         },
                         "name": "ClassWork",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "nswork::ClassWork::",
                         "typemap_name": "nswork::ClassWork"
                     }

@@ -79,6 +79,7 @@
                 },
                 "name": "Class1",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Class1::",
                 "typemap_name": "Class1"
             },
@@ -159,6 +160,7 @@
                 },
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Class2::",
                 "typemap_name": "Class2"
             }

@@ -1672,6 +1672,7 @@
                                 ],
                                 "name": "ExClass1",
                                 "options": {},
+                                "parse_keyword": "class",
                                 "python": {
                                     "type": [
                                         "init",
@@ -5186,6 +5187,7 @@
                                 ],
                                 "name": "ExClass2",
                                 "options": {},
+                                "parse_keyword": "class",
                                 "python": {
                                     "type": [
                                         "dealloc",

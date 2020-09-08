@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wraparray_info.h",
@@ -25,6 +24,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
+                "parse_keyword": "struct",
                 "scope": "array_info::",
                 "typemap_name": "array_info",
                 "variables": [

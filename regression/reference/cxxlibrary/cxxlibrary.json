@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
@@ -29,6 +28,7 @@
                 "options": {
                     "PY_struct_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct1::",
                 "typemap_name": "Cstruct1",
                 "variables": [
@@ -79,7 +79,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1_cls.h",
@@ -244,6 +243,7 @@
                 "options": {
                     "PY_struct_arg": "class"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct1_cls::",
                 "typemap_name": "Cstruct1_cls",
                 "variables": [
