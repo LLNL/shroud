@@ -225,6 +225,8 @@ class ToDict(visitor.Visitor):
         )
         if node.baseclass:
             d["baseclass"] = stringify_baseclass(node.baseclass)
+        if node.parse_keyword != node.wrap_as:
+            d["wrap_as"] = node.wrap_as
         self.add_visit_fields(
             node,
             d,

@@ -599,7 +599,7 @@ PY_struct_array_descr_create_template
     ``{PY_prefix}{cxx_class}_create_array_descr``
 
 PY_struct_arg
-    How to wrap arrays - numpy, list or class.
+    How to wrap structs - numpy, list or class.
     Defaults to *numpy*.
 
 PY_struct_array_descr_variable_template

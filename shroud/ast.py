@@ -1043,15 +1043,17 @@ class ClassNode(AstNode, NamespaceMixin):
         if fields is not None:
             if not isinstance(fields, dict):
                 raise TypeError("fields must be a dictionary")
+
+        if parse_keyword not in ["class", "struct"]:
+            raise TypeError("parse_keyword must be 'class' or 'struct'")
+        self.wrap_as = self.parse_keyword
         if ntypemap is not None:
             # From YAML typemap
             self.typemap = ntypemap
-        elif parse_keyword == "struct":
+        elif self.wrap_as == "struct":
             self.typemap = typemap.create_struct_typemap(self, fields)
-        elif parse_keyword == "class":
+        elif self.wrap_as == "class":
             self.typemap = typemap.create_class_typemap(self, fields)
-        else:
-            raise TypeError("parse_keyword must be 'class' or 'struct'")
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
             # when in the format dictionary is passed in.

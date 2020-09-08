@@ -622,7 +622,7 @@ class GenFunctions(object):
         """
         clslist = []
         for cls in node.classes:
-            if cls.parse_keyword == "struct":
+            if cls.wrap_as == "struct":
                 clslist.append(cls)
                 options = cls.options
                 if options.wrap_python and options.PY_struct_arg == "class":

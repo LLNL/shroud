@@ -96,7 +96,7 @@ class Wrapf(util.WrapperMixin):
 
             # how to decide module name, module per class
             #            module_name = cls.options.setdefault('module_name', name.lower())
-            if cls.parse_keyword == "struct":
+            if cls.wrap_as == "struct":
                 self.wrap_struct(cls, fileinfo)
             else:
                 self.wrap_class(cls, fileinfo)
