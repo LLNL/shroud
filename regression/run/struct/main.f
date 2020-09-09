@@ -121,6 +121,8 @@ contains
 
     call assert_false(as_class%associated())
 
+!    as_class = Cstruct_as_class()
+
   end subroutine test_struct_class
 
 end program tester

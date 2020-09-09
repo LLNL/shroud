@@ -202,6 +202,7 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "PY_write_helper_in_util": false,
             "YAML_type_filename_template": "{library_lower}_types.yaml",
+            "class_ctor": null,
             "debug": false,
             "debug_index": false,
             "debug_testsuite": true,

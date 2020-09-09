@@ -241,6 +241,24 @@ C_line_length
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
 
+class_ctor
+  Indicates that this function is a constructor for a struct.
+  The value is the name of the struct.
+  Useful for *wrap_struct_as=class* when used with C.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct_as_class {
+              int x1;
+              int y1;
+            };
+      options:
+        wrap_struct_as: class
+
+    - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+      options:
+        class_ctor: Cstruct_as_class
+
 CXX_standard
   C++ standard. Defaults to *2011*.
   See *nullptr*.

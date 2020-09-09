@@ -1842,7 +1842,13 @@ rv = .false.
 
             self.update_f_module(modules, imports, result_typemap.f_module)
 
-        if options.F_create_generic:
+        if node.options.class_ctor:
+            # Generic constructor for C "class" (wrap_struct_as=class).
+            fmt_func.F_name_generic = node.options.class_ctor
+            fileinfo.f_function_generic.setdefault(
+                fmt_func.F_name_generic, GenericFunction(True, [])
+            ).functions.append(node)
+        elif options.F_create_generic:
             # if return type is templated in C++,
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())

@@ -434,6 +434,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             flatten_namespace=False,
             wrap_class_as="class",
             wrap_struct_as="struct",
+            class_ctor=None,
             C_force_wrapper=False,
             C_line_length=72,
             F_flatten_namespace=False,
