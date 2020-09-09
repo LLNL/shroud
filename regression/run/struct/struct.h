@@ -84,6 +84,7 @@ typedef struct Cstruct_as_numpy Cstruct_as_numpy;
 
 Cstruct_as_class *Create_Cstruct_as_class(void);
 Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y);
+int Cstruct_as_class_sum(Cstruct_as_class *point);
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 

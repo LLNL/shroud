@@ -2439,7 +2439,7 @@ fc_statements = [
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};",
         ],
     ),
     dict(

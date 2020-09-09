@@ -484,6 +484,26 @@ module struct_mod
         end function c_create__cstruct_as_class_args
     end interface
 
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  Cstruct_as_class * point +intent(inout)
+    ! Requested: c_shadow_*_inout
+    ! Match:     c_shadow_inout
+    interface
+        function c_cstruct_as_class_sum(point) &
+                result(SHT_rv) &
+                bind(C, name="STR_cstruct_as_class_sum")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(INOUT) :: point
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_sum
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -783,6 +803,29 @@ contains
         SHT_prv = c_create__cstruct_as_class_args(x, y, SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_class_args
     end function create__cstruct_as_class_args
+
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! int Cstruct_as_class_sum
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  Cstruct_as_class * point +intent(inout)
+    ! Requested: f_shadow_*_inout
+    ! Match:     f_default
+    ! Requested: c_shadow_*_inout
+    ! Match:     c_shadow_inout
+    function cstruct_as_class_sum(point) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        type(cstruct_as_class), intent(INOUT) :: point
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.cstruct_as_class_sum
+        SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
+        ! splicer end function.cstruct_as_class_sum
+    end function cstruct_as_class_sum
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

@@ -127,6 +127,11 @@ Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
     return rv;
 }
 
+int Cstruct_as_class_sum(Cstruct_as_class *point)
+{
+    return point->x1 + point->y1;
+}
+
 // Return sum of x members to test that they were passed in correctly.
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2)

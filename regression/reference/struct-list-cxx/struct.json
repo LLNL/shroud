@@ -1946,6 +1946,46 @@
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
                 }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_as_class_sum",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "point",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct_as_class"
+                            ],
+                            "typemap_name": "Cstruct_as_class"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int Cstruct_as_class_sum(Cstruct_as_class *point)",
+                "declgen": "int Cstruct_as_class_sum(Cstruct_as_class * point +intent(inout))",
+                "fmtdict": {
+                    "function_name": "Cstruct_as_class_sum",
+                    "underscore_name": "cstruct_as_class_sum"
+                },
+                "options": {
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

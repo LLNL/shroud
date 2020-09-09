@@ -129,6 +129,8 @@ contains
     call assert_equals(1, point2%get_x1())
     call assert_equals(2, point2%get_y1())
 
+    call assert_equals(3, cstruct_as_class_sum(point2))
+
   end subroutine test_struct_class
 
 end program tester

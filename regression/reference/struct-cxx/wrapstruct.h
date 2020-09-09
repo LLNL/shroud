@@ -97,6 +97,8 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
 STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHadow_rv);
 
+int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
+
 #ifdef __cplusplus
 }
 #endif

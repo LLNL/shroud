@@ -135,6 +135,11 @@ declarations:
     wrap_python: False
     class_ctor: Cstruct_as_class
 
+- decl: int Cstruct_as_class_sum(Cstruct_as_class *point)
+  options:
+    wrap_python: False
+
+
 ######################################################################
 splicer_code:
   f:
