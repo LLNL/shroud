@@ -52,8 +52,8 @@ void ARR_ArrayWrapper_set_size(ARR_ArrayWrapper * self, int size)
 // Match:     c_default
 int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
 {
-    const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+    const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
+        (self->addr);
     // splicer begin class.ArrayWrapper.method.get_size
     int SHC_rv = SH_this->getSize();
     return SHC_rv;
@@ -128,8 +128,8 @@ double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
 // Match:     c_default
 double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 {
-    const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+    const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
+        (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const
     double * SHC_rv = SH_this->getArrayConst();
     return SHC_rv;
@@ -142,8 +142,8 @@ double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 double * ARR_ArrayWrapper_get_array_const_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
 {
-    const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+    const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
+        (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const_bufferify
     double * SHC_rv = SH_this->getArrayConst();
     DSHC_rv->cxx.addr  = SHC_rv;
@@ -199,8 +199,8 @@ const double * ARR_ArrayWrapper_get_array_c_bufferify(
 const double * ARR_ArrayWrapper_get_array_const_c(
     const ARR_ArrayWrapper * self)
 {
-    const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+    const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
+        (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const_c
     const double * SHC_rv = SH_this->getArrayConstC();
     return SHC_rv;
@@ -213,8 +213,8 @@ const double * ARR_ArrayWrapper_get_array_const_c(
 const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
 {
-    const ArrayWrapper *SH_this =
-        static_cast<const ArrayWrapper *>(self->addr);
+    const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
+        (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const_c_bufferify
     const double * SHC_rv = SH_this->getArrayConstC();
     DSHC_rv->cxx.addr  = const_cast<double *>(SHC_rv);

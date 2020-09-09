@@ -109,6 +109,12 @@ void freeStruct(Cstruct1 *arg1)
 #endif
 
 /*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+Cstruct_as_class *Create_Cstruct_as_class(void)
+{
+    return NULL;
+}
 
 // Return sum of x members to test that they were passed in correctly.
 

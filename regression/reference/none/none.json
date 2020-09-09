@@ -212,9 +212,11 @@
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,
+            "wrap_class_as": "class",
             "wrap_fortran": true,
             "wrap_lua": false,
-            "wrap_python": false
+            "wrap_python": false,
+            "wrap_struct_as": "struct"
         },
         "scope_file": [
             "library"

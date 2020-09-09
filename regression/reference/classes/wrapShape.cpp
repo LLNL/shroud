@@ -36,8 +36,8 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
 // Match:     c_default
 int CLA_Shape_get_ivar(const CLA_Shape * self)
 {
-    const classes::Shape *SH_this =
-        static_cast<const classes::Shape *>(self->addr);
+    const classes::Shape *SH_this = static_cast<const classes::Shape *>
+        (self->addr);
     // splicer begin class.Shape.method.get_ivar
     int SHC_rv = SH_this->get_ivar();
     return SHC_rv;

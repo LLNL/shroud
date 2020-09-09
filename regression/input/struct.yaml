@@ -120,11 +120,13 @@ declarations:
           int y1;
         };
   options:
-    F_struct: class
+    wrap_struct_as: class
     wrap_python: False  # tested in struct-py.yaml
   doxygen:
     description: |
       Treat a struct as a class, i.e. create a shadow derived type.
+
+#- decl: Cstruct_as_class *Create_Cstruct_as_class(void)
 
 ######################################################################
 splicer_code:

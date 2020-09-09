@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
   Python uses `PyTypeObject.tp_base` field.
+- Add options *wrap_class_as* and *wrap_struct_as*.
+  *wrap_struct_as=class* is useful with C code which does not support ``class`` directly.
 
 ### Changed
 

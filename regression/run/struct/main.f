@@ -6,6 +6,7 @@
 ! #######################################################################
 !
 ! Test Fortran API generated from struct.yaml.
+! Used by struct-c, struct-cxx
 !
 program tester
   use fruit
@@ -21,6 +22,7 @@ program tester
   call test_struct
   call test_struct2
   call test_struct_array
+  call test_struct_class
 
   call fruit_summary
   call fruit_finalize
@@ -113,5 +115,12 @@ contains
     call assert_equals(10, size(str1%count), "test_struct_array")
     
   end subroutine test_struct_array
+
+  subroutine test_struct_class
+    type(cstruct_as_class) as_class
+
+    call assert_false(as_class%associated())
+
+  end subroutine test_struct_class
 
 end program tester

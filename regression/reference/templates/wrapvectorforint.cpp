@@ -36,8 +36,8 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHC_rv)
 // Exact:     c_shadow_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)
 {
-    std::vector<int> *SH_this =
-        static_cast<std::vector<int> *>(self->addr);
+    std::vector<int> *SH_this = static_cast<std::vector<int> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.dtor
     delete SH_this;
     self->addr = nullptr;
@@ -54,8 +54,8 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // Match:     c_default
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 {
-    std::vector<int> *SH_this =
-        static_cast<std::vector<int> *>(self->addr);
+    std::vector<int> *SH_this = static_cast<std::vector<int> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.push_back
     SH_this->push_back(*value);
     // splicer end namespace.std.class.vector.method.push_back
@@ -71,8 +71,8 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Match:     c_default
 int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 {
-    std::vector<int> *SH_this =
-        static_cast<std::vector<int> *>(self->addr);
+    std::vector<int> *SH_this = static_cast<std::vector<int> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.at
     int & SHC_rv = SH_this->at(n);
     return &SHC_rv;

@@ -1,5 +1,12 @@
 Read yaml struct.yaml
 Close struct_types.yaml
+class Cstruct_as_class
+C method int getX1()
+C method void setX1(int val +intent(in)+value)
+C method int getY1()
+C method void setY1(int val +intent(in)+value)
+Close wrapCstruct_as_class.h
+Close wrapCstruct_as_class.c
 C function int passStructByValue(Cstruct1 arg +intent(in)+value)
 C function int passStruct1(const Cstruct1 * arg +intent(in))
 C function int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))
@@ -21,6 +28,10 @@ class Cstruct_list
 class Cstruct_numpy
 class Arrays1
 class Cstruct_as_class
+C-interface, Fortran method int getX1()
+C-interface, Fortran method void setX1(int val +intent(in)+value)
+C-interface, Fortran method int getY1()
+C-interface, Fortran method void setY1(int val +intent(in)+value)
 C-interface, Fortran function int passStructByValue(Cstruct1 arg +intent(in)+value)
 C-interface, Fortran function int passStruct1(const Cstruct1 * arg +intent(in))
 C-interface, Fortran function int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))

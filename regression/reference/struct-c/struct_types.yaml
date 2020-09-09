@@ -24,11 +24,14 @@ typemap:
       f_derived_type: cstruct1
   - type: Cstruct_as_class
     fields:
-      base: struct
-      c_header:
-      - struct.h
-      c_type: Cstruct_as_class
+      base: shadow
+      wrap_header:
+      - typesstruct.h
+      c_type: STR_Cstruct_as_class
+      f_module_name: struct_mod
       f_derived_type: cstruct_as_class
+      f_capsule_data_type: STR_SHROUD_capsule_data
+      f_to_c: "{f_var}%cxxmem"
   - type: Cstruct_list
     fields:
       base: struct

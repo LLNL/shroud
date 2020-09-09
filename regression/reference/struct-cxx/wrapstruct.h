@@ -62,13 +62,6 @@ struct s_STR_arrays1 {
 };
 typedef struct s_STR_arrays1 STR_arrays1;
 
-
-struct s_STR_cstruct_as_class {
-    int x1;
-    int y1;
-};
-typedef struct s_STR_cstruct_as_class STR_cstruct_as_class;
-
 // splicer begin C_declarations
 // splicer end C_declarations
 

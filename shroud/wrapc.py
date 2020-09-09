@@ -979,7 +979,7 @@ class Wrapc(util.WrapperMixin):
                     append_format(
                         setup_this,
                         "{c_const}{namespace_scope}{cxx_type} *{CXX_this} =\t "
-                        "static_cast<{c_const}{namespace_scope}{cxx_type} *>({c_var}->addr);",
+                        "{cast_static}{c_const}{namespace_scope}{cxx_type} *{cast1}{c_var}->addr{cast2};",
                         fmt_func,
                     )
 

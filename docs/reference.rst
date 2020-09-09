@@ -375,6 +375,18 @@ show_splicer_comments
     else, do not show the comments.
     Only the global level option is used.
 
+wrap_class_as
+    Defines how a ``class`` should be wrapped.
+    If *class*, wrap using a shadow type.
+    If *struct*, wrap the same as a ``struct``.
+    Default is *class*.
+
+wrap_struct_as
+    Defines how a ``struct`` should be wrapped.
+    If *struct*, wrap a struct as a Fortran derived-type.
+    If *class*, wrap a struct the same as a class using a shadow type.
+    Default is *struct*.
+    
 wrap_c
   If *true*, create C wrappers.
   Defaults to *true*.

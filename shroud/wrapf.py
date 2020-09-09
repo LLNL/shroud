@@ -90,7 +90,8 @@ class Wrapf(util.WrapperMixin):
 
         self._push_splicer("class")
         for cls in node.classes:
-            if not cls.options.wrap_fortran:
+            cls_options = cls.options
+            if not cls_options.wrap_fortran:
                 continue
             fileinfo.begin_class()
 

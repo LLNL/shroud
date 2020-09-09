@@ -1570,7 +1570,7 @@
                     "C_header_filename": "wrapCstruct_as_class.h",
                     "C_impl_filename": "wrapCstruct_as_class.cpp",
                     "C_name_scope": "Cstruct_as_class_",
-                    "C_type_name": "STR_cstruct_as_class",
+                    "C_type_name": "STR_Cstruct_as_class",
                     "F_derived_name": "cstruct_as_class",
                     "F_name_scope": "cstruct_as_class_",
                     "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
@@ -1581,10 +1581,156 @@
                     "cxx_type": "Cstruct_as_class",
                     "file_scope": "Cstruct_as_class"
                 },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "getX1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getX1()",
+                        "declgen": "int getX1()",
+                        "fmtdict": {
+                            "function_name": "getX1",
+                            "underscore_name": "get_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->x1;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "setX1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setX1(int val)",
+                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "function_name": "setX1",
+                            "underscore_name": "set_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->x1 = val;",
+                                "return;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "getY1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getY1()",
+                        "declgen": "int getY1()",
+                        "fmtdict": {
+                            "function_name": "getY1",
+                            "underscore_name": "get_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->y1;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "setY1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setY1(int val)",
+                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "function_name": "setY1",
+                            "underscore_name": "set_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->y1 = val;",
+                                "return;"
+                            ]
+                        }
+                    }
+                ],
                 "name": "Cstruct_as_class",
                 "options": {
-                    "F_struct": "class",
-                    "wrap_python": false
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
                 },
                 "parse_keyword": "struct",
                 "scope": "Cstruct_as_class::",
@@ -1634,7 +1780,8 @@
                         "name": "y1",
                         "options": {}
                     }
-                ]
+                ],
+                "wrap_as": "class"
             }
         ],
         "copyright": [

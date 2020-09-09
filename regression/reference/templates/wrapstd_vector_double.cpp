@@ -36,8 +36,8 @@ TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
 // Exact:     c_shadow_dtor
 void TEM_vector_double_dtor(TEM_vector_double * self)
 {
-    std::vector<double> *SH_this =
-        static_cast<std::vector<double> *>(self->addr);
+    std::vector<double> *SH_this = static_cast<std::vector<double> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.dtor
     delete SH_this;
     self->addr = nullptr;
@@ -55,8 +55,8 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value)
 {
-    std::vector<double> *SH_this =
-        static_cast<std::vector<double> *>(self->addr);
+    std::vector<double> *SH_this = static_cast<std::vector<double> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.push_back
     SH_this->push_back(*value);
     // splicer end namespace.std.class.vector.method.push_back
@@ -72,8 +72,8 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Match:     c_default
 double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 {
-    std::vector<double> *SH_this =
-        static_cast<std::vector<double> *>(self->addr);
+    std::vector<double> *SH_this = static_cast<std::vector<double> *>
+        (self->addr);
     // splicer begin namespace.std.class.vector.method.at
     double & SHC_rv = SH_this->at(n);
     return &SHC_rv;

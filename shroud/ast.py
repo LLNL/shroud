@@ -432,6 +432,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug_testsuite=False,
             # They change when a function is inserted.
             flatten_namespace=False,
+            wrap_class_as="class",
+            wrap_struct_as="struct",
             C_force_wrapper=False,
             C_line_length=72,
             F_flatten_namespace=False,
@@ -1044,9 +1046,12 @@ class ClassNode(AstNode, NamespaceMixin):
             if not isinstance(fields, dict):
                 raise TypeError("fields must be a dictionary")
 
-        if parse_keyword not in ["class", "struct"]:
+        if self.parse_keyword == "struct":
+            self.wrap_as = self.options.wrap_struct_as
+        elif self.parse_keyword == "class":
+            self.wrap_as = self.options.wrap_class_as
+        else:
             raise TypeError("parse_keyword must be 'class' or 'struct'")
-        self.wrap_as = self.parse_keyword
         if ntypemap is not None:
             # From YAML typemap
             self.typemap = ntypemap
