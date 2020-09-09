@@ -442,10 +442,57 @@ module struct_mod
         end function c_get_global_struct_list
     end interface
 
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    interface
+        function c_create__cstruct_as_class(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="STR_create__cstruct_as_class")
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_create__cstruct_as_class
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_create__cstruct_as_class_args(x, y, SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="STR_create__cstruct_as_class_args")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: x
+            integer(C_INT), value, intent(IN) :: y
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_create__cstruct_as_class_args
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
+
+    interface Cstruct_as_class
+        module procedure create__cstruct_as_class
+        module procedure create__cstruct_as_class_args
+    end interface Cstruct_as_class
 
 contains
 
@@ -688,6 +735,54 @@ contains
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.get_global_struct_list
     end function get_global_struct_list
+
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Cstruct_as_class * Create_Cstruct_as_class
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    function create__cstruct_as_class() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(cstruct_as_class) :: SHT_rv
+        ! splicer begin function.create__cstruct_as_class
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_create__cstruct_as_class(SHT_rv%cxxmem)
+        ! splicer end function.create__cstruct_as_class
+    end function create__cstruct_as_class
+
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    function create__cstruct_as_class_args(x, y) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: x
+        integer(C_INT), value, intent(IN) :: y
+        type(cstruct_as_class) :: SHT_rv
+        ! splicer begin function.create__cstruct_as_class_args
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_create__cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        ! splicer end function.create__cstruct_as_class_args
+    end function create__cstruct_as_class_args
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

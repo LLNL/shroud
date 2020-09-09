@@ -91,6 +91,12 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 STR_cstruct_list * STR_get_global_struct_list(void);
 
+STR_Cstruct_as_class * STR_create__cstruct_as_class(
+    STR_Cstruct_as_class * SHadow_rv);
+
+STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHadow_rv);
+
 #ifdef __cplusplus
 }
 #endif

@@ -126,10 +126,14 @@ declarations:
     description: |
       Treat a struct as a class, i.e. create a shadow derived type.
 
-#- decl: Cstruct_as_class *Create_Cstruct_as_class(void)
-#  options:
-#    wrap_python: False
-#    class_ctor: Cstruct_as_class
+- decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_class
+- decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_class
 
 ######################################################################
 splicer_code:

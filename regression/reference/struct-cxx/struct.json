@@ -2645,6 +2645,234 @@
                     "underscore_name": "get_global_struct_list"
                 },
                 "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "STR_Cstruct_as_class",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct_as_class",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_*_result",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_as_class",
+                        "f_type": "type(cstruct_as_class)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_*_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_*_result",
+                        "stmtc1": "c_shadow_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "fmtdict": {
+                    "C_name": "STR_create__cstruct_as_class",
+                    "C_prototype": "STR_Cstruct_as_class * SHadow_rv",
+                    "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_call": "c_create__cstruct_as_class",
+                    "F_C_name": "c_create__cstruct_as_class",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "create__cstruct_as_class",
+                    "F_name_generic": "Cstruct_as_class",
+                    "F_name_impl": "create__cstruct_as_class",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                    "function_name": "Create_Cstruct_as_class",
+                    "underscore_name": "create__cstruct_as_class"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "x",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_x",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_x",
+                            "c_var": "x",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "x",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "y": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "y",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_y",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_y",
+                            "c_var": "y",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "y",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "STR_Cstruct_as_class",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct_as_class",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_*_result",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_as_class",
+                        "f_type": "type(cstruct_as_class)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_*_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_*_result",
+                        "stmtc1": "c_shadow_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class_args",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "y",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "x,\t y",
+                    "C_name": "STR_create__cstruct_as_class_args",
+                    "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHadow_rv",
+                    "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_call": "c_create__cstruct_as_class_args",
+                    "F_C_name": "c_create__cstruct_as_class_args",
+                    "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
+                    "F_arguments": "x,\t y",
+                    "F_name_function": "create__cstruct_as_class_args",
+                    "F_name_generic": "Cstruct_as_class",
+                    "F_name_impl": "create__cstruct_as_class_args",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                    "function_name": "Create_Cstruct_as_class_args",
+                    "underscore_name": "create__cstruct_as_class_args"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

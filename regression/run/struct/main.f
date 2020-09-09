@@ -117,11 +117,17 @@ contains
   end subroutine test_struct_array
 
   subroutine test_struct_class
-    type(cstruct_as_class) as_class
+    type(cstruct_as_class) point1, point2
 
-    call assert_false(as_class%associated())
+    call assert_false(point1%associated())
 
-!    as_class = Cstruct_as_class()
+    point1 = Cstruct_as_class()
+    call assert_equals(0, point1%get_x1())
+    call assert_equals(0, point1%get_y1())
+
+    point2 = Cstruct_as_class(1, 2)
+    call assert_equals(1, point2%get_x1())
+    call assert_equals(2, point2%get_y1())
 
   end subroutine test_struct_class
 

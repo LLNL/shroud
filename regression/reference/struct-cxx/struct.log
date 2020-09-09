@@ -24,6 +24,8 @@ C function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent
 C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)
 C function Cstruct_list * get_global_struct_list()
+C function Cstruct_as_class * Create_Cstruct_as_class()
+C function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
 Close wrapstruct.h
 Close wrapstruct.cpp
 Close typesstruct.h
@@ -49,4 +51,6 @@ C-interface, Fortran function Cstruct1 * returnStructPtr1(int i +intent(in)+valu
 C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)
 C-interface, Fortran function Cstruct_list * get_global_struct_list()
+C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class()
+C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
 Close wrapfstruct.f

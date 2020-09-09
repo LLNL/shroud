@@ -2868,6 +2868,89 @@
                     "underscore_name": "get_global_struct_list"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "fmtdict": {
+                    "function_name": "Create_Cstruct_as_class",
+                    "underscore_name": "create__cstruct_as_class"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class_args",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "y",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)",
+                "fmtdict": {
+                    "function_name": "Create_Cstruct_as_class_args",
+                    "underscore_name": "create__cstruct_as_class_args"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
             }
         ],
         "language": "c",

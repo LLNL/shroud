@@ -308,6 +308,44 @@ STR_cstruct_list * STR_get_global_struct_list(void)
     // splicer end function.get_global_struct_list
 }
 
+// ----------------------------------------
+// Function:  Cstruct_as_class * Create_Cstruct_as_class
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+STR_Cstruct_as_class * STR_create__cstruct_as_class(
+    STR_Cstruct_as_class * SHadow_rv)
+{
+    // splicer begin function.create__cstruct_as_class
+    Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class();
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
+    // splicer end function.create__cstruct_as_class
+}
+
+// ----------------------------------------
+// Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  int x +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int y +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHadow_rv)
+{
+    // splicer begin function.create__cstruct_as_class_args
+    Cstruct_as_class * SHCXX_rv = Create_Cstruct_as_class_args(x, y);
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
+    // splicer end function.create__cstruct_as_class_args
+}
+
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
 {
