@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin class.Singleton.C_declarations
 // splicer end class.Singleton.C_declarations
 
-CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv);
+CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHadow_rv);
 
 #ifdef __cplusplus
 }

@@ -23,13 +23,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Exact:     c_shadow_scalar_ctor
-FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHC_rv)
+FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 {
     // splicer begin class.Class2.method.ctor
     forward::Class2 *SHCXX_rv = new forward::Class2();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 1;
-    return SHC_rv;
+    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHadow_rv->idtor = 1;
+    return SHadow_rv;
     // splicer end class.Class2.method.ctor
 }
 

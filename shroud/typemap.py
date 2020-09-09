@@ -2456,11 +2456,11 @@ fc_statements = [
         buf_extra=["shadow"],
         c_local_var="pointer",
         post_call=[
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = {cxx_nonconst_ptr};",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         return_cptr=True,
@@ -2479,11 +2479,11 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = {cxx_nonconst_ptr};",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         return_cptr=True,
@@ -2507,11 +2507,11 @@ fc_statements = [
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         owner="caller",

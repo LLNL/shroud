@@ -30,6 +30,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_native_*_in_cdesc",
                             "stmt1": "c_native_*_cdesc"
                         },
@@ -124,6 +125,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
                         }
@@ -143,6 +145,7 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_value",
                             "stmt0": "c_void_*_out_cdesc",
                             "stmt1": "c_void_*_cdesc"
                         }
@@ -562,6 +565,7 @@
                             "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -594,6 +598,7 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_value",
                             "stmt0": "c_void_*_out_buf_cdesc",
                             "stmt1": "c_void_*_cdesc"
                         },
@@ -884,6 +889,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -984,6 +990,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },

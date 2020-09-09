@@ -263,6 +263,7 @@
                             "cxx_var": "name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_char_*_inout",
                             "stmt1": "c_default"
                         },
@@ -362,6 +363,7 @@
                             "cxx_var": "ARG_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_char_*_inout_buf",
                             "stmt1": "c_char_*_inout_buf"
                         },
@@ -521,6 +523,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -626,6 +629,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -731,6 +735,7 @@
                             "cxx_var": "ARG_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_rv",
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
                         },
@@ -769,6 +774,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -870,6 +876,7 @@
                             "cxx_var": "ARG_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_rv",
                             "stmt0": "c_string_&_in_buf",
                             "stmt1": "c_string_in_buf"
                         },
@@ -901,6 +908,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -1012,6 +1020,7 @@
                             "cxx_var": "ARG_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout",
                             "stmt1": "c_string_inout"
                         },
@@ -1050,6 +1059,7 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_value",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
@@ -1185,6 +1195,7 @@
                             "cxx_var": "ARG_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout_buf",
                             "stmt1": "c_string_inout_buf"
                         },
@@ -1217,6 +1228,7 @@
                             "cxx_var": "value",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_value",
                             "stmt0": "c_native_*_out_buf",
                             "stmt1": "c_default"
                         },
@@ -1457,6 +1469,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1506,6 +1519,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
+                            "shadow_var": "SHadow_arg2",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1685,6 +1699,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1734,6 +1749,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_arg2",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1967,6 +1983,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -2103,6 +2120,7 @@
                                         "cxx_var": "ARG_rv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
+                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
@@ -2156,7 +2174,7 @@
                                 "declgen": "Names() +name(defaultctor)",
                                 "fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_defaultctor",
-                                    "C_prototype": "TES_ns0_Names * SHC_rv",
+                                    "C_prototype": "TES_ns0_Names * SHadow_rv",
                                     "C_return_type": "TES_ns0_Names *",
                                     "F_C_call": "xxx_tes_names_defaultctor",
                                     "F_C_name": "xxx_tes_names_defaultctor",
@@ -2210,6 +2228,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -2253,6 +2272,7 @@
                                     "c_member": "->",
                                     "c_var": "self2",
                                     "function_name": "method2",
+                                    "shadow_var": "SHadow_self2",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -2876,6 +2896,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "Member1",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",

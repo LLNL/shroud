@@ -20,13 +20,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  Circle
 // Exact:     c_shadow_scalar_ctor
-CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv)
+CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv)
 {
     // splicer begin class.Circle.method.ctor
     classes::Circle *SHCXX_rv = new classes::Circle();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 3;
-    return SHC_rv;
+    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHadow_rv->idtor = 3;
+    return SHadow_rv;
     // splicer end class.Circle.method.ctor
 }
 

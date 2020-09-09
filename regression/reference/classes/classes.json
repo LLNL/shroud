@@ -113,6 +113,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
@@ -165,7 +166,7 @@
                         "declgen": "Class1()",
                         "fmtdict": {
                             "C_name": "CLA_Class1_ctor_default",
-                            "C_prototype": "CLA_Class1 * SHC_rv",
+                            "C_prototype": "CLA_Class1 * SHadow_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_call": "c_class1_ctor_default",
                             "F_C_name": "c_class1_ctor_default",
@@ -204,6 +205,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -251,6 +253,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
@@ -319,7 +322,7 @@
                         "fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "CLA_Class1_ctor_flag",
-                            "C_prototype": "int flag,\t CLA_Class1 * SHC_rv",
+                            "C_prototype": "int flag,\t CLA_Class1 * SHadow_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_call": "c_class1_ctor_flag",
                             "F_C_name": "c_class1_ctor_flag",
@@ -374,6 +377,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "delete",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_shadow_dtor",
                             "stmt1": "f_default",
                             "stmtc0": "c_shadow_dtor",
@@ -396,6 +400,7 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -463,6 +468,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "Method1",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "method1"
                         },
                         "options": {}
@@ -483,6 +489,7 @@
                                     "cxx_var": "SHCXX_obj2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_obj2",
                                     "stmt0": "c_shadow_&_in",
                                     "stmt1": "c_shadow_in"
                                 },
@@ -537,6 +544,7 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_BOOL",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_bool_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -626,6 +634,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "bool SHC_rv",
                             "function_name": "equivalent",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "equivalent"
                         },
                         "options": {
@@ -670,6 +679,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "returnThis",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -698,6 +708,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
+                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_bool_scalar_in",
                                     "stmt1": "c_default"
                                 }
@@ -716,6 +727,7 @@
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_name",
                                     "stmt0": "c_string_&_in",
                                     "stmt1": "c_string_in"
                                 }
@@ -733,6 +745,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_*_result",
                                 "stmt1": "c_shadow_result"
                             },
@@ -802,7 +815,7 @@
                         "fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "CLA_Class1_return_this_buffer",
-                            "C_prototype": "CLA_Class1 * self,\t char * name,\t bool flag,\t CLA_Class1 * SHC_rv",
+                            "C_prototype": "CLA_Class1 * self,\t char * name,\t bool flag,\t CLA_Class1 * SHadow_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_call": "c_class1_return_this_buffer_bufferify",
                             "F_C_name": "c_class1_return_this_buffer",
@@ -819,6 +832,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "returnThisBuffer",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "return_this_buffer"
                         },
                         "options": {
@@ -842,6 +856,7 @@
                                     "cxx_var": "flag",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
+                                    "shadow_var": "SHadow_flag",
                                     "stmt0": "c_bool_scalar_in_buf",
                                     "stmt1": "c_default"
                                 },
@@ -873,6 +888,7 @@
                                     "cxx_var": "SHCXX_name",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_name",
                                     "stmt0": "c_string_&_in_buf",
                                     "stmt1": "c_string_in_buf"
                                 },
@@ -903,6 +919,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_*_result_buf",
                                 "stmt1": "c_shadow_result"
                             }
@@ -966,7 +983,7 @@
                         "fmtdict": {
                             "C_call_list": "SHCXX_name,\t flag",
                             "C_name": "CLA_Class1_return_this_buffer_bufferify",
-                            "C_prototype": "CLA_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t CLA_Class1 * SHC_rv",
+                            "C_prototype": "CLA_Class1 * self,\t char * name,\t int Lname,\t bool flag,\t CLA_Class1 * SHadow_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
                             "c_const": "",
@@ -976,6 +993,7 @@
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "returnThisBuffer",
                             "function_suffix": "_bufferify",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "return_this_buffer"
                         },
                         "options": {
@@ -998,6 +1016,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_*_result",
                                 "stmt1": "c_shadow_result"
                             },
@@ -1056,7 +1075,7 @@
                         },
                         "fmtdict": {
                             "C_name": "CLA_Class1_getclass3",
-                            "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * SHC_rv",
+                            "C_prototype": "const CLA_Class1 * self,\t CLA_Class1 * SHadow_rv",
                             "C_return_type": "CLA_Class1 *",
                             "F_C_call": "c_class1_getclass3",
                             "F_C_name": "c_class1_getclass3",
@@ -1074,6 +1093,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1 * SHCXX_rv",
                             "function_name": "getclass3",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "getclass3"
                         },
                         "options": {
@@ -1095,6 +1115,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_string_&_result",
                                 "stmt1": "c_string_result"
                             },
@@ -1171,6 +1192,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "options": {}
@@ -1192,6 +1214,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_SHF_rv",
                                     "stmt0": "c_string_&_result_buf_allocatable",
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
@@ -1222,6 +1245,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_void_scalar_result_buf",
                                 "stmt1": "c_default"
                             }
@@ -1277,6 +1301,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
                             "function_suffix": "_bufferify",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "options": {
@@ -1304,6 +1329,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -1357,6 +1383,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -1437,6 +1464,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                             "function_name": "directionFunc",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "direction_func"
                         },
                         "options": {}
@@ -1455,6 +1483,7 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -1501,6 +1530,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "getM_flag",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_m_flag"
                         },
                         "options": {
@@ -1527,6 +1557,7 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -1573,6 +1604,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "getTest",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_test"
                         },
                         "options": {
@@ -1601,6 +1633,7 @@
                                     "cxx_var": "val",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
                                     "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -1664,6 +1697,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "setTest",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -1788,6 +1822,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_string_&_result",
                                 "stmt1": "c_string_result"
                             },
@@ -1864,6 +1899,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "options": {}
@@ -1885,6 +1921,7 @@
                                     "cxx_var": "SHCXX_rv",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_SHF_rv",
                                     "stmt0": "c_string_&_result_buf_allocatable",
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
@@ -1915,6 +1952,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_CPTR",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_void_scalar_result_buf",
                                 "stmt1": "c_default"
                             }
@@ -1970,6 +2008,7 @@
                             "cxx_rv_decl": "const std::string & SHCXX_rv",
                             "function_name": "getName",
                             "function_suffix": "_bufferify",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
                         "options": {
@@ -2024,6 +2063,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_&_result",
                                 "stmt1": "c_shadow_result"
                             },
@@ -2082,7 +2122,7 @@
                         "fmtdict": {
                             "CXX_this_call": "classes::Singleton::",
                             "C_name": "CLA_Singleton_get_reference",
-                            "C_prototype": "CLA_Singleton * SHC_rv",
+                            "C_prototype": "CLA_Singleton * SHadow_rv",
                             "C_return_type": "CLA_Singleton *",
                             "F_C_call": "c_singleton_get_reference",
                             "F_C_name": "c_singleton_get_reference",
@@ -2101,6 +2141,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "classes::Singleton & SHCXX_rv",
                             "function_name": "getReference",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_reference"
                         },
                         "options": {}
@@ -2151,6 +2192,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "2",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
@@ -2203,7 +2245,7 @@
                         "declgen": "Shape()",
                         "fmtdict": {
                             "C_name": "CLA_Shape_ctor",
-                            "C_prototype": "CLA_Shape * SHC_rv",
+                            "C_prototype": "CLA_Shape * SHadow_rv",
                             "C_return_type": "CLA_Shape *",
                             "F_C_call": "c_shape_ctor",
                             "F_C_name": "c_shape_ctor",
@@ -2239,6 +2281,7 @@
                                 "cxx_var": "SHC_rv",
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_scalar_result",
                                 "stmt1": "c_default"
                             },
@@ -2304,6 +2347,7 @@
                             "c_var": "self",
                             "cxx_rv_decl": "int SHC_rv",
                             "function_name": "get_ivar",
+                            "shadow_var": "SHadow_self",
                             "underscore_name": "get_ivar"
                         },
                         "options": {}
@@ -2361,6 +2405,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "3",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
@@ -2413,7 +2458,7 @@
                         "declgen": "Circle()",
                         "fmtdict": {
                             "C_name": "CLA_Circle_ctor",
-                            "C_prototype": "CLA_Circle * SHC_rv",
+                            "C_prototype": "CLA_Circle * SHadow_rv",
                             "C_return_type": "CLA_Circle *",
                             "F_C_call": "c_circle_ctor",
                             "F_C_name": "c_circle_ctor",
@@ -2473,6 +2518,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -2526,6 +2572,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -2622,6 +2669,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_shadow_scalar_in",
                             "stmt1": "c_shadow_scalar_in"
                         },
@@ -2734,6 +2782,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_shadow_*_in",
                             "stmt1": "c_shadow_in"
                         },
@@ -2788,6 +2837,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -2887,6 +2937,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_shadow_*_result",
                         "stmt1": "c_shadow_result"
                     },
@@ -2921,7 +2972,7 @@
                 "declgen": "const Class1 * getclass2()",
                 "fmtdict": {
                     "C_name": "CLA_getclass2",
-                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_prototype": "CLA_Class1 * SHadow_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_call": "c_getclass2",
                     "F_C_name": "c_getclass2",
@@ -2954,6 +3005,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_shadow_*_result",
                         "stmt1": "c_shadow_result"
                     },
@@ -3008,7 +3060,7 @@
                 "declgen": "Class1 * getclass3()",
                 "fmtdict": {
                     "C_name": "CLA_getclass3",
-                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_prototype": "CLA_Class1 * SHadow_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_call": "c_getclass3",
                     "F_C_name": "c_getclass3",
@@ -3041,6 +3093,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_shadow_&_result",
                         "stmt1": "c_shadow_result"
                     },
@@ -3075,7 +3128,7 @@
                 "declgen": "const Class1 & getConstClassReference()",
                 "fmtdict": {
                     "C_name": "CLA_get_const_class_reference",
-                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_prototype": "CLA_Class1 * SHadow_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_call": "c_get_const_class_reference",
                     "F_C_name": "c_get_const_class_reference",
@@ -3108,6 +3161,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_shadow_&_result",
                         "stmt1": "c_shadow_result"
                     },
@@ -3162,7 +3216,7 @@
                 "declgen": "Class1 & getClassReference()",
                 "fmtdict": {
                     "C_name": "CLA_get_class_reference",
-                    "C_prototype": "CLA_Class1 * SHC_rv",
+                    "C_prototype": "CLA_Class1 * SHadow_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_call": "c_get_class_reference",
                     "F_C_name": "c_get_class_reference",
@@ -3198,6 +3252,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_flag",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -3227,6 +3282,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "1",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_shadow_scalar_result",
                         "stmt1": "c_shadow_scalar_result"
                     },
@@ -3275,7 +3331,7 @@
                 "fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "CLA_get_class_copy",
-                    "C_prototype": "int flag,\t CLA_Class1 * SHC_rv",
+                    "C_prototype": "int flag,\t CLA_Class1 * SHadow_rv",
                     "C_return_type": "CLA_Class1 *",
                     "F_C_call": "c_get_class_copy",
                     "F_C_name": "c_get_class_copy",
@@ -3311,6 +3367,7 @@
                             "cxx_var": "arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -3412,6 +3469,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -3491,6 +3549,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result",
                         "stmt1": "c_string_result"
                     },
@@ -3583,6 +3642,7 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_SHF_rv",
                             "stmt0": "c_string_&_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
@@ -3613,6 +3673,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_void_scalar_result_buf",
                         "stmt1": "c_default"
                     }

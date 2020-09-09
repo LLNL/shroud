@@ -20,13 +20,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Exact:     c_shadow_scalar_ctor
-ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHC_rv)
+ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
     ArrayWrapper *SHCXX_rv = new ArrayWrapper();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 1;
-    return SHC_rv;
+    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHadow_rv->idtor = 1;
+    return SHadow_rv;
     // splicer end class.ArrayWrapper.method.ctor
 }
 

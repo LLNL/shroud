@@ -27,6 +27,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -101,6 +102,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result",
                         "stmt1": "c_string_result"
                     },
@@ -176,6 +178,7 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_SHF_rv",
                             "stmt0": "c_string_&_result_buf",
                             "stmt1": "c_string_result_buf"
                         },
@@ -206,6 +209,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_void_scalar_result_buf",
                         "stmt1": "c_default"
                     }

@@ -27,7 +27,7 @@ extern "C" {
 // splicer begin class.Circle.C_declarations
 // splicer end class.Circle.C_declarations
 
-CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHC_rv);
+CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv);
 
 #ifdef __cplusplus
 }

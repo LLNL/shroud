@@ -20,13 +20,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  Shape
 // Exact:     c_shadow_scalar_ctor
-CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHC_rv)
+CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
 {
     // splicer begin class.Shape.method.ctor
     classes::Shape *SHCXX_rv = new classes::Shape();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
-    return SHC_rv;
+    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHadow_rv->idtor = 2;
+    return SHadow_rv;
     // splicer end class.Shape.method.ctor
 }
 

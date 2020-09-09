@@ -38,9 +38,9 @@ enum CLA_Class1_DIRECTION {
 // splicer begin class.Class1.C_declarations
 // splicer end class.Class1.C_declarations
 
-CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv);
 
-CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHadow_rv);
 
 void CLA_Class1_delete(CLA_Class1 * self);
 
@@ -51,13 +51,13 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2);
 void CLA_Class1_return_this(CLA_Class1 * self);
 
 CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
-    char * name, bool flag, CLA_Class1 * SHC_rv);
+    char * name, bool flag, CLA_Class1 * SHadow_rv);
 
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
-    char * name, int Lname, bool flag, CLA_Class1 * SHC_rv);
+    char * name, int Lname, bool flag, CLA_Class1 * SHadow_rv);
 
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
-    CLA_Class1 * SHC_rv);
+    CLA_Class1 * SHadow_rv);
 
 const char * CLA_Class1_get_name(CLA_Class1 * self);
 

@@ -21,13 +21,14 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Exact:     c_shadow_scalar_ctor
-TEM_vector_double * TEM_vector_double_ctor(TEM_vector_double * SHC_rv)
+TEM_vector_double * TEM_vector_double_ctor(
+    TEM_vector_double * SHadow_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
     std::vector<double> *SHCXX_rv = new std::vector<double>();
-    SHC_rv->addr = static_cast<void *>(SHCXX_rv);
-    SHC_rv->idtor = 2;
-    return SHC_rv;
+    SHadow_rv->addr = static_cast<void *>(SHCXX_rv);
+    SHadow_rv->idtor = 2;
+    return SHadow_rv;
     // splicer end namespace.std.class.vector.method.ctor
 }
 
