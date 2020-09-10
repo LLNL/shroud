@@ -86,6 +86,13 @@
                     "C_type_name": "CLA_Class1",
                     "F_derived_name": "class1",
                     "F_name_scope": "class1_",
+                    "LUA_class_reg": "l_Class1_Reg",
+                    "LUA_ctor_name": "Class1",
+                    "LUA_metadata": "Class1.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Class1_Type",
+                    "LUA_userdata_var": "SH_this",
                     "PY_PyObject": "PY_Class1",
                     "PY_PyTypeObject": "PY_Class1_Type",
                     "PY_capsule_name": "PY_Class1_capsule_name",
@@ -126,6 +133,12 @@
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtl": {
+                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -177,6 +190,8 @@
                             "F_name_impl": "class1_ctor_default",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "ctor",
+                            "LUA_name_impl": "l_Class1_ctor",
                             "PY_name_impl": "PY_Class1_tp_init_default",
                             "PY_type_impl": "PY_Class1_tp_init_default",
                             "PY_type_method": "tp_init",
@@ -220,6 +235,17 @@
                                     "stmt1": "f_default",
                                     "stmtc0": "c_native_scalar_in",
                                     "stmtc1": "c_default"
+                                },
+                                "fmtl": {
+                                    "LUA_index": 1,
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "lua_tointeger(L, 1)",
+                                    "c_var_len": "Lflag",
+                                    "cxx_member": ".",
+                                    "cxx_type": "int",
+                                    "cxx_var": "flag",
+                                    "lua_var": "SH_Lua_flag"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -266,6 +292,12 @@
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtl": {
+                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -372,6 +404,8 @@
                             "F_name_generic": "delete",
                             "F_name_impl": "class1_delete",
                             "F_subprogram": "subroutine",
+                            "LUA_name": "delete",
+                            "LUA_name_impl": "l_Class1_delete",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -413,6 +447,12 @@
                                 "stmt1": "f_default",
                                 "stmtc0": "c_native_scalar_result",
                                 "stmtc1": "c_default"
+                            },
+                            "fmtl": {
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -461,6 +501,8 @@
                             "F_name_impl": "class1_method1",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "Method1",
+                            "LUA_name_impl": "l_Class1_method1",
                             "PY_name_impl": "PY_Method1",
                             "c_const": "",
                             "c_deref": "*",
@@ -1129,6 +1171,12 @@
                                 "stmtc0": "c_string_scalar_result_buf",
                                 "stmtc1": "c_string_scalar_result_buf"
                             },
+                            "fmtl": {
+                                "c_var": "SHCXX_rv.c_str()",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv"
+                            },
                             "fmtpy": {
                                 "array_size": "1",
                                 "c_deref": "",
@@ -1185,6 +1233,8 @@
                             "F_name_impl": "class1_get_name",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "getName",
+                            "LUA_name_impl": "l_Class1_get_name",
                             "PY_name_impl": "PY_getName",
                             "c_const": "",
                             "c_deref": "*",
@@ -1345,6 +1395,17 @@
                                     "stmtc0": "c_native_scalar_in",
                                     "stmtc1": "c_default"
                                 },
+                                "fmtl": {
+                                    "LUA_index": 1,
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "lua_tointeger(L, 1)",
+                                    "c_var_len": "Larg",
+                                    "cxx_member": ".",
+                                    "cxx_type": "classes::Class1::DIRECTION",
+                                    "cxx_var": "arg",
+                                    "lua_var": "SH_Lua_arg"
+                                },
                                 "fmtpy": {
                                     "c_const": "",
                                     "c_deref": "",
@@ -1396,6 +1457,12 @@
                                 "stmt1": "f_default",
                                 "stmtc0": "c_native_scalar_result",
                                 "stmtc1": "c_default"
+                            },
+                            "fmtl": {
+                                "c_var": "static_cast<int>(SHCXX_rv)",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -1457,6 +1524,8 @@
                             "F_name_impl": "class1_direction_func",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "directionFunc",
+                            "LUA_name_impl": "l_Class1_direction_func",
                             "PY_name_impl": "PY_directionFunc",
                             "c_const": "",
                             "c_deref": "*",
@@ -1792,6 +1861,13 @@
                     "C_type_name": "CLA_Class2",
                     "F_derived_name": "class2",
                     "F_name_scope": "class2_",
+                    "LUA_class_reg": "l_Class2_Reg",
+                    "LUA_ctor_name": "Class2",
+                    "LUA_metadata": "Class2.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Class2_Type",
+                    "LUA_userdata_var": "SH_this",
                     "PY_PyObject": "PY_Class2",
                     "PY_PyTypeObject": "PY_Class2_Type",
                     "PY_capsule_name": "PY_Class2_capsule_name",
@@ -1835,6 +1911,12 @@
                                 "stmt1": "f_string_scalar_result_allocatable",
                                 "stmtc0": "c_string_scalar_result_buf",
                                 "stmtc1": "c_string_scalar_result_buf"
+                            },
+                            "fmtl": {
+                                "c_var": "SHCXX_rv.c_str()",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "array_size": "1",
@@ -1892,6 +1974,8 @@
                             "F_name_impl": "class2_get_name",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "getName",
+                            "LUA_name_impl": "l_Class2_get_name",
                             "PY_name_impl": "PY_getName",
                             "c_const": "",
                             "c_deref": "*",
@@ -2165,6 +2249,13 @@
                     "C_type_name": "CLA_Shape",
                     "F_derived_name": "shape",
                     "F_name_scope": "shape_",
+                    "LUA_class_reg": "l_Shape_Reg",
+                    "LUA_ctor_name": "Shape",
+                    "LUA_metadata": "Shape.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Shape_Type",
+                    "LUA_userdata_var": "SH_this",
                     "PY_PyObject": "PY_Shape",
                     "PY_PyTypeObject": "PY_Shape_Type",
                     "PY_capsule_name": "PY_Shape_capsule_name",
@@ -2205,6 +2296,12 @@
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtl": {
+                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -2256,6 +2353,8 @@
                             "F_name_impl": "shape_ctor",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "ctor",
+                            "LUA_name_impl": "l_Shape_ctor",
                             "PY_name_impl": "PY_Shape_tp_init",
                             "PY_type_impl": "PY_Shape_tp_init",
                             "PY_type_method": "tp_init",
@@ -2294,6 +2393,12 @@
                                 "stmt1": "f_default",
                                 "stmtc0": "c_native_scalar_result",
                                 "stmtc1": "c_default"
+                            },
+                            "fmtl": {
+                                "c_var": "SHCXX_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -2340,6 +2445,8 @@
                             "F_name_impl": "shape_get_ivar",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "get_ivar",
+                            "LUA_name_impl": "l_Shape_get_ivar",
                             "PY_name_impl": "PY_get_ivar",
                             "c_const": "const ",
                             "c_deref": "*",
@@ -2377,6 +2484,13 @@
                     "F_derived_member_base": "shape",
                     "F_derived_name": "circle",
                     "F_name_scope": "circle_",
+                    "LUA_class_reg": "l_Circle_Reg",
+                    "LUA_ctor_name": "Circle",
+                    "LUA_metadata": "Circle.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Circle_Type",
+                    "LUA_userdata_var": "SH_this",
                     "PY_PyObject": "PY_Circle",
                     "PY_PyTypeObject": "PY_Circle_Type",
                     "PY_PyTypeObject_base": "PY_Shape_Type",
@@ -2418,6 +2532,12 @@
                                 "stmt1": "f_shadow_ctor",
                                 "stmtc0": "c_shadow_ctor",
                                 "stmtc1": "c_shadow_ctor"
+                            },
+                            "fmtl": {
+                                "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_var": "SHCXX_rv"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -2469,6 +2589,8 @@
                             "F_name_impl": "circle_ctor",
                             "F_result_clause": "\fresult(SHT_rv)",
                             "F_subprogram": "function",
+                            "LUA_name": "ctor",
+                            "LUA_name_impl": "l_Circle_ctor",
                             "PY_name_impl": "PY_Circle_tp_init",
                             "PY_type_impl": "PY_Circle_tp_init",
                             "PY_type_method": "tp_init",
@@ -2534,6 +2656,17 @@
                             "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         },
+                        "fmtl": {
+                            "LUA_index": 1,
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "lua_tointeger(L, 1)",
+                            "c_var_len": "Larg",
+                            "cxx_member": ".",
+                            "cxx_type": "classes::Class1::DIRECTION",
+                            "cxx_var": "arg",
+                            "lua_var": "SH_Lua_arg"
+                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
@@ -2585,6 +2718,12 @@
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
                         "stmtc1": "c_default"
+                    },
+                    "fmtl": {
+                        "c_var": "static_cast<int>(SHCXX_rv)",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2646,6 +2785,8 @@
                     "F_name_impl": "direction_func",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "LUA_name": "directionFunc",
+                    "LUA_name_impl": "l_direction_func",
                     "PY_name_impl": "PY_directionFunc",
                     "cxx_rv_decl": "classes::Class1::DIRECTION SHCXX_rv",
                     "function_name": "directionFunc",
@@ -3383,6 +3524,17 @@
                             "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         },
+                        "fmtl": {
+                            "LUA_index": 1,
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "lua_tointeger(L, 1)",
+                            "c_var_len": "Larg",
+                            "cxx_member": ".",
+                            "cxx_type": "int",
+                            "cxx_var": "arg",
+                            "lua_var": "SH_Lua_arg"
+                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
@@ -3445,6 +3597,8 @@
                     "F_name_generic": "set_global_flag",
                     "F_name_impl": "set_global_flag",
                     "F_subprogram": "subroutine",
+                    "LUA_name": "set_global_flag",
+                    "LUA_name_impl": "l_set_global_flag",
                     "PY_name_impl": "PY_set_global_flag",
                     "function_name": "set_global_flag",
                     "stmt0": "f_subroutine",
@@ -3482,6 +3636,12 @@
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result",
                         "stmtc1": "c_default"
+                    },
+                    "fmtl": {
+                        "c_var": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3526,6 +3686,8 @@
                     "F_name_impl": "get_global_flag",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "LUA_name": "get_global_flag",
+                    "LUA_name_impl": "l_get_global_flag",
                     "PY_name_impl": "PY_get_global_flag",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "get_global_flag",
@@ -3563,6 +3725,12 @@
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
+                    },
+                    "fmtl": {
+                        "c_var": "SHCXX_rv.c_str()",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_var": "SHCXX_rv"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3618,6 +3786,8 @@
                     "F_name_impl": "last_function_called",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
+                    "LUA_name": "LastFunctionCalled",
+                    "LUA_name_impl": "l_last_function_called",
                     "PY_name_impl": "PY_LastFunctionCalled",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "LastFunctionCalled",

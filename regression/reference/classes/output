@@ -23,3 +23,5 @@ Wrote pyclassesmodule.cpp
 Wrote pyclassesutil.cpp
 Wrote pyclassesmodule.hpp
 Wrote setup.py
+Wrote luaclassesmodule.hpp
+Wrote luaclassesmodule.cpp
