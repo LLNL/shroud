@@ -270,6 +270,7 @@ class VerifyAttrs(object):
                 "len_trim",
                 "name",
                 "owner",
+                "pass",
                 "rank",
                 "size",
                 "value",

@@ -135,10 +135,10 @@ declarations:
     wrap_python: False
     class_ctor: Cstruct_as_class
 
-- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point)
+- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
   options:
     wrap_python: False
-#    class_method: Cstruct_as_class
+    class_method: Cstruct_as_class
   format:
     F_name_function: sum
 

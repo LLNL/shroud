@@ -2944,7 +2944,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "pass": true
                             },
                             "const": true,
                             "declarator": {
@@ -2966,8 +2967,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in))",
+                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_point",
                     "C_name": "STR_cstruct_as_class_sum",
@@ -2987,6 +2988,7 @@
                     "underscore_name": "cstruct_as_class_sum"
                 },
                 "options": {
+                    "class_method": "Cstruct_as_class",
                     "wrap_python": false
                 }
             }

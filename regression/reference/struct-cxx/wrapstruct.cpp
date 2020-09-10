@@ -351,7 +351,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +intent(in)
+// Argument:  const Cstruct_as_class * point +intent(in)+pass
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)

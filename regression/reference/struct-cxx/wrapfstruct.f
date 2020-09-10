@@ -75,6 +75,7 @@ module struct_mod
         procedure :: get_instance => cstruct_as_class_get_instance
         procedure :: set_instance => cstruct_as_class_set_instance
         procedure :: associated => cstruct_as_class_associated
+        procedure :: sum => cstruct_as_class_sum
         ! splicer begin class.Cstruct_as_class.type_bound_procedure_part
         ! splicer end class.Cstruct_as_class.type_bound_procedure_part
     end type cstruct_as_class
@@ -453,7 +454,7 @@ module struct_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const Cstruct_as_class * point +intent(in)
+        ! Argument:  const Cstruct_as_class * point +intent(in)+pass
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         function c_cstruct_as_class_sum(point) &
@@ -773,7 +774,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +intent(in)
+    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     ! Requested: c_shadow_*_in
@@ -781,7 +782,7 @@ contains
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        type(cstruct_as_class), intent(IN) :: point
+        class(cstruct_as_class), intent(IN) :: point
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum
         SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
