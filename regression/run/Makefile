@@ -161,7 +161,8 @@ test-lua-% : compile-lua-%
 	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua
 
 test-lua : \
-    test-lua-tutorial
+    test-lua-tutorial \
+    test-lua-classes
 
 ######################################################################
 test-all : test-c test-fortran test-python test-lua

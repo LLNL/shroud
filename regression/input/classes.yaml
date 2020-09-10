@@ -13,7 +13,7 @@ namespace: classes
 options:
   debug: True
   wrap_python: True
-#  wrap_lua: True
+  wrap_lua: True
   literalinclude2: True
 
 declarations:

@@ -22,7 +22,7 @@ VPATH = \
 
 OBJS = \
     classes.o \
-    luaClassesmodule.o
+    luaclassesmodule.o
 
 CXXFLAGS += $(SHARED)
 

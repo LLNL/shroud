@@ -126,3 +126,19 @@ Close pyclassesmodule.cpp
 Close pyclassesutil.cpp
 Close pyclassesmodule.hpp
 Close setup.py
+Lua method Class1()
+Lua method Class1(int flag +intent(in)+value)
+Lua method ~Class1() +name(delete)
+Lua method int Method1()
+Lua method const std::string & getName() +deref(allocatable)
+Lua method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+Lua method const std::string & getName() +deref(allocatable)
+Lua method Shape()
+Lua method int get_ivar() const
+Lua method Circle()
+Lua function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+Lua function void set_global_flag(int arg +intent(in)+value)
+Lua function int get_global_flag()
+Lua function const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+Close luaclassesmodule.hpp
+Close luaclassesmodule.cpp
