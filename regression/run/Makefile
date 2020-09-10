@@ -147,18 +147,21 @@ test-python : \
 # test-python-templates
 
 ######################################################################
-# Compile the geneated Lua wrapper
-lua-tutorial : $(tempdir)/run/tutorial/lua/.. phony_explicit
+# Compile the generated Lua wrapper
+compile-lua-% : $(tempdir)/run/%/lua/.. phony_explicit
 	$(MAKE) \
-	    -C $(tempdir)/run/tutorial/lua \
-	    -f $(top)/regression/run/tutorial/lua/Makefile \
+	    -C $(tempdir)/run/$*/lua \
+	    -f $(top)/regression/run/$*/lua/Makefile \
 	    LUA=$(LUA) top=$(top) all
 
 # Run the Lua test
-test-lua : lua-tutorial
+test-lua-% : compile-lua-%
 #	export LUA_PATH=$(top)/$(tempdir)/run/tutorial/lua;
-	cd $(top)/$(tempdir)/run/tutorial/lua; \
-	$(LUA_BIN) $(top)/regression/run/tutorial/lua/test.lua
+	cd $(top)/$(tempdir)/run/$*/lua; \
+	$(LUA_BIN) $(top)/regression/run/$*/lua/test.lua
+
+test-lua : \
+    test-lua-tutorial
 
 ######################################################################
 test-all : test-c test-fortran test-python test-lua
@@ -181,8 +184,9 @@ test-struct : \
   test-python-struct-class-cxx
 
 .PHONY : test-c
+.PHONY : test-fortran
 .PHONY : test-python
-.PHONY : test-lua lua-tutorial
+.PHONY : test-lua
 .PHONY : test-all
 .PHONY : test-struct
 
