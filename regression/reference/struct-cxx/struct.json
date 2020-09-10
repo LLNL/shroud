@@ -2879,32 +2879,32 @@
                     "point": {
                         "fmtc": {
                             "c_addr": "",
-                            "c_const": "",
+                            "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "point",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_point",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct_as_class *>\t(SHCXX_point)",
                             "cxx_type": "Cstruct_as_class",
                             "cxx_var": "SHCXX_point",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_point",
-                            "stmt0": "c_shadow_*_inout",
-                            "stmt1": "c_shadow_inout"
+                            "stmt0": "c_shadow_*_in",
+                            "stmt1": "c_shadow_in"
                         },
                         "fmtf": {
                             "F_pointer": "SHPTR_point",
                             "c_var": "point",
-                            "f_intent": "INOUT",
+                            "f_intent": "IN",
                             "f_type": "type(cstruct_as_class)",
                             "f_var": "point",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_shadow_*_inout",
+                            "stmt0": "f_shadow_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_shadow_*_inout",
-                            "stmtc1": "c_shadow_inout"
+                            "stmtc0": "c_shadow_*_in",
+                            "stmtc1": "c_shadow_in"
                         }
                     }
                 },
@@ -2944,8 +2944,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout"
+                                "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "point",
                                 "pointer": [
@@ -2965,8 +2966,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int Cstruct_as_class_sum(Cstruct_as_class *point)",
-                "declgen": "int Cstruct_as_class_sum(Cstruct_as_class * point +intent(inout))",
+                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in))",
                 "fmtdict": {
                     "C_call_list": "SHCXX_point",
                     "C_name": "STR_cstruct_as_class_sum",
@@ -2976,7 +2977,7 @@
                     "F_C_name": "c_cstruct_as_class_sum",
                     "F_arg_c_call": "point%cxxmem",
                     "F_arguments": "point",
-                    "F_name_function": "cstruct_as_class_sum",
+                    "F_name_function": "sum",
                     "F_name_generic": "cstruct_as_class_sum",
                     "F_name_impl": "cstruct_as_class_sum",
                     "F_result_clause": "\fresult(SHT_rv)",

@@ -204,6 +204,7 @@
             "PY_write_helper_in_util": false,
             "YAML_type_filename_template": "{library_lower}_types.yaml",
             "class_ctor": null,
+            "class_method": null,
             "debug": false,
             "debug_index": false,
             "debug_testsuite": true,

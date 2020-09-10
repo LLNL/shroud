@@ -453,16 +453,16 @@ module struct_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  Cstruct_as_class * point +intent(inout)
-        ! Requested: c_shadow_*_inout
-        ! Match:     c_shadow_inout
+        ! Argument:  const Cstruct_as_class * point +intent(in)
+        ! Requested: c_shadow_*_in
+        ! Match:     c_shadow_in
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="STR_cstruct_as_class_sum")
             use iso_c_binding, only : C_INT
             import :: STR_SHROUD_capsule_data
             implicit none
-            type(STR_SHROUD_capsule_data), intent(INOUT) :: point
+            type(STR_SHROUD_capsule_data), intent(IN) :: point
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_class_sum
 
@@ -773,19 +773,19 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct_as_class * point +intent(inout)
-    ! Requested: f_shadow_*_inout
+    ! Argument:  const Cstruct_as_class * point +intent(in)
+    ! Requested: f_shadow_*_in
     ! Match:     f_default
-    ! Requested: c_shadow_*_inout
-    ! Match:     c_shadow_inout
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
     function cstruct_as_class_sum(point) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        type(cstruct_as_class), intent(INOUT) :: point
+        type(cstruct_as_class), intent(IN) :: point
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.cstruct_as_class_sum
+        ! splicer begin function.sum
         SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
-        ! splicer end function.cstruct_as_class_sum
+        ! splicer end function.sum
     end function cstruct_as_class_sum
 
     ! splicer begin additional_functions

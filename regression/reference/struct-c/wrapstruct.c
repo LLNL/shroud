@@ -120,13 +120,14 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Cstruct_as_class * point +intent(inout)
-// Requested: c_shadow_*_inout
-// Match:     c_shadow_inout
+// Argument:  const Cstruct_as_class * point +intent(in)
+// Requested: c_shadow_*_in
+// Match:     c_shadow_in
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum
-    Cstruct_as_class * SHCXX_point = (Cstruct_as_class *) point->addr;
+    const Cstruct_as_class * SHCXX_point =
+        (const Cstruct_as_class *) point->addr;
     int SHC_rv = Cstruct_as_class_sum(SHCXX_point);
     return SHC_rv;
     // splicer end function.cstruct_as_class_sum

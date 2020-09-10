@@ -87,6 +87,7 @@ class Wrapf(util.WrapperMixin):
             top  - True if library module, else namespace module.
         """
         options = node.options
+        self.wrap_class_method_option(node.functions, fileinfo)
 
         self._push_splicer("class")
         for cls in node.classes:
@@ -148,6 +149,23 @@ class Wrapf(util.WrapperMixin):
         if do_write:
             self.write_module(fileinfo)
 
+    def wrap_class_method_option(self, functions, fileinfo):
+        """Gather up info for option.class_method.
+        """
+        for node in functions:
+            options = node.options
+            if not options.wrap_fortran:
+                continue
+            if not options.class_method:
+                continue
+            fmt_func = node.fmtdict
+            type_bound_part = fileinfo.method_type_bound_part.setdefault(
+                options.class_method, [])
+            type_bound_part.append(
+                "procedure :: %s => %s"
+                % (fmt_func.F_name_function, fmt_func.F_name_impl)
+            )
+            
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
@@ -266,6 +284,9 @@ class Wrapf(util.WrapperMixin):
         self._create_splicer("component_part", f_type_decl)
         f_type_decl.append("-contains+")
         f_type_decl.extend(fileinfo.type_bound_part)
+        if node.name in fileinfo.method_type_bound_part:
+            # option.class_method methods with wrap_struct_as=class.
+            f_type_decl.extend(fileinfo.method_type_bound_part[node.name])
 
         # Look for generics
         # splicer to extend generic
@@ -2266,6 +2287,7 @@ class ModuleInfo(object):
         self.use_stmts = []
         self.enum_impl = []
         self.f_type_decl = []
+        self.method_type_bound_part = {}
         self.c_interface = []
         self.abstract_interface = []
         self.generic_interface = []

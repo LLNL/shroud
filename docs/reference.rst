@@ -259,6 +259,9 @@ class_ctor
       options:
         class_ctor: Cstruct_as_class
 
+class_method
+  Indicates that this function is a method for a struct.
+
 CXX_standard
   C++ standard. Defaults to *2011*.
   See *nullptr*.

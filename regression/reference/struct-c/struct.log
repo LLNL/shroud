@@ -21,7 +21,7 @@ C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent
 C function Cstruct_list * get_global_struct_list()
 C function Cstruct_as_class * Create_Cstruct_as_class()
 C function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
-C function int Cstruct_as_class_sum(Cstruct_as_class * point +intent(inout))
+C function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in))
 Close wrapstruct.h
 Close wrapstruct.c
 Close typesstruct.h
@@ -49,5 +49,5 @@ C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double
 C-interface, Fortran function Cstruct_list * get_global_struct_list()
 C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class()
 C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
-C-interface, Fortran function int Cstruct_as_class_sum(Cstruct_as_class * point +intent(inout))
+C-interface, Fortran function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in))
 Close wrapfstruct.f

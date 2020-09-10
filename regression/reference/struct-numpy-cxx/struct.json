@@ -1947,8 +1947,9 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout"
+                                "intent": "in"
                             },
+                            "const": true,
                             "declarator": {
                                 "name": "point",
                                 "pointer": [
@@ -1968,9 +1969,10 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int Cstruct_as_class_sum(Cstruct_as_class *point)",
-                "declgen": "int Cstruct_as_class_sum(Cstruct_as_class * point +intent(inout))",
+                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in))",
                 "fmtdict": {
+                    "F_name_function": "sum",
                     "function_name": "Cstruct_as_class_sum",
                     "underscore_name": "cstruct_as_class_sum"
                 },

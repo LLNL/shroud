@@ -127,7 +127,7 @@ Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
     return rv;
 }
 
-int Cstruct_as_class_sum(Cstruct_as_class *point)
+int Cstruct_as_class_sum(const Cstruct_as_class *point)
 {
     return point->x1 + point->y1;
 }

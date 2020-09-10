@@ -73,6 +73,7 @@ class Typemap(object):
             "f_c_module",
             None,
         ),  # Fortran modules needed for interface  (dictionary)
+        ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
@@ -950,6 +951,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     )
 
     # some default for ntypemap.f_capsule_data_type
+    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
     ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
 

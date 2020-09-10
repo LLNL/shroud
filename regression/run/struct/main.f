@@ -130,6 +130,7 @@ contains
     call assert_equals(2, point2%get_y1())
 
     call assert_equals(3, cstruct_as_class_sum(point2))
+!    call assert_equals(3, point2%sum())
 
   end subroutine test_struct_class
 
