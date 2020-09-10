@@ -28,6 +28,7 @@
                 },
                 "name": "Worker",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Worker::",
                 "typemap_name": "Worker"
             },
@@ -149,6 +150,7 @@
                                     "cxx_var": "arg1",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_arg1",
                                     "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -198,6 +200,7 @@
                                     "cxx_var": "arg2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_DOUBLE",
+                                    "shadow_var": "SHadow_arg2",
                                     "stmt0": "c_native_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -298,6 +301,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "nested",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -335,6 +339,7 @@
                 ],
                 "name": "user",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "user::",
                 "template_arguments": [
                     {
@@ -488,6 +493,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -537,6 +543,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_LONG",
+                            "shadow_var": "SHadow_arg2",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -707,6 +714,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -756,6 +764,7 @@
                             "cxx_var": "arg2",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_arg2",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -994,6 +1003,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -1112,6 +1122,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -1265,6 +1276,7 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "1",
                                         "sh_type": "SH_TYPE_OTHER",
+                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
@@ -1317,7 +1329,7 @@
                                 "declgen": "vector()",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_int_ctor",
-                                    "C_prototype": "TEM_vector_int * SHC_rv",
+                                    "C_prototype": "TEM_vector_int * SHadow_rv",
                                     "C_return_type": "TEM_vector_int *",
                                     "F_C_call": "c_vector_int_ctor",
                                     "F_C_name": "c_vector_int_ctor",
@@ -1370,6 +1382,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "dtor",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_shadow_dtor",
                                     "stmt1": "f_default",
                                     "stmtc0": "c_shadow_dtor",
@@ -1439,6 +1452,7 @@
                                             "cxx_var": "value",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
+                                            "shadow_var": "SHadow_value",
                                             "stmt0": "c_native_&_in",
                                             "stmt1": "c_default"
                                         },
@@ -1528,6 +1542,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "push_back",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -1606,6 +1621,7 @@
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
+                                            "shadow_var": "SHadow_n",
                                             "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
@@ -1655,6 +1671,7 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_INT",
+                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result",
                                         "stmt1": "c_default"
                                     },
@@ -1744,6 +1761,7 @@
                                     "c_var": "self",
                                     "cxx_rv_decl": "int & SHC_rv",
                                     "function_name": "at",
+                                    "shadow_var": "SHadow_self",
                                     "underscore_name": "at"
                                 },
                                 "have_template_args": true,
@@ -1760,6 +1778,7 @@
                         "options": {
                             "optsample": "two"
                         },
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -1836,6 +1855,7 @@
                                         "cxx_var": "SHCXX_rv",
                                         "idtor": "2",
                                         "sh_type": "SH_TYPE_OTHER",
+                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_shadow_scalar_ctor",
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
@@ -1888,7 +1908,7 @@
                                 "declgen": "vector()",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_double_ctor",
-                                    "C_prototype": "TEM_vector_double * SHC_rv",
+                                    "C_prototype": "TEM_vector_double * SHadow_rv",
                                     "C_return_type": "TEM_vector_double *",
                                     "F_C_call": "c_vector_double_ctor",
                                     "F_C_name": "c_vector_double_ctor",
@@ -1941,6 +1961,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "dtor",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_shadow_dtor",
                                     "stmt1": "f_default",
                                     "stmtc0": "c_shadow_dtor",
@@ -2010,6 +2031,7 @@
                                             "cxx_var": "value",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_DOUBLE",
+                                            "shadow_var": "SHadow_value",
                                             "stmt0": "c_native_&_in",
                                             "stmt1": "c_default"
                                         },
@@ -2099,6 +2121,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "push_back",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -2177,6 +2200,7 @@
                                             "cxx_var": "n",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
+                                            "shadow_var": "SHadow_n",
                                             "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
@@ -2226,6 +2250,7 @@
                                         "cxx_var": "SHC_rv",
                                         "idtor": "0",
                                         "sh_type": "SH_TYPE_DOUBLE",
+                                        "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result",
                                         "stmt1": "c_default"
                                     },
@@ -2315,6 +2340,7 @@
                                     "c_var": "self",
                                     "cxx_rv_decl": "double & SHC_rv",
                                     "function_name": "at",
+                                    "shadow_var": "SHadow_self",
                                     "underscore_name": "at"
                                 },
                                 "have_template_args": true,
@@ -2329,6 +2355,7 @@
                         ],
                         "name": "vector",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "std::vector::",
                         "template_arguments": [
                             {
@@ -2423,6 +2450,7 @@
                         "options": {
                             "wrap_fortran": false
                         },
+                        "parse_keyword": "class",
                         "scope": "internal::ImplWorker1::",
                         "typemap_name": "internal::ImplWorker1"
                     },
@@ -2455,6 +2483,7 @@
                         "options": {
                             "wrap_fortran": false
                         },
+                        "parse_keyword": "class",
                         "scope": "internal::ImplWorker2::",
                         "typemap_name": "internal::ImplWorker2"
                     }

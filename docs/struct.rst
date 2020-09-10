@@ -354,6 +354,11 @@ All creation and access of members can be done using Fortran.
     st(2)%ifield = 2_C_INT
     st(2)%dfield = 2.6_C_DOUBLE
 
+The option *wrap_struct_as* can be set to *class* to create a shadow type
+identical to how classes are wrapped.  This is useful when wrapping C
+code which does not support ``class`` directly.
+*wrap_struct_as* defaults to *struct* which will create a derived type.
+*wrap_class_as* also exists and defaults to *class*.
 
 Python
 ^^^^^^

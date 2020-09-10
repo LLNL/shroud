@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
@@ -24,6 +23,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct1::",
                 "typemap_name": "Cstruct1",
                 "variables": [
@@ -74,7 +74,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_ptr.h",
@@ -93,6 +92,7 @@
                 },
                 "name": "Cstruct_ptr",
                 "options": {},
+                "parse_keyword": "struct",
                 "scope": "Cstruct_ptr::",
                 "typemap_name": "Cstruct_ptr",
                 "variables": [
@@ -152,7 +152,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_list.h",
@@ -173,6 +172,7 @@
                 "options": {
                     "PY_array_arg": "list"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_list::",
                 "typemap_name": "Cstruct_list",
                 "variables": [
@@ -324,7 +324,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_numpy.h",
@@ -345,6 +344,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_numpy::",
                 "typemap_name": "Cstruct_numpy",
                 "variables": [
@@ -445,7 +445,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapArrays1.h",
@@ -466,6 +465,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [
@@ -524,6 +524,427 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCstruct_as_class.h",
+                    "C_impl_filename": "wrapCstruct_as_class.cpp",
+                    "C_name_scope": "Cstruct_as_class_",
+                    "C_type_name": "STR_Cstruct_as_class",
+                    "F_derived_name": "cstruct_as_class",
+                    "F_name_scope": "cstruct_as_class_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
+                    "class_scope": "Cstruct_as_class::",
+                    "cxx_class": "Cstruct_as_class",
+                    "cxx_type": "Cstruct_as_class",
+                    "file_scope": "Cstruct_as_class",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "getX1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getX1()",
+                        "declgen": "int getX1()",
+                        "fmtdict": {
+                            "C_name": "STR_Cstruct_as_class_get_x1",
+                            "C_prototype": "STR_Cstruct_as_class * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_cstruct_as_class_get_x1",
+                            "F_C_name": "c_cstruct_as_class_get_x1",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_x1",
+                            "F_name_generic": "get_x1",
+                            "F_name_impl": "cstruct_as_class_get_x1",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getX1",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->x1;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "val",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_val",
+                                    "c_var": "val",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "setX1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setX1(int val)",
+                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "STR_Cstruct_as_class_set_x1",
+                            "C_prototype": "STR_Cstruct_as_class * self,\t int val",
+                            "C_return_type": "void",
+                            "F_C_call": "c_cstruct_as_class_set_x1",
+                            "F_C_name": "c_cstruct_as_class_set_x1",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_x1",
+                            "F_name_generic": "set_x1",
+                            "F_name_impl": "cstruct_as_class_set_x1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "setX1",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->x1 = val;",
+                                "return;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "getY1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getY1()",
+                        "declgen": "int getY1()",
+                        "fmtdict": {
+                            "C_name": "STR_Cstruct_as_class_get_y1",
+                            "C_prototype": "STR_Cstruct_as_class * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_cstruct_as_class_get_y1",
+                            "F_C_name": "c_cstruct_as_class_get_y1",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_y1",
+                            "F_name_generic": "get_y1",
+                            "F_name_impl": "cstruct_as_class_get_y1",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getY1",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->y1;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "val",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_val",
+                                    "c_var": "val",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "setY1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setY1(int val)",
+                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "STR_Cstruct_as_class_set_y1",
+                            "C_prototype": "STR_Cstruct_as_class * self,\t int val",
+                            "C_return_type": "void",
+                            "F_C_call": "c_cstruct_as_class_set_y1",
+                            "F_C_name": "c_cstruct_as_class_set_y1",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_y1",
+                            "F_name_generic": "set_y1",
+                            "F_name_impl": "cstruct_as_class_set_y1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "setY1",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->y1 = val;",
+                                "return;"
+                            ]
+                        }
+                    }
+                ],
+                "name": "Cstruct_as_class",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_class::",
+                "typemap_name": "Cstruct_as_class",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "x1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "x1",
+                            "variable_lower": "x1",
+                            "variable_name": "x1",
+                            "variable_upper": "X1"
+                        },
+                        "name": "x1",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "y1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "y1",
+                            "variable_lower": "y1",
+                            "variable_name": "y1",
+                            "variable_upper": "Y1"
+                        },
+                        "name": "y1",
+                        "options": {}
+                    }
+                ],
+                "wrap_as": "class"
             }
         ],
         "copyright": [
@@ -554,6 +975,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_struct_scalar_in",
                             "stmt1": "c_struct"
                         },
@@ -584,6 +1006,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -664,6 +1087,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         },
@@ -694,6 +1118,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -778,6 +1203,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         }
@@ -796,6 +1222,7 @@
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_s1",
                             "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         }
@@ -814,6 +1241,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -918,6 +1346,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out_buf",
                             "stmt1": "c_char_*_out_buf"
                         },
@@ -949,6 +1378,7 @@
                             "cxx_var": "SHCXX_s1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_s1",
                             "stmt0": "c_struct_*_in_buf",
                             "stmt1": "c_struct"
                         },
@@ -979,6 +1409,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -1074,6 +1505,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         },
@@ -1104,6 +1536,7 @@
                         "cxx_var": "SHC_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
                     },
@@ -1185,6 +1618,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_struct_*_out",
                             "stmt1": "c_struct"
                         },
@@ -1215,6 +1649,7 @@
                             "cxx_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1245,6 +1680,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1362,6 +1798,7 @@
                             "cxx_var": "SHCXX_arg",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arg",
                             "stmt0": "c_struct_*_inout",
                             "stmt1": "c_struct"
                         },
@@ -1448,6 +1885,7 @@
                             "cxx_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1478,6 +1916,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1508,6 +1947,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_struct_scalar_result",
                         "stmt1": "c_struct_result"
                     },
@@ -1600,6 +2040,7 @@
                             "cxx_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1630,6 +2071,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
@@ -1660,6 +2102,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
@@ -1763,6 +2206,7 @@
                             "cxx_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         }
@@ -1781,6 +2225,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         }
@@ -1799,6 +2244,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         }
@@ -1817,6 +2263,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
@@ -1938,6 +2385,7 @@
                             "cxx_var": "d",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in_buf",
                             "stmt1": "c_default"
                         },
@@ -1968,6 +2416,7 @@
                             "cxx_var": "i",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in_buf",
                             "stmt1": "c_default"
                         },
@@ -1999,6 +2448,7 @@
                             "cxx_var": "outbuf",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out_buf",
                             "stmt1": "c_char_*_out_buf"
                         },
@@ -2030,6 +2480,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_struct_*_result_buf",
                         "stmt1": "c_struct_result"
                     }
@@ -2142,6 +2593,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_struct_*_result",
                         "stmt1": "c_struct_result"
                     },
@@ -2193,6 +2645,352 @@
                     "underscore_name": "get_global_struct_list"
                 },
                 "options": {}
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "STR_Cstruct_as_class",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct_as_class",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_*_result",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_as_class",
+                        "f_type": "type(cstruct_as_class)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_*_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_*_result",
+                        "stmtc1": "c_shadow_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "fmtdict": {
+                    "C_name": "STR_create__cstruct_as_class",
+                    "C_prototype": "STR_Cstruct_as_class * SHadow_rv",
+                    "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_call": "c_create__cstruct_as_class",
+                    "F_C_name": "c_create__cstruct_as_class",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "create__cstruct_as_class",
+                    "F_name_generic": "Cstruct_as_class",
+                    "F_name_impl": "create__cstruct_as_class",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                    "function_name": "Create_Cstruct_as_class",
+                    "underscore_name": "create__cstruct_as_class"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "x",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_x",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_x",
+                            "c_var": "x",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "x",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "y": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "y",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_y",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_y",
+                            "c_var": "y",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "y",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "STR_Cstruct_as_class",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct_as_class",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_*_result",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_as_class",
+                        "f_type": "type(cstruct_as_class)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_*_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_*_result",
+                        "stmtc1": "c_shadow_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class_args",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "y",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "x,\t y",
+                    "C_name": "STR_create__cstruct_as_class_args",
+                    "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHadow_rv",
+                    "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_call": "c_create__cstruct_as_class_args",
+                    "F_C_name": "c_create__cstruct_as_class_args",
+                    "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
+                    "F_arguments": "x,\t y",
+                    "F_name_function": "create__cstruct_as_class_args",
+                    "F_name_generic": "Cstruct_as_class",
+                    "F_name_impl": "create__cstruct_as_class_args",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "Cstruct_as_class * SHCXX_rv",
+                    "function_name": "Create_Cstruct_as_class_args",
+                    "underscore_name": "create__cstruct_as_class_args"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "point": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "point",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct_as_class *>\t(SHCXX_point)",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "SHCXX_point",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_point",
+                            "stmt0": "c_shadow_*_in",
+                            "stmt1": "c_shadow_in"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_point",
+                            "c_var": "point",
+                            "f_intent": "IN",
+                            "f_type": "type(cstruct_as_class)",
+                            "f_var": "point",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_shadow_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_shadow_*_in",
+                            "stmtc1": "c_shadow_in"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_as_class_sum",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "pass": true
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "point",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct_as_class"
+                            ],
+                            "typemap_name": "Cstruct_as_class"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)",
+                "fmtdict": {
+                    "C_call_list": "SHCXX_point",
+                    "C_name": "STR_cstruct_as_class_sum",
+                    "C_prototype": "STR_Cstruct_as_class * point",
+                    "C_return_type": "int",
+                    "F_C_call": "c_cstruct_as_class_sum",
+                    "F_C_name": "c_cstruct_as_class_sum",
+                    "F_arg_c_call": "point%cxxmem",
+                    "F_arguments": "point",
+                    "F_name_function": "sum",
+                    "F_name_generic": "cstruct_as_class_sum",
+                    "F_name_impl": "cstruct_as_class_sum",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "Cstruct_as_class_sum",
+                    "underscore_name": "cstruct_as_class_sum"
+                },
+                "options": {
+                    "class_method": "Cstruct_as_class",
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

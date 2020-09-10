@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapArrays1.h",
@@ -185,6 +184,7 @@
                     "PY_array_arg": "list",
                     "PY_struct_arg": "class"
                 },
+                "parse_keyword": "struct",
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [

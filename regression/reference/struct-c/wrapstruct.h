@@ -27,4 +27,12 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf);
 
+STR_Cstruct_as_class * STR_create__cstruct_as_class(
+    STR_Cstruct_as_class * SHadow_rv);
+
+STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
+    STR_Cstruct_as_class * SHadow_rv);
+
+int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
+
 #endif  // WRAPSTRUCT_H

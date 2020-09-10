@@ -99,13 +99,13 @@ int CLA_useclass(CLA_Class1 * arg)
 // Function:  const Class1 * getclass2
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass2
     const classes::Class1 * SHCXX_rv = classes::getclass2();
-    SHC_rv->addr = const_cast<classes::Class1 *>(SHCXX_rv);
-    SHC_rv->idtor = 0;
-    return SHC_rv;
+    SHadow_rv->addr = const_cast<classes::Class1 *>(SHCXX_rv);
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
     // splicer end function.getclass2
 }
 
@@ -113,13 +113,13 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv)
 // Function:  Class1 * getclass3
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass3
     classes::Class1 * SHCXX_rv = classes::getclass3();
-    SHC_rv->addr = SHCXX_rv;
-    SHC_rv->idtor = 0;
-    return SHC_rv;
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
     // splicer end function.getclass3
 }
 
@@ -127,14 +127,14 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv)
 // Function:  const Class1 & getConstClassReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
-CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_const_class_reference
     const classes::Class1 & SHCXX_rv = classes::getConstClassReference(
         );
-    SHC_rv->addr = const_cast<classes::Class1 *>(&SHCXX_rv);
-    SHC_rv->idtor = 0;
-    return SHC_rv;
+    SHadow_rv->addr = const_cast<classes::Class1 *>(&SHCXX_rv);
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
     // splicer end function.get_const_class_reference
 }
 
@@ -142,13 +142,13 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv)
 // Function:  Class1 & getClassReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
-CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_reference
     classes::Class1 & SHCXX_rv = classes::getClassReference();
-    SHC_rv->addr = &SHCXX_rv;
-    SHC_rv->idtor = 0;
-    return SHC_rv;
+    SHadow_rv->addr = &SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
     // splicer end function.get_class_reference
 }
 
@@ -163,14 +163,14 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv)
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
-CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv)
+CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_copy
     classes::Class1 * SHCXX_rv = new classes::Class1;
     *SHCXX_rv = classes::getClassCopy(flag);
-    SHC_rv->addr = SHCXX_rv;
-    SHC_rv->idtor = 1;
-    return SHC_rv;
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 1;
+    return SHadow_rv;
     // splicer end function.get_class_copy
 }
 

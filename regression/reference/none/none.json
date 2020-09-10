@@ -87,6 +87,7 @@
             "PY_type_obj": "obj",
             "PY_typedef_converter": "LIB_SHROUD_converter_value",
             "PY_value_init": "{NULL, NULL, NULL, NULL, 0}",
+            "SH_shadow": "SHadow_",
             "YAML_type_filename": "library_types.yaml",
             "c_array_shape": "",
             "c_array_size": "1",
@@ -202,6 +203,8 @@
             "PY_utility_filename_template": "py{library}util.{PY_impl_filename_suffix}",
             "PY_write_helper_in_util": false,
             "YAML_type_filename_template": "{library_lower}_types.yaml",
+            "class_ctor": null,
+            "class_method": null,
             "debug": false,
             "debug_index": false,
             "debug_testsuite": true,
@@ -212,9 +215,11 @@
             "return_scalar_pointer": "pointer",
             "show_splicer_comments": true,
             "wrap_c": true,
+            "wrap_class_as": "class",
             "wrap_fortran": true,
             "wrap_lua": false,
-            "wrap_python": false
+            "wrap_python": false,
+            "wrap_struct_as": "struct"
         },
         "scope_file": [
             "library"

@@ -13,7 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module struct_mod
-    use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_PTR
+    use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT, C_NULL_PTR, C_PTR
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -21,6 +21,14 @@ module struct_mod
     ! splicer begin module_top
     integer, parameter :: MAXNAME = 20
     ! splicer end module_top
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: STR_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type STR_SHROUD_capsule_data
+    ! end helper capsule_data_helper
 
 
     ! start derived-type cstruct1
@@ -56,6 +64,104 @@ module struct_mod
         character(kind=C_CHAR) :: name(20)
         integer(C_INT) :: count(10)
     end type arrays1
+
+    type cstruct_as_class
+        type(STR_SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Cstruct_as_class.component_part
+        ! splicer end class.Cstruct_as_class.component_part
+    contains
+        procedure :: get_x1 => cstruct_as_class_get_x1
+        procedure :: set_x1 => cstruct_as_class_set_x1
+        procedure :: get_y1 => cstruct_as_class_get_y1
+        procedure :: set_y1 => cstruct_as_class_set_y1
+        procedure :: get_instance => cstruct_as_class_get_instance
+        procedure :: set_instance => cstruct_as_class_set_instance
+        procedure :: associated => cstruct_as_class_associated
+        procedure :: sum => cstruct_as_class_sum
+        ! splicer begin class.Cstruct_as_class.type_bound_procedure_part
+        ! splicer end class.Cstruct_as_class.type_bound_procedure_part
+    end type cstruct_as_class
+
+    interface operator (.eq.)
+        module procedure cstruct_as_class_eq
+    end interface
+
+    interface operator (.ne.)
+        module procedure cstruct_as_class_ne
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int getX1
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        function c_cstruct_as_class_get_x1(self) &
+                result(SHT_rv) &
+                bind(C, name="STR_Cstruct_as_class_get_x1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_get_x1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void setX1
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_cstruct_as_class_set_x1(self, val) &
+                bind(C, name="STR_Cstruct_as_class_set_x1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_cstruct_as_class_set_x1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int getY1
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        function c_cstruct_as_class_get_y1(self) &
+                result(SHT_rv) &
+                bind(C, name="STR_Cstruct_as_class_get_y1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_get_y1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void setY1
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_cstruct_as_class_set_y1(self, val) &
+                bind(C, name="STR_Cstruct_as_class_set_y1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_cstruct_as_class_set_y1
+    end interface
+
+    ! splicer begin class.Cstruct_as_class.additional_interfaces
+    ! splicer end class.Cstruct_as_class.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  int passStructByValue
@@ -337,12 +443,183 @@ module struct_mod
         end function c_get_global_struct_list
     end interface
 
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    interface
+        function c_create__cstruct_as_class(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="STR_create__cstruct_as_class")
+            use iso_c_binding, only : C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_create__cstruct_as_class
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_create__cstruct_as_class_args(x, y, SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="STR_create__cstruct_as_class_args")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: x
+            integer(C_INT), value, intent(IN) :: y
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_create__cstruct_as_class_args
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
+    interface
+        function c_cstruct_as_class_sum(point) &
+                result(SHT_rv) &
+                bind(C, name="STR_cstruct_as_class_sum")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: point
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_sum
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
 
+    interface Cstruct_as_class
+        module procedure create__cstruct_as_class
+        module procedure create__cstruct_as_class_args
+    end interface Cstruct_as_class
+
 contains
+
+    ! ----------------------------------------
+    ! Function:  int getX1
+    ! int getX1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function cstruct_as_class_get_x1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_class) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Cstruct_as_class.method.get_x1
+        SHT_rv = c_cstruct_as_class_get_x1(obj%cxxmem)
+        ! splicer end class.Cstruct_as_class.method.get_x1
+    end function cstruct_as_class_get_x1
+
+    ! ----------------------------------------
+    ! Function:  void setX1
+    ! void setX1
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine cstruct_as_class_set_x1(obj, val)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_class) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Cstruct_as_class.method.set_x1
+        call c_cstruct_as_class_set_x1(obj%cxxmem, val)
+        ! splicer end class.Cstruct_as_class.method.set_x1
+    end subroutine cstruct_as_class_set_x1
+
+    ! ----------------------------------------
+    ! Function:  int getY1
+    ! int getY1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function cstruct_as_class_get_y1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_class) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Cstruct_as_class.method.get_y1
+        SHT_rv = c_cstruct_as_class_get_y1(obj%cxxmem)
+        ! splicer end class.Cstruct_as_class.method.get_y1
+    end function cstruct_as_class_get_y1
+
+    ! ----------------------------------------
+    ! Function:  void setY1
+    ! void setY1
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine cstruct_as_class_set_y1(obj, val)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_class) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Cstruct_as_class.method.set_y1
+        call c_cstruct_as_class_set_y1(obj%cxxmem, val)
+        ! splicer end class.Cstruct_as_class.method.set_y1
+    end subroutine cstruct_as_class_set_y1
+
+    ! Return pointer to C++ memory.
+    function cstruct_as_class_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(cstruct_as_class), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function cstruct_as_class_get_instance
+
+    subroutine cstruct_as_class_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(cstruct_as_class), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine cstruct_as_class_set_instance
+
+    function cstruct_as_class_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(cstruct_as_class), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function cstruct_as_class_associated
+
+    ! splicer begin class.Cstruct_as_class.additional_functions
+    ! splicer end class.Cstruct_as_class.additional_functions
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -480,7 +757,100 @@ contains
         ! splicer end function.get_global_struct_list
     end function get_global_struct_list
 
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Cstruct_as_class * Create_Cstruct_as_class
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    function create__cstruct_as_class() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(cstruct_as_class) :: SHT_rv
+        ! splicer begin function.create__cstruct_as_class
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_create__cstruct_as_class(SHT_rv%cxxmem)
+        ! splicer end function.create__cstruct_as_class
+    end function create__cstruct_as_class
+
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    function create__cstruct_as_class_args(x, y) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: x
+        integer(C_INT), value, intent(IN) :: y
+        type(cstruct_as_class) :: SHT_rv
+        ! splicer begin function.create__cstruct_as_class_args
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_create__cstruct_as_class_args(x, y, SHT_rv%cxxmem)
+        ! splicer end function.create__cstruct_as_class_args
+    end function create__cstruct_as_class_args
+
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! int Cstruct_as_class_sum
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Requested: f_shadow_*_in
+    ! Match:     f_default
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
+    function cstruct_as_class_sum(point) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_class), intent(IN) :: point
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.sum
+        SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
+        ! splicer end function.sum
+    end function cstruct_as_class_sum
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
+
+    function cstruct_as_class_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(cstruct_as_class), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_class_eq
+
+    function cstruct_as_class_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(cstruct_as_class), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_class_ne
 
 end module struct_mod

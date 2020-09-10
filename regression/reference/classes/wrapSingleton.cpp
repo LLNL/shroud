@@ -21,13 +21,13 @@ extern "C" {
 // Function:  static Singleton & getReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
-CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHC_rv)
+CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHadow_rv)
 {
     // splicer begin class.Singleton.method.get_reference
     classes::Singleton & SHCXX_rv = classes::Singleton::getReference();
-    SHC_rv->addr = &SHCXX_rv;
-    SHC_rv->idtor = 0;
-    return SHC_rv;
+    SHadow_rv->addr = &SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
     // splicer end class.Singleton.method.get_reference
 }
 

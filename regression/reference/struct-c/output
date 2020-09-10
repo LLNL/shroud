@@ -1,4 +1,6 @@
 Wrote struct_types.yaml
+Wrote wrapCstruct_as_class.h
+Wrote wrapCstruct_as_class.c
 Wrote wrapstruct.h
 Wrote wrapstruct.c
 Wrote typesstruct.h

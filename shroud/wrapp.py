@@ -235,7 +235,7 @@ class Wrapp(util.WrapperMixin):
             name = cls.name
             self.reset_file()
             self._push_splicer(name)
-            if cls.as_struct and cls.options.PY_struct_arg != "class":
+            if cls.parse_keyword == "struct" and cls.options.PY_struct_arg != "class":
                 self.create_arraydescr(cls)
             else:
                 self.need_blah = True
@@ -1910,7 +1910,7 @@ return 1;""",
         assert cls is not None
         capsule_type = fmt.namespace_scope + fmt.cxx_type + " *"
         var = "self->" + fmt.PY_type_obj
-        if cls.as_struct:
+        if cls.parse_keyword == "struct":
             typeflag = "struct"
         else:
             typeflag = None
@@ -2946,7 +2946,7 @@ setup(
         """Loop over variables in the struct-as-class and add
         a line of formatted text for each pointer variable.
         """
-        if not node.as_struct:
+        if node.parse_keyword != "struct":
             return
         print_header = True
         for var in node.variables:

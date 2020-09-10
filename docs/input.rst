@@ -596,6 +596,18 @@ library
 
 .. steal  intent(in)
 
+pass
+^^^^
+
+Used to define the argument which is the passed-object dummy argument
+for type-bound procedures when treating a struct as a class.  In C,
+which does not support the ``class`` keyword, a ``struct`` can be used
+as a class by defining option ``wrap_struct_as=class``.  Other
+functions can be associated with the class by setting option
+``class_method`` to the name of the struct.
+
+.. XXX See detail at ...
+
 rank
 ^^^^
 

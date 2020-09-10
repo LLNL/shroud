@@ -73,6 +73,7 @@ class Typemap(object):
             "f_c_module",
             None,
         ),  # Fortran modules needed for interface  (dictionary)
+        ("f_class", None),  # Used with type-bound procedures
         ("f_type", None),  # Name of type in Fortran -- integer(C_INT)
         ("f_kind", None),  # Fortran kind            -- C_INT
         ("f_c_type", None),  # Type for C interface    -- int
@@ -950,6 +951,7 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     )
 
     # some default for ntypemap.f_capsule_data_type
+    ntypemap.f_class = "class(%s)" % ntypemap.f_derived_type
     ntypemap.f_type = "type(%s)" % ntypemap.f_derived_type
     ntypemap.f_c_type = "type(%s)" % ntypemap.f_capsule_data_type
 
@@ -2439,7 +2441,7 @@ fc_statements = [
         cxx_local_var="pointer",
         pre_call=[
             "{c_const}{cxx_type} * {cxx_var} =\t "
-            "static_cast<{c_const}{cxx_type} *>\t({c_var}{c_member}addr);",
+            "{cast_static}{c_const}{cxx_type} *{cast1}{c_var}{c_member}addr{cast2};",
         ],
     ),
     dict(
@@ -2456,11 +2458,11 @@ fc_statements = [
         buf_extra=["shadow"],
         c_local_var="pointer",
         post_call=[
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = {cxx_nonconst_ptr};",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         return_cptr=True,
@@ -2479,11 +2481,11 @@ fc_statements = [
             "{cxx_type} * {cxx_var} = new {cxx_type};",
         ],
         post_call=[
-            "{c_var}->addr = {cxx_nonconst_ptr};",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = {cxx_nonconst_ptr};",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         return_cptr=True,
@@ -2507,11 +2509,11 @@ fc_statements = [
         cxx_local_var="pointer",
         call=[
             "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});",
-            "{c_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
-            "{c_var}->idtor = {idtor};",
+            "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});",
+            "{shadow_var}->idtor = {idtor};",
         ],
         ret=[
-            "return {c_var};",
+            "return {shadow_var};",
         ],
         return_type="{c_type} *",
         owner="caller",

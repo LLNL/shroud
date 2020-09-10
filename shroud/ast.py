@@ -227,7 +227,7 @@ class NamespaceMixin(object):
             ast = declast.check_decl(decl, namespace=self)
         name = ast.name
         # XXX - base=... for inheritance
-        node = ClassNode(name, self, as_struct=True, **kwargs)
+        node = ClassNode(name, self, parse_keyword="struct", **kwargs)
         for member in ast.members:
             node.add_variable(str(member), member)
         self.classes.append(node)
@@ -432,6 +432,10 @@ class LibraryNode(AstNode, NamespaceMixin):
             debug_testsuite=False,
             # They change when a function is inserted.
             flatten_namespace=False,
+            wrap_class_as="class",
+            wrap_struct_as="struct",
+            class_ctor=None,
+            class_method=None,
             C_force_wrapper=False,
             C_line_length=72,
             F_flatten_namespace=False,
@@ -652,6 +656,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             PY_type_dtor="idtor",  # name of destructor capsule infomation
             PY_value_init="{NULL, NULL, NULL, NULL, 0}",  # initial value for PY_typedef_converter
 
+            SH_shadow="SHadow_",
+
             library=self.library,
             library_lower=self.library.lower(),
             library_upper=self.library.upper(),
@@ -686,6 +692,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 idtor="XXXidtor",
                 PY_member_object="XXXPY_member_object",
                 PY_to_object_func="XXXPY_to_object_func",
+                shadow_var="XXXsh_var",
             ))
 
         fmt_library.F_filename_suffix = "f"
@@ -991,13 +998,13 @@ class ClassNode(AstNode, NamespaceMixin):
         cxx_header="",
         format=None,
         options=None,
-        as_struct=False,
+        parse_keyword="class",
         template_parameters=None,
         ntypemap=None,
         **kwargs
     ):
         """Create ClassNode.
-        Used with class or struct if as_struct==True.
+        Used with classes and structs.
 
         template_parameters - list names of template parameters.
              ex. template<typename T>  -> ['T']
@@ -1007,11 +1014,13 @@ class ClassNode(AstNode, NamespaceMixin):
 
         Args:
             base - list of tuples ('public|private|protected', qualified-name (aa:bb), ntypemap)
+            parse_keyword - keyword from decl - "class" or "struct".
         """
         # From arguments
         self.name = name
         self.parent = parent
         self.baseclass = base
+        self.parse_keyword = parse_keyword
         self.cxx_header = cxx_header.split()
         self.nodename = "class"
         self.linenumber = kwargs.get("__line__", "?")
@@ -1021,9 +1030,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.functions = []
         self.namespaces = []
         self.variables = []
-        self.as_struct = (
-            as_struct
-        )  # if True, treat as struct, else as shadow class
 
         self.python = kwargs.get("python", {})
         self.cpp_if = kwargs.get("cpp_if", None)
@@ -1044,12 +1050,19 @@ class ClassNode(AstNode, NamespaceMixin):
         if fields is not None:
             if not isinstance(fields, dict):
                 raise TypeError("fields must be a dictionary")
+
+        if self.parse_keyword == "struct":
+            self.wrap_as = self.options.wrap_struct_as
+        elif self.parse_keyword == "class":
+            self.wrap_as = self.options.wrap_class_as
+        else:
+            raise TypeError("parse_keyword must be 'class' or 'struct'")
         if ntypemap is not None:
             # From YAML typemap
             self.typemap = ntypemap
-        elif as_struct:
+        elif self.wrap_as == "struct":
             self.typemap = typemap.create_struct_typemap(self, fields)
-        else:
+        elif self.wrap_as == "class":
             self.typemap = typemap.create_class_typemap(self, fields)
         if format and 'template_suffix' in format:
             # Do not use scope from self.fmtdict, instead only copy value
@@ -1164,7 +1177,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.eval_template("C_impl_filename", "_class")
 
         # As PyArray_Descr
-        if self.as_struct:
+        if self.parse_keyword == "struct":
             self.eval_template("PY_struct_array_descr_create")
             self.eval_template("PY_struct_array_descr_variable")
             self.eval_template("PY_struct_array_descr_name")

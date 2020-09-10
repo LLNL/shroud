@@ -1548,6 +1548,7 @@ class Declaration(Node):
         self,
         bindc=False,
         local=False,
+        pass_obj=False,
         **kwargs
     ):
         """Geneate declaration for Fortran variable.
@@ -1586,6 +1587,9 @@ class Declaration(Node):
                 t.append("character(len=*)")
             else:
                 t.append("character")
+        elif pass_obj:
+            # Used with wrap_struct_as=class for passed-object dummy argument.
+            t.append(ntypemap.f_class)
         elif bindc:
             t.append(ntypemap.f_c_type or ntypemap.f_type)
         else:

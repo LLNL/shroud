@@ -50,8 +50,8 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // Match:     c_string_result
 const char * CLA_Class2_get_name(CLA_Class2 * self)
 {
-    classes::Class2 *SH_this =
-        static_cast<classes::Class2 *>(self->addr);
+    classes::Class2 *SH_this = static_cast<classes::Class2 *>
+        (self->addr);
     // splicer begin class.Class2.method.get_name
     const std::string & SHCXX_rv = SH_this->getName();
     const char * SHC_rv = SHCXX_rv.c_str();
@@ -74,8 +74,8 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *DSHF_rv)
 {
-    classes::Class2 *SH_this =
-        static_cast<classes::Class2 *>(self->addr);
+    classes::Class2 *SH_this = static_cast<classes::Class2 *>
+        (self->addr);
     // splicer begin class.Class2.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
     ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);

@@ -87,16 +87,18 @@ class Wrapf(util.WrapperMixin):
             top  - True if library module, else namespace module.
         """
         options = node.options
+        self.wrap_class_method_option(node.functions, fileinfo)
 
         self._push_splicer("class")
         for cls in node.classes:
-            if not cls.options.wrap_fortran:
+            cls_options = cls.options
+            if not cls_options.wrap_fortran:
                 continue
             fileinfo.begin_class()
 
             # how to decide module name, module per class
             #            module_name = cls.options.setdefault('module_name', name.lower())
-            if cls.as_struct:
+            if cls.wrap_as == "struct":
                 self.wrap_struct(cls, fileinfo)
             else:
                 self.wrap_class(cls, fileinfo)
@@ -147,6 +149,23 @@ class Wrapf(util.WrapperMixin):
         if do_write:
             self.write_module(fileinfo)
 
+    def wrap_class_method_option(self, functions, fileinfo):
+        """Gather up info for option.class_method.
+        """
+        for node in functions:
+            options = node.options
+            if not options.wrap_fortran:
+                continue
+            if not options.class_method:
+                continue
+            fmt_func = node.fmtdict
+            type_bound_part = fileinfo.method_type_bound_part.setdefault(
+                options.class_method, [])
+            type_bound_part.append(
+                "procedure :: %s => %s"
+                % (fmt_func.F_name_function, fmt_func.F_name_impl)
+            )
+            
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
         No methods.
@@ -265,6 +284,9 @@ class Wrapf(util.WrapperMixin):
         self._create_splicer("component_part", f_type_decl)
         f_type_decl.append("-contains+")
         f_type_decl.extend(fileinfo.type_bound_part)
+        if node.name in fileinfo.method_type_bound_part:
+            # option.class_method methods with wrap_struct_as=class.
+            f_type_decl.extend(fileinfo.method_type_bound_part[node.name])
 
         # Look for generics
         # splicer to extend generic
@@ -1655,6 +1677,7 @@ rv = .false.
 
             if is_f_arg:
                 implied = f_attrs["implied"]
+                pass_obj = f_attrs["pass"]
 
                 if c_arg.ftrim_char_in:
                     # Pass NULL terminated string to C.
@@ -1723,7 +1746,7 @@ rv = .false.
                         arg_f_names.append(fmt_arg.f_var)
                 else:
                     # Generate declaration from argument.
-                    arg_f_decl.append(f_arg.gen_arg_as_fortran())
+                    arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj))
                     arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.
@@ -1841,7 +1864,13 @@ rv = .false.
 
             self.update_f_module(modules, imports, result_typemap.f_module)
 
-        if options.F_create_generic:
+        if node.options.class_ctor:
+            # Generic constructor for C "class" (wrap_struct_as=class).
+            fmt_func.F_name_generic = node.options.class_ctor
+            fileinfo.f_function_generic.setdefault(
+                fmt_func.F_name_generic, GenericFunction(True, [])
+            ).functions.append(node)
+        elif options.F_create_generic:
             # if return type is templated in C++,
             # then do not set up generic since only the
             # return type may be different (ex. getValue<T>())
@@ -2259,6 +2288,7 @@ class ModuleInfo(object):
         self.use_stmts = []
         self.enum_impl = []
         self.f_type_decl = []
+        self.method_type_bound_part = {}
         self.c_interface = []
         self.abstract_interface = []
         self.generic_interface = []

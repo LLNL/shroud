@@ -33,15 +33,15 @@ void CLA_pass_class_by_value(CLA_Class1 arg);
 
 int CLA_useclass(CLA_Class1 * arg);
 
-CLA_Class1 * CLA_getclass2(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv);
 
-CLA_Class1 * CLA_getclass3(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv);
 
-CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv);
 
-CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv);
 
-CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHC_rv);
+CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv);
 
 void CLA_set_global_flag(int arg);
 

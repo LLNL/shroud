@@ -109,6 +109,28 @@ void freeStruct(Cstruct1 *arg1)
 #endif
 
 /*----------------------------------------------------------------------*/
+/*----------------------------------------------------------------------*/
+
+Cstruct_as_class *Create_Cstruct_as_class(void)
+{
+    Cstruct_as_class *rv = (Cstruct_as_class *) malloc(sizeof(Cstruct_as_class));
+    rv->x1 = 0;
+    rv->y1 = 0;
+    return rv;
+}
+
+Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+{
+    Cstruct_as_class *rv = (Cstruct_as_class *) malloc(sizeof(Cstruct_as_class));
+    rv->x1 = x;
+    rv->y1 = y;
+    return rv;
+}
+
+int Cstruct_as_class_sum(const Cstruct_as_class *point)
+{
+    return point->x1 + point->y1;
+}
 
 // Return sum of x members to test that they were passed in correctly.
 

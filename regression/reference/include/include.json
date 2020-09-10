@@ -37,6 +37,7 @@
                                     "cxx_var": "SHCXX_comm",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_comm",
                                     "stmt0": "c_unknown_scalar_in",
                                     "stmt1": "c_default"
                                 },
@@ -100,6 +101,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method1",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -124,6 +126,7 @@
                                     "cxx_var": "SHCXX_c2",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_c2",
                                     "stmt0": "c_shadow_*_inout",
                                     "stmt1": "c_shadow_inout"
                                 },
@@ -190,6 +193,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "method2",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -201,6 +205,7 @@
                 ],
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "Class2::",
                 "typemap_name": "Class2"
             }
@@ -342,6 +347,7 @@
                                             "cxx_var": "arg1",
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
+                                            "shadow_var": "SHadow_arg1",
                                             "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
@@ -405,6 +411,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method1",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -416,6 +423,7 @@
                         ],
                         "name": "Class1",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "three::Class1::",
                         "typemap_name": "three::Class1"
                     }
@@ -493,6 +501,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -504,6 +513,7 @@
                         ],
                         "name": "class0",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "outer1::class0::",
                         "typemap_name": "outer1::class0"
                     }
@@ -620,6 +630,7 @@
                                     "c_member": "->",
                                     "c_var": "self",
                                     "function_name": "method",
+                                    "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_default",
                                     "stmtc0": "c",
@@ -631,6 +642,7 @@
                         ],
                         "name": "class0",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "outer2::class0::",
                         "typemap_name": "outer2::class0"
                     }

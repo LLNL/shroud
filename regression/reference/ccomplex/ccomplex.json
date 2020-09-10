@@ -29,6 +29,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_FLOAT_COMPLEX",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_*_inout",
                             "stmt1": "c_default"
                         },
@@ -118,6 +119,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_*_inout",
                             "stmt1": "c_default"
                         },
@@ -229,6 +231,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
@@ -451,6 +454,7 @@
                             "cxx_var": "arg1",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE_COMPLEX",
+                            "shadow_var": "SHadow_arg1",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
@@ -503,6 +507,7 @@
                             "cxx_var": "flag",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_flag",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },

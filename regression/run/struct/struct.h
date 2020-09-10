@@ -67,6 +67,8 @@ struct Arrays1 {
 typedef struct Arrays1 Arrays1;
 
 /*----------------------------------------------------------------------*/
+// Used in struct-py.yaml
+// Test similar structs with PY_struct_arg as both "class" and "numpy"
 
 struct Cstruct_as_class {
     int x1;
@@ -79,6 +81,10 @@ struct Cstruct_as_numpy {
     int y2;
 };
 typedef struct Cstruct_as_numpy Cstruct_as_numpy;
+
+Cstruct_as_class *Create_Cstruct_as_class(void);
+Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y);
+int Cstruct_as_class_sum(const Cstruct_as_class *point);
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 

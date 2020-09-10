@@ -217,13 +217,16 @@ class ToDict(visitor.Visitor):
             cxx_header=node.cxx_header,
             name=node.name,
             typemap_name=node.typemap.name,  # print name to avoid too much nesting
+            parse_keyword=node.parse_keyword,
         )
         add_non_none_fields(node, d, ["linenumber"])
         add_true_fields(
-            node, d, ["as_struct", "python", "scope", "template_parameters"]
+            node, d, ["python", "scope", "template_parameters"]
         )
         if node.baseclass:
             d["baseclass"] = stringify_baseclass(node.baseclass)
+        if node.parse_keyword != node.wrap_as:
+            d["wrap_as"] = node.wrap_as
         self.add_visit_fields(
             node,
             d,

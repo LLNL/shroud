@@ -23,6 +23,7 @@ OBJS = \
     struct.o \
     wrapfstruct.o \
     wrapstruct.o \
+    wrapCstruct_as_class.o \
     fruit.o \
     main.o
 

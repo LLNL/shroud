@@ -3,7 +3,6 @@
     "library": {
         "classes": [
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct1.h",
@@ -168,6 +167,7 @@
                 "options": {
                     "literalinclude": true
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct1::",
                 "typemap_name": "Cstruct1",
                 "variables": [
@@ -224,7 +224,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_ptr.h",
@@ -402,6 +401,7 @@
                 ],
                 "name": "Cstruct_ptr",
                 "options": {},
+                "parse_keyword": "struct",
                 "scope": "Cstruct_ptr::",
                 "typemap_name": "Cstruct_ptr",
                 "variables": [
@@ -473,7 +473,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_list.h",
@@ -785,6 +784,7 @@
                 "options": {
                     "PY_array_arg": "list"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_list::",
                 "typemap_name": "Cstruct_list",
                 "variables": [
@@ -957,7 +957,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapCstruct_numpy.h",
@@ -1197,6 +1196,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Cstruct_numpy::",
                 "typemap_name": "Cstruct_numpy",
                 "variables": [
@@ -1312,7 +1312,6 @@
                 ]
             },
             {
-                "as_struct": true,
                 "cxx_header": [],
                 "fmtdict": {
                     "C_header_filename": "wrapArrays1.h",
@@ -1493,6 +1492,7 @@
                 "options": {
                     "PY_array_arg": "numpy"
                 },
+                "parse_keyword": "struct",
                 "scope": "Arrays1::",
                 "typemap_name": "Arrays1",
                 "variables": [
@@ -1563,6 +1563,225 @@
                         "options": {}
                     }
                 ]
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "C_header_filename": "wrapCstruct_as_class.h",
+                    "C_impl_filename": "wrapCstruct_as_class.cpp",
+                    "C_name_scope": "Cstruct_as_class_",
+                    "C_type_name": "STR_Cstruct_as_class",
+                    "F_derived_name": "cstruct_as_class",
+                    "F_name_scope": "cstruct_as_class_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
+                    "class_scope": "Cstruct_as_class::",
+                    "cxx_class": "Cstruct_as_class",
+                    "cxx_type": "Cstruct_as_class",
+                    "file_scope": "Cstruct_as_class"
+                },
+                "functions": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "getX1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getX1()",
+                        "declgen": "int getX1()",
+                        "fmtdict": {
+                            "function_name": "getX1",
+                            "underscore_name": "get_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->x1;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "setX1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setX1(int val)",
+                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "function_name": "setX1",
+                            "underscore_name": "set_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->x1 = val;",
+                                "return;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "getY1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getY1()",
+                        "declgen": "int getY1()",
+                        "fmtdict": {
+                            "function_name": "getY1",
+                            "underscore_name": "get_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->y1;"
+                            ]
+                        }
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "setY1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setY1(int val)",
+                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "function_name": "setY1",
+                            "underscore_name": "set_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->y1 = val;",
+                                "return;"
+                            ]
+                        }
+                    }
+                ],
+                "name": "Cstruct_as_class",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_class::",
+                "typemap_name": "Cstruct_as_class",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "x1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "x1",
+                            "variable_lower": "x1",
+                            "variable_name": "x1",
+                            "variable_upper": "X1"
+                        },
+                        "name": "x1",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "y1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "y1",
+                            "variable_lower": "y1",
+                            "variable_name": "y1",
+                            "variable_upper": "Y1"
+                        },
+                        "name": "y1",
+                        "options": {}
+                    }
+                ],
+                "wrap_as": "class"
             }
         ],
         "copyright": [
@@ -2649,6 +2868,133 @@
                     "underscore_name": "get_global_struct_list"
                 },
                 "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "fmtdict": {
+                    "function_name": "Create_Cstruct_as_class",
+                    "underscore_name": "create__cstruct_as_class"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_class_args",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "y",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct_as_class"
+                    ],
+                    "typemap_name": "Cstruct_as_class"
+                },
+                "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)",
+                "fmtdict": {
+                    "function_name": "Create_Cstruct_as_class_args",
+                    "underscore_name": "create__cstruct_as_class_args"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "Cstruct_as_class_sum",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "pass": true
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "point",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct_as_class"
+                            ],
+                            "typemap_name": "Cstruct_as_class"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)",
+                "fmtdict": {
+                    "F_name_function": "sum",
+                    "function_name": "Cstruct_as_class_sum",
+                    "underscore_name": "cstruct_as_class_sum"
+                },
+                "options": {
+                    "class_method": "Cstruct_as_class",
+                    "wrap_python": false
+                }
             }
         ],
         "language": "cxx",

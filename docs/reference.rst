@@ -241,6 +241,27 @@ C_line_length
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
 
+class_ctor
+  Indicates that this function is a constructor for a struct.
+  The value is the name of the struct.
+  Useful for *wrap_struct_as=class* when used with C.
+
+.. code-block:: yaml
+
+    - decl: struct Cstruct_as_class {
+              int x1;
+              int y1;
+            };
+      options:
+        wrap_struct_as: class
+
+    - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+      options:
+        class_ctor: Cstruct_as_class
+
+class_method
+  Indicates that this function is a method for a struct.
+
 CXX_standard
   C++ standard. Defaults to *2011*.
   See *nullptr*.
@@ -370,11 +391,27 @@ return_scalar_pointer
   
 .. bufferify
 
+SH_shadow
+    Prefix for shadow variables to avoid conflicting with other variables.
+    Defaults to ``SHadow_``.
+
 show_splicer_comments
     If ``true`` show comments which delineate the splicer blocks;
     else, do not show the comments.
     Only the global level option is used.
 
+wrap_class_as
+    Defines how a ``class`` should be wrapped.
+    If *class*, wrap using a shadow type.
+    If *struct*, wrap the same as a ``struct``.
+    Default is *class*.
+
+wrap_struct_as
+    Defines how a ``struct`` should be wrapped.
+    If *struct*, wrap a struct as a Fortran derived-type.
+    If *class*, wrap a struct the same as a class using a shadow type.
+    Default is *struct*.
+    
 wrap_c
   If *true*, create C wrappers.
   Defaults to *true*.
@@ -599,7 +636,7 @@ PY_struct_array_descr_create_template
     ``{PY_prefix}{cxx_class}_create_array_descr``
 
 PY_struct_arg
-    How to wrap arrays - numpy, list or class.
+    How to wrap structs - numpy, list or class.
     Defaults to *numpy*.
 
 PY_struct_array_descr_variable_template
@@ -1162,6 +1199,10 @@ function_suffix
 LUA_name
     Name of function as known by LUA.
     Defaults to evaluation of option *LUA_name_template*.
+
+shadow_var
+   Name of variables which are shadow variables that represent a class.
+   Used with C++ classes for C structs with *wrap_struct_as=class*.
 
 template_suffix
    String which is append to the end of a generated function names

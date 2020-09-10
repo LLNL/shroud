@@ -39,6 +39,7 @@
                 },
                 "name": "Class3",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "forward::Class3::",
                 "typemap_name": "forward::Class3"
             },
@@ -86,6 +87,7 @@
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "1",
                                 "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_scalar_ctor",
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
@@ -144,7 +146,7 @@
                         "declgen": "Class2()",
                         "fmtdict": {
                             "C_name": "FOR_Class2_ctor",
-                            "C_prototype": "FOR_Class2 * SHC_rv",
+                            "C_prototype": "FOR_Class2 * SHadow_rv",
                             "C_return_type": "FOR_Class2 *",
                             "F_C_call": "c_class2_ctor",
                             "F_C_name": "c_class2_ctor",
@@ -201,6 +203,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "dtor",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_shadow_dtor",
                             "stmt1": "f_default",
                             "stmtc0": "c_shadow_dtor",
@@ -225,6 +228,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_shadow_*_in",
                                     "stmt1": "c_shadow_in"
                                 },
@@ -327,6 +331,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "func1",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -351,6 +356,7 @@
                                     "cxx_var": "SHCXX_arg",
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_OTHER",
+                                    "shadow_var": "SHadow_arg",
                                     "stmt0": "c_shadow_*_in",
                                     "stmt1": "c_shadow_in"
                                 },
@@ -455,6 +461,7 @@
                             "c_member": "->",
                             "c_var": "self",
                             "function_name": "acceptClass3",
+                            "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_default",
                             "stmtc0": "c",
@@ -466,6 +473,7 @@
                 ],
                 "name": "Class2",
                 "options": {},
+                "parse_keyword": "class",
                 "scope": "forward::Class2::",
                 "typemap_name": "forward::Class2"
             }

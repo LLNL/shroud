@@ -270,6 +270,7 @@ class VerifyAttrs(object):
                 "len_trim",
                 "name",
                 "owner",
+                "pass",
                 "rank",
                 "size",
                 "value",
@@ -622,7 +623,7 @@ class GenFunctions(object):
         """
         clslist = []
         for cls in node.classes:
-            if cls.as_struct:
+            if cls.wrap_as == "struct":
                 clslist.append(cls)
                 options = cls.options
                 if options.wrap_python and options.PY_struct_arg == "class":

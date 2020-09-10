@@ -115,6 +115,35 @@ declarations:
     PY_array_arg: numpy
 
 ######################################################################
+- decl: struct Cstruct_as_class {
+          int x1;
+          int y1;
+        };
+  options:
+    wrap_struct_as: class
+    wrap_python: False  # tested in struct-py.yaml
+  doxygen:
+    description: |
+      Treat a struct as a class, i.e. create a shadow derived type.
+
+- decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_class
+- decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_class
+
+- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+  options:
+    wrap_python: False
+    class_method: Cstruct_as_class
+  format:
+    F_name_function: sum
+
+
+######################################################################
 splicer_code:
   f:
     module_top:

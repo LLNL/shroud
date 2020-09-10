@@ -28,6 +28,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result",
                         "stmt1": "c_string_result"
                     },
@@ -118,6 +119,7 @@
                             "cxx_var": "SHCXX_rv",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_SHF_rv",
                             "stmt0": "c_string_&_result_buf_allocatable",
                             "stmt1": "c_string_result_buf_allocatable"
                         },
@@ -148,6 +150,7 @@
                         "cxx_var": "SHCXX_rv",
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
+                        "shadow_var": "SHadow_rv",
                         "stmt0": "c_void_scalar_result_buf",
                         "stmt1": "c_default"
                     }
@@ -317,7 +320,6 @@
             {
                 "classes": [
                     {
-                        "as_struct": true,
                         "cxx_header": [],
                         "fmtdict": {
                             "C_header_filename": "wrapouter_Cstruct1.h",
@@ -480,6 +482,7 @@
                         ],
                         "name": "Cstruct1",
                         "options": {},
+                        "parse_keyword": "struct",
                         "scope": "outer::Cstruct1::",
                         "typemap_name": "outer::Cstruct1",
                         "variables": [
@@ -626,6 +629,7 @@
                         },
                         "name": "ClassWork",
                         "options": {},
+                        "parse_keyword": "class",
                         "scope": "nswork::ClassWork::",
                         "typemap_name": "nswork::ClassWork"
                     }
