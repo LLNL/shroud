@@ -158,6 +158,41 @@ do-test-shiv :
 	$(PYTHON) regression/do-test.py $(do-test-args)
 
 ########################################################################
+# Nuitka is a Python compiler written in Python.
+# http://nuitka.net/
+# hinted-compilation https://github.com/Nuitka/NUITKA-Utilities
+#
+# Create an executable at $(nuitka-root)/$(vernum)/shroud.dist/shroud
+
+nuitka-root = dist-nuitka
+
+install-nuitka :
+	$(python.dir)/pip install nuitka
+
+# $(python.dir)/python -m nuitka 
+nuitka-options = $(python.dir)/nuitka3
+nuitka-options += --standalone
+nuitka-options += --follow-imports
+#nuitka-options += --show-progress
+#nuitka-options += --show-scons
+#nuitka-options += --generate-c-only
+nuitka-options += --remove-output
+#nuitka-options += --output-dir=nuitka-work
+
+# Use version in output file name.
+nuitka-file : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+nuitka-file :
+	CC=gcc $(nuitka-options) --output-dir=$(nuitka-root)/$(vernum) dist-nuitka/shroud.py
+
+# Test nuitka created executable
+do-test-nuitka : vernum = $(shell grep __version__ shroud/metadata.py | awk -F '"' '{print $$2}')
+do-test-nuitka :
+	@export TEST_OUTPUT_DIR=$(top)/$(tempdir)/regression; \
+	export TEST_INPUT_DIR=$(top)/regression; \
+	export EXECUTABLE_DIR=$(nuitka-root)/$(vernum)/shroud.dist/shroud; \
+	$(PYTHON) regression/do-test.py $(do-test-args)
+
+########################################################################
 # python must have sphinx installed or else it reports
 # error: invalid command 'build_sphinx'
 docs :
