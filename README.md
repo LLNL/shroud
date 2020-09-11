@@ -93,6 +93,17 @@ Shroud can be installed using pip
 pip install llnl-shroud
 ```
 
+This can be done in a virtual environment as
+
+```
+cd my_project_folder
+virtualenv my_project
+source my_project/bin/activate
+pip install llnl-shroud
+```
+
+This assumes the bash shell. Source activate.csh for csh.
+
 In addition, a file created by
 [shiv](https://github.com/linkedin/shiv)
 is available from the github release.
