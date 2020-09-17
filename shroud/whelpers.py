@@ -50,7 +50,26 @@
  interface = code for INTERFACE
  source    = code for CONTAINS
 
-Python helpers
+# Helper in wrapper classes
+
+Methods in wrappers to deal with helpers.
+  add_helper - Build up a list of helpers from statements.
+    - wrapf.ModuleInfo.add_f_helper and add_c_helper
+    - wrapc.Wrapc.add_c_helper
+    - wrapp.Wrapp.add_helper
+  gather_helper_code - Write helpers in a sorted order (so the generated
+   files will compare). Write dependent helpers so their declaration is before
+   their use.
+
+# Fortran helpers
+
+Some Fortran helpers are implemented in C.
+Listed in the statements.c_helper and f_helper fields.
+The C helpers are written after creating the Fortran wrappers by 
+clibrary.write_impl_utility function.
+
+# Python helpers
+
 Most C API functions also return an error indicator, usually NULL if
 they are supposed to return a pointer, or -1 if they return an integer.
 

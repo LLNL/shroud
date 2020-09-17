@@ -59,7 +59,7 @@ class Wrapf(util.WrapperMixin):
         self.doxygen_cont = "!!"
         self.doxygen_end = "!<"
         self.file_list = []
-        self.shared_helper = config.shared_helpers  # All accumulated helpers
+        self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         ModuleInfo.newlibrary = newlibrary
 
     _default_buf_args = ["arg"]
@@ -2000,8 +2000,8 @@ rv = .false.
         to add code in order.
 
         Args:
-            name -
-            done -
+            name - Name of helper.
+            done - Dictionary of previously processed helpers.
             fileinfo - ModuleInfo
         """
         if name in done:
@@ -2049,7 +2049,7 @@ rv = .false.
         Args:
             fileinfo - ModuleInfo
         """
-        done = {}  # avoid duplicates
+        done = {}  # Avoid duplicates by keeping track of what's been written.
         for name in sorted(fileinfo.f_helper.keys()):
             self._gather_helper_code(name, done, fileinfo)
 
