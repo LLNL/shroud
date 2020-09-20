@@ -10,6 +10,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import typemap
 from . import util
 from .util import wformat, append_format
 
@@ -26,6 +27,7 @@ class Wrapl(util.WrapperMixin):
             splicers -
         """
         self.newlibrary = newlibrary
+        self.language = newlibrary.language
         self.patterns = newlibrary.patterns
         self.config = config
         self.log = config.log
@@ -36,6 +38,8 @@ class Wrapl(util.WrapperMixin):
         self.doxygen_begin = "/**"
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
+        self.helpers = Helpers(self.language)
+        update_typemap_for_language(self.language)
 
     def reset_file(self):
         pass
@@ -582,34 +586,43 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 )
 
             cxx_call_list.append(fmt_arg.cxx_var)
+        # --- End loop over function parameters
 
         # call with arguments
         fmt.cxx_call_list = ",\t ".join(cxx_call_list)
         #        LUA_code.extend(post_parse)
 
+        sgroup = None
+        spointer = None
+        sintent = None
         if is_ctor:
+            sgroup ="shadow"
+            sintent = "ctor"
             fmt.LUA_used_param_state = True
-            append_format(
-                LUA_code,
-                "{LUA_userdata_type} * {LUA_userdata_var} ="
-                "\t ({LUA_userdata_type} *) lua_newuserdata"
-                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n"
-                "{LUA_userdata_var}->{LUA_userdata_member} ="
-                "\t new {namespace_scope}{cxx_class}({cxx_call_list});\n"
-                "/* Add the metatable to the stack. */\n"
-                'luaL_getmetatable(L, "{LUA_metadata}");\n'
-                "/* Set the metatable on the userdata. */\n"
-                "lua_setmetatable(L, -2);",
-                fmt,
-            )
+#            self.helpers.add_helper("maker", fmt)
+#XXX            append_format(
+#XXX                LUA_code,
+#XXX                "{LUA_userdata_type} * {LUA_userdata_var} ="
+#XXX                "\t ({LUA_userdata_type} *) lua_newuserdata"
+#XXX                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n"
+#XXX                "{LUA_userdata_var}->{LUA_userdata_member} ="
+#XXX                "\t new {namespace_scope}{cxx_class}({cxx_call_list});\n"
+#XXX                "/* Add the metatable to the stack. */\n"
+#XXX                'luaL_getmetatable(L, "{LUA_metadata}");\n'
+#XXX                "/* Set the metatable on the userdata. */\n"
+#XXX                "lua_setmetatable(L, -2);",
+#XXX                fmt,
+#XXX            )
         elif is_dtor:
+            sgroup ="shadow"
+            sintent = "dtor"
             fmt.LUA_used_param_state = True
-            append_format(
-                LUA_code,
-                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
-                "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
-                fmt,
-            )
+#XXX            append_format(
+#XXX                LUA_code,
+#XXX                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
+#XXX                "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
+#XXX                fmt,
+#XXX            )
         elif CXX_subprogram == "subroutine":
             append_format(
                 LUA_code,
@@ -617,11 +630,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt,
             )
         else:
+            sgroup = "XXXsgroup"
+            sintent = "result"
             append_format(
                 LUA_code,
                 "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
                 fmt,
             )
+        stmts = ["lua", sgroup, spointer, sintent]
+        result_blk = lookup_stmts(stmts)
 
         #        if 'LUA_error_pattern' in node:
         #            lfmt = util.Scope(fmt)
@@ -631,7 +648,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #                 self.patterns[node['LUA_error_pattern']], lfmt)
 
         # Compute return value
-        if CXX_subprogram == "function" and not is_ctor:
+        if result_blk.call:
+            for line in result_blk.call:
+                append_format(LUA_code, line, fmt) #XXX_result)
+        elif CXX_subprogram == "function": # and not is_ctor:
             fmt.LUA_used_param_state = True
             tmp = wformat(result_typemap.LUA_push, fmt_result)
             LUA_push.append(tmp + ";")
@@ -696,6 +716,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt = node.fmtdict
         fname = fmt.LUA_module_filename
 
+        hinclude, hsource = self.helpers.find_file_helper_code()
+
         output = []
 
         for include in node.cxx_header:
@@ -710,6 +732,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         self._create_splicer("C_definition", output)
 
+        output.extend(hsource)
         output.extend(self.body_lines)
 
         self.append_luaL_Reg(output, fmt.LUA_module_reg, self.luaL_Reg_module)
@@ -741,7 +764,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
 class LuaFunction(object):
     """Gather information used to write a wrapper for
-    and overloaded/default-argument function
+    an overloaded/default-argument function
     """
 
     def __init__(self, function, subprogram, inargs, outargs):
@@ -761,3 +784,169 @@ class LuaFunction(object):
 
         if subprogram == "function":
             self.nresults += 1
+
+
+class Helpers(object):
+    def __init__(self, language):
+        self.c_helpers = {}  # c and c++
+        self.language = language
+
+    def add_helper(self, helpers, fmt):
+        """Add a list of C helpers."""
+        c_helper = wformat(helpers, fmt)
+        for i, helper in enumerate(c_helper.split()):
+            self.c_helpers[helper] = True
+            setattr(fmt, "hnamefunc" + str(i),
+                    LuaHelpers[helper].get("name", helper))
+        
+#        self.c_helper[name] = True
+#        # Adjust for alias like with type char.
+#        return whelpers.CHelpers[name]["name"]
+
+    def _gather_helper_code(self, name, done):
+        """Add code from helpers.
+
+        First recursively process dependent_helpers
+        to add code in order.
+
+        Args:
+            name - Name of helper.
+            done - Dictionary of previously processed helpers.
+        """
+        if name in done:
+            return  # avoid recursion
+        done[name] = True
+
+        helper_info = LuaHelpers[name]
+        if "dependent_helpers" in helper_info:
+            for dep in helper_info["dependent_helpers"]:
+                # check for recursion
+                self._gather_helper_code(dep, done)
+
+        scope = helper_info.get("scope", "file")
+        # assert scope in ["file", "utility"]
+
+        lang_key = self.language + "_include"
+        if lang_key in helper_info:
+            for include in helper_info[lang_key].split():
+                self.helper_summary["include"][scope][include] = True
+        elif "include" in helper_info:
+            for include in helper_info["include"].split():
+                self.helper_summary["include"][scope][include] = True
+
+        for key in ["proto", "source"]:
+            lang_key = self.language + "_" + key 
+            if lang_key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[lang_key])
+            elif key in helper_info:
+                self.helper_summary[key][scope].append(helper_info[key])
+
+    def gather_helper_code(self, helpers):
+        """Gather up all helpers requested and insert code into output.
+
+        helpers should be self.c_helper or self.shared_helper
+
+        Args:
+            helpers - dictionary of helper names.
+        """
+        self.helper_summary = dict(
+            include=dict(file={}, pwrap_impl={}),
+            proto=dict(file=[], pwrap_impl=[]),
+            source=dict(file=[], pwrap_impl=[]),
+        )
+        self.helper_need_numpy = False
+
+        done = {}  # Avoid duplicates by keeping track of what's been written.
+        for name in sorted(helpers.keys()):
+            self._gather_helper_code(name, done)
+
+#        print("XXXXXXXX", self.helper_summary)
+
+    def find_file_helper_code(self):
+        """Get "file" helper code.
+        Add to shared_helper, then reset.
+
+        Return dictionary of headers and list of source files.
+        """
+#        if self.newlibrary.options.PY_write_helper_in_util:
+#            self.shared_helper.update(self.c_helper)
+#        if True:
+#            self.c_helpers = {}
+#            return {}, []
+        self.gather_helper_code(self.c_helpers)
+#        self.shared_helper.update(self.c_helpers)
+        self.c_helper = {}
+        return (
+            self.helper_summary["include"]["file"],
+            self.helper_summary["source"]["file"],
+#            self.helper_need_numpy
+        )
+
+        
+
+
+LuaHelpers = dict(
+    maker=dict(
+        source="""
+// Test adding helper
+""",
+    ),
+)
+
+######################################################################
+
+# The tree of Python Scope statements.
+lua_tree = {}
+default_scope = None  # for statements
+
+def update_typemap_for_language(language):
+    """Preprocess statements for lookup.
+
+    Update statements for c or c++.
+    Fill in py_tree.
+    """
+    typemap.update_for_language(lua_statements, language)
+    typemap.update_stmt_tree(lua_statements, lua_tree, default_stmts)
+    global default_scope
+    default_scope = typemap.default_scopes["lua"]
+
+def lookup_stmts(path):
+    return typemap.lookup_stmts_tree(lua_tree, path)
+
+class LuaStmts(object):
+    def __init__(
+        self,
+        name="lua_default",
+        call=[],
+    ):
+        self.name = name
+        self.call = call
+
+default_stmts = dict(
+    lua=LuaStmts,
+    base=LuaStmts,
+)
+        
+lua_statements = [
+    dict(
+        name="lua_shadow_ctor",
+        call=[
+            "{LUA_userdata_type} * {LUA_userdata_var} ="
+                "\t ({LUA_userdata_type} *) lua_newuserdata"
+                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));",
+            "{LUA_userdata_var}->{LUA_userdata_member} ="
+                "\t new {namespace_scope}{cxx_class}({cxx_call_list});",
+            "/* Add the metatable to the stack. */",
+            'luaL_getmetatable(L, "{LUA_metadata}");',
+            "/* Set the metatable on the userdata. */",
+            "lua_setmetatable(L, -2);",
+        ],
+    ),
+    dict(
+        name="lua_shadow_dtor",
+        call=[
+            "delete {LUA_userdata_var}->{LUA_userdata_member};",
+            "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
+        ],
+    ),
+]
