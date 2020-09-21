@@ -593,8 +593,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        LUA_code.extend(post_parse)
 
         sgroup = None
-        spointer = None
+        spointer = ast.get_indirect_stmt()
         sintent = None
+#        print("DDDDDDDDDDDDDD", ast.name)
         if is_ctor:
             sgroup ="shadow"
             sintent = "ctor"
@@ -624,20 +625,22 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #XXX                fmt,
 #XXX            )
         elif CXX_subprogram == "subroutine":
-            append_format(
-                LUA_code,
-                "{LUA_this_call}{function_name}({cxx_call_list});",
-                fmt,
-            )
+            sgroup = "void"
+#XXX            append_format(
+#XXX                LUA_code,
+#XXX                "{LUA_this_call}{function_name}({cxx_call_list});",
+#XXX                fmt,
+#XXX            )
         else:
-            sgroup = "XXXsgroup"
+            sgroup = result_typemap.sgroup
             sintent = "result"
-            append_format(
-                LUA_code,
-                "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-                fmt,
-            )
+#XXX            append_format(
+#XXX                LUA_code,
+#XXX                "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+#XXX                fmt,
+#XXX            )
         stmts = ["lua", sgroup, spointer, sintent]
+#        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)
 
         #        if 'LUA_error_pattern' in node:
@@ -651,7 +654,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if result_blk.call:
             for line in result_blk.call:
                 append_format(LUA_code, line, fmt) #XXX_result)
-        elif CXX_subprogram == "function": # and not is_ctor:
+        if result_blk.post_call:
+            for line in result_blk.post_call:
+                append_format(LUA_push, line, fmt_result)
+        elif CXX_subprogram == "function" and not is_ctor:
             fmt.LUA_used_param_state = True
             tmp = wformat(result_typemap.LUA_push, fmt_result)
             LUA_push.append(tmp + ";")
@@ -918,9 +924,11 @@ class LuaStmts(object):
         self,
         name="lua_default",
         call=[],
+        post_call=[],
     ):
         self.name = name
         self.call = call
+        self.post_call = post_call
 
 default_stmts = dict(
     lua=LuaStmts,
@@ -928,6 +936,59 @@ default_stmts = dict(
 )
         
 lua_statements = [
+    dict(
+        # subroutine
+        name="lua_void_scalar",
+        call=[
+            "{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+    ),
+    dict(
+        name="lua_void_*_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+    ),
+    #####
+    dict(
+        name="lua_bool_scalar_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+#        post_call=[
+#            "lua_pushnumber({LUA_state_var}, {c_var});",
+#        ],
+    ),
+    #####
+    dict(
+        name="lua_native_scalar_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+#        post_call=[
+#            "lua_pushnumber({LUA_state_var}, {c_var});",
+#        ],
+    ),
+    #####
+    dict(
+        name="lua_string_scalar_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+#        post_call=[
+#            "lua_pushstring({LUA_state_var}, {c_var});",
+#        ],
+    ),
+    dict(
+        name="lua_string_&_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+#        post_call=[
+#            "lua_pushstring({LUA_state_var}, {c_var});",
+#        ],
+    ),
+    #####
     dict(
         name="lua_shadow_ctor",
         call=[
@@ -948,5 +1009,14 @@ lua_statements = [
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
         ],
+    ),
+    dict(
+        name="lua_shadow_*_result",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+#        post_call=[
+#            "lua_pushnumber({LUA_state_var}, {c_var});",
+#        ],
     ),
 ]

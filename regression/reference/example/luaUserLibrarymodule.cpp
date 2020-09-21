@@ -334,7 +334,6 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             TypeID type = getTypeID(lua_tointeger(L, 1));
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            SH_this->self->declare(type);
             SH_nresult = 0;
         }
         else {
@@ -348,7 +347,6 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             SidreLength len = lua_tointeger(L, 2);
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            SH_this->self->declare(type, len);
             SH_nresult = 0;
         }
         else {
