@@ -479,9 +479,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             )
             fmt.rv_asgn = fmt.rv_decl + " =\t "
 
-        LUA_decl = []  # declare variables and pop values
-        LUA_code = []  # call C++ function
-        LUA_push = []  # push results
+        declare_code = []  # declare variables and pop values
+        call_code = []  # call C++ function
+        post_call_code = []  # push results
 
         # post_parse = []
         cxx_call_list = []
@@ -493,7 +493,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt.LUA_used_param_state = True
                 fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
                 append_format(
-                    LUA_code,
+                    call_code,
                     "{LUA_userdata_type} * {LUA_userdata_var} =\t {c_var};",
                     fmt,
                 )
@@ -502,7 +502,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # call function based on number of default arguments provided
         # XXX default_calls = []   # each possible default call
         # XXX if '_has_default_arg' in node:
-        # XXX     append_format(LUA_decl, 'int SH_nargs =
+        # XXX     append_format(declare_code, 'int SH_nargs =
         # XXX          lua_gettop({LUA_state_var});', fmt)
 
         # Only process nargs.
@@ -551,10 +551,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX  build_format.append(format)
                 # XXX  build_vargs.append('*' + vargs)
 
-                # append_format(LUA_push, arg_typemap.LUA_push, fmt_arg)
+                # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
                 fmt.LUA_used_param_state = True
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
-                LUA_push.append(tmp + ";")
+                post_call_code.append(tmp + ";")
 
             # argument for C++ function
             # This has been replaced by gen_arg methods, but not sure about const.
@@ -576,11 +576,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 decl_suffix = ";"
             if arg_typemap.base == "string":
-                LUA_decl.append(
+                declare_code.append(
                     arg.gen_arg_as_c(continuation=True) + decl_suffix
                 )
             else:
-                LUA_decl.append(
+                declare_code.append(
                     arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
                     + decl_suffix
                 )
@@ -590,7 +590,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         # call with arguments
         fmt.cxx_call_list = ",\t ".join(cxx_call_list)
-        #        LUA_code.extend(post_parse)
+        #        call_code.extend(post_parse)
 
         sgroup = None
         spointer = ast.get_indirect_stmt()
@@ -602,7 +602,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt)
 #XXX            append_format(
-#XXX                LUA_code,
+#XXX                call_code,
 #XXX                "{LUA_userdata_type} * {LUA_userdata_var} ="
 #XXX                "\t ({LUA_userdata_type} *) lua_newuserdata"
 #XXX                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n"
@@ -619,7 +619,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sintent = "dtor"
             fmt.LUA_used_param_state = True
 #XXX            append_format(
-#XXX                LUA_code,
+#XXX                call_code,
 #XXX                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
 #XXX                "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
 #XXX                fmt,
@@ -627,7 +627,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         elif CXX_subprogram == "subroutine":
             sgroup = "void"
 #XXX            append_format(
-#XXX                LUA_code,
+#XXX                call_code,
 #XXX                "{LUA_this_call}{function_name}({cxx_call_list});",
 #XXX                fmt,
 #XXX            )
@@ -635,7 +635,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sgroup = result_typemap.sgroup
             sintent = "result"
 #XXX            append_format(
-#XXX                LUA_code,
+#XXX                call_code,
 #XXX                "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
 #XXX                fmt,
 #XXX            )
@@ -647,26 +647,26 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #            lfmt = util.Scope(fmt)
         #            lfmt.c_var = fmt.LUA_result
         #            lfmt.cxx_var = fmt.LUA_result
-        #            append_format(LUA_code,
+        #            append_format(call_code,
         #                 self.patterns[node['LUA_error_pattern']], lfmt)
 
         # Compute return value
         if result_blk.call:
             for line in result_blk.call:
-                append_format(LUA_code, line, fmt) #XXX_result)
+                append_format(call_code, line, fmt) #XXX_result)
         if result_blk.post_call:
             for line in result_blk.post_call:
-                append_format(LUA_push, line, fmt_result)
+                append_format(post_call_code, line, fmt_result)
         elif CXX_subprogram == "function" and not is_ctor:
             fmt.LUA_used_param_state = True
             tmp = wformat(result_typemap.LUA_push, fmt_result)
-            LUA_push.append(tmp + ";")
+            post_call_code.append(tmp + ";")
 
         lines = self.splicer_lines
-        lines.extend(LUA_decl)
-        lines.extend(LUA_code)
+        lines.extend(declare_code)
+        lines.extend(call_code)
         # int lua_checkstack (lua_State *L, int extra)
-        lines.extend(LUA_push)  # return values
+        lines.extend(post_call_code)  # return values
 
     def write_header(self, node):
         """
