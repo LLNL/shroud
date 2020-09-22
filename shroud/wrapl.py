@@ -936,6 +936,16 @@ default_stmts = dict(
 )
         
 lua_statements = [
+    # Factor out some common code patterns to use as mixins.
+    dict(
+        # Used to capture return value.
+        # Used with intent(result).
+        name="lua_mixin_callfunction",
+        call=[
+            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
+        ],
+    ),
+    #####
     dict(
         # subroutine
         name="lua_void_scalar",
@@ -945,16 +955,12 @@ lua_statements = [
     ),
     dict(
         name="lua_void_*_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
     ),
     #####
     dict(
         name="lua_bool_scalar_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
 #        post_call=[
 #            "lua_pushnumber({LUA_state_var}, {c_var});",
 #        ],
@@ -962,9 +968,7 @@ lua_statements = [
     #####
     dict(
         name="lua_native_scalar_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
 #        post_call=[
 #            "lua_pushnumber({LUA_state_var}, {c_var});",
 #        ],
@@ -972,18 +976,14 @@ lua_statements = [
     #####
     dict(
         name="lua_string_scalar_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
 #        post_call=[
 #            "lua_pushstring({LUA_state_var}, {c_var});",
 #        ],
     ),
     dict(
         name="lua_string_&_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
 #        post_call=[
 #            "lua_pushstring({LUA_state_var}, {c_var});",
 #        ],
@@ -1012,9 +1012,7 @@ lua_statements = [
     ),
     dict(
         name="lua_shadow_*_result",
-        call=[
-            "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-        ],
+        mixin="lua_mixin_callfunction",
 #        post_call=[
 #            "lua_pushnumber({LUA_state_var}, {c_var});",
 #        ],
