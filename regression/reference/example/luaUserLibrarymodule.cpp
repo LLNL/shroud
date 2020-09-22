@@ -719,16 +719,16 @@ static int l_example_nested_verylongfunctionname1(lua_State *L)
     example::nested::verylongfunctionname1(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
-    lua_pushinteger(L, lua_tointeger(L, 1));
-    lua_pushinteger(L, lua_tointeger(L, 2));
-    lua_pushinteger(L, lua_tointeger(L, 3));
-    lua_pushinteger(L, lua_tointeger(L, 4));
-    lua_pushinteger(L, lua_tointeger(L, 5));
-    lua_pushinteger(L, lua_tointeger(L, 6));
-    lua_pushinteger(L, lua_tointeger(L, 7));
-    lua_pushinteger(L, lua_tointeger(L, 8));
-    lua_pushinteger(L, lua_tointeger(L, 9));
-    lua_pushinteger(L, lua_tointeger(L, 10));
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
+    lua_pushinteger(L, XXXpush_arg);
     return 0;
     // splicer end function.verylongfunctionname1
 }
@@ -768,7 +768,7 @@ static int l_example_nested_cos_doubles(lua_State *L)
     double * out;
     int sizein = lua_tointeger(L, 2);
     example::nested::cos_doubles(in, out, sizein);
-    lua_pushnumber(L, out);
+    lua_pushnumber(L, XXXpush_arg);
     return 0;
     // splicer end function.cos_doubles
 }

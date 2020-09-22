@@ -452,7 +452,9 @@
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv",
+                                "push_expr": "lua_pushinteger(L, SHCXX_rv)"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -1175,7 +1177,9 @@
                                 "c_var": "SHCXX_rv.c_str()",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv.c_str()",
+                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
                             },
                             "fmtpy": {
                                 "array_size": "1",
@@ -1462,7 +1466,9 @@
                                 "c_var": "static_cast<int>(SHCXX_rv)",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "static_cast<int>(SHCXX_rv)",
+                                "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -1916,7 +1922,9 @@
                                 "c_var": "SHCXX_rv.c_str()",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv.c_str()",
+                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
                             },
                             "fmtpy": {
                                 "array_size": "1",
@@ -2398,7 +2406,9 @@
                                 "c_var": "SHCXX_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "push_arg": "SHCXX_rv",
+                                "push_expr": "lua_pushinteger(L, SHCXX_rv)"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -2723,7 +2733,9 @@
                         "c_var": "static_cast<int>(SHCXX_rv)",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv",
+                        "push_arg": "static_cast<int>(SHCXX_rv)",
+                        "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3641,7 +3653,9 @@
                         "c_var": "SHCXX_rv",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv",
+                        "push_arg": "SHCXX_rv",
+                        "push_expr": "lua_pushinteger(L, SHCXX_rv)"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3730,7 +3744,9 @@
                         "c_var": "SHCXX_rv.c_str()",
                         "cxx_addr": "&",
                         "cxx_member": ".",
-                        "cxx_var": "SHCXX_rv"
+                        "cxx_var": "SHCXX_rv",
+                        "push_arg": "SHCXX_rv.c_str()",
+                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
                     },
                     "fmtpy": {
                         "array_size": "1",

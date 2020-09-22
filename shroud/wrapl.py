@@ -58,6 +58,7 @@ class Wrapl(util.WrapperMixin):
         # Some kludges, need to compute correct value in wrapl.py
         fmt_library.LUA_metadata = "XXLUA_metadata"
         fmt_library.LUA_userdata_type = "XXLUA_userdata_type"
+        fmt_library.push_arg = "XXXpush_arg"
 
         # XXX - Without this c_const is undefined.
         #       Need to sort out where it should be set.
@@ -651,16 +652,23 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #                 self.patterns[node['LUA_error_pattern']], lfmt)
 
         # Compute return value
+        if CXX_subprogram == "function" and not is_ctor:
+            fmt_result.push_arg = fmt_result.c_var
+            fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
         if result_blk.call:
             for line in result_blk.call:
                 append_format(call_code, line, fmt) #XXX_result)
         if result_blk.post_call:
+            fmt.LUA_used_param_state = True
             for line in result_blk.post_call:
                 append_format(post_call_code, line, fmt_result)
-        elif CXX_subprogram == "function" and not is_ctor:
-            fmt.LUA_used_param_state = True
-            tmp = wformat(result_typemap.LUA_push, fmt_result)
-            post_call_code.append(tmp + ";")
+#XXX        elif CXX_subprogram == "function" and not is_ctor:
+#XXX            fmt_result.push_arg = fmt_result.c_var
+#XXX            fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
+#XXX#            fmt.push_arg = result_typemap.LUA_push.format(push_arg=fmt.c_var)
+#XXX            fmt.LUA_used_param_state = True
+#XXX            tmp = wformat(result_typemap.LUA_push, fmt_result)
+#XXX            post_call_code.append(tmp + ";")
 
         lines = self.splicer_lines
         lines.extend(declare_code)
@@ -945,6 +953,14 @@ lua_statements = [
             "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
         ],
     ),
+    dict(
+        # Used to capture return value.
+        # Used with intent(result).
+        name="lua_mixin_push",
+        post_call=[
+            "{push_expr};",
+        ],
+    ),
     #####
     dict(
         # subroutine
@@ -960,33 +976,21 @@ lua_statements = [
     #####
     dict(
         name="lua_bool_scalar_result",
-        mixin="lua_mixin_callfunction",
-#        post_call=[
-#            "lua_pushnumber({LUA_state_var}, {c_var});",
-#        ],
+        mixin="lua_mixin_callfunction lua_mixin_push",
     ),
     #####
     dict(
         name="lua_native_scalar_result",
-        mixin="lua_mixin_callfunction",
-#        post_call=[
-#            "lua_pushnumber({LUA_state_var}, {c_var});",
-#        ],
+        mixin="lua_mixin_callfunction lua_mixin_push",
     ),
     #####
     dict(
         name="lua_string_scalar_result",
-        mixin="lua_mixin_callfunction",
-#        post_call=[
-#            "lua_pushstring({LUA_state_var}, {c_var});",
-#        ],
+        mixin="lua_mixin_callfunction lua_mixin_push",
     ),
     dict(
         name="lua_string_&_result",
-        mixin="lua_mixin_callfunction",
-#        post_call=[
-#            "lua_pushstring({LUA_state_var}, {c_var});",
-#        ],
+        mixin="lua_mixin_callfunction lua_mixin_push",
     ),
     #####
     dict(
@@ -1012,9 +1016,6 @@ lua_statements = [
     ),
     dict(
         name="lua_shadow_*_result",
-        mixin="lua_mixin_callfunction",
-#        post_call=[
-#            "lua_pushnumber({LUA_state_var}, {c_var});",
-#        ],
+        mixin="lua_mixin_callfunction lua_mixin_push",
     ),
 ]
