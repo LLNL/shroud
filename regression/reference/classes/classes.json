@@ -138,7 +138,9 @@
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "stmt0": "lua_shadow_scalar_ctor",
+                                "stmt1": "lua_shadow_ctor"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -297,7 +299,9 @@
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "stmt0": "lua_shadow_scalar_ctor",
+                                "stmt1": "lua_shadow_ctor"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -378,6 +382,12 @@
                         }
                     },
                     {
+                        "_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_shadow_scalar_dtor",
+                                "stmt1": "lua_shadow_dtor"
+                            }
+                        },
                         "ast": {
                             "attrs": {
                                 "_destructor": true,
@@ -454,7 +464,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "push_arg": "SHCXX_rv",
-                                "push_expr": "lua_pushinteger(L, SHCXX_rv)"
+                                "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                                "stmt0": "lua_native_scalar_result",
+                                "stmt1": "lua_native_scalar_result"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -1179,7 +1191,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "push_arg": "SHCXX_rv.c_str()",
-                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
+                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                "stmt0": "lua_string_&_result",
+                                "stmt1": "lua_string_&_result"
                             },
                             "fmtpy": {
                                 "array_size": "1",
@@ -1468,7 +1482,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "push_arg": "static_cast<int>(SHCXX_rv)",
-                                "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))"
+                                "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
+                                "stmt0": "lua_native_scalar_result",
+                                "stmt1": "lua_native_scalar_result"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -1924,7 +1940,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "push_arg": "SHCXX_rv.c_str()",
-                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
+                                "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                                "stmt0": "lua_string_&_result",
+                                "stmt1": "lua_string_&_result"
                             },
                             "fmtpy": {
                                 "array_size": "1",
@@ -2309,7 +2327,9 @@
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "stmt0": "lua_shadow_scalar_ctor",
+                                "stmt1": "lua_shadow_ctor"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -2408,7 +2428,9 @@
                                 "cxx_member": ".",
                                 "cxx_var": "SHCXX_rv",
                                 "push_arg": "SHCXX_rv",
-                                "push_expr": "lua_pushinteger(L, SHCXX_rv)"
+                                "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                                "stmt0": "lua_native_scalar_result",
+                                "stmt1": "lua_native_scalar_result"
                             },
                             "fmtpy": {
                                 "c_deref": "",
@@ -2547,7 +2569,9 @@
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "stmt0": "lua_shadow_scalar_ctor",
+                                "stmt1": "lua_shadow_ctor"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -2735,7 +2759,9 @@
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "push_arg": "static_cast<int>(SHCXX_rv)",
-                        "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))"
+                        "push_expr": "lua_pushinteger(L, static_cast<int>(SHCXX_rv))",
+                        "stmt0": "lua_native_scalar_result",
+                        "stmt1": "lua_native_scalar_result"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3568,6 +3594,12 @@
                         }
                     }
                 },
+                "_fmtresult": {
+                    "fmtl": {
+                        "stmt0": "lua_void_scalar",
+                        "stmt1": "lua_void_scalar"
+                    }
+                },
                 "ast": {
                     "declarator": {
                         "name": "set_global_flag",
@@ -3655,7 +3687,9 @@
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "push_arg": "SHCXX_rv",
-                        "push_expr": "lua_pushinteger(L, SHCXX_rv)"
+                        "push_expr": "lua_pushinteger(L, SHCXX_rv)",
+                        "stmt0": "lua_native_scalar_result",
+                        "stmt1": "lua_native_scalar_result"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -3746,7 +3780,9 @@
                         "cxx_member": ".",
                         "cxx_var": "SHCXX_rv",
                         "push_arg": "SHCXX_rv.c_str()",
-                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())"
+                        "push_expr": "lua_pushstring(L, SHCXX_rv.c_str())",
+                        "stmt0": "lua_string_&_result",
+                        "stmt1": "lua_string_&_result"
                     },
                     "fmtpy": {
                         "array_size": "1",

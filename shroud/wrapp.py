@@ -1940,8 +1940,7 @@ return 1;""",
 
         result_blk = default_scope
 
-        fmt_result0 = node._fmtresult
-        fmt_result = fmt_result0.setdefault(
+        fmt_result = node._fmtresult.setdefault(
             "fmtpy", util.Scope(fmt)
         )  # fmt_func
         CXX_result = node.ast

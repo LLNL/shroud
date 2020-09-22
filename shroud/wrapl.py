@@ -271,6 +271,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         self.splicer_lines = []
         lines = self.splicer_lines
+        self.stmts_comments = []
 
         if len(all_calls) == 1:
             call = all_calls[0]
@@ -370,6 +371,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if node.options.debug:
             for node in overloads:
                 body.append("// " + node.declgen)
+        body.extend(self.stmts_comments)
         if node.options.doxygen:
             for node in overloads:
                 if node.doxygen:
@@ -412,8 +414,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         variation of a function.
 
         Args:
-            cls -
-            luafcn -
+            cls - ast.ClassNode
+            luafcn - LuaFunction
             fmt - local format dictionary
         """
         node = luafcn.function
@@ -456,9 +458,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
+        fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt))
         if CXX_subprogram == "function":
-            fmt_result0 = node._fmtresult
-            fmt_result = fmt_result0.setdefault("fmtl", util.Scope(fmt))
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or ast.is_pointer():
                 #                fmt_result.c_member = '->'
@@ -643,6 +644,17 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         stmts = ["lua", sgroup, spointer, sintent]
 #        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)
+        fmt_result.stmt0 = typemap.compute_name(stmts)
+        fmt_result.stmt1 = result_blk.name
+        stmts_comments = self.stmts_comments
+        if node.options.debug:
+            stmts_comments.append(
+                "// ----------------------------------------")
+            stmts_comments.append(
+                "// Function:  " + ast.gen_decl(params=None))
+            self.document_stmts(
+                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+            
 
         #        if 'LUA_error_pattern' in node:
         #            lfmt = util.Scope(fmt)

@@ -35,6 +35,12 @@
                 },
                 "functions": [
                     {
+                        "_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_shadow_scalar_dtor",
+                                "stmt1": "lua_shadow_dtor"
+                            }
+                        },
                         "ast": {
                             "attrs": {
                                 "_destructor": true,

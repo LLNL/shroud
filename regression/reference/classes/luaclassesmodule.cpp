@@ -22,6 +22,14 @@ extern "C" {
 
 // Class1()
 // Class1(int flag +intent(in)+value)
+// ----------------------------------------
+// Function:  Class1
+// Requested: lua_shadow_scalar_ctor
+// Match:     lua_shadow_ctor
+// ----------------------------------------
+// Function:  Class1
+// Requested: lua_shadow_scalar_ctor
+// Match:     lua_shadow_ctor
 static int l_Class1_ctor(lua_State *L)
 {
     // splicer begin class.Class1.method.ctor
@@ -66,6 +74,10 @@ static int l_Class1_ctor(lua_State *L)
 }
 
 // ~Class1() +name(delete)
+// ----------------------------------------
+// Function:  ~Class1 +name(delete)
+// Requested: lua_shadow_scalar_dtor
+// Match:     lua_shadow_dtor
 static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -78,6 +90,9 @@ static int l_Class1_delete(lua_State *L)
 }
 
 // int Method1()
+// ----------------------------------------
+// Function:  int Method1
+// Exact:     lua_native_scalar_result
 /**
  * \brief returns the value of flag member
  *
@@ -94,6 +109,9 @@ static int l_Class1_method1(lua_State *L)
 }
 
 // const std::string & getName() +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string & getName +deref(allocatable)
+// Exact:     lua_string_&_result
 /**
  * \brief test helper
  *
@@ -110,6 +128,9 @@ static int l_Class1_get_name(lua_State *L)
 }
 
 // DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// ----------------------------------------
+// Function:  DIRECTION directionFunc
+// Exact:     lua_native_scalar_result
 static int l_Class1_direction_func(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
@@ -138,6 +159,9 @@ static const struct luaL_Reg l_Class1_Reg [] = {
 };
 
 // const std::string & getName() +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string & getName +deref(allocatable)
+// Exact:     lua_string_&_result
 /**
  * \brief test helper
  *
@@ -164,6 +188,10 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 };
 
 // Shape()
+// ----------------------------------------
+// Function:  Shape
+// Requested: lua_shadow_scalar_ctor
+// Match:     lua_shadow_ctor
 static int l_Shape_ctor(lua_State *L)
 {
     // splicer begin class.Shape.method.ctor
@@ -179,6 +207,9 @@ static int l_Shape_ctor(lua_State *L)
 }
 
 // int get_ivar() const
+// ----------------------------------------
+// Function:  int get_ivar
+// Exact:     lua_native_scalar_result
 static int l_Shape_get_ivar(lua_State *L)
 {
     // splicer begin class.Shape.method.get_ivar
@@ -201,6 +232,10 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 };
 
 // Circle()
+// ----------------------------------------
+// Function:  Circle
+// Requested: lua_shadow_scalar_ctor
+// Match:     lua_shadow_ctor
 static int l_Circle_ctor(lua_State *L)
 {
     // splicer begin class.Circle.method.ctor
@@ -225,6 +260,9 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 };
 
 // Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+// ----------------------------------------
+// Function:  Class1::DIRECTION directionFunc
+// Exact:     lua_native_scalar_result
 static int l_direction_func(lua_State *L)
 {
     // splicer begin function.directionFunc
@@ -237,6 +275,9 @@ static int l_direction_func(lua_State *L)
 }
 
 // void set_global_flag(int arg +intent(in)+value)
+// ----------------------------------------
+// Function:  void set_global_flag
+// Exact:     lua_void_scalar
 static int l_set_global_flag(lua_State *L)
 {
     // splicer begin function.set_global_flag
@@ -247,6 +288,9 @@ static int l_set_global_flag(lua_State *L)
 }
 
 // int get_global_flag()
+// ----------------------------------------
+// Function:  int get_global_flag
+// Exact:     lua_native_scalar_result
 static int l_get_global_flag(lua_State *L)
 {
     // splicer begin function.get_global_flag
@@ -257,6 +301,9 @@ static int l_get_global_flag(lua_State *L)
 }
 
 // const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+// ----------------------------------------
+// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Exact:     lua_string_&_result
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled

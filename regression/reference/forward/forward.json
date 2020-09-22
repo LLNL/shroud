@@ -105,7 +105,9 @@
                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                 "cxx_addr": "",
                                 "cxx_member": "->",
-                                "cxx_var": "SHCXX_rv"
+                                "cxx_var": "SHCXX_rv",
+                                "stmt0": "lua_shadow_scalar_ctor",
+                                "stmt1": "lua_shadow_ctor"
                             },
                             "fmtpy": {
                                 "PY_build_format": "O",
@@ -171,6 +173,12 @@
                         }
                     },
                     {
+                        "_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_shadow_scalar_dtor",
+                                "stmt1": "lua_shadow_dtor"
+                            }
+                        },
                         "ast": {
                             "attrs": {
                                 "_destructor": true,
@@ -277,6 +285,12 @@
                                     "stmt1": "py_shadow_*_in",
                                     "value_var": "SHValue_arg"
                                 }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_void_scalar",
+                                "stmt1": "lua_void_scalar"
                             }
                         },
                         "ast": {
@@ -407,6 +421,12 @@
                                     "stmt1": "py_shadow_*_in",
                                     "value_var": "SHValue_arg"
                                 }
+                            }
+                        },
+                        "_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_void_scalar",
+                                "stmt1": "lua_void_scalar"
                             }
                         },
                         "ast": {

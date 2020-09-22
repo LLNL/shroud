@@ -21,6 +21,9 @@ extern "C" {
 // splicer end C_definition
 
 // void NoReturnNoArguments()
+// ----------------------------------------
+// Function:  void NoReturnNoArguments
+// Exact:     lua_void_scalar
 static int l_no_return_no_arguments(lua_State *)
 {
     // splicer begin function.NoReturnNoArguments
@@ -30,6 +33,9 @@ static int l_no_return_no_arguments(lua_State *)
 }
 
 // double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// ----------------------------------------
+// Function:  double PassByValue
+// Exact:     lua_native_scalar_result
 static int l_pass_by_value(lua_State *L)
 {
     // splicer begin function.PassByValue
@@ -42,6 +48,9 @@ static int l_pass_by_value(lua_State *L)
 }
 
 // const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// ----------------------------------------
+// Function:  const std::string ConcatenateStrings +deref(allocatable)
+// Exact:     lua_string_scalar_result
 /**
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
@@ -59,6 +68,15 @@ static int l_concatenate_strings(lua_State *L)
 }
 
 // double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// ----------------------------------------
+// Function:  double UseDefaultArguments
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  double UseDefaultArguments
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  double UseDefaultArguments
+// Exact:     lua_native_scalar_result
 static int l_use_default_arguments(lua_State *L)
 {
     // splicer begin function.UseDefaultArguments
@@ -108,6 +126,12 @@ static int l_use_default_arguments(lua_State *L)
 
 // void OverloadedFunction(const std::string & name +intent(in))
 // void OverloadedFunction(int indx +intent(in)+value)
+// ----------------------------------------
+// Function:  void OverloadedFunction
+// Exact:     lua_void_scalar
+// ----------------------------------------
+// Function:  void OverloadedFunction
+// Exact:     lua_void_scalar
 static int l_overloaded_function(lua_State *L)
 {
     // splicer begin function.OverloadedFunction
@@ -140,6 +164,12 @@ static int l_overloaded_function(lua_State *L)
 
 // void TemplateArgument(int arg +intent(in)+value)
 // void TemplateArgument(double arg +intent(in)+value)
+// ----------------------------------------
+// Function:  void TemplateArgument
+// Exact:     lua_void_scalar
+// ----------------------------------------
+// Function:  void TemplateArgument
+// Exact:     lua_void_scalar
 static int l_template_argument(lua_State *L)
 {
     // splicer begin function.TemplateArgument
@@ -172,6 +202,12 @@ static int l_template_argument(lua_State *L)
 
 // void FortranGenericOverloaded()
 // void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+// ----------------------------------------
+// Function:  void FortranGenericOverloaded
+// Exact:     lua_void_scalar
+// ----------------------------------------
+// Function:  void FortranGenericOverloaded
+// Exact:     lua_void_scalar
 static int l_fortran_generic_overloaded(lua_State *L)
 {
     // splicer begin function.FortranGenericOverloaded
@@ -208,6 +244,24 @@ static int l_fortran_generic_overloaded(lua_State *L)
 
 // int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
 // int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
 static int l_use_default_overload(lua_State *L)
 {
     // splicer begin function.UseDefaultOverload
@@ -304,6 +358,9 @@ static int l_use_default_overload(lua_State *L)
 }
 
 // TypeID typefunc(TypeID arg +intent(in)+value)
+// ----------------------------------------
+// Function:  TypeID typefunc
+// Exact:     lua_native_scalar_result
 static int l_typefunc(lua_State *L)
 {
     // splicer begin function.typefunc
@@ -315,6 +372,9 @@ static int l_typefunc(lua_State *L)
 }
 
 // EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
+// ----------------------------------------
+// Function:  EnumTypeID enumfunc
+// Exact:     lua_native_scalar_result
 static int l_enumfunc(lua_State *L)
 {
     // splicer begin function.enumfunc
@@ -327,6 +387,9 @@ static int l_enumfunc(lua_State *L)
 }
 
 // Color colorfunc(Color arg +intent(in)+value)
+// ----------------------------------------
+// Function:  Color colorfunc
+// Exact:     lua_native_scalar_result
 static int l_colorfunc(lua_State *L)
 {
     // splicer begin function.colorfunc
@@ -339,6 +402,9 @@ static int l_colorfunc(lua_State *L)
 }
 
 // const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+// ----------------------------------------
+// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Exact:     lua_string_&_result
 static int l_last_function_called(lua_State *L)
 {
     // splicer begin function.LastFunctionCalled
