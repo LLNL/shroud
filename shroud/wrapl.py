@@ -971,26 +971,40 @@ lua_statements = [
     ),
     dict(
         name="lua_void_*_result",
-        mixin="lua_mixin_callfunction",
+        mixin=[
+            "lua_mixin_callfunction",
+        ],
     ),
     #####
     dict(
         name="lua_bool_scalar_result",
-        mixin="lua_mixin_callfunction lua_mixin_push",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
     ),
     #####
     dict(
         name="lua_native_scalar_result",
-        mixin="lua_mixin_callfunction lua_mixin_push",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
     ),
     #####
     dict(
         name="lua_string_scalar_result",
-        mixin="lua_mixin_callfunction lua_mixin_push",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
     ),
     dict(
         name="lua_string_&_result",
-        mixin="lua_mixin_callfunction lua_mixin_push",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push"
+        ],
     ),
     #####
     dict(
@@ -1016,6 +1030,9 @@ lua_statements = [
     ),
     dict(
         name="lua_shadow_*_result",
-        mixin="lua_mixin_callfunction lua_mixin_push",
+        mixin=[
+            "lua_mixin_callfunction",
+            "lua_mixin_push",
+        ],
     ),
 ]

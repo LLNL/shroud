@@ -78,7 +78,7 @@ class Typemap(unittest.TestCase):
             ),
             dict(
                 name="c_b",
-                mixin="c_mixin_field1 c_mixin_field2",
+                mixin=["c_mixin_field1", "c_mixin_field2"],
                 field2="field2_from_c_b",
             ),
         ]

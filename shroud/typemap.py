@@ -1296,7 +1296,7 @@ def update_stmt_tree(stmts, tree, defaults):
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])
             if "mixin" in node:
-                for mpart in node["mixin"].split():
+                for mpart in node["mixin"]:
                     scope.update(nodes[mpart])
             scope.update(node)
             node["scope"] = scope
