@@ -57,6 +57,44 @@ class Typemap(unittest.TestCase):
         self.assertEqual("field1_from_c_a", rv.field1)
         self.assertEqual("field2_from_c_b", rv.field2)
         
+    def test_mixin(self):
+        # Prefix names with "c" to work with typemap.default_stmts.
+        cf_tree = {}
+        stmts = [
+            dict(
+                name="c_mixin_field1",
+                field1="field1_from_mixin_field1",
+                field1a="field1a_from_mixin_field1",
+            ),
+            dict(
+                name="c_mixin_field2",
+                field2="field2_from_mixin_field2",
+                field2a="field2a_from_mixin_field2",
+            ),
+            dict(
+                name="c_a",
+                field1="field1_from_c_a",
+                field2="field2_from_c_a",
+            ),
+            dict(
+                name="c_b",
+                mixin="c_mixin_field1 c_mixin_field2",
+                field2="field2_from_c_b",
+            ),
+        ]
+        typemap.update_stmt_tree(stmts, cf_tree, typemap.default_stmts)
+
+        rv = typemap.lookup_stmts_tree(cf_tree, ["c", "a"])
+        self.assertIsInstance(rv, util.Scope)
+        self.assertEqual("field1_from_c_a", rv.field1)
+        self.assertEqual("field2_from_c_a", rv.field2)
+
+        rv = typemap.lookup_stmts_tree(cf_tree, ["c", "b"])
+        self.assertIsInstance(rv, util.Scope)
+        self.assertEqual("field1_from_mixin_field1", rv.field1)
+        self.assertEqual("field1a_from_mixin_field1", rv.field1a)
+        self.assertEqual("field2_from_c_b", rv.field2)
+        
     def test_lookup_tree1(self):
         cf_tree = {}
         stmts = [

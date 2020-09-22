@@ -1235,7 +1235,7 @@ def update_stmt_tree(stmts, tree, defaults):
     Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
-    based based on the language (c or f) and added as "scope" field.
+    based on the language (c or f) and added as "scope" field.
     This additional layer of indirection is needed to implement base.
 
     stmts = [
@@ -1264,10 +1264,10 @@ def update_stmt_tree(stmts, tree, defaults):
     for key, node in defaults.items():
         default_scopes[key] = node()
 
-    # index by name to find aliases
-    # XXX - look for duplicate names?
+    # Index by name to find alias, base, mixin.
     nodes = {}
     for node in stmts:
+        # node is a dict.
         if "name" not in node:
             raise RuntimeError("Missing name in statements: {}".
                                format(str(node)))
@@ -1295,6 +1295,9 @@ def update_stmt_tree(stmts, tree, defaults):
         else:
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])
+            if "mixin" in node:
+                for mpart in node["mixin"].split():
+                    scope.update(nodes[mpart])
             scope.update(node)
             node["scope"] = scope
 #    print_tree(tree)
@@ -1443,6 +1446,8 @@ class FStmts(object):
         self.result = result
 
 
+# Define class for nodes in tree based on their first entry.
+# c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,
