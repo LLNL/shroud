@@ -440,6 +440,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         ast = node.ast
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
+        stmts_comments = self.stmts_comments
+        stmts_comments_args = []  # Used to reorder comments
 
         #        is_const = ast.const
         # XXX        if is_ctor:   # or is_dtor:
@@ -535,7 +537,27 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
-            if attrs["intent"] in ["inout", "in"]:
+
+            intent_blk = None
+            intent = attrs["intent"]
+            sgroup = arg_typemap.sgroup
+            spointer = arg.get_indirect_stmt()
+            stmts = None
+            stmts = ["lua", sgroup, spointer, intent]
+            if intent_blk is None:
+                intent_blk = lookup_stmts(stmts)
+            # Useful for debugging.  Requested and found path.
+            fmt_arg.stmt0 = typemap.compute_name(stmts)
+            fmt_arg.stmt1 = intent_blk.name
+            # Add some debug comments to function.
+            if node.options.debug:
+                stmts_comments_args.append(
+                    "// ----------------------------------------")
+                stmts_comments_args.append("// Argument:  " + arg.gen_decl())
+                self.document_stmts(
+                    stmts_comments_args, fmt_arg.stmt0, fmt_arg.stmt1)
+            
+            if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
                 fmt_arg.c_var = wformat(arg_typemap.LUA_pop, fmt_arg)
@@ -545,7 +567,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     lua_pop = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
-            if attrs["intent"] in ["inout", "out"]:
+            if intent in ["inout", "out"]:
                 # output variable must be a pointer
                 # XXX - fix up for strings
                 # XXX  format, vargs = self.intent_out(
@@ -646,7 +668,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         result_blk = lookup_stmts(stmts)
         fmt_result.stmt0 = typemap.compute_name(stmts)
         fmt_result.stmt1 = result_blk.name
-        stmts_comments = self.stmts_comments
         if node.options.debug:
             stmts_comments.append(
                 "// ----------------------------------------")
@@ -654,6 +675,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(
                 stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+            stmts_comments.extend(stmts_comments_args)
             
 
         #        if 'LUA_error_pattern' in node:

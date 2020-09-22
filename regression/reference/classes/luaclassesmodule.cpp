@@ -30,6 +30,10 @@ extern "C" {
 // Function:  Class1
 // Requested: lua_shadow_scalar_ctor
 // Match:     lua_shadow_ctor
+// ----------------------------------------
+// Argument:  int flag +intent(in)+value
+// Requested: lua_native_scalar_in
+// Match:     lua_default
 static int l_Class1_ctor(lua_State *L)
 {
     // splicer begin class.Class1.method.ctor
@@ -131,6 +135,10 @@ static int l_Class1_get_name(lua_State *L)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Argument:  DIRECTION arg +intent(in)+value
+// Requested: lua_native_scalar_in
+// Match:     lua_default
 static int l_Class1_direction_func(lua_State *L)
 {
     // splicer begin class.Class1.method.directionFunc
@@ -263,6 +271,10 @@ static const struct luaL_Reg l_Circle_Reg [] = {
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Argument:  Class1::DIRECTION arg +intent(in)+value
+// Requested: lua_native_scalar_in
+// Match:     lua_default
 static int l_direction_func(lua_State *L)
 {
     // splicer begin function.directionFunc
@@ -278,6 +290,10 @@ static int l_direction_func(lua_State *L)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Exact:     lua_void_scalar
+// ----------------------------------------
+// Argument:  int arg +intent(in)+value
+// Requested: lua_native_scalar_in
+// Match:     lua_default
 static int l_set_global_flag(lua_State *L)
 {
     // splicer begin function.set_global_flag

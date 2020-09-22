@@ -261,7 +261,9 @@
                                     "cxx_member": "->",
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "arg",
-                                    "lua_var": "SH_Lua_arg"
+                                    "lua_var": "SH_Lua_arg",
+                                    "stmt0": "lua_shadow_*_in",
+                                    "stmt1": "lua_default"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PY_Class1_Type",
@@ -395,7 +397,9 @@
                                     "cxx_member": "->",
                                     "cxx_type": "forward::Class3",
                                     "cxx_var": "arg",
-                                    "lua_var": "SH_Lua_arg"
+                                    "lua_var": "SH_Lua_arg",
+                                    "stmt0": "lua_shadow_*_in",
+                                    "stmt1": "lua_default"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",

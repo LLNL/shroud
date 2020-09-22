@@ -68,6 +68,10 @@ static int l_Class2_dtor(lua_State *L)
 // ----------------------------------------
 // Function:  void func1
 // Exact:     lua_void_scalar
+// ----------------------------------------
+// Argument:  tutorial::Class1 * arg +intent(in)
+// Requested: lua_shadow_*_in
+// Match:     lua_default
 static int l_Class2_func1(lua_State *L)
 {
     // splicer begin class.Class2.method.func1
@@ -85,6 +89,10 @@ static int l_Class2_func1(lua_State *L)
 // ----------------------------------------
 // Function:  void acceptClass3
 // Exact:     lua_void_scalar
+// ----------------------------------------
+// Argument:  Class3 * arg +intent(in)
+// Requested: lua_shadow_*_in
+// Match:     lua_default
 static int l_Class2_accept_class3(lua_State *L)
 {
     // splicer begin class.Class2.method.acceptClass3

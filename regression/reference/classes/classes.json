@@ -247,7 +247,9 @@
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
-                                    "lua_var": "SH_Lua_flag"
+                                    "lua_var": "SH_Lua_flag",
+                                    "stmt0": "lua_native_scalar_in",
+                                    "stmt1": "lua_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -1422,7 +1424,9 @@
                                     "cxx_member": ".",
                                     "cxx_type": "classes::Class1::DIRECTION",
                                     "cxx_var": "arg",
-                                    "lua_var": "SH_Lua_arg"
+                                    "lua_var": "SH_Lua_arg",
+                                    "stmt0": "lua_native_scalar_in",
+                                    "stmt1": "lua_default"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -2699,7 +2703,9 @@
                             "cxx_member": ".",
                             "cxx_type": "classes::Class1::DIRECTION",
                             "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg"
+                            "lua_var": "SH_Lua_arg",
+                            "stmt0": "lua_native_scalar_in",
+                            "stmt1": "lua_default"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3571,7 +3577,9 @@
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg",
-                            "lua_var": "SH_Lua_arg"
+                            "lua_var": "SH_Lua_arg",
+                            "stmt0": "lua_native_scalar_in",
+                            "stmt1": "lua_default"
                         },
                         "fmtpy": {
                             "c_const": "",
