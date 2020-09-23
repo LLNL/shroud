@@ -286,7 +286,7 @@ static int l_direction_func(lua_State *L)
 // void set_global_flag(int arg +intent(in)+value)
 // ----------------------------------------
 // Function:  void set_global_flag
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +intent(in)+value
 // Exact:     lua_native_scalar_in

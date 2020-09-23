@@ -3608,8 +3608,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "ast": {

@@ -559,7 +559,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
-                fmt_func.LUA_used_param_state = True
                 fmt_arg.pop_expr = wformat(arg_typemap.LUA_pop, fmt_arg)
                 if self.language == "c":
                     pass
@@ -577,12 +576,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX  build_vargs.append('*' + vargs)
 
                 # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
-                fmt_func.LUA_used_param_state = True
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
                 node_stmt.post_call.append(tmp + ";")
                 # XXX - needs work with pointers: int *out+intent(out)
 
-            self.append_code(intent_blk, node_stmt, fmt_arg)
+            self.append_code(intent_blk, node_stmt, fmt_arg, fmt_func)
 
             cxx_call_list.append(fmt_arg.cxx_var)
         # --- End loop over function parameters
@@ -605,7 +603,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sintent = "dtor"
             fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
-            sgroup = "void"
+            sgroup = "subroutine"
+            spointer = None
         else:
             sgroup = result_typemap.sgroup
             sintent = "result"
@@ -635,13 +634,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if CXX_subprogram == "function" and not is_ctor:
             fmt_result.push_arg = fmt_result.c_var
             fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
-        if result_blk.call:
-            for line in result_blk.call:
-                append_format(node_stmt.call, line, fmt_func) #XXX_result)
-        if result_blk.post_call:
-            fmt_func.LUA_used_param_state = True
-            for line in result_blk.post_call:
-                append_format(node_stmt.post_call, line, fmt_result)
+        self.append_code(result_blk, node_stmt, fmt_result, fmt_func)
 
         lines = self.splicer_lines
         lines.extend(declare_code)
@@ -651,21 +644,24 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         lines.extend(node_stmt.post_call)  # return values
 
 
-    def append_code(self, blk, node_stmt, fmt):
+    def append_code(self, blk, node_stmt, fmt, fmt_func):
         """Append code from blk
 
         Args:
             blk - util.Scope
             node_stmt - LuaStmts
             fmt - util.Scope
+            fmt_func - util.Scope
         """
-#        if result_blk.call:
-#            for line in result_blk.call:
-#                append_format(call_code, line, fmt) #XXX_result)
         if blk.pre_call:
+            fmt_func.LUA_used_param_state = True
             for line in blk.pre_call:
                 append_format(node_stmt.pre_call, line, fmt)
+        if blk.call:
+            for line in blk.call:
+                append_format(node_stmt.call, line, fmt)
         if blk.post_call:
+            fmt_func.LUA_used_param_state = True
             for line in blk.post_call:
                 append_format(node_stmt.post_call, line, fmt)
         
@@ -964,14 +960,15 @@ lua_statements = [
         ],
     ),
     #####
-    # void
+    # subroutine
     dict(
-        # subroutine
-        name="lua_void_scalar",
+        name="lua_subroutine",
         call=[
             "{LUA_this_call}{function_name}({cxx_call_list});",
         ],
     ),
+    #####
+    # void
     dict(
         name="lua_void_*_result",
         mixin=[

@@ -23,7 +23,7 @@ extern "C" {
 // void NoReturnNoArguments()
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 static int l_no_return_no_arguments(lua_State *)
 {
     // splicer begin function.NoReturnNoArguments
@@ -149,13 +149,13 @@ static int l_use_default_arguments(lua_State *L)
 // void OverloadedFunction(int indx +intent(in)+value)
 // ----------------------------------------
 // Function:  void OverloadedFunction
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
 // Exact:     lua_string_&_in
 // ----------------------------------------
 // Function:  void OverloadedFunction
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int indx +intent(in)+value
 // Exact:     lua_native_scalar_in
@@ -193,13 +193,13 @@ static int l_overloaded_function(lua_State *L)
 // void TemplateArgument(double arg +intent(in)+value)
 // ----------------------------------------
 // Function:  void TemplateArgument
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +intent(in)+value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void TemplateArgument
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double arg +intent(in)+value
 // Exact:     lua_native_scalar_in
@@ -237,10 +237,10 @@ static int l_template_argument(lua_State *L)
 // void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
-// Exact:     lua_void_scalar
+// Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
 // Exact:     lua_string_&_in

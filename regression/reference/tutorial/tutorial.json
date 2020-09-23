@@ -72,8 +72,8 @@
             {
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "ast": {
@@ -1302,8 +1302,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_overloaded": true,
@@ -1525,8 +1525,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_overloaded": true,
@@ -1726,8 +1726,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_generated": "cxx_template",
@@ -1889,8 +1889,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_generated": "cxx_template",
@@ -2248,8 +2248,8 @@
             {
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_overloaded": true,
@@ -2400,8 +2400,8 @@
                 },
                 "_fmtresult": {
                     "fmtl": {
-                        "stmt0": "lua_void_scalar",
-                        "stmt1": "lua_void_scalar"
+                        "stmt0": "lua_subroutine",
+                        "stmt1": "lua_subroutine"
                     }
                 },
                 "_overloaded": true,

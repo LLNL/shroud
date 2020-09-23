@@ -1707,8 +1707,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "ast": {
@@ -3766,8 +3766,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_*",
-                                                "stmt1": "lua_default"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "_has_default_arg": true,
@@ -4088,8 +4088,8 @@
                                     {
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "ast": {
@@ -4401,8 +4401,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "_generated": "cxx_template",
@@ -4591,8 +4591,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "_generated": "cxx_template",
@@ -4779,8 +4779,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "_generated": "cxx_template",
@@ -4967,8 +4967,8 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_void_scalar",
-                                                "stmt1": "lua_void_scalar"
+                                                "stmt0": "lua_subroutine",
+                                                "stmt1": "lua_subroutine"
                                             }
                                         },
                                         "_generated": "cxx_template",
@@ -5471,8 +5471,8 @@
                             {
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -5956,8 +5956,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "_overloaded": true,
@@ -6220,8 +6220,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "_overloaded": true,
@@ -6704,8 +6704,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "_has_default_arg": true,
@@ -6948,8 +6948,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "_overloaded": true,
@@ -7010,8 +7010,8 @@
                             {
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "_overloaded": true,
@@ -7090,7 +7090,7 @@
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
                                             "stmt0": "lua_void_scalar_in",
-                                            "stmt1": "lua_void_scalar"
+                                            "stmt1": "lua_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -7113,8 +7113,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -7245,8 +7245,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -7379,8 +7379,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -7628,7 +7628,7 @@
                                             "lua_var": "SH_Lua_get",
                                             "pop_expr": "POP",
                                             "stmt0": "lua_void_scalar_in",
-                                            "stmt1": "lua_void_scalar"
+                                            "stmt1": "lua_default"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -7651,8 +7651,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -8502,8 +8502,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
@@ -9803,8 +9803,8 @@
                                 },
                                 "_fmtresult": {
                                     "fmtl": {
-                                        "stmt0": "lua_void_scalar",
-                                        "stmt1": "lua_void_scalar"
+                                        "stmt0": "lua_subroutine",
+                                        "stmt1": "lua_subroutine"
                                     }
                                 },
                                 "ast": {
