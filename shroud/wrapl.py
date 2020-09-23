@@ -580,35 +580,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_func.LUA_used_param_state = True
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
                 node_stmt.post_call.append(tmp + ";")
-
-            # argument for C++ function
-            # This has been replaced by gen_arg methods, but not sure about const.
-            #            lang = 'cxx_type'
-            #            arg_const = False
-            #            if arg_typemap.base == 'string':
-            #                # C++ will coerce char * to std::string
-            #                lang = 'c_type'
-            #                arg_const = True  # lua_tostring is const
-            #            if arg.is_reference():
-            #                # convert a reference to a pointer
-            #                ptr = True
-            #            else:
-            #                ptr = False
-
-#XXX            if lua_pop:
-#XXX                fmt.LUA_used_param_state = True
-#XXX                decl_suffix = " =\t {};".format(lua_pop)
-#XXX            else:
-#XXX                decl_suffix = ";"
-#XXX            if arg_typemap.base == "string":
-#XXX                declare_code.append(
-#XXX                    arg.gen_arg_as_c(continuation=True) + decl_suffix
-#XXX                )
-#XXX            else:
-#XXX                declare_code.append(
-#XXX                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
-#XXX                    + decl_suffix
-#XXX                )
+                # XXX - needs work with pointers: int *out+intent(out)
 
             self.append_code(intent_blk, node_stmt, fmt_arg)
 
@@ -628,44 +600,15 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             sintent = "ctor"
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
-#XXX            append_format(
-#XXX                call_code,
-#XXX                "{LUA_userdata_type} * {LUA_userdata_var} ="
-#XXX                "\t ({LUA_userdata_type} *) lua_newuserdata"
-#XXX                "({LUA_state_var}, sizeof(*{LUA_userdata_var}));\n"
-#XXX                "{LUA_userdata_var}->{LUA_userdata_member} ="
-#XXX                "\t new {namespace_scope}{cxx_class}({cxx_call_list});\n"
-#XXX                "/* Add the metatable to the stack. */\n"
-#XXX                'luaL_getmetatable(L, "{LUA_metadata}");\n'
-#XXX                "/* Set the metatable on the userdata. */\n"
-#XXX                "lua_setmetatable(L, -2);",
-#XXX                fmt,
-#XXX            )
         elif is_dtor:
             sgroup ="shadow"
             sintent = "dtor"
             fmt_func.LUA_used_param_state = True
-#XXX            append_format(
-#XXX                call_code,
-#XXX                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
-#XXX                "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
-#XXX                fmt,
-#XXX            )
         elif CXX_subprogram == "subroutine":
             sgroup = "void"
-#XXX            append_format(
-#XXX                call_code,
-#XXX                "{LUA_this_call}{function_name}({cxx_call_list});",
-#XXX                fmt,
-#XXX            )
         else:
             sgroup = result_typemap.sgroup
             sintent = "result"
-#XXX            append_format(
-#XXX                call_code,
-#XXX                "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
-#XXX                fmt,
-#XXX            )
         stmts = ["lua", sgroup, spointer, sintent]
 #        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)
@@ -699,13 +642,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_func.LUA_used_param_state = True
             for line in result_blk.post_call:
                 append_format(node_stmt.post_call, line, fmt_result)
-#XXX        elif CXX_subprogram == "function" and not is_ctor:
-#XXX            fmt_result.push_arg = fmt_result.c_var
-#XXX            fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
-#XXX#            fmt.push_arg = result_typemap.LUA_push.format(push_arg=fmt.c_var)
-#XXX            fmt.LUA_used_param_state = True
-#XXX            tmp = wformat(result_typemap.LUA_push, fmt_result)
-#XXX            post_call_code.append(tmp + ";")
 
         lines = self.splicer_lines
         lines.extend(declare_code)
