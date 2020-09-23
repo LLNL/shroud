@@ -408,7 +408,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 self.luaL_Reg_module, '{{"{LUA_name}", {LUA_name_impl}}},', fmt
             )
 
-    def do_function(self, cls, luafcn, fmt):
+    def do_function(self, cls, luafcn, fmt_func):
         """
         Wrap a single function/overload/default-argument
         variation of a function.
@@ -416,7 +416,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         Args:
             cls - ast.ClassNode
             luafcn - LuaFunction
-            fmt - local format dictionary
+            fmt_func - local format dictionary
         """
         node = luafcn.function
         #        if not options.wrap_lua:
@@ -460,7 +460,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        fmt.rv_decl = self.std_c_decl(
         #            'cxx_type', ast, name=fmt.LUA_result, const=is_const)
 
-        fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt))
+        fmt_result = node._fmtresult.setdefault("fmtl", util.Scope(fmt_func))
         if CXX_subprogram == "function":
             fmt_result.cxx_var = wformat("{CXX_local}{LUA_result}", fmt_result)
             if is_ctor or ast.is_pointer():
@@ -478,10 +478,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             else:
                 fmt_result.c_var = fmt_result.cxx_var
 
-            fmt.rv_decl = ast.gen_arg_as_cxx(
+            fmt_func.rv_decl = ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None
             )
-            fmt.rv_asgn = fmt.rv_decl + " =\t "
+            fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
 
         declare_code = []  # Declare variables and pop values.
         pre_call_code = []  # Extract arguments.
@@ -495,12 +495,12 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if cls:
             cls_typedef = cls.typemap
             if not is_ctor:
-                fmt.LUA_used_param_state = True
-                fmt.c_var = wformat(cls_typedef.LUA_pop, fmt)
+                fmt_func.LUA_used_param_state = True
+                fmt_func.c_var = wformat(cls_typedef.LUA_pop, fmt_func)
                 append_format(
                     call_code,
                     "{LUA_userdata_type} * {LUA_userdata_var} =\t {c_var};",
-                    fmt,
+                    fmt_func,
                 )
 
         # parse arguments
@@ -508,17 +508,16 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX default_calls = []   # each possible default call
         # XXX if '_has_default_arg' in node:
         # XXX     append_format(declare_code, 'int SH_nargs =
-        # XXX          lua_gettop({LUA_state_var});', fmt)
+        # XXX          lua_gettop({LUA_state_var});', fmt_func)
 
         # Only process nargs.
         # Each variation of default-arguments produces a new call.
-        fmt_arg = util.Scope(fmt)
         LUA_index = 1
         for iarg in range(luafcn.nargs):
             arg = ast.params[iarg]
             arg_name = arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
-            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt))
+            fmt_arg = fmt_arg0.setdefault("fmtl", util.Scope(fmt_func))
             fmt_arg.LUA_index = LUA_index
             fmt_arg.c_var = arg_name
             fmt_arg.cxx_var = arg_name
@@ -559,7 +558,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
-                fmt.LUA_used_param_state = True
+                fmt_func.LUA_used_param_state = True
                 fmt_arg.pop_expr = wformat(arg_typemap.LUA_pop, fmt_arg)
                 if self.language == "c":
                     pass
@@ -577,7 +576,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # XXX  build_vargs.append('*' + vargs)
 
                 # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
-                fmt.LUA_used_param_state = True
+                fmt_func.LUA_used_param_state = True
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
                 post_call_code.append(tmp + ";")
 
@@ -616,7 +615,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # --- End loop over function parameters
 
         # call with arguments
-        fmt.cxx_call_list = ",\t ".join(cxx_call_list)
+        fmt_func.cxx_call_list = ",\t ".join(cxx_call_list)
         #        call_code.extend(post_parse)
 
         sgroup = None
@@ -626,8 +625,8 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         if is_ctor:
             sgroup ="shadow"
             sintent = "ctor"
-            fmt.LUA_used_param_state = True
-#            self.helpers.add_helper("maker", fmt)
+            fmt_func.LUA_used_param_state = True
+#            self.helpers.add_helper("maker", fmt_func)
 #XXX            append_format(
 #XXX                call_code,
 #XXX                "{LUA_userdata_type} * {LUA_userdata_var} ="
@@ -644,7 +643,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         elif is_dtor:
             sgroup ="shadow"
             sintent = "dtor"
-            fmt.LUA_used_param_state = True
+            fmt_func.LUA_used_param_state = True
 #XXX            append_format(
 #XXX                call_code,
 #XXX                "delete {LUA_userdata_var}->{LUA_userdata_member};\n"
@@ -694,9 +693,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
         if result_blk.call:
             for line in result_blk.call:
-                append_format(call_code, line, fmt) #XXX_result)
+                append_format(call_code, line, fmt_func) #XXX_result)
         if result_blk.post_call:
-            fmt.LUA_used_param_state = True
+            fmt_func.LUA_used_param_state = True
             for line in result_blk.post_call:
                 append_format(post_call_code, line, fmt_result)
 #XXX        elif CXX_subprogram == "function" and not is_ctor:
