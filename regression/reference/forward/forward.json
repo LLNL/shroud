@@ -262,8 +262,9 @@
                                     "cxx_type": "tutorial::Class1",
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
+                                    "pop_expr": "static_cast<tutorial::Class1 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
                                     "stmt0": "lua_shadow_*_in",
-                                    "stmt1": "lua_default"
+                                    "stmt1": "lua_shadow_*_in"
                                 },
                                 "fmtpy": {
                                     "PyTypeObject": "PY_Class1_Type",
@@ -398,8 +399,9 @@
                                     "cxx_type": "forward::Class3",
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
+                                    "pop_expr": "static_cast<forward::Class3 *>\t(\t(l_Class2_Type *)\t luaL_checkudata(\tL, 1, \"Class2.metatable\")->addr)",
                                     "stmt0": "lua_shadow_*_in",
-                                    "stmt1": "lua_default"
+                                    "stmt1": "lua_shadow_*_in"
                                 },
                                 "fmtpy": {
                                     "PY_to_object_idtor_func": "PP_Class3_to_Object_idtor",

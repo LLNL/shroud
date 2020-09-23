@@ -189,14 +189,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": " *",
                                                     "c_member": "->",
-                                                    "c_var": "lua_tostring(L, 1)",
+                                                    "c_var": "name",
                                                     "c_var_len": "Lname",
                                                     "cxx_member": "->",
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "name",
                                                     "lua_var": "SH_Lua_name",
+                                                    "pop_expr": "lua_tostring(L, 1)",
                                                     "stmt0": "lua_string_*_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_string_*_in"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -541,14 +542,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var": "incr",
                                                     "c_var_len": "Lincr",
                                                     "cxx_member": ".",
                                                     "cxx_type": "int",
                                                     "cxx_var": "incr",
                                                     "lua_var": "SH_Lua_incr",
+                                                    "pop_expr": "lua_tointeger(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -1199,14 +1201,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "int",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tointeger(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -1378,14 +1381,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "long",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tointeger(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -1555,14 +1559,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_toboolean(L, 1)",
+                                                    "c_var": "in",
                                                     "c_var_len": "Lin",
                                                     "cxx_member": ".",
                                                     "cxx_type": "bool",
                                                     "cxx_var": "in",
                                                     "lua_var": "SH_Lua_in",
+                                                    "pop_expr": "lua_toboolean(L, 1)",
                                                     "stmt0": "lua_bool_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_bool_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "PyTypeObject": "PyBool_Type",
@@ -1821,14 +1826,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": " *",
                                                     "c_member": "->",
-                                                    "c_var": "lua_tostring(L, 1)",
+                                                    "c_var": "name",
                                                     "c_var_len": "Lname",
                                                     "cxx_member": "->",
                                                     "cxx_type": "std::string",
                                                     "cxx_var": "name",
                                                     "lua_var": "SH_Lua_name",
+                                                    "pop_expr": "lua_tostring(L, 1)",
                                                     "stmt0": "lua_string_*_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_string_*_in"
                                                 },
                                                 "fmtpy": {
                                                     "array_size": "1",
@@ -3153,8 +3159,9 @@
                                                     "cxx_type": "example::nested::ExClass1",
                                                     "cxx_var": "in",
                                                     "lua_var": "SH_Lua_in",
+                                                    "pop_expr": "static_cast<example::nested::ExClass1 *>\t(\t(l_ExClass2_Type *)\t luaL_checkudata(\tL, 1, \"ExClass2.metatable\")->addr)",
                                                     "stmt0": "lua_shadow_*_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_shadow_*_in"
                                                 },
                                                 "fmtpy": {
                                                     "PY_to_object_idtor_func": "PP_ExClass1_to_Object_idtor",
@@ -3658,14 +3665,15 @@
                                                     "LUA_index": 2,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 2)",
+                                                    "c_var": "len",
                                                     "c_var_len": "Llen",
                                                     "cxx_member": ".",
                                                     "cxx_type": "SidreLength",
                                                     "cxx_var": "len",
                                                     "lua_var": "SH_Lua_len",
+                                                    "pop_expr": "lua_tointeger(L, 2)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -3729,8 +3737,9 @@
                                                     "cxx_type": "TypeID",
                                                     "cxx_var": "type",
                                                     "lua_var": "SH_Lua_type",
+                                                    "pop_expr": "getTypeID(lua_tointeger(L, 1))",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -4359,14 +4368,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "int",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tointeger(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -4548,14 +4558,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tointeger(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "long",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tointeger(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -4735,14 +4746,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tonumber(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "float",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tonumber(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -4922,14 +4934,15 @@
                                                     "LUA_index": 1,
                                                     "c_deref": "",
                                                     "c_member": ".",
-                                                    "c_var": "lua_tonumber(L, 1)",
+                                                    "c_var": "value",
                                                     "c_var_len": "Lvalue",
                                                     "cxx_member": ".",
                                                     "cxx_type": "double",
                                                     "cxx_var": "value",
                                                     "lua_var": "SH_Lua_value",
+                                                    "pop_expr": "lua_tonumber(L, 1)",
                                                     "stmt0": "lua_native_scalar_in",
-                                                    "stmt1": "lua_default"
+                                                    "stmt1": "lua_native_scalar_in"
                                                 },
                                                 "fmtpy": {
                                                     "c_const": "",
@@ -5522,14 +5535,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tostring(L, 1)",
+                                            "c_var": "name",
                                             "c_var_len": "Lname",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
+                                            "pop_expr": "lua_tostring(L, 1)",
                                             "stmt0": "lua_string_&_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_string_&_in"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -5908,14 +5922,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tostring(L, 1)",
+                                            "c_var": "name",
                                             "c_var_len": "Lname",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
+                                            "pop_expr": "lua_tostring(L, 1)",
                                             "stmt0": "lua_string_&_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_string_&_in"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -6119,14 +6134,15 @@
                                             "LUA_index": 2,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 2)",
+                                            "c_var": "flag",
                                             "c_var_len": "Lflag",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "flag",
                                             "lua_var": "SH_Lua_flag",
+                                            "pop_expr": "lua_tointeger(L, 2)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -6170,14 +6186,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tostring(L, 1)",
+                                            "c_var": "name",
                                             "c_var_len": "Lname",
                                             "cxx_member": ".",
                                             "cxx_type": "std::string",
                                             "cxx_var": "name",
                                             "lua_var": "SH_Lua_name",
+                                            "pop_expr": "lua_tostring(L, 1)",
                                             "stmt0": "lua_string_&_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_string_&_in"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -6590,14 +6607,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 1)",
+                                            "c_var": "i",
                                             "c_var_len": "Li",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "i",
                                             "lua_var": "SH_Lua_i",
+                                            "pop_expr": "lua_tointeger(L, 1)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -6653,14 +6671,15 @@
                                             "LUA_index": 2,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 2)",
+                                            "c_var": "j",
                                             "c_var_len": "Lj",
                                             "cxx_member": ".",
                                             "cxx_type": "long",
                                             "cxx_var": "j",
                                             "lua_var": "SH_Lua_j",
+                                            "pop_expr": "lua_tointeger(L, 2)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -6900,6 +6919,7 @@
                                             "cxx_type": "MPI_Comm",
                                             "cxx_var": "comm",
                                             "lua_var": "SH_Lua_comm",
+                                            "pop_expr": "MPI_Comm_f2c(POP)",
                                             "stmt0": "lua_unknown_scalar_in",
                                             "stmt1": "lua_default"
                                         },
@@ -7062,12 +7082,13 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "POP",
+                                            "c_var": "get",
                                             "c_var_len": "Lget",
                                             "cxx_member": ".",
                                             "cxx_type": "void",
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
+                                            "pop_expr": "POP",
                                             "stmt0": "lua_void_scalar_in",
                                             "stmt1": "lua_void_scalar"
                                         },
@@ -7192,12 +7213,13 @@
                                             "LUA_index": 1,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tonumber(L, 1)",
+                                            "c_var": "get",
                                             "c_var_len": "Lget",
                                             "cxx_member": "->",
                                             "cxx_type": "double",
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
+                                            "pop_expr": "lua_tonumber(L, 1)",
                                             "stmt0": "lua_native_*_in",
                                             "stmt1": "lua_default"
                                         },
@@ -7326,14 +7348,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tonumber(L, 1)",
+                                            "c_var": "get",
                                             "c_var_len": "Lget",
                                             "cxx_member": ".",
                                             "cxx_type": "double",
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
+                                            "pop_expr": "lua_tonumber(L, 1)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -7597,12 +7620,13 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "POP",
+                                            "c_var": "get",
                                             "c_var_len": "Lget",
                                             "cxx_member": ".",
                                             "cxx_type": "void",
                                             "cxx_var": "get",
                                             "lua_var": "SH_Lua_get",
+                                            "pop_expr": "POP",
                                             "stmt0": "lua_void_scalar_in",
                                             "stmt1": "lua_void_scalar"
                                         },
@@ -7859,14 +7883,15 @@
                                             "LUA_index": 1,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 1)",
+                                            "c_var": "verylongname1",
                                             "c_var_len": "Lverylongname1",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname1",
                                             "lua_var": "SH_Lua_verylongname1",
+                                            "pop_expr": "lua_tointeger(L, 1)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -7923,14 +7948,15 @@
                                             "LUA_index": 10,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 10)",
+                                            "c_var": "verylongname10",
                                             "c_var_len": "Lverylongname10",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname10",
                                             "lua_var": "SH_Lua_verylongname10",
+                                            "pop_expr": "lua_tointeger(L, 10)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -7987,14 +8013,15 @@
                                             "LUA_index": 2,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 2)",
+                                            "c_var": "verylongname2",
                                             "c_var_len": "Lverylongname2",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname2",
                                             "lua_var": "SH_Lua_verylongname2",
+                                            "pop_expr": "lua_tointeger(L, 2)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8051,14 +8078,15 @@
                                             "LUA_index": 3,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 3)",
+                                            "c_var": "verylongname3",
                                             "c_var_len": "Lverylongname3",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname3",
                                             "lua_var": "SH_Lua_verylongname3",
+                                            "pop_expr": "lua_tointeger(L, 3)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8115,14 +8143,15 @@
                                             "LUA_index": 4,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 4)",
+                                            "c_var": "verylongname4",
                                             "c_var_len": "Lverylongname4",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname4",
                                             "lua_var": "SH_Lua_verylongname4",
+                                            "pop_expr": "lua_tointeger(L, 4)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8179,14 +8208,15 @@
                                             "LUA_index": 5,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 5)",
+                                            "c_var": "verylongname5",
                                             "c_var_len": "Lverylongname5",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname5",
                                             "lua_var": "SH_Lua_verylongname5",
+                                            "pop_expr": "lua_tointeger(L, 5)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8243,14 +8273,15 @@
                                             "LUA_index": 6,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 6)",
+                                            "c_var": "verylongname6",
                                             "c_var_len": "Lverylongname6",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname6",
                                             "lua_var": "SH_Lua_verylongname6",
+                                            "pop_expr": "lua_tointeger(L, 6)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8307,14 +8338,15 @@
                                             "LUA_index": 7,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 7)",
+                                            "c_var": "verylongname7",
                                             "c_var_len": "Lverylongname7",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname7",
                                             "lua_var": "SH_Lua_verylongname7",
+                                            "pop_expr": "lua_tointeger(L, 7)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8371,14 +8403,15 @@
                                             "LUA_index": 8,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 8)",
+                                            "c_var": "verylongname8",
                                             "c_var_len": "Lverylongname8",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname8",
                                             "lua_var": "SH_Lua_verylongname8",
+                                            "pop_expr": "lua_tointeger(L, 8)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8435,14 +8468,15 @@
                                             "LUA_index": 9,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tointeger(L, 9)",
+                                            "c_var": "verylongname9",
                                             "c_var_len": "Lverylongname9",
                                             "cxx_member": "->",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname9",
                                             "lua_var": "SH_Lua_verylongname9",
+                                            "pop_expr": "lua_tointeger(L, 9)",
                                             "stmt0": "lua_native_*_inout",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_*_inout"
                                         },
                                         "fmtpy": {
                                             "array_size": "1",
@@ -8719,14 +8753,15 @@
                                             "LUA_index": 1,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 1)",
+                                            "c_var": "verylongname1",
                                             "c_var_len": "Lverylongname1",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname1",
                                             "lua_var": "SH_Lua_verylongname1",
+                                            "pop_expr": "lua_tointeger(L, 1)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -8782,14 +8817,15 @@
                                             "LUA_index": 10,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 10)",
+                                            "c_var": "verylongname10",
                                             "c_var_len": "Lverylongname10",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname10",
                                             "lua_var": "SH_Lua_verylongname10",
+                                            "pop_expr": "lua_tointeger(L, 10)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -8845,14 +8881,15 @@
                                             "LUA_index": 2,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 2)",
+                                            "c_var": "verylongname2",
                                             "c_var_len": "Lverylongname2",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname2",
                                             "lua_var": "SH_Lua_verylongname2",
+                                            "pop_expr": "lua_tointeger(L, 2)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -8908,14 +8945,15 @@
                                             "LUA_index": 3,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 3)",
+                                            "c_var": "verylongname3",
                                             "c_var_len": "Lverylongname3",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname3",
                                             "lua_var": "SH_Lua_verylongname3",
+                                            "pop_expr": "lua_tointeger(L, 3)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -8971,14 +9009,15 @@
                                             "LUA_index": 4,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 4)",
+                                            "c_var": "verylongname4",
                                             "c_var_len": "Lverylongname4",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname4",
                                             "lua_var": "SH_Lua_verylongname4",
+                                            "pop_expr": "lua_tointeger(L, 4)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9034,14 +9073,15 @@
                                             "LUA_index": 5,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 5)",
+                                            "c_var": "verylongname5",
                                             "c_var_len": "Lverylongname5",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname5",
                                             "lua_var": "SH_Lua_verylongname5",
+                                            "pop_expr": "lua_tointeger(L, 5)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9097,14 +9137,15 @@
                                             "LUA_index": 6,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 6)",
+                                            "c_var": "verylongname6",
                                             "c_var_len": "Lverylongname6",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname6",
                                             "lua_var": "SH_Lua_verylongname6",
+                                            "pop_expr": "lua_tointeger(L, 6)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9160,14 +9201,15 @@
                                             "LUA_index": 7,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 7)",
+                                            "c_var": "verylongname7",
                                             "c_var_len": "Lverylongname7",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname7",
                                             "lua_var": "SH_Lua_verylongname7",
+                                            "pop_expr": "lua_tointeger(L, 7)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9223,14 +9265,15 @@
                                             "LUA_index": 8,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 8)",
+                                            "c_var": "verylongname8",
                                             "c_var_len": "Lverylongname8",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname8",
                                             "lua_var": "SH_Lua_verylongname8",
+                                            "pop_expr": "lua_tointeger(L, 8)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9286,14 +9329,15 @@
                                             "LUA_index": 9,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 9)",
+                                            "c_var": "verylongname9",
                                             "c_var_len": "Lverylongname9",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "verylongname9",
                                             "lua_var": "SH_Lua_verylongname9",
+                                            "pop_expr": "lua_tointeger(L, 9)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -9591,12 +9635,13 @@
                                             "LUA_index": 1,
                                             "c_deref": " *",
                                             "c_member": "->",
-                                            "c_var": "lua_tonumber(L, 1)",
+                                            "c_var": "in",
                                             "c_var_len": "Lin",
                                             "cxx_member": "->",
                                             "cxx_type": "double",
                                             "cxx_var": "in",
                                             "lua_var": "SH_Lua_in",
+                                            "pop_expr": "lua_tonumber(L, 1)",
                                             "stmt0": "lua_native_*_in",
                                             "stmt1": "lua_default"
                                         },
@@ -9726,14 +9771,15 @@
                                             "LUA_index": 2,
                                             "c_deref": "",
                                             "c_member": ".",
-                                            "c_var": "lua_tointeger(L, 2)",
+                                            "c_var": "sizein",
                                             "c_var_len": "Lsizein",
                                             "cxx_member": ".",
                                             "cxx_type": "int",
                                             "cxx_var": "sizein",
                                             "lua_var": "SH_Lua_sizein",
+                                            "pop_expr": "lua_tointeger(L, 2)",
                                             "stmt0": "lua_native_scalar_in",
-                                            "stmt1": "lua_default"
+                                            "stmt1": "lua_native_scalar_in"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

@@ -201,6 +201,7 @@ phony_explicit:
     $(tempdir)/run/ccomplex/python/.. \
     $(tempdir)/run/cdesc/.. \
     $(tempdir)/run/classes/.. \
+    $(tempdir)/run/classes/lua/.. \
     $(tempdir)/run/classes/python/.. \
     $(tempdir)/run/clibrary/.. \
     $(tempdir)/run/clibrary/python/.. \
@@ -242,8 +243,8 @@ phony_explicit:
     $(tempdir)/run/templates/.. \
     $(tempdir)/run/templates/python/.. \
     $(tempdir)/run/tutorial/..\
-    $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/tutorial/lua/.. \
+    $(tempdir)/run/tutorial/python/.. \
     $(tempdir)/run/types/..\
     $(tempdir)/run/types/python/..\
     $(tempdir)/run/vectors/..\

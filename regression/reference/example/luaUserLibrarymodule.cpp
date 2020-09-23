@@ -31,8 +31,7 @@ extern "C" {
 // Match:     lua_shadow_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)
-// Requested: lua_string_*_in
-// Match:     lua_default
+// Exact:     lua_string_*_in
 /**
  * \brief constructor
  *
@@ -111,8 +110,7 @@ static int l_example_nested_ExClass1_dtor(lua_State *L)
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
 // Argument:  int incr +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_ExClass1_increment_count(lua_State *L)
 {
     // splicer begin class.ExClass1.method.incrementCount
@@ -162,15 +160,13 @@ static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
 // Argument:  int value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  long getValue
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
 // Argument:  long value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_ExClass1_get_value(lua_State *L)
 {
     // splicer begin class.ExClass1.method.getValue
@@ -213,8 +209,7 @@ static int l_example_nested_ExClass1_get_value(lua_State *L)
 // Exact:     lua_bool_scalar_result
 // ----------------------------------------
 // Argument:  bool in +intent(in)+value
-// Requested: lua_bool_scalar_in
-// Match:     lua_default
+// Exact:     lua_bool_scalar_in
 static int l_example_nested_ExClass1_has_addr(lua_State *L)
 {
     // splicer begin class.ExClass1.method.hasAddr
@@ -264,8 +259,7 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 // Match:     lua_shadow_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(trim_name)
-// Requested: lua_string_*_in
-// Match:     lua_default
+// Exact:     lua_string_*_in
 /**
  * \brief constructor
  *
@@ -390,12 +384,11 @@ static int l_example_nested_ExClass2_get_name_length(lua_State *L)
 // Exact:     lua_shadow_*_result
 // ----------------------------------------
 // Argument:  const ExClass1 * in +intent(in)
-// Requested: lua_shadow_*_in
-// Match:     lua_default
+// Exact:     lua_shadow_*_in
 static int l_example_nested_ExClass2_get_class1(lua_State *L)
 {
     // splicer begin class.ExClass2.method.get_class1
-    const example::nested::ExClass1 * in =
+    example::nested::ExClass1 * in =
         static_cast<example::nested::ExClass1 *>((l_ExClass2_Type *)
         luaL_checkudata(L, 1, "ExClass2.metatable")->addr);
     l_ExClass2_Type * SH_this = (l_ExClass2_Type *) luaL_checkudata(
@@ -414,20 +407,17 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
 // Match:     lua_default
 // ----------------------------------------
 // Argument:  TypeID type +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void * declare
 // Requested: lua_void_*
 // Match:     lua_default
 // ----------------------------------------
 // Argument:  TypeID type +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  SidreLength len=1 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_ExClass2_declare(lua_State *L)
 {
     // splicer begin class.ExClass2.method.declare
@@ -506,29 +496,25 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  int value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void setValue
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  long value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void setValue
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  float value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void setValue
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  double value +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_ExClass2_set_value(lua_State *L)
 {
     // splicer begin class.ExClass2.method.setValue
@@ -654,8 +640,7 @@ static int l_example_nested_local_function1(lua_State *)
 // Exact:     lua_bool_scalar_result
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: lua_string_&_in
-// Match:     lua_default
+// Exact:     lua_string_&_in
 static int l_example_nested_is_name_valid(lua_State *L)
 {
     // splicer begin function.isNameValid
@@ -686,19 +671,16 @@ static int l_example_nested_is_initialized(lua_State *L)
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: lua_string_&_in
-// Match:     lua_default
+// Exact:     lua_string_&_in
 // ----------------------------------------
 // Function:  void test_names
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: lua_string_&_in
-// Match:     lua_default
+// Exact:     lua_string_&_in
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_test_names(lua_State *L)
 {
     // splicer begin function.test_names
@@ -746,19 +728,16 @@ static int l_example_nested_test_names(lua_State *L)
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  int i=1 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void testoptional
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  int i=1 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  long j=2 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_testoptional(lua_State *L)
 {
     // splicer begin function.testoptional
@@ -843,7 +822,6 @@ static int l_example_nested_testmpi(lua_State *L)
         break;
     case 1:
         if (SH_itype1 == LUA_TNONE) {
-            MPI_Comm comm = MPI_Comm_f2c(POP);
             example::nested::testmpi(comm);
             SH_nresult = 0;
         }
@@ -874,7 +852,6 @@ static int l_example_nested_testmpi(lua_State *L)
 static int l_example_nested_func_ptr1(lua_State *L)
 {
     // splicer begin function.FuncPtr1
-    void ( * get)() = POP;
     example::nested::FuncPtr1(get);
     return 0;
     // splicer end function.FuncPtr1
@@ -895,7 +872,6 @@ static int l_example_nested_func_ptr1(lua_State *L)
 static int l_example_nested_func_ptr2(lua_State *L)
 {
     // splicer begin function.FuncPtr2
-    double * ( * get)() = lua_tonumber(L, 1);
     example::nested::FuncPtr2(get);
     return 0;
     // splicer end function.FuncPtr2
@@ -907,8 +883,7 @@ static int l_example_nested_func_ptr2(lua_State *L)
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 /**
  * \brief abstract argument
  *
@@ -916,7 +891,7 @@ static int l_example_nested_func_ptr2(lua_State *L)
 static int l_example_nested_func_ptr3(lua_State *L)
 {
     // splicer begin function.FuncPtr3
-    double ( * get)(int i, int) = lua_tonumber(L, 1);
+    double get = lua_tonumber(L, 1);
     example::nested::FuncPtr3(get);
     return 0;
     // splicer end function.FuncPtr3
@@ -933,10 +908,6 @@ static int l_example_nested_func_ptr3(lua_State *L)
 static int l_example_nested_func_ptr5(lua_State *L)
 {
     // splicer begin function.FuncPtr5
-    void ( * get)(int verylongname1, int verylongname2,
-        int verylongname3, int verylongname4, int verylongname5,
-        int verylongname6, int verylongname7, int verylongname8,
-        int verylongname9, int verylongname10) = POP;
     example::nested::FuncPtr5(get);
     return 0;
     // splicer end function.FuncPtr5
@@ -948,57 +919,47 @@ static int l_example_nested_func_ptr5(lua_State *L)
 // Exact:     lua_void_scalar
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
-// Requested: lua_native_*_inout
-// Match:     lua_default
+// Exact:     lua_native_*_inout
 static int l_example_nested_verylongfunctionname1(lua_State *L)
 {
     // splicer begin function.verylongfunctionname1
-    int * verylongname1 = lua_tointeger(L, 1);
-    int * verylongname2 = lua_tointeger(L, 2);
-    int * verylongname3 = lua_tointeger(L, 3);
-    int * verylongname4 = lua_tointeger(L, 4);
-    int * verylongname5 = lua_tointeger(L, 5);
-    int * verylongname6 = lua_tointeger(L, 6);
-    int * verylongname7 = lua_tointeger(L, 7);
-    int * verylongname8 = lua_tointeger(L, 8);
-    int * verylongname9 = lua_tointeger(L, 9);
-    int * verylongname10 = lua_tointeger(L, 10);
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
+    // lua_native_*_inout;
     example::nested::verylongfunctionname1(verylongname1, verylongname2,
         verylongname3, verylongname4, verylongname5, verylongname6,
         verylongname7, verylongname8, verylongname9, verylongname10);
@@ -1022,44 +983,34 @@ static int l_example_nested_verylongfunctionname1(lua_State *L)
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
 // Argument:  int verylongname1 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname2 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname3 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname4 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname5 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname6 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname7 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname8 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname9 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Argument:  int verylongname10 +intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 static int l_example_nested_verylongfunctionname2(lua_State *L)
 {
     // splicer begin function.verylongfunctionname2
@@ -1096,8 +1047,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // Match:     lua_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+intent(in)+value
-// Requested: lua_native_scalar_in
-// Match:     lua_default
+// Exact:     lua_native_scalar_in
 /**
  * \brief Test multidimensional arrays with allocatable
  *
@@ -1105,8 +1055,6 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 static int l_example_nested_cos_doubles(lua_State *L)
 {
     // splicer begin function.cos_doubles
-    double * in = lua_tonumber(L, 1);
-    double * out;
     int sizein = lua_tointeger(L, 2);
     example::nested::cos_doubles(in, out, sizein);
     lua_pushnumber(L, XXXpush_arg);

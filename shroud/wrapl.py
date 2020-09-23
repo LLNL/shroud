@@ -483,9 +483,10 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             )
             fmt.rv_asgn = fmt.rv_decl + " =\t "
 
-        declare_code = []  # declare variables and pop values
-        call_code = []  # call C++ function
-        post_call_code = []  # push results
+        declare_code = []  # Declare variables and pop values.
+        pre_call_code = []  # Extract arguments.
+        call_code = []  # Call C++ function.
+        post_call_code = []  # Push results.
 
         # post_parse = []
         cxx_call_list = []
@@ -533,8 +534,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.cxx_member = "."
             attrs = arg.attrs
 
-            lua_pop = None
-
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
 
@@ -560,11 +559,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
                 # lua_pop is a C++ expression
-                fmt_arg.c_var = wformat(arg_typemap.LUA_pop, fmt_arg)
-                if arg_typemap.c_to_cxx is None:
-                    lua_pop = fmt_arg.c_var
-                else:
-                    lua_pop = wformat(arg_typemap.c_to_cxx, fmt_arg)
+                fmt.LUA_used_param_state = True
+                fmt_arg.pop_expr = wformat(arg_typemap.LUA_pop, fmt_arg)
+                if self.language == "c":
+                    pass
+                elif arg_typemap.c_to_cxx:
+                    fmt_arg.c_var = fmt_arg.pop_expr
+                    fmt_arg.pop_expr = wformat(arg_typemap.c_to_cxx, fmt_arg)
                 LUA_index += 1
 
             if intent in ["inout", "out"]:
@@ -594,20 +595,22 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             #            else:
             #                ptr = False
 
-            if lua_pop:
-                fmt.LUA_used_param_state = True
-                decl_suffix = " =\t {};".format(lua_pop)
-            else:
-                decl_suffix = ";"
-            if arg_typemap.base == "string":
-                declare_code.append(
-                    arg.gen_arg_as_c(continuation=True) + decl_suffix
-                )
-            else:
-                declare_code.append(
-                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
-                    + decl_suffix
-                )
+#XXX            if lua_pop:
+#XXX                fmt.LUA_used_param_state = True
+#XXX                decl_suffix = " =\t {};".format(lua_pop)
+#XXX            else:
+#XXX                decl_suffix = ";"
+#XXX            if arg_typemap.base == "string":
+#XXX                declare_code.append(
+#XXX                    arg.gen_arg_as_c(continuation=True) + decl_suffix
+#XXX                )
+#XXX            else:
+#XXX                declare_code.append(
+#XXX                    arg.gen_arg_as_cxx(as_ptr=True, continuation=True)
+#XXX                    + decl_suffix
+#XXX                )
+
+            self.append_code(intent_blk, fmt_arg, pre_call_code, post_call_code)
 
             cxx_call_list.append(fmt_arg.cxx_var)
         # --- End loop over function parameters
@@ -706,10 +709,25 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         lines = self.splicer_lines
         lines.extend(declare_code)
+        lines.extend(pre_call_code)
         lines.extend(call_code)
         # int lua_checkstack (lua_State *L, int extra)
         lines.extend(post_call_code)  # return values
 
+
+    def append_code(self, blk, fmt, pre_call_code, post_call_code):
+        """Append code from blk
+        """
+#        if result_blk.call:
+#            for line in result_blk.call:
+#                append_format(call_code, line, fmt) #XXX_result)
+        if blk.pre_call:
+            for line in blk.pre_call:
+                append_format(pre_call_code, line, fmt)
+        if blk.post_call:
+            for line in blk.post_call:
+                append_format(post_call_code, line, fmt)
+        
     def write_header(self, node):
         """
         Args:
@@ -965,10 +983,12 @@ class LuaStmts(object):
     def __init__(
         self,
         name="lua_default",
+        pre_call=[],
         call=[],
         post_call=[],
     ):
         self.name = name
+        self.pre_call = pre_call
         self.call = call
         self.post_call = post_call
 
@@ -987,6 +1007,13 @@ lua_statements = [
             "{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});",
         ],
     ),
+#    dict(
+#        # Pop an argument off of the stack
+#        name="lua_mixin_pop",
+#        pre_call=[
+#            "// pre_call",
+#        ],
+#    ),
     dict(
         # Used to capture return value.
         # Used with intent(result).
@@ -996,6 +1023,7 @@ lua_statements = [
         ],
     ),
     #####
+    # void
     dict(
         # subroutine
         name="lua_void_scalar",
@@ -1010,6 +1038,13 @@ lua_statements = [
         ],
     ),
     #####
+    # bool
+    dict(
+        name="lua_bool_scalar_in",
+        pre_call=[
+            "bool {c_var} = {pop_expr};",
+        ],
+    ),
     dict(
         name="lua_bool_scalar_result",
         mixin=[
@@ -1018,6 +1053,19 @@ lua_statements = [
         ],
     ),
     #####
+    # native
+    dict(
+        name="lua_native_scalar_in",
+        pre_call=[
+            "{cxx_type} {cxx_var} =\t {pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_native_*_inout",
+        pre_call=[
+            "// lua_native_*_inout;",
+        ],
+    ),
     dict(
         name="lua_native_scalar_result",
         mixin=[
@@ -1026,6 +1074,17 @@ lua_statements = [
         ],
     ),
     #####
+    # string
+    dict(
+        name="lua_string_*_in",
+        pre_call=[
+            "const char * {c_var} = \t{pop_expr};",
+        ],
+    ),
+    dict(
+        name="lua_string_&_in",
+        base="lua_string_*_in",
+    ),
     dict(
         name="lua_string_scalar_result",
         mixin=[
@@ -1041,6 +1100,7 @@ lua_statements = [
         ],
     ),
     #####
+    # shadow
     dict(
         name="lua_shadow_ctor",
         call=[
@@ -1060,6 +1120,12 @@ lua_statements = [
         call=[
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",
+        ],
+    ),
+    dict(
+        name="lua_shadow_*_in",
+        pre_call=[
+            "{cxx_type} * {cxx_var} =\t {pop_expr};",
         ],
     ),
     dict(

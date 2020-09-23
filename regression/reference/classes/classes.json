@@ -242,14 +242,15 @@
                                     "LUA_index": 1,
                                     "c_deref": "",
                                     "c_member": ".",
-                                    "c_var": "lua_tointeger(L, 1)",
+                                    "c_var": "flag",
                                     "c_var_len": "Lflag",
                                     "cxx_member": ".",
                                     "cxx_type": "int",
                                     "cxx_var": "flag",
                                     "lua_var": "SH_Lua_flag",
+                                    "pop_expr": "lua_tointeger(L, 1)",
                                     "stmt0": "lua_native_scalar_in",
-                                    "stmt1": "lua_default"
+                                    "stmt1": "lua_native_scalar_in"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -1425,8 +1426,9 @@
                                     "cxx_type": "classes::Class1::DIRECTION",
                                     "cxx_var": "arg",
                                     "lua_var": "SH_Lua_arg",
+                                    "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
                                     "stmt0": "lua_native_scalar_in",
-                                    "stmt1": "lua_default"
+                                    "stmt1": "lua_native_scalar_in"
                                 },
                                 "fmtpy": {
                                     "c_const": "",
@@ -2704,8 +2706,9 @@
                             "cxx_type": "classes::Class1::DIRECTION",
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
+                            "pop_expr": "static_cast<classes::Class1::DIRECTION>(lua_tointeger(L, 1))",
                             "stmt0": "lua_native_scalar_in",
-                            "stmt1": "lua_default"
+                            "stmt1": "lua_native_scalar_in"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -3572,14 +3575,15 @@
                             "LUA_index": 1,
                             "c_deref": "",
                             "c_member": ".",
-                            "c_var": "lua_tointeger(L, 1)",
+                            "c_var": "arg",
                             "c_var_len": "Larg",
                             "cxx_member": ".",
                             "cxx_type": "int",
                             "cxx_var": "arg",
                             "lua_var": "SH_Lua_arg",
+                            "pop_expr": "lua_tointeger(L, 1)",
                             "stmt0": "lua_native_scalar_in",
-                            "stmt1": "lua_default"
+                            "stmt1": "lua_native_scalar_in"
                         },
                         "fmtpy": {
                             "c_const": "",

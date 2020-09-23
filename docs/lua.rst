@@ -70,6 +70,14 @@ Manipulates the LUA stack.
 Format fields
 -------------
 
+pop_expr
+^^^^^^^^
+
+From ``typemap.LUA_pop``.
+Returns a C++ type when appropriate using a ``static_cast``.
+
+.. XXX uses c_to_cxx
+
 push_arg
 ^^^^^^^^
 
