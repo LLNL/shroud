@@ -52,7 +52,7 @@ class Wrapc(util.WrapperMixin):
         self.doxygen_begin = "/**"
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
-        self.shared_helper = config.shared_helpers  # All accumulated helpers
+        self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         self.shared_proto_c = []
         # Include files required by wrapper implementations.
         self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
@@ -199,8 +199,8 @@ class Wrapc(util.WrapperMixin):
         to add code in order.
 
         Args:
-            name -
-            done -
+            name - Name of helper.
+            done - Dictionary of previously processed helpers.
         """
         if name in done:
             return  # avoid recursion
@@ -244,7 +244,7 @@ class Wrapc(util.WrapperMixin):
         self.helper_source = dict(file=[], cwrap_include=[], cwrap_impl=[])
         self.helper_include = dict(file={}, cwrap_include={}, cwrap_impl={})
 
-        done = {}  # avoid duplicates and recursion
+        done = {}  # Avoid duplicates by keeping track of what's been written.
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 

@@ -55,7 +55,7 @@ typemap:
       PYN_typenum: NPY_BOOL
       LUA_type: LUA_TBOOLEAN
       LUA_pop: lua_toboolean({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushboolean({LUA_state_var}, {c_var})
+      LUA_push: lua_pushboolean({LUA_state_var}, {push_arg})
       sgroup: bool
       sh_type: SH_TYPE_BOOL
   - type: char
@@ -77,7 +77,7 @@ typemap:
       PYN_typenum: NPY_INTP
       LUA_type: LUA_TSTRING
       LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
+      LUA_push: lua_pushstring({LUA_state_var}, {push_arg})
       sgroup: char
       sh_type: SH_TYPE_OTHER
   - type: double
@@ -99,7 +99,7 @@ typemap:
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_DOUBLE
   - type: double_complex
@@ -131,7 +131,7 @@ typemap:
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_DOUBLE_COMPLEX
   - type: float
@@ -153,7 +153,7 @@ typemap:
       PYN_typenum: NPY_FLOAT
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_FLOAT
   - type: float_complex
@@ -185,7 +185,7 @@ typemap:
       PYN_typenum: NPY_DOUBLE
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tonumber({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushnumber({LUA_state_var}, {c_var})
+      LUA_push: lua_pushnumber({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_FLOAT_COMPLEX
   - type: int
@@ -207,7 +207,7 @@ typemap:
       PYN_typenum: NPY_INT
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT
   - type: int16_t
@@ -233,7 +233,7 @@ typemap:
       PYN_typenum: NPY_INT16
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT16_T
   - type: int32_t
@@ -259,7 +259,7 @@ typemap:
       PYN_typenum: NPY_INT32
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT32_T
   - type: int64_t
@@ -285,7 +285,7 @@ typemap:
       PYN_typenum: NPY_INT64
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT64_T
   - type: int8_t
@@ -311,7 +311,7 @@ typemap:
       PYN_typenum: NPY_INT8
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_INT8_T
   - type: long
@@ -333,7 +333,7 @@ typemap:
       PYN_typenum: NPY_LONG
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_LONG
   - type: long_long
@@ -353,7 +353,7 @@ typemap:
       PYN_typenum: NPY_LONGLONG
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_LONG_LONG
   - type: short
@@ -375,7 +375,7 @@ typemap:
       PYN_typenum: NPY_SHORT
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_SHORT
   - type: size_t
@@ -399,7 +399,7 @@ typemap:
       PY_ctor: PyInt_FromSize_t({ctor_expr})
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_SIZE_T
   - type: std::string
@@ -425,7 +425,7 @@ typemap:
       PY_build_format: s#
       LUA_type: LUA_TSTRING
       LUA_pop: lua_tostring({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushstring({LUA_state_var}, {c_var})
+      LUA_push: lua_pushstring({LUA_state_var}, {push_arg})
       sgroup: string
       sh_type: SH_TYPE_OTHER
   - type: std::vector
@@ -466,7 +466,7 @@ typemap:
       PYN_typenum: NPY_UINT16
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT16_T
   - type: uint32_t
@@ -492,7 +492,7 @@ typemap:
       PYN_typenum: NPY_UINT32
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT32_T
   - type: uint64_t
@@ -518,7 +518,7 @@ typemap:
       PYN_typenum: NPY_UINT64
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT64_T
   - type: uint8_t
@@ -544,7 +544,7 @@ typemap:
       PYN_typenum: NPY_UINT8
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UINT8_T
   - type: unsigned_int
@@ -566,7 +566,7 @@ typemap:
       PYN_typenum: NPY_INT
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_INT
   - type: unsigned_long
@@ -588,7 +588,7 @@ typemap:
       PYN_typenum: NPY_LONG
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_LONG
   - type: unsigned_long_long
@@ -608,7 +608,7 @@ typemap:
       PYN_typenum: NPY_LONGLONG
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_LONG_LONG
   - type: unsigned_short
@@ -630,7 +630,7 @@ typemap:
       PYN_typenum: NPY_SHORT
       LUA_type: LUA_TNUMBER
       LUA_pop: lua_tointeger({LUA_state_var}, {LUA_index})
-      LUA_push: lua_pushinteger({LUA_state_var}, {c_var})
+      LUA_push: lua_pushinteger({LUA_state_var}, {push_arg})
       sgroup: native
       sh_type: SH_TYPE_UNSIGNED_SHORT
   - type: void

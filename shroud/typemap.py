@@ -308,7 +308,7 @@ def initialize():
             PYN_typenum="NPY_SHORT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_SHORT",
         ),
@@ -326,7 +326,7 @@ def initialize():
             PYN_typenum="NPY_INT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT",
         ),
@@ -344,7 +344,7 @@ def initialize():
             PYN_typenum="NPY_LONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_LONG",
         ),
@@ -361,7 +361,7 @@ def initialize():
             PYN_typenum="NPY_LONGLONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_LONG_LONG",
         ),
@@ -379,7 +379,7 @@ def initialize():
             PYN_typenum="NPY_SHORT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_SHORT",
         ),
@@ -397,7 +397,7 @@ def initialize():
             PYN_typenum="NPY_INT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_INT",
         ),
@@ -415,7 +415,7 @@ def initialize():
             PYN_typenum="NPY_LONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_LONG",
         ),
@@ -432,7 +432,7 @@ def initialize():
             PYN_typenum="NPY_LONGLONG",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UNSIGNED_LONG_LONG",
         ),
@@ -450,7 +450,7 @@ def initialize():
             PY_ctor="PyInt_FromSize_t({ctor_expr})",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_SIZE_T",
         ),
@@ -471,7 +471,7 @@ def initialize():
             PYN_typenum="NPY_INT8",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT8_T",
         ),
@@ -491,7 +491,7 @@ def initialize():
             PYN_typenum="NPY_INT16",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT16_T",
         ),
@@ -511,7 +511,7 @@ def initialize():
             PYN_typenum="NPY_INT32",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT32_T",
         ),
@@ -531,7 +531,7 @@ def initialize():
             PYN_typenum="NPY_INT64",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_INT64_T",
         ),
@@ -552,7 +552,7 @@ def initialize():
             PYN_typenum="NPY_UINT8",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT8_T",
         ),
@@ -572,7 +572,7 @@ def initialize():
             PYN_typenum="NPY_UINT16",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT16_T",
         ),
@@ -592,7 +592,7 @@ def initialize():
             PYN_typenum="NPY_UINT32",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT32_T",
         ),
@@ -612,7 +612,7 @@ def initialize():
             PYN_typenum="NPY_UINT64",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tointeger({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushinteger({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushinteger({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_UINT64_T",
         ),
@@ -630,7 +630,7 @@ def initialize():
             PYN_typenum="NPY_FLOAT",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_FLOAT",
         ),
@@ -648,7 +648,7 @@ def initialize():
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_DOUBLE",
         ),
@@ -674,7 +674,7 @@ def initialize():
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_FLOAT_COMPLEX",
         ),
@@ -704,7 +704,7 @@ def initialize():
             PYN_typenum="NPY_DOUBLE",
             LUA_type="LUA_TNUMBER",
             LUA_pop="lua_tonumber({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushnumber({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushnumber({LUA_state_var}, {push_arg})",
             sgroup="native",
             sh_type="SH_TYPE_DOUBLE_COMPLEX",
         ),
@@ -726,7 +726,7 @@ def initialize():
             PYN_typenum="NPY_BOOL",
             LUA_type="LUA_TBOOLEAN",
             LUA_pop="lua_toboolean({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushboolean({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushboolean({LUA_state_var}, {push_arg})",
             base="bool",
             sgroup="bool",
             sh_type="SH_TYPE_BOOL",
@@ -746,7 +746,7 @@ def initialize():
             PYN_typenum="NPY_INTP",  # void *    # XXX - 
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushstring({LUA_state_var}, {push_arg})",
             base="string",
             sgroup="char",
         ),
@@ -768,7 +768,7 @@ def initialize():
             PY_build_arg="{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
             LUA_type="LUA_TSTRING",
             LUA_pop="lua_tostring({LUA_state_var}, {LUA_index})",
-            LUA_push="lua_pushstring({LUA_state_var}, {c_var})",
+            LUA_push="lua_pushstring({LUA_state_var}, {push_arg})",
             base="string",
             sgroup="string",
         ),
@@ -786,7 +786,7 @@ def initialize():
             #            PY_ctor='PyString_FromString({c_var})',
             #            LUA_type='LUA_TSTRING',
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
-            #            LUA_push='lua_pushstring({LUA_state_var}, {c_var})',
+            #            LUA_push='lua_pushstring({LUA_state_var}, {push_arg})',
             base="vector",
             sgroup="vector",
         ),
@@ -1235,7 +1235,7 @@ def update_stmt_tree(stmts, tree, defaults):
     Add "_key" to tree to aid debugging.
 
     Each typemap is converted into a Scope instance with the parent
-    based based on the language (c or f) and added as "scope" field.
+    based on the language (c or f) and added as "scope" field.
     This additional layer of indirection is needed to implement base.
 
     stmts = [
@@ -1264,10 +1264,10 @@ def update_stmt_tree(stmts, tree, defaults):
     for key, node in defaults.items():
         default_scopes[key] = node()
 
-    # index by name to find aliases
-    # XXX - look for duplicate names?
+    # Index by name to find alias, base, mixin.
     nodes = {}
     for node in stmts:
+        # node is a dict.
         if "name" not in node:
             raise RuntimeError("Missing name in statements: {}".
                                format(str(node)))
@@ -1295,6 +1295,9 @@ def update_stmt_tree(stmts, tree, defaults):
         else:
             step['_node'] = node
             scope = util.Scope(default_scopes[steps[0]])
+            if "mixin" in node:
+                for mpart in node["mixin"]:
+                    scope.update(nodes[mpart])
             scope.update(node)
             node["scope"] = scope
 #    print_tree(tree)
@@ -1443,6 +1446,8 @@ class FStmts(object):
         self.result = result
 
 
+# Define class for nodes in tree based on their first entry.
+# c_native_*_in uses 'c'.
 default_stmts = dict(
     c=CStmts,
     f=FStmts,

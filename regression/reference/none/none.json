@@ -249,7 +249,7 @@
         },
         "bool": {
             "LUA_pop": "lua_toboolean({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushboolean({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushboolean({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TBOOLEAN",
             "PYN_typenum": "NPY_BOOL",
             "PY_PyTypeObject": "PyBool_Type",
@@ -273,7 +273,7 @@
         },
         "char": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushstring({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TSTRING",
             "PYN_typenum": "NPY_INTP",
             "PY_ctor": "PyString_FromString({ctor_expr})",
@@ -294,7 +294,7 @@
         },
         "double": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_DOUBLE",
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
@@ -316,7 +316,7 @@
         },
         "double_complex": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_DOUBLE",
             "PY_build_arg": "&{ctype_var}",
@@ -349,7 +349,7 @@
         },
         "float": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_FLOAT",
             "PY_ctor": "PyFloat_FromDouble({ctor_expr})",
@@ -371,7 +371,7 @@
         },
         "float_complex": {
             "LUA_pop": "lua_tonumber({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushnumber({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushnumber({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_DOUBLE",
             "PY_build_arg": "&{ctype_var}",
@@ -404,7 +404,7 @@
         },
         "int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -426,7 +426,7 @@
         },
         "int16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT16",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -454,7 +454,7 @@
         },
         "int32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT32",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -482,7 +482,7 @@
         },
         "int64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT64",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -510,7 +510,7 @@
         },
         "int8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT8",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -538,7 +538,7 @@
         },
         "long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONG",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -560,7 +560,7 @@
         },
         "long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
@@ -580,7 +580,7 @@
         },
         "short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_SHORT",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -602,7 +602,7 @@
         },
         "size_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PY_ctor": "PyInt_FromSize_t({ctor_expr})",
             "PY_format": "n",
@@ -628,7 +628,7 @@
         },
         "std::string": {
             "LUA_pop": "lua_tostring({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushstring({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushstring({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TSTRING",
             "PY_build_arg": "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()",
             "PY_build_format": "s#",
@@ -663,7 +663,7 @@
         },
         "uint16_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_UINT16",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -691,7 +691,7 @@
         },
         "uint32_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_UINT32",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -719,7 +719,7 @@
         },
         "uint64_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_UINT64",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -747,7 +747,7 @@
         },
         "uint8_t": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_UINT8",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -775,7 +775,7 @@
         },
         "unsigned_int": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_INT",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -797,7 +797,7 @@
         },
         "unsigned_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONG",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",
@@ -819,7 +819,7 @@
         },
         "unsigned_long_long": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_LONGLONG",
             "PY_format": "L",
@@ -839,7 +839,7 @@
         },
         "unsigned_short": {
             "LUA_pop": "lua_tointeger({LUA_state_var}, {LUA_index})",
-            "LUA_push": "lua_pushinteger({LUA_state_var}, {c_var})",
+            "LUA_push": "lua_pushinteger({LUA_state_var}, {push_arg})",
             "LUA_type": "LUA_TNUMBER",
             "PYN_typenum": "NPY_SHORT",
             "PY_ctor": "PyInt_FromLong({ctor_expr})",

@@ -26,7 +26,7 @@ Run a single unittest:
 Running a single Python regression test.
 
     # Use the Python in the virtual environment
-    setenv WORK  .../build/temp.linux-x86_64-2.7
+    setenv WORK  .../build/temp.linux-x86_64-3.7
     setenv PYTHONEXE $WORK/venv/bin/python
 
     cd tests

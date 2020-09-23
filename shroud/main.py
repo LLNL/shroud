@@ -49,7 +49,7 @@ class Config(object):
         self.cfiles = []  # list of C/C++ files created
         self.ffiles = []  # list of Fortran files created
         self.pyfiles = []  # list of Python module files created
-        self.shared_helpers = {} # All acccumulated C/Fortran helpers
+        self.fc_shared_helpers = {}   # Shared between Fortran and C.
 
 
 class TypeOut(util.WrapperMixin):

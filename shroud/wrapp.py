@@ -1940,8 +1940,7 @@ return 1;""",
 
         result_blk = default_scope
 
-        fmt_result0 = node._fmtresult
-        fmt_result = fmt_result0.setdefault(
+        fmt_result = node._fmtresult.setdefault(
             "fmtpy", util.Scope(fmt)
         )  # fmt_func
         CXX_result = node.ast
@@ -2213,8 +2212,8 @@ return 1;""",
         to add code in order.
 
         Args:
-            name -
-            done -
+            name - Name of helper.
+            done - Dictionary of previously processed helpers.
         """
         if name in done:
             return  # avoid recursion
@@ -2262,7 +2261,7 @@ return 1;""",
         )
         self.helper_need_numpy = False
 
-        done = {}  # avoid duplicates and recursion
+        done = {}  # Avoid duplicates by keeping track of what's been written.
         for name in sorted(helpers.keys()):
             self._gather_helper_code(name, done)
 
