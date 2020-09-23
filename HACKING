@@ -12,6 +12,15 @@ Defaults to Python 3.
     make venv=/usr/tce/packages/python/python-3.7.2/bin/virtualenv virtualenv
     make develop
 
+pythondevmode
+-------------
+
+If this environment variable is set to a non-empty string, enable
+Python Development Mode, introducing additional runtime checks that
+are too expensive to be enabled by default.  New in version 3.7.
+
+setenv PYTHONDEVMODE 1
+
 Run unittest
 ------------
 
