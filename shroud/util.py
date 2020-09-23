@@ -11,6 +11,15 @@ import collections
 import os
 import string
 
+try:
+    # Python 3
+    Mapping = collections.abc.Mapping
+    Sequence = collections.abc.Sequence
+except AttributeError:
+    # Python 2
+    Mapping = collections.Mapping
+    Sequence = collections.Sequence
+
 fmt = string.Formatter()
 
 def wformat(template, dct):
@@ -108,7 +117,7 @@ def as_yaml(obj, order, output):
     """
 
     for key in order:
-        if isinstance(obj, collections.Mapping):
+        if isinstance(obj, Mapping):
             value = obj[key]
         else:
             value = getattr(obj, key)
@@ -124,7 +133,7 @@ def as_yaml(obj, order, output):
                 output.append('{}: "{}"'.format(key, value))
             else:
                 output.append("{}: {}".format(key, value))
-        elif isinstance(value, collections.Sequence):
+        elif isinstance(value, Sequence):
             # Keys which are are an array of string (code templates)
             if key in (
                 "declare",
@@ -141,7 +150,7 @@ def as_yaml(obj, order, output):
                 output.append("{}:".format(key))
                 for i in value:
                     output.append("@- {}".format(i))
-        elif isinstance(value, collections.Mapping):
+        elif isinstance(value, Mapping):
             output.append("{}:".format(key))
             order0 = sorted(value.keys())
             output.append(1)
