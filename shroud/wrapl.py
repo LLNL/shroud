@@ -483,10 +483,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             )
             fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
 
+        node_stmt = LuaStmts()
         declare_code = []  # Declare variables and pop values.
-        pre_call_code = []  # Extract arguments.
-        call_code = []  # Call C++ function.
-        post_call_code = []  # Push results.
+        node_stmt.pre_call = []  # Extract arguments.
+        node_stmt.call = []  # Call C++ function.
+        node_stmt.post_call = []  # Push results.
 
         # post_parse = []
         cxx_call_list = []
@@ -498,7 +499,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_func.LUA_used_param_state = True
                 fmt_func.c_var = wformat(cls_typedef.LUA_pop, fmt_func)
                 append_format(
-                    call_code,
+                    node_stmt.call,
                     "{LUA_userdata_type} * {LUA_userdata_var} =\t {c_var};",
                     fmt_func,
                 )
@@ -578,7 +579,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 # append_format(post_call_code, arg_typemap.LUA_push, fmt_arg)
                 fmt_func.LUA_used_param_state = True
                 tmp = wformat(arg_typemap.LUA_push, fmt_arg)
-                post_call_code.append(tmp + ";")
+                node_stmt.post_call.append(tmp + ";")
 
             # argument for C++ function
             # This has been replaced by gen_arg methods, but not sure about const.
@@ -609,7 +610,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #XXX                    + decl_suffix
 #XXX                )
 
-            self.append_code(intent_blk, fmt_arg, pre_call_code, post_call_code)
+            self.append_code(intent_blk, node_stmt, fmt_arg)
 
             cxx_call_list.append(fmt_arg.cxx_var)
         # --- End loop over function parameters
@@ -693,11 +694,11 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
         if result_blk.call:
             for line in result_blk.call:
-                append_format(call_code, line, fmt_func) #XXX_result)
+                append_format(node_stmt.call, line, fmt_func) #XXX_result)
         if result_blk.post_call:
             fmt_func.LUA_used_param_state = True
             for line in result_blk.post_call:
-                append_format(post_call_code, line, fmt_result)
+                append_format(node_stmt.post_call, line, fmt_result)
 #XXX        elif CXX_subprogram == "function" and not is_ctor:
 #XXX            fmt_result.push_arg = fmt_result.c_var
 #XXX            fmt_result.push_expr = wformat(result_typemap.LUA_push, fmt_result)
@@ -708,24 +709,29 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         lines = self.splicer_lines
         lines.extend(declare_code)
-        lines.extend(pre_call_code)
-        lines.extend(call_code)
+        lines.extend(node_stmt.pre_call)
+        lines.extend(node_stmt.call)
         # int lua_checkstack (lua_State *L, int extra)
-        lines.extend(post_call_code)  # return values
+        lines.extend(node_stmt.post_call)  # return values
 
 
-    def append_code(self, blk, fmt, pre_call_code, post_call_code):
+    def append_code(self, blk, node_stmt, fmt):
         """Append code from blk
+
+        Args:
+            blk - util.Scope
+            node_stmt - LuaStmts
+            fmt - util.Scope
         """
 #        if result_blk.call:
 #            for line in result_blk.call:
 #                append_format(call_code, line, fmt) #XXX_result)
         if blk.pre_call:
             for line in blk.pre_call:
-                append_format(pre_call_code, line, fmt)
+                append_format(node_stmt.pre_call, line, fmt)
         if blk.post_call:
             for line in blk.post_call:
-                append_format(post_call_code, line, fmt)
+                append_format(node_stmt.post_call, line, fmt)
         
     def write_header(self, node):
         """
