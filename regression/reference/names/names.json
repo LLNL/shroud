@@ -450,7 +450,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function1()",
-                "declgen": "void function1()",
+                "declgen": "void function1(void)",
                 "fmtdict": {
                     "C_name": "YYY_TES_function1",
                     "C_prototype": "void",
@@ -485,7 +485,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function2()",
-                "declgen": "void function2()",
+                "declgen": "void function2(void)",
                 "fmtdict": {
                     "C_name": "c_name_special",
                     "C_prototype": "void",
@@ -982,7 +982,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function5() +name(fiveplus)",
-                "declgen": "void function5() +name(fiveplus)",
+                "declgen": "void function5(void) +name(fiveplus)",
                 "fmtdict": {
                     "C_name": "YYY_TES_fiveplus",
                     "C_prototype": "void",
@@ -1938,7 +1938,7 @@
                     ]
                 },
                 "decl": "template<typename T> int UseImplWorker()",
-                "declgen": "int UseImplWorker()",
+                "declgen": "int UseImplWorker(void)",
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
@@ -2029,7 +2029,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "template<typename T> int UseImplWorker()",
-                "declgen": "int UseImplWorker()",
+                "declgen": "int UseImplWorker(void)",
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
@@ -2171,7 +2171,7 @@
                                     "typemap_name": "ns0::Names"
                                 },
                                 "decl": "Names()         +name(defaultctor)",
-                                "declgen": "Names() +name(defaultctor)",
+                                "declgen": "Names(void) +name(defaultctor)",
                                 "fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_defaultctor",
                                     "C_prototype": "TES_ns0_Names * SHadow_rv",
@@ -2209,7 +2209,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method1()",
-                                "declgen": "void method1()",
+                                "declgen": "void method1(void)",
                                 "fmtdict": {
                                     "C_name": "XXX_TES_ns0_Names_method1",
                                     "C_prototype": "TES_ns0_Names * self",
@@ -2250,7 +2250,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method2()",
-                                "declgen": "void method2()",
+                                "declgen": "void method2(void)",
                                 "fmtdict": {
                                     "CXX_this": "SH_this2",
                                     "C_name": "XXX_TES_ns0_Names_method2",
@@ -2379,7 +2379,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void init_ns1()",
-                        "declgen": "void init_ns1()",
+                        "declgen": "void init_ns1(void)",
                         "fmtdict": {
                             "C_name": "TES_ns1_init_ns1",
                             "C_prototype": "void",
@@ -2878,7 +2878,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void Member1()",
-                                "declgen": "void Member1()",
+                                "declgen": "void Member1(void)",
                                 "fmtdict": {
                                     "C_name": "TES_capi_class1_member1",
                                     "C_prototype": "TES_capi_class1 * self",
@@ -2942,7 +2942,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void Worker1()",
-                        "declgen": "void Worker1()",
+                        "declgen": "void Worker1(void)",
                         "fmtdict": {
                             "C_name": "TES_capi_worker1",
                             "C_prototype": "void",

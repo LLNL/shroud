@@ -832,7 +832,7 @@
                     ]
                 },
                 "decl": "template<typename DataType> DataType getData();",
-                "declgen": "DataType getData()",
+                "declgen": "DataType getData(void)",
                 "doxygen": {
                     "description": "Wrapper for function which is templated on the return value.\n"
                 },
@@ -918,7 +918,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "template<typename DataType> DataType getData();",
-                "declgen": "int getData()",
+                "declgen": "int getData(void)",
                 "doxygen": {
                     "description": "Wrapper for function which is templated on the return value.\n"
                 },
@@ -1019,7 +1019,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "template<typename DataType> DataType getData();",
-                "declgen": "double getData()",
+                "declgen": "double getData(void)",
                 "doxygen": {
                     "description": "Wrapper for function which is templated on the return value.\n"
                 },

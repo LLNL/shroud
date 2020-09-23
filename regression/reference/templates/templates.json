@@ -945,7 +945,7 @@
                     ]
                 },
                 "decl": "template<typename T> int UseImplWorker()",
-                "declgen": "int UseImplWorker()",
+                "declgen": "int UseImplWorker(void)",
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
@@ -1049,7 +1049,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "template<typename T> int UseImplWorker()",
-                "declgen": "int UseImplWorker()",
+                "declgen": "int UseImplWorker(void)",
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
@@ -1168,7 +1168,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "template<typename T> int UseImplWorker()",
-                "declgen": "int UseImplWorker()",
+                "declgen": "int UseImplWorker(void)",
                 "doxygen": {
                     "brief": "Function which uses a templated T in the implemetation."
                 },
@@ -1326,7 +1326,7 @@
                                     "typemap_name": "std::vector_int"
                                 },
                                 "decl": "vector()",
-                                "declgen": "vector()",
+                                "declgen": "vector(void)",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_int_ctor",
                                     "C_prototype": "TEM_vector_int * SHadow_rv",
@@ -1364,7 +1364,7 @@
                                     "typemap_name": "std::vector"
                                 },
                                 "decl": "~vector()",
-                                "declgen": "~vector()",
+                                "declgen": "~vector(void)",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_int_dtor",
                                     "C_prototype": "TEM_vector_int * self",
@@ -1905,7 +1905,7 @@
                                     "typemap_name": "std::vector_double"
                                 },
                                 "decl": "vector()",
-                                "declgen": "vector()",
+                                "declgen": "vector(void)",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_double_ctor",
                                     "C_prototype": "TEM_vector_double * SHadow_rv",
@@ -1943,7 +1943,7 @@
                                     "typemap_name": "std::vector"
                                 },
                                 "decl": "~vector()",
-                                "declgen": "~vector()",
+                                "declgen": "~vector(void)",
                                 "fmtdict": {
                                     "C_name": "TEM_vector_double_dtor",
                                     "C_prototype": "TEM_vector_double * self",

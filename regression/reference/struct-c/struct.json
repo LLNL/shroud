@@ -586,7 +586,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getX1()",
-                        "declgen": "int getX1()",
+                        "declgen": "int getX1(void)",
                         "fmtdict": {
                             "C_name": "STR_Cstruct_as_class_get_x1",
                             "C_prototype": "STR_Cstruct_as_class * self",
@@ -758,7 +758,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getY1()",
-                        "declgen": "int getY1()",
+                        "declgen": "int getY1(void)",
                         "fmtdict": {
                             "C_name": "STR_Cstruct_as_class_get_y1",
                             "C_prototype": "STR_Cstruct_as_class * self",
@@ -2627,7 +2627,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list()",
+                "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "fmtdict": {
                     "C_name": "get_global_struct_list",
                     "C_prototype": "void",
@@ -2690,7 +2690,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
                 "fmtdict": {
                     "C_name": "STR_create__cstruct_as_class",
                     "C_prototype": "STR_Cstruct_as_class * SHadow_rv",

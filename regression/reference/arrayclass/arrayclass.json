@@ -89,7 +89,7 @@
                             "typemap_name": "ArrayWrapper"
                         },
                         "decl": "ArrayWrapper()",
-                        "declgen": "ArrayWrapper()",
+                        "declgen": "ArrayWrapper(void)",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_ctor",
                             "C_prototype": "ARR_ArrayWrapper * SHadow_rv",
@@ -282,7 +282,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getSize() const",
-                        "declgen": "int getSize() const",
+                        "declgen": "int getSize(void) const",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_size",
                             "C_prototype": "const ARR_ArrayWrapper * self",
@@ -434,7 +434,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void allocate()",
-                        "declgen": "void allocate()",
+                        "declgen": "void allocate(void)",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_allocate",
                             "C_prototype": "ARR_ArrayWrapper * self",
@@ -550,7 +550,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray() +dimension(getSize())",
+                        "declgen": "double * getArray(void) +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array",
                             "C_prototype": "ARR_ArrayWrapper * self",
@@ -629,7 +629,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray() +context(DSHC_rv)+dimension(getSize())",
+                        "declgen": "double * getArray(void) +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -742,7 +742,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst() const +dimension(getSize())",
+                        "declgen": "double * getArrayConst(void) const +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const",
                             "C_prototype": "const ARR_ArrayWrapper * self",
@@ -822,7 +822,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())",
+                        "declgen": "double * getArrayConst(void) const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -935,7 +935,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC() +dimension(getSize())",
+                        "declgen": "const double * getArrayC(void) +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c",
                             "C_prototype": "ARR_ArrayWrapper * self",
@@ -1015,7 +1015,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC() +context(DSHC_rv)+dimension(getSize())",
+                        "declgen": "const double * getArrayC(void) +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -1129,7 +1129,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC() const +dimension(getSize())",
+                        "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c",
                             "C_prototype": "const ARR_ArrayWrapper * self",
@@ -1210,7 +1210,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())",
+                        "declgen": "const double * getArrayConstC(void) const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -3051,7 +3051,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double sumArray()",
-                        "declgen": "double sumArray()",
+                        "declgen": "double sumArray(void)",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_sum_array",
                             "C_prototype": "ARR_ArrayWrapper * self",

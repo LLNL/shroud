@@ -328,7 +328,7 @@ PP_testmpi_serial(
 // Function:  void FuncPtr1
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  void ( * get)() +intent(in)+value
+// Argument:  void ( * get)(void) +intent(in)+value
 // Exact:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
@@ -345,7 +345,7 @@ PP_FuncPtr1(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.func_ptr1
-    void ( * get)();
+    void ( * get)(void);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };
@@ -363,7 +363,7 @@ PP_FuncPtr1(
 // Function:  void FuncPtr2
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double * ( * get)() +intent(in)
+// Argument:  double * ( * get)(void) +intent(in)
 // Exact:     py_default
 static char PP_FuncPtr2__doc__[] =
 "documentation"
@@ -380,7 +380,7 @@ PP_FuncPtr2(
   PyObject *kwds)
 {
 // splicer begin namespace.example::nested.function.func_ptr2
-    double * ( * get)();
+    double * ( * get)(void);
     const char *SHT_kwlist[] = {
         "get",
         nullptr };

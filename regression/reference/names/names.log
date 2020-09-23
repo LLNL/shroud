@@ -2,13 +2,13 @@ Read yaml names.yaml
 Close testnames_types.yaml
 Close wraptestnames_ns0_inner.cc
 class Names
-C method Names() +name(defaultctor)
-C method void method1()
-C method void method2()
+C method Names(void) +name(defaultctor)
+C method void method1(void)
+C method void method2(void)
 Close foo.h
 Close foo.cpp
 Close foons0.cpp
-C function void init_ns1()
+C function void init_ns1(void)
 Close wraptestnames_ns1.hh
 Close wraptestnames_ns1.cc
 class ImplWorker1
@@ -17,10 +17,10 @@ class vector
 class vector
 class vector
 class Class1
-C method void Member1()
+C method void Member1(void)
 Close wrapCAPI_Class1.hh
 Close wrapCAPI_Class1.cc
-C function void Worker1()
+C function void Worker1(void)
 Close wraptestnames_CAPI.hh
 Close wraptestnames_CAPI.cc
 class Names2
@@ -29,18 +29,18 @@ class twoTs
 class twoTs
 C function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
-C function void function1()
-C function void function2()
+C function void function1(void)
+C function void function2(void)
 C function void function3a(int i +intent(in)+value)
 C function void function3a(long i +intent(in)+value)
 C function int function4(const std::string & rv +intent(in))
 C function int function4(const std::string & rv +intent(in)+len_trim)
-C function void function5() +name(fiveplus)
+C function void function5(void) +name(fiveplus)
 C function void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 C function void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))
 C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C function int UseImplWorker()
+C function int UseImplWorker(void)
 Close top.h
 Close top.cpp
 Close typestestnames.hh
@@ -49,25 +49,25 @@ class twoTs
 class twoTs
 C-interface, Fortran function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C-interface function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
-C-interface, Fortran function void function1()
-C-interface, Fortran function void function2()
+C-interface, Fortran function void function1(void)
+C-interface, Fortran function void function2(void)
 C-interface, Fortran function void function3a(int i +intent(in)+value)
 C-interface, Fortran function void function3a(long i +intent(in)+value)
 C-interface, Fortran function int function4(const std::string & rv +intent(in))
 C-interface function int function4(const std::string & rv +intent(in)+len_trim)
-C-interface, Fortran function void function5() +name(fiveplus)
+C-interface, Fortran function void function5(void) +name(fiveplus)
 C-interface, Fortran function void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 C-interface function void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))
 C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C-interface, Fortran function int UseImplWorker()
+C-interface, Fortran function int UseImplWorker(void)
 class Names
-C-interface, Fortran method Names() +name(defaultctor)
-C-interface, Fortran method void method1()
-C-interface, Fortran method void method2()
+C-interface, Fortran method Names(void) +name(defaultctor)
+C-interface, Fortran method void method1(void)
+C-interface, Fortran method void method2(void)
 Close wrapftestnames_ns0_inner.F
 Close foo.f
-C-interface, Fortran function void init_ns1()
+C-interface, Fortran function void init_ns1(void)
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
 class vector
@@ -76,18 +76,18 @@ class vector
 class vector
 Close wrapftestnames_std.F
 class Class1
-C-interface, Fortran method void Member1()
-C-interface, Fortran function void Worker1()
+C-interface, Fortran method void Member1(void)
+C-interface, Fortran function void Worker1(void)
 Close wrapftestnames_CAPI.F
 Close top.f
 Close pytestnames_ns0_innermodule.cpp
 class Names
-Python method Names() +name(defaultctor)
-Python method void method1()
-Python method void method2()
+Python method Names(void) +name(defaultctor)
+Python method void method1(void)
+Python method void method2(void)
 Close pyns0_Namestype.cpp
 Close pytestnames_ns0module.cpp
-Python function void init_ns1()
+Python function void init_ns1(void)
 Close pytestnames_ns1module.cpp
 Close pytestnames_internalmodule.cpp
 class vector
@@ -106,16 +106,16 @@ Close pytwoTs_0type.cpp
 class twoTs
 Close pytwoTs_instantiation4type.cpp
 Python function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
-Python function void function1()
-Python function void function2()
+Python function void function1(void)
+Python function void function2(void)
 Python function void function3a(int i +intent(in)+value)
 Python function void function3a(long i +intent(in)+value)
 Python function int function4(const std::string & rv +intent(in))
-Python function void function5() +name(fiveplus)
+Python function void function5(void) +name(fiveplus)
 Python function void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
 Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-Python function int UseImplWorker()
+Python function int UseImplWorker(void)
 Close pytestnamesmodule.cpp
 Close pytestnamesutil.cpp
 Close pytestnamesmodule.hpp

@@ -63,6 +63,7 @@ void passAssumedTypeDim(void *arg);
 int passAssumedTypeBuf(void *arg, char *outbuf);
 
 void callback1(int type, void (*incr)(void));
+void callback1a(int type, void (*incr)(void));
 void callback2(int type, void * in, void (*incr)(int *));
 void callback3(const char *type, void * in, void (*incr)(int *), char *outbuf);
 void callback_set_alloc(int tc, array_info *arr, void (*alloc)(int tc, array_info *arr));

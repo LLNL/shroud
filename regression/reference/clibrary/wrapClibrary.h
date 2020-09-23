@@ -39,6 +39,8 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf);
 int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
     int Noutbuf);
 
+void CLI_callback1a(int type, void ( * incr)(void));
+
 void CLI_callback3_bufferify(const char * type, void * in,
     void ( * incr)(int *), char * outbuf, int Noutbuf);
 

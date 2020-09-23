@@ -252,6 +252,32 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 /**
  * \brief Test function pointer
  *
+ * Add C_force_wrapper to test generating function pointer prototype.
+ */
+// ----------------------------------------
+// Function:  void callback1a
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int type +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void ( * incr)(void) +external+intent(in)+value
+// Requested: c_void_scalar_in
+// Match:     c_default
+// start CLI_callback1a
+void CLI_callback1a(int type, void ( * incr)(void))
+{
+    // splicer begin function.callback1a
+    callback1a(type, incr);
+    // splicer end function.callback1a
+}
+// end CLI_callback1a
+
+/**
+ * \brief Test function pointer
+ *
  * A bufferify function will be created.
  */
 // ----------------------------------------

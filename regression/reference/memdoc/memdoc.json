@@ -61,7 +61,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc() +deref(allocatable)+owner(library)",
+                "declgen": "const std::string * getConstStringPtrAlloc(void) +deref(allocatable)+owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_prototype": "void",

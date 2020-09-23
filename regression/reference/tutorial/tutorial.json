@@ -88,7 +88,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void NoReturnNoArguments()",
-                "declgen": "void NoReturnNoArguments()",
+                "declgen": "void NoReturnNoArguments(void)",
                 "fmtdict": {
                     "C_name": "TUT_no_return_no_arguments",
                     "C_prototype": "void",
@@ -814,7 +814,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments()",
+                "declgen": "double UseDefaultArguments(void)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -2005,7 +2005,7 @@
                     ]
                 },
                 "decl": "template<typename RetType> RetType TemplateReturn()",
-                "declgen": "RetType TemplateReturn()",
+                "declgen": "RetType TemplateReturn(void)",
                 "fmtdict": {
                     "function_name": "TemplateReturn",
                     "underscore_name": "template_return"
@@ -2088,7 +2088,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "template<typename RetType> RetType TemplateReturn()",
-                "declgen": "int TemplateReturn()",
+                "declgen": "int TemplateReturn(void)",
                 "fmtdict": {
                     "CXX_template": "<int>",
                     "C_name": "TUT_template_return_int",
@@ -2186,7 +2186,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "template<typename RetType> RetType TemplateReturn()",
-                "declgen": "double TemplateReturn()",
+                "declgen": "double TemplateReturn(void)",
                 "fmtdict": {
                     "CXX_template": "<double>",
                     "C_name": "TUT_template_return_double",
@@ -2265,7 +2265,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded()",
-                "declgen": "void FortranGenericOverloaded()",
+                "declgen": "void FortranGenericOverloaded(void)",
                 "fmtdict": {
                     "C_name": "TUT_fortran_generic_overloaded_0",
                     "C_prototype": "void",
@@ -5310,7 +5310,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called",
                     "C_prototype": "void",

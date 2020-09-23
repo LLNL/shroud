@@ -242,10 +242,10 @@ void AA_example_nested_testmpi_serial(void)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  void ( * get)() +intent(in)+value
+// Argument:  void ( * get)(void) +intent(in)+value
 // Requested: c_void_scalar_in
 // Match:     c_default
-void AA_example_nested_func_ptr1(void ( * get)())
+void AA_example_nested_func_ptr1(void ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.func_ptr1
     example::nested::FuncPtr1(get);
@@ -261,10 +261,10 @@ void AA_example_nested_func_ptr1(void ( * get)())
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * ( * get)() +intent(in)
+// Argument:  double * ( * get)(void) +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
-void AA_example_nested_func_ptr2(double * ( * get)())
+void AA_example_nested_func_ptr2(double * ( * get)(void))
 {
     // splicer begin namespace.example::nested.function.func_ptr2
     example::nested::FuncPtr2(get);

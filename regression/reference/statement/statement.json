@@ -57,7 +57,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int GetNameLength() +pure",
-                "declgen": "int GetNameLength() +pure",
+                "declgen": "int GetNameLength(void) +pure",
                 "doxygen": {
                     "brief": "helper function for Fortran to get length of name."
                 },
@@ -139,7 +139,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getNameErrorPattern()",
-                "declgen": "const string & getNameErrorPattern() +deref(result-as-arg)+len(get_name_length())",
+                "declgen": "const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())",
                 "fmtdict": {
                     "C_name": "STMT_get_name_error_pattern",
                     "C_prototype": "void",
