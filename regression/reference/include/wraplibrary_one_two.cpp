@@ -8,6 +8,7 @@
 //
 #include "wraplibrary_one_two.h"
 #include "global_header.hpp"
+#include "zzheader.hpp"
 
 
 extern "C" {

@@ -9,6 +9,7 @@
 #include "wrapClass2.h"
 #include "class_header.hpp"
 #include "global_header.hpp"
+#include "zzheader.hpp"
 
 
 extern "C" {
