@@ -145,7 +145,7 @@
                             "typemap_name": "forward::Class2"
                         },
                         "decl": "Class2()",
-                        "declgen": "Class2()",
+                        "declgen": "Class2(void)",
                         "fmtdict": {
                             "C_name": "FOR_Class2_ctor",
                             "C_prototype": "FOR_Class2 * SHadow_rv",
@@ -191,7 +191,7 @@
                             "typemap_name": "forward::Class2"
                         },
                         "decl": "~Class2()",
-                        "declgen": "~Class2()",
+                        "declgen": "~Class2(void)",
                         "fmtdict": {
                             "C_name": "FOR_Class2_dtor",
                             "C_prototype": "FOR_Class2 * self",

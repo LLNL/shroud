@@ -1,19 +1,19 @@
 Read yaml arrayclass.yaml
 Close arrayclass_types.yaml
 class ArrayWrapper
-C method ArrayWrapper()
+C method ArrayWrapper(void)
 C method void setSize(int size +intent(in)+value)
-C method int getSize() const
+C method int getSize(void) const
 C method void fillSize(int & size +intent(out))
-C method void allocate()
-C method double * getArray() +dimension(getSize())
-C method double * getArray() +context(DSHC_rv)+dimension(getSize())
-C method double * getArrayConst() const +dimension(getSize())
-C method double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())
-C method const double * getArrayC() +dimension(getSize())
-C method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
-C method const double * getArrayConstC() const +dimension(getSize())
-C method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
+C method void allocate(void)
+C method double * getArray(void) +dimension(getSize())
+C method double * getArray(void) +context(DSHC_rv)+dimension(getSize())
+C method double * getArrayConst(void) const +dimension(getSize())
+C method double * getArrayConst(void) const +context(DSHC_rv)+dimension(getSize())
+C method const double * getArrayC(void) +dimension(getSize())
+C method const double * getArrayC(void) +context(DSHC_rv)+dimension(getSize())
+C method const double * getArrayConstC(void) const +dimension(getSize())
+C method const double * getArrayConstC(void) const +context(DSHC_rv)+dimension(getSize())
 C method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
 C method void fetchArrayPtr(double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
 C method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))
@@ -25,25 +25,25 @@ C method void fetchArrayRefConst(const double * & array +context+deref(pointer)+
 C method void fetchVoidPtr(void * * array +intent(out))
 C method void fetchVoidRef(void * & array +intent(out))
 C method bool checkPtr(void * array +intent(in)+value)
-C method double sumArray()
+C method double sumArray(void)
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
 Close wraparrayclass.cpp
 Close typesarrayclass.h
 class ArrayWrapper
-C-interface, Fortran method ArrayWrapper()
+C-interface, Fortran method ArrayWrapper(void)
 C-interface, Fortran method void setSize(int size +intent(in)+value)
-C-interface, Fortran method int getSize() const
+C-interface, Fortran method int getSize(void) const
 C-interface, Fortran method void fillSize(int & size +intent(out))
-C-interface, Fortran method void allocate()
-C-interface, Fortran method double * getArray() +dimension(getSize())
-C-interface method double * getArray() +context(DSHC_rv)+dimension(getSize())
-C-interface, Fortran method double * getArrayConst() const +dimension(getSize())
-C-interface method double * getArrayConst() const +context(DSHC_rv)+dimension(getSize())
-C-interface, Fortran method const double * getArrayC() +dimension(getSize())
-C-interface method const double * getArrayC() +context(DSHC_rv)+dimension(getSize())
-C-interface, Fortran method const double * getArrayConstC() const +dimension(getSize())
-C-interface method const double * getArrayConstC() const +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method void allocate(void)
+C-interface, Fortran method double * getArray(void) +dimension(getSize())
+C-interface method double * getArray(void) +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method double * getArrayConst(void) const +dimension(getSize())
+C-interface method double * getArrayConst(void) const +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method const double * getArrayC(void) +dimension(getSize())
+C-interface method const double * getArrayC(void) +context(DSHC_rv)+dimension(getSize())
+C-interface, Fortran method const double * getArrayConstC(void) const +dimension(getSize())
+C-interface method const double * getArrayConstC(void) const +context(DSHC_rv)+dimension(getSize())
 C-interface, Fortran method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
 C-interface method void fetchArrayPtr(double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
 C-interface, Fortran method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))
@@ -55,18 +55,18 @@ C-interface method void fetchArrayRefConst(const double * & array +context+deref
 C-interface, Fortran method void fetchVoidPtr(void * * array +intent(out))
 C-interface, Fortran method void fetchVoidRef(void * & array +intent(out))
 C-interface, Fortran method bool checkPtr(void * array +intent(in)+value)
-C-interface, Fortran method double sumArray()
+C-interface, Fortran method double sumArray(void)
 Close wrapfarrayclass.f
 class ArrayWrapper
-Python method ArrayWrapper()
+Python method ArrayWrapper(void)
 Python method void setSize(int size +intent(in)+value)
-Python method int getSize() const
+Python method int getSize(void) const
 Python method void fillSize(int & size +intent(out))
-Python method void allocate()
-Python method double * getArray() +dimension(getSize())
-Python method double * getArrayConst() const +dimension(getSize())
-Python method const double * getArrayC() +dimension(getSize())
-Python method const double * getArrayConstC() const +dimension(getSize())
+Python method void allocate(void)
+Python method double * getArray(void) +dimension(getSize())
+Python method double * getArrayConst(void) const +dimension(getSize())
+Python method const double * getArrayC(void) +dimension(getSize())
+Python method const double * getArrayConstC(void) const +dimension(getSize())
 Python method void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
 Python method void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden+intent(inout))
 Python method void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden+intent(inout))
@@ -74,7 +74,7 @@ Python method void fetchArrayRefConst(const double * & array +deref(pointer)+dim
 Python method void fetchVoidPtr(void * * array +intent(out))
 Python method void fetchVoidRef(void * & array +intent(out))
 Python method bool checkPtr(void * array +intent(in)+value)
-Python method double sumArray()
+Python method double sumArray(void)
 Close pyArrayWrappertype.cpp
 Close pyarrayclassmodule.cpp
 Close pyarrayclassutil.cpp

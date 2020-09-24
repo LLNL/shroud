@@ -78,7 +78,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void NoReturnNoArguments(void)",
-                "declgen": "void NoReturnNoArguments()",
+                "declgen": "void NoReturnNoArguments(void)",
                 "fmtdict": {
                     "C_name": "NoReturnNoArguments",
                     "C_prototype": "void",
@@ -3276,7 +3276,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void bindC1(void)",
-                "declgen": "void bindC1()",
+                "declgen": "void bindC1(void)",
                 "doxygen": {
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
@@ -4196,34 +4196,6 @@
                         }
                     }
                 },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
-                        "stmtc1": "c_default"
-                    }
-                },
                 "ast": {
                     "declarator": {
                         "name": "callback1",
@@ -4269,20 +4241,20 @@
                         }
                     ],
                     "specifier": [
-                        "int"
+                        "void"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "void"
                 },
-                "decl": "int callback1(int type, void (*incr)(void)+external)",
-                "declgen": "int callback1(int type +intent(in)+value, void ( * incr)() +external+intent(in)+value)",
+                "decl": "void callback1(int type, void (*incr)(void)+external)",
+                "declgen": "void callback1(int type +intent(in)+value, void ( * incr)(void) +external+intent(in)+value)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
                 "fmtdict": {
                     "C_call_list": "type,\t incr",
                     "C_name": "callback1",
-                    "C_prototype": "int type,\t void ( * incr)(\t)",
-                    "C_return_type": "int",
+                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
+                    "C_return_type": "void",
                     "F_C_call": "c_callback1",
                     "F_C_name": "c_callback1",
                     "F_arg_c_call": "type,\t incr",
@@ -4290,13 +4262,158 @@
                     "F_name_function": "callback1",
                     "F_name_generic": "callback1",
                     "F_name_impl": "callback1",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
+                    "F_subprogram": "subroutine",
                     "function_name": "callback1",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "callback1"
                 },
                 "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "incr": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "incr",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_incr",
+                            "stmt0": "c_void_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_incr",
+                            "c_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "callback1a",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "external": true,
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "func": {
+                                    "name": "incr",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void callback1a(int type, void (*incr)(void)+external)",
+                "declgen": "void callback1a(int type +intent(in)+value, void ( * incr)(void) +external+intent(in)+value)",
+                "doxygen": {
+                    "brief": "Test function pointer",
+                    "description": "Add C_force_wrapper to test generating function pointer prototype.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "type,\t incr",
+                    "C_name": "CLI_callback1a",
+                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
+                    "C_return_type": "void",
+                    "F_C_call": "c_callback1a",
+                    "F_C_name": "c_callback1a",
+                    "F_arg_c_call": "type,\t incr",
+                    "F_arguments": "type,\t incr",
+                    "F_name_function": "callback1a",
+                    "F_name_generic": "callback1a",
+                    "F_name_impl": "callback1a",
+                    "F_subprogram": "subroutine",
+                    "function_name": "callback1a",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "callback1a"
+                },
+                "options": {
+                    "C_force_wrapper": true,
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false

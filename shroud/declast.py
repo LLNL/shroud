@@ -1321,11 +1321,14 @@ class Declaration(Node):
         params = kwargs.get("params", self.params)
         if params is not None:
             decl.append("(")
-            comma = ""
-            for arg in params:
-                decl.append(comma)
-                arg.gen_decl_work(decl)
-                comma = ", "
+            if params:
+                comma = ""
+                for arg in params:
+                    decl.append(comma)
+                    arg.gen_decl_work(decl)
+                    comma = ", "
+            else:
+                decl.append("void")
             decl.append(")")
             if self.func_const:
                 decl.append(" const")
@@ -1451,14 +1454,19 @@ class Declaration(Node):
             decl.append("(")
             if continuation:
                 decl.append("\t")
-            comma = ""
-            for arg in params:
-                decl.append(comma)
-                arg.gen_decl_work(decl, attrs=None, continuation=continuation)
-                if continuation:
-                    comma = ",\t "
-                else:
-                    comma = ", "
+
+            if params:
+                comma = ""
+                for arg in params:
+                    decl.append(comma)
+                    arg.gen_decl_work(decl, attrs=None, continuation=continuation)
+                    if continuation:
+                        comma = ",\t "
+                    else:
+                        comma = ", "
+
+            else:
+                decl.append("void")
             decl.append(")")
             if self.func_const:
                 decl.append(" const")

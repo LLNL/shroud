@@ -81,7 +81,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled() +deref(allocatable)",
+                "declgen": "const std::string & LastFunctionCalled(void) +deref(allocatable)",
                 "fmtdict": {
                     "C_name": "NS_last_function_called",
                     "C_prototype": "void",
@@ -221,7 +221,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void One()",
-                "declgen": "void One()",
+                "declgen": "void One(void)",
                 "fmtdict": {
                     "C_name": "NS_one",
                     "C_prototype": "void",
@@ -570,7 +570,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void One()",
-                        "declgen": "void One()",
+                        "declgen": "void One(void)",
                         "fmtdict": {
                             "C_name": "NS_outer_one",
                             "C_prototype": "void",

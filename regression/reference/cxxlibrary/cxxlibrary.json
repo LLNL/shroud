@@ -1212,7 +1212,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
-                "declgen": "bool defaultPtrIsNULL()",
+                "declgen": "bool defaultPtrIsNULL(void)",
                 "fmtdict": {
                     "C_name": "CXX_default_ptr_is_null_0",
                     "C_prototype": "void",

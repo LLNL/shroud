@@ -178,7 +178,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1()",
-                        "declgen": "Class1()",
+                        "declgen": "Class1(void)",
                         "fmtdict": {
                             "C_name": "CLA_Class1_ctor_default",
                             "C_prototype": "CLA_Class1 * SHadow_rv",
@@ -404,7 +404,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "~Class1()        +name(delete)",
-                        "declgen": "~Class1() +name(delete)",
+                        "declgen": "~Class1(void) +name(delete)",
                         "fmtdict": {
                             "C_name": "CLA_Class1_delete",
                             "C_prototype": "CLA_Class1 * self",
@@ -501,7 +501,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int Method1()",
-                        "declgen": "int Method1()",
+                        "declgen": "int Method1(void)",
                         "doxygen": {
                             "brief": "returns the value of flag member"
                         },
@@ -717,7 +717,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThis();",
-                        "declgen": "Class1 * returnThis()",
+                        "declgen": "Class1 * returnThis(void)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1128,7 +1128,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 *getclass3() const",
-                        "declgen": "Class1 * getclass3() const",
+                        "declgen": "Class1 * getclass3(void) const",
                         "doxygen": {
                             "brief": "Test const method"
                         },
@@ -1237,7 +1237,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName() +deref(allocatable)",
+                        "declgen": "const std::string & getName(void) +deref(allocatable)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -1607,7 +1607,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getM_flag()",
-                        "declgen": "int getM_flag()",
+                        "declgen": "int getM_flag(void)",
                         "fmtdict": {
                             "C_name": "CLA_Class1_get_m_flag",
                             "C_prototype": "CLA_Class1 * self",
@@ -1681,7 +1681,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getTest()",
-                        "declgen": "int getTest()",
+                        "declgen": "int getTest(void)",
                         "fmtdict": {
                             "C_name": "CLA_Class1_get_test",
                             "C_prototype": "CLA_Class1 * self",
@@ -1989,7 +1989,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName() +deref(allocatable)",
+                        "declgen": "const std::string & getName(void) +deref(allocatable)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -2234,7 +2234,7 @@
                             "typemap_name": "classes::Singleton"
                         },
                         "decl": "static Singleton& getReference()",
-                        "declgen": "static Singleton & getReference()",
+                        "declgen": "static Singleton & getReference(void)",
                         "fmtdict": {
                             "CXX_this_call": "classes::Singleton::",
                             "C_name": "CLA_Singleton_get_reference",
@@ -2373,7 +2373,7 @@
                             "typemap_name": "classes::Shape"
                         },
                         "decl": "Shape()",
-                        "declgen": "Shape()",
+                        "declgen": "Shape(void)",
                         "fmtdict": {
                             "C_name": "CLA_Shape_ctor",
                             "C_prototype": "CLA_Shape * SHadow_rv",
@@ -2469,7 +2469,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int get_ivar() const",
-                        "declgen": "int get_ivar() const",
+                        "declgen": "int get_ivar(void) const",
                         "fmtdict": {
                             "C_name": "CLA_Shape_get_ivar",
                             "C_prototype": "const CLA_Shape * self",
@@ -2615,7 +2615,7 @@
                             "typemap_name": "classes::Circle"
                         },
                         "decl": "Circle()",
-                        "declgen": "Circle()",
+                        "declgen": "Circle(void)",
                         "fmtdict": {
                             "C_name": "CLA_Circle_ctor",
                             "C_prototype": "CLA_Circle * SHadow_rv",
@@ -3157,7 +3157,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "const Class1 *getclass2()",
-                "declgen": "const Class1 * getclass2()",
+                "declgen": "const Class1 * getclass2(void)",
                 "fmtdict": {
                     "C_name": "CLA_getclass2",
                     "C_prototype": "CLA_Class1 * SHadow_rv",
@@ -3245,7 +3245,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 *getclass3()",
-                "declgen": "Class1 * getclass3()",
+                "declgen": "Class1 * getclass3(void)",
                 "fmtdict": {
                     "C_name": "CLA_getclass3",
                     "C_prototype": "CLA_Class1 * SHadow_rv",
@@ -3313,7 +3313,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "const Class1 &getConstClassReference()",
-                "declgen": "const Class1 & getConstClassReference()",
+                "declgen": "const Class1 & getConstClassReference(void)",
                 "fmtdict": {
                     "C_name": "CLA_get_const_class_reference",
                     "C_prototype": "CLA_Class1 * SHadow_rv",
@@ -3401,7 +3401,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 &getClassReference()",
-                "declgen": "Class1 & getClassReference()",
+                "declgen": "Class1 & getClassReference(void)",
                 "fmtdict": {
                     "C_name": "CLA_get_class_reference",
                     "C_prototype": "CLA_Class1 * SHadow_rv",
@@ -3733,7 +3733,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int get_global_flag()",
-                "declgen": "int get_global_flag()",
+                "declgen": "int get_global_flag(void)",
                 "fmtdict": {
                     "C_name": "CLA_get_global_flag",
                     "C_prototype": "void",
@@ -3836,7 +3836,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_name": "CLA_last_function_called",
                     "C_prototype": "void",

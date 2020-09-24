@@ -581,7 +581,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getX1()",
-                        "declgen": "int getX1()",
+                        "declgen": "int getX1(void)",
                         "fmtdict": {
                             "function_name": "getX1",
                             "underscore_name": "get_x1"
@@ -653,7 +653,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int getY1()",
-                        "declgen": "int getY1()",
+                        "declgen": "int getY1(void)",
                         "fmtdict": {
                             "function_name": "getY1",
                             "underscore_name": "get_y1"
@@ -1847,7 +1847,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list()",
+                "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "fmtdict": {
                     "PY_name_impl": "PY_get_global_struct_list",
                     "function_name": "get_global_struct_list",
@@ -1872,7 +1872,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class(void)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class()",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class(void)",
                 "fmtdict": {
                     "function_name": "Create_Cstruct_as_class",
                     "underscore_name": "create__cstruct_as_class"

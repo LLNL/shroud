@@ -1,9 +1,9 @@
 Read yaml struct.yaml
 Close struct_types.yaml
 class Cstruct_as_class
-C method int getX1()
+C method int getX1(void)
 C method void setX1(int val +intent(in)+value)
-C method int getY1()
+C method int getY1(void)
 C method void setY1(int val +intent(in)+value)
 Close wrapCstruct_as_class.h
 Close wrapCstruct_as_class.cpp
@@ -23,8 +23,8 @@ C function Cstruct1 returnStructByValue(int i +intent(in)+value, double d +inten
 C function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 C function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)
-C function Cstruct_list * get_global_struct_list()
-C function Cstruct_as_class * Create_Cstruct_as_class()
+C function Cstruct_list * get_global_struct_list(void)
+C function Cstruct_as_class * Create_Cstruct_as_class(void)
 C function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
 C function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 Close wrapstruct.h
@@ -36,9 +36,9 @@ class Cstruct_list
 class Cstruct_numpy
 class Arrays1
 class Cstruct_as_class
-C-interface, Fortran method int getX1()
+C-interface, Fortran method int getX1(void)
 C-interface, Fortran method void setX1(int val +intent(in)+value)
-C-interface, Fortran method int getY1()
+C-interface, Fortran method int getY1(void)
 C-interface, Fortran method void setY1(int val +intent(in)+value)
 C-interface, Fortran function int passStructByValue(Cstruct1 arg +intent(in)+value)
 C-interface, Fortran function int passStruct1(const Cstruct1 * arg +intent(in))
@@ -51,8 +51,8 @@ C-interface, Fortran function Cstruct1 returnStructByValue(int i +intent(in)+val
 C-interface, Fortran function Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)
 C-interface, Fortran function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))
 C-interface function Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)
-C-interface, Fortran function Cstruct_list * get_global_struct_list()
-C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class()
+C-interface, Fortran function Cstruct_list * get_global_struct_list(void)
+C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class(void)
 C-interface, Fortran function Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)
 C-interface, Fortran function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 Close wrapfstruct.f

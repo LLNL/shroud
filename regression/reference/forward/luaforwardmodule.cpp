@@ -29,7 +29,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// Class2()
+// Class2(void)
 // ----------------------------------------
 // Function:  Class2
 // Requested: lua_shadow_scalar_ctor
@@ -48,7 +48,7 @@ static int l_Class2_ctor(lua_State *L)
     // splicer end class.Class2.method.ctor
 }
 
-// ~Class2()
+// ~Class2(void)
 // ----------------------------------------
 // Function:  ~Class2
 // Requested: lua_shadow_scalar_dtor

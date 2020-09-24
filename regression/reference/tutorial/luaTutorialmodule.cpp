@@ -20,7 +20,7 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
-// void NoReturnNoArguments()
+// void NoReturnNoArguments(void)
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
 // Exact:     lua_subroutine
@@ -233,7 +233,7 @@ static int l_template_argument(lua_State *L)
     // splicer end function.TemplateArgument
 }
 
-// void FortranGenericOverloaded()
+// void FortranGenericOverloaded(void)
 // void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
@@ -494,7 +494,7 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+// const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Exact:     lua_string_&_result

@@ -961,7 +961,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  void ( * get)() +intent(in)+value
+        ! Argument:  void ( * get)(void) +intent(in)+value
         ! Requested: c_void_scalar_in
         ! Match:     c_default
         subroutine func_ptr1(get) &
@@ -976,7 +976,7 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * ( * get)() +intent(in)
+        ! Argument:  double * ( * get)(void) +intent(in)
         ! Requested: c_native_*_in
         ! Match:     c_default
         subroutine func_ptr2(get) &

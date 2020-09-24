@@ -35,6 +35,14 @@ module clibrary_mod
     end interface
     ! end abstract callback1_incr
 
+    ! start abstract callback1a_incr
+    abstract interface
+        subroutine callback1a_incr() bind(C)
+            implicit none
+        end subroutine callback1a_incr
+    end interface
+    ! end abstract callback1a_incr
+
     abstract interface
         subroutine callback2_incr(arg0) bind(C)
             use iso_c_binding, only : C_INT
@@ -660,31 +668,54 @@ module clibrary_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  int callback1
-    ! Requested: c_native_scalar_result
+    ! Function:  void callback1
+    ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void ( * incr)() +external+intent(in)+value
+    ! Argument:  void ( * incr)(void) +external+intent(in)+value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     ! start c_callback1
     interface
-        function c_callback1(type, incr) &
-                result(SHT_rv) &
+        subroutine c_callback1(type, incr) &
                 bind(C, name="callback1")
             use iso_c_binding, only : C_INT
             import :: callback1_incr
             implicit none
             integer(C_INT), value, intent(IN) :: type
             procedure(callback1_incr) :: incr
-            integer(C_INT) :: SHT_rv
-        end function c_callback1
+        end subroutine c_callback1
     end interface
     ! end c_callback1
+
+    ! ----------------------------------------
+    ! Function:  void callback1a
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void ( * incr)(void) +external+intent(in)+value
+    ! Requested: c_void_scalar_in
+    ! Match:     c_default
+    ! start c_callback1a
+    interface
+        subroutine c_callback1a(type, incr) &
+                bind(C, name="CLI_callback1a")
+            use iso_c_binding, only : C_INT
+            import :: callback1a_incr
+            implicit none
+            integer(C_INT), value, intent(IN) :: type
+            procedure(callback1a_incr) :: incr
+        end subroutine c_callback1a
+    end interface
+    ! end c_callback1a
 
     ! ----------------------------------------
     ! Function:  void callback2
@@ -1195,11 +1226,11 @@ contains
     end function pass_assumed_type_buf
 
     ! ----------------------------------------
-    ! Function:  int callback1
-    ! int callback1
-    ! Requested: f_native_scalar_result
+    ! Function:  void callback1
+    ! void callback1
+    ! Requested: f_subroutine
     ! Match:     f_default
-    ! Requested: c_native_scalar_result
+    ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int type +intent(in)+value
@@ -1212,17 +1243,44 @@ contains
     !!
     !<
     ! start callback1
-    function callback1(type, incr) &
-            result(SHT_rv)
+    subroutine callback1(type, incr)
         use iso_c_binding, only : C_INT
         integer(C_INT), value, intent(IN) :: type
         external :: incr
-        integer(C_INT) :: SHT_rv
         ! splicer begin function.callback1
-        SHT_rv = c_callback1(type, incr)
+        call c_callback1(type, incr)
         ! splicer end function.callback1
-    end function callback1
+    end subroutine callback1
     ! end callback1
+
+    ! ----------------------------------------
+    ! Function:  void callback1a
+    ! void callback1a
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! \brief Test function pointer
+    !!
+    !! Add C_force_wrapper to test generating function pointer prototype.
+    !<
+    ! start callback1a
+    subroutine callback1a(type, incr)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), value, intent(IN) :: type
+        external :: incr
+        ! splicer begin function.callback1a
+        call c_callback1a(type, incr)
+        ! splicer end function.callback1a
+    end subroutine callback1a
+    ! end callback1a
 
     ! ----------------------------------------
     ! Function:  void callback2

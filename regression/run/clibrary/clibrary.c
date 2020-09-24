@@ -191,6 +191,11 @@ void callback1(int type, void (*incr)(void))
 }
 // end callback1
 
+void callback1a(int type, void (*incr)(void))
+{
+  // Use type to decide how to call incr
+}
+
 void callback2(int type, void * in, void (*incr)(int *))
 {
   if (type == 1) {

@@ -1,35 +1,35 @@
 Read yaml namespacedoc.yaml
 Close wrapped_types.yaml
-C function void worker()
+C function void worker(void)
 Close wrapwrapped_inner1.h
 Close wrapwrapped_inner1.cpp
-C function void worker()
+C function void worker(void)
 Close wrapwrapped_inner2.h
 Close wrapwrapped_inner2.cpp
-C function void worker4()
+C function void worker4(void)
 Close wrapwrapped_inner4.h
 Close wrapwrapped_inner4.cpp
-C function void worker3()
-C function void worker()
+C function void worker3(void)
+C function void worker(void)
 Close wrapwrapped.h
 Close wrapwrapped.cpp
 Close typeswrapped.h
-C-interface, Fortran function void worker3()
-C-interface, Fortran function void worker()
-C-interface, Fortran function void worker()
+C-interface, Fortran function void worker3(void)
+C-interface, Fortran function void worker(void)
+C-interface, Fortran function void worker(void)
 Close wrapfwrapped_inner1.f
-C-interface, Fortran function void worker()
+C-interface, Fortran function void worker(void)
 Close wrapfwrapped_inner2.f
-C-interface, Fortran function void worker4()
+C-interface, Fortran function void worker4(void)
 Close wrapfwrapped.f
-Python function void worker()
+Python function void worker(void)
 Close pywrapped_inner1module.cpp
-Python function void worker()
+Python function void worker(void)
 Close pywrapped_inner2module.cpp
-Python function void worker4()
+Python function void worker4(void)
 Close pywrapped_inner4module.cpp
-Python function void worker3()
-Python function void worker()
+Python function void worker3(void)
+Python function void worker(void)
 Close pywrappedmodule.cpp
 Close pywrappedmodule.hpp
 Close setup.py

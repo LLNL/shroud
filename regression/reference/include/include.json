@@ -271,7 +271,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void function1()",
-                                "declgen": "void function1()",
+                                "declgen": "void function1(void)",
                                 "fmtdict": {
                                     "C_name": "LIB_one_two_function1",
                                     "C_prototype": "void",
@@ -483,7 +483,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method()",
-                                "declgen": "void method()",
+                                "declgen": "void method(void)",
                                 "fmtdict": {
                                     "C_name": "LIB_outer1_class0_method",
                                     "C_prototype": "LIB_outer1_class0 * self",
@@ -547,7 +547,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void outer_func()",
-                        "declgen": "void outer_func()",
+                        "declgen": "void outer_func(void)",
                         "fmtdict": {
                             "C_name": "LIB_outer1_outer_func",
                             "C_prototype": "void",
@@ -612,7 +612,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method()",
-                                "declgen": "void method()",
+                                "declgen": "void method(void)",
                                 "fmtdict": {
                                     "C_name": "LIB_outer2_class0_method",
                                     "C_prototype": "LIB_outer2_class0 * self",
@@ -676,7 +676,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void outer_func()",
-                        "declgen": "void outer_func()",
+                        "declgen": "void outer_func(void)",
                         "fmtdict": {
                             "C_name": "LIB_outer2_outer_func",
                             "C_prototype": "void",

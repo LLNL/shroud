@@ -20,7 +20,7 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
-// ~Class1()
+// ~Class1(void)
 // ----------------------------------------
 // Function:  ~Class1
 // Requested: lua_shadow_scalar_dtor

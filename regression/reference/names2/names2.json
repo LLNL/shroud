@@ -23,7 +23,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void AFunction()",
-                "declgen": "void AFunction()",
+                "declgen": "void AFunction(void)",
                 "fmtdict": {
                     "C_name": "NAM_afunction",
                     "C_prototype": "void",

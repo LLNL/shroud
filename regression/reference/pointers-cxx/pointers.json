@@ -2541,7 +2541,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int sumFixedArray(void)",
-                "declgen": "int sumFixedArray()",
+                "declgen": "int sumFixedArray(void)",
                 "doxygen": {
                     "description": "Used to test values global_array.\n"
                 },
@@ -5519,7 +5519,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
-                "declgen": "int * returnIntPtrToScalar()",
+                "declgen": "int * returnIntPtrToScalar(void)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_scalar",
                     "C_prototype": "void",
@@ -5602,7 +5602,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray() +dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array",
                     "C_prototype": "void",
@@ -5674,7 +5674,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray() +context(DSHC_rv)+dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray(void) +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *DSHC_rv",
@@ -5742,7 +5742,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
-                "declgen": "const int * returnIntPtrToConstScalar()",
+                "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_const_scalar",
                     "C_prototype": "void",
@@ -5826,7 +5826,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray() +dimension(10)",
+                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array",
                     "C_prototype": "void",
@@ -5899,7 +5899,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray() +context(DSHC_rv)+dimension(10)",
+                "declgen": "const int * returnIntPtrToFixedConstArray(void) +context(DSHC_rv)+dimension(10)",
                 "fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *DSHC_rv",
@@ -5965,7 +5965,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntScalar(void) +deref(scalar)",
-                "declgen": "int * returnIntScalar() +deref(scalar)",
+                "declgen": "int * returnIntScalar(void) +deref(scalar)",
                 "fmtdict": {
                     "C_name": "POI_return_int_scalar",
                     "C_prototype": "void",
@@ -6032,7 +6032,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntRaw(void) +deref(raw)",
-                "declgen": "int * returnIntRaw() +deref(raw)",
+                "declgen": "int * returnIntRaw(void) +deref(raw)",
                 "doxygen": {
                     "description": "Call directly via interface.\n"
                 },
@@ -6230,7 +6230,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int **returnRawPtrToInt2d(void)",
-                "declgen": "int * * returnRawPtrToInt2d()",
+                "declgen": "int * * returnRawPtrToInt2d(void)",
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },

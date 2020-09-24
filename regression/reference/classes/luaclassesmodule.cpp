@@ -20,7 +20,7 @@ extern "C" {
 // splicer begin C_definition
 // splicer end C_definition
 
-// Class1()
+// Class1(void)
 // Class1(int flag +intent(in)+value)
 // ----------------------------------------
 // Function:  Class1
@@ -76,7 +76,7 @@ static int l_Class1_ctor(lua_State *L)
     // splicer end class.Class1.method.ctor
 }
 
-// ~Class1() +name(delete)
+// ~Class1(void) +name(delete)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Requested: lua_shadow_scalar_dtor
@@ -92,7 +92,7 @@ static int l_Class1_delete(lua_State *L)
     // splicer end class.Class1.method.__gc
 }
 
-// int Method1()
+// int Method1(void)
 // ----------------------------------------
 // Function:  int Method1
 // Exact:     lua_native_scalar_result
@@ -111,7 +111,7 @@ static int l_Class1_method1(lua_State *L)
     // splicer end class.Class1.method.Method1
 }
 
-// const std::string & getName() +deref(allocatable)
+// const std::string & getName(void) +deref(allocatable)
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
 // Exact:     lua_string_&_result
@@ -164,7 +164,7 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// const std::string & getName() +deref(allocatable)
+// const std::string & getName(void) +deref(allocatable)
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
 // Exact:     lua_string_&_result
@@ -193,7 +193,7 @@ static const struct luaL_Reg l_Class2_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// Shape()
+// Shape(void)
 // ----------------------------------------
 // Function:  Shape
 // Requested: lua_shadow_scalar_ctor
@@ -212,7 +212,7 @@ static int l_Shape_ctor(lua_State *L)
     // splicer end class.Shape.method.ctor
 }
 
-// int get_ivar() const
+// int get_ivar(void) const
 // ----------------------------------------
 // Function:  int get_ivar
 // Exact:     lua_native_scalar_result
@@ -237,7 +237,7 @@ static const struct luaL_Reg l_Shape_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// Circle()
+// Circle(void)
 // ----------------------------------------
 // Function:  Circle
 // Requested: lua_shadow_scalar_ctor
@@ -299,7 +299,7 @@ static int l_set_global_flag(lua_State *L)
     // splicer end function.set_global_flag
 }
 
-// int get_global_flag()
+// int get_global_flag(void)
 // ----------------------------------------
 // Function:  int get_global_flag
 // Exact:     lua_native_scalar_result
@@ -312,7 +312,7 @@ static int l_get_global_flag(lua_State *L)
     // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled() +deref(result-as-arg)+len(30)
+// const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Exact:     lua_string_&_result

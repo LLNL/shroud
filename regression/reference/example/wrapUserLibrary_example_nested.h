@@ -71,9 +71,9 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm);
 void AA_example_nested_testmpi_serial(void);
 #endif
 
-void AA_example_nested_func_ptr1(void ( * get)());
+void AA_example_nested_func_ptr1(void ( * get)(void));
 
-void AA_example_nested_func_ptr2(double * ( * get)());
+void AA_example_nested_func_ptr2(double * ( * get)(void));
 
 void AA_example_nested_func_ptr3(double ( * get)(int i, int));
 
