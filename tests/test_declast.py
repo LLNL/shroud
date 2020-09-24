@@ -533,11 +533,11 @@ class CheckParse(unittest.TestCase):
         """
         r = declast.check_decl("size_t var1()")
         s = r.gen_decl()
-        self.assertEqual("size_t var1()", s)
+        self.assertEqual("size_t var1(void)", s)
 
         r = declast.check_decl("MPI_Comm get_comm()")
         s = r.gen_decl()
-        self.assertEqual("MPI_Comm get_comm()", s)
+        self.assertEqual("MPI_Comm get_comm(void)", s)
 
     def test_type_int_func(self):
         """Test function declarations
@@ -673,7 +673,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("void foo()")
 
         s = r.gen_decl()
-        self.assertEqual("void foo()", s)
+        self.assertEqual("void foo(void)", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -695,7 +695,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("void *foo() const")
 
         s = r.gen_decl()
-        self.assertEqual("void * foo() const", s)
+        self.assertEqual("void * foo(void) const", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -774,7 +774,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
-        self.assertEqual("const std::string & getName() const", s)
+        self.assertEqual("const std::string & getName(void) const", s)
         self.assertFalse(r.is_pointer())
         self.assertTrue(r.is_reference())
         self.assertEqual(1, r.is_indirect())
@@ -841,7 +841,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("Class1()", namespace=self.class1)
 
         s = r.gen_decl()
-        self.assertEqual("Class1()", s)
+        self.assertEqual("Class1(void)", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -856,7 +856,7 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         # must provide the name since the ctor has no name
-        self.assertEqual("Class1 ctor()", r.gen_arg_as_cxx())
+        self.assertEqual("Class1 ctor(void)", r.gen_arg_as_cxx())
         self.assertEqual("CC_Class1 ctor", r.gen_arg_as_c(params=None))
 
     def test_decl09b(self):
@@ -865,7 +865,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("Class1() +name(new)", namespace=self.class1)
 
         s = r.gen_decl()
-        self.assertEqual("Class1() +name(new)", s)
+        self.assertEqual("Class1(void) +name(new)", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -881,15 +881,15 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_reference())
         self.assertEqual(0, r.is_indirect())
         self.assertEqual("Class1 new", r.gen_arg_as_cxx(params=None))
-        self.assertEqual("CC_Class1 new()", r.gen_arg_as_c())
+        self.assertEqual("CC_Class1 new(void)", r.gen_arg_as_c())
 
     def test_decl09c(self):
         """Test destructor
         """
-        r = declast.check_decl("~Class1()", namespace=self.class1)
+        r = declast.check_decl("~Class1(void)", namespace=self.class1)
 
         s = r.gen_decl()
-        self.assertEqual("~Class1()", s)
+        self.assertEqual("~Class1(void)", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -904,8 +904,8 @@ class CheckParse(unittest.TestCase):
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertEqual(0, r.is_indirect())
-        self.assertEqual("Class1 dtor()", r.gen_arg_as_cxx())
-        self.assertEqual("CC_Class1 dtor()", r.gen_arg_as_c())
+        self.assertEqual("Class1 dtor(void)", r.gen_arg_as_cxx())
+        self.assertEqual("CC_Class1 dtor(void)", r.gen_arg_as_c())
 
     def test_inheritance0(self):
         self.library = ast.LibraryNode(library="cc")
@@ -939,7 +939,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("Class1 * make()", namespace=self.class1)
 
         s = r.gen_decl()
-        self.assertEqual("Class1 * make()", s)
+        self.assertEqual("Class1 * make(void)", s)
 
         self.assertEqual(
             todict.to_dict(r),
@@ -1121,7 +1121,7 @@ class CheckParse(unittest.TestCase):
         r = declast.check_decl("const std::string& getName() const")
 
         s = r.gen_decl()
-        self.assertEqual("const std::string & getName() const", s)
+        self.assertEqual("const std::string & getName(void) const", s)
 
         r.result_as_arg("output")
         s = r.gen_decl()
