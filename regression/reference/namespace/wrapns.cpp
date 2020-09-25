@@ -7,8 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapns.h"
+// cxx_header
 #include "namespace.hpp"
+// typemap
 #include <string>
+// shroud
 #include "typesns.h"
 #include <cstdlib>
 #include <cstddef>

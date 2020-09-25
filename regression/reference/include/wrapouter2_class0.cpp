@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapouter2_class0.h"
+// cxx_header
 #include "classA.hpp"
 #include "classAb.hpp"
 

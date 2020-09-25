@@ -321,7 +321,7 @@ class WrapperMixin(object):
                     found[header] = True
                     if label:
                         # Only print label if there are unique entries.
-#                        output.append("// " + key)
+                        output.append("// " + key)
                         label = False
                     if header[0] == "<":
                         output.append("#include %s" % header)

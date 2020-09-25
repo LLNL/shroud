@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "preprocess.hpp"
+// shroud
 #include "typespreprocess.h"
 #include <cstdlib>
 

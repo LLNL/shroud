@@ -7,7 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapstruct.h"
+// cxx_header
 #include "struct.h"
+// shroud
 #include "typesstruct.h"
 #include <stdlib.h>
 #include <string.h>

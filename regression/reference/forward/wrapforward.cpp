@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "forward.hpp"
+// shroud
 #include "typesforward.h"
 #include <cstdlib>
 

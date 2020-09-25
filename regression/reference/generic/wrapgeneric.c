@@ -7,8 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapgeneric.h"
+// cxx_header
 #include "generic.h"
 #include "helper.h"
+// shroud
 #include "typesgeneric.h"
 #include <stdlib.h>
 

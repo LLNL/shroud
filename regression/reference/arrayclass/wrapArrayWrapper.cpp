@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapArrayWrapper.h"
+// cxx_header
 #include "arrayclass.hpp"
 
 // splicer begin class.ArrayWrapper.CXX_definitions

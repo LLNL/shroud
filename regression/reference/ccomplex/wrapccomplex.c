@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "ccomplex.h"
+// shroud
 #include "typesccomplex.h"
 #include <stdlib.h>
 

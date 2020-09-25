@@ -7,8 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapTutorial.h"
+// cxx_header
 #include "tutorial.hpp"
+// typemap
 #include <string>
+// shroud
 #include "typesTutorial.h"
 #include <cstdlib>
 #include <cstddef>

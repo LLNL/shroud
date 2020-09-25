@@ -7,8 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapcdesc.h"
+// cxx_header
 #include "cdesc.hpp"
+// typemap
 #include <string>
+// shroud
 #include "typescdesc.h"
 #include <cstdlib>
 

@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapUser1.h"
+// cxx_header
 #include "preprocess.hpp"
 
 // splicer begin class.User1.CXX_definitions

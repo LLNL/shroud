@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapCstruct_as_class.h"
+// cxx_header
 #include "struct.h"
 
 // splicer begin class.Cstruct_as_class.CXX_definitions
