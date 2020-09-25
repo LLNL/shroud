@@ -7,8 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapstd_vector_int.h"
-#include <cstddef>
 #include <vector>
+#include <cstddef>
 
 // splicer begin namespace.std.class.vector.CXX_definitions
 // splicer end namespace.std.class.vector.CXX_definitions

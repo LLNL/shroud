@@ -42,13 +42,15 @@ class AstNode(object):
         return self.parent.get_LibraryNode()
 
     def find_header(self):
-        """Return most recent cxx_header"""
+        """Return most recent cxx_header.
+        Return list of headers to preserve order.
+        """
         if self.cxx_header:
             return self.cxx_header
         elif self.parent is not None:
             return self.parent.find_header()
         else:
-            return ""
+            return []
 
     def may_have_args(self):
         # only FunctionNode may have args

@@ -7,10 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrappointers.h"
-#include <stdlib.h>
-#include <string.h>
 #include "pointers.h"
 #include "typespointers.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 // helper ShroudLenTrim

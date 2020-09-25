@@ -7,10 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapgeneric.h"
-#include <stdlib.h>
 #include "generic.h"
 #include "helper.h"
 #include "typesgeneric.h"
+#include <stdlib.h>
 
 // splicer begin C_definitions
 // splicer end C_definitions

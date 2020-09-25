@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wraptypes.h"
-#include <cstdlib>
 #include "types.hpp"
 #include "typestypes.h"
+#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

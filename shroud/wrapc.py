@@ -68,7 +68,7 @@ class Wrapc(util.WrapperMixin):
         # Include files required by wrapper implementations.
         self.impl_typedef_nodes = {}  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
-        self.header_impl_include = {}
+        self.header_impl_include_order = dict(typemap=[], cxx_header=[], shroud=[])
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
@@ -218,8 +218,8 @@ class Wrapc(util.WrapperMixin):
         else:
             lang_include = "cxx_include"
             lang_source = "cxx_source"
-        scope = helper_info.get("scope", "file")
 
+        scope = helper_info.get("scope", "file")
         if lang_include in helper_info:
             for include in helper_info[lang_include].split():
                 self.helper_include[scope][include] = True
@@ -443,13 +443,14 @@ class Wrapc(util.WrapperMixin):
             output.append('#include "%s"' % hname)
 
         # Use headers from implementation
-        self.find_header(node, self.header_impl_include)
-        self.header_impl_include.update(self.helper_include["file"])
+        self.header_impl_include_order["cxx_header"].append(
+            node.find_header())
+        self.header_impl_include_order["shroud"].append(
+            sorted(self.helper_include["file"].keys()))
 
         # headers required by implementation
-        if self.header_impl_include:
-            headers = self.header_impl_include.keys()
-            self.write_headers(headers, output)
+        skip = {}
+        self.write_headers_order(self.header_impl_include_order, output, skip)
 
         # Headers required by implementations,
         # for example template instantiation.
@@ -459,7 +460,7 @@ class Wrapc(util.WrapperMixin):
                 self.impl_typedef_nodes,
                 [],
                 output,
-                self.header_impl_include,
+                skip,
             )
 
         if self.language == "cxx":
@@ -1018,9 +1019,9 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
-            if arg_typemap.impl_header is not None:
-                for hdr in arg_typemap.impl_header:
-                    self.header_impl_include[hdr] = True
+            self.header_impl_include_order["typemap"].append(
+                arg_typemap.impl_header)
+                    
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
@@ -1244,9 +1245,8 @@ class Wrapc(util.WrapperMixin):
                     )
                 self.set_cxx_nonconst_ptr(ast, fmt_result)
                     
-                if result_typemap.impl_header is not None:
-                    for hdr in result_typemap.impl_header:
-                        self.header_impl_include[hdr] = True
+                self.header_impl_include_order["typemap"].append(
+                    result_typemap.impl_header)
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_blk, pre_call, post_call, need_wrapper
@@ -1346,8 +1346,9 @@ class Wrapc(util.WrapperMixin):
         self.c_helper["capsule_data_helper"] = True
         fmt = library.fmtdict
 
-        self.header_impl_include.update(self.capsule_include)
-        self.header_impl_include[fmt.C_header_utility] = True
+        self.header_impl_include_order["shroud"].append([fmt.C_header_utility])
+        self.header_impl_include_order["shroud"].append(
+            sorted(self.capsule_include.keys()))
 
         append_format(
             self.shared_proto_c,
@@ -1399,10 +1400,10 @@ class Wrapc(util.WrapperMixin):
 
         # Add header for NULL.
         if self.language == "cxx":
-            self.header_impl_include["<cstdlib>"] = True
+            self.header_impl_include_order["shroud"].append(["<cstdlib>"])
             # XXXX nullptr
         else:
-            self.header_impl_include["<stdlib.h>"] = True
+            self.header_impl_include_order["shroud"].append(["<stdlib.h>"])
         append_format(output,
                       "cap->addr = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"

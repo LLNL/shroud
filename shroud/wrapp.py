@@ -118,7 +118,7 @@ class Wrapp(util.WrapperMixin):
 
     def reset_file(self):
         """Start a new output file"""
-        self.header_impl_include = {}  # header files in implementation file
+        self.header_impl_include_order = dict(typemap=[], cxx_header=[], shroud=[])
         self.c_helper = {}
 #        self.c_helper_include = {}  # include files in generated C header
 
@@ -2336,9 +2336,10 @@ return 1;""",
         self._push_splicer("impl")
 
         # Use headers from implementation
-        header_impl_include = self.header_impl_include
-        header_impl_include.update(hinclude)
-        self.write_headers(header_impl_include, output)
+        header_impl_include_order = self.header_impl_include_order
+        header_impl_include_order["shroud"].append(
+            sorted(hinclude.keys()))
+        self.write_headers_order(header_impl_include_order, output, {})
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
@@ -2592,8 +2593,9 @@ extern PyObject *{PY_prefix}error_obj;
         if self.need_numpy:
             self.add_numpy_includes(output, top)
 
-        self.header_impl_include.update(hinclude)
-        self.write_headers(self.header_impl_include, output)
+        self.header_impl_include_order["shroud"].append(
+            sorted(hinclude.keys()))
+        self.write_headers_order(self.header_impl_include_order, output, {})
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)

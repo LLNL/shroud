@@ -7,12 +7,12 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapns.h"
-#include <cstddef>
-#include <cstdlib>
-#include <cstring>
-#include <string>
 #include "namespace.hpp"
+#include <string>
 #include "typesns.h"
+#include <cstdlib>
+#include <cstddef>
+#include <cstring>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

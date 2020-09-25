@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wraptemplates.h"
-#include <cstdlib>
 #include "templates.hpp"
 #include "typestemplates.h"
+#include <cstdlib>
 
 #include <vector>
 #include "implworker1.hpp"

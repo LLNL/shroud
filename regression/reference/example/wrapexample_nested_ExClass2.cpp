@@ -7,11 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapexample_nested_ExClass2.h"
-#include <cstddef>
-#include <cstring>
+#include "ExClass2.hpp"
 #include <string>
 #include "ExClass1.hpp"
-#include "ExClass2.hpp"
+#include <cstddef>
+#include <cstring>
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_definitions
 //   namespace.example::nested.class.ExClass2.CXX_definitions

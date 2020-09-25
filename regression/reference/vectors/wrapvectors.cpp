@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapvectors.h"
-#include <cstdlib>
-#include "typesvectors.h"
 #include "vectors.hpp"
+#include "typesvectors.h"
+#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

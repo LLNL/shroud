@@ -290,8 +290,7 @@ class WrapperMixin(object):
             headers = intent_blk.c_header
         else:
             headers = intent_blk.cxx_header
-        for hdr in headers:
-            self.header_impl_include[hdr] = True
+        self.header_impl_include_order["shroud"].append(headers)
 
     def write_headers(self, headers, output):
         for header in sorted(headers):
@@ -299,6 +298,35 @@ class WrapperMixin(object):
                 output.append("#include %s" % header)
             else:
                 output.append('#include "%s"' % header)
+
+    def write_headers_order(self, headers, output, found):
+        """Preserve header order, avoid duplicates.
+
+        Args:
+            headers -
+            output - list of output lines.
+            found - dictionary of header files found.
+        """
+        debug = self.newlibrary.options.debug
+        label = False
+        for key in ["cxx_header", "typemap", "shroud"]:
+            if not headers[key]:
+                continue
+            if debug:
+                label = True
+            for group in headers[key]:
+                for header in group:
+                    if header in found:
+                        continue
+                    found[header] = True
+                    if label:
+                        # Only print label if there are unique entries.
+#                        output.append("// " + key)
+                        label = False
+                    if header[0] == "<":
+                        output.append("#include %s" % header)
+                    else:
+                        output.append('#include "%s"' % header)
 
     def write_headers_nodes(self, lang_header, types, hlist,
                             output, skip={}):

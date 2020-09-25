@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Attribute *+pass* defines the passed-object dummy argument. Defines ``PASS``
   Fortran keyword with type-bound procedures.
 
+### Fixed
+- Order of header files in *cxx_header* is preserved in the generated code.
+
 ### Changed
 
 ### Removed

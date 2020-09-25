@@ -6,8 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include <cstdlib>
 #include "typeslibrary.h"
+#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

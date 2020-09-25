@@ -7,10 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "top.h"
-#include <cstdlib>
-#include <cstring>
 #include <string>
+#include <cstring>
 #include "typestestnames.hh"
+#include <cstdlib>
 
 // splicer begin CXX_definitions
 // Add some text from splicer

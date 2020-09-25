@@ -7,9 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapenum.h"
-#include <stdlib.h>
 #include "enum.h"
 #include "typesenum.h"
+#include <stdlib.h>
 
 // splicer begin C_definitions
 // splicer end C_definitions

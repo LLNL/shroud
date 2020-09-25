@@ -7,10 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapstruct.h"
-#include <stdlib.h>
-#include <string.h>
 #include "struct.h"
 #include "typesstruct.h"
+#include <stdlib.h>
+#include <string.h>
 
 
 // helper ShroudStrBlankFill

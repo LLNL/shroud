@@ -7,11 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapstatement.h"
+#include "statement.hpp"
+#include <string>
+#include "typesstatement.h"
 #include <cstdlib>
 #include <cstring>
-#include <string>
-#include "statement.hpp"
-#include "typesstatement.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
