@@ -279,54 +279,12 @@ class WrapperMixin(object):
         for hdr in node.find_header():
             dct[hdr] = True
 
-    def add_statements_headers(self, intent_blk):
-        """Add headers required by intent_blk to self.header_impl_include.
-
-        Args:
-            intent_blk -
-        """
-        # include any dependent header in generated source
-        if self.language == "c":
-            headers = intent_blk.c_header
-        else:
-            headers = intent_blk.cxx_header
-        self.header_impl_include_order["shroud"].append(headers)
-
     def write_headers(self, headers, output):
         for header in sorted(headers):
             if header[0] == "<":
                 output.append("#include %s" % header)
             else:
                 output.append('#include "%s"' % header)
-
-    def write_headers_order(self, headers, output, found):
-        """Preserve header order, avoid duplicates.
-
-        Args:
-            headers -
-            output - list of output lines.
-            found - dictionary of header files found.
-        """
-        debug = self.newlibrary.options.debug
-        label = False
-        for key in ["cxx_header", "typemap", "shroud"]:
-            if not headers[key]:
-                continue
-            if debug:
-                label = True
-            for group in headers[key]:
-                for header in group:
-                    if header in found:
-                        continue
-                    found[header] = True
-                    if label:
-                        # Only print label if there are unique entries.
-                        output.append("// " + key)
-                        label = False
-                    if header[0] == "<":
-                        output.append("#include %s" % header)
-                    else:
-                        output.append('#include "%s"' % header)
 
     def write_headers_nodes(self, lang_header, types, hlist,
                             output, skip={}):
@@ -670,6 +628,141 @@ class WrapperMixin(object):
             output.append(
                 self.comment + " Match:     " + stmt1)
 
+
+class Header(object):
+    """Manage header files for a wrapper file.
+
+    Headers are grouped into categories with keys of
+    header_impl_include_order.
+    The order of headers from cxx_header, typemap and helpers are preserved.
+    Each header is only included once.
+    """
+    def __init__(self, newlibrary):
+        self.newlibrary = newlibrary
+        self.options = newlibrary.options
+        self.header_impl_include_order = dict(
+            typemap=[],
+            cxx_header=[],
+            shroud=[]
+        )
+
+    def add_cxx_header(self, node):
+        """Add the headers from cxx_header."""
+        self.header_impl_include_order["cxx_header"].append(
+            node.find_header())
+
+    def add_typemap_list(self, lst):
+        """Append list of headers."""
+        self.header_impl_include_order["typemap"].append(lst)
+
+    def add_shroud_file(self, name):
+        """Add a dict of headers.
+        """
+        self.header_impl_include_order["shroud"].append([name])
+
+    def add_shroud_dict(self, d):
+        """Add a dict of headers.
+        """
+        self.header_impl_include_order["shroud"].append(
+            sorted(d.keys()))
+    
+    def add_statements_headers(self, intent_blk):
+        """Add headers required by intent_blk to self.header_impl_include.
+
+        Args:
+            intent_blk -
+        """
+        # include any dependent header in generated source
+        if self.newlibrary.language == "c":
+            headers = intent_blk.c_header
+        else:
+            headers = intent_blk.cxx_header
+        self.header_impl_include_order["shroud"].append(headers)
+
+    def write_headers(self, output, found):
+        """Preserve header order, avoid duplicates.
+
+        Args:
+            headers -
+            output - list of output lines.
+            found - dictionary of header files found.
+        """
+        headers = self.header_impl_include_order
+        debug = self.newlibrary.options.debug
+        label = False
+        for key in ["cxx_header", "typemap", "shroud"]:
+            if not headers[key]:
+                continue
+            if debug:
+                label = True
+            for group in headers[key]:
+                for header in group:
+                    if header in found:
+                        continue
+                    found[header] = True
+                    if label:
+                        # Only print label if there are unique entries.
+                        output.append("// " + key)
+                        label = False
+                    if header[0] == "<":
+                        output.append("#include %s" % header)
+                    else:
+                        output.append('#include "%s"' % header)
+
+    def write_headers_nodes(self, lang_header, types, hlist,
+                            output, skip={}):
+        """Write out headers required by types
+
+        Args:
+            lang_header - "c_header"
+            types - dictionary of Typemap nodes.
+                    types[typedef.name] = typedef
+            hlist - list of headers to include
+                    From helper routines
+            output - append lines of code.
+            skip - dictionary of headers to ignore.
+
+        headers[hdr] [ typedef, None, ... ]
+        None from helper files
+        """
+        # find which headers are required and who requires them
+        headers = {}
+        for hdr in hlist:
+            headers.setdefault(hdr, []).append(None)
+
+        for typedef in types.values():
+            hdr = getattr(typedef, lang_header)
+            for h in hdr:
+                headers.setdefault(h, []).append(typedef)
+
+        need_blank = True
+        for hdr in sorted(headers):
+            if hdr in skip:
+                continue
+            if need_blank:
+                output.append("")
+                need_blank = False
+            if len(headers[hdr]) == 1:
+                # Only one type uses the include, check for if_cpp.
+                # For example, add conditional around mpi.h.
+                typedef = headers[hdr][0]
+                if typedef and typedef.cpp_if:
+                    output.append("#" + typedef.cpp_if)
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+                if typedef and typedef.cpp_if:
+                    output.append("#endif")
+            else:
+                # XXX - unclear how to mix header and cpp_if
+                # so always include the file
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+
+        
 
 class Scope(object):
     """

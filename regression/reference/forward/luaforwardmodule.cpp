@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "forward.hpp"
+// shroud
 #include "luaforwardmodule.hpp"
 #ifdef __cplusplus
 extern "C" {

@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "classes.hpp"
+// shroud
 #include "luaclassesmodule.hpp"
 #ifdef __cplusplus
 extern "C" {

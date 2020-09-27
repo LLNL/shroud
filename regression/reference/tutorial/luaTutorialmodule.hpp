@@ -11,6 +11,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+// cxx_header
 #include "tutorial.hpp"
 #include "lua.h"
 

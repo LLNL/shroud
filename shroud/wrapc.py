@@ -68,7 +68,7 @@ class Wrapc(util.WrapperMixin):
         # Include files required by wrapper implementations.
         self.impl_typedef_nodes = {}  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
-        self.header_impl_include_order = dict(typemap=[], cxx_header=[], shroud=[])
+        self.header_impl = util.Header(self.newlibrary)
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
@@ -443,14 +443,12 @@ class Wrapc(util.WrapperMixin):
             output.append('#include "%s"' % hname)
 
         # Use headers from implementation
-        self.header_impl_include_order["cxx_header"].append(
-            node.find_header())
-        self.header_impl_include_order["shroud"].append(
-            sorted(self.helper_include["file"].keys()))
+        self.header_impl.add_cxx_header(node)
+        self.header_impl.add_shroud_dict(self.helper_include["file"])
 
         # headers required by implementation
         skip = {}
-        self.write_headers_order(self.header_impl_include_order, output, skip)
+        self.header_impl.write_headers(output, skip)
 
         # Headers required by implementations,
         # for example template instantiation.
@@ -711,7 +709,7 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.add_statements_headers(intent_blk)
+        self.header_impl.add_statements_headers(intent_blk)
 
         if intent_blk.pre_call:
             need_wrapper = True
@@ -1019,8 +1017,7 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
-            self.header_impl_include_order["typemap"].append(
-                arg_typemap.impl_header)
+            self.header_impl.add_typemap_list(arg_typemap.impl_header)
                     
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
@@ -1245,8 +1242,7 @@ class Wrapc(util.WrapperMixin):
                     )
                 self.set_cxx_nonconst_ptr(ast, fmt_result)
                     
-                self.header_impl_include_order["typemap"].append(
-                    result_typemap.impl_header)
+                self.header_impl.add_typemap_list(result_typemap.impl_header)
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_blk, pre_call, post_call, need_wrapper
@@ -1346,9 +1342,8 @@ class Wrapc(util.WrapperMixin):
         self.c_helper["capsule_data_helper"] = True
         fmt = library.fmtdict
 
-        self.header_impl_include_order["shroud"].append([fmt.C_header_utility])
-        self.header_impl_include_order["shroud"].append(
-            sorted(self.capsule_include.keys()))
+        self.header_impl.add_shroud_file(fmt.C_header_utility)
+        self.header_impl.add_shroud_dict(self.capsule_include)
 
         append_format(
             self.shared_proto_c,
@@ -1400,10 +1395,10 @@ class Wrapc(util.WrapperMixin):
 
         # Add header for NULL.
         if self.language == "cxx":
-            self.header_impl_include_order["shroud"].append(["<cstdlib>"])
+            self.header_impl.add_shroud_file("<cstdlib>")
             # XXXX nullptr
         else:
-            self.header_impl_include_order["shroud"].append(["<stdlib.h>"])
+            self.header_impl.add_shroud_file("<stdlib.h>")
         append_format(output,
                       "cap->addr = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"

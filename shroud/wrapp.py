@@ -118,7 +118,7 @@ class Wrapp(util.WrapperMixin):
 
     def reset_file(self):
         """Start a new output file"""
-        self.header_impl_include_order = dict(typemap=[], cxx_header=[], shroud=[])
+        self.header_impl = util.Header(self.newlibrary)
         self.c_helper = {}
 #        self.c_helper_include = {}  # include files in generated C header
 
@@ -1478,7 +1478,7 @@ return 1;""",
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
-            self.add_statements_headers(intent_blk)
+            self.header_impl.add_statements_headers(intent_blk)
 
             # Pass correct value to wrapped function.
             if intent_blk.arg_call:
@@ -2336,10 +2336,8 @@ return 1;""",
         self._push_splicer("impl")
 
         # Use headers from implementation
-        header_impl_include_order = self.header_impl_include_order
-        header_impl_include_order["shroud"].append(
-            sorted(hinclude.keys()))
-        self.write_headers_order(header_impl_include_order, output, {})
+        self.header_impl.add_shroud_dict(hinclude)
+        self.header_impl.write_headers(output, {})
 
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
@@ -2593,9 +2591,8 @@ extern PyObject *{PY_prefix}error_obj;
         if self.need_numpy:
             self.add_numpy_includes(output, top)
 
-        self.header_impl_include_order["shroud"].append(
-            sorted(hinclude.keys()))
-        self.write_headers_order(self.header_impl_include_order, output, {})
+        self.header_impl.add_shroud_dict(hinclude)
+        self.header_impl.write_headers(output, {})
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)

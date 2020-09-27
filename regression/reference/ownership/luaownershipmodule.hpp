@@ -11,6 +11,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+// cxx_header
 #include "ownership.hpp"
 #include "lua.h"
 // splicer begin class.Class1.C_declaration

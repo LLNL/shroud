@@ -6,7 +6,9 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+// cxx_header
 #include "tutorial.hpp"
+// shroud
 #include "luaTutorialmodule.hpp"
 #ifdef __cplusplus
 extern "C" {
