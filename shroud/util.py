@@ -19,6 +19,7 @@ except AttributeError:
     # Python 2
     Mapping = collections.Mapping
     Sequence = collections.Sequence
+OrderedDict = collections.OrderedDict
 
 fmt = string.Formatter()
 
@@ -634,37 +635,39 @@ class Header(object):
 
     Headers are grouped into categories with keys of
     header_impl_include_order.
-    The order of headers from cxx_header, typemap and helpers are preserved.
+    The order of headers from cxx_header, typemap and helpers are preserved
+    (via OrderedDict).
     Each header is only included once.
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
         self.options = newlibrary.options
         self.header_impl_include_order = dict(
-            typemap=[],
-            cxx_header=[],
-            shroud=[]
+            typemap=OrderedDict(),
+            cxx_header=OrderedDict(),
+            shroud=OrderedDict(),
         )
 
     def add_cxx_header(self, node):
         """Add the headers from cxx_header."""
-        self.header_impl_include_order["cxx_header"].append(
-            node.find_header())
+        for name in node.find_header():
+            self.header_impl_include_order["cxx_header"][name] = True
 
     def add_typemap_list(self, lst):
         """Append list of headers."""
-        self.header_impl_include_order["typemap"].append(lst)
+        for name in lst:
+            self.header_impl_include_order["typemap"][name] = True
 
     def add_shroud_file(self, name):
         """Add a dict of headers.
         """
-        self.header_impl_include_order["shroud"].append([name])
+        self.header_impl_include_order["shroud"][name] = True
 
     def add_shroud_dict(self, d):
         """Add a dict of headers.
         """
-        self.header_impl_include_order["shroud"].append(
-            sorted(d.keys()))
+        for name in sorted(d.keys()):
+            self.header_impl_include_order["shroud"][name] = True
     
     def add_statements_headers(self, intent_blk):
         """Add headers required by intent_blk to self.header_impl_include.
@@ -677,7 +680,8 @@ class Header(object):
             headers = intent_blk.c_header
         else:
             headers = intent_blk.cxx_header
-        self.header_impl_include_order["shroud"].append(headers)
+        for name in headers:
+            self.header_impl_include_order["shroud"][name] = True
 
     def write_headers(self, output, found):
         """Preserve header order, avoid duplicates.
@@ -690,24 +694,23 @@ class Header(object):
         headers = self.header_impl_include_order
         debug = self.newlibrary.options.debug
         label = False
-        for key in ["cxx_header", "typemap", "shroud"]:
-            if not headers[key]:
+        for category in ["cxx_header", "typemap", "shroud"]:
+            if not headers[category]:
                 continue
             if debug:
                 label = True
-            for group in headers[key]:
-                for header in group:
-                    if header in found:
-                        continue
-                    found[header] = True
-                    if label:
-                        # Only print label if there are unique entries.
-                        output.append("// " + key)
-                        label = False
-                    if header[0] == "<":
-                        output.append("#include %s" % header)
-                    else:
-                        output.append('#include "%s"' % header)
+            for header in headers[category].keys():
+                if header in found:
+                    continue
+                found[header] = True
+                if label:
+                    # Only print label if there are unique entries.
+                    output.append("// " + category)
+                    label = False
+                if header[0] == "<":
+                    output.append("#include %s" % header)
+                else:
+                    output.append('#include "%s"' % header)
 
     def write_headers_nodes(self, lang_header, types, hlist,
                             output, skip={}):
