@@ -221,10 +221,10 @@ class Wrapc(util.WrapperMixin):
 
         scope = helper_info.get("scope", "file")
         if lang_include in helper_info:
-            for include in helper_info[lang_include].split():
+            for include in helper_info[lang_include]:
                 self.helper_include[scope][include] = True
         elif "include" in helper_info:
-            for include in helper_info["include"].split():
+            for include in helper_info["include"]:
                 self.helper_include[scope][include] = True
 
         if lang_source in helper_info:

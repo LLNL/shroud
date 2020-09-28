@@ -836,10 +836,10 @@ class Helpers(object):
 
         lang_key = self.language + "_include"
         if lang_key in helper_info:
-            for include in helper_info[lang_key].split():
+            for include in helper_info[lang_key]:
                 self.helper_summary["include"][scope][include] = True
         elif "include" in helper_info:
-            for include in helper_info["include"].split():
+            for include in helper_info["include"]:
                 self.helper_summary["include"][scope][include] = True
 
         for key in ["proto", "source"]:
