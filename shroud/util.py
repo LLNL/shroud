@@ -275,13 +275,6 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
-    def write_headers(self, headers, output):
-        for header in sorted(headers):
-            if header[0] == "<":
-                output.append("#include %s" % header)
-            else:
-                output.append('#include "%s"' % header)
-
     def write_headers_nodes(self, lang_header, types, hlist,
                             output, skip={}):
         """Write out headers required by types

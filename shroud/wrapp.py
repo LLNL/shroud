@@ -2682,12 +2682,15 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         need_file = False
         hinclude, hsource, need_numpy = self.find_shared_file_helper_code()
+
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_file(fmt.PY_header_filename)
+        headers.add_shroud_dict(hinclude)
         
         output = []
-        append_format(output, '#include "{PY_header_filename}"', fmt)
         if need_numpy:
             self.add_numpy_includes(output)
-        self.write_headers(hinclude, output)
+        headers.write_headers(output, {})
         output.append(cpp_boilerplate)
 
         if hsource:

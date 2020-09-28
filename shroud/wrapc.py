@@ -260,7 +260,9 @@ class Wrapc(util.WrapperMixin):
         write_file = False
         output = []
 
-        self.write_headers([ fmt.C_header_utility], output)
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_file(fmt.C_header_utility)
+        headers.write_headers(output, {})
         # headers required helpers
         self.write_headers_nodes(
             "c_header", {}, self.helper_include["cwrap_impl"].keys(), output
