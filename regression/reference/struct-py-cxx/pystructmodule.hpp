@@ -9,6 +9,7 @@
 #ifndef PYSTRUCTMODULE_HPP
 #define PYSTRUCTMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include "struct.h"
 // splicer begin header.include
 // splicer end header.include

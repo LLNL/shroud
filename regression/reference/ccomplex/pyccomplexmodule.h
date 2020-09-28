@@ -9,6 +9,7 @@
 #ifndef PYCCOMPLEXMODULE_H
 #define PYCCOMPLEXMODULE_H
 #include <Python.h>
+// cxx_header
 #include "ccomplex.h"
 // splicer begin header.include
 // splicer end header.include

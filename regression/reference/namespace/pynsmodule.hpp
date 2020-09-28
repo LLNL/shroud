@@ -9,6 +9,7 @@
 #ifndef PYNSMODULE_HPP
 #define PYNSMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include "namespace.hpp"
 // splicer begin header.include
 // splicer end header.include

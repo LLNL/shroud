@@ -9,6 +9,7 @@
 #ifndef PYARRAYCLASSMODULE_HPP
 #define PYARRAYCLASSMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include "arrayclass.hpp"
 // splicer begin header.include
 // splicer end header.include

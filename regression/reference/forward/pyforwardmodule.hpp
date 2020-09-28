@@ -9,9 +9,10 @@
 #ifndef PYFORWARDMODULE_HPP
 #define PYFORWARDMODULE_HPP
 #include <Python.h>
-#include "forward.hpp"
+// cxx_header
 #include "header1.hpp"
 #include "header2.hpp"
+#include "forward.hpp"
 // splicer begin header.include
 // splicer end header.include
 

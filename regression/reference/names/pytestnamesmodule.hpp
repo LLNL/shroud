@@ -9,6 +9,7 @@
 #ifndef PYTESTNAMESMODULE_HPP
 #define PYTESTNAMESMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include <vector>
 // splicer begin header.include
 // splicer end header.include

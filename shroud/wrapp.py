@@ -102,7 +102,7 @@ class Wrapp(util.WrapperMixin):
         self.define_arraydescr = []
         self.call_arraydescr = []
         self.need_blah = False
-        self.header_type_include = {}  # header files in module header
+        self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
         update_typemap_for_language(self.language)
 
@@ -381,7 +381,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)
 
-        self.find_header(node, self.header_type_include)
+        self.header_type_include.add_cxx_header(node)
             
         # header declarations
         output = self.py_class_decl
@@ -2508,7 +2508,7 @@ return 1;""",
         """
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
-        self.find_header(node, self.header_type_include)
+        self.header_type_include.add_cxx_header(node)
         hinclude, hsource = self.find_utility_helper_code()
         output = []
 
@@ -2517,7 +2517,7 @@ return 1;""",
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
 
         output.append("#include <Python.h>")
-        self.write_headers(self.header_type_include, output)
+        self.header_type_include.write_headers(output, {})
 
         self._push_splicer("header")
         self._create_splicer("include", output)

@@ -275,11 +275,6 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
-    def find_header(self, node, dct):
-        """Add cxx_header for node or its parent to header_impl_include."""
-        for hdr in node.find_header():
-            dct[hdr] = True
-
     def write_headers(self, headers, output):
         for header in sorted(headers):
             if header[0] == "<":

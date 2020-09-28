@@ -9,6 +9,7 @@
 #ifndef PYUSERLIBRARYMODULE_HPP
 #define PYUSERLIBRARYMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include "ExClass1.hpp"
 #include "ExClass2.hpp"
 // splicer begin header.include

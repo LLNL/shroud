@@ -9,6 +9,7 @@
 #ifndef PYOWNERSHIPMODULE_HPP
 #define PYOWNERSHIPMODULE_HPP
 #include <Python.h>
+// cxx_header
 #include "ownership.hpp"
 // splicer begin header.include
 // splicer end header.include
