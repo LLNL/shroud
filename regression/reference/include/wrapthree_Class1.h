@@ -14,6 +14,8 @@
 
 #ifndef WRAPTHREE_CLASS1_H
 #define WRAPTHREE_CLASS1_H
+
+// typemap
 #ifdef __cplusplus
 #include "type_header.hpp"
 #else

@@ -14,6 +14,8 @@
 
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
+
+// typemap
 #include "mpi.h"
 // shroud
 #include "typeslibrary.h"

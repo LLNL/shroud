@@ -10,6 +10,7 @@
 
 #ifndef TYPESTUTORIAL_H
 #define TYPESTUTORIAL_H
+
 // shroud
 #include <stddef.h>
 

@@ -14,6 +14,8 @@
 
 #ifndef WRAPEXAMPLE_NESTED_EXCLASS1_H
 #define WRAPEXAMPLE_NESTED_EXCLASS1_H
+
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

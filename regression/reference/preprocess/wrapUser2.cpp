@@ -8,6 +8,7 @@
 //
 #ifdef USE_USER2
 #include "wrapUser2.h"
+
 // cxx_header
 #include "User2.hpp"
 

@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapenum.h"
+
 // cxx_header
 #include "enum.h"
 // shroud

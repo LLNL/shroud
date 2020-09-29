@@ -14,6 +14,7 @@
 
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
+
 // shroud
 #include "typesscope.h"
 

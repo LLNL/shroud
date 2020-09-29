@@ -8,9 +8,12 @@
 //
 #ifndef PYSTRINGSMODULE_HPP
 #define PYSTRINGSMODULE_HPP
+
 #include <Python.h>
+
 // cxx_header
 #include "strings.hpp"
+
 // splicer begin header.include
 // splicer end header.include
 

@@ -14,6 +14,8 @@
 
 #ifndef WRAPCXXLIBRARY_H
 #define WRAPCXXLIBRARY_H
+
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

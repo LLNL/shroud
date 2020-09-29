@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
 #include "typesTutorial.h"
 #include <cstddef>
 #include <cstring>

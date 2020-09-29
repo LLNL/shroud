@@ -14,6 +14,7 @@
 
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
+
 // shroud
 #include "typesownership.h"
 

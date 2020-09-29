@@ -2339,6 +2339,7 @@ return 1;""",
         self.header_impl.add_shroud_dict(hinclude)
         self.header_impl.write_headers(output, {})
 
+        output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
         output.extend(hsource)
@@ -2516,9 +2517,11 @@ return 1;""",
         guard = fname.replace(".", "_").upper()
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
 
+        output.append("")
         output.append("#include <Python.h>")
         self.header_type_include.write_headers(output, {})
 
+        output.append("")
         self._push_splicer("header")
         self._create_splicer("include", output)
 

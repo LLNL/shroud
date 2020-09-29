@@ -14,6 +14,7 @@
 
 #ifndef WRAPPOINTERS_H
 #define WRAPPOINTERS_H
+
 // shroud
 #include "typespointers.h"
 

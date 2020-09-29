@@ -10,6 +10,7 @@
 
 #ifndef TYPESARRAYCLASS_H
 #define TYPESARRAYCLASS_H
+
 // shroud
 #include <stddef.h>
 

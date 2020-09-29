@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pyclassesmodule.hpp"
+
 // splicer begin class.Shape.impl.include
 // splicer end class.Shape.impl.include
 

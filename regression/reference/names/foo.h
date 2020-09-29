@@ -14,6 +14,7 @@
 
 #ifndef FOO_H
 #define FOO_H
+
 // shroud
 #include "typestestnames.hh"
 

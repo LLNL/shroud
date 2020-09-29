@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrappointers.h"
+
 // cxx_header
 #include "pointers.h"
 // shroud

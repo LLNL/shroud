@@ -8,12 +8,15 @@
 //
 #ifndef PYTEMPLATESMODULE_HPP
 #define PYTEMPLATESMODULE_HPP
+
 #include <Python.h>
+
 // cxx_header
 #include <vector>
 #include "implworker1.hpp"
 #include "implworker2.hpp"
 #include "templates.hpp"
+
 // splicer begin header.include
 // splicer end header.include
 

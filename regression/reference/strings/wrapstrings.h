@@ -14,6 +14,7 @@
 
 #ifndef WRAPSTRINGS_H
 #define WRAPSTRINGS_H
+
 // shroud
 #include "typesstrings.h"
 

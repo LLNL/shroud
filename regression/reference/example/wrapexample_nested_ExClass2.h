@@ -14,6 +14,8 @@
 
 #ifndef WRAPEXAMPLE_NESTED_EXCLASS2_H
 #define WRAPEXAMPLE_NESTED_EXCLASS2_H
+
+// typemap
 #ifdef __cplusplus
 #include "sidre/SidreWrapperHelpers.hpp"
 #else

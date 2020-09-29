@@ -14,6 +14,7 @@
 
 #ifndef WRAPCAPI_CLASS1_HH
 #define WRAPCAPI_CLASS1_HH
+
 // shroud
 #include "typestestnames.hh"
 

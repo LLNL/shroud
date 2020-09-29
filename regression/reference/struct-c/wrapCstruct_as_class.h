@@ -14,6 +14,7 @@
 
 #ifndef WRAPCSTRUCT_AS_CLASS_H
 #define WRAPCSTRUCT_AS_CLASS_H
+
 // shroud
 #include "typesstruct.h"
 

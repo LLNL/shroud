@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapstd_vector_double.h"
+
 // cxx_header
 #include <vector>
 // shroud

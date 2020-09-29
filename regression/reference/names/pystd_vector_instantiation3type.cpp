@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytestnamesmodule.hpp"
+
 // splicer begin namespace.std.class.vector.impl.include
 // splicer end namespace.std.class.vector.impl.include
 

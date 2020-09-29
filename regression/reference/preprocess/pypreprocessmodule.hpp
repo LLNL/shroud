@@ -8,10 +8,13 @@
 //
 #ifndef PYPREPROCESSMODULE_HPP
 #define PYPREPROCESSMODULE_HPP
+
 #include <Python.h>
+
 // cxx_header
 #include "preprocess.hpp"
 #include "User2.hpp"
+
 // splicer begin header.include
 // splicer end header.include
 

@@ -542,29 +542,31 @@ class Header(object):
         """
         headers = self.header_impl_include_order
         debug = self.newlibrary.options.debug
-        label = False
+        blank = True
         for category in ["cxx_header", "typemap", "shroud"]:
+            lines = []
             if category == "typemap":
                 if self.typemap_field:
-                    self.write_headers_nodes(output, found)
+                    self.write_headers_nodes(lines, found)
                 else:
-                    self.write_includes_for_header(output, found)
-            if not headers[category]:
-                continue
-            if debug:
-                label = True
+                    self.write_includes_for_header(lines, found)
             for header in headers[category].keys():
                 if header in found:
                     continue
                 found[header] = True
-                if label:
+                if header[0] == "<":
+                    lines.append("#include %s" % header)
+                else:
+                    lines.append('#include "%s"' % header)
+            if lines:
+                if blank:
+                    output.append("")
+                    # Put blank line before any includes
+                    blank = False
+                if debug:
                     # Only print label if there are unique entries.
                     output.append("// " + category)
-                    label = False
-                if header[0] == "<":
-                    output.append("#include %s" % header)
-                else:
-                    output.append('#include "%s"' % header)
+                output.extend(lines)
 
     def write_headers_nodes(self, output, skip):
         """Write out headers required by types
@@ -626,24 +628,21 @@ class Header(object):
             del c_headers[hdr]
             del cxx_headers[hdr]
 
-        lines = []
-        self.write_include_group(wrap_headers, lines)
-        self.write_include_group(always, lines)
+        self.write_include_group(wrap_headers, output)
+        self.write_include_group(always, output)
         if self.newlibrary.language == "c":
-            self.write_include_group(c_headers, lines)
+            self.write_include_group(c_headers, output)
         elif cxx_headers:
-            lines.append("#ifdef __cplusplus")
-            self.write_include_group(cxx_headers, lines)
+            output.append("#ifdef __cplusplus")
+            self.write_include_group(cxx_headers, output)
             if c_headers:
-                lines.append("#else")
-                self.write_include_group(c_headers, lines)
-            lines.append("#endif")
+                output.append("#else")
+                self.write_include_group(c_headers, output)
+            output.append("#endif")
         elif c_headers:
-            lines.append("#ifndef __cplusplus")
-            self.write_include_group(c_headers, lines)
-            lines.append("#endif")
-        if lines:
-            output.extend(lines)
+            output.append("#ifndef __cplusplus")
+            self.write_include_group(c_headers, output)
+            output.append("#endif")
 
     def write_include_group(self, headers, output, skip={}):
         for hdr in headers:

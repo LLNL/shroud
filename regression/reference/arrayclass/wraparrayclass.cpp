@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
 // cxx_header
 #include "arrayclass.hpp"
 // shroud

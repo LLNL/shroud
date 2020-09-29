@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapexample_nested_ExClass2.h"
+
 // cxx_header
 #include "ExClass2.hpp"
 // typemap

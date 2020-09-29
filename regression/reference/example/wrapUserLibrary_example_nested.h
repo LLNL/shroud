@@ -14,6 +14,8 @@
 
 #ifndef WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 #define WRAPUSERLIBRARY_EXAMPLE_NESTED_H
+
+// typemap
 #ifdef USE_MPI
 #include "mpi.h"
 #endif

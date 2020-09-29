@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pynsmodule.hpp"
+
 // splicer begin namespace.outer.class.Cstruct1.impl.include
 // splicer end namespace.outer.class.Cstruct1.impl.include
 

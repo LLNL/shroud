@@ -14,6 +14,7 @@
 
 #ifndef WRAPSCOPE_NS1_H
 #define WRAPSCOPE_NS1_H
+
 // shroud
 #include "typesscope.h"
 

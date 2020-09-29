@@ -14,6 +14,8 @@
 
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
+
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

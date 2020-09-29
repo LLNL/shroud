@@ -14,6 +14,7 @@
 
 #ifndef WRAPWRAPPED_INNER2_H
 #define WRAPWRAPPED_INNER2_H
+
 // shroud
 #include "typeswrapped.h"
 

@@ -736,6 +736,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.append('#include "lauxlib.h"')
         util.extern_C(output, "end")
 
+        output.append("")
         self._create_splicer("include", output)
 
         self._create_splicer("C_definition", output)

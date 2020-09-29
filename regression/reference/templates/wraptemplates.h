@@ -14,6 +14,7 @@
 
 #ifndef WRAPTEMPLATES_H
 #define WRAPTEMPLATES_H
+
 // shroud
 #include "typestemplates.h"
 

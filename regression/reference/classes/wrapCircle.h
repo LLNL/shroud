@@ -14,6 +14,7 @@
 
 #ifndef WRAPCIRCLE_H
 #define WRAPCIRCLE_H
+
 // shroud
 #include "typesclasses.h"
 

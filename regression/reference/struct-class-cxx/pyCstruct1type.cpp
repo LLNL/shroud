@@ -7,6 +7,7 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pystructmodule.hpp"
+
 // splicer begin class.Cstruct1.impl.include
 // splicer end class.Cstruct1.impl.include
 

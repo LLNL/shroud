@@ -8,9 +8,12 @@
 //
 #ifndef PYCLASSESMODULE_HPP
 #define PYCLASSESMODULE_HPP
+
 #include <Python.h>
+
 // cxx_header
 #include "classes.hpp"
+
 // splicer begin header.include
 // splicer end header.include
 

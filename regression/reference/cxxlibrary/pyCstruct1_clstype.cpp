@@ -11,6 +11,7 @@
 #define PY_ARRAY_UNIQUE_SYMBOL SHROUD_CXXLIBRARY_ARRAY_API
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include "numpy/arrayobject.h"
+
 // splicer begin class.Cstruct1_cls.impl.include
 // splicer end class.Cstruct1_cls.impl.include
 

@@ -14,6 +14,8 @@
 
 #ifndef WRAPARRAYWRAPPER_H
 #define WRAPARRAYWRAPPER_H
+
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
