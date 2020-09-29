@@ -12,6 +12,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import os
+from collections import OrderedDict
 
 from . import declast
 from . import todict
@@ -64,9 +65,9 @@ class Wrapc(util.WrapperMixin):
         #        # forward declarations of C++ class as opaque C struct.
         #        self.header_forward = {}
         # Include files required by wrapper prototypes
-        self.header_typedef_nodes = {}  # [typemap.name] = typemap
+        self.header_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Include files required by wrapper implementations.
-        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
+        self.impl_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
         self.header_impl = util.Header(self.newlibrary)
         self.header_proto_c = []

@@ -506,7 +506,9 @@ class Header(object):
 
     def add_typemaps_xxx(self, dct, field=None):
         """Update dictionary of typemaps."""
-        self.typemaps.update(dct)
+        # Save reference to dictionary, update does not preserved order prior to Python 3.6.
+#        self.typemaps.update(dct)
+        self.typemaps = dct
         self.typemap_field = field
 
     def add_shroud_file(self, name):
@@ -604,7 +606,7 @@ class Header(object):
         fmt = self.newlibrary.fmtdict
         
         # find which headers are required and which language requires them.
-        always = {}  # used by C and C++.
+        always = OrderedDict()  # used by C and C++.
         c_headers = OrderedDict()
         cxx_headers = OrderedDict()
         wrap_headers = OrderedDict()
