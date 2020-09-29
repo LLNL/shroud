@@ -275,61 +275,6 @@ class WrapperMixin(object):
                 else:
                     output.append("}")
 
-    def write_headers_nodes(self, lang_header, types, hlist,
-                            output, skip={}):
-        """Write out headers required by types
-
-        Args:
-            lang_header - "c_header"
-            types - dictionary of Typemap nodes.
-                    types[typedef.name] = typedef
-            hlist - list of headers to include
-                    From helper routines
-            output - append lines of code.
-            skip - dictionary of headers to ignore.
-
-        headers[hdr] [ typedef, None, ... ]
-        None from helper files
-        """
-        # find which headers are required and who requires them
-        headers = {}
-        for hdr in hlist:
-            headers.setdefault(hdr, []).append(None)
-
-        for typedef in types.values():
-            hdr = getattr(typedef, lang_header)
-            for h in hdr:
-                headers.setdefault(h, []).append(typedef)
-
-        need_blank = True
-        for hdr in sorted(headers):
-            if hdr in skip:
-                continue
-            if need_blank:
-                output.append("")
-                need_blank = False
-            if len(headers[hdr]) == 1:
-                # Only one type uses the include, check for if_cpp.
-                # For example, add conditional around mpi.h.
-                typedef = headers[hdr][0]
-                if typedef and typedef.cpp_if:
-                    output.append("#" + typedef.cpp_if)
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
-                if typedef and typedef.cpp_if:
-                    output.append("#endif")
-            else:
-                # XXX - unclear how to mix header and cpp_if
-                # so always include the file
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
-
-    #####
-
     def write_output_file(self, fname, directory, output, spaces="    "):
         """
         fname  - file name
@@ -545,6 +490,7 @@ class Header(object):
             shroud=OrderedDict(),
         )
         self.typemaps = {}
+        self.typemap_field = None
 
     def add_cxx_header(self, node):
         """Add the headers from cxx_header."""
@@ -556,9 +502,10 @@ class Header(object):
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
-    def add_typemaps_xxx(self, dct):
+    def add_typemaps_xxx(self, dct, field=None):
         """Update dictionary of typemaps."""
         self.typemaps.update(dct)
+        self.typemap_field = field
 
     def add_shroud_file(self, name):
         """Add a dict of headers.
@@ -598,7 +545,10 @@ class Header(object):
         label = False
         for category in ["cxx_header", "typemap", "shroud"]:
             if category == "typemap":
-                self.write_includes_for_header(output, found)
+                if self.typemap_field:
+                    self.write_headers_nodes(output, found)
+                else:
+                    self.write_includes_for_header(output, found)
             if not headers[category]:
                 continue
             if debug:
@@ -616,58 +566,23 @@ class Header(object):
                 else:
                     output.append('#include "%s"' % header)
 
-    def write_headers_nodes(self, lang_header, types, hlist,
-                            output, skip={}):
+    def write_headers_nodes(self, output, skip):
         """Write out headers required by types
 
         Args:
-            lang_header - "c_header"
-            types - dictionary of Typemap nodes.
-                    types[typedef.name] = typedef
-            hlist - list of headers to include
-                    From helper routines
             output - append lines of code.
             skip - dictionary of headers to ignore.
 
         headers[hdr] [ typedef, None, ... ]
-        None from helper files
         """
         # find which headers are required and who requires them
-        headers = {}
-        for hdr in hlist:
-            headers.setdefault(hdr, []).append(None)
-
-        for typedef in types.values():
-            hdr = getattr(typedef, lang_header)
+        headers = OrderedDict()
+        for ntypemap in self.typemaps.values():
+            hdr = getattr(ntypemap, self.typemap_field)
             for h in hdr:
-                headers.setdefault(h, []).append(typedef)
+                headers.setdefault(h, []).append(ntypemap)
 
-        need_blank = True
-        for hdr in sorted(headers):
-            if hdr in skip:
-                continue
-            if need_blank:
-                output.append("")
-                need_blank = False
-            if len(headers[hdr]) == 1:
-                # Only one type uses the include, check for if_cpp.
-                # For example, add conditional around mpi.h.
-                typedef = headers[hdr][0]
-                if typedef and typedef.cpp_if:
-                    output.append("#" + typedef.cpp_if)
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
-                if typedef and typedef.cpp_if:
-                    output.append("#endif")
-            else:
-                # XXX - unclear how to mix header and cpp_if
-                # so always include the file
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
+        self.write_include_group(headers, output, skip)
 
     def write_includes_for_header(self, output, skip):
         """

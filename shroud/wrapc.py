@@ -441,21 +441,11 @@ class Wrapc(util.WrapperMixin):
         # Use headers from implementation
         self.header_impl.add_cxx_header(node)
         self.header_impl.add_shroud_dict(self.helper_include["file"])
+        self.header_impl.add_typemaps_xxx(self.impl_typedef_nodes, "impl_header")
 
         # headers required by implementation
         skip = {}
         self.header_impl.write_headers(output, skip)
-
-        # Headers required by implementations,
-        # for example template instantiation.
-        if self.impl_typedef_nodes:
-            self.write_headers_nodes(
-                "impl_header",
-                self.impl_typedef_nodes,
-                [],
-                output,
-                skip,
-            )
 
         if self.language == "cxx":
             output.append("")

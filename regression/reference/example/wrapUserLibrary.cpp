@@ -6,12 +6,11 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+#include "ExClass1.hpp"
+#include "ExClass2.hpp"
 // shroud
 #include "typesUserLibrary.h"
 #include <cstdlib>
-
-#include "ExClass1.hpp"
-#include "ExClass2.hpp"
 
 // splicer begin CXX_definitions
 //   CXX_definitions

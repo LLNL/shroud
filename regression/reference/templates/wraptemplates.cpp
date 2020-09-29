@@ -9,13 +9,12 @@
 #include "wraptemplates.h"
 // cxx_header
 #include "templates.hpp"
+#include "implworker1.hpp"
+#include "implworker2.hpp"
+#include <vector>
 // shroud
 #include "typestemplates.h"
 #include <cstdlib>
-
-#include <vector>
-#include "implworker1.hpp"
-#include "implworker2.hpp"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
