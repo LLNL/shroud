@@ -302,7 +302,8 @@ class ToDict(visitor.Visitor):
             ],
         )
         if node.gen_headers_typedef:
-            d['gen_headers_typedef'] = sorted(node.gen_headers_typedef.keys())
+            # OrderedDict
+            d['gen_headers_typedef'] = list(node.gen_headers_typedef.keys())
 
         return d
 

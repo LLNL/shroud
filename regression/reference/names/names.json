@@ -1857,10 +1857,10 @@
                     "underscore_name": "function_tu"
                 },
                 "gen_headers_typedef": [
-                    "double",
-                    "float",
                     "int",
-                    "long"
+                    "long",
+                    "float",
+                    "double"
                 ],
                 "have_template_args": true,
                 "options": {
