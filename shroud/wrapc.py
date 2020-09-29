@@ -846,7 +846,7 @@ class Wrapc(util.WrapperMixin):
 
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
-        header_typedef_nodes = {}
+        header_typedef_nodes = OrderedDict()
         header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
@@ -1276,7 +1276,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
-            self.header_typedef_nodes.update(header_typedef_nodes)
+            self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
             self.header_proto_c.append("")
             if node.cpp_if:
                 self.header_proto_c.append("#" + node.cpp_if)
