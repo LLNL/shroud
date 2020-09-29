@@ -14,7 +14,7 @@
 
 #ifndef WRAPNS_H
 #define WRAPNS_H
-
+// shroud
 #include "typesns.h"
 
 // splicer begin CXX_declarations

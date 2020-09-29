@@ -14,7 +14,7 @@
 
 #ifndef WRAPCAPI_CLASS1_HH
 #define WRAPCAPI_CLASS1_HH
-
+// shroud
 #include "typestestnames.hh"
 
 // splicer begin namespace.CAPI.class.Class1.CXX_declarations

@@ -14,7 +14,7 @@
 
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
-
+// shroud
 #include "typesscope.h"
 
 // splicer begin class.Class2.CXX_declarations

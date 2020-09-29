@@ -15,12 +15,13 @@
 #ifndef WRAPTHREE_CLASS1_H
 #define WRAPTHREE_CLASS1_H
 
-#include "typeslibrary.h"
 #ifdef __cplusplus
 #include "type_header.hpp"
 #else
 #include "type_header.h"
 #endif
+// shroud
+#include "typeslibrary.h"
 
 
 #ifdef __cplusplus

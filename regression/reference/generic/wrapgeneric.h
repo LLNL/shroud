@@ -15,8 +15,9 @@
 #ifndef WRAPGENERIC_H
 #define WRAPGENERIC_H
 
-#include "typesgeneric.h"
 #include <stddef.h>
+// shroud
+#include "typesgeneric.h"
 
 // splicer begin C_declarations
 // splicer end C_declarations

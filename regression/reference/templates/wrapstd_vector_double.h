@@ -15,12 +15,13 @@
 #ifndef WRAPSTD_VECTOR_DOUBLE_H
 #define WRAPSTD_VECTOR_DOUBLE_H
 
-#include "typestemplates.h"
 #ifdef __cplusplus
 #include <cstddef>
 #else
 #include <stddef.h>
 #endif
+// shroud
+#include "typestemplates.h"
 
 // splicer begin namespace.std.class.vector.CXX_declarations
 // splicer end namespace.std.class.vector.CXX_declarations

@@ -16,6 +16,7 @@
 #define WRAPCLASS2_H
 
 #include "wrapClass1.h"
+// shroud
 #include "typesforward.h"
 
 // splicer begin class.Class2.CXX_declarations

@@ -15,12 +15,13 @@
 #ifndef WRAPEXAMPLE_NESTED_EXCLASS2_H
 #define WRAPEXAMPLE_NESTED_EXCLASS2_H
 
-#include "typesUserLibrary.h"
 #ifdef __cplusplus
 #include "sidre/SidreWrapperHelpers.hpp"
 #else
 #include "sidre/SidreTypes.h"
 #endif
+// shroud
+#include "typesUserLibrary.h"
 
 // splicer begin namespace.example::nested.class.ExClass2.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass2.CXX_declarations

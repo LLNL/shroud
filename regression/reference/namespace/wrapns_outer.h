@@ -14,7 +14,7 @@
 
 #ifndef WRAPNS_OUTER_H
 #define WRAPNS_OUTER_H
-
+// shroud
 #include "typesns.h"
 
 // splicer begin namespace.outer.CXX_declarations

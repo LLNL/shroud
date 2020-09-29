@@ -14,7 +14,7 @@
 
 #ifndef FOO_H
 #define FOO_H
-
+// shroud
 #include "typestestnames.hh"
 
 // splicer begin namespace.ns0.class.Names.CXX_declarations

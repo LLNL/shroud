@@ -15,7 +15,7 @@
 #ifndef WRAPUSER2_H
 #define WRAPUSER2_H
 #ifdef USE_USER2
-
+// shroud
 #include "typespreprocess.h"
 
 // splicer begin class.User2.CXX_declarations

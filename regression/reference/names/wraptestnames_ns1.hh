@@ -14,7 +14,7 @@
 
 #ifndef WRAPTESTNAMES_NS1_HH
 #define WRAPTESTNAMES_NS1_HH
-
+// shroud
 #include "typestestnames.hh"
 
 // splicer begin namespace.ns1.CXX_declarations

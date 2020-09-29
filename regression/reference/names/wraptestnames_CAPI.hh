@@ -14,7 +14,7 @@
 
 #ifndef WRAPTESTNAMES_CAPI_HH
 #define WRAPTESTNAMES_CAPI_HH
-
+// shroud
 #include "typestestnames.hh"
 
 // splicer begin namespace.CAPI.CXX_declarations

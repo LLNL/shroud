@@ -367,13 +367,11 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        self.write_includes_for_header(
-            node.fmtdict,
-            self.header_typedef_nodes,
-            self.c_helper_include.keys(),
-            output,
-        )
-
+        headers = util.Header(self.newlibrary)
+        headers.add_typemaps_xxx(self.header_typedef_nodes)
+        headers.add_shroud_dict(self.c_helper_include)
+        headers.write_headers(output, {})
+        
         if self.language == "cxx":
             output.append("")
             if self._create_splicer("CXX_declarations", output):

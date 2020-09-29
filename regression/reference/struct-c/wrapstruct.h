@@ -15,8 +15,9 @@
 #ifndef WRAPSTRUCT_H
 #define WRAPSTRUCT_H
 
-#include "typesstruct.h"
 #include "struct.h"
+// shroud
+#include "typesstruct.h"
 
 // splicer begin C_declarations
 // splicer end C_declarations

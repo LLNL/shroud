@@ -15,10 +15,11 @@
 #ifndef WRAPCXXLIBRARY_H
 #define WRAPCXXLIBRARY_H
 
-#include "typescxxlibrary.h"
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
+// shroud
+#include "typescxxlibrary.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

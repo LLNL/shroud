@@ -328,97 +328,6 @@ class WrapperMixin(object):
                 else:
                     output.append('#include "%s"' % hdr)
 
-    def write_includes_for_header(
-            self, fmt, types, hlist, output, skip={}):
-        """
-        Write the include statements for headers required for
-        arguments in wrapper declarations.
-
-        Write include files for C or C++.
-
-        Args:
-            types - dictionary of Typemap nodes.
-                    types[typedef.name] = typedef
-            hlist - list of headers to include
-                    From helper routines
-            output - append lines of code.
-            skip - dictionary of headers to ignore.
-
-        headers[hdr] [ typedef, None, ... ]
-        None from helper files
-        """
-        # find which headers are required and which language requires them.
-        always = {}  # used by C and C++.
-        c_headers = {}
-        cxx_headers = {}
-        wrap_headers = {}
-        for hdr in hlist:
-            always.setdefault(hdr, []).append(None)
-
-        # Collect headers for c and c++.
-        for typedef in types.values():
-            for hdr in typedef.c_header:
-                c_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.cxx_header:
-                cxx_headers.setdefault(hdr, []).append(typedef)
-            for hdr in typedef.wrap_header:
-                if hdr != fmt.C_header_utility:
-                    wrap_headers.setdefault(hdr, []).append(typedef)
-
-        # Find which headers are always included.
-        both = {}
-        for hdr in c_headers.keys():
-            if hdr in cxx_headers:
-                both[hdr] = True
-        for hdr in both:
-            always[hdr] = c_headers[hdr]
-            del c_headers[hdr]
-            del cxx_headers[hdr]
-
-        lines = []
-        self.write_include_group(wrap_headers, lines)
-        self.write_include_group(always, lines)
-        if self.language == "c":
-            self.write_include_group(c_headers, lines)
-        elif cxx_headers:
-            lines.append("#ifdef __cplusplus")
-            self.write_include_group(cxx_headers, lines)
-            if c_headers:
-                lines.append("#else")
-                self.write_include_group(c_headers, lines)
-            lines.append("#endif")
-        elif c_headers:
-            lines.append("#ifndef __cplusplus")
-            self.write_include_group(c_headers, lines)
-            lines.append("#endif")
-        if lines:
-            output.append("")
-            output.extend(lines)
-
-    def write_include_group(self, headers, output, skip={}):
-        for hdr in sorted(headers):
-            if hdr in skip:
-                continue
-            if len(headers[hdr]) == 1:
-                # Only one type uses the include, check for if_cpp.
-                # For example, add conditional around mpi.h.
-                typedef = headers[hdr][0]
-                if typedef and typedef.cpp_if:
-                    output.append("#" + typedef.cpp_if)
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
-                if typedef and typedef.cpp_if:
-                    output.append("#endif")
-            else:
-                # XXX - unclear how to mix header and cpp_if
-                # so always include the file
-                if hdr[0] == "<":
-                    output.append("#include %s" % hdr)
-                else:
-                    output.append('#include "%s"' % hdr)
-
     #####
 
     def write_output_file(self, fname, directory, output, spaces="    "):
@@ -635,6 +544,7 @@ class Header(object):
             cxx_header=OrderedDict(),
             shroud=OrderedDict(),
         )
+        self.typemaps = {}
 
     def add_cxx_header(self, node):
         """Add the headers from cxx_header."""
@@ -646,15 +556,19 @@ class Header(object):
         for name in lst:
             self.header_impl_include_order["typemap"][name] = True
 
+    def add_typemaps_xxx(self, dct):
+        """Update dictionary of typemaps."""
+        self.typemaps.update(dct)
+
     def add_shroud_file(self, name):
         """Add a dict of headers.
         """
         self.header_impl_include_order["shroud"][name] = True
 
-    def add_shroud_dict(self, d):
+    def add_shroud_dict(self, dct):
         """Add a dict of headers.
         """
-        for name in sorted(d.keys()):
+        for name in sorted(dct.keys()):
             self.header_impl_include_order["shroud"][name] = True
     
     def add_statements_headers(self, intent_blk):
@@ -683,6 +597,8 @@ class Header(object):
         debug = self.newlibrary.options.debug
         label = False
         for category in ["cxx_header", "typemap", "shroud"]:
+            if category == "typemap":
+                self.write_includes_for_header(output, found)
             if not headers[category]:
                 continue
             if debug:
@@ -733,6 +649,92 @@ class Header(object):
             if need_blank:
                 output.append("")
                 need_blank = False
+            if len(headers[hdr]) == 1:
+                # Only one type uses the include, check for if_cpp.
+                # For example, add conditional around mpi.h.
+                typedef = headers[hdr][0]
+                if typedef and typedef.cpp_if:
+                    output.append("#" + typedef.cpp_if)
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+                if typedef and typedef.cpp_if:
+                    output.append("#endif")
+            else:
+                # XXX - unclear how to mix header and cpp_if
+                # so always include the file
+                if hdr[0] == "<":
+                    output.append("#include %s" % hdr)
+                else:
+                    output.append('#include "%s"' % hdr)
+
+    def write_includes_for_header(self, output, skip):
+        """
+        Write the include statements for headers required for
+        arguments in wrapper declarations.
+
+        Write include files for C or C++.
+
+        Args:
+            output - append lines of code.
+            skip - dictionary of headers to ignore.
+
+        headers[hdr] [ typedef, None, ... ]
+        None from helper files
+        """
+        fmt = self.newlibrary.fmtdict
+        
+        # find which headers are required and which language requires them.
+        always = {}  # used by C and C++.
+        c_headers = {}
+        cxx_headers = {}
+        wrap_headers = {}
+
+        # Collect headers for c and c++.
+        for typedef in self.typemaps.values():
+            for hdr in typedef.c_header:
+                c_headers.setdefault(hdr, []).append(typedef)
+            for hdr in typedef.cxx_header:
+                cxx_headers.setdefault(hdr, []).append(typedef)
+            for hdr in typedef.wrap_header:
+                if hdr != fmt.C_header_utility:
+                    wrap_headers.setdefault(hdr, []).append(typedef)
+
+        # Find which headers are always included.
+        both = {}
+        for hdr in c_headers.keys():
+            if hdr in cxx_headers:
+                both[hdr] = True
+        for hdr in both:
+            always[hdr] = c_headers[hdr]
+            del c_headers[hdr]
+            del cxx_headers[hdr]
+
+        lines = []
+        self.write_include_group(wrap_headers, lines)
+        self.write_include_group(always, lines)
+        if self.newlibrary.language == "c":
+            self.write_include_group(c_headers, lines)
+        elif cxx_headers:
+            lines.append("#ifdef __cplusplus")
+            self.write_include_group(cxx_headers, lines)
+            if c_headers:
+                lines.append("#else")
+                self.write_include_group(c_headers, lines)
+            lines.append("#endif")
+        elif c_headers:
+            lines.append("#ifndef __cplusplus")
+            self.write_include_group(c_headers, lines)
+            lines.append("#endif")
+        if lines:
+            output.append("")
+            output.extend(lines)
+
+    def write_include_group(self, headers, output, skip={}):
+        for hdr in sorted(headers):
+            if hdr in skip:
+                continue
             if len(headers[hdr]) == 1:
                 # Only one type uses the include, check for if_cpp.
                 # For example, add conditional around mpi.h.
