@@ -263,7 +263,7 @@ class Wrapc(util.WrapperMixin):
         headers = util.Header(self.newlibrary)
         headers.add_shroud_file(fmt.C_header_utility)
         headers.add_shroud_dict(self.helper_include["cwrap_impl"])
-        headers.write_headers(output, {})
+        headers.write_headers(output)
 
         if self.language == "cxx":
             output.append("")
@@ -308,7 +308,7 @@ class Wrapc(util.WrapperMixin):
 
         headers = util.Header(self.newlibrary)
         headers.add_shroud_dict(self.helper_include["cwrap_include"])
-        headers.write_headers(output, {})
+        headers.write_headers(output)
 
         if self.language == "cxx":
             output.append("")
@@ -366,7 +366,7 @@ class Wrapc(util.WrapperMixin):
         headers = util.Header(self.newlibrary)
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
-        headers.write_headers(output, {})
+        headers.write_headers(output)
         
         if self.language == "cxx":
             output.append("")
@@ -442,10 +442,7 @@ class Wrapc(util.WrapperMixin):
         self.header_impl.add_cxx_header(node)
         self.header_impl.add_shroud_dict(self.helper_include["file"])
         self.header_impl.add_typemaps_xxx(self.impl_typedef_nodes, "impl_header")
-
-        # headers required by implementation
-        skip = {}
-        self.header_impl.write_headers(output, skip)
+        self.header_impl.write_headers(output)
 
         if self.language == "cxx":
             output.append("")

@@ -2337,7 +2337,7 @@ return 1;""",
 
         # Use headers from implementation
         self.header_impl.add_shroud_dict(hinclude)
-        self.header_impl.write_headers(output, {})
+        self.header_impl.write_headers(output)
 
         output.append("")
         self._create_splicer("include", output)
@@ -2519,7 +2519,7 @@ return 1;""",
 
         output.append("")
         output.append("#include <Python.h>")
-        self.header_type_include.write_headers(output, {})
+        self.header_type_include.write_headers(output)
 
         output.append("")
         self._push_splicer("header")
@@ -2595,7 +2595,7 @@ extern PyObject *{PY_prefix}error_obj;
             self.add_numpy_includes(output, top)
 
         self.header_impl.add_shroud_dict(hinclude)
-        self.header_impl.write_headers(output, {})
+        self.header_impl.write_headers(output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
@@ -2693,7 +2693,7 @@ extern PyObject *{PY_prefix}error_obj;
         output = []
         if need_numpy:
             self.add_numpy_includes(output)
-        headers.write_headers(output, {})
+        headers.write_headers(output)
         output.append(cpp_boilerplate)
 
         if hsource:

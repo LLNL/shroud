@@ -480,6 +480,8 @@ class Header(object):
     The order of headers from cxx_header, typemap and helpers are preserved
     (via OrderedDict).
     Each header is only included once.
+
+    A label is printed before each category when options.debug is True.
     """
     def __init__(self, newlibrary):
         self.newlibrary = newlibrary
@@ -532,17 +534,16 @@ class Header(object):
         for name in headers:
             self.header_impl_include_order["shroud"][name] = True
 
-    def write_headers(self, output, found):
+    def write_headers(self, output):
         """Preserve header order, avoid duplicates.
 
         Args:
-            headers -
             output - list of output lines.
-            found - dictionary of header files found.
         """
         headers = self.header_impl_include_order
         debug = self.newlibrary.options.debug
         blank = True
+        found = {} # dictionary of header files found.
         for category in ["cxx_header", "typemap", "shroud"]:
             lines = []
             if category == "typemap":

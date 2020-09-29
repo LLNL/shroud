@@ -683,7 +683,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
         util.extern_C(output, "begin")
 
-        header_impl.write_headers(output, {})
+        header_impl.write_headers(output)
 
         output.append('#include "lua.h"')
         output.extend(self.lua_type_structs)
@@ -730,7 +730,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         
         output = []
 
-        header_impl.write_headers(output, {})
+        header_impl.write_headers(output)
 
         util.extern_C(output, "begin")
         output.append('#include "lauxlib.h"')
