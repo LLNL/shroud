@@ -56,7 +56,7 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         self.shared_proto_c = []
         # Include files required by wrapper implementations.
-        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
+        self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
 
     _default_buf_args = ["arg"]
 
