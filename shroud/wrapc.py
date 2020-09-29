@@ -150,7 +150,8 @@ class Wrapc(util.WrapperMixin):
             self.wrap_functions(ns)
             if top:
                 self.write_capsule_code()
-                self.impl_typedef_nodes.update(self.capsule_typedef_nodes)
+                # self.impl_typedef_nodes.update(self.capsule_typedef_nodes) Python 3.6
+                self.impl_typedef_nodes.update(self.capsule_typedef_nodes.items())
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -843,7 +844,8 @@ class Wrapc(util.WrapperMixin):
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
 
-        self.impl_typedef_nodes.update(node.gen_headers_typedef)
+        # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
+        self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = {}
         header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
