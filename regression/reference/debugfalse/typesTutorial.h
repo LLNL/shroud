@@ -10,7 +10,6 @@
 
 #ifndef TYPESTUTORIAL_H
 #define TYPESTUTORIAL_H
-
 #include <stddef.h>
 
 

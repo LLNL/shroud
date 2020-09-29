@@ -8,7 +8,6 @@
 //
 // shroud
 #include "typesvectors.h"
-
 #include <cstring>
 
 

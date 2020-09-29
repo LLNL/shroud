@@ -8,7 +8,6 @@
 //
 // shroud
 #include "typesUserLibrary.h"
-
 #include <cstddef>
 #include <cstring>
 

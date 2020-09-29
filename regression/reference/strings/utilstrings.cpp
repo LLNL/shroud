@@ -8,7 +8,6 @@
 //
 // shroud
 #include "typesstrings.h"
-
 #include <cstddef>
 #include <cstring>
 

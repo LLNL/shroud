@@ -8,7 +8,6 @@
 //
 // shroud
 #include "typesownership.h"
-
 #include <cstring>
 
 

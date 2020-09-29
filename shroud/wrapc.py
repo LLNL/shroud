@@ -262,11 +262,8 @@ class Wrapc(util.WrapperMixin):
 
         headers = util.Header(self.newlibrary)
         headers.add_shroud_file(fmt.C_header_utility)
+        headers.add_shroud_dict(self.helper_include["cwrap_impl"])
         headers.write_headers(output, {})
-        # headers required helpers
-        self.write_headers_nodes(
-            "c_header", {}, self.helper_include["cwrap_impl"].keys(), output
-        )
 
         if self.language == "cxx":
             output.append("")
@@ -309,10 +306,9 @@ class Wrapc(util.WrapperMixin):
             ]
         )
 
-        # headers required helpers
-        self.write_headers_nodes(
-            "c_header", {}, self.helper_include["cwrap_include"].keys(), output
-        )
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_dict(self.helper_include["cwrap_include"])
+        headers.write_headers(output, {})
 
         if self.language == "cxx":
             output.append("")

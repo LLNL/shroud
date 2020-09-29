@@ -8,7 +8,6 @@
 //
 // shroud
 #include "typesns.h"
-
 #include <cstddef>
 #include <cstring>
 
