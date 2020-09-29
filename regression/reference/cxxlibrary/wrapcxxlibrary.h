@@ -14,7 +14,6 @@
 
 #ifndef WRAPCXXLIBRARY_H
 #define WRAPCXXLIBRARY_H
-
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

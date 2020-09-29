@@ -14,7 +14,6 @@
 
 #ifndef WRAPSTRUCT_H
 #define WRAPSTRUCT_H
-
 #include "struct.h"
 // shroud
 #include "typesstruct.h"

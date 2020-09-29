@@ -14,7 +14,6 @@
 
 #ifndef WRAPSTD_VECTOR_INT_H
 #define WRAPSTD_VECTOR_INT_H
-
 #ifdef __cplusplus
 #include <cstddef>
 #else

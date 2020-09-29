@@ -14,7 +14,6 @@
 
 #ifndef WRAPTYPES_H
 #define WRAPTYPES_H
-
 #ifdef __cplusplus
 #include <cstdint>
 #include <cstddef>

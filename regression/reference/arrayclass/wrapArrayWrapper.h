@@ -14,7 +14,6 @@
 
 #ifndef WRAPARRAYWRAPPER_H
 #define WRAPARRAYWRAPPER_H
-
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

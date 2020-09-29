@@ -14,7 +14,6 @@
 
 #ifndef WRAPPOINTERS_H
 #define WRAPPOINTERS_H
-
 #ifdef __cplusplus
 #include <cstddef>
 #else

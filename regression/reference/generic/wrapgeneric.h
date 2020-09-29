@@ -14,7 +14,6 @@
 
 #ifndef WRAPGENERIC_H
 #define WRAPGENERIC_H
-
 #include <stddef.h>
 // shroud
 #include "typesgeneric.h"

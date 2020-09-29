@@ -14,7 +14,6 @@
 
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
-
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

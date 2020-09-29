@@ -14,7 +14,6 @@
 
 #ifndef WRAPCLASS2_H
 #define WRAPCLASS2_H
-
 #include "wrapClass1.h"
 // shroud
 #include "typesforward.h"

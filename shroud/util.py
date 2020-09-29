@@ -643,7 +643,6 @@ class Header(object):
             self.write_include_group(c_headers, lines)
             lines.append("#endif")
         if lines:
-            output.append("")
             output.extend(lines)
 
     def write_include_group(self, headers, output, skip={}):

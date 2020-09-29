@@ -14,7 +14,6 @@
 
 #ifndef WRAPSTD_VECTOR_DOUBLE_H
 #define WRAPSTD_VECTOR_DOUBLE_H
-
 #ifdef __cplusplus
 #include <cstddef>
 #else

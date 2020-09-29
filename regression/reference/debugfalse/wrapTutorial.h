@@ -14,7 +14,6 @@
 
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
-
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif

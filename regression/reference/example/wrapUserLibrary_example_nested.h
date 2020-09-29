@@ -14,7 +14,6 @@
 
 #ifndef WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 #define WRAPUSERLIBRARY_EXAMPLE_NESTED_H
-
 #ifdef USE_MPI
 #include "mpi.h"
 #endif
