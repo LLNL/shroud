@@ -687,9 +687,9 @@ class Header(object):
         
         # find which headers are required and which language requires them.
         always = {}  # used by C and C++.
-        c_headers = {}
-        cxx_headers = {}
-        wrap_headers = {}
+        c_headers = OrderedDict()
+        cxx_headers = OrderedDict()
+        wrap_headers = OrderedDict()
 
         # Collect headers for c and c++.
         for typedef in self.typemaps.values():
@@ -732,7 +732,7 @@ class Header(object):
             output.extend(lines)
 
     def write_include_group(self, headers, output, skip={}):
-        for hdr in sorted(headers):
+        for hdr in headers:
             if hdr in skip:
                 continue
             if len(headers[hdr]) == 1:

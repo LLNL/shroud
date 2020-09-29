@@ -16,12 +16,12 @@
 #define WRAPTYPES_H
 
 #ifdef __cplusplus
-#include <cstddef>
 #include <cstdint>
+#include <cstddef>
 #else
-#include <stdbool.h>
-#include <stddef.h>
 #include <stdint.h>
+#include <stddef.h>
+#include <stdbool.h>
 #endif
 // shroud
 #include "typestypes.h"
