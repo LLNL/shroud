@@ -15,12 +15,14 @@
 #ifndef WRAPPOINTERS_H
 #define WRAPPOINTERS_H
 
-#include "typespointers.h"
+// typemap
 #ifdef __cplusplus
 #include <cstddef>
 #else
 #include <stddef.h>
 #endif
+// shroud
+#include "typespointers.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

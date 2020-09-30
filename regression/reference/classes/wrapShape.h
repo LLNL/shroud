@@ -15,6 +15,7 @@
 #ifndef WRAPSHAPE_H
 #define WRAPSHAPE_H
 
+// shroud
 #include "typesclasses.h"
 
 // splicer begin class.Shape.CXX_declarations

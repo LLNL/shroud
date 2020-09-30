@@ -15,6 +15,7 @@
 #ifndef WRAPSINGLETON_H
 #define WRAPSINGLETON_H
 
+// shroud
 #include "typesclasses.h"
 
 // splicer begin class.Singleton.CXX_declarations

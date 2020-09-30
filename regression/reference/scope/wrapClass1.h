@@ -15,6 +15,7 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
+// shroud
 #include "typesscope.h"
 
 // splicer begin class.Class1.CXX_declarations

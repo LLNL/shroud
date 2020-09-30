@@ -7,10 +7,13 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapClibrary.h"
+
+// cxx_header
+#include "clibrary.h"
+// shroud
+#include "typesClibrary.h"
 #include <stdlib.h>
 #include <string.h>
-#include "clibrary.h"
-#include "typesClibrary.h"
 
 
 // helper ShroudStrAlloc

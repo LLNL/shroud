@@ -8,7 +8,9 @@
 //
 #ifndef PYWRAPPEDMODULE_HPP
 #define PYWRAPPEDMODULE_HPP
+
 #include <Python.h>
+
 // splicer begin header.include
 // splicer end header.include
 

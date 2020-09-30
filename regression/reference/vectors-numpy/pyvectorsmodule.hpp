@@ -8,8 +8,12 @@
 //
 #ifndef PYVECTORSMODULE_HPP
 #define PYVECTORSMODULE_HPP
+
 #include <Python.h>
+
+// cxx_header
 #include "vectors.hpp"
+
 // splicer begin header.include
 // splicer end header.include
 

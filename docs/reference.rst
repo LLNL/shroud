@@ -79,6 +79,7 @@ classes
 cxx_header
   Blank delimited list of header files which
   will be included in the implementation file.
+  The order will be preserved when generating wrapper files.
 
 format
    Dictionary of Format fields for the library.

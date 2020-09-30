@@ -11,7 +11,8 @@ copyright:
 #  cxx_header  namespace
 
 
-cxx_header: global_header.hpp
+# Order of headers should be preserved in generated code.
+cxx_header: zzheader.hpp global_header.hpp
 
 options:
   debug: True

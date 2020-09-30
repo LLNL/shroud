@@ -15,10 +15,12 @@
 #ifndef WRAPTUTORIAL_H
 #define WRAPTUTORIAL_H
 
-#include "typesTutorial.h"
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
+// shroud
+#include "typesTutorial.h"
 
 // splicer begin CXX_declarations
 // splicer end CXX_declarations

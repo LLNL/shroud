@@ -8,6 +8,7 @@
 //
 #ifdef USE_USER2
 #include "pypreprocessmodule.hpp"
+
 // splicer begin class.User2.impl.include
 // splicer end class.User2.impl.include
 

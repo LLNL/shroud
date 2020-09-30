@@ -15,10 +15,12 @@
 #ifndef WRAPCLASS1_H
 #define WRAPCLASS1_H
 
-#include "typesclasses.h"
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
+// shroud
+#include "typesclasses.h"
 
 // splicer begin class.Class1.CXX_declarations
 // splicer end class.Class1.CXX_declarations

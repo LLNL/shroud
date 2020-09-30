@@ -6,9 +6,12 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
-#include <stdlib.h>
+
+// cxx_header
 #include "interface.h"
+// shroud
 #include "typesInterface.h"
+#include <stdlib.h>
 
 // splicer begin C_definitions
 // splicer end C_definitions

@@ -219,6 +219,7 @@
             ""
         ],
         "cxx_header": [
+            "zzheader.hpp",
             "global_header.hpp"
         ],
         "language": "cxx",

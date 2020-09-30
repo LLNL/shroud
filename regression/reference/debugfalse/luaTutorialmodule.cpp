@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
 #include "tutorial.hpp"
 #include "luaTutorialmodule.hpp"
 #ifdef __cplusplus
@@ -15,6 +16,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
 // splicer begin include
 // splicer end include
 // splicer begin C_definition

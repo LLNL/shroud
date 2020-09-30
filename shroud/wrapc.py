@@ -12,6 +12,7 @@ from __future__ import print_function
 from __future__ import absolute_import
 
 import os
+from collections import OrderedDict
 
 from . import declast
 from . import todict
@@ -55,7 +56,7 @@ class Wrapc(util.WrapperMixin):
         self.shared_helper = config.fc_shared_helpers  # Shared between Fortran and C.
         self.shared_proto_c = []
         # Include files required by wrapper implementations.
-        self.capsule_typedef_nodes = {}  # [typemap.name] = typemap
+        self.capsule_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
 
     _default_buf_args = ["arg"]
 
@@ -64,11 +65,11 @@ class Wrapc(util.WrapperMixin):
         #        # forward declarations of C++ class as opaque C struct.
         #        self.header_forward = {}
         # Include files required by wrapper prototypes
-        self.header_typedef_nodes = {}  # [typemap.name] = typemap
+        self.header_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Include files required by wrapper implementations.
-        self.impl_typedef_nodes = {}  # [typemap.name] = typemap
+        self.impl_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
-        self.header_impl_include = {}
+        self.header_impl = util.Header(self.newlibrary)
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
@@ -149,7 +150,8 @@ class Wrapc(util.WrapperMixin):
             self.wrap_functions(ns)
             if top:
                 self.write_capsule_code()
-                self.impl_typedef_nodes.update(self.capsule_typedef_nodes)
+                # self.impl_typedef_nodes.update(self.capsule_typedef_nodes) Python 3.6
+                self.impl_typedef_nodes.update(self.capsule_typedef_nodes.items())
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -218,13 +220,13 @@ class Wrapc(util.WrapperMixin):
         else:
             lang_include = "cxx_include"
             lang_source = "cxx_source"
-        scope = helper_info.get("scope", "file")
 
+        scope = helper_info.get("scope", "file")
         if lang_include in helper_info:
-            for include in helper_info[lang_include].split():
+            for include in helper_info[lang_include]:
                 self.helper_include[scope][include] = True
         elif "include" in helper_info:
-            for include in helper_info["include"].split():
+            for include in helper_info["include"]:
                 self.helper_include[scope][include] = True
 
         if lang_source in helper_info:
@@ -260,11 +262,10 @@ class Wrapc(util.WrapperMixin):
         write_file = False
         output = []
 
-        self.write_headers([ fmt.C_header_utility], output)
-        # headers required helpers
-        self.write_headers_nodes(
-            "c_header", {}, self.helper_include["cwrap_impl"].keys(), output
-        )
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_file(fmt.C_header_utility)
+        headers.add_shroud_dict(self.helper_include["cwrap_impl"])
+        headers.write_headers(output)
 
         if self.language == "cxx":
             output.append("")
@@ -307,10 +308,9 @@ class Wrapc(util.WrapperMixin):
             ]
         )
 
-        # headers required helpers
-        self.write_headers_nodes(
-            "c_header", {}, self.helper_include["cwrap_include"].keys(), output
-        )
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_dict(self.helper_include["cwrap_include"])
+        headers.write_headers(output)
 
         if self.language == "cxx":
             output.append("")
@@ -365,13 +365,11 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        self.write_includes_for_header(
-            node.fmtdict,
-            self.header_typedef_nodes,
-            self.c_helper_include.keys(),
-            output,
-        )
-
+        headers = util.Header(self.newlibrary)
+        headers.add_typemaps_xxx(self.header_typedef_nodes)
+        headers.add_shroud_dict(self.c_helper_include)
+        headers.write_headers(output)
+        
         if self.language == "cxx":
             output.append("")
             if self._create_splicer("CXX_declarations", output):
@@ -443,24 +441,10 @@ class Wrapc(util.WrapperMixin):
             output.append('#include "%s"' % hname)
 
         # Use headers from implementation
-        self.find_header(node, self.header_impl_include)
-        self.header_impl_include.update(self.helper_include["file"])
-
-        # headers required by implementation
-        if self.header_impl_include:
-            headers = self.header_impl_include.keys()
-            self.write_headers(headers, output)
-
-        # Headers required by implementations,
-        # for example template instantiation.
-        if self.impl_typedef_nodes:
-            self.write_headers_nodes(
-                "impl_header",
-                self.impl_typedef_nodes,
-                [],
-                output,
-                self.header_impl_include,
-            )
+        self.header_impl.add_cxx_header(node)
+        self.header_impl.add_shroud_dict(self.helper_include["file"])
+        self.header_impl.add_typemaps_xxx(self.impl_typedef_nodes, "impl_header")
+        self.header_impl.write_headers(output)
 
         if self.language == "cxx":
             output.append("")
@@ -710,7 +694,7 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.add_statements_headers(intent_blk)
+        self.header_impl.add_statements_headers(intent_blk)
 
         if intent_blk.pre_call:
             need_wrapper = True
@@ -860,8 +844,9 @@ class Wrapc(util.WrapperMixin):
         is_pointer = CXX_ast.is_pointer()
         is_const = ast.func_const
 
-        self.impl_typedef_nodes.update(node.gen_headers_typedef)
-        header_typedef_nodes = {}
+        # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
+        self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
+        header_typedef_nodes = OrderedDict()
         header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
@@ -1018,9 +1003,8 @@ class Wrapc(util.WrapperMixin):
             if arg_typemap.base == "vector":
                 fmt_arg.cxx_T = arg.template_arguments[0].typemap.name
 
-            if arg_typemap.impl_header is not None:
-                for hdr in arg_typemap.impl_header:
-                    self.header_impl_include[hdr] = True
+            self.header_impl.add_typemap_list(arg_typemap.impl_header)
+                    
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
@@ -1244,9 +1228,7 @@ class Wrapc(util.WrapperMixin):
                     )
                 self.set_cxx_nonconst_ptr(ast, fmt_result)
                     
-                if result_typemap.impl_header is not None:
-                    for hdr in result_typemap.impl_header:
-                        self.header_impl_include[hdr] = True
+                self.header_impl.add_typemap_list(result_typemap.impl_header)
 
         need_wrapper = self.add_code_from_statements(
             fmt_result, result_blk, pre_call, post_call, need_wrapper
@@ -1294,7 +1276,7 @@ class Wrapc(util.WrapperMixin):
                      post_call + final_code + return_code
 
         if need_wrapper:
-            self.header_typedef_nodes.update(header_typedef_nodes)
+            self.header_typedef_nodes.update(header_typedef_nodes.items()) # Python 3.6
             self.header_proto_c.append("")
             if node.cpp_if:
                 self.header_proto_c.append("#" + node.cpp_if)
@@ -1346,8 +1328,8 @@ class Wrapc(util.WrapperMixin):
         self.c_helper["capsule_data_helper"] = True
         fmt = library.fmtdict
 
-        self.header_impl_include.update(self.capsule_include)
-        self.header_impl_include[fmt.C_header_utility] = True
+        self.header_impl.add_shroud_file(fmt.C_header_utility)
+        self.header_impl.add_shroud_dict(self.capsule_include)
 
         append_format(
             self.shared_proto_c,
@@ -1399,10 +1381,10 @@ class Wrapc(util.WrapperMixin):
 
         # Add header for NULL.
         if self.language == "cxx":
-            self.header_impl_include["<cstdlib>"] = True
+            self.header_impl.add_shroud_file("<cstdlib>")
             # XXXX nullptr
         else:
-            self.header_impl_include["<stdlib.h>"] = True
+            self.header_impl.add_shroud_file("<stdlib.h>")
         append_format(output,
                       "cap->addr = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"

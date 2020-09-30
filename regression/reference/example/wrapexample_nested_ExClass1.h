@@ -15,10 +15,12 @@
 #ifndef WRAPEXAMPLE_NESTED_EXCLASS1_H
 #define WRAPEXAMPLE_NESTED_EXCLASS1_H
 
-#include "typesUserLibrary.h"
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
+// shroud
+#include "typesUserLibrary.h"
 
 // splicer begin namespace.example::nested.class.ExClass1.CXX_declarations
 // splicer end namespace.example::nested.class.ExClass1.CXX_declarations

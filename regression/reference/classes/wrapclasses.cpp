@@ -7,11 +7,15 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapclasses.h"
+
+// cxx_header
+#include "classes.hpp"
+// typemap
+#include <string>
+// shroud
+#include "typesclasses.h"
 #include <cstdlib>
 #include <cstring>
-#include <string>
-#include "classes.hpp"
-#include "typesclasses.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

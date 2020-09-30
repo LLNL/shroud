@@ -1042,8 +1042,8 @@
                     "underscore_name": "get_data"
                 },
                 "gen_headers_typedef": [
-                    "double",
-                    "int"
+                    "int",
+                    "double"
                 ],
                 "have_template_args": true,
                 "options": {

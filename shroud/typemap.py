@@ -756,7 +756,7 @@ def initialize():
             cxx_type="std::string",
             cxx_to_c="{cxx_var}{cxx_member}c_str()",  # cxx_member is . or ->
             c_type="char",  # XXX - char *
-            impl_header="<string>",
+            impl_header=["<string>"],
             f_type="character(*)",
             f_kind="C_CHAR",
             f_c_type="character(kind=C_CHAR)",

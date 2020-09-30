@@ -7,8 +7,12 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapClass2.h"
-#include "class_header.hpp"
+
+// cxx_header
+#include "zzheader.hpp"
 #include "global_header.hpp"
+// typemap
+#include "class_header.hpp"
 
 
 extern "C" {

@@ -15,6 +15,7 @@
 #ifndef WRAPSTRINGS_H
 #define WRAPSTRINGS_H
 
+// shroud
 #include "typesstrings.h"
 
 // splicer begin CXX_declarations

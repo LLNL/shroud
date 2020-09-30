@@ -7,12 +7,13 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapTutorial.h"
-#include <cstddef>
-#include <cstdlib>
-#include <cstring>
-#include <string>
+
 #include "tutorial.hpp"
+#include <string>
 #include "typesTutorial.h"
+#include <cstdlib>
+#include <cstddef>
+#include <cstring>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

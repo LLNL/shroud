@@ -6,6 +6,8 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+
+// shroud
 #include "luaUserLibrarymodule.hpp"
 #ifdef __cplusplus
 extern "C" {
@@ -14,6 +16,7 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+
 // splicer begin include
 // splicer end include
 // splicer begin C_definition

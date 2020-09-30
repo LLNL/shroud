@@ -15,6 +15,7 @@
 #ifndef WRAPSCOPE_H
 #define WRAPSCOPE_H
 
+// shroud
 #include "typesscope.h"
 
 // splicer begin CXX_declarations

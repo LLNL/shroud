@@ -15,6 +15,7 @@
 #ifndef WRAPNS_UPPER_H
 #define WRAPNS_UPPER_H
 
+// shroud
 #include "typesns.h"
 
 // splicer begin namespace.upper.CXX_declarations

@@ -15,6 +15,7 @@
 #ifndef WRAPWRAPPED_INNER4_H
 #define WRAPWRAPPED_INNER4_H
 
+// shroud
 #include "typeswrapped.h"
 
 // splicer begin namespace.inner4.CXX_declarations

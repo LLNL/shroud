@@ -7,10 +7,13 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrappointers.h"
+
+// cxx_header
+#include "pointers.h"
+// shroud
+#include "typespointers.h"
 #include <cstdlib>
 #include <cstring>
-#include "pointers.h"
-#include "typespointers.h"
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

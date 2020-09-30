@@ -15,6 +15,7 @@
 #ifndef WRAPOWNERSHIP_H
 #define WRAPOWNERSHIP_H
 
+// shroud
 #include "typesownership.h"
 
 // splicer begin CXX_declarations

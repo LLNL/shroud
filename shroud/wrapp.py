@@ -102,7 +102,7 @@ class Wrapp(util.WrapperMixin):
         self.define_arraydescr = []
         self.call_arraydescr = []
         self.need_blah = False
-        self.header_type_include = {}  # header files in module header
+        self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
         update_typemap_for_language(self.language)
 
@@ -118,7 +118,7 @@ class Wrapp(util.WrapperMixin):
 
     def reset_file(self):
         """Start a new output file"""
-        self.header_impl_include = {}  # header files in implementation file
+        self.header_impl = util.Header(self.newlibrary)
         self.c_helper = {}
 #        self.c_helper_include = {}  # include files in generated C header
 
@@ -381,7 +381,7 @@ PyModule_AddObject(m, "{cxx_class}", (PyObject *)&{PY_PyTypeObject});""",
         if node.cpp_if:
             output.append("#endif // " + node.cpp_if)
 
-        self.find_header(node, self.header_type_include)
+        self.header_type_include.add_cxx_header(node)
             
         # header declarations
         output = self.py_class_decl
@@ -1478,7 +1478,7 @@ return 1;""",
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
-            self.add_statements_headers(intent_blk)
+            self.header_impl.add_statements_headers(intent_blk)
 
             # Pass correct value to wrapped function.
             if intent_blk.arg_call:
@@ -2233,10 +2233,10 @@ return 1;""",
 
         lang_key = self.language + "_include"
         if lang_key in helper_info:
-            for include in helper_info[lang_key].split():
+            for include in helper_info[lang_key]:
                 self.helper_summary["include"][scope][include] = True
         elif "include" in helper_info:
-            for include in helper_info["include"].split():
+            for include in helper_info["include"]:
                 self.helper_summary["include"][scope][include] = True
 
         for key in ["proto", "source"]:
@@ -2336,10 +2336,10 @@ return 1;""",
         self._push_splicer("impl")
 
         # Use headers from implementation
-        header_impl_include = self.header_impl_include
-        header_impl_include.update(hinclude)
-        self.write_headers(header_impl_include, output)
+        self.header_impl.add_shroud_dict(hinclude)
+        self.header_impl.write_headers(output)
 
+        output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
         output.extend(hsource)
@@ -2509,7 +2509,7 @@ return 1;""",
         """
         fmt = node.fmtdict
         fname = fmt.PY_header_filename
-        self.find_header(node, self.header_type_include)
+        self.header_type_include.add_cxx_header(node)
         hinclude, hsource = self.find_utility_helper_code()
         output = []
 
@@ -2517,9 +2517,11 @@ return 1;""",
         guard = fname.replace(".", "_").upper()
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
 
+        output.append("")
         output.append("#include <Python.h>")
-        self.write_headers(self.header_type_include, output)
+        self.header_type_include.write_headers(output)
 
+        output.append("")
         self._push_splicer("header")
         self._create_splicer("include", output)
 
@@ -2592,8 +2594,8 @@ extern PyObject *{PY_prefix}error_obj;
         if self.need_numpy:
             self.add_numpy_includes(output, top)
 
-        self.header_impl_include.update(hinclude)
-        self.write_headers(self.header_impl_include, output)
+        self.header_impl.add_shroud_dict(hinclude)
+        self.header_impl.write_headers(output)
         output.append("")
         self._create_splicer("include", output)
         output.append(cpp_boilerplate)
@@ -2683,12 +2685,15 @@ extern PyObject *{PY_prefix}error_obj;
         fmt = node.fmtdict
         need_file = False
         hinclude, hsource, need_numpy = self.find_shared_file_helper_code()
+
+        headers = util.Header(self.newlibrary)
+        headers.add_shroud_file(fmt.PY_header_filename)
+        headers.add_shroud_dict(hinclude)
         
         output = []
-        append_format(output, '#include "{PY_header_filename}"', fmt)
         if need_numpy:
             self.add_numpy_includes(output)
-        self.write_headers(hinclude, output)
+        headers.write_headers(output)
         output.append(cpp_boilerplate)
 
         if hsource:

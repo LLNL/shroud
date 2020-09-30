@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wraplibrary_outer2.h"
+
+// cxx_header
 #include "outer2.hpp"
 
 

@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapCircle.h"
+
+// cxx_header
 #include "classes.hpp"
 
 // splicer begin class.Circle.CXX_definitions

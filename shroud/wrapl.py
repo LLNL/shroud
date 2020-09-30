@@ -673,6 +673,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         fmt = node.fmtdict
         fname = fmt.LUA_header_filename
 
+        header_impl = util.Header(self.newlibrary)
+        header_impl.add_cxx_header(node)
+
         output = []
 
         # add guard
@@ -680,8 +683,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         output.extend(["#ifndef %s" % guard, "#define %s" % guard])
         util.extern_C(output, "begin")
 
-        for include in node.cxx_header:
-            output.append('#include "%s"' % include)
+        header_impl.write_headers(output)
 
         output.append('#include "lua.h"')
         output.extend(self.lua_type_structs)
@@ -721,16 +723,20 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         hinclude, hsource = self.helpers.find_file_helper_code()
 
+        header_impl = util.Header(self.newlibrary)
+        header_impl.add_cxx_header(node)
+        header_impl.add_shroud_file(fmt.LUA_header_filename)
+        header_impl.add_shroud_dict(hinclude)
+        
         output = []
 
-        for include in node.cxx_header:
-            output.append('#include "{}"'.format(include))
-        append_format(output, '#include "{LUA_header_filename}"', fmt)
+        header_impl.write_headers(output)
 
         util.extern_C(output, "begin")
         output.append('#include "lauxlib.h"')
         util.extern_C(output, "end")
 
+        output.append("")
         self._create_splicer("include", output)
 
         self._create_splicer("C_definition", output)
@@ -831,10 +837,10 @@ class Helpers(object):
 
         lang_key = self.language + "_include"
         if lang_key in helper_info:
-            for include in helper_info[lang_key].split():
+            for include in helper_info[lang_key]:
                 self.helper_summary["include"][scope][include] = True
         elif "include" in helper_info:
-            for include in helper_info["include"].split():
+            for include in helper_info["include"]:
                 self.helper_summary["include"][scope][include] = True
 
         for key in ["proto", "source"]:

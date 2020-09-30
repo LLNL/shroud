@@ -15,10 +15,12 @@
 #ifndef WRAPARRAYWRAPPER_H
 #define WRAPARRAYWRAPPER_H
 
-#include "typesarrayclass.h"
+// typemap
 #ifndef __cplusplus
 #include <stdbool.h>
 #endif
+// shroud
+#include "typesarrayclass.h"
 
 // splicer begin class.ArrayWrapper.CXX_declarations
 // splicer end class.ArrayWrapper.CXX_declarations

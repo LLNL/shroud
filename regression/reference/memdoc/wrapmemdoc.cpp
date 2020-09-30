@@ -7,11 +7,14 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "wrapmemdoc.h"
-#include <cstddef>
-#include <cstdlib>
-#include <cstring>
+
+// typemap
 #include <string>
+// shroud
 #include "typesmemdoc.h"
+#include <cstdlib>
+#include <cstddef>
+#include <cstring>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

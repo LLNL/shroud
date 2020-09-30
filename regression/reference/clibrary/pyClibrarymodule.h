@@ -8,8 +8,12 @@
 //
 #ifndef PYCLIBRARYMODULE_H
 #define PYCLIBRARYMODULE_H
+
 #include <Python.h>
+
+// cxx_header
 #include "clibrary.h"
+
 // splicer begin header.include
 // splicer end header.include
 

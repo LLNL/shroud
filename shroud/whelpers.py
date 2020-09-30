@@ -24,9 +24,9 @@
                   called by Fortran.
                "pwrap_impl" - Added to PY_utility_filename and shared
                   among files.
- c_include   = Blank delimited list of files to #include
+ c_include   = List of files to #include
                in implementation file when wrapping a C library.
- cxx_include = Blank delimited list of files to #include.
+ cxx_include = List of files to #include.
                in implementation file when wrapping a C++ library.
  c_source    = language=c source.
  cxx_source  = language=c++ source.
@@ -179,8 +179,8 @@ type({F_capsule_data_type}), intent(INOUT) :: ptr
     CHelpers[name] = dict(
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
-        c_include="<string.h>",
-        cxx_include="<cstring>",
+        c_include=["<string.h>"],
+        cxx_include=["<cstring>"],
         # Create a single C routine which is called from Fortran
         # via an interface for each cxx_type.
         cxx_source=wformat(
@@ -211,7 +211,7 @@ n *= data->elem_len;
     CHelpers[name] = dict(
         scope="cwrap_impl",
         dependent_helpers=["array_context"],
-        cxx_include="<cstring> <cstddef>",
+        cxx_include=["<cstring>", "<cstddef>"],
         # XXX - mangle name
         source=wformat(
             """
@@ -262,7 +262,7 @@ integer(C_SIZE_T), value :: c_var_size
         fmt.lend = "\n{}helper {}".format(cend, name)
     CHelpers[name] = dict(
         dependent_helpers=["array_context"],
-        cxx_include="<cstring> <cstddef>",
+        cxx_include=["<cstring>", "<cstddef>"],
         source=wformat(
             """
 {lstart}// helper {hname}
@@ -412,8 +412,8 @@ return 1;
     CHelpers[name] = dict(
         name=fmt.hnamefunc,
         dependent_helpers=["get_from_object_char"],
-        c_include="<string.h>",
-        cxx_include="<cstring>",
+        c_include=["<string.h>"],
+        cxx_include=["<cstring>"],
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
@@ -459,8 +459,8 @@ return 0;
     ########################################
     CHelpers['PY_converter_type'] = dict(
         scope="pwrap_impl",
-        c_include="<stddef.h>",
-        cxx_include="<cstddef>",
+        c_include=["<stddef.h>"],
+        cxx_include=["<cstddef>"],
         # obj may be the argument passed into a function or
         # it may be a PyCapsule for locally allocated memory.
         source=wformat("""
@@ -621,7 +621,7 @@ call {__helper}(cap%mem)
         fmt.lend = "\n{}{}".format(cend, name)
     helper = dict(
         scope="cwrap_include",
-        include="<stddef.h>",
+        include=["<stddef.h>"],
         # Create a union for addr to avoid some casts.
         # And help with debugging since ccharp will display contents.
         source=wformat(
@@ -1004,8 +1004,8 @@ def create_get_from_object_list(fmt):
             "PY_converter_type",
             "py_capsule_dtor",
         ],
-        c_include="<stdlib.h>",   # malloc/free
-        cxx_include="<cstdlib>",  # malloc/free
+        c_include=["<stdlib.h>"],   # malloc/free
+        cxx_include=["<cstdlib>"],  # malloc/free
         proto=fmt.hnameproto + ";",
         source=wformat("""
 // helper {hname}
@@ -1065,8 +1065,8 @@ def create_get_from_object_list_charptr(fmt):
             "PY_converter_type",
             "get_from_object_char",
         ],
-        c_include="<stdlib.h>",   # malloc/free
-        cxx_include="<cstdlib>",  # malloc/free
+        c_include=["<stdlib.h>"],   # malloc/free
+        cxx_include=["<cstdlib>"],  # malloc/free
         proto=fmt.hnameproto + ";",
         source=wformat("""
 
@@ -1234,7 +1234,7 @@ PyList_SET_ITEM(out, i, {Py_ctor});
         "int {hnamefunc}\t(PyObject *obj,\t const char *name,\t std::vector<{cxx_type}> & in)", fmt)
     helper = dict(
         name=fmt.hnamefunc,
-##-        cxx_include="<cstdlib>",  # malloc/free
+##-        cxx_include=["<cstdlib>"],  # malloc/free
         cxx_proto=fmt.hnameproto + ";",
         cxx_source=wformat(
             """
@@ -1332,7 +1332,7 @@ CHelpers = dict(
 #define SH_TYPE_OTHER      32""",
     ),
     ShroudStrCopy=dict(
-        c_include="<string.h>",
+        c_include=["<string.h>"],
         c_source="""
 // helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
@@ -1349,7 +1349,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
      if(ndest > nm) memset(dest+nm,' ',ndest-nm); // blank fill
    }
 }""",
-        cxx_include="<cstring>",
+        cxx_include=["<cstring>"],
         cxx_source="""
 // helper ShroudStrCopy
 // Copy src into dest, blank fill to ndest characters
@@ -1370,7 +1370,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 
     ########################################
     ShroudStrBlankFill=dict(
-        c_include="<string.h>",
+        c_include=["<string.h>"],
         c_source="""
 // helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
@@ -1379,7 +1379,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
    int nm = strlen(dest);
    if(ndest > nm) memset(dest+nm,' ',ndest-nm);
 }""",
-        cxx_include="<cstring>",
+        cxx_include=["<cstring>"],
         cxx_source="""
 // helper ShroudStrBlankFill
 // blank fill dest starting at trailing NULL.
@@ -1394,7 +1394,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
     # Used by 'const char *' arguments which need to be NULL terminated
     # in the C wrapper.
     ShroudStrAlloc=dict(
-        c_include="<string.h> <stdlib.h>",
+        c_include=["<string.h>", "<stdlib.h>"],
         c_source="""
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
@@ -1407,7 +1407,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
    rv[ntrim] = '\\0';
    return rv;
 }""",
-        cxx_include="<cstring> <cstdlib>",
+        cxx_include=["<cstring>", "<cstdlib>"],
         cxx_source="""
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
@@ -1423,7 +1423,7 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
     ),
 
     ShroudStrFree=dict(
-        c_include="<stdlib.h>",
+        c_include=["<stdlib.h>"],
         c_source="""
 // helper ShroudStrFree
 // Release memory allocated by ShroudStrAlloc
@@ -1431,7 +1431,7 @@ static void ShroudStrFree(char *src)
 {
    free(src);
 }""",
-        cxx_include="<cstdlib>",
+        cxx_include=["<cstdlib>"],
         cxx_source="""
 // helper ShroudStrFree
 // Release memory allocated by ShroudStrAlloc
@@ -1464,7 +1464,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
     # Used with 'char **' arguments.
     ShroudStrArrayAlloc=dict(
         dependent_helpers=["ShroudLenTrim"],
-        c_include="<string.h> <stdlib.h>",
+        c_include=["<string.h>", "<stdlib.h>"],
         c_source="""
 // helper ShroudStrArrayAlloc
 // Copy src into new memory and null terminate.
@@ -1482,7 +1482,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
    }
    return rv;
 }""",
-        cxx_include="<cstring> <cstdlib>",
+        cxx_include=["<cstring>", "<cstdlib>"],
         cxx_source="""
 // helper ShroudStrArrayAlloc
 // Copy src into new memory and null terminate.
@@ -1505,7 +1505,7 @@ static char **ShroudStrArrayAlloc(const char *src, int nsrc, int len)
     ),
     
     ShroudStrArrayFree=dict(
-        c_include="<stdlib.h>",
+        c_include=["<stdlib.h>"],
         c_source="""
 // helper ShroudStrArrayFree
 // Release memory allocated by ShroudStrArrayAlloc
@@ -1516,7 +1516,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
    }
    free(src);
 }""",
-        cxx_include="<cstdlib>",
+        cxx_include=["<cstdlib>"],
         cxx_source="""
 // helper ShroudStrArrayFree
 // Release memory allocated by ShroudStrArrayAlloc

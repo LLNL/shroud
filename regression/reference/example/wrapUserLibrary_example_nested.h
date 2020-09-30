@@ -15,16 +15,18 @@
 #ifndef WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 #define WRAPUSERLIBRARY_EXAMPLE_NESTED_H
 
+// typemap
 #ifdef USE_MPI
 #include "mpi.h"
 #endif
-#include "typesUserLibrary.h"
 #ifdef __cplusplus
 #include <cstddef>
 #else
 #include <stdbool.h>
 #include <stddef.h>
 #endif
+// shroud
+#include "typesUserLibrary.h"
 
 // splicer begin namespace.example::nested.CXX_declarations
 // splicer end namespace.example::nested.CXX_declarations

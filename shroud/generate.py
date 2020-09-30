@@ -10,6 +10,7 @@ Generate additional functions required to create wrappers.
 from __future__ import print_function
 from __future__ import absolute_import
 
+import collections
 import copy
 
 from . import ast
@@ -859,7 +860,7 @@ class GenFunctions(object):
             ordered_functions -
         """
         oldoptions = node.options
-        headers_typedef = {}
+        headers_typedef = collections.OrderedDict()
 
         # targs - ast.TemplateArgument
         for iargs, targs in enumerate(node.template_arguments):
