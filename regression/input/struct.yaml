@@ -77,11 +77,10 @@ declarations:
       Generates a bufferify C wrapper function.
 
 ######################################################################
-- decl: struct Cstruct_ptr {
-          char *cfield;
-          const double *const_dvalue;
-        };
-#          double *dvalue;
+- decl: struct Cstruct_ptr
+  declarations:
+  - decl: char *cfield;
+  - decl: const double *const_dvalue;
         # dvalue is implied +readonly because of const.
 
 ######################################################################

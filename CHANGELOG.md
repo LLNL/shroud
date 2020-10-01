@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Add options *wrap_class_as*, *wrap_struct_as*, *class_ctor* and *class_method*.
   Attribute *+pass* defines the passed-object dummy argument. Defines ``PASS``
   Fortran keyword with type-bound procedures.
+- ``struct`` can now be defined the same as a ``class`` by using a
+  *declarations* field in the YAML file.  The entire struct can
+  continue to be declared in a single *decl* field as before.  This
+  makes it easier to define opaque structs where the members are not
+  listed. Useful with *wrap_struct_as=class*.
 
 ### Fixed
 - Order of header files in *cxx_header* is preserved in the generated code.

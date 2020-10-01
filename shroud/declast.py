@@ -852,13 +852,13 @@ class Parser(ExprParser):
         self.enter("struct_statement")
         self.mustbe("STRUCT")
         name = self.mustbe("ID")
-        self.mustbe("LCURLY")
         node = Struct(name.value)
-        members = node.members
-        while self.token.typ != "RCURLY":
-            members.append(self.declaration())
-            self.mustbe("SEMICOLON")
-        self.mustbe("RCURLY")
+        if self.have("LCURLY"):
+            members = node.members
+            while self.token.typ != "RCURLY":
+                members.append(self.declaration())
+                self.mustbe("SEMICOLON")
+            self.mustbe("RCURLY")
         self.exit("struct_statement")
         return node
 
