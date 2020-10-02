@@ -320,7 +320,9 @@ same thing, Shroud treats structs as a C style struct.  They do not
 have associated methods.  This allows them to be mapped to a Fortran
 derived type with the ``bind(C)`` attribute and a Python NumPy array.
 
-A struct is defined in a single ``decl`` in the YAML file.
+A struct is defined the same as a class with a *declarations* field
+for struct members.
+In addition, a struct can be defined in a single ``decl`` in the YAML file.
 
 .. code-block:: yaml
 
