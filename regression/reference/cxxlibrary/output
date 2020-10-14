@@ -1,8 +1,12 @@
 Wrote cxxlibrary_types.yaml
+Wrote wrapcxxlibrary_structns.h
+Wrote wrapcxxlibrary_structns.cpp
 Wrote wrapcxxlibrary.h
 Wrote wrapcxxlibrary.cpp
 Wrote typescxxlibrary.h
+Wrote wrapfcxxlibrary_structns.f
 Wrote wrapfcxxlibrary.f
+Wrote pycxxlibrary_structnsmodule.cpp
 Wrote pyCstruct1_clstype.cpp
 Wrote pycxxlibrarymodule.cpp
 Wrote pycxxlibraryutil.cpp

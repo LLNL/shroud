@@ -13,7 +13,6 @@
 ! splicer begin file_top
 ! splicer end file_top
 module cxxlibrary_mod
-    use iso_c_binding, only : C_DOUBLE, C_INT
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -21,79 +20,7 @@ module cxxlibrary_mod
     ! splicer begin module_top
     ! splicer end module_top
 
-
-    type, bind(C) :: cstruct1
-        integer(C_INT) :: ifield
-        real(C_DOUBLE) :: dfield
-    end type cstruct1
-
     interface
-
-        ! ----------------------------------------
-        ! Function:  int passStructByReference
-        ! Requested: c_native_scalar_result
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(inout)
-        ! Requested: c_struct_&_inout
-        ! Match:     c_struct
-        function pass_struct_by_reference(arg) &
-                result(SHT_rv) &
-                bind(C, name="CXX_pass_struct_by_reference")
-            use iso_c_binding, only : C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(INOUT) :: arg
-            integer(C_INT) :: SHT_rv
-        end function pass_struct_by_reference
-
-        ! ----------------------------------------
-        ! Function:  int passStructByReferenceIn
-        ! Requested: c_native_scalar_result
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  const Cstruct1 & arg +intent(in)
-        ! Requested: c_struct_&_in
-        ! Match:     c_struct
-        function pass_struct_by_reference_in(arg) &
-                result(SHT_rv) &
-                bind(C, name="CXX_pass_struct_by_reference_in")
-            use iso_c_binding, only : C_INT
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(IN) :: arg
-            integer(C_INT) :: SHT_rv
-        end function pass_struct_by_reference_in
-
-        ! ----------------------------------------
-        ! Function:  void passStructByReferenceInout
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(inout)
-        ! Requested: c_struct_&_inout
-        ! Match:     c_struct
-        subroutine pass_struct_by_reference_inout(arg) &
-                bind(C, name="CXX_pass_struct_by_reference_inout")
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(INOUT) :: arg
-        end subroutine pass_struct_by_reference_inout
-
-        ! ----------------------------------------
-        ! Function:  void passStructByReferenceOut
-        ! Requested: c_void_scalar_result
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(out)
-        ! Requested: c_struct_&_out
-        ! Match:     c_struct
-        subroutine pass_struct_by_reference_out(arg) &
-                bind(C, name="CXX_pass_struct_by_reference_out")
-            import :: cstruct1
-            implicit none
-            type(cstruct1), intent(OUT) :: arg
-        end subroutine pass_struct_by_reference_out
 
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL

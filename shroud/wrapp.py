@@ -63,7 +63,11 @@ BuildTuple = collections.namedtuple("BuildTuple", "format vargs blk0 blk ctorvar
 # type_object_creation - code to add variables to module.
 ModuleTuple = collections.namedtuple(
     "ModuleTuple",
-    "type_object_creation"
+    "type_object_creation "
+    "decl_arraydescr "
+    "define_arraydescr "
+    "call_arraydescr "
+    "code_arraydescr "
 )
 
 # Info used per file.  Each library, namespace and class create a file.
@@ -97,10 +101,6 @@ class Wrapp(util.WrapperMixin):
         self.need_numpy = False
         self.enum_impl = []
         self.module_init_decls = []
-        self.arraydescr = []  # Create PyArray_Descr for struct
-        self.decl_arraydescr = []
-        self.define_arraydescr = []
-        self.call_arraydescr = []
         self.need_blah = False
         self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
@@ -184,7 +184,7 @@ class Wrapp(util.WrapperMixin):
             top  - True if top level module, else submodule.
         """
         node.eval_template("PY_module_filename")
-        modinfo = ModuleTuple([])
+        modinfo = ModuleTuple([], [], [], [], [])
         fileinfo = FileTuple([], [], [], [])
 
         if top:
@@ -236,7 +236,7 @@ class Wrapp(util.WrapperMixin):
             self.reset_file()
             self._push_splicer(name)
             if cls.parse_keyword == "struct" and cls.options.PY_struct_arg != "class":
-                self.create_arraydescr(cls)
+                self.create_arraydescr(cls, modinfo)
             else:
                 self.need_blah = True
                 self.wrap_class(cls, modinfo)
@@ -568,7 +568,7 @@ return 1;""",
 
         self._pop_splicer("utility")
 
-    def create_arraydescr(self, node):
+    def create_arraydescr(self, node, modinfo):
         """Create a NumPy PyArray_Descr for a struct.
         Install into module.
 
@@ -586,28 +586,29 @@ return 1;""",
 
         Args:
             node - ast.ClassNode
+            modinfo - ModuleTuple
         """
         options = node.options
         fmt = node.fmtdict
 
         self.need_numpy = True
 
-        self.decl_arraydescr.append(
+        modinfo.decl_arraydescr.append(
             wformat(
                 "extern PyArray_Descr *{PY_struct_array_descr_variable};", fmt
             )
         )
-        self.define_arraydescr.append(
+        modinfo.define_arraydescr.append(
             wformat("PyArray_Descr *{PY_struct_array_descr_variable};", fmt)
         )
         append_format(
-            self.call_arraydescr,
+            modinfo.call_arraydescr,
             "{PY_struct_array_descr_variable} = {PY_struct_array_descr_create}();\n"
             'PyModule_AddObject(m, "{PY_struct_array_descr_name}",'
             " \t(PyObject *) {PY_struct_array_descr_variable});",
             fmt,
         )
-        output = self.arraydescr
+        output = modinfo.code_arraydescr
         output.append("")
         if options.literalinclude:
             output.append("// start " + fmt.PY_struct_array_descr_create)
@@ -2605,7 +2606,7 @@ extern PyObject *{PY_prefix}error_obj;
 
         if top:
             output.extend(self.module_init_decls)
-        output.extend(self.define_arraydescr)
+        output.extend(modinfo.define_arraydescr)
 
         self._create_splicer("additional_functions", output)
         output.extend(fileinfo.MethodBody)
@@ -2622,7 +2623,7 @@ extern PyObject *{PY_prefix}error_obj;
         )
         output.append("};")
 
-        output.extend(self.arraydescr)
+        output.extend(modinfo.code_arraydescr)
 
         if top:
             self.write_init_module(fmt, output, modinfo)
@@ -2637,6 +2638,11 @@ extern PyObject *{PY_prefix}error_obj;
 
         Uses Python's API for importing a module from a shared library.
         Deal with numpy initialization.
+
+        Args:
+            fmt - 
+            output -
+            modinfo - ModuleTuple
         """
         append_format(output, module_begin, fmt)
         self._create_splicer("C_init_locals", output)
@@ -2646,10 +2652,10 @@ extern PyObject *{PY_prefix}error_obj;
             output.append("import_array();")
         output.extend(modinfo.type_object_creation)
         output.extend(self.enum_impl)
-        if self.call_arraydescr:
+        if modinfo.call_arraydescr:
             output.append("")
             output.append("// Define PyArray_Descr for structs")
-            output.extend(self.call_arraydescr)
+            output.extend(modinfo.call_arraydescr)
         append_format(output, module_middle2, fmt)
         self._create_splicer("C_init_body", output)
         append_format(output, module_end, fmt)
@@ -2662,6 +2668,10 @@ extern PyObject *{PY_prefix}error_obj;
         append_format(output, submodule_begin, fmt)
         output.extend(modinfo.type_object_creation)
 #        output.extend(self.enum_impl)
+        if modinfo.call_arraydescr:
+            output.append("")
+            output.append("// Define PyArray_Descr for structs")
+            output.extend(modinfo.call_arraydescr)
         append_format(output, submodule_end, fmt)
 
     def add_numpy_includes(self, output, top=False):

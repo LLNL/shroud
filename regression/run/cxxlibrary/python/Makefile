@@ -23,6 +23,7 @@ OBJS = \
     cxxlibrary.o \
     pyCstruct1_clstype.o \
     pycxxlibrarymodule.o \
+    pycxxlibrary_structnsmodule.o \
     pycxxlibraryutil.o
 
 CXXFLAGS += $(SHARED)

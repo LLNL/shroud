@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Order of header files in *cxx_header* is preserved in the generated code.
+- Struct in an inner namespace using Py_struct_arg=numpy is now properly wrapped.
 
 ### Changed
 

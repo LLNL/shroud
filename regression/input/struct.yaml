@@ -7,6 +7,9 @@ copyright:
 -
 
 # Wrap a C library with structs
+# This file is tested as language=c and c++.
+# Only C features are tested here.
+# cxxlibrary.yaml has additional struct tests with C++ specific features.
 
 # Several tests have a 'char *outbuf+intent(out)' argument
 # which will force a C bufferify wrapper to be created.

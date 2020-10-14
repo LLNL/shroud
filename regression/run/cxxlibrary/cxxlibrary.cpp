@@ -11,10 +11,11 @@
 
 #include "cxxlibrary.hpp"
 
-static Cstruct1 global_Cstruct1;
 static Cstruct1_cls global_Cstruct1_cls;
 
 //----------------------------------------------------------------------
+namespace structns {
+static Cstruct1 global_Cstruct1;
 // Test Fortran.
 // Test Python struct as numpy.
 
@@ -42,6 +43,7 @@ void passStructByReferenceOut(Cstruct1 &arg)
 {
     arg = global_Cstruct1;
 }
+};  // namespace cxxlibrary
 
 //----------------------------------------------------------------------
 // Test Python struct as class.

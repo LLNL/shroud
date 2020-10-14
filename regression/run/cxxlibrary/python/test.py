@@ -13,6 +13,7 @@ from __future__ import print_function
 import numpy as np
 import unittest
 import cxxlibrary
+structns = cxxlibrary.structns
 
 class Struct(unittest.TestCase):
     """Test struct problem"""
@@ -32,21 +33,21 @@ class Struct(unittest.TestCase):
     def test_StructNumpy(self):
         # NumPy creates a struct out of the tuple
         # which is returned since the argument is intent(inout)
-        i, str1out = cxxlibrary.passStructByReference((2, 2.0))
+        i, str1out = structns.passStructByReference((2, 2.0))
         self.assertEqual(4, i)
         self.assertEqual(3, str1out["ifield"])
 
         # Create struct via numpy
-        dt = cxxlibrary.Cstruct1_dtype
+        dt = structns.Cstruct1_dtype
         str1 = np.array((3, 2.0), dtype=dt)
         
-        rvi = cxxlibrary.passStructByReferenceIn(str1) # assign global_Cstruct1
+        rvi = structns.passStructByReferenceIn(str1) # assign global_Cstruct1
         self.assertEqual(6, rvi)
-        str2 = cxxlibrary.passStructByReferenceOut()   # fetch global_Cstruct1
+        str2 = structns.passStructByReferenceOut()   # fetch global_Cstruct1
         self.assertEqual(str1, str2)
 
         # Change str1 in place.
-        str3 = cxxlibrary.passStructByReferenceInout(str1)
+        str3 = structns.passStructByReferenceInout(str1)
         self.assertEqual(4, str1["ifield"])
 
     def test_StructClass(self):
