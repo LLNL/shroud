@@ -80,6 +80,15 @@ declarations:
       Generates a bufferify C wrapper function.
 
 ######################################################################
+#- decl: int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
+#  doxygen:
+#    brief: Pass struct as function pointer argument
+#    description: |
+#      The arguments to the function pointer include a pointer to struct.
+#      The struct in C and C++ have different names.
+#      Must cast function pointer.
+
+######################################################################
 - decl: struct Cstruct_ptr
   declarations:
   - decl: char *cfield;

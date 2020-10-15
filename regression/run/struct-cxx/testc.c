@@ -12,6 +12,11 @@
 
 #include <assert.h>
 
+static int callback_fcn(STR_cstruct1 *arg)
+{
+    return arg->ifield;
+}
+
 void test_Cstruct1(void)
 {
     int rvi;
@@ -45,7 +50,14 @@ void test_Cstruct1(void)
     STR_accept_struct_in_out_ptr(&str1);
     assert(5 == str1.ifield && "acceptStructInOutPtr i field");
     assert(5.0 == str1.dfield && "acceptStructInOutPtr d field");
-    
+
+#if 0
+    //typedef void ( *worker0 )(STR_cstruct1 * arg);
+    //typedef void ( *worker )(Cstruct1 * arg);
+    str1.ifield = 6;
+    rvi = STR_callback1(&str1, callback_fcn);
+    assert(6 == rvi && "callback1");
+#endif
 }
 
 int main(int argc, char *argv[])
