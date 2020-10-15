@@ -69,6 +69,7 @@ test-c : \
   test-c-classes \
   test-c-enum-c \
   test-c-namespace \
+  test-c-struct-cxx \
   test-c-statement \
   test-c-templates
 
@@ -177,6 +178,7 @@ test-pointers : \
   test-python-pointers-list-cxx
 
 test-struct : \
+  test-c-struct-cxx \
   test-fortran-struct-c \
   test-fortran-struct-cxx \
   test-python-struct-numpy-c \
