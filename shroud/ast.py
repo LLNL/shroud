@@ -246,6 +246,15 @@ class NamespaceMixin(object):
         self.symbols[name] = node
         return node
 
+    def add_typedef_by_name(self, name, ntypemap=None):
+        """Add a type name to the symbol table to enable parsing.
+        Used by names which are in typemap.shared_typemap.
+        Also used with generated typemaps for template parameters.
+        """
+        node = TypedefNode(name, parent=self, ntypemap=ntypemap)
+        self.symbols[name] = node
+        return node
+
     def add_variable(self, decl, ast=None, **kwargs):
         """Add a variable or class member.
 
@@ -376,16 +385,16 @@ class LibraryNode(AstNode, NamespaceMixin):
 
     def create_std_names(self):
         """Add standard types to the Library."""
-        self.add_typedef("size_t")
-        self.add_typedef("int8_t")
-        self.add_typedef("int16_t")
-        self.add_typedef("int32_t")
-        self.add_typedef("int64_t")
-        self.add_typedef("uint8_t")
-        self.add_typedef("uint16_t")
-        self.add_typedef("uint32_t")
-        self.add_typedef("uint64_t")
-        self.add_typedef("MPI_Comm")
+        self.add_typedef_by_name("size_t")
+        self.add_typedef_by_name("int8_t")
+        self.add_typedef_by_name("int16_t")
+        self.add_typedef_by_name("int32_t")
+        self.add_typedef_by_name("int64_t")
+        self.add_typedef_by_name("uint8_t")
+        self.add_typedef_by_name("uint16_t")
+        self.add_typedef_by_name("uint32_t")
+        self.add_typedef_by_name("uint64_t")
+        self.add_typedef_by_name("MPI_Comm")
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -1115,7 +1124,7 @@ class ClassNode(AstNode, NamespaceMixin):
         )
         typemap.register_type(ntypemap.name, ntypemap)
 
-        self.add_typedef(name, ntypemap=ntypemap)
+        self.add_typedef_by_name(name, ntypemap=ntypemap)
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -1818,8 +1827,8 @@ def create_std_namespace(glb):
         glb: ast.LibraryNode
     """
     std = glb.add_namespace("std", expose=False)
-    std.add_typedef("string")
-    std.add_typedef("vector")
+    std.add_typedef_by_name("string")
+    std.add_typedef_by_name("vector")
     return std
 
 
