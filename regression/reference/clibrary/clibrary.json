@@ -5304,6 +5304,44 @@
         "language": "c",
         "scope_file": [
             "Clibrary"
+        ],
+        "typedefs": [
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "TypeID",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "int"
+                },
+                "fmtdict": {},
+                "name": "TypeID",
+                "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "EnumTypeID",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "int"
+                },
+                "fmtdict": {},
+                "name": "EnumTypeID",
+                "options": {}
+            }
         ]
     }
 }

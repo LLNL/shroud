@@ -204,6 +204,7 @@ class ToDict(visitor.Visitor):
                 "enums",
                 "functions",
                 "namespaces",
+                "typedefs",
                 "variables",
 #                "fmtdict",
 #                "options",
@@ -321,11 +322,17 @@ class ToDict(visitor.Visitor):
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
         self.add_visit_fields(node, d, [
-            "classes", "enums", "functions", "namespaces", "variables",
+            "classes", "enums", "functions", "namespaces", "typedefs", "variables",
             "fmtdict", "options"])
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, ["scope_file"])
         add_non_none_fields(node, d, ["scope"])
+        return d
+
+    def visit_TypedefNode(self, node):
+        d = dict(name=node.name)
+        self.add_visit_fields(node, d, ["ast", "fmtdict", "options"])
+        add_non_none_fields(node, d, ["linenumber"])
         return d
 
     def visit_VariableNode(self, node):

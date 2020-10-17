@@ -1061,6 +1061,41 @@ def fill_struct_typemap_defaults(node, ntypemap):
     # ntypemap.LUA_statements = {}
 
 
+def create_fcnptr_typemap(node, fields=None):
+    """Create a typemap for a function pointer
+    The typemap contains a the declaration.
+
+    Args:
+        node - declast.Declaration
+        fields - dictionary
+    """
+#    print("XXXXXXXX", dir(node))
+#    print("XXXXXXXX", type(node))
+#    print("  name", node.name)   # return type of function pointer
+#    print("  typemap", node.typemap)   # return type of function pointer
+#    raise NotImplementedError(
+#        "Function pointers not supported in typedef"
+#    )
+    fmt_class = node.fmtdict
+    cxx_name = node.name
+#    cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
+#    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt_class)
+    ntypemap = Typemap(
+        cxx_name,
+        base="fcnptr",
+        sgroup="fcnptr",
+        c_type="XXXc_type",
+        cxx_type="XXXcxx_type",
+        f_type="XXXf_type",
+    )
+    # Check if all fields are C compatible
+    
+    if fields is not None:
+        ntypemap.update(fields)
+    register_type(cxx_name, ntypemap)
+    return ntypemap
+
+
 def lookup_c_statements(arg):
     """Look up the c_statements for an argument.
     If the argument type is a template, look for
