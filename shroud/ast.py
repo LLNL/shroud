@@ -121,7 +121,7 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
-                node = self.create_typedef_typemap(ast, **kwargs)
+                node = self.add_typedef(decl, ast=ast, **kwargs)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
             else:
@@ -149,29 +149,30 @@ class NamespaceMixin(object):
             )
         return node
 
-    def create_typedef_typemap(self, ast, **kwargs):
-        """Create a TypedefNode from a Declarator.
+    def create_typedef_typemap(self, node, fields=None):
+        """Create a typemap from a Declarator.
 
         For simple aliases, clone the original typemap and update fields.
         """
+        ast = node.ast
         if ast.declarator.pointer:
+            # typedef int *foo;
             raise NotImplementedError("Pointers not supported in typedef")
         elif ast.declarator.func:
-            ntypemap = typemap.create_fcnptr_typemap(ast, kwargs.get("fields", None))
-            key = ast.name
+            # typedef int (*incr_type)(int);
+            ntypemap = typemap.create_fcnptr_typemap(node, fields)
         else:
+            # typedef int TypeID;
             key = ast.declarator.name
             orig = ast.typemap
             ntypemap = orig.clone_as(self.scope + key)
             ntypemap.typedef = orig.name
             ntypemap.cxx_type = ntypemap.name
             ntypemap.compute_flat_name()
-            if "fields" in kwargs:
-                ntypemap.update(kwargs["fields"])
+            if fields:
+                ntypemap.update(fields)
             typemap.register_type(ntypemap.name, ntypemap)
-
-        node = self.add_typedef(key, ast, ntypemap)
-        return node
+        return ntypemap
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
@@ -237,12 +238,16 @@ class NamespaceMixin(object):
         self.symbols[node.name] = node
         return node
 
-    def add_typedef(self, name, ast=None, ntypemap=None):
+    def add_typedef(self, decl, ast=None, **kwargs):
         """Add a TypedefNode to the symbol table.
         """
-        node = TypedefNode(name, parent=self, ast=ast, ntypemap=ntypemap)
-        if ast is not None:
-            self.typedefs.append(node)
+        if ast is None:
+            ast = declast.check_decl(decl, namespace=self)
+
+        name = ast.get_name()  # Local name.
+        node = TypedefNode(name, parent=self, ast=ast)
+        node.typemap = self.create_typedef_typemap(node, fields=kwargs.get("fields", None))
+        self.typedefs.append(node)
         self.symbols[name] = node
         return node
 
@@ -1677,6 +1682,8 @@ class TypedefNode(AstNode):
                  **kwargs):
         """
         Args:
+            name - 
+            parent - 
             ast - declast.Declaration, typedef statement.
         """
 

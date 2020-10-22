@@ -672,7 +672,7 @@ class Parser(ExprParser):
 #                    break
         if ntypemap is None:
             self.error_msg(
-                "Unknown typemap '{}".format("_".join(decl.specifier))
+                "(get_canonical_typemap) Unknown typemap '{}' - '{}'".format("_".join(decl.specifier), typename)
             )
         decl.typemap = ntypemap
 
