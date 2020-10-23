@@ -242,6 +242,40 @@ C_line_length
   A value of 0 will give the shortest possible lines.
   Defaults to 72.
 
+class_baseclass
+  Used to define a baseclass for a struct for *wrap_struct_as=class*".
+  The baseclase must already be defined earlier in the YAML file.
+  It must be in the same namespace as the struct.
+
+.. example from struct.yaml
+  
+.. code-block:: yaml
+
+    - decl: struct Cstruct_as_class
+      options:
+        wrap_struct_as: class
+    - decl: struct Cstruct_as_subclass
+      options:
+        wrap_struct_as: class
+        class_baseclass: Cstruct_as_class
+
+ This is equivelent to the C++ code
+
+ .. code-block:: c++
+
+    class Cstruct_as_class;
+    class Cstruct_as_subclass : public Cstruct_as_class;
+
+The corresponding Fortran wrapper will have
+
+.. code-block:: fortran
+
+    type cstruct_as_class
+      type(STR_SHROUD_capsule_data) :: cxxmem
+    end type cstruct_as_class
+    type, extends(cstruct_as_class) ::  cstruct_as_class
+    end type cstruct_as_subclass
+
 class_ctor
   Indicates that this function is a constructor for a struct.
   The value is the name of the struct.

@@ -161,6 +161,7 @@ declarations:
         };
   options:
     wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
     wrap_python: False
   doxygen:
     description: |

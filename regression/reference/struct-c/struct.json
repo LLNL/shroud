@@ -954,6 +954,7 @@
                     "C_impl_filename": "wrapCstruct_as_subclass.c",
                     "C_name_scope": "Cstruct_as_subclass_",
                     "C_type_name": "STR_Cstruct_as_subclass",
+                    "F_derived_member_base": "cstruct_as_class",
                     "F_derived_name": "cstruct_as_subclass",
                     "F_name_scope": "cstruct_as_subclass_",
                     "PY_struct_array_descr_create": "PY_Cstruct_as_subclass_create_array_descr",
@@ -1485,6 +1486,7 @@
                 ],
                 "name": "Cstruct_as_subclass",
                 "options": {
+                    "class_baseclass": "Cstruct_as_class",
                     "wrap_python": false,
                     "wrap_struct_as": "class"
                 },

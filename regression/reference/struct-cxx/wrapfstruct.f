@@ -80,8 +80,7 @@ module struct_mod
         ! splicer end class.Cstruct_as_class.type_bound_procedure_part
     end type cstruct_as_class
 
-    type cstruct_as_subclass
-        type(STR_SHROUD_capsule_data) :: cxxmem
+    type, extends(cstruct_as_class) :: cstruct_as_subclass
         ! splicer begin class.Cstruct_as_subclass.component_part
         ! splicer end class.Cstruct_as_subclass.component_part
     contains

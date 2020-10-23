@@ -266,6 +266,13 @@ class Wrapf(util.WrapperMixin):
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
             fmt_class.F_derived_member_base = node.baseclass[0][2].typemap.f_derived_type
+        elif options.class_baseclass:
+            # Used with wrap_struct_as=class.
+            baseclass = node.parent.unqualified_lookup(options.class_baseclass)
+            if not baseclass:
+                raise RuntimeError("Unknown class '{}'".format(options.class_baseclass))
+            fmt_class.F_derived_member_base = baseclass.typemap.f_derived_type
+        if fmt_class.F_derived_member_base:
             append_format(
                 f_type_decl,
                 "type, extends({F_derived_member_base}) :: {F_derived_name}+",

@@ -233,6 +233,24 @@ declarations:
   - instantiation: <internal::ImplWorker1>
 
 ########################################
+# from struct.yaml
+# Check that F_derived_member_base is set correctly.
+# Should be F_derived_name of class_baseclass.
+
+- decl: struct Cstruct_as_class
+  options:
+    wrap_struct_as: class
+  format:
+    F_derived_name: Fstruct_as_class
+
+- decl: struct Cstruct_as_subclass
+  options:
+    wrap_struct_as: class
+    class_baseclass: Cstruct_as_class
+  format:
+    F_derived_name: Fstruct_as_subclass
+
+########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.
 splicer_code:

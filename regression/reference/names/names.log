@@ -27,6 +27,8 @@ class Names2
 Close wrapNames2.cc
 class twoTs
 class twoTs
+class Cstruct_as_class
+class Cstruct_as_subclass
 C function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C function void function1(void)
@@ -47,6 +49,8 @@ Close typestestnames.hh
 class Names2
 class twoTs
 class twoTs
+class Cstruct_as_class
+class Cstruct_as_subclass
 C-interface, Fortran function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C-interface function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
 C-interface, Fortran function void function1(void)

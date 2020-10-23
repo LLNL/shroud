@@ -16,6 +16,20 @@
 extern "C" {
 #endif
 
+// helper capsule_TES_Cstruct_as_class
+struct s_TES_Cstruct_as_class {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_Cstruct_as_class TES_Cstruct_as_class;
+
+// helper capsule_TES_Cstruct_as_subclass
+struct s_TES_Cstruct_as_subclass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TES_Cstruct_as_subclass TES_Cstruct_as_subclass;
+
 // helper capsule_TES_Names2
 struct s_TES_Names2 {
     void *addr;     /* address of C++ memory */

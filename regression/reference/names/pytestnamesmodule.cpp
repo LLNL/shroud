@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytestnamesmodule.hpp"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TESTNAMES_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -33,6 +36,8 @@ PyObject *PY_init_testnames_ns0(void);
 PyObject *PY_init_testnames_ns1(void);
 PyObject *PY_init_testnames_internal(void);
 PyObject *PY_init_testnames_std(void);
+PyArray_Descr *PY_Cstruct_as_class_array_descr;
+PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -455,6 +460,98 @@ static PyMethodDef PY_methods[] = {
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
 
+// Create PyArray_Descr for Cstruct_as_class
+static PyArray_Descr *PY_Cstruct_as_class_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(0);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(0);
+    if (ldescr == nullptr) goto fail;
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
+// Create PyArray_Descr for Cstruct_as_subclass
+static PyArray_Descr *PY_Cstruct_as_subclass_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(0);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(0);
+    if (ldescr == nullptr) goto fail;
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
 /*
  * inittestnames - Initialization function for the module
  * *must* be called inittestnames
@@ -530,6 +627,8 @@ inittestnames(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
+
     {
         PyObject *submodule = PY_init_testnames_ns0();
         if (submodule == nullptr)
@@ -590,6 +689,14 @@ inittestnames(void)
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
+
+    // Define PyArray_Descr for structs
+    PY_Cstruct_as_class_array_descr = PY_Cstruct_as_class_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_as_class_dtype", 
+        (PyObject *) PY_Cstruct_as_class_array_descr);
+    PY_Cstruct_as_subclass_array_descr = PY_Cstruct_as_subclass_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_as_subclass_dtype", 
+        (PyObject *) PY_Cstruct_as_subclass_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

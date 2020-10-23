@@ -178,6 +178,74 @@
                     "T2"
                 ],
                 "typemap_name": "twoTs_instantiation4"
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCstruct_as_class.hh",
+                    "C_impl_filename": "wrapCstruct_as_class.cc",
+                    "C_name_scope": "Cstruct_as_class_",
+                    "C_type_name": "TES_Cstruct_as_class",
+                    "F_derived_name": "Fstruct_as_class",
+                    "F_name_scope": "cstruct_as_class_",
+                    "PY_PyObject": "PY_Cstruct_as_class",
+                    "PY_PyTypeObject": "PY_Cstruct_as_class_Type",
+                    "PY_from_object_func": "PP_Cstruct_as_class_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_as_class_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
+                    "class_scope": "Cstruct_as_class::",
+                    "cxx_class": "Cstruct_as_class",
+                    "cxx_type": "Cstruct_as_class",
+                    "file_scope": "Cstruct_as_class",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "name": "Cstruct_as_class",
+                "options": {
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_class::",
+                "typemap_name": "Cstruct_as_class",
+                "wrap_as": "class"
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCstruct_as_subclass.hh",
+                    "C_impl_filename": "wrapCstruct_as_subclass.cc",
+                    "C_name_scope": "Cstruct_as_subclass_",
+                    "C_type_name": "TES_Cstruct_as_subclass",
+                    "F_derived_member_base": "Fstruct_as_class",
+                    "F_derived_name": "Fstruct_as_subclass",
+                    "F_name_scope": "cstruct_as_subclass_",
+                    "PY_PyObject": "PY_Cstruct_as_subclass",
+                    "PY_PyTypeObject": "PY_Cstruct_as_subclass_Type",
+                    "PY_from_object_func": "PP_Cstruct_as_subclass_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_subclass_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_subclass_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_subclass_array_descr",
+                    "PY_to_object_func": "PP_Cstruct_as_subclass_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_as_subclass_to_Object_idtor",
+                    "class_scope": "Cstruct_as_subclass::",
+                    "cxx_class": "Cstruct_as_subclass",
+                    "cxx_type": "Cstruct_as_subclass",
+                    "file_scope": "Cstruct_as_subclass",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "name": "Cstruct_as_subclass",
+                "options": {
+                    "class_baseclass": "Cstruct_as_class",
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_subclass::",
+                "typemap_name": "Cstruct_as_subclass",
+                "wrap_as": "class"
             }
         ],
         "copyright": [

@@ -137,6 +137,7 @@ contains
     call assert_equals(1, subpoint1%get_x1())
     call assert_equals(2, subpoint1%get_y1())
     call assert_equals(3, subpoint1%get_z1())
+    call assert_equals(3, subpoint1%sum())
 
   end subroutine test_struct_class
 
