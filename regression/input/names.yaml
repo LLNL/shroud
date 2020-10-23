@@ -250,6 +250,12 @@ declarations:
   format:
     F_derived_name: Fstruct_as_subclass
 
+# Fortran type-bound name same as function name so will generate:
+#    procedure :: cstruct_as_class_sum
+- decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+  options:
+    class_method: Cstruct_as_class
+
 ########################################
 # Test explicit splicers
 # class Name2 has no methods by default it would not be written.

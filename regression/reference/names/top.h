@@ -64,6 +64,8 @@ void TES_function_tu_instantiation2(float arg1, double arg2);
 
 int TES_use_impl_worker_instantiation3(void);
 
+int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point);
+
 #ifdef __cplusplus
 }
 #endif

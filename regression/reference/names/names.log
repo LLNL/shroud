@@ -43,6 +43,7 @@ C function void TestMultilineSplicer(std::string & name +intent(inout)+len+len_t
 C function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 C function int UseImplWorker(void)
+C function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 Close top.h
 Close top.cpp
 Close typestestnames.hh
@@ -65,6 +66,7 @@ C-interface function void TestMultilineSplicer(std::string & name +intent(inout)
 C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 C-interface, Fortran function int UseImplWorker(void)
+C-interface, Fortran function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 class Names
 C-interface, Fortran method Names(void) +name(defaultctor)
 C-interface, Fortran method void method1(void)
@@ -120,6 +122,7 @@ Python function void TestMultilineSplicer(std::string & name +intent(inout), int
 Python function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
 Python function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
 Python function int UseImplWorker(void)
+Python function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 Close pytestnamesmodule.cpp
 Close pytestnamesutil.cpp
 Close pytestnamesmodule.hpp

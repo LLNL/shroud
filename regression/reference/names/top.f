@@ -76,6 +76,7 @@ module top_module
         procedure :: get_instance => cstruct_as_class_get_instance
         procedure :: set_instance => cstruct_as_class_set_instance
         procedure :: associated => cstruct_as_class_associated
+        procedure :: cstruct_as_class_sum
         ! splicer begin class.Cstruct_as_class.type_bound_procedure_part
         ! splicer end class.Cstruct_as_class.type_bound_procedure_part
     end type Fstruct_as_class
@@ -341,6 +342,24 @@ module top_module
             implicit none
             integer(C_INT) :: SHT_rv
         end function c_use_impl_worker_instantiation3
+
+        ! ----------------------------------------
+        ! Function:  int Cstruct_as_class_sum
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+        ! Requested: c_shadow_*_in
+        ! Match:     c_shadow_in
+        function c_cstruct_as_class_sum(point) &
+                result(SHT_rv) &
+                bind(C, name="TES_cstruct_as_class_sum")
+            use iso_c_binding, only : C_INT
+            import :: TES_SHROUD_capsule_data
+            implicit none
+            type(TES_SHROUD_capsule_data), intent(IN) :: point
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_sum
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -737,6 +756,29 @@ contains
         SHT_rv = c_use_impl_worker_instantiation3()
         ! splicer end function.use_impl_worker_instantiation3
     end function use_impl_worker_instantiation3
+
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! int Cstruct_as_class_sum
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Requested: f_shadow_*_in
+    ! Match:     f_default
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
+    function cstruct_as_class_sum(point) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(Fstruct_as_class), intent(IN) :: point
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.cstruct_as_class_sum
+        SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
+        ! splicer end function.cstruct_as_class_sum
+    end function cstruct_as_class_sum
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

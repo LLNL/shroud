@@ -363,6 +363,48 @@ PY_UseImplWorker_instantiation3(
 // splicer end function.use_impl_worker_instantiation3
 }
 
+// ----------------------------------------
+// Function:  int Cstruct_as_class_sum
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Exact:     py_shadow_*_in
+static char PY_Cstruct_as_class_sum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_Cstruct_as_class_sum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.cstruct_as_class_sum
+    PY_Cstruct_as_class * SHPy_point;
+    const char *SHT_kwlist[] = {
+        "point",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!:Cstruct_as_class_sum", const_cast<char **>(SHT_kwlist), 
+        &PY_Cstruct_as_class_Type, &SHPy_point))
+        return nullptr;
+
+    // post_declare
+    const Cstruct_as_class * point =
+        SHPy_point ? SHPy_point->myobj : nullptr;
+
+    int ARG_rv = Cstruct_as_class_sum(point);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(ARG_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.cstruct_as_class_sum
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -453,6 +495,8 @@ static PyMethodDef PY_methods[] = {
 {"UseImplWorker_instantiation3",
     (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
     PY_UseImplWorker_instantiation3__doc__},
+{"Cstruct_as_class_sum", (PyCFunction)PY_Cstruct_as_class_sum,
+    METH_VARARGS|METH_KEYWORDS, PY_Cstruct_as_class_sum__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,

@@ -161,10 +161,14 @@ class Wrapf(util.WrapperMixin):
             fmt_func = node.fmtdict
             type_bound_part = fileinfo.method_type_bound_part.setdefault(
                 options.class_method, [])
-            type_bound_part.append(
-                "procedure :: %s => %s"
-                % (fmt_func.F_name_function, fmt_func.F_name_impl)
-            )
+            if fmt_func.F_name_function == fmt_func.F_name_impl:
+                append_format(type_bound_part,
+                              "procedure :: {F_name_impl}",
+                              fmt_func)
+            else:
+                append_format(type_bound_part,
+                              "procedure :: {F_name_function} => {F_name_impl}",
+                              fmt_func)
             
     def wrap_struct(self, node, fileinfo):
         """A struct must be bind(C)-able. i.e. all POD.
@@ -437,9 +441,9 @@ class Wrapf(util.WrapperMixin):
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            type_bound_part.append(
-                "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
-            )
+            append_format(type_bound_part,
+                          "procedure :: {F_name_function} => {F_name_impl}",
+                          fmt)
 
             append_format(
                 impl,
@@ -460,9 +464,9 @@ cxxptr = {F_this}%{F_derived_member}%addr
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            type_bound_part.append(
-                "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
-            )
+            append_format(type_bound_part,
+                          "procedure :: {F_name_function} => {F_name_impl}",
+                          fmt)
 
             # XXX - release existing pointer?
             append_format(
@@ -484,9 +488,9 @@ type(C_PTR), intent(IN) :: {F_derived_member}
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            type_bound_part.append(
-                "procedure :: %s => %s" % (fmt.F_name_function, fmt.F_name_impl)
-            )
+            append_format(type_bound_part,
+                          "procedure :: {F_name_function} => {F_name_impl}",
+                          fmt)
 
             append_format(
                 impl,
@@ -506,11 +510,12 @@ rv = c_associated({F_this}%{F_derived_member}%addr)
             fmt.F_name_function = wformat(options.F_name_function_template, fmt)
             fmt.F_name_impl = wformat(options.F_name_impl_template, fmt)
 
-            type_bound_part.append("procedure :: %s" % fmt.F_name_impl)
-            type_bound_part.append(
-                "generic :: assignment(=) => %s" % fmt.F_name_impl
-            )
-
+            append_format(type_bound_part,
+                          "procedure :: {F_name_impl}",
+                          fmt)
+            append_format(type_bound_part,
+                          "generic :: assignment(=) => {F_name_impl}",
+                          fmt)
             append_format(
                 impl,
                 """
@@ -1901,15 +1906,13 @@ rv = .false.
             if node.cpp_if:
                 type_bound_part.append("#" + node.cpp_if)
             if is_static:
-                type_bound_part.append(
-                    "procedure, nopass :: %s => %s"
-                    % (fmt_func.F_name_function, fmt_func.F_name_impl)
-                )
+                append_format(type_bound_part,
+                              "procedure, nopass :: {F_name_function} => {F_name_impl}",
+                              fmt_func)
             elif not is_ctor:
-                type_bound_part.append(
-                    "procedure :: %s => %s"
-                    % (fmt_func.F_name_function, fmt_func.F_name_impl)
-                )
+                append_format(type_bound_part,
+                              "procedure :: {F_name_function} => {F_name_impl}",
+                              fmt_func)
             if node.cpp_if:
                 type_bound_part.append("#endif")
 
