@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Python uses `PyTypeObject.tp_base` field.
 - Ability to treat a struct as a class.
   Useful with C code which does not support ``class`` directly.
-  Add options *wrap_class_as*, *wrap_struct_as*, *class_ctor* and *class_method*.
+  Add options *wrap_class_as*, *wrap_struct_as*, *class_baseclass*, *class_ctor* and *class_method*.
   Attribute *+pass* defines the passed-object dummy argument. Defines ``PASS``
   Fortran keyword with type-bound procedures.
 - ``struct`` can now be defined the same as a ``class`` by using a
