@@ -26,7 +26,7 @@ class Namespace(unittest.TestCase):
 
         # typedef foo;
         # foo var;
-        typefoo = lib.add_typedef("foo")
+        typefoo = lib.add_typedef("typedef int foo")
         self.assertIsInstance(typefoo, ast.TypedefNode)
         self.assertEqual("foo", typefoo.typemap.name)
         node = lib.qualified_lookup("foo")
