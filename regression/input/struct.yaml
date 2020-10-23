@@ -154,6 +154,23 @@ declarations:
     F_name_function: sum
 
 
+- decl: struct Cstruct_as_subclass {
+          int x1;
+          int y1;
+          int z1;
+        };
+  options:
+    wrap_struct_as: class
+    wrap_python: False
+  doxygen:
+    description: |
+      Treat a struct as a subclass of another struct
+
+- decl: Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+  options:
+    wrap_python: False
+    class_ctor: Cstruct_as_subclass
+
 ######################################################################
 splicer_code:
   f:

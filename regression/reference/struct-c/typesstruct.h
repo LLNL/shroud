@@ -18,6 +18,13 @@ struct s_STR_Cstruct_as_class {
 };
 typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
 
+// helper capsule_STR_Cstruct_as_subclass
+struct s_STR_Cstruct_as_subclass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
+
 // helper capsule_data_helper
 struct s_STR_SHROUD_capsule_data {
     void *addr;     /* address of C++ memory */

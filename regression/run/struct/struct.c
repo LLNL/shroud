@@ -119,7 +119,8 @@ void freeStruct(Cstruct1 *arg1)
 
 Cstruct_as_class *Create_Cstruct_as_class(void)
 {
-    Cstruct_as_class *rv = (Cstruct_as_class *) malloc(sizeof(Cstruct_as_class));
+    Cstruct_as_class *rv = (Cstruct_as_class *)
+        malloc(sizeof(Cstruct_as_class));
     rv->x1 = 0;
     rv->y1 = 0;
     return rv;
@@ -127,9 +128,20 @@ Cstruct_as_class *Create_Cstruct_as_class(void)
 
 Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
 {
-    Cstruct_as_class *rv = (Cstruct_as_class *) malloc(sizeof(Cstruct_as_class));
+    Cstruct_as_class *rv = (Cstruct_as_class *)
+        malloc(sizeof(Cstruct_as_class));
     rv->x1 = x;
     rv->y1 = y;
+    return rv;
+}
+
+Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+{
+    Cstruct_as_subclass *rv = (Cstruct_as_subclass *)
+        malloc(sizeof(Cstruct_as_subclass));
+    rv->x1 = x;
+    rv->y1 = y;
+    rv->z1 = z;
     return rv;
 }
 

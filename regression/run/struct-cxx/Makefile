@@ -23,7 +23,8 @@ VPATH = \
 C_OBJS = \
     struct.o \
     wrapstruct.o \
-    wrapCstruct_as_class.o
+    wrapCstruct_as_class.o \
+    wrapCstruct_as_subclass.o
 F_OBJS = \
     wrapfstruct.o \
     fruit.o \

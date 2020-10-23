@@ -82,12 +82,32 @@ module struct_mod
         ! splicer end class.Cstruct_as_class.type_bound_procedure_part
     end type cstruct_as_class
 
+    type cstruct_as_subclass
+        type(STR_SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Cstruct_as_subclass.component_part
+        ! splicer end class.Cstruct_as_subclass.component_part
+    contains
+        procedure :: get_x1 => cstruct_as_subclass_get_x1
+        procedure :: set_x1 => cstruct_as_subclass_set_x1
+        procedure :: get_y1 => cstruct_as_subclass_get_y1
+        procedure :: set_y1 => cstruct_as_subclass_set_y1
+        procedure :: get_z1 => cstruct_as_subclass_get_z1
+        procedure :: set_z1 => cstruct_as_subclass_set_z1
+        procedure :: get_instance => cstruct_as_subclass_get_instance
+        procedure :: set_instance => cstruct_as_subclass_set_instance
+        procedure :: associated => cstruct_as_subclass_associated
+        ! splicer begin class.Cstruct_as_subclass.type_bound_procedure_part
+        ! splicer end class.Cstruct_as_subclass.type_bound_procedure_part
+    end type cstruct_as_subclass
+
     interface operator (.eq.)
         module procedure cstruct_as_class_eq
+        module procedure cstruct_as_subclass_eq
     end interface
 
     interface operator (.ne.)
         module procedure cstruct_as_class_ne
+        module procedure cstruct_as_subclass_ne
     end interface
 
     ! ----------------------------------------
@@ -162,6 +182,114 @@ module struct_mod
 
     ! splicer begin class.Cstruct_as_class.additional_interfaces
     ! splicer end class.Cstruct_as_class.additional_interfaces
+
+    ! ----------------------------------------
+    ! Function:  int getX1
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        function c_cstruct_as_subclass_get_x1(self) &
+                result(SHT_rv) &
+                bind(C, name="STR_Cstruct_as_subclass_get_x1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_subclass_get_x1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void setX1
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_cstruct_as_subclass_set_x1(self, val) &
+                bind(C, name="STR_Cstruct_as_subclass_set_x1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_cstruct_as_subclass_set_x1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int getY1
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        function c_cstruct_as_subclass_get_y1(self) &
+                result(SHT_rv) &
+                bind(C, name="STR_Cstruct_as_subclass_get_y1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_subclass_get_y1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void setY1
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_cstruct_as_subclass_set_y1(self, val) &
+                bind(C, name="STR_Cstruct_as_subclass_set_y1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_cstruct_as_subclass_set_y1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int getZ1
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    interface
+        function c_cstruct_as_subclass_get_z1(self) &
+                result(SHT_rv) &
+                bind(C, name="STR_Cstruct_as_subclass_get_z1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_subclass_get_z1
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void setZ1
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_cstruct_as_subclass_set_z1(self, val) &
+                bind(C, name="STR_Cstruct_as_subclass_set_z1")
+            use iso_c_binding, only : C_INT
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            type(STR_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: val
+        end subroutine c_cstruct_as_subclass_set_z1
+    end interface
+
+    ! splicer begin class.Cstruct_as_subclass.additional_interfaces
+    ! splicer end class.Cstruct_as_subclass.additional_interfaces
 
     ! ----------------------------------------
     ! Function:  int passStructByValue
@@ -505,6 +633,37 @@ module struct_mod
         end function c_cstruct_as_class_sum
     end interface
 
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int z +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_create__cstruct_as_subclass_args(x, y, z, SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="STR_create__cstruct_as_subclass_args")
+            use iso_c_binding, only : C_INT, C_PTR
+            import :: STR_SHROUD_capsule_data
+            implicit none
+            integer(C_INT), value, intent(IN) :: x
+            integer(C_INT), value, intent(IN) :: y
+            integer(C_INT), value, intent(IN) :: z
+            type(STR_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_create__cstruct_as_subclass_args
+    end interface
+
     interface
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -514,6 +673,10 @@ module struct_mod
         module procedure create__cstruct_as_class
         module procedure create__cstruct_as_class_args
     end interface Cstruct_as_class
+
+    interface Cstruct_as_subclass
+        module procedure create__cstruct_as_subclass_args
+    end interface Cstruct_as_subclass
 
 contains
 
@@ -620,6 +783,149 @@ contains
 
     ! splicer begin class.Cstruct_as_class.additional_functions
     ! splicer end class.Cstruct_as_class.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  int getX1
+    ! int getX1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function cstruct_as_subclass_get_x1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Cstruct_as_subclass.method.get_x1
+        SHT_rv = c_cstruct_as_subclass_get_x1(obj%cxxmem)
+        ! splicer end class.Cstruct_as_subclass.method.get_x1
+    end function cstruct_as_subclass_get_x1
+
+    ! ----------------------------------------
+    ! Function:  void setX1
+    ! void setX1
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine cstruct_as_subclass_set_x1(obj, val)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Cstruct_as_subclass.method.set_x1
+        call c_cstruct_as_subclass_set_x1(obj%cxxmem, val)
+        ! splicer end class.Cstruct_as_subclass.method.set_x1
+    end subroutine cstruct_as_subclass_set_x1
+
+    ! ----------------------------------------
+    ! Function:  int getY1
+    ! int getY1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function cstruct_as_subclass_get_y1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Cstruct_as_subclass.method.get_y1
+        SHT_rv = c_cstruct_as_subclass_get_y1(obj%cxxmem)
+        ! splicer end class.Cstruct_as_subclass.method.get_y1
+    end function cstruct_as_subclass_get_y1
+
+    ! ----------------------------------------
+    ! Function:  void setY1
+    ! void setY1
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine cstruct_as_subclass_set_y1(obj, val)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Cstruct_as_subclass.method.set_y1
+        call c_cstruct_as_subclass_set_y1(obj%cxxmem, val)
+        ! splicer end class.Cstruct_as_subclass.method.set_y1
+    end subroutine cstruct_as_subclass_set_y1
+
+    ! ----------------------------------------
+    ! Function:  int getZ1
+    ! int getZ1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function cstruct_as_subclass_get_z1(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.Cstruct_as_subclass.method.get_z1
+        SHT_rv = c_cstruct_as_subclass_get_z1(obj%cxxmem)
+        ! splicer end class.Cstruct_as_subclass.method.get_z1
+    end function cstruct_as_subclass_get_z1
+
+    ! ----------------------------------------
+    ! Function:  void setZ1
+    ! void setZ1
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int val +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine cstruct_as_subclass_set_z1(obj, val)
+        use iso_c_binding, only : C_INT
+        class(cstruct_as_subclass) :: obj
+        integer(C_INT), value, intent(IN) :: val
+        ! splicer begin class.Cstruct_as_subclass.method.set_z1
+        call c_cstruct_as_subclass_set_z1(obj%cxxmem, val)
+        ! splicer end class.Cstruct_as_subclass.method.set_z1
+    end subroutine cstruct_as_subclass_set_z1
+
+    ! Return pointer to C++ memory.
+    function cstruct_as_subclass_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(cstruct_as_subclass), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function cstruct_as_subclass_get_instance
+
+    subroutine cstruct_as_subclass_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(cstruct_as_subclass), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine cstruct_as_subclass_set_instance
+
+    function cstruct_as_subclass_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(cstruct_as_subclass), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function cstruct_as_subclass_associated
+
+    ! splicer begin class.Cstruct_as_subclass.additional_functions
+    ! splicer end class.Cstruct_as_subclass.additional_functions
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -828,6 +1134,45 @@ contains
         ! splicer end function.sum
     end function cstruct_as_class_sum
 
+    ! ----------------------------------------
+    ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Requested: f_shadow_*_result
+    ! Match:     f_shadow_result
+    ! Requested: c_shadow_*_result
+    ! Match:     c_shadow_result
+    ! ----------------------------------------
+    ! Argument:  int x +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int y +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int z +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    function create__cstruct_as_subclass_args(x, y, z) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        integer(C_INT), value, intent(IN) :: x
+        integer(C_INT), value, intent(IN) :: y
+        integer(C_INT), value, intent(IN) :: z
+        type(cstruct_as_subclass) :: SHT_rv
+        ! splicer begin function.create__cstruct_as_subclass_args
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_create__cstruct_as_subclass_args(x, y, z, &
+            SHT_rv%cxxmem)
+        ! splicer end function.create__cstruct_as_subclass_args
+    end function create__cstruct_as_subclass_args
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
@@ -852,5 +1197,27 @@ contains
             rv = .false.
         endif
     end function cstruct_as_class_ne
+
+    function cstruct_as_subclass_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(cstruct_as_subclass), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_subclass_eq
+
+    function cstruct_as_subclass_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(cstruct_as_subclass), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_subclass_ne
 
 end module struct_mod

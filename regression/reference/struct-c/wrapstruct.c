@@ -136,6 +136,34 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
     // splicer end function.cstruct_as_class_sum
 }
 
+// ----------------------------------------
+// Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  int x +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int y +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int z +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
+    int y, int z, STR_Cstruct_as_subclass * SHadow_rv)
+{
+    // splicer begin function.create__cstruct_as_subclass_args
+    Cstruct_as_subclass * SHC_rv = Create_Cstruct_as_subclass_args(x, y,
+        z);
+    SHadow_rv->addr = SHC_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
+    // splicer end function.create__cstruct_as_subclass_args
+}
+
 // start release allocated memory
 // Release library allocated memory.
 void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
