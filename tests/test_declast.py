@@ -1317,12 +1317,11 @@ class CheckTypedef(unittest.TestCase):
             "Pointers not supported in typedef" in str(context.exception)
         )
 
-        with self.assertRaises(NotImplementedError) as context:
-            library.add_declaration("typedef int(*func)();")
-        self.assertTrue(
-            "Function pointers not supported in typedef"
-            in str(context.exception)
-        )
+    def test_typedef_fcnptr(self):
+        library = ast.LibraryNode()
+        node = library.add_declaration("typedef int(*func)();")
+        self.assertIsInstance(node, ast.TypedefNode)
+        self.assertIn("func", library.symbols)
 
 
 class CheckEnum(unittest.TestCase):

@@ -23,7 +23,9 @@ VPATH = \
 OBJS = \
     cxxlibrary.o \
     wrapfcxxlibrary.o \
+    wrapfcxxlibrary_structns.o \
     wrapcxxlibrary.o \
+    wrapcxxlibrary_structns.o \
     fruit.o \
     main.o
 

@@ -7,6 +7,9 @@ copyright:
 -
 
 # Wrap a C library with structs
+# This file is tested as language=c and c++.
+# Only C features are tested here.
+# cxxlibrary.yaml has additional struct tests with C++ specific features.
 
 # Several tests have a 'char *outbuf+intent(out)' argument
 # which will force a C bufferify wrapper to be created.
@@ -75,6 +78,15 @@ declarations:
     brief: Return a pointer to a struct
     description: |
       Generates a bufferify C wrapper function.
+
+######################################################################
+#- decl: int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
+#  doxygen:
+#    brief: Pass struct as function pointer argument
+#    description: |
+#      The arguments to the function pointer include a pointer to struct.
+#      The struct in C and C++ have different names.
+#      Must cast function pointer.
 
 ######################################################################
 - decl: struct Cstruct_ptr

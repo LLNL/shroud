@@ -33,6 +33,8 @@ Cstruct1 returnStructByValue(int i, double d);
 Cstruct1 *returnStructPtr1(int i, double d);
 Cstruct1 *returnStructPtr2(int i, double d, char *outbuf);
 
+int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg));
+
 /*----------------------------------------------------------------------*/
 struct Cstruct_ptr {
     char *cfield;

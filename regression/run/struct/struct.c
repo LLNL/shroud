@@ -93,6 +93,12 @@ Cstruct1 *returnStructPtr2(int i, double d, char *outbuf)
     return &global_Cstruct1;
 }
 
+int callback1(Cstruct1 *arg, int (*work)(Cstruct1 *arg))
+{
+    int rv = work(arg);
+    return rv;
+}
+
 #if 0
 Cstruct1 *returnStructPtrNew(int i, double d)
 {

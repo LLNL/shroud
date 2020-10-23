@@ -672,7 +672,7 @@ class Parser(ExprParser):
 #                    break
         if ntypemap is None:
             self.error_msg(
-                "Unknown typemap '{}".format("_".join(decl.specifier))
+                "(get_canonical_typemap) Unknown typemap '{}' - '{}'".format("_".join(decl.specifier), typename)
             )
         decl.typemap = ntypemap
 
@@ -1459,7 +1459,7 @@ class Declaration(Node):
                 comma = ""
                 for arg in params:
                     decl.append(comma)
-                    arg.gen_decl_work(decl, attrs=None, continuation=continuation)
+                    arg.gen_arg_as_lang(decl, lang, attrs=None, continuation=continuation)
                     if continuation:
                         comma = ",\t "
                     else:

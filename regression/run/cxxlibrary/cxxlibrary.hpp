@@ -14,15 +14,18 @@
 
 #include <complex>
 
-struct Cstruct1 {
-    int ifield;
-    double dfield;
-};
+namespace structns {
+    struct Cstruct1 {
+        int ifield;
+        double dfield;
+    };
 
-int passStructByReference(Cstruct1 &arg);
-int passStructByReferenceIn(const Cstruct1 &arg);
-void passStructByReferenceInout(Cstruct1 &arg);
-void passStructByReferenceOut(Cstruct1 &arg);
+    int passStructByReference(Cstruct1 &arg);
+    int passStructByReferenceIn(const Cstruct1 &arg);
+    void passStructByReferenceInout(Cstruct1 &arg);
+    void passStructByReferenceOut(Cstruct1 &arg);
+};  // namespace cxxlibrary
+
 
 //----------------------------------------------------------------------
 

@@ -10,7 +10,6 @@
 program tester
   use fruit
   use iso_c_binding
-  use cxxlibrary_mod
   implicit none
   logical ok
 
@@ -30,6 +29,7 @@ program tester
 contains
 
   subroutine test_struct
+    use cxxlibrary_structns_mod
     type(cstruct1) str1, str2
     integer(C_INT) rvi
 
@@ -59,6 +59,7 @@ contains
   end subroutine test_struct
 
   subroutine test_default_args
+    use cxxlibrary_mod
     real(C_DOUBLE) :: some_var(2)
     integer(C_INT) :: out1, out2
     

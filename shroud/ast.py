@@ -121,7 +121,7 @@ class NamespaceMixin(object):
 
         if isinstance(ast, declast.Declaration):
             if "typedef" in ast.storage:
-                node = self.create_typedef_typemap(ast, **kwargs)
+                node = self.add_typedef(decl, ast=ast, **kwargs)
             elif ast.params is None:
                 node = self.add_variable(decl, ast=ast, **kwargs)
             else:
@@ -149,28 +149,30 @@ class NamespaceMixin(object):
             )
         return node
 
-    def create_typedef_typemap(self, ast, **kwargs):
-        """Create a TypedefNode from a Declarator.
+    def create_typedef_typemap(self, node, fields=None):
+        """Create a typemap from a Declarator.
+
+        For simple aliases, clone the original typemap and update fields.
         """
+        ast = node.ast
         if ast.declarator.pointer:
+            # typedef int *foo;
             raise NotImplementedError("Pointers not supported in typedef")
-        if ast.declarator.func:
-            raise NotImplementedError(
-                "Function pointers not supported in typedef"
-            )
-
-        key = ast.declarator.name
-        orig = ast.typemap
-        ntypemap = orig.clone_as(self.scope + key)
-        ntypemap.typedef = orig.name
-        ntypemap.cxx_type = ntypemap.name
-        ntypemap.compute_flat_name()
-        if "fields" in kwargs:
-            ntypemap.update(kwargs["fields"])
-        typemap.register_type(ntypemap.name, ntypemap)
-
-        node = self.add_typedef(key, ntypemap)
-        return node
+        elif ast.declarator.func:
+            # typedef int (*incr_type)(int);
+            ntypemap = typemap.create_fcnptr_typemap(node, fields)
+        else:
+            # typedef int TypeID;
+            key = ast.declarator.name
+            orig = ast.typemap
+            ntypemap = orig.clone_as(self.scope + key)
+            ntypemap.typedef = orig.name
+            ntypemap.cxx_type = ntypemap.name
+            ntypemap.compute_flat_name()
+            if fields:
+                ntypemap.update(fields)
+            typemap.register_type(ntypemap.name, ntypemap)
+        return ntypemap
 
     def add_enum(self, decl, ast=None, **kwargs):
         """Add an enumeration.
@@ -236,8 +238,23 @@ class NamespaceMixin(object):
         self.symbols[node.name] = node
         return node
 
-    def add_typedef(self, name, ntypemap=None):
+    def add_typedef(self, decl, ast=None, **kwargs):
         """Add a TypedefNode to the symbol table.
+        """
+        if ast is None:
+            ast = declast.check_decl(decl, namespace=self)
+
+        name = ast.get_name()  # Local name.
+        node = TypedefNode(name, parent=self, ast=ast)
+        node.typemap = self.create_typedef_typemap(node, fields=kwargs.get("fields", None))
+        self.typedefs.append(node)
+        self.symbols[name] = node
+        return node
+
+    def add_typedef_by_name(self, name, ntypemap=None):
+        """Add a type name to the symbol table to enable parsing.
+        Used by names which are in typemap.shared_typemap.
+        Also used with generated typemaps for template parameters.
         """
         node = TypedefNode(name, parent=self, ntypemap=ntypemap)
         self.symbols[name] = node
@@ -317,6 +334,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.enums = []
         self.functions = []
         self.namespaces = []
+        self.typedefs = []
         self.variables = []
         # Each is given a _function_index when created.
         self.function_index = []
@@ -372,16 +390,16 @@ class LibraryNode(AstNode, NamespaceMixin):
 
     def create_std_names(self):
         """Add standard types to the Library."""
-        self.add_typedef("size_t")
-        self.add_typedef("int8_t")
-        self.add_typedef("int16_t")
-        self.add_typedef("int32_t")
-        self.add_typedef("int64_t")
-        self.add_typedef("uint8_t")
-        self.add_typedef("uint16_t")
-        self.add_typedef("uint32_t")
-        self.add_typedef("uint64_t")
-        self.add_typedef("MPI_Comm")
+        self.add_typedef_by_name("size_t")
+        self.add_typedef_by_name("int8_t")
+        self.add_typedef_by_name("int16_t")
+        self.add_typedef_by_name("int32_t")
+        self.add_typedef_by_name("int64_t")
+        self.add_typedef_by_name("uint8_t")
+        self.add_typedef_by_name("uint16_t")
+        self.add_typedef_by_name("uint32_t")
+        self.add_typedef_by_name("uint64_t")
+        self.add_typedef_by_name("MPI_Comm")
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -828,6 +846,7 @@ class BlockNode(AstNode, NamespaceMixin):
         self.enums = parent.enums
         self.functions = parent.functions
         self.namespaces = parent.namespaces
+        self.typedefs = parent.typedefs
         self.variables = parent.variables
         self.scope = parent.scope
         self.scope_file = parent.scope_file
@@ -878,12 +897,14 @@ class NamespaceNode(AstNode, NamespaceMixin):
             self.enums = parent.enums
             self.functions = parent.functions
             self.namespaces = parent.namespaces
+            self.typedefs = parent.typedefs
             self.variables = parent.variables
         else:
             self.classes = []
             self.enums = []
             self.functions = []
             self.namespaces = []
+            self.typedefs = []
             self.variables = []
 
         # Headers required by template arguments.
@@ -1031,6 +1052,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.enums = []
         self.functions = []
         self.namespaces = []
+        self.typedefs = []
         self.variables = []
 
         self.python = kwargs.get("python", {})
@@ -1107,7 +1129,7 @@ class ClassNode(AstNode, NamespaceMixin):
         )
         typemap.register_type(ntypemap.name, ntypemap)
 
-        self.add_typedef(name, ntypemap=ntypemap)
+        self.add_typedef_by_name(name, ntypemap=ntypemap)
 
     def qualified_lookup(self, name):
         """Look for symbols within class.
@@ -1647,16 +1669,37 @@ class EnumNode(AstNode):
 
 class TypedefNode(AstNode):
     """
+    Typedef.
+    Includes builtin typedefs and from declarations.
+
     Used for namespace resolution
 
     type name must be in a typemap.
     """
 
-    def __init__(self, name, parent, ntypemap=None):
+    def __init__(self, name, parent, ntypemap=None, ast=None,
+                 format=None, options=None,
+                 **kwargs):
+        """
+        Args:
+            name - 
+            parent - 
+            ast - declast.Declaration, typedef statement.
+        """
 
         # From arguments
         self.name = name
         self.parent = parent
+        self.linenumber = kwargs.get("__line__", "?")
+
+        self.options = util.Scope(parent=parent.options)
+        if options:
+            self.options.update(options, replace=True)
+
+        #        self.default_format(parent, format, kwargs)
+        self.fmtdict = util.Scope(parent=parent.fmtdict)
+
+        self.ast = ast
 
         # Add to namespace
         if ntypemap is None:
@@ -1791,8 +1834,8 @@ def create_std_namespace(glb):
         glb: ast.LibraryNode
     """
     std = glb.add_namespace("std", expose=False)
-    std.add_typedef("string")
-    std.add_typedef("vector")
+    std.add_typedef_by_name("string")
+    std.add_typedef_by_name("vector")
     return std
 
 

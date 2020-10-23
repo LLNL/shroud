@@ -9936,6 +9936,44 @@
         ],
         "scope_file": [
             "UserLibrary"
+        ],
+        "typedefs": [
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "SidreLength",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "long"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "long"
+                },
+                "fmtdict": {},
+                "name": "SidreLength",
+                "options": {}
+            },
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "TypeID",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "int"
+                },
+                "fmtdict": {},
+                "name": "TypeID",
+                "options": {}
+            }
         ]
     }
 }

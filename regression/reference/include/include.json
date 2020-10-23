@@ -710,6 +710,26 @@
         ],
         "scope_file": [
             "library"
+        ],
+        "typedefs": [
+            {
+                "ast": {
+                    "declarator": {
+                        "name": "CustomType",
+                        "pointer": []
+                    },
+                    "specifier": [
+                        "int"
+                    ],
+                    "storage": [
+                        "typedef"
+                    ],
+                    "typemap_name": "int"
+                },
+                "fmtdict": {},
+                "name": "CustomType",
+                "options": {}
+            }
         ]
     }
 }
