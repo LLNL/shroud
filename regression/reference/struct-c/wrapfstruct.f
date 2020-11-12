@@ -574,6 +574,7 @@ module struct_mod
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
+    ! start c_create__cstruct_as_class
     interface
         function c_create__cstruct_as_class(SHT_crv) &
                 result(SHT_rv) &
@@ -585,6 +586,7 @@ module struct_mod
             type(C_PTR) SHT_rv
         end function c_create__cstruct_as_class
     end interface
+    ! end c_create__cstruct_as_class
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
@@ -668,10 +670,12 @@ module struct_mod
         ! splicer end additional_interfaces
     end interface
 
+    ! start interface Cstruct_as_class
     interface Cstruct_as_class
         module procedure create__cstruct_as_class
         module procedure create__cstruct_as_class_args
     end interface Cstruct_as_class
+    ! end interface Cstruct_as_class
 
     interface Cstruct_as_subclass
         module procedure create__cstruct_as_subclass_args
@@ -1069,6 +1073,7 @@ contains
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
+    ! start create__cstruct_as_class
     function create__cstruct_as_class() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1078,6 +1083,7 @@ contains
         SHT_prv = c_create__cstruct_as_class(SHT_rv%cxxmem)
         ! splicer end function.create__cstruct_as_class
     end function create__cstruct_as_class
+    ! end create__cstruct_as_class
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args

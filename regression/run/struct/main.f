@@ -117,6 +117,7 @@ contains
   end subroutine test_struct_array
 
   subroutine test_struct_class
+    ! start main.f test_struct_class
     type(cstruct_as_class) point1, point2
     type(cstruct_as_subclass) subpoint1
 
@@ -138,6 +139,7 @@ contains
     call assert_equals(2, subpoint1%get_y1())
     call assert_equals(3, subpoint1%get_z1())
     call assert_equals(3, subpoint1%sum())
+    ! end main.f test_struct_class
 
   end subroutine test_struct_class
 

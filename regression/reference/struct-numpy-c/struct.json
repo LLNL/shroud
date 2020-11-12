@@ -2193,6 +2193,7 @@
                 },
                 "options": {
                     "class_ctor": "Cstruct_as_class",
+                    "literalinclude": true,
                     "wrap_python": false
                 }
             },

@@ -84,6 +84,7 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+// start STR_create__cstruct_as_class
 STR_Cstruct_as_class * STR_create__cstruct_as_class(
     STR_Cstruct_as_class * SHadow_rv)
 {
@@ -94,6 +95,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
     return SHadow_rv;
     // splicer end function.create__cstruct_as_class
 }
+// end STR_create__cstruct_as_class
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args

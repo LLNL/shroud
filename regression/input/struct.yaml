@@ -141,6 +141,7 @@ declarations:
   options:
     wrap_python: False
     class_ctor: Cstruct_as_class
+    literalinclude: True
 - decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
   options:
     wrap_python: False
