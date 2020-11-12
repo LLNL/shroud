@@ -769,12 +769,12 @@ module classes_mod
         module procedure circle_ctor
     end interface circle
 
-    ! start interface class1
+    ! start generic interface class1
     interface class1
         module procedure class1_ctor_default
         module procedure class1_ctor_flag
     end interface class1
-    ! end interface class1
+    ! end generic interface class1
 
     interface shape
         module procedure shape_ctor

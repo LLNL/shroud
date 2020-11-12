@@ -2079,8 +2079,8 @@ are combined into a generic interface.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: ! start interface class1
-   :end-before: ! end interface class1
+   :start-after: ! start generic interface class1
+   :end-before: ! end generic interface class1
    :dedent: 4
 
 A class instance is created and destroy from Fortran as:
@@ -2312,8 +2312,8 @@ A Fortran generic interface is created for the class:
 
 .. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
    :language: fortran
-   :start-after: start interface Cstruct_as_class
-   :end-before: end interface Cstruct_as_class
+   :start-after: start generic interface Cstruct_as_class
+   :end-before: end generic interface Cstruct_as_class
    :dedent: 4
 
 And the Fortran constructor call the C wrapper function.
@@ -2482,8 +2482,8 @@ A generic interface is created for each declaration in the *fortran_generic* blo
 
 .. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
    :language: fortran
-   :start-after: ! start interface generic_real
-   :end-before: ! end interface generic_real
+   :start-after: ! start generic interface generic_real
+   :end-before: ! end generic interface generic_real
    :dedent: 4
 
 A Fortran wrapper is created for each declaration in the *fortran_generic* block.

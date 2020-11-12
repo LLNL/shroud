@@ -742,7 +742,7 @@ rv = .false.
                 if iface_cpp_if:
                     iface.append("#" + iface_cpp_if)
                 if literalinclude:
-                    iface.append("! start interface " + key)
+                    iface.append("! start generic interface " + key)
                 iface.append("interface " + key)
                 iface.append(1)
                 if iface_cpp_if:
@@ -759,7 +759,7 @@ rv = .false.
                 iface.append(-1)
                 iface.append("end interface " + key)
                 if literalinclude:
-                    iface.append("! end interface " + key)
+                    iface.append("! end generic interface " + key)
                 if iface_cpp_if:
                     iface.append("#endif")
                 self._pop_splicer(key)

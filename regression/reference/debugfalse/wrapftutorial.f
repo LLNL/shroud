@@ -416,13 +416,13 @@ module tutorial_mod
         module procedure template_argument_double
     end interface template_argument
 
-    ! start interface use_default_arguments
+    ! start generic interface use_default_arguments
     interface use_default_arguments
         module procedure use_default_arguments
         module procedure use_default_arguments_arg1
         module procedure use_default_arguments_arg1_arg2
     end interface use_default_arguments
-    ! end interface use_default_arguments
+    ! end generic interface use_default_arguments
 
     interface use_default_overload
         module procedure use_default_overload_num

@@ -617,12 +617,12 @@ module struct_mod
         ! splicer end additional_interfaces
     end interface
 
-    ! start interface Cstruct_as_class
+    ! start generic interface Cstruct_as_class
     interface Cstruct_as_class
         module procedure create__cstruct_as_class
         module procedure create__cstruct_as_class_args
     end interface Cstruct_as_class
-    ! end interface Cstruct_as_class
+    ! end generic interface Cstruct_as_class
 
     interface Cstruct_as_subclass
         module procedure create__cstruct_as_subclass_args
