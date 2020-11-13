@@ -65,6 +65,7 @@ module struct_mod
         integer(C_INT) :: count(10)
     end type arrays1
 
+    ! start derived-type cstruct_as_class
     type cstruct_as_class
         type(STR_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Cstruct_as_class.component_part
@@ -74,14 +75,13 @@ module struct_mod
         procedure :: set_x1 => cstruct_as_class_set_x1
         procedure :: get_y1 => cstruct_as_class_get_y1
         procedure :: set_y1 => cstruct_as_class_set_y1
-        procedure :: get_instance => cstruct_as_class_get_instance
-        procedure :: set_instance => cstruct_as_class_set_instance
-        procedure :: associated => cstruct_as_class_associated
         procedure :: sum => cstruct_as_class_sum
         ! splicer begin class.Cstruct_as_class.type_bound_procedure_part
         ! splicer end class.Cstruct_as_class.type_bound_procedure_part
     end type cstruct_as_class
+    ! end derived-type cstruct_as_class
 
+    ! start derived-type cstruct_as_subclass
     type, extends(cstruct_as_class) :: cstruct_as_subclass
         ! splicer begin class.Cstruct_as_subclass.component_part
         ! splicer end class.Cstruct_as_subclass.component_part
@@ -92,12 +92,10 @@ module struct_mod
         procedure :: set_y1 => cstruct_as_subclass_set_y1
         procedure :: get_z1 => cstruct_as_subclass_get_z1
         procedure :: set_z1 => cstruct_as_subclass_set_z1
-        procedure :: get_instance => cstruct_as_subclass_get_instance
-        procedure :: set_instance => cstruct_as_subclass_set_instance
-        procedure :: associated => cstruct_as_subclass_associated
         ! splicer begin class.Cstruct_as_subclass.type_bound_procedure_part
         ! splicer end class.Cstruct_as_subclass.type_bound_procedure_part
     end type cstruct_as_subclass
+    ! end derived-type cstruct_as_subclass
 
     interface operator (.eq.)
         module procedure cstruct_as_class_eq
@@ -113,6 +111,7 @@ module struct_mod
     ! Function:  int getX1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start c_cstruct_as_class_get_x1
     interface
         function c_cstruct_as_class_get_x1(self) &
                 result(SHT_rv) &
@@ -124,6 +123,7 @@ module struct_mod
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_class_get_x1
     end interface
+    ! end c_cstruct_as_class_get_x1
 
     ! ----------------------------------------
     ! Function:  void setX1
@@ -133,6 +133,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start c_cstruct_as_class_set_x1
     interface
         subroutine c_cstruct_as_class_set_x1(self, val) &
                 bind(C, name="STR_Cstruct_as_class_set_x1")
@@ -143,11 +144,13 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_cstruct_as_class_set_x1
     end interface
+    ! end c_cstruct_as_class_set_x1
 
     ! ----------------------------------------
     ! Function:  int getY1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start c_cstruct_as_class_get_y1
     interface
         function c_cstruct_as_class_get_y1(self) &
                 result(SHT_rv) &
@@ -159,6 +162,7 @@ module struct_mod
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_class_get_y1
     end interface
+    ! end c_cstruct_as_class_get_y1
 
     ! ----------------------------------------
     ! Function:  void setY1
@@ -168,6 +172,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start c_cstruct_as_class_set_y1
     interface
         subroutine c_cstruct_as_class_set_y1(self, val) &
                 bind(C, name="STR_Cstruct_as_class_set_y1")
@@ -178,6 +183,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_cstruct_as_class_set_y1
     end interface
+    ! end c_cstruct_as_class_set_y1
 
     ! splicer begin class.Cstruct_as_class.additional_interfaces
     ! splicer end class.Cstruct_as_class.additional_interfaces
@@ -186,6 +192,7 @@ module struct_mod
     ! Function:  int getX1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_get_x1
     interface
         function c_cstruct_as_subclass_get_x1(self) &
                 result(SHT_rv) &
@@ -197,6 +204,7 @@ module struct_mod
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_subclass_get_x1
     end interface
+    ! end c_cstruct_as_subclass_get_x1
 
     ! ----------------------------------------
     ! Function:  void setX1
@@ -206,6 +214,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_set_x1
     interface
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_x1")
@@ -216,11 +225,13 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_cstruct_as_subclass_set_x1
     end interface
+    ! end c_cstruct_as_subclass_set_x1
 
     ! ----------------------------------------
     ! Function:  int getY1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_get_y1
     interface
         function c_cstruct_as_subclass_get_y1(self) &
                 result(SHT_rv) &
@@ -232,6 +243,7 @@ module struct_mod
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_subclass_get_y1
     end interface
+    ! end c_cstruct_as_subclass_get_y1
 
     ! ----------------------------------------
     ! Function:  void setY1
@@ -241,6 +253,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_set_y1
     interface
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_y1")
@@ -251,11 +264,13 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_cstruct_as_subclass_set_y1
     end interface
+    ! end c_cstruct_as_subclass_set_y1
 
     ! ----------------------------------------
     ! Function:  int getZ1
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_get_z1
     interface
         function c_cstruct_as_subclass_get_z1(self) &
                 result(SHT_rv) &
@@ -267,6 +282,7 @@ module struct_mod
             integer(C_INT) :: SHT_rv
         end function c_cstruct_as_subclass_get_z1
     end interface
+    ! end c_cstruct_as_subclass_get_z1
 
     ! ----------------------------------------
     ! Function:  void setZ1
@@ -276,6 +292,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start c_cstruct_as_subclass_set_z1
     interface
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
                 bind(C, name="STR_Cstruct_as_subclass_set_z1")
@@ -286,6 +303,7 @@ module struct_mod
             integer(C_INT), value, intent(IN) :: val
         end subroutine c_cstruct_as_subclass_set_z1
     end interface
+    ! end c_cstruct_as_subclass_set_z1
 
     ! splicer begin class.Cstruct_as_subclass.additional_interfaces
     ! splicer end class.Cstruct_as_subclass.additional_interfaces
@@ -690,6 +708,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start cstruct_as_class_get_x1
     function cstruct_as_class_get_x1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -699,6 +718,7 @@ contains
         SHT_rv = c_cstruct_as_class_get_x1(obj%cxxmem)
         ! splicer end class.Cstruct_as_class.method.get_x1
     end function cstruct_as_class_get_x1
+    ! end cstruct_as_class_get_x1
 
     ! ----------------------------------------
     ! Function:  void setX1
@@ -713,6 +733,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start cstruct_as_class_set_x1
     subroutine cstruct_as_class_set_x1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_class) :: obj
@@ -721,6 +742,7 @@ contains
         call c_cstruct_as_class_set_x1(obj%cxxmem, val)
         ! splicer end class.Cstruct_as_class.method.set_x1
     end subroutine cstruct_as_class_set_x1
+    ! end cstruct_as_class_set_x1
 
     ! ----------------------------------------
     ! Function:  int getY1
@@ -729,6 +751,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start cstruct_as_class_get_y1
     function cstruct_as_class_get_y1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -738,6 +761,7 @@ contains
         SHT_rv = c_cstruct_as_class_get_y1(obj%cxxmem)
         ! splicer end class.Cstruct_as_class.method.get_y1
     end function cstruct_as_class_get_y1
+    ! end cstruct_as_class_get_y1
 
     ! ----------------------------------------
     ! Function:  void setY1
@@ -752,6 +776,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start cstruct_as_class_set_y1
     subroutine cstruct_as_class_set_y1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_class) :: obj
@@ -760,29 +785,7 @@ contains
         call c_cstruct_as_class_set_y1(obj%cxxmem, val)
         ! splicer end class.Cstruct_as_class.method.set_y1
     end subroutine cstruct_as_class_set_y1
-
-    ! Return pointer to C++ memory.
-    function cstruct_as_class_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(cstruct_as_class), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function cstruct_as_class_get_instance
-
-    subroutine cstruct_as_class_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(cstruct_as_class), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine cstruct_as_class_set_instance
-
-    function cstruct_as_class_associated(obj) result (rv)
-        use iso_c_binding, only: c_associated
-        class(cstruct_as_class), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function cstruct_as_class_associated
+    ! end cstruct_as_class_set_y1
 
     ! splicer begin class.Cstruct_as_class.additional_functions
     ! splicer end class.Cstruct_as_class.additional_functions
@@ -794,6 +797,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start cstruct_as_subclass_get_x1
     function cstruct_as_subclass_get_x1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -803,6 +807,7 @@ contains
         SHT_rv = c_cstruct_as_subclass_get_x1(obj%cxxmem)
         ! splicer end class.Cstruct_as_subclass.method.get_x1
     end function cstruct_as_subclass_get_x1
+    ! end cstruct_as_subclass_get_x1
 
     ! ----------------------------------------
     ! Function:  void setX1
@@ -817,6 +822,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start cstruct_as_subclass_set_x1
     subroutine cstruct_as_subclass_set_x1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -825,6 +831,7 @@ contains
         call c_cstruct_as_subclass_set_x1(obj%cxxmem, val)
         ! splicer end class.Cstruct_as_subclass.method.set_x1
     end subroutine cstruct_as_subclass_set_x1
+    ! end cstruct_as_subclass_set_x1
 
     ! ----------------------------------------
     ! Function:  int getY1
@@ -833,6 +840,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start cstruct_as_subclass_get_y1
     function cstruct_as_subclass_get_y1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -842,6 +850,7 @@ contains
         SHT_rv = c_cstruct_as_subclass_get_y1(obj%cxxmem)
         ! splicer end class.Cstruct_as_subclass.method.get_y1
     end function cstruct_as_subclass_get_y1
+    ! end cstruct_as_subclass_get_y1
 
     ! ----------------------------------------
     ! Function:  void setY1
@@ -856,6 +865,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start cstruct_as_subclass_set_y1
     subroutine cstruct_as_subclass_set_y1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -864,6 +874,7 @@ contains
         call c_cstruct_as_subclass_set_y1(obj%cxxmem, val)
         ! splicer end class.Cstruct_as_subclass.method.set_y1
     end subroutine cstruct_as_subclass_set_y1
+    ! end cstruct_as_subclass_set_y1
 
     ! ----------------------------------------
     ! Function:  int getZ1
@@ -872,6 +883,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_result
     ! Match:     c_default
+    ! start cstruct_as_subclass_get_z1
     function cstruct_as_subclass_get_z1(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -881,6 +893,7 @@ contains
         SHT_rv = c_cstruct_as_subclass_get_z1(obj%cxxmem)
         ! splicer end class.Cstruct_as_subclass.method.get_z1
     end function cstruct_as_subclass_get_z1
+    ! end cstruct_as_subclass_get_z1
 
     ! ----------------------------------------
     ! Function:  void setZ1
@@ -895,6 +908,7 @@ contains
     ! Match:     f_default
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    ! start cstruct_as_subclass_set_z1
     subroutine cstruct_as_subclass_set_z1(obj, val)
         use iso_c_binding, only : C_INT
         class(cstruct_as_subclass) :: obj
@@ -903,29 +917,7 @@ contains
         call c_cstruct_as_subclass_set_z1(obj%cxxmem, val)
         ! splicer end class.Cstruct_as_subclass.method.set_z1
     end subroutine cstruct_as_subclass_set_z1
-
-    ! Return pointer to C++ memory.
-    function cstruct_as_subclass_get_instance(obj) result (cxxptr)
-        use iso_c_binding, only: C_PTR
-        class(cstruct_as_subclass), intent(IN) :: obj
-        type(C_PTR) :: cxxptr
-        cxxptr = obj%cxxmem%addr
-    end function cstruct_as_subclass_get_instance
-
-    subroutine cstruct_as_subclass_set_instance(obj, cxxmem)
-        use iso_c_binding, only: C_PTR
-        class(cstruct_as_subclass), intent(INOUT) :: obj
-        type(C_PTR), intent(IN) :: cxxmem
-        obj%cxxmem%addr = cxxmem
-        obj%cxxmem%idtor = 0
-    end subroutine cstruct_as_subclass_set_instance
-
-    function cstruct_as_subclass_associated(obj) result (rv)
-        use iso_c_binding, only: c_associated
-        class(cstruct_as_subclass), intent(IN) :: obj
-        logical rv
-        rv = c_associated(obj%cxxmem%addr)
-    end function cstruct_as_subclass_associated
+    ! end cstruct_as_subclass_set_z1
 
     ! splicer begin class.Cstruct_as_subclass.additional_functions
     ! splicer end class.Cstruct_as_subclass.additional_functions

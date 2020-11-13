@@ -2300,6 +2300,21 @@ The methods are wrapped in :file:`classes.yaml`:
 This uses several options to creates the class features for the struct:
 *wrap_struct_as*, *class_ctor*, *class_method*.
 
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_class
+   :end-before: end derived-type cstruct_as_class
+
+The subclass is created using the Fortran ``EXTENDS`` keyword.  No
+additional members are added. The ``cxxmem`` field from
+``cstruct_as_class`` will now point to an instance of the C struct
+``Cstruct_as_subclass``.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_subclass
+   :end-before: end derived-type cstruct_as_subclass
+
 The C wrapper to construct the struct-as-class.  It calls the C function
 and fills in the fields for the shadow struct.
 

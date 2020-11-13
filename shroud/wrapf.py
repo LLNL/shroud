@@ -266,6 +266,9 @@ class Wrapf(util.WrapperMixin):
             f_type_decl.append("#" + node.cpp_if)
         fileinfo.add_f_helper("capsule_data_helper", fmt_class)
 
+        if options.literalinclude:
+            f_type_decl.append("! start derived-type " +
+                               fmt_class.F_derived_name)
         if node.baseclass:
             # Only single inheritance supported.
             # Base class already contains F_derived_member.
@@ -338,6 +341,9 @@ class Wrapf(util.WrapperMixin):
 
         self._create_splicer("type_bound_procedure_part", f_type_decl)
         append_format(f_type_decl, "-end type {F_derived_name}", fmt_class)
+        if options.literalinclude:
+            f_type_decl.append("! end derived-type " +
+                               fmt_class.F_derived_name)
         if node.cpp_if:
             f_type_decl.append("#endif")
 

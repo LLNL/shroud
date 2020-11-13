@@ -715,6 +715,7 @@
                 ],
                 "name": "Cstruct_as_class",
                 "options": {
+                    "literalinclude": true,
                     "wrap_python": false,
                     "wrap_struct_as": "class"
                 },
@@ -1007,6 +1008,7 @@
                 "name": "Cstruct_as_subclass",
                 "options": {
                     "class_baseclass": "Cstruct_as_class",
+                    "literalinclude": true,
                     "wrap_python": false,
                     "wrap_struct_as": "class"
                 },

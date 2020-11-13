@@ -31,6 +31,10 @@ options:
 format:
   # Avoid conflict with builtin module
   PY_module_name: cstruct
+  # Remove these methods to make documentation simpler.
+  F_name_associated:
+  F_name_instance_get:
+  F_name_instance_set:
 
 declarations:
 
@@ -126,6 +130,8 @@ declarations:
     PY_array_arg: numpy
 
 ######################################################################
+#  test struct-as-class
+
 - decl: struct Cstruct_as_class {
           int x1;
           int y1;
@@ -133,6 +139,7 @@ declarations:
   options:
     wrap_struct_as: class
     wrap_python: False  # tested in struct-py.yaml
+    literalinclude: True
   doxygen:
     description: |
       Treat a struct as a class, i.e. create a shadow derived type.
@@ -164,6 +171,7 @@ declarations:
     wrap_struct_as: class
     class_baseclass: Cstruct_as_class
     wrap_python: False
+    literalinclude: True
   doxygen:
     description: |
       Treat a struct as a subclass of another struct
