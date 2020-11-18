@@ -61,6 +61,11 @@ To get started using Shroud, check out the full documentation:
 
 http://shroud.readthedocs.io/en/develop
 
+Presentation at FortranCon2020
+
+https://www.youtube.com/watch?v=1mdI-M94vDc
+[Slides](./pdf/Shroud-forcon.pdf)
+
 ## Mailing List
 
 shroud-users@groups.io
