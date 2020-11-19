@@ -68,16 +68,44 @@ module top_module
         ! splicer end class.twoTs_instantiation4.type_bound_procedure_part
     end type twots_instantiation4
 
+    type Fstruct_as_class
+        type(TES_SHROUD_capsule_data) :: cxxmem
+        ! splicer begin class.Cstruct_as_class.component_part
+        ! splicer end class.Cstruct_as_class.component_part
+    contains
+        procedure :: get_instance => cstruct_as_class_get_instance
+        procedure :: set_instance => cstruct_as_class_set_instance
+        procedure :: associated => cstruct_as_class_associated
+        procedure :: cstruct_as_class_sum
+        ! splicer begin class.Cstruct_as_class.type_bound_procedure_part
+        ! splicer end class.Cstruct_as_class.type_bound_procedure_part
+    end type Fstruct_as_class
+
+    type, extends(Fstruct_as_class) :: Fstruct_as_subclass
+        ! splicer begin class.Cstruct_as_subclass.component_part
+        ! splicer end class.Cstruct_as_subclass.component_part
+    contains
+        procedure :: get_instance => cstruct_as_subclass_get_instance
+        procedure :: set_instance => cstruct_as_subclass_set_instance
+        procedure :: associated => cstruct_as_subclass_associated
+        ! splicer begin class.Cstruct_as_subclass.type_bound_procedure_part
+        ! splicer end class.Cstruct_as_subclass.type_bound_procedure_part
+    end type Fstruct_as_subclass
+
     interface operator (.eq.)
         module procedure names2_eq
         module procedure twots_0_eq
         module procedure twots_instantiation4_eq
+        module procedure cstruct_as_class_eq
+        module procedure cstruct_as_subclass_eq
     end interface
 
     interface operator (.ne.)
         module procedure names2_ne
         module procedure twots_0_ne
         module procedure twots_instantiation4_ne
+        module procedure cstruct_as_class_ne
+        module procedure cstruct_as_subclass_ne
     end interface
 
     interface
@@ -90,6 +118,12 @@ module top_module
 
         ! splicer begin class.twoTs_instantiation4.additional_interfaces
         ! splicer end class.twoTs_instantiation4.additional_interfaces
+
+        ! splicer begin class.Cstruct_as_class.additional_interfaces
+        ! splicer end class.Cstruct_as_class.additional_interfaces
+
+        ! splicer begin class.Cstruct_as_subclass.additional_interfaces
+        ! splicer end class.Cstruct_as_subclass.additional_interfaces
 
         ! ----------------------------------------
         ! Function:  void getName
@@ -309,6 +343,24 @@ module top_module
             integer(C_INT) :: SHT_rv
         end function c_use_impl_worker_instantiation3
 
+        ! ----------------------------------------
+        ! Function:  int Cstruct_as_class_sum
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+        ! Requested: c_shadow_*_in
+        ! Match:     c_shadow_in
+        function c_cstruct_as_class_sum(point) &
+                result(SHT_rv) &
+                bind(C, name="TES_cstruct_as_class_sum")
+            use iso_c_binding, only : C_INT
+            import :: TES_SHROUD_capsule_data
+            implicit none
+            type(TES_SHROUD_capsule_data), intent(IN) :: point
+            integer(C_INT) :: SHT_rv
+        end function c_cstruct_as_class_sum
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -402,6 +454,58 @@ contains
 
     ! splicer begin class.twoTs_instantiation4.additional_functions
     ! splicer end class.twoTs_instantiation4.additional_functions
+
+    ! Return pointer to C++ memory.
+    function cstruct_as_class_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(Fstruct_as_class), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function cstruct_as_class_get_instance
+
+    subroutine cstruct_as_class_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(Fstruct_as_class), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine cstruct_as_class_set_instance
+
+    function cstruct_as_class_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(Fstruct_as_class), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function cstruct_as_class_associated
+
+    ! splicer begin class.Cstruct_as_class.additional_functions
+    ! splicer end class.Cstruct_as_class.additional_functions
+
+    ! Return pointer to C++ memory.
+    function cstruct_as_subclass_get_instance(obj) result (cxxptr)
+        use iso_c_binding, only: C_PTR
+        class(Fstruct_as_subclass), intent(IN) :: obj
+        type(C_PTR) :: cxxptr
+        cxxptr = obj%cxxmem%addr
+    end function cstruct_as_subclass_get_instance
+
+    subroutine cstruct_as_subclass_set_instance(obj, cxxmem)
+        use iso_c_binding, only: C_PTR
+        class(Fstruct_as_subclass), intent(INOUT) :: obj
+        type(C_PTR), intent(IN) :: cxxmem
+        obj%cxxmem%addr = cxxmem
+        obj%cxxmem%idtor = 0
+    end subroutine cstruct_as_subclass_set_instance
+
+    function cstruct_as_subclass_associated(obj) result (rv)
+        use iso_c_binding, only: c_associated
+        class(Fstruct_as_subclass), intent(IN) :: obj
+        logical rv
+        rv = c_associated(obj%cxxmem%addr)
+    end function cstruct_as_subclass_associated
+
+    ! splicer begin class.Cstruct_as_subclass.additional_functions
+    ! splicer end class.Cstruct_as_subclass.additional_functions
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -653,6 +757,29 @@ contains
         ! splicer end function.use_impl_worker_instantiation3
     end function use_impl_worker_instantiation3
 
+    ! ----------------------------------------
+    ! Function:  int Cstruct_as_class_sum
+    ! int Cstruct_as_class_sum
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Requested: f_shadow_*_in
+    ! Match:     f_default
+    ! Requested: c_shadow_*_in
+    ! Match:     c_shadow_in
+    function cstruct_as_class_sum(point) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(Fstruct_as_class), intent(IN) :: point
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.cstruct_as_class_sum
+        SHT_rv = c_cstruct_as_class_sum(point%cxxmem)
+        ! splicer end function.cstruct_as_class_sum
+    end function cstruct_as_class_sum
+
     ! splicer begin additional_functions
     ! splicer end additional_functions
 
@@ -721,5 +848,49 @@ contains
             rv = .false.
         endif
     end function twots_instantiation4_ne
+
+    function cstruct_as_class_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(Fstruct_as_class), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_class_eq
+
+    function cstruct_as_class_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(Fstruct_as_class), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_class_ne
+
+    function cstruct_as_subclass_eq(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(Fstruct_as_subclass), intent(IN) ::a,b
+        logical :: rv
+        if (c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_subclass_eq
+
+    function cstruct_as_subclass_ne(a,b) result (rv)
+        use iso_c_binding, only: c_associated
+        type(Fstruct_as_subclass), intent(IN) ::a,b
+        logical :: rv
+        if (.not. c_associated(a%cxxmem%addr, b%cxxmem%addr)) then
+            rv = .true.
+        else
+            rv = .false.
+        endif
+    end function cstruct_as_subclass_ne
 
 end module top_module

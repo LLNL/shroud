@@ -37,4 +37,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point);
 
+STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
+    int y, int z, STR_Cstruct_as_subclass * SHadow_rv);
+
 #endif  // WRAPSTRUCT_H

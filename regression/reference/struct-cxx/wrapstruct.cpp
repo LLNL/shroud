@@ -315,6 +315,7 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+// start STR_create__cstruct_as_class
 STR_Cstruct_as_class * STR_create__cstruct_as_class(
     STR_Cstruct_as_class * SHadow_rv)
 {
@@ -325,6 +326,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
     return SHadow_rv;
     // splicer end function.create__cstruct_as_class
 }
+// end STR_create__cstruct_as_class
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
@@ -365,6 +367,34 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
     int SHC_rv = Cstruct_as_class_sum(SHCXX_point);
     return SHC_rv;
     // splicer end function.cstruct_as_class_sum
+}
+
+// ----------------------------------------
+// Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+// Requested: c_shadow_*_result
+// Match:     c_shadow_result
+// ----------------------------------------
+// Argument:  int x +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int y +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+// ----------------------------------------
+// Argument:  int z +intent(in)+value
+// Requested: c_native_scalar_in
+// Match:     c_default
+STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
+    int y, int z, STR_Cstruct_as_subclass * SHadow_rv)
+{
+    // splicer begin function.create__cstruct_as_subclass_args
+    Cstruct_as_subclass * SHCXX_rv = Create_Cstruct_as_subclass_args(x,
+        y, z);
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 0;
+    return SHadow_rv;
+    // splicer end function.create__cstruct_as_subclass_args
 }
 
 // Release library allocated memory.

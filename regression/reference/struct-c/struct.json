@@ -892,6 +892,7 @@
                 ],
                 "name": "Cstruct_as_class",
                 "options": {
+                    "literalinclude": true,
                     "wrap_python": false,
                     "wrap_struct_as": "class"
                 },
@@ -941,6 +942,624 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
+                        "options": {}
+                    }
+                ],
+                "wrap_as": "class"
+            },
+            {
+                "cxx_header": [],
+                "fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapCstruct_as_subclass.h",
+                    "C_impl_filename": "wrapCstruct_as_subclass.c",
+                    "C_name_scope": "Cstruct_as_subclass_",
+                    "C_type_name": "STR_Cstruct_as_subclass",
+                    "F_derived_member_base": "cstruct_as_class",
+                    "F_derived_name": "cstruct_as_subclass",
+                    "F_name_scope": "cstruct_as_subclass_",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_subclass_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_subclass_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_subclass_array_descr",
+                    "class_scope": "Cstruct_as_subclass::",
+                    "cxx_class": "Cstruct_as_subclass",
+                    "cxx_type": "Cstruct_as_subclass",
+                    "file_scope": "Cstruct_as_subclass",
+                    "hnamefunc0": "capsule_data_helper"
+                },
+                "functions": [
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "getX1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getX1()",
+                        "declgen": "int getX1(void)",
+                        "fmtdict": {
+                            "C_name": "STR_Cstruct_as_subclass_get_x1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_cstruct_as_subclass_get_x1",
+                            "F_C_name": "c_cstruct_as_subclass_get_x1",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_x1",
+                            "F_name_generic": "get_x1",
+                            "F_name_impl": "cstruct_as_subclass_get_x1",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getX1",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->x1;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "val",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_val",
+                                    "c_var": "val",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "setX1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setX1(int val)",
+                        "declgen": "void setX1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "STR_Cstruct_as_subclass_set_x1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
+                            "C_return_type": "void",
+                            "F_C_call": "c_cstruct_as_subclass_set_x1",
+                            "F_C_name": "c_cstruct_as_subclass_set_x1",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_x1",
+                            "F_name_generic": "set_x1",
+                            "F_name_impl": "cstruct_as_subclass_set_x1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "setX1",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_x1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->x1 = val;",
+                                "return;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "getY1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getY1()",
+                        "declgen": "int getY1(void)",
+                        "fmtdict": {
+                            "C_name": "STR_Cstruct_as_subclass_get_y1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_cstruct_as_subclass_get_y1",
+                            "F_C_name": "c_cstruct_as_subclass_get_y1",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_y1",
+                            "F_name_generic": "get_y1",
+                            "F_name_impl": "cstruct_as_subclass_get_y1",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getY1",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->y1;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "val",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_val",
+                                    "c_var": "val",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "setY1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setY1(int val)",
+                        "declgen": "void setY1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "STR_Cstruct_as_subclass_set_y1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
+                            "C_return_type": "void",
+                            "F_C_call": "c_cstruct_as_subclass_set_y1",
+                            "F_C_name": "c_cstruct_as_subclass_set_y1",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_y1",
+                            "F_name_generic": "set_y1",
+                            "F_name_impl": "cstruct_as_subclass_set_y1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "setY1",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_y1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->y1 = val;",
+                                "return;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "cxx_type": "int",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "getZ1",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getZ1()",
+                        "declgen": "int getZ1(void)",
+                        "fmtdict": {
+                            "C_name": "STR_Cstruct_as_subclass_get_z1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self",
+                            "C_return_type": "int",
+                            "F_C_call": "c_cstruct_as_subclass_get_z1",
+                            "F_C_name": "c_cstruct_as_subclass_get_z1",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_z1",
+                            "F_name_generic": "get_z1",
+                            "F_name_impl": "cstruct_as_subclass_get_z1",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getZ1",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_z1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "return SH_this->z1;"
+                            ]
+                        }
+                    },
+                    {
+                        "_fmtargs": {
+                            "val": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "val",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&val",
+                                    "cxx_type": "int",
+                                    "cxx_var": "val",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_val",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_pointer": "SHPTR_val",
+                                    "c_var": "val",
+                                    "f_intent": "IN",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "val",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "ast": {
+                            "declarator": {
+                                "name": "setZ1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in",
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "val",
+                                        "pointer": []
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void setZ1(int val)",
+                        "declgen": "void setZ1(int val +intent(in)+value)",
+                        "fmtdict": {
+                            "C_call_list": "val",
+                            "C_name": "STR_Cstruct_as_subclass_set_z1",
+                            "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
+                            "C_return_type": "void",
+                            "F_C_call": "c_cstruct_as_subclass_set_z1",
+                            "F_C_name": "c_cstruct_as_subclass_set_z1",
+                            "F_arg_c_call": "obj%cxxmem,\t val",
+                            "F_arguments": "obj,\t val",
+                            "F_name_function": "set_z1",
+                            "F_name_generic": "set_z1",
+                            "F_name_impl": "cstruct_as_subclass_set_z1",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "setZ1",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_z1"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "splicer": {
+                            "c": [
+                                "SH_this->z1 = val;",
+                                "return;"
+                            ]
+                        }
+                    }
+                ],
+                "name": "Cstruct_as_subclass",
+                "options": {
+                    "class_baseclass": "Cstruct_as_class",
+                    "literalinclude": true,
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_subclass::",
+                "typemap_name": "Cstruct_as_subclass",
+                "variables": [
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "x1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "x1",
+                            "variable_lower": "x1",
+                            "variable_name": "x1",
+                            "variable_upper": "X1"
+                        },
+                        "name": "x1",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "y1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "y1",
+                            "variable_lower": "y1",
+                            "variable_name": "y1",
+                            "variable_upper": "Y1"
+                        },
+                        "name": "y1",
+                        "options": {}
+                    },
+                    {
+                        "ast": {
+                            "declarator": {
+                                "name": "z1",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "z1",
+                            "variable_lower": "z1",
+                            "variable_name": "z1",
+                            "variable_upper": "Z1"
+                        },
+                        "name": "z1",
                         "options": {}
                     }
                 ],
@@ -2710,6 +3329,7 @@
                 },
                 "options": {
                     "class_ctor": "Cstruct_as_class",
+                    "literalinclude": true,
                     "wrap_python": false
                 }
             },
@@ -2989,6 +3609,212 @@
                 },
                 "options": {
                     "class_method": "Cstruct_as_class",
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "x": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "x",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&x",
+                            "cxx_type": "int",
+                            "cxx_var": "x",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_x",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_x",
+                            "c_var": "x",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "x",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "y": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "y",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&y",
+                            "cxx_type": "int",
+                            "cxx_var": "y",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_y",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_y",
+                            "c_var": "y",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "y",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "z": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "z",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&z",
+                            "cxx_type": "int",
+                            "cxx_var": "z",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_z",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_z",
+                            "c_var": "z",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "z",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "STR_Cstruct_as_subclass",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "Cstruct_as_subclass",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_*_result",
+                        "stmt1": "c_shadow_result"
+                    },
+                    "fmtf": {
+                        "cxx_type": "Cstruct_as_subclass",
+                        "f_type": "type(cstruct_as_subclass)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_*_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_*_result",
+                        "stmtc1": "c_shadow_result"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "Create_Cstruct_as_subclass_args",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "x",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "y",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "z",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct_as_subclass"
+                    ],
+                    "typemap_name": "Cstruct_as_subclass"
+                },
+                "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
+                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +intent(in)+value, int y +intent(in)+value, int z +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "x,\t y,\t z",
+                    "C_name": "STR_create__cstruct_as_subclass_args",
+                    "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHadow_rv",
+                    "C_return_type": "STR_Cstruct_as_subclass *",
+                    "F_C_call": "c_create__cstruct_as_subclass_args",
+                    "F_C_name": "c_create__cstruct_as_subclass_args",
+                    "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
+                    "F_arguments": "x,\t y,\t z",
+                    "F_name_function": "create__cstruct_as_subclass_args",
+                    "F_name_generic": "Cstruct_as_subclass",
+                    "F_name_impl": "create__cstruct_as_subclass_args",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "Cstruct_as_subclass * SHC_rv",
+                    "function_name": "Create_Cstruct_as_subclass_args",
+                    "underscore_name": "create__cstruct_as_subclass_args"
+                },
+                "options": {
+                    "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false
                 }
             }

@@ -2079,8 +2079,8 @@ are combined into a generic interface.
 
 .. literalinclude:: ../regression/reference/classes/wrapfclasses.f
    :language: fortran
-   :start-after: ! start interface class1
-   :end-before: ! end interface class1
+   :start-after: ! start generic interface class1
+   :end-before: ! end generic interface class1
    :dedent: 4
 
 A class instance is created and destroy from Fortran as:
@@ -2109,6 +2109,7 @@ Corresponding C++ code:
 
 Getter and Setter
 ^^^^^^^^^^^^^^^^^
+
 The C++ header file from :file:`classes.hpp`.
 
 .. code-block:: c++
@@ -2225,6 +2226,127 @@ Corresponding C++ code:
     classes::Class1 obj = new * classes::Class1;
     obj->m_test = 4;
     int iflag = obj->m_test;
+
+.. ############################################################
+
+.. _example_struct_as_class:
+
+Struct as a Class
+^^^^^^^^^^^^^^^^^
+
+While C does not support object-oriented programming directly, it can be
+emulated by using structs.  The 'base class' struct is ``Cstruct_as_clss``.
+It is subclassed by ``Cstruct_as_subclass`` which explicitly duplicates
+the members of ``C_struct_as_class``.
+The C header file from :file:`struct.h`.
+
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start struct Cstruct_as_class
+   :end-before: end struct Cstruct_as_class
+
+The C 'constructor' returns a pointer to an instance of the object.
+
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start Cstruct_as_class ctor
+   :end-before: end Cstruct_as_class ctor
+
+The 'methods' pass an instance of the class as an explicit *this* object.
+          
+.. literalinclude:: ../regression/run/struct/struct.h
+   :language: c
+   :start-after: start Cstruct_as_class Cstruct_as_class_sum
+   :end-before: end Cstruct_as_class Cstruct_as_class_sum
+
+The methods are wrapped in :file:`classes.yaml`:
+
+.. code-block:: yaml
+
+    declarations:
+    - decl: struct Cstruct_as_class {
+              int x1;
+              int y1;
+            };
+      options:
+        wrap_struct_as: class
+    
+    - decl: Cstruct_as_class *Create_Cstruct_as_class(void)
+      options:
+        class_ctor: Cstruct_as_class
+    - decl: Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)
+      options:
+        class_ctor: Cstruct_as_class
+    
+    - decl: int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)
+      options:
+        class_method: Cstruct_as_class
+      format:
+        F_name_function: sum
+
+    - decl: struct Cstruct_as_subclass {
+              int x1;
+              int y1;
+              int z1;
+            };
+      options:
+        wrap_struct_as: class
+        class_baseclass: Cstruct_as_class
+    - decl: Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)
+      options:
+        wrap_python: False
+        class_ctor: Cstruct_as_subclass
+
+This uses several options to creates the class features for the struct:
+*wrap_struct_as*, *class_ctor*, *class_method*.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_class
+   :end-before: end derived-type cstruct_as_class
+
+The subclass is created using the Fortran ``EXTENDS`` keyword.  No
+additional members are added. The ``cxxmem`` field from
+``cstruct_as_class`` will now point to an instance of the C struct
+``Cstruct_as_subclass``.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: c
+   :start-after: start derived-type cstruct_as_subclass
+   :end-before: end derived-type cstruct_as_subclass
+
+The C wrapper to construct the struct-as-class.  It calls the C function
+and fills in the fields for the shadow struct.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapstruct.c
+   :language: c
+   :start-after: start STR_create__cstruct_as_class
+   :end-before: end STR_create__cstruct_as_class
+
+A Fortran generic interface is created for the class:
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start generic interface Cstruct_as_class
+   :end-before: end generic interface Cstruct_as_class
+   :dedent: 4
+
+And the Fortran constructor call the C wrapper function.
+
+.. literalinclude:: ../regression/reference/struct-c/wrapfstruct.f
+   :language: fortran
+   :start-after: start create__cstruct_as_class
+   :end-before: end create__cstruct_as_class
+   :dedent: 4
+
+The class can be used as:
+
+
+.. literalinclude:: ../regression/run/struct/main.f
+   :language: fortran
+   :start-after: start main.f test_struct_class
+   :end-before: end main.f test_struct_class
+   :dedent: 4
 
 .. ############################################################
 
@@ -2375,8 +2497,8 @@ A generic interface is created for each declaration in the *fortran_generic* blo
 
 .. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
    :language: fortran
-   :start-after: ! start interface generic_real
-   :end-before: ! end interface generic_real
+   :start-after: ! start generic interface generic_real
+   :end-before: ! end generic interface generic_real
    :dedent: 4
 
 A Fortran wrapper is created for each declaration in the *fortran_generic* block.

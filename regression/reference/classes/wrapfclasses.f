@@ -54,6 +54,7 @@ module classes_mod
     integer(C_INT), parameter :: class1_left = 100
     integer(C_INT), parameter :: class1_right = 101
 
+    ! start derived-type class1
     type class1
         type(CLA_SHROUD_capsule_data) :: cxxmem
         ! splicer begin class.Class1.component_part
@@ -76,6 +77,7 @@ module classes_mod
         ! splicer begin class.Class1.type_bound_procedure_part
         ! splicer end class.Class1.type_bound_procedure_part
     end type class1
+    ! end derived-type class1
 
     type class2
         type(CLA_SHROUD_capsule_data) :: cxxmem
@@ -769,12 +771,12 @@ module classes_mod
         module procedure circle_ctor
     end interface circle
 
-    ! start interface class1
+    ! start generic interface class1
     interface class1
         module procedure class1_ctor_default
         module procedure class1_ctor_flag
     end interface class1
-    ! end interface class1
+    ! end generic interface class1
 
     interface shape
         module procedure shape_ctor

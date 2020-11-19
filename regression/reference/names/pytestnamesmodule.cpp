@@ -7,6 +7,9 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 #include "pytestnamesmodule.hpp"
+#define PY_ARRAY_UNIQUE_SYMBOL SHROUD_TESTNAMES_ARRAY_API
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include "numpy/arrayobject.h"
 
 // splicer begin include
 // splicer end include
@@ -33,6 +36,8 @@ PyObject *PY_init_testnames_ns0(void);
 PyObject *PY_init_testnames_ns1(void);
 PyObject *PY_init_testnames_internal(void);
 PyObject *PY_init_testnames_std(void);
+PyArray_Descr *PY_Cstruct_as_class_array_descr;
+PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 // splicer begin additional_functions
 // splicer end additional_functions
 
@@ -358,6 +363,48 @@ PY_UseImplWorker_instantiation3(
 // splicer end function.use_impl_worker_instantiation3
 }
 
+// ----------------------------------------
+// Function:  int Cstruct_as_class_sum
+// Requested: py_native_scalar_result
+// Match:     py_default
+// ----------------------------------------
+// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Exact:     py_shadow_*_in
+static char PY_Cstruct_as_class_sum__doc__[] =
+"documentation"
+;
+
+static PyObject *
+PY_Cstruct_as_class_sum(
+  PyObject *SHROUD_UNUSED(self),
+  PyObject *args,
+  PyObject *kwds)
+{
+// splicer begin function.cstruct_as_class_sum
+    PY_Cstruct_as_class * SHPy_point;
+    const char *SHT_kwlist[] = {
+        "point",
+        nullptr };
+    PyObject * SHTPy_rv = nullptr;
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwds,
+        "O!:Cstruct_as_class_sum", const_cast<char **>(SHT_kwlist), 
+        &PY_Cstruct_as_class_Type, &SHPy_point))
+        return nullptr;
+
+    // post_declare
+    const Cstruct_as_class * point =
+        SHPy_point ? SHPy_point->myobj : nullptr;
+
+    int ARG_rv = Cstruct_as_class_sum(point);
+
+    // post_call
+    SHTPy_rv = PyInt_FromLong(ARG_rv);
+
+    return (PyObject *) SHTPy_rv;
+// splicer end function.cstruct_as_class_sum
+}
+
 static char PY_function3a__doc__[] =
 "documentation"
 ;
@@ -448,12 +495,106 @@ static PyMethodDef PY_methods[] = {
 {"UseImplWorker_instantiation3",
     (PyCFunction)PY_UseImplWorker_instantiation3, METH_NOARGS,
     PY_UseImplWorker_instantiation3__doc__},
+{"Cstruct_as_class_sum", (PyCFunction)PY_Cstruct_as_class_sum,
+    METH_VARARGS|METH_KEYWORDS, PY_Cstruct_as_class_sum__doc__},
 {"function3a", (PyCFunction)PY_function3a, METH_VARARGS|METH_KEYWORDS,
     PY_function3a__doc__},
 {"FunctionTU", (PyCFunction)PY_FunctionTU, METH_VARARGS|METH_KEYWORDS,
     PY_FunctionTU__doc__},
 {nullptr,   (PyCFunction)nullptr, 0, nullptr}            /* sentinel */
 };
+
+// Create PyArray_Descr for Cstruct_as_class
+static PyArray_Descr *PY_Cstruct_as_class_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(0);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(0);
+    if (ldescr == nullptr) goto fail;
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
+
+// Create PyArray_Descr for Cstruct_as_subclass
+static PyArray_Descr *PY_Cstruct_as_subclass_create_array_descr()
+{
+    int ierr;
+    PyObject *obj = nullptr;
+    PyObject * lnames = nullptr;
+    PyObject * ldescr = nullptr;
+    PyObject * dict = nullptr;
+    PyArray_Descr *dtype = nullptr;
+
+    lnames = PyList_New(0);
+    if (lnames == nullptr) goto fail;
+    ldescr = PyList_New(0);
+    if (ldescr == nullptr) goto fail;
+    obj = nullptr;
+
+    dict = PyDict_New();
+    if (dict == nullptr) goto fail;
+    ierr = PyDict_SetItemString(dict, "names", lnames);
+    if (ierr == -1) goto fail;
+    lnames = nullptr;
+    ierr = PyDict_SetItemString(dict, "formats", ldescr);
+    if (ierr == -1) goto fail;
+    ldescr = nullptr;
+    ierr = PyArray_DescrAlignConverter(dict, &dtype);
+    if (ierr == 0) goto fail;
+    return dtype;
+fail:
+    Py_XDECREF(obj);
+    if (lnames != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(lnames, i));
+        }
+        Py_DECREF(lnames);
+    }
+    if (ldescr != nullptr) {
+        for (int i=0; i < 0; i++) {
+            Py_XDECREF(PyList_GET_ITEM(ldescr, i));
+        }
+        Py_DECREF(ldescr);
+    }
+    Py_XDECREF(dict);
+    Py_XDECREF(dtype);
+    return nullptr;
+}
 
 /*
  * inittestnames - Initialization function for the module
@@ -530,6 +671,8 @@ inittestnames(void)
         return RETVAL;
     struct module_state *st = GETSTATE(m);
 
+    import_array();
+
     {
         PyObject *submodule = PY_init_testnames_ns0();
         if (submodule == nullptr)
@@ -590,6 +733,14 @@ inittestnames(void)
     PyModule_AddIntConstant(m, "RED", RED);
     PyModule_AddIntConstant(m, "BLUE", BLUE);
     PyModule_AddIntConstant(m, "WHITE", WHITE);
+
+    // Define PyArray_Descr for structs
+    PY_Cstruct_as_class_array_descr = PY_Cstruct_as_class_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_as_class_dtype", 
+        (PyObject *) PY_Cstruct_as_class_array_descr);
+    PY_Cstruct_as_subclass_array_descr = PY_Cstruct_as_subclass_create_array_descr();
+    PyModule_AddObject(m, "Cstruct_as_subclass_dtype", 
+        (PyObject *) PY_Cstruct_as_subclass_array_descr);
 
     PY_error_obj = PyErr_NewException((char *) error_name, nullptr, nullptr);
     if (PY_error_obj == nullptr)

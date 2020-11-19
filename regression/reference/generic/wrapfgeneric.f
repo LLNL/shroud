@@ -231,12 +231,12 @@ module generic_mod
         ! splicer end additional_interfaces
     end interface
 
-    ! start interface generic_real
+    ! start generic interface generic_real
     interface generic_real
         module procedure generic_real_float
         module procedure generic_real_double
     end interface generic_real
-    ! end interface generic_real
+    ! end generic interface generic_real
 
     interface generic_real2
         module procedure generic_real2_all_int

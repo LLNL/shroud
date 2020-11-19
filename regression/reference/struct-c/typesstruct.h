@@ -11,12 +11,23 @@
 #ifndef TYPESSTRUCT_H
 #define TYPESSTRUCT_H
 
+// start struct STR_Cstruct_as_class
 // helper capsule_STR_Cstruct_as_class
 struct s_STR_Cstruct_as_class {
     void *addr;     /* address of C++ memory */
     int idtor;      /* index of destructor */
 };
 typedef struct s_STR_Cstruct_as_class STR_Cstruct_as_class;
+// end struct STR_Cstruct_as_class
+
+// start struct STR_Cstruct_as_subclass
+// helper capsule_STR_Cstruct_as_subclass
+struct s_STR_Cstruct_as_subclass {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_STR_Cstruct_as_subclass STR_Cstruct_as_subclass;
+// end struct STR_Cstruct_as_subclass
 
 // helper capsule_data_helper
 struct s_STR_SHROUD_capsule_data {

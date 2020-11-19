@@ -298,6 +298,24 @@ int TES_use_impl_worker_instantiation3(void)
     // splicer end function.use_impl_worker_instantiation3
 }
 
+// ----------------------------------------
+// Function:  int Cstruct_as_class_sum
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Requested: c_shadow_*_in
+// Match:     c_shadow_in
+int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
+{
+    // splicer begin function.cstruct_as_class_sum
+    const Cstruct_as_class * ARG_point =
+        static_cast<const Cstruct_as_class *>(point->addr);
+    int SHC_rv = Cstruct_as_class_sum(ARG_point);
+    return SHC_rv;
+    // splicer end function.cstruct_as_class_sum
+}
+
 // Release library allocated memory.
 void TES_SHROUD_memory_destructor(TES_SHROUD_capsule_data *cap)
 {

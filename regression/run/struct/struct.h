@@ -71,12 +71,23 @@ typedef struct Arrays1 Arrays1;
 /*----------------------------------------------------------------------*/
 // Used in struct-py.yaml
 // Test similar structs with PY_struct_arg as both "class" and "numpy"
+// And with wrap_struct_as=class.
 
+// start struct Cstruct_as_class
 struct Cstruct_as_class {
     int x1;
     int y1;
 };
 typedef struct Cstruct_as_class Cstruct_as_class;
+
+/* The first members match Cstruct_as_class */
+struct Cstruct_as_subclass {
+    int x1;
+    int y1;
+    int z1;
+};
+typedef struct Cstruct_as_subclass Cstruct_as_subclass;
+// end struct Cstruct_as_class
 
 struct Cstruct_as_numpy {
     int x2;
@@ -84,12 +95,20 @@ struct Cstruct_as_numpy {
 };
 typedef struct Cstruct_as_numpy Cstruct_as_numpy;
 
+// start Cstruct_as_class ctor
 Cstruct_as_class *Create_Cstruct_as_class(void);
 Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y);
+// end Cstruct_as_class ctor
+// start Cstruct_as_class Cstruct_as_class_sum
 int Cstruct_as_class_sum(const Cstruct_as_class *point);
+// end Cstruct_as_class Cstruct_as_class_sum
 
 int acceptBothStructs(Cstruct_as_class *s1, Cstruct_as_numpy *s2);
 
+Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z);
+
 Cstruct_list *get_global_struct_list(void);
+
+
 
 #endif // STRUCT_H
