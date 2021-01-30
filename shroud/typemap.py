@@ -855,18 +855,26 @@ def create_enum_typemap(node):
 def create_class_typemap_from_fields(cxx_name, fields, library):
     """Create a typemap from fields.
     Used when creating typemap from YAML. (from regression/forward.yaml)
-    typemap:
-    - type: tutorial::Class1
-      fields:
-        base: shadow
 
-    Args:
-        cxx_name -
-        fields - dictionary object.
-        library - ast.LibraryNode.
+        typemap:
+        - type: tutorial::Class1
+          fields:
+            base: shadow
+
+    Parameters:
+    -----------
+    cxx_name : str
+    fields : dictionary object.
+    library : ast.LibraryNode.
     """
     fmt_class = library.fmtdict
-    ntypemap = Typemap(cxx_name, base="shadow", sgroup="shadow", cxx_type=cxx_name)
+    ntypemap = Typemap(
+        cxx_name,
+        base="shadow", sgroup="shadow",
+        cxx_type=cxx_name,
+        f_capsule_data_type="missing-f_capsule_data_type",
+        f_derived_type=cxx_name,
+    )
     ntypemap.update(fields)
     if ntypemap.f_module_name is None:
         raise RuntimeError(
@@ -930,14 +938,15 @@ def create_class_typemap(node, fields=None):
 
 
 def fill_shadow_typemap_defaults(ntypemap, fmt):
-    """Add some defaults to typemap.
+    """Add some defaults to shadow typemap.
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
 
-    Args:
-        ntypemap - typemap.Typemap.
-        fmt -
+    Parameters
+    ----------
+    ntypemap : typemap.Typemap.
+    fmt : util.Scope
     """
     if ntypemap.base != "shadow":
         return
@@ -980,13 +989,54 @@ def fill_shadow_typemap_defaults(ntypemap, fmt):
     ntypemap.forward = ntypemap.cxx_type
 
 
+def create_struct_typemap_from_fields(cxx_name, fields, library):
+    """Create a struct typemap from fields.
+    Used when creating typemap from YAML. (from regression/forward.yaml)
+
+        typemap:
+        - type: tutorial::Struct1
+          fields:
+            base: struct
+
+    Parameters:
+    -----------
+    cxx_name : str
+    fields : dictionary object.
+    library : ast.LibraryNode.
+    """
+    fmt_class = library.fmtdict
+    ntypemap = Typemap(
+        cxx_name,
+        base="struct", sgroup="struct",
+        c_type=cxx_name,
+        cxx_type=cxx_name,
+        f_type = "type(%s)" % cxx_name,
+        f_to_c="{f_var}",
+    )
+    ntypemap.update(fields)
+    if ntypemap.f_module_name is None:
+        raise RuntimeError(
+            "typemap {} requires field f_module_name".format(cxx_name)
+        )
+    if ntypemap.f_derived_type is None:
+        ntypemap.f_derived_type  = ntypemap.name
+    ntypemap.f_module = {ntypemap.f_module_name: [ntypemap.f_derived_type]}
+# XXX - Set defaults while being created above.
+#    fill_struct_typemap_defaults(node, ntypemap)
+
+    register_type(cxx_name, ntypemap)
+    library.add_shadow_typemap(ntypemap)
+    return ntypemap
+
+
 def create_struct_typemap(node, fields=None):
     """Create a typemap for a struct from a ClassNode.
     Use fields to override defaults.
 
-    Args:
-        node   - ast.ClassNode
-        fields - dictionary-like object.
+    Parameters:
+    -----------
+    node : ast.ClassNode
+    fields : dictionary-like object.
     """
     fmt_class = node.fmtdict
     cxx_name = util.wformat("{namespace_scope}{cxx_class}", fmt_class)
@@ -1017,14 +1067,15 @@ def create_struct_typemap(node, fields=None):
 
 
 def fill_struct_typemap_defaults(node, ntypemap):
-    """Add some defaults to typemap.
+    """Add some defaults to struct typemap.
     When dumping typemaps to a file, only a subset is written
     since the rest are boilerplate.  This function restores
     the boilerplate.
 
-    Args:
-        node     - ast.ClassNode
-        ntypemap - typemap.Typemap.
+    Parameters:
+    -----------
+        node : ast.ClassNode
+        ntypemap : typemap.Typemap.
     """
     if ntypemap.base != "struct":
         return

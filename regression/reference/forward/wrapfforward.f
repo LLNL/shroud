@@ -129,6 +129,24 @@ module forward_mod
         ! splicer begin class.Class2.additional_interfaces
         ! splicer end class.Class2.additional_interfaces
 
+        ! ----------------------------------------
+        ! Function:  int passStruct1
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  const Cstruct1 * arg +intent(in)
+        ! Requested: c_struct_*_in
+        ! Match:     c_struct
+        function c_pass_struct1(arg) &
+                result(SHT_rv) &
+                bind(C, name="FOR_pass_struct1")
+            use iso_c_binding, only : C_INT
+            use struct_mod, only : cstruct1
+            implicit none
+            type(Cstruct1), intent(IN) :: arg
+            integer(C_INT) :: SHT_rv
+        end function c_pass_struct1
+
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
     end interface
@@ -261,6 +279,30 @@ contains
 
     ! splicer begin class.Class2.additional_functions
     ! splicer end class.Class2.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  int passStruct1
+    ! int passStruct1
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const Cstruct1 * arg +intent(in)
+    ! Requested: f_struct_*_in
+    ! Match:     f_default
+    ! Requested: c_struct_*_in
+    ! Match:     c_struct
+    function pass_struct1(arg) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        use struct_mod, only : cstruct1
+        type(Cstruct1), intent(IN) :: arg
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.pass_struct1
+        SHT_rv = c_pass_struct1(arg)
+        ! splicer end function.pass_struct1
+    end function pass_struct1
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

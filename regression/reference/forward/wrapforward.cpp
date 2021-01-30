@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
+#include "wrapforward.h"
 
 // cxx_header
 #include "forward.hpp"
@@ -20,6 +21,24 @@ extern "C" {
 
 // splicer begin C_definitions
 // splicer end C_definitions
+
+// ----------------------------------------
+// Function:  int passStruct1
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const Cstruct1 * arg +intent(in)
+// Requested: c_struct_*_in
+// Match:     c_struct
+int FOR_pass_struct1(const STR_cstruct1 * arg)
+{
+    // splicer begin function.pass_struct1
+    const Cstruct1 * SHCXX_arg = static_cast<const Cstruct1 *>
+        (static_cast<const void *>(arg));
+    int SHC_rv = forward::passStruct1(SHCXX_arg);
+    return SHC_rv;
+    // splicer end function.pass_struct1
+}
 
 // Release library allocated memory.
 void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)

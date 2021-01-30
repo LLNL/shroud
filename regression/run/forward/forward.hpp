@@ -11,6 +11,8 @@
 #ifndef FORWARD_HPP
 #define FORWARD_HPP
 
+// Headers from other library.
+#include "struct.hpp"
 #include "tutorial.hpp"  // Class1
 
 namespace forward
@@ -28,6 +30,7 @@ class Class3
 {
 };
 
+int passStruct1(const Cstruct1 *s1);
 
 } /* end namespace tutorial */
 

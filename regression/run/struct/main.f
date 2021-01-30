@@ -121,7 +121,10 @@ contains
     type(cstruct_as_class) point1, point2
     type(cstruct_as_subclass) subpoint1
 
-    call assert_false(point1%associated())
+    ! F_name_associated is blank so the associated function is not created.
+    ! Instead look at pointer directly.
+    ! call assert_false(point1%associated())
+    call assert_false(c_associated(point1%cxxmem%addr))
 
     point1 = Cstruct_as_class()
     call assert_equals(0, point1%get_x1())

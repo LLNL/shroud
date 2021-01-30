@@ -39,7 +39,7 @@ base
 The base type of *type-name*.
 This is used to generalize operations for several types.
 The base types that Shroud uses are **string**, **vector**, 
-or **shadow**.
+**struct** or **shadow**.
 
 cpp_if
 ^^^^^^
@@ -263,19 +263,35 @@ An ``int`` argument is converted to Fortran with the typemap:
 
 .. code-block:: yaml
 
-    type: int
-    fields:
-        f_type: integer(C_INT)
-        f_kind: C_INT
-        f_module:
-            iso_c_binding:
-            - C_INT
-        f_cast: int({f_var}, C_INT)
+    typemap:
+    - type: int
+      fields:
+          f_type: integer(C_INT)
+          f_kind: C_INT
+          f_module:
+              iso_c_binding:
+              - C_INT
+          f_cast: int({f_var}, C_INT)
 
+.. Example from forward.yaml...
+          
+A ``struct`` defined in another YAML file.
 
+.. code-block:: yaml
 
-
-
+    typemap:
+    - type: Cstruct1
+      fields:
+        base: struct
+        cxx_header:
+        - struct.hpp
+        wrap_header:
+        - wrapstruct.h
+        c_type: STR_cstruct1
+        f_derived_type: cstruct1
+        f_module_name: struct_mod
+                
+.. XXX - explain about generated type file.
    
 
 Statements

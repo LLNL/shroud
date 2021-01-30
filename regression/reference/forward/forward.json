@@ -515,6 +515,125 @@
         "cxx_header": [
             "forward.hpp"
         ],
+        "functions": [
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(SHCXX_arg)",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_struct_*_in",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "type(Cstruct1)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_struct_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_*_in",
+                            "stmtc1": "c_struct"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "passStruct1",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "Cstruct1"
+                            ],
+                            "typemap_name": "Cstruct1"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int passStruct1(const Cstruct1 *arg)",
+                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
+                "fmtdict": {
+                    "C_call_list": "SHCXX_arg",
+                    "C_name": "FOR_pass_struct1",
+                    "C_prototype": "const STR_cstruct1 * arg",
+                    "C_return_type": "int",
+                    "F_C_call": "c_pass_struct1",
+                    "F_C_name": "c_pass_struct1",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "pass_struct1",
+                    "F_name_generic": "pass_struct1",
+                    "F_name_impl": "pass_struct1",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passStruct1",
+                    "underscore_name": "pass_struct1"
+                },
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            }
+        ],
         "language": "cxx",
         "scope_file": [
             "forward"

@@ -426,13 +426,17 @@ class LibraryNode(AstNode, NamespaceMixin):
             self.using.append(ns)
 
     def add_shadow_typemap(self, ntypemap):
-        """Add a shadow typemap into the symbol table.
+        """Add a shadow or struct typemap into the symbol table.
         ntypemap is created by create_class_typemap_from_fields
         using data from the YAML file.
         Adding to the symbol table allows it to be parsed.
 
         cxx_name is always fully qualified (namespace1::namespace2::class)
+        Parameters
+        ----------
+        ntypemap : typemap.Typemap
         """
+        # assert ntypemap.base in ['shadow', 'struct']
         names = ntypemap.name.split("::")
         cxx_name = names.pop()
         ns = self.add_namespaces(names, expose=False)
@@ -2080,8 +2084,13 @@ def create_library_from_dictionary(node):
                     typemap.create_class_typemap_from_fields(
                         key, fields, library
                     )
+                elif base == "struct":
+                    typemap.create_struct_typemap_from_fields(
+                        key, fields, library
+                    )
                 else:
-                    raise RuntimeError("base must be 'shadow'")
+                    raise RuntimeError("base must be 'shadow' or 'struct'"
+                                       " otherwise use a typedef")
 
     add_declarations(library.wrap_namespace, node)
 
