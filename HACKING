@@ -54,15 +54,15 @@ Regression tests
 
 Run the script test/do-test.py over some yaml files.
 
-The output is saved in build/temp.linux-x86_64-2.7/run
+The output is saved in build/temp.linux-x86_64-3.7/regression
 
 Update fiducials
 
-    make do-test-replace
+    make do-test-replace [ do-test-args=tutorial ]
 
 Running a single test
 
-    make do-test test-args=tutorial
+    make do-test do-test-args=tutorial
 
 
 Running a test manually (with pdb).

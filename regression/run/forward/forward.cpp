@@ -20,5 +20,11 @@ namespace forward
   void Class2::acceptClass3(Class3 *arg)
   {
   };
+
+  // Use a struct defined in another wrapped library.
+  int passStruct1(const Cstruct1 *s1)
+  {
+    return s1->ifield;
+  }
   
 } /* end namespace forward */

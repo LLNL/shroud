@@ -8,6 +8,8 @@ C method void func1(tutorial::Class1 * arg +intent(in))
 C method void acceptClass3(Class3 * arg +intent(in))
 Close wrapClass2.h
 Close wrapClass2.cpp
+C function int passStruct1(const Cstruct1 * arg +intent(in))
+Close wrapforward.h
 Close wrapforward.cpp
 Close typesforward.h
 class Class3
@@ -16,6 +18,7 @@ C-interface, Fortran method Class2(void)
 C-interface, Fortran method ~Class2(void)
 C-interface, Fortran method void func1(tutorial::Class1 * arg +intent(in))
 C-interface, Fortran method void acceptClass3(Class3 * arg +intent(in))
+C-interface, Fortran function int passStruct1(const Cstruct1 * arg +intent(in))
 Close wrapfforward.f
 class Class3
 Close pyClass3type.cpp

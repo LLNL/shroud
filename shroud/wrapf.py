@@ -647,19 +647,17 @@ rv = .false.
             self.wrap_function_interface(cls, node, fileinfo)
 
     def update_f_module(self, modules, imports, f_module):
-        """aggragate the information from f_module into modules.
-        modules is a dictionary of dictionaries:
+        """Aggragate the information from f_module into modules.
+
+        Parameters
+        ----------
+        modules : dictionary of dictionaries:
             modules['iso_c_bindings']['C_INT'] = True
-        f_module is a dictionary of lists:
+        imports: dict
+            If the module name is '--import--', add to imports.
+            Useful for interfaces.
+        f_module : a dictionary of lists:
             dict(iso_c_binding=['C_INT'])
-
-        If the module name is '--import--', add to imports.
-        Useful for interfaces.
-
-        Args:
-            modules -
-            imports -
-            f_module -
         """
         if f_module is not None:
             for mname, only in f_module.items():
@@ -692,10 +690,14 @@ rv = .false.
         Save any names which must be imported in imports to be used with
         interface blocks.
 
-        Args:
-            modules -
-            module_name -
-            imports -
+        Parameters
+        ----------
+        modules : dict
+            { 'module name': {'symbol': True}}
+        module_name : str
+            The name of current module. Use IMPORT when necessary.
+        imports : dict or None
+            Updated with symbols from modules[module_name].
         """
         arg_f_use = []
         for mname in sorted(modules):
