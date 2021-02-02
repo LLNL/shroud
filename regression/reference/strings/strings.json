@@ -7464,6 +7464,7 @@
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",

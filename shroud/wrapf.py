@@ -1458,6 +1458,7 @@ rv = .false.
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.f_assumed_size = "(*)"
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(f_ast.metaattrs["dimension"])

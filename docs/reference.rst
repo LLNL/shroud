@@ -1299,12 +1299,61 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
-f_var
-    Fortran variable name for argument.
-
 size_var
     Name of variable which holds the size of an array in the
     Python wrapper.
+
+fmtc
+""""
+
+Format strings used with C wrappers.
+
+fmtf
+""""
+
+Format strings used with Fortran wrappers.
+
+f_array_allocate
+    Fortran shape expression used with ``ALLOCATE`` statement when
+    *dimension* attribute is set.
+
+f_array_shape
+
+f_assumed_shape
+   Set when *rank* attribute is set to the corresponding shape.
+   ``rank=1`` sets to ``(:)``,
+   ``rank=2`` sets to ``(:,:)``, etc.
+
+f_assumed_size
+    Set to ``(*)`` when *rank* attribute is set.
+    Used with Fortran interface for C functions for array arguments.
+
+f_declare_shape_prefix
+
+f_declare_shape_array
+
+f_get_shape_array
+
+f_pointer_shape
+
+f_shape_var
+    
+f_var
+    Fortran variable name for argument.
+
+size
+    Expression to compute size of array argument using ``SIZE`` intrinsic.
+
+fmtl
+""""
+
+Format strings used with Lua wrappers.
+
+fmtpy
+"""""
+
+Format strings used with Python wrappers.
+
 
 Result
 ^^^^^^
