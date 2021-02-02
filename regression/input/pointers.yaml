@@ -223,6 +223,9 @@ declarations:
   options:
     F_force_wrapper: True
 - decl: void fetchVoidPtr(void **addr+intent(out))
+- decl: int VoidPtrArray(void **addr+rank(1))
+  options:
+    wrap_python: False
 
 - decl: int *returnIntPtrToScalar(void)
   # Fortran: return pointer to scalar

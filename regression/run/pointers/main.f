@@ -166,10 +166,12 @@ contains
 
   subroutine test_out_ptrs
     integer(C_INT) :: ivalue
+    integer(C_INT), target :: ivalue1, ivalue2
     integer(C_INT), pointer :: iscalar, irvscalar
     integer(C_INT), pointer :: iarray(:), irvarray(:)
     type(C_PTR) :: cptr_scalar, cptr_array
     type(C_PTR) :: void
+    type(C_PTR) :: cptr_arrays(2)
 
     call set_global_int(0)
     call get_ptr_to_scalar(iscalar)
@@ -234,6 +236,13 @@ contains
     void = C_NULL_PTR
     call fetch_void_ptr(void)
     call assert_true(c_associated(void, cptr_scalar))
+
+    ! Pass array of pointers  (void **)
+    ivalue1 = 10
+    ivalue2 = 4
+    cptr_arrays(1) = c_loc(ivalue1)
+    cptr_arrays(2) = c_loc(ivalue2)
+    call assert_equals(14, void_ptr_array(cptr_arrays))
 
     ! ***** Non-const results
     ! Return pointer to global_int as a fortran pointer.

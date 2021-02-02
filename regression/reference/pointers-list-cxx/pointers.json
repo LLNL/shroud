@@ -3103,6 +3103,50 @@
                 "options": {}
             },
             {
+                "ast": {
+                    "declarator": {
+                        "name": "VoidPtrArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int VoidPtrArray(void **addr+rank(1))",
+                "declgen": "int VoidPtrArray(void * * addr +intent(in)+rank(1))",
+                "fmtdict": {
+                    "function_name": "VoidPtrArray",
+                    "underscore_name": "void_ptr_array"
+                },
+                "options": {
+                    "wrap_python": false
+                }
+            },
+            {
                 "_fmtresult": {
                     "fmtpy": {
                         "array_size": "1",
