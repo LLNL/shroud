@@ -1177,8 +1177,7 @@ F_arguments
 
 F_C_arguments
     Argument names to the ``bind(C)`` interface for the subprogram.
-
-.. uses tabs
+    Arguments are tab delimited to aid in creating continuations.
 
 F_C_call
     The name of the C function to call.  Usually *F_C_name*, but it may
@@ -1196,7 +1195,9 @@ F_C_result_clause
     Result clause for the ``bind(C)`` interface.
 
 F_C_subprogram
-    ``subroutine`` or ``function``.
+    ``subroutine`` or ``function`` for the ``bind(C)`` interface.
+    The C wrapper funtion may be different Fortran wrapper function since
+    some function results may be converted into arguments.
 
 .. uses tabs
 
@@ -1340,6 +1341,12 @@ f_shape_var
     
 f_var
     Fortran variable name for argument.
+
+hnamefunc
+    Helper name for a function.
+    Each name in statements *f_helper* will set a suffix index.
+    The first helper will be *hnamefunc0*.
+    Used by statements *pre_call* and *post_call* statements.
 
 size
     Expression to compute size of array argument using ``SIZE`` intrinsic.

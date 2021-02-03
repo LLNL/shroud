@@ -1058,10 +1058,10 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         if subprogram == "subroutine":
-            fmt.F_C_subprogram = "subroutine"
+            fmt_func.F_C_subprogram = "subroutine"
         else:
-            fmt.F_C_subprogram = "function"
-            fmt.F_C_result_clause = "\fresult(%s)" % fmt.F_result
+            fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         if cls:
             is_static = "static" in ast.storage
@@ -1069,13 +1069,13 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
-                arg_c_names.append(fmt.C_this)
+                arg_c_names.append(fmt_func.C_this)
                 append_format(
                     arg_c_decl,
                     "type({F_capsule_data_type}), intent(IN) :: {C_this}",
-                    fmt,
+                    fmt_func,
                 )
-                imports[fmt.F_capsule_data_type] = True
+                imports[fmt_func.F_capsule_data_type] = True
 
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
@@ -1094,8 +1094,8 @@ rv = .false.
 
         if c_result_blk.return_type:
             # Change a subroutine into function.
-            fmt.F_C_subprogram = "function"
-            fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+            fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         self.build_arg_list_interface(
             node, fileinfo,
@@ -1179,34 +1179,34 @@ rv = .false.
         elif subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
-            fmt.F_C_pure_clause = "pure "
+            fmt_func.F_C_pure_clause = "pure "
 
-        fmt.F_C_arguments = options.get(
+        fmt_func.F_C_arguments = options.get(
             "F_C_arguments", ",\t ".join(arg_c_names)
         )
 
-        if fmt.F_C_subprogram == "function":
+        if fmt_func.F_C_subprogram == "function":
             return_deref_attr = ast.attrs["deref"]
             if c_result_blk.f_result_decl:
                 for arg in c_result_blk.f_result_decl:
-                    arg_c_decl.append(arg.format(c_var=fmt.F_result))
+                    arg_c_decl.append(arg.format(c_var=fmt_func.F_result))
                 if c_result_blk.f_module:
                     self.update_f_module(
                         modules, imports, c_result_blk.f_module)
             elif c_result_blk.return_cptr:
-                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:
                 # Return type changed by user.
                 ntypemap = typemap.lookup_type(c_result_blk.return_type)
-                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt.F_result))
+                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
             elif return_deref_attr in ["pointer", "allocatable", "raw"]:
-                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c(name=fmt.F_result))
+                arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(
                     modules,
                     imports,
@@ -1224,7 +1224,7 @@ rv = .false.
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
         if options.literalinclude:
-            append_format(c_interface, "! start {F_C_name}", fmt)
+            append_format(c_interface, "! start {F_C_name}", fmt_func)
         if self.newlibrary.options.literalinclude2:
             c_interface.append("interface+")
         c_interface.append(
@@ -1232,7 +1232,7 @@ rv = .false.
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
                 "(\t{F_C_arguments}){F_C_result_clause}"
                 '\fbind(C, name="{C_name}")',
-                fmt,
+                fmt_func,
             )
         )
         c_interface.append(1)
@@ -1242,11 +1242,11 @@ rv = .false.
         c_interface.append("implicit none")
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
-        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
+        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt_func))
         if self.newlibrary.options.literalinclude2:
             c_interface.append("-end interface")
         if options.literalinclude:
-            append_format(c_interface, "! end {F_C_name}", fmt)
+            append_format(c_interface, "! end {F_C_name}", fmt_func)
         if node.cpp_if:
             c_interface.append("#endif")
 
