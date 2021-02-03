@@ -877,7 +877,6 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
-        name=None,
         intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
@@ -895,7 +894,6 @@ rv = .false.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
-            name    - name to override ast.name (shadow only).
             intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
@@ -932,7 +930,7 @@ rv = .false.
                     intent = ast.attrs["intent"].upper()
                     arg_c_decl.append(
                         "type(C_PTR), intent({}) :: {}".format(
-                            intent, name or ast.name))
+                            intent, fmt.F_C_var))
                     self.set_f_module(modules, "iso_c_binding", "C_PTR")
                 else:
                     arg_c_decl.append(ast.bind_c())
@@ -948,12 +946,12 @@ rv = .false.
             elif buf_arg == "shadow":
                 # Do not use const or value in declaration
                 # Function result arguments explicitly set to intent(out).
-                arg_c_names.append(name or ast.name)
+                arg_c_names.append(fmt.F_C_var)
                 arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.attrs["intent"]).upper(),
                     ", value" if attrs["value"] else "",
-                    name or ast.name))
+                    fmt.F_C_var))
                 self.update_f_module(
                     modules, imports,
                     ast.typemap.f_c_module or ast.typemap.f_module
@@ -961,10 +959,11 @@ rv = .false.
                 continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
-                arg_c_names.append(name or ast.name)
+                arg_c_names.append(fmt.F_C_var)
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
-                        c_var=name or ast.name,
+                        c_var=fmt.F_C_var,
+                        f_assumed_size=fmt.f_assumed_size,
                     ))
                 if intent_blk.f_module:
                     self.update_f_module(
@@ -990,7 +989,6 @@ rv = .false.
                     "type(%s), intent(INOUT) :: %s"
                     % (fmt.F_capsule_data_type, buf_arg_name)
                 )
-                fileinfo.add_f_helper("capsule_data_helper", fmt)
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
                 if ast.attrs["_is_result"]:
@@ -1002,7 +1000,6 @@ rv = .false.
                     "type(%s), intent(%s) :: %s"
                     % (fmt.F_array_type, intent, buf_arg_name)
                 )
-                fileinfo.add_f_helper("array_context", fmt)
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":
@@ -1038,7 +1035,7 @@ rv = .false.
         """
         options = node.options
         fmt_func = node.fmtdict
-        fmt = util.Scope(fmt_func)
+        fmtargs = node._fmtargs
 
         ast = node.ast
         subprogram = node.C_subprogram
@@ -1058,10 +1055,10 @@ rv = .false.
         # find subprogram type
         # compute first to get order of arguments correct.
         if subprogram == "subroutine":
-            fmt.F_C_subprogram = "subroutine"
+            fmt_func.F_C_subprogram = "subroutine"
         else:
-            fmt.F_C_subprogram = "function"
-            fmt.F_C_result_clause = "\fresult(%s)" % fmt.F_result
+            fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         if cls:
             is_static = "static" in ast.storage
@@ -1069,13 +1066,13 @@ rv = .false.
                 pass
             else:
                 # Add 'this' argument
-                arg_c_names.append(fmt.C_this)
+                arg_c_names.append(fmt_func.C_this)
                 append_format(
                     arg_c_decl,
                     "type({F_capsule_data_type}), intent(IN) :: {C_this}",
-                    fmt,
+                    fmt_func,
                 )
-                imports[fmt.F_capsule_data_type] = True
+                imports[fmt_func.F_capsule_data_type] = True
 
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
@@ -1094,8 +1091,8 @@ rv = .false.
 
         if c_result_blk.return_type:
             # Change a subroutine into function.
-            fmt.F_C_subprogram = "function"
-            fmt.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+            fmt_func.F_C_subprogram = "function"
+            fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
         self.build_arg_list_interface(
             node, fileinfo,
@@ -1113,10 +1110,13 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
-            fmt.c_var = arg.name
+            fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs
             intent = attrs["intent"] or "inout"
@@ -1144,7 +1144,7 @@ rv = .false.
                     c_intent_blk.name)
             self.build_arg_list_interface(
                 node, fileinfo,
-                fmt,
+                fmt_arg,
                 arg,
                 c_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
@@ -1155,6 +1155,7 @@ rv = .false.
             )
 
         if subprogram == "function":
+            fmt_func.F_C_var = fmt_func.F_result_capsule
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_func,
@@ -1165,7 +1166,6 @@ rv = .false.
                 imports,
                 arg_c_names,
                 arg_c_decl,
-                name=fmt_func.F_result_capsule,
                 intent="out",
             )
         # Filter out non-pure functions.
@@ -1179,34 +1179,34 @@ rv = .false.
         elif subprogram == "function" and (
             is_pure or (func_is_const and args_all_in)
         ):
-            fmt.F_C_pure_clause = "pure "
+            fmt_func.F_C_pure_clause = "pure "
 
-        fmt.F_C_arguments = options.get(
+        fmt_func.F_C_arguments = options.get(
             "F_C_arguments", ",\t ".join(arg_c_names)
         )
 
-        if fmt.F_C_subprogram == "function":
+        if fmt_func.F_C_subprogram == "function":
             return_deref_attr = ast.attrs["deref"]
             if c_result_blk.f_result_decl:
                 for arg in c_result_blk.f_result_decl:
-                    arg_c_decl.append(arg.format(c_var=fmt.F_result))
+                    arg_c_decl.append(arg.format(c_var=fmt_func.F_result))
                 if c_result_blk.f_module:
                     self.update_f_module(
                         modules, imports, c_result_blk.f_module)
             elif c_result_blk.return_cptr:
-                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             elif c_result_blk.return_type:
                 # Return type changed by user.
                 ntypemap = typemap.lookup_type(c_result_blk.return_type)
-                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt.F_result))
+                arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
             elif return_deref_attr in ["pointer", "allocatable", "raw"]:
-                arg_c_decl.append("type(C_PTR) %s" % fmt.F_result)
+                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
-                arg_c_decl.append(ast.bind_c(name=fmt.F_result))
+                arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(
                     modules,
                     imports,
@@ -1224,7 +1224,7 @@ rv = .false.
             c_interface.append("#" + node.cpp_if)
         c_interface.extend(stmts_comments)
         if options.literalinclude:
-            append_format(c_interface, "! start {F_C_name}", fmt)
+            append_format(c_interface, "! start {F_C_name}", fmt_func)
         if self.newlibrary.options.literalinclude2:
             c_interface.append("interface+")
         c_interface.append(
@@ -1232,7 +1232,7 @@ rv = .false.
                 "\r{F_C_pure_clause}{F_C_subprogram} {F_C_name}"
                 "(\t{F_C_arguments}){F_C_result_clause}"
                 '\fbind(C, name="{C_name}")',
-                fmt,
+                fmt_func,
             )
         )
         c_interface.append(1)
@@ -1242,11 +1242,11 @@ rv = .false.
         c_interface.append("implicit none")
         c_interface.extend(arg_c_decl)
         c_interface.append(-1)
-        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt))
+        c_interface.append(wformat("end {F_C_subprogram} {F_C_name}", fmt_func))
         if self.newlibrary.options.literalinclude2:
             c_interface.append("-end interface")
         if options.literalinclude:
-            append_format(c_interface, "! end {F_C_name}", fmt)
+            append_format(c_interface, "! end {F_C_name}", fmt_func)
         if node.cpp_if:
             c_interface.append("#endif")
 
@@ -1458,6 +1458,7 @@ rv = .false.
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                fmt.f_assumed_size = "(*)"
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(f_ast.metaattrs["dimension"])

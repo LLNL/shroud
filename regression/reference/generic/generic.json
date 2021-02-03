@@ -60,8 +60,12 @@
                     "C_name": "GetGlobalDouble",
                     "C_prototype": "void",
                     "C_return_type": "double",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_global_double",
                     "F_C_name": "get_global_double",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_double",
                     "F_name_generic": "get_global_double",
@@ -95,6 +99,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -145,7 +150,9 @@
                     "C_name": "GenericReal",
                     "C_prototype": "double arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_name": "c_generic_real",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "GenericReal",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -335,6 +342,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -366,6 +374,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -449,7 +458,11 @@
                     "C_name": "GenericReal2",
                     "C_prototype": "long arg1,\t long arg2",
                     "C_return_type": "long",
+                    "F_C_arguments": "arg1,\t arg2",
                     "F_C_name": "c_generic_real2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "GenericReal2",
                     "underscore_name": "generic_real2"
@@ -711,9 +724,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_assumed_shape": "(:,:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -745,6 +760,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
                             "f_intent": "IN",
@@ -773,6 +789,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
                             "f_intent": "IN",
@@ -850,7 +867,9 @@
                     "C_name": "SavePointer",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
                     "F_C_name": "c_save_pointer",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "SavePointer",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -1171,9 +1190,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_assumed_shape": "(:,:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -1205,6 +1226,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
                             "c_var": "SH_size",
                             "f_intent": "IN",
@@ -1233,6 +1255,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "SH_type",
                             "f_intent": "IN",
@@ -1311,7 +1334,9 @@
                     "C_name": "GEN_save_pointer2",
                     "C_prototype": "void * addr,\t int type,\t size_t size",
                     "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
                     "F_C_name": "c_save_pointer2",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "SavePointer2",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -1662,6 +1687,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_intent": "OUT",
@@ -1693,6 +1719,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
                             "c_var": "size",
                             "f_intent": "OUT",
@@ -1724,6 +1751,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "OUT",
@@ -1810,8 +1838,10 @@
                     "C_name": "GetPointer",
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
                     "F_C_call": "c_get_pointer",
                     "F_C_name": "get_pointer",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "addr,\t type,\t size",
                     "F_arguments": "addr,\t type,\t size",
                     "F_name_function": "get_pointer",
@@ -1849,10 +1879,12 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "c_var_context": "FIXME",
                             "f_assumed_shape": "(:,:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "OUT",
                             "f_type": "real(C_FLOAT)",
                             "f_var": "addr",
@@ -1884,6 +1916,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
                             "c_var": "size",
                             "f_intent": "OUT",
@@ -1915,6 +1948,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "OUT",
@@ -2005,7 +2039,9 @@
                     "C_name": "GetPointerAsPointer",
                     "C_prototype": "void * * addr,\t int * type,\t size_t * size",
                     "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
                     "F_C_name": "c_get_pointer_as_pointer",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "GetPointerAsPointer",
                     "stmt0": "c",
                     "stmt1": "c_default",

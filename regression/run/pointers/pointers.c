@@ -325,6 +325,13 @@ void fetchVoidPtr(void **addr)
 {
     *addr = (void *) &global_int;
 }
+// addr : array of two int pointers.
+int VoidPtrArray(void **addr)
+{
+    int *a = (int *) addr[0];
+    int *b = (int *) addr[1];
+    return *a + *b;
+}
 
 int *returnIntPtrToScalar(void)
 {

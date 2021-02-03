@@ -34,6 +34,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -103,8 +104,10 @@
                     "C_name": "STR_pass_char",
                     "C_prototype": "char status",
                     "C_return_type": "void",
+                    "F_C_arguments": "status",
                     "F_C_call": "c_pass_char",
                     "F_C_name": "pass_char",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "status",
                     "F_arguments": "status",
                     "F_name_function": "pass_char",
@@ -142,6 +145,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -191,8 +195,10 @@
                     "C_name": "STR_pass_char_force",
                     "C_prototype": "char status",
                     "C_return_type": "void",
+                    "F_C_arguments": "status",
                     "F_C_call": "c_pass_char_force",
                     "F_C_name": "c_pass_char_force",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "status",
                     "F_arguments": "status",
                     "F_name_function": "pass_char_force",
@@ -277,8 +283,12 @@
                     "C_name": "STR_return_char",
                     "C_prototype": "void",
                     "C_return_type": "char",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_char_bufferify",
                     "F_C_name": "c_return_char",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "return_char",
@@ -315,6 +325,7 @@
                             "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -386,7 +397,9 @@
                     "C_name": "STR_return_char_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_return_char_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "returnChar",
                     "function_suffix": "_bufferify",
@@ -418,6 +431,9 @@
                             "shadow_var": "SHadow_dest",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "dest"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -458,6 +474,9 @@
                             "shadow_var": "SHadow_src",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "src"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -541,8 +560,10 @@
                     "C_name": "STR_pass_char_ptr",
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
+                    "F_C_arguments": "dest,\t src",
                     "F_C_call": "c_pass_char_ptr_bufferify",
                     "F_C_name": "c_pass_char_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
                     "F_arguments": "dest,\t src",
                     "F_name_function": "pass_char_ptr",
@@ -584,6 +605,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "c_var_len": "Ndest",
@@ -616,6 +638,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_intent": "IN",
@@ -688,7 +711,9 @@
                     "C_name": "STR_pass_char_ptr_bufferify",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_type": "void",
+                    "F_C_arguments": "dest,\t Ndest,\t src",
                     "F_C_name": "c_pass_char_ptr_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtr",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -723,6 +748,9 @@
                             "shadow_var": "SHadow_s",
                             "stmt0": "c_char_*_inout",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "s"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -786,8 +814,10 @@
                     "C_name": "STR_pass_char_ptr_in_out",
                     "C_prototype": "char * s",
                     "C_return_type": "void",
+                    "F_C_arguments": "s",
                     "F_C_call": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_name": "c_pass_char_ptr_in_out",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "s,\t len_trim(s, kind=C_INT),\t len(s, kind=C_INT)",
                     "F_arguments": "s",
                     "F_name_function": "pass_char_ptr_in_out",
@@ -827,6 +857,7 @@
                             "stmt1": "c_char_*_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
                             "c_var_len": "Ns",
@@ -886,7 +917,9 @@
                     "C_name": "STR_pass_char_ptr_in_out_bufferify",
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
                     "C_return_type": "void",
+                    "F_C_arguments": "s,\t Ls,\t Ns",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -975,8 +1008,12 @@
                     "C_name": "STR_get_char_ptr1",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_char_ptr1_bufferify",
                     "F_C_name": "c_get_char_ptr1",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr1",
@@ -1015,6 +1052,7 @@
                             "stmt1": "c_char_*_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -1089,7 +1127,9 @@
                     "C_name": "STR_get_char_ptr1_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_char_ptr1_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1",
                     "function_suffix": "_bufferify",
@@ -1181,8 +1221,12 @@
                     "C_name": "STR_get_char_ptr2",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_char_ptr2_bufferify",
                     "F_C_name": "c_get_char_ptr2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr2",
@@ -1221,6 +1265,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -1296,7 +1341,9 @@
                     "C_name": "STR_get_char_ptr2_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_get_char_ptr2_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr2",
                     "function_suffix": "_bufferify",
@@ -1375,7 +1422,11 @@
                     "C_name": "STR_get_char_ptr3",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_name": "c_get_char_ptr3",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
                     "cxx_rv_decl": "const char * SHC_rv",
@@ -1409,6 +1460,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -1480,7 +1532,9 @@
                     "C_name": "STR_get_char_ptr3_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
+                    "F_C_arguments": "output,\t Noutput",
                     "F_C_name": "c_get_char_ptr3_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr3",
@@ -1615,8 +1669,12 @@
                     "C_name": "STR_get_char_ptr4",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_char_ptr4",
                     "F_C_name": "get_char_ptr4",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr4",
                     "F_name_generic": "get_char_ptr4",
@@ -1722,6 +1780,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -1796,7 +1855,9 @@
                     "C_name": "STR_get_const_string_result_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_result_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "getConstStringResult",
                     "function_suffix": "_bufferify",
@@ -1902,6 +1963,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -1977,7 +2039,9 @@
                     "C_name": "STR_get_const_string_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_get_const_string_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringLen",
                     "function_suffix": "_bufferify",
@@ -2065,6 +2129,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -2136,7 +2201,9 @@
                     "C_name": "STR_get_const_string_as_arg_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
+                    "F_C_arguments": "output,\t Noutput",
                     "F_C_name": "c_get_const_string_as_arg_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringAsArg",
@@ -2299,6 +2366,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -2370,7 +2438,9 @@
                     "C_name": "STR_get_const_string_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_alloc_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "getConstStringAlloc",
                     "function_suffix": "_bufferify",
@@ -2459,8 +2529,12 @@
                     "C_name": "STR_get_const_string_ref_pure",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ref_pure_bufferify",
                     "F_C_name": "c_get_const_string_ref_pure",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_pure",
@@ -2499,6 +2573,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -2573,7 +2648,9 @@
                     "C_name": "STR_get_const_string_ref_pure_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_ref_pure_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure",
                     "function_suffix": "_bufferify",
@@ -2668,8 +2745,12 @@
                     "C_name": "STR_get_const_string_ref_len",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ref_len_bufferify",
                     "F_C_name": "c_get_const_string_ref_len",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len",
@@ -2707,6 +2788,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -2783,7 +2865,9 @@
                     "C_name": "STR_get_const_string_ref_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_get_const_string_ref_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen",
                     "function_suffix": "_bufferify",
@@ -2864,7 +2948,11 @@
                     "C_name": "STR_get_const_string_ref_as_arg",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_name": "c_get_const_string_ref_as_arg",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
@@ -2898,6 +2986,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -2970,7 +3059,9 @@
                     "C_name": "STR_get_const_string_ref_as_arg_bufferify",
                     "C_prototype": "char * output,\t int Noutput",
                     "C_return_type": "void",
+                    "F_C_arguments": "output,\t Noutput",
                     "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
@@ -3128,8 +3219,12 @@
                     "C_name": "STR_get_const_string_ref_len_empty",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
                     "F_C_name": "c_get_const_string_ref_len_empty",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len_empty",
@@ -3167,6 +3262,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -3242,7 +3338,9 @@
                     "C_name": "STR_get_const_string_ref_len_empty_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty",
                     "function_suffix": "_bufferify",
@@ -3328,8 +3426,12 @@
                     "C_name": "STR_get_const_string_ref_alloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ref_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ref_alloc",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_alloc",
@@ -3366,6 +3468,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -3437,7 +3540,9 @@
                     "C_name": "STR_get_const_string_ref_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_ref_alloc_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc",
                     "function_suffix": "_bufferify",
@@ -3530,8 +3635,12 @@
                     "C_name": "STR_get_const_string_ptr_len",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ptr_len_bufferify",
                     "F_C_name": "c_get_const_string_ptr_len",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_len",
@@ -3575,6 +3684,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -3651,7 +3761,9 @@
                     "C_name": "STR_get_const_string_ptr_len_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_get_const_string_ptr_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
                     "function_suffix": "_bufferify",
@@ -3745,8 +3857,12 @@
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_alloc",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
@@ -3783,6 +3899,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -3855,7 +3972,9 @@
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
                     "function_suffix": "_bufferify",
@@ -3945,8 +4064,12 @@
                     "C_name": "STR_get_const_string_ptr_owns_alloc",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc",
@@ -3983,6 +4106,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -4058,7 +4182,9 @@
                     "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc",
                     "function_suffix": "_bufferify",
@@ -4149,8 +4275,12 @@
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern",
                     "C_prototype": "void",
                     "C_return_type": "const char *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
@@ -4187,6 +4317,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -4264,7 +4395,9 @@
                     "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "DSHF_rv",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern",
                     "function_suffix": "_bufferify",
@@ -4296,6 +4429,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4360,8 +4496,10 @@
                     "C_name": "STR_accept_string_const_reference",
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_const_reference_bufferify",
                     "F_C_name": "c_accept_string_const_reference",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_const_reference",
@@ -4400,6 +4538,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -4458,7 +4597,9 @@
                     "C_name": "STR_accept_string_const_reference_bufferify",
                     "C_prototype": "const char * arg1,\t int Larg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Larg1",
                     "F_C_name": "c_accept_string_const_reference_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringConstReference",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4491,6 +4632,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_&_out",
                             "stmt1": "c_string_out"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4554,8 +4698,10 @@
                     "C_name": "STR_accept_string_reference_out",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_reference_out_bufferify",
                     "F_C_name": "c_accept_string_reference_out",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_reference_out",
@@ -4594,6 +4740,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -4651,7 +4798,9 @@
                     "C_name": "STR_accept_string_reference_out_bufferify",
                     "C_prototype": "char * arg1,\t int Narg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Narg1",
                     "F_C_name": "c_accept_string_reference_out_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringReferenceOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4684,6 +4833,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_&_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4747,8 +4899,10 @@
                     "C_name": "STR_accept_string_reference",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_reference_bufferify",
                     "F_C_name": "c_accept_string_reference",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t len(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_reference",
@@ -4790,6 +4944,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -4849,7 +5004,9 @@
                     "C_name": "STR_accept_string_reference_bufferify",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Larg1,\t Narg1",
                     "F_C_name": "c_accept_string_reference_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringReference",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4883,6 +5040,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_in",
                             "stmt1": "c_string_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4946,8 +5106,10 @@
                     "C_name": "STR_accept_string_pointer_const",
                     "C_prototype": "const char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_pointer_const_bufferify",
                     "F_C_name": "c_accept_string_pointer_const",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_pointer_const",
@@ -4986,6 +5148,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -5043,7 +5206,9 @@
                     "C_name": "STR_accept_string_pointer_const_bufferify",
                     "C_prototype": "const char * arg1,\t int Larg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Larg1",
                     "F_C_name": "c_accept_string_pointer_const_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringPointerConst",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5076,6 +5241,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5138,8 +5306,10 @@
                     "C_name": "STR_accept_string_pointer",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_pointer_bufferify",
                     "F_C_name": "c_accept_string_pointer",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t len(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_pointer",
@@ -5179,6 +5349,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5237,7 +5408,9 @@
                     "C_name": "STR_accept_string_pointer_bufferify",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Larg1,\t Narg1",
                     "F_C_name": "c_accept_string_pointer_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringPointer",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5270,6 +5443,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_out",
                             "stmt1": "c_string_out"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5333,8 +5509,10 @@
                     "C_name": "STR_fetch_string_pointer",
                     "C_prototype": "char * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_fetch_string_pointer_bufferify",
                     "F_C_name": "c_fetch_string_pointer",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "fetch_string_pointer",
@@ -5373,6 +5551,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5430,7 +5609,9 @@
                     "C_name": "STR_fetch_string_pointer_bufferify",
                     "C_prototype": "char * arg1,\t int Narg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Narg1",
                     "F_C_name": "c_fetch_string_pointer_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "fetchStringPointer",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5463,6 +5644,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5502,6 +5686,9 @@
                             "shadow_var": "SHadow_nlen",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5582,8 +5769,10 @@
                     "C_name": "STR_accept_string_pointer_len",
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t nlen",
                     "F_C_call": "c_accept_string_pointer_len_bufferify",
                     "F_C_name": "c_accept_string_pointer_len",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t len(arg1, kind=C_INT),\t nlen",
                     "F_arguments": "arg1,\t nlen",
                     "F_name_function": "accept_string_pointer_len",
@@ -5623,6 +5812,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5656,6 +5846,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nlen",
                             "F_pointer": "SHPTR_nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT",
@@ -5731,7 +5922,9 @@
                     "C_name": "STR_accept_string_pointer_len_bufferify",
                     "C_prototype": "char * arg1,\t int Larg1,\t int Narg1,\t int * nlen",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Larg1,\t Narg1,\t nlen",
                     "F_C_name": "c_accept_string_pointer_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "acceptStringPointerLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5764,6 +5957,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_out",
                             "stmt1": "c_string_out"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5803,6 +5999,9 @@
                             "shadow_var": "SHadow_nlen",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5883,8 +6082,10 @@
                     "C_name": "STR_fetch_string_pointer_len",
                     "C_prototype": "char * arg1,\t int * nlen",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t nlen",
                     "F_C_call": "c_fetch_string_pointer_len_bufferify",
                     "F_C_name": "c_fetch_string_pointer_len",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t len(arg1, kind=C_INT),\t nlen",
                     "F_arguments": "arg1,\t nlen",
                     "F_name_function": "fetch_string_pointer_len",
@@ -5923,6 +6124,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5955,6 +6157,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nlen",
                             "F_pointer": "SHPTR_nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT",
@@ -6029,7 +6232,9 @@
                     "C_name": "STR_fetch_string_pointer_len_bufferify",
                     "C_prototype": "char * arg1,\t int Narg1,\t int * nlen",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t Narg1,\t nlen",
                     "F_C_name": "c_fetch_string_pointer_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "fetchStringPointerLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -6062,6 +6267,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_scalar_in",
                             "stmt1": "c_string_scalar_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -6165,8 +6373,12 @@
                     "C_name": "STR_accept_string_instance",
                     "C_prototype": "char *arg1",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_string_instance_bufferify",
                     "F_C_name": "c_accept_string_instance",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_instance",
@@ -6203,6 +6415,7 @@
                             "stmt1": "c_string_scalar_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -6274,7 +6487,11 @@
                     "C_name": "STR_accept_string_instance_bufferify",
                     "C_prototype": "char *arg1,\t int Larg1",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg1,\t Larg1",
                     "F_C_name": "c_accept_string_instance_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance",
                     "function_suffix": "_bufferify",
@@ -6462,6 +6679,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "AAlen",
@@ -6531,8 +6749,10 @@
                     "C_name": "STR_explicit1",
                     "C_prototype": "char * name",
                     "C_return_type": "void",
+                    "F_C_arguments": "name",
                     "F_C_call": "c_explicit1",
                     "F_C_name": "c_explicit1",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "trim(name)//C_NULL_CHAR",
                     "F_arguments": "name",
                     "F_name_function": "explicit1",
@@ -6569,6 +6789,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         }
                     }
                 },
@@ -6609,8 +6832,10 @@
                     "C_name": "STR_explicit2",
                     "C_prototype": "char * name",
                     "C_return_type": "void",
+                    "F_C_arguments": "name",
                     "F_C_call": "c_explicit2_bufferify",
                     "F_C_name": "c_explicit2",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "name,\t len(name, kind=C_INT)",
                     "F_arguments": "name",
                     "F_name_function": "explicit2",
@@ -6651,6 +6876,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "AAtrim",
@@ -6704,7 +6930,9 @@
                     "C_name": "STR_explicit2_bufferify",
                     "C_prototype": "char * name,\t int AAtrim",
                     "C_return_type": "void",
+                    "F_C_arguments": "name,\t AAtrim",
                     "F_C_name": "c_explicit2_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "explicit2",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -6740,6 +6968,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -6809,8 +7038,10 @@
                     "C_name": "CpassChar",
                     "C_prototype": "char status",
                     "C_return_type": "void",
+                    "F_C_arguments": "status",
                     "F_C_call": "c_cpass_char",
                     "F_C_name": "cpass_char",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "status",
                     "F_arguments": "status",
                     "F_name_function": "cpass_char",
@@ -6895,8 +7126,12 @@
                     "C_name": "CreturnChar",
                     "C_prototype": "void",
                     "C_return_type": "char",
+                    "F_C_arguments": "",
                     "F_C_call": "c_creturn_char_bufferify",
                     "F_C_name": "c_creturn_char",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "creturn_char",
@@ -6935,6 +7170,7 @@
                             "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -7006,7 +7242,9 @@
                     "C_name": "STR_creturn_char_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_creturn_char_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "CreturnChar",
                     "function_suffix": "_bufferify",
@@ -7039,6 +7277,9 @@
                             "shadow_var": "SHadow_dest",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "dest"
                         }
                     },
                     "src": {
@@ -7058,6 +7299,9 @@
                             "shadow_var": "SHadow_src",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "src"
                         }
                     }
                 },
@@ -7120,8 +7364,10 @@
                     "C_name": "CpassCharPtr",
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
+                    "F_C_arguments": "dest,\t src",
                     "F_C_call": "c_cpass_char_ptr_bufferify",
                     "F_C_name": "c_cpass_char_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
                     "F_arguments": "dest,\t src",
                     "F_name_function": "cpass_char_ptr",
@@ -7163,6 +7409,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "c_var_len": "Ndest",
@@ -7195,6 +7442,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_intent": "IN",
@@ -7266,7 +7514,9 @@
                     "C_name": "STR_cpass_char_ptr_bufferify",
                     "C_prototype": "char * dest,\t int Ndest,\t const char * src",
                     "C_return_type": "void",
+                    "F_C_arguments": "dest,\t Ndest,\t src",
                     "F_C_name": "c_cpass_char_ptr_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "CpassCharPtr",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -7301,6 +7551,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -7342,6 +7595,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -7419,8 +7675,10 @@
                     "C_name": "STR_post_declare",
                     "C_prototype": "int * count,\t char * name",
                     "C_return_type": "void",
+                    "F_C_arguments": "count,\t name",
                     "F_C_call": "c_post_declare_bufferify",
                     "F_C_name": "c_post_declare",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "count,\t name,\t len_trim(name, kind=C_INT),\t len(name, kind=C_INT)",
                     "F_arguments": "count,\t name",
                     "F_name_function": "post_declare",
@@ -7461,9 +7719,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "count",
@@ -7497,6 +7757,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "Nname",
@@ -7571,7 +7832,9 @@
                     "C_name": "STR_post_declare_bufferify",
                     "C_prototype": "int * count,\t char * name,\t int Lname,\t int Nname",
                     "C_return_type": "void",
+                    "F_C_arguments": "count,\t name,\t Lname,\t Nname",
                     "F_C_name": "c_post_declare_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "PostDeclare",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",

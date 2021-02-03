@@ -34,6 +34,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -84,8 +85,10 @@
                     "C_name": "intargs_in",
                     "C_prototype": "const int * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_intargs_in",
                     "F_C_name": "intargs_in",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "intargs_in",
@@ -122,6 +125,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "INOUT",
@@ -174,8 +178,10 @@
                     "C_name": "intargs_inout",
                     "C_prototype": "int * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_intargs_inout",
                     "F_C_name": "intargs_inout",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "intargs_inout",
@@ -212,6 +218,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "OUT",
@@ -261,8 +268,10 @@
                     "C_name": "intargs_out",
                     "C_prototype": "int * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_intargs_out",
                     "F_C_name": "intargs_out",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "intargs_out",
@@ -299,6 +308,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "argin",
                             "F_pointer": "SHPTR_argin",
                             "c_var": "argin",
                             "f_intent": "IN",
@@ -330,6 +340,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arginout",
                             "F_pointer": "SHPTR_arginout",
                             "c_var": "arginout",
                             "f_intent": "INOUT",
@@ -361,6 +372,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "argout",
                             "F_pointer": "SHPTR_argout",
                             "c_var": "argout",
                             "f_intent": "OUT",
@@ -442,8 +454,10 @@
                     "C_name": "intargs",
                     "C_prototype": "const int argin,\t int * arginout,\t int * argout",
                     "C_return_type": "void",
+                    "F_C_arguments": "argin,\t arginout,\t argout",
                     "F_C_call": "c_intargs",
                     "F_C_name": "intargs",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "argin,\t arginout,\t argout",
                     "F_arguments": "argin,\t arginout,\t argout",
                     "F_name_function": "intargs",
@@ -480,9 +494,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
@@ -515,6 +531,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out",
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_array_allocate": "(size(in))",
@@ -549,6 +566,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_intent": "IN",
@@ -646,8 +664,10 @@
                     "C_name": "cos_doubles",
                     "C_prototype": "double * in,\t double * out,\t int sizein",
                     "C_return_type": "void",
+                    "F_C_arguments": "in,\t out,\t sizein",
                     "F_C_call": "c_cos_doubles",
                     "F_C_name": "c_cos_doubles",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
                     "F_name_function": "cos_doubles",
@@ -684,9 +704,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "in",
@@ -719,6 +741,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out",
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_array_allocate": "(size(in))",
@@ -753,6 +776,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_intent": "IN",
@@ -850,8 +874,10 @@
                     "C_name": "truncate_to_int",
                     "C_prototype": "double * in,\t int * out,\t int sizein",
                     "C_return_type": "void",
+                    "F_C_arguments": "in,\t out,\t sizein",
                     "F_C_call": "c_truncate_to_int",
                     "F_C_name": "c_truncate_to_int",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in,\t out,\t SH_sizein",
                     "F_arguments": "in,\t out",
                     "F_name_function": "truncate_to_int",
@@ -888,6 +914,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nvalues",
                             "F_pointer": "SHPTR_nvalues",
                             "c_var": "nvalues",
                             "f_intent": "OUT",
@@ -920,6 +947,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "values",
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
                             "f_array_allocate": "(3)",
@@ -1001,8 +1029,10 @@
                     "C_name": "get_values",
                     "C_prototype": "int * nvalues,\t int * values",
                     "C_return_type": "void",
+                    "F_C_arguments": "nvalues,\t values",
                     "F_C_call": "c_get_values",
                     "F_C_name": "get_values",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "nvalues,\t values",
                     "F_arguments": "nvalues,\t values",
                     "F_name_function": "get_values",
@@ -1040,6 +1070,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_array_allocate": "(3)",
@@ -1075,6 +1106,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_array_allocate": "(3)",
@@ -1164,8 +1196,10 @@
                     "C_name": "get_values2",
                     "C_prototype": "int * arg1,\t int * arg2",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t arg2",
                     "F_C_call": "c_get_values2",
                     "F_C_name": "get_values2",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "get_values2",
@@ -1202,6 +1236,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nvar",
                             "F_pointer": "SHPTR_nvar",
                             "c_var": "nvar",
                             "f_intent": "IN",
@@ -1234,6 +1269,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "values",
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
                             "f_array_allocate": "(nvar)",
@@ -1309,8 +1345,10 @@
                     "C_name": "iota_allocatable",
                     "C_prototype": "int nvar,\t int * values",
                     "C_return_type": "void",
+                    "F_C_arguments": "nvar,\t values",
                     "F_C_call": "c_iota_allocatable",
                     "F_C_name": "c_iota_allocatable",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "nvar,\t values",
                     "F_arguments": "nvar,\t values",
                     "F_name_function": "iota_allocatable",
@@ -1347,6 +1385,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nvar",
                             "F_pointer": "SHPTR_nvar",
                             "c_var": "nvar",
                             "f_intent": "IN",
@@ -1379,6 +1418,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "values",
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
                             "f_array_allocate": "(nvar)",
@@ -1453,8 +1493,10 @@
                     "C_name": "iota_dimension",
                     "C_prototype": "int nvar,\t int * values",
                     "C_return_type": "void",
+                    "F_C_arguments": "nvar,\t values",
                     "F_C_call": "c_iota_dimension",
                     "F_C_name": "iota_dimension",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "nvar,\t values",
                     "F_arguments": "nvar,\t values",
                     "F_name_function": "iota_dimension",
@@ -1491,6 +1533,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "SH_len",
                             "f_intent": "IN",
@@ -1519,6 +1562,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "result",
                             "F_pointer": "SHPTR_result",
                             "c_var": "result",
                             "f_intent": "OUT",
@@ -1550,9 +1594,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "values",
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
@@ -1636,8 +1682,10 @@
                     "C_name": "Sum",
                     "C_prototype": "int len,\t const int * values,\t int * result",
                     "C_return_type": "void",
+                    "F_C_arguments": "len,\t values,\t result",
                     "F_C_call": "c_sum",
                     "F_C_name": "c_sum",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SH_len,\t values,\t result",
                     "F_arguments": "values,\t result",
                     "F_name_function": "sum",
@@ -1677,6 +1725,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out",
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_array_allocate": "(3)",
@@ -1740,8 +1789,10 @@
                     "C_name": "fillIntArray",
                     "C_prototype": "int * out",
                     "C_return_type": "void",
+                    "F_C_arguments": "out",
                     "F_C_call": "c_fill_int_array",
                     "F_C_name": "fill_int_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "out",
                     "F_arguments": "out",
                     "F_name_function": "fill_int_array",
@@ -1778,9 +1829,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "array",
                             "F_pointer": "SHPTR_array",
                             "c_var": "array",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "INOUT",
                             "f_type": "integer(C_INT)",
                             "f_var": "array",
@@ -1812,6 +1865,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
                             "c_var": "SH_sizein",
                             "f_intent": "IN",
@@ -1877,8 +1931,10 @@
                     "C_name": "incrementIntArray",
                     "C_prototype": "int * array,\t int sizein",
                     "C_return_type": "void",
+                    "F_C_arguments": "array,\t sizein",
                     "F_C_call": "c_increment_int_array",
                     "F_C_name": "c_increment_int_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "array,\t SH_sizein",
                     "F_arguments": "array",
                     "F_name_function": "increment_int_array",
@@ -1915,9 +1971,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "x",
                             "F_pointer": "SHPTR_x",
                             "c_var": "x",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "INOUT",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "x",
@@ -1949,6 +2007,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "x_length",
                             "F_pointer": "SHPTR_x_length",
                             "c_var": "SH_x_length",
                             "f_intent": "IN",
@@ -2011,8 +2070,10 @@
                     "C_name": "fill_with_zeros",
                     "C_prototype": "double * x,\t int x_length",
                     "C_return_type": "void",
+                    "F_C_arguments": "x,\t x_length",
                     "F_C_call": "c_fill_with_zeros",
                     "F_C_name": "c_fill_with_zeros",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "x,\t SH_x_length",
                     "F_arguments": "x",
                     "F_name_function": "fill_with_zeros",
@@ -2049,9 +2110,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arr",
                             "F_pointer": "SHPTR_arr",
                             "c_var": "arr",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arr",
@@ -2083,6 +2146,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "SH_len",
                             "f_intent": "IN",
@@ -2174,8 +2238,12 @@
                     "C_name": "accumulate",
                     "C_prototype": "const int * arr,\t size_t len",
                     "C_return_type": "int",
+                    "F_C_arguments": "arr,\t len",
                     "F_C_call": "c_accumulate",
                     "F_C_name": "c_accumulate",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arr,\t SH_len",
                     "F_arguments": "arr",
                     "F_name_function": "accumulate",
@@ -2208,6 +2276,9 @@
                             "shadow_var": "SHadow_names",
                             "stmt0": "c_char_**_in",
                             "stmt1": "c_char_**_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "names"
                         }
                     }
                 },
@@ -2282,8 +2353,12 @@
                     "C_name": "acceptCharArrayIn",
                     "C_prototype": "char **names",
                     "C_return_type": "int",
+                    "F_C_arguments": "names",
                     "F_C_call": "c_accept_char_array_in_bufferify",
                     "F_C_name": "c_accept_char_array_in",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "names,\t size(names, kind=C_LONG),\t len(names, kind=C_INT)",
                     "F_arguments": "names",
                     "F_name_function": "accept_char_array_in",
@@ -2320,11 +2395,13 @@
                             "stmt1": "c_char_**_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "names",
                             "F_pointer": "SHPTR_names",
                             "c_var": "names",
                             "c_var_len": "Nnames",
                             "c_var_size": "Snames",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "character(*)",
                             "f_var": "names",
@@ -2403,7 +2480,11 @@
                     "C_name": "POI_accept_char_array_in_bufferify",
                     "C_prototype": "char *names,\t long Snames,\t int Nnames",
                     "C_return_type": "int",
+                    "F_C_arguments": "names,\t Snames,\t Nnames",
                     "F_C_name": "c_accept_char_array_in_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptCharArrayIn",
                     "function_suffix": "_bufferify",
@@ -2437,6 +2518,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "f_intent": "IN",
@@ -2483,8 +2565,10 @@
                     "C_name": "setGlobalInt",
                     "C_prototype": "int value",
                     "C_return_type": "void",
+                    "F_C_arguments": "value",
                     "F_C_call": "c_set_global_int",
                     "F_C_name": "set_global_int",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "value",
                     "F_arguments": "value",
                     "F_name_function": "set_global_int",
@@ -2549,8 +2633,12 @@
                     "C_name": "sumFixedArray",
                     "C_prototype": "void",
                     "C_return_type": "int",
+                    "F_C_arguments": "",
                     "F_C_call": "c_sum_fixed_array",
                     "F_C_name": "sum_fixed_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "sum_fixed_array",
                     "F_name_generic": "sum_fixed_array",
@@ -2582,6 +2670,9 @@
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nitems"
                         }
                     }
                 },
@@ -2625,8 +2716,10 @@
                     "C_name": "getPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "nitems",
                     "F_C_call": "c_get_ptr_to_scalar_bufferify",
                     "F_C_name": "c_get_ptr_to_scalar",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_ptr_to_scalar",
@@ -2666,6 +2759,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
                             "c_var_context": "Dnitems",
@@ -2724,7 +2818,9 @@
                     "C_name": "POI_get_ptr_to_scalar_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dnitems",
                     "F_C_name": "c_get_ptr_to_scalar_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToScalar",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2758,6 +2854,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     }
                 },
@@ -2812,8 +2911,10 @@
                     "C_name": "getPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
+                    "F_C_arguments": "count",
                     "F_C_call": "c_get_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_get_ptr_to_fixed_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_fixed_array",
@@ -2854,6 +2955,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -2928,7 +3030,9 @@
                     "C_name": "POI_get_ptr_to_fixed_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount",
                     "F_C_name": "c_get_ptr_to_fixed_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFixedArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2962,6 +3066,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     },
                     "ncount": {
@@ -2981,6 +3088,9 @@
                             "shadow_var": "SHadow_ncount",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "ncount"
                         }
                     }
                 },
@@ -3053,8 +3163,10 @@
                     "C_name": "getPtrToDynamicArray",
                     "C_prototype": "int * * count,\t int * ncount",
                     "C_return_type": "void",
+                    "F_C_arguments": "count,\t ncount",
                     "F_C_call": "c_get_ptr_to_dynamic_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount,\t ncount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_array",
@@ -3095,6 +3207,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -3133,6 +3246,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ncount",
                             "F_pointer": "SHPTR_ncount",
                             "c_var": "ncount",
                             "f_intent": "OUT",
@@ -3219,7 +3333,9 @@
                     "C_name": "POI_get_ptr_to_dynamic_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount,\t ncount",
                     "F_C_name": "c_get_ptr_to_dynamic_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3253,6 +3369,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     }
                 },
@@ -3308,8 +3427,10 @@
                     "C_name": "getPtrToFuncArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
+                    "F_C_arguments": "count",
                     "F_C_call": "c_get_ptr_to_func_array_bufferify",
                     "F_C_name": "c_get_ptr_to_func_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_func_array",
@@ -3350,6 +3471,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -3425,7 +3547,9 @@
                     "C_name": "POI_get_ptr_to_func_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount",
                     "F_C_name": "c_get_ptr_to_func_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFuncArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3458,6 +3582,9 @@
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nitems"
                         }
                     }
                 },
@@ -3502,8 +3629,10 @@
                     "C_name": "getPtrToConstScalar",
                     "C_prototype": "const int * * nitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "nitems",
                     "F_C_call": "c_get_ptr_to_const_scalar_bufferify",
                     "F_C_name": "c_get_ptr_to_const_scalar",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_ptr_to_const_scalar",
@@ -3543,6 +3672,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
                             "c_var_context": "Dnitems",
@@ -3602,7 +3732,9 @@
                     "C_name": "POI_get_ptr_to_const_scalar_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dnitems",
                     "F_C_name": "c_get_ptr_to_const_scalar_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToConstScalar",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3636,6 +3768,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     }
                 },
@@ -3688,8 +3823,10 @@
                     "C_name": "getPtrToFixedConstArray",
                     "C_prototype": "const int * * count",
                     "C_return_type": "void",
+                    "F_C_arguments": "count",
                     "F_C_call": "c_get_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_get_ptr_to_fixed_const_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_fixed_const_array",
@@ -3730,6 +3867,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -3802,7 +3940,9 @@
                     "C_name": "POI_get_ptr_to_fixed_const_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount",
                     "F_C_name": "c_get_ptr_to_fixed_const_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToFixedConstArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -3836,6 +3976,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     },
                     "ncount": {
@@ -3855,6 +3998,9 @@
                             "shadow_var": "SHadow_ncount",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "ncount"
                         }
                     }
                 },
@@ -3925,8 +4071,10 @@
                     "C_name": "getPtrToDynamicConstArray",
                     "C_prototype": "const int * * count,\t int * ncount",
                     "C_return_type": "void",
+                    "F_C_arguments": "count,\t ncount",
                     "F_C_call": "c_get_ptr_to_dynamic_const_array_bufferify",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount,\t ncount",
                     "F_arguments": "count",
                     "F_name_function": "get_ptr_to_dynamic_const_array",
@@ -3967,6 +4115,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -4005,6 +4154,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ncount",
                             "F_pointer": "SHPTR_ncount",
                             "c_var": "ncount",
                             "f_intent": "OUT",
@@ -4089,7 +4239,9 @@
                     "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount,\t int * ncount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount,\t ncount",
                     "F_C_name": "c_get_ptr_to_dynamic_const_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getPtrToDynamicConstArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4122,6 +4274,9 @@
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nitems"
                         }
                     }
                 },
@@ -4168,8 +4323,10 @@
                     "C_name": "getRawPtrToScalar",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "nitems",
                     "F_C_call": "c_get_raw_ptr_to_scalar_bufferify",
                     "F_C_name": "c_get_raw_ptr_to_scalar",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_raw_ptr_to_scalar",
@@ -4207,6 +4364,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
                             "c_var_context": "Dnitems",
@@ -4267,7 +4425,9 @@
                     "C_name": "POI_get_raw_ptr_to_scalar_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dnitems",
                     "F_C_name": "c_get_raw_ptr_to_scalar_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getRawPtrToScalar",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4300,6 +4460,9 @@
                             "shadow_var": "SHadow_nitems",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nitems"
                         }
                     }
                 },
@@ -4346,8 +4509,10 @@
                     "C_name": "getRawPtrToScalarForce",
                     "C_prototype": "int * * nitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "nitems",
                     "F_C_call": "c_get_raw_ptr_to_scalar_force_bufferify",
                     "F_C_name": "c_get_raw_ptr_to_scalar_force",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dnitems",
                     "F_arguments": "nitems",
                     "F_name_function": "get_raw_ptr_to_scalar_force",
@@ -4388,6 +4553,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "nitems",
                             "F_pointer": "SHPTR_nitems",
                             "c_var": "nitems",
                             "c_var_context": "Dnitems",
@@ -4448,7 +4614,9 @@
                     "C_name": "POI_get_raw_ptr_to_scalar_force_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dnitems",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dnitems",
                     "F_C_name": "c_get_raw_ptr_to_scalar_force_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getRawPtrToScalarForce",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4482,6 +4650,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     }
                 },
@@ -4528,8 +4699,10 @@
                     "C_name": "getRawPtrToFixedArray",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
+                    "F_C_arguments": "count",
                     "F_C_call": "c_get_raw_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_get_raw_ptr_to_fixed_array",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_raw_ptr_to_fixed_array",
@@ -4567,6 +4740,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -4627,7 +4801,9 @@
                     "C_name": "POI_get_raw_ptr_to_fixed_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount",
                     "F_C_name": "c_get_raw_ptr_to_fixed_array_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getRawPtrToFixedArray",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4660,6 +4836,9 @@
                             "shadow_var": "SHadow_count",
                             "stmt0": "c_native_**_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "count"
                         }
                     }
                 },
@@ -4706,8 +4885,10 @@
                     "C_name": "getRawPtrToFixedArrayForce",
                     "C_prototype": "int * * count",
                     "C_return_type": "void",
+                    "F_C_arguments": "count",
                     "F_C_call": "c_get_raw_ptr_to_fixed_array_force_bufferify",
                     "F_C_name": "c_get_raw_ptr_to_fixed_array_force",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Dcount",
                     "F_arguments": "count",
                     "F_name_function": "get_raw_ptr_to_fixed_array_force",
@@ -4748,6 +4929,7 @@
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "c_var_context": "Dcount",
@@ -4808,7 +4990,9 @@
                     "C_name": "POI_get_raw_ptr_to_fixed_array_force_bufferify",
                     "C_prototype": "POI_SHROUD_array *Dcount",
                     "C_return_type": "void",
+                    "F_C_arguments": "Dcount",
                     "F_C_name": "c_get_raw_ptr_to_fixed_array_force_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "getRawPtrToFixedArrayForce",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -4844,6 +5028,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "OUT",
@@ -4902,8 +5087,10 @@
                     "C_name": "getRawPtrToInt2d",
                     "C_prototype": "int * * * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_get_raw_ptr_to_int2d",
                     "F_C_name": "get_raw_ptr_to_int2d",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "get_raw_ptr_to_int2d",
@@ -4942,6 +5129,7 @@
                             "stmt1": "c_native_**_in"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -5025,8 +5213,12 @@
                     "C_name": "checkInt2d",
                     "C_prototype": "int **arg",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_check_int2d",
                     "F_C_name": "check_int2d",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "check_int2d",
@@ -5064,6 +5256,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_array_allocate": "(10,20)",
@@ -5131,8 +5324,10 @@
                     "C_name": "DimensionIn",
                     "C_prototype": "const int * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_dimension_in",
                     "F_C_name": "c_dimension_in",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "dimension_in",
@@ -5172,6 +5367,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
@@ -5250,8 +5446,12 @@
                     "C_name": "returnAddress1",
                     "C_prototype": "int flag",
                     "C_return_type": "void *",
+                    "F_C_arguments": "flag",
                     "F_C_call": "c_return_address1",
                     "F_C_name": "return_address1",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "flag",
                     "F_arguments": "flag",
                     "F_name_function": "return_address1",
@@ -5286,6 +5486,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
@@ -5364,8 +5565,12 @@
                     "C_name": "returnAddress2",
                     "C_prototype": "int flag",
                     "C_return_type": "void *",
+                    "F_C_arguments": "flag",
                     "F_C_call": "c_return_address2",
                     "F_C_name": "c_return_address2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "flag",
                     "F_arguments": "flag",
                     "F_name_function": "return_address2",
@@ -5402,6 +5607,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
                             "f_intent": "OUT",
@@ -5454,8 +5660,10 @@
                     "C_name": "fetchVoidPtr",
                     "C_prototype": "void * * addr",
                     "C_return_type": "void",
+                    "F_C_arguments": "addr",
                     "F_C_call": "c_fetch_void_ptr",
                     "F_C_name": "fetch_void_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "addr",
                     "F_arguments": "addr",
                     "F_name_function": "fetch_void_ptr",
@@ -5470,6 +5678,135 @@
                     "underscore_name": "fetch_void_ptr"
                 },
                 "options": {}
+            },
+            {
+                "_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "void",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_void_**_in",
+                            "stmt1": "c_void_**_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "addr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "size": "size(addr)",
+                            "stmt0": "f_void_**_in",
+                            "stmt1": "f_void_**_in",
+                            "stmtc0": "c_void_**_in",
+                            "stmtc1": "c_void_**_in"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "VoidPtrArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int VoidPtrArray(void **addr+rank(1))",
+                "declgen": "int VoidPtrArray(void * * addr +intent(in)+rank(1))",
+                "fmtdict": {
+                    "C_call_list": "addr",
+                    "C_name": "VoidPtrArray",
+                    "C_prototype": "void **addr",
+                    "C_return_type": "int",
+                    "F_C_arguments": "addr",
+                    "F_C_call": "c_void_ptr_array",
+                    "F_C_name": "c_void_ptr_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "addr",
+                    "F_arguments": "addr",
+                    "F_name_function": "void_ptr_array",
+                    "F_name_generic": "void_ptr_array",
+                    "F_name_impl": "void_ptr_array",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "VoidPtrArray",
+                    "underscore_name": "void_ptr_array"
+                },
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                }
             },
             {
                 "_fmtresult": {
@@ -5524,8 +5861,12 @@
                     "C_name": "returnIntPtrToScalar",
                     "C_prototype": "void",
                     "C_return_type": "int *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_ptr_to_scalar",
                     "F_C_name": "c_return_int_ptr_to_scalar",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
@@ -5607,8 +5948,12 @@
                     "C_name": "returnIntPtrToFixedArray",
                     "C_prototype": "void",
                     "C_return_type": "int *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_ptr_to_fixed_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_array",
@@ -5679,11 +6024,14 @@
                     "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *DSHC_rv",
                     "C_return_type": "int *",
+                    "F_C_arguments": "DSHC_rv",
                     "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
                 "options": {
@@ -5747,8 +6095,12 @@
                     "C_name": "returnIntPtrToConstScalar",
                     "C_prototype": "void",
                     "C_return_type": "const int *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_ptr_to_const_scalar",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
@@ -5831,8 +6183,12 @@
                     "C_name": "returnIntPtrToFixedConstArray",
                     "C_prototype": "void",
                     "C_return_type": "const int *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_ptr_to_fixed_const_array_bufferify",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
@@ -5904,11 +6260,14 @@
                     "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
                     "C_prototype": "POI_SHROUD_array *DSHC_rv",
                     "C_return_type": "const int *",
+                    "F_C_arguments": "DSHC_rv",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToFixedConstArray",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
                 "options": {
@@ -5970,8 +6329,12 @@
                     "C_name": "POI_return_int_scalar",
                     "C_prototype": "void",
                     "C_return_type": "int",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_scalar",
                     "F_C_name": "return_int_scalar",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_scalar",
                     "F_name_generic": "return_int_scalar",
@@ -6040,8 +6403,12 @@
                     "C_name": "returnIntRaw",
                     "C_prototype": "void",
                     "C_return_type": "int *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_int_raw",
                     "F_C_name": "return_int_raw",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_raw",
                     "F_name_generic": "return_int_raw",
@@ -6077,6 +6444,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_intent": "IN",
@@ -6162,8 +6530,12 @@
                     "C_name": "returnIntRawWithArgs",
                     "C_prototype": "const char * name",
                     "C_return_type": "int *",
+                    "F_C_arguments": "name",
                     "F_C_call": "c_return_int_raw_with_args",
                     "F_C_name": "c_return_int_raw_with_args",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(name)//C_NULL_CHAR",
                     "F_arguments": "name",
                     "F_name_function": "return_int_raw_with_args",
@@ -6238,8 +6610,12 @@
                     "C_name": "returnRawPtrToInt2d",
                     "C_prototype": "void",
                     "C_return_type": "int * *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_return_raw_ptr_to_int2d",
                     "F_C_name": "c_return_raw_ptr_to_int2d",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_raw_ptr_to_int2d",
                     "F_name_generic": "return_raw_ptr_to_int2d",

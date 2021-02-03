@@ -1142,6 +1142,23 @@ void POI_fetch_void_ptr(void * * addr)
 // end POI_fetch_void_ptr
 
 // ----------------------------------------
+// Function:  int VoidPtrArray
+// Requested: c_native_scalar_result
+// Match:     c_default
+// ----------------------------------------
+// Argument:  void * * addr +intent(in)+rank(1)
+// Exact:     c_void_**_in
+// start POI_void_ptr_array
+int POI_void_ptr_array(void **addr)
+{
+    // splicer begin function.void_ptr_array
+    int SHC_rv = VoidPtrArray(addr);
+    return SHC_rv;
+    // splicer end function.void_ptr_array
+}
+// end POI_void_ptr_array
+
+// ----------------------------------------
 // Function:  int * returnIntPtrToScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default

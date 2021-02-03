@@ -83,8 +83,10 @@
                     "C_name": "NoReturnNoArguments",
                     "C_prototype": "void",
                     "C_return_type": "void",
+                    "F_C_arguments": "",
                     "F_C_call": "c_no_return_no_arguments",
                     "F_C_name": "no_return_no_arguments",
+                    "F_C_subprogram": "subroutine",
                     "F_arguments": "",
                     "F_name_function": "no_return_no_arguments",
                     "F_name_generic": "no_return_no_arguments",
@@ -123,6 +125,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -173,6 +176,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -297,8 +301,12 @@
                     "C_name": "PassByValue",
                     "C_prototype": "double arg1,\t int arg2",
                     "C_return_type": "double",
+                    "F_C_arguments": "arg1,\t arg2",
                     "F_C_call": "c_pass_by_value",
                     "F_C_name": "pass_by_value",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "pass_by_value",
@@ -336,6 +344,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -387,6 +396,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "OUT",
@@ -473,8 +483,10 @@
                     "C_name": "PassByReference",
                     "C_prototype": "double * arg1,\t int * arg2",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t arg2",
                     "F_C_call": "c_pass_by_reference",
                     "F_C_name": "pass_by_reference",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "pass_by_reference",
@@ -514,6 +526,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -627,8 +640,12 @@
                     "C_name": "CLI_pass_by_value_macro",
                     "C_prototype": "int arg2",
                     "C_return_type": "double",
+                    "F_C_arguments": "arg2",
                     "F_C_call": "c_pass_by_value_macro",
                     "F_C_name": "pass_by_value_macro",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg2",
                     "F_arguments": "arg2",
                     "F_name_function": "pass_by_value_macro",
@@ -666,6 +683,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "SH_arg1",
                             "f_intent": "IN",
@@ -718,6 +736,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "SH_arg2",
                             "f_intent": "OUT",
@@ -770,6 +789,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg3",
                             "F_pointer": "SHPTR_arg3",
                             "c_var": "SH_arg3",
                             "f_intent": "INOUT",
@@ -876,8 +896,10 @@
                     "C_name": "checkBool",
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t arg2,\t arg3",
                     "F_C_call": "c_check_bool",
                     "F_C_name": "c_check_bool",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "SH_arg1,\t SH_arg2,\t SH_arg3",
                     "F_arguments": "arg1,\t arg2,\t arg3",
                     "F_name_function": "check_bool",
@@ -915,6 +937,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -954,6 +979,9 @@
                             "shadow_var": "SHadow_arg2",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg2"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1090,8 +1118,12 @@
                     "C_name": "Function4a",
                     "C_prototype": "const char * arg1,\t const char * arg2",
                     "C_return_type": "char *",
+                    "F_C_arguments": "arg1,\t arg2",
                     "F_C_call": "c_function4a_bufferify",
                     "F_C_name": "c_function4a",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function4a",
@@ -1128,6 +1160,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -1160,6 +1193,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -1187,6 +1221,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -1293,7 +1328,9 @@
                     "C_name": "CLI_function4a_bufferify",
                     "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t arg2,\t SHF_rv,\t NSHF_rv",
                     "F_C_name": "c_function4a_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "char * SHC_rv",
                     "function_name": "Function4a",
                     "function_suffix": "_bufferify",
@@ -1327,6 +1364,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_intent": "IN",
@@ -1394,8 +1432,10 @@
                     "C_name": "acceptName",
                     "C_prototype": "const char * name",
                     "C_return_type": "void",
+                    "F_C_arguments": "name",
                     "F_C_call": "c_accept_name",
                     "F_C_name": "c_accept_name",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "trim(name)//C_NULL_CHAR",
                     "F_arguments": "name",
                     "F_name_function": "accept_name",
@@ -1433,6 +1473,9 @@
                             "shadow_var": "SHadow_s",
                             "stmt0": "c_char_*_inout",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "s"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1496,8 +1539,10 @@
                     "C_name": "passCharPtrInOut",
                     "C_prototype": "char * s",
                     "C_return_type": "void",
+                    "F_C_arguments": "s",
                     "F_C_call": "c_pass_char_ptr_in_out_bufferify",
                     "F_C_name": "c_pass_char_ptr_in_out",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "s,\t len_trim(s, kind=C_INT),\t len(s, kind=C_INT)",
                     "F_arguments": "s",
                     "F_name_function": "pass_char_ptr_in_out",
@@ -1537,6 +1582,7 @@
                             "stmt1": "c_char_*_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
                             "c_var_len": "Ns",
@@ -1596,7 +1642,9 @@
                     "C_name": "CLI_pass_char_ptr_in_out_bufferify",
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
                     "C_return_type": "void",
+                    "F_C_arguments": "s,\t Ls,\t Ns",
                     "F_C_name": "c_pass_char_ptr_in_out_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtrInOut",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -1629,6 +1677,9 @@
                             "shadow_var": "SHadow_name1",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1694,8 +1745,10 @@
                     "C_name": "returnOneName",
                     "C_prototype": "char * name1",
                     "C_return_type": "void",
+                    "F_C_arguments": "name1",
                     "F_C_call": "c_return_one_name_bufferify",
                     "F_C_name": "c_return_one_name",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "name1,\t len(name1, kind=C_INT)",
                     "F_arguments": "name1",
                     "F_name_function": "return_one_name",
@@ -1736,6 +1789,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
                             "c_var_len": "Nname1",
@@ -1794,7 +1848,9 @@
                     "C_name": "CLI_return_one_name_bufferify",
                     "C_prototype": "char * name1,\t int Nname1",
                     "C_return_type": "void",
+                    "F_C_arguments": "name1,\t Nname1",
                     "F_C_name": "c_return_one_name_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "returnOneName",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -1828,6 +1884,9 @@
                             "shadow_var": "SHadow_name1",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1868,6 +1927,9 @@
                             "shadow_var": "SHadow_name2",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name2"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1951,8 +2013,10 @@
                     "C_name": "returnTwoNames",
                     "C_prototype": "char * name1,\t char * name2",
                     "C_return_type": "void",
+                    "F_C_arguments": "name1,\t name2",
                     "F_C_call": "c_return_two_names_bufferify",
                     "F_C_name": "c_return_two_names",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "name1,\t len(name1, kind=C_INT),\t name2,\t len(name2, kind=C_INT)",
                     "F_arguments": "name1,\t name2",
                     "F_name_function": "return_two_names",
@@ -1991,6 +2055,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
                             "c_var_len": "Nname1",
@@ -2024,6 +2089,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name2",
                             "F_pointer": "SHPTR_name2",
                             "c_var": "name2",
                             "c_var_len": "Nname2",
@@ -2102,7 +2168,9 @@
                     "C_name": "CLI_return_two_names_bufferify",
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
                     "C_return_type": "void",
+                    "F_C_arguments": "name1,\t Nname1,\t name2,\t Nname2",
                     "F_C_name": "c_return_two_names_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "returnTwoNames",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2135,6 +2203,9 @@
                             "shadow_var": "SHadow_ltext",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "ltext"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -2172,6 +2243,9 @@
                             "shadow_var": "SHadow_text",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "text"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2251,8 +2325,10 @@
                     "C_name": "ImpliedTextLen",
                     "C_prototype": "char * text,\t int ltext",
                     "C_return_type": "void",
+                    "F_C_arguments": "text,\t ltext",
                     "F_C_call": "c_implied_text_len_bufferify",
                     "F_C_name": "c_implied_text_len",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "text,\t len(text, kind=C_INT),\t SH_ltext",
                     "F_arguments": "text",
                     "F_name_function": "implied_text_len",
@@ -2292,6 +2368,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2321,6 +2398,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "c_var_len": "Ntext",
@@ -2394,7 +2472,9 @@
                     "C_name": "CLI_implied_text_len_bufferify",
                     "C_prototype": "char * text,\t int Ntext,\t int ltext",
                     "C_return_type": "void",
+                    "F_C_arguments": "text,\t Ntext,\t ltext",
                     "F_C_name": "c_implied_text_len_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "ImpliedTextLen",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -2430,6 +2510,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -2477,6 +2558,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2523,6 +2605,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "f_intent": "IN",
@@ -2669,8 +2752,12 @@
                     "C_name": "ImpliedLen",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_type": "int",
+                    "F_C_arguments": "text,\t ltext,\t flag",
                     "F_C_call": "c_implied_len",
                     "F_C_name": "c_implied_len",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
                     "F_name_function": "implied_len",
@@ -2708,6 +2795,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -2755,6 +2843,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2801,6 +2890,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "f_intent": "IN",
@@ -2947,8 +3037,12 @@
                     "C_name": "ImpliedLenTrim",
                     "C_prototype": "const char * text,\t int ltext,\t bool flag",
                     "C_return_type": "int",
+                    "F_C_arguments": "text,\t ltext,\t flag",
                     "F_C_call": "c_implied_len_trim",
                     "F_C_name": "c_implied_len_trim",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
                     "F_name_function": "implied_len_trim",
@@ -2986,6 +3080,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -3098,8 +3193,12 @@
                     "C_name": "ImpliedBoolTrue",
                     "C_prototype": "bool flag",
                     "C_return_type": "bool",
+                    "F_C_arguments": "flag",
                     "F_C_call": "c_implied_bool_true",
                     "F_C_name": "c_implied_bool_true",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
                     "F_name_function": "implied_bool_true",
@@ -3135,6 +3234,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -3247,8 +3347,12 @@
                     "C_name": "ImpliedBoolFalse",
                     "C_prototype": "bool flag",
                     "C_return_type": "bool",
+                    "F_C_arguments": "flag",
                     "F_C_call": "c_implied_bool_false",
                     "F_C_name": "c_implied_bool_false",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
                     "F_name_function": "implied_bool_false",
@@ -3285,8 +3389,10 @@
                     "C_name": "bindC1",
                     "C_prototype": "void",
                     "C_return_type": "void",
+                    "F_C_arguments": "",
                     "F_C_call": "fortran_bindc1b",
                     "F_C_name": "Fortran_bindC1a",
+                    "F_C_subprogram": "subroutine",
                     "F_arguments": "",
                     "F_name_function": "bind_c1",
                     "F_name_generic": "bind_c1",
@@ -3322,6 +3428,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     }
                 },
@@ -3365,8 +3474,10 @@
                     "C_name": "bindC2",
                     "C_prototype": "char * outbuf",
                     "C_return_type": "void",
+                    "F_C_arguments": "outbuf",
                     "F_C_call": "c_bind_c2_bufferify",
                     "F_C_name": "c_bind_c2",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "outbuf",
                     "F_name_function": "bind_c2",
@@ -3406,6 +3517,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -3463,7 +3575,9 @@
                     "C_name": "CLI_bind_c2_bufferify",
                     "C_prototype": "char * outbuf,\t int Noutbuf",
                     "C_return_type": "void",
+                    "F_C_arguments": "outbuf,\t Noutbuf",
                     "F_C_name": "c_bind_c2_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "F_name_impl": "Fortran_bindC2a",
                     "function_name": "bindC2",
                     "function_suffix": "_bufferify",
@@ -3499,6 +3613,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -3530,6 +3645,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out",
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_intent": "OUT",
@@ -3604,8 +3720,10 @@
                     "C_name": "passVoidStarStar",
                     "C_prototype": "void * in,\t void * * out",
                     "C_return_type": "void",
+                    "F_C_arguments": "in,\t out",
                     "F_C_call": "c_pass_void_star_star",
                     "F_C_name": "pass_void_star_star",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in,\t out",
                     "F_arguments": "in,\t out",
                     "F_name_function": "pass_void_star_star",
@@ -3645,6 +3763,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -3723,8 +3842,12 @@
                     "C_name": "passAssumedType",
                     "C_prototype": "void * arg",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_pass_assumed_type",
                     "F_C_name": "pass_assumed_type",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_assumed_type",
@@ -3762,9 +3885,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
@@ -3815,8 +3940,10 @@
                     "C_name": "passAssumedTypeDim",
                     "C_prototype": "void * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_pass_assumed_type_dim",
                     "F_C_name": "pass_assumed_type_dim",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_assumed_type_dim",
@@ -3854,6 +3981,9 @@
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg"
                         }
                     },
                     "outbuf": {
@@ -3873,6 +4003,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     }
                 },
@@ -3962,8 +4095,12 @@
                     "C_name": "passAssumedTypeBuf",
                     "C_prototype": "void * arg,\t char * outbuf",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg,\t outbuf",
                     "F_C_call": "c_pass_assumed_type_buf_bufferify",
                     "F_C_name": "c_pass_assumed_type_buf",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "arg,\t outbuf",
                     "F_name_function": "pass_assumed_type_buf",
@@ -4000,6 +4137,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -4028,6 +4166,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -4122,7 +4261,11 @@
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
                     "C_prototype": "void * arg,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg,\t outbuf,\t Noutbuf",
                     "F_C_name": "c_pass_assumed_type_buf_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeBuf",
                     "function_suffix": "_bufferify",
@@ -4156,6 +4299,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4183,6 +4327,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4255,8 +4400,10 @@
                     "C_name": "callback1",
                     "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                     "C_return_type": "void",
+                    "F_C_arguments": "type,\t incr",
                     "F_C_call": "c_callback1",
                     "F_C_name": "c_callback1",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "type,\t incr",
                     "F_arguments": "type,\t incr",
                     "F_name_function": "callback1",
@@ -4297,6 +4444,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4324,6 +4472,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4397,8 +4546,10 @@
                     "C_name": "CLI_callback1a",
                     "C_prototype": "int type,\t void ( * incr)(\tvoid)",
                     "C_return_type": "void",
+                    "F_C_arguments": "type,\t incr",
                     "F_C_call": "c_callback1a",
                     "F_C_name": "c_callback1a",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "type,\t incr",
                     "F_arguments": "type,\t incr",
                     "F_name_function": "callback1a",
@@ -4440,6 +4591,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -4467,6 +4619,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4494,6 +4647,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4598,8 +4752,10 @@
                     "C_name": "callback2",
                     "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
                     "C_return_type": "void",
+                    "F_C_arguments": "type,\t in,\t incr",
                     "F_C_call": "c_callback2",
                     "F_C_name": "c_callback2",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "type,\t in,\t incr",
                     "F_arguments": "type,\t in,\t incr",
                     "F_name_function": "callback2",
@@ -4637,6 +4793,9 @@
                             "shadow_var": "SHadow_in",
                             "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in"
                         }
                     },
                     "incr": {
@@ -4656,6 +4815,9 @@
                             "shadow_var": "SHadow_incr",
                             "stmt0": "c_void_scalar_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "incr"
                         }
                     },
                     "outbuf": {
@@ -4675,6 +4837,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     },
                     "type": {
@@ -4694,6 +4859,9 @@
                             "shadow_var": "SHadow_type",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type"
                         }
                     }
                 },
@@ -4811,8 +4979,10 @@
                     "C_name": "callback3",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
                     "C_return_type": "void",
+                    "F_C_arguments": "type,\t in,\t incr,\t outbuf",
                     "F_C_call": "c_callback3_bufferify",
                     "F_C_name": "c_callback3",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "trim(type)//C_NULL_CHAR,\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "type,\t in,\t incr,\t outbuf",
                     "F_name_function": "callback3",
@@ -4852,6 +5022,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -4879,6 +5050,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4907,6 +5079,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -4939,6 +5112,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -5067,7 +5241,9 @@
                     "C_name": "CLI_callback3_bufferify",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "void",
+                    "F_C_arguments": "type,\t in,\t incr,\t outbuf,\t Noutbuf",
                     "F_C_name": "c_callback3_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "callback3",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -5102,6 +5278,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "alloc",
                             "F_pointer": "SHPTR_alloc",
                             "c_var": "alloc",
                             "f_intent": "IN",
@@ -5129,6 +5306,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arr",
                             "F_pointer": "SHPTR_arr",
                             "c_var": "arr",
                             "f_intent": "INOUT",
@@ -5160,6 +5338,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "tc",
                             "F_pointer": "SHPTR_tc",
                             "c_var": "tc",
                             "f_intent": "IN",
@@ -5280,8 +5459,10 @@
                     "C_name": "callback_set_alloc",
                     "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
                     "C_return_type": "void",
+                    "F_C_arguments": "tc,\t arr,\t alloc",
                     "F_C_call": "c_callback_set_alloc",
                     "F_C_name": "callback_set_alloc",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "tc,\t arr,\t alloc",
                     "F_arguments": "tc,\t arr,\t alloc",
                     "F_name_function": "callback_set_alloc",

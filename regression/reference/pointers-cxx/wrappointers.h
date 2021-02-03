@@ -135,6 +135,8 @@ void * POI_return_address2(int flag);
 
 void POI_fetch_void_ptr(void * * addr);
 
+int POI_void_ptr_array(void **addr);
+
 int * POI_return_int_ptr_to_scalar(void);
 
 int * POI_return_int_ptr_to_fixed_array(void);

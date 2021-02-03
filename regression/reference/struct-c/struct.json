@@ -591,8 +591,12 @@
                             "C_name": "STR_Cstruct_as_class_get_x1",
                             "C_prototype": "STR_Cstruct_as_class * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_cstruct_as_class_get_x1",
                             "F_C_name": "c_cstruct_as_class_get_x1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_x1",
@@ -640,6 +644,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -686,8 +691,10 @@
                             "C_name": "STR_Cstruct_as_class_set_x1",
                             "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
                             "F_C_call": "c_cstruct_as_class_set_x1",
                             "F_C_name": "c_cstruct_as_class_set_x1",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_x1",
@@ -763,8 +770,12 @@
                             "C_name": "STR_Cstruct_as_class_get_y1",
                             "C_prototype": "STR_Cstruct_as_class * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_cstruct_as_class_get_y1",
                             "F_C_name": "c_cstruct_as_class_get_y1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_y1",
@@ -812,6 +823,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -858,8 +870,10 @@
                             "C_name": "STR_Cstruct_as_class_set_y1",
                             "C_prototype": "STR_Cstruct_as_class * self,\t int val",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
                             "F_C_call": "c_cstruct_as_class_set_y1",
                             "F_C_name": "c_cstruct_as_class_set_y1",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_y1",
@@ -1014,8 +1028,12 @@
                             "C_name": "STR_Cstruct_as_subclass_get_x1",
                             "C_prototype": "STR_Cstruct_as_subclass * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_cstruct_as_subclass_get_x1",
                             "F_C_name": "c_cstruct_as_subclass_get_x1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_x1",
@@ -1063,6 +1081,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -1109,8 +1128,10 @@
                             "C_name": "STR_Cstruct_as_subclass_set_x1",
                             "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
                             "F_C_call": "c_cstruct_as_subclass_set_x1",
                             "F_C_name": "c_cstruct_as_subclass_set_x1",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_x1",
@@ -1186,8 +1207,12 @@
                             "C_name": "STR_Cstruct_as_subclass_get_y1",
                             "C_prototype": "STR_Cstruct_as_subclass * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_cstruct_as_subclass_get_y1",
                             "F_C_name": "c_cstruct_as_subclass_get_y1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_y1",
@@ -1235,6 +1260,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -1281,8 +1307,10 @@
                             "C_name": "STR_Cstruct_as_subclass_set_y1",
                             "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
                             "F_C_call": "c_cstruct_as_subclass_set_y1",
                             "F_C_name": "c_cstruct_as_subclass_set_y1",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_y1",
@@ -1358,8 +1386,12 @@
                             "C_name": "STR_Cstruct_as_subclass_get_z1",
                             "C_prototype": "STR_Cstruct_as_subclass * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_cstruct_as_subclass_get_z1",
                             "F_C_name": "c_cstruct_as_subclass_get_z1",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_z1",
@@ -1407,6 +1439,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -1453,8 +1486,10 @@
                             "C_name": "STR_Cstruct_as_subclass_set_z1",
                             "C_prototype": "STR_Cstruct_as_subclass * self,\t int val",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t val",
                             "F_C_call": "c_cstruct_as_subclass_set_z1",
                             "F_C_name": "c_cstruct_as_subclass_set_z1",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t val",
                             "F_arguments": "obj,\t val",
                             "F_name_function": "set_z1",
@@ -1599,6 +1634,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -1673,8 +1709,12 @@
                     "C_name": "passStructByValue",
                     "C_prototype": "Cstruct1 arg",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_pass_struct_by_value",
                     "F_C_name": "pass_struct_by_value",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_struct_by_value",
@@ -1711,6 +1751,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -1789,8 +1830,12 @@
                     "C_name": "passStruct1",
                     "C_prototype": "const Cstruct1 * arg",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_pass_struct1",
                     "F_C_name": "pass_struct1",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_struct1",
@@ -1825,6 +1870,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     },
                     "s1": {
@@ -1844,6 +1892,9 @@
                             "shadow_var": "SHadow_s1",
                             "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "s1"
                         }
                     }
                 },
@@ -1933,8 +1984,12 @@
                     "C_name": "passStruct2",
                     "C_prototype": "const Cstruct1 * s1,\t char * outbuf",
                     "C_return_type": "int",
+                    "F_C_arguments": "s1,\t outbuf",
                     "F_C_call": "c_pass_struct2_bufferify",
                     "F_C_name": "c_pass_struct2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "s1,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "s1,\t outbuf",
                     "F_name_function": "pass_struct2",
@@ -1970,6 +2025,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -2002,6 +2058,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "s1",
                             "F_pointer": "SHPTR_s1",
                             "c_var": "s1",
                             "f_intent": "IN",
@@ -2095,7 +2152,11 @@
                     "C_name": "STR_pass_struct2_bufferify",
                     "C_prototype": "const Cstruct1 * s1,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "int",
+                    "F_C_arguments": "s1,\t outbuf,\t Noutbuf",
                     "F_C_name": "c_pass_struct2_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
                     "function_suffix": "_bufferify",
@@ -2129,6 +2190,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -2206,8 +2268,12 @@
                     "C_name": "acceptStructInPtr",
                     "C_prototype": "Cstruct1 * arg",
                     "C_return_type": "int",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_accept_struct_in_ptr",
                     "F_C_name": "accept_struct_in_ptr",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "accept_struct_in_ptr",
@@ -2242,6 +2308,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "OUT",
@@ -2273,6 +2340,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "d",
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_intent": "IN",
@@ -2304,6 +2372,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "i",
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_intent": "IN",
@@ -2384,8 +2453,10 @@
                     "C_name": "acceptStructOutPtr",
                     "C_prototype": "Cstruct1 * arg,\t int i,\t double d",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg,\t i,\t d",
                     "F_C_call": "c_accept_struct_out_ptr",
                     "F_C_name": "accept_struct_out_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg,\t i,\t d",
                     "F_arguments": "arg,\t i,\t d",
                     "F_name_function": "accept_struct_out_ptr",
@@ -2422,6 +2493,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "INOUT",
@@ -2471,8 +2543,10 @@
                     "C_name": "acceptStructInOutPtr",
                     "C_prototype": "Cstruct1 * arg",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg",
                     "F_C_call": "c_accept_struct_in_out_ptr",
                     "F_C_name": "accept_struct_in_out_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "accept_struct_in_out_ptr",
@@ -2509,6 +2583,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "d",
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_intent": "IN",
@@ -2540,6 +2615,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "i",
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_intent": "IN",
@@ -2628,8 +2704,12 @@
                     "C_name": "returnStructByValue",
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "Cstruct1",
+                    "F_C_arguments": "i,\t d",
                     "F_C_call": "c_return_struct_by_value",
                     "F_C_name": "return_struct_by_value",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
                     "F_name_function": "return_struct_by_value",
@@ -2664,6 +2744,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "d",
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_intent": "IN",
@@ -2695,6 +2776,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "i",
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_intent": "IN",
@@ -2794,8 +2876,12 @@
                     "C_name": "returnStructPtr1",
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "Cstruct1 *",
+                    "F_C_arguments": "i,\t d",
                     "F_C_call": "c_return_struct_ptr1",
                     "F_C_name": "c_return_struct_ptr1",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
                     "F_name_function": "return_struct_ptr1",
@@ -2828,6 +2914,9 @@
                             "shadow_var": "SHadow_d",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "d"
                         }
                     },
                     "i": {
@@ -2847,6 +2936,9 @@
                             "shadow_var": "SHadow_i",
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "i"
                         }
                     },
                     "outbuf": {
@@ -2866,6 +2958,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     }
                 },
@@ -2973,8 +3068,12 @@
                     "C_name": "returnStructPtr2",
                     "C_prototype": "int i,\t double d,\t char * outbuf",
                     "C_return_type": "Cstruct1 *",
+                    "F_C_arguments": "i,\t d,\t outbuf",
                     "F_C_call": "c_return_struct_ptr2_bufferify",
                     "F_C_name": "c_return_struct_ptr2",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "i,\t d,\t outbuf",
                     "F_name_function": "return_struct_ptr2",
@@ -3009,6 +3108,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "d",
                             "F_pointer": "SHPTR_d",
                             "c_var": "d",
                             "f_intent": "IN",
@@ -3040,6 +3140,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "i",
                             "F_pointer": "SHPTR_i",
                             "c_var": "i",
                             "f_intent": "IN",
@@ -3072,6 +3173,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -3185,7 +3287,11 @@
                     "C_name": "STR_return_struct_ptr2_bufferify",
                     "C_prototype": "int i,\t double d,\t char * outbuf,\t int Noutbuf",
                     "C_return_type": "Cstruct1 *",
+                    "F_C_arguments": "i,\t d,\t outbuf,\t Noutbuf",
                     "F_C_name": "c_return_struct_ptr2_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "Cstruct1 * SHC_rv",
                     "function_name": "returnStructPtr2",
                     "function_suffix": "_bufferify",
@@ -3251,8 +3357,12 @@
                     "C_name": "get_global_struct_list",
                     "C_prototype": "void",
                     "C_return_type": "Cstruct_list *",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_global_struct_list",
                     "F_C_name": "c_get_global_struct_list",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_struct_list",
                     "F_name_generic": "get_global_struct_list",
@@ -3314,8 +3424,12 @@
                     "C_name": "STR_create__cstruct_as_class",
                     "C_prototype": "STR_Cstruct_as_class * SHadow_rv",
                     "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_arguments": "SHT_crv",
                     "F_C_call": "c_create__cstruct_as_class",
                     "F_C_name": "c_create__cstruct_as_class",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "create__cstruct_as_class",
@@ -3354,6 +3468,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "x",
                             "F_pointer": "SHPTR_x",
                             "c_var": "x",
                             "f_intent": "IN",
@@ -3385,6 +3500,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "y",
                             "F_pointer": "SHPTR_y",
                             "c_var": "y",
                             "f_intent": "IN",
@@ -3476,8 +3592,12 @@
                     "C_name": "STR_create__cstruct_as_class_args",
                     "C_prototype": "int x,\t int y,\t STR_Cstruct_as_class * SHadow_rv",
                     "C_return_type": "STR_Cstruct_as_class *",
+                    "F_C_arguments": "x,\t y,\t SHT_crv",
                     "F_C_call": "c_create__cstruct_as_class_args",
                     "F_C_name": "c_create__cstruct_as_class_args",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "x,\t y,\t SHT_rv%cxxmem",
                     "F_arguments": "x,\t y",
                     "F_name_function": "create__cstruct_as_class_args",
@@ -3515,6 +3635,7 @@
                             "stmt1": "c_shadow_in"
                         },
                         "fmtf": {
+                            "F_C_var": "point",
                             "F_pointer": "SHPTR_point",
                             "c_var": "point",
                             "f_intent": "IN",
@@ -3594,8 +3715,12 @@
                     "C_name": "STR_cstruct_as_class_sum",
                     "C_prototype": "STR_Cstruct_as_class * point",
                     "C_return_type": "int",
+                    "F_C_arguments": "point",
                     "F_C_call": "c_cstruct_as_class_sum",
                     "F_C_name": "c_cstruct_as_class_sum",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "point%cxxmem",
                     "F_arguments": "point",
                     "F_name_function": "sum",
@@ -3633,6 +3758,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "x",
                             "F_pointer": "SHPTR_x",
                             "c_var": "x",
                             "f_intent": "IN",
@@ -3664,6 +3790,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "y",
                             "F_pointer": "SHPTR_y",
                             "c_var": "y",
                             "f_intent": "IN",
@@ -3695,6 +3822,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "z",
                             "F_pointer": "SHPTR_z",
                             "c_var": "z",
                             "f_intent": "IN",
@@ -3800,8 +3928,12 @@
                     "C_name": "STR_create__cstruct_as_subclass_args",
                     "C_prototype": "int x,\t int y,\t int z,\t STR_Cstruct_as_subclass * SHadow_rv",
                     "C_return_type": "STR_Cstruct_as_subclass *",
+                    "F_C_arguments": "x,\t y,\t z,\t SHT_crv",
                     "F_C_call": "c_create__cstruct_as_subclass_args",
                     "F_C_name": "c_create__cstruct_as_subclass_args",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "x,\t y,\t z,\t SHT_rv%cxxmem",
                     "F_arguments": "x,\t y,\t z",
                     "F_name_function": "create__cstruct_as_subclass_args",

@@ -94,8 +94,12 @@
                             "C_name": "ARR_ArrayWrapper_ctor",
                             "C_prototype": "ARR_ArrayWrapper * SHadow_rv",
                             "C_return_type": "ARR_ArrayWrapper *",
+                            "F_C_arguments": "SHT_crv",
                             "F_C_call": "c_arraywrapper_ctor",
                             "F_C_name": "c_arraywrapper_ctor",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -135,6 +139,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "size",
                                     "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "IN",
@@ -200,8 +205,10 @@
                             "C_name": "ARR_ArrayWrapper_set_size",
                             "C_prototype": "ARR_ArrayWrapper * self,\t int size",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t size",
                             "F_C_call": "c_arraywrapper_set_size",
                             "F_C_name": "c_arraywrapper_set_size",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t size",
                             "F_arguments": "obj,\t size",
                             "F_name_function": "set_size",
@@ -287,8 +294,13 @@
                             "C_name": "ARR_ArrayWrapper_get_size",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "int",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_get_size",
                             "F_C_name": "c_arraywrapper_get_size",
+                            "F_C_pure_clause": "pure ",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_size",
@@ -329,6 +341,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "size",
                                     "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "OUT",
@@ -398,8 +411,10 @@
                             "C_name": "ARR_ArrayWrapper_fill_size",
                             "C_prototype": "ARR_ArrayWrapper * self,\t int * size",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t size",
                             "F_C_call": "c_arraywrapper_fill_size",
                             "F_C_name": "c_arraywrapper_fill_size",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t size",
                             "F_arguments": "obj,\t size",
                             "F_name_function": "fill_size",
@@ -439,8 +454,10 @@
                             "C_name": "ARR_ArrayWrapper_allocate",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "void",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_allocate",
                             "F_C_name": "c_arraywrapper_allocate",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "allocate",
@@ -555,8 +572,12 @@
                             "C_name": "ARR_ArrayWrapper_get_array",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_get_array_bufferify",
                             "F_C_name": "c_arraywrapper_get_array",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array",
@@ -634,7 +655,11 @@
                             "C_name": "ARR_ArrayWrapper_get_array_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "double *",
+                            "F_C_arguments": "self,\t DSHC_rv",
                             "F_C_name": "c_arraywrapper_get_array_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -642,7 +667,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
@@ -747,8 +771,13 @@
                             "C_name": "ARR_ArrayWrapper_get_array_const",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "double *",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_get_array_const_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_const",
+                            "F_C_pure_clause": "pure ",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const",
@@ -827,7 +856,11 @@
                             "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "double *",
+                            "F_C_arguments": "self,\t DSHC_rv",
                             "F_C_name": "c_arraywrapper_get_array_const_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -835,7 +868,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
@@ -940,8 +972,12 @@
                             "C_name": "ARR_ArrayWrapper_get_array_c",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_get_array_c_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_c",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_c",
@@ -1020,7 +1056,11 @@
                             "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "const double *",
+                            "F_C_arguments": "self,\t DSHC_rv",
                             "F_C_name": "c_arraywrapper_get_array_c_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1028,7 +1068,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
@@ -1134,8 +1173,13 @@
                             "C_name": "ARR_ArrayWrapper_get_array_const_c",
                             "C_prototype": "const ARR_ArrayWrapper * self",
                             "C_return_type": "const double *",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_get_array_const_c_bufferify",
                             "F_C_name": "c_arraywrapper_get_array_const_c",
+                            "F_C_pure_clause": "pure ",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const_c",
@@ -1215,7 +1259,11 @@
                             "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
                             "C_return_type": "const double *",
+                            "F_C_arguments": "self,\t DSHC_rv",
                             "F_C_name": "c_arraywrapper_get_array_const_c_bufferify",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1223,7 +1271,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
@@ -1254,6 +1301,9 @@
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_native_**_out",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1298,6 +1348,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1387,8 +1440,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array,\t isize",
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ptr",
@@ -1435,6 +1490,7 @@
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -1473,6 +1529,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -1556,7 +1613,9 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t Darray,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_bufferify",
+                            "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1595,6 +1654,9 @@
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_native_*&_out",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1639,6 +1701,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1728,8 +1793,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref",
                             "C_prototype": "ARR_ArrayWrapper * self,\t double * * array,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array,\t isize",
                             "F_C_call": "c_arraywrapper_fetch_array_ref_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ref",
@@ -1776,6 +1843,7 @@
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -1814,6 +1882,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -1897,7 +1966,9 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t Darray,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_bufferify",
+                            "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1936,6 +2007,9 @@
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_native_**_out",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1980,6 +2054,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2070,8 +2147,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const",
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array,\t isize",
                             "F_C_call": "c_arraywrapper_fetch_array_ptr_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ptr_const",
@@ -2118,6 +2197,7 @@
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -2156,6 +2236,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -2240,7 +2321,9 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t Darray,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ptr_const_bufferify",
+                            "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2279,6 +2362,9 @@
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_native_*&_out",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2323,6 +2409,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2413,8 +2502,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const",
                             "C_prototype": "ARR_ArrayWrapper * self,\t const double * * array,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array,\t isize",
                             "F_C_call": "c_arraywrapper_fetch_array_ref_const_bufferify",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t Darray,\t isize",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_array_ref_const",
@@ -2461,6 +2552,7 @@
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -2499,6 +2591,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -2583,7 +2676,9 @@
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *Darray,\t int * isize",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t Darray,\t isize",
                             "F_C_name": "c_arraywrapper_fetch_array_ref_const_bufferify",
+                            "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -2623,6 +2718,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
@@ -2695,8 +2791,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_void_ptr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array",
                             "F_C_call": "c_arraywrapper_fetch_void_ptr",
                             "F_C_name": "c_arraywrapper_fetch_void_ptr",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t array",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_void_ptr",
@@ -2739,6 +2837,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
@@ -2811,8 +2910,10 @@
                             "C_name": "ARR_ArrayWrapper_fetch_void_ref",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void * * array",
                             "C_return_type": "void",
+                            "F_C_arguments": "self,\t array",
                             "F_C_call": "c_arraywrapper_fetch_void_ref",
                             "F_C_name": "c_arraywrapper_fetch_void_ref",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "obj%cxxmem,\t array",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "fetch_void_ref",
@@ -2855,6 +2956,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "IN",
@@ -2972,8 +3074,12 @@
                             "C_name": "ARR_ArrayWrapper_check_ptr",
                             "C_prototype": "ARR_ArrayWrapper * self,\t void * array",
                             "C_return_type": "bool",
+                            "F_C_arguments": "self,\t array",
                             "F_C_call": "c_arraywrapper_check_ptr",
                             "F_C_name": "c_arraywrapper_check_ptr",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t array",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "check_ptr",
@@ -3056,8 +3162,12 @@
                             "C_name": "ARR_ArrayWrapper_sum_array",
                             "C_prototype": "ARR_ArrayWrapper * self",
                             "C_return_type": "double",
+                            "F_C_arguments": "self",
                             "F_C_call": "c_arraywrapper_sum_array",
                             "F_C_name": "c_arraywrapper_sum_array",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "sum_array",

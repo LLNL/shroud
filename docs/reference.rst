@@ -1177,8 +1177,7 @@ F_arguments
 
 F_C_arguments
     Argument names to the ``bind(C)`` interface for the subprogram.
-
-.. uses tabs
+    Arguments are tab delimited to aid in creating continuations.
 
 F_C_call
     The name of the C function to call.  Usually *F_C_name*, but it may
@@ -1196,9 +1195,12 @@ F_C_result_clause
     Result clause for the ``bind(C)`` interface.
 
 F_C_subprogram
-    ``subroutine`` or ``function``.
+    ``subroutine`` or ``function`` for the ``bind(C)`` interface.
+    The C wrapper funtion may be different Fortran wrapper function since
+    some function results may be converted into arguments.
 
-.. uses tabs
+F_C_var
+    Name of dummy argument in the ``bind(C)`` interface.
 
 F_pure_clause
     For non-void function, ``pure`` if the *pure* annotation is added or 
@@ -1299,12 +1301,67 @@ cxx_type
 cxx_var
     Name of the C++ variable.
 
-f_var
-    Fortran variable name for argument.
-
 size_var
     Name of variable which holds the size of an array in the
     Python wrapper.
+
+fmtc
+""""
+
+Format strings used with C wrappers.
+
+fmtf
+""""
+
+Format strings used with Fortran wrappers.
+
+f_array_allocate
+    Fortran shape expression used with ``ALLOCATE`` statement when
+    *dimension* attribute is set.
+
+f_array_shape
+
+f_assumed_shape
+   Set when *rank* attribute is set to the corresponding shape.
+   ``rank=1`` sets to ``(:)``,
+   ``rank=2`` sets to ``(:,:)``, etc.
+
+f_assumed_size
+    Set to ``(*)`` when *rank* attribute is set.
+    Used with Fortran interface for C functions for array arguments.
+
+f_declare_shape_prefix
+
+f_declare_shape_array
+
+f_get_shape_array
+
+f_pointer_shape
+
+f_shape_var
+    
+f_var
+    Fortran variable name for argument.
+
+hnamefunc
+    Helper name for a function.
+    Each name in statements *f_helper* will set a suffix index.
+    The first helper will be *hnamefunc0*.
+    Used by statements *pre_call* and *post_call* statements.
+
+size
+    Expression to compute size of array argument using ``SIZE`` intrinsic.
+
+fmtl
+""""
+
+Format strings used with Lua wrappers.
+
+fmtpy
+"""""
+
+Format strings used with Python wrappers.
+
 
 Result
 ^^^^^^

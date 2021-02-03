@@ -597,8 +597,12 @@
                     "C_name": "CXX_default_ptr_is_null_0",
                     "C_prototype": "void",
                     "C_return_type": "bool",
+                    "F_C_arguments": "",
                     "F_C_call": "c_default_ptr_is_null_0",
                     "F_C_name": "c_default_ptr_is_null_0",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "default_ptr_is_null_0",
                     "F_name_generic": "default_ptr_is_null",
@@ -641,9 +645,11 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "data",
                             "F_pointer": "SHPTR_data",
                             "c_var": "data",
                             "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "data",
@@ -768,8 +774,12 @@
                     "C_name": "CXX_default_ptr_is_null_1",
                     "C_prototype": "double * data",
                     "C_return_type": "bool",
+                    "F_C_arguments": "data",
                     "F_C_call": "c_default_ptr_is_null_1",
                     "F_C_name": "c_default_ptr_is_null_1",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "data",
                     "F_arguments": "data",
                     "F_name_function": "default_ptr_is_null_1",
@@ -807,6 +817,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in1",
                             "F_pointer": "SHPTR_in1",
                             "c_var": "in1",
                             "f_intent": "IN",
@@ -838,6 +849,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out1",
                             "F_pointer": "SHPTR_out1",
                             "c_var": "out1",
                             "f_intent": "OUT",
@@ -869,6 +881,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out2",
                             "F_pointer": "SHPTR_out2",
                             "c_var": "out2",
                             "f_intent": "OUT",
@@ -951,8 +964,10 @@
                     "C_name": "CXX_default_args_in_out_0",
                     "C_prototype": "int in1,\t int * out1,\t int * out2",
                     "C_return_type": "void",
+                    "F_C_arguments": "in1,\t out1,\t out2",
                     "F_C_call": "c_default_args_in_out_0",
                     "F_C_name": "c_default_args_in_out_0",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in1,\t out1,\t out2",
                     "F_arguments": "in1,\t out1,\t out2",
                     "F_name_function": "default_args_in_out_0",
@@ -998,6 +1013,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -1050,6 +1066,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in1",
                             "F_pointer": "SHPTR_in1",
                             "c_var": "in1",
                             "f_intent": "IN",
@@ -1100,6 +1117,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out1",
                             "F_pointer": "SHPTR_out1",
                             "c_var": "out1",
                             "f_intent": "OUT",
@@ -1151,6 +1169,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out2",
                             "F_pointer": "SHPTR_out2",
                             "c_var": "out2",
                             "f_intent": "OUT",
@@ -1272,8 +1291,10 @@
                     "C_name": "CXX_default_args_in_out_1",
                     "C_prototype": "int in1,\t int * out1,\t int * out2,\t bool flag",
                     "C_return_type": "void",
+                    "F_C_arguments": "in1,\t out1,\t out2,\t flag",
                     "F_C_call": "c_default_args_in_out_1",
                     "F_C_name": "c_default_args_in_out_1",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "in1,\t out1,\t out2,\t SH_flag",
                     "F_arguments": "in1,\t out1,\t out2,\t flag",
                     "F_name_function": "default_args_in_out_1",
@@ -1413,6 +1434,7 @@
                                     "stmt1": "c_struct"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
@@ -1535,8 +1557,12 @@
                             "C_name": "CXX_structns_pass_struct_by_reference",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "int",
+                            "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct_by_reference",
                             "F_C_name": "pass_struct_by_reference",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_name_function": "pass_struct_by_reference",
@@ -1572,6 +1598,7 @@
                                     "stmt1": "c_struct"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
@@ -1695,8 +1722,12 @@
                             "C_name": "CXX_structns_pass_struct_by_reference_in",
                             "C_prototype": "const CXX_cstruct1 * arg",
                             "C_return_type": "int",
+                            "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct_by_reference_in",
                             "F_C_name": "pass_struct_by_reference_in",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_name_function": "pass_struct_by_reference_in",
@@ -1732,6 +1763,7 @@
                                     "stmt1": "c_struct"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "INOUT",
@@ -1806,8 +1838,10 @@
                             "C_name": "CXX_structns_pass_struct_by_reference_inout",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "void",
+                            "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct_by_reference_inout",
                             "F_C_name": "pass_struct_by_reference_inout",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_name_function": "pass_struct_by_reference_inout",
@@ -1845,6 +1879,7 @@
                                     "stmt1": "c_struct"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "OUT",
@@ -1918,8 +1953,10 @@
                             "C_name": "CXX_structns_pass_struct_by_reference_out",
                             "C_prototype": "CXX_cstruct1 * arg",
                             "C_return_type": "void",
+                            "F_C_arguments": "arg",
                             "F_C_call": "c_pass_struct_by_reference_out",
                             "F_C_name": "pass_struct_by_reference_out",
+                            "F_C_subprogram": "subroutine",
                             "F_arg_c_call": "arg",
                             "F_arguments": "arg",
                             "F_name_function": "pass_struct_by_reference_out",

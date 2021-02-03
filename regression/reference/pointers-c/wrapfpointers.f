@@ -1048,6 +1048,26 @@ module pointers_mod
     ! end fetch_void_ptr
 
     ! ----------------------------------------
+    ! Function:  int VoidPtrArray
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * addr +intent(in)+rank(1)
+    ! Exact:     c_void_**_in
+    ! start c_void_ptr_array
+    interface
+        function c_void_ptr_array(addr) &
+                result(SHT_rv) &
+                bind(C, name="VoidPtrArray")
+            use iso_c_binding, only : C_INT, C_PTR
+            implicit none
+            type(C_PTR), intent(IN) :: addr(*)
+            integer(C_INT) :: SHT_rv
+        end function c_void_ptr_array
+    end interface
+    ! end c_void_ptr_array
+
+    ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar +deref(pointer)
     ! Requested: c_native_*_result
     ! Match:     c_default
@@ -1842,6 +1862,29 @@ contains
         ! splicer end function.return_address2
     end function return_address2
     ! end return_address2
+
+    ! ----------------------------------------
+    ! Function:  int VoidPtrArray
+    ! int VoidPtrArray
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  void * * addr +intent(in)+rank(1)
+    ! Exact:     f_void_**_in
+    ! Exact:     c_void_**_in
+    ! start void_ptr_array
+    function void_ptr_array(addr) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT, C_PTR
+        type(C_PTR), intent(IN) :: addr(*)
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.void_ptr_array
+        SHT_rv = c_void_ptr_array(addr)
+        ! splicer end function.void_ptr_array
+    end function void_ptr_array
+    ! end void_ptr_array
 
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar +deref(pointer)

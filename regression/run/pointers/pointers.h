@@ -64,6 +64,7 @@ void DimensionIn(const int *arg);
 void *returnAddress1(int flag);
 void *returnAddress2(int flag);
 void fetchVoidPtr(void **addr);
+int VoidPtrArray(void **addr);
 
 int *returnIntPtrToScalar(void);
 int *returnIntPtrToFixedArray(void);

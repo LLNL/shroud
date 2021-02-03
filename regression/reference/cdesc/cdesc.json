@@ -35,10 +35,12 @@
                             "stmt1": "c_native_*_cdesc"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
                             "f_assumed_shape": "(:,:)",
+                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "arg",
@@ -92,8 +94,10 @@
                     "C_name": "CDE_rank2_in",
                     "C_prototype": "CDE_SHROUD_array *Darg",
                     "C_return_type": "void",
+                    "F_C_arguments": "Darg",
                     "F_C_call": "c_rank2_in",
                     "F_C_name": "c_rank2_in",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "Darg",
                     "F_arguments": "arg",
                     "F_name_function": "rank2_in",
@@ -128,6 +132,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         }
                     },
                     "value": {
@@ -148,6 +155,9 @@
                             "shadow_var": "SHadow_value",
                             "stmt0": "c_void_*_out_cdesc",
                             "stmt1": "c_void_*_cdesc"
+                        },
+                        "fmtf": {
+                            "F_C_var": "value"
                         }
                     }
                 },
@@ -212,7 +222,9 @@
                     "C_name": "CDE_get_scalar1",
                     "C_prototype": "char * name,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
+                    "F_C_arguments": "name,\t Dvalue",
                     "F_C_name": "c_get_scalar1",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
                     "stmt0": "c",
                     "stmt1": "c_default",
@@ -570,6 +582,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "Lname",
@@ -603,6 +616,7 @@
                             "stmt1": "c_void_*_cdesc"
                         },
                         "fmtf": {
+                            "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_context": "Dvalue",
@@ -684,7 +698,9 @@
                     "C_name": "CDE_get_scalar1_bufferify",
                     "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
+                    "F_C_arguments": "name,\t Lname,\t Dvalue",
                     "F_C_name": "c_get_scalar1_bufferify",
+                    "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
                     "function_suffix": "_bufferify",
                     "stmt0": "c",
@@ -927,8 +943,12 @@
                     "C_name": "CDE_get_data_int",
                     "C_prototype": "void",
                     "C_return_type": "int",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_data_int",
                     "F_C_name": "c_get_data_int",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_data_int",
                     "F_name_generic": "get_data",
@@ -1028,8 +1048,12 @@
                     "C_name": "CDE_get_data_double",
                     "C_prototype": "void",
                     "C_return_type": "double",
+                    "F_C_arguments": "",
                     "F_C_call": "c_get_data_double",
                     "F_C_name": "c_get_data_double",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_data_double",
                     "F_name_generic": "get_data",

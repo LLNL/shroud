@@ -103,6 +103,7 @@
             "f_array_allocate": "",
             "f_array_shape": "",
             "f_assumed_shape": "",
+            "f_assumed_size": "",
             "f_declare_shape_array": "",
             "f_declare_shape_prefix": "SHAPE_",
             "f_get_shape_array": "",

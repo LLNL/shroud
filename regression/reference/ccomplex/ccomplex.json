@@ -34,6 +34,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT",
@@ -84,8 +85,10 @@
                     "C_name": "acceptFloatComplexInoutPtr",
                     "C_prototype": "float complex * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_float_complex_inout_ptr",
                     "F_C_name": "accept_float_complex_inout_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_float_complex_inout_ptr",
@@ -124,6 +127,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "INOUT",
@@ -197,8 +201,10 @@
                     "C_name": "acceptDoubleComplexInoutPtr",
                     "C_prototype": "double complex * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_double_complex_inout_ptr",
                     "F_C_name": "accept_double_complex_inout_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_double_complex_inout_ptr",
@@ -236,6 +242,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT",
@@ -308,8 +315,10 @@
                     "C_name": "acceptDoubleComplexOutPtr",
                     "C_prototype": "double complex * arg1",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1",
                     "F_C_call": "c_accept_double_complex_out_ptr",
                     "F_C_name": "accept_double_complex_out_ptr",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_double_complex_out_ptr",
@@ -459,6 +468,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "OUT",
@@ -512,6 +522,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "OUT",
@@ -602,8 +613,10 @@
                     "C_name": "acceptDoubleComplexOutPtrFlag",
                     "C_prototype": "double complex * arg1,\t int * flag",
                     "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t flag",
                     "F_C_call": "c_accept_double_complex_out_ptr_flag",
                     "F_C_name": "accept_double_complex_out_ptr_flag",
+                    "F_C_subprogram": "subroutine",
                     "F_arg_c_call": "arg1,\t flag",
                     "F_arguments": "arg1,\t flag",
                     "F_name_function": "accept_double_complex_out_ptr_flag",

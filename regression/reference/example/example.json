@@ -142,8 +142,12 @@
                                             "C_name": "AA_example_nested_ExClass1_ctor_0",
                                             "C_prototype": "AA_example_nested_ExClass1 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
+                                            "F_C_arguments": "SHT_crv",
                                             "F_C_call": "c_exclass1_ctor_0",
                                             "F_C_name": "c_exclass1_ctor_0",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "SHT_rv%cxxmem",
                                             "F_arguments": "",
                                             "F_name_function": "ctor_0",
@@ -184,6 +188,9 @@
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in",
                                                     "stmt1": "c_string_in"
+                                                },
+                                                "fmtf": {
+                                                    "F_C_var": "name"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -320,8 +327,12 @@
                                             "C_name": "AA_example_nested_ExClass1_ctor_1",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass1 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
+                                            "F_C_arguments": "name,\t SHT_crv",
                                             "F_C_call": "c_exclass1_ctor_1_bufferify",
                                             "F_C_name": "c_exclass1_ctor_1",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor_1",
@@ -363,6 +374,7 @@
                                                     "stmt1": "c_string_in_buf"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_trim": "Lname",
@@ -439,7 +451,11 @@
                                             "C_name": "AA_example_nested_ExClass1_ctor_1_bufferify",
                                             "C_prototype": "const char * name,\t int Lname,\t AA_example_nested_ExClass1 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
+                                            "F_C_arguments": "name,\t Lname,\t SHT_crv",
                                             "F_C_name": "c_exclass1_ctor_1_bufferify",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_name_generic": "exclass1",
                                             "cxx_rv_decl": "example::nested::ExClass1 SHCXX_rv",
                                             "function_name": "ctor",
@@ -482,8 +498,10 @@
                                             "C_name": "AA_example_nested_ExClass1_dtor",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass1_dtor",
                                             "F_C_name": "c_exclass1_dtor",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "delete",
@@ -527,6 +545,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "incr",
                                                     "F_pointer": "SHPTR_incr",
                                                     "c_var": "incr",
                                                     "f_intent": "IN",
@@ -661,8 +680,12 @@
                                             "C_name": "AA_example_nested_ExClass1_increment_count",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t int incr",
                                             "C_return_type": "int",
+                                            "F_C_arguments": "self,\t incr",
                                             "F_C_call": "c_exclass1_increment_count",
                                             "F_C_name": "c_exclass1_increment_count",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t incr",
                                             "F_arguments": "obj,\t incr",
                                             "F_name_function": "increment_count",
@@ -768,8 +791,13 @@
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
                                             "C_return_type": "const char *",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass1_get_name_error_check_bufferify",
                                             "F_C_name": "c_exclass1_get_name_error_check",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name_error_check",
@@ -813,6 +841,7 @@
                                                     "stmt1": "c_string_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
                                                     "c_var_context": "DSHF_rv",
@@ -885,7 +914,9 @@
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t DSHF_rv",
                                             "F_C_name": "c_exclass1_get_name_error_check_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -977,7 +1008,12 @@
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
                                             "C_return_type": "const char *",
+                                            "F_C_arguments": "self",
                                             "F_C_name": "c_exclass1_get_name_arg",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_string_result_as_arg": "name",
                                             "LUA_name": "getNameArg",
                                             "LUA_name_impl": "l_example_nested_ExClass1_get_name_arg",
@@ -1017,6 +1053,7 @@
                                                     "stmt1": "c_string_result_buf"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_len": "Nname",
@@ -1086,7 +1123,9 @@
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t char * name,\t int Nname",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t name,\t Nname",
                                             "F_C_name": "c_exclass1_get_name_arg_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "F_string_result_as_arg": "name",
                                             "c_const": "const ",
                                             "c_deref": "*",
@@ -1186,6 +1225,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -1321,8 +1361,12 @@
                                             "C_name": "AA_example_nested_ExClass1_get_value_from_int",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t int value",
                                             "C_return_type": "int",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass1_get_value_from_int",
                                             "F_C_name": "c_exclass1_get_value_from_int",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "get_value_from_int",
@@ -1366,6 +1410,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -1501,8 +1546,12 @@
                                             "C_name": "AA_example_nested_ExClass1_get_value_1",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t long value",
                                             "C_return_type": "long",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass1_get_value_1",
                                             "F_C_name": "c_exclass1_get_value_1",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "get_value_1",
@@ -1544,6 +1593,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "in",
                                                     "F_pointer": "SHPTR_in",
                                                     "c_var": "SH_in",
                                                     "f_intent": "IN",
@@ -1681,8 +1731,12 @@
                                             "C_name": "AA_example_nested_ExClass1_has_addr",
                                             "C_prototype": "AA_example_nested_ExClass1 * self,\t bool in",
                                             "C_return_type": "bool",
+                                            "F_C_arguments": "self,\t in",
                                             "F_C_call": "c_exclass1_has_addr",
                                             "F_C_name": "c_exclass1_has_addr",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t SH_in",
                                             "F_arguments": "obj,\t in",
                                             "F_name_function": "has_addr",
@@ -1728,8 +1782,10 @@
                                             "C_name": "AA_example_nested_ExClass1_splicer_special",
                                             "C_prototype": "AA_example_nested_ExClass1 * self",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass1_splicer_special",
                                             "F_C_name": "c_exclass1_splicer_special",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "splicer_special",
@@ -1821,6 +1877,9 @@
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in",
                                                     "stmt1": "c_string_in"
+                                                },
+                                                "fmtf": {
+                                                    "F_C_var": "name"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -1956,8 +2015,12 @@
                                             "C_name": "AA_example_nested_ExClass2_ctor",
                                             "C_prototype": "const char * name,\t AA_example_nested_ExClass2 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
+                                            "F_C_arguments": "name,\t SHT_crv",
                                             "F_C_call": "c_exclass2_ctor_bufferify",
                                             "F_C_name": "c_exclass2_ctor",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t SHT_rv%cxxmem",
                                             "F_arguments": "name",
                                             "F_name_function": "ctor",
@@ -2000,6 +2063,7 @@
                                                     "stmt1": "c_string_in_buf"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "name",
                                                     "F_pointer": "SHPTR_name",
                                                     "c_var": "name",
                                                     "c_var_trim": "trim_name",
@@ -2074,7 +2138,11 @@
                                             "C_name": "AA_example_nested_ExClass2_ctor_bufferify",
                                             "C_prototype": "const char * name,\t int trim_name,\t AA_example_nested_ExClass2 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass2 *",
+                                            "F_C_arguments": "name,\t trim_name,\t SHT_crv",
                                             "F_C_name": "c_exclass2_ctor_bufferify",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_name_generic": "exclass2",
                                             "cxx_rv_decl": "example::nested::ExClass2 SHCXX_rv",
                                             "function_name": "ctor",
@@ -2116,8 +2184,10 @@
                                             "C_name": "AA_example_nested_ExClass2_dtor",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_dtor",
                                             "F_C_name": "c_exclass2_dtor",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "delete",
@@ -2227,8 +2297,13 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "const char *",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_name_bufferify",
                                             "F_C_name": "c_exclass2_get_name",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name",
@@ -2272,6 +2347,7 @@
                                                     "stmt1": "c_string_result_buf"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
                                                     "c_var_len": "NSHF_rv",
@@ -2345,7 +2421,9 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t char * SHF_rv,\t int NSHF_rv",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t SHF_rv,\t NSHF_rv",
                                             "F_C_name": "c_exclass2_get_name_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2446,8 +2524,12 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name2",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "const char *",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_name2_bufferify",
                                             "F_C_name": "c_exclass2_get_name2",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name2",
@@ -2491,6 +2573,7 @@
                                                     "stmt1": "c_string_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
                                                     "c_var_context": "DSHF_rv",
@@ -2562,7 +2645,9 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t DSHF_rv",
                                             "F_C_name": "c_exclass2_get_name2_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2663,8 +2748,13 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name3",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "char *",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_name3_bufferify",
                                             "F_C_name": "c_exclass2_get_name3",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name3",
@@ -2708,6 +2798,7 @@
                                                     "stmt1": "c_string_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
                                                     "c_var_context": "DSHF_rv",
@@ -2779,7 +2870,9 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t DSHF_rv",
                                             "F_C_name": "c_exclass2_get_name3_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "const ",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -2879,8 +2972,12 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name4",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "char *",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_name4_bufferify",
                                             "F_C_name": "c_exclass2_get_name4",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name4",
@@ -2924,6 +3021,7 @@
                                                     "stmt1": "c_string_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
                                                     "c_var": "SHT_rv",
                                                     "c_var_context": "DSHF_rv",
@@ -2994,7 +3092,9 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t DSHF_rv",
                                             "F_C_name": "c_exclass2_get_name4_bufferify",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -3089,8 +3189,13 @@
                                             "C_name": "AA_example_nested_ExClass2_get_name_length",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "int",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_name_length",
                                             "F_C_name": "c_exclass2_get_name_length",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name_length",
@@ -3138,6 +3243,7 @@
                                                     "stmt1": "c_shadow_in"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "in",
                                                     "F_pointer": "SHPTR_in",
                                                     "c_var": "in",
                                                     "f_intent": "IN",
@@ -3288,8 +3394,12 @@
                                             "C_name": "AA_example_nested_ExClass2_get_class1",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_example_nested_ExClass1 * in,\t AA_example_nested_ExClass1 * SHadow_rv",
                                             "C_return_type": "AA_example_nested_ExClass1 *",
+                                            "F_C_arguments": "self,\t in,\t SHT_crv",
                                             "F_C_call": "c_exclass2_get_class1",
                                             "F_C_name": "c_exclass2_get_class1",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem,\t in%cxxmem,\t SHT_rv%cxxmem",
                                             "F_arguments": "obj,\t in",
                                             "F_name_function": "get_class1",
@@ -3334,6 +3444,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "type",
                                                     "F_pointer": "SHPTR_type",
                                                     "c_var": "type",
                                                     "f_intent": "IN",
@@ -3386,7 +3497,9 @@
                                             "C_name": "AA_example_nested_ExClass2_declare_0",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int type",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t type",
                                             "F_C_name": "c_exclass2_declare_0",
+                                            "F_C_subprogram": "subroutine",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -3650,6 +3763,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "len",
                                                     "F_pointer": "SHPTR_len",
                                                     "c_var": "len",
                                                     "f_intent": "IN",
@@ -3716,6 +3830,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "type",
                                                     "F_pointer": "SHPTR_type",
                                                     "c_var": "type",
                                                     "f_intent": "IN",
@@ -3828,7 +3943,9 @@
                                             "C_name": "AA_example_nested_ExClass2_declare_1",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int type,\t SIDRE_SidreLength len",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t type,\t len",
                                             "F_C_name": "c_exclass2_declare_1",
+                                            "F_C_subprogram": "subroutine",
                                             "LUA_name": "declare",
                                             "LUA_name_impl": "l_example_nested_ExClass2_declare",
                                             "PY_cleanup_decref": "Py_XDECREF",
@@ -4109,8 +4226,10 @@
                                             "C_name": "AA_example_nested_ExClass2_destroyall",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_destroyall",
                                             "F_C_name": "c_exclass2_destroyall",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "destroyall",
@@ -4210,8 +4329,13 @@
                                             "C_name": "AA_example_nested_ExClass2_get_type_id",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
                                             "C_return_type": "int",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_type_id",
                                             "F_C_name": "c_exclass2_get_type_id",
+                                            "F_C_pure_clause": "pure ",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_type_id",
@@ -4353,6 +4477,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -4441,8 +4566,10 @@
                                             "C_name": "AA_example_nested_ExClass2_set_value_int",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int value",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass2_set_value_int",
                                             "F_C_name": "c_exclass2_set_value_int",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "set_value_int",
@@ -4543,6 +4670,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -4631,8 +4759,10 @@
                                             "C_name": "AA_example_nested_ExClass2_set_value_long",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t long value",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass2_set_value_long",
                                             "F_C_name": "c_exclass2_set_value_long",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "set_value_long",
@@ -4731,6 +4861,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -4819,8 +4950,10 @@
                                             "C_name": "AA_example_nested_ExClass2_set_value_float",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t float value",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass2_set_value_float",
                                             "F_C_name": "c_exclass2_set_value_float",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "set_value_float",
@@ -4919,6 +5052,7 @@
                                                     "stmt1": "c_default"
                                                 },
                                                 "fmtf": {
+                                                    "F_C_var": "value",
                                                     "F_pointer": "SHPTR_value",
                                                     "c_var": "value",
                                                     "f_intent": "IN",
@@ -5007,8 +5141,10 @@
                                             "C_name": "AA_example_nested_ExClass2_set_value_double",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t double value",
                                             "C_return_type": "void",
+                                            "F_C_arguments": "self,\t value",
                                             "F_C_call": "c_exclass2_set_value_double",
                                             "F_C_name": "c_exclass2_set_value_double",
+                                            "F_C_subprogram": "subroutine",
                                             "F_arg_c_call": "obj%cxxmem,\t value",
                                             "F_arguments": "obj,\t value",
                                             "F_name_function": "set_value_double",
@@ -5228,8 +5364,12 @@
                                             "C_name": "AA_example_nested_ExClass2_get_value_int",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "int",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_value_int",
                                             "F_C_name": "c_exclass2_get_value_int",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_value_int",
@@ -5362,8 +5502,12 @@
                                             "C_name": "AA_example_nested_ExClass2_get_value_double",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
                                             "C_return_type": "double",
+                                            "F_C_arguments": "self",
                                             "F_C_call": "c_exclass2_get_value_double",
                                             "F_C_name": "c_exclass2_get_value_double",
+                                            "F_C_result_clause": "\fresult(SHT_rv)",
+                                            "F_C_subprogram": "function",
+                                            "F_C_var": "SHT_crv",
                                             "F_arg_c_call": "obj%cxxmem",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_value_double",
@@ -5492,8 +5636,10 @@
                                     "C_name": "AA_example_nested_local_function1",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "",
                                     "F_C_call": "c_local_function1",
                                     "F_C_name": "local_function1",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_name_function": "local_function1",
                                     "F_name_generic": "local_function1",
@@ -5530,6 +5676,9 @@
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
                                             "stmt1": "c_string_in"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -5660,8 +5809,12 @@
                                     "C_name": "AA_example_nested_is_name_valid",
                                     "C_prototype": "const char * name",
                                     "C_return_type": "bool",
+                                    "F_C_arguments": "name",
                                     "F_C_call": "c_is_name_valid_bufferify",
                                     "F_C_name": "c_is_name_valid",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
                                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
                                     "F_arguments": "name",
                                     "F_name_function": "is_name_valid",
@@ -5711,6 +5864,7 @@
                                             "stmt1": "c_string_in_buf"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
@@ -5783,7 +5937,11 @@
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "bool",
+                                    "F_C_arguments": "name,\t Lname",
                                     "F_C_name": "c_is_name_valid_bufferify",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
                                     "cxx_rv_decl": "bool SHC_rv",
                                     "function_name": "isNameValid",
                                     "function_suffix": "_bufferify",
@@ -5881,8 +6039,12 @@
                                     "C_name": "AA_example_nested_is_initialized",
                                     "C_prototype": "void",
                                     "C_return_type": "bool",
+                                    "F_C_arguments": "",
                                     "F_C_call": "c_is_initialized",
                                     "F_C_name": "c_is_initialized",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
                                     "F_arguments": "",
                                     "F_name_function": "is_initialized",
                                     "F_name_generic": "is_initialized",
@@ -5917,6 +6079,9 @@
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
                                             "stmt1": "c_string_in"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -5998,8 +6163,10 @@
                                     "C_name": "AA_example_nested_test_names",
                                     "C_prototype": "const char * name",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "name",
                                     "F_C_call": "c_test_names_bufferify",
                                     "F_C_name": "c_test_names",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT)",
                                     "F_arguments": "name",
                                     "F_name_function": "test_names",
@@ -6041,6 +6208,7 @@
                                             "stmt1": "c_string_in_buf"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
@@ -6096,7 +6264,9 @@
                                     "C_name": "AA_example_nested_test_names_bufferify",
                                     "C_prototype": "const char * name,\t int Lname",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "name,\t Lname",
                                     "F_C_name": "c_test_names_bufferify",
+                                    "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",
                                     "function_suffix": "_bufferify",
                                     "stmt0": "c",
@@ -6129,6 +6299,9 @@
                                             "shadow_var": "SHadow_flag",
                                             "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "flag"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -6181,6 +6354,9 @@
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
                                             "stmt1": "c_string_in"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6276,8 +6452,10 @@
                                     "C_name": "AA_example_nested_test_names_flag",
                                     "C_prototype": "const char * name,\t int flag",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "name,\t flag",
                                     "F_C_call": "c_test_names_flag_bufferify",
                                     "F_C_name": "c_test_names_flag",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t flag",
                                     "F_arguments": "name,\t flag",
                                     "F_name_function": "test_names_flag",
@@ -6316,6 +6494,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "flag",
                                             "F_pointer": "SHPTR_flag",
                                             "c_var": "flag",
                                             "f_intent": "IN",
@@ -6348,6 +6527,7 @@
                                             "stmt1": "c_string_in_buf"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "name",
                                             "F_pointer": "SHPTR_name",
                                             "c_var": "name",
                                             "c_var_trim": "Lname",
@@ -6418,7 +6598,9 @@
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
                                     "C_prototype": "const char * name,\t int Lname,\t int flag",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "name,\t Lname,\t flag",
                                     "F_C_name": "c_test_names_flag_bufferify",
+                                    "F_C_subprogram": "subroutine",
                                     "function_name": "test_names",
                                     "function_suffix": "_flag_bufferify",
                                     "stmt0": "c",
@@ -6452,8 +6634,10 @@
                                     "C_name": "AA_example_nested_testoptional_0",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "",
                                     "F_C_call": "c_testoptional_0",
                                     "F_C_name": "c_testoptional_0",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_name_function": "testoptional_0",
                                     "F_name_generic": "testoptional",
@@ -6495,6 +6679,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "i",
                                             "F_pointer": "SHPTR_i",
                                             "c_var": "i",
                                             "f_intent": "IN",
@@ -6544,8 +6729,10 @@
                                     "C_name": "AA_example_nested_testoptional_1",
                                     "C_prototype": "int i",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "i",
                                     "F_C_call": "c_testoptional_1",
                                     "F_C_name": "c_testoptional_1",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "i",
                                     "F_arguments": "i",
                                     "F_name_function": "testoptional_1",
@@ -6592,6 +6779,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "i",
                                             "F_pointer": "SHPTR_i",
                                             "c_var": "i",
                                             "f_intent": "IN",
@@ -6656,6 +6844,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "j",
                                             "F_pointer": "SHPTR_j",
                                             "c_var": "j",
                                             "f_intent": "IN",
@@ -6763,8 +6952,10 @@
                                     "C_name": "AA_example_nested_testoptional_2",
                                     "C_prototype": "int i,\t long j",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "i,\t j",
                                     "F_C_call": "c_testoptional_2",
                                     "F_C_name": "c_testoptional_2",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "i,\t j",
                                     "F_arguments": "i,\t j",
                                     "F_name_function": "testoptional_2",
@@ -6858,8 +7049,12 @@
                                     "C_name": "AA_example_nested_test_size_t",
                                     "C_prototype": "void",
                                     "C_return_type": "size_t",
+                                    "F_C_arguments": "",
                                     "F_C_call": "c_test_size_t",
                                     "F_C_name": "test_size_t",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
                                     "F_arguments": "",
                                     "F_name_function": "test_size_t",
                                     "F_name_generic": "test_size_t",
@@ -6898,6 +7093,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "comm",
                                             "F_pointer": "SHPTR_comm",
                                             "c_var": "comm",
                                             "f_intent": "IN",
@@ -6986,8 +7182,10 @@
                                     "C_name": "AA_example_nested_testmpi_mpi",
                                     "C_prototype": "MPI_Fint comm",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "comm",
                                     "F_C_call": "c_testmpi_mpi",
                                     "F_C_name": "c_testmpi_mpi",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "comm",
                                     "F_arguments": "comm",
                                     "F_name_function": "testmpi_mpi",
@@ -7032,8 +7230,10 @@
                                     "C_name": "AA_example_nested_testmpi_serial",
                                     "C_prototype": "void",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "",
                                     "F_C_call": "c_testmpi_serial",
                                     "F_C_name": "c_testmpi_serial",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arguments": "",
                                     "F_name_function": "testmpi_serial",
                                     "F_name_generic": "testmpi",
@@ -7071,6 +7271,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "get",
                                             "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
@@ -7161,8 +7362,10 @@
                                     "C_name": "AA_example_nested_func_ptr1",
                                     "C_prototype": "void ( * get)(\tvoid)",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "get",
                                     "F_C_call": "c_func_ptr1",
                                     "F_C_name": "func_ptr1",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "get",
                                     "F_arguments": "get",
                                     "F_name_function": "func_ptr1",
@@ -7202,6 +7405,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "get",
                                             "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
@@ -7296,8 +7500,10 @@
                                     "C_name": "AA_example_nested_func_ptr2",
                                     "C_prototype": "double * ( * get)(\tvoid)",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "get",
                                     "F_C_call": "c_func_ptr2",
                                     "F_C_name": "func_ptr2",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "get",
                                     "F_arguments": "get",
                                     "F_name_function": "func_ptr2",
@@ -7337,6 +7543,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "get",
                                             "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
@@ -7450,8 +7657,10 @@
                                     "C_name": "AA_example_nested_func_ptr3",
                                     "C_prototype": "double ( * get)(\tint i,\t int)",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "get",
                                     "F_C_call": "c_func_ptr3",
                                     "F_C_name": "c_func_ptr3",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "get",
                                     "F_arguments": "get",
                                     "F_name_function": "func_ptr3",
@@ -7493,6 +7702,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "get",
                                             "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
@@ -7565,8 +7775,10 @@
                                     "C_name": "AA_example_nested_func_ptr4",
                                     "C_prototype": "double ( * get)(\tdouble,\t int)",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "get",
                                     "F_C_call": "c_func_ptr4",
                                     "F_C_name": "c_func_ptr4",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "get",
                                     "F_arguments": "get",
                                     "F_name_function": "func_ptr4",
@@ -7609,6 +7821,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "get",
                                             "F_pointer": "SHPTR_get",
                                             "c_var": "get",
                                             "f_intent": "IN",
@@ -7827,8 +8040,10 @@
                                     "C_name": "AA_example_nested_func_ptr5",
                                     "C_prototype": "void ( * get)(\tint verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10)",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "get",
                                     "F_C_call": "c_func_ptr5",
                                     "F_C_name": "func_ptr5",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "get",
                                     "F_arguments": "get",
                                     "F_name_function": "func_ptr5",
@@ -7868,6 +8083,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname1",
                                             "F_pointer": "SHPTR_verylongname1",
                                             "c_var": "verylongname1",
                                             "f_intent": "INOUT",
@@ -7933,6 +8149,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname10",
                                             "F_pointer": "SHPTR_verylongname10",
                                             "c_var": "verylongname10",
                                             "f_intent": "INOUT",
@@ -7998,6 +8215,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname2",
                                             "F_pointer": "SHPTR_verylongname2",
                                             "c_var": "verylongname2",
                                             "f_intent": "INOUT",
@@ -8063,6 +8281,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname3",
                                             "F_pointer": "SHPTR_verylongname3",
                                             "c_var": "verylongname3",
                                             "f_intent": "INOUT",
@@ -8128,6 +8347,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname4",
                                             "F_pointer": "SHPTR_verylongname4",
                                             "c_var": "verylongname4",
                                             "f_intent": "INOUT",
@@ -8193,6 +8413,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname5",
                                             "F_pointer": "SHPTR_verylongname5",
                                             "c_var": "verylongname5",
                                             "f_intent": "INOUT",
@@ -8258,6 +8479,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname6",
                                             "F_pointer": "SHPTR_verylongname6",
                                             "c_var": "verylongname6",
                                             "f_intent": "INOUT",
@@ -8323,6 +8545,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname7",
                                             "F_pointer": "SHPTR_verylongname7",
                                             "c_var": "verylongname7",
                                             "f_intent": "INOUT",
@@ -8388,6 +8611,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname8",
                                             "F_pointer": "SHPTR_verylongname8",
                                             "c_var": "verylongname8",
                                             "f_intent": "INOUT",
@@ -8453,6 +8677,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname9",
                                             "F_pointer": "SHPTR_verylongname9",
                                             "c_var": "verylongname9",
                                             "f_intent": "INOUT",
@@ -8695,8 +8920,10 @@
                                     "C_name": "AA_example_nested_verylongfunctionname1",
                                     "C_prototype": "int * verylongname1,\t int * verylongname2,\t int * verylongname3,\t int * verylongname4,\t int * verylongname5,\t int * verylongname6,\t int * verylongname7,\t int * verylongname8,\t int * verylongname9,\t int * verylongname10",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_C_call": "c_verylongfunctionname1",
                                     "F_C_name": "c_verylongfunctionname1",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_name_function": "verylongfunctionname1",
@@ -8738,6 +8965,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname1",
                                             "F_pointer": "SHPTR_verylongname1",
                                             "c_var": "verylongname1",
                                             "f_intent": "IN",
@@ -8802,6 +9030,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname10",
                                             "F_pointer": "SHPTR_verylongname10",
                                             "c_var": "verylongname10",
                                             "f_intent": "IN",
@@ -8866,6 +9095,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname2",
                                             "F_pointer": "SHPTR_verylongname2",
                                             "c_var": "verylongname2",
                                             "f_intent": "IN",
@@ -8930,6 +9160,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname3",
                                             "F_pointer": "SHPTR_verylongname3",
                                             "c_var": "verylongname3",
                                             "f_intent": "IN",
@@ -8994,6 +9225,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname4",
                                             "F_pointer": "SHPTR_verylongname4",
                                             "c_var": "verylongname4",
                                             "f_intent": "IN",
@@ -9058,6 +9290,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname5",
                                             "F_pointer": "SHPTR_verylongname5",
                                             "c_var": "verylongname5",
                                             "f_intent": "IN",
@@ -9122,6 +9355,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname6",
                                             "F_pointer": "SHPTR_verylongname6",
                                             "c_var": "verylongname6",
                                             "f_intent": "IN",
@@ -9186,6 +9420,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname7",
                                             "F_pointer": "SHPTR_verylongname7",
                                             "c_var": "verylongname7",
                                             "f_intent": "IN",
@@ -9250,6 +9485,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname8",
                                             "F_pointer": "SHPTR_verylongname8",
                                             "c_var": "verylongname8",
                                             "f_intent": "IN",
@@ -9314,6 +9550,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "verylongname9",
                                             "F_pointer": "SHPTR_verylongname9",
                                             "c_var": "verylongname9",
                                             "f_intent": "IN",
@@ -9574,8 +9811,12 @@
                                     "C_name": "AA_example_nested_verylongfunctionname2",
                                     "C_prototype": "int verylongname1,\t int verylongname2,\t int verylongname3,\t int verylongname4,\t int verylongname5,\t int verylongname6,\t int verylongname7,\t int verylongname8,\t int verylongname9,\t int verylongname10",
                                     "C_return_type": "int",
+                                    "F_C_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_C_call": "c_verylongfunctionname2",
                                     "F_C_name": "c_verylongfunctionname2",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
                                     "F_arg_c_call": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_arguments": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "F_name_function": "verylongfunctionname2",
@@ -9617,9 +9858,11 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "in",
                                             "F_pointer": "SHPTR_in",
                                             "c_var": "in",
                                             "f_assumed_shape": "(:,:)",
+                                            "f_assumed_size": "(*)",
                                             "f_intent": "IN",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "in",
@@ -9687,6 +9930,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "out",
                                             "F_pointer": "SHPTR_out",
                                             "c_var": "out",
                                             "f_array_allocate": "(shape(in))",
@@ -9759,6 +10003,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
+                                            "F_C_var": "sizein",
                                             "F_pointer": "SHPTR_sizein",
                                             "c_var": "SH_sizein",
                                             "f_intent": "IN",
@@ -9893,8 +10138,10 @@
                                     "C_name": "AA_example_nested_cos_doubles",
                                     "C_prototype": "double * in,\t double * out,\t int sizein",
                                     "C_return_type": "void",
+                                    "F_C_arguments": "in,\t out,\t sizein",
                                     "F_C_call": "c_cos_doubles",
                                     "F_C_name": "c_cos_doubles",
+                                    "F_C_subprogram": "subroutine",
                                     "F_arg_c_call": "in,\t out,\t SH_sizein",
                                     "F_arguments": "in,\t out",
                                     "F_name_function": "cos_doubles",

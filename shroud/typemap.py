@@ -1763,14 +1763,6 @@ fc_statements = [
         ],
     ),
     dict(
-        name="f_void_**_out",
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_decl=[
-            "type(C_PTR), intent(OUT) :: {f_var}",
-        ],
-    ),
-    
-    dict(
         name="c_void_*_cdesc",
         base="c_native_*_cdesc",
     ),
@@ -1779,6 +1771,36 @@ fc_statements = [
         base="f_native_*_cdesc",
     ),    
 
+########################################
+# void **
+    dict(
+        # Treat as an assumed length array in Fortran interface.
+        name='c_void_**_in',
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "void **{c_var}",
+        ],
+        f_arg_decl=[
+            "type(C_PTR), intent(IN) :: {c_var}{f_assumed_size}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="f_void_**_in",
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        arg_decl=[
+            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_size}",
+        ],
+    ),
+    dict(
+        # XXX - intent as a format string
+        name="f_void_**_out",
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        arg_decl=[
+            "type(C_PTR), intent(OUT) :: {f_var}",
+        ],
+    ),
+    
     # Function has a result with deref(allocatable).
     #
     #    C wrapper:
