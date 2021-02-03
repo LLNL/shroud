@@ -1053,8 +1053,7 @@ module pointers_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(in)+rank(1)
-    ! Requested: c_void_**_in
-    ! Match:     c_default
+    ! Exact:     c_void_**_in
     ! start void_ptr_array
     interface
         function void_ptr_array(addr) &
@@ -1062,7 +1061,7 @@ module pointers_mod
                 bind(C, name="POI_void_ptr_array")
             use iso_c_binding, only : C_INT, C_PTR
             implicit none
-            type(C_PTR), intent(IN) :: addr
+            type(C_PTR), intent(IN) :: addr(*)
             integer(C_INT) :: SHT_rv
         end function void_ptr_array
     end interface

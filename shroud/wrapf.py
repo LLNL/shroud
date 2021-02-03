@@ -963,6 +963,7 @@ rv = .false.
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
                         c_var=fmt.F_C_var,
+                        f_assumed_size=fmt.f_assumed_size,
                     ))
                 if intent_blk.f_module:
                     self.update_f_module(

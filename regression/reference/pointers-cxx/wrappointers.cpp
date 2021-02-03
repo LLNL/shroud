@@ -1147,10 +1147,9 @@ void POI_fetch_void_ptr(void * * addr)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * * addr +intent(in)+rank(1)
-// Requested: c_void_**_in
-// Match:     c_default
+// Exact:     c_void_**_in
 // start POI_void_ptr_array
-int POI_void_ptr_array(void * * addr)
+int POI_void_ptr_array(void **addr)
 {
     // splicer begin function.void_ptr_array
     int SHC_rv = VoidPtrArray(addr);

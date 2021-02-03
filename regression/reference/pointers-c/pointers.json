@@ -5697,7 +5697,7 @@
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_addr",
                             "stmt0": "c_void_**_in",
-                            "stmt1": "c_default"
+                            "stmt1": "c_void_**_in"
                         },
                         "fmtf": {
                             "F_C_var": "addr",
@@ -5714,7 +5714,7 @@
                             "stmt0": "f_void_**_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_void_**_in",
-                            "stmtc1": "c_default"
+                            "stmtc1": "c_void_**_in"
                         }
                     }
                 },
@@ -5784,7 +5784,7 @@
                 "fmtdict": {
                     "C_call_list": "addr",
                     "C_name": "VoidPtrArray",
-                    "C_prototype": "void * * addr",
+                    "C_prototype": "void **addr",
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
                     "F_C_call": "c_void_ptr_array",
