@@ -1786,7 +1786,14 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
-        # XXX - array vs single value
+        name="f_void_**_in",
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        arg_decl=[
+            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_size}",
+        ],
+    ),
+    dict(
+        # XXX - intent as a format string
         name="f_void_**_out",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[

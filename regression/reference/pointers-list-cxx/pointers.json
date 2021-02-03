@@ -3143,6 +3143,7 @@
                     "underscore_name": "void_ptr_array"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },

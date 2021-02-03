@@ -225,6 +225,7 @@ declarations:
 - decl: void fetchVoidPtr(void **addr+intent(out))
 - decl: int VoidPtrArray(void **addr+rank(1))
   options:
+    F_force_wrapper: True
     wrap_python: False
 
 - decl: int *returnIntPtrToScalar(void)

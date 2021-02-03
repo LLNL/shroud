@@ -5712,7 +5712,7 @@
                             "sh_type": "SH_TYPE_CPTR",
                             "size": "size(addr)",
                             "stmt0": "f_void_**_in",
-                            "stmt1": "f_default",
+                            "stmt1": "f_void_**_in",
                             "stmtc0": "c_void_**_in",
                             "stmtc1": "c_void_**_in"
                         }
@@ -5788,7 +5788,7 @@
                     "C_return_type": "int",
                     "F_C_arguments": "addr",
                     "F_C_call": "c_void_ptr_array",
-                    "F_C_name": "void_ptr_array",
+                    "F_C_name": "c_void_ptr_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
@@ -5804,6 +5804,7 @@
                     "underscore_name": "void_ptr_array"
                 },
                 "options": {
+                    "F_force_wrapper": true,
                     "wrap_python": false
                 }
             },
