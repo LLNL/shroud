@@ -155,6 +155,7 @@
                             "F_C_name": "c_class2_ctor",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -246,6 +247,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
@@ -385,6 +387,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
@@ -546,6 +549,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -629,6 +633,7 @@
                     "F_C_name": "c_pass_struct1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_struct1",

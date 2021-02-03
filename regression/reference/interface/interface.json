@@ -70,6 +70,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -101,6 +102,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -194,6 +196,7 @@
                     "F_C_name": "function2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function2",

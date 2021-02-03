@@ -135,6 +135,7 @@
                             "F_C_name": "c_class1_get_flag",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_flag",
@@ -259,6 +260,7 @@
                     "F_C_name": "c_return_int_ptr_raw",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrRaw",
                     "underscore_name": "return_int_ptr_raw"
@@ -344,6 +346,7 @@
                     "F_C_name": "return_int_ptr_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_scalar",
                     "F_name_generic": "return_int_ptr_scalar",
@@ -435,6 +438,7 @@
                     "F_C_name": "c_return_int_ptr_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_pointer",
                     "F_name_generic": "return_int_ptr_pointer",
@@ -469,6 +473,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         }
                     }
                 },
@@ -537,6 +544,7 @@
                     "F_C_name": "c_return_int_ptr_dim_raw",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRaw",
                     "underscore_name": "return_int_ptr_dim_raw"
@@ -566,6 +574,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -705,6 +716,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_pointer",
@@ -742,6 +754,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_intent": "OUT",
@@ -836,6 +849,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "function_suffix": "_bufferify",
@@ -867,6 +881,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1006,6 +1023,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_alloc",
@@ -1043,6 +1061,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_intent": "OUT",
@@ -1137,6 +1156,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "function_suffix": "_bufferify",
@@ -1168,6 +1188,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1307,6 +1330,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv,\t len",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_dim_default",
@@ -1344,6 +1368,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_intent": "OUT",
@@ -1438,6 +1463,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "function_suffix": "_bufferify",
@@ -1469,6 +1495,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         }
                     }
                 },
@@ -1550,6 +1579,7 @@
                     "F_C_name": "c_return_int_ptr_dim_raw_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimRawNew",
                     "underscore_name": "return_int_ptr_dim_raw_new"
@@ -1579,6 +1609,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1722,6 +1755,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv,\t len",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_pointer_new",
@@ -1759,6 +1793,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_intent": "OUT",
@@ -1856,6 +1891,7 @@
                     "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "function_suffix": "_bufferify",
@@ -1887,6 +1923,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2009,6 +2048,7 @@
                     "F_C_name": "c_return_int_ptr_dim_alloc_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAllocNew",
@@ -2038,6 +2078,9 @@
                             "shadow_var": "SHadow_len",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2181,6 +2224,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHC_rv,\t len",
                     "F_arguments": "Crv",
                     "F_name_function": "return_int_ptr_dim_default_new",
@@ -2218,6 +2262,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
                             "c_var": "len",
                             "f_intent": "OUT",
@@ -2315,6 +2360,7 @@
                     "F_C_name": "c_return_int_ptr_dim_default_new_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "function_suffix": "_bufferify",
@@ -2925,6 +2971,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
@@ -3090,6 +3137,7 @@
                     "F_C_name": "c_get_class_static",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_class_static",
@@ -3127,6 +3175,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
@@ -3255,6 +3304,7 @@
                     "F_C_name": "c_get_class_new",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                     "F_arguments": "flag",
                     "F_name_function": "get_class_new",

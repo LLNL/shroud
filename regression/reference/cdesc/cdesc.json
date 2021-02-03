@@ -35,6 +35,7 @@
                             "stmt1": "c_native_*_cdesc"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -131,6 +132,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         }
                     },
                     "value": {
@@ -151,6 +155,9 @@
                             "shadow_var": "SHadow_value",
                             "stmt0": "c_void_*_out_cdesc",
                             "stmt1": "c_void_*_cdesc"
+                        },
+                        "fmtf": {
+                            "F_C_var": "value"
                         }
                     }
                 },
@@ -575,6 +582,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "Lname",
@@ -608,6 +616,7 @@
                             "stmt1": "c_void_*_cdesc"
                         },
                         "fmtf": {
+                            "F_C_var": "value",
                             "F_pointer": "SHPTR_value",
                             "c_var": "value",
                             "c_var_context": "Dvalue",
@@ -939,6 +948,7 @@
                     "F_C_name": "c_get_data_int",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_data_int",
                     "F_name_generic": "get_data",
@@ -1043,6 +1053,7 @@
                     "F_C_name": "c_get_data_double",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_data_double",
                     "F_name_generic": "get_data",

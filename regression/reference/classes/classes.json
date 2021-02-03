@@ -188,6 +188,7 @@
                             "F_C_name": "c_class1_ctor_default",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor_default",
@@ -230,6 +231,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "flag",
                                     "F_pointer": "SHPTR_flag",
                                     "c_var": "flag",
                                     "f_intent": "IN",
@@ -371,6 +373,7 @@
                             "F_C_name": "c_class1_ctor_flag",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                             "F_arguments": "flag",
                             "F_name_function": "ctor_flag",
@@ -522,6 +525,7 @@
                             "F_C_name": "c_class1_method1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "method1",
@@ -564,6 +568,7 @@
                                     "stmt1": "c_shadow_in"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "obj2",
                                     "F_pointer": "SHPTR_obj2",
                                     "c_var": "obj2",
                                     "f_intent": "IN",
@@ -694,6 +699,7 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t obj2%cxxmem",
                             "F_arguments": "obj,\t obj2",
                             "F_name_function": "equivalent",
@@ -787,6 +793,9 @@
                                     "shadow_var": "SHadow_flag",
                                     "stmt0": "c_bool_scalar_in",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "flag"
                                 }
                             },
                             "name": {
@@ -806,6 +815,9 @@
                                     "shadow_var": "SHadow_name",
                                     "stmt0": "c_string_&_in",
                                     "stmt1": "c_string_in"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "name"
                                 }
                             }
                         },
@@ -898,6 +910,7 @@
                             "F_C_name": "c_class1_return_this_buffer",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t name,\t len_trim(name, kind=C_INT),\t SH_flag,\t SHT_rv%cxxmem",
                             "F_arguments": "obj,\t name,\t flag",
                             "F_name_function": "return_this_buffer",
@@ -940,6 +953,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "flag",
                                     "F_pointer": "SHPTR_flag",
                                     "c_var": "SH_flag",
                                     "f_intent": "IN",
@@ -972,6 +986,7 @@
                                     "stmt1": "c_string_in_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "name",
                                     "F_pointer": "SHPTR_name",
                                     "c_var": "name",
                                     "c_var_trim": "Lname",
@@ -1068,6 +1083,7 @@
                             "F_C_name": "c_class1_return_this_buffer_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1164,6 +1180,7 @@
                             "F_C_name": "c_class1_getclass3",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t SHT_rv%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "getclass3",
@@ -1276,6 +1293,7 @@
                             "F_C_name": "c_class1_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
@@ -1319,6 +1337,7 @@
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
                                     "c_var": "SHT_rv",
                                     "c_var_context": "DSHF_rv",
@@ -1436,6 +1455,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "arg",
                                     "F_pointer": "SHPTR_arg",
                                     "c_var": "arg",
                                     "f_intent": "IN",
@@ -1579,6 +1599,7 @@
                             "F_C_name": "c_class1_direction_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t arg",
                             "F_arguments": "obj,\t arg",
                             "F_name_function": "direction_func",
@@ -1651,6 +1672,7 @@
                             "F_C_name": "c_class1_get_m_flag",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_m_flag",
@@ -1728,6 +1750,7 @@
                             "F_C_name": "c_class1_get_test",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_test",
@@ -1775,6 +1798,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "val",
                                     "F_pointer": "SHPTR_val",
                                     "c_var": "val",
                                     "f_intent": "IN",
@@ -2044,6 +2068,7 @@
                             "F_C_name": "c_class2_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
@@ -2087,6 +2112,7 @@
                                     "stmt1": "c_string_result_buf_allocatable"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
                                     "c_var": "SHT_rv",
                                     "c_var_context": "DSHF_rv",
@@ -2292,6 +2318,7 @@
                             "F_C_name": "c_singleton_get_reference",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "get_reference",
@@ -2433,6 +2460,7 @@
                             "F_C_name": "c_shape_ctor",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -2533,6 +2561,7 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_ivar",
@@ -2682,6 +2711,7 @@
                             "F_C_name": "c_circle_ctor",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -2745,6 +2775,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -2888,6 +2919,7 @@
                     "F_C_name": "direction_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "direction_func",
@@ -2925,6 +2957,7 @@
                             "stmt1": "c_shadow_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -3040,6 +3073,7 @@
                             "stmt1": "c_shadow_in"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -3164,6 +3198,7 @@
                     "F_C_name": "c_useclass",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg%cxxmem",
                     "F_arguments": "arg",
                     "F_name_function": "useclass",
@@ -3235,6 +3270,7 @@
                     "F_C_name": "c_getclass2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "getclass2",
@@ -3326,6 +3362,7 @@
                     "F_C_name": "c_getclass3",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "getclass3",
@@ -3397,6 +3434,7 @@
                     "F_C_name": "c_get_const_class_reference",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_const_class_reference",
@@ -3488,6 +3526,7 @@
                     "F_C_name": "c_get_class_reference",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv%cxxmem",
                     "F_arguments": "",
                     "F_name_function": "get_class_reference",
@@ -3525,6 +3564,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "flag",
                             "f_intent": "IN",
@@ -3606,6 +3646,7 @@
                     "F_C_name": "c_get_class_copy",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
                     "F_arguments": "flag",
                     "F_name_function": "get_class_copy",
@@ -3643,6 +3684,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -3828,6 +3870,7 @@
                     "F_C_name": "get_global_flag",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_flag",
                     "F_name_generic": "get_global_flag",
@@ -3934,6 +3977,7 @@
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "last_function_called",
@@ -3972,6 +4016,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",

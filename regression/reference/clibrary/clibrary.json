@@ -125,6 +125,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -175,6 +176,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -304,6 +306,7 @@
                     "F_C_name": "pass_by_value",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "pass_by_value",
@@ -341,6 +344,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -392,6 +396,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "OUT",
@@ -521,6 +526,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -639,6 +645,7 @@
                     "F_C_name": "pass_by_value_macro",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg2",
                     "F_arguments": "arg2",
                     "F_name_function": "pass_by_value_macro",
@@ -676,6 +683,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "SH_arg1",
                             "f_intent": "IN",
@@ -728,6 +736,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "SH_arg2",
                             "f_intent": "OUT",
@@ -780,6 +789,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg3",
                             "F_pointer": "SHPTR_arg3",
                             "c_var": "SH_arg3",
                             "f_intent": "INOUT",
@@ -928,6 +938,9 @@
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "arg1"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "const ",
@@ -966,6 +979,9 @@
                             "shadow_var": "SHadow_arg2",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg2"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1107,6 +1123,7 @@
                     "F_C_name": "c_function4a",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "function4a",
@@ -1143,6 +1160,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -1175,6 +1193,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "f_intent": "IN",
@@ -1202,6 +1221,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
                             "c_var": "arg2",
                             "f_intent": "IN",
@@ -1344,6 +1364,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "f_intent": "IN",
@@ -1453,6 +1474,9 @@
                             "stmt0": "c_char_*_inout",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "s"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -1558,6 +1582,7 @@
                             "stmt1": "c_char_*_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
                             "c_var_len": "Ns",
@@ -1652,6 +1677,9 @@
                             "shadow_var": "SHadow_name1",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1761,6 +1789,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
                             "c_var_len": "Nname1",
@@ -1856,6 +1885,9 @@
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "name1"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -1895,6 +1927,9 @@
                             "shadow_var": "SHadow_name2",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name2"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2020,6 +2055,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name1",
                             "F_pointer": "SHPTR_name1",
                             "c_var": "name1",
                             "c_var_len": "Nname1",
@@ -2053,6 +2089,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name2",
                             "F_pointer": "SHPTR_name2",
                             "c_var": "name2",
                             "c_var_len": "Nname2",
@@ -2167,6 +2204,9 @@
                             "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "ltext"
+                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
@@ -2203,6 +2243,9 @@
                             "shadow_var": "SHadow_text",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "text"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -2325,6 +2368,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2354,6 +2398,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "c_var_len": "Ntext",
@@ -2465,6 +2510,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -2512,6 +2558,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2558,6 +2605,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "f_intent": "IN",
@@ -2709,6 +2757,7 @@
                     "F_C_name": "c_implied_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
                     "F_name_function": "implied_len",
@@ -2746,6 +2795,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -2793,6 +2843,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "ltext",
                             "F_pointer": "SHPTR_ltext",
                             "c_var": "SH_ltext",
                             "f_intent": "IN",
@@ -2839,6 +2890,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "text",
                             "F_pointer": "SHPTR_text",
                             "c_var": "text",
                             "f_intent": "IN",
@@ -2990,6 +3042,7 @@
                     "F_C_name": "c_implied_len_trim",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
                     "F_arguments": "text",
                     "F_name_function": "implied_len_trim",
@@ -3027,6 +3080,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -3144,6 +3198,7 @@
                     "F_C_name": "c_implied_bool_true",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
                     "F_name_function": "implied_bool_true",
@@ -3179,6 +3234,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
                             "c_var": "SH_flag",
                             "f_intent": "IN",
@@ -3296,6 +3352,7 @@
                     "F_C_name": "c_implied_bool_false",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SH_flag",
                     "F_arguments": "",
                     "F_name_function": "implied_bool_false",
@@ -3371,6 +3428,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     }
                 },
@@ -3457,6 +3517,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -3552,6 +3613,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -3583,6 +3645,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "out",
                             "F_pointer": "SHPTR_out",
                             "c_var": "out",
                             "f_intent": "OUT",
@@ -3700,6 +3763,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -3783,6 +3847,7 @@
                     "F_C_name": "pass_assumed_type",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_assumed_type",
@@ -3820,6 +3885,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_assumed_shape": "(:)",
@@ -3915,6 +3981,9 @@
                             "shadow_var": "SHadow_arg",
                             "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg"
                         }
                     },
                     "outbuf": {
@@ -3934,6 +4003,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     }
                 },
@@ -4028,6 +4100,7 @@
                     "F_C_name": "c_pass_assumed_type_buf",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "arg,\t outbuf",
                     "F_name_function": "pass_assumed_type_buf",
@@ -4064,6 +4137,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "f_intent": "IN",
@@ -4092,6 +4166,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -4190,6 +4265,7 @@
                     "F_C_name": "c_pass_assumed_type_buf_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passAssumedTypeBuf",
                     "function_suffix": "_bufferify",
@@ -4223,6 +4299,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4250,6 +4327,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4366,6 +4444,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4393,6 +4472,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4511,6 +4591,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -4538,6 +4619,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4565,6 +4647,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -4710,6 +4793,9 @@
                             "shadow_var": "SHadow_in",
                             "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in"
                         }
                     },
                     "incr": {
@@ -4729,6 +4815,9 @@
                             "shadow_var": "SHadow_incr",
                             "stmt0": "c_void_scalar_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "incr"
                         }
                     },
                     "outbuf": {
@@ -4748,6 +4837,9 @@
                             "shadow_var": "SHadow_outbuf",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
                         }
                     },
                     "type": {
@@ -4767,6 +4859,9 @@
                             "shadow_var": "SHadow_type",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type"
                         }
                     }
                 },
@@ -4927,6 +5022,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "in",
                             "F_pointer": "SHPTR_in",
                             "c_var": "in",
                             "f_intent": "IN",
@@ -4954,6 +5050,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "incr",
                             "F_pointer": "SHPTR_incr",
                             "c_var": "incr",
                             "f_intent": "IN",
@@ -4982,6 +5079,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "outbuf",
                             "F_pointer": "SHPTR_outbuf",
                             "c_var": "outbuf",
                             "c_var_len": "Noutbuf",
@@ -5014,6 +5112,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
                             "c_var": "type",
                             "f_intent": "IN",
@@ -5179,6 +5278,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "alloc",
                             "F_pointer": "SHPTR_alloc",
                             "c_var": "alloc",
                             "f_intent": "IN",
@@ -5206,6 +5306,7 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
+                            "F_C_var": "arr",
                             "F_pointer": "SHPTR_arr",
                             "c_var": "arr",
                             "f_intent": "INOUT",
@@ -5237,6 +5338,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "tc",
                             "F_pointer": "SHPTR_tc",
                             "c_var": "tc",
                             "f_intent": "IN",

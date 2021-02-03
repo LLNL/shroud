@@ -108,6 +108,7 @@
                             "stmt1": "c_vector_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_size": "Sarg",
@@ -198,6 +199,7 @@
                     "F_C_name": "c_vector_sum_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_sum",
                     "function_suffix": "_bufferify",
@@ -299,6 +301,7 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -501,6 +504,7 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -721,6 +725,7 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -916,6 +921,7 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -1096,6 +1102,7 @@
                             "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -1273,6 +1280,7 @@
                             "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -1446,6 +1454,7 @@
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_context": "Darg",
@@ -1633,6 +1642,7 @@
                             "stmt1": "c_vector_in_buf_string"
                         },
                         "fmtf": {
+                            "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
                             "c_var_len": "Narg",
@@ -1729,6 +1739,7 @@
                     "F_C_name": "c_vector_string_count_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "vector_string_count",
                     "function_suffix": "_bufferify",
@@ -1951,6 +1962,7 @@
                             "stmt1": "c_vector_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -1989,6 +2001,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "n",
                             "F_pointer": "SHPTR_n",
                             "c_var": "n",
                             "f_intent": "IN",

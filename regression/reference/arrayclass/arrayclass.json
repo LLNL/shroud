@@ -99,6 +99,7 @@
                             "F_C_name": "c_arraywrapper_ctor",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "SHT_rv%cxxmem",
                             "F_arguments": "",
                             "F_name_function": "ctor",
@@ -138,6 +139,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "size",
                                     "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "IN",
@@ -298,6 +300,7 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_size",
@@ -338,6 +341,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "size",
                                     "F_pointer": "SHPTR_size",
                                     "c_var": "size",
                                     "f_intent": "OUT",
@@ -573,6 +577,7 @@
                             "F_C_name": "c_arraywrapper_get_array",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array",
@@ -654,6 +659,7 @@
                             "F_C_name": "c_arraywrapper_get_array_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -771,6 +777,7 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const",
@@ -853,6 +860,7 @@
                             "F_C_name": "c_arraywrapper_get_array_const_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -969,6 +977,7 @@
                             "F_C_name": "c_arraywrapper_get_array_c",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_c",
@@ -1051,6 +1060,7 @@
                             "F_C_name": "c_arraywrapper_get_array_c_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1169,6 +1179,7 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const_c",
@@ -1252,6 +1263,7 @@
                             "F_C_name": "c_arraywrapper_get_array_const_c_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1289,6 +1301,9 @@
                                     "shadow_var": "SHadow_array",
                                     "stmt0": "c_native_**_out",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1333,6 +1348,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1472,6 +1490,7 @@
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -1510,6 +1529,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -1635,6 +1655,9 @@
                                     "stmt0": "c_native_*&_out",
                                     "stmt1": "c_default"
                                 },
+                                "fmtf": {
+                                    "F_C_var": "array"
+                                },
                                 "fmtpy": {
                                     "array_size": "isize",
                                     "c_const": "",
@@ -1678,6 +1701,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1817,6 +1843,7 @@
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -1855,6 +1882,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -1980,6 +2008,9 @@
                                     "stmt0": "c_native_**_out",
                                     "stmt1": "c_default"
                                 },
+                                "fmtf": {
+                                    "F_C_var": "array"
+                                },
                                 "fmtpy": {
                                     "array_size": "isize",
                                     "c_const": "const ",
@@ -2023,6 +2054,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_*_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2163,6 +2197,7 @@
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -2201,6 +2236,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -2327,6 +2363,9 @@
                                     "stmt0": "c_native_*&_out",
                                     "stmt1": "c_default"
                                 },
+                                "fmtf": {
+                                    "F_C_var": "array"
+                                },
                                 "fmtpy": {
                                     "array_size": "isize",
                                     "c_const": "const ",
@@ -2370,6 +2409,9 @@
                                     "shadow_var": "SHadow_isize",
                                     "stmt0": "c_native_&_inout",
                                     "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2510,6 +2552,7 @@
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "c_var_context": "Darray",
@@ -2548,6 +2591,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "isize",
                                     "F_pointer": "SHPTR_isize",
                                     "c_var": "isize",
                                     "f_intent": "INOUT",
@@ -2674,6 +2718,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
@@ -2792,6 +2837,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "OUT",
@@ -2910,6 +2956,7 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
+                                    "F_C_var": "array",
                                     "F_pointer": "SHPTR_array",
                                     "c_var": "array",
                                     "f_intent": "IN",
@@ -3032,6 +3079,7 @@
                             "F_C_name": "c_arraywrapper_check_ptr",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t array",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "check_ptr",
@@ -3119,6 +3167,7 @@
                             "F_C_name": "c_arraywrapper_sum_array",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "sum_array",

@@ -34,6 +34,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -144,6 +145,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -286,6 +288,7 @@
                     "F_C_name": "c_return_char",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "return_char",
@@ -322,6 +325,7 @@
                             "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -428,6 +432,9 @@
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "dest"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -467,6 +474,9 @@
                             "shadow_var": "SHadow_src",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "src"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -595,6 +605,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "c_var_len": "Ndest",
@@ -627,6 +638,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_intent": "IN",
@@ -737,6 +749,9 @@
                             "stmt0": "c_char_*_inout",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "s"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -842,6 +857,7 @@
                             "stmt1": "c_char_*_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
                             "c_var_len": "Ns",
@@ -997,6 +1013,7 @@
                     "F_C_name": "c_get_char_ptr1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr1",
@@ -1035,6 +1052,7 @@
                             "stmt1": "c_char_*_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -1208,6 +1226,7 @@
                     "F_C_name": "c_get_char_ptr2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr2",
@@ -1246,6 +1265,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -1406,6 +1426,7 @@
                     "F_C_name": "c_get_char_ptr3",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getCharPtr3",
                     "cxx_rv_decl": "const char * SHC_rv",
@@ -1439,6 +1460,7 @@
                             "stmt1": "c_char_*_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -1652,6 +1674,7 @@
                     "F_C_name": "get_char_ptr4",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr4",
                     "F_name_generic": "get_char_ptr4",
@@ -1757,6 +1780,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -1939,6 +1963,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -2104,6 +2129,7 @@
                             "stmt1": "c_string_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -2340,6 +2366,7 @@
                             "stmt1": "c_string_scalar_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -2507,6 +2534,7 @@
                     "F_C_name": "c_get_const_string_ref_pure",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_pure",
@@ -2545,6 +2573,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -2721,6 +2750,7 @@
                     "F_C_name": "c_get_const_string_ref_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len",
@@ -2758,6 +2788,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -2921,6 +2952,7 @@
                     "F_C_name": "c_get_const_string_ref_as_arg",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_string_result_as_arg": "output",
                     "PY_name_impl": "PY_getConstStringRefAsArg",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
@@ -2954,6 +2986,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
                             "c_var_len": "Noutput",
@@ -3191,6 +3224,7 @@
                     "F_C_name": "c_get_const_string_ref_len_empty",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len_empty",
@@ -3228,6 +3262,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -3396,6 +3431,7 @@
                     "F_C_name": "c_get_const_string_ref_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_alloc",
@@ -3432,6 +3468,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -3603,6 +3640,7 @@
                     "F_C_name": "c_get_const_string_ptr_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_len",
@@ -3646,6 +3684,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -3823,6 +3862,7 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
@@ -3859,6 +3899,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -4028,6 +4069,7 @@
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc",
@@ -4064,6 +4106,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -4237,6 +4280,7 @@
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
@@ -4273,6 +4317,7 @@
                             "stmt1": "c_string_result_buf_allocatable"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_context": "DSHF_rv",
@@ -4385,6 +4430,9 @@
                             "stmt0": "c_string_&_in",
                             "stmt1": "c_string_in"
                         },
+                        "fmtf": {
+                            "F_C_var": "arg1"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "const ",
@@ -4490,6 +4538,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -4583,6 +4632,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_&_out",
                             "stmt1": "c_string_out"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4688,6 +4740,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -4780,6 +4833,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_&_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -4888,6 +4944,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -4983,6 +5040,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_in",
                             "stmt1": "c_string_in"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5088,6 +5148,7 @@
                             "stmt1": "c_string_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -5180,6 +5241,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5285,6 +5349,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5378,6 +5443,9 @@
                             "shadow_var": "SHadow_arg1",
                             "stmt0": "c_string_*_out",
                             "stmt1": "c_string_out"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5483,6 +5551,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5576,6 +5645,9 @@
                             "stmt0": "c_string_*_inout",
                             "stmt1": "c_string_inout"
                         },
+                        "fmtf": {
+                            "F_C_var": "arg1"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -5614,6 +5686,9 @@
                             "shadow_var": "SHadow_nlen",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5737,6 +5812,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -5770,6 +5846,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nlen",
                             "F_pointer": "SHPTR_nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT",
@@ -5881,6 +5958,9 @@
                             "stmt0": "c_string_*_out",
                             "stmt1": "c_string_out"
                         },
+                        "fmtf": {
+                            "F_C_var": "arg1"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -5919,6 +5999,9 @@
                             "shadow_var": "SHadow_nlen",
                             "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6041,6 +6124,7 @@
                             "stmt1": "c_string_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_len": "Narg1",
@@ -6073,6 +6157,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "nlen",
                             "F_pointer": "SHPTR_nlen",
                             "c_var": "nlen",
                             "f_intent": "OUT",
@@ -6183,6 +6268,9 @@
                             "stmt0": "c_string_scalar_in",
                             "stmt1": "c_string_scalar_in"
                         },
+                        "fmtf": {
+                            "F_C_var": "arg1"
+                        },
                         "fmtpy": {
                             "c_const": "",
                             "c_deref": "",
@@ -6290,6 +6378,7 @@
                     "F_C_name": "c_accept_string_instance",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT)",
                     "F_arguments": "arg1",
                     "F_name_function": "accept_string_instance",
@@ -6326,6 +6415,7 @@
                             "stmt1": "c_string_scalar_in_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "arg1",
                             "F_pointer": "SHPTR_arg1",
                             "c_var": "arg1",
                             "c_var_trim": "Larg1",
@@ -6401,6 +6491,7 @@
                     "F_C_name": "c_accept_string_instance_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "acceptStringInstance",
                     "function_suffix": "_bufferify",
@@ -6588,6 +6679,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_trim": "AAlen",
@@ -6697,6 +6789,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         }
                     }
                 },
@@ -6781,6 +6876,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "AAtrim",
@@ -6872,6 +6968,7 @@
                             "stmt1": "c_char_scalar_in"
                         },
                         "fmtf": {
+                            "F_C_var": "status",
                             "F_pointer": "SHPTR_status",
                             "c_var": "status",
                             "f_intent": "IN",
@@ -7034,6 +7131,7 @@
                     "F_C_name": "c_creturn_char",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "creturn_char",
@@ -7072,6 +7170,7 @@
                             "stmt1": "c_char_scalar_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
@@ -7178,6 +7277,9 @@
                             "shadow_var": "SHadow_dest",
                             "stmt0": "c_char_*_out",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "dest"
                         }
                     },
                     "src": {
@@ -7197,6 +7299,9 @@
                             "shadow_var": "SHadow_src",
                             "stmt0": "c_char_*_in",
                             "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "src"
                         }
                     }
                 },
@@ -7304,6 +7409,7 @@
                             "stmt1": "c_char_*_out_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
                             "c_var_len": "Ndest",
@@ -7336,6 +7442,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "src",
                             "F_pointer": "SHPTR_src",
                             "c_var": "src",
                             "f_intent": "IN",
@@ -7445,6 +7552,9 @@
                             "stmt0": "c_native_*_in",
                             "stmt1": "c_default"
                         },
+                        "fmtf": {
+                            "F_C_var": "count"
+                        },
                         "fmtpy": {
                             "array_size": "1",
                             "c_const": "",
@@ -7485,6 +7595,9 @@
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout",
                             "stmt1": "c_string_inout"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -7606,6 +7719,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
+                            "F_C_var": "count",
                             "F_pointer": "SHPTR_count",
                             "c_var": "count",
                             "f_assumed_shape": "(:)",
@@ -7643,6 +7757,7 @@
                             "stmt1": "c_string_inout_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "name",
                             "F_pointer": "SHPTR_name",
                             "c_var": "name",
                             "c_var_len": "Nname",

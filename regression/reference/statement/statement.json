@@ -71,6 +71,7 @@
                     "F_C_pure_clause": "pure ",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_name_length",
                     "F_name_generic": "get_name_length",
@@ -153,6 +154,7 @@
                     "F_C_name": "c_get_name_error_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_name_error_pattern",
@@ -190,6 +192,7 @@
                             "stmt1": "c_string_result_buf"
                         },
                         "fmtf": {
+                            "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",

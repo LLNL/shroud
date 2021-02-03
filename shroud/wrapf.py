@@ -877,7 +877,6 @@ rv = .false.
         imports,
         arg_c_names,
         arg_c_decl,
-        name=None,
         intent=None,
     ):
         """Build the Fortran interface for a c wrapper function.
@@ -895,7 +894,6 @@ rv = .false.
             imports - Build up IMPORT statement.
             arg_c_names - Names of arguments to subprogram.
             arg_c_decl  - Declaration for arguments.
-            name    - name to override ast.name (shadow only).
             intent  - override attrs["intent"] (shadow only).
         """
         attrs = ast.attrs
@@ -932,7 +930,7 @@ rv = .false.
                     intent = ast.attrs["intent"].upper()
                     arg_c_decl.append(
                         "type(C_PTR), intent({}) :: {}".format(
-                            intent, name or ast.name))
+                            intent, fmt.F_C_var))
                     self.set_f_module(modules, "iso_c_binding", "C_PTR")
                 else:
                     arg_c_decl.append(ast.bind_c())
@@ -948,12 +946,12 @@ rv = .false.
             elif buf_arg == "shadow":
                 # Do not use const or value in declaration
                 # Function result arguments explicitly set to intent(out).
-                arg_c_names.append(name or ast.name)
+                arg_c_names.append(fmt.F_C_var)
                 arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
                     (intent or ast.attrs["intent"]).upper(),
                     ", value" if attrs["value"] else "",
-                    name or ast.name))
+                    fmt.F_C_var))
                 self.update_f_module(
                     modules, imports,
                     ast.typemap.f_c_module or ast.typemap.f_module
@@ -961,10 +959,10 @@ rv = .false.
                 continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
-                arg_c_names.append(name or ast.name)
+                arg_c_names.append(fmt.F_C_var)
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
-                        c_var=name or ast.name,
+                        c_var=fmt.F_C_var,
                     ))
                 if intent_blk.f_module:
                     self.update_f_module(
@@ -1036,7 +1034,7 @@ rv = .false.
         """
         options = node.options
         fmt_func = node.fmtdict
-        fmt = util.Scope(fmt_func)
+        fmtargs = node._fmtargs
 
         ast = node.ast
         subprogram = node.C_subprogram
@@ -1111,10 +1109,13 @@ rv = .false.
         for arg in ast.params:
             # default argument's intent
             # XXX look at const, ptr
+            arg_name = arg.name
+            fmt_arg0 = fmtargs.setdefault(arg_name, {})
+            fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = typemap.lookup_c_statements(arg)
-            fmt.c_var = arg.name
+            fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs
             intent = attrs["intent"] or "inout"
@@ -1142,7 +1143,7 @@ rv = .false.
                     c_intent_blk.name)
             self.build_arg_list_interface(
                 node, fileinfo,
-                fmt,
+                fmt_arg,
                 arg,
                 c_intent_blk,
                 c_intent_blk.buf_args or self._default_buf_args,
@@ -1153,6 +1154,7 @@ rv = .false.
             )
 
         if subprogram == "function":
+            fmt_func.F_C_var = fmt_func.F_result_capsule
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_func,
@@ -1163,7 +1165,6 @@ rv = .false.
                 imports,
                 arg_c_names,
                 arg_c_decl,
-                name=fmt_func.F_result_capsule,
                 intent="out",
             )
         # Filter out non-pure functions.
