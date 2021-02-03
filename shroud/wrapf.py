@@ -990,7 +990,6 @@ rv = .false.
                     "type(%s), intent(INOUT) :: %s"
                     % (fmt.F_capsule_data_type, buf_arg_name)
                 )
-                fileinfo.add_f_helper("capsule_data_helper", fmt)
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
                 if ast.attrs["_is_result"]:
@@ -1002,7 +1001,6 @@ rv = .false.
                     "type(%s), intent(%s) :: %s"
                     % (fmt.F_array_type, intent, buf_arg_name)
                 )
-                fileinfo.add_f_helper("array_context", fmt)
 #                self.set_f_module(modules, 'iso_c_binding', fmt.F_array_type)
                 imports[fmt.F_array_type] = True
             elif buf_arg == "len_trim":

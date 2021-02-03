@@ -5926,7 +5926,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
                 "options": {
@@ -6160,7 +6159,6 @@
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToFixedConstArray",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
                 "options": {

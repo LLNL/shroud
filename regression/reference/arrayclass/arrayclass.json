@@ -661,7 +661,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArray",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
@@ -861,7 +860,6 @@
                             "cxx_rv_decl": "double * SHC_rv",
                             "function_name": "getArrayConst",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
@@ -1060,7 +1058,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayC",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
@@ -1262,7 +1259,6 @@
                             "cxx_rv_decl": "const double * SHC_rv",
                             "function_name": "getArrayConstC",
                             "function_suffix": "_bufferify",
-                            "hnamefunc0": "array_context",
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },

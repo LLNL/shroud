@@ -839,7 +839,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointer",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
                 "options": {
@@ -1141,7 +1140,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimAlloc",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
                 "options": {
@@ -1443,7 +1441,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefault",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_default"
                 },
                 "options": {
@@ -1862,7 +1859,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimPointerNew",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 },
                 "options": {
@@ -2322,7 +2318,6 @@
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "ReturnIntPtrDimDefaultNew",
                     "function_suffix": "_bufferify",
-                    "hnamefunc0": "array_context",
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
                 "options": {
