@@ -42,6 +42,15 @@ long GenericReal2(long arg1, long arg2)
   return arg1 + arg2;
 }
 
+int SumArray(int *values, int nvalues)
+{
+    int sum = 0;
+    for (int i=0; i < nvalues; i++) {
+        sum += values[i];
+    }
+    return sum;
+}
+
 void SavePointer(void *addr, int type, size_t size)
 {
   global_void = addr;

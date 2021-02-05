@@ -19,6 +19,7 @@ program tester
 
   call test_generic_group
   call test_functions
+  call test_scalar_array
   call test_database
 
   call fruit_summary
@@ -67,6 +68,16 @@ contains
     call assert_true(30_C_LONG == rv, "generic_real2 long")
 
   end subroutine test_functions
+
+  subroutine test_scalar_array
+    integer scalar
+    
+    call set_case_name("test_scalar_array")
+
+    scalar = 5
+    call assert_equals(5, sum_array(scalar, 1), "generic_real double")
+    
+  end subroutine test_scalar_array
 
   subroutine test_database
     real(C_FLOAT) var1(10)

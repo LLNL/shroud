@@ -24,6 +24,8 @@ void GenericReal(double arg);
 
 long GenericReal2(long arg1, long arg2);
 
+int SumArray(int *values, int nvalues);
+
 void SavePointer(void *addr, int type, size_t size);
 void SavePointer2(void *addr, int type, size_t size);
 void GetPointer(void **addr, int *type, size_t *size);

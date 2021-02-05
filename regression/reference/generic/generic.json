@@ -883,6 +883,280 @@
             },
             {
                 "_fmtargs": {
+                    "nvalues": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nvalues",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nvalues",
+                            "cxx_type": "int",
+                            "cxx_var": "nvalues",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nvalues",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nvalues",
+                            "F_pointer": "SHPTR_nvalues",
+                            "c_var": "nvalues",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nvalues",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "values",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_values",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "values",
+                            "F_pointer": "SHPTR_values",
+                            "c_var": "values",
+                            "f_intent": "INOUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "values",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_inout",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    }
+                },
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SumArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int SumArray(int *values, int nvalues)",
+                "declgen": "int SumArray(int * values +intent(inout), int nvalues +intent(in)+value)",
+                "doxygen": {
+                    "brief": "scalar or array argument"
+                },
+                "fmtdict": {
+                    "C_call_list": "values,\t nvalues",
+                    "C_name": "SumArray",
+                    "C_prototype": "int * values,\t int nvalues",
+                    "C_return_type": "int",
+                    "F_C_arguments": "values,\t nvalues",
+                    "F_C_name": "c_sum_array",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "SumArray",
+                    "underscore_name": "sum_array"
+                },
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "inout"
+                                },
+                                "declarator": {
+                                    "name": "values",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nvalues",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_scalar",
+                        "generic": "(int *values)"
+                    }
+                ],
+                "options": {
+                    "wrap_fortran": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SumArray",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int SumArray(int *values, int nvalues)",
+                "declgen": "int SumArray(int * values +intent(inout), int nvalues +intent(in)+value)",
+                "doxygen": {
+                    "brief": "scalar or array argument"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_sum_array",
+                    "F_arg_c_call": "values,\t nvalues",
+                    "F_arguments": "values,\t nvalues",
+                    "F_name_function": "sum_array_scalar",
+                    "F_name_generic": "sum_array",
+                    "F_name_impl": "sum_array_scalar",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "SumArray",
+                    "function_suffix": "_scalar",
+                    "underscore_name": "sum_array"
+                },
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
                     "addr": {
                         "fmtc": {
                             "c_addr": "",
