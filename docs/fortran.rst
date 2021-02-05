@@ -146,7 +146,7 @@ The compiler will then call the corresponding function based on the argument typ
 to call the generic function.
 
 
-Grouping functions together
+Grouping Functions Together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first case allows multiple C wrapper routines to be called by the same name.
@@ -185,3 +185,59 @@ Or more typically as:
 
     call update_real(22.0)
     call update_real(23.0d0)
+
+Argument Coercion
+^^^^^^^^^^^^^^^^^
+
+The C compiler will coerce arguments in a function call to the type of
+the argument in the prototype.  This makes it very easy to pass an
+``float`` to a function which is expecting a ``double``.  Fortran,
+which defaults to pass by reference, does not have this feature since
+it is passing the address of the argument. This corresponds to C's
+behavior since it cannot coerce a ``float *`` to a ``double *``. When
+passing a literal ``0.0`` as a ``float`` argument it is necessary to
+use ``0.0_C_DOUBLE``.
+
+Shroud can create a generic interface for function which will
+coerce arguments similar to C's behavior.
+The *fortran_generic* section variations of arguments which will be
+used to create a generic interface. For example, when wrapping a function
+which takes a ``double``, the ``float`` variation can also be created.
+
+.. code-block:: yaml
+
+    - decl: void GenericReal(double arg)
+      fortran_generic:
+      - decl: (float arg)
+        function_suffix: _float
+      - decl: (double arg)
+        function_suffix: _double
+
+This will create a generic interface ``generic_real`` with two module
+procedures ``generic_real_float`` and ``generic_real_double``.
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: start generic interface generic_real
+   :end-before: end generic interface generic_real
+   :dedent: 4
+
+This can be used as
+
+.. code-block:: fortran
+                
+    call generic_real(0.0)
+    call generic_real(0.0d0)
+    
+    call generic_real_float(0.0)
+    call generic_real_double(0.0d0)
+
+When adding *decl* entries to the *fortran_generic* list the original
+declaration must also be included, ``double arg`` in this case. When
+there are multiple arguments only the arguments which vary need to be
+declared.  The other arguments will be the same as the original
+*decl* line.
+
+The *function_suffix* line will be used to add a unique string to the
+generated Fortran wrappers. Without *function_suffix* each function
+will have an integer suffix which is increment for each function.
