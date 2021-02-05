@@ -19,6 +19,16 @@ double GetGlobalDouble(void)
   return global_double;
 }
 
+void UpdateAsFloat(float arg)
+{
+    global_double = arg;
+}
+
+void UpdateAsDouble(double arg)
+{
+    global_double = arg;
+}
+
 // start GenericReal
 void GenericReal(double arg)
 {

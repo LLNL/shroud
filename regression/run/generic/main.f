@@ -17,6 +17,7 @@ program tester
 
   call init_fruit
 
+  call test_generic_group
   call test_functions
   call test_database
 
@@ -29,6 +30,24 @@ program tester
   endif
 
 contains
+
+  ! Create a generic interface for two functions.
+  subroutine test_generic_group
+    call set_case_name("test_generic_group")
+
+    call update_as_float(12.0_C_FLOAT)
+    call assert_equals(12.0d0, get_global_double(), "update_as_float")
+
+    call update_as_double(13.0_C_DOUBLE)
+    call assert_equals(13.0d0, get_global_double(), "update_as_double")
+    
+    call update_real(22.0_C_FLOAT)
+    call assert_equals(22.0d0, get_global_double(), "update_as_float")
+
+    call update_real(23.0_C_DOUBLE)
+    call assert_equals(23.0d0, get_global_double(), "update_as_double")
+    
+  end subroutine test_generic_group
 
   subroutine test_functions
     integer(C_LONG) rv

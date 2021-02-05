@@ -1,4 +1,6 @@
 Read yaml generic.yaml
+C function void UpdateAsFloat(float arg +intent(in)+value)
+C function void UpdateAsDouble(double arg +intent(in)+value)
 C function double GetGlobalDouble(void)
 C function void GenericReal(double arg +intent(in)+value)
 C function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
@@ -9,6 +11,8 @@ C function void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), i
 Close wrapgeneric.h
 Close wrapgeneric.c
 Close typesgeneric.h
+C-interface, Fortran function void UpdateAsFloat(float arg +intent(in)+value)
+C-interface, Fortran function void UpdateAsDouble(double arg +intent(in)+value)
 C-interface, Fortran function double GetGlobalDouble(void)
 C-interface function void GenericReal(double arg +intent(in)+value)
 Fortran function void GenericReal(float arg +intent(in)+value)

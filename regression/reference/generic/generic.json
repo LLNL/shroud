@@ -15,6 +15,184 @@
         ],
         "functions": [
             {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "float",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "UpdateAsFloat",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void UpdateAsFloat(float arg)",
+                "declgen": "void UpdateAsFloat(float arg +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "UpdateAsFloat",
+                    "C_prototype": "float arg",
+                    "C_return_type": "void",
+                    "F_C_arguments": "arg",
+                    "F_C_call": "c_update_as_float",
+                    "F_C_name": "c_update_as_float",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "update_as_float",
+                    "F_name_generic": "update_real",
+                    "F_name_impl": "update_as_float",
+                    "F_subprogram": "subroutine",
+                    "function_name": "UpdateAsFloat",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "update_as_float"
+                },
+                "options": {
+                    "F_force_wrapper": true
+                }
+            },
+            {
+                "_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg",
+                            "cxx_type": "double",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "ast": {
+                    "declarator": {
+                        "name": "UpdateAsDouble",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void UpdateAsDouble(double arg)",
+                "declgen": "void UpdateAsDouble(double arg +intent(in)+value)",
+                "fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "UpdateAsDouble",
+                    "C_prototype": "double arg",
+                    "C_return_type": "void",
+                    "F_C_arguments": "arg",
+                    "F_C_call": "c_update_as_double",
+                    "F_C_name": "c_update_as_double",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "update_as_double",
+                    "F_name_generic": "update_real",
+                    "F_name_impl": "update_as_double",
+                    "F_subprogram": "subroutine",
+                    "function_name": "UpdateAsDouble",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "update_as_double"
+                },
+                "options": {
+                    "F_force_wrapper": true
+                }
+            },
+            {
                 "_fmtresult": {
                     "fmtc": {
                         "c_const": "",

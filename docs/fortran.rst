@@ -137,3 +137,51 @@ Two predicate function are generated to compare derived types:
             endif
         end function {F_name_scope}ne
  
+Generic Interfaces
+------------------
+
+Shroud has the ability to create generic interfaces for the routines that are being wrapped.
+The generic intefaces groups several functions under a common name.
+The compiler will then call the corresponding function based on the argument types used
+to call the generic function.
+
+
+Grouping functions together
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first case allows multiple C wrapper routines to be called by the same name.
+This is done by setting the *F_name_generic* format field.
+
+.. code-block:: yaml
+
+        - decl: void UpdateAsFloat(float arg)
+          options:
+            F_force_wrapper: True
+          format:
+            F_name_generic: update_real
+        - decl: void UpdateAsDouble(double arg)
+          options:
+            F_force_wrapper: True
+          format:
+            F_name_generic: update_real
+
+This allows the correct functions to be called based on the argument type.
+
+.. note:: In this example *F_force_wrapper* is set to *True* since by default
+          Shroud will not create explicit wrappers for the functions since only
+          native types are used as arguments.
+          The generic interface is using ``module procedure``` which requires
+          the Fortran wrapper.
+          This should be changed in a future version of Shroud.
+
+.. code-block:: fortran
+
+    call update_real(22.0_C_FLOAT)
+    call update_real(23.0_C_DOUBLE)
+
+Or more typically as:
+
+.. code-block:: fortran
+
+    call update_real(22.0)
+    call update_real(23.0d0)

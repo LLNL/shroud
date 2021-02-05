@@ -20,6 +20,22 @@ options:
 
 declarations:
 
+# Create a generic interface for two functions.
+# XXX - F_force_wrapper is required since the generic interface is using
+#       MODULE PROCEDURE and Shroud is not creating a function since no
+#       wrapper is needed since they're native types.
+- decl: void UpdateAsFloat(float arg)
+  options:
+    F_force_wrapper: True
+  format:
+    F_name_generic: update_real
+- decl: void UpdateAsDouble(double arg)
+  options:
+    F_force_wrapper: True
+  format:
+    F_name_generic: update_real
+
+
 - decl: double GetGlobalDouble(void)
 
 - decl: void GenericReal(double arg)
