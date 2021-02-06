@@ -969,7 +969,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumArray",
+                        "name": "SumValues",
                         "pointer": []
                     },
                     "params": [
@@ -1010,24 +1010,24 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumArray(int *values, int nvalues)",
-                "declgen": "int SumArray(int * values +intent(inout), int nvalues +intent(in)+value)",
+                "decl": "int SumValues(int *values, int nvalues)",
+                "declgen": "int SumValues(int * values +intent(inout), int nvalues +intent(in)+value)",
                 "doxygen": {
                     "brief": "scalar or array argument"
                 },
                 "fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "SumArray",
+                    "C_name": "SumValues",
                     "C_prototype": "int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_name": "c_sum_array",
+                    "F_C_name": "c_sum_values",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "SumArray",
-                    "underscore_name": "sum_array"
+                    "function_name": "SumValues",
+                    "underscore_name": "sum_values"
                 },
                 "fortran_generic": [
                     {
@@ -1127,7 +1127,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumArray",
+                        "name": "SumValues",
                         "pointer": []
                     },
                     "params": [
@@ -1168,23 +1168,23 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumArray(int *values, int nvalues)",
-                "declgen": "int SumArray(int * values +intent(inout), int nvalues +intent(in)+value)",
+                "decl": "int SumValues(int *values, int nvalues)",
+                "declgen": "int SumValues(int * values +intent(inout), int nvalues +intent(in)+value)",
                 "doxygen": {
                     "brief": "scalar or array argument"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_sum_array",
+                    "F_C_call": "c_sum_values",
                     "F_arg_c_call": "values,\t nvalues",
                     "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_array_scalar",
-                    "F_name_generic": "sum_array",
-                    "F_name_impl": "sum_array_scalar",
+                    "F_name_function": "sum_values_scalar",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_scalar",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "SumArray",
+                    "function_name": "SumValues",
                     "function_suffix": "_scalar",
-                    "underscore_name": "sum_array"
+                    "underscore_name": "sum_values"
                 },
                 "options": {
                     "wrap_c": false,
@@ -1210,7 +1210,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumArray",
+                        "name": "SumValues",
                         "pointer": []
                     },
                     "params": [
@@ -1252,23 +1252,23 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumArray(int *values, int nvalues)",
-                "declgen": "int SumArray(int * values +intent(inout)+rank(1), int nvalues +intent(in)+value)",
+                "decl": "int SumValues(int *values, int nvalues)",
+                "declgen": "int SumValues(int * values +intent(inout)+rank(1), int nvalues +intent(in)+value)",
                 "doxygen": {
                     "brief": "scalar or array argument"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_sum_array_array",
+                    "F_C_call": "c_sum_values_array",
                     "F_arg_c_call": "values,\t nvalues",
                     "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_array_array",
-                    "F_name_generic": "sum_array",
-                    "F_name_impl": "sum_array_array",
+                    "F_name_function": "sum_values_array",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_array",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
-                    "function_name": "SumArray",
+                    "function_name": "SumValues",
                     "function_suffix": "_array",
-                    "underscore_name": "sum_array"
+                    "underscore_name": "sum_values"
                 },
                 "options": {
                     "wrap_c": false,
@@ -1370,7 +1370,7 @@
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
-                        "name": "SumArray",
+                        "name": "SumValues",
                         "pointer": []
                     },
                     "params": [
@@ -1412,25 +1412,25 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumArray(int *values, int nvalues)",
-                "declgen": "int SumArray(int * values +intent(inout)+rank(1), int nvalues +intent(in)+value)",
+                "decl": "int SumValues(int *values, int nvalues)",
+                "declgen": "int SumValues(int * values +intent(inout)+rank(1), int nvalues +intent(in)+value)",
                 "doxygen": {
                     "brief": "scalar or array argument"
                 },
                 "fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "SumArray",
+                    "C_name": "SumValues",
                     "C_prototype": "int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_name": "c_sum_array_array",
+                    "F_C_name": "c_sum_values_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "SumArray",
+                    "function_name": "SumValues",
                     "function_suffix": "_array",
-                    "underscore_name": "sum_array"
+                    "underscore_name": "sum_values"
                 },
                 "options": {
                     "wrap_c": true,

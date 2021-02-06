@@ -76,12 +76,12 @@ contains
     call set_case_name("test_scalar_array")
 
     scalar = 5
-    call assert_equals(5, sum_array(scalar, 1), "generic_real double")
-!    call assert_equals(6, sum_array(6, 1), "generic_real double constant")
+    call assert_equals(5, sum_values(scalar, 1), "generic_real double")
+!    call assert_equals(6, sum_values(6, 1), "generic_real double constant")
 
     array = [1,2,3,4,5]
-    call assert_equals(15, sum_array(array, 5), "generic_real double")
-!    call assert_equals(9, sum_array([3, 3, 3], 3), "generic_real double constant")
+    call assert_equals(15, sum_values(array, 5), "generic_real double")
+!    call assert_equals(9, sum_values([3, 3, 3], 3), "generic_real double constant")
     
   end subroutine test_scalar_array
 

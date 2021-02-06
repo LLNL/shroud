@@ -62,7 +62,7 @@ declarations:
     function_suffix: _all_long
 
 
-- decl: int SumArray(int *values, int nvalues)
+- decl: int SumValues(int *values, int nvalues)
   doxygen:
     brief: scalar or array argument
   fortran_generic:
