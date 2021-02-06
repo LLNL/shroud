@@ -241,3 +241,52 @@ declared.  The other arguments will be the same as the original
 The *function_suffix* line will be used to add a unique string to the
 generated Fortran wrappers. Without *function_suffix* each function
 will have an integer suffix which is increment for each function.
+
+Scalar and Array Arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Shroud can produce a generic interface which allows an argument to be
+passed as a scalar or an array. This can help generalize some function
+calls where a scalar can be used instead of an array of length one.
+This was often used in Fortran code before interfaces were introduced
+in Fortran 90. But now when using an interface the compiler will
+report an error when passing a scalar where an array is expected.
+Likewise, a C function with a pointer argument such as ``int *`` has
+no way of knowing how long the array is without being told explicitly.
+Thus in C it is easy to pass a pointer to a scalar.
+
+In the *fortran_generic* section one of the declarations can be given
+the *rank* attribute which causes the interface to expect an
+array. Note that the declaration for the C function does not include
+the *rank* attribute.
+
+.. code-block:: yaml
+
+    - decl: int SumArray(int *values, int nvalues)
+      fortran_generic:
+      - decl: (int *values)
+        function_suffix: _scalar
+      - decl: (int *values+rank(1))
+        function_suffix: _array
+
+The generated generic interface can be used to pass a scalar or array
+to the C function.
+
+.. code-block:: fortran
+
+    integer scalar, result
+    integer array(5)
+    
+    scalar = 5
+    result = sum_array(scalar, 1)
+
+    array = [1,2,3,4,5]
+    result = sum_array(array, 5)
+        
+
+.. note:: TS 29113, Futher interoperability with C, provides features which
+          allow Fortran descriptors to be passed directly to C functions.
+          This feature was incorporated into Fortran 2018.
+          Shroud can generate lots of generic functions to provide the
+          same functionality in old compilers.
+          Eventually TS 29113 will be fully supported.

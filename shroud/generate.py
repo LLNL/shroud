@@ -1022,10 +1022,50 @@ class GenFunctions(object):
         it will not be.  But the generic function does have
         an argument which meets the critieria.
 
-        Args:
-            node - ast.FunctionNode
-            ordered_functions -
+        # scalar/array generic
+          - decl: int SumValues(int *values, int nvalues)
+          fortran_generic:
+          - decl: (int *values)
+          - decl: (int *values+rank(1))
+        In this example, the original declaration of values is scalar.
+        An additional bind(C) will be created to declare values as
+        assumed-size argument since it has the rank(1) attribute.
+
+        Parameters
+        ----------
+        node : ast.FunctionNode
+            Function with 'fortran_generic'
+        ordered_functions : list
+            Create functions are appended to this list.
         """
+
+        def get_order(params, mold=None):
+            """Return string of ignore/scalar/array for each argument.
+
+            Called first with the args from the C function.
+            Any non-native types are ignored (ex. void *).
+            Then called for each fortran-generic.  Record if
+            scalar or array to compare with C prototype decl.
+            """
+            arglst = []
+            for i, arg in enumerate(params):
+                if mold and i >= len(mold):
+                    break   # fortran_generic and default arguments.
+                elif mold and mold[i] == "-":
+                    arglst.append('-')  # ignore in C prototype
+                elif arg.typemap.sgroup != "native":
+                    arglst.append('-')  # ignore
+                elif arg.attrs["rank"] is None:
+                    arglst.append('s')  # scalar
+                elif arg.attrs["rank"] == 0:
+                    arglst.append('s')  # scalar
+                else:
+                    arglst.append('a')  # array
+            return ''.join(arglst)
+
+        corder = get_order(node.ast.params)
+        cvariants = {corder: node._function_index}
+
         context_args = {}
         for generic in node.fortran_generic:
             new = node.clone()
@@ -1052,7 +1092,32 @@ class GenFunctions(object):
                     arg.attrs["intent"] == "out" and
                     arg.get_indirect_stmt() in  ["**", "*&"]):
                     context_args[arg.name] = True
-                
+
+            order = get_order(new.ast.params, corder)
+            new._PTR_F_C_index = cvariants.get(order, None)
+            if new._PTR_F_C_index is None:
+                # Create C function with correct rank attribute.
+                cnew = node.clone()
+                ordered_functions.append(cnew)
+                self.append_function_index(cnew)
+                cnew._generated = "fortran_generic_c"
+                cfmt = cnew.fmtdict
+                cfmt.function_suffix = cfmt.function_suffix + generic.function_suffix
+                cnew.fortran_generic = {}
+                options = cnew.options
+                options.wrap_c = True
+                options.wrap_fortran = False
+                options.wrap_python = False
+                options.wrap_lua = False
+                # Set C function rank based on fortran_generic entry.
+                for arg, rank in zip(cnew.ast.params, order):
+                    if rank == 's':
+                        arg.attrs["rank"] = None
+                    elif rank == 'a':
+                        arg.attrs["rank"] = 1
+                cvariants[order] = cnew._function_index
+                new._PTR_F_C_index = cnew._function_index
+        
         for argname in context_args.keys():
             arg = node.ast.find_arg_by_name(argname)
             arg.attrs["context"] = "FIXME"

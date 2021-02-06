@@ -631,6 +631,13 @@ extent instead of using Fortran's assumed-shape with ``dimension(:)``.
 This can be simpler than the *dimension* attribute for multidimension arrays.
 *rank* and *dimension* can not be specified together.
 
+For the ``bind(C)`` interface, an assumed-size array will be created
+for any array with rank > 0.
+
+.. code-block:: fortran
+
+    real(C_DOUBLE) :: array(*)
+
 .. XXX to be used with fortran_generic and formatting  +rank({generic_rank})
 
 

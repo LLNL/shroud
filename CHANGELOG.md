@@ -19,8 +19,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   continue to be declared in a single *decl* field as before.  This
   makes it easier to define opaque structs where the members are not
   listed. Useful with *wrap_struct_as=class*.
-- Support `base: struct` in the `typemap` field of the YAML file. This allows structs wrapped
-  outside of the current YAML file to be used.
+- Support `base: struct` in the `typemap` field of the YAML file. This
+  allows structs wrapped outside of the current YAML file to be used.
+- Generate generic interface which allows a scalar or array to be
+  passed for an argument.
 
 ### Fixed
 - Order of header files in *cxx_header* is preserved in the generated code.

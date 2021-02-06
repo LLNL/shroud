@@ -1502,6 +1502,7 @@ rv = .false.
         if C_node._generated:
             generated.append(C_node._generated)
         while C_node._PTR_F_C_index is not None:
+            assert C_node._PTR_F_C_index != C_node._function_index
             C_node = self.newlibrary.function_index[C_node._PTR_F_C_index]
             if C_node._generated:
                 generated.append(C_node._generated)

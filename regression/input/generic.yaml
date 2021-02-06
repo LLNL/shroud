@@ -68,8 +68,8 @@ declarations:
   fortran_generic:
   - decl: (int *values)
     function_suffix: _scalar
-#  - decl: (int *values+rank(1))
-#    function_suffix: _array
+  - decl: (int *values+rank(1))
+    function_suffix: _array
 
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
   # cannot use size as an dummy argument name
