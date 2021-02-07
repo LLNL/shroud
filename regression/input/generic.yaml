@@ -62,13 +62,13 @@ declarations:
     function_suffix: _all_long
 
 
-- decl: int SumValues(int *values, int nvalues)
+- decl: int SumValues(const int *values, int nvalues)
   doxygen:
     brief: scalar or array argument
   fortran_generic:
-  - decl: (int *values)
+  - decl: (const int *values)
     function_suffix: _scalar
-  - decl: (int *values+rank(1))
+  - decl: (const int *values+rank(1))
     function_suffix: _array
 
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))

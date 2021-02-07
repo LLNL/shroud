@@ -42,7 +42,7 @@ long GenericReal2(long arg1, long arg2)
   return arg1 + arg2;
 }
 
-int SumValues(int *values, int nvalues)
+int SumValues(const int *values, int nvalues)
 {
     int sum = 0;
     for (int i=0; i < nvalues; i++) {

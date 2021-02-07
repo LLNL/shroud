@@ -153,8 +153,8 @@ module generic_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(inout)
-    ! Requested: c_native_*_inout
+    ! Argument:  const int * values +intent(in)
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
@@ -166,7 +166,7 @@ module generic_mod
                 bind(C, name="SumValues")
             use iso_c_binding, only : C_INT
             implicit none
-            integer(C_INT), intent(INOUT) :: values
+            integer(C_INT), intent(IN) :: values
             integer(C_INT), value, intent(IN) :: nvalues
             integer(C_INT) :: SHT_rv
         end function c_sum_values
@@ -177,8 +177,8 @@ module generic_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(inout)+rank(1)
-    ! Requested: c_native_*_inout
+    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
@@ -190,7 +190,7 @@ module generic_mod
                 bind(C, name="SumValues")
             use iso_c_binding, only : C_INT
             implicit none
-            integer(C_INT), intent(INOUT) :: values(*)
+            integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), value, intent(IN) :: nvalues
             integer(C_INT) :: SHT_rv
         end function c_sum_values_array
@@ -540,10 +540,10 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(inout)
-    ! Requested: f_native_*_inout
+    ! Argument:  const int * values +intent(in)
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_*_inout
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
@@ -558,7 +558,7 @@ contains
     function sum_values_scalar(values, nvalues) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(INOUT) :: values
+        integer(C_INT), intent(IN) :: values
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum_values_scalar
@@ -575,10 +575,10 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * values +intent(inout)+rank(1)
-    ! Requested: f_native_*_inout
+    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Requested: c_native_*_inout
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
@@ -593,7 +593,7 @@ contains
     function sum_values_array(values, nvalues) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
-        integer(C_INT), intent(INOUT) :: values(:)
+        integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum_values_array

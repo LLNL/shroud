@@ -24,7 +24,7 @@ void GenericReal(double arg);
 
 long GenericReal2(long arg1, long arg2);
 
-int SumValues(int *values, int nvalues);
+int SumValues(const int *values, int nvalues);
 
 void SavePointer(void *addr, int type, size_t size);
 void SavePointer2(void *addr, int type, size_t size);
