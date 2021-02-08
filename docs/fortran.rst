@@ -140,17 +140,21 @@ Two predicate function are generated to compare derived types:
 Generic Interfaces
 ------------------
 
-Shroud has the ability to create generic interfaces for the routines that are being wrapped.
-The generic intefaces groups several functions under a common name.
-The compiler will then call the corresponding function based on the argument types used
-to call the generic function.
+Shroud has the ability to create generic interfaces for the routines
+that are being wrapped.  The generic intefaces groups several
+functions under a common name.  The compiler will then call the
+corresponding function based on the argument types used to call the
+generic function.
 
+In several cases generic interfaces are automatically
+created. Function overloading and default arguments both create
+generic interfaces.
 
 Grouping Functions Together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first case allows multiple C wrapper routines to be called by the same name.
-This is done by setting the *F_name_generic* format field.
+The first case allows multiple C wrapper routines to be called by the
+same name.  This is done by setting the *F_name_generic* format field.
 
 .. code-block:: yaml
 
@@ -167,12 +171,12 @@ This is done by setting the *F_name_generic* format field.
 
 This allows the correct functions to be called based on the argument type.
 
-.. note:: In this example *F_force_wrapper* is set to *True* since by default
-          Shroud will not create explicit wrappers for the functions since only
-          native types are used as arguments.
-          The generic interface is using ``module procedure``` which requires
-          the Fortran wrapper.
-          This should be changed in a future version of Shroud.
+.. note:: In this example *F_force_wrapper* is set to *True* since by
+          default Shroud will not create explicit wrappers for the
+          functions since only native types are used as arguments.
+          The generic interface is using ``module procedure``` which
+          requires the Fortran wrapper.  This should be changed in a
+          future version of Shroud.
 
 .. code-block:: fortran
 
@@ -284,9 +288,9 @@ to the C function.
     result = sum_array(array, 5)
         
 
-.. note:: TS 29113, Futher interoperability with C, provides features which
-          allow Fortran descriptors to be passed directly to C functions.
-          This feature was incorporated into Fortran 2018.
+.. note:: TS 29113, Futher interoperability with C, provides features
+          which allow Fortran descriptors to be passed directly to C
+          functions.  This feature was incorporated into Fortran 2018.
           Shroud can generate lots of generic functions to provide the
-          same functionality in old compilers.
-          Eventually TS 29113 will be fully supported.
+          same functionality in old compilers.  Eventually TS 29113
+          will be fully supported.
