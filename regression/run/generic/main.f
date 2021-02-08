@@ -17,7 +17,9 @@ program tester
 
   call init_fruit
 
+  call test_generic_group
   call test_functions
+  call test_scalar_array
   call test_database
 
   call fruit_summary
@@ -29,6 +31,24 @@ program tester
   endif
 
 contains
+
+  ! Create a generic interface for two functions.
+  subroutine test_generic_group
+    call set_case_name("test_generic_group")
+
+    call update_as_float(12.0_C_FLOAT)
+    call assert_equals(12.0d0, get_global_double(), "update_as_float")
+
+    call update_as_double(13.0_C_DOUBLE)
+    call assert_equals(13.0d0, get_global_double(), "update_as_double")
+    
+    call update_real(22.0_C_FLOAT)
+    call assert_equals(22.0d0, get_global_double(), "update_as_float")
+
+    call update_real(23.0_C_DOUBLE)
+    call assert_equals(23.0d0, get_global_double(), "update_as_double")
+    
+  end subroutine test_generic_group
 
   subroutine test_functions
     integer(C_LONG) rv
@@ -48,6 +68,22 @@ contains
     call assert_true(30_C_LONG == rv, "generic_real2 long")
 
   end subroutine test_functions
+
+  subroutine test_scalar_array
+    integer scalar
+    integer array(5)
+    
+    call set_case_name("test_scalar_array")
+
+    scalar = 5
+    call assert_equals(5, sum_values(scalar, 1), "generic_real double")
+    call assert_equals(6, sum_values(6, 1), "generic_real double constant")
+
+    array = [1,2,3,4,5]
+    call assert_equals(15, sum_values(array, 5), "generic_real double")
+    call assert_equals(9, sum_values([3, 3, 3], 3), "generic_real double constant")
+    
+  end subroutine test_scalar_array
 
   subroutine test_database
     real(C_FLOAT) var1(10)

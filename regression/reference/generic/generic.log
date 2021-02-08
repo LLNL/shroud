@@ -1,7 +1,11 @@
 Read yaml generic.yaml
+C function void UpdateAsFloat(float arg +intent(in)+value)
+C function void UpdateAsDouble(double arg +intent(in)+value)
 C function double GetGlobalDouble(void)
 C function void GenericReal(double arg +intent(in)+value)
 C function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C function int SumValues(const int * values +intent(in), int nvalues +intent(in)+value)
+C function int SumValues(const int * values +intent(in)+rank(1), int nvalues +intent(in)+value)
 C function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 C function void SavePointer2(void * addr +intent(in)+value, int type +implied(type(addr))+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 C function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
@@ -9,6 +13,8 @@ C function void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), i
 Close wrapgeneric.h
 Close wrapgeneric.c
 Close typesgeneric.h
+C-interface, Fortran function void UpdateAsFloat(float arg +intent(in)+value)
+C-interface, Fortran function void UpdateAsDouble(double arg +intent(in)+value)
 C-interface, Fortran function double GetGlobalDouble(void)
 C-interface function void GenericReal(double arg +intent(in)+value)
 Fortran function void GenericReal(float arg +intent(in)+value)
@@ -16,6 +22,10 @@ Fortran function void GenericReal(double arg +intent(in)+value)
 C-interface function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
 Fortran function long GenericReal2(int arg1 +intent(in)+value, int arg2 +intent(in)+value)
 Fortran function long GenericReal2(long arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface function int SumValues(const int * values +intent(in), int nvalues +intent(in)+value)
+Fortran function int SumValues(const int * values +intent(in), int nvalues +intent(in)+value)
+Fortran function int SumValues(const int * values +intent(in)+rank(1), int nvalues +intent(in)+value)
+C-interface function int SumValues(const int * values +intent(in)+rank(1), int nvalues +intent(in)+value)
 C-interface function void SavePointer(void * addr +intent(in)+value, int type +intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 Fortran function void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)
 Fortran function void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+intent(in)+value, size_t size +implied(size(addr))+intent(in)+value)

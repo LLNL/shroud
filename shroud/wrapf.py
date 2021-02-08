@@ -40,6 +40,10 @@ fortran_ranks = [
     "(:,:,:,:,:,:,:)",
 ]
 
+# force : boolean
+#    Create generic interface even if only one function.
+# functions : list
+#    List of function nodes in generic interface.
 GenericFunction = collections.namedtuple("GenericTuple", ["force", "functions"])
 
 class Wrapf(util.WrapperMixin):
@@ -1498,6 +1502,7 @@ rv = .false.
         if C_node._generated:
             generated.append(C_node._generated)
         while C_node._PTR_F_C_index is not None:
+            assert C_node._PTR_F_C_index != C_node._function_index
             C_node = self.newlibrary.function_index[C_node._PTR_F_C_index]
             if C_node._generated:
                 generated.append(C_node._generated)
@@ -1906,9 +1911,14 @@ rv = .false.
                     fmt_func.F_name_generic, GenericFunction(False, [])
                 ).functions.append(node)
             else:
+                # If from a fortran_generic list, create generic interface.
+                if node._generated == "fortran_generic":
+                    force = True
+                else:
+                    force = False
                 fileinfo.f_function_generic.setdefault(
                     fmt_func.F_name_scope + fmt_func.F_name_generic,
-                    GenericFunction(False, [])).functions.append(node)
+                    GenericFunction(force, [])).functions.append(node)
         if cls:
             # Add procedure to derived type
             type_bound_part = fileinfo.type_bound_part

@@ -137,3 +137,160 @@ Two predicate function are generated to compare derived types:
             endif
         end function {F_name_scope}ne
  
+Generic Interfaces
+------------------
+
+Shroud has the ability to create generic interfaces for the routines
+that are being wrapped.  The generic intefaces groups several
+functions under a common name.  The compiler will then call the
+corresponding function based on the argument types used to call the
+generic function.
+
+In several cases generic interfaces are automatically
+created. Function overloading and default arguments both create
+generic interfaces.
+
+Grouping Functions Together
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first case allows multiple C wrapper routines to be called by the
+same name.  This is done by setting the *F_name_generic* format field.
+
+.. code-block:: yaml
+
+        - decl: void UpdateAsFloat(float arg)
+          options:
+            F_force_wrapper: True
+          format:
+            F_name_generic: update_real
+        - decl: void UpdateAsDouble(double arg)
+          options:
+            F_force_wrapper: True
+          format:
+            F_name_generic: update_real
+
+This allows the correct functions to be called based on the argument type.
+
+.. note:: In this example *F_force_wrapper* is set to *True* since by
+          default Shroud will not create explicit wrappers for the
+          functions since only native types are used as arguments.
+          The generic interface is using ``module procedure``` which
+          requires the Fortran wrapper.  This should be changed in a
+          future version of Shroud.
+
+.. code-block:: fortran
+
+    call update_real(22.0_C_FLOAT)
+    call update_real(23.0_C_DOUBLE)
+
+Or more typically as:
+
+.. code-block:: fortran
+
+    call update_real(22.0)
+    call update_real(23.0d0)
+
+Argument Coercion
+^^^^^^^^^^^^^^^^^
+
+The C compiler will coerce arguments in a function call to the type of
+the argument in the prototype.  This makes it very easy to pass an
+``float`` to a function which is expecting a ``double``.  Fortran,
+which defaults to pass by reference, does not have this feature since
+it is passing the address of the argument. This corresponds to C's
+behavior since it cannot coerce a ``float *`` to a ``double *``. When
+passing a literal ``0.0`` as a ``float`` argument it is necessary to
+use ``0.0_C_DOUBLE``.
+
+Shroud can create a generic interface for function which will
+coerce arguments similar to C's behavior.
+The *fortran_generic* section variations of arguments which will be
+used to create a generic interface. For example, when wrapping a function
+which takes a ``double``, the ``float`` variation can also be created.
+
+.. code-block:: yaml
+
+    - decl: void GenericReal(double arg)
+      fortran_generic:
+      - decl: (float arg)
+        function_suffix: _float
+      - decl: (double arg)
+        function_suffix: _double
+
+This will create a generic interface ``generic_real`` with two module
+procedures ``generic_real_float`` and ``generic_real_double``.
+
+.. literalinclude:: ../regression/reference/generic/wrapfgeneric.f
+   :language: fortran
+   :start-after: start generic interface generic_real
+   :end-before: end generic interface generic_real
+   :dedent: 4
+
+This can be used as
+
+.. code-block:: fortran
+                
+    call generic_real(0.0)
+    call generic_real(0.0d0)
+    
+    call generic_real_float(0.0)
+    call generic_real_double(0.0d0)
+
+When adding *decl* entries to the *fortran_generic* list the original
+declaration must also be included, ``double arg`` in this case. When
+there are multiple arguments only the arguments which vary need to be
+declared.  The other arguments will be the same as the original
+*decl* line.
+
+The *function_suffix* line will be used to add a unique string to the
+generated Fortran wrappers. Without *function_suffix* each function
+will have an integer suffix which is increment for each function.
+
+Scalar and Array Arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Shroud can produce a generic interface which allows an argument to be
+passed as a scalar or an array. This can help generalize some function
+calls where a scalar can be used instead of an array of length one.
+This was often used in Fortran code before interfaces were introduced
+in Fortran 90. But now when using an interface the compiler will
+report an error when passing a scalar where an array is expected.
+Likewise, a C function with a pointer argument such as ``int *`` has
+no way of knowing how long the array is without being told explicitly.
+Thus in C it is easy to pass a pointer to a scalar.
+
+In the *fortran_generic* section one of the declarations can be given
+the *rank* attribute which causes the interface to expect an
+array. Note that the declaration for the C function does not include
+the *rank* attribute.
+
+.. code-block:: yaml
+
+    - decl: int SumArray(int *values, int nvalues)
+      fortran_generic:
+      - decl: (int *values)
+        function_suffix: _scalar
+      - decl: (int *values+rank(1))
+        function_suffix: _array
+
+The generated generic interface can be used to pass a scalar or array
+to the C function.
+
+.. code-block:: fortran
+
+    integer scalar, result
+    integer array(5)
+    
+    scalar = 5
+    result = sum_array(scalar, 1)
+
+    array = [1,2,3,4,5]
+    result = sum_array(array, 5)
+        
+
+.. note:: TS 29113, Futher interoperability with C, provides features
+          which allow Fortran descriptors to be passed directly to C
+          functions.  This feature was incorporated into Fortran 2018.
+          Shroud can generate lots of generic functions to provide the
+          same functionality in old compilers.  Eventually TS 29113
+          will be fully supported.

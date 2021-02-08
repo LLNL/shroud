@@ -58,6 +58,40 @@ module generic_mod
         SH_TYPE_OTHER     = 32
 
     ! ----------------------------------------
+    ! Function:  void UpdateAsFloat
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float arg +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_update_as_float(arg) &
+                bind(C, name="UpdateAsFloat")
+            use iso_c_binding, only : C_FLOAT
+            implicit none
+            real(C_FLOAT), value, intent(IN) :: arg
+        end subroutine c_update_as_float
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void UpdateAsDouble
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double arg +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_update_as_double(arg) &
+                bind(C, name="UpdateAsDouble")
+            use iso_c_binding, only : C_DOUBLE
+            implicit none
+            real(C_DOUBLE), value, intent(IN) :: arg
+        end subroutine c_update_as_double
+    end interface
+
+    ! ----------------------------------------
     ! Function:  double GetGlobalDouble
     ! Requested: c_native_scalar_result
     ! Match:     c_default
@@ -112,6 +146,54 @@ module generic_mod
             integer(C_LONG), value, intent(IN) :: arg2
             integer(C_LONG) :: SHT_rv
         end function c_generic_real2
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_sum_values(values, nvalues) &
+                result(SHT_rv) &
+                bind(C, name="SumValues")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: values
+            integer(C_INT), value, intent(IN) :: nvalues
+            integer(C_INT) :: SHT_rv
+        end function c_sum_values
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_sum_values_array(values, nvalues) &
+                result(SHT_rv) &
+                bind(C, name="SumValues")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: values(*)
+            integer(C_INT), value, intent(IN) :: nvalues
+            integer(C_INT) :: SHT_rv
+        end function c_sum_values_array
     end interface
 
 #if 1
@@ -262,7 +344,59 @@ module generic_mod
         module procedure save_pointer2_float2d
     end interface save_pointer2
 
+    interface sum_values
+        module procedure sum_values_scalar
+        module procedure sum_values_array
+    end interface sum_values
+
+    interface update_real
+        module procedure update_as_float
+        module procedure update_as_double
+    end interface update_real
+
 contains
+
+    ! ----------------------------------------
+    ! Function:  void UpdateAsFloat
+    ! void UpdateAsFloat
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float arg +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine update_as_float(arg)
+        use iso_c_binding, only : C_FLOAT
+        real(C_FLOAT), value, intent(IN) :: arg
+        ! splicer begin function.update_as_float
+        call c_update_as_float(arg)
+        ! splicer end function.update_as_float
+    end subroutine update_as_float
+
+    ! ----------------------------------------
+    ! Function:  void UpdateAsDouble
+    ! void UpdateAsDouble
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double arg +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine update_as_double(arg)
+        use iso_c_binding, only : C_DOUBLE
+        real(C_DOUBLE), value, intent(IN) :: arg
+        ! splicer begin function.update_as_double
+        call c_update_as_double(arg)
+        ! splicer end function.update_as_double
+    end subroutine update_as_double
 
     ! Generated by fortran_generic
     ! ----------------------------------------
@@ -396,6 +530,76 @@ contains
         SHT_rv = c_generic_real2(arg1, arg2)
         ! splicer end function.generic_real2_all_long
     end function generic_real2_all_long
+
+    ! Generated by fortran_generic
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! int SumValues
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! \brief scalar or array argument
+    !!
+    !<
+    function sum_values_scalar(values, nvalues) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: values
+        integer(C_INT), value, intent(IN) :: nvalues
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.sum_values_scalar
+        SHT_rv = c_sum_values(values, nvalues)
+        ! splicer end function.sum_values_scalar
+    end function sum_values_scalar
+
+    ! Generated by fortran_generic - fortran_generic_c
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! int SumValues
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! \brief scalar or array argument
+    !!
+    !<
+    function sum_values_array(values, nvalues) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: values(:)
+        integer(C_INT), value, intent(IN) :: nvalues
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.sum_values_array
+        SHT_rv = c_sum_values_array(values, nvalues)
+        ! splicer end function.sum_values_array
+    end function sum_values_array
 
 #if 1
     ! Generated by fortran_generic

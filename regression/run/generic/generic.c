@@ -19,6 +19,16 @@ double GetGlobalDouble(void)
   return global_double;
 }
 
+void UpdateAsFloat(float arg)
+{
+    global_double = arg;
+}
+
+void UpdateAsDouble(double arg)
+{
+    global_double = arg;
+}
+
 // start GenericReal
 void GenericReal(double arg)
 {
@@ -30,6 +40,15 @@ void GenericReal(double arg)
 long GenericReal2(long arg1, long arg2)
 {
   return arg1 + arg2;
+}
+
+int SumValues(const int *values, int nvalues)
+{
+    int sum = 0;
+    for (int i=0; i < nvalues; i++) {
+        sum += values[i];
+    }
+    return sum;
 }
 
 void SavePointer(void *addr, int type, size_t size)
