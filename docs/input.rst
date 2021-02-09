@@ -450,6 +450,11 @@ but will not be part of the wrapped API since it is *hidden*.
 .. XXX ``+dimension(size(in))`` is similar to ``mold(in)``, but works
    better with multiple dimensions to avoid ``+dimension(size(in,1), size(in,2))
 
+The dimension may also be assumed-rank, *dimemsion(..)*, to allow
+scalar or any rank.
+
+.. XXX - See Fortran.rst
+
 
 external
 ^^^^^^^^

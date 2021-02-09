@@ -1587,6 +1587,10 @@ class ToDimension(todict.PrintNode):
                 return deref + self.param_list(node) # function
         return "--??--"
 
+    def visit_AssumedRank(self, node):
+        return "--assumed-rank--"
+        raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
+
 ######################################################################
 
 def compute_c_deref(arg, local_var, fmt):

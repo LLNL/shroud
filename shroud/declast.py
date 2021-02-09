@@ -70,6 +70,7 @@ token_specification = [
     ("NAMESPACE", r"::"),
     ("COLON", r":"),
     ("VARARG", r"\.\.\."),
+#    ("DOTDOT", r"\.\."),
     ("ID", r"[A-Za-z_][A-Za-z0-9_]*"),  # Identifiers
     ("NEWLINE", r"[\n]"),  # Line endings
     ("SKIP", r"[ \t]"),  # Skip over spaces and tabs
@@ -330,8 +331,15 @@ def check_expr(expr, trace=False):
     return a
 
 def check_dimension(dim, trace=False):
-    """return a list of expressions"""
-    a = ExprParser(dim, trace=trace).dimension_shape()
+    """Return a list of expressions.
+
+    Look for assumed-rank, "..", first.
+    Else a comma delimited list of expressions.
+    """
+    if dim == "..":
+        a = AssumedRank()
+    else:
+        a = ExprParser(dim, trace=trace).dimension_shape()
     return a
 
 ######################################################################
@@ -874,6 +882,11 @@ class Identifier(Node):
     def __init__(self, name, args=None):
         self.name = name
         self.args = args
+
+
+class AssumedRank(Node):
+    """Assumed-rank dimension i.e. (..)"""
+    pass
 
 
 class BinaryOp(Node):

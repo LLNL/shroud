@@ -1369,6 +1369,7 @@ class FunctionNode(AstNode):
         self._has_default_arg = False
         self._nargs = None
         self._overloaded = False
+        self._gen_fortran_generic = False # An argument is assumed-rank.
         self.splicer = {}
         self.fstatements = {}
 
@@ -1810,17 +1811,20 @@ class TemplateArgument(object):
 class FortranGeneric(object):
     """Information used to create a fortran generic version of a function.
 
-    generic: (double arg)
-    args = [ Declaration() ]
+    generic : str
+        "(double arg)"
+    decls : [ declast.Declaration ]
+        A parse list of generic argument.
     """
     def __init__(self, generic, fmtdict=None, options=None,
-                 function_suffix="X", linenumber="?"):
+                 function_suffix="X", linenumber="?",
+                 decls=None):
         self.generic = generic
         self.fmtdict = fmtdict
         self.options = options
         self.function_suffix = function_suffix
         self.linenumber = linenumber
-        self.decls = None
+        self.decls = decls
 
     def parse_generic(self, namespace):
         """Parse argument list (ex. int arg1, float *arg2) and set list of Declarations."""

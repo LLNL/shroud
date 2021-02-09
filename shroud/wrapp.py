@@ -3405,6 +3405,9 @@ class ToDimension(todict.PrintNode):
             return self.param_list(node) # function
         return "--??--"
 
+    def visit_AssumedRank(self, node):
+        raise RuntimeError("wrapp.py: Detected assumed-rank dimension")
+
 ######################################################################
 
 class ToImplied(todict.PrintNode):

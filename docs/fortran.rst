@@ -150,6 +150,38 @@ In several cases generic interfaces are automatically
 created. Function overloading and default arguments both create
 generic interfaces.
 
+Assumed Rank
+^^^^^^^^^^^^
+
+Assumed rank arguments allow a scalar or any rank array to be passed
+as an argument. This is added as the attribute *dimension(..)*.  Think
+of the ``..`` as a ``:``, used to separate lower and upper bounds,
+which fell over. This feature is part of Fortran's *Futher
+interoperability with C*. First as TS 29113, approved in 2012, then as
+part of the Fortran 2018 standard.
+
+.. note:: Shroud does not support *Futher Interoperability with C* directly, yet.
+
+Assumed-rank arguments are support by Shroud for older versions of
+Fortran by creating a generic interface.  If there are multiple
+arguments with assumed-rank, Shroud will give each argument the same
+rank for each generic interface.  This handles the common case and
+avoids the combinatoral explosion of mixing ranks in a single
+function interface.
+
+.. code-block:: yaml
+
+    - decl: int SumValues(const int *values+dimension(..), int nvalues)
+
+The generated generic interface can be used to pass a scalar or array
+to the C function. In each case ``result`` is 5.
+
+.. code-block:: fortran
+
+    result = sum_array(5, 1)
+    result = sum_array([1,1,1,1,1], 5)
+      
+
 Grouping Functions Together
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -286,11 +318,4 @@ to the C function.
 
     array = [1,2,3,4,5]
     result = sum_array(array, 5)
-        
 
-.. note:: TS 29113, Futher interoperability with C, provides features
-          which allow Fortran descriptors to be passed directly to C
-          functions.  This feature was incorporated into Fortran 2018.
-          Shroud can generate lots of generic functions to provide the
-          same functionality in old compilers.  Eventually TS 29113
-          will be fully supported.

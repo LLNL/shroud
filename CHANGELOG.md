@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   allows structs wrapped outside of the current YAML file to be used.
 - Generate generic interface which allows a scalar or array to be
   passed for an argument.
+- Process assumed-rank dimension attribute, *dimension(..)*.
+  Create a generic interface using scalar and each rank.
 
 ### Fixed
 - Order of header files in *cxx_header* is preserved in the generated code.
