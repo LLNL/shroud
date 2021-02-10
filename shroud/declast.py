@@ -70,7 +70,6 @@ token_specification = [
     ("NAMESPACE", r"::"),
     ("COLON", r":"),
     ("VARARG", r"\.\.\."),
-#    ("DOTDOT", r"\.\."),
     ("ID", r"[A-Za-z_][A-Za-z0-9_]*"),  # Identifiers
     ("NEWLINE", r"[\n]"),  # Line endings
     ("SKIP", r"[ \t]"),  # Skip over spaces and tabs

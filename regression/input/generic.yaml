@@ -71,6 +71,21 @@ declarations:
   - decl: (const int *values+rank(1))
     function_suffix: _array
 
+# Test Fortran Generic and rank.
+# Also creates several bind(C) interfaces to the same function.
+- decl: void AssignValues(const int *from, int nfrom, int *to, int nto)
+  doxygen:
+    description: |
+      Broadcast if nfrom == 1
+      Copy if nfrom == nto
+  fortran_generic:
+  - decl: (const int *from, int *to)
+    function_suffix: _scalar
+  - decl: (const int *from, int *to+rank(1))
+    function_suffix: _broadcast
+  - decl: (const int *from+rank(1), int *to+rank(1))
+    function_suffix: _copy
+
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
   # cannot use size as an dummy argument name
   # Add deref(raw) attribute to Fortan function.
