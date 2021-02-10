@@ -149,6 +149,8 @@
             "F_abstract_interface_argument_template": "arg{index}",
             "F_abstract_interface_subprogram_template": "{underscore_name}_{argname}",
             "F_array_type_template": "{C_prefix}SHROUD_array",
+            "F_assumed_rank_max": 7,
+            "F_assumed_rank_min": 0,
             "F_auto_reference_count": false,
             "F_capsule_data_type_template": "{C_prefix}SHROUD_capsule_data",
             "F_capsule_type_template": "{C_prefix}SHROUD_capsule",

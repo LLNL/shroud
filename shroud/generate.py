@@ -409,6 +409,10 @@ class VerifyAttrs(object):
 
         self.parse_attrs(node, arg)
 
+        # Flag node if any argument is assumed-rank.
+        if arg.metaattrs["assumed-rank"]:
+            node._gen_fortran_generic = True
+
         if arg.is_function_pointer():
             for arg1 in arg.params:
                 self.check_arg_attrs(None, arg1, options)
@@ -418,17 +422,19 @@ class VerifyAttrs(object):
         This tree will be traversed by the wrapping classes
         to convert to language specific code.
 
-        Args:
-            attrs - collections.defaultdict
-            node - Container struct or class.
+        Parameters
+        ----------
+        node : ast.FunctionNode, ast.FortranGeneric, ast.VariableNode
+            Used for line number in error messages.
+        ast : declast.Declaration
         """
         attrs = ast.attrs
         metaattrs = ast.metaattrs
-        
+
         dim = attrs["dimension"]
         if dim:
             try:
-                metaattrs["dimension"] = declast.check_dimension(dim)
+                declast.check_dimension(dim, metaattrs)
             except RuntimeError:
                 raise RuntimeError("Unable to parse dimension: {} at line {}"
                                    .format(dim, node.linenumber))
@@ -832,6 +838,8 @@ class GenFunctions(object):
             ordered4.append(method)
             if not method.options.wrap_fortran:
                 continue
+            if method._gen_fortran_generic:
+                self.process_assumed_rank(method)
             if method.fortran_generic:
                 method._overloaded = True
                 self.generic_function(method, ordered4)
@@ -997,6 +1005,41 @@ class GenFunctions(object):
         options.wrap_python = False
         options.wrap_lua = False
 
+    def process_assumed_rank(self, node):
+        """Convert assumed-rank argument into fortran_generic.
+
+        At least one argument has assumed-rank.
+        Create generic funcions for scalar plus each rank
+        and set the rank for assumed-rank argument.
+        Each argument with assumed-rank is give the same rank.
+
+        Parameters
+        ----------
+        node : ast.FunctionNode
+        """
+        # fortran_generic must already be empty
+        options = node.options
+        params = node.ast.params
+
+        for rank in range(options.F_assumed_rank_min,
+                          options.F_assumed_rank_max+1):
+            newdecls = copy.deepcopy(params)
+            for decl in newdecls:
+                if decl.metaattrs["assumed-rank"]:
+                    # Replace dimension with rank.
+                    decl.attrs["dimension"] = None
+                    decl.attrs["rank"] = rank
+            generic = ast.FortranGeneric(
+                "", function_suffix="_{}d".format(rank),
+                decls=newdecls)
+            node.fortran_generic.append(generic)
+
+        # Remove assumed-rank from C function.
+        for decl in params:
+            if decl.metaattrs["assumed-rank"]:
+                decl.attrs["dimension"] = None
+        node.declgen = node.ast.gen_decl()
+        
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.
 

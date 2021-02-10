@@ -318,6 +318,14 @@ debug_index
 doxygen
   If True, create doxygen comments.
 
+F_assumed_rank_min
+  Minimum rank of argument with assumed-rank.
+  Defaults to 0 (scalar).
+
+F_assumed_rank_max
+  Maximum rank of argument with assumed-rank.
+  Defaults to 7.
+
 F_create_bufferify_function
   Controls creation of a *bufferify* function.
   If *true*, an additional C function is created which receives

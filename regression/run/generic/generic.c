@@ -51,6 +51,22 @@ int SumValues(const int *values, int nvalues)
     return sum;
 }
 
+// Broadcast if nfrom == 1
+// Copy if nfrom == nto
+void AssignValues(const int *from, int nfrom, int *to, int nto)
+{
+    if (nfrom == 1) {
+        for (int i=0; i < nto; i++) {
+            to[i] = from[0];
+        }
+    }
+    else if (nfrom == nto) {
+        for (int i=0; i < nto; i++) {
+            to[i] = from[i];
+        }
+    }
+}
+
 void SavePointer(void *addr, int type, size_t size)
 {
   global_void = addr;

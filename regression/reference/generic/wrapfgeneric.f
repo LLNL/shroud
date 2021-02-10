@@ -185,7 +185,7 @@ module generic_mod
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
-        function c_sum_values_array(values, nvalues) &
+        function c_sum_values_1d(values, nvalues) &
                 result(SHT_rv) &
                 bind(C, name="SumValues")
             use iso_c_binding, only : C_INT
@@ -193,7 +193,103 @@ module generic_mod
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), value, intent(IN) :: nvalues
             integer(C_INT) :: SHT_rv
-        end function c_sum_values_array
+        end function c_sum_values_1d
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_assign_values(from, nfrom, to, nto) &
+                bind(C, name="AssignValues")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: from
+            integer(C_INT), value, intent(IN) :: nfrom
+            integer(C_INT), intent(INOUT) :: to
+            integer(C_INT), value, intent(IN) :: nto
+        end subroutine c_assign_values
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_assign_values_broadcast(from, nfrom, to, nto) &
+                bind(C, name="AssignValues")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: from
+            integer(C_INT), value, intent(IN) :: nfrom
+            integer(C_INT), intent(INOUT) :: to(*)
+            integer(C_INT), value, intent(IN) :: nto
+        end subroutine c_assign_values_broadcast
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)+rank(1)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_assign_values_copy(from, nfrom, to, nto) &
+                bind(C, name="AssignValues")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: from(*)
+            integer(C_INT), value, intent(IN) :: nfrom
+            integer(C_INT), intent(INOUT) :: to(*)
+            integer(C_INT), value, intent(IN) :: nto
+        end subroutine c_assign_values_copy
     end interface
 
 #if 1
@@ -313,6 +409,12 @@ module generic_mod
         ! splicer end additional_interfaces
     end interface
 
+    interface assign_values
+        module procedure assign_values_scalar
+        module procedure assign_values_broadcast
+        module procedure assign_values_copy
+    end interface assign_values
+
     ! start generic interface generic_real
     interface generic_real
         module procedure generic_real_float
@@ -345,8 +447,9 @@ module generic_mod
     end interface save_pointer2
 
     interface sum_values
-        module procedure sum_values_scalar
-        module procedure sum_values_array
+        module procedure sum_values_0d
+        module procedure sum_values_1d
+        module procedure sum_values_2d
     end interface sum_values
 
     interface update_real
@@ -540,9 +643,10 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)
+    ! Argument:  const int * values +intent(in)+rank(0)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Argument:  const int * values +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
@@ -552,19 +656,19 @@ contains
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
-    !! \brief scalar or array argument
+    !! \brief scalar or array argument using assumed rank
     !!
     !<
-    function sum_values_scalar(values, nvalues) &
+    function sum_values_0d(values, nvalues) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(IN) :: values
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.sum_values_scalar
+        ! splicer begin function.sum_values_0d
         SHT_rv = c_sum_values(values, nvalues)
-        ! splicer end function.sum_values_scalar
-    end function sum_values_scalar
+        ! splicer end function.sum_values_0d
+    end function sum_values_0d
 
     ! Generated by fortran_generic - fortran_generic_c
     ! ----------------------------------------
@@ -587,19 +691,196 @@ contains
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
-    !! \brief scalar or array argument
+    !! \brief scalar or array argument using assumed rank
     !!
     !<
-    function sum_values_array(values, nvalues) &
+    function sum_values_1d(values, nvalues) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(IN) :: values(:)
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
-        ! splicer begin function.sum_values_array
-        SHT_rv = c_sum_values_array(values, nvalues)
-        ! splicer end function.sum_values_array
-    end function sum_values_array
+        ! splicer begin function.sum_values_1d
+        SHT_rv = c_sum_values_1d(values, nvalues)
+        ! splicer end function.sum_values_1d
+    end function sum_values_1d
+
+    ! Generated by fortran_generic - fortran_generic_c
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! int SumValues
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +intent(in)+rank(2)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! \brief scalar or array argument using assumed rank
+    !!
+    !<
+    function sum_values_2d(values, nvalues) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: values(:,:)
+        integer(C_INT), value, intent(IN) :: nvalues
+        integer(C_INT) :: SHT_rv
+        ! splicer begin function.sum_values_2d
+        SHT_rv = c_sum_values_1d(values, nvalues)
+        ! splicer end function.sum_values_2d
+    end function sum_values_2d
+
+    ! Generated by fortran_generic
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! void AssignValues
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! Broadcast if nfrom == 1
+    !! Copy if nfrom == nto
+    !<
+    subroutine assign_values_scalar(from, nfrom, to, nto)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: from
+        integer(C_INT), value, intent(IN) :: nfrom
+        integer(C_INT), intent(INOUT) :: to
+        integer(C_INT), value, intent(IN) :: nto
+        ! splicer begin function.assign_values_scalar
+        call c_assign_values(from, nfrom, to, nto)
+        ! splicer end function.assign_values_scalar
+    end subroutine assign_values_scalar
+
+    ! Generated by fortran_generic - fortran_generic_c
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! void AssignValues
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! Broadcast if nfrom == 1
+    !! Copy if nfrom == nto
+    !<
+    subroutine assign_values_broadcast(from, nfrom, to, nto)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: from
+        integer(C_INT), value, intent(IN) :: nfrom
+        integer(C_INT), intent(INOUT) :: to(:)
+        integer(C_INT), value, intent(IN) :: nto
+        ! splicer begin function.assign_values_broadcast
+        call c_assign_values_broadcast(from, nfrom, to, nto)
+        ! splicer end function.assign_values_broadcast
+    end subroutine assign_values_broadcast
+
+    ! Generated by fortran_generic - fortran_generic_c
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! void AssignValues
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from +intent(in)+rank(1)
+    ! Requested: f_native_*_in
+    ! Match:     f_default
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Requested: f_native_*_inout
+    ! Match:     f_default
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +intent(in)+value
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    !>
+    !! Broadcast if nfrom == 1
+    !! Copy if nfrom == nto
+    !<
+    subroutine assign_values_copy(from, nfrom, to, nto)
+        use iso_c_binding, only : C_INT
+        integer(C_INT), intent(IN) :: from(:)
+        integer(C_INT), value, intent(IN) :: nfrom
+        integer(C_INT), intent(INOUT) :: to(:)
+        integer(C_INT), value, intent(IN) :: nto
+        ! splicer begin function.assign_values_copy
+        call c_assign_values_copy(from, nfrom, to, nto)
+        ! splicer end function.assign_values_copy
+    end subroutine assign_values_copy
 
 #if 1
     ! Generated by fortran_generic

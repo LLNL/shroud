@@ -19,6 +19,7 @@ program tester
 
   call test_generic_group
   call test_functions
+  call test_assumed_rank
   call test_scalar_array
   call test_database
 
@@ -69,19 +70,46 @@ contains
 
   end subroutine test_functions
 
-  subroutine test_scalar_array
+  subroutine test_assumed_rank
     integer scalar
-    integer array(5)
+    integer array(5), array2d(2,3)
+    
+    call set_case_name("test_assumed_rank")
+
+    scalar = 5
+    call assert_equals(5, sum_values(scalar, 1), "sum_values scalar")
+    call assert_equals(6, sum_values(6, 1), "sum_values scalar constant")
+
+    array = [1,2,3,4,5]
+    call assert_equals(15, sum_values(array, 5), "sum_values 1d")
+    call assert_equals(9, sum_values([3, 3, 3], 3), "sum_values 1d constant")
+
+    array2d = reshape([1, 2, 3, 4, 5, 6], shape(array2d))
+    call assert_equals(21, sum_values(array2d, size(array2d)), "sum_values 2d")
+  end subroutine test_assumed_rank
+
+  subroutine test_scalar_array
+    integer sfrom, sto
+    integer from(5), to(5)
     
     call set_case_name("test_scalar_array")
 
-    scalar = 5
-    call assert_equals(5, sum_values(scalar, 1), "generic_real double")
-    call assert_equals(6, sum_values(6, 1), "generic_real double constant")
+    ! assign
+    sfrom = 5
+    sto = -1
+    call assign_values(sfrom, 1, sto, 1)
+    call assert_equals(sfrom, sto, "assign_values assign")
 
-    array = [1,2,3,4,5]
-    call assert_equals(15, sum_values(array, 5), "generic_real double")
-    call assert_equals(9, sum_values([3, 3, 3], 3), "generic_real double constant")
+    ! broadcast
+    to = -1
+    call assign_values(5, 1, to, size(to))
+    call assert_true( all(to == [5,5,5,5,5]), "assign_values broadcast")
+
+    ! copy
+    from = 7
+    to = -1
+    call assign_values(from, size(from), to, size(to))
+    call assert_true( all(to == from), "assign_values copy")
     
   end subroutine test_scalar_array
 

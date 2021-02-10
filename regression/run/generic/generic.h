@@ -26,6 +26,8 @@ long GenericReal2(long arg1, long arg2);
 
 int SumValues(const int *values, int nvalues);
 
+void AssignValues(const int *from, int nfrom, int *to, int nto);
+
 void SavePointer(void *addr, int type, size_t size);
 void SavePointer2(void *addr, int type, size_t size);
 void GetPointer(void **addr, int *type, size_t *size);

@@ -62,14 +62,26 @@ declarations:
     function_suffix: _all_long
 
 
-- decl: int SumValues(const int *values, int nvalues)
+- decl: int SumValues(const int *values+dimension(..), int nvalues)
   doxygen:
-    brief: scalar or array argument
+    brief: scalar or array argument using assumed rank
+  options:
+    F_assumed_rank_max: 2
+
+# Test Fortran Generic and rank.
+# Also creates several bind(C) interfaces to the same function.
+- decl: void AssignValues(const int *from, int nfrom, int *to, int nto)
+  doxygen:
+    description: |
+      Broadcast if nfrom == 1
+      Copy if nfrom == nto
   fortran_generic:
-  - decl: (const int *values)
+  - decl: (const int *from, int *to)
     function_suffix: _scalar
-  - decl: (const int *values+rank(1))
-    function_suffix: _array
+  - decl: (const int *from, int *to+rank(1))
+    function_suffix: _broadcast
+  - decl: (const int *from+rank(1), int *to+rank(1))
+    function_suffix: _copy
 
 - decl: void SavePointer(void *addr, int type, size_t size+implied(size(addr)))
   # cannot use size as an dummy argument name

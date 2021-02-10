@@ -940,7 +940,9 @@
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
+                            "rank": "0",
                             "sh_type": "SH_TYPE_INT",
+                            "size": "1",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_native_*_in",
@@ -966,6 +968,7 @@
                         "stmt1": "c_default"
                     }
                 },
+                "_gen_fortran_generic": true,
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -985,6 +988,12 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                }
                             },
                             "specifier": [
                                 "int"
@@ -1011,10 +1020,10 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumValues(const int *values, int nvalues)",
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int * values +intent(in), int nvalues +intent(in)+value)",
                 "doxygen": {
-                    "brief": "scalar or array argument"
+                    "brief": "scalar or array argument using assumed rank"
                 },
                 "fmtdict": {
                     "C_call_list": "values,\t nvalues",
@@ -1035,7 +1044,8 @@
                         "decls": [
                             {
                                 "attrs": {
-                                    "intent": "in"
+                                    "intent": "in",
+                                    "rank": 0
                                 },
                                 "const": true,
                                 "declarator": {
@@ -1045,6 +1055,12 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "assumed-rank": true,
+                                    "dimension": {
+                                        "assumedrank": true
+                                    }
                                 },
                                 "specifier": [
                                     "int"
@@ -1066,8 +1082,8 @@
                                 "typemap_name": "int"
                             }
                         ],
-                        "function_suffix": "_scalar",
-                        "generic": "(const int *values)"
+                        "function_suffix": "_0d",
+                        "generic": ""
                     },
                     {
                         "decls": [
@@ -1085,6 +1101,12 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "assumed-rank": true,
+                                    "dimension": {
+                                        "assumedrank": true
+                                    }
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -1105,11 +1127,57 @@
                                 "typemap_name": "int"
                             }
                         ],
-                        "function_suffix": "_array",
-                        "generic": "(const int *values+rank(1))"
+                        "function_suffix": "_1d",
+                        "generic": ""
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "rank": 2
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "values",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "metaattrs": {
+                                    "assumed-rank": true,
+                                    "dimension": {
+                                        "assumedrank": true
+                                    }
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nvalues",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_2d",
+                        "generic": ""
                     }
                 ],
                 "options": {
+                    "F_assumed_rank_max": 2,
                     "wrap_fortran": false
                 }
             },
@@ -1126,6 +1194,7 @@
                         "stmtc1": "c_default"
                     }
                 },
+                "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1136,7 +1205,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in"
+                                "intent": "in",
+                                "rank": 0
                             },
                             "const": true,
                             "declarator": {
@@ -1146,6 +1216,12 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                }
                             },
                             "specifier": [
                                 "int"
@@ -1172,25 +1248,26 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumValues(const int *values, int nvalues)",
-                "declgen": "int SumValues(const int * values +intent(in), int nvalues +intent(in)+value)",
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int * values +intent(in)+rank(0), int nvalues +intent(in)+value)",
                 "doxygen": {
-                    "brief": "scalar or array argument"
+                    "brief": "scalar or array argument using assumed rank"
                 },
                 "fmtdict": {
                     "F_C_call": "c_sum_values",
                     "F_arg_c_call": "values,\t nvalues",
                     "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_values_scalar",
+                    "F_name_function": "sum_values_0d",
                     "F_name_generic": "sum_values",
-                    "F_name_impl": "sum_values_scalar",
+                    "F_name_impl": "sum_values_0d",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "SumValues",
-                    "function_suffix": "_scalar",
+                    "function_suffix": "_0d",
                     "underscore_name": "sum_values"
                 },
                 "options": {
+                    "F_assumed_rank_max": 2,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -1210,6 +1287,7 @@
                         "stmtc1": "c_default"
                     }
                 },
+                "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1232,6 +1310,12 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                }
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1257,25 +1341,26 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumValues(const int *values, int nvalues)",
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int * values +intent(in)+rank(1), int nvalues +intent(in)+value)",
                 "doxygen": {
-                    "brief": "scalar or array argument"
+                    "brief": "scalar or array argument using assumed rank"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_sum_values_array",
+                    "F_C_call": "c_sum_values_1d",
                     "F_arg_c_call": "values,\t nvalues",
                     "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_values_array",
+                    "F_name_function": "sum_values_1d",
                     "F_name_generic": "sum_values",
-                    "F_name_impl": "sum_values_array",
+                    "F_name_impl": "sum_values_1d",
                     "F_result_clause": "\fresult(SHT_rv)",
                     "F_subprogram": "function",
                     "function_name": "SumValues",
-                    "function_suffix": "_array",
+                    "function_suffix": "_1d",
                     "underscore_name": "sum_values"
                 },
                 "options": {
+                    "F_assumed_rank_max": 2,
                     "wrap_c": false,
                     "wrap_fortran": true,
                     "wrap_lua": false,
@@ -1338,12 +1423,12 @@
                             "F_C_var": "values",
                             "F_pointer": "SHPTR_values",
                             "c_var": "values",
-                            "f_assumed_shape": "(:)",
+                            "f_assumed_shape": "(:,:)",
                             "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "integer(C_INT)",
                             "f_var": "values",
-                            "rank": "1",
+                            "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(values)",
                             "stmt0": "f_native_*_in",
@@ -1371,6 +1456,7 @@
                         "stmt1": "c_default"
                     }
                 },
+                "_gen_fortran_generic": true,
                 "_generated": "fortran_generic_c",
                 "_overloaded": true,
                 "ast": {
@@ -1392,6 +1478,12 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                }
                             },
                             "specifier": [
                                 "int"
@@ -1418,10 +1510,10 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int SumValues(const int *values, int nvalues)",
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
                 "declgen": "int SumValues(const int * values +intent(in)+rank(1), int nvalues +intent(in)+value)",
                 "doxygen": {
-                    "brief": "scalar or array argument"
+                    "brief": "scalar or array argument using assumed rank"
                 },
                 "fmtdict": {
                     "C_call_list": "values,\t nvalues",
@@ -1429,14 +1521,1353 @@
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_name": "c_sum_values_array",
+                    "F_C_name": "c_sum_values_1d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
-                    "function_suffix": "_array",
+                    "function_suffix": "_1d",
                     "underscore_name": "sum_values"
+                },
+                "options": {
+                    "F_assumed_rank_max": 2,
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                },
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SumValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 2
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                }
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int * values +intent(in)+rank(2), int nvalues +intent(in)+value)",
+                "doxygen": {
+                    "brief": "scalar or array argument using assumed rank"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_sum_values_1d",
+                    "F_arg_c_call": "values,\t nvalues",
+                    "F_arguments": "values,\t nvalues",
+                    "F_name_function": "sum_values_2d",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_2d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "function_name": "SumValues",
+                    "function_suffix": "_2d",
+                    "underscore_name": "sum_values"
+                },
+                "options": {
+                    "F_assumed_rank_max": 2,
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "from": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "from",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) from",
+                            "cxx_type": "int",
+                            "cxx_var": "from",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_from",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "from",
+                            "F_pointer": "SHPTR_from",
+                            "c_var": "from",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "from",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nfrom": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nfrom",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nfrom",
+                            "cxx_type": "int",
+                            "cxx_var": "nfrom",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nfrom",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nfrom",
+                            "F_pointer": "SHPTR_nfrom",
+                            "c_var": "nfrom",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nfrom",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nto": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nto",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nto",
+                            "cxx_type": "int",
+                            "cxx_var": "nto",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nto",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nto",
+                            "F_pointer": "SHPTR_nto",
+                            "c_var": "nto",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nto",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "to": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "to",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "to",
+                            "cxx_type": "int",
+                            "cxx_var": "to",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_to",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "to",
+                            "F_pointer": "SHPTR_to",
+                            "c_var": "to",
+                            "f_intent": "INOUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "to",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_inout",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in), int nfrom +intent(in)+value, int * to +intent(inout), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "from,\t nfrom,\t to,\t nto",
+                    "C_name": "AssignValues",
+                    "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
+                    "C_return_type": "void",
+                    "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_name": "c_assign_values",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "assign_values"
+                },
+                "fortran_generic": [
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in"
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "inout"
+                                },
+                                "declarator": {
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nto",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_scalar",
+                        "generic": "(const int *from, int *to)"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in"
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "inout",
+                                    "rank": 1
+                                },
+                                "declarator": {
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nto",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_broadcast",
+                        "generic": "(const int *from, int *to+rank(1))"
+                    },
+                    {
+                        "decls": [
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "rank": 1
+                                },
+                                "const": true,
+                                "declarator": {
+                                    "name": "from",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nfrom",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "inout",
+                                    "rank": 1
+                                },
+                                "declarator": {
+                                    "name": "to",
+                                    "pointer": [
+                                        {
+                                            "ptr": "*"
+                                        }
+                                    ]
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            },
+                            {
+                                "attrs": {
+                                    "intent": "in",
+                                    "value": true
+                                },
+                                "declarator": {
+                                    "name": "nto",
+                                    "pointer": []
+                                },
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "function_suffix": "_copy",
+                        "generic": "(const int *from+rank(1), int *to+rank(1))"
+                    }
+                ],
+                "options": {
+                    "wrap_fortran": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in), int nfrom +intent(in)+value, int * to +intent(inout), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_assign_values",
+                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                    "F_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_name_function": "assign_values_scalar",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values_scalar",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_scalar",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "assign_values"
+                },
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in), int nfrom +intent(in)+value, int * to +intent(inout)+rank(1), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_assign_values_broadcast",
+                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                    "F_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_name_function": "assign_values_broadcast",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values_broadcast",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_broadcast",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "assign_values"
+                },
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "from": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "from",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) from",
+                            "cxx_type": "int",
+                            "cxx_var": "from",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_from",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "from",
+                            "F_pointer": "SHPTR_from",
+                            "c_var": "from",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "from",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nfrom": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nfrom",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nfrom",
+                            "cxx_type": "int",
+                            "cxx_var": "nfrom",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nfrom",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nfrom",
+                            "F_pointer": "SHPTR_nfrom",
+                            "c_var": "nfrom",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nfrom",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nto": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nto",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nto",
+                            "cxx_type": "int",
+                            "cxx_var": "nto",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nto",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nto",
+                            "F_pointer": "SHPTR_nto",
+                            "c_var": "nto",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nto",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "to": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "to",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "to",
+                            "cxx_type": "int",
+                            "cxx_var": "to",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_to",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "to",
+                            "F_pointer": "SHPTR_to",
+                            "c_var": "to",
+                            "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
+                            "f_intent": "INOUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "to",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(to)",
+                            "stmt0": "f_native_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_inout",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "fortran_generic_c",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in), int nfrom +intent(in)+value, int * to +intent(inout)+rank(1), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "from,\t nfrom,\t to,\t nto",
+                    "C_name": "AssignValues",
+                    "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
+                    "C_return_type": "void",
+                    "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_name": "c_assign_values_broadcast",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_broadcast",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "assign_values"
+                },
+                "options": {
+                    "wrap_c": true,
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in)+rank(1), int nfrom +intent(in)+value, int * to +intent(inout)+rank(1), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "F_C_call": "c_assign_values_copy",
+                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                    "F_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_name_function": "assign_values_copy",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values_copy",
+                    "F_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_copy",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "assign_values"
+                },
+                "options": {
+                    "wrap_c": false,
+                    "wrap_fortran": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                }
+            },
+            {
+                "_fmtargs": {
+                    "from": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "from",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) from",
+                            "cxx_type": "int",
+                            "cxx_var": "from",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_from",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "from",
+                            "F_pointer": "SHPTR_from",
+                            "c_var": "from",
+                            "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "from",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(from)",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nfrom": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nfrom",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nfrom",
+                            "cxx_type": "int",
+                            "cxx_var": "nfrom",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nfrom",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nfrom",
+                            "F_pointer": "SHPTR_nfrom",
+                            "c_var": "nfrom",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nfrom",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "nto": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nto",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nto",
+                            "cxx_type": "int",
+                            "cxx_var": "nto",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nto",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nto",
+                            "F_pointer": "SHPTR_nto",
+                            "c_var": "nto",
+                            "f_intent": "IN",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nto",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "to": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "to",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "to",
+                            "cxx_type": "int",
+                            "cxx_var": "to",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_to",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "to",
+                            "F_pointer": "SHPTR_to",
+                            "c_var": "to",
+                            "f_assumed_shape": "(:)",
+                            "f_assumed_size": "(*)",
+                            "f_intent": "INOUT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "to",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(to)",
+                            "stmt0": "f_native_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_inout",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_generated": "fortran_generic_c",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "rank": 1
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from +intent(in)+rank(1), int nfrom +intent(in)+value, int * to +intent(inout)+rank(1), int nto +intent(in)+value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "from,\t nfrom,\t to,\t nto",
+                    "C_name": "AssignValues",
+                    "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
+                    "C_return_type": "void",
+                    "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_name": "c_assign_values_copy",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "function_suffix": "_copy",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "assign_values"
                 },
                 "options": {
                     "wrap_c": true,
