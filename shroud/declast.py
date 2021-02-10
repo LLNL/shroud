@@ -329,17 +329,23 @@ def check_expr(expr, trace=False):
     a = ExprParser(expr, trace=trace).expression()
     return a
 
-def check_dimension(dim, trace=False):
-    """Return a list of expressions.
+def check_dimension(dim, attrs, trace=False):
+    """Return AST of dim and assumed_rank flag.
 
     Look for assumed-rank, "..", first.
     Else a comma delimited list of expressions.
+
+    Parameters
+    ----------
+    dim : str
+    attrs : dict
+    trace : boolean
     """
     if dim == "..":
-        a = AssumedRank()
+        attrs["dimension"] = AssumedRank()
+        attrs["assumed-rank"] = True
     else:
-        a = ExprParser(dim, trace=trace).dimension_shape()
-    return a
+        attrs["dimension"] = ExprParser(dim, trace=trace).dimension_shape()
 
 ######################################################################
 
@@ -1554,10 +1560,10 @@ class Declaration(Node):
         elif ntypemap.base == "string":
             decl.append("(*)")
         elif attrs["dimension"]:
-            # Any dimension is changed to assumed length.
+            # Any dimension is changed to assumed-size.
             decl.append("(*)")
         elif attrs["rank"] is not None and attrs["rank"] > 0:
-            # Any dimension is changed to assumed length.
+            # Any dimension is changed to assumed-size.
             decl.append("(*)")
         elif attrs["allocatable"]:
             # allocatable assumes dimension

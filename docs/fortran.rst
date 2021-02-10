@@ -169,12 +169,17 @@ rank for each generic interface.  This handles the common case and
 avoids the combinatoral explosion of mixing ranks in a single
 function interface.
 
+The ranks used are controlled by the options *F_assumed_rank_min* and
+*F_assumed_rank_max* which default to 0, for scalar, and 7.
+
 .. code-block:: yaml
 
     - decl: int SumValues(const int *values+dimension(..), int nvalues)
+      options:
+        F_assumed_rank_max: 2
 
-The generated generic interface can be used to pass a scalar or array
-to the C function. In each case ``result`` is 5.
+The generated generic interface can be used to pass a scalar, 1d or 2d
+array to the C function. In each case ``result`` is 5.
 
 .. code-block:: fortran
 

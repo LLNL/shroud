@@ -463,6 +463,8 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_method=None,
             C_force_wrapper=False,
             C_line_length=72,
+            F_assumed_rank_min=0,
+            F_assumed_rank_max=7,
             F_flatten_namespace=False,
             F_line_length=72,
             F_string_len_trim=True,

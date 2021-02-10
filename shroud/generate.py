@@ -410,8 +410,7 @@ class VerifyAttrs(object):
         self.parse_attrs(node, arg)
 
         # Flag node if any argument is assumed-rank.
-        dim = arg.metaattrs.get("dimension")
-        if isinstance(dim, declast.AssumedRank):
+        if arg.metaattrs["assumed-rank"]:
             node._gen_fortran_generic = True
 
         if arg.is_function_pointer():
@@ -431,11 +430,11 @@ class VerifyAttrs(object):
         """
         attrs = ast.attrs
         metaattrs = ast.metaattrs
-        
+
         dim = attrs["dimension"]
         if dim:
             try:
-                metaattrs["dimension"] = declast.check_dimension(dim)
+                declast.check_dimension(dim, metaattrs)
             except RuntimeError:
                 raise RuntimeError("Unable to parse dimension: {} at line {}"
                                    .format(dim, node.linenumber))
@@ -1019,13 +1018,14 @@ class GenFunctions(object):
         node : ast.FunctionNode
         """
         # fortran_generic must already be empty
+        options = node.options
         params = node.ast.params
 
-        # XXX - hook 3 to an option
-        for rank in range(3):
+        for rank in range(options.F_assumed_rank_min,
+                          options.F_assumed_rank_max+1):
             newdecls = copy.deepcopy(params)
             for decl in newdecls:
-                if isinstance(decl.metaattrs["dimension"], declast.AssumedRank):
+                if decl.metaattrs["assumed-rank"]:
                     # Replace dimension with rank.
                     decl.attrs["dimension"] = None
                     decl.attrs["rank"] = rank
@@ -1033,6 +1033,12 @@ class GenFunctions(object):
                 "", function_suffix="_{}d".format(rank),
                 decls=newdecls)
             node.fortran_generic.append(generic)
+
+        # Remove assumed-rank from C function.
+        for decl in params:
+            if decl.metaattrs["assumed-rank"]:
+                decl.attrs["dimension"] = None
+        node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
         """ Create overloaded functions for each generic method.

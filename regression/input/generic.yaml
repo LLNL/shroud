@@ -62,14 +62,11 @@ declarations:
     function_suffix: _all_long
 
 
-- decl: int SumValues(const int *values, int nvalues)
+- decl: int SumValues(const int *values+dimension(..), int nvalues)
   doxygen:
-    brief: scalar or array argument
-  fortran_generic:
-  - decl: (const int *values)
-    function_suffix: _scalar
-  - decl: (const int *values+rank(1))
-    function_suffix: _array
+    brief: scalar or array argument using assumed rank
+  options:
+    F_assumed_rank_max: 2
 
 # Test Fortran Generic and rank.
 # Also creates several bind(C) interfaces to the same function.
