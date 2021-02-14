@@ -39,6 +39,7 @@ import re
 
 from . import declast
 from . import todict
+from . import statements
 from . import typemap
 from . import util
 from . import whelpers
@@ -104,7 +105,7 @@ class Wrapp(util.WrapperMixin):
         self.need_blah = False
         self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
-        update_typemap_for_language(self.language)
+        update_statements_for_language(self.language)
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -773,7 +774,7 @@ return 1;""",
                 fmt.c_var_non_const = wformat(
                     "{cast_const}{c_type} *{cast1}{c_var}{cast2}", fmt)
 
-        stmt0 = typemap.compute_name(stmts)
+        stmt0 = statements.compute_name(stmts)
         intent_blk = lookup_stmts(stmts)
         output = fileinfo.GetSetBody
         ########################################
@@ -1330,7 +1331,7 @@ return 1;""",
                 if intent_blk is None:
                     intent_blk = lookup_stmts(stmts)
                 # Useful for debugging.  Requested and found path.
-                fmt_arg.stmt0 = typemap.compute_name(stmts)
+                fmt_arg.stmt0 = statements.compute_name(stmts)
                 fmt_arg.stmt1 = intent_blk.name
                 # Add some debug comments to function.
                 if options.debug:
@@ -2002,7 +2003,7 @@ return 1;""",
         if stmts is not None:
             result_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
-            fmt_result.stmt0 = typemap.compute_name(stmts)
+            fmt_result.stmt0 = statements.compute_name(stmts)
             fmt_result.stmt1 = result_blk.name
                 
         return fmt_result, result_blk
@@ -3527,19 +3528,24 @@ def XXXdo_cast(lang, kind, typ, var):
     else:
         return "%s_cast<%s>\t(%s)" % (kind, typ, var)
 
-def update_typemap_for_language(language):
+def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
     Fill in py_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
     """
-    typemap.update_for_language(py_statements, language)
-    typemap.update_stmt_tree(py_statements, py_tree, default_stmts)
+    statements.update_for_language(py_statements, language)
+    statements.update_stmt_tree(py_statements, py_tree, default_stmts)
     global default_scope
-    default_scope = typemap.default_scopes["py"]
+    default_scope = statements.default_scopes["py"]
 
 def lookup_stmts(path):
-    return typemap.lookup_stmts_tree(py_tree, path)
+    return statements.lookup_stmts_tree(py_tree, path)
 
 class PyStmts(object):
     def __init__(

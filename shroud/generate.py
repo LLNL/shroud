@@ -16,6 +16,7 @@ import copy
 from . import ast
 from . import declast
 from . import todict
+from . import statements
 from . import typemap
 from . import util
 from . import whelpers
@@ -1402,7 +1403,7 @@ class GenFunctions(object):
                   arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 attrs["context"] = True
-            arg_typemap, sp = typemap.lookup_c_statements(arg)
+            arg_typemap, sp = statements.lookup_c_statements(arg)
 
             # Set names for implied buffer arguments.
             # This filters out "buf" for ftrim_char_in
@@ -1410,8 +1411,8 @@ class GenFunctions(object):
             
             spointer = arg.get_indirect_stmt()
             c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
-            intent_blk = typemap.lookup_fc_stmts(c_stmts)
-            typemap.create_buf_variable_names(options, intent_blk, attrs)
+            intent_blk = statements.lookup_fc_stmts(c_stmts)
+            statements.create_buf_variable_names(options, intent_blk, attrs)
 
         ast = C_new.ast
         if has_string_result:
@@ -1684,7 +1685,7 @@ class Preprocess(object):
             )
 
         for arg in node.ast.params:
-            typemap.set_buf_variable_names(
+            statements.set_buf_variable_names(
                 options, arg.attrs, arg.name)
 
     def process_xxx(self, cls, node):

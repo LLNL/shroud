@@ -16,6 +16,7 @@ from collections import OrderedDict
 
 from . import declast
 from . import todict
+from . import statements
 from . import typemap
 from . import whelpers
 from . import util
@@ -738,7 +739,7 @@ class Wrapc(util.WrapperMixin):
             fmt.idtor = "0"
         
         attrs = ast.attrs
-        typemap.assign_buf_variable_names(attrs, fmt)
+        statements.assign_buf_variable_names(attrs, fmt)
         
         dim = attrs["dimension"]
         if dim:
@@ -861,7 +862,7 @@ class Wrapc(util.WrapperMixin):
                 stmts = ["c", "shadow", "dtor"]
             else:
                 stmts = ["c"]
-            result_blk = typemap.lookup_fc_stmts(stmts)
+            result_blk = statements.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtc", util.Scope(fmt_func))
@@ -873,7 +874,7 @@ class Wrapc(util.WrapperMixin):
             else:
                 sintent = "result"
             stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
-            result_blk = typemap.lookup_fc_stmts(stmts)
+            result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
             fmt_result.shadow_var = fmt_result.SH_shadow + fmt_result.C_result
@@ -905,7 +906,7 @@ class Wrapc(util.WrapperMixin):
             compute_cxx_deref(
                 CXX_ast, result_blk.cxx_local_var, fmt_result)
             fmt_pattern = fmt_result
-        result_blk = typemap.lookup_local_stmts(
+        result_blk = statements.lookup_local_stmts(
             ["c", generated_suffix], result_blk, node)
 
         proto_list = []  # arguments for wrapper prototype
@@ -916,7 +917,7 @@ class Wrapc(util.WrapperMixin):
         stmts_comments = []
 
         # Useful for debugging.  Requested and found path.
-        fmt_result.stmt0 = typemap.compute_name(stmts)
+        fmt_result.stmt0 = statements.compute_name(stmts)
         fmt_result.stmt1 = result_blk.name
         if options.debug:
             stmts_comments.append(
@@ -1005,7 +1006,7 @@ class Wrapc(util.WrapperMixin):
 
             self.header_impl.add_typemap_list(arg_typemap.impl_header)
                     
-            arg_typemap, specialize = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = statements.lookup_c_statements(arg)
             header_typedef_nodes[arg_typemap.name] = arg_typemap
             cxx_local_var = ""
 
@@ -1035,7 +1036,7 @@ class Wrapc(util.WrapperMixin):
                     "c", sgroup, spointer, "result",
                     generated_suffix, return_deref_attr,
                 ]
-                intent_blk = typemap.lookup_fc_stmts(stmts)
+                intent_blk = statements.lookup_fc_stmts(stmts)
                 need_wrapper = True
                 cxx_local_var = intent_blk.cxx_local_var
 
@@ -1049,7 +1050,7 @@ class Wrapc(util.WrapperMixin):
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
                 stmts = ["c", sgroup, spointer, c_attrs["intent"],
                          arg.stmts_suffix, cdesc] + specialize
-                intent_blk = typemap.lookup_fc_stmts(stmts)
+                intent_blk = statements.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:
                     # Explicit conversion must be in pre_call.
@@ -1076,7 +1077,7 @@ class Wrapc(util.WrapperMixin):
                 compute_cxx_deref(arg, cxx_local_var, fmt_arg)
 
             # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = typemap.compute_name(stmts)
+            fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name
             if options.debug:
                 stmts_comments.append(
@@ -1175,7 +1176,7 @@ class Wrapc(util.WrapperMixin):
         # generate the C body
         post_call_pattern = []
         if node.C_error_pattern is not None:
-            C_error_pattern = typemap.compute_name(
+            C_error_pattern = statements.compute_name(
                 [node.C_error_pattern, generated_suffix])
             if C_error_pattern in self.patterns:
                 need_wrapper = True
@@ -1254,7 +1255,7 @@ class Wrapc(util.WrapperMixin):
         elif result_arg is None and C_subprogram == "function":
             # Note: A C function may be converted into a Fortran subroutine
             # subprogram when the result is returned in an argument.
-            fmt_result.c_get_value = typemap.compute_return_prefix(ast, c_local_var)
+            fmt_result.c_get_value = statements.compute_return_prefix(ast, c_local_var)
             raw_return_code = ["return {c_get_value}{c_var};"]
         else:
             # XXX - No return for void statements.
@@ -1264,7 +1265,7 @@ class Wrapc(util.WrapperMixin):
         for line in raw_return_code:
             append_format(return_code, line, fmt_result)
 
-        splicer_name = typemap.compute_name(["c", generated_suffix])
+        splicer_name = statements.compute_name(["c", generated_suffix])
         if splicer_name in node.splicer:
             need_wrapper = True
             C_force = node.splicer[splicer_name]

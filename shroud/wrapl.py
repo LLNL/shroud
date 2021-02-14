@@ -10,6 +10,7 @@ Generate Lua module for C++ code.
 from __future__ import print_function
 from __future__ import absolute_import
 
+from . import statements
 from . import typemap
 from . import util
 from .util import wformat, append_format
@@ -39,7 +40,7 @@ class Wrapl(util.WrapperMixin):
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
         self.helpers = Helpers(self.language)
-        update_typemap_for_language(self.language)
+        update_statements_for_language(self.language)
 
     def reset_file(self):
         pass
@@ -546,7 +547,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             if intent_blk is None:
                 intent_blk = lookup_stmts(stmts)
             # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = typemap.compute_name(stmts)
+            fmt_arg.stmt0 = statements.compute_name(stmts)
             fmt_arg.stmt1 = intent_blk.name
             # Add some debug comments to function.
             if node.options.debug:
@@ -611,7 +612,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         stmts = ["lua", sgroup, spointer, sintent]
 #        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)
-        fmt_result.stmt0 = typemap.compute_name(stmts)
+        fmt_result.stmt0 = statements.compute_name(stmts)
         fmt_result.stmt1 = result_blk.name
         if node.options.debug:
             stmts_comments.append(
@@ -908,19 +909,24 @@ LuaHelpers = dict(
 lua_tree = {}
 default_scope = None  # for statements
 
-def update_typemap_for_language(language):
+def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
     Fill in py_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
     """
-    typemap.update_for_language(lua_statements, language)
-    typemap.update_stmt_tree(lua_statements, lua_tree, default_stmts)
+    statements.update_for_language(lua_statements, language)
+    statements.update_stmt_tree(lua_statements, lua_tree, default_stmts)
     global default_scope
-    default_scope = typemap.default_scopes["lua"]
+    default_scope = statements.default_scopes["lua"]
 
 def lookup_stmts(path):
-    return typemap.lookup_stmts_tree(lua_tree, path)
+    return statements.lookup_stmts_tree(lua_tree, path)
 
 class LuaStmts(object):
     def __init__(
