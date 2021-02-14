@@ -379,7 +379,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         # Create typemaps once.
         if not typemap.get_global_types():
             typemap.initialize()
-        statements.update_typemap_for_language(self.language)
+        statements.update_statements_for_language(self.language)
 
         self.setup = kwargs.get("setup", {}) # for setup.py
 

@@ -150,11 +150,16 @@ def compute_return_prefix(arg, local_var):
         return ""
 
 
-def update_typemap_for_language(language):
+def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
     Fill in cf_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
     """
     update_for_language(fc_statements, language)
     update_stmt_tree(fc_statements, cf_tree, default_stmts)

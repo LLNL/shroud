@@ -105,7 +105,7 @@ class Wrapp(util.WrapperMixin):
         self.need_blah = False
         self.header_type_include = util.Header(newlibrary)  # header files in module header
         self.shared_helper = {} # All accumulated helpers
-        update_typemap_for_language(self.language)
+        update_statements_for_language(self.language)
 
     def XXX_begin_output_file(self):
         """Start a new class for output"""
@@ -3528,11 +3528,16 @@ def XXXdo_cast(lang, kind, typ, var):
     else:
         return "%s_cast<%s>\t(%s)" % (kind, typ, var)
 
-def update_typemap_for_language(language):
+def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
     Fill in py_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
     """
     statements.update_for_language(py_statements, language)
     statements.update_stmt_tree(py_statements, py_tree, default_stmts)

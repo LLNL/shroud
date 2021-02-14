@@ -40,7 +40,7 @@ class Wrapl(util.WrapperMixin):
         self.doxygen_cont = " *"
         self.doxygen_end = " */"
         self.helpers = Helpers(self.language)
-        update_typemap_for_language(self.language)
+        update_statements_for_language(self.language)
 
     def reset_file(self):
         pass
@@ -909,11 +909,16 @@ LuaHelpers = dict(
 lua_tree = {}
 default_scope = None  # for statements
 
-def update_typemap_for_language(language):
+def update_statements_for_language(language):
     """Preprocess statements for lookup.
 
     Update statements for c or c++.
     Fill in py_tree.
+
+    Parameters
+    ----------
+    language : str
+        "c" or "c++"
     """
     statements.update_for_language(lua_statements, language)
     statements.update_stmt_tree(lua_statements, lua_tree, default_stmts)
