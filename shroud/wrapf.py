@@ -22,6 +22,7 @@ import os
 import re
 
 from . import declast
+from . import statements
 from . import todict
 from . import typemap
 from . import whelpers
@@ -832,7 +833,7 @@ rv = .false.
                     arg_f_names.append(name)
                     arg_c_decl.append(param.bind_c(name=name))
 
-                    arg_typemap, specialize = typemap.lookup_c_statements(
+                    arg_typemap, specialize = statements.lookup_c_statements(
                         param
                     )
                     self.update_f_module(
@@ -1081,8 +1082,8 @@ rv = .false.
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
         c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
-        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
-        c_result_blk = typemap.lookup_local_stmts(
+        c_result_blk = statements.lookup_fc_stmts(c_stmts)
+        c_result_blk = statements.lookup_local_stmts(
             ["c", node.generated_suffix], c_result_blk, node)
         if options.debug:
             stmts_comments.append(
@@ -1090,7 +1091,7 @@ rv = .false.
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, typemap.compute_name(c_stmts),
+                stmts_comments, statements.compute_name(c_stmts),
                 c_result_blk.name)
 
         if c_result_blk.return_type:
@@ -1119,7 +1120,7 @@ rv = .false.
             fmt_arg = fmt_arg0.setdefault("fmtf", util.Scope(fmt_func))
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
-            arg_typemap, specialize = typemap.lookup_c_statements(arg)
+            arg_typemap, specialize = statements.lookup_c_statements(arg)
             fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs
@@ -1137,14 +1138,14 @@ rv = .false.
                 c_stmts = ["c", sgroup, spointer, intent,
                            arg.stmts_suffix, deref_attr, cdesc]
             c_stmts.extend(specialize)
-            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
             if options.debug:
                 stmts_comments.append(
                     "! ----------------------------------------")
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, typemap.compute_name(c_stmts),
+                    stmts_comments, statements.compute_name(c_stmts),
                     c_intent_blk.name)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1431,7 +1432,7 @@ rv = .false.
             fmt - format dictionary
         """
         c_attrs = c_ast.attrs
-        typemap.assign_buf_variable_names(c_attrs, fmt)
+        statements.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
 #            ntypemap = ntypemap
@@ -1564,16 +1565,16 @@ rv = .false.
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
-        f_result_blk = typemap.lookup_fc_stmts(f_stmts)
-        f_result_blk = typemap.lookup_local_stmts("f", f_result_blk, node)
+        f_result_blk = statements.lookup_fc_stmts(f_stmts)
+        f_result_blk = statements.lookup_local_stmts("f", f_result_blk, node)
         # Useful for debugging.  Requested and found path.
-        fmt_result.stmt0 = typemap.compute_name(f_stmts)
+        fmt_result.stmt0 = statements.compute_name(f_stmts)
         fmt_result.stmt1 = f_result_blk.name
 
-        c_result_blk = typemap.lookup_fc_stmts(c_stmts)
-        c_result_blk = typemap.lookup_local_stmts(
+        c_result_blk = statements.lookup_fc_stmts(c_stmts)
+        c_result_blk = statements.lookup_local_stmts(
             ["c", generated_suffix], c_result_blk, node)
-        fmt_result.stmtc0 = typemap.compute_name(c_stmts)
+        fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
 
         if options.debug:
@@ -1698,8 +1699,8 @@ rv = .false.
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 
-            f_intent_blk = typemap.lookup_fc_stmts(f_stmts)
-            c_intent_blk = typemap.lookup_fc_stmts(c_stmts)
+            f_intent_blk = statements.lookup_fc_stmts(f_stmts)
+            c_intent_blk = statements.lookup_fc_stmts(c_stmts)
 
             if is_f_arg:
                 implied = f_attrs["implied"]
@@ -1776,9 +1777,9 @@ rv = .false.
                     arg_f_names.append(fmt_arg.f_var)
 
             # Useful for debugging.  Requested and found path.
-            fmt_arg.stmt0 = typemap.compute_name(f_stmts)
+            fmt_arg.stmt0 = statements.compute_name(f_stmts)
             fmt_arg.stmt1 = f_intent_blk.name
-            fmt_arg.stmtc0 = typemap.compute_name(c_stmts)
+            fmt_arg.stmtc0 = statements.compute_name(c_stmts)
             fmt_arg.stmtc1 = c_intent_blk.name
 
             if options.debug:
@@ -1799,7 +1800,7 @@ rv = .false.
             # Now C function arguments
             # May have different types, like generic
             # or different attributes, like adding +len to string args
-            arg_typemap, specialize = typemap.lookup_c_statements(c_arg)
+            arg_typemap, specialize = statements.lookup_c_statements(c_arg)
 
             # Create a local variable for C if necessary.
             # The local variable c_var is used in fc_statements. 

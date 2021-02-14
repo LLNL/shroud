@@ -102,9 +102,8 @@ main.py
 wrapX.py  generate.py
 ast.py
 declast.py
-typemap.py
-todict.py
 whelpers.py
+typemap.py statements.py todict.py
 util.py visitor.py  # no dependencies
 metadata.py
 
