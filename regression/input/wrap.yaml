@@ -1,0 +1,28 @@
+# Test wrap options.
+# Top level all are false, then wrap selected functions
+# This test is not compiled
+
+copyright:
+- Copyright (c) 2017-2021, Lawrence Livermore National Security, LLC and
+- other Shroud Project Developers.
+- See the top-level COPYRIGHT file for details.
+-
+- "SPDX-License-Identifier: (BSD-3-Clause)"
+-
+
+library: wrap
+
+options:
+  # Do not wrap anything by default
+  wrap_c: False
+  wrap_fortran: False
+  wrap_python: False
+  wrap_lua: False
+
+declarations:
+- decl: class Class1
+  declarations:
+  - decl: void FuncInClass(void)
+    options:
+      wrap_fortran: True
+
