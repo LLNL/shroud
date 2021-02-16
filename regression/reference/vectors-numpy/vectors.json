@@ -112,6 +112,9 @@
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -198,6 +201,9 @@
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -275,7 +281,8 @@
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -346,7 +353,8 @@
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -401,7 +409,8 @@
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -456,7 +465,8 @@
                     "literalinclude": true,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -506,7 +516,8 @@
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -591,6 +602,9 @@
                 },
                 "options": {
                     "wrap_lua": false
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -645,7 +659,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -701,7 +716,8 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -756,7 +772,8 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -856,12 +873,18 @@
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "vectors"
-        ]
+        ],
+        "wrap": {
+            "python": true
+        }
     }
 }

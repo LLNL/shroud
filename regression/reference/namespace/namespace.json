@@ -104,7 +104,12 @@
                     "function_name": "LastFunctionCalled",
                     "underscore_name": "last_function_called"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -213,6 +218,11 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -250,7 +260,12 @@
                     "stmtc1": "c_default",
                     "underscore_name": "one"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "language": "cxx",
@@ -296,7 +311,11 @@
                         },
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "upper::Color"
+                        "typemap_name": "upper::Color",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -324,7 +343,11 @@
                 "scope_file": [
                     "ns",
                     "upper"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "classes": [
@@ -486,6 +509,9 @@
                                     "wrap_c": false,
                                     "wrap_fortran": false,
                                     "wrap_lua": false
+                                },
+                                "wrap": {
+                                    "python": true
                                 }
                             }
                         ],
@@ -518,7 +544,12 @@
                                     "variable_upper": "IFIELD"
                                 },
                                 "name": "ifield",
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             },
                             {
                                 "ast": {
@@ -543,9 +574,19 @@
                                     "variable_upper": "DFIELD"
                                 },
                                 "name": "dfield",
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             }
-                        ]
+                        ],
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -601,7 +642,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "one"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "outer",
@@ -610,7 +656,12 @@
                 "scope_file": [
                     "ns",
                     "outer"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "classes": [
@@ -642,7 +693,12 @@
                         "options": {},
                         "parse_keyword": "class",
                         "scope": "nswork::ClassWork::",
-                        "typemap_name": "nswork::ClassWork"
+                        "typemap_name": "nswork::ClassWork",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -671,11 +727,21 @@
                 "scope_file": [
                     "ns",
                     "nswork"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "scope_file": [
             "ns"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "python": true
+        }
     }
 }

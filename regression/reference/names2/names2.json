@@ -44,12 +44,20 @@
                     "stmtc1": "c_default",
                     "underscore_name": "afunction"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "Names"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

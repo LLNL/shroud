@@ -176,6 +176,9 @@
                             "wrap_c": false,
                             "wrap_fortran": false,
                             "wrap_lua": false
+                        },
+                        "wrap": {
+                            "python": true
                         }
                     }
                 ],
@@ -219,7 +222,10 @@
                             "variable_upper": "NAME"
                         },
                         "name": "name",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -252,9 +258,15 @@
                             "variable_upper": "COUNT"
                         },
                         "name": "count",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -271,6 +283,9 @@
         "language": "c",
         "scope_file": [
             "struct"
-        ]
+        ],
+        "wrap": {
+            "python": true
+        }
     }
 }

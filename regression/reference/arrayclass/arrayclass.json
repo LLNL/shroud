@@ -116,6 +116,11 @@
                         },
                         "options": {
                             "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -228,7 +233,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_size"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -318,7 +328,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_size"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -434,7 +449,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fill_size"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -477,7 +497,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "allocate"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -595,7 +620,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -675,6 +705,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -795,7 +830,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -876,6 +916,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -995,7 +1040,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -1076,6 +1126,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -1197,7 +1252,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -1279,6 +1339,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -1463,7 +1528,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_array_ptr"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -1632,6 +1702,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -1816,7 +1891,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_array_ref"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -1985,6 +2065,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -2170,7 +2255,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_array_ptr_const"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -2340,6 +2430,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -2525,7 +2620,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_array_ref_const"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -2695,6 +2795,11 @@
                             "wrap_fortran": false,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -2814,7 +2919,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_void_ptr"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -2933,7 +3043,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "fetch_void_ref"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -3097,7 +3212,12 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "check_ptr"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtresult": {
@@ -3185,14 +3305,24 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "sum_array"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "ArrayWrapper",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "ArrayWrapper::",
-                "typemap_name": "ArrayWrapper"
+                "typemap_name": "ArrayWrapper",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -3209,6 +3339,11 @@
         "language": "cxx",
         "scope_file": [
             "arrayclass"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "python": true
+        }
     }
 }

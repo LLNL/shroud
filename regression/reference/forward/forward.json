@@ -41,7 +41,13 @@
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "forward::Class3::",
-                "typemap_name": "forward::Class3"
+                "typemap_name": "forward::Class3",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "lua": true,
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -174,6 +180,12 @@
                         },
                         "options": {
                             "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
                         }
                     },
                     {
@@ -224,7 +236,13 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -364,7 +382,13 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -506,14 +530,26 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "Class2",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "forward::Class2::",
-                "typemap_name": "forward::Class2"
+                "typemap_name": "forward::Class2",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "lua": true,
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -648,12 +684,22 @@
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "forward"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "lua": true,
+            "python": true
+        }
     }
 }

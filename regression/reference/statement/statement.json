@@ -87,6 +87,10 @@
                     "c": [
                         "return getNameErrorPattern().length();"
                     ]
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -166,7 +170,11 @@
                     "function_name": "getNameErrorPattern",
                     "underscore_name": "get_name_error_pattern"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "C_error_pattern": "C_invalid_name",
@@ -278,12 +286,20 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "statement"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

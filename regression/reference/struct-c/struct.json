@@ -47,7 +47,11 @@
                             "variable_upper": "IFIELD"
                         },
                         "name": "ifield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -69,9 +73,17 @@
                             "variable_upper": "DFIELD"
                         },
                         "name": "dfield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -120,7 +132,11 @@
                             "variable_upper": "CFIELD"
                         },
                         "name": "cfield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -147,9 +163,17 @@
                             "variable_upper": "CONST_DVALUE"
                         },
                         "name": "const_dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -196,7 +220,11 @@
                             "variable_upper": "NITEMS"
                         },
                         "name": "nitems",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -238,7 +266,11 @@
                             "variable_upper": "IVALUE"
                         },
                         "name": "ivalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -280,7 +312,11 @@
                             "variable_upper": "DVALUE"
                         },
                         "name": "dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -319,9 +355,17 @@
                             "variable_upper": "SVALUE"
                         },
                         "name": "svalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -368,7 +412,11 @@
                             "variable_upper": "NITEMS"
                         },
                         "name": "nitems",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -404,7 +452,11 @@
                             "variable_upper": "IVALUE"
                         },
                         "name": "ivalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -440,9 +492,17 @@
                             "variable_upper": "DVALUE"
                         },
                         "name": "dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -494,7 +554,11 @@
                             "variable_upper": "NAME"
                         },
                         "name": "name",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -521,9 +585,17 @@
                             "variable_upper": "COUNT"
                         },
                         "name": "count",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -621,6 +693,10 @@
                             "c": [
                                 "return SH_this->x1;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -722,6 +798,10 @@
                                 "SH_this->x1 = val;",
                                 "return;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -800,6 +880,10 @@
                             "c": [
                                 "return SH_this->y1;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -901,6 +985,10 @@
                                 "SH_this->y1 = val;",
                                 "return;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     }
                 ],
@@ -934,7 +1022,11 @@
                             "variable_upper": "X1"
                         },
                         "name": "x1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -956,9 +1048,17 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
                 "wrap_as": "class"
             },
             {
@@ -1058,6 +1158,10 @@
                             "c": [
                                 "return SH_this->x1;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -1159,6 +1263,10 @@
                                 "SH_this->x1 = val;",
                                 "return;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -1237,6 +1345,10 @@
                             "c": [
                                 "return SH_this->y1;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -1338,6 +1450,10 @@
                                 "SH_this->y1 = val;",
                                 "return;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -1416,6 +1532,10 @@
                             "c": [
                                 "return SH_this->z1;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     },
                     {
@@ -1517,6 +1637,10 @@
                                 "SH_this->z1 = val;",
                                 "return;"
                             ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
                         }
                     }
                 ],
@@ -1551,7 +1675,11 @@
                             "variable_upper": "X1"
                         },
                         "name": "x1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -1573,7 +1701,11 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "ast": {
@@ -1595,9 +1727,17 @@
                             "variable_upper": "Z1"
                         },
                         "name": "z1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
                 "wrap_as": "class"
             }
         ],
@@ -1728,6 +1868,10 @@
                 },
                 "options": {
                     "literalinclude": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -1849,6 +1993,10 @@
                 },
                 "options": {
                     "literalinclude": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -2001,7 +2149,11 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2167,6 +2319,10 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -2285,7 +2441,11 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2470,7 +2630,11 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_struct_out_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2560,7 +2724,11 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2721,7 +2889,11 @@
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2893,7 +3065,11 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -3085,7 +3261,11 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -3302,6 +3482,10 @@
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -3373,7 +3557,11 @@
                     "function_name": "get_global_struct_list",
                     "underscore_name": "get_global_struct_list"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtresult": {
@@ -3445,6 +3633,10 @@
                     "class_ctor": "Cstruct_as_class",
                     "literalinclude": true,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -3612,6 +3804,10 @@
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -3735,6 +3931,10 @@
                 "options": {
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -3948,12 +4148,20 @@
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             }
         ],
         "language": "c",
         "scope_file": [
             "struct"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

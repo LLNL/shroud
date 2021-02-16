@@ -60,7 +60,11 @@
                         },
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "Class1::Color"
+                        "typemap_name": "Class1::Color",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -81,7 +85,11 @@
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "Class1::",
-                "typemap_name": "Class1"
+                "typemap_name": "Class1",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "cxx_header": [],
@@ -141,7 +149,11 @@
                         },
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "Class2::Color"
+                        "typemap_name": "Class2::Color",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -162,7 +174,11 @@
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "Class2::",
-                "typemap_name": "Class2"
+                "typemap_name": "Class2",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "copyright": [
@@ -228,7 +244,11 @@
                 },
                 "name": "Color",
                 "options": {},
-                "typemap_name": "Color"
+                "typemap_name": "Color",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtmembers": {
@@ -284,7 +304,11 @@
                 },
                 "name": "Color",
                 "options": {},
-                "typemap_name": "ns3::Color"
+                "typemap_name": "ns3::Color",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtmembers": {
@@ -347,7 +371,11 @@
                 },
                 "name": "ColorEnum",
                 "options": {},
-                "typemap_name": "ColorEnum"
+                "typemap_name": "ColorEnum",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "language": "cxx",
@@ -408,7 +436,11 @@
                         },
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "ns1::Color"
+                        "typemap_name": "ns1::Color",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -432,7 +464,11 @@
                 "scope_file": [
                     "scope",
                     "ns1"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "enums": [
@@ -490,7 +526,11 @@
                         },
                         "name": "Color",
                         "options": {},
-                        "typemap_name": "ns2::Color"
+                        "typemap_name": "ns2::Color",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -514,11 +554,19 @@
                 "scope_file": [
                     "scope",
                     "ns2"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "scope_file": [
             "scope"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

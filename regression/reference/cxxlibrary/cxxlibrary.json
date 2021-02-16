@@ -160,6 +160,9 @@
                             "wrap_c": false,
                             "wrap_fortran": false,
                             "wrap_lua": false
+                        },
+                        "wrap": {
+                            "python": true
                         }
                     }
                 ],
@@ -194,7 +197,10 @@
                             "variable_upper": "IFIELD"
                         },
                         "name": "ifield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -219,9 +225,15 @@
                             "variable_upper": "DFIELD"
                         },
                         "name": "dfield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -321,7 +333,10 @@
                     "function_name": "passStructByReferenceCls",
                     "underscore_name": "pass_struct_by_reference_cls"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -412,7 +427,10 @@
                     "function_name": "passStructByReferenceInCls",
                     "underscore_name": "pass_struct_by_reference_in_cls"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -480,7 +498,10 @@
                     "function_name": "passStructByReferenceInoutCls",
                     "underscore_name": "pass_struct_by_reference_inout_cls"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -547,7 +568,10 @@
                     "function_name": "passStructByReferenceOutCls",
                     "underscore_name": "pass_struct_by_reference_out_cls"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -619,6 +643,11 @@
                     "wrap_fortran": true,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -794,7 +823,12 @@
                     "function_suffix": "_1",
                     "underscore_name": "default_ptr_is_null"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -987,6 +1021,11 @@
                     "wrap_fortran": true,
                     "wrap_lua": false,
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1311,7 +1350,12 @@
                     "stmtc1": "c_default",
                     "underscore_name": "default_args_in_out"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "language": "cxx",
@@ -1368,7 +1412,12 @@
                                     "variable_upper": "IFIELD"
                                 },
                                 "name": "ifield",
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             },
                             {
                                 "ast": {
@@ -1390,9 +1439,19 @@
                                     "variable_upper": "DFIELD"
                                 },
                                 "name": "dfield",
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             }
-                        ]
+                        ],
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -1575,7 +1634,12 @@
                             "function_name": "passStructByReference",
                             "underscore_name": "pass_struct_by_reference"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -1740,7 +1804,12 @@
                             "function_name": "passStructByReferenceIn",
                             "underscore_name": "pass_struct_by_reference_in"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -1856,7 +1925,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "pass_struct_by_reference_inout"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -1971,7 +2045,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "pass_struct_by_reference_out"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "structns",
@@ -1980,11 +2059,21 @@
                 "scope_file": [
                     "cxxlibrary",
                     "structns"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "scope_file": [
             "cxxlibrary"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "python": true
+        }
     }
 }

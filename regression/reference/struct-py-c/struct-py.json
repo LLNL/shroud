@@ -160,6 +160,9 @@
                             "wrap_c": false,
                             "wrap_fortran": false,
                             "wrap_lua": false
+                        },
+                        "wrap": {
+                            "python": true
                         }
                     }
                 ],
@@ -194,7 +197,10 @@
                             "variable_upper": "X1"
                         },
                         "name": "x1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -219,9 +225,15 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -273,7 +285,10 @@
                             "variable_upper": "X2"
                         },
                         "name": "x2",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -295,9 +310,15 @@
                             "variable_upper": "Y2"
                         },
                         "name": "y2",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -441,12 +462,18 @@
                     "function_name": "acceptBothStructs",
                     "underscore_name": "accept_both_structs"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             }
         ],
         "language": "c",
         "scope_file": [
             "struct"
-        ]
+        ],
+        "wrap": {
+            "python": true
+        }
     }
 }

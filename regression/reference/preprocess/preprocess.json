@@ -68,7 +68,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -111,7 +116,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_generated": "has_default_arg",
@@ -161,6 +171,11 @@
                             "wrap_fortran": true,
                             "wrap_lua": false,
                             "wrap_python": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
                         }
                     },
                     {
@@ -285,14 +300,24 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "User1",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "User1::",
-                "typemap_name": "User1"
+                "typemap_name": "User1",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "cxx_header": [
@@ -364,7 +389,12 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -478,14 +508,24 @@
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "User2",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "User2::",
-                "typemap_name": "User2"
+                "typemap_name": "User2",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "copyright": [
@@ -502,6 +542,11 @@
         "language": "cxx",
         "scope_file": [
             "preprocess"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "python": true
+        }
     }
 }

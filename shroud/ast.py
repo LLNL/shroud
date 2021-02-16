@@ -20,6 +20,17 @@ from . import typemap
 from .util import wformat
 
 
+class WrapFlags(object):
+    """Keep track of which languages to wrap.
+    """
+    def __init__(self, options):
+        self.fortran = options.wrap_fortran
+        self.c_f = False
+        self.c = options.wrap_c
+        self.lua = options.wrap_lua
+        self.python = options.wrap_python
+
+
 class AstNode(object):
     is_class = False
 
@@ -78,7 +89,7 @@ class AstNode(object):
         scope, self.symbols, and any scopes added via a 'using' statement.
         """
         raise NotImplemented  # virtual function
-    
+
 
 ######################################################################
 
@@ -351,6 +362,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
         if self.options.literalinclude:
             # global literalinclude implies literalinclude2
             self.options.literalinclude2 = True
@@ -901,6 +913,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         if self.options.flatten_namespace:
             self.classes = parent.classes
@@ -1071,6 +1084,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
@@ -1354,6 +1368,7 @@ class FunctionNode(AstNode):
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         self.default_format(parent, format, kwargs)
 
@@ -1585,6 +1600,7 @@ class EnumNode(AstNode):
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1706,6 +1722,7 @@ class TypedefNode(AstNode):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1749,6 +1766,7 @@ class VariableNode(AstNode):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
