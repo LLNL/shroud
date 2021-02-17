@@ -103,7 +103,7 @@ class Wrapc(util.WrapperMixin):
             self._push_splicer("namespace")
             self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
-            if ns.options.wrap_c:
+            if ns.wrap.c:
                 self.wrap_namespace(ns)
         if top:
             self._pop_splicer("XXX")  # This name will not match since it is replaced.
@@ -115,7 +115,7 @@ class Wrapc(util.WrapperMixin):
         self._push_splicer("class")
         structs = []
         for cls in node.classes:
-            if not node.options.wrap_c:
+            if not node.wrap.c:
                 continue
             if cls.wrap_as == "struct":
                 structs.append(cls)
@@ -489,7 +489,7 @@ class Wrapc(util.WrapperMixin):
             # No need for wrapper with C.
             # Use struct definition in user's header from cxx_header.
             return
-        if node.options.wrap_c is False:
+        if node.wrap.c is False:
             return
         self.log.write("struct {1.name}\n".format(self, node))
         cname = node.typemap.c_type
@@ -795,7 +795,7 @@ class Wrapc(util.WrapperMixin):
             node - ast.FunctionNode.
         """
         options = node.options
-        if not options.wrap_c:
+        if not node.wrap.c:
             return
 
         if cls:

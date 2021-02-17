@@ -837,7 +837,7 @@ class GenFunctions(object):
         ordered4 = []
         for method in ordered3:
             ordered4.append(method)
-            if not method.options.wrap_fortran:
+            if not method.wrap.fortran:
                 continue
             if method._gen_fortran_generic:
                 self.process_assumed_rank(method)
@@ -1308,7 +1308,7 @@ class GenFunctions(object):
                 )
             )
 
-        if options.wrap_fortran is False:
+        if node.wrap.fortran is False:
             # The buffer function is intended to be called by Fortran.
             # No Fortran, no need for buffer function.
             return
@@ -1630,8 +1630,7 @@ class Namify(object):
             cls -
             node -
         """
-        options = node.options
-        if not options.wrap_fortran:
+        if not node.wrap.fortran:
             return
 
         node.eval_template("F_name_impl")

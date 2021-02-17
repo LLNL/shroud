@@ -500,15 +500,15 @@ def main_with_args(args):
     TypeOut(newlibrary, config).write_class_types()
 
     try:
-        options = newlibrary.options
+        wrap = newlibrary.wrap
         # Wrap C functions first to see which actually generate wrappers
         # based on fc_statements. Then the Fortran wrapper will call
         # the C function directly or the wrapped function.
         clibrary = wrapc.Wrapc(newlibrary, config, splicers["c"])
-        if options.wrap_c:
+        if wrap.c:
             clibrary.wrap_library()
 
-        if options.wrap_fortran:
+        if wrap.fortran:
             wrapf.Wrapf(newlibrary, config, splicers["f"]).wrap_library()
 
         # Fortran wrappers may produce C helper functions.
@@ -516,10 +516,10 @@ def main_with_args(args):
         # Write C utility file after creating Fortran wrappers.
         clibrary.write_impl_utility()
 
-        if options.wrap_python:
+        if wrap.python:
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()
 
-        if options.wrap_lua:
+        if wrap.lua:
             wrapl.Wrapl(newlibrary, config, splicers["lua"]).wrap_library()
     finally:
         # Write a debug dump even if there was an exception.

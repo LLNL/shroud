@@ -97,7 +97,7 @@ class Wrapf(util.WrapperMixin):
         self._push_splicer("class")
         for cls in node.classes:
             cls_options = cls.options
-            if not cls_options.wrap_fortran:
+            if not cls.wrap.fortran:
                 continue
             fileinfo.begin_class()
 
@@ -135,7 +135,7 @@ class Wrapf(util.WrapperMixin):
             self._push_splicer("namespace")
             self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
-            if not ns.options.wrap_fortran:
+            if not ns.wrap.fortran:
                 continue
             if ns.options.F_flatten_namespace:
                 self.wrap_namespace(ns, fileinfo)
@@ -159,7 +159,7 @@ class Wrapf(util.WrapperMixin):
         """
         for node in functions:
             options = node.options
-            if not options.wrap_fortran:
+            if not node.wrap.fortran:
                 continue
             if not options.class_method:
                 continue
@@ -632,11 +632,10 @@ rv = .false.
         else:
             cls_function = "function"
 
-        options = node.options
         wrap = []
-        if options.wrap_c:
+        if node.wrap.c:
             wrap.append("C-interface")
-        if options.wrap_fortran:
+        if node.wrap.fortran:
             wrap.append("Fortran")
         if not wrap:
             return
@@ -646,9 +645,9 @@ rv = .false.
 
         # Create fortran wrappers first.
         # If no real work to do, call the C function directly.
-        if options.wrap_fortran:
+        if node.wrap.fortran:
             self.wrap_function_impl(cls, node, fileinfo)
-        if options.wrap_c:
+        if node.wrap.c:
             self.wrap_function_interface(cls, node, fileinfo)
 
     def update_f_module(self, modules, imports, f_module):
