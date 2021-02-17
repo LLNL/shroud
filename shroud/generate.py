@@ -939,6 +939,7 @@ class GenFunctions(object):
         options.wrap_fortran = False
         options.wrap_python = False
         options.wrap_lua = False
+        node.wrap.clear()
 
     def template_function2(self, node, ordered_functions):
         """ Create overloaded functions for each templated argument.
@@ -1005,6 +1006,7 @@ class GenFunctions(object):
         options.wrap_fortran = False
         options.wrap_python = False
         options.wrap_lua = False
+        node.wrap.clear()
 
     def process_assumed_rank(self, node):
         """Convert assumed-rank argument into fortran_generic.
@@ -1128,6 +1130,7 @@ class GenFunctions(object):
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
+            new.wrap.assign(fortran=True)
             new.ast.params = generic.decls
 
             for arg in generic.decls:
@@ -1153,6 +1156,7 @@ class GenFunctions(object):
                 options.wrap_fortran = False
                 options.wrap_python = False
                 options.wrap_lua = False
+                cnew.wrap.assign(c=True)
                 # Set C function rank based on fortran_generic entry.
                 for arg, rank in zip(cnew.ast.params, order):
                     if rank == 's':
@@ -1171,6 +1175,7 @@ class GenFunctions(object):
         options = node.options
         #        options.wrap_c = False
         options.wrap_fortran = False
+        node.wrap.fortran = False
 
     #        options.wrap_python = False
 
@@ -1209,6 +1214,7 @@ class GenFunctions(object):
             # Python and Lua both deal with default args in their own way
             options.wrap_python = False
             options.wrap_lua = False
+            new.wrap.assign(c=True, fortran=True)
             fmt = new.fmtdict
             try:
                 fmt.function_suffix = default_arg_suffix[ndefault]
@@ -1291,6 +1297,7 @@ class GenFunctions(object):
             and not result_is_ptr
         ):
             options.wrap_c = False
+            node.wrap.c = False
             #            options.wrap_fortran = False
             self.config.log.write(
                 "Skipping {}, unable to create C wrapper "
@@ -1381,6 +1388,7 @@ class GenFunctions(object):
         options.wrap_fortran = False
         options.wrap_python = False
         options.wrap_lua = False
+        C_new.wrap.assign(c=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
@@ -1490,11 +1498,13 @@ class GenFunctions(object):
             options.wrap_fortran = True
             options.wrap_python = False
             options.wrap_lua = False
+            F_new.wrap.assign(fortran=True)
             # Do not add '_bufferify'
             F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
 
             # Do not wrap original function (does not have result argument)
             node.options.wrap_fortran = False
+            node.wrap.fortran = False
         else:
             # Fortran function may call C subroutine if string/vector result
             node._PTR_F_C_index = C_new._function_index

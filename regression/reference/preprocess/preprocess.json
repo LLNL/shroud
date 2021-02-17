@@ -174,8 +174,7 @@
                         },
                         "wrap": {
                             "c": true,
-                            "fortran": true,
-                            "python": true
+                            "fortran": true
                         }
                     },
                     {
@@ -303,8 +302,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
-                            "fortran": true,
-                            "python": true
+                            "fortran": true
                         }
                     }
                 ],

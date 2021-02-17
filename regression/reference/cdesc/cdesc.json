@@ -351,10 +351,7 @@
                         "}"
                     ]
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -461,10 +458,7 @@
                         "}"
                     ]
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -571,10 +565,7 @@
                         "}"
                     ]
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -843,10 +834,7 @@
                         "}"
                     ]
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_overloaded": true,
@@ -910,10 +898,7 @@
                 "template_parameters": [
                     "DataType"
                 ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -1019,10 +1004,7 @@
                 "template_parameters": [
                     "DataType"
                 ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -1132,10 +1114,7 @@
                 "template_parameters": [
                     "DataType"
                 ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -1329,9 +1308,7 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -1422,9 +1399,7 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -1515,9 +1490,7 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {
-                    "fortran": true
-                }
+                "wrap": {}
             }
         ],
         "language": "cxx",

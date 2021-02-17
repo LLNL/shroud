@@ -394,10 +394,7 @@
                     "literalinclude": true,
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -456,10 +453,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -518,10 +512,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -742,10 +733,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -827,10 +815,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -912,10 +897,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -1216,10 +1198,7 @@
                     "F_assumed_rank_max": 2,
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -1313,10 +1292,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -1410,10 +1386,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -1585,10 +1558,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -1682,10 +1652,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -2128,8 +2095,7 @@
                     "wrap_fortran": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2238,8 +2204,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2349,8 +2314,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2592,8 +2556,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2704,8 +2667,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2952,8 +2914,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -3243,10 +3204,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -3336,10 +3294,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -3429,10 +3384,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -3732,10 +3684,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -3835,10 +3784,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -3938,10 +3884,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -4461,10 +4404,7 @@
                 "options": {
                     "wrap_fortran": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -4563,10 +4503,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -4665,10 +4602,7 @@
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
+                "wrap": {}
             }
         ],
         "language": "c",

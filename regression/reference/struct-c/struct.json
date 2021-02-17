@@ -2151,8 +2151,7 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -2321,8 +2320,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -3263,8 +3261,7 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
@@ -3484,8 +3481,7 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true
+                    "c": true
                 }
             },
             {
