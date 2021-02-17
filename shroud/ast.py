@@ -1302,6 +1302,7 @@ class ClassNode(AstNode, NamespaceMixin):
         # Add new format and options Scope.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.wrap = WrapFlags(self.options)
         new.scope_file = self.scope_file[:]
 
         # Clone all functions.
@@ -1588,6 +1589,7 @@ class FunctionNode(AstNode):
         # new Scope with same inlocal and parent.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.wrap = WrapFlags(self.options)
 
         # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)

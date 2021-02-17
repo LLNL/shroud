@@ -345,7 +345,11 @@
                         "template_parameters": [
                             "U"
                         ],
-                        "wrap": {}
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        }
                     }
                 ],
                 "name": "user",
@@ -718,7 +722,11 @@
                     "T",
                     "U"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -950,7 +958,11 @@
                     "T",
                     "U"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_overloaded": true,
@@ -1139,7 +1151,11 @@
                 "template_parameters": [
                     "T"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -1267,7 +1283,11 @@
                 "template_parameters": [
                     "T"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "language": "cxx",
@@ -1614,7 +1634,11 @@
                                     "wrap_lua": false,
                                     "wrap_python": true
                                 },
-                                "wrap": {}
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             },
                             {
                                 "ast": {
@@ -1837,7 +1861,11 @@
                                     "wrap_lua": false,
                                     "wrap_python": true
                                 },
-                                "wrap": {}
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             }
                         ],
                         "name": "vector",
@@ -2226,7 +2254,11 @@
                                     "wrap_lua": false,
                                     "wrap_python": true
                                 },
-                                "wrap": {}
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             },
                             {
                                 "ast": {
@@ -2449,7 +2481,11 @@
                                     "wrap_lua": false,
                                     "wrap_python": true
                                 },
-                                "wrap": {}
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                }
                             }
                         ],
                         "name": "vector",

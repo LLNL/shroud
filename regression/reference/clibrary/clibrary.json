@@ -1171,7 +1171,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1603,7 +1605,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1817,7 +1821,9 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -2089,7 +2095,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -2409,7 +2417,9 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -3587,7 +3597,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -4226,7 +4237,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -5129,7 +5141,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 }
             },
             {

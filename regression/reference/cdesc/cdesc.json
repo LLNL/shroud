@@ -351,7 +351,9 @@
                         "}"
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "c": true
+                }
             },
             {
                 "_generated": "fortran_generic",
@@ -458,7 +460,9 @@
                         "}"
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "fortran": true
+                }
             },
             {
                 "_generated": "fortran_generic",
@@ -565,7 +569,9 @@
                         "}"
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -834,7 +840,9 @@
                         "}"
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "c": true
+                }
             },
             {
                 "_overloaded": true,
@@ -1004,7 +1012,10 @@
                 "template_parameters": [
                     "DataType"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtresult": {
@@ -1114,7 +1125,10 @@
                 "template_parameters": [
                     "DataType"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1399,7 +1413,9 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "fortran": true
+                }
             },
             {
                 "_generated": "fortran_generic",
@@ -1490,7 +1506,9 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {}
+                "wrap": {
+                    "fortran": true
+                }
             }
         ],
         "language": "cxx",

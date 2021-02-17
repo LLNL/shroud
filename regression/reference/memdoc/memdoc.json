@@ -85,7 +85,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true
                 }
             },
             {

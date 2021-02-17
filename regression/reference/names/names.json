@@ -448,7 +448,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1008,7 +1010,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1352,7 +1356,9 @@
                     ]
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "fortran": true,
+                    "python": true
                 }
             },
             {
@@ -1872,7 +1878,11 @@
                     "T",
                     "U"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2113,7 +2123,11 @@
                     "T",
                     "U"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_overloaded": true,
@@ -2278,7 +2292,11 @@
                 "template_parameters": [
                     "T"
                 ],
-                "wrap": {}
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
