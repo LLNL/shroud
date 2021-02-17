@@ -1749,7 +1749,7 @@ def generate_functions(library, config):
     GenFunctions(library, config).gen_library()
     Namify(library, config).name_library()
     Preprocess(library, config).process_library()
-
+    ast.promote_wrap(library)
 
 ######################################################################
 

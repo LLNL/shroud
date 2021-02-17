@@ -17,6 +17,7 @@ from . import declast
 from . import statements
 from . import todict
 from . import typemap
+from . import visitor
 from .util import wformat
 
 
@@ -66,6 +67,19 @@ class WrapFlags(object):
         self.c = c
         self.lua = lua
         self.python = python
+
+    def accumulate(self, wrap):
+        """Accumulate flags via OR operator.
+
+        Parameters
+        ----------
+        wrap : WrapFlags
+        """
+        self.fortran = self.fortran or wrap.fortran
+        self.c_f = self.c_f or wrap.c_f
+        self.c = self.c or wrap.c
+        self.lua = self.lua or wrap.lua
+        self.python = self.python or wrap.python
 
 
 class AstNode(object):
@@ -1896,7 +1910,6 @@ class FortranGeneric(object):
 
 ######################################################################
 
-
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     (string and vector)
@@ -1909,6 +1922,86 @@ def create_std_namespace(glb):
     std.add_typedef_by_name("vector")
     return std
 
+######################################################################
+
+class PromoteWrap(visitor.Visitor):
+    """Promote wrap_x options up to container.
+
+    For example:
+       options:
+         wrap_f: False
+       declarations:
+       - decl: void Func(void)
+         options:
+           wrap_f: True
+
+    Since the function's wrap_f option is True, the library should set
+    library.wrap.fortran to True as well.  Likewise for other
+    containers: namespace, class.
+
+    """
+    def visit_LibraryNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+    def visit_ClassNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+    def visit_NamespaceNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+
+def promote_wrap(node):
+    """Promote wrap options to parent containers.
+
+    Parameters
+    ----------
+    node : LibraryNode
+        Could be any AstNode subclass
+    """
+    visitor = PromoteWrap()
+    return visitor.visit(node)
 
 ######################################################################
 # Parse yaml file
