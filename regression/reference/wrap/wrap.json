@@ -40,6 +40,9 @@
                         },
                         "options": {
                             "wrap_fortran": true
+                        },
+                        "wrap": {
+                            "fortran": true
                         }
                     }
                 ],
@@ -47,7 +50,8 @@
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "Class1::",
-                "typemap_name": "Class1"
+                "typemap_name": "Class1",
+                "wrap": {}
             }
         ],
         "copyright": [
@@ -61,6 +65,7 @@
         "language": "cxx",
         "scope_file": [
             "wrap"
-        ]
+        ],
+        "wrap": {}
     }
 }
