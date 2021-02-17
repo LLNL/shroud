@@ -158,10 +158,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_flag"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->m_flag;"

@@ -685,10 +685,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->x1;"
@@ -789,10 +786,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->x1 = val;",
@@ -872,10 +866,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->y1;"
@@ -976,10 +967,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->y1 = val;",
@@ -1150,10 +1138,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->x1;"
@@ -1254,10 +1239,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->x1 = val;",
@@ -1337,10 +1319,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->y1;"
@@ -1441,10 +1420,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->y1 = val;",
@@ -1524,10 +1500,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_z1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->z1;"
@@ -1628,10 +1601,7 @@
                             "stmtc1": "c_default",
                             "underscore_name": "set_z1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->z1 = val;",

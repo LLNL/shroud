@@ -554,8 +554,6 @@ class GenFunctions(object):
 
         fmt = util.Scope(var.fmtdict)
 
-        options = dict(wrap_lua=False, wrap_python=False)
-
         # getter
         funcname = "get" + fieldname.capitalize()
         argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
@@ -573,7 +571,9 @@ class GenFunctions(object):
             ],
         )
 
-        cls.add_function(decl, options=options, splicer=splicer)
+        fcn = cls.add_function(decl, splicer=splicer)
+        fcn.wrap.lua = False
+        fcn.wrap.python = False
 
         # setter
         if ast.attrs["readonly"]:
@@ -602,7 +602,9 @@ class GenFunctions(object):
             ],
         )
 
-        cls.add_function(decl, attrs=attrs, options=options, splicer=splicer)
+        fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
+        fcn.wrap.lua = False
+        fcn.wrap.python = False
 
     def instantiate_all_classes(self, node):
         """Instantate all class template_arguments recursively.
