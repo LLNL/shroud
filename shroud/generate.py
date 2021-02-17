@@ -794,7 +794,7 @@ class GenFunctions(object):
         # Look for overloaded functions
         overloaded_functions = {}
         for function in ordered_functions:
-            # if not function.options.wrap_c:
+            # if not function.wrap.c:
             #     continue
             if function.cxx_template:
                 continue
@@ -1274,7 +1274,7 @@ class GenFunctions(object):
         options = node.options
         fmt = node.fmtdict
 
-        if options.wrap_c is False:
+        if node.wrap.c is False:
             # The user does not require a C wrapper.
             # This can be the case if the Fortran wrapper is doing all
             # the work via splicer or fstatements.
@@ -1614,8 +1614,7 @@ class Namify(object):
             cls -
             node -
         """
-        options = node.options
-        if not options.wrap_c:
+        if not node.wrap.c:
             return
         fmt_func = node.fmtdict
 
