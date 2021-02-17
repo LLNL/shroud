@@ -38,24 +38,6 @@ class WrapFlags(object):
         self.lua = False
         self.python = False
 
-    def XXXassign(self, fortran=None, c_f=None, c=None, lua=None, python=None):
-        """Assign wrap flags after clearing all flags.
-
-        Used when generating new FunctionNodes as part of function
-        overload, generic, default args.
-        """
-        self.clear()
-        if fortran is not None:
-            self.fortran = fortran
-        if c_f is not None:
-            self.c_f = c_f
-        if c is not None:
-            self.c = c
-        if lua is not None:
-            self.lua = lua
-        if python is not None:
-            self.python = python
-
     def assign(self, fortran=False, c_f=False, c=False, lua=False, python=False):
         """Assign wrap flags to wrap.
 
