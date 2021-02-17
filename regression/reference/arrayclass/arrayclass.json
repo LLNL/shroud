@@ -700,12 +700,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -909,12 +904,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -1117,12 +1107,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -1328,12 +1313,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -1689,12 +1669,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ptr"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -2050,12 +2025,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ref"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -2413,12 +2383,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ptr_const"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }
@@ -2776,12 +2741,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ref_const"
                         },
-                        "options": {
-                            "wrap_c": true,
-                            "wrap_fortran": false,
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "wrap": {
                             "c": true
                         }

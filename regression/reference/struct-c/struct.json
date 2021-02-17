@@ -2284,12 +2284,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -3446,12 +3441,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }

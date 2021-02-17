@@ -1374,12 +1374,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4a"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -1702,12 +1697,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -1917,11 +1907,7 @@
                     "underscore_name": "return_one_name"
                 },
                 "options": {
-                    "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "literalinclude": true
                 },
                 "wrap": {
                     "c": true
@@ -2244,12 +2230,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "return_two_names"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -2557,11 +2538,7 @@
                     "underscore_name": "implied_text_len"
                 },
                 "options": {
-                    "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "literalinclude": true
                 },
                 "wrap": {
                     "c": true
@@ -3692,9 +3669,6 @@
                     "underscore_name": "bind_c2"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -4397,9 +4371,6 @@
                     "underscore_name": "pass_assumed_type_buf"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -5395,8 +5366,6 @@
                     "underscore_name": "callback3"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },

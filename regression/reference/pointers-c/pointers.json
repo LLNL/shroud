@@ -2554,12 +2554,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_char_array_in"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -2907,9 +2902,6 @@
                     "underscore_name": "get_ptr_to_scalar"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -3125,12 +3117,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -3435,12 +3422,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -3656,12 +3638,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_func_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -3849,9 +3826,6 @@
                     "underscore_name": "get_ptr_to_const_scalar"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -4063,12 +4037,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -4369,12 +4338,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -4562,12 +4526,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -4760,9 +4719,6 @@
                 },
                 "options": {
                     "F_force_wrapper": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -4952,12 +4908,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -5150,9 +5101,6 @@
                 },
                 "options": {
                     "F_force_wrapper": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -6222,12 +6170,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -6469,12 +6412,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }

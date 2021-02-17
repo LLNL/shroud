@@ -81,7 +81,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -210,10 +209,7 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -280,7 +276,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -393,10 +388,7 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -488,7 +480,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -626,8 +617,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -715,7 +704,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -846,8 +834,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -917,7 +903,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1032,8 +1017,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1103,7 +1086,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1221,8 +1203,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1287,7 +1267,6 @@
                     "underscore_name": "vector_increment"
                 },
                 "options": {
-                    "wrap_c": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1400,8 +1379,6 @@
                     "underscore_name": "vector_increment"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -1469,7 +1446,6 @@
                     "underscore_name": "vector_iota_out_d"
                 },
                 "options": {
-                    "wrap_c": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -1581,10 +1557,7 @@
                     "underscore_name": "vector_iota_out_d"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -1661,8 +1634,6 @@
                     "underscore_name": "vector_string_count"
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -1797,9 +1768,6 @@
                     "underscore_name": "vector_string_count"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -1991,9 +1959,7 @@
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "options": {
-                    "wrap_c": false
-                },
+                "options": {},
                 "wrap": {
                     "fortran": true
                 }
@@ -2168,12 +2134,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_vector_alloc"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }

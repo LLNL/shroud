@@ -541,12 +541,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_name"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -1120,12 +1115,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -1502,12 +1492,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "test_multiline_splicer"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// line 1",
@@ -1588,12 +1573,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -1823,12 +1803,7 @@
                     "underscore_name": "function_tu"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": true
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -2068,12 +2043,7 @@
                     "double"
                 ],
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": true
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -2156,12 +2126,7 @@
                     "function_name": "UseImplWorker",
                     "underscore_name": "use_impl_worker"
                 },
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -2270,12 +2235,7 @@
                 "gen_headers_typedef": [
                     "internal::ImplWorker1"
                 ],
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": true
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [

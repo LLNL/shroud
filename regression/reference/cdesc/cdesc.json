@@ -322,9 +322,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -428,12 +426,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
                 },
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -537,12 +530,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
                 },
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -808,12 +796,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -873,12 +856,7 @@
                     "underscore_name": "get_data"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -979,11 +957,7 @@
                 },
                 "have_template_args": true,
                 "options": {
-                    "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_create_generic": false
                 },
                 "template_arguments": [
                     {
@@ -1092,11 +1066,7 @@
                 ],
                 "have_template_args": true,
                 "options": {
-                    "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_create_generic": false
                 },
                 "template_arguments": [
                     {
@@ -1314,8 +1284,7 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [
@@ -1403,10 +1372,7 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [
@@ -1496,10 +1462,7 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [

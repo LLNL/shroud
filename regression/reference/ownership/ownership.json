@@ -896,10 +896,7 @@
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -1211,10 +1208,7 @@
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -1526,10 +1520,7 @@
                     "underscore_name": "return_int_ptr_dim_default"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -1965,10 +1956,7 @@
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
@@ -2446,10 +2434,7 @@
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
                 "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true

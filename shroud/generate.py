@@ -636,7 +636,7 @@ class GenFunctions(object):
             if cls.wrap_as == "struct":
                 clslist.append(cls)
                 options = cls.options
-                if options.wrap_python and options.PY_struct_arg == "class":
+                if cls.wrap.python and options.PY_struct_arg == "class":
                     self.add_struct_ctor(cls)
             elif cls.template_arguments:
                 # Replace class with new class for each template instantiation.
@@ -901,11 +901,6 @@ class GenFunctions(object):
                 fmt.template_suffix = "_" + str(iargs)
 
             new.cxx_template = {}
-            options = new.options
-            options.wrap_c = oldoptions.wrap_c
-            options.wrap_fortran = oldoptions.wrap_fortran
-            options.wrap_python = oldoptions.wrap_python
-            options.wrap_lua = oldoptions.wrap_lua
             fmt.CXX_template = targs.instantiation  # ex. <int>
 
             # Gather headers required by template arguments.
@@ -919,7 +914,7 @@ class GenFunctions(object):
                 iast = getattr(self.instantiate_scope, new.ast.typemap.name)
                 new.ast = new.ast.instantiate(node.ast.instantiate(iast))
                 # Generics cannot differentiate on return type
-                options.F_create_generic = False
+                new.options.F_create_generic = False
 
             # Replace templated arguments.
             # arg - declast.Declaration
@@ -936,11 +931,6 @@ class GenFunctions(object):
         new.gen_headers_typedef = headers_typedef
         # Do not process templated node, instead process
         # generated functions above.
-        options = node.options
-        options.wrap_c = False
-        options.wrap_fortran = False
-        options.wrap_python = False
-        options.wrap_lua = False
         node.wrap.clear()
 
     def template_function2(self, node, ordered_functions):
@@ -966,8 +956,6 @@ class GenFunctions(object):
             node -
             ordered_functions -
         """
-        oldoptions = node.options
-
         new = node.clone()
         ordered_functions.append(new)
         self.append_function_index(new)
@@ -975,11 +963,6 @@ class GenFunctions(object):
         new._generated = "cxx_template"
 
         new.cxx_template = {}
-        options = new.options
-        options.wrap_c = oldoptions.wrap_c
-        options.wrap_fortran = oldoptions.wrap_fortran
-        options.wrap_python = oldoptions.wrap_python
-        options.wrap_lua = oldoptions.wrap_lua
         #        fmt.CXX_template = targs.instantiation   # ex. <int>
 
         #        self.push_instantiate_scope(new, targs)
@@ -988,7 +971,7 @@ class GenFunctions(object):
             iast = getattr(self.instantiate_scope, new.ast.typemap.name)
             new.ast = new.ast.instantiate(node.ast.instantiate(iast))
             # Generics cannot differentiate on return type
-            options.F_create_generic = False
+            new.options.F_create_generic = False
 
         # Replace templated arguments.
         newparams = []
@@ -1003,11 +986,6 @@ class GenFunctions(object):
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node.options
-        options.wrap_c = False
-        options.wrap_fortran = False
-        options.wrap_python = False
-        options.wrap_lua = False
         node.wrap.clear()
 
     def process_assumed_rank(self, node):
@@ -1127,11 +1105,6 @@ class GenFunctions(object):
                 fmt.update(generic.fmtdict)
             fmt.function_suffix = fmt.function_suffix + generic.function_suffix
             new.fortran_generic = {}
-            options = new.options
-            options.wrap_c = False
-            options.wrap_fortran = True
-            options.wrap_python = False
-            options.wrap_lua = False
             new.wrap.assign(fortran=True)
             new.ast.params = generic.decls
 
@@ -1153,11 +1126,6 @@ class GenFunctions(object):
                 cfmt = cnew.fmtdict
                 cfmt.function_suffix = cfmt.function_suffix + generic.function_suffix
                 cnew.fortran_generic = {}
-                options = cnew.options
-                options.wrap_c = True
-                options.wrap_fortran = False
-                options.wrap_python = False
-                options.wrap_lua = False
                 cnew.wrap.assign(c=True)
                 # Set C function rank based on fortran_generic entry.
                 for arg, rank in zip(cnew.ast.params, order):
@@ -1174,12 +1142,10 @@ class GenFunctions(object):
 
         # Do not process templated node, instead process
         # generated functions above.
-        options = node.options
-        #        options.wrap_c = False
-        options.wrap_fortran = False
+        #        node.wrap.c = False
         node.wrap.fortran = False
 
-    #        options.wrap_python = False
+    #        node.wrap.python = False
 
     def has_default_args(self, node, ordered_functions):
         """
@@ -1210,12 +1176,7 @@ class GenFunctions(object):
             new._generated = "has_default_arg"
             del new.ast.params[i:]  # remove trailing arguments
             new._has_default_arg = False
-            options = new.options
-            options.wrap_c = True
-            options.wrap_fortran = True
             # Python and Lua both deal with default args in their own way
-            options.wrap_python = False
-            options.wrap_lua = False
             new.wrap.assign(c=True, fortran=True)
             fmt = new.fmtdict
             try:
@@ -1298,9 +1259,8 @@ class GenFunctions(object):
             and result_typemap.name != "char"
             and not result_is_ptr
         ):
-            options.wrap_c = False
             node.wrap.c = False
-            #            options.wrap_fortran = False
+            #            node.wrap.fortran = False
             self.config.log.write(
                 "Skipping {}, unable to create C wrapper "
                 "for function returning {} instance"
@@ -1368,9 +1328,8 @@ class GenFunctions(object):
                 need_cdesc_result or has_buf_arg):
             return
 
-        # XXX       options = node['options']
-        # XXX       options.wrap_fortran = False
-        # Preserve wrap_c.
+        # XXX       node.wrap.fortran = False
+        # Preserve wrap.c.
         # This keep a version which accepts char * arguments.
 
         # Create a new C function and change arguments
@@ -1386,10 +1345,6 @@ class GenFunctions(object):
         fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
 
         options = C_new.options
-        options.wrap_c = True
-        options.wrap_fortran = False
-        options.wrap_python = False
-        options.wrap_lua = False
         C_new.wrap.assign(c=True)
         C_new._PTR_C_CXX_index = node._function_index
 
@@ -1405,8 +1360,6 @@ class GenFunctions(object):
                 # Meaningless to call without the size argument.
                 # TODO: add an option where char** length is determined by looking
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
-                node.options.wrap_c = False
-                node.options.wrap_lua = False  # NotImplemented
                 node.wrap.c = False
                 node.wrap.lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
@@ -1497,17 +1450,11 @@ class GenFunctions(object):
 
             # Fortran function should wrap the new C function
             F_new._PTR_F_C_index = C_new._function_index
-            options = F_new.options
-            options.wrap_c = False
-            options.wrap_fortran = True
-            options.wrap_python = False
-            options.wrap_lua = False
             F_new.wrap.assign(fortran=True)
             # Do not add '_bufferify'
             F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
 
             # Do not wrap original function (does not have result argument)
-            node.options.wrap_fortran = False
             node.wrap.fortran = False
         else:
             # Fortran function may call C subroutine if string/vector result

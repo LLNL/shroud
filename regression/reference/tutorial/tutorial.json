@@ -577,9 +577,7 @@
                     "function_name": "ConcatenateStrings",
                     "underscore_name": "concatenate_strings"
                 },
-                "options": {
-                    "wrap_c": false
-                },
+                "options": {},
                 "wrap": {
                     "fortran": true,
                     "lua": true,
@@ -800,12 +798,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "concatenate_strings"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -881,11 +874,7 @@
                     "underscore_name": "use_default_arguments"
                 },
                 "options": {
-                    "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "literalinclude": true
                 },
                 "wrap": {
                     "c": true,
@@ -1015,11 +1004,7 @@
                     "underscore_name": "use_default_arguments"
                 },
                 "options": {
-                    "literalinclude": true,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "literalinclude": true
                 },
                 "wrap": {
                     "c": true,
@@ -1531,12 +1516,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "overloaded_function"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
@@ -1717,12 +1697,7 @@
                     "underscore_name": "template_argument"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -1884,12 +1859,7 @@
                     "underscore_name": "template_argument"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": true,
-                    "wrap_python": true
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -2058,12 +2028,7 @@
                     "double"
                 ],
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": true,
-                    "wrap_python": true
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -2125,8 +2090,6 @@
                 },
                 "have_template_args": true,
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -2228,8 +2191,6 @@
                 "have_template_args": true,
                 "options": {
                     "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -2338,8 +2299,6 @@
                 "have_template_args": true,
                 "options": {
                     "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -2689,8 +2648,7 @@
                     }
                 ],
                 "options": {
-                    "F_string_len_trim": true,
-                    "wrap_fortran": false
+                    "F_string_len_trim": true
                 },
                 "wrap": {
                     "c": true,
@@ -2764,11 +2722,7 @@
                     "underscore_name": "fortran_generic_overloaded"
                 },
                 "options": {
-                    "F_string_len_trim": true,
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_string_len_trim": true
                 },
                 "wrap": {
                     "fortran": true
@@ -2840,11 +2794,7 @@
                     "underscore_name": "fortran_generic_overloaded"
                 },
                 "options": {
-                    "F_string_len_trim": true,
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_string_len_trim": true
                 },
                 "wrap": {
                     "fortran": true
@@ -3063,11 +3013,7 @@
                     }
                 ],
                 "options": {
-                    "F_string_len_trim": true,
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_string_len_trim": true
                 },
                 "wrap": {
                     "c": true
@@ -3194,12 +3140,7 @@
                     "function_suffix": "_num",
                     "underscore_name": "use_default_overload"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -3373,12 +3314,7 @@
                     "function_suffix": "_num_offset",
                     "underscore_name": "use_default_overload"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -3907,12 +3843,7 @@
                     "function_suffix": "_3",
                     "underscore_name": "use_default_overload"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -4127,12 +4058,7 @@
                     "function_suffix": "_4",
                     "underscore_name": "use_default_overload"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true
@@ -5729,12 +5655,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true
                 }
