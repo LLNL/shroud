@@ -86,7 +86,7 @@ class Wrapl(util.WrapperMixin):
         """
         self._push_splicer("class")
         for cls in node.classes:
-            if not cls.options.wrap_lua:
+            if not cls.wrap.lua:
                 continue
             name = cls.name
             self.reset_file()
@@ -103,7 +103,7 @@ class Wrapl(util.WrapperMixin):
             self._pop_splicer("function")
 
         for ns in node.namespaces:
-            if ns.options.wrap_lua:
+            if ns.wrap.lua:
                 self.wrap_namespace(ns)
 
     def wrap_class(self, node):
@@ -186,7 +186,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         overloaded_methods = {}
         overloads = []
         for function in functions:
-            if not function.options.wrap_lua:
+            if not function.wrap.lua:
                 continue
             name = function.ast.name
             if name in overloaded_methods:

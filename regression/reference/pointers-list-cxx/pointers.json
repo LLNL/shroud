@@ -75,7 +75,10 @@
                     "function_name": "intargs_in",
                     "underscore_name": "intargs_in"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -141,7 +144,10 @@
                     "function_name": "intargs_inout",
                     "underscore_name": "intargs_inout"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -204,7 +210,10 @@
                     "function_name": "intargs_out",
                     "underscore_name": "intargs_out"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -342,7 +351,10 @@
                     "function_name": "intargs",
                     "underscore_name": "intargs"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -506,7 +518,10 @@
                     "function_name": "cos_doubles",
                     "underscore_name": "cos_doubles"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -670,7 +685,10 @@
                     "function_name": "truncate_to_int",
                     "underscore_name": "truncate_to_int"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -790,7 +808,10 @@
                     "function_name": "get_values",
                     "underscore_name": "get_values"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -924,7 +945,10 @@
                     "function_name": "get_values2",
                     "underscore_name": "get_values2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1037,7 +1061,10 @@
                     "function_name": "iota_allocatable",
                     "underscore_name": "iota_allocatable"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1149,7 +1176,10 @@
                     "function_name": "iota_dimension",
                     "underscore_name": "iota_dimension"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1292,6 +1322,9 @@
                 },
                 "options": {
                     "wrap_lua": false
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -1372,7 +1405,10 @@
                     "function_name": "fillIntArray",
                     "underscore_name": "fill_int_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1477,7 +1513,10 @@
                     "function_name": "incrementIntArray",
                     "underscore_name": "increment_int_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1579,7 +1618,10 @@
                     "function_name": "fill_with_zeros",
                     "underscore_name": "fill_with_zeros"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1700,7 +1742,10 @@
                     "function_name": "accumulate",
                     "underscore_name": "accumulate"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1791,7 +1836,10 @@
                     "function_name": "acceptCharArrayIn",
                     "underscore_name": "accept_char_array_in"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1850,7 +1898,10 @@
                     "function_name": "setGlobalInt",
                     "underscore_name": "set_global_int"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -1893,7 +1944,10 @@
                     "function_name": "sumFixedArray",
                     "underscore_name": "sum_fixed_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -1937,7 +1991,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -2021,7 +2076,10 @@
                     "function_name": "getPtrToFixedArray",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2145,7 +2203,10 @@
                     "function_name": "getPtrToDynamicArray",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2230,7 +2291,10 @@
                     "function_name": "getPtrToFuncArray",
                     "underscore_name": "get_ptr_to_func_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -2275,7 +2339,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -2357,7 +2422,10 @@
                     "function_name": "getPtrToFixedConstArray",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2479,7 +2547,10 @@
                     "function_name": "getPtrToDynamicConstArray",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2549,7 +2620,10 @@
                     "function_name": "getRawPtrToScalar",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -2597,7 +2671,8 @@
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -2667,7 +2742,10 @@
                     "function_name": "getRawPtrToFixedArray",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -2715,7 +2793,8 @@
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2764,7 +2843,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2810,7 +2890,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2866,7 +2947,8 @@
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtargs": {
@@ -2949,7 +3031,10 @@
                     "function_name": "returnAddress1",
                     "underscore_name": "return_address1"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -3034,6 +3119,9 @@
                 },
                 "options": {
                     "F_force_wrapper": true
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -3100,7 +3188,10 @@
                     "function_name": "fetchVoidPtr",
                     "underscore_name": "fetch_void_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -3145,7 +3236,8 @@
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -3194,7 +3286,10 @@
                     "function_name": "returnIntPtrToScalar",
                     "underscore_name": "return_int_ptr_to_scalar"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -3256,7 +3351,10 @@
                     "function_name": "returnIntPtrToFixedArray",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -3306,7 +3404,10 @@
                     "function_name": "returnIntPtrToConstScalar",
                     "underscore_name": "return_int_ptr_to_const_scalar"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -3369,7 +3470,10 @@
                     "function_name": "returnIntPtrToFixedConstArray",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -3417,7 +3521,10 @@
                     "function_name": "returnIntScalar",
                     "underscore_name": "return_int_scalar"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -3449,7 +3556,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -3501,7 +3609,8 @@
                 },
                 "options": {
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -3537,12 +3646,16 @@
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             }
         ],
         "language": "cxx",
         "scope_file": [
             "pointers"
-        ]
+        ],
+        "wrap": {
+            "python": true
+        }
     }
 }

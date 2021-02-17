@@ -47,7 +47,11 @@
                     "stmtc1": "c_default",
                     "underscore_name": "function1"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -208,12 +212,20 @@
                     "function_name": "Function2",
                     "underscore_name": "function2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "language": "c",
         "scope_file": [
             "Interface"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

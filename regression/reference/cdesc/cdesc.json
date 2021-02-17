@@ -111,7 +111,11 @@
                     "stmtc1": "c_default",
                     "underscore_name": "rank2_in"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -318,9 +322,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
-                "options": {
-                    "wrap_fortran": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -346,6 +348,9 @@
                         "// default:",
                         "}"
                     ]
+                },
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -421,12 +426,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
                 },
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -452,6 +452,9 @@
                         "// default:",
                         "}"
                     ]
+                },
+                "wrap": {
+                    "fortran": true
                 }
             },
             {
@@ -527,12 +530,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
                 },
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -558,6 +556,9 @@
                         "// default:",
                         "}"
                     ]
+                },
+                "wrap": {
+                    "fortran": true
                 }
             },
             {
@@ -795,12 +796,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "splicer": {
                     "c": [
                         "// This function should not exist"
@@ -826,6 +822,9 @@
                         "// default:",
                         "}"
                     ]
+                },
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -857,12 +856,7 @@
                     "underscore_name": "get_data"
                 },
                 "have_template_args": true,
-                "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
+                "options": {},
                 "template_arguments": [
                     {
                         "asts": [
@@ -889,7 +883,8 @@
                 ],
                 "template_parameters": [
                     "DataType"
-                ]
+                ],
+                "wrap": {}
             },
             {
                 "_fmtresult": {
@@ -962,11 +957,7 @@
                 },
                 "have_template_args": true,
                 "options": {
-                    "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_create_generic": false
                 },
                 "template_arguments": [
                     {
@@ -994,7 +985,11 @@
                 ],
                 "template_parameters": [
                     "DataType"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtresult": {
@@ -1071,11 +1066,7 @@
                 ],
                 "have_template_args": true,
                 "options": {
-                    "F_create_generic": false,
-                    "wrap_c": true,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "F_create_generic": false
                 },
                 "template_arguments": [
                     {
@@ -1103,7 +1094,11 @@
                 ],
                 "template_parameters": [
                     "DataType"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1289,14 +1284,14 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [
                         "// This function does not need to exist."
                     ]
-                }
+                },
+                "wrap": {}
             },
             {
                 "_generated": "fortran_generic",
@@ -1377,15 +1372,15 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [
                         "// This function does not need to exist."
                     ]
+                },
+                "wrap": {
+                    "fortran": true
                 }
             },
             {
@@ -1467,21 +1462,25 @@
                     }
                 },
                 "options": {
-                    "wrap_c": false,
-                    "wrap_fortran": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                    "wrap_c": false
                 },
                 "splicer": {
                     "c_buf": [
                         "// This function does not need to exist."
                     ]
+                },
+                "wrap": {
+                    "fortran": true
                 }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "cdesc"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

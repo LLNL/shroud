@@ -489,6 +489,7 @@ if __name__ == "__main__":
         TestDesc("ownership"),
         TestDesc("generic"),
         TestDesc("memdoc"),
+        TestDesc("wrap"),
     ]
 
     if args.testname:

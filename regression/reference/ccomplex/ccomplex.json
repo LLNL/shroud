@@ -104,6 +104,10 @@
                 },
                 "options": {
                     "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
                 }
             },
             {
@@ -219,7 +223,12 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_inout_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -333,7 +342,12 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_out_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -445,6 +459,9 @@
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -631,12 +648,22 @@
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_out_ptr_flag"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                }
             }
         ],
         "language": "c",
         "scope_file": [
             "ccomplex"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true,
+            "python": true
+        }
     }
 }

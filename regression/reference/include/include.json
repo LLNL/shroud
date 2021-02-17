@@ -111,7 +111,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     },
                     {
                         "_fmtargs": {
@@ -206,14 +210,22 @@
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "name": "Class2",
                 "options": {},
                 "parse_keyword": "class",
                 "scope": "Class2::",
-                "typemap_name": "Class2"
+                "typemap_name": "Class2",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "copyright": [
@@ -299,7 +311,11 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "function1"
                                 },
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true
+                                }
                             }
                         ],
                         "name": "two",
@@ -309,7 +325,11 @@
                             "library",
                             "one",
                             "two"
-                        ]
+                        ],
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "options": {},
@@ -317,7 +337,11 @@
                 "scope_file": [
                     "library",
                     "one"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "classes": [
@@ -430,14 +454,22 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method1"
                                 },
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true
+                                }
                             }
                         ],
                         "name": "Class1",
                         "options": {},
                         "parse_keyword": "class",
                         "scope": "three::Class1::",
-                        "typemap_name": "three::Class1"
+                        "typemap_name": "three::Class1",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -461,7 +493,11 @@
                 "scope_file": [
                     "library",
                     "three"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "classes": [
@@ -522,14 +558,22 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true
+                                }
                             }
                         ],
                         "name": "class0",
                         "options": {},
                         "parse_keyword": "class",
                         "scope": "outer1::class0::",
-                        "typemap_name": "outer1::class0"
+                        "typemap_name": "outer1::class0",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -582,7 +626,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "name": "outer1",
@@ -591,7 +639,11 @@
                 "scope_file": [
                     "library",
                     "outer1"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "classes": [
@@ -655,14 +707,22 @@
                                     "stmtc1": "c_default",
                                     "underscore_name": "method"
                                 },
-                                "options": {}
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true
+                                }
                             }
                         ],
                         "name": "class0",
                         "options": {},
                         "parse_keyword": "class",
                         "scope": "outer2::class0::",
-                        "typemap_name": "outer2::class0"
+                        "typemap_name": "outer2::class0",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "fmtdict": {
@@ -715,7 +775,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "outer_func"
                         },
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        }
                     }
                 ],
                 "name": "outer2",
@@ -724,7 +788,11 @@
                 "scope_file": [
                     "library",
                     "outer2"
-                ]
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
         ],
         "scope_file": [
@@ -747,8 +815,16 @@
                 },
                 "fmtdict": {},
                 "name": "CustomType",
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             }
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

@@ -31,6 +31,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Struct in an inner namespace using Py_struct_arg=numpy is now properly wrapped.
 - Support an array of pointers - ``void **addr+rank(1)``.
 - Create generic interface even if only one *decl* in *fortran_generic* list.
+- Promote wrap options (ex wrap_fortran) up to container when True
+  (library, class, namespace). This allows wrap_fortran to be False at
+  the global level and set True on a function and get a wrapper.
+  Before a False at the global level would never attempt to do any
+  wrapping.
 
 ### Changed
 

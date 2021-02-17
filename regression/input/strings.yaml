@@ -50,7 +50,7 @@ declarations:
   options:
     # This copies into 'dest' which must be allocated first
     # and does not work with Python
-    wrap_Lua: False
+    wrap_lua: False
     literalinclude: True
 
 - decl: void passCharPtrInOut(char * s+intent(inout))
@@ -285,7 +285,7 @@ declarations:
     # This copies into 'name' which must be allocated first
     # and does not work with Python
     wrap_python: False
-    wrap_Lua: False
+    wrap_lua: False
 
 #- decl: void explicit3(char * name+len(AAlen)+len_trim(AAtrim))
 # set names for len/len_trim annotations
@@ -314,7 +314,7 @@ declarations:
     # This copies into 'dest' which must be allocated first
     # and does not work with Python
     wrap_python: False
-    wrap_Lua: False
+    wrap_lua: False
   doxygen:
     brief: strcpy like behavior
     description: |
@@ -325,6 +325,7 @@ declarations:
 - decl: void PostDeclare(int *count +rank(1)+intent(in), std::string &name)
   options:
     PY_array_arg: list
+  doxygen:
     description: |
       Test post_declare.
       The std::string in py_string_inout must be declared before the

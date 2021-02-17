@@ -193,7 +193,7 @@ class Wrapp(util.WrapperMixin):
             self._push_splicer("namespace")
             self._push_splicer("XXX") # placer holder
         for ns in node.namespaces:
-            if ns.options.wrap_python:
+            if ns.wrap.python:
                 self.wrap_namespace(ns)
                 self.register_submodule(ns, modinfo)
         if top:
@@ -205,7 +205,7 @@ class Wrapp(util.WrapperMixin):
 
         # preprocess all classes first to allow them to reference each other
         for cls in node.classes:
-            if not cls.options.wrap_python:
+            if not cls.wrap.python:
                 continue
 
             # XXX - classes and structs as classes
@@ -231,7 +231,7 @@ class Wrapp(util.WrapperMixin):
 
         self._push_splicer("class")
         for cls in node.classes:
-            if not cls.options.wrap_python:
+            if not cls.wrap.python:
                 continue
             name = cls.name
             self.reset_file()
@@ -1067,7 +1067,7 @@ return 1;""",
         overloaded_methods = {}
         for function in functions:
             flist = overloaded_methods.setdefault(function.ast.name, [])
-            if not function.options.wrap_python:
+            if not function.wrap.python:
                 continue
             if not function.options.PY_create_generic:
                 continue
@@ -1108,7 +1108,7 @@ return 1;""",
         #  then call wrapped function several times.
         #  If goto_fail, set to True to avoid "crosses initialization" error.
         options = node.options
-        if not options.wrap_python:
+        if not node.wrap.python:
             return
         if options.PY_array_arg not in ["numpy", "list"]:
             linenumber = options.get("__line__", "?")

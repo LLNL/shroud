@@ -52,7 +52,10 @@
                             "variable_upper": "IFIELD"
                         },
                         "name": "ifield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -74,9 +77,15 @@
                             "variable_upper": "DFIELD"
                         },
                         "name": "dfield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -130,7 +139,10 @@
                             "variable_upper": "CFIELD"
                         },
                         "name": "cfield",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -157,9 +169,15 @@
                             "variable_upper": "CONST_DVALUE"
                         },
                         "name": "const_dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -211,7 +229,10 @@
                             "variable_upper": "NITEMS"
                         },
                         "name": "nitems",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -253,7 +274,10 @@
                             "variable_upper": "IVALUE"
                         },
                         "name": "ivalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -295,7 +319,10 @@
                             "variable_upper": "DVALUE"
                         },
                         "name": "dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -334,9 +361,15 @@
                             "variable_upper": "SVALUE"
                         },
                         "name": "svalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -388,7 +421,10 @@
                             "variable_upper": "NITEMS"
                         },
                         "name": "nitems",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -424,7 +460,10 @@
                             "variable_upper": "IVALUE"
                         },
                         "name": "ivalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -460,9 +499,15 @@
                             "variable_upper": "DVALUE"
                         },
                         "name": "dvalue",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -519,7 +564,10 @@
                             "variable_upper": "NAME"
                         },
                         "name": "name",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     },
                     {
                         "ast": {
@@ -546,9 +594,15 @@
                             "variable_upper": "COUNT"
                         },
                         "name": "count",
-                        "options": {}
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        }
                     }
-                ]
+                ],
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "cxx_header": [],
@@ -586,15 +640,13 @@
                             "function_name": "getX1",
                             "underscore_name": "get_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->x1;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -629,16 +681,14 @@
                             "function_name": "setX1",
                             "underscore_name": "set_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->x1 = val;",
                                 "return;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -658,15 +708,13 @@
                             "function_name": "getY1",
                             "underscore_name": "get_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->y1;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -701,16 +749,14 @@
                             "function_name": "setY1",
                             "underscore_name": "set_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->y1 = val;",
                                 "return;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     }
                 ],
                 "name": "Cstruct_as_class",
@@ -743,7 +789,8 @@
                             "variable_upper": "X1"
                         },
                         "name": "x1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -765,9 +812,11 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {}
                     }
                 ],
+                "wrap": {},
                 "wrap_as": "class"
             },
             {
@@ -806,15 +855,13 @@
                             "function_name": "getX1",
                             "underscore_name": "get_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->x1;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -849,16 +896,14 @@
                             "function_name": "setX1",
                             "underscore_name": "set_x1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->x1 = val;",
                                 "return;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -878,15 +923,13 @@
                             "function_name": "getY1",
                             "underscore_name": "get_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->y1;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -921,16 +964,14 @@
                             "function_name": "setY1",
                             "underscore_name": "set_y1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->y1 = val;",
                                 "return;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -950,15 +991,13 @@
                             "function_name": "getZ1",
                             "underscore_name": "get_z1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "return SH_this->z1;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -993,16 +1032,14 @@
                             "function_name": "setZ1",
                             "underscore_name": "set_z1"
                         },
-                        "options": {
-                            "wrap_lua": false,
-                            "wrap_python": false
-                        },
+                        "options": {},
                         "splicer": {
                             "c": [
                                 "SH_this->z1 = val;",
                                 "return;"
                             ]
-                        }
+                        },
+                        "wrap": {}
                     }
                 ],
                 "name": "Cstruct_as_subclass",
@@ -1036,7 +1073,8 @@
                             "variable_upper": "X1"
                         },
                         "name": "x1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -1058,7 +1096,8 @@
                             "variable_upper": "Y1"
                         },
                         "name": "y1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {}
                     },
                     {
                         "ast": {
@@ -1080,9 +1119,11 @@
                             "variable_upper": "Z1"
                         },
                         "name": "z1",
-                        "options": {}
+                        "options": {},
+                        "wrap": {}
                     }
                 ],
+                "wrap": {},
                 "wrap_as": "class"
             }
         ],
@@ -1181,6 +1222,9 @@
                 },
                 "options": {
                     "literalinclude": true
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -1271,6 +1315,9 @@
                 },
                 "options": {
                     "literalinclude": true
+                },
+                "wrap": {
+                    "python": true
                 }
             },
             {
@@ -1403,7 +1450,10 @@
                     "function_name": "passStruct2",
                     "underscore_name": "pass_struct2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1490,7 +1540,10 @@
                     "function_name": "acceptStructInPtr",
                     "underscore_name": "accept_struct_in_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1630,7 +1683,10 @@
                     "function_name": "acceptStructOutPtr",
                     "underscore_name": "accept_struct_out_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1698,7 +1754,10 @@
                     "function_name": "acceptStructInOutPtr",
                     "underscore_name": "accept_struct_in_out_ptr"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1818,7 +1877,10 @@
                     "function_name": "returnStructByValue",
                     "underscore_name": "return_struct_by_value"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -1947,7 +2009,10 @@
                     "function_name": "returnStructPtr1",
                     "underscore_name": "return_struct_ptr1"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtargs": {
@@ -2117,7 +2182,10 @@
                     "function_name": "returnStructPtr2",
                     "underscore_name": "return_struct_ptr2"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "_fmtresult": {
@@ -2169,7 +2237,10 @@
                     "function_name": "get_global_struct_list",
                     "underscore_name": "get_global_struct_list"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "python": true
+                }
             },
             {
                 "ast": {
@@ -2197,7 +2268,8 @@
                     "class_ctor": "Cstruct_as_class",
                     "literalinclude": true,
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2253,7 +2325,8 @@
                 "options": {
                     "class_ctor": "Cstruct_as_class",
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2297,7 +2370,8 @@
                 "options": {
                     "class_method": "Cstruct_as_class",
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             },
             {
                 "ast": {
@@ -2367,12 +2441,16 @@
                 "options": {
                     "class_ctor": "Cstruct_as_subclass",
                     "wrap_python": false
-                }
+                },
+                "wrap": {}
             }
         ],
         "language": "cxx",
         "scope_file": [
             "struct"
-        ]
+        ],
+        "wrap": {
+            "python": true
+        }
     }
 }

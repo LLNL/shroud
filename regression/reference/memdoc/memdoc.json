@@ -83,7 +83,11 @@
                     "function_name": "getConstStringPtrAlloc",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "options": {}
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                }
             },
             {
                 "_fmtargs": {
@@ -188,17 +192,19 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "options": {
-                    "wrap_c": true,
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
+                "options": {},
+                "wrap": {
+                    "c": true
                 }
             }
         ],
         "language": "cxx",
         "scope_file": [
             "memdoc"
-        ]
+        ],
+        "wrap": {
+            "c": true,
+            "fortran": true
+        }
     }
 }

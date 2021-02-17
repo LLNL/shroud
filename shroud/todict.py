@@ -194,6 +194,13 @@ class ToDict(visitor.Visitor):
 
     ######################################################################
 
+    def visit_WrapFlags(self, node):
+        d = dict()
+        add_true_fields(
+            node, d, ["fortran", "c_f", "c", "lua", "python"]
+        )
+        return d
+
     def visit_LibraryNode(self, node):
         d = dict()
         add_true_fields(node, d, ["copyright", "cxx_header", "language", "scope"])
@@ -210,6 +217,7 @@ class ToDict(visitor.Visitor):
                 "namespaces",
                 "typedefs",
                 "variables",
+                "wrap",
 #                "fmtdict",
 #                "options",
 #                "scope_file",
@@ -242,6 +250,7 @@ class ToDict(visitor.Visitor):
                 "fmtdict",
                 "options",
                 "template_arguments",
+                "wrap",
             ],
         )
         return d
@@ -260,6 +269,7 @@ class ToDict(visitor.Visitor):
                 "fortran_generic",
                 "fstatements",
                 "splicer",
+                "wrap",
             ],
         )
         add_true_fields(
@@ -321,14 +331,19 @@ class ToDict(visitor.Visitor):
             decl=node.decl,
         )
         add_non_none_fields(node, d, ["linenumber"])
-        self.add_visit_fields(node, d, ["_fmtmembers", "fmtdict", "options"])
+        self.add_visit_fields(node, d, [
+            "_fmtmembers",
+            "fmtdict",
+            "options",
+            "wrap",
+        ])
         return d
 
     def visit_NamespaceNode(self, node):
         d = dict(name=node.name)
         self.add_visit_fields(node, d, [
             "classes", "enums", "functions", "namespaces", "typedefs", "variables",
-            "fmtdict", "options"])
+            "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])
         self.add_visit_fields(node, d, ["scope_file"])
         add_non_none_fields(node, d, ["scope"])
@@ -336,13 +351,13 @@ class ToDict(visitor.Visitor):
 
     def visit_TypedefNode(self, node):
         d = dict(name=node.name)
-        self.add_visit_fields(node, d, ["ast", "fmtdict", "options"])
+        self.add_visit_fields(node, d, ["ast", "fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])
         return d
 
     def visit_VariableNode(self, node):
         d = dict(name=node.name, ast=self.visit(node.ast))
-        self.add_visit_fields(node, d, ["fmtdict", "options"])
+        self.add_visit_fields(node, d, ["fmtdict", "options", "wrap"])
         add_non_none_fields(node, d, ["linenumber"])
         return d
 

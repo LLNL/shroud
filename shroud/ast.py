@@ -17,7 +17,51 @@ from . import declast
 from . import statements
 from . import todict
 from . import typemap
+from . import visitor
 from .util import wformat
+
+
+class WrapFlags(object):
+    """Keep track of which languages to wrap.
+    """
+    def __init__(self, options):
+        self.fortran = options.wrap_fortran
+        self.c_f = False
+        self.c = options.wrap_c
+        self.lua = options.wrap_lua
+        self.python = options.wrap_python
+
+    def clear(self):
+        self.fortran = False
+        self.c_f = False
+        self.c = False
+        self.lua = False
+        self.python = False
+
+    def assign(self, fortran=False, c_f=False, c=False, lua=False, python=False):
+        """Assign wrap flags to wrap.
+
+        Used when generating new FunctionNodes as part of function
+        overload, generic, default args.
+        """
+        self.fortran = fortran
+        self.c_f = c_f
+        self.c = c
+        self.lua = lua
+        self.python = python
+
+    def accumulate(self, wrap):
+        """Accumulate flags via OR operator.
+
+        Parameters
+        ----------
+        wrap : WrapFlags
+        """
+        self.fortran = self.fortran or wrap.fortran
+        self.c_f = self.c_f or wrap.c_f
+        self.c = self.c or wrap.c
+        self.lua = self.lua or wrap.lua
+        self.python = self.python or wrap.python
 
 
 class AstNode(object):
@@ -78,7 +122,7 @@ class AstNode(object):
         scope, self.symbols, and any scopes added via a 'using' statement.
         """
         raise NotImplemented  # virtual function
-    
+
 
 ######################################################################
 
@@ -351,6 +395,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         self.options = self.default_options()
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
         if self.options.literalinclude:
             # global literalinclude implies literalinclude2
             self.options.literalinclude2 = True
@@ -901,6 +946,7 @@ class NamespaceNode(AstNode, NamespaceMixin):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         if self.options.flatten_namespace:
             self.classes = parent.classes
@@ -1071,6 +1117,7 @@ class ClassNode(AstNode, NamespaceMixin):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         self.scope = self.parent.scope + self.name + "::"
         self.scope_file = self.parent.scope_file + [self.name]
@@ -1251,6 +1298,7 @@ class ClassNode(AstNode, NamespaceMixin):
         # Add new format and options Scope.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.wrap = WrapFlags(self.options)
         new.scope_file = self.scope_file[:]
 
         # Clone all functions.
@@ -1354,6 +1402,7 @@ class FunctionNode(AstNode):
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         self.default_format(parent, format, kwargs)
 
@@ -1536,6 +1585,7 @@ class FunctionNode(AstNode):
         # new Scope with same inlocal and parent.
         new.fmtdict = self.fmtdict.clone()
         new.options = self.options.clone()
+        new.wrap = WrapFlags(self.options)
 
         # Deep copy dictionaries to allow them to be modified independently.
         new.ast = copy.deepcopy(self.ast)
@@ -1585,6 +1635,7 @@ class EnumNode(AstNode):
         self.options = util.Scope(parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1706,6 +1757,7 @@ class TypedefNode(AstNode):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1749,6 +1801,7 @@ class VariableNode(AstNode):
         self.options = util.Scope(parent=parent.options)
         if options:
             self.options.update(options, replace=True)
+        self.wrap = WrapFlags(self.options)
 
         #        self.default_format(parent, format, kwargs)
         self.fmtdict = util.Scope(parent=parent.fmtdict)
@@ -1839,7 +1892,6 @@ class FortranGeneric(object):
 
 ######################################################################
 
-
 def create_std_namespace(glb):
     """Create the std namespace and add the types we care about.
     (string and vector)
@@ -1852,6 +1904,86 @@ def create_std_namespace(glb):
     std.add_typedef_by_name("vector")
     return std
 
+######################################################################
+
+class PromoteWrap(visitor.Visitor):
+    """Promote wrap_x options up to container.
+
+    For example:
+       options:
+         wrap_f: False
+       declarations:
+       - decl: void Func(void)
+         options:
+           wrap_f: True
+
+    Since the function's wrap_f option is True, the library should set
+    library.wrap.fortran to True as well.  Likewise for other
+    containers: namespace, class.
+
+    """
+    def visit_LibraryNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+    def visit_ClassNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+    def visit_NamespaceNode(self, node):
+        wrap = node.wrap
+        for cls in node.classes:
+            self.visit(cls)
+            wrap.accumulate(cls.wrap)
+        for en in node.enums:
+            wrap.accumulate(en.wrap)
+        for fcn in node.functions:
+            wrap.accumulate(fcn.wrap)
+        for ns in node.namespaces:
+            self.visit(ns)
+            wrap.accumulate(ns.wrap)
+        for typ in node.typedefs:
+            wrap.accumulate(typ.wrap)
+        for var in node.variables:
+            wrap.accumulate(var.wrap)
+
+
+def promote_wrap(node):
+    """Promote wrap options to parent containers.
+
+    Parameters
+    ----------
+    node : LibraryNode
+        Could be any AstNode subclass
+    """
+    visitor = PromoteWrap()
+    return visitor.visit(node)
 
 ######################################################################
 # Parse yaml file
