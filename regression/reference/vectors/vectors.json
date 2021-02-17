@@ -85,7 +85,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -285,7 +284,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -495,7 +493,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -723,7 +720,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -926,7 +922,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -1113,7 +1108,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -1298,7 +1292,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -1480,7 +1473,6 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },
@@ -1674,7 +1666,6 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true,
                     "fortran": true
                 }
             },

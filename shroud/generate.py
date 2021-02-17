@@ -1405,6 +1405,8 @@ class GenFunctions(object):
                 #       for trailing NULL pointer.  { "foo", "bar", NULL };
                 node.options.wrap_c = False
                 node.options.wrap_lua = False  # NotImplemented
+                node.wrap.c = False
+                node.wrap.lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
                   arg.attrs["intent"] == "out" and
