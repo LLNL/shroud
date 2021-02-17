@@ -2171,6 +2171,12 @@ contains
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
     ! Requested: c_string_&_inout_buf
     ! Match:     c_string_inout_buf
+    !>
+    !! Test post_declare.
+    !! The std::string in py_string_inout must be declared before the
+    !! goto added by py_native_*_in_pointer_list to avoid
+    !! "jump to label 'fail' crosses initialization of" error.
+    !<
     subroutine post_declare(count, name)
         use iso_c_binding, only : C_INT
         integer(C_INT), intent(IN) :: count(:)

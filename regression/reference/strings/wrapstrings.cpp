@@ -1385,6 +1385,12 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     // splicer end function.cpass_char_ptr_bufferify
 }
 
+/**
+ * Test post_declare.
+ * The std::string in py_string_inout must be declared before the
+ * goto added by py_native_*_in_pointer_list to avoid
+ * "jump to label 'fail' crosses initialization of" error.
+ */
 // ----------------------------------------
 // Function:  void PostDeclare
 // Requested: c
@@ -1406,6 +1412,12 @@ void STR_post_declare(int * count, char * name)
     // splicer end function.post_declare
 }
 
+/**
+ * Test post_declare.
+ * The std::string in py_string_inout must be declared before the
+ * goto added by py_native_*_in_pointer_list to avoid
+ * "jump to label 'fail' crosses initialization of" error.
+ */
 // ----------------------------------------
 // Function:  void PostDeclare
 // Requested: c

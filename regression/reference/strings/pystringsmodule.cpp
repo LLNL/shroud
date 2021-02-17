@@ -1248,6 +1248,12 @@ static char PY_PostDeclare__doc__[] =
 "documentation"
 ;
 
+/**
+ * Test post_declare.
+ * The std::string in py_string_inout must be declared before the
+ * goto added by py_native_*_in_pointer_list to avoid
+ * "jump to label 'fail' crosses initialization of" error.
+ */
 static PyObject *
 PY_PostDeclare(
   PyObject *SHROUD_UNUSED(self),

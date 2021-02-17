@@ -597,7 +597,7 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_Lua": false
+                    "wrap_lua": false
                 },
                 "wrap": {
                     "c": true,
@@ -744,7 +744,6 @@
                 },
                 "options": {
                     "literalinclude": true,
-                    "wrap_Lua": false,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7098,7 +7097,7 @@
                     "underscore_name": "explicit2"
                 },
                 "options": {
-                    "wrap_Lua": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -7192,7 +7191,6 @@
                     "underscore_name": "explicit2"
                 },
                 "options": {
-                    "wrap_Lua": false,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7651,7 +7649,7 @@
                 },
                 "options": {
                     "C_extern_C": true,
-                    "wrap_Lua": false,
+                    "wrap_lua": false,
                     "wrap_python": false
                 },
                 "wrap": {
@@ -7797,7 +7795,6 @@
                 },
                 "options": {
                     "C_extern_C": true,
-                    "wrap_Lua": false,
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
@@ -7945,6 +7942,9 @@
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
                 "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))",
+                "doxygen": {
+                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
+                },
                 "fmtdict": {
                     "C_call_list": "count,\t SHCXX_name",
                     "C_name": "STR_post_declare",
@@ -7969,8 +7969,7 @@
                     "underscore_name": "post_declare"
                 },
                 "options": {
-                    "PY_array_arg": "list",
-                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
+                    "PY_array_arg": "list"
                 },
                 "wrap": {
                     "c": true,
@@ -8107,6 +8106,9 @@
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
                 "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout)+len+len_trim)",
+                "doxygen": {
+                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
+                },
                 "fmtdict": {
                     "C_call_list": "count,\t SHCXX_name",
                     "C_name": "STR_post_declare_bufferify",
@@ -8123,7 +8125,6 @@
                 },
                 "options": {
                     "PY_array_arg": "list",
-                    "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n",
                     "wrap_c": true,
                     "wrap_fortran": false,
                     "wrap_lua": false,
