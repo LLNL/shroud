@@ -1107,7 +1107,6 @@ class ClassNode(AstNode, NamespaceMixin):
         self.classes = []
         self.enums = []
         self.functions = []
-        self.namespaces = []
         self.typedefs = []
         self.variables = []
 
@@ -1948,9 +1947,6 @@ class PromoteWrap(visitor.Visitor):
             wrap.accumulate(en.wrap)
         for fcn in node.functions:
             wrap.accumulate(fcn.wrap)
-        for ns in node.namespaces:
-            self.visit(ns)
-            wrap.accumulate(ns.wrap)
         for typ in node.typedefs:
             wrap.accumulate(typ.wrap)
         for var in node.variables:

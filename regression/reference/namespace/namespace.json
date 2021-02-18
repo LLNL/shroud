@@ -213,6 +213,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

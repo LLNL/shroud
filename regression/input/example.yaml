@@ -115,6 +115,7 @@ declarations:
                init, alloc, new, free, del]
 
       declarations:
+      - decl: class ExClass2Nested
       - decl: ExClass2(const string *name)
         doxygen:
           brief:  constructor

@@ -244,6 +244,7 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
+                "classes",
                 "enums",
                 "functions",
                 "variables",
@@ -312,6 +313,7 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
+                "generated_suffix",
                 "statements",
                 # #- 'CXX_subprogram', 'C_subprogram', 'F_subprogram',
                 # #- 'CXX_return_type', 'C_return_type', 'F_return_type',
@@ -405,8 +407,18 @@ def add_true_fields(node, d, fields):
 
 
 def add_optional_true_fields(node, d, fields):
-    """Update dict d  with fields from node which are not None.
-    Used to skip empty fields.
+    """Update dict d  with fields from node which are not false.
+
+    Used to skip empty fields to avoid clutter in JSON file.
+
+    Parameters
+    ----------
+    node :
+        Input instance which contains fields.
+    d : dict
+        Dictionary being filled.
+    fields : list of str
+        Fields to add to d.
     """
     for key in fields:
         if hasattr(node, key):

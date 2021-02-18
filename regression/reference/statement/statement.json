@@ -281,6 +281,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_name_error_pattern"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

@@ -796,6 +796,7 @@
                         "generic": "(double *value+intent(out)+rank(0)+cdesc)"
                     }
                 ],
+                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [

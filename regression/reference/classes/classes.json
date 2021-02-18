@@ -1137,6 +1137,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "return_this_buffer"
                         },
+                        "generated_suffix": "buf",
                         "options": {
                             "wrap_lua": false,
                             "wrap_python": false
@@ -1480,6 +1481,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -2286,6 +2288,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_name"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -4283,6 +4286,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
