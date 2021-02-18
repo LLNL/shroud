@@ -2020,8 +2020,9 @@ rv = .false.
             if node.cpp_if:
                 impl.append("#endif")
         else:
-            fmt_func.F_C_name = fmt_func.F_name_impl
-
+            # Call the C function directly via bind(C).
+            C_node.fmtdict.F_C_name = fmt_func.F_name_impl
+ 
     def _gather_helper_code(self, name, done, fileinfo):
         """Add code from helpers.
 
