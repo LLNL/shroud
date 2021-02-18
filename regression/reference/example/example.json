@@ -474,6 +474,7 @@
                                             "function_suffix": "_1_bufferify",
                                             "underscore_name": "ctor"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -956,6 +957,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_error_check"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -1167,6 +1169,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name_arg"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -1225,6 +1228,7 @@
                                             "stmtc1": "c_default",
                                             "underscore_name": "get_name_arg"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "fortran": true
@@ -2239,6 +2243,7 @@
                                             "function_suffix": "_bufferify",
                                             "underscore_name": "ctor"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {
                                             "F_create_generic": true
                                         },
@@ -2535,6 +2540,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -2763,6 +2769,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name2"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -2992,6 +2999,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name3"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -3218,6 +3226,7 @@
                                             "shadow_var": "SHadow_self",
                                             "underscore_name": "get_name4"
                                         },
+                                        "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
                                             "c": true
@@ -6093,6 +6102,7 @@
                                     "function_suffix": "_bufferify",
                                     "underscore_name": "is_name_valid"
                                 },
+                                "generated_suffix": "buf",
                                 "options": {},
                                 "splicer": {
                                     "c": [
@@ -6429,6 +6439,7 @@
                                     "stmt1": "c_default",
                                     "underscore_name": "test_names"
                                 },
+                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true
@@ -6767,6 +6778,7 @@
                                     "stmt1": "c_default",
                                     "underscore_name": "test_names"
                                 },
+                                "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
                                     "c": true

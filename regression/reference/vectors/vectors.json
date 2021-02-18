@@ -207,6 +207,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_sum"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -386,6 +387,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -615,6 +617,7 @@
                         "result": "num"
                     }
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -832,6 +835,7 @@
                         "result": "num"
                     }
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1015,6 +1019,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1201,6 +1206,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -1378,6 +1384,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "vector_increment"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -1556,6 +1563,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_d"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1767,6 +1775,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_string_count"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -2134,6 +2143,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_vector_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

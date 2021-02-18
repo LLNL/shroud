@@ -2284,6 +2284,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_struct2"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3441,6 +3442,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_struct_ptr2"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

@@ -700,6 +700,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -904,6 +905,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -1107,6 +1109,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_c"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -1313,6 +1316,7 @@
                             "shadow_var": "SHadow_self",
                             "underscore_name": "get_array_const_c"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -1669,6 +1673,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ptr"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -2025,6 +2030,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ref"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -2383,6 +2389,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ptr_const"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true
@@ -2741,6 +2748,7 @@
                             "stmt1": "c_default",
                             "underscore_name": "fetch_array_ref_const"
                         },
+                        "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
                             "c": true

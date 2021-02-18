@@ -798,6 +798,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "concatenate_strings"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1516,6 +1517,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "overloaded_function"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3012,6 +3014,7 @@
                         "generic": "(double arg2)"
                     }
                 ],
+                "generated_suffix": "buf",
                 "options": {
                     "F_string_len_trim": true
                 },
@@ -5655,6 +5658,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

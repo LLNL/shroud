@@ -541,6 +541,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_name"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1115,6 +1116,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1492,6 +1494,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "test_multiline_splicer"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
                     "c": [

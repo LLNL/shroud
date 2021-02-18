@@ -895,6 +895,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1207,6 +1208,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1519,6 +1521,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_default"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -1955,6 +1958,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_pointer_new"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
@@ -2433,6 +2437,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },

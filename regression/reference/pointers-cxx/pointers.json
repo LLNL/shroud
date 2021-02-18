@@ -2554,6 +2554,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_char_array_in"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2901,6 +2902,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_scalar"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -3117,6 +3119,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3422,6 +3425,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3638,6 +3642,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_func_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3825,6 +3830,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_const_scalar"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -4037,6 +4043,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4338,6 +4345,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4526,6 +4534,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4717,6 +4726,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_scalar_force"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -4908,6 +4918,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -5099,6 +5110,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "get_raw_ptr_to_fixed_array_force"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "F_force_wrapper": true,
                     "wrap_python": false
@@ -6170,6 +6182,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_to_fixed_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -6412,6 +6425,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_to_fixed_const_array"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true

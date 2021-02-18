@@ -1374,6 +1374,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "function4a"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1697,6 +1698,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1906,6 +1908,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "return_one_name"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -2230,6 +2233,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "return_two_names"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2537,6 +2541,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "implied_text_len"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -3668,6 +3673,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "bind_c2"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -4370,6 +4376,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_assumed_type_buf"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_python": false
                 },
@@ -5365,6 +5372,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "callback3"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false

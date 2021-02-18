@@ -419,6 +419,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_char"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -737,6 +738,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false
@@ -947,6 +949,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -1159,6 +1162,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_char_ptr1"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -1377,6 +1381,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_char_ptr2"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -1571,6 +1576,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_char_ptr3"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -1633,6 +1639,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_char_ptr3"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -1897,6 +1904,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_result"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2081,6 +2089,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_len"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2242,6 +2251,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_as_arg"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2303,6 +2313,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_const_string_as_arg"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -2476,6 +2487,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -2689,6 +2701,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_pure"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -2910,6 +2923,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_len"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3105,6 +3119,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3167,6 +3182,7 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "fortran": true
@@ -3384,6 +3400,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_len_empty"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3589,6 +3606,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ref_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -3820,6 +3838,7 @@
                         ]
                     }
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4027,6 +4046,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4240,6 +4260,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4456,6 +4477,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4662,6 +4684,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_const_reference"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -4866,6 +4889,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_reference_out"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -5075,6 +5099,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_reference"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
@@ -5281,6 +5306,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_pointer_const"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -5486,6 +5512,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_pointer"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -5690,6 +5717,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "fetch_string_pointer"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -6006,6 +6034,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "accept_string_pointer_len"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -6319,6 +6348,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "fetch_string_pointer_len"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -6578,6 +6608,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "accept_string_instance"
                 },
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
                     "c": true
@@ -7031,6 +7062,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "explicit2"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -7352,6 +7384,7 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "creturn_char"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "C_extern_C": true
                 },
@@ -7628,6 +7661,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "cpass_char_ptr"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "C_extern_C": true,
                     "wrap_lua": false,
@@ -7956,6 +7990,7 @@
                     "stmt1": "c_default",
                     "underscore_name": "post_declare"
                 },
+                "generated_suffix": "buf",
                 "options": {
                     "PY_array_arg": "list"
                 },
