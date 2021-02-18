@@ -244,6 +244,7 @@ class ToDict(visitor.Visitor):
             node,
             d,
             [
+                "classes",
                 "enums",
                 "functions",
                 "variables",

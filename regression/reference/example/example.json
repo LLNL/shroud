@@ -1880,6 +1880,34 @@
                                 }
                             },
                             {
+                                "classes": [
+                                    {
+                                        "cxx_header": [],
+                                        "fmtdict": {
+                                            "C_header_filename": "wrapexample_nested_ExClass2_ExClass2Nested.h",
+                                            "C_impl_filename": "wrapexample_nested_ExClass2_ExClass2Nested.cpp",
+                                            "C_name_scope": "example_nested_ExClass2_ExClass2Nested_",
+                                            "C_type_name": "AA_example_nested_ExClass2_ExClass2Nested",
+                                            "F_derived_name": "exclass2nested",
+                                            "F_name_scope": "exclass2_exclass2nested_",
+                                            "class_scope": "ExClass2Nested::",
+                                            "cxx_class": "ExClass2Nested",
+                                            "cxx_type": "ExClass2Nested",
+                                            "file_scope": "example_nested_ExClass2_ExClass2Nested"
+                                        },
+                                        "name": "ExClass2Nested",
+                                        "options": {},
+                                        "parse_keyword": "class",
+                                        "scope": "example::nested::ExClass2::ExClass2Nested::",
+                                        "typemap_name": "example::nested::ExClass2Nested",
+                                        "wrap": {
+                                            "c": true,
+                                            "fortran": true,
+                                            "lua": true,
+                                            "python": true
+                                        }
+                                    }
+                                ],
                                 "cxx_header": [
                                     "ExClass2.hpp"
                                 ],
