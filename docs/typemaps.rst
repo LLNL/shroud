@@ -104,6 +104,16 @@ Defaults to *None*.
 
 See also *cxx_header*.
 
+For example, ``size_t`` requires stddef.h:
+
+.. code-block:: yaml
+
+    type: size_t
+    fields:
+        c_type: size_t 
+        cxx_type: size_t
+        c_header: <stddef.h>
+
 
 c_to_cxx
 ^^^^^^^^

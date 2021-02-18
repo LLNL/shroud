@@ -1480,7 +1480,7 @@ return 1;""",
             goto_fail = goto_fail or intent_blk.goto_fail
             self.need_numpy = self.need_numpy or intent_blk.need_numpy
             update_code_blocks(locals(), intent_blk, fmt_arg)
-            self.header_impl.add_statements_headers(intent_blk)
+            self.header_impl.add_statements_headers_PY(intent_blk)
 
             # Pass correct value to wrapped function.
             if intent_blk.arg_call:

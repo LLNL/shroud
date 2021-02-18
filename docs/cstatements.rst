@@ -47,7 +47,7 @@ arg
     This is the default when *buf_args* is not explicit.
 
 arg_decl
-    The explicit declarations will be provided in the fields
+    The explicit dummy/prototype declarations will be provided in the fields
     *c_arg_decl* and *f_arg_decl*.
     
 capsule
@@ -109,21 +109,24 @@ Used to add argument for return values.
 For example, function which return class instance.
 
 
-c_header
-^^^^^^^^
+iface_header
+^^^^^^^^^^^^
 
-List of blank delimited header files which will be included by the generated header
+List of header files which will be included in the generated header
 for the C wrapper.  These headers must be C only.
-For example, ``size_t`` requires stddef.h:
+Used for headers needed when *buf_args* contains *arg_decl*.
+Can contain headers required for the generated prototypes.
 
-.. code-block:: yaml
+.. note that typemaps will also add c_headers.
 
-    type: size_t
-    fields:
-        c_type: size_t 
-        cxx_type: size_t
-        c_header: <stddef.h>
+impl_header
+^^^^^^^^^^^
 
+A list of header files which will be added to the C
+wrapper implementation.
+These headers may include C++ code.
+
+.. listed in fc_statements as *c_impl_header* and *cxx_impl_header*
 
 c_helper
 ^^^^^^^^
@@ -154,13 +157,6 @@ If true, generate a local variable using the C declaration for the argument.
 This variable can be used by the pre_call and post_call statements.
 A single declaration will be added even if with ``intent(inout)``.
 
-cxx_header
-^^^^^^^^^^
-
-A blank delimited list of header files which will be added to the C
-wrapper implementation.
-These headers may include C++ code.
-
 cxx_local_var
 ^^^^^^^^^^^^^
 
@@ -172,19 +168,27 @@ This in turns will set the format fields *cxx_member*.
 For example, a ``std::string`` argument is created for the C++ function
 from the ``char *`` argument passed into the C API wrapper.
 
+.. code-block:: yaml
+
+        name="c_string_inout",
+        cxx_local_var="scalar",
+        pre_call=["{c_const}std::string {cxx_var}({c_var});"],
+
 c_arg_decl
 ^^^^^^^^^^
 
-A list of declarations in the C wrapper when buf_arg includes "arg_decl".
+A list of declarations to append to the prototype in the C wrapper
+when buf_arg includes "arg_decl".
 
 f_arg_decl
 ^^^^^^^^^^
 
-A list of declarations in the Fortran interface when buf_arg includes "arg_decl".
-The variable to be declared is *c_var*.
-*f_module* can be used to add ``USE`` statements.
+A list of dummy argument declarations in the Fortran ``bind(C)``
+interface when buf_arg includes "arg_decl".  The variable to be
+declared is *c_var*.  *f_module* can be used to add ``USE`` statements
+needed by the declarations.
 
-.. c_var
+.. c_var  c_f_dimension
 
 
 f_result_decl
