@@ -512,7 +512,7 @@ class Header(object):
         self.typemap_field = field
 
     def add_shroud_file(self, name):
-        """Add a dict of headers.
+        """Add a header file.
         """
         self.header_impl_include_order["shroud"][name] = True
 
@@ -522,7 +522,7 @@ class Header(object):
         for name in sorted(dct.keys()):
             self.header_impl_include_order["shroud"][name] = True
     
-    def add_statements_headers(self, intent_blk):
+    def add_statements_headers_PY(self, intent_blk):
         """Add headers required by intent_blk to self.header_impl_include.
 
         Args:
@@ -534,6 +534,18 @@ class Header(object):
         else:
             headers = intent_blk.cxx_header
         for name in headers:
+            self.header_impl_include_order["shroud"][name] = True
+
+    def add_statements_headers(self, lang, intent_blk):
+        """Add headers required by intent_blk to self.header_impl_include.
+
+        Parameters
+        ----------
+        lang : str
+            "impl_header", "iface_header"
+        intent_blk : CStmts
+        """
+        for name in getattr(intent_blk, lang):
             self.header_impl_include_order["shroud"][name] = True
 
     def write_headers(self, output):

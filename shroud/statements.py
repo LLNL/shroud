@@ -182,9 +182,16 @@ def update_for_language(stmts, lang):
       foo_bar["declare"] = foo_bar["c_declare"]
     """
     for item in stmts:
-        for clause in ["cxx_local_var", "declare", "post_parse",
-                       "pre_call", "post_call",
-                       "cleanup", "fail"]:
+        for clause in [
+                "impl_header",
+                "cxx_local_var",
+                "declare",
+                "post_parse",
+                "pre_call",
+                "post_call",
+                "cleanup",
+                "fail",
+        ]:
             specific = lang + "_" + clause
             if specific in item:
                 # XXX - maybe make sure clause does not already exist.
@@ -344,8 +351,10 @@ class CStmts(object):
     def __init__(self,
         name="c_default",
         buf_args=[], buf_extra=[],
-        c_header=[], c_helper="", c_local_var=None,
-        cxx_header=[], cxx_local_var=None,
+        iface_header=[],
+        impl_header=[],
+        c_helper="", c_local_var=None,
+        cxx_local_var=None,
         arg_call=[],
         pre_call=[], call=[], post_call=[], final=[], ret=[],
         destructor_name=None,
@@ -359,10 +368,10 @@ class CStmts(object):
         self.name = name
         self.buf_args = buf_args
         self.buf_extra = buf_extra
-        self.c_header = c_header
+        self.iface_header = iface_header
+        self.impl_header = impl_header
         self.c_helper = c_helper
         self.c_local_var = c_local_var
-        self.cxx_header = cxx_header
         self.cxx_local_var = cxx_local_var
 
         self.pre_call = pre_call
@@ -816,8 +825,8 @@ fc_statements = [
     dict(
         name="c_char_scalar_result_buf",
         buf_args=["arg", "len"],
-        c_header=["<string.h>"],
-        cxx_header=["<cstring>"],
+        c_impl_header=["<string.h>"],
+        cxx_impl_header=["<cstring>"],
         post_call=[
             "{stdlib}memset({c_var}, ' ', {c_var_len});",
             "{c_var}[0] = {cxx_var};",
@@ -962,7 +971,7 @@ fc_statements = [
     ),
     dict(
         name="c_string_out",
-        cxx_header=["<cstring>"],
+        cxx_impl_header=["<cstring>"],
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
         # #-     ],
@@ -975,7 +984,7 @@ fc_statements = [
     ),
     dict(
         name="c_string_inout",
-        cxx_header=["<cstring>"],
+        cxx_impl_header=["<cstring>"],
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
         post_call=[
@@ -1525,8 +1534,8 @@ fc_statements = [
     dict(
         # NULL in stddef.h
         name="c_shadow_dtor",
-        c_header=["<stddef.h>"],
-        cxx_header=["<cstddef>"],
+        c_impl_header=["<stddef.h>"],
+        cxx_impl_header=["<cstddef>"],
         call=[
             "delete {CXX_this};",
             "{C_this}->addr = {nullptr};",

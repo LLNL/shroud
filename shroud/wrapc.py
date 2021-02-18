@@ -71,6 +71,9 @@ class Wrapc(util.WrapperMixin):
         self.impl_typedef_nodes = OrderedDict()  # [typemap.name] = typemap
         # Headers needed by implementation, i.e. helper functions.
         self.header_impl = util.Header(self.newlibrary)
+        # Headers needed by interface.
+        self.header_iface = util.Header(self.newlibrary)
+        # Prototype for wrapped functions.
         self.header_proto_c = []
         self.impl = []
         self.enum_impl = []
@@ -366,7 +369,7 @@ class Wrapc(util.WrapperMixin):
             output.append("#" + node.cpp_if)
 
         # headers required by typedefs and helpers
-        headers = util.Header(self.newlibrary)
+        headers = self.header_iface
         headers.add_typemaps_xxx(self.header_typedef_nodes)
         headers.add_shroud_dict(self.c_helper_include)
         headers.write_headers(output)
@@ -695,7 +698,8 @@ class Wrapc(util.WrapperMixin):
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.header_impl.add_statements_headers(intent_blk)
+        self.header_impl.add_statements_headers("impl_header", intent_blk)
+        self.header_iface.add_statements_headers("iface_header", intent_blk)
 
         if intent_blk.pre_call:
             need_wrapper = True
