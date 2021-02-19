@@ -666,7 +666,7 @@ fc_statements = [
             "void **{c_var}",
         ],
         f_arg_decl=[
-            "type(C_PTR), intent(IN) :: {c_var}{f_assumed_size}",
+            "type(C_PTR), intent(IN) :: {c_var}{c_f_dimension}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
@@ -674,7 +674,7 @@ fc_statements = [
         name="f_void_**_in",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
-            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_size}",
+            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_shape}",
         ],
     ),
     dict(

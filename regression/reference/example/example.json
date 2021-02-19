@@ -10092,9 +10092,9 @@
                                         "fmtf": {
                                             "F_C_var": "in",
                                             "F_pointer": "SHPTR_in",
+                                            "c_f_dimension": "(*)",
                                             "c_var": "in",
                                             "f_assumed_shape": "(:,:)",
-                                            "f_assumed_size": "(*)",
                                             "f_intent": "IN",
                                             "f_type": "real(C_DOUBLE)",
                                             "f_var": "in",

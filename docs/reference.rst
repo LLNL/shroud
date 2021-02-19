@@ -1323,6 +1323,10 @@ fmtf
 
 Format strings used with Fortran wrappers.
 
+c_f_dimension
+    Dimension used in ``bind(C)`` interface.
+    May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
+
 f_array_allocate
     Fortran shape expression used with ``ALLOCATE`` statement when
     *dimension* attribute is set.
@@ -1333,10 +1337,6 @@ f_assumed_shape
    Set when *rank* attribute is set to the corresponding shape.
    ``rank=1`` sets to ``(:)``,
    ``rank=2`` sets to ``(:,:)``, etc.
-
-f_assumed_size
-    Set to ``(*)`` when *rank* attribute is set.
-    Used with Fortran interface for C functions for array arguments.
 
 f_declare_shape_prefix
 

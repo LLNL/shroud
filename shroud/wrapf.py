@@ -967,7 +967,7 @@ rv = .false.
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
                         c_var=fmt.F_C_var,
-                        f_assumed_size=fmt.f_assumed_size,
+                        c_f_dimension=fmt.c_f_dimension,
                     ))
                 if intent_blk.f_module:
                     self.update_f_module(
@@ -1455,6 +1455,8 @@ rv = .false.
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
+        if f_ast.metaattrs["assumed-rank"]:
+            fmt.c_f_dimension = "(..)"
         if rank is not None:
             fmt.rank = str(rank)
             if rank == 0:
@@ -1462,7 +1464,7 @@ rv = .false.
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                fmt.f_assumed_size = "(*)"
+                fmt.c_f_dimension = "(*)"
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(f_ast.metaattrs["dimension"])

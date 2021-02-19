@@ -670,9 +670,9 @@
                         "fmtf": {
                             "F_C_var": "data",
                             "F_pointer": "SHPTR_data",
+                            "c_f_dimension": "(*)",
                             "c_var": "data",
                             "f_assumed_shape": "(:)",
-                            "f_assumed_size": "(*)",
                             "f_intent": "IN",
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "data",
