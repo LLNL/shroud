@@ -198,6 +198,72 @@ def update_for_language(stmts, lang):
                 item[clause] = item[specific]
 
 
+def compute_stmt_permutations(out, parts):
+    """Expand parts which have multiple values
+
+    Ex: parts = 
+      [['c'], ['native'], ['*'], ['in', 'out', 'inout'], ['cfi']]
+    Three entries will be appended to out:
+      ['c', 'native', '*', 'in', 'cfi']
+      ['c', 'native', '*', 'out', 'cfi']
+      ['c', 'native', '*', 'inout', 'cfi']
+
+    Parameters
+    ----------
+    out : list
+        Results are appended to the list.
+    parts :
+    """
+    tmp = []
+    for i, part in enumerate(parts):
+        if isinstance(part, list):
+            if len(part) == 1:
+                tmp.append(part[0])
+            else:
+                for expand in part:
+                    permutations(out, tmp + [expand] + parts[i+1:])
+                break
+        else:
+            tmp.append(part)
+    else:
+        out.append(tmp)
+                
+
+def add_statement_to_tree(tree, nodes, node, steps):
+    """Add node to tree.
+
+    Parameters
+    ----------
+    tree : dict
+        The accumulated tree.
+    nodes : dict
+        nodes indexed by name to implement 'base'
+    node : dict
+        A single 'statements' dict.
+    steps : list of str
+        ['c', 'native', '*', 'in', 'cfi']
+    """
+    step = tree
+    label = []
+    for part in steps:
+        step = step.setdefault(part, {})
+        label.append(part)
+        step["_key"] = "_".join(label)
+    if "base" in node:
+        step['_node'] = node
+        scope = util.Scope(nodes[node["base"]]["scope"])
+        scope.update(node)
+        node["scope"] = scope
+    else:
+        step['_node'] = node
+        scope = util.Scope(default_scopes[steps[0]])
+        if "mixin" in node:
+            for mpart in node["mixin"]:
+                scope.update(nodes[mpart])
+        scope.update(node)
+        node["scope"] = scope
+    
+        
 def update_stmt_tree(stmts, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
@@ -253,28 +319,8 @@ def update_stmt_tree(stmts, tree, defaults):
 
     for node in stmts:
         key = node["name"]
-        step = tree
         steps = key.split("_")
-        label = []
-        for part in steps:
-            step = step.setdefault(part, {})
-            label.append(part)
-            step["_key"] = "_".join(label)
-#        if "alias" in node:
-#            step['_node'] = nodes[node["alias"]]
-        if "base" in node:
-            step['_node'] = node
-            scope = util.Scope(nodes[node["base"]]["scope"])
-            scope.update(node)
-            node["scope"] = scope
-        else:
-            step['_node'] = node
-            scope = util.Scope(default_scopes[steps[0]])
-            if "mixin" in node:
-                for mpart in node["mixin"]:
-                    scope.update(nodes[mpart])
-            scope.update(node)
-            node["scope"] = scope
+        add_statement_to_tree(tree, nodes, node, steps)
 #    print_tree(tree)
 
 def print_tree(tree, indent=""):
