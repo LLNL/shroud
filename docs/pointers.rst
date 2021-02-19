@@ -336,7 +336,7 @@ to set the value of the result and possible free memory for
    :end-before: end helper copy_string
 
 .. note:: The three steps of call, allocate, copy could be replaced
-          with a single call by using the *futher interoperability
+          with a single call by using the *further interoperability
           with C* features of Fortran 2018 (a.k.a TS 29113).  This
           feature allows Fortran ``ALLOCATABLE`` variables to be
           allocated by C. However, not all compilers currently support
