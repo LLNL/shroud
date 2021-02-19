@@ -646,7 +646,7 @@ fc_statements = [
     # Used with intent IN, INOUT, and OUT.
 #    c_native_pointer_cdesc=dict(
     dict(
-        name="c_native_*_cdesc",
+        name="c_native_*_in/out/inout_cdesc",
         buf_args=["context"],
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -700,7 +700,7 @@ fc_statements = [
     ),
     dict(
         name="c_void_*_cdesc",
-        base="c_native_*_cdesc",
+        base="c_native_*_in_cdesc",
     ),
     dict(
         name="f_void_*_cdesc",

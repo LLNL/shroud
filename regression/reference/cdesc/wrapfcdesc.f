@@ -86,7 +86,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
         ! Requested: c_native_*_in_cdesc
-        ! Match:     c_native_*_cdesc
+        ! Match:     c_native_*_in/out/inout_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: CDE_SHROUD_array
@@ -189,7 +189,7 @@ contains
     ! Requested: f_native_*_in_cdesc
     ! Match:     f_native_*_in/out/inout_cdesc
     ! Requested: c_native_*_in_cdesc
-    ! Match:     c_native_*_cdesc
+    ! Match:     c_native_*_in/out/inout_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
