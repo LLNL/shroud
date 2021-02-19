@@ -33,6 +33,7 @@
                     },
                     "fmtf": {
                         "cxx_type": "int",
+                        "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
@@ -118,6 +119,7 @@
                     "fmtf": {
                         "c_var_len": "get_name_length()",
                         "cxx_type": "std::string",
+                        "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -205,6 +207,7 @@
                             "c_var": "SHT_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",

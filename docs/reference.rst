@@ -1344,9 +1344,16 @@ f_declare_shape_array
 
 f_get_shape_array
 
+f_kind
+    Value from typemap.  ex ``C_INT``.
+    Can be used in *CStmts.f_module_line*.
+
 f_pointer_shape
 
 f_shape_var
+
+f_type
+    Value from typemap.  ex ``integer(C_INT)``.
     
 f_var
     Fortran variable name for argument.

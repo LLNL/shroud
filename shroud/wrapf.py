@@ -1483,6 +1483,8 @@ rv = .false.
                 # If a template, use its type
                 ntypemap = c_ast.template_arguments[0].typemap
                 fmt.cxx_T = ntypemap.name
+        if ntypemap.f_kind:
+            fmt.f_kind = ntypemap.f_kind
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         
