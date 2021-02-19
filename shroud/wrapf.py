@@ -967,6 +967,8 @@ rv = .false.
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
                         c_var=fmt.F_C_var,
+                        f_type=fmt.f_type,
+                        f_intent=fmt.f_intent,
                         c_f_dimension=fmt.c_f_dimension,
                     ))
                 if intent_blk.f_module:
@@ -1681,7 +1683,7 @@ rv = .false.
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
-                
+
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
             c_deref_attr = c_attrs["deref"]
