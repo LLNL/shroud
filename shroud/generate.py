@@ -1549,19 +1549,20 @@ class Namify(object):
         """
         for cls in node.classes:
             for func in cls.functions:
-                handler(cls, func)
+                handler(func)
 
         for func in node.functions:
-            handler(None, func)
+            handler(func)
 
         for ns in node.namespaces:
             self.name_language(handler, ns)
 
-    def name_function_c(self, cls, node):
-        """
-        Args:
-            cls -
-            node -
+    def name_function_c(self, node):
+        """Compute name for C wrapped functions.
+
+        Parameters
+        ----------
+        node : FunctionNode
         """
         if not node.wrap.c:
             return
@@ -1571,12 +1572,12 @@ class Namify(object):
         node.eval_template("F_C_name")
         fmt_func.F_C_name = fmt_func.F_C_name.lower()
 
-    def name_function_fortran(self, cls, node):
-        """ Must process C functions to generate their names.
+    def name_function_fortran(self, node):
+        """Compute name for Fortran wrapped functions.
 
-        Args:
-            cls -
-            node -
+        Parameters
+        ----------
+        node : FunctionNode
         """
         if not node.wrap.fortran:
             return
