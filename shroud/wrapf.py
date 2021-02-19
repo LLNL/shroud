@@ -650,6 +650,39 @@ rv = .false.
         if node.wrap.c:
             self.wrap_function_interface(cls, node, fileinfo)
 
+    def update_f_module_line(self, modules, imports, line, fmt):
+        """Aggragate the information from f_module_line into modules.
+        
+        line will be formatted using fmt.
+
+        line of the form:
+           module ":" symbol [ "," symbol ]*
+           [ ";" module ":" symbol [ "," symbol ]* ]
+
+        ex: "iso_c_binding:{f_kind}"
+        where fmt.f_kind = 'C_INT'
+        expands to dict(iso_c_binding=['C_INT'])
+
+        Parameters
+        ----------
+        modules : dictionary of dictionaries:
+            modules['iso_c_bindings']['C_INT'] = True
+        imports: dict
+            If the module name is '--import--', add to imports.
+            Useful for interfaces.
+        line : str
+            module dictionary info as a string.
+        fmt : Scope
+        """
+        wline = wformat(line, fmt)
+        wline = wline.replace(" ", "")
+        f_module = {}
+        for use in wline.split(";"):
+            mname, syms = use.split(":")
+            module = modules.setdefault(mname, {})
+            for sym in syms.split(","):
+                module[sym] = True
+        
     def update_f_module(self, modules, imports, f_module):
         """Aggragate the information from f_module into modules.
 
@@ -974,6 +1007,9 @@ rv = .false.
                 if intent_blk.f_module:
                     self.update_f_module(
                         modules, imports, intent_blk.f_module)
+                if intent_blk.f_module_line:
+                    self.update_f_module_line(
+                        modules, imports, intent_blk.f_module_line, fmt)
                 continue
 
             buf_arg_name = attrs[buf_arg]

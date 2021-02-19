@@ -364,6 +364,7 @@ class CStmts(object):
         f_arg_decl=[],
         f_result_decl=[],
         f_module=None,
+        f_module_line=None,
     ):
         self.name = name
         self.buf_args = buf_args
@@ -389,6 +390,7 @@ class CStmts(object):
         self.f_arg_decl = f_arg_decl
         self.f_result_decl = f_result_decl
         self.f_module = f_module
+        self.f_module_line = f_module_line
 
 class FStmts(object):
     """Fortran Statements.
