@@ -3984,9 +3984,9 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
-                            "c_f_dimension": "(*)",
                             "c_var": "arg",
                             "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",

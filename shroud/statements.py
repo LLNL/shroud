@@ -666,7 +666,7 @@ fc_statements = [
             "void **{c_var}",
         ],
         f_arg_decl=[
-            "type(C_PTR), intent(IN) :: {c_var}{c_f_dimension}",
+            "type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
