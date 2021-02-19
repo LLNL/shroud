@@ -661,7 +661,7 @@ fc_statements = [
     ),
 #    f_native_pointer_cdesc=dict(
     dict(
-        name="f_native_*_cdesc",
+        name="f_native_*_in/out/inout_cdesc",
         # TARGET required for argument to C_LOC.
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
@@ -679,14 +679,6 @@ fc_statements = [
             # This also works with scalars since (1:0) is a zero length array.
             "{c_var_context}%shape(1:{rank}) = shape({f_var})",
         ],
-    ),
-    dict(
-        name="f_native_*_in_cdesc",
-        base="f_native_*_cdesc",
-    ),
-    dict(
-        name="f_native_*_out_cdesc",
-        base="f_native_*_cdesc",
     ),
 
 ########################################
@@ -712,7 +704,7 @@ fc_statements = [
     ),
     dict(
         name="f_void_*_cdesc",
-        base="f_native_*_cdesc",
+        base="f_native_*_in_cdesc",
     ),    
 
 ########################################
@@ -1006,7 +998,7 @@ fc_statements = [
     ),
     #####
     dict(
-        name="f_char_*_result_allocatable",
+        name="f_char_scalar/*_result_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -1017,10 +1009,6 @@ fc_statements = [
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
-    ),
-    dict(
-        name="f_char_scalar_result_allocatable",
-        base="f_char_*_result_allocatable",
     ),
 
     dict(
