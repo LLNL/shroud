@@ -650,6 +650,39 @@ rv = .false.
         if node.wrap.c:
             self.wrap_function_interface(cls, node, fileinfo)
 
+    def update_f_module_line(self, modules, imports, line, fmt):
+        """Aggragate the information from f_module_line into modules.
+        
+        line will be formatted using fmt.
+
+        line of the form:
+           module ":" symbol [ "," symbol ]*
+           [ ";" module ":" symbol [ "," symbol ]* ]
+
+        ex: "iso_c_binding:{f_kind}"
+        where fmt.f_kind = 'C_INT'
+        expands to dict(iso_c_binding=['C_INT'])
+
+        Parameters
+        ----------
+        modules : dictionary of dictionaries:
+            modules['iso_c_bindings']['C_INT'] = True
+        imports: dict
+            If the module name is '--import--', add to imports.
+            Useful for interfaces.
+        line : str
+            module dictionary info as a string.
+        fmt : Scope
+        """
+        wline = wformat(line, fmt)
+        wline = wline.replace(" ", "")
+        f_module = {}
+        for use in wline.split(";"):
+            mname, syms = use.split(":")
+            module = modules.setdefault(mname, {})
+            for sym in syms.split(","):
+                module[sym] = True
+        
     def update_f_module(self, modules, imports, f_module):
         """Aggragate the information from f_module into modules.
 
@@ -967,11 +1000,16 @@ rv = .false.
                 for arg in intent_blk.f_arg_decl:
                     arg_c_decl.append(arg.format(
                         c_var=fmt.F_C_var,
-                        f_assumed_size=fmt.f_assumed_size,
+                        f_type=fmt.f_type,
+                        f_intent=fmt.f_intent,
+                        f_c_dimension=fmt.f_c_dimension,
                     ))
                 if intent_blk.f_module:
                     self.update_f_module(
                         modules, imports, intent_blk.f_module)
+                if intent_blk.f_module_line:
+                    self.update_f_module_line(
+                        modules, imports, intent_blk.f_module_line, fmt)
                 continue
 
             buf_arg_name = attrs[buf_arg]
@@ -1445,6 +1483,8 @@ rv = .false.
                 # If a template, use its type
                 ntypemap = c_ast.template_arguments[0].typemap
                 fmt.cxx_T = ntypemap.name
+        if ntypemap.f_kind:
+            fmt.f_kind = ntypemap.f_kind
         fmt.f_type = ntypemap.f_type
         fmt.sh_type = ntypemap.sh_type
         
@@ -1455,6 +1495,8 @@ rv = .false.
         f_attrs = f_ast.attrs
         dim = f_attrs["dimension"]
         rank = f_attrs["rank"]
+        if f_ast.metaattrs["assumed-rank"]:
+            fmt.f_c_dimension = "(..)"
         if rank is not None:
             fmt.rank = str(rank)
             if rank == 0:
@@ -1462,7 +1504,7 @@ rv = .false.
             else:
                 fmt.size = wformat("size({f_var})", fmt)
                 fmt.f_assumed_shape = fortran_ranks[rank]
-                fmt.f_assumed_size = "(*)"
+                fmt.f_c_dimension = "(*)"
         elif dim:
             visitor = ToDimension(cls, fcn, fmt)
             visitor.visit(f_ast.metaattrs["dimension"])
@@ -1679,7 +1721,7 @@ rv = .false.
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
-                
+
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
             c_deref_attr = c_attrs["deref"]

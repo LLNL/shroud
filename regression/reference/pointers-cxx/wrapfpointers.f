@@ -1878,7 +1878,7 @@ contains
     function void_ptr_array(addr) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
-        type(C_PTR), intent(IN) :: addr(*)
+        type(C_PTR), intent(IN) :: addr(:)
         integer(C_INT) :: SHT_rv
         ! splicer begin function.void_ptr_array
         SHT_rv = c_void_ptr_array(addr)

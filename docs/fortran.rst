@@ -156,11 +156,11 @@ Assumed Rank
 Assumed rank arguments allow a scalar or any rank array to be passed
 as an argument. This is added as the attribute *dimension(..)*.  Think
 of the ``..`` as a ``:``, used to separate lower and upper bounds,
-which fell over. This feature is part of Fortran's *Futher
+which fell over. This feature is part of Fortran's *Further
 interoperability with C*. First as TS 29113, approved in 2012, then as
 part of the Fortran 2018 standard.
 
-.. note:: Shroud does not support *Futher Interoperability with C* directly, yet.
+.. note:: Shroud does not support *Further Interoperability with C* directly, yet.
 
 Assumed-rank arguments are support by Shroud for older versions of
 Fortran by creating a generic interface.  If there are multiple

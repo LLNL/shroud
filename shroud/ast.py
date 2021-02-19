@@ -705,12 +705,15 @@ class LibraryNode(AstNode, NamespaceMixin):
             f_array_allocate="",
             f_array_shape="",
             f_assumed_shape="",  # scalar
-            f_assumed_size="",   # scalar
+            f_c_dimension="",
             f_declare_shape_prefix="SHAPE_",
             f_declare_shape_array="",
             f_get_shape_array="",
+            f_intent="",
+            f_kind="",
             f_pointer_shape="",  # scalar
             f_shape_var="",
+            f_type="",
             f_var_shape="",      # scalar
 
             rank="0",            # scalar
@@ -757,11 +760,13 @@ class LibraryNode(AstNode, NamespaceMixin):
                 c_var_context="XXXc_var_context",
                 c_var_dimension="XXXc_var_dimension",
                 c_var_len="XXXc_var_len",
+                f_c_dimension="XXXf_c_dimension",
                 cxx_addr="XXXcxx_addr",
                 cxx_member="XXXcxx_member",
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
+                f_intent="XXXf_intent",
                 f_type="XXXf_type",
                 f_var="XXXf_var",
                 idtor="XXXidtor",

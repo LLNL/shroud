@@ -1334,9 +1334,9 @@ f_assumed_shape
    ``rank=1`` sets to ``(:)``,
    ``rank=2`` sets to ``(:,:)``, etc.
 
-f_assumed_size
-    Set to ``(*)`` when *rank* attribute is set.
-    Used with Fortran interface for C functions for array arguments.
+f_c_dimension
+    Dimension used in ``bind(C)`` interface.
+    May be assumed-size, ``(*)`` or assumed-rank, ``(..)``.
 
 f_declare_shape_prefix
 
@@ -1344,9 +1344,16 @@ f_declare_shape_array
 
 f_get_shape_array
 
+f_kind
+    Value from typemap.  ex ``C_INT``.
+    Can be used in *CStmts.f_module_line*.
+
 f_pointer_shape
 
 f_shape_var
+
+f_type
+    Value from typemap.  ex ``integer(C_INT)``.
     
 f_var
     Fortran variable name for argument.

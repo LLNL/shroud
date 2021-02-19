@@ -207,6 +207,19 @@ Fortran modules used in the Fortran interface:
 
         f_module=dict(iso_c_binding=["C_PTR"]),
 
+f_module_line
+^^^^^^^^^^^^^
+
+Fortran modules used in the Fortran interface as a single line
+which allows format strings to be used.
+
+.. code-block:: yaml
+
+        f_module_line="iso_c_binding:{f_kind}",
+
+The format is::
+
+     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
 
 
 arg_call

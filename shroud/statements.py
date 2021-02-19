@@ -364,6 +364,7 @@ class CStmts(object):
         f_arg_decl=[],
         f_result_decl=[],
         f_module=None,
+        f_module_line=None,
     ):
         self.name = name
         self.buf_args = buf_args
@@ -389,6 +390,7 @@ class CStmts(object):
         self.f_arg_decl = f_arg_decl
         self.f_result_decl = f_result_decl
         self.f_module = f_module
+        self.f_module_line = f_module_line
 
 class FStmts(object):
     """Fortran Statements.
@@ -666,7 +668,7 @@ fc_statements = [
             "void **{c_var}",
         ],
         f_arg_decl=[
-            "type(C_PTR), intent(IN) :: {c_var}{f_assumed_size}",
+            "type(C_PTR), intent(IN) :: {c_var}{f_c_dimension}",
         ],
         f_module=dict(iso_c_binding=["C_PTR"]),
     ),
@@ -674,7 +676,7 @@ fc_statements = [
         name="f_void_**_in",
         f_module=dict(iso_c_binding=["C_PTR"]),
         arg_decl=[
-            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_size}",
+            "type(C_PTR), intent(IN) :: {f_var}{f_assumed_shape}",
         ],
     ),
     dict(
