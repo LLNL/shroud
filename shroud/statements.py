@@ -320,7 +320,16 @@ def update_stmt_tree(stmts, tree, defaults):
     for node in stmts:
         key = node["name"]
         steps = key.split("_")
-        add_statement_to_tree(tree, nodes, node, steps)
+        substeps = []
+        for part in steps:
+            subparts = part.split("/")
+            substeps.append(subparts)
+
+        expanded = []
+        compute_stmt_permutations(expanded, substeps)
+
+        for namelst in expanded:
+            add_statement_to_tree(tree, nodes, node, namelst)
 #    print_tree(tree)
 
 def print_tree(tree, indent=""):
