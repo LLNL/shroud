@@ -1336,12 +1336,14 @@ contains
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1 +deref(allocatable)
     ! const char * getCharPtr1 +deref(allocatable)
-    ! Exact:     f_char_scalar_result_allocatable
+    ! Requested: f_char_scalar_result_allocatable
+    ! Match:     f_char_scalar/*_result_allocatable
     ! Function:  void getCharPtr1
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Exact:     f_char_*_result_allocatable
+    ! Requested: f_char_*_result_allocatable
+    ! Match:     f_char_scalar/*_result_allocatable
     ! Exact:     c_char_*_result_buf_allocatable
     !>
     !! \brief return a 'const char *' as character(*)

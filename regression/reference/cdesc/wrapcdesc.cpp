@@ -31,7 +31,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
 // Requested: c_native_*_in_cdesc
-// Match:     c_native_*_cdesc
+// Match:     c_native_*_in/out/inout_cdesc
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in

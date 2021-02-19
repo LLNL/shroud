@@ -86,7 +86,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
         ! Requested: c_native_*_in_cdesc
-        ! Match:     c_native_*_cdesc
+        ! Match:     c_native_*_in/out/inout_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: CDE_SHROUD_array
@@ -186,9 +186,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
-    ! Exact:     f_native_*_in_cdesc
+    ! Requested: f_native_*_in_cdesc
+    ! Match:     f_native_*_in/out/inout_cdesc
     ! Requested: c_native_*_in_cdesc
-    ! Match:     c_native_*_cdesc
+    ! Match:     c_native_*_in/out/inout_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
@@ -221,7 +222,8 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
-    ! Exact:     f_native_*_out_cdesc
+    ! Requested: f_native_*_out_cdesc
+    ! Match:     f_native_*_in/out/inout_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Requested: c_void_*_out_buf_cdesc
     ! Match:     c_void_*_cdesc
@@ -268,7 +270,8 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
-    ! Exact:     f_native_*_out_cdesc
+    ! Requested: f_native_*_out_cdesc
+    ! Match:     f_native_*_in/out/inout_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Requested: c_void_*_out_buf_cdesc
     ! Match:     c_void_*_cdesc

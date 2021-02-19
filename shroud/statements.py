@@ -198,6 +198,73 @@ def update_for_language(stmts, lang):
                 item[clause] = item[specific]
 
 
+def compute_stmt_permutations(out, parts):
+    """Expand parts which have multiple values
+
+    Ex: parts = 
+      [['c'], ['native'], ['*'], ['in', 'out', 'inout'], ['cfi']]
+    Three entries will be appended to out:
+      ['c', 'native', '*', 'in', 'cfi']
+      ['c', 'native', '*', 'out', 'cfi']
+      ['c', 'native', '*', 'inout', 'cfi']
+
+    Parameters
+    ----------
+    out : list
+        Results are appended to the list.
+    parts :
+    """
+    tmp = []
+    for i, part in enumerate(parts):
+        if isinstance(part, list):
+            if len(part) == 1:
+                tmp.append(part[0])
+            else:
+                for expand in part:
+                    compute_stmt_permutations(
+                        out, tmp + [expand] + parts[i+1:])
+                break
+        else:
+            tmp.append(part)
+    else:
+        out.append(tmp)
+                
+
+def add_statement_to_tree(tree, nodes, node, steps):
+    """Add node to tree.
+
+    Parameters
+    ----------
+    tree : dict
+        The accumulated tree.
+    nodes : dict
+        nodes indexed by name to implement 'base'
+    node : dict
+        A single 'statements' dict.
+    steps : list of str
+        ['c', 'native', '*', 'in', 'cfi']
+    """
+    step = tree
+    label = []
+    for part in steps:
+        step = step.setdefault(part, {})
+        label.append(part)
+        step["_key"] = "_".join(label)
+    if "base" in node:
+        step['_node'] = node
+        scope = util.Scope(nodes[node["base"]]["scope"])
+        scope.update(node)
+        node["scope"] = scope
+    else:
+        step['_node'] = node
+        scope = util.Scope(default_scopes[steps[0]])
+        if "mixin" in node:
+            for mpart in node["mixin"]:
+                scope.update(nodes[mpart])
+        scope.update(node)
+        node["scope"] = scope
+    
+        
 def update_stmt_tree(stmts, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
@@ -246,35 +313,25 @@ def update_stmt_tree(stmts, tree, defaults):
         if "name" not in node:
             raise RuntimeError("Missing name in statements: {}".
                                format(str(node)))
-        if node["name"] in nodes:
-            raise RuntimeError("Duplicate key in statements: {}".
-                               format(node["name"]))
-        nodes[node["name"]] = node
 
     for node in stmts:
         key = node["name"]
-        step = tree
         steps = key.split("_")
-        label = []
+        substeps = []
         for part in steps:
-            step = step.setdefault(part, {})
-            label.append(part)
-            step["_key"] = "_".join(label)
-#        if "alias" in node:
-#            step['_node'] = nodes[node["alias"]]
-        if "base" in node:
-            step['_node'] = node
-            scope = util.Scope(nodes[node["base"]]["scope"])
-            scope.update(node)
-            node["scope"] = scope
-        else:
-            step['_node'] = node
-            scope = util.Scope(default_scopes[steps[0]])
-            if "mixin" in node:
-                for mpart in node["mixin"]:
-                    scope.update(nodes[mpart])
-            scope.update(node)
-            node["scope"] = scope
+            subparts = part.split("/")
+            substeps.append(subparts)
+
+        expanded = []
+        compute_stmt_permutations(expanded, substeps)
+
+        for namelst in expanded:
+            name = "_".join(namelst)
+            if name in nodes:
+                raise RuntimeError("Duplicate key in statements: {}".
+                                   format(name))
+            nodes[name] = node
+            add_statement_to_tree(tree, nodes, node, namelst)
 #    print_tree(tree)
 
 def print_tree(tree, indent=""):
@@ -589,7 +646,7 @@ fc_statements = [
     # Used with intent IN, INOUT, and OUT.
 #    c_native_pointer_cdesc=dict(
     dict(
-        name="c_native_*_cdesc",
+        name="c_native_*_in/out/inout_cdesc",
         buf_args=["context"],
 #        c_helper="ShroudTypeDefines",
         c_pre_call=[
@@ -604,7 +661,7 @@ fc_statements = [
     ),
 #    f_native_pointer_cdesc=dict(
     dict(
-        name="f_native_*_cdesc",
+        name="f_native_*_in/out/inout_cdesc",
         # TARGET required for argument to C_LOC.
         arg_decl=[
             "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
@@ -622,14 +679,6 @@ fc_statements = [
             # This also works with scalars since (1:0) is a zero length array.
             "{c_var_context}%shape(1:{rank}) = shape({f_var})",
         ],
-    ),
-    dict(
-        name="f_native_*_in_cdesc",
-        base="f_native_*_cdesc",
-    ),
-    dict(
-        name="f_native_*_out_cdesc",
-        base="f_native_*_cdesc",
     ),
 
 ########################################
@@ -651,11 +700,11 @@ fc_statements = [
     ),
     dict(
         name="c_void_*_cdesc",
-        base="c_native_*_cdesc",
+        base="c_native_*_in_cdesc",
     ),
     dict(
         name="f_void_*_cdesc",
-        base="f_native_*_cdesc",
+        base="f_native_*_in_cdesc",
     ),    
 
 ########################################
@@ -949,7 +998,7 @@ fc_statements = [
     ),
     #####
     dict(
-        name="f_char_*_result_allocatable",
+        name="f_char_scalar/*_result_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -960,10 +1009,6 @@ fc_statements = [
             "allocate(character(len={c_var_context}%elem_len):: {f_var})",
             "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
-    ),
-    dict(
-        name="f_char_scalar_result_allocatable",
-        base="f_char_*_result_allocatable",
     ),
 
     dict(
