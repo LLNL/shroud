@@ -29,6 +29,24 @@ c_statements
 
 ..        name="c_default",
 
+name
+^^^^
+
+A name can contain variants separated by ``/``.
+
+.. code-block:: yaml
+
+    - name: c_native_*_in/out/inout_cfi
+
+This is equivelent to having three groups:
+    
+.. code-block:: yaml
+
+    - name: c_native_*_in_cfi
+    - name: c_native_*_out_cfi
+    - name: c_native_*_inout_cfi
+
+
 buf_args
 ^^^^^^^^^
 
