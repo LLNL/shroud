@@ -221,7 +221,8 @@ def compute_stmt_permutations(out, parts):
                 tmp.append(part[0])
             else:
                 for expand in part:
-                    permutations(out, tmp + [expand] + parts[i+1:])
+                    compute_stmt_permutations(
+                        out, tmp + [expand] + parts[i+1:])
                 break
         else:
             tmp.append(part)
@@ -312,10 +313,6 @@ def update_stmt_tree(stmts, tree, defaults):
         if "name" not in node:
             raise RuntimeError("Missing name in statements: {}".
                                format(str(node)))
-        if node["name"] in nodes:
-            raise RuntimeError("Duplicate key in statements: {}".
-                               format(node["name"]))
-        nodes[node["name"]] = node
 
     for node in stmts:
         key = node["name"]
@@ -329,6 +326,11 @@ def update_stmt_tree(stmts, tree, defaults):
         compute_stmt_permutations(expanded, substeps)
 
         for namelst in expanded:
+            name = "_".join(namelst)
+            if name in nodes:
+                raise RuntimeError("Duplicate key in statements: {}".
+                                   format(name))
+            nodes[name] = node
             add_statement_to_tree(tree, nodes, node, namelst)
 #    print_tree(tree)
 
