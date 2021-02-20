@@ -230,7 +230,7 @@ def compute_stmt_permutations(out, parts):
         out.append(tmp)
                 
 
-def add_statement_to_tree(tree, nodes, node, steps):
+def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     """Add node to tree.
 
     Parameters
@@ -238,9 +238,11 @@ def add_statement_to_tree(tree, nodes, node, steps):
     tree : dict
         The accumulated tree.
     nodes : dict
-        nodes indexed by name to implement 'base'
+        Scopes indexed by name to implement 'base'.
+    node_stmts : dict
+        nodes indexed by name to implement 'mixin'.
     node : dict
-        A single 'statements' dict.
+        A 'statements' dict from fc_statement to add.
     steps : list of str
         ['c', 'native', '*', 'in', 'cfi']
     """
@@ -252,17 +254,20 @@ def add_statement_to_tree(tree, nodes, node, steps):
         step["_key"] = "_".join(label)
     if "base" in node:
         step['_node'] = node
-        scope = util.Scope(nodes[node["base"]]["scope"])
-        scope.update(node)
-        node["scope"] = scope
+        scope = util.Scope(nodes[node["base"]])
     else:
         step['_node'] = node
         scope = util.Scope(default_scopes[steps[0]])
         if "mixin" in node:
             for mpart in node["mixin"]:
-                scope.update(nodes[mpart])
-        scope.update(node)
-        node["scope"] = scope
+                scope.update(node_stmts[mpart])
+    scope.update(node)
+    step["_stmts"] = scope
+    name = step["_key"]
+    # Name scope using variant name (ex in/out/inout).
+    scope.name = name
+    nodes[name] = scope
+    node_stmts[name] = node
     
         
 def update_stmt_tree(stmts, tree, defaults):
@@ -307,7 +312,8 @@ def update_stmt_tree(stmts, tree, defaults):
         default_scopes[key] = node()
 
     # Index by name to find alias, base, mixin.
-    nodes = {}
+    nodes = {}      # Created Scope members for 'base'.
+    node_stmts = {} # Dict from fc_statements for 'mixin'.
     for node in stmts:
         # node is a dict.
         if "name" not in node:
@@ -330,8 +336,7 @@ def update_stmt_tree(stmts, tree, defaults):
             if name in nodes:
                 raise RuntimeError("Duplicate key in statements: {}".
                                    format(name))
-            nodes[name] = node
-            add_statement_to_tree(tree, nodes, node, namelst)
+            add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
 #    print_tree(tree)
 
 def print_tree(tree, indent=""):
@@ -388,7 +393,7 @@ def lookup_stmts_tree(tree, path):
         step = step[part]
         if "_node" in step:
             # Path ends here.
-            found = step["_node"]["scope"]
+            found = step["_stmts"]
 #    if not isinstance(found, util.Scope):
 #        raise RuntimeError
     return found
