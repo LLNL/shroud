@@ -264,7 +264,8 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     scope.update(node)
     step["_stmts"] = scope
     name = step["_key"]
-#keep    scope.name = name
+    # Name scope using variant name (ex in/out/inout).
+    scope.name = name
     nodes[name] = scope
     node_stmts[name] = node
     
