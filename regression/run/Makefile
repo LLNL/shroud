@@ -50,6 +50,12 @@ test-fortran : \
   test-fortran-statement \
   test-fortran-templates
 
+# Futher Interoperability with C
+# gfortran 9.1
+# intel 16.0.3
+test-cfi : \
+  test-fortran-generic-cfi
+
 ######################################################################
 # Compile a C test
 c-% : $(tempdir)/run/%/.. phony_explicit
@@ -213,6 +219,7 @@ phony_explicit:
     $(tempdir)/run/enum-c/python/.. \
     $(tempdir)/run/forward/.. \
     $(tempdir)/run/generic/.. \
+    $(tempdir)/run/generic-cfi/.. \
     $(tempdir)/run/namespace/.. \
     $(tempdir)/run/namespace/python/.. \
     $(tempdir)/run/ownership/.. \

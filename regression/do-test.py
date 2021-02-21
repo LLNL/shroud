@@ -488,6 +488,10 @@ if __name__ == "__main__":
         TestDesc("templates"),
         TestDesc("ownership"),
         TestDesc("generic"),
+        TestDesc("generic-cfi", yaml="generic",
+                 cmdline=[
+                     "--option", "F_CFI=true",
+                 ]),
         TestDesc("memdoc"),
         TestDesc("wrap"),
     ]

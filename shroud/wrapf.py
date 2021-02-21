@@ -1074,6 +1074,7 @@ rv = .false.
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
         multiple Fortran wrappers.
+        XXX - xlf does not allow this.
         """
         options = node.options
         fmt_func = node.fmtdict
@@ -2064,7 +2065,7 @@ rv = .false.
         else:
             # Call the C function directly via bind(C).
             C_node.fmtdict.F_C_name = fmt_func.F_name_impl
- 
+
     def _gather_helper_code(self, name, done, fileinfo):
         """Add code from helpers.
 

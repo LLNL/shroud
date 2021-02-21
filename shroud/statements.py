@@ -1620,4 +1620,25 @@ fc_statements = [
         name="f_struct_*_result",
         base="f_native_*_result_pointer",
     ),
+
+    ########################################
+    # CFI - Further Interoperability with C
+    # c_var will be CFI_cdesc_t *.
+    dict(
+        name="c_native_*_in_cfi",
+        iface_header=["ISO_Fortran_binding.h"],
+        buf_args=["arg_decl"],
+        cxx_local_var="pointer",
+        c_arg_decl=[
+            "CFI_cdesc_t *{c_var}",
+        ],
+        f_arg_decl=[
+            "{f_type}, intent({f_intent}) :: {c_var}{f_c_dimension}",
+        ],
+        f_module_line="iso_c_binding:{f_kind}",
+        pre_call=[
+            "{cxx_type} *{cxx_var} = {c_var}->base_addr;",
+        ],
+    ),
+    
 ]

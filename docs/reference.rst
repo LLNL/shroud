@@ -326,6 +326,10 @@ F_assumed_rank_max
   Maximum rank of argument with assumed-rank.
   Defaults to 7.
 
+F_CFI
+  Use the C Fortran Interface provided by *Futher Interoperability with C*
+  from Fortran 2018 (initially defined in TS29113 2012).
+
 F_create_bufferify_function
   Controls creation of a *bufferify* function.
   If *true*, an additional C function is created which receives
