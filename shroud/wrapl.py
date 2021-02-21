@@ -484,7 +484,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             )
             fmt_func.rv_asgn = fmt_func.rv_decl + " =\t "
 
-        node_stmt = LuaStmts()
+        node_stmt = util.Scope(LuaStmts)
         declare_code = []  # Declare variables and pop values.
         node_stmt.pre_call = []  # Extract arguments.
         node_stmt.call = []  # Call C++ function.
@@ -928,22 +928,15 @@ def update_statements_for_language(language):
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(lua_tree, path)
 
-class LuaStmts(object):
-    def __init__(
-        self,
-        name="lua_default",
-        pre_call=[],
-        call=[],
-        post_call=[],
-    ):
-        self.name = name
-        self.pre_call = pre_call
-        self.call = call
-        self.post_call = post_call
+LuaStmts = util.Scope(None,
+    name="lua_default",
+    pre_call=[],
+    call=[],
+    post_call=[],
+)
 
 default_stmts = dict(
     lua=LuaStmts,
-    base=LuaStmts,
 )
         
 lua_statements = [
