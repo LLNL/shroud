@@ -309,7 +309,7 @@ def update_stmt_tree(stmts, tree, defaults):
     """
     # Convert defaults into Scope nodes.
     for key, node in defaults.items():
-        default_scopes[key] = node()
+        default_scopes[key] = node
 
     # Index by name to find alias, base, mixin.
     nodes = {}      # Created Scope members for 'base'.
@@ -399,92 +399,47 @@ def lookup_stmts_tree(tree, path):
     return found
 
 
-class CStmts(object):
-    """C Statements.
-    arg_call    - List of arguments passed to C function.
+# C Statements.
+#  arg_call    - List of arguments passed to C function.
+#
+#  Used with buf_args = "arg_decl".
+#  c_arg_decl  - Add C declaration to C wrapper with buf_args=arg_decl
+#  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
+#                with buf_args=arg_decl.
+#  f_result_decl - Declaration for function result.
+#  f_module    - Add module info to interface block.
+CStmts = util.Scope(None,
+    name="c_default",
+    buf_args=[], buf_extra=[],
+    iface_header=[],
+    impl_header=[],
+    c_helper="", c_local_var=None,
+    cxx_local_var=None,
+    arg_call=[],
+    pre_call=[], call=[], post_call=[], final=[], ret=[],
+    destructor_name=None,
+    owner="library",
+    return_type=None, return_cptr=False,
+    c_arg_decl=[],
+    f_arg_decl=[],
+    f_result_decl=[],
+    f_module=None,
+    f_module_line=None,
+)
 
-    Used with buf_args = "arg_decl".
-    c_arg_decl  - Add C declaration to C wrapper with buf_args=arg_decl
-    f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
-                  with buf_args=arg_decl.
-    f_result_decl - Declaration for function result.
-    f_module    - Add module info to interface block.
-    """
-    def __init__(self,
-        name="c_default",
-        buf_args=[], buf_extra=[],
-        iface_header=[],
-        impl_header=[],
-        c_helper="", c_local_var=None,
-        cxx_local_var=None,
-        arg_call=[],
-        pre_call=[], call=[], post_call=[], final=[], ret=[],
-        destructor_name=None,
-        owner="library",
-        return_type=None, return_cptr=False,
-        c_arg_decl=[],
-        f_arg_decl=[],
-        f_result_decl=[],
-        f_module=None,
-        f_module_line=None,
-    ):
-        self.name = name
-        self.buf_args = buf_args
-        self.buf_extra = buf_extra
-        self.iface_header = iface_header
-        self.impl_header = impl_header
-        self.c_helper = c_helper
-        self.c_local_var = c_local_var
-        self.cxx_local_var = cxx_local_var
-
-        self.pre_call = pre_call
-        self.call = call
-        self.arg_call = arg_call
-        self.post_call = post_call
-        self.final = final
-        self.ret = ret
-
-        self.destructor_name = destructor_name
-        self.owner = owner
-        self.return_type = return_type
-        self.return_cptr = return_cptr
-        self.c_arg_decl = c_arg_decl
-        self.f_arg_decl = f_arg_decl
-        self.f_result_decl = f_result_decl
-        self.f_module = f_module
-        self.f_module_line = f_module_line
-
-class FStmts(object):
-    """Fortran Statements.
-
-    """
-    def __init__(self,
-        name="f_default",
-        c_helper="",
-        c_local_var=None,
-        f_helper="", f_module=None,
-        need_wrapper=False,
-        arg_name=None,
-        arg_decl=None,
-        arg_c_call=None,
-        declare=[], pre_call=[], call=[], post_call=[],
-        result=None,  # name of result variable
-    ):
-        self.name = name
-        self.c_helper = c_helper
-        self.c_local_var = c_local_var
-        self.f_helper = f_helper
-        self.f_module = f_module
-
-        self.need_wrapper = need_wrapper
-        self.arg_name = arg_name        # Names in subprogram list.
-        self.arg_decl = arg_decl        # argument/result declaration
-        self.arg_c_call = arg_c_call    # argument to C function.
-        self.declare = declare          # local declaration
-        self.pre_call = pre_call
-        self.call = call
-        self.post_call = post_call
-        self.result = result
+# Fortran Statements.
+FStmts = util.Scope(None,
+    name="f_default",
+    c_helper="",
+    c_local_var=None,
+    f_helper="", f_module=None,
+    need_wrapper=False,
+    arg_name=None,
+    arg_decl=None,
+    arg_c_call=None,
+    declare=[], pre_call=[], call=[], post_call=[],
+    result=None,  # name of result variable
+)
 
 # Define class for nodes in tree based on their first entry.
 # c_native_*_in uses 'c'.

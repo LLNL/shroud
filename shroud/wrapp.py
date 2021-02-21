@@ -1031,7 +1031,7 @@ return 1;""",
                         declare = [wformat("{py_ctype} {ctype_var};", fmt)]
                     else:
                         declare = []
-                    blk = PyStmts(
+                    blk = util.Scope(PyStmts,
                         declare=declare,
                         post_call=[
                             wformat(typemap.cxx_to_pytype, fmt),
@@ -1048,7 +1048,7 @@ return 1;""",
                 fmt.vargs = vargs
                 declare0 = "{PyObject} * {py_var} = {nullptr};"
                 post_call0 = '{py_var} = Py_BuildValue("{PY_build_format}", {vargs});'
-            blk0 = PyStmts(
+            blk0 = util.Scope(PyStmts,
                 declare=[wformat(declare0, fmt)],
                 post_call=[wformat(post_call0, fmt)],
             )
@@ -1717,7 +1717,7 @@ return 1;""",
                 post_call_code.extend(blk.blk.post_call)
             fmt.PyBuild_format = "".join([ttt.format for ttt in build_tuples])
             fmt.PyBuild_vargs = ",\t ".join([ttt.vargs for ttt in build_tuples])
-            rv_blk = PyStmts(
+            rv_blk = util.Scope(PyStmts,
                 declare=["PyObject *{PY_result} = {nullptr};  // return value object"],
                 post_call=["{PY_result} = "
                            'Py_BuildValue("{PyBuild_format}",\t {PyBuild_vargs});'],
@@ -2075,7 +2075,7 @@ return 1;""",
 #            result_typeflag = ast.typemap.base
 #        result_typemap = node.CXX_result_typemap
             
-            return PyStmts(
+            return util.Scope(PyStmts,
                 declare=["{cxx_alloc_decl} = {nullptr};"],
                 pre_call=self.allocate_memory(
                     fmt.cxx_var, capsule_type, fmt,
@@ -3547,107 +3547,29 @@ def update_statements_for_language(language):
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(py_tree, path)
 
-class PyStmts(object):
-    def __init__(
-        self,
-        name="py_default",
-        arg_declare=None,   # Empty list indicates no declaration.
-        post_declare=[],
-        fmtdict=None,
+PyStmts = util.Scope(None,
+    name="py_default",
+    arg_declare=None,   # Empty list indicates no declaration.
+    post_declare=[],
+    fmtdict=None,
             
-        allocate_local_var=False,
-        arg_call=None,
-        c_header=[], c_helper=[],
-        cxx_header=[], cxx_local_var=None,
-        need_numpy=False,
-        object_created=False,
-        parse_format=None, parse_args=[],
-        declare=[], post_parse=[], pre_call=[],
-        post_call=[],
-        declare_capsule=[], post_call_capsule=[], fail_capsule=[],
-        declare_keep=[], post_call_keep=[], fail_keep=[],
-        cleanup=[], fail=[],
-        goto_fail=False,
-        getter=[], getter_helper=[],
-        setter=[], setter_helper=[],
-    ):
-        self.name = name
-        self.arg_declare = arg_declare
-        self.post_declare = post_declare
-        self.fmtdict = fmtdict
+    allocate_local_var=False,
+    arg_call=None,
+    c_header=[], c_helper=[],
+    cxx_header=[], cxx_local_var=None,
+    need_numpy=False,
+    object_created=False,
+    parse_format=None, parse_args=[],
+    declare=[], post_parse=[], pre_call=[],
+    post_call=[],
+    declare_capsule=[], post_call_capsule=[], fail_capsule=[],
+    declare_keep=[], post_call_keep=[], fail_keep=[],
+    cleanup=[], fail=[],
+    goto_fail=False,
+    getter=[], getter_helper=[],
+    setter=[], setter_helper=[],
+)
 
-        self.allocate_local_var = allocate_local_var
-        self.arg_call = arg_call
-        self.c_header = c_header
-        self.c_helper = c_helper
-        self.cxx_header = cxx_header
-        self.cxx_local_var = cxx_local_var
-        self.need_numpy = need_numpy
-        self.object_created = object_created
-        self.parse_format = parse_format
-        self.parse_args = parse_args
-
-        self.declare = declare
-        self.post_parse = post_parse
-        self.pre_call = pre_call
-        self.post_call = post_call
-
-        self.declare_capsule = declare_capsule
-        self.post_call_capsule = post_call_capsule
-        self.fail_capsule = fail_capsule
-        self.declare_keep = declare_keep
-        self.post_call_keep = post_call_keep
-        self.fail_keep = fail_keep
-
-        self.cleanup = cleanup
-        self.fail = fail
-        self.goto_fail = goto_fail
-        # descr
-        self.getter = getter
-        self.getter_helper = getter_helper
-        self.setter = setter
-        self.setter_helper = setter_helper
-
-    def to_dict(self):
-        d = {}
-        for key in [
-                "name",
-                "allocate_local_var",
-                "arg_call",
-                "arg_declare",
-                "c_header",
-                "c_helper",
-                "cxx_header",
-                "cxx_local_var",
-                "fmtdict",
-                "need_numpy",
-                "object_created",
-                "parse_format",
-                "parse_args",
-                "declare",
-                "post_declare",
-                "post_parse",
-                "pre_call",
-                "post_call",
-                "declare_capsule",
-                "post_call_capsule",
-                "fail_capsule",
-                "declare_keep",
-                "post_call_keep",
-                "fail_keep",
-                "cleanup",
-                "fail",
-                "goto_fail",
-                "getter",
-                "getter_helper",
-                "setter",
-                "setter_helper",
-                ]:
-            value = getattr(self, key)
-            if value:
-                d[key] = value
-        return d
-                          
 default_stmts = dict(
     py=PyStmts,
     base=PyStmts,
