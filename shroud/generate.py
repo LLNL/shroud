@@ -747,22 +747,23 @@ class GenFunctions(object):
                 function.ast.typemap = cls.typemap
 
     def process_class(self, cls):
-        """process variables and functions for a class.
+        """Process variables and functions for a class.
         Create getter/setter functions for class variables.
 
-        Args:
-            cls - ast.ClassNode
+        Parameters
+        ----------
+        cls : ast.ClassNode
         """
         for var in cls.variables:
             self.add_var_getter_setter(cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
 
     def define_function_suffix(self, functions):
-        """
-        Return a new list with generated function inserted.
+        """Return a new list with generated function inserted.
 
-        Args:
-            functions - list of ast.FunctionNode
+        Parameters
+        ----------
+        functions : list of ast.FunctionNode
         """
 
         # Look for overloaded functions
@@ -831,7 +832,10 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
-            if method.options.F_create_bufferify_function:
+            if method.options.F_CFI:
+#                method._gen_fortran_generic = False
+                self.arg_to_CFI(method, ordered3)
+            elif method.options.F_create_bufferify_function:
                 self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
@@ -841,7 +845,7 @@ class GenFunctions(object):
             ordered4.append(method)
             if not method.wrap.fortran:
                 continue
-            if method._gen_fortran_generic:
+            if method._gen_fortran_generic and not method.options.F_CFI:
                 self.process_assumed_rank(method)
             if method.fortran_generic:
                 method._overloaded = True
@@ -1221,8 +1225,67 @@ class GenFunctions(object):
                 attrs[name] = c_attrs[name]
                 del c_attrs[name]
 
+    def arg_to_CFI(self, node, ordered_functions):
+        """Look for functions which can use TS29113
+        Futher interoperability with C.
+
+        If a function requires CFI_cdesc, clone the function and set
+        arg.stmts_suffix to "cfi" to use the correct statements.  The
+        new function will be called by Fortran directly via the
+        bind(C) interface.  The original function no longer needs to
+        be wrapped by Fortran; however, it will still be wrapped by C
+        to provide a C API to a C++ function.
+        
+
+        Parameters
+        ----------
+        node : FunctionNode
+        ordered_functions : list of FunctionNode
+        """
+        options = node.options
+
+        if options.wrap_fortran is False:
+            # The buffer function is intended to be called by Fortran.
+            # No Fortran, no need for buffer function.
+            return
+
+        ast = node.ast
+        need_cfi = False
+        for arg in ast.params:
+            if arg.metaattrs["assumed-rank"]:
+                need_cfi = True
+
+        if not need_cfi:
+            return
+
+        options.wrap_fortran = False
+
+        # Create a new C function and change arguments
+        # and add attributes.
+        C_new = node.clone()
+        ordered_functions.append(C_new)
+        self.append_function_index(C_new)
+
+        generated_suffix = "cfi"
+        C_new._generated = "arg_to_cfi"
+        C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
+        fmt = C_new.fmtdict
+        fmt.function_suffix = fmt.function_suffix + fmt.C_cfi_suffix
+
+        C_new.wrap.assign(c=True)#, fortran=True)
+        C_new._PTR_C_CXX_index = node._function_index
+
+        for arg in C_new.ast.params:
+            if arg.metaattrs["assumed-rank"]:
+                arg.stmts_suffix = generated_suffix
+                
+        # Fortran function may call C subroutine if string/vector result
+        # Fortran function calls bufferify function.
+        node._PTR_F_C_index = C_new._function_index
+
     def arg_to_buffer(self, node, ordered_functions):
         """Look for function which have buffer arguments.
+
         This includes functions with string or vector arguments.
         If found then create a new C function that
         will add arguments buf_args (typically a buffer and length).
@@ -1230,9 +1293,10 @@ class GenFunctions(object):
         String arguments added deref(allocatable) by default so that
         char * function will create an allocatable string in Fortran.
 
-        Args:
-            node -
-            ordered_functions -
+        Parameters
+        ----------
+        node : FunctionNode
+        ordered_functions : list of FunctionNode
         """
         options = node.options
         fmt = node.fmtdict

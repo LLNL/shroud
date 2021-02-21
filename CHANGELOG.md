@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   passed for an argument.
 - Process assumed-rank dimension attribute, *dimension(..)*.
   Create a generic interface using scalar and each rank.
+- Started adding support for Futher Interoperability with C.
+  Used when option *F_CFI* is True (C/Fortran Interoperability).
 
 ### Fixed
 - Order of header files in *cxx_header* is preserved in the generated code.

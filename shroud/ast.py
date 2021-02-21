@@ -509,6 +509,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             class_method=None,
             C_force_wrapper=False,
             C_line_length=72,
+            F_CFI=False,    # TS29113 C Fortran Interoperability
             F_assumed_rank_min=0,
             F_assumed_rank_max=7,
             F_flatten_namespace=False,
@@ -665,6 +666,7 @@ class LibraryNode(AstNode, NamespaceMixin):
         fmt_library = util.Scope(
             parent=None,
             C_bufferify_suffix="_bufferify",
+            C_cfi_suffix="_CFI",
             C_call_list="",
             C_prefix=C_prefix,
             C_result="rv",  # return value
