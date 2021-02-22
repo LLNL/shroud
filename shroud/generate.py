@@ -832,10 +832,14 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
+            
             if method.options.F_CFI:
 #                method._gen_fortran_generic = False
-                self.arg_to_CFI(method, ordered3)
-            elif method.options.F_create_bufferify_function:
+                done = self.arg_to_CFI(method, ordered3)
+            else:
+                done = False
+
+            if method.options.F_create_bufferify_function and not done:
                 self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
@@ -1256,7 +1260,7 @@ class GenFunctions(object):
                 need_cfi = True
 
         if not need_cfi:
-            return
+            return False
 
         options.wrap_fortran = False
 
@@ -1282,6 +1286,7 @@ class GenFunctions(object):
         # Fortran function may call C subroutine if string/vector result
         # Fortran function calls bufferify function.
         node._PTR_F_C_index = C_new._function_index
+        return True
 
     def arg_to_buffer(self, node, ordered_functions):
         """Look for function which have buffer arguments.
