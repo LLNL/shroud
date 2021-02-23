@@ -44,9 +44,13 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
+// if ntrim is -1, call ShroudLenTrim.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = malloc(nsrc + 1);
+   if (ntrim == -1) {
+      ntrim = ShroudLenTrim(src, nsrc);
+   }
    if (ntrim > 0) {
      memcpy(rv, src, ntrim);
    }
@@ -62,6 +66,9 @@ static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = (char *) std::malloc(nsrc + 1);
+   if (ntrim == -1) {
+      ntrim = ShroudLenTrim(src, nsrc);
+   }
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }

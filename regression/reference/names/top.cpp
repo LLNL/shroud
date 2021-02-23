@@ -23,11 +23,30 @@
 extern "C" {
 
 
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = (char *) std::malloc(nsrc + 1);
+   if (ntrim == -1) {
+      ntrim = ShroudLenTrim(src, nsrc);
+   }
    if (ntrim > 0) {
      std::memcpy(rv, src, ntrim);
    }

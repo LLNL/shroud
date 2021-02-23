@@ -16,11 +16,31 @@
 #include <string.h>
 
 
+// helper ShroudLenTrim
+// Returns the length of character string src with length nsrc,
+// ignoring any trailing blanks.
+static int ShroudLenTrim(const char *src, int nsrc) {
+    int i;
+
+    for (i = nsrc - 1; i >= 0; i--) {
+        if (src[i] != ' ') {
+            break;
+        }
+    }
+
+    return i + 1;
+}
+
+
 // helper ShroudStrAlloc
 // Copy src into new memory and null terminate.
+// if ntrim is -1, call ShroudLenTrim.
 static char *ShroudStrAlloc(const char *src, int nsrc, int ntrim)
 {
    char *rv = malloc(nsrc + 1);
+   if (ntrim == -1) {
+      ntrim = ShroudLenTrim(src, nsrc);
+   }
    if (ntrim > 0) {
      memcpy(rv, src, ntrim);
    }
