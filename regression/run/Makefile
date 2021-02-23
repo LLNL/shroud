@@ -239,6 +239,7 @@ phony_explicit:
     $(tempdir)/run/statement/.. \
     $(tempdir)/run/strings/.. \
     $(tempdir)/run/strings/python/.. \
+    $(tempdir)/run/strings-cfi/.. \
     $(tempdir)/run/struct-c/.. \
     $(tempdir)/run/struct-cxx/.. \
     $(tempdir)/run/struct-numpy-c/python/.. \

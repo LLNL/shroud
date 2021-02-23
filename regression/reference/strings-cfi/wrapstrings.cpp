@@ -219,22 +219,25 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
-// Exact:     c_char_*_out_buf
+// Argument:  char * dest +charlen(40)+intent(out)
+// Exact:     c_char_*_out_cfi
 // ----------------------------------------
 // Argument:  const char * src +intent(in)
-// Requested: c_char_*_in
-// Match:     c_default
-// start STR_pass_char_ptr_bufferify
-void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src)
+// Exact:     c_char_*_in_cfi
+// start STR_pass_char_ptr_CFI
+void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
+    CFI_cdesc_t *SHcfi_src)
 {
-    // splicer begin function.pass_char_ptr_bufferify
-    passCharPtr(dest, src);
-    ShroudStrBlankFill(dest, Ndest);
-    // splicer end function.pass_char_ptr_bufferify
+    // splicer begin function.pass_char_ptr_CFI
+    char *SHCXX_dest = static_cast<char *>(SHcfi_dest->base_addr);
+    char *src = static_cast<char *>(SHcfi_src->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHcfi_src->elem_len, -1);
+    passCharPtr(SHCXX_dest, SHCXX_src);
+    ShroudStrBlankFill(SHCXX_dest, SHcfi_dest->elem_len);
+    ShroudStrFree(SHCXX_src);
+    // splicer end function.pass_char_ptr_CFI
 }
-// end STR_pass_char_ptr_bufferify
+// end STR_pass_char_ptr_CFI
 
 /**
  * \brief toupper
@@ -268,16 +271,17 @@ void STR_pass_char_ptr_in_out(char * s)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-// Exact:     c_char_*_inout_buf
-void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
+// Argument:  char * s +intent(inout)
+// Exact:     c_char_*_inout_cfi
+void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s)
 {
-    // splicer begin function.pass_char_ptr_in_out_bufferify
-    char * SHCXX_s = ShroudStrAlloc(s, Ns, Ls);
+    // splicer begin function.pass_char_ptr_in_out_CFI
+    char *s = static_cast<char *>(SHcfi_s->base_addr);
+    char *SHCXX_s = ShroudStrAlloc(s, SHcfi_s->elem_len, -1);
     passCharPtrInOut(SHCXX_s);
-    ShroudStrCopy(s, Ns, SHCXX_s, -1);
+    ShroudStrCopy(s, SHcfi_s->elem_len, SHCXX_s, -1);
     ShroudStrFree(SHCXX_s);
-    // splicer end function.pass_char_ptr_in_out_bufferify
+    // splicer end function.pass_char_ptr_in_out_CFI
 }
 
 /**
@@ -1328,6 +1332,23 @@ void STR_explicit1(char * name)
 }
 
 // ----------------------------------------
+// Function:  void explicit1
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  char * name +intent(in)+len_trim(AAlen)
+// Exact:     c_char_*_in_cfi
+void STR_explicit1_CFI(CFI_cdesc_t *SHcfi_name)
+{
+    // splicer begin function.explicit1_CFI
+    char *name = static_cast<char *>(SHcfi_name->base_addr);
+    char *SHCXX_name = ShroudStrAlloc(name, SHcfi_name->elem_len, -1);
+    explicit1(SHCXX_name);
+    ShroudStrFree(SHCXX_name);
+    // splicer end function.explicit1_CFI
+}
+
+// ----------------------------------------
 // Function:  void explicit2
 // Requested: c
 // Match:     c_default
@@ -1348,13 +1369,14 @@ void STR_explicit2(char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * name +intent(out)+len(AAtrim)
-// Exact:     c_char_*_out_buf
-void STR_explicit2_bufferify(char * name, int AAtrim)
+// Exact:     c_char_*_out_cfi
+void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
 {
-    // splicer begin function.explicit2_bufferify
-    explicit2(name);
-    ShroudStrBlankFill(name, AAtrim);
-    // splicer end function.explicit2_bufferify
+    // splicer begin function.explicit2_CFI
+    char *SHCXX_name = static_cast<char *>(SHcfi_name->base_addr);
+    explicit2(SHCXX_name);
+    ShroudStrBlankFill(SHCXX_name, SHcfi_name->elem_len);
+    // splicer end function.explicit2_CFI
 }
 
 /**
@@ -1389,19 +1411,22 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * dest +intent(out)+len(Ndest)
-// Exact:     c_char_*_out_buf
+// Argument:  char * dest +intent(out)
+// Exact:     c_char_*_out_cfi
 // ----------------------------------------
 // Argument:  const char * src +intent(in)
-// Requested: c_char_*_in
-// Match:     c_default
-void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src)
+// Exact:     c_char_*_in_cfi
+void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
+    CFI_cdesc_t *SHcfi_src)
 {
-    // splicer begin function.cpass_char_ptr_bufferify
-    CpassCharPtr(dest, src);
-    ShroudStrBlankFill(dest, Ndest);
-    // splicer end function.cpass_char_ptr_bufferify
+    // splicer begin function.cpass_char_ptr_CFI
+    char *SHCXX_dest = static_cast<char *>(SHcfi_dest->base_addr);
+    char *src = static_cast<char *>(SHcfi_src->base_addr);
+    char *SHCXX_src = ShroudStrAlloc(src, SHcfi_src->elem_len, -1);
+    CpassCharPtr(SHCXX_dest, SHCXX_src);
+    ShroudStrBlankFill(SHCXX_dest, SHcfi_dest->elem_len);
+    ShroudStrFree(SHCXX_src);
+    // splicer end function.cpass_char_ptr_CFI
 }
 
 /**

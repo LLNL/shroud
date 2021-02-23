@@ -1605,8 +1605,104 @@ fc_statements = [
         ],
         f_module_line="iso_c_binding:{f_kind}",
         pre_call=[
-            "{cxx_type} *{cxx_var} = {c_var}->base_addr;",
+            "{cxx_type} *{cxx_var} = "
+            "{cast_static}{cxx_type} *{cast1}{c_var}->base_addr{cast2};",
         ],
     ),
+
+    ########################################
+    # char arg
+    dict(
+        name="c_mixin_character",
+        iface_header=["ISO_Fortran_binding.h"],
+        buf_args=["arg_decl"],
+        cxx_local_var="pointer",
+        c_arg_decl=[
+            "CFI_cdesc_t *{cfi_prefix}{c_var}",
+        ],
+        f_arg_decl=[
+            "character(len=*), intent({f_intent}) :: {c_var}",
+        ],
+        pre_call=[
+            "{cxx_type} *{cxx_var} = "
+            "{cast_static}{cxx_type} *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+        ],
+    ),
+
+    dict(
+        name="c_char_*_in_cfi",
+        mixin=[
+            "c_mixin_character",
+        ],
+        # Null terminate string.
+        pre_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "char *{cxx_var} = ShroudStrAlloc(\t"
+            "{c_var},\t {cfi_prefix}{c_var}->elem_len,\t -1);",
+        ],
+        post_call=[
+            "ShroudStrFree({cxx_var});",
+        ],
+    ),
+    dict(
+        name="c_char_*_out_cfi",
+        mixin=[
+            "c_mixin_character",
+        ],
+        c_helper="ShroudStrBlankFill",
+        post_call=[
+            "ShroudStrBlankFill({cxx_var}, {cfi_prefix}{c_var}->elem_len);"
+        ],
+    ),
+    dict(
+        name="c_char_*_inout_cfi",
+        mixin=[
+            "c_mixin_character",
+        ],
+        # Null terminate string.
+        c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
+        pre_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "char *{cxx_var} = ShroudStrAlloc(\t"
+            "{c_var},\t {cfi_prefix}{c_var}->elem_len,\t -1);",
+        ],
+        post_call=[
+            # nsrc=-1 will call strlen({cxx_var})
+            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "\t {cxx_var},\t -1);",
+            "ShroudStrFree({cxx_var});",
+        ],
+    ),
+    dict(
+        name="c_xxchar_*_result_cfi",
+        buf_args=["arg", "len"],
+        c_helper="ShroudStrCopy",
+        post_call=[
+            # nsrc=-1 will call strlen({cxx_var})
+            "ShroudStrCopy({c_var}, {c_var_len},"
+            "\t {cxx_var},\t -1);",
+        ],
+    ),
+    dict(
+        name="c_xxchar_*_result_cfi_allocatable",
+        buf_args=["context"],
+        c_helper="ShroudTypeDefines",
+        # Copy address of result into c_var and save length.
+        # When returning a std::string (and not a reference or pointer)
+        # an intermediate object is created to save the results
+        # which will be passed to copy_string
+        post_call=[
+            "{c_var_context}->cxx.addr = {cxx_nonconst_ptr};",
+            "{c_var_context}->cxx.idtor = {idtor};",
+            "{c_var_context}->addr.ccharp = {cxx_var};",
+            "{c_var_context}->type = {sh_type};",
+            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{c_var_context}->size = 1;",
+            "{c_var_context}->rank = 0;",
+        ],
+    ),
+    
     
 ]

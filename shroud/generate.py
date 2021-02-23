@@ -376,9 +376,15 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if intent == "in" and is_ptr == 1 and arg_typemap.name == "char":
+        if (
+            options.F_CFI is False and
+            intent == "in" and
+            is_ptr == 1 and
+            arg_typemap.name == "char"):
             # const char *arg
             # char *arg+intent(in)
+            # Add terminating NULL in Fortran wrapper.
+            # Avoid a C wrapper just to do the NULL terminate.
             arg.ftrim_char_in = True
 
         if node:
@@ -1254,12 +1260,18 @@ class GenFunctions(object):
             return
 
         ast = node.ast
-        need_cfi = False
+        cfi_args = {}
         for arg in ast.params:
+            cfi_args[arg.name] = False
             if arg.metaattrs["assumed-rank"]:
-                need_cfi = True
+                cfi_args[arg.name] = True
+            else:
+                arg_typemap = arg.typemap
+                if arg_typemap.sgroup == "char":
+                    if arg.is_indirect():
+                        cfi_args[arg.name] = True
 
-        if not need_cfi:
+        if not any(cfi_args.values()):
             return False
 
         options.wrap_fortran = False
@@ -1280,7 +1292,7 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
-            if arg.metaattrs["assumed-rank"]:
+            if cfi_args[arg.name]:
                 arg.stmts_suffix = generated_suffix
                 
         # Fortran function may call C subroutine if string/vector result

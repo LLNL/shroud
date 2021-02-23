@@ -16,6 +16,7 @@
 #define WRAPSTRINGS_H
 
 // shroud
+#include "ISO_Fortran_binding.h"
 #include "typesstrings.h"
 
 // splicer begin CXX_declarations
@@ -38,12 +39,12 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_pass_char_ptr(char * dest, const char * src);
 
-void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src);
+void STR_pass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
+    CFI_cdesc_t *SHcfi_src);
 
 void STR_pass_char_ptr_in_out(char * s);
 
-void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
+void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s);
 
 const char * STR_get_char_ptr1(void);
 
@@ -153,14 +154,16 @@ int STR_accept_string_instance_bufferify(char *arg1, int Larg1);
 
 void STR_explicit1(char * name);
 
+void STR_explicit1_CFI(CFI_cdesc_t *SHcfi_name);
+
 void STR_explicit2(char * name);
 
-void STR_explicit2_bufferify(char * name, int AAtrim);
+void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name);
 
 void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv);
 
-void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
-    const char * src);
+void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
+    CFI_cdesc_t *SHcfi_src);
 
 void STR_post_declare(int * count, char * name);
 

@@ -554,7 +554,6 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -578,10 +577,10 @@
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_pass_char_ptr_bufferify",
+                    "F_C_call": "c_pass_char_ptr_cfi",
                     "F_C_name": "c_pass_char_ptr",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
+                    "F_arg_c_call": "dest,\t src",
                     "F_arguments": "dest,\t src",
                     "F_name_function": "pass_char_ptr",
                     "F_name_generic": "pass_char_ptr",
@@ -597,6 +596,7 @@
                 },
                 "options": {
                     "literalinclude": true,
+                    "wrap_fortran": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -614,23 +614,21 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "dest",
+                            "cxx_nonconst_ptr": "SHCXX_dest",
                             "cxx_type": "char",
-                            "cxx_var": "dest",
+                            "cxx_var": "SHCXX_dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_dest",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_char_*_out_cfi",
+                            "stmt1": "c_char_*_out_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -638,8 +636,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "stmtc0": "c_char_*_out_cfi",
+                            "stmtc1": "c_char_*_out_cfi"
                         }
                     },
                     "src": {
@@ -651,14 +649,14 @@
                             "c_var": "src",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
+                            "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
                             "cxx_type": "char",
-                            "cxx_var": "src",
+                            "cxx_var": "SHCXX_src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_src",
-                            "stmt0": "c_char_*_in",
-                            "stmt1": "c_default"
+                            "stmt0": "c_char_*_in_cfi",
+                            "stmt1": "c_char_*_in_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "src",
@@ -668,11 +666,15 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_in_cfi",
+                            "stmtc1": "c_char_*_in_cfi"
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "passCharPtr",
@@ -682,8 +684,7 @@
                         {
                             "attrs": {
                                 "charlen": "40",
-                                "intent": "out",
-                                "len": "Ndest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -696,7 +697,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         },
                         {
@@ -712,10 +713,10 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -725,28 +726,29 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out)+len, const char * src +intent(in))",
+                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "dest,\t src",
-                    "C_name": "STR_pass_char_ptr_bufferify",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
+                    "C_call_list": "SHCXX_dest,\t SHCXX_src",
+                    "C_name": "STR_pass_char_ptr_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_dest,\t CFI_cdesc_t *SHcfi_src",
                     "C_return_type": "void",
-                    "F_C_arguments": "dest,\t Ndest,\t src",
-                    "F_C_name": "c_pass_char_ptr_bufferify",
+                    "F_C_arguments": "dest,\t src",
+                    "F_C_name": "pass_char_ptr",
                     "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtr",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
                     "literalinclude": true,
+                    "wrap_fortran": false,
                     "wrap_lua": false
                 },
                 "wrap": {
@@ -839,10 +841,10 @@
                     "C_prototype": "char * s",
                     "C_return_type": "void",
                     "F_C_arguments": "s",
-                    "F_C_call": "c_pass_char_ptr_in_out_bufferify",
+                    "F_C_call": "c_pass_char_ptr_in_out_cfi",
                     "F_C_name": "c_pass_char_ptr_in_out",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "s,\t len_trim(s, kind=C_INT),\t len(s, kind=C_INT)",
+                    "F_arg_c_call": "s",
                     "F_arguments": "s",
                     "F_name_function": "pass_char_ptr_in_out",
                     "F_name_generic": "pass_char_ptr_in_out",
@@ -856,7 +858,9 @@
                     "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -872,8 +876,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_s",
@@ -882,15 +884,13 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_s",
-                            "stmt0": "c_char_*_inout_buf",
-                            "stmt1": "c_char_*_inout_buf"
+                            "stmt0": "c_char_*_inout_cfi",
+                            "stmt1": "c_char_*_inout_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "s",
                             "F_pointer": "SHPTR_s",
                             "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
                             "f_intent": "INOUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -898,12 +898,12 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_*_inout",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_inout_buf",
-                            "stmtc1": "c_char_*_inout_buf"
+                            "stmtc0": "c_char_*_inout_cfi",
+                            "stmtc1": "c_char_*_inout_cfi"
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "passCharPtrInOut",
@@ -912,9 +912,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
-                                "len": "Ns",
-                                "len_trim": "Ls"
+                                "intent": "inout"
                             },
                             "declarator": {
                                 "name": "s",
@@ -927,7 +925,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -937,27 +935,29 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout)+len+len_trim)",
+                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
                 "doxygen": {
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
                 "fmtdict": {
                     "C_call_list": "SHCXX_s",
-                    "C_name": "STR_pass_char_ptr_in_out_bufferify",
-                    "C_prototype": "char * s,\t int Ls,\t int Ns",
+                    "C_name": "STR_pass_char_ptr_in_out_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_s",
                     "C_return_type": "void",
-                    "F_C_arguments": "s,\t Ls,\t Ns",
-                    "F_C_name": "c_pass_char_ptr_in_out_bufferify",
+                    "F_C_arguments": "s",
+                    "F_C_name": "pass_char_ptr_in_out",
                     "F_C_subprogram": "subroutine",
                     "function_name": "passCharPtrInOut",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -6842,15 +6842,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "name",
-                            "F_pointer": "SHPTR_name",
-                            "c_var": "name",
-                            "c_var_trim": "AAlen",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "name",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "F_C_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6893,7 +6885,6 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -6914,10 +6905,10 @@
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_explicit1",
+                    "F_C_call": "c_explicit1_cfi",
                     "F_C_name": "c_explicit1",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "trim(name)//C_NULL_CHAR",
+                    "F_arg_c_call": "name",
                     "F_arguments": "name",
                     "F_name_function": "explicit1",
                     "F_name_generic": "explicit1",
@@ -6931,11 +6922,108 @@
                     "stmtc1": "c_default",
                     "underscore_name": "explicit1"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
+                }
+            },
+            {
+                "_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "AAlen",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_name",
+                            "cxx_type": "char",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
+                            "stmt0": "c_char_*_in_cfi",
+                            "stmt1": "c_char_*_in_cfi"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name",
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_trim": "AAlen",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_in_cfi",
+                            "stmtc1": "c_char_*_in_cfi"
+                        }
+                    }
+                },
+                "_generated": "arg_to_cfi",
+                "ast": {
+                    "declarator": {
+                        "name": "explicit1",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "len_trim": "AAlen"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "cfi",
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void explicit1(char * name+len_trim(AAlen)+intent(in))",
+                "declgen": "void explicit1(char * name +intent(in)+len_trim(AAlen))",
+                "fmtdict": {
+                    "C_bufferify_suffix": "_BUFFER",
+                    "C_call_list": "SHCXX_name",
+                    "C_name": "STR_explicit1_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_name",
+                    "C_return_type": "void",
+                    "F_C_arguments": "name",
+                    "F_C_name": "explicit1",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "explicit1",
+                    "function_suffix": "_CFI",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "explicit1"
+                },
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -7002,10 +7090,10 @@
                     "C_prototype": "char * name",
                     "C_return_type": "void",
                     "F_C_arguments": "name",
-                    "F_C_call": "c_explicit2_bufferify",
+                    "F_C_call": "c_explicit2_cfi",
                     "F_C_name": "c_explicit2",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "name,\t len(name, kind=C_INT)",
+                    "F_arg_c_call": "name",
                     "F_arguments": "name",
                     "F_name_function": "explicit2",
                     "F_name_generic": "explicit2",
@@ -7019,6 +7107,7 @@
                     "underscore_name": "explicit2"
                 },
                 "options": {
+                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -7039,14 +7128,14 @@
                             "c_var_len": "AAtrim",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name",
+                            "cxx_nonconst_ptr": "SHCXX_name",
                             "cxx_type": "char",
-                            "cxx_var": "name",
+                            "cxx_var": "SHCXX_name",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_char_*_out_cfi",
+                            "stmt1": "c_char_*_out_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -7060,12 +7149,12 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "stmtc0": "c_char_*_out_cfi",
+                            "stmtc1": "c_char_*_out_cfi"
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "explicit2",
@@ -7088,7 +7177,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -7100,21 +7189,22 @@
                 "decl": "void explicit2(char * name+len(AAtrim)+intent(out))",
                 "declgen": "void explicit2(char * name +intent(out)+len(AAtrim))",
                 "fmtdict": {
-                    "C_call_list": "name",
-                    "C_name": "STR_explicit2_bufferify",
-                    "C_prototype": "char * name,\t int AAtrim",
+                    "C_call_list": "SHCXX_name",
+                    "C_name": "STR_explicit2_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_name",
                     "C_return_type": "void",
-                    "F_C_arguments": "name,\t AAtrim",
-                    "F_C_name": "c_explicit2_bufferify",
+                    "F_C_arguments": "name",
+                    "F_C_name": "explicit2",
                     "F_C_subprogram": "subroutine",
                     "function_name": "explicit2",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "explicit2"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
+                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -7529,7 +7619,6 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
@@ -7553,10 +7642,10 @@
                     "C_prototype": "char * dest,\t const char * src",
                     "C_return_type": "void",
                     "F_C_arguments": "dest,\t src",
-                    "F_C_call": "c_cpass_char_ptr_bufferify",
+                    "F_C_call": "c_cpass_char_ptr_cfi",
                     "F_C_name": "c_cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "dest,\t len(dest, kind=C_INT),\t trim(src)//C_NULL_CHAR",
+                    "F_arg_c_call": "dest,\t src",
                     "F_arguments": "dest,\t src",
                     "F_name_function": "cpass_char_ptr",
                     "F_name_generic": "cpass_char_ptr",
@@ -7571,6 +7660,7 @@
                 },
                 "options": {
                     "C_extern_C": true,
+                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
@@ -7588,23 +7678,21 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "dest",
+                            "cxx_nonconst_ptr": "SHCXX_dest",
                             "cxx_type": "char",
-                            "cxx_var": "dest",
+                            "cxx_var": "SHCXX_dest",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_dest",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_char_*_out_cfi",
+                            "stmt1": "c_char_*_out_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "dest",
                             "F_pointer": "SHPTR_dest",
                             "c_var": "dest",
-                            "c_var_len": "Ndest",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
@@ -7612,8 +7700,8 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "stmt0": "f_char_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "stmtc0": "c_char_*_out_cfi",
+                            "stmtc1": "c_char_*_out_cfi"
                         }
                     },
                     "src": {
@@ -7625,14 +7713,14 @@
                             "c_var": "src",
                             "cxx_addr": "",
                             "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<char *>\t(src)",
+                            "cxx_nonconst_ptr": "const_cast<char *>\t(SHCXX_src)",
                             "cxx_type": "char",
-                            "cxx_var": "src",
+                            "cxx_var": "SHCXX_src",
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_src",
-                            "stmt0": "c_char_*_in",
-                            "stmt1": "c_default"
+                            "stmt0": "c_char_*_in_cfi",
+                            "stmt1": "c_char_*_in_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "src",
@@ -7642,11 +7730,15 @@
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "src",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_in_cfi",
+                            "stmtc1": "c_char_*_in_cfi"
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "CpassCharPtr",
@@ -7655,8 +7747,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out",
-                                "len": "Ndest"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "dest",
@@ -7669,7 +7760,7 @@
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         },
                         {
@@ -7685,10 +7776,10 @@
                                     }
                                 ]
                             },
-                            "ftrim_char_in": true,
                             "specifier": [
                                 "char"
                             ],
+                            "stmts_suffix": "cfi",
                             "typemap_name": "char"
                         }
                     ],
@@ -7698,28 +7789,29 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out)+len, const char * src +intent(in))",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
                 },
                 "fmtdict": {
-                    "C_call_list": "dest,\t src",
-                    "C_name": "STR_cpass_char_ptr_bufferify",
-                    "C_prototype": "char * dest,\t int Ndest,\t const char * src",
+                    "C_call_list": "SHCXX_dest,\t SHCXX_src",
+                    "C_name": "STR_cpass_char_ptr_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_dest,\t CFI_cdesc_t *SHcfi_src",
                     "C_return_type": "void",
-                    "F_C_arguments": "dest,\t Ndest,\t src",
-                    "F_C_name": "c_cpass_char_ptr_bufferify",
+                    "F_C_arguments": "dest,\t src",
+                    "F_C_name": "cpass_char_ptr",
                     "F_C_subprogram": "subroutine",
                     "function_name": "CpassCharPtr",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "cpass_char_ptr"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
                     "C_extern_C": true,
+                    "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },

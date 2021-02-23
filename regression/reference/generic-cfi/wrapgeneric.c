@@ -36,7 +36,7 @@
 int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
 {
     // splicer begin function.sum_values_CFI
-    int *SHCXX_values = values->base_addr;
+    int *SHCXX_values = (int *) values->base_addr;
     int SHC_rv = SumValues(SHCXX_values, nvalues);
     return SHC_rv;
     // splicer end function.sum_values_CFI

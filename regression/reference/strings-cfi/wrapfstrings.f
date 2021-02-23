@@ -136,27 +136,24 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtr
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
-    ! Exact:     c_char_*_out_buf
+    ! Argument:  char * dest +charlen(40)+intent(out)
+    ! Exact:     c_char_*_out_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +intent(in)
-    ! Requested: c_char_*_in
-    ! Match:     c_default
-    ! start c_pass_char_ptr_bufferify
+    ! Exact:     c_char_*_in_cfi
+    ! start pass_char_ptr
     interface
-        subroutine c_pass_char_ptr_bufferify(dest, Ndest, src) &
-                bind(C, name="STR_pass_char_ptr_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine pass_char_ptr(dest, src) &
+                bind(C, name="STR_pass_char_ptr_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: Ndest
-            character(kind=C_CHAR), intent(IN) :: src(*)
-        end subroutine c_pass_char_ptr_bufferify
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine pass_char_ptr
     end interface
-    ! end c_pass_char_ptr_bufferify
+    ! end pass_char_ptr
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
@@ -177,20 +174,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void passCharPtrInOut
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-    ! Exact:     c_char_*_inout_buf
+    ! Argument:  char * s +intent(inout)
+    ! Exact:     c_char_*_inout_cfi
     interface
-        subroutine c_pass_char_ptr_in_out_bufferify(s, Ls, Ns) &
-                bind(C, name="STR_pass_char_ptr_in_out_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine pass_char_ptr_in_out(s) &
+                bind(C, name="STR_pass_char_ptr_in_out_CFI")
             implicit none
-            character(kind=C_CHAR), intent(INOUT) :: s(*)
-            integer(C_INT), value, intent(IN) :: Ls
-            integer(C_INT), value, intent(IN) :: Ns
-        end subroutine c_pass_char_ptr_in_out_bufferify
+            character(len=*), intent(INOUT) :: s
+        end subroutine pass_char_ptr_in_out
     end interface
 
     ! ----------------------------------------
@@ -1033,6 +1027,21 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
+    ! Function:  void explicit1
+    ! Requested: c_void_scalar_result_cfi
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  char * name +intent(in)+len_trim(AAlen)
+    ! Exact:     c_char_*_in_cfi
+    interface
+        subroutine explicit1(name) &
+                bind(C, name="STR_explicit1_CFI")
+            implicit none
+            character(len=*), intent(IN) :: name
+        end subroutine explicit1
+    end interface
+
+    ! ----------------------------------------
     ! Function:  void explicit2
     ! Requested: c_void_scalar_result
     ! Match:     c_default
@@ -1051,19 +1060,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void explicit2
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
-    ! Exact:     c_char_*_out_buf
+    ! Exact:     c_char_*_out_cfi
     interface
-        subroutine c_explicit2_bufferify(name, AAtrim) &
-                bind(C, name="STR_explicit2_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine explicit2(name) &
+                bind(C, name="STR_explicit2_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: AAtrim
-        end subroutine c_explicit2_bufferify
+            character(len=*), intent(OUT) :: name
+        end subroutine explicit2
     end interface
 
     ! ----------------------------------------
@@ -1136,24 +1143,21 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void CpassCharPtr
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)+len(Ndest)
-    ! Exact:     c_char_*_out_buf
+    ! Argument:  char * dest +intent(out)
+    ! Exact:     c_char_*_out_cfi
     ! ----------------------------------------
     ! Argument:  const char * src +intent(in)
-    ! Requested: c_char_*_in
-    ! Match:     c_default
+    ! Exact:     c_char_*_in_cfi
     interface
-        subroutine c_cpass_char_ptr_bufferify(dest, Ndest, src) &
-                bind(C, name="STR_cpass_char_ptr_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine cpass_char_ptr(dest, src) &
+                bind(C, name="STR_cpass_char_ptr_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: dest(*)
-            integer(C_INT), value, intent(IN) :: Ndest
-            character(kind=C_CHAR), intent(IN) :: src(*)
-        end subroutine c_cpass_char_ptr_bufferify
+            character(len=*), intent(OUT) :: dest
+            character(len=*), intent(IN) :: src
+        end subroutine cpass_char_ptr
     end interface
 
     ! ----------------------------------------
@@ -1269,68 +1273,6 @@ contains
         call c_return_char_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.return_char
     end function return_char
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void passCharPtr
-    ! void passCharPtr
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)
-    ! Requested: f_char_*_out
-    ! Match:     f_default
-    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
-    ! Exact:     c_char_*_out_buf
-    !>
-    !! \brief strcpy like behavior
-    !!
-    !! dest is marked intent(OUT) to override the intent(INOUT) default
-    !! This avoid a copy-in on dest.
-    !! In Python, src must not be over 40 characters, defined by charlen.
-    !<
-    ! start pass_char_ptr
-    subroutine pass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR
-        character(len=*), intent(OUT) :: dest
-        character(len=*), intent(IN) :: src
-        ! splicer begin function.pass_char_ptr
-        call c_pass_char_ptr_bufferify(dest, len(dest, kind=C_INT), &
-            trim(src)//C_NULL_CHAR)
-        ! splicer end function.pass_char_ptr
-    end subroutine pass_char_ptr
-    ! end pass_char_ptr
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void passCharPtrInOut
-    ! void passCharPtrInOut
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
-    ! Requested: f_char_*_inout
-    ! Match:     f_default
-    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
-    ! Exact:     c_char_*_inout_buf
-    !>
-    !! \brief toupper
-    !!
-    !! Change a string in-place.
-    !! For Python, return a new string since strings are immutable.
-    !<
-    subroutine pass_char_ptr_in_out(s)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(INOUT) :: s
-        ! splicer begin function.pass_char_ptr_in_out
-        call c_pass_char_ptr_in_out_bufferify(s, &
-            len_trim(s, kind=C_INT), len(s, kind=C_INT))
-        ! splicer end function.pass_char_ptr_in_out
-    end subroutine pass_char_ptr_in_out
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
@@ -2057,42 +1999,6 @@ contains
         ! splicer end function.accept_string_instance
     end function accept_string_instance
 
-    ! ----------------------------------------
-    ! Function:  void explicit1
-    ! void explicit1
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    subroutine explicit1(name)
-        use iso_c_binding, only : C_NULL_CHAR
-        character(len=*), intent(IN) :: name
-        ! splicer begin function.explicit1
-        call c_explicit1(trim(name)//C_NULL_CHAR)
-        ! splicer end function.explicit1
-    end subroutine explicit1
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void explicit2
-    ! void explicit2
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(AAtrim)
-    ! Requested: f_char_*_out
-    ! Match:     f_default
-    ! Exact:     c_char_*_out_buf
-    subroutine explicit2(name)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: name
-        ! splicer begin function.explicit2
-        call c_explicit2_bufferify(name, len(name, kind=C_INT))
-        ! splicer end function.explicit2
-    end subroutine explicit2
-
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  char CreturnChar
@@ -2118,37 +2024,6 @@ contains
         call c_creturn_char_bufferify(SHT_rv, len(SHT_rv, kind=C_INT))
         ! splicer end function.creturn_char
     end function creturn_char
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void CpassCharPtr
-    ! void CpassCharPtr
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
-    ! Requested: f_char_*_out
-    ! Match:     f_default
-    ! Argument:  char * dest +intent(out)+len(Ndest)
-    ! Exact:     c_char_*_out_buf
-    !>
-    !! \brief strcpy like behavior
-    !!
-    !! dest is marked intent(OUT) to override the intent(INOUT) default
-    !! This avoid a copy-in on dest.
-    !! extern "C"
-    !<
-    subroutine cpass_char_ptr(dest, src)
-        use iso_c_binding, only : C_INT, C_NULL_CHAR
-        character(len=*), intent(OUT) :: dest
-        character(len=*), intent(IN) :: src
-        ! splicer begin function.cpass_char_ptr
-        call c_cpass_char_ptr_bufferify(dest, len(dest, kind=C_INT), &
-            trim(src)//C_NULL_CHAR)
-        ! splicer end function.cpass_char_ptr
-    end subroutine cpass_char_ptr
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
