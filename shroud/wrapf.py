@@ -116,8 +116,7 @@ class Wrapf(util.WrapperMixin):
             self.wrap_enums(node, fileinfo)
 
             self._push_splicer("function")
-            for function in node.functions:
-                self.wrap_function(None, function, fileinfo)
+            self.wrap_functions(None, node.functions, fileinfo)
             self._pop_splicer("function")
 
         do_write = top or not node.options.F_flatten_namespace
@@ -246,8 +245,7 @@ class Wrapf(util.WrapperMixin):
         if node.cpp_if:
             fileinfo.c_interface.append("#" + node.cpp_if)
         self._push_splicer("method")
-        for method in node.functions:
-            self.wrap_function(node, method, fileinfo)
+        self.wrap_functions(node, node.functions, fileinfo)
         self._pop_splicer("method")
         if node.cpp_if:
             fileinfo.c_interface.append("#endif")
@@ -616,39 +614,32 @@ rv = .false.
             fmt,
         )
 
-    def wrap_function(self, cls, node, fileinfo):
-        """
+    def wrap_functions(self, cls, functions, fileinfo):
+        """Wrap functions in list
+
         Wrapping involves both a C interface and a Fortran wrapper.
         For some generic functions there may be single C method with
         multiple Fortran wrappers.
 
-        Args:
-            cls  - ast.ClassNode or None for functions
-            node - ast.FunctionNode
-            fileinfo - ModuleInfo
+        Create Fortran wrappers first.  If no real work to do,
+        F_C_name will be updated to call the C function directly.
+
+        Parameters
+        ----------
+        cls : ClassNode or None
+        node : list of ast.FunctionNode
+        fileinfo : ModuleInfo
+
         """
-        if cls:
-            cls_function = "method"
-        else:
-            cls_function = "function"
+        for node in functions:
+            if node.wrap.fortran:
+                self.log.write("Fortran {0.declgen}\n".format(node))
+                self.wrap_function_impl(cls, node, fileinfo)
 
-        wrap = []
-        if node.wrap.c:
-            wrap.append("C-interface")
-        if node.wrap.fortran:
-            wrap.append("Fortran")
-        if not wrap:
-            return
-
-        self.log.write(", ".join(wrap))
-        self.log.write(" {0} {1.declgen}\n".format(cls_function, node))
-
-        # Create fortran wrappers first.
-        # If no real work to do, call the C function directly.
-        if node.wrap.fortran:
-            self.wrap_function_impl(cls, node, fileinfo)
-        if node.wrap.c:
-            self.wrap_function_interface(cls, node, fileinfo)
+        for node in functions:
+            if node.wrap.c:
+                self.log.write("C-interface {0.declgen}\n".format(node))
+                self.wrap_function_interface(cls, node, fileinfo)
 
     def update_f_module_line(self, modules, imports, line, fmt):
         """Aggragate the information from f_module_line into modules.

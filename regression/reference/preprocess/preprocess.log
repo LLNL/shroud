@@ -15,13 +15,19 @@ Close wrapUser2.cpp
 Close wrappreprocess.cpp
 Close typespreprocess.h
 class User1
-C-interface, Fortran method void method1(void)
-C-interface, Fortran method void method2(void)
-C-interface, Fortran method void method3def(void)
-C-interface, Fortran method void method3def(int i=0 +intent(in)+value)
+Fortran void method1(void)
+Fortran void method2(void)
+Fortran void method3def(void)
+Fortran void method3def(int i=0 +intent(in)+value)
+C-interface void method1(void)
+C-interface void method2(void)
+C-interface void method3def(void)
+C-interface void method3def(int i=0 +intent(in)+value)
 class User2
-C-interface, Fortran method void exfunc(void)
-C-interface, Fortran method void exfunc(int flag +intent(in)+value)
+Fortran void exfunc(void)
+Fortran void exfunc(int flag +intent(in)+value)
+C-interface void exfunc(void)
+C-interface void exfunc(int flag +intent(in)+value)
 Close wrapfpreprocess.f
 class User1
 Python method void method1(void)

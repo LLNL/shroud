@@ -14,11 +14,16 @@ Close wrapforward.cpp
 Close typesforward.h
 class Class3
 class Class2
-C-interface, Fortran method Class2(void)
-C-interface, Fortran method ~Class2(void)
-C-interface, Fortran method void func1(tutorial::Class1 * arg +intent(in))
-C-interface, Fortran method void acceptClass3(Class3 * arg +intent(in))
-C-interface, Fortran function int passStruct1(const Cstruct1 * arg +intent(in))
+Fortran Class2(void)
+Fortran ~Class2(void)
+Fortran void func1(tutorial::Class1 * arg +intent(in))
+Fortran void acceptClass3(Class3 * arg +intent(in))
+C-interface Class2(void)
+C-interface ~Class2(void)
+C-interface void func1(tutorial::Class1 * arg +intent(in))
+C-interface void acceptClass3(Class3 * arg +intent(in))
+Fortran int passStruct1(const Cstruct1 * arg +intent(in))
+C-interface int passStruct1(const Cstruct1 * arg +intent(in))
 Close wrapfforward.f
 class Class3
 Close pyClass3type.cpp
