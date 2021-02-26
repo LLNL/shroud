@@ -12,11 +12,14 @@ C function void One(void)
 Close wrapns.h
 Close wrapns.cpp
 Close typesns.h
-C-interface, Fortran function const std::string & LastFunctionCalled(void) +deref(allocatable)
-C-interface function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
-C-interface, Fortran function void One(void)
+Fortran const std::string & LastFunctionCalled(void) +deref(allocatable)
+Fortran void One(void)
+C-interface const std::string & LastFunctionCalled(void) +deref(allocatable)
+C-interface void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C-interface void One(void)
 class Cstruct1
-C-interface, Fortran function void One(void)
+Fortran void One(void)
+C-interface void One(void)
 Close wrapfns_outer.f
 class ClassWork
 Close wrapfns.f

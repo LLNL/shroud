@@ -52,28 +52,44 @@ class twoTs
 class twoTs
 class Cstruct_as_class
 class Cstruct_as_subclass
-C-interface, Fortran function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
-C-interface function void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
-C-interface, Fortran function void function1(void)
-C-interface, Fortran function void function2(void)
-C-interface, Fortran function void function3a(int i +intent(in)+value)
-C-interface, Fortran function void function3a(long i +intent(in)+value)
-C-interface, Fortran function int function4(const std::string & rv +intent(in))
-C-interface function int function4(const std::string & rv +intent(in)+len_trim)
-C-interface, Fortran function void function5(void) +name(fiveplus)
-C-interface, Fortran function void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
-C-interface function void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))
-C-interface, Fortran function void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
-C-interface, Fortran function void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
-C-interface, Fortran function int UseImplWorker(void)
-C-interface, Fortran function int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
+Fortran void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
+Fortran void function1(void)
+Fortran void function2(void)
+Fortran void function3a(int i +intent(in)+value)
+Fortran void function3a(long i +intent(in)+value)
+Fortran int function4(const std::string & rv +intent(in))
+Fortran void function5(void) +name(fiveplus)
+Fortran void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+Fortran void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+Fortran void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+Fortran int UseImplWorker(void)
+Fortran int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
+C-interface void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
+C-interface void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))
+C-interface void function1(void)
+C-interface void function2(void)
+C-interface void function3a(int i +intent(in)+value)
+C-interface void function3a(long i +intent(in)+value)
+C-interface int function4(const std::string & rv +intent(in))
+C-interface int function4(const std::string & rv +intent(in)+len_trim)
+C-interface void function5(void) +name(fiveplus)
+C-interface void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))
+C-interface void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))
+C-interface void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)
+C-interface void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)
+C-interface int UseImplWorker(void)
+C-interface int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)
 class Names
-C-interface, Fortran method Names(void) +name(defaultctor)
-C-interface, Fortran method void method1(void)
-C-interface, Fortran method void method2(void)
+Fortran Names(void) +name(defaultctor)
+Fortran void method1(void)
+Fortran void method2(void)
+C-interface Names(void) +name(defaultctor)
+C-interface void method1(void)
+C-interface void method2(void)
 Close wrapftestnames_ns0_inner.F
 Close foo.f
-C-interface, Fortran function void init_ns1(void)
+Fortran void init_ns1(void)
+C-interface void init_ns1(void)
 Close wrapftestnames_ns1.F
 Close wrapftestnames_internal.F
 class vector
@@ -82,8 +98,10 @@ class vector
 class vector
 Close wrapftestnames_std.F
 class Class1
-C-interface, Fortran method void Member1(void)
-C-interface, Fortran function void Worker1(void)
+Fortran void Member1(void)
+C-interface void Member1(void)
+Fortran void Worker1(void)
+C-interface void Worker1(void)
 Close wrapftestnames_CAPI.F
 Close top.f
 Close pytestnames_ns0_innermodule.cpp

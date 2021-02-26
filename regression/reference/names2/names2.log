@@ -4,5 +4,6 @@ C function void AFunction(void)
 Close wrapNames.h
 Close wrapNames.cpp
 Close typesNames.h
-C-interface, Fortran function void AFunction(void)
+Fortran void AFunction(void)
+C-interface void AFunction(void)
 Close wrapfnames.f

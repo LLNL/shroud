@@ -5,7 +5,9 @@ C function void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +
 Close wrapstatement.h
 Close wrapstatement.cpp
 Close typesstatement.h
-C-interface, Fortran function int GetNameLength(void) +pure
-C-interface, Fortran function const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
-C-interface function void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())
+Fortran int GetNameLength(void) +pure
+Fortran const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
+C-interface int GetNameLength(void) +pure
+C-interface const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
+C-interface void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())
 Close wrapfstatement.f
