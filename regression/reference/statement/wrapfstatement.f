@@ -72,13 +72,13 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
     ! const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
-    ! Requested: f_string_scalar_result_result-as-arg
+    ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: f_string_&_result
+    ! Requested: f_string_&_result_buf
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf

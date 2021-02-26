@@ -623,7 +623,7 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArray +deref(pointer)+dimension(getSize())
     ! double * getArray +deref(pointer)+dimension(getSize())
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
@@ -644,7 +644,7 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
     ! double * getArrayConst +deref(pointer)+dimension(getSize())
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array_const(obj) &
@@ -665,7 +665,7 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
     ! const double * getArrayC +deref(pointer)+dimension(getSize())
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array_c(obj) &
@@ -686,7 +686,7 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
     ! const double * getArrayConstC +deref(pointer)+dimension(getSize())
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
     function arraywrapper_get_array_const_c(obj) &

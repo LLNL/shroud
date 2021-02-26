@@ -1602,8 +1602,8 @@ rv = .false.
                 c_stmts = ["c", "shadow", "ctor"]
             else:
                 sintent = "result"
-                f_stmts = ["f", sgroup, spointer, "result", return_deref_attr,
-                           ast.attrs["owner"]]
+                f_stmts = ["f", sgroup, spointer, "result", generated_suffix,
+                           return_deref_attr, ast.attrs["owner"]]
                 c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
         fmt_func.F_subprogram = subprogram
 
@@ -1732,12 +1732,12 @@ rv = .false.
             if c_attrs["_is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
-#XXX            f_stmts = ["f", f_sgroup, f_spointer, "result", return_deref_attr]  # + generated_suffix
-                f_stmts = ["f", f_sgroup, f_spointer, "result", f_deref_attr]  # + generated_suffix
+                f_stmts = ["f", f_sgroup, f_spointer, "result", generated_suffix, f_deref_attr]
 
             else:
-                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]  # e.g. buf
-                f_stmts = ["f", f_sgroup, f_spointer, intent, f_deref_attr, cdesc]
+                #                                             buf
+                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]
+                f_stmts = ["f", f_sgroup, f_spointer, intent, f_arg.stmts_suffix, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

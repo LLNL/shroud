@@ -289,7 +289,7 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! int vector_sum
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
@@ -548,7 +548,7 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_string_count
     ! int vector_string_count
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
@@ -578,7 +578,7 @@ contains
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
     ! std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
-    ! Requested: f_vector_scalar_result_allocatable
+    ! Requested: f_vector_scalar_result_buf_allocatable
     ! Match:     f_vector_result_allocatable
     ! Function:  void ReturnVectorAlloc +rank(1)
     ! Requested: c_vector_scalar_result_buf
@@ -591,7 +591,7 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
-    ! Requested: f_vector_*_result_allocatable_native
+    ! Requested: f_vector_*_result_buf_allocatable_native
     ! Match:     f_vector_result_allocatable
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf

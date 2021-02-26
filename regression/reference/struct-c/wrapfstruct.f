@@ -926,7 +926,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! int passStruct2
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
@@ -998,7 +998,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
     ! Cstruct1 * returnStructPtr2 +deref(pointer)
-    ! Requested: f_struct_*_result_pointer
+    ! Requested: f_struct_*_result_buf_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result

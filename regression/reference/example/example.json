@@ -759,8 +759,8 @@
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_string_scalar_result_allocatable",
-                                                "stmt1": "f_string_scalar_result_allocatable",
+                                                "stmt0": "f_string_scalar_result_buf_allocatable",
+                                                "stmt1": "f_string_scalar_result_buf_allocatable",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
                                             },
@@ -885,8 +885,8 @@
                                                     "f_var": "SHT_rv",
                                                     "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result_allocatable",
-                                                    "stmt1": "f_string_&_result_allocatable",
+                                                    "stmt0": "f_string_&_result_buf_allocatable",
+                                                    "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
                                                     "stmtc1": "c_string_result_buf_allocatable"
                                                 }
@@ -1099,7 +1099,7 @@
                                                     "f_type": "character(*)",
                                                     "f_var": "name",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result",
+                                                    "stmt0": "f_string_&_result_buf",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_&_result_buf",
                                                     "stmtc1": "c_string_result_buf"
@@ -2350,7 +2350,7 @@
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_string_scalar_result_result-as-arg",
+                                                "stmt0": "f_string_scalar_result_buf_result-as-arg",
                                                 "stmt1": "f_default",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
@@ -2476,7 +2476,7 @@
                                                     "f_type": "character(*)",
                                                     "f_var": "SHT_rv",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result",
+                                                    "stmt0": "f_string_&_result_buf",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_&_result_buf",
                                                     "stmtc1": "c_string_result_buf"
@@ -2586,8 +2586,8 @@
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_string_scalar_result_allocatable",
-                                                "stmt1": "f_string_scalar_result_allocatable",
+                                                "stmt0": "f_string_scalar_result_buf_allocatable",
+                                                "stmt1": "f_string_scalar_result_buf_allocatable",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
                                             },
@@ -2710,8 +2710,8 @@
                                                     "f_var": "SHT_rv",
                                                     "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result_allocatable",
-                                                    "stmt1": "f_string_&_result_allocatable",
+                                                    "stmt0": "f_string_&_result_buf_allocatable",
+                                                    "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
                                                     "stmtc1": "c_string_result_buf_allocatable"
                                                 }
@@ -2817,8 +2817,8 @@
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_string_scalar_result_allocatable",
-                                                "stmt1": "f_string_scalar_result_allocatable",
+                                                "stmt0": "f_string_scalar_result_buf_allocatable",
+                                                "stmt1": "f_string_scalar_result_buf_allocatable",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
                                             },
@@ -2942,8 +2942,8 @@
                                                     "f_var": "SHT_rv",
                                                     "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result_allocatable",
-                                                    "stmt1": "f_string_&_result_allocatable",
+                                                    "stmt0": "f_string_&_result_buf_allocatable",
+                                                    "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
                                                     "stmtc1": "c_string_result_buf_allocatable"
                                                 }
@@ -3049,8 +3049,8 @@
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_string_scalar_result_allocatable",
-                                                "stmt1": "f_string_scalar_result_allocatable",
+                                                "stmt0": "f_string_scalar_result_buf_allocatable",
+                                                "stmt1": "f_string_scalar_result_buf_allocatable",
                                                 "stmtc0": "c_string_scalar_result_buf",
                                                 "stmtc1": "c_string_scalar_result_buf"
                                             },
@@ -3172,8 +3172,8 @@
                                                     "f_var": "SHT_rv",
                                                     "hnamefunc0": "AA_SHROUD_copy_string_and_free",
                                                     "sh_type": "SH_TYPE_OTHER",
-                                                    "stmt0": "f_string_&_result_allocatable",
-                                                    "stmt1": "f_string_&_result_allocatable",
+                                                    "stmt0": "f_string_&_result_buf_allocatable",
+                                                    "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
                                                     "stmtc1": "c_string_result_buf_allocatable"
                                                 }
@@ -5920,7 +5920,7 @@
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_BOOL",
-                                        "stmt0": "f_bool_scalar_result",
+                                        "stmt0": "f_bool_scalar_result_buf",
                                         "stmt1": "f_bool_result",
                                         "stmtc0": "c_bool_scalar_result_buf",
                                         "stmtc1": "c_default"

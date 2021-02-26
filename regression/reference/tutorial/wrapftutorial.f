@@ -728,7 +728,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings +deref(allocatable)
     ! const std::string ConcatenateStrings +deref(allocatable)
-    ! Exact:     f_string_scalar_result_allocatable
+    ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void ConcatenateStrings
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
@@ -747,7 +747,7 @@ contains
     ! Match:     c_string_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Exact:     f_string_*_result_allocatable
+    ! Exact:     f_string_*_result_buf_allocatable
     ! Requested: c_string_*_result_buf_allocatable
     ! Match:     c_string_result_buf_allocatable
     !>
@@ -1258,13 +1258,13 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    ! Requested: f_string_scalar_result_result-as-arg
+    ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: f_string_&_result
+    ! Requested: f_string_&_result_buf
     ! Match:     f_default
     ! Requested: c_string_&_result_buf
     ! Match:     c_string_result_buf
