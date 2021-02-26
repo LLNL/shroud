@@ -899,13 +899,13 @@ contains
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
     ! char * Function4a +deref(result-as-arg)+len(30)
-    ! Requested: f_char_scalar_result_result-as-arg
+    ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: f_char_*_result
+    ! Requested: f_char_*_result_buf
     ! Match:     f_default
     ! Exact:     c_char_*_result_buf
     function function4a(arg1, arg2) &
@@ -1196,7 +1196,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! int passAssumedTypeBuf
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default

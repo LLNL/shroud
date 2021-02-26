@@ -1463,7 +1463,7 @@ contains
     ! ----------------------------------------
     ! Function:  int acceptCharArrayIn
     ! int acceptCharArrayIn
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
@@ -1909,7 +1909,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
     ! int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
     ! Exact:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_array
@@ -1949,7 +1949,7 @@ contains
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
     ! const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
     ! Exact:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_const_array

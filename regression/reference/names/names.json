@@ -930,7 +930,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_native_scalar_result_buf",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
                         "stmtc1": "c_default"

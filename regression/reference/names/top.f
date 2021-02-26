@@ -601,7 +601,7 @@ contains
     ! ----------------------------------------
     ! Function:  int function4
     ! int function4
-    ! Requested: f_native_scalar_result
+    ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default

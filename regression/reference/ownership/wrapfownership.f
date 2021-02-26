@@ -524,7 +524,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
@@ -550,7 +550,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-    ! Exact:     f_native_*_result_allocatable
+    ! Exact:     f_native_*_result_buf_allocatable
     ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
@@ -577,7 +577,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
     ! int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
-    ! Exact:     f_native_*_result_pointer
+    ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+deref(pointer)+dimension(len)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
@@ -603,7 +603,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-    ! Exact:     f_native_*_result_pointer_caller
+    ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
@@ -632,7 +632,7 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-    ! Exact:     f_native_*_result_pointer_caller
+    ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------

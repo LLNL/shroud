@@ -2051,7 +2051,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_native_scalar_result_buf",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
                         "stmtc1": "c_default"
@@ -3148,7 +3148,7 @@
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_pointer",
+                        "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result",
                         "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"

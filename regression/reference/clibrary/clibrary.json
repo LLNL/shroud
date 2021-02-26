@@ -1073,7 +1073,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_char_scalar_result_result-as-arg",
+                        "stmt0": "f_char_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_char_scalar_result_buf",
                         "stmtc1": "c_char_scalar_result_buf"
@@ -1218,7 +1218,7 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result",
+                            "stmt0": "f_char_*_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_result_buf",
                             "stmtc1": "c_char_*_result_buf"
@@ -4168,7 +4168,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_native_scalar_result_buf",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
                         "stmtc1": "c_default"

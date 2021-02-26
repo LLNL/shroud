@@ -452,16 +452,18 @@ default_stmts = dict(
 
 # language   "c" 
 # sgroup     "native", "string", "char"
-# spointer   "pointer" ""
+# spointer   "scalar" "*" "**", "&"
 # intent     "in", "out", "inout", "result"
 # generated  "buf"
 # attribute  "allocatable"
 #
 # language   "f"
 # sgroup     "native", "string", "char"
-# spointer   "pointer" ""
+# spointer   "scalar" "*" "**", "&"
 # intent     "in", "out", "inout", "result"
+# generated  "buf"
 # deref      "allocatable", "pointer"
+# owner      "caller"
 
 fc_statements = [
     dict(
@@ -727,7 +729,7 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
-        name="f_native_*_result_allocatable",
+        name="f_native_*_result_buf_allocatable",
         c_helper="copy_array",
         f_helper="copy_array_{cxx_type}",
         f_module=dict(iso_c_binding=["C_PTR"]),
@@ -760,8 +762,12 @@ fc_statements = [
         ],
     ),
     dict(
+        name="f_native_*_result_buf_pointer",
+        base="f_native_*_result_pointer",
+    ),
+    dict(
         # +deref(pointer) +owner(caller)
-        name="f_native_*_result_pointer_caller",
+        name="f_native_*_result_buf_pointer_caller",
         f_helper="capsule_helper",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         arg_name=["{c_var_capsule}"],
@@ -958,7 +964,7 @@ fc_statements = [
     ),
     #####
     dict(
-        name="f_char_scalar/*_result_allocatable",
+        name="f_char_scalar/*_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -1155,7 +1161,7 @@ fc_statements = [
     
     # similar to f_char_scalar_result_allocatable
     dict(
-        name="f_string_scalar_result_allocatable",
+        name="f_string_scalar/*/&_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string",
@@ -1167,16 +1173,9 @@ fc_statements = [
             "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
         ],
     ),
-    dict(
-        name="f_string_*_result_allocatable",
-        base="f_string_scalar_result_allocatable",
-    ),
-    dict(
-        name="f_string_&_result_allocatable",
-        base="f_string_scalar_result_allocatable",
-    ),
     
-    
+    ########################################
+    # vector
     dict(
         name="c_vector_in_buf",
         buf_args=["arg", "size"],
