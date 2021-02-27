@@ -99,8 +99,7 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
-        ! Requested: c_string_&_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_&_in
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
         ! Requested: c_void_*_out_cdesc
@@ -120,8 +119,7 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-        ! Requested: c_string_&_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_&_in_buf
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
         ! Requested: c_void_*_out_buf_cdesc
@@ -215,8 +213,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Exact:     f_native_*_out_cdesc
@@ -262,8 +259,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Exact:     f_native_*_out_cdesc
@@ -348,8 +344,7 @@ contains
     ! Argument:  std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Requested: f_native_*_out
@@ -385,8 +380,7 @@ contains
     ! Argument:  std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
     ! Requested: f_native_*_out

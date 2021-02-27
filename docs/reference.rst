@@ -54,6 +54,10 @@ write-helpers BASE
        Write files which contain the available helper functions
        into the files BASE.c and BASE.f.
 
+write-statements BASE
+       Write a file which contain the statements tree.
+       Used for debugging.
+
 write-version
        Write Shroud version into generated files.
        ``--nowrite-version`` will not write the version and is used

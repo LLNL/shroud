@@ -258,8 +258,7 @@ module classes_mod
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: c_bool_scalar_in
@@ -287,8 +286,7 @@ module classes_mod
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: c_bool_scalar_in_buf
@@ -333,8 +331,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -355,8 +352,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
@@ -454,8 +450,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -474,8 +469,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     interface
         subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
@@ -732,8 +726,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -750,8 +743,7 @@ module classes_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="CLA_last_function_called_bufferify")
@@ -939,8 +931,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: f_bool_scalar_in
@@ -1003,8 +994,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
     !!
@@ -1147,8 +1137,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
     !!
@@ -1463,8 +1452,7 @@ contains
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

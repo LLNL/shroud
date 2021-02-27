@@ -58,8 +58,7 @@ int STMT_get_name_length(void)
 
 // ----------------------------------------
 // Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * STMT_get_name_error_pattern(void)
 {
     // splicer begin function.get_name_error_pattern
@@ -80,8 +79,7 @@ const char * STMT_get_name_error_pattern(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_string_&_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_&_result_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.get_name_error_pattern_bufferify

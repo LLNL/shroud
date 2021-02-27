@@ -36,8 +36,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_get_name_error_pattern")
@@ -52,8 +51,7 @@ module statement_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-        ! Requested: c_string_&_result_buf
-        ! Match:     c_string_result_buf
+        ! Exact:     c_string_&_result_buf
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -80,8 +78,7 @@ contains
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     function get_name_error_pattern() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

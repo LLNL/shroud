@@ -136,7 +136,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in",
-                            "stmt1": "c_string_in"
+                            "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
                             "F_C_var": "name"
@@ -581,7 +581,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_in_buf"
+                            "stmt1": "c_string_&_in_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -596,7 +596,7 @@
                             "stmt0": "f_string_&_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_in_buf"
+                            "stmtc1": "c_string_&_in_buf"
                         }
                     },
                     "value": {
@@ -1120,7 +1120,7 @@
                             "stmt0": "f_string_&_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in",
-                            "stmtc1": "c_string_in"
+                            "stmtc1": "c_string_&_in"
                         }
                     },
                     "value": {

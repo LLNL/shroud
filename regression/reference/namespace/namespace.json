@@ -30,7 +30,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result",
-                        "stmt1": "c_string_result"
+                        "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
                         "cxx_type": "std::string",
@@ -131,7 +131,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
                             "stmt0": "c_string_&_result_buf_allocatable",
-                            "stmt1": "c_string_result_buf_allocatable"
+                            "stmt1": "c_string_&_result_buf_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
@@ -147,7 +147,7 @@
                             "stmt0": "f_string_&_result_buf_allocatable",
                             "stmt1": "f_string_&_result_buf_allocatable",
                             "stmtc0": "c_string_&_result_buf_allocatable",
-                            "stmtc1": "c_string_result_buf_allocatable"
+                            "stmtc1": "c_string_&_result_buf_allocatable"
                         }
                     }
                 },

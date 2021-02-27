@@ -24,6 +24,7 @@ from . import ast
 from . import generate
 from . import metadata
 from . import splicer
+from . import statements
 from . import todict
 from . import typemap
 from . import util
@@ -275,6 +276,9 @@ def main():
         "--write-helpers", default="", help="Write a file with helper functions."
     )
     parser.add_argument(
+        "--write-statements", default="", help="Write a file with statements."
+    )
+    parser.add_argument(
         "--write-version", "--nowrite-version",
         dest="write_version",
         action=BooleanAction,
@@ -320,6 +324,7 @@ def create_wrapper(filename, outdir="", path=None):
     else:
         args.path = path
     args.write_helpers = ""
+    args.write_statements = ""
     args.yaml_types = ""
 
     config = main_with_args(args)
@@ -384,6 +389,7 @@ def main_with_args(args):
     config.lua_dir = args.outdir_lua or args.outdir
     config.yaml_dir = args.outdir_yaml or args.outdir
     config.write_helpers = args.write_helpers
+    config.write_statements = args.write_statements
     config.yaml_types = args.yaml_types
     config.log = log
     if args.write_version:
@@ -544,6 +550,11 @@ def main_with_args(args):
         hfile = os.path.join(args.logdir, args.write_helpers + ".f")
         with open(hfile, "w") as fp:
             whelpers.write_f_helpers(fp)
+
+    if args.write_statements:
+        hfile = os.path.join(args.logdir, args.write_statements)
+        with open(hfile, "w") as fp:
+            statements.write_cf_tree(fp)
             
     log.close()
 

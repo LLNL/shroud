@@ -337,19 +337,40 @@ def update_stmt_tree(stmts, tree, defaults):
                 raise RuntimeError("Duplicate key in statements: {}".
                                    format(name))
             add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
-#    print_tree(tree)
 
-def print_tree(tree, indent=""):
+
+def write_cf_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    print_tree(cf_tree, lines)
+    fp.writelines(lines)
+
+
+def print_tree(tree, lines, indent=""):
     """Print statements search tree.
     Intermediate nodes are prefixed with --.
     Useful for debugging.
+
+    Parameters
+    ----------
+    fp : file
+    lines : list
+        list of output lines
+    indent : str
+        indention for recursion.
     """
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        print("{}{} -- {}".format(indent, parts[-1], tree.get('_key', '??')))
+        origname = tree["_node"]["name"]
+        lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
     else:
-        print("{}{}".format(indent, parts[-1]))
+        lines.append("{}{}\n".format(indent, parts[-1]))
     indent += '  '
     for key in sorted(tree.keys()):
         if key == '_node':
@@ -360,7 +381,7 @@ def print_tree(tree, indent=""):
             continue
         value = tree[key]
         if isinstance(value, dict):
-            print_tree(value, indent)
+            print_tree(value, lines, indent)
 
 def lookup_stmts_tree(tree, path):
     """
@@ -978,12 +999,12 @@ fc_statements = [
     ),
 
     dict(
-        name="c_string_in",
+        name="c_string_*/&_in",
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
     ),
     dict(
-        name="c_string_out",
+        name="c_string_*/&_out",
         cxx_impl_header=["<cstring>"],
         # #- pre_call=[
         # #-     'int {c_var_trim} = strlen({c_var});',
@@ -996,7 +1017,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_string_inout",
+        name="c_string_*/&_inout",
         cxx_impl_header=["<cstring>"],
         cxx_local_var="scalar",
         pre_call=["{c_const}std::string {cxx_var}({c_var});"],
@@ -1006,7 +1027,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_string_in_buf",
+        name="c_string_*/&_in_buf",
         buf_args=["arg", "len_trim"],
         cxx_local_var="scalar",
         pre_call=[
@@ -1017,7 +1038,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_string_out_buf",
+        name="c_string_*/&_out_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -1029,7 +1050,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_string_inout_buf",
+        name="c_string_*/&_inout_buf",
         buf_args=["arg", "len_trim", "len"],
         c_helper="ShroudStrCopy",
         cxx_local_var="scalar",
@@ -1041,7 +1062,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_string_result",
+        name="c_string_scalar/*/&_result",
         # cxx_to_c creates a pointer from a value via c_str()
         # The default behavior will dereference the value.
         ret=[
@@ -1050,7 +1071,9 @@ fc_statements = [
         return_cptr=True,
     ),
     dict(
-        name="c_string_result_buf",
+        # No need to allocate a local copy since the string is copied
+        # into a Fortran variable before the string is deleted.
+        name="c_string_scalar/*/&_result_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
         post_call=[
@@ -1110,7 +1133,7 @@ fc_statements = [
     # only used with bufferifed routines and intent(out) or result
     # std::string * function()
     dict(
-        name="c_string_result_buf_allocatable",
+        name="c_string_*/&_result_buf_allocatable",
         # pass address of string and length back to Fortran
         buf_args=["context"],
         c_helper="ShroudStrToArray",
@@ -1123,15 +1146,6 @@ fc_statements = [
         ],
     ),
 
-    # Since 'c_string_scalar_result_buf_allocatable' exists,
-    # must set an alias for c_string_scalar.
-    # No need to allocate a local copy since the string is copied
-    # into a Fortran variable before the string is deleted.
-    dict(
-        name="c_string_scalar_result_buf",
-        base="c_string_result_buf",
-    ),
-    
     # std::string function()
     # Must allocate the std::string then assign to it via cxx_rv_decl.
     # This allows the std::string to outlast the function return.

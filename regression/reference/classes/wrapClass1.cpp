@@ -168,8 +168,7 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Match:     c_shadow_result
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 // ----------------------------------------
 // Argument:  bool flag +intent(in)+value
 // Requested: c_bool_scalar_in
@@ -201,8 +200,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Match:     c_shadow_result
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  bool flag +intent(in)+value
 // Requested: c_bool_scalar_in_buf
@@ -253,8 +251,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
  */
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 // start CLA_Class1_get_name
 const char * CLA_Class1_get_name(CLA_Class1 * self)
 {
@@ -278,8 +275,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_string_&_result_buf_allocatable
-// Match:     c_string_result_buf_allocatable
+// Exact:     c_string_&_result_buf_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *DSHF_rv)

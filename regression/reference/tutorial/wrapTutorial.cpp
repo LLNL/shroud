@@ -105,12 +105,10 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_buf_allocatable
@@ -186,8 +184,7 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 void TUT_overloaded_function_from_name(const char * name)
 {
     // splicer begin function.overloaded_function_from_name
@@ -202,8 +199,7 @@ void TUT_overloaded_function_from_name(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
 {
@@ -299,8 +295,7 @@ void TUT_fortran_generic_overloaded_0(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -319,8 +314,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in_buf
@@ -575,8 +569,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * TUT_last_function_called(void)
 {
     // splicer begin function.last_function_called
@@ -592,8 +585,7 @@ const char * TUT_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_string_&_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_&_result_buf
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

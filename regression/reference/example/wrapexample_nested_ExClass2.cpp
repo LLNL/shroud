@@ -69,8 +69,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(trim_name)
-// Requested: c_string_*_in
-// Match:     c_string_in
+// Exact:     c_string_*_in
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
     const char * name, AA_example_nested_ExClass2 * SHadow_rv)
 {
@@ -94,8 +93,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
 // Match:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(trim_name)
-// Requested: c_string_*_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_*_in_buf
 AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
     const char * name, int trim_name,
     AA_example_nested_ExClass2 * SHadow_rv)
@@ -129,8 +127,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 
 // ----------------------------------------
 // Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * AA_example_nested_ExClass2_get_name(
     const AA_example_nested_ExClass2 * self)
 {
@@ -149,8 +146,7 @@ const char * AA_example_nested_ExClass2_get_name(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_string_&_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_&_result_buf
 void AA_example_nested_ExClass2_get_name_bufferify(
     const AA_example_nested_ExClass2 * self, char * SHF_rv, int NSHF_rv)
 {
@@ -169,8 +165,7 @@ void AA_example_nested_ExClass2_get_name_bufferify(
 
 // ----------------------------------------
 // Function:  const string & getName2 +deref(allocatable)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * AA_example_nested_ExClass2_get_name2(
     AA_example_nested_ExClass2 * self)
 {
@@ -189,8 +184,7 @@ const char * AA_example_nested_ExClass2_get_name2(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_string_&_result_buf_allocatable
-// Match:     c_string_result_buf_allocatable
+// Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -204,8 +198,7 @@ void AA_example_nested_ExClass2_get_name2_bufferify(
 
 // ----------------------------------------
 // Function:  string & getName3 +deref(allocatable)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 char * AA_example_nested_ExClass2_get_name3(
     const AA_example_nested_ExClass2 * self)
 {
@@ -224,8 +217,7 @@ char * AA_example_nested_ExClass2_get_name3(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_string_&_result_buf_allocatable
-// Match:     c_string_result_buf_allocatable
+// Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
     const AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -239,8 +231,7 @@ void AA_example_nested_ExClass2_get_name3_bufferify(
 
 // ----------------------------------------
 // Function:  string & getName4 +deref(allocatable)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 char * AA_example_nested_ExClass2_get_name4(
     AA_example_nested_ExClass2 * self)
 {
@@ -259,8 +250,7 @@ char * AA_example_nested_ExClass2_get_name4(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_string_&_result_buf_allocatable
-// Match:     c_string_result_buf_allocatable
+// Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(
     AA_example_nested_ExClass2 * self, AA_SHROUD_array *DSHF_rv)
 {

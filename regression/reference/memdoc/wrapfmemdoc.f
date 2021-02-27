@@ -50,8 +50,7 @@ module memdoc_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-    ! Requested: c_string_*_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_*_result
     ! start c_get_const_string_ptr_alloc
     interface
         function c_get_const_string_ptr_alloc() &
@@ -70,8 +69,7 @@ module memdoc_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
@@ -114,8 +112,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)

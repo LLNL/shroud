@@ -150,8 +150,7 @@ void YYY_TES_function3a_1(long i)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 int YYY_TES_function4(const char * rv)
 {
     // splicer begin function.function4
@@ -167,8 +166,7 @@ int YYY_TES_function4(const char * rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
     // splicer begin function.function4_bufferify
@@ -198,8 +196,7 @@ void YYY_TES_fiveplus(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & name +intent(inout)
-// Requested: c_string_&_inout
-// Match:     c_string_inout
+// Exact:     c_string_&_inout
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Requested: c_native_*_out
@@ -221,8 +218,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-// Requested: c_string_&_inout_buf
-// Match:     c_string_inout_buf
+// Exact:     c_string_&_inout_buf
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Requested: c_native_*_out_buf

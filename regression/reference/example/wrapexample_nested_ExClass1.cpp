@@ -87,8 +87,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)
-// Requested: c_string_*_in
-// Match:     c_string_in
+// Exact:     c_string_*_in
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
     const char * name, AA_example_nested_ExClass1 * SHadow_rv)
 {
@@ -116,8 +115,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Match:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name +intent(in)+len_trim(Lname)
-// Requested: c_string_*_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_*_in_buf
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
     const char * name, int Lname,
     AA_example_nested_ExClass1 * SHadow_rv)
@@ -171,8 +169,7 @@ int AA_example_nested_ExClass1_increment_count(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck +deref(allocatable)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * AA_example_nested_ExClass1_get_name_error_check(
     const AA_example_nested_ExClass1 * self)
 {
@@ -191,8 +188,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Requested: c_string_&_result_buf_allocatable
-// Match:     c_string_result_buf_allocatable
+// Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self, AA_SHROUD_array *DSHF_rv)
 {
@@ -206,8 +202,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
 
 // ----------------------------------------
 // Function:  const string & getNameArg +deref(result-as-arg)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * AA_example_nested_ExClass1_get_name_arg(
     const AA_example_nested_ExClass1 * self)
 {
@@ -226,8 +221,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & name +intent(out)+len(Nname)
-// Requested: c_string_&_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_&_result_buf
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
     const AA_example_nested_ExClass1 * self, char * name, int Nname)
 {
