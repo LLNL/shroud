@@ -322,7 +322,8 @@ if __name__ == "__main__":
                  cmdline=[
                      "--write-helpers", "helpers",
                      "--yaml-types", "def_types.yaml",
-                     "--write-version",  # Test writing vesion
+                     "--write-statements", "statements",
+                     "--write-version",  # Test writing version
                  ]),
         TestDesc("tutorial"),
         TestDesc("debugfalse", yaml="tutorial",

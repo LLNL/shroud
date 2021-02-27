@@ -337,19 +337,37 @@ def update_stmt_tree(stmts, tree, defaults):
                 raise RuntimeError("Duplicate key in statements: {}".
                                    format(name))
             add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
-#    print_tree(tree)
 
-def print_tree(tree, indent=""):
+def write_cf_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    print_tree(cf_tree, lines)
+    fp.writelines(lines)
+
+def print_tree(tree, lines, indent=""):
     """Print statements search tree.
     Intermediate nodes are prefixed with --.
     Useful for debugging.
+
+    Parameters
+    ----------
+    fp : file
+    lines : list
+        list of output lines
+    indent : str
+        indention for recursion.
     """
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        print("{}{} -- {}".format(indent, parts[-1], tree.get('_key', '??')))
+        lines.append("{}{} -- {}\n".format(indent, parts[-1], tree.get('_key', '??')))
     else:
-        print("{}{}".format(indent, parts[-1]))
+        lines.append("{}{}\n".format(indent, parts[-1]))
     indent += '  '
     for key in sorted(tree.keys()):
         if key == '_node':
@@ -360,7 +378,7 @@ def print_tree(tree, indent=""):
             continue
         value = tree[key]
         if isinstance(value, dict):
-            print_tree(value, indent)
+            print_tree(value, lines, indent)
 
 def lookup_stmts_tree(tree, path):
     """

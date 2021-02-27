@@ -1,0 +1,167 @@
+root
+  c
+    char
+      *
+        in
+          buf -- c_char_*_in_buf
+        inout
+          buf -- c_char_*_inout_buf
+        out
+          buf -- c_char_*_out_buf
+        result -- c_char_*_result
+          buf -- c_char_*_result_buf
+            allocatable -- c_char_*_result_buf_allocatable
+      **
+        in -- c_char_**_in
+          buf -- c_char_**_in_buf
+      scalar
+        in -- c_char_scalar_in
+        result -- c_char_scalar_result
+          buf -- c_char_scalar_result_buf
+    native
+      *
+        in
+          cdesc -- c_native_*_in_cdesc
+          cfi -- c_native_*_in_cfi
+        inout
+          cdesc -- c_native_*_inout_cdesc
+        out
+          cdesc -- c_native_*_out_cdesc
+        result
+          buf -- c_native_*_result_buf
+      *&
+        out
+          buf -- c_native_*&_out_buf
+      **
+        in -- c_native_**_in
+        out
+          buf -- c_native_**_out_buf
+    shadow
+      ctor -- c_shadow_ctor
+      dtor -- c_shadow_dtor
+      in -- c_shadow_in
+      inout -- c_shadow_inout
+      result -- c_shadow_result
+      scalar
+        ctor -- c_shadow_scalar_ctor
+        in -- c_shadow_scalar_in
+        result -- c_shadow_scalar_result
+    string
+      in -- c_string_in
+        buf -- c_string_in_buf
+      inout -- c_string_inout
+        buf -- c_string_inout_buf
+      out -- c_string_out
+        buf -- c_string_out_buf
+      result -- c_string_result
+        buf -- c_string_result_buf
+          allocatable -- c_string_result_buf_allocatable
+      scalar
+        in -- c_string_scalar_in
+          buf -- c_string_scalar_in_buf
+        result
+          buf -- c_string_scalar_result_buf
+            allocatable -- c_string_scalar_result_buf_allocatable
+    struct -- c_struct
+      result -- c_struct_result
+    vector
+      in
+        buf -- c_vector_in_buf
+          string -- c_vector_in_buf_string
+      inout
+        buf -- c_vector_inout_buf
+          string -- c_vector_inout_buf_string
+      out
+        buf -- c_vector_out_buf
+          string -- c_vector_out_buf_string
+      result
+        buf -- c_vector_result_buf
+    void
+      *
+        cdesc -- c_void_*_cdesc
+      **
+        in -- c_void_**_in
+  f
+    XXX
+      native
+        **
+          out -- f_XXX_native_**_out
+    bool
+      in -- f_bool_in
+      inout -- f_bool_inout
+      out -- f_bool_out
+      result -- f_bool_result
+    char
+      *
+        result
+          buf
+            allocatable -- f_char_*_result_buf_allocatable
+          raw -- f_char_*_result_raw
+      scalar
+        in -- f_char_scalar_in
+        result
+          buf
+            allocatable -- f_char_scalar_result_buf_allocatable
+    native
+      &
+        result -- f_native_&_result
+      *
+        in
+          cdesc -- f_native_*_in_cdesc
+          raw -- f_native_*_in_raw
+        inout
+          cdesc -- f_native_*_inout_cdesc
+        out
+          allocatable -- f_native_*_out_allocatable
+          cdesc -- f_native_*_out_cdesc
+        result
+          buf
+            allocatable -- f_native_*_result_buf_allocatable
+            pointer -- f_native_*_result_buf_pointer
+              caller -- f_native_*_result_buf_pointer_caller
+          pointer -- f_native_*_result_pointer
+          raw -- f_native_*_result_raw
+          scalar -- f_native_*_result_scalar
+      *&
+        out -- f_native_*&_out
+      **
+        out -- f_native_**_out
+          raw -- f_native_**_out_raw
+        result -- f_native_**_result
+    shadow
+      ctor -- f_shadow_ctor
+      result -- f_shadow_result
+    string
+      &
+        result
+          buf
+            allocatable -- f_string_&_result_buf_allocatable
+      *
+        result
+          buf
+            allocatable -- f_string_*_result_buf_allocatable
+      scalar
+        in -- f_string_scalar_in
+        result
+          buf
+            allocatable -- f_string_scalar_result_buf_allocatable
+    struct
+      *
+        result -- f_struct_*_result
+      scalar
+        result -- f_struct_scalar_result
+    vector
+      inout -- f_vector_inout
+        allocatable -- f_vector_inout_allocatable
+      out -- f_vector_out
+        allocatable -- f_vector_out_allocatable
+      result -- f_vector_result
+        allocatable -- f_vector_result_allocatable
+    void
+      *
+        cdesc -- f_void_*_cdesc
+        in -- f_void_*_in
+        result -- f_void_*_result
+      **
+        in -- f_void_**_in
+        out -- f_void_**_out
