@@ -1,5 +1,23 @@
 root
   c
+    XXXstring
+      &
+        in
+          cfi -- c_XXXstring_*/&_in_cfi
+        inout
+          cfi -- c_XXXstring_*/&_inout_cfi
+        out
+          cfi -- c_XXXstring_*/&_out_cfi
+      *
+        in
+          cfi -- c_XXXstring_*/&_in_cfi
+        inout
+          cfi -- c_XXXstring_*/&_inout_cfi
+        out
+          cfi -- c_XXXstring_*/&_out_cfi
+      scalar
+        in
+          cfi -- c_XXXstring_scalar_in_cfi
     char
       *
         in
@@ -25,7 +43,11 @@ root
           buf -- c_char_scalar_result_buf
           cfi -- c_char_scalar_result_cfi
     mixin
-      character -- c_mixin_character
+      cfi
+        character
+          arg -- c_mixin_cfi_character_arg
+          result
+            allocatable -- c_mixin_cfi_character_result_allocatable
     native
       *
         in
@@ -65,6 +87,8 @@ root
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_*/&_result_cfi_allocatable
       *
         in -- c_string_*/&_in
           buf -- c_string_*/&_in_buf
@@ -75,12 +99,16 @@ root
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_*/&_result_cfi_allocatable
       scalar
         in -- c_string_scalar_in
           buf -- c_string_scalar_in_buf
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_scalar_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_scalar_result_cfi_allocatable
     struct -- c_struct
       result -- c_struct_result
     vector
@@ -159,15 +187,21 @@ root
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
       *
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
       scalar
         in -- f_string_scalar_in
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
     struct
       *
         result -- f_struct_*_result

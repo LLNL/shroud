@@ -1286,6 +1286,22 @@ class GenFunctions(object):
         # shadow classes have not been added yet.
         # Only care about string, vector here.
         result_is_ptr = ast.is_indirect()
+        if (
+            result_typemap
+            and result_typemap.base in ["string", "vector"]
+            and result_typemap.name != "char"
+            and not result_is_ptr
+        ):
+            node.wrap.c = False
+            #            node.wrap.fortran = False
+            self.config.log.write(
+                "Skipping {}, unable to create C wrapper "
+                "for function returning {} instance"
+                " (must return a pointer or reference)."
+                " Bufferify version will still be created.\n".format(
+                    result_typemap.cxx_type, ast.name
+                )
+            )
         
         ast = node.ast
         cfi_args = {}
@@ -1311,7 +1327,7 @@ class GenFunctions(object):
         if attrs["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
-        elif result_typemap.sgroup == "char":
+        elif result_typemap.sgroup in ["char", "string"]:
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
@@ -1355,7 +1371,8 @@ class GenFunctions(object):
 #                )
                 # Special case for wrapf.py to override "allocatable"
                 f_attrs["deref"] = "result-as-arg"
-            elif result_is_ptr:  # 'char *'
+            elif (result_typemap.sgroup == "string" or
+                  result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
                 self.move_arg_attributes(attrs, node, C_new)
@@ -1471,7 +1488,7 @@ class GenFunctions(object):
         if attrs["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
-        elif result_typemap.base == "string":
+        elif result_typemap.sgroup in ["char", "string"]:
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg

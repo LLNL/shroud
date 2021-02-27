@@ -23,7 +23,6 @@ VPATH = \
 
 OBJS = \
     strings.o \
-    utilstrings.o \
     wrapfstrings.o \
     wrapstrings.o \
     fruit.o \

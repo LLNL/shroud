@@ -1624,7 +1624,20 @@ fc_statements = [
     ),
     
     dict(
-        name="c_mixin_character",
+        # Function which return char * or std::string.
+        name="c_mixin_cfi_character_result_allocatable",
+        iface_header=["ISO_Fortran_binding.h"],
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "CFI_cdesc_t *{cfi_prefix}{c_var}",
+        ],
+        f_arg_decl=[
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+        ],
+    ),
+    dict(
+        # Character argument which use CFI_desc_t.
+        name="c_mixin_cfi_character_arg",
         iface_header=["ISO_Fortran_binding.h"],
         buf_args=["arg_decl"],
         cxx_local_var="pointer",
@@ -1642,7 +1655,7 @@ fc_statements = [
     dict(
         name="c_char_*_in_cfi",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         # Null terminate string.
         pre_call=[
@@ -1658,7 +1671,7 @@ fc_statements = [
     dict(
         name="c_char_*_out_cfi",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         c_helper="ShroudStrBlankFill",
         post_call=[
@@ -1668,7 +1681,7 @@ fc_statements = [
     dict(
         name="c_char_*_inout_cfi",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         # Null terminate string.
         c_helper="ShroudStrAlloc ShroudStrCopy ShroudStrFree",
@@ -1689,7 +1702,7 @@ fc_statements = [
         # Blank fill result.
         name="c_char_scalar_result_cfi",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
@@ -1706,7 +1719,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="c_char_*_result_cfi",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -1723,7 +1736,7 @@ fc_statements = [
     dict(
         name="c_char_*_result_cfi_allocatable",
         mixin=[
-            "c_mixin_character",
+            "c_mixin_cfi_character_arg",
         ],
         f_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
@@ -1740,5 +1753,158 @@ fc_statements = [
         ],
     ),
     
+    ########################################
+    # std::string
+    dict(
+        name="c_XXXstring_*/&_in_cfi",
+        buf_args=["arg", "len_trim"],
+        cxx_local_var="scalar",
+        pre_call=[
+            (
+                "{c_const}std::string "
+                "{cxx_var}({c_var}, {c_var_trim});"
+            )
+        ],
+    ),
+    dict(
+        name="c_XXXstring_*/&_out_cfi",
+        buf_args=["arg", "len"],
+        c_helper="ShroudStrCopy",
+        cxx_local_var="scalar",
+        pre_call=["std::string {cxx_var};"],
+        post_call=[
+            "ShroudStrCopy({c_var}, {c_var_len},"
+            "\t {cxx_var}{cxx_member}data(),"
+            "\t {cxx_var}{cxx_member}size());"
+        ],
+    ),
+    dict(
+        name="c_XXXstring_*/&_inout_cfi",
+        buf_args=["arg", "len_trim", "len"],
+        c_helper="ShroudStrCopy",
+        cxx_local_var="scalar",
+        pre_call=["std::string {cxx_var}({c_var}, {c_var_trim});"],
+        post_call=[
+            "ShroudStrCopy({c_var}, {c_var_len},"
+            "\t {cxx_var}{cxx_member}data(),"
+            "\t {cxx_var}{cxx_member}size());"
+        ],
+    ),
+    dict(
+        # c_string_scalar_result_cfi
+        # c_string_*_result_cfi
+        # c_string_&_result_cfi
+        name="c_string_scalar/*/&_result_cfi",
+        mixin=[
+            "c_mixin_cfi_character_arg",
+        ],
+        cxx_local_var=None, # replace mixin
+        pre_call=[],        # replace mixin
+#        buf_args=["arg", "len"],
+#        c_helper="ShroudStrCopy",
+#        post_call=[
+#            "if ({cxx_var}{cxx_member}empty()) {{+",
+#            "ShroudStrCopy({c_var}, {c_var_len},"
+#            "\t {nullptr},\t 0);",
+#            "-}} else {{+",
+#            "ShroudStrCopy({c_var}, {c_var_len},"
+#            "\t {cxx_var}{cxx_member}data(),"
+#            "\t {cxx_var}{cxx_member}size());",
+#            "-}}",
+#        ],
+        c_helper="ShroudStrCopy",
+        post_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "if ({cxx_var}{cxx_member}empty()) {{+",
+            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "\t {nullptr},\t 0);",
+            "-}} else {{+",
+            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
+            "\t {cxx_var}{cxx_member}data(),"
+            "\t {cxx_var}{cxx_member}size());",
+            "-}}",
+        ],
+    ),
+    dict(###
+        name="c_XXXstring_scalar_in_cfi",
+##        base="c_XXXstring_scalar_in",
+        buf_args=["arg_decl", "len_trim"],
+        cxx_local_var="scalar",
+        pre_call=[
+            "std::string {cxx_var}({c_var}, {c_var_trim});",
+        ],
+        call=[
+            "{cxx_var}",
+        ],
+    ),
+    # std::string * function()
+    dict(
+        # c_string_*_result_cfi_allocatable
+        # c_string_&_result_cfi_allocatable
+        name="c_string_*/&_result_cfi_allocatable",
+        mixin=[
+            "c_mixin_cfi_character_result_allocatable",
+        ],
+        c_impl_header=["<string.h>"],
+        cxx_impl_header=["<cstring>"],
+#        # pass address of string and length back to Fortran
+#        buf_args=["context"],
+#        c_helper="ShroudStrToArray",
+#        # Copy address of result into c_var and save length.
+#        # When returning a std::string (and not a reference or pointer)
+#        # an intermediate object is created to save the results
+#        # which will be passed to copy_string
+#        post_call=[
+#            "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
+#        ],
+#        cxx_local_var=None,  # replace mixin
+#        pre_call=[],         # replace mixin
+        post_call=[
+            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}{cxx_member}length());",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}{cxx_member}data(), \t{cxx_var}{cxx_member}length());",
+            "-}}",
+        ],
+    ),
+
+    # std::string & function()
+    dict(
+        name="c_string_scalar_result_cfi_allocatable",
+        mixin=[
+            "c_mixin_cfi_character_arg",
+        ],
+        f_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        pre_call=[],         # replace mixin
+        post_call=[
+            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \t{cxx_var}.length());",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}.data(), \t{cfi_prefix}{c_var}->elem_len);",
+            "-}}",
+        ],
+        
+        destructor_name="new_string",
+        destructor=[
+            "std::string *cxx_ptr = \treinterpret_cast<std::string *>(ptr);",
+            "delete cxx_ptr;",
+        ],
+#        post_call=[
+#            "ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});",
+#        ],
+    ),
+    
+    # similar to f_char_scalar_result_allocatable
+    dict(
+        name="f_string_scalar/*/&_result_cfi_allocatable",
+#        need_wrapper=True,
+        arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+    ),
+    
+
     
 ]

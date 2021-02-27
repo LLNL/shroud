@@ -1750,10 +1750,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1794,8 +1794,8 @@
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_get_const_string_result_bufferify",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_C_call": "c_get_const_string_result_cfi",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_result",
                     "F_name_generic": "get_const_string_result",
@@ -1806,7 +1806,9 @@
                     "function_name": "getConstStringResult",
                     "underscore_name": "get_const_string_result"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -1822,33 +1824,30 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_scalar_result_buf_allocatable",
-                            "stmt1": "c_string_scalar_result_buf_allocatable"
+                            "stmt0": "c_string_scalar_result_cfi_allocatable",
+                            "stmt1": "c_string_scalar_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "f_string_*_result_cfi_allocatable",
+                            "stmt1": "f_string_*_result_cfi_allocatable",
+                            "stmtc0": "c_string_*_result_cfi_allocatable",
+                            "stmtc1": "c_string_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -1864,11 +1863,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringResult",
@@ -1878,7 +1877,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -1903,24 +1901,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringResult()",
-                "declgen": "void getConstStringResult(const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringResult(const string * SHF_rv +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_result_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_result_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_result_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_result_cfi",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "*SHCXX_rv",
+                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringResult",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_result"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -1935,10 +1935,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
+                        "stmt0": "f_string_scalar_result_cfi_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -1980,8 +1980,8 @@
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_get_const_string_len_bufferify",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_C_call": "c_get_const_string_len_cfi",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_len",
                     "F_name_generic": "get_const_string_len",
@@ -1992,7 +1992,9 @@
                     "function_name": "getConstStringLen",
                     "underscore_name": "get_const_string_len"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -2008,7 +2010,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2017,23 +2019,23 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_scalar_result_buf",
-                            "stmt1": "c_string_scalar_result_buf"
+                            "stmt0": "c_string_scalar_result_cfi",
+                            "stmt1": "c_string_scalar_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf",
+                            "stmt0": "f_string_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_*_result_buf",
-                            "stmtc1": "c_string_*_result_buf"
+                            "stmtc0": "c_string_*_result_cfi",
+                            "stmtc1": "c_string_*_result_cfi"
                         }
                     }
                 },
@@ -2050,11 +2052,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "len": 30
@@ -2068,7 +2070,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "intent": "out",
-                                "len": "NSHF_rv"
+                                "len": 30
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -2090,24 +2092,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringLen() +len=30",
-                "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_get_const_string_len_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_get_const_string_len_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_len_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringLen",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_len"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -2159,7 +2163,9 @@
                     "function_name": "getConstStringAsArg",
                     "underscore_name": "get_const_string_as_arg"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "python": true
                 }
@@ -2174,7 +2180,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2183,23 +2188,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_string_scalar_result_buf",
-                            "stmt1": "c_string_scalar_result_buf"
+                            "stmt0": "c_string_scalar_result_cfi",
+                            "stmt1": "c_string_scalar_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf",
+                            "stmt0": "f_string_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_*_result_buf",
-                            "stmtc1": "c_string_*_result_buf"
+                            "stmtc0": "c_string_*_result_cfi",
+                            "stmtc1": "c_string_*_result_cfi"
                         }
                     }
                 },
@@ -2215,11 +2219,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringAsArg",
@@ -2229,8 +2233,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -2252,32 +2255,34 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))",
+                "declgen": "void getConstStringAsArg(string * output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_as_arg_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_name": "STR_get_const_string_as_arg_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
-                    "F_C_name": "c_get_const_string_as_arg_bufferify",
+                    "F_C_arguments": "output",
+                    "F_C_name": "get_const_string_as_arg",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringAsArg",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_as_arg"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
             },
             {
                 "C_error_pattern": "C_invalid_name",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringAsArg",
@@ -2287,8 +2292,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -2310,13 +2314,13 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +intent(out)+len(Noutput))",
+                "declgen": "void getConstStringAsArg(string * output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_get_const_string_as_arg_bufferify",
-                    "F_arg_c_call": "output,\t len(output, kind=C_INT)",
+                    "F_C_call": "c_get_const_string_as_arg_cfi",
+                    "F_arg_c_call": "output",
                     "F_arguments": "output",
                     "F_name_function": "get_const_string_as_arg",
                     "F_name_generic": "get_const_string_as_arg",
@@ -2331,8 +2335,10 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_const_string_as_arg"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true
                 }
@@ -2345,10 +2351,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2386,8 +2392,8 @@
                 "decl": "const std::string getConstStringAlloc()",
                 "declgen": "const std::string getConstStringAlloc(void) +deref(allocatable)",
                 "fmtdict": {
-                    "F_C_call": "c_get_const_string_alloc_bufferify",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_C_call": "c_get_const_string_alloc_cfi",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_alloc",
                     "F_name_generic": "get_const_string_alloc",
@@ -2398,7 +2404,9 @@
                     "function_name": "getConstStringAlloc",
                     "underscore_name": "get_const_string_alloc"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true,
                     "python": true
@@ -2413,33 +2421,30 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
                             "cxx_type": "std::string",
                             "cxx_var": "SHCXX_rv",
                             "idtor": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_scalar_result_buf_allocatable",
-                            "stmt1": "c_string_scalar_result_buf_allocatable"
+                            "stmt0": "c_string_scalar_result_cfi_allocatable",
+                            "stmt1": "c_string_scalar_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "f_string_*_result_cfi_allocatable",
+                            "stmt1": "f_string_*_result_cfi_allocatable",
+                            "stmtc0": "c_string_*_result_cfi_allocatable",
+                            "stmtc1": "c_string_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -2455,11 +2460,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringAlloc",
@@ -2469,7 +2474,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -2494,21 +2498,23 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string getConstStringAlloc()",
-                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_alloc_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_alloc_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_alloc_cfi",
                     "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "*SHCXX_rv",
+                    "cxx_rv_decl": "const std::string SHCXX_rv",
                     "function_name": "getConstStringAlloc",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_alloc"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -2538,10 +2544,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -2591,12 +2597,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_pure_bufferify",
+                    "F_C_call": "c_get_const_string_ref_pure_cfi",
                     "F_C_name": "c_get_const_string_ref_pure",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_pure",
                     "F_name_generic": "get_const_string_ref_pure",
@@ -2609,7 +2615,8 @@
                     "underscore_name": "get_const_string_ref_pure"
                 },
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true,
@@ -2626,7 +2633,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -2635,24 +2641,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_&_result_buf_allocatable",
-                            "stmt1": "c_string_&_result_buf_allocatable"
+                            "stmt0": "c_string_&_result_cfi_allocatable",
+                            "stmt1": "c_string_&_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf_allocatable",
-                            "stmt1": "f_string_&_result_buf_allocatable",
-                            "stmtc0": "c_string_&_result_buf_allocatable",
-                            "stmtc1": "c_string_&_result_buf_allocatable"
+                            "stmt0": "f_string_&_result_cfi_allocatable",
+                            "stmt1": "f_string_&_result_cfi_allocatable",
+                            "stmtc0": "c_string_&_result_cfi_allocatable",
+                            "stmtc1": "c_string_&_result_cfi_allocatable"
                         }
                     }
                 },
@@ -2668,11 +2672,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringRefPure",
@@ -2682,7 +2686,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -2707,25 +2710,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "void getConstStringRefPure(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefPure(const string & SHF_rv +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ref_pure_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_ref_pure_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_ref_pure_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ref_pure_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefPure",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ref_pure"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true
@@ -2759,10 +2763,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
+                        "stmt0": "f_string_scalar_result_cfi_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -2814,12 +2818,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_len_bufferify",
+                    "F_C_call": "c_get_const_string_ref_len_cfi",
                     "F_C_name": "c_get_const_string_ref_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len",
                     "F_name_generic": "get_const_string_ref_len",
@@ -2831,7 +2835,9 @@
                     "function_name": "getConstStringRefLen",
                     "underscore_name": "get_const_string_ref_len"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -2848,7 +2854,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -2857,23 +2863,23 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_&_result_buf",
-                            "stmt1": "c_string_&_result_buf"
+                            "stmt0": "c_string_&_result_cfi",
+                            "stmt1": "c_string_&_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf",
+                            "stmt0": "f_string_&_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_result_buf",
-                            "stmtc1": "c_string_&_result_buf"
+                            "stmtc0": "c_string_&_result_cfi",
+                            "stmtc1": "c_string_&_result_cfi"
                         }
                     }
                 },
@@ -2890,11 +2896,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "len": 30
@@ -2908,7 +2914,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "intent": "out",
-                                "len": "NSHF_rv"
+                                "len": 30
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -2930,25 +2936,27 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_get_const_string_ref_len_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_get_const_string_ref_len_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ref_len_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLen",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ref_len"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -3032,7 +3040,9 @@
                     "function_name": "getConstStringRefAsArg",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "python": true
@@ -3048,7 +3058,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -3057,23 +3066,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_string_&_result_buf",
-                            "stmt1": "c_string_&_result_buf"
+                            "stmt0": "c_string_&_result_cfi",
+                            "stmt1": "c_string_&_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf",
+                            "stmt0": "f_string_&_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_result_buf",
-                            "stmtc1": "c_string_&_result_buf"
+                            "stmtc0": "c_string_&_result_cfi",
+                            "stmtc1": "c_string_&_result_cfi"
                         }
                     }
                 },
@@ -3089,11 +3097,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringRefAsArg",
@@ -3103,8 +3111,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -3126,33 +3133,35 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))",
+                "declgen": "void getConstStringRefAsArg(string & output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ref_as_arg_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_name": "STR_get_const_string_ref_as_arg_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
-                    "F_C_name": "c_get_const_string_ref_as_arg_bufferify",
+                    "F_C_arguments": "output",
+                    "F_C_name": "get_const_string_ref_as_arg",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAsArg",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
             },
             {
                 "C_error_pattern": "C_invalid_name",
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringRefAsArg",
@@ -3162,8 +3171,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -3185,14 +3193,14 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +intent(out)+len(Noutput))",
+                "declgen": "void getConstStringRefAsArg(string & output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_get_const_string_ref_as_arg_bufferify",
-                    "F_arg_c_call": "output,\t len(output, kind=C_INT)",
+                    "F_C_call": "c_get_const_string_ref_as_arg_cfi",
+                    "F_arg_c_call": "output",
                     "F_arguments": "output",
                     "F_name_function": "get_const_string_ref_as_arg",
                     "F_name_generic": "get_const_string_ref_as_arg",
@@ -3207,8 +3215,10 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_const_string_ref_as_arg"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "fortran": true
                 }
@@ -3241,10 +3251,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
+                        "stmt0": "f_string_scalar_result_cfi_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3295,12 +3305,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_len_empty_bufferify",
+                    "F_C_call": "c_get_const_string_ref_len_empty_cfi",
                     "F_C_name": "c_get_const_string_ref_len_empty",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_len_empty",
                     "F_name_generic": "get_const_string_ref_len_empty",
@@ -3312,7 +3322,9 @@
                     "function_name": "getConstStringRefLenEmpty",
                     "underscore_name": "get_const_string_ref_len_empty"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3329,7 +3341,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHCXX_rv",
@@ -3338,23 +3350,23 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_&_result_buf",
-                            "stmt1": "c_string_&_result_buf"
+                            "stmt0": "c_string_&_result_cfi",
+                            "stmt1": "c_string_&_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf",
+                            "stmt0": "f_string_&_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_result_buf",
-                            "stmtc1": "c_string_&_result_buf"
+                            "stmtc0": "c_string_&_result_cfi",
+                            "stmtc1": "c_string_&_result_cfi"
                         }
                     }
                 },
@@ -3371,11 +3383,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "len": 30
@@ -3389,7 +3401,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "intent": "out",
-                                "len": "NSHF_rv"
+                                "len": 30
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -3411,24 +3423,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(30)) +len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ref_len_empty_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_get_const_string_ref_len_empty_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_get_const_string_ref_len_empty_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ref_len_empty_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefLenEmpty",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ref_len_empty"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -3458,10 +3472,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3508,12 +3522,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ref_alloc_bufferify",
+                    "F_C_call": "c_get_const_string_ref_alloc_cfi",
                     "F_C_name": "c_get_const_string_ref_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ref_alloc",
                     "F_name_generic": "get_const_string_ref_alloc",
@@ -3525,7 +3539,9 @@
                     "function_name": "getConstStringRefAlloc",
                     "underscore_name": "get_const_string_ref_alloc"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3541,7 +3557,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
@@ -3550,24 +3565,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_&_result_buf_allocatable",
-                            "stmt1": "c_string_&_result_buf_allocatable"
+                            "stmt0": "c_string_&_result_cfi_allocatable",
+                            "stmt1": "c_string_&_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf_allocatable",
-                            "stmt1": "f_string_&_result_buf_allocatable",
-                            "stmtc0": "c_string_&_result_buf_allocatable",
-                            "stmtc1": "c_string_&_result_buf_allocatable"
+                            "stmt0": "f_string_&_result_cfi_allocatable",
+                            "stmt1": "f_string_&_result_cfi_allocatable",
+                            "stmtc0": "c_string_&_result_cfi_allocatable",
+                            "stmtc1": "c_string_&_result_cfi_allocatable"
                         }
                     }
                 },
@@ -3583,11 +3596,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringRefAlloc",
@@ -3597,7 +3610,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -3622,21 +3634,23 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +deref(allocatable)+intent(out))",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ref_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_ref_alloc_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_ref_alloc_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ref_alloc_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string & SHCXX_rv",
                     "function_name": "getConstStringRefAlloc",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ref_alloc"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -3668,10 +3682,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
+                        "stmt0": "f_string_scalar_result_cfi_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3723,12 +3737,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_len_bufferify",
+                    "F_C_call": "c_get_const_string_ptr_len_cfi",
                     "F_C_name": "c_get_const_string_ptr_len",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_len",
                     "F_name_generic": "get_const_string_ptr_len",
@@ -3747,7 +3761,9 @@
                         ]
                     }
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3763,7 +3779,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHCXX_rv",
@@ -3772,23 +3788,23 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_*_result_buf",
-                            "stmt1": "c_string_*_result_buf"
+                            "stmt0": "c_string_*_result_cfi",
+                            "stmt1": "c_string_*_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": 30,
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf",
+                            "stmt0": "f_string_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_*_result_buf",
-                            "stmtc1": "c_string_*_result_buf"
+                            "stmtc0": "c_string_*_result_cfi",
+                            "stmtc1": "c_string_*_result_cfi"
                         }
                     }
                 },
@@ -3805,11 +3821,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "len": 30
@@ -3823,7 +3839,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "intent": "out",
-                                "len": "NSHF_rv"
+                                "len": 30
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -3845,21 +3861,21 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_len_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_get_const_string_ptr_len_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_get_const_string_ptr_len_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ptr_len_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrLen",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ptr_len"
                 },
                 "fstatements": {
@@ -3869,8 +3885,10 @@
                         ]
                     }
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -3900,10 +3918,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable_library",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable_library",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3951,12 +3969,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_call": "c_get_const_string_ptr_alloc_cfi",
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
                     "F_name_generic": "get_const_string_ptr_alloc",
@@ -3968,7 +3986,9 @@
                     "function_name": "getConstStringPtrAlloc",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -3984,7 +4004,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -3993,24 +4012,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_*_result_buf_allocatable",
-                            "stmt1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "c_string_*_result_cfi_allocatable",
+                            "stmt1": "c_string_*_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "f_string_*_result_cfi_allocatable",
+                            "stmt1": "f_string_*_result_cfi_allocatable",
+                            "stmtc0": "c_string_*_result_cfi_allocatable",
+                            "stmtc1": "c_string_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -4026,11 +4043,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringPtrAlloc",
@@ -4040,7 +4057,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out",
                                 "owner": "library"
@@ -4066,21 +4082,23 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(library))",
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_ptr_alloc_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ptr_alloc_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrAlloc",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -4110,10 +4128,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable_caller",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable_caller",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4164,12 +4182,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_bufferify",
+                    "F_C_call": "c_get_const_string_ptr_owns_alloc_cfi",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc",
                     "F_name_generic": "get_const_string_ptr_owns_alloc",
@@ -4181,7 +4199,9 @@
                     "function_name": "getConstStringPtrOwnsAlloc",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -4197,7 +4217,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -4206,24 +4225,22 @@
                             "idtor": "2",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_*_result_buf_allocatable",
-                            "stmt1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "c_string_*_result_cfi_allocatable",
+                            "stmt1": "c_string_*_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "f_string_*_result_cfi_allocatable",
+                            "stmt1": "f_string_*_result_cfi_allocatable",
+                            "stmtc0": "c_string_*_result_cfi_allocatable",
+                            "stmtc1": "c_string_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -4239,11 +4256,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getConstStringPtrOwnsAlloc",
@@ -4253,7 +4270,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out",
                                 "owner": "caller"
@@ -4279,24 +4295,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(caller))",
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_ptr_owns_alloc_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ptr_owns_alloc_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAlloc",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ptr_owns_alloc"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -4326,10 +4344,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_buf_allocatable_caller",
-                        "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmt0": "f_string_scalar_result_cfi_allocatable_caller",
+                        "stmt1": "f_string_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_string_scalar_result_cfi",
+                        "stmtc1": "c_string_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4381,12 +4399,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                    "F_C_call": "c_get_const_string_ptr_owns_alloc_pattern_cfi",
                     "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_owns_alloc_pattern",
                     "F_name_generic": "get_const_string_ptr_owns_alloc_pattern",
@@ -4398,7 +4416,9 @@
                     "function_name": "getConstStringPtrOwnsAllocPattern",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -4414,7 +4434,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
@@ -4423,24 +4442,22 @@
                             "idtor": "3",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_*_result_buf_allocatable",
-                            "stmt1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "c_string_*_result_cfi_allocatable",
+                            "stmt1": "c_string_*_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
+                            "stmt0": "f_string_*_result_cfi_allocatable",
+                            "stmt1": "f_string_*_result_cfi_allocatable",
+                            "stmtc0": "c_string_*_result_cfi_allocatable",
+                            "stmtc1": "c_string_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -4456,11 +4473,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {},
                     "declarator": {
@@ -4471,7 +4488,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "free_pattern": "C_string_free",
                                 "intent": "out",
@@ -4498,24 +4514,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_const_string_ptr_owns_alloc_pattern_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_const_string_ptr_owns_alloc_pattern_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const std::string * SHCXX_rv",
                     "function_name": "getConstStringPtrOwnsAllocPattern",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_const_string_ptr_owns_alloc_pattern"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
