@@ -21,12 +21,12 @@ root
     native
       *
         in
-          cdesc -- c_native_*_in_cdesc
+          cdesc -- c_native_*_in/out/inout_cdesc
           cfi -- c_native_*_in_cfi
         inout
-          cdesc -- c_native_*_inout_cdesc
+          cdesc -- c_native_*_in/out/inout_cdesc
         out
-          cdesc -- c_native_*_out_cdesc
+          cdesc -- c_native_*_in/out/inout_cdesc
         result
           buf -- c_native_*_result_buf
       *&
@@ -95,25 +95,25 @@ root
       *
         result
           buf
-            allocatable -- f_char_*_result_buf_allocatable
+            allocatable -- f_char_scalar/*_result_buf_allocatable
           raw -- f_char_*_result_raw
       scalar
         in -- f_char_scalar_in
         result
           buf
-            allocatable -- f_char_scalar_result_buf_allocatable
+            allocatable -- f_char_scalar/*_result_buf_allocatable
     native
       &
         result -- f_native_&_result
       *
         in
-          cdesc -- f_native_*_in_cdesc
+          cdesc -- f_native_*_in/out/inout_cdesc
           raw -- f_native_*_in_raw
         inout
-          cdesc -- f_native_*_inout_cdesc
+          cdesc -- f_native_*_in/out/inout_cdesc
         out
           allocatable -- f_native_*_out_allocatable
-          cdesc -- f_native_*_out_cdesc
+          cdesc -- f_native_*_in/out/inout_cdesc
         result
           buf
             allocatable -- f_native_*_result_buf_allocatable
@@ -135,16 +135,16 @@ root
       &
         result
           buf
-            allocatable -- f_string_&_result_buf_allocatable
+            allocatable -- f_string_scalar/*/&_result_buf_allocatable
       *
         result
           buf
-            allocatable -- f_string_*_result_buf_allocatable
+            allocatable -- f_string_scalar/*/&_result_buf_allocatable
       scalar
         in -- f_string_scalar_in
         result
           buf
-            allocatable -- f_string_scalar_result_buf_allocatable
+            allocatable -- f_string_scalar/*/&_result_buf_allocatable
     struct
       *
         result -- f_struct_*_result

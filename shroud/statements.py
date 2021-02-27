@@ -338,6 +338,7 @@ def update_stmt_tree(stmts, tree, defaults):
                                    format(name))
             add_statement_to_tree(tree, nodes, node_stmts, node, namelst)
 
+
 def write_cf_tree(fp):
     """Write out statements tree.
 
@@ -348,6 +349,7 @@ def write_cf_tree(fp):
     lines = []
     print_tree(cf_tree, lines)
     fp.writelines(lines)
+
 
 def print_tree(tree, lines, indent=""):
     """Print statements search tree.
@@ -365,7 +367,8 @@ def print_tree(tree, lines, indent=""):
     parts = tree.get('_key', 'root').split('_')
     if "_node" in tree:
         #        final = '' # + tree["_node"]["scope"].name + '-'
-        lines.append("{}{} -- {}\n".format(indent, parts[-1], tree.get('_key', '??')))
+        origname = tree["_node"]["name"]
+        lines.append("{}{} -- {}\n".format(indent, parts[-1], origname))
     else:
         lines.append("{}{}\n".format(indent, parts[-1]))
     indent += '  '
