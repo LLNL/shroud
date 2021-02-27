@@ -107,16 +107,13 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
                 Larg2, DSHF_rv) &
@@ -201,8 +198,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_overloaded_function_from_name")
@@ -218,8 +214,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 Lname) &
@@ -327,8 +322,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: c_native_scalar_in
@@ -349,8 +343,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: c_native_scalar_in_buf
@@ -637,8 +630,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -655,8 +647,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_last_function_called_bufferify")
@@ -736,20 +727,17 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2 +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
     !! is allocated.  It is assumed +owner(library).
@@ -862,8 +850,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -998,8 +985,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
@@ -1030,8 +1016,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
@@ -1266,8 +1251,7 @@ contains
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     function last_function_called() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT

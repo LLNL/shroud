@@ -193,7 +193,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in",
-                                                    "stmt1": "c_string_in"
+                                                    "stmt1": "c_string_*_in"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name"
@@ -383,7 +383,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in_buf",
-                                                    "stmt1": "c_string_in_buf"
+                                                    "stmt1": "c_string_*_in_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
@@ -398,7 +398,7 @@
                                                     "stmt0": "f_string_*_in",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_*_in_buf",
-                                                    "stmtc1": "c_string_in_buf"
+                                                    "stmtc1": "c_string_*_in_buf"
                                                 }
                                             }
                                         },
@@ -751,7 +751,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
@@ -872,7 +872,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_SHF_rv",
                                                     "stmt0": "c_string_&_result_buf_allocatable",
-                                                    "stmt1": "c_string_result_buf_allocatable"
+                                                    "stmt1": "c_string_&_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
@@ -888,7 +888,7 @@
                                                     "stmt0": "f_string_&_result_buf_allocatable",
                                                     "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
-                                                    "stmtc1": "c_string_result_buf_allocatable"
+                                                    "stmtc1": "c_string_&_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -985,7 +985,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -1087,7 +1087,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_&_result_buf",
-                                                    "stmt1": "c_string_result_buf"
+                                                    "stmt1": "c_string_&_result_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
@@ -1102,7 +1102,7 @@
                                                     "stmt0": "f_string_&_result_buf",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_&_result_buf",
-                                                    "stmtc1": "c_string_result_buf"
+                                                    "stmtc1": "c_string_&_result_buf"
                                                 }
                                             }
                                         },
@@ -1976,7 +1976,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in",
-                                                    "stmt1": "c_string_in"
+                                                    "stmt1": "c_string_*_in"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name"
@@ -2166,7 +2166,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_name",
                                                     "stmt0": "c_string_*_in_buf",
-                                                    "stmt1": "c_string_in_buf"
+                                                    "stmt1": "c_string_*_in_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "name",
@@ -2181,7 +2181,7 @@
                                                     "stmt0": "f_string_*_in",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_*_in_buf",
-                                                    "stmtc1": "c_string_in_buf"
+                                                    "stmtc1": "c_string_*_in_buf"
                                                 }
                                             }
                                         },
@@ -2341,7 +2341,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
                                                 "c_var_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
@@ -2464,7 +2464,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_SHF_rv",
                                                     "stmt0": "c_string_&_result_buf",
-                                                    "stmt1": "c_string_result_buf"
+                                                    "stmt1": "c_string_&_result_buf"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
@@ -2479,7 +2479,7 @@
                                                     "stmt0": "f_string_&_result_buf",
                                                     "stmt1": "f_default",
                                                     "stmtc0": "c_string_&_result_buf",
-                                                    "stmtc1": "c_string_result_buf"
+                                                    "stmtc1": "c_string_&_result_buf"
                                                 }
                                             }
                                         },
@@ -2578,7 +2578,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
@@ -2697,7 +2697,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_SHF_rv",
                                                     "stmt0": "c_string_&_result_buf_allocatable",
-                                                    "stmt1": "c_string_result_buf_allocatable"
+                                                    "stmt1": "c_string_&_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
@@ -2713,7 +2713,7 @@
                                                     "stmt0": "f_string_&_result_buf_allocatable",
                                                     "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
-                                                    "stmtc1": "c_string_result_buf_allocatable"
+                                                    "stmtc1": "c_string_&_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -2809,7 +2809,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
@@ -2929,7 +2929,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_SHF_rv",
                                                     "stmt0": "c_string_&_result_buf_allocatable",
-                                                    "stmt1": "c_string_result_buf_allocatable"
+                                                    "stmt1": "c_string_&_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
@@ -2945,7 +2945,7 @@
                                                     "stmt0": "f_string_&_result_buf_allocatable",
                                                     "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
-                                                    "stmtc1": "c_string_result_buf_allocatable"
+                                                    "stmtc1": "c_string_&_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -3041,7 +3041,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result",
-                                                "stmt1": "c_string_result"
+                                                "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
                                                 "cxx_type": "std::string",
@@ -3159,7 +3159,7 @@
                                                     "sh_type": "SH_TYPE_OTHER",
                                                     "shadow_var": "SHadow_SHF_rv",
                                                     "stmt0": "c_string_&_result_buf_allocatable",
-                                                    "stmt1": "c_string_result_buf_allocatable"
+                                                    "stmt1": "c_string_&_result_buf_allocatable"
                                                 },
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
@@ -3175,7 +3175,7 @@
                                                     "stmt0": "f_string_&_result_buf_allocatable",
                                                     "stmt1": "f_string_&_result_buf_allocatable",
                                                     "stmtc0": "c_string_&_result_buf_allocatable",
-                                                    "stmtc1": "c_string_result_buf_allocatable"
+                                                    "stmtc1": "c_string_&_result_buf_allocatable"
                                                 }
                                             }
                                         },
@@ -5856,7 +5856,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
-                                            "stmt1": "c_string_in"
+                                            "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name"
@@ -6049,7 +6049,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in_buf",
-                                            "stmt1": "c_string_in_buf"
+                                            "stmt1": "c_string_&_in_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
@@ -6064,7 +6064,7 @@
                                             "stmt0": "f_string_&_in",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_string_&_in_buf",
-                                            "stmtc1": "c_string_in_buf"
+                                            "stmtc1": "c_string_&_in_buf"
                                         }
                                     }
                                 },
@@ -6273,7 +6273,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
-                                            "stmt1": "c_string_in"
+                                            "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name"
@@ -6406,7 +6406,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in_buf",
-                                            "stmt1": "c_string_in_buf"
+                                            "stmt1": "c_string_&_in_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
@@ -6421,7 +6421,7 @@
                                             "stmt0": "f_string_&_in",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_string_&_in_buf",
-                                            "stmtc1": "c_string_in_buf"
+                                            "stmtc1": "c_string_&_in_buf"
                                         }
                                     }
                                 },
@@ -6554,7 +6554,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in",
-                                            "stmt1": "c_string_in"
+                                            "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name"
@@ -6732,7 +6732,7 @@
                                             "sh_type": "SH_TYPE_OTHER",
                                             "shadow_var": "SHadow_name",
                                             "stmt0": "c_string_&_in_buf",
-                                            "stmt1": "c_string_in_buf"
+                                            "stmt1": "c_string_&_in_buf"
                                         },
                                         "fmtf": {
                                             "F_C_var": "name",
@@ -6747,7 +6747,7 @@
                                             "stmt0": "f_string_&_in",
                                             "stmt1": "f_default",
                                             "stmtc0": "c_string_&_in_buf",
-                                            "stmtc1": "c_string_in_buf"
+                                            "stmtc1": "c_string_&_in_buf"
                                         }
                                     }
                                 },

@@ -880,7 +880,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_rv",
                             "stmt0": "c_string_&_in",
-                            "stmt1": "c_string_in"
+                            "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
                             "F_C_var": "rv"
@@ -1034,7 +1034,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_rv",
                             "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_in_buf"
+                            "stmt1": "c_string_&_in_buf"
                         },
                         "fmtf": {
                             "F_C_var": "rv",
@@ -1049,7 +1049,7 @@
                             "stmt0": "f_string_&_in",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_in_buf"
+                            "stmtc1": "c_string_&_in_buf"
                         }
                     }
                 },
@@ -1190,7 +1190,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout",
-                            "stmt1": "c_string_inout"
+                            "stmt1": "c_string_&_inout"
                         },
                         "fmtf": {
                             "F_C_var": "name"
@@ -1378,7 +1378,7 @@
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
                             "stmt0": "c_string_&_inout_buf",
-                            "stmt1": "c_string_inout_buf"
+                            "stmt1": "c_string_&_inout_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1394,7 +1394,7 @@
                             "stmt0": "f_string_&_inout",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_buf",
-                            "stmtc1": "c_string_inout_buf"
+                            "stmtc1": "c_string_&_inout_buf"
                         }
                     },
                     "value": {

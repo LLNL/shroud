@@ -207,8 +207,7 @@ int CLA_get_global_flag(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-// Requested: c_string_&_result
-// Match:     c_string_result
+// Exact:     c_string_&_result
 const char * CLA_last_function_called(void)
 {
     // splicer begin function.last_function_called
@@ -224,8 +223,7 @@ const char * CLA_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
-// Requested: c_string_&_result_buf
-// Match:     c_string_result_buf
+// Exact:     c_string_&_result_buf
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

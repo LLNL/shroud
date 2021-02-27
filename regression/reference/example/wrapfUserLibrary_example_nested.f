@@ -179,8 +179,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)
-        ! Requested: c_string_*_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_*_in
         function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1")
@@ -198,8 +197,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)+len_trim(Lname)
-        ! Requested: c_string_*_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_*_in_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_ctor_1_bufferify")
@@ -244,8 +242,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck +deref(allocatable)
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check")
@@ -262,8 +259,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-        ! Requested: c_string_&_result_buf_allocatable
-        ! Match:     c_string_result_buf_allocatable
+        ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
@@ -275,8 +271,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg +deref(result-as-arg)
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg")
@@ -293,8 +288,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & name +intent(out)+len(Nname)
-        ! Requested: c_string_&_result_buf
-        ! Match:     c_string_result_buf
+        ! Exact:     c_string_&_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -381,8 +375,7 @@ module userlibrary_example_nested_mod
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)+len_trim(trim_name)
-        ! Requested: c_string_*_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_*_in
         function c_exclass2_ctor(name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor")
@@ -400,8 +393,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)+len_trim(trim_name)
-        ! Requested: c_string_*_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_*_in_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_ctor_bufferify")
@@ -427,8 +419,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name")
@@ -445,8 +436,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-        ! Requested: c_string_&_result_buf
-        ! Match:     c_string_result_buf
+        ! Exact:     c_string_&_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -459,8 +449,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2 +deref(allocatable)
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2")
@@ -477,8 +466,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-        ! Requested: c_string_&_result_buf_allocatable
-        ! Match:     c_string_result_buf_allocatable
+        ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -489,8 +477,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3 +deref(allocatable)
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3")
@@ -507,8 +494,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-        ! Requested: c_string_&_result_buf_allocatable
-        ! Match:     c_string_result_buf_allocatable
+        ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -519,8 +505,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4 +deref(allocatable)
-        ! Requested: c_string_&_result
-        ! Match:     c_string_result
+        ! Exact:     c_string_&_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4")
@@ -537,8 +522,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-        ! Requested: c_string_&_result_buf_allocatable
-        ! Match:     c_string_result_buf_allocatable
+        ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -759,8 +743,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)
-        ! Requested: c_string_&_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_&_in
         function c_is_name_valid(name) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_name_valid")
@@ -776,8 +759,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-        ! Requested: c_string_&_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_&_in_buf
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_is_name_valid_bufferify")
@@ -806,8 +788,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)
-        ! Requested: c_string_&_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_&_in
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
             use iso_c_binding, only : C_CHAR
@@ -821,8 +802,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-        ! Requested: c_string_&_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_&_in_buf
         subroutine c_test_names_bufferify(name, Lname) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -837,8 +817,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)
-        ! Requested: c_string_&_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_&_in
         ! ----------------------------------------
         ! Argument:  int flag +intent(in)+value
         ! Requested: c_native_scalar_in
@@ -857,8 +836,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-        ! Requested: c_string_&_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_&_in_buf
         ! ----------------------------------------
         ! Argument:  int flag +intent(in)+value
         ! Requested: c_native_scalar_in_buf
@@ -1258,8 +1236,7 @@ contains
     ! Requested: f_string_*_in
     ! Match:     f_default
     ! Argument:  const string * name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_*_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_*_in_buf
     !>
     !! \brief constructor
     !!
@@ -1332,8 +1309,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
@@ -1359,8 +1335,7 @@ contains
     ! Argument:  string & name +intent(out)+len(Nname)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
         class(exclass1) :: obj
@@ -1488,8 +1463,7 @@ contains
     ! Argument:  const string * name +intent(in)+len_trim(trim_name)
     ! Requested: f_string_*_in
     ! Match:     f_default
-    ! Requested: c_string_*_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_*_in_buf
     !>
     !! \brief constructor
     !!
@@ -1535,8 +1509,7 @@ contains
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -1558,8 +1531,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1582,8 +1554,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1606,8 +1577,7 @@ contains
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
@@ -1965,8 +1935,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     function is_name_valid(name) &
             result(SHT_rv)
         use iso_c_binding, only : C_BOOL, C_INT
@@ -2006,8 +1975,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
         character(len=*), intent(IN) :: name
@@ -2029,8 +1997,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in

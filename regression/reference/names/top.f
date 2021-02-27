@@ -210,8 +210,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & rv +intent(in)
-        ! Requested: c_string_&_in
-        ! Match:     c_string_in
+        ! Exact:     c_string_&_in
         function yyy_tes_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -227,8 +226,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
-        ! Requested: c_string_&_in_buf
-        ! Match:     c_string_in_buf
+        ! Exact:     c_string_&_in_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
@@ -254,8 +252,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)
-        ! Requested: c_string_&_inout
-        ! Match:     c_string_inout
+        ! Exact:     c_string_&_inout
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out
@@ -274,8 +271,7 @@ module top_module
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-        ! Requested: c_string_&_inout_buf
-        ! Match:     c_string_inout_buf
+        ! Exact:     c_string_&_inout_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out_buf
@@ -610,8 +606,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     function testnames_function4(rv) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
@@ -649,8 +644,7 @@ contains
     ! Requested: f_string_&_inout
     ! Match:     f_default
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-    ! Requested: c_string_&_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_&_inout_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Requested: f_native_*_out

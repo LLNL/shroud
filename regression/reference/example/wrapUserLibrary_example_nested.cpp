@@ -36,8 +36,7 @@ void AA_example_nested_local_function1(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 bool AA_example_nested_is_name_valid(const char * name)
 {
     // splicer begin namespace.example::nested.function.is_name_valid
@@ -51,8 +50,7 @@ bool AA_example_nested_is_name_valid(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 bool AA_example_nested_is_name_valid_bufferify(const char * name,
     int Lname)
 {
@@ -79,8 +77,7 @@ bool AA_example_nested_is_initialized(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 void AA_example_nested_test_names(const char * name)
 {
     // splicer begin namespace.example::nested.function.test_names
@@ -95,8 +92,7 @@ void AA_example_nested_test_names(const char * name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 void AA_example_nested_test_names_bufferify(const char * name,
     int Lname)
 {
@@ -112,8 +108,7 @@ void AA_example_nested_test_names_bufferify(const char * name,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
-// Requested: c_string_&_in
-// Match:     c_string_in
+// Exact:     c_string_&_in
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
@@ -132,8 +127,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
-// Requested: c_string_&_in_buf
-// Match:     c_string_in_buf
+// Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in_buf

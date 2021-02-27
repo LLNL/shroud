@@ -47,20 +47,31 @@ root
         in -- c_shadow_scalar_in
         result -- c_shadow_scalar_result
     string
-      in -- c_string_in
-        buf -- c_string_in_buf
-      inout -- c_string_inout
-        buf -- c_string_inout_buf
-      out -- c_string_out
-        buf -- c_string_out_buf
-      result -- c_string_result
-        buf -- c_string_result_buf
-          allocatable -- c_string_result_buf_allocatable
+      &
+        in -- c_string_*/&_in
+          buf -- c_string_*/&_in_buf
+        inout -- c_string_*/&_inout
+          buf -- c_string_*/&_inout_buf
+        out -- c_string_*/&_out
+          buf -- c_string_*/&_out_buf
+        result -- c_string_scalar/*/&_result
+          buf -- c_string_scalar/*/&_result_buf
+            allocatable -- c_string_*/&_result_buf_allocatable
+      *
+        in -- c_string_*/&_in
+          buf -- c_string_*/&_in_buf
+        inout -- c_string_*/&_inout
+          buf -- c_string_*/&_inout_buf
+        out -- c_string_*/&_out
+          buf -- c_string_*/&_out_buf
+        result -- c_string_scalar/*/&_result
+          buf -- c_string_scalar/*/&_result_buf
+            allocatable -- c_string_*/&_result_buf_allocatable
       scalar
         in -- c_string_scalar_in
           buf -- c_string_scalar_in_buf
-        result
-          buf -- c_string_scalar_result_buf
+        result -- c_string_scalar/*/&_result
+          buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_scalar_result_buf_allocatable
     struct -- c_struct
       result -- c_struct_result
