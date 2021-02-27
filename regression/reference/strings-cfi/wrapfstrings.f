@@ -300,8 +300,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_result_bufferify")
@@ -317,8 +316,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_len_bufferify")
@@ -335,8 +333,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * output +intent(out)+len(Noutput)
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
                 bind(C, name="STR_get_const_string_as_arg_bufferify")
@@ -353,8 +350,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_alloc_bufferify")
@@ -366,8 +362,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure +deref(allocatable)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     ! start c_get_const_string_ref_pure
     interface
         function c_get_const_string_ref_pure() &
@@ -386,8 +381,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
         subroutine c_get_const_string_ref_pure_bufferify(DSHF_rv) &
@@ -401,8 +395,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_get_const_string_ref_len() &
                 result(SHT_rv) &
@@ -419,8 +412,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_ref_len_bufferify")
@@ -433,8 +425,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -451,8 +442,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & output +intent(out)+len(Noutput)
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
                 Noutput) &
@@ -466,8 +456,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
@@ -484,8 +473,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHF_rv, &
                 NSHF_rv) &
@@ -499,8 +487,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
-    ! Requested: c_string_&_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_&_result
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -517,8 +504,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_bufferify")
@@ -530,8 +516,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
-    ! Requested: c_string_*_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_*_result
     interface
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
@@ -548,8 +533,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_len_bufferify")
@@ -562,8 +546,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-    ! Requested: c_string_*_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_*_result
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -580,8 +563,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
@@ -593,8 +575,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
-    ! Requested: c_string_*_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_*_result
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -611,8 +592,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_bufferify")
@@ -624,8 +604,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! Requested: c_string_*_result
-    ! Match:     c_string_result
+    ! Exact:     c_string_*_result
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &
@@ -642,8 +621,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
                 DSHF_rv) &
@@ -660,8 +638,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)
-    ! Requested: c_string_&_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_&_in
     interface
         subroutine c_accept_string_const_reference(arg1) &
                 bind(C, name="STR_accept_string_const_reference")
@@ -677,8 +654,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     interface
         subroutine c_accept_string_const_reference_bufferify(arg1, &
                 Larg1) &
@@ -696,8 +672,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
-    ! Requested: c_string_&_out
-    ! Match:     c_string_out
+    ! Exact:     c_string_&_out
     interface
         subroutine c_accept_string_reference_out(arg1) &
                 bind(C, name="STR_accept_string_reference_out")
@@ -713,8 +688,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_&_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_&_out_buf
     interface
         subroutine c_accept_string_reference_out_bufferify(arg1, Narg1) &
                 bind(C, name="STR_accept_string_reference_out_bufferify")
@@ -731,8 +705,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(inout)
-    ! Requested: c_string_&_inout
-    ! Match:     c_string_inout
+    ! Exact:     c_string_&_inout
     ! start c_accept_string_reference
     interface
         subroutine c_accept_string_reference(arg1) &
@@ -750,8 +723,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_&_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_&_inout_buf
     ! start c_accept_string_reference_bufferify
     interface
         subroutine c_accept_string_reference_bufferify(arg1, Larg1, &
@@ -772,8 +744,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * arg1 +intent(in)
-    ! Requested: c_string_*_in
-    ! Match:     c_string_in
+    ! Exact:     c_string_*_in
     interface
         subroutine c_accept_string_pointer_const(arg1) &
                 bind(C, name="STR_accept_string_pointer_const")
@@ -789,8 +760,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_*_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_*_in_buf
     interface
         subroutine c_accept_string_pointer_const_bufferify(arg1, Larg1) &
                 bind(C, name="STR_accept_string_pointer_const_bufferify")
@@ -807,8 +777,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)
-    ! Requested: c_string_*_inout
-    ! Match:     c_string_inout
+    ! Exact:     c_string_*_inout
     interface
         subroutine c_accept_string_pointer(arg1) &
                 bind(C, name="STR_accept_string_pointer")
@@ -824,8 +793,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_*_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_*_inout_buf
     interface
         subroutine c_accept_string_pointer_bufferify(arg1, Larg1, Narg1) &
                 bind(C, name="STR_accept_string_pointer_bufferify")
@@ -843,8 +811,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Requested: c_string_*_out
-    ! Match:     c_string_out
+    ! Exact:     c_string_*_out
     interface
         subroutine c_fetch_string_pointer(arg1) &
                 bind(C, name="STR_fetch_string_pointer")
@@ -860,8 +827,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_*_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_*_out_buf
     interface
         subroutine c_fetch_string_pointer_bufferify(arg1, Narg1) &
                 bind(C, name="STR_fetch_string_pointer_bufferify")
@@ -878,8 +844,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)
-    ! Requested: c_string_*_inout
-    ! Match:     c_string_inout
+    ! Exact:     c_string_*_inout
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: c_native_*_out
@@ -900,8 +865,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_*_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_*_inout_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: c_native_*_out_buf
@@ -925,8 +889,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
-    ! Requested: c_string_*_out
-    ! Match:     c_string_out
+    ! Exact:     c_string_*_out
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: c_native_*_out
@@ -947,8 +910,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_*_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_*_out_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: c_native_*_out_buf
@@ -1161,8 +1123,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(inout)
-    ! Requested: c_string_&_inout
-    ! Match:     c_string_inout
+    ! Exact:     c_string_&_inout
     interface
         subroutine c_post_declare(count, name) &
                 bind(C, name="STR_post_declare")
@@ -1183,8 +1144,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-    ! Requested: c_string_&_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_&_inout_buf
     interface
         subroutine c_post_declare_bufferify(count, name, Lname, Nname) &
                 bind(C, name="STR_post_declare_bufferify")
@@ -1326,8 +1286,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
@@ -1355,8 +1314,7 @@ contains
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1383,8 +1341,7 @@ contains
     ! Argument:  string * output +intent(out)+len(Noutput)
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string' as argument
     !!
@@ -1408,8 +1365,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
         type(STR_SHROUD_array) :: DSHF_rv
@@ -1431,8 +1387,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
     !!
@@ -1462,8 +1417,7 @@ contains
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     !>
     !! \brief return 'const string&' with fixed size (len=30)
     !!
@@ -1493,8 +1447,7 @@ contains
     ! Argument:  string & output +intent(out)+len(Noutput)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     !>
     !! \brief return a 'const string&' as argument
     !!
@@ -1522,8 +1475,7 @@ contains
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Requested: c_string_&_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_&_result_buf
     !>
     !! \brief Test returning empty string reference
     !!
@@ -1548,8 +1500,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Requested: c_string_&_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_&_result_buf_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
         type(STR_SHROUD_array) :: DSHF_rv
@@ -1573,8 +1524,7 @@ contains
     ! Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Requested: c_string_*_result_buf
-    ! Match:     c_string_result_buf
+    ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string *' as character(30)
     !!
@@ -1604,8 +1554,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         type(STR_SHROUD_array) :: DSHF_rv
@@ -1628,8 +1577,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! It is the caller's responsibility to release the string
     !! created by the C++ library.
@@ -1659,8 +1607,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Requested: c_string_*_result_buf_allocatable
-    ! Match:     c_string_result_buf_allocatable
+    ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
@@ -1688,8 +1635,7 @@ contains
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_&_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_&_in_buf
     !>
     !! \brief Accept a const string reference
     !!
@@ -1719,8 +1665,7 @@ contains
     ! Requested: f_string_&_out
     ! Match:     f_default
     ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_&_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_&_out_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -1750,8 +1695,7 @@ contains
     ! Requested: f_string_&_inout
     ! Match:     f_default
     ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_&_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_&_inout_buf
     !>
     !! \brief Accept a string reference
     !!
@@ -1783,8 +1727,7 @@ contains
     ! Requested: f_string_*_in
     ! Match:     f_default
     ! Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
-    ! Requested: c_string_*_in_buf
-    ! Match:     c_string_in_buf
+    ! Exact:     c_string_*_in_buf
     !>
     !! \brief Accept a const string pointer - intent(in)
     !!
@@ -1811,8 +1754,7 @@ contains
     ! Requested: f_string_*_inout
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_*_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_*_inout_buf
     !>
     !! \brief Accept a string pointer - intent(inout)
     !!
@@ -1839,8 +1781,7 @@ contains
     ! Requested: f_string_*_out
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_*_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_*_out_buf
     !>
     !! \brief Accept a string pointer - intent(out)
     !!
@@ -1868,8 +1809,7 @@ contains
     ! Requested: f_string_*_inout
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Requested: c_string_*_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_*_inout_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: f_native_*_out
@@ -1905,8 +1845,7 @@ contains
     ! Requested: f_string_*_out
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Requested: c_string_*_out_buf
-    ! Match:     c_string_out_buf
+    ! Exact:     c_string_*_out_buf
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Requested: f_native_*_out
@@ -2002,8 +1941,7 @@ contains
     ! Requested: f_string_&_inout
     ! Match:     f_default
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-    ! Requested: c_string_&_inout_buf
-    ! Match:     c_string_inout_buf
+    ! Exact:     c_string_&_inout_buf
     !>
     !! Test post_declare.
     !! The std::string in py_string_inout must be declared before the
