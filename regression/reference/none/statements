@@ -1,23 +1,5 @@
 root
   c
-    XXXstring
-      &
-        in
-          cfi -- c_XXXstring_*/&_in_cfi
-        inout
-          cfi -- c_XXXstring_*/&_inout_cfi
-        out
-          cfi -- c_XXXstring_*/&_out_cfi
-      *
-        in
-          cfi -- c_XXXstring_*/&_in_cfi
-        inout
-          cfi -- c_XXXstring_*/&_inout_cfi
-        out
-          cfi -- c_XXXstring_*/&_out_cfi
-      scalar
-        in
-          cfi -- c_XXXstring_scalar_in_cfi
     char
       *
         in
@@ -80,10 +62,13 @@ root
       &
         in -- c_string_*/&_in
           buf -- c_string_*/&_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         inout -- c_string_*/&_inout
           buf -- c_string_*/&_inout_buf
+          cfi -- c_string_*/&_inout_cfi
         out -- c_string_*/&_out
           buf -- c_string_*/&_out_buf
+          cfi -- c_string_*/&_out_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
@@ -92,10 +77,13 @@ root
       *
         in -- c_string_*/&_in
           buf -- c_string_*/&_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         inout -- c_string_*/&_inout
           buf -- c_string_*/&_inout_buf
+          cfi -- c_string_*/&_inout_cfi
         out -- c_string_*/&_out
           buf -- c_string_*/&_out_buf
+          cfi -- c_string_*/&_out_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
@@ -104,6 +92,7 @@ root
       scalar
         in -- c_string_scalar_in
           buf -- c_string_scalar_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_scalar_result_buf_allocatable

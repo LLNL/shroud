@@ -107,45 +107,41 @@ void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
 
 void STR_accept_string_const_reference(const char * arg1);
 
-void STR_accept_string_const_reference_bufferify(const char * arg1,
-    int Larg1);
+void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_accept_string_reference_out(char * arg1);
 
-void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1);
+void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_accept_string_reference(char * arg1);
 
-void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
-    int Narg1);
+void STR_accept_string_reference_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_accept_string_pointer_const(const char * arg1);
 
-void STR_accept_string_pointer_const_bufferify(const char * arg1,
-    int Larg1);
+void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_accept_string_pointer(char * arg1);
 
-void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
-    int Narg1);
+void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_fetch_string_pointer(char * arg1);
 
-void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1);
+void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_accept_string_pointer_len(char * arg1, int * nlen);
 
-void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
-    int Narg1, int * nlen);
+void STR_accept_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
+    int * nlen);
 
 void STR_fetch_string_pointer_len(char * arg1, int * nlen);
 
-void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
+void STR_fetch_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
     int * nlen);
 
 int STR_accept_string_instance(char *arg1);
 
-int STR_accept_string_instance_bufferify(char *arg1, int Larg1);
+int STR_accept_string_instance_CFI(CFI_cdesc_t *SHcfi_arg1);
 
 void STR_explicit1(char * name);
 
@@ -162,8 +158,7 @@ void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
 
 void STR_post_declare(int * count, char * name);
 
-void STR_post_declare_bufferify(int * count, char * name, int Lname,
-    int Nname);
+void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHcfi_name);
 
 #ifdef __cplusplus
 }

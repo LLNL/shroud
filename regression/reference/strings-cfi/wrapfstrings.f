@@ -109,10 +109,10 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * dest +charlen(40)+intent(out)
+    ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)+len_trim(Ldest)
     ! Exact:     c_char_*_out_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +intent(in)
+    ! Argument:  const char * src +intent(in)+len(Nsrc)+len_trim(Lsrc)
     ! Exact:     c_char_*_in_cfi
     ! start pass_char_ptr
     interface
@@ -147,7 +147,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * s +intent(inout)
+    ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
     ! Exact:     c_char_*_inout_cfi
     interface
         subroutine pass_char_ptr_in_out(s) &
@@ -600,20 +600,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringConstReference
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Exact:     c_string_&_in_buf
+    ! Argument:  const std::string & arg1 +intent(in)+len(Narg1)+len_trim(Larg1)
+    ! Exact:     c_string_&_in_cfi
     interface
-        subroutine c_accept_string_const_reference_bufferify(arg1, &
-                Larg1) &
-                bind(C, name="STR_accept_string_const_reference_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_const_reference(arg1) &
+                bind(C, name="STR_accept_string_const_reference_CFI")
             implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-        end subroutine c_accept_string_const_reference_bufferify
+            character(len=*), intent(IN) :: arg1
+        end subroutine accept_string_const_reference
     end interface
 
     ! ----------------------------------------
@@ -634,19 +631,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReferenceOut
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_&_out_buf
+    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Exact:     c_string_&_out_cfi
     interface
-        subroutine c_accept_string_reference_out_bufferify(arg1, Narg1) &
-                bind(C, name="STR_accept_string_reference_out_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_reference_out(arg1) &
+                bind(C, name="STR_accept_string_reference_out_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
-        end subroutine c_accept_string_reference_out_bufferify
+            character(len=*), intent(OUT) :: arg1
+        end subroutine accept_string_reference_out
     end interface
 
     ! ----------------------------------------
@@ -669,24 +664,20 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringReference
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_&_inout_buf
-    ! start c_accept_string_reference_bufferify
+    ! Exact:     c_string_&_inout_cfi
+    ! start accept_string_reference
     interface
-        subroutine c_accept_string_reference_bufferify(arg1, Larg1, &
-                Narg1) &
-                bind(C, name="STR_accept_string_reference_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_reference(arg1) &
+                bind(C, name="STR_accept_string_reference_CFI")
             implicit none
-            character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
-        end subroutine c_accept_string_reference_bufferify
+            character(len=*), intent(INOUT) :: arg1
+        end subroutine accept_string_reference
     end interface
-    ! end c_accept_string_reference_bufferify
+    ! end accept_string_reference
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerConst
@@ -706,19 +697,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerConst
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
-    ! Exact:     c_string_*_in_buf
+    ! Argument:  const std::string * arg1 +intent(in)+len(Narg1)+len_trim(Larg1)
+    ! Exact:     c_string_*_in_cfi
     interface
-        subroutine c_accept_string_pointer_const_bufferify(arg1, Larg1) &
-                bind(C, name="STR_accept_string_pointer_const_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_pointer_const(arg1) &
+                bind(C, name="STR_accept_string_pointer_const_CFI")
             implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-        end subroutine c_accept_string_pointer_const_bufferify
+            character(len=*), intent(IN) :: arg1
+        end subroutine accept_string_pointer_const
     end interface
 
     ! ----------------------------------------
@@ -739,20 +728,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointer
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_*_inout_buf
+    ! Exact:     c_string_*_inout_cfi
     interface
-        subroutine c_accept_string_pointer_bufferify(arg1, Larg1, Narg1) &
-                bind(C, name="STR_accept_string_pointer_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_pointer(arg1) &
+                bind(C, name="STR_accept_string_pointer_CFI")
             implicit none
-            character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
-        end subroutine c_accept_string_pointer_bufferify
+            character(len=*), intent(INOUT) :: arg1
+        end subroutine accept_string_pointer
     end interface
 
     ! ----------------------------------------
@@ -773,19 +759,17 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointer
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_*_out_buf
+    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Exact:     c_string_*_out_cfi
     interface
-        subroutine c_fetch_string_pointer_bufferify(arg1, Narg1) &
-                bind(C, name="STR_fetch_string_pointer_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine fetch_string_pointer(arg1) &
+                bind(C, name="STR_fetch_string_pointer_CFI")
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
-        end subroutine c_fetch_string_pointer_bufferify
+            character(len=*), intent(OUT) :: arg1
+        end subroutine fetch_string_pointer
     end interface
 
     ! ----------------------------------------
@@ -811,26 +795,23 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStringPointerLen
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_*_inout_buf
+    ! Exact:     c_string_*_inout_cfi
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
-        subroutine c_accept_string_pointer_len_bufferify(arg1, Larg1, &
-                Narg1, nlen) &
-                bind(C, name="STR_accept_string_pointer_len_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine accept_string_pointer_len(arg1, nlen) &
+                bind(C, name="STR_accept_string_pointer_len_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            character(kind=C_CHAR), intent(INOUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
-            integer(C_INT), value, intent(IN) :: Narg1
+            character(len=*), intent(INOUT) :: arg1
             integer(C_INT), intent(OUT) :: nlen
-        end subroutine c_accept_string_pointer_len_bufferify
+        end subroutine accept_string_pointer_len
     end interface
 
     ! ----------------------------------------
@@ -856,25 +837,23 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void fetchStringPointerLen
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_*_out_buf
+    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)+len_trim(Larg1)
+    ! Exact:     c_string_*_out_cfi
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
-        subroutine c_fetch_string_pointer_len_bufferify(arg1, Narg1, &
-                nlen) &
-                bind(C, name="STR_fetch_string_pointer_len_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine fetch_string_pointer_len(arg1, nlen) &
+                bind(C, name="STR_fetch_string_pointer_len_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            character(kind=C_CHAR), intent(OUT) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Narg1
+            character(len=*), intent(OUT) :: arg1
             integer(C_INT), intent(OUT) :: nlen
-        end subroutine c_fetch_string_pointer_len_bufferify
+        end subroutine fetch_string_pointer_len
     end interface
 
     ! ----------------------------------------
@@ -897,21 +876,20 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
-    ! Requested: c_native_scalar_result_buf
+    ! Requested: c_native_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string arg1 +intent(in)+len_trim(Larg1)+value
-    ! Exact:     c_string_scalar_in_buf
+    ! Argument:  std::string arg1 +intent(in)+len(Narg1)+len_trim(Larg1)+value
+    ! Exact:     c_string_scalar_in_cfi
     interface
-        function c_accept_string_instance_bufferify(arg1, Larg1) &
+        function c_accept_string_instance_cfi(arg1) &
                 result(SHT_rv) &
-                bind(C, name="STR_accept_string_instance_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+                bind(C, name="STR_accept_string_instance_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
-            character(kind=C_CHAR), intent(IN) :: arg1(*)
-            integer(C_INT), value, intent(IN) :: Larg1
+            character(len=*), intent(IN) :: arg1
             integer(C_INT) :: SHT_rv
-        end function c_accept_string_instance_bufferify
+        end function c_accept_string_instance_cfi
     end interface
 
     ! ----------------------------------------
@@ -936,7 +914,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * name +intent(in)+len_trim(AAlen)
+    ! Argument:  char * name +intent(in)+len(Nname)+len_trim(Lname)
     ! Exact:     c_char_*_in_cfi
     interface
         subroutine explicit1(name) &
@@ -968,7 +946,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * name +intent(out)+len(AAtrim)
+    ! Argument:  char * name +intent(out)+len(Nname)+len_trim(Lname)
     ! Exact:     c_char_*_out_cfi
     interface
         subroutine explicit2(name) &
@@ -1049,10 +1027,10 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * dest +intent(out)
+    ! Argument:  char * dest +intent(out)+len(Ndest)+len_trim(Ldest)
     ! Exact:     c_char_*_out_cfi
     ! ----------------------------------------
-    ! Argument:  const char * src +intent(in)
+    ! Argument:  const char * src +intent(in)+len(Nsrc)+len_trim(Lsrc)
     ! Exact:     c_char_*_in_cfi
     interface
         subroutine cpass_char_ptr(dest, src) &
@@ -1086,25 +1064,23 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void PostDeclare
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
-    ! Requested: c_native_*_in_buf
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-    ! Exact:     c_string_&_inout_buf
+    ! Exact:     c_string_&_inout_cfi
     interface
-        subroutine c_post_declare_bufferify(count, name, Lname, Nname) &
-                bind(C, name="STR_post_declare_bufferify")
-            use iso_c_binding, only : C_CHAR, C_INT
+        subroutine post_declare(count, name) &
+                bind(C, name="STR_post_declare_CFI")
+            use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: count(*)
-            character(kind=C_CHAR), intent(INOUT) :: name(*)
-            integer(C_INT), value, intent(IN) :: Lname
-            integer(C_INT), value, intent(IN) :: Nname
-        end subroutine c_post_declare_bufferify
+            character(len=*), intent(INOUT) :: name
+        end subroutine post_declare
     end interface
 
     interface
@@ -1476,266 +1452,19 @@ contains
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringConstReference
-    ! void acceptStringConstReference
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +intent(in)
-    ! Requested: f_string_&_in
-    ! Match:     f_default
-    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
-    ! Exact:     c_string_&_in_buf
-    !>
-    !! \brief Accept a const string reference
-    !!
-    !! Save contents of arg1.
-    !! arg1 is assumed to be intent(IN) since it is const
-    !! Will copy in.
-    !<
-    subroutine accept_string_const_reference(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        ! splicer begin function.accept_string_const_reference
-        call c_accept_string_const_reference_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
-        ! splicer end function.accept_string_const_reference
-    end subroutine accept_string_const_reference
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringReferenceOut
-    ! void acceptStringReferenceOut
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(out)
-    ! Requested: f_string_&_out
-    ! Match:     f_default
-    ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_&_out_buf
-    !>
-    !! \brief Accept a string reference
-    !!
-    !! Set out to a constant string.
-    !! arg1 is intent(OUT)
-    !! Must copy out.
-    !<
-    subroutine accept_string_reference_out(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: arg1
-        ! splicer begin function.accept_string_reference_out
-        call c_accept_string_reference_out_bufferify(arg1, &
-            len(arg1, kind=C_INT))
-        ! splicer end function.accept_string_reference_out
-    end subroutine accept_string_reference_out
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringReference
-    ! void acceptStringReference
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string & arg1 +intent(inout)
-    ! Requested: f_string_&_inout
-    ! Match:     f_default
-    ! Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_&_inout_buf
-    !>
-    !! \brief Accept a string reference
-    !!
-    !! Append "dog" to the end of arg1.
-    !! arg1 is assumed to be intent(INOUT)
-    !! Must copy in and copy out.
-    !<
-    ! start accept_string_reference
-    subroutine accept_string_reference(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(INOUT) :: arg1
-        ! splicer begin function.accept_string_reference
-        call c_accept_string_reference_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
-        ! splicer end function.accept_string_reference
-    end subroutine accept_string_reference
-    ! end accept_string_reference
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringPointerConst
-    ! void acceptStringPointerConst
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * arg1 +intent(in)
-    ! Requested: f_string_*_in
-    ! Match:     f_default
-    ! Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
-    ! Exact:     c_string_*_in_buf
-    !>
-    !! \brief Accept a const string pointer - intent(in)
-    !!
-    !<
-    subroutine accept_string_pointer_const(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(IN) :: arg1
-        ! splicer begin function.accept_string_pointer_const
-        call c_accept_string_pointer_const_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
-        ! splicer end function.accept_string_pointer_const
-    end subroutine accept_string_pointer_const
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringPointer
-    ! void acceptStringPointer
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(inout)
-    ! Requested: f_string_*_inout
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_*_inout_buf
-    !>
-    !! \brief Accept a string pointer - intent(inout)
-    !!
-    !<
-    subroutine accept_string_pointer(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(INOUT) :: arg1
-        ! splicer begin function.accept_string_pointer
-        call c_accept_string_pointer_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT))
-        ! splicer end function.accept_string_pointer
-    end subroutine accept_string_pointer
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void fetchStringPointer
-    ! void fetchStringPointer
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
-    ! Requested: f_string_*_out
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_*_out_buf
-    !>
-    !! \brief Accept a string pointer - intent(out)
-    !!
-    !! Return global_str.
-    !<
-    subroutine fetch_string_pointer(arg1)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: arg1
-        ! splicer begin function.fetch_string_pointer
-        call c_fetch_string_pointer_bufferify(arg1, &
-            len(arg1, kind=C_INT))
-        ! splicer end function.fetch_string_pointer
-    end subroutine fetch_string_pointer
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void acceptStringPointerLen
-    ! void acceptStringPointerLen
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(inout)
-    ! Requested: f_string_*_inout
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
-    ! Exact:     c_string_*_inout_buf
-    ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
-    ! Requested: f_native_*_out
-    ! Match:     f_default
-    ! Requested: c_native_*_out_buf
-    ! Match:     c_default
-    !>
-    !! \brief Accept a string pointer - intent(inout)
-    !!
-    !! Test return tuple with two arguments.
-    !! Must rename argument to nlen to avoid conflict with intrinsic len.
-    !<
-    subroutine accept_string_pointer_len(arg1, nlen)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(INOUT) :: arg1
-        integer(C_INT), intent(OUT) :: nlen
-        ! splicer begin function.accept_string_pointer_len
-        call c_accept_string_pointer_len_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT), len(arg1, kind=C_INT), nlen)
-        ! splicer end function.accept_string_pointer_len
-    end subroutine accept_string_pointer_len
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void fetchStringPointerLen
-    ! void fetchStringPointerLen
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string * arg1 +intent(out)
-    ! Requested: f_string_*_out
-    ! Match:     f_default
-    ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
-    ! Exact:     c_string_*_out_buf
-    ! ----------------------------------------
-    ! Argument:  int * nlen +intent(out)
-    ! Requested: f_native_*_out
-    ! Match:     f_default
-    ! Requested: c_native_*_out_buf
-    ! Match:     c_default
-    !>
-    !! \brief Accept a string pointer - intent(out)
-    !!
-    !! Return global_str.
-    !! Test return tuple with two arguments.
-    !! Must rename argument to nlen to avoid conflict with intrinsic len.
-    !<
-    subroutine fetch_string_pointer_len(arg1, nlen)
-        use iso_c_binding, only : C_INT
-        character(len=*), intent(OUT) :: arg1
-        integer(C_INT), intent(OUT) :: nlen
-        ! splicer begin function.fetch_string_pointer_len
-        call c_fetch_string_pointer_len_bufferify(arg1, &
-            len(arg1, kind=C_INT), nlen)
-        ! splicer end function.fetch_string_pointer_len
-    end subroutine fetch_string_pointer_len
-
-    ! Generated by arg_to_buffer
+    ! Generated by arg_to_cfi
     ! ----------------------------------------
     ! Function:  int acceptStringInstance
     ! int acceptStringInstance
-    ! Requested: f_native_scalar_result_buf
+    ! Requested: f_native_scalar_result_cfi
     ! Match:     f_default
-    ! Requested: c_native_scalar_result_buf
+    ! Requested: c_native_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string arg1 +intent(in)+value
     ! Exact:     f_string_scalar_in
-    ! Argument:  std::string arg1 +intent(in)+len_trim(Larg1)+value
-    ! Exact:     c_string_scalar_in_buf
+    ! Argument:  std::string arg1 +intent(in)+len(Narg1)+len_trim(Larg1)+value
+    ! Exact:     c_string_scalar_in_cfi
     !>
     !! \brief Accept a string instance
     !!
@@ -1746,8 +1475,7 @@ contains
         character(len=*), intent(IN) :: arg1
         integer(C_INT) :: SHT_rv
         ! splicer begin function.accept_string_instance
-        SHT_rv = c_accept_string_instance_bufferify(arg1, &
-            len_trim(arg1, kind=C_INT))
+        SHT_rv = c_accept_string_instance_cfi(arg1)
         ! splicer end function.accept_string_instance
     end function accept_string_instance
 
@@ -1775,42 +1503,6 @@ contains
         call c_creturn_char_cfi(SHT_rv)
         ! splicer end function.creturn_char
     end function creturn_char
-
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void PostDeclare
-    ! void PostDeclare
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * count +intent(in)+rank(1)
-    ! Requested: f_native_*_in
-    ! Match:     f_default
-    ! Requested: c_native_*_in_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::string & name +intent(inout)
-    ! Requested: f_string_&_inout
-    ! Match:     f_default
-    ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
-    ! Exact:     c_string_&_inout_buf
-    !>
-    !! Test post_declare.
-    !! The std::string in py_string_inout must be declared before the
-    !! goto added by py_native_*_in_pointer_list to avoid
-    !! "jump to label 'fail' crosses initialization of" error.
-    !<
-    subroutine post_declare(count, name)
-        use iso_c_binding, only : C_INT
-        integer(C_INT), intent(IN) :: count(:)
-        character(len=*), intent(INOUT) :: name
-        ! splicer begin function.post_declare
-        call c_post_declare_bufferify(count, name, &
-            len_trim(name, kind=C_INT), len(name, kind=C_INT))
-        ! splicer end function.post_declare
-    end subroutine post_declare
 
     ! splicer begin additional_functions
     ! splicer end additional_functions

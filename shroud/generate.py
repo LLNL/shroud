@@ -1307,13 +1307,14 @@ class GenFunctions(object):
         cfi_args = {}
         for arg in ast.params:
             cfi_args[arg.name] = False
+            arg_typemap = arg.typemap
             if arg.metaattrs["assumed-rank"]:
                 cfi_args[arg.name] = True
-            else:
-                arg_typemap = arg.typemap
-                if arg_typemap.sgroup == "char":
-                    if arg.is_indirect():
-                        cfi_args[arg.name] = True
+            elif arg_typemap.sgroup == "string":
+                    cfi_args[arg.name] = True
+            elif arg_typemap.sgroup == "char":
+                if arg.is_indirect():
+                    cfi_args[arg.name] = True
         has_cfi_arg = any(cfi_args.values())
 
         # Function result.
@@ -1354,8 +1355,15 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
+            attrs = arg.attrs
+            arg_typemap = arg.typemap
             if cfi_args[arg.name]:
                 arg.stmts_suffix = generated_suffix
+            if arg_typemap.sgroup in ["char", "string"]:
+                # Create local variable names to be used in statements.
+                # TODO: move into metaattrs
+                attrs["len"] = True
+                attrs["len_trim"] = True
 
         ast = C_new.ast
         if has_string_result:
