@@ -4,13 +4,18 @@ root
       *
         in
           buf -- c_char_*_in_buf
+          cfi -- c_char_*_in_cfi
         inout
           buf -- c_char_*_inout_buf
+          cfi -- c_char_*_inout_cfi
         out
           buf -- c_char_*_out_buf
+          cfi -- c_char_*_out_cfi
         result -- c_char_*_result
           buf -- c_char_*_result_buf
             allocatable -- c_char_*_result_buf_allocatable
+          cfi -- c_char_*_result_cfi
+            allocatable -- c_char_*_result_cfi_allocatable
       **
         in -- c_char_**_in
           buf -- c_char_**_in_buf
@@ -18,6 +23,13 @@ root
         in -- c_char_scalar_in
         result -- c_char_scalar_result
           buf -- c_char_scalar_result_buf
+          cfi -- c_char_scalar_result_cfi
+    mixin
+      cfi
+        character
+          arg -- c_mixin_cfi_character_arg
+          result
+            allocatable -- c_mixin_cfi_character_result_allocatable
     native
       *
         in
@@ -50,29 +62,42 @@ root
       &
         in -- c_string_*/&_in
           buf -- c_string_*/&_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         inout -- c_string_*/&_inout
           buf -- c_string_*/&_inout_buf
+          cfi -- c_string_*/&_inout_cfi
         out -- c_string_*/&_out
           buf -- c_string_*/&_out_buf
+          cfi -- c_string_*/&_out_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_*/&_result_cfi_allocatable
       *
         in -- c_string_*/&_in
           buf -- c_string_*/&_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         inout -- c_string_*/&_inout
           buf -- c_string_*/&_inout_buf
+          cfi -- c_string_*/&_inout_cfi
         out -- c_string_*/&_out
           buf -- c_string_*/&_out_buf
+          cfi -- c_string_*/&_out_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_*/&_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_*/&_result_cfi_allocatable
       scalar
         in -- c_string_scalar_in
           buf -- c_string_scalar_in_buf
+          cfi -- c_string_scalar/*/&_in_cfi
         result -- c_string_scalar/*/&_result
           buf -- c_string_scalar/*/&_result_buf
             allocatable -- c_string_scalar_result_buf_allocatable
+          cfi -- c_string_scalar/*/&_result_cfi
+            allocatable -- c_string_scalar_result_cfi_allocatable
     struct -- c_struct
       result -- c_struct_result
     vector
@@ -107,12 +132,16 @@ root
         result
           buf
             allocatable -- f_char_scalar/*_result_buf_allocatable
+          cfi
+            allocatable -- f_char_scalar/*_result_cfi_allocatable
           raw -- f_char_*_result_raw
       scalar
         in -- f_char_scalar_in
         result
           buf
             allocatable -- f_char_scalar/*_result_buf_allocatable
+          cfi
+            allocatable -- f_char_scalar/*_result_cfi_allocatable
     native
       &
         result -- f_native_&_result
@@ -147,15 +176,21 @@ root
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
       *
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
       scalar
         in -- f_string_scalar_in
         result
           buf
             allocatable -- f_string_scalar/*/&_result_buf_allocatable
+          cfi
+            allocatable -- f_string_scalar/*/&_result_cfi_allocatable
     struct
       *
         result -- f_struct_*_result

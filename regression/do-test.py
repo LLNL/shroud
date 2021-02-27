@@ -481,6 +481,10 @@ if __name__ == "__main__":
         TestDesc("namespace"),
         TestDesc("namespacedoc"),
         TestDesc("strings"),
+        TestDesc("strings-cfi", yaml="strings",
+                 cmdline=[
+                     "--option", "F_CFI=true",
+                 ]),
         TestDesc("ccomplex"),
         TestDesc("clibrary"),
         TestDesc("cxxlibrary"),

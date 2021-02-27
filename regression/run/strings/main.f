@@ -19,6 +19,7 @@ program tester
   call test_charargs
   call test_charargs_c
   call test_functions
+  call test_explicit
 
   call fruit_summary
   call fruit_finalize
@@ -256,5 +257,18 @@ contains
     call assert_equals(len_trim(str), nlen, "acceptStringPointerLen")
 
   end subroutine test_functions
+
+  subroutine test_explicit
+    character(10) name
+    call set_case_name("test_explicit")
+
+    name = "cat"
+    call explicit1(name)
+
+    name = " "
+    call explicit2(name)
+    call assert_equals("a", name(1:1))
+    
+  end subroutine test_explicit
 
 end program tester

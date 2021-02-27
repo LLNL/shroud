@@ -376,9 +376,15 @@ class VerifyAttrs(object):
             if charlen is True:
                 raise RuntimeError("charlen attribute must have a value")
 
-        if intent == "in" and is_ptr == 1 and arg_typemap.name == "char":
+        if (
+            options.F_CFI is False and
+            intent == "in" and
+            is_ptr == 1 and
+            arg_typemap.name == "char"):
             # const char *arg
             # char *arg+intent(in)
+            # Add terminating NULL in Fortran wrapper.
+            # Avoid a C wrapper just to do the NULL terminate.
             arg.ftrim_char_in = True
 
         if node:
@@ -832,10 +838,14 @@ class GenFunctions(object):
         ordered3 = []
         for method in ordered_functions:
             ordered3.append(method)
+            
             if method.options.F_CFI:
 #                method._gen_fortran_generic = False
-                self.arg_to_CFI(method, ordered3)
-            elif method.options.F_create_bufferify_function:
+                done = self.arg_to_CFI(method, ordered3)
+            else:
+                done = False
+
+            if method.options.F_create_bufferify_function and not done:
                 self.arg_to_buffer(method, ordered3)
 
         # Create multiple generic Fortran wrappers to call a
@@ -1225,6 +1235,27 @@ class GenFunctions(object):
                 attrs[name] = c_attrs[name]
                 del c_attrs[name]
 
+    def result_as_arg(self, node, C_new):
+        """
+        Create a Fortran function for a C function which has the
+        result added as an argument.
+
+        Create Fortran function without bufferify function_suffix but
+        with len attributes on string arguments.
+        char *out(); ->  call out(result_as_arg)
+        """
+        F_new = C_new.clone()
+
+        # Fortran function should wrap the new C function
+        F_new._PTR_F_C_index = C_new._function_index
+        F_new.wrap.assign(fortran=True)
+        # Do not add '_bufferify'
+        F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
+
+        # Do not wrap original function (does not have result argument)
+        node.wrap.fortran = False
+        return F_new
+
     def arg_to_CFI(self, node, ordered_functions):
         """Look for functions which can use TS29113
         Futher interoperability with C.
@@ -1243,6 +1274,7 @@ class GenFunctions(object):
         ordered_functions : list of FunctionNode
         """
         options = node.options
+        fmt_func = node.fmtdict
 
         if options.wrap_fortran is False:
             # The buffer function is intended to be called by Fortran.
@@ -1250,13 +1282,60 @@ class GenFunctions(object):
             return
 
         ast = node.ast
-        need_cfi = False
+        result_typemap = ast.typemap
+        # shadow classes have not been added yet.
+        # Only care about string, vector here.
+        result_is_ptr = ast.is_indirect()
+        if (
+            result_typemap
+            and result_typemap.base in ["string", "vector"]
+            and result_typemap.name != "char"
+            and not result_is_ptr
+        ):
+            node.wrap.c = False
+            #            node.wrap.fortran = False
+            self.config.log.write(
+                "Skipping {}, unable to create C wrapper "
+                "for function returning {} instance"
+                " (must return a pointer or reference)."
+                " Bufferify version will still be created.\n".format(
+                    result_typemap.cxx_type, ast.name
+                )
+            )
+        
+        ast = node.ast
+        cfi_args = {}
         for arg in ast.params:
+            cfi_args[arg.name] = False
+            arg_typemap = arg.typemap
             if arg.metaattrs["assumed-rank"]:
-                need_cfi = True
+                cfi_args[arg.name] = True
+            elif arg_typemap.sgroup == "string":
+                    cfi_args[arg.name] = True
+            elif arg_typemap.sgroup == "char":
+                if arg.is_indirect():
+                    cfi_args[arg.name] = True
+        has_cfi_arg = any(cfi_args.values())
 
-        if not need_cfi:
-            return
+        # Function result.
+        has_string_result = False
+
+        result_as_arg = ""  # Only applies to string functions
+        # when the result is added as an argument to the Fortran api.
+
+        # Check if result needs to be an argument.
+        attrs = ast.attrs
+        if attrs["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif result_typemap.sgroup in ["char", "string"]:
+            has_string_result = True
+            result_as_arg = fmt_func.F_string_result_as_arg
+            result_name = result_as_arg or fmt_func.C_string_result_as_arg
+
+        if not (has_cfi_arg or
+                has_string_result):
+            return False
 
         options.wrap_fortran = False
 
@@ -1269,19 +1348,60 @@ class GenFunctions(object):
         generated_suffix = "cfi"
         C_new._generated = "arg_to_cfi"
         C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
-        fmt = C_new.fmtdict
-        fmt.function_suffix = fmt.function_suffix + fmt.C_cfi_suffix
+        fmt_func = C_new.fmtdict
+        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_cfi_suffix
 
         C_new.wrap.assign(c=True)#, fortran=True)
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
-            if arg.metaattrs["assumed-rank"]:
+            attrs = arg.attrs
+            arg_typemap = arg.typemap
+            if cfi_args[arg.name]:
                 arg.stmts_suffix = generated_suffix
-                
-        # Fortran function may call C subroutine if string/vector result
-        # Fortran function calls bufferify function.
-        node._PTR_F_C_index = C_new._function_index
+            if arg_typemap.sgroup in ["char", "string"]:
+                # Create local variable names to be used in statements.
+                # TODO: move into metaattrs
+                attrs["len"] = True
+                attrs["len_trim"] = True
+
+        ast = C_new.ast
+        if has_string_result:
+            f_attrs = node.ast.attrs  # Fortran function attributes
+            if ast.attrs["len"] or result_as_arg:
+                # decl: const char * getCharPtr2() +len(30)
+                # +len implies copying into users buffer.
+                result_as_string = ast.result_as_arg(result_name)
+                result_as_string.const = False # must be writeable
+                attrs = result_as_string.attrs
+#                attrs["len"] = options.C_var_len_template.format(
+#                    c_var=result_name
+#                )
+                # Special case for wrapf.py to override "allocatable"
+                f_attrs["deref"] = "result-as-arg"
+            elif (result_typemap.sgroup == "string" or
+                  result_is_ptr):  # 'char *'
+                result_as_string = ast.result_as_arg(result_name)
+                attrs = result_as_string.attrs
+                self.move_arg_attributes(attrs, node, C_new)
+            else: # char
+                result_as_string = ast.result_as_arg(result_name)
+                result_as_string.const = False # must be writeable
+                attrs = result_as_string.attrs
+            attrs["intent"] = "out"
+            attrs["_is_result"] = True
+            # convert to subroutine
+            C_new._subprogram = "subroutine"
+
+        if result_as_arg:
+            F_new = self.result_as_arg(node, C_new)
+            ordered_functions.append(F_new)
+            self.append_function_index(F_new)
+        else:
+            # Fortran function may call C subroutine if string/vector result
+            # Fortran function calls bufferify function.
+            node._PTR_F_C_index = C_new._function_index
+        return True
 
     def arg_to_buffer(self, node, ordered_functions):
         """Look for function which have buffer arguments.
@@ -1299,7 +1419,7 @@ class GenFunctions(object):
         ordered_functions : list of FunctionNode
         """
         options = node.options
-        fmt = node.fmtdict
+        fmt_func = node.fmtdict
 
         if node.wrap.c is False:
             # The user does not require a C wrapper.
@@ -1315,7 +1435,6 @@ class GenFunctions(object):
         result_typemap = ast.typemap
         # shadow classes have not been added yet.
         # Only care about string, vector here.
-        attrs = ast.attrs
         result_is_ptr = ast.is_indirect()
         if (
             result_typemap
@@ -1364,7 +1483,7 @@ class GenFunctions(object):
                 # double **values +intent(out) +dimension(nvalues)
                 has_buf_arg = True
 
-        # Function Result.
+        # Function result.
         has_string_result = False
         has_vector_result = False
         need_cdesc_result = False
@@ -1372,13 +1491,15 @@ class GenFunctions(object):
         result_as_arg = ""  # Only applies to string functions
         # when the result is added as an argument to the Fortran api.
 
+        # Check if result needs to be an argument.
+        attrs = ast.attrs
         if attrs["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
-        elif result_typemap.base == "string":
+        elif result_typemap.sgroup in ["char", "string"]:
             has_string_result = True
-            result_as_arg = fmt.F_string_result_as_arg
-            result_name = result_as_arg or fmt.C_string_result_as_arg
+            result_as_arg = fmt_func.F_string_result_as_arg
+            result_name = result_as_arg or fmt_func.C_string_result_as_arg
         elif result_typemap.base == "vector":
             has_vector_result = True
         elif result_is_ptr:
@@ -1388,8 +1509,10 @@ class GenFunctions(object):
                 need_cdesc_result = True
 
         # Functions with these results need wrappers.
-        if not (has_string_result or has_vector_result or
-                need_cdesc_result or has_buf_arg):
+        if not (has_string_result or
+                has_vector_result or
+                need_cdesc_result or
+                has_buf_arg):
             return
 
         # XXX       node.wrap.fortran = False
@@ -1405,8 +1528,8 @@ class GenFunctions(object):
         generated_suffix = "buf"
         C_new._generated = "arg_to_buffer"
         C_new.generated_suffix = generated_suffix  # used to lookup fc_statements
-        fmt = C_new.fmtdict
-        fmt.function_suffix = fmt.function_suffix + fmt.C_bufferify_suffix
+        fmt_func = C_new.fmtdict
+        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix
 
         options = C_new.options
         C_new.wrap.assign(c=True)
@@ -1452,6 +1575,7 @@ class GenFunctions(object):
             f_attrs = node.ast.attrs  # Fortran function attributes
 
             if ast.attrs["len"] or result_as_arg:
+                # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
@@ -1483,8 +1607,8 @@ class GenFunctions(object):
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result
-            vector_as_arg = fmt.F_string_result_as_arg
-            result_name = vector_as_arg or fmt.C_string_result_as_arg
+            vector_as_arg = fmt_func.F_string_result_as_arg
+            result_name = vector_as_arg or fmt_func.C_string_result_as_arg
             result_as_vector = ast.result_as_arg(result_name)
             attrs = result_as_vector.attrs
             attrs["context"] = options.C_var_context_template.format(
@@ -1505,21 +1629,9 @@ class GenFunctions(object):
                 c_var=result_name)
 
         if result_as_arg:
-            # Create Fortran function without bufferify function_suffix but
-            # with len attributes on string arguments.
-            #  char *out(); ->  call out(result_as_arg)
-            F_new = C_new.clone()
+            F_new = self.result_as_arg(node, C_new)
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
-
-            # Fortran function should wrap the new C function
-            F_new._PTR_F_C_index = C_new._function_index
-            F_new.wrap.assign(fortran=True)
-            # Do not add '_bufferify'
-            F_new.fmtdict.function_suffix = node.fmtdict.function_suffix
-
-            # Do not wrap original function (does not have result argument)
-            node.wrap.fortran = False
         else:
             # Fortran function may call C subroutine if string/vector result
             node._PTR_F_C_index = C_new._function_index
