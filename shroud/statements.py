@@ -861,6 +861,7 @@ fc_statements = [
         f_module=dict(iso_c_binding=["C_CHAR"]),
     ),
     dict(
+        # Blank fill result.
         name="c_char_scalar_result_buf",
         buf_args=["arg", "len"],
         c_impl_header=["<string.h>"],
@@ -913,6 +914,7 @@ fc_statements = [
         ],
     ),
     dict(
+        # Copy result into caller's buffer.
         name="c_char_*_result_buf",
         buf_args=["arg", "len"],
         c_helper="ShroudStrCopy",
@@ -1613,6 +1615,15 @@ fc_statements = [
     ########################################
     # char arg
     dict(
+        # Add allocatable attribute to declaration.
+        name="f_char_scalar/*_result_cfi_allocatable",
+        need_wrapper=True,
+        arg_decl=[
+            "character(len=:), allocatable :: {f_var}",
+        ],
+    ),
+    
+    dict(
         name="c_mixin_character",
         iface_header=["ISO_Fortran_binding.h"],
         buf_args=["arg_decl"],
@@ -1628,7 +1639,6 @@ fc_statements = [
             "{cast_static}{cxx_type} *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
         ],
     ),
-
     dict(
         name="c_char_*_in_cfi",
         mixin=[
@@ -1676,31 +1686,57 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_xxchar_*_result_cfi",
-        buf_args=["arg", "len"],
+        # Blank fill result.
+        name="c_char_scalar_result_cfi",
+        mixin=[
+            "c_mixin_character",
+        ],
+        c_impl_header=["<string.h>"],
+        cxx_impl_header=["<cstring>"],
+        cxx_local_var=None,  # replace mixin
+        pre_call=[],         # replace mixin        
+        post_call=[
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "{stdlib}memset({c_var}, ' ', {cfi_prefix}{c_var}->elem_len);",
+            "{c_var}[0] = {cxx_var};",
+        ],
+    ),
+    dict(
+        # Copy result into caller's buffer.
+        name="c_char_*_result_cfi",
+        mixin=[
+            "c_mixin_character",
+        ],
+        cxx_local_var=None,  # undo mixin
+        pre_call=[],         # undo mixin
         c_helper="ShroudStrCopy",
         post_call=[
+            # XXX c_type is undefined
             # nsrc=-1 will call strlen({cxx_var})
-            "ShroudStrCopy({c_var}, {c_var_len},"
+            "char *{c_var} = "
+            "{cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};",
+            "ShroudStrCopy({c_var}, {cfi_prefix}{c_var}->elem_len,"
             "\t {cxx_var},\t -1);",
         ],
     ),
     dict(
-        name="c_xxchar_*_result_cfi_allocatable",
-        buf_args=["context"],
-        c_helper="ShroudTypeDefines",
-        # Copy address of result into c_var and save length.
-        # When returning a std::string (and not a reference or pointer)
-        # an intermediate object is created to save the results
-        # which will be passed to copy_string
+        name="c_char_*_result_cfi_allocatable",
+        mixin=[
+            "c_mixin_character",
+        ],
+        f_arg_decl=[        # replace mixin
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+        ],
+        cxx_local_var=None,  # replace mixin
+        pre_call=[],         # replace mixin
         post_call=[
-            "{c_var_context}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.ccharp = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{c_var_context}->size = 1;",
-            "{c_var_context}->rank = 0;",
+            "if ({cxx_var} != {nullptr}) {{+",
+            "int SH_ret = CFI_allocate({cfi_prefix}{c_var}, \t(CFI_index_t *) 0, \t(CFI_index_t *) 0, \tstrlen({cxx_var}));",
+            "if (SH_ret == CFI_SUCCESS) {{+",
+            "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}, \t{cfi_prefix}{c_var}->elem_len);",
+            "-}}",
+            "-}}",
         ],
     ),
     

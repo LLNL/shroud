@@ -252,10 +252,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_char_scalar_result",
+                        "stmt0": "f_char_scalar_result_cfi",
                         "stmt1": "f_default",
-                        "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_char_scalar_result_buf"
+                        "stmtc0": "c_char_scalar_result_cfi",
+                        "stmtc1": "c_char_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -296,12 +296,12 @@
                     "C_prototype": "void",
                     "C_return_type": "char",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_char_bufferify",
+                    "F_C_call": "c_return_char_cfi",
                     "F_C_name": "c_return_char",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "return_char",
                     "F_name_generic": "return_char",
@@ -313,7 +313,9 @@
                     "function_name": "returnChar",
                     "underscore_name": "return_char"
                 },
-                "options": {},
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true,
                     "fortran": true,
@@ -329,7 +331,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
@@ -338,23 +339,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_char_scalar_result_buf",
-                            "stmt1": "c_char_scalar_result_buf"
+                            "stmt0": "c_char_scalar_result_cfi",
+                            "stmt1": "c_char_scalar_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result",
+                            "stmt0": "f_char_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_result_buf",
-                            "stmtc1": "c_char_*_result_buf"
+                            "stmtc0": "c_char_*_result_cfi",
+                            "stmtc1": "c_char_*_result_cfi"
                         }
                     }
                 },
@@ -370,11 +370,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "returnChar",
@@ -384,8 +384,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "NSHF_rv"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -407,24 +406,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "char returnChar()",
-                "declgen": "void returnChar(char * SHF_rv +intent(out)+len(NSHF_rv))",
+                "declgen": "void returnChar(char * SHF_rv +intent(out))",
                 "doxygen": {
                     "brief": "return a char argument (non-pointer)"
                 },
                 "fmtdict": {
-                    "C_name": "STR_return_char_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_return_char_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_return_char_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_return_char_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "returnChar",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "return_char"
                 },
-                "generated_suffix": "buf",
-                "options": {},
+                "generated_suffix": "cfi",
+                "options": {
+                    "wrap_fortran": false
+                },
                 "wrap": {
                     "c": true
                 }
@@ -986,10 +987,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_char_scalar_result_allocatable",
-                        "stmt1": "f_char_scalar_result_allocatable",
-                        "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_char_scalar_result_buf"
+                        "stmt0": "f_char_scalar_result_cfi_allocatable",
+                        "stmt1": "f_char_scalar_result_cfi_allocatable",
+                        "stmtc0": "c_char_scalar_result_cfi",
+                        "stmtc1": "c_char_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1039,12 +1040,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr1_bufferify",
+                    "F_C_call": "c_get_char_ptr1_cfi",
                     "F_C_name": "c_get_char_ptr1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr1",
                     "F_name_generic": "get_char_ptr1",
@@ -1057,7 +1058,8 @@
                     "underscore_name": "get_char_ptr1"
                 },
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true,
@@ -1074,7 +1076,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "const_cast<char *>\t(SHC_rv)",
@@ -1083,24 +1084,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_char_*_result_buf_allocatable",
-                            "stmt1": "c_char_*_result_buf_allocatable"
+                            "stmt0": "c_char_*_result_cfi_allocatable",
+                            "stmt1": "c_char_*_result_cfi_allocatable"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result_allocatable",
-                            "stmt1": "f_char_*_result_allocatable",
-                            "stmtc0": "c_char_*_result_buf_allocatable",
-                            "stmtc1": "c_char_*_result_buf_allocatable"
+                            "stmt0": "f_char_*_result_cfi_allocatable",
+                            "stmt1": "f_char_*_result_cfi_allocatable",
+                            "stmtc0": "c_char_*_result_cfi_allocatable",
+                            "stmtc1": "c_char_*_result_cfi_allocatable"
                         }
                     }
                 },
@@ -1116,11 +1115,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getCharPtr1",
@@ -1130,7 +1129,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "intent": "out"
                             },
@@ -1155,25 +1153,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr1()",
-                "declgen": "void getCharPtr1(const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void getCharPtr1(const char * SHF_rv +deref(allocatable)+intent(out))",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_char_ptr1_bufferify",
-                    "C_prototype": "STR_SHROUD_array *DSHF_rv",
+                    "C_name": "STR_get_char_ptr1_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "DSHF_rv",
-                    "F_C_name": "c_get_char_ptr1_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_char_ptr1_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr1",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_char_ptr1"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true
@@ -1205,10 +1204,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_char_scalar_result_result-as-arg",
+                        "stmt0": "f_char_scalar_result_cfi_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_char_scalar_result_buf"
+                        "stmtc0": "c_char_scalar_result_cfi",
+                        "stmtc1": "c_char_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1259,12 +1258,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const char *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_char_ptr2_bufferify",
+                    "F_C_call": "c_get_char_ptr2_cfi",
                     "F_C_name": "c_get_char_ptr2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "get_char_ptr2",
                     "F_name_generic": "get_char_ptr2",
@@ -1277,7 +1276,8 @@
                     "underscore_name": "get_char_ptr2"
                 },
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true,
@@ -1294,7 +1294,7 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": "30",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_rv",
@@ -1303,23 +1303,23 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_char_*_result_buf",
-                            "stmt1": "c_char_*_result_buf"
+                            "stmt0": "c_char_*_result_cfi",
+                            "stmt1": "c_char_*_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
+                            "c_var_len": "30",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result",
+                            "stmt0": "f_char_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_result_buf",
-                            "stmtc1": "c_char_*_result_buf"
+                            "stmtc0": "c_char_*_result_cfi",
+                            "stmtc1": "c_char_*_result_cfi"
                         }
                     }
                 },
@@ -1336,11 +1336,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -1354,7 +1354,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "intent": "out",
-                                "len": "NSHF_rv"
+                                "len": "30"
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -1376,25 +1376,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_char_ptr2_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_get_char_ptr2_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_get_char_ptr2_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_get_char_ptr2_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr2",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_char_ptr2"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true
@@ -1477,7 +1478,8 @@
                     "underscore_name": "get_char_ptr3"
                 },
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true,
@@ -1493,7 +1495,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "SHC_rv",
@@ -1502,23 +1503,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_output",
-                            "stmt0": "c_char_*_result_buf",
-                            "stmt1": "c_char_*_result_buf"
+                            "stmt0": "c_char_*_result_cfi",
+                            "stmt1": "c_char_*_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "output",
                             "F_pointer": "SHPTR_output",
                             "c_var": "output",
-                            "c_var_len": "Noutput",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result",
+                            "stmt0": "f_char_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_result_buf",
-                            "stmtc1": "c_char_*_result_buf"
+                            "stmtc0": "c_char_*_result_cfi",
+                            "stmtc1": "c_char_*_result_cfi"
                         }
                     }
                 },
@@ -1534,11 +1534,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getCharPtr3",
@@ -1548,8 +1548,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -1571,33 +1570,34 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))",
+                "declgen": "void getCharPtr3(char * output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "C_name": "STR_get_char_ptr3_bufferify",
-                    "C_prototype": "char * output,\t int Noutput",
+                    "C_name": "STR_get_char_ptr3_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_output",
                     "C_return_type": "void",
-                    "F_C_arguments": "output,\t Noutput",
-                    "F_C_name": "c_get_char_ptr3_bufferify",
+                    "F_C_arguments": "output",
+                    "F_C_name": "get_char_ptr3",
                     "F_C_subprogram": "subroutine",
                     "F_string_result_as_arg": "output",
                     "cxx_rv_decl": "const char * SHC_rv",
                     "function_name": "getCharPtr3",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "get_char_ptr3"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true
                 }
             },
             {
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "getCharPtr3",
@@ -1607,8 +1607,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "Noutput"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "output",
@@ -1630,13 +1629,13 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +intent(out)+len(Noutput))",
+                "declgen": "void getCharPtr3(char * output +intent(out))",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
                 "fmtdict": {
-                    "F_C_call": "c_get_char_ptr3_bufferify",
-                    "F_arg_c_call": "output,\t len(output, kind=C_INT)",
+                    "F_C_call": "c_get_char_ptr3_cfi",
+                    "F_arg_c_call": "output",
                     "F_arguments": "output",
                     "F_name_function": "get_char_ptr3",
                     "F_name_generic": "get_char_ptr3",
@@ -1651,9 +1650,10 @@
                     "stmtc1": "c_default",
                     "underscore_name": "get_char_ptr3"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "literalinclude": true
+                    "literalinclude": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "fortran": true
@@ -1750,8 +1750,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -1845,8 +1845,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_allocatable",
-                            "stmt1": "f_string_*_result_allocatable",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
                             "stmtc0": "c_string_*_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -1935,7 +1935,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_result-as-arg",
+                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -2030,7 +2030,7 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result",
+                            "stmt0": "f_string_*_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -2196,7 +2196,7 @@
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result",
+                            "stmt0": "f_string_*_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -2345,8 +2345,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -2436,8 +2436,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_allocatable",
-                            "stmt1": "f_string_*_result_allocatable",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
                             "stmtc0": "c_string_*_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -2538,8 +2538,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -2649,8 +2649,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_allocatable",
-                            "stmt1": "f_string_&_result_allocatable",
+                            "stmt0": "f_string_&_result_buf_allocatable",
+                            "stmt1": "f_string_&_result_buf_allocatable",
                             "stmtc0": "c_string_&_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -2759,7 +2759,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_result-as-arg",
+                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -2870,7 +2870,7 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result",
+                            "stmt0": "f_string_&_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -3070,7 +3070,7 @@
                             "f_type": "character(*)",
                             "f_var": "output",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result",
+                            "stmt0": "f_string_&_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -3241,7 +3241,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_result-as-arg",
+                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -3351,7 +3351,7 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result",
+                            "stmt0": "f_string_&_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -3458,8 +3458,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -3564,8 +3564,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_allocatable",
-                            "stmt1": "f_string_&_result_allocatable",
+                            "stmt0": "f_string_&_result_buf_allocatable",
+                            "stmt1": "f_string_&_result_buf_allocatable",
                             "stmtc0": "c_string_&_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -3668,7 +3668,7 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_result-as-arg",
+                        "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
@@ -3785,7 +3785,7 @@
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result",
+                            "stmt0": "f_string_*_result_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_result_buf",
                             "stmtc1": "c_string_result_buf"
@@ -3900,8 +3900,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable_library",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable_library",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -4007,8 +4007,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_allocatable",
-                            "stmt1": "f_string_*_result_allocatable",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
                             "stmtc0": "c_string_*_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -4110,8 +4110,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable_caller",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable_caller",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -4220,8 +4220,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_allocatable",
-                            "stmt1": "f_string_*_result_allocatable",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
                             "stmtc0": "c_string_*_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -4326,8 +4326,8 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_string_scalar_result_allocatable_caller",
-                        "stmt1": "f_string_scalar_result_allocatable",
+                        "stmt0": "f_string_scalar_result_buf_allocatable_caller",
+                        "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
@@ -4437,8 +4437,8 @@
                             "f_var": "SHT_rv",
                             "hnamefunc0": "STR_SHROUD_copy_string_and_free",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_allocatable",
-                            "stmt1": "f_string_*_result_allocatable",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
                             "stmtc0": "c_string_*_result_buf_allocatable",
                             "stmtc1": "c_string_result_buf_allocatable"
                         }
@@ -6468,7 +6468,7 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_native_scalar_result_buf",
                         "stmt1": "f_default",
                         "stmtc0": "c_native_scalar_result_buf",
                         "stmtc1": "c_default"
@@ -7355,10 +7355,10 @@
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
-                        "stmt0": "f_char_scalar_result",
+                        "stmt0": "f_char_scalar_result_cfi",
                         "stmt1": "f_default",
-                        "stmtc0": "c_char_scalar_result_buf",
-                        "stmtc1": "c_char_scalar_result_buf"
+                        "stmtc0": "c_char_scalar_result_cfi",
+                        "stmtc1": "c_char_scalar_result_cfi"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -7399,12 +7399,12 @@
                     "C_prototype": "void",
                     "C_return_type": "char",
                     "F_C_arguments": "",
-                    "F_C_call": "c_creturn_char_bufferify",
+                    "F_C_call": "c_creturn_char_cfi",
                     "F_C_name": "c_creturn_char",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv",
                     "F_arguments": "",
                     "F_name_function": "creturn_char",
                     "F_name_generic": "creturn_char",
@@ -7417,7 +7417,8 @@
                     "underscore_name": "creturn_char"
                 },
                 "options": {
-                    "C_extern_C": true
+                    "C_extern_C": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true,
@@ -7434,7 +7435,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "SHF_rv",
-                            "c_var_len": "NSHF_rv",
                             "cxx_addr": "&",
                             "cxx_member": ".",
                             "cxx_nonconst_ptr": "&SHC_rv",
@@ -7443,23 +7443,22 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_char_scalar_result_buf",
-                            "stmt1": "c_char_scalar_result_buf"
+                            "stmt0": "c_char_scalar_result_cfi",
+                            "stmt1": "c_char_scalar_result_cfi"
                         },
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
                             "c_var": "SHT_rv",
-                            "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
                             "f_type": "character(*)",
                             "f_var": "SHT_rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_result",
+                            "stmt0": "f_char_*_result_cfi",
                             "stmt1": "f_default",
-                            "stmtc0": "c_char_*_result_buf",
-                            "stmtc1": "c_char_*_result_buf"
+                            "stmtc0": "c_char_*_result_cfi",
+                            "stmtc1": "c_char_*_result_cfi"
                         }
                     }
                 },
@@ -7475,11 +7474,11 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt0": "c_void_scalar_result_cfi",
                         "stmt1": "c_default"
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "_generated": "arg_to_cfi",
                 "ast": {
                     "declarator": {
                         "name": "CreturnChar",
@@ -7489,8 +7488,7 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
-                                "len": "NSHF_rv"
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "SHF_rv",
@@ -7512,25 +7510,26 @@
                     "typemap_name": "void"
                 },
                 "decl": "char CreturnChar()",
-                "declgen": "void CreturnChar(char * SHF_rv +intent(out)+len(NSHF_rv))",
+                "declgen": "void CreturnChar(char * SHF_rv +intent(out))",
                 "doxygen": {
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
                 "fmtdict": {
-                    "C_name": "STR_creturn_char_bufferify",
-                    "C_prototype": "char * SHF_rv,\t int NSHF_rv",
+                    "C_name": "STR_creturn_char_CFI",
+                    "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
                     "C_return_type": "void",
-                    "F_C_arguments": "SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_creturn_char_bufferify",
+                    "F_C_arguments": "SHF_rv",
+                    "F_C_name": "c_creturn_char_cfi",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "char SHC_rv",
                     "function_name": "CreturnChar",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_CFI",
                     "underscore_name": "creturn_char"
                 },
-                "generated_suffix": "buf",
+                "generated_suffix": "cfi",
                 "options": {
-                    "C_extern_C": true
+                    "C_extern_C": true,
+                    "wrap_fortran": false
                 },
                 "wrap": {
                     "c": true

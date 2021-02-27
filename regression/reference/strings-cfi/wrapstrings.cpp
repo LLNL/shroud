@@ -165,18 +165,19 @@ char STR_return_char(void)
  */
 // ----------------------------------------
 // Function:  void returnChar
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Exact:     c_char_scalar_result_buf
-void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
+// Argument:  char * SHF_rv +intent(out)
+// Exact:     c_char_scalar_result_cfi
+void STR_return_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
-    // splicer begin function.return_char_bufferify
+    // splicer begin function.return_char_CFI
     char SHC_rv = returnChar();
-    std::memset(SHF_rv, ' ', NSHF_rv);
+    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    std::memset(SHF_rv, ' ', SHcfi_SHF_rv->elem_len);
     SHF_rv[0] = SHC_rv;
-    // splicer end function.return_char_bufferify
+    // splicer end function.return_char_CFI
 }
 
 /**
@@ -307,26 +308,27 @@ const char * STR_get_char_ptr1(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr1
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
-// Exact:     c_char_*_result_buf_allocatable
-// start STR_get_char_ptr1_bufferify
-void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv)
+// Argument:  const char * SHF_rv +deref(allocatable)+intent(out)
+// Exact:     c_char_*_result_cfi_allocatable
+// start STR_get_char_ptr1_CFI
+void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
-    // splicer begin function.get_char_ptr1_bufferify
+    // splicer begin function.get_char_ptr1_CFI
     const char * SHC_rv = getCharPtr1();
-    DSHF_rv->cxx.addr = const_cast<char *>(SHC_rv);
-    DSHF_rv->cxx.idtor = 0;
-    DSHF_rv->addr.ccharp = SHC_rv;
-    DSHF_rv->type = SH_TYPE_OTHER;
-    DSHF_rv->elem_len = SHC_rv == nullptr ? 0 : std::strlen(SHC_rv);
-    DSHF_rv->size = 1;
-    DSHF_rv->rank = 0;
-    // splicer end function.get_char_ptr1_bufferify
+    if (SHC_rv != nullptr) {
+        int SH_ret = CFI_allocate(SHcfi_SHF_rv, (CFI_index_t *) 0, 
+            (CFI_index_t *) 0, strlen(SHC_rv));
+        if (SH_ret == CFI_SUCCESS) {
+            std::memcpy(SHcfi_SHF_rv->base_addr, SHC_rv, 
+                SHcfi_SHF_rv->elem_len);
+        }
+    }
+    // splicer end function.get_char_ptr1_CFI
 }
-// end STR_get_char_ptr1_bufferify
+// end STR_get_char_ptr1_CFI
 
 /**
  * \brief return 'const char *' with fixed size (len=30)
@@ -351,20 +353,21 @@ const char * STR_get_char_ptr2(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr2 +len(30)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Exact:     c_char_*_result_buf
-// start STR_get_char_ptr2_bufferify
-void STR_get_char_ptr2_bufferify(char * SHF_rv, int NSHF_rv)
+// Argument:  char * SHF_rv +intent(out)+len(30)
+// Exact:     c_char_*_result_cfi
+// start STR_get_char_ptr2_CFI
+void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
-    // splicer begin function.get_char_ptr2_bufferify
+    // splicer begin function.get_char_ptr2_CFI
     const char * SHC_rv = getCharPtr2();
-    ShroudStrCopy(SHF_rv, NSHF_rv, SHC_rv, -1);
-    // splicer end function.get_char_ptr2_bufferify
+    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    ShroudStrCopy(SHF_rv, SHcfi_SHF_rv->elem_len, SHC_rv, -1);
+    // splicer end function.get_char_ptr2_CFI
 }
-// end STR_get_char_ptr2_bufferify
+// end STR_get_char_ptr2_CFI
 
 /**
  * \brief return a 'const char *' as argument
@@ -389,20 +392,21 @@ const char * STR_get_char_ptr3(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr3
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * output +intent(out)+len(Noutput)
-// Exact:     c_char_*_result_buf
-// start STR_get_char_ptr3_bufferify
-void STR_get_char_ptr3_bufferify(char * output, int Noutput)
+// Argument:  char * output +intent(out)
+// Exact:     c_char_*_result_cfi
+// start STR_get_char_ptr3_CFI
+void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output)
 {
-    // splicer begin function.get_char_ptr3_bufferify
+    // splicer begin function.get_char_ptr3_CFI
     const char * SHC_rv = getCharPtr3();
-    ShroudStrCopy(output, Noutput, SHC_rv, -1);
-    // splicer end function.get_char_ptr3_bufferify
+    char *output = static_cast<char *>(SHcfi_output->base_addr);
+    ShroudStrCopy(output, SHcfi_output->elem_len, SHC_rv, -1);
+    // splicer end function.get_char_ptr3_CFI
 }
-// end STR_get_char_ptr3_bufferify
+// end STR_get_char_ptr3_CFI
 
 /**
  * \brief return a 'const char *' as type(C_PTR)
@@ -1385,18 +1389,19 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
  */
 // ----------------------------------------
 // Function:  void CreturnChar
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
-// Exact:     c_char_scalar_result_buf
-void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
+// Argument:  char * SHF_rv +intent(out)
+// Exact:     c_char_scalar_result_cfi
+void STR_creturn_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
-    // splicer begin function.creturn_char_bufferify
+    // splicer begin function.creturn_char_CFI
     char SHC_rv = CreturnChar();
-    std::memset(SHF_rv, ' ', NSHF_rv);
+    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
+    std::memset(SHF_rv, ' ', SHcfi_SHF_rv->elem_len);
     SHF_rv[0] = SHC_rv;
-    // splicer end function.creturn_char_bufferify
+    // splicer end function.creturn_char_CFI
 }
 
 /**
