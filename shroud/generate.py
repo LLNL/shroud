@@ -1503,7 +1503,7 @@ class GenFunctions(object):
         elif result_typemap.base == "vector":
             has_vector_result = True
         elif result_is_ptr:
-            if attrs["deref"] in ["allocatable"]:
+            if attrs["deref"] in ["allocatable", "pointer"]:
                 need_cdesc_result = True
             elif attrs["dimension"]:
                 need_cdesc_result = True
