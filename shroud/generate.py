@@ -124,7 +124,7 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
-        self.check_shared_attrs(node.ast)
+        self.check_common_attrs(node.ast)
 
         if ast.typemap is None:
             print("XXXXXX typemap is None")
@@ -142,12 +142,13 @@ class VerifyAttrs(object):
 
         self.parse_attrs(node, ast)
             
-    def check_shared_attrs(self, ast):
-        """Check attributes which may be assigned to function or argument:
-        deref, dimension, free_pattern, owner, rank
+    def check_common_attrs(self, ast):
+        """Check attributes which are common to function and argument AST
+        This includes: deref, dimension, free_pattern, owner, rank
 
-        Args:
-            ast - declast.Declaration
+        Parameters
+        ----------
+        ast : declast.Declaration
         """
         attrs = ast.attrs
         ntypemap = ast.typemap
@@ -292,7 +293,7 @@ class VerifyAttrs(object):
                 )
             )
 
-        self.check_shared_attrs(arg)
+        self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
 
@@ -1805,7 +1806,7 @@ class Preprocess(object):
         # that have the template expanded.
         if not node.cxx_template:
             self.process_xxx(cls, node)
-            self.check_return_pointer(node, node.ast)
+            check_return_pointer(node, node.ast, node.CXX_result_typemap)
 
         options = self.newlibrary.options
         # XXX - not sure if result uses any of these attributes.
@@ -1875,49 +1876,6 @@ class Preprocess(object):
     #        if not result_typedef:
     #            raise RuntimeError("Unknown type {} in {}",
     #                               CXX_result_type, fmt_func.function_name)
-
-    def check_return_pointer(self, node, ast):
-        """Compute how to deal with a pointer function result.
-
-        Args:
-            node - ast.FunctionNode
-            ast - declast.Declaration
-        """
-        options = node.options
-        attrs = ast.attrs
-        result_typemap = node.CXX_result_typemap
-        if result_typemap.cxx_type == "void":
-            # subprogram == subroutine
-            # deref may be set when a string function is converted into a subroutine.
-            pass
-        elif result_typemap.base == "shadow":
-            # Change a C++ pointer into a Fortran pointer
-            # return 'void *' as 'type(C_PTR)'
-            # 'shadow' assigns pointer to type(C_PTR) in a derived type
-            pass
-        elif result_typemap.base in ["string", "vector"]:
-            if attrs["deref"]:
-                pass
-            else:
-                # Default strings to create a Fortran allocatable.
-                # XXX - do not deref a scalar.
-                if ast.is_indirect():
-                    attrs["deref"] = "allocatable"
-        elif ast.is_indirect():
-            # pointer to a POD  e.g. int *
-            if attrs["deref"]:
-                pass
-            elif attrs["dimension"]:
-                attrs["deref"] = "pointer"
-            else:
-                attrs["deref"] = options.return_scalar_pointer
-        else:
-            if attrs["deref"]:
-                raise RuntimeError(
-                    "Cannot have attribute 'deref' on non-pointer in {}".format(
-                        node.decl
-                    )
-                )
 
 
 def generate_functions(library, config):
@@ -2021,3 +1979,46 @@ def check_implied(context, expr, decls):
     node = declast.ExprParser(expr).expression()
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
+
+
+def check_return_pointer(node, ast, result_typemap):
+    """Compute how to deal with a pointer function result.
+
+    Args:
+        node - ast.FunctionNode
+        ast - declast.Declaration
+    """
+    options = node.options
+    attrs = ast.attrs
+    if result_typemap.cxx_type == "void":
+        # subprogram == subroutine
+        # deref may be set when a string function is converted into a subroutine.
+        pass
+    elif result_typemap.base == "shadow":
+        # Change a C++ pointer into a Fortran pointer
+        # return 'void *' as 'type(C_PTR)'
+        # 'shadow' assigns pointer to type(C_PTR) in a derived type
+        pass
+    elif result_typemap.base in ["string", "vector"]:
+        if attrs["deref"]:
+            pass
+        else:
+            # Default strings to create a Fortran allocatable.
+            # XXX - do not deref a scalar.
+            if ast.is_indirect():
+                attrs["deref"] = "allocatable"
+    elif ast.is_indirect():
+        # pointer to a POD  e.g. int *
+        if attrs["deref"]:
+            pass
+        elif attrs["dimension"]:
+            attrs["deref"] = "pointer"
+        else:
+            attrs["deref"] = options.return_scalar_pointer
+    else:
+        if attrs["deref"]:
+            raise RuntimeError(
+                "Cannot have attribute 'deref' on non-pointer in {}".format(
+                    node.decl
+                )
+            )
