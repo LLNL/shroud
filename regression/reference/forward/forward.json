@@ -197,14 +197,14 @@
                         },
                         "ast": {
                             "attrs": {
-                                "_destructor": true,
+                                "_destructor": "Class2",
                                 "_name": "dtor"
                             },
                             "params": [],
                             "specifier": [
-                                "Class2"
+                                "void"
                             ],
-                            "typemap_name": "forward::Class2"
+                            "typemap_name": "void"
                         },
                         "decl": "~Class2()",
                         "declgen": "~Class2(void)",

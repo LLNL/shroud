@@ -43,14 +43,14 @@
                         },
                         "ast": {
                             "attrs": {
-                                "_destructor": true,
+                                "_destructor": "Class1",
                                 "_name": "dtor"
                             },
                             "params": [],
                             "specifier": [
-                                "Class1"
+                                "void"
                             ],
-                            "typemap_name": "Class1"
+                            "typemap_name": "void"
                         },
                         "decl": "~Class1()",
                         "declgen": "~Class1(void)",

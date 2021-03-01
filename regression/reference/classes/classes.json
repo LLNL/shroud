@@ -421,15 +421,15 @@
                         },
                         "ast": {
                             "attrs": {
-                                "_destructor": true,
+                                "_destructor": "Class1",
                                 "_name": "dtor",
                                 "name": "delete"
                             },
                             "params": [],
                             "specifier": [
-                                "Class1"
+                                "void"
                             ],
-                            "typemap_name": "classes::Class1"
+                            "typemap_name": "void"
                         },
                         "decl": "~Class1()        +name(delete)",
                         "declgen": "~Class1(void) +name(delete)",

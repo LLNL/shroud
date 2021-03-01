@@ -492,14 +492,14 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "_destructor": true,
+                                                "_destructor": "ExClass1",
                                                 "_name": "dtor"
                                             },
                                             "params": [],
                                             "specifier": [
-                                                "ExClass1"
+                                                "void"
                                             ],
-                                            "typemap_name": "example::nested::ExClass1"
+                                            "typemap_name": "void"
                                         },
                                         "decl": "~ExClass1()",
                                         "declgen": "~ExClass1(void)",
@@ -2273,14 +2273,14 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "_destructor": true,
+                                                "_destructor": "ExClass2",
                                                 "_name": "dtor"
                                             },
                                             "params": [],
                                             "specifier": [
-                                                "ExClass2"
+                                                "void"
                                             ],
-                                            "typemap_name": "example::nested::ExClass2"
+                                            "typemap_name": "void"
                                         },
                                         "decl": "~ExClass2()",
                                         "declgen": "~ExClass2(void)",

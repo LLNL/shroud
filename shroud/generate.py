@@ -1897,14 +1897,6 @@ class Preprocess(object):
         F_result_type = CXX_result_type
         subprogram = ast.get_subprogram()
         node.CXX_subprogram = subprogram
-        is_dtor = ast.attrs["_destructor"]
-
-        if is_dtor:
-            CXX_result_type = "void"
-            C_result_type = "void"
-            F_result_type = "void"
-            node.CXX_subprogram = "subroutine"
-            subprogram = "subroutine"
 
         node.C_subprogram = subprogram
         node.F_subprogram = subprogram

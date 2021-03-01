@@ -1392,14 +1392,14 @@
                             {
                                 "ast": {
                                     "attrs": {
-                                        "_destructor": true,
+                                        "_destructor": "vector",
                                         "_name": "dtor"
                                     },
                                     "params": [],
                                     "specifier": [
-                                        "vector"
+                                        "void"
                                     ],
-                                    "typemap_name": "std::vector"
+                                    "typemap_name": "void"
                                 },
                                 "decl": "~vector()",
                                 "declgen": "~vector(void)",
@@ -1996,14 +1996,14 @@
                             {
                                 "ast": {
                                     "attrs": {
-                                        "_destructor": true,
+                                        "_destructor": "vector",
                                         "_name": "dtor"
                                     },
                                     "params": [],
                                     "specifier": [
-                                        "vector"
+                                        "void"
                                     ],
-                                    "typemap_name": "std::vector"
+                                    "typemap_name": "void"
                                 },
                                 "decl": "~vector()",
                                 "declgen": "~vector(void)",
