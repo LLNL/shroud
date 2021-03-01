@@ -1999,7 +1999,9 @@ def check_return_pointer(node, ast):
             # Default strings to create a Fortran allocatable.
             # XXX - do not deref a scalar.
             if ast.is_indirect():
-                attrs["deref"] = "allocatable"
+                # If the function has +len, result will be an argument.
+                if not attrs["len"]:
+                    attrs["deref"] = "allocatable"
     elif ast.is_indirect():
         # pointer to a POD  e.g. int *
         if attrs["deref"]:
