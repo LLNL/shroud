@@ -3576,6 +3576,122 @@
                                         }
                                     },
                                     {
+                                        "_generated": "has_default_arg",
+                                        "_overloaded": true,
+                                        "ast": {
+                                            "declarator": {
+                                                "name": "declare",
+                                                "pointer": [
+                                                    {
+                                                        "ptr": "*"
+                                                    }
+                                                ]
+                                            },
+                                            "params": [
+                                                {
+                                                    "attrs": {
+                                                        "intent": "in",
+                                                        "value": true
+                                                    },
+                                                    "declarator": {
+                                                        "name": "type",
+                                                        "pointer": []
+                                                    },
+                                                    "specifier": [
+                                                        "TypeID"
+                                                    ],
+                                                    "typemap_name": "TypeID"
+                                                }
+                                            ],
+                                            "specifier": [
+                                                "void"
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                                        "fmtdict": {
+                                            "function_name": "declare",
+                                            "function_suffix": "_0",
+                                            "underscore_name": "declare"
+                                        },
+                                        "fortran_generic": [
+                                            {
+                                                "decls": [
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "type",
+                                                            "pointer": []
+                                                        },
+                                                        "specifier": [
+                                                            "TypeID"
+                                                        ],
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "len",
+                                                            "pointer": []
+                                                        },
+                                                        "init": 1,
+                                                        "specifier": [
+                                                            "int"
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    }
+                                                ],
+                                                "function_suffix": "_int",
+                                                "generic": "(int len=1)"
+                                            },
+                                            {
+                                                "decls": [
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "type",
+                                                            "pointer": []
+                                                        },
+                                                        "specifier": [
+                                                            "TypeID"
+                                                        ],
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "len",
+                                                            "pointer": []
+                                                        },
+                                                        "init": 1,
+                                                        "specifier": [
+                                                            "long"
+                                                        ],
+                                                        "typemap_name": "long"
+                                                    }
+                                                ],
+                                                "function_suffix": "_long",
+                                                "generic": "(long len=1)"
+                                            }
+                                        ],
+                                        "options": {},
+                                        "return_this": true,
+                                        "wrap": {}
+                                    },
+                                    {
                                         "_fmtargs": {
                                             "type": {
                                                 "fmtc": {
@@ -3613,16 +3729,12 @@
                                                 }
                                             }
                                         },
-                                        "_generated": "has_default_arg",
+                                        "_generated": "return_this",
                                         "_overloaded": true,
                                         "ast": {
                                             "declarator": {
                                                 "name": "declare",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
+                                                "pointer": []
                                             },
                                             "params": [
                                                 {
@@ -3646,7 +3758,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value)",
                                         "fmtdict": {
                                             "C_call_list": "SHCXX_type",
                                             "C_name": "AA_example_nested_ExClass2_declare_0",
@@ -3750,11 +3862,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "declare",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
+                                                "pointer": []
                                             },
                                             "params": [
                                                 {
@@ -3793,7 +3901,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_0",
                                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3822,11 +3930,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "declare",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
+                                                "pointer": []
                                             },
                                             "params": [
                                                 {
@@ -3865,7 +3969,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_0",
                                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -3894,37 +3998,6 @@
                                         ],
                                         "_fmtargs": {
                                             "len": {
-                                                "fmtc": {
-                                                    "c_addr": "&",
-                                                    "c_const": "",
-                                                    "c_deref": "",
-                                                    "c_member": ".",
-                                                    "c_var": "len",
-                                                    "cxx_addr": "&",
-                                                    "cxx_member": ".",
-                                                    "cxx_nonconst_ptr": "&len",
-                                                    "cxx_type": "SidreLength",
-                                                    "cxx_var": "len",
-                                                    "idtor": "0",
-                                                    "sh_type": "SH_TYPE_LONG",
-                                                    "shadow_var": "SHadow_len",
-                                                    "stmt0": "c_native_scalar_in",
-                                                    "stmt1": "c_default"
-                                                },
-                                                "fmtf": {
-                                                    "F_C_var": "len",
-                                                    "F_pointer": "SHPTR_len",
-                                                    "c_var": "len",
-                                                    "f_intent": "IN",
-                                                    "f_kind": "C_LONG",
-                                                    "f_type": "integer(C_LONG)",
-                                                    "f_var": "len",
-                                                    "sh_type": "SH_TYPE_LONG",
-                                                    "stmt0": "f_native_scalar_in",
-                                                    "stmt1": "f_default",
-                                                    "stmtc0": "c_native_scalar_in",
-                                                    "stmtc1": "c_default"
-                                                },
                                                 "fmtl": {
                                                     "LUA_index": 2,
                                                     "c_deref": "",
@@ -3960,39 +4033,6 @@
                                                 }
                                             },
                                             "type": {
-                                                "fmtc": {
-                                                    "c_addr": "&",
-                                                    "c_const": "",
-                                                    "c_deref": "",
-                                                    "c_member": ".",
-                                                    "c_var": "type",
-                                                    "cxx_addr": "&",
-                                                    "cxx_decl": "TypeID SHCXX_type",
-                                                    "cxx_member": ".",
-                                                    "cxx_nonconst_ptr": "&SHCXX_type",
-                                                    "cxx_type": "TypeID",
-                                                    "cxx_val": "getTypeID(type)",
-                                                    "cxx_var": "SHCXX_type",
-                                                    "idtor": "0",
-                                                    "sh_type": "SH_TYPE_INT",
-                                                    "shadow_var": "SHadow_type",
-                                                    "stmt0": "c_native_scalar_in",
-                                                    "stmt1": "c_default"
-                                                },
-                                                "fmtf": {
-                                                    "F_C_var": "type",
-                                                    "F_pointer": "SHPTR_type",
-                                                    "c_var": "type",
-                                                    "f_intent": "IN",
-                                                    "f_kind": "C_INT",
-                                                    "f_type": "integer(C_INT)",
-                                                    "f_var": "type",
-                                                    "sh_type": "SH_TYPE_INT",
-                                                    "stmt0": "f_native_scalar_in",
-                                                    "stmt1": "f_default",
-                                                    "stmtc0": "c_native_scalar_in",
-                                                    "stmtc1": "c_default"
-                                                },
                                                 "fmtl": {
                                                     "LUA_index": 1,
                                                     "c_deref": "",
@@ -4032,8 +4072,32 @@
                                         },
                                         "_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_subroutine",
-                                                "stmt1": "lua_subroutine"
+                                                "c_var": "SHCXX_rv",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_var": "SHCXX_rv",
+                                                "push_arg": "SHCXX_rv",
+                                                "push_expr": "PUSH",
+                                                "stmt0": "lua_void_*_result",
+                                                "stmt1": "lua_void_*_result"
+                                            },
+                                            "fmtpy": {
+                                                "array_size": "1",
+                                                "c_deref": "*",
+                                                "c_var": "SHCXX_rv",
+                                                "ctor_expr": "SHCXX_rv",
+                                                "cxx_addr": "",
+                                                "cxx_member": "->",
+                                                "cxx_nonconst_ptr": "SHCXX_rv",
+                                                "cxx_type": "void",
+                                                "cxx_var": "SHCXX_rv",
+                                                "data_var": "SHData_rv",
+                                                "numpy_type": null,
+                                                "py_var": "SHTPy_rv",
+                                                "size_var": "SHSize_rv",
+                                                "stmt0": "py_void_*_result",
+                                                "stmt1": "py_void_*_result",
+                                                "value_var": "SHValue_rv"
                                             }
                                         },
                                         "_has_default_arg": true,
@@ -4090,6 +4154,218 @@
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
                                         "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)",
                                         "fmtdict": {
+                                            "LUA_name": "declare",
+                                            "LUA_name_impl": "l_example_nested_ExClass2_declare",
+                                            "PY_cleanup_decref": "Py_XDECREF",
+                                            "PY_name_impl": "PP_declare_1",
+                                            "function_name": "declare",
+                                            "function_suffix": "_1",
+                                            "underscore_name": "declare"
+                                        },
+                                        "fortran_generic": [
+                                            {
+                                                "decls": [
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "type",
+                                                            "pointer": []
+                                                        },
+                                                        "specifier": [
+                                                            "TypeID"
+                                                        ],
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "len",
+                                                            "pointer": []
+                                                        },
+                                                        "init": 1,
+                                                        "specifier": [
+                                                            "int"
+                                                        ],
+                                                        "typemap_name": "int"
+                                                    }
+                                                ],
+                                                "function_suffix": "_int",
+                                                "generic": "(int len=1)"
+                                            },
+                                            {
+                                                "decls": [
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "type",
+                                                            "pointer": []
+                                                        },
+                                                        "specifier": [
+                                                            "TypeID"
+                                                        ],
+                                                        "typemap_name": "TypeID"
+                                                    },
+                                                    {
+                                                        "attrs": {
+                                                            "intent": "in",
+                                                            "value": true
+                                                        },
+                                                        "declarator": {
+                                                            "name": "len",
+                                                            "pointer": []
+                                                        },
+                                                        "init": 1,
+                                                        "specifier": [
+                                                            "long"
+                                                        ],
+                                                        "typemap_name": "long"
+                                                    }
+                                                ],
+                                                "function_suffix": "_long",
+                                                "generic": "(long len=1)"
+                                            }
+                                        ],
+                                        "options": {},
+                                        "return_this": true,
+                                        "wrap": {
+                                            "lua": true,
+                                            "python": true
+                                        }
+                                    },
+                                    {
+                                        "_default_funcs": [
+                                            27
+                                        ],
+                                        "_fmtargs": {
+                                            "len": {
+                                                "fmtc": {
+                                                    "c_addr": "&",
+                                                    "c_const": "",
+                                                    "c_deref": "",
+                                                    "c_member": ".",
+                                                    "c_var": "len",
+                                                    "cxx_addr": "&",
+                                                    "cxx_member": ".",
+                                                    "cxx_nonconst_ptr": "&len",
+                                                    "cxx_type": "SidreLength",
+                                                    "cxx_var": "len",
+                                                    "idtor": "0",
+                                                    "sh_type": "SH_TYPE_LONG",
+                                                    "shadow_var": "SHadow_len",
+                                                    "stmt0": "c_native_scalar_in",
+                                                    "stmt1": "c_default"
+                                                },
+                                                "fmtf": {
+                                                    "F_C_var": "len",
+                                                    "F_pointer": "SHPTR_len",
+                                                    "c_var": "len",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_LONG",
+                                                    "f_type": "integer(C_LONG)",
+                                                    "f_var": "len",
+                                                    "sh_type": "SH_TYPE_LONG",
+                                                    "stmt0": "f_native_scalar_in",
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in",
+                                                    "stmtc1": "c_default"
+                                                }
+                                            },
+                                            "type": {
+                                                "fmtc": {
+                                                    "c_addr": "&",
+                                                    "c_const": "",
+                                                    "c_deref": "",
+                                                    "c_member": ".",
+                                                    "c_var": "type",
+                                                    "cxx_addr": "&",
+                                                    "cxx_decl": "TypeID SHCXX_type",
+                                                    "cxx_member": ".",
+                                                    "cxx_nonconst_ptr": "&SHCXX_type",
+                                                    "cxx_type": "TypeID",
+                                                    "cxx_val": "getTypeID(type)",
+                                                    "cxx_var": "SHCXX_type",
+                                                    "idtor": "0",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "shadow_var": "SHadow_type",
+                                                    "stmt0": "c_native_scalar_in",
+                                                    "stmt1": "c_default"
+                                                },
+                                                "fmtf": {
+                                                    "F_C_var": "type",
+                                                    "F_pointer": "SHPTR_type",
+                                                    "c_var": "type",
+                                                    "f_intent": "IN",
+                                                    "f_kind": "C_INT",
+                                                    "f_type": "integer(C_INT)",
+                                                    "f_var": "type",
+                                                    "sh_type": "SH_TYPE_INT",
+                                                    "stmt0": "f_native_scalar_in",
+                                                    "stmt1": "f_default",
+                                                    "stmtc0": "c_native_scalar_in",
+                                                    "stmtc1": "c_default"
+                                                }
+                                            }
+                                        },
+                                        "_generated": "return_this",
+                                        "_has_default_arg": true,
+                                        "_nargs": [
+                                            1,
+                                            2
+                                        ],
+                                        "_overloaded": true,
+                                        "ast": {
+                                            "declarator": {
+                                                "name": "declare",
+                                                "pointer": []
+                                            },
+                                            "params": [
+                                                {
+                                                    "attrs": {
+                                                        "intent": "in",
+                                                        "value": true
+                                                    },
+                                                    "declarator": {
+                                                        "name": "type",
+                                                        "pointer": []
+                                                    },
+                                                    "specifier": [
+                                                        "TypeID"
+                                                    ],
+                                                    "typemap_name": "TypeID"
+                                                },
+                                                {
+                                                    "attrs": {
+                                                        "intent": "in",
+                                                        "value": true
+                                                    },
+                                                    "declarator": {
+                                                        "name": "len",
+                                                        "pointer": []
+                                                    },
+                                                    "init": 1,
+                                                    "specifier": [
+                                                        "SidreLength"
+                                                    ],
+                                                    "typemap_name": "SidreLength"
+                                                }
+                                            ],
+                                            "specifier": [
+                                                "void"
+                                            ],
+                                            "typemap_name": "void"
+                                        },
+                                        "decl": "void* declare(TypeID type, SidreLength len = 1)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)",
+                                        "fmtdict": {
                                             "C_call_list": "SHCXX_type,\t len",
                                             "C_name": "AA_example_nested_ExClass2_declare_1",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t int type,\t SIDRE_SidreLength len",
@@ -4097,10 +4373,6 @@
                                             "F_C_arguments": "self,\t type,\t len",
                                             "F_C_name": "c_exclass2_declare_1",
                                             "F_C_subprogram": "subroutine",
-                                            "LUA_name": "declare",
-                                            "LUA_name_impl": "l_example_nested_ExClass2_declare",
-                                            "PY_cleanup_decref": "Py_XDECREF",
-                                            "PY_name_impl": "PP_declare_1",
                                             "c_const": "",
                                             "c_deref": "*",
                                             "c_member": "->",
@@ -4187,9 +4459,7 @@
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
-                                            "c": true,
-                                            "lua": true,
-                                            "python": true
+                                            "c": true
                                         }
                                     },
                                     {
@@ -4206,11 +4476,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "declare",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
+                                                "pointer": []
                                             },
                                             "params": [
                                                 {
@@ -4249,7 +4515,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_1",
                                             "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
@@ -4286,11 +4552,7 @@
                                         "ast": {
                                             "declarator": {
                                                 "name": "declare",
-                                                "pointer": [
-                                                    {
-                                                        "ptr": "*"
-                                                    }
-                                                ]
+                                                "pointer": []
                                             },
                                             "params": [
                                                 {
@@ -4329,7 +4591,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_1",
                                             "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
@@ -6963,8 +7225,8 @@
                             },
                             {
                                 "_default_funcs": [
-                                    60,
-                                    61
+                                    62,
+                                    63
                                 ],
                                 "_fmtargs": {
                                     "i": {

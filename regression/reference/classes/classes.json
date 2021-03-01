@@ -781,6 +781,35 @@
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
                         "fmtdict": {
+                            "function_name": "returnThis",
+                            "underscore_name": "return_this"
+                        },
+                        "options": {
+                            "wrap_lua": false,
+                            "wrap_python": false
+                        },
+                        "return_this": true,
+                        "wrap": {}
+                    },
+                    {
+                        "_generated": "return_this",
+                        "ast": {
+                            "declarator": {
+                                "name": "returnThis",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "Class1 * returnThis();",
+                        "declgen": "void returnThis(void)",
+                        "doxygen": {
+                            "brief": "Return pointer to 'this' to allow chaining calls"
+                        },
+                        "fmtdict": {
                             "C_name": "CLA_Class1_return_this",
                             "C_prototype": "CLA_Class1 * self",
                             "C_return_type": "void",

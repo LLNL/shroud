@@ -1224,7 +1224,7 @@ class Declaration(Node):
         new.template_arguments = self.template_arguments
         return new
 
-    def _set_to_void(self):
+    def set_return_to_void(self):
         """Change function to void"""
         self.specifier = ["void"]
         self.typemap = typemap.lookup_type("void")
@@ -1239,7 +1239,7 @@ class Declaration(Node):
         """
         newarg = self._as_arg(name)
         self.params.append(newarg)
-        self._set_to_void()
+        self.set_return_to_void()
         return newarg
 
     def instantiate(self, node):

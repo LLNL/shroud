@@ -229,11 +229,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        if node.return_this:
-            # XXX           result_type = 'void'
-            # XXX           result_is_ptr = False
-            CXX_subprogram = "subroutine"
-
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         if is_dtor:

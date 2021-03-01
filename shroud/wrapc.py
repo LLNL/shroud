@@ -1161,9 +1161,7 @@ class Wrapc(util.WrapperMixin):
         )
 
         return_deref_attr = ast.attrs["deref"]
-        if node.return_this:
-            fmt_func.C_return_type = "void"
-        elif result_blk.return_type:
+        if result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
         elif return_deref_attr == "scalar":

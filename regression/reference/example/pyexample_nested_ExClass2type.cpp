@@ -365,7 +365,7 @@ PP_get_class1(
 
 // ----------------------------------------
 // Function:  void * declare
-// Exact:     py_default
+// Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  TypeID type +intent(in)+value
 // Requested: py_native_scalar_in
@@ -392,6 +392,8 @@ PP_declare_1(
         "type",
         "len",
         nullptr };
+    void * SHCXX_rv;
+    PyObject * SHTPy_rv = nullptr;
 
     if (args != nullptr) SH_nargs += PyTuple_Size(args);
     if (kwds != nullptr) SH_nargs += PyDict_Size(args);
@@ -404,7 +406,7 @@ PP_declare_1(
             // post_declare
             TypeID SH_type = getTypeID(type);
 
-            self->obj->declare(SH_type);
+            SHCXX_rv = self->obj->declare(SH_type);
             break;
         }
     case 2:
@@ -412,14 +414,18 @@ PP_declare_1(
             // post_declare
             TypeID SH_type = getTypeID(type);
 
-            self->obj->declare(SH_type, len);
+            SHCXX_rv = self->obj->declare(SH_type, len);
             break;
         }
     default:
         PyErr_SetString(PyExc_ValueError, "Wrong number of arguments");
         return nullptr;
     }
-    Py_RETURN_NONE;
+
+    // post_call
+    SHTPy_rv = PyCapsule_New(SHCXX_rv, NULL, NULL);
+
+    return (PyObject *) SHTPy_rv;
 // splicer end namespace.example::nested.class.ExClass2.method.declare
 }
 

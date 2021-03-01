@@ -835,9 +835,17 @@ class GenFunctions(object):
                     if not function.fmtdict.inlocal("function_suffix"):
                         function.fmtdict.function_suffix = "_{}".format(i)
 
+        # return_this
+        ordered2 = []
+        for method in ordered_functions:
+            ordered2.append(method)
+            if method.return_this:
+                self.process_return_this(method, ordered2)
+                
+
         # Create additional C bufferify functions.
         ordered3 = []
-        for method in ordered_functions:
+        for method in ordered2:
             ordered3.append(method)
             
             if method.options.F_CFI:
@@ -1257,6 +1265,42 @@ class GenFunctions(object):
         node.wrap.fortran = False
         return F_new
 
+    def process_return_this(self, node, ordered_functions):
+        """Deal with return_this feature.
+
+        If a function is marked return_this, convert it into a 
+        subroutine for the C and Fortran wrappers.
+        Return this allows chaining of function calls.
+        For example in C++:   obj->doA()->doB();
+        Python:   obj.doA().doB()
+        However, there is no way to chain in C or Fortran.
+
+        Clone the function and wrap for C and Fortran.
+        Turn off C and Fortran wrapper on original node.
+        Remove the function result.
+        
+        Parameters
+        ----------
+        node : FunctionNode
+        ordered_functions : list of FunctionNode
+        """
+        if node.wrap.c == False and node.wrap.fortran == False:
+            return
+        new = node.clone()
+        ordered_functions.append(new)
+        self.append_function_index(new)
+        new._generated = "return_this"
+
+        # Only wrap for C and Fortran, transfer values from node.
+        new.wrap.clear()
+        new.wrap.c = node.wrap.c
+        new.wrap.fortran = node.wrap.fortran
+        node.wrap.c = False
+        node.wrap.fortran = False
+
+        # Do not return C++ this instance.
+        new.ast.set_return_to_void()
+    
     def arg_to_CFI(self, node, ordered_functions):
         """Look for functions which can use TS29113
         Futher interoperability with C.
@@ -1855,7 +1899,7 @@ class Preprocess(object):
         node.CXX_subprogram = subprogram
         is_dtor = ast.attrs["_destructor"]
 
-        if node.return_this or is_dtor:
+        if is_dtor:
             CXX_result_type = "void"
             C_result_type = "void"
             F_result_type = "void"

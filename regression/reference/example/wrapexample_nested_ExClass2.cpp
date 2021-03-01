@@ -306,7 +306,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass2_get_class1(
 }
 
 // ----------------------------------------
-// Function:  void * declare
+// Function:  void declare
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
@@ -325,7 +325,7 @@ void AA_example_nested_ExClass2_declare_0(
 }
 
 // ----------------------------------------
-// Function:  void * declare
+// Function:  void declare
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
