@@ -6,7 +6,7 @@ C method Class1(int flag +intent(in)+value)
 C method ~Class1(void) +name(delete)
 C method int Method1(void)
 C method bool equivalent(const Class1 & obj2 +intent(in)) const
-C method Class1 * returnThis(void)
+C method void returnThis(void)
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C method Class1 * getclass3(void) const
@@ -57,7 +57,7 @@ Fortran Class1(int flag +intent(in)+value)
 Fortran ~Class1(void) +name(delete)
 Fortran int Method1(void)
 Fortran bool equivalent(const Class1 & obj2 +intent(in)) const
-Fortran Class1 * returnThis(void)
+Fortran void returnThis(void)
 Fortran Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 Fortran Class1 * getclass3(void) const
 Fortran const std::string & getName(void) +deref(allocatable)
@@ -70,7 +70,7 @@ C-interface Class1(int flag +intent(in)+value)
 C-interface ~Class1(void) +name(delete)
 C-interface int Method1(void)
 C-interface bool equivalent(const Class1 & obj2 +intent(in)) const
-C-interface Class1 * returnThis(void)
+C-interface void returnThis(void)
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
 C-interface Class1 * getclass3(void) const

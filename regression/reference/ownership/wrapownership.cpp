@@ -59,6 +59,24 @@ int * OWN_return_int_ptr_pointer(void)
 }
 
 // ----------------------------------------
+// Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
+// Exact:     c_native_*_result_buf
+int * OWN_return_int_ptr_pointer_bufferify(OWN_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_pointer_bufferify
+    int * SHC_rv = ReturnIntPtrPointer();
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 0;
+    DSHC_rv->size = 1;
+    return SHC_rv;
+    // splicer end function.return_int_ptr_pointer_bufferify
+}
+
+// ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
 // Requested: c_native_*_result
 // Match:     c_default

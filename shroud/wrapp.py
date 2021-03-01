@@ -1133,9 +1133,9 @@ return 1;""",
         fmt.PY_doc_string = "documentation"
         fmt.PY_array_arg = options.PY_array_arg
 
-        CXX_subprogram = node.CXX_subprogram
-        result_typemap = node.CXX_result_typemap
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         #        is_const = ast.const
@@ -1938,7 +1938,7 @@ return 1;""",
         ast = node.ast
         attrs = ast.attrs
         is_ctor = ast.is_ctor()
-        result_typemap = node.CXX_result_typemap
+        result_typemap = ast.typemap
 
         result_blk = default_scope
 
@@ -2073,7 +2073,7 @@ return 1;""",
             fmt.ctor_expr = "*" + fmt.c_var
             typemap = ast.typemap
 #            result_typeflag = ast.typemap.base
-#        result_typemap = node.CXX_result_typemap
+#        result_typemap = ast.typemap
             
             return util.Scope(PyStmts,
                 declare=["{cxx_alloc_decl} = {nullptr};"],

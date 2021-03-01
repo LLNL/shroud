@@ -784,8 +784,21 @@ fc_statements = [
     ),
     dict(
         name="f_native_*_result_buf_pointer",
-        base="f_native_*_result_pointer",
+        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        declare=[
+            "type(C_PTR) :: {F_pointer}",
+        ],
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
+        ],
+        post_call=[
+            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+        ],
     ),
+#    dict(
+#        name="f_native_*_result_buf_pointer",
+#        base="f_native_*_result_pointer",
+#    ),
     dict(
         # +deref(pointer) +owner(caller)
         name="f_native_*_result_buf_pointer_caller",

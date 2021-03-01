@@ -34,6 +34,8 @@ int OWN_return_int_ptr_scalar(void);
 
 int * OWN_return_int_ptr_pointer(void);
 
+int * OWN_return_int_ptr_pointer_bufferify(OWN_SHROUD_array *DSHC_rv);
+
 int * OWN_return_int_ptr_dim_raw(int * len);
 
 int * OWN_return_int_ptr_dim_pointer(int * len);

@@ -144,7 +144,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
  *
  */
 // ----------------------------------------
-// Function:  Class1 * returnThis
+// Function:  void returnThis
 // Requested: c
 // Match:     c_default
 // start CLA_Class1_return_this

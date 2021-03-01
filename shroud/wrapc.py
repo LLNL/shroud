@@ -834,12 +834,12 @@ class Wrapc(util.WrapperMixin):
             if CXX_node._generated:
                 generated.append(CXX_node._generated)
         CXX_ast = CXX_node.ast
-        CXX_subprogram = CXX_node.CXX_subprogram
+        CXX_subprogram = CXX_ast.get_subprogram()
 
         # C return type
         ast = node.ast
-        C_subprogram = node.C_subprogram
-        result_typemap = node.CXX_result_typemap
+        C_subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
         generated_suffix = node.generated_suffix
 
         result_is_const = ast.const
@@ -1161,9 +1161,7 @@ class Wrapc(util.WrapperMixin):
         )
 
         return_deref_attr = ast.attrs["deref"]
-        if node.return_this:
-            fmt_func.C_return_type = "void"
-        elif result_blk.return_type:
+        if result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
         elif return_deref_attr == "scalar":

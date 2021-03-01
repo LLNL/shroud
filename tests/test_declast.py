@@ -894,18 +894,18 @@ class CheckParse(unittest.TestCase):
         self.assertEqual(
             todict.to_dict(r),
             {
-                "attrs": {"_destructor": True, "_name": "dtor"},
+                "attrs": {"_destructor": "Class1", "_name": "dtor"},
                 "params": [],
-                "specifier": ["Class1"],
-                "typemap_name": "Class1",
+                "specifier": ["void"],
+                "typemap_name": "void",
             },
         )
         self.assertEqual("dtor", r.get_name())
         self.assertFalse(r.is_pointer())
         self.assertFalse(r.is_reference())
         self.assertEqual(0, r.is_indirect())
-        self.assertEqual("Class1 dtor(void)", r.gen_arg_as_cxx())
-        self.assertEqual("CC_Class1 dtor(void)", r.gen_arg_as_c())
+        self.assertEqual("void dtor(void)", r.gen_arg_as_cxx())
+        self.assertEqual("void dtor(void)", r.gen_arg_as_c())
 
     def test_inheritance0(self):
         self.library = ast.LibraryNode(library="cc")

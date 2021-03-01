@@ -460,13 +460,14 @@ class Parser(ExprParser):
             tok = self.mustbe("ID")
             if tok.value != self.namespace.name:
                 raise RuntimeError("Expected class-name after ~")
-            node.specifier.append(tok.value)
+            node.specifier.append("void")
             self.parse_template_arguments(node)
             #  class Class1 { ~Class1(); }
             self.info("destructor", self.namespace.typemap.name)
             node.attrs["_name"] = "dtor"
-            node.attrs["_destructor"] = True
-            node.typemap = self.namespace.typemap
+            node.attrs["_destructor"] = tok.value
+            #node.typemap = self.namespace.typemap # The class' typemap
+            node.typemap = typemap.lookup_type("void")
             found_type = True
             more = False
 
@@ -1082,7 +1083,9 @@ class Declaration(Node):
         return self.attrs["_constructor"]
 
     def is_dtor(self):
-        """Return True if self is a constructor."""
+        """Return destructor attribute.
+        Will be False for non-destructors, else class name.
+        """
         return self.attrs["_destructor"]
 
     def is_pointer(self):
@@ -1224,7 +1227,7 @@ class Declaration(Node):
         new.template_arguments = self.template_arguments
         return new
 
-    def _set_to_void(self):
+    def set_return_to_void(self):
         """Change function to void"""
         self.specifier = ["void"]
         self.typemap = typemap.lookup_type("void")
@@ -1239,7 +1242,7 @@ class Declaration(Node):
         """
         newarg = self._as_arg(name)
         self.params.append(newarg)
-        self._set_to_void()
+        self.set_return_to_void()
         return newarg
 
     def instantiate(self, node):
@@ -1261,13 +1264,15 @@ class Declaration(Node):
             out.append("volatile ")
         if self.attrs["_destructor"]:
             out.append("~")
-        if self.storage:
-            out.append(" ".join(self.storage))
-            out.append(" ")
-        if self.specifier:
-            out.append(" ".join(self.specifier))
+            out.append(self.attrs["_destructor"])
         else:
-            out.append("int")
+            if self.storage:
+                out.append(" ".join(self.storage))
+                out.append(" ")
+            if self.specifier:
+                out.append(" ".join(self.specifier))
+            else:
+                out.append("int")
         if self.declarator:
             out.append(" ")
             out.append(str(self.declarator))
@@ -1316,10 +1321,12 @@ class Declaration(Node):
 
         if self.attrs["_destructor"]:
             decl.append("~")
-        if self.storage:
-            decl.append(" ".join(self.storage))
-            decl.append(" ")
-        decl.append(" ".join(self.specifier))
+            decl.append(self.attrs["_destructor"])
+        else:
+            if self.storage:
+                decl.append(" ".join(self.storage))
+                decl.append(" ")
+            decl.append(" ".join(self.specifier))
         if self.template_arguments:
             decl.append("<")
             for targ in self.template_arguments:

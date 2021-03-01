@@ -229,11 +229,6 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         # XXX       result_is_ptr = ast.is_pointer()
         # XXX       result_is_ref = ast.is_reference()
 
-        if node.return_this:
-            # XXX           result_type = 'void'
-            # XXX           result_is_ptr = False
-            CXX_subprogram = "subroutine"
-
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         if is_dtor:
@@ -436,9 +431,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        node.eval_template('LUA_name')
         #        node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node.CXX_subprogram
-        result_typemap = node.CXX_result_typemap
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         stmts_comments = self.stmts_comments

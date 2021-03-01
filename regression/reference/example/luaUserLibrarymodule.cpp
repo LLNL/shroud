@@ -406,13 +406,13 @@ static int l_example_nested_ExClass2_get_class1(lua_State *L)
 // void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)
 // ----------------------------------------
 // Function:  void * declare
-// Exact:     lua_subroutine
+// Exact:     lua_void_*_result
 // ----------------------------------------
 // Argument:  TypeID type +intent(in)+value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void * declare
-// Exact:     lua_subroutine
+// Exact:     lua_void_*_result
 // ----------------------------------------
 // Argument:  TypeID type +intent(in)+value
 // Exact:     lua_native_scalar_in
@@ -432,8 +432,8 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             TypeID type = getTypeID(lua_tointeger(L, 1));
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            SH_this->self->declare(type);
-            SH_nresult = 0;
+            void * SHCXX_rv = SH_this->self->declare(type);
+            SH_nresult = 1;
         }
         else {
             luaL_error(L, "error with arguments");
@@ -446,8 +446,8 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
             SidreLength len = lua_tointeger(L, 2);
             l_ExClass2_Type * SH_this = (l_ExClass2_Type *)
                 luaL_checkudata(L, 1, "ExClass2.metatable");
-            SH_this->self->declare(type, len);
-            SH_nresult = 0;
+            void * SHCXX_rv = SH_this->self->declare(type, len);
+            SH_nresult = 1;
         }
         else {
             luaL_error(L, "error with arguments");
