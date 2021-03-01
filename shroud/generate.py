@@ -1849,8 +1849,7 @@ class Preprocess(object):
         # Any nodes with cxx_template have been replaced with nodes
         # that have the template expanded.
         if not node.cxx_template:
-            self.process_xxx(cls, node)
-            check_return_pointer(node, node.ast, node.CXX_result_typemap)
+            check_return_pointer(node, node.ast, node.ast.typemap)
 
         options = self.newlibrary.options
         # XXX - not sure if result uses any of these attributes.
@@ -1868,50 +1867,6 @@ class Preprocess(object):
         for arg in node.ast.params:
             statements.set_buf_variable_names(
                 options, arg.attrs, arg.name)
-
-    def process_xxx(self, cls, node):
-        """Compute information common to all wrapper languages.
-
-        Compute subprogram.  This may be different for each language.
-        CXX_subprogram - The C++ function being wrapped.
-        C_subprogram - functions will be converted to subroutines for
-            return_this and destructors.
-            A subroutine can be converted to a function by C_return_type.
-
-        return_this = True for C++ functions which return 'this',
-        are easier to call from Fortran if they are subroutines.
-        There is no way to chain in Fortran:  obj->doA()->doB();
-
-#        Lookup up typemap for result and arguments
-
-        Args:
-            cls -
-            node -
-        """
-
-        fmt_func = node.fmtdict
-
-        ast = node.ast
-        CXX_result_type = ast.typemap.name
-        C_result_type = CXX_result_type
-        F_result_type = CXX_result_type
-        subprogram = ast.get_subprogram()
-        node.CXX_subprogram = subprogram
-
-        node.C_subprogram = subprogram
-        node.F_subprogram = subprogram
-
-        node.CXX_return_type = CXX_result_type
-        node.C_return_type = C_result_type
-        node.F_return_type = F_result_type
-
-        node.CXX_result_typemap = typemap.lookup_type(CXX_result_type)
-        node.C_result_typemap = typemap.lookup_type(C_result_type)
-        node.F_result_typemap = typemap.lookup_type(F_result_type)
-
-    #        if not result_typedef:
-    #            raise RuntimeError("Unknown type {} in {}",
-    #                               CXX_result_type, fmt_func.function_name)
 
 
 def generate_functions(library, config):

@@ -431,9 +431,9 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
         #        node.eval_template('LUA_name')
         #        node.eval_template('LUA_name_impl')
 
-        CXX_subprogram = node.CXX_subprogram
-        result_typemap = node.CXX_result_typemap
         ast = node.ast
+        CXX_subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         stmts_comments = self.stmts_comments

@@ -1072,8 +1072,8 @@ rv = .false.
         fmtargs = node._fmtargs
 
         ast = node.ast
-        subprogram = node.C_subprogram
-        result_typemap = node.C_result_typemap
+        subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
         generated_suffix = node.generated_suffix
         is_ctor = ast.is_ctor()
         is_pure = ast.attrs["pure"]
@@ -1548,12 +1548,11 @@ rv = .false.
         fmtargs = C_node._fmtargs
 
         # Fortran return type
-        result_type = node.F_return_type
-        subprogram = node.F_subprogram
-        result_typemap = node.F_result_typemap
-        C_subprogram = C_node.C_subprogram
-        generated_suffix = C_node.generated_suffix
         ast = node.ast
+        subprogram = ast.get_subprogram()
+        result_typemap = ast.typemap
+        C_subprogram = C_node.ast.get_subprogram()
+        generated_suffix = C_node.generated_suffix
         is_ctor = ast.is_ctor()
         is_dtor = ast.is_dtor()
         is_static = False
@@ -1647,7 +1646,7 @@ rv = .false.
                 )
 
         # Function result.
-        if C_node.F_subprogram == "function":
+        if C_subprogram == "function":
             need_wrapper = self.build_arg_list_impl(
                 fileinfo,
                 fmt_result,
