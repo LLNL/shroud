@@ -1849,7 +1849,7 @@ class Preprocess(object):
         # Any nodes with cxx_template have been replaced with nodes
         # that have the template expanded.
         if not node.cxx_template:
-            check_return_pointer(node, node.ast, node.ast.typemap)
+            check_return_pointer(node, node.ast)
 
         options = self.newlibrary.options
         # XXX - not sure if result uses any of these attributes.
@@ -1972,25 +1972,27 @@ def check_implied(context, expr, decls):
     return visitor.visit(node)
 
 
-def check_return_pointer(node, ast, result_typemap):
+def check_return_pointer(node, ast):
     """Compute how to deal with a pointer function result.
 
-    Args:
-        node - ast.FunctionNode
-        ast - declast.Declaration
+    Parameters
+    ----------
+    node : ast.FunctionNode
+    ast : declast.Declaration
     """
     options = node.options
     attrs = ast.attrs
-    if result_typemap.cxx_type == "void":
+    ntypemap = ast.typemap
+    if ntypemap.cxx_type == "void":
         # subprogram == subroutine
         # deref may be set when a string function is converted into a subroutine.
         pass
-    elif result_typemap.base == "shadow":
+    elif ntypemap.base == "shadow":
         # Change a C++ pointer into a Fortran pointer
         # return 'void *' as 'type(C_PTR)'
         # 'shadow' assigns pointer to type(C_PTR) in a derived type
         pass
-    elif result_typemap.base in ["string", "vector"]:
+    elif ntypemap.base in ["string", "vector"]:
         if attrs["deref"]:
             pass
         else:
