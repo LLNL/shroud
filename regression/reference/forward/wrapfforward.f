@@ -71,7 +71,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -100,9 +100,9 @@ module forward_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
+        ! Attrs:     +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
-        !    metaattrs:  +intent(in)
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -118,9 +118,9 @@ module forward_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
+        ! Attrs:     +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
-        !    metaattrs:  +intent(in)
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
             import :: FOR_SHROUD_capsule_data
@@ -134,14 +134,14 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  int passStruct1
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * arg
+        ! Attrs:     +intent(in)
         ! Requested: c_struct_*_in
         ! Match:     c_struct
-        !    metaattrs:  +intent(in)
         function c_pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_pass_struct1")
@@ -191,8 +191,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class2
     ! Class2
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     function class2_ctor() &
             result(SHT_rv)
@@ -226,9 +227,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  tutorial::Class1 * arg +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_func1(obj, arg)
@@ -249,9 +251,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Class3 * arg +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_accept_class3(obj, arg)
@@ -291,16 +294,18 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! int passStruct1
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const Cstruct1 * arg
+    ! Attrs:     +intent(in)
     ! Requested: f_struct_*_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     function pass_struct1(arg) &

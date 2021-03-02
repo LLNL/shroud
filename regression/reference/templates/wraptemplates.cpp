@@ -36,14 +36,14 @@ extern "C" {
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  long arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void TEM_function_tu_0(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
@@ -61,14 +61,14 @@ void TEM_function_tu_0(int arg1, long arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  float arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void TEM_function_tu_1(float arg1, double arg2)
 {
     // splicer begin function.function_tu_1
@@ -82,9 +82,9 @@ void TEM_function_tu_1(float arg1, double arg2)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 int TEM_use_impl_worker_internal_ImplWorker1(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker1
@@ -99,9 +99,9 @@ int TEM_use_impl_worker_internal_ImplWorker1(void)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 int TEM_use_impl_worker_internal_ImplWorker2(void)
 {
     // splicer begin function.use_impl_worker_internal_ImplWorker2

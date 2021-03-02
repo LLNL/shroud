@@ -151,9 +151,11 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 
 // ----------------------------------------
 // Function:  ExClass2
+// Attrs:     +intent(result)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
+// Attrs:     +intent(in)
 // Exact:     py_string_*_in
 /**
  * \brief constructor
@@ -190,6 +192,7 @@ PP_ExClass2_tp_init(
 
 // ----------------------------------------
 // Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName__doc__[] =
 "documentation"
@@ -216,6 +219,7 @@ PP_getName(
 
 // ----------------------------------------
 // Function:  const string & getName2 +deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName2__doc__[] =
 "documentation"
@@ -242,6 +246,7 @@ PP_getName2(
 
 // ----------------------------------------
 // Function:  string & getName3 +deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName3__doc__[] =
 "documentation"
@@ -268,6 +273,7 @@ PP_getName3(
 
 // ----------------------------------------
 // Function:  string & getName4 +deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName4__doc__[] =
 "documentation"
@@ -294,6 +300,7 @@ PP_getName4(
 
 // ----------------------------------------
 // Function:  int GetNameLength
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_GetNameLength__doc__[] =
@@ -324,9 +331,11 @@ PP_GetNameLength(
 
 // ----------------------------------------
 // Function:  ExClass1 * get_class1
+// Attrs:     +intent(result)
 // Exact:     py_shadow_*_result
 // ----------------------------------------
 // Argument:  const ExClass1 * in
+// Attrs:     +intent(in)
 // Exact:     py_shadow_*_in
 static char PP_get_class1__doc__[] =
 "documentation"
@@ -365,13 +374,16 @@ PP_get_class1(
 
 // ----------------------------------------
 // Function:  void * declare
+// Attrs:     +intent(result)
 // Exact:     py_void_*_result
 // ----------------------------------------
 // Argument:  TypeID type +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  SidreLength len=1 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_declare_1__doc__[] =
@@ -450,6 +462,7 @@ PP_destroyall(
 
 // ----------------------------------------
 // Function:  TypeID getTypeID
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_getTypeID__doc__[] =
@@ -479,6 +492,7 @@ PP_getTypeID(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -507,6 +521,7 @@ PP_setValue_int(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  long value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -535,6 +550,7 @@ PP_setValue_long(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -563,6 +579,7 @@ PP_setValue_float(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -588,6 +605,7 @@ PP_setValue_double(
 
 // ----------------------------------------
 // Function:  int getValue
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static PyObject *
@@ -610,6 +628,7 @@ PP_getValue_int(
 
 // ----------------------------------------
 // Function:  double getValue
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static PyObject *

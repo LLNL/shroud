@@ -21,9 +21,9 @@ extern "C" {
 // Match:     c_default
 // ----------------------------------------
 // Argument:  CustomType arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)
 {
     three::Class1 *SH_this = static_cast<three::Class1 *>(self->addr);

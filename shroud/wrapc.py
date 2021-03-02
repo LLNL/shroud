@@ -929,8 +929,7 @@ class Wrapc(util.WrapperMixin):
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
-            self.document_metaattrs(stmts_comments, ast)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
         
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
@@ -1091,8 +1090,7 @@ class Wrapc(util.WrapperMixin):
                 c_decl = arg.gen_decl()
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
-                self.document_metaattrs(stmts_comments, arg)
+                    stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,

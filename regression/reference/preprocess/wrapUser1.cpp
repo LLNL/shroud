@@ -66,9 +66,9 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int i=0 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);

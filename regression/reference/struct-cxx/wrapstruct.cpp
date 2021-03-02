@@ -33,14 +33,14 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 
 // ----------------------------------------
 // Function:  int passStructByValue
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
+// Attrs:     +intent(in)
 // Requested: c_struct_scalar_in
 // Match:     c_struct
-//    metaattrs:  +intent(in)
 // start STR_pass_struct_by_value
 int STR_pass_struct_by_value(STR_cstruct1 arg)
 {
@@ -55,14 +55,14 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 
 // ----------------------------------------
 // Function:  int passStruct1
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
-//    metaattrs:  +intent(in)
 // start STR_pass_struct1
 int STR_pass_struct1(const STR_cstruct1 * arg)
 {
@@ -80,19 +80,19 @@ int STR_pass_struct1(const STR_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  int passStruct2
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_char_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 {
     // splicer begin function.pass_struct2
@@ -108,18 +108,18 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
  */
 // ----------------------------------------
 // Function:  int passStruct2
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in_buf
 // Match:     c_struct
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Attrs:     +intent(out)
 // Exact:     c_char_*_out_buf
-//    metaattrs:  +intent(out)
 int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
 {
@@ -134,14 +134,14 @@ int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
 
 // ----------------------------------------
 // Function:  int acceptStructInPtr
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
-//    metaattrs:  +intent(in)
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_ptr
@@ -161,19 +161,19 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_struct_*_out
 // Match:     c_struct
-//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 {
     // splicer begin function.accept_struct_out_ptr
@@ -189,9 +189,9 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
+// Attrs:     +intent(inout)
 // Requested: c_struct_*_inout
 // Match:     c_struct
-//    metaattrs:  +intent(inout)
 void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 {
     // splicer begin function.accept_struct_in_out_ptr
@@ -203,19 +203,19 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
+// Attrs:     +intent(result)
 // Requested: c_struct_scalar_result
 // Match:     c_struct_result
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 STR_cstruct1 STR_return_struct_by_value(int i, double d)
 {
     // splicer begin function.return_struct_by_value
@@ -233,19 +233,19 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
-//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 {
     // splicer begin function.return_struct_ptr1
@@ -263,24 +263,24 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
-//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_char_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 {
     // splicer begin function.return_struct_ptr2
@@ -298,23 +298,23 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
-//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Attrs:     +intent(out)
 // Exact:     c_char_*_out_buf
-//    metaattrs:  +intent(out)
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
 {
@@ -329,9 +329,9 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
-//    metaattrs:  +deref(pointer)+intent(result)
 STR_cstruct_list * STR_get_global_struct_list(void)
 {
     // splicer begin function.get_global_struct_list
@@ -344,9 +344,9 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 // start STR_create__cstruct_as_class
 STR_Cstruct_as_class * STR_create__cstruct_as_class(
     STR_Cstruct_as_class * SHadow_rv)
@@ -362,19 +362,19 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int x +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int y +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
     STR_Cstruct_as_class * SHadow_rv)
 {
@@ -388,14 +388,14 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +pass
+// Attrs:     +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
-//    metaattrs:  +intent(in)
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum
@@ -408,24 +408,24 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int x +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int y +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int z +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
     int y, int z, STR_Cstruct_as_subclass * SHadow_rv)
 {

@@ -60,6 +60,7 @@ PY_exfunc_0(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 #ifndef USE_CLASS3_A

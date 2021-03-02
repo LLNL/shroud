@@ -24,9 +24,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
+// Attrs:     +intent(result)
 // Requested: c_bool_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 bool CXX_default_ptr_is_null_0(void)
 {
     // splicer begin function.default_ptr_is_null_0
@@ -37,14 +37,14 @@ bool CXX_default_ptr_is_null_0(void)
 
 // ----------------------------------------
 // Function:  bool defaultPtrIsNULL
+// Attrs:     +intent(result)
 // Requested: c_bool_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(IN)+rank(1)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 bool CXX_default_ptr_is_null_1(double * data)
 {
     // splicer begin function.default_ptr_is_null_1
@@ -59,19 +59,19 @@ bool CXX_default_ptr_is_null_1(double * data)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int in1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.default_args_in_out_0
@@ -85,24 +85,24 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int in1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
-//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  bool flag=false +value
+// Attrs:     +intent(in)
 // Requested: c_bool_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     bool flag)
 {

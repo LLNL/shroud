@@ -41,10 +41,12 @@ PyArray_Descr *PY_Arrays1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByValue
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 arg +value
+// Attrs:     +intent(in)
 // Exact:     py_struct_scalar_in_list
 static char PY_passStructByValue__doc__[] =
 "documentation"
@@ -78,10 +80,12 @@ PY_passStructByValue(
 
 // ----------------------------------------
 // Function:  int passStruct1
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg
+// Attrs:     +intent(in)
 // Exact:     py_struct_*_in_list
 static char PY_passStruct1__doc__[] =
 "documentation"
@@ -115,13 +119,16 @@ PY_passStruct1(
 
 // ----------------------------------------
 // Function:  int passStruct2
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
+// Attrs:     +intent(in)
 // Exact:     py_struct_*_in_list
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_passStruct2__doc__[] =
 "documentation"
@@ -159,10 +166,12 @@ PY_passStruct2(
 
 // ----------------------------------------
 // Function:  int acceptStructInPtr
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
+// Attrs:     +intent(in)
 // Exact:     py_struct_*_in_list
 static char PY_acceptStructInPtr__doc__[] =
 "documentation"
@@ -199,13 +208,16 @@ PY_acceptStructInPtr(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_struct_*_out_list
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_acceptStructOutPtr__doc__[] =
@@ -252,6 +264,7 @@ PY_acceptStructOutPtr(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_struct_*_inout_list
 static char PY_acceptStructInOutPtr__doc__[] =
 "documentation"
@@ -286,14 +299,17 @@ PY_acceptStructInOutPtr(
 
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
+// Attrs:     +intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructByValue__doc__[] =
@@ -331,14 +347,17 @@ PY_returnStructByValue(
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_returnStructPtr1__doc__[] =
@@ -380,18 +399,22 @@ PY_returnStructPtr1(
 
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_char_*_out_charlen
 static char PY_returnStructPtr2__doc__[] =
 "documentation"
@@ -433,6 +456,7 @@ PY_returnStructPtr2(
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
 static char PY_get_global_struct_list__doc__[] =

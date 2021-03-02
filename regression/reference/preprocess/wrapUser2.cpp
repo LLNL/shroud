@@ -41,9 +41,9 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {
     User2 *SH_this = static_cast<User2 *>(self->addr);

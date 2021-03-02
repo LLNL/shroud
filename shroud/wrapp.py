@@ -781,7 +781,7 @@ return 1;""",
         # getter
         output.append("")
         if options.debug:
-            self.document_stmts(output, stmt0, intent_blk.name)
+            self.document_stmts(output, ast, stmt0, intent_blk.name)
         append_format(
             output,
             "static PyObject *{PY_getter}("
@@ -816,7 +816,7 @@ return 1;""",
 
             output.append("")
             if options.debug:
-                self.document_stmts(output, stmt0, intent_blk.name)
+                self.document_stmts(output, ast, stmt0, intent_blk.name)
             append_format(
                 output,
                 "static int {PY_setter}("
@@ -1184,7 +1184,7 @@ return 1;""",
             stmts_comments.append(
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
         if result_blk.fmtdict is not None:
             for key, value in result_blk.fmtdict.items():
@@ -1337,7 +1337,7 @@ return 1;""",
                 # Add some debug comments to function.
                 if options.debug:
                     self.document_stmts(
-                        stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                        stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
             elif options.debug:
                 stmts_comments.append(
                     self.comment + " Exact:     " + intent_blk.name)

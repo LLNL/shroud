@@ -30,8 +30,8 @@ extern "C" {
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
+// Attrs:     +intent(in)
 // Exact:     c_native_*_in_cdesc
-//    metaattrs:  +intent(in)
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in
@@ -55,13 +55,13 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+// Attrs:     +intent(out)
 // Requested: c_void_*_out_cdesc
 // Match:     c_void_*_cdesc
-//    metaattrs:  +intent(out)
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 {
     // splicer begin function.get_scalar1
@@ -84,13 +84,13 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
-//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+// Attrs:     +intent(out)
 // Requested: c_void_*_out_buf_cdesc
 // Match:     c_void_*_cdesc
-//    metaattrs:  +intent(out)
 void CDE_get_scalar1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {
@@ -122,9 +122,9 @@ void CDE_get_scalar1_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  int getData
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 int CDE_get_data_int(void)
 {
     // splicer begin function.get_data_int
@@ -138,9 +138,9 @@ int CDE_get_data_int(void)
  */
 // ----------------------------------------
 // Function:  double getData
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 double CDE_get_data_double(void)
 {
     // splicer begin function.get_data_double

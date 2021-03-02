@@ -107,7 +107,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
-        !    metaattrs:  +deref(raw)+intent(result)
+        ! Attrs:     +deref(raw)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         function c_return_int_ptr_raw() &
@@ -120,7 +120,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrScalar +deref(scalar)
-        !    metaattrs:  +deref(scalar)+intent(result)
+        ! Attrs:     +deref(scalar)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         function return_int_ptr_scalar() &
@@ -133,7 +133,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         function c_return_int_ptr_pointer() &
@@ -146,7 +146,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         function c_return_int_ptr_pointer_bufferify(DSHC_rv) &
                 result(SHT_rv) &
@@ -160,14 +160,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
-        !    metaattrs:  +deref(raw)+intent(result)
+        ! Attrs:     +deref(raw)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_raw(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_raw")
@@ -179,14 +179,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_pointer(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer")
@@ -198,13 +198,13 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_bufferify")
@@ -218,14 +218,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-        !    metaattrs:  +deref(allocatable)+intent(result)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_alloc(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc")
@@ -237,13 +237,13 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
-        !    metaattrs:  +deref(allocatable)+intent(result)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
@@ -257,14 +257,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_default(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default")
@@ -276,13 +276,13 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+deref(pointer)+dimension(len)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_default_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_bufferify")
@@ -296,14 +296,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_raw_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_raw_new")
@@ -315,14 +315,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_pointer_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_new")
@@ -334,13 +334,13 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
                 len) &
                 result(SHT_rv) &
@@ -355,14 +355,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(allocatable)+intent(result)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_alloc_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_new")
@@ -374,14 +374,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_default_new(len) &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_new")
@@ -393,13 +393,13 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
                 len) &
                 result(SHT_rv) &
@@ -418,9 +418,9 @@ module ownership_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int flag +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         subroutine create_class_static(flag) &
                 bind(C, name="OWN_create_class_static")
             use iso_c_binding, only : C_INT
@@ -430,7 +430,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassStatic +owner(library)
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         function c_get_class_static(SHT_crv) &
@@ -445,14 +445,14 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  Class1 * getClassNew +owner(caller)
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
         ! Argument:  int flag +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function c_get_class_new(flag, SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="OWN_get_class_new")
@@ -554,9 +554,10 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrPointer +deref(pointer)
     ! int * ReturnIntPtrPointer +deref(pointer)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     c_native_*_result_buf
     function return_int_ptr_pointer() &
             result(SHT_rv)
@@ -574,15 +575,17 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_pointer() &
@@ -602,15 +605,17 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
-    !    metaattrs:  +deref(allocatable)+intent(result)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_native_*_result_buf_allocatable
     ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_alloc() &
@@ -631,15 +636,17 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
     ! int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+deref(pointer)+dimension(len)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_default() &
@@ -659,15 +666,17 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_pointer_new(Crv) &
@@ -690,15 +699,17 @@ contains
     ! ----------------------------------------
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     function return_int_ptr_dim_default_new(Crv) &
@@ -720,9 +731,10 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getClassStatic +owner(library)
     ! Class1 * getClassStatic +owner(library)
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result_library
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     function get_class_static() &
@@ -738,16 +750,18 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getClassNew +owner(caller)
     ! Class1 * getClassNew +owner(caller)
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result_caller
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
     ! Argument:  int flag +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>

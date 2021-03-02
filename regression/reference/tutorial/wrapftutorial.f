@@ -79,19 +79,19 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValue
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function pass_by_value(arg1, arg2) &
                 result(SHT_rv) &
@@ -110,16 +110,16 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  const std::string & arg2 +len_trim(Larg2)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     c_string_*_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)+intent(out)
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
                 Larg2, DSHF_rv) &
@@ -137,7 +137,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_use_default_arguments
@@ -154,14 +154,14 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! start c_use_default_arguments_arg1
     interface
         function c_use_default_arguments_arg1(arg1) &
@@ -177,19 +177,19 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  bool arg2=true +value
+    ! Attrs:     +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! start c_use_default_arguments_arg1_arg2
     interface
         function c_use_default_arguments_arg1_arg2(arg1, arg2) &
@@ -210,8 +210,8 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_overloaded_function_from_name(name) &
                 bind(C, name="TUT_overloaded_function_from_name")
@@ -227,8 +227,8 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_overloaded_function_from_name_bufferify(name, &
                 Lname) &
@@ -246,9 +246,9 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int indx +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_overloaded_function_from_index(indx) &
                 bind(C, name="TUT_overloaded_function_from_index")
@@ -264,9 +264,9 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_template_argument_int(arg) &
                 bind(C, name="TUT_template_argument_int")
@@ -282,9 +282,9 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_template_argument_double(arg) &
                 bind(C, name="TUT_template_argument_double")
@@ -296,7 +296,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int TemplateReturn
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -311,7 +311,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double TemplateReturn
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -341,13 +341,13 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_fortran_generic_overloaded_1(name, arg2) &
                 bind(C, name="TUT_fortran_generic_overloaded_1")
@@ -364,13 +364,13 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
                 arg2) &
@@ -385,14 +385,14 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_num(num) &
                 result(SHT_rv) &
@@ -406,19 +406,19 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_num_offset(num, offset) &
                 result(SHT_rv) &
@@ -433,24 +433,24 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_num_offset_stride(num, offset, &
                 stride) &
@@ -467,19 +467,19 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_3(type, num) &
                 result(SHT_rv) &
@@ -494,24 +494,24 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_4(type, num, offset) &
                 result(SHT_rv) &
@@ -527,29 +527,29 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function c_use_default_overload_5(type, num, offset, stride) &
                 result(SHT_rv) &
@@ -566,14 +566,14 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  TypeID typefunc
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  TypeID arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function typefunc(arg) &
                 result(SHT_rv) &
@@ -587,14 +587,14 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  EnumTypeID enumfunc
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  EnumTypeID arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function enumfunc(arg) &
                 result(SHT_rv) &
@@ -608,14 +608,14 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Color arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     interface
         function colorfunc(arg) &
                 result(SHT_rv) &
@@ -633,14 +633,14 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_&_out
     ! Match:     c_default
-    !    metaattrs:  +intent(out)
     ! ----------------------------------------
     ! Argument:  int & max +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_&_out
     ! Match:     c_default
-    !    metaattrs:  +intent(out)
     ! start get_min_max
     interface
         subroutine get_min_max(min, max) &
@@ -655,19 +655,19 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int callback1
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int in +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int ( * incr)(int +value) +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    !    metaattrs:  +intent(in)
     ! start callback1
     interface
         function callback1(in, incr) &
@@ -685,7 +685,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)+intent(result)
+    ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
@@ -703,8 +703,8 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
+    ! Attrs:     +intent(out)
     ! Exact:     c_string_&_result_buf
-    !    metaattrs:  +intent(out)
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="TUT_last_function_called_bufferify")
@@ -776,28 +776,31 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings +deref(allocatable)
     ! const std::string ConcatenateStrings +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)+intent(result)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void ConcatenateStrings
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & arg2 +len_trim(Larg2)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_string_*_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -823,9 +826,10 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start use_default_arguments
@@ -843,16 +847,18 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start use_default_arguments_arg1
@@ -870,23 +876,26 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg1=3.1415 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  bool arg2=true +value
+    ! Attrs:     +intent(in)
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     ! start use_default_arguments_arg1_arg2
@@ -914,10 +923,11 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
@@ -937,9 +947,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int indx +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine overloaded_function_from_index(indx)
@@ -960,9 +971,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine template_argument_int(arg)
@@ -983,9 +995,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine template_argument_double(arg)
@@ -1000,9 +1013,10 @@ contains
     ! ----------------------------------------
     ! Function:  int TemplateReturn
     ! int TemplateReturn
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function template_return_int() &
@@ -1018,9 +1032,10 @@ contains
     ! ----------------------------------------
     ! Function:  double TemplateReturn
     ! double TemplateReturn
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function template_return_double() &
@@ -1055,17 +1070,19 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  float arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     subroutine fortran_generic_overloaded_1_float(name, arg2)
@@ -1088,16 +1105,18 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     subroutine fortran_generic_overloaded_1_double(name, arg2)
@@ -1114,16 +1133,18 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_num(num) &
@@ -1140,23 +1161,26 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_num_offset(num, offset) &
@@ -1173,30 +1197,34 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_num_offset_stride(num, offset, stride) &
@@ -1216,23 +1244,26 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_3(type, num) &
@@ -1250,30 +1281,34 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_4(type, num, offset) &
@@ -1291,37 +1326,42 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int num +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int offset=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int stride=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function use_default_overload_5(type, num, offset, stride) &
@@ -1341,16 +1381,17 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)+intent(result)
+    ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
+    ! Attrs:     +intent(out)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Exact:     c_string_&_result_buf
     function last_function_called() &
             result(SHT_rv)

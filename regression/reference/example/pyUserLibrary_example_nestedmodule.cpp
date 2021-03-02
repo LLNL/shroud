@@ -55,10 +55,12 @@ PP_local_function1(
 
 // ----------------------------------------
 // Function:  bool isNameValid
+// Attrs:     +intent(result)
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
 // Argument:  const std::string & name
+// Attrs:     +intent(in)
 // Exact:     py_string_&_in
 static char PP_isNameValid__doc__[] =
 "documentation"
@@ -100,6 +102,7 @@ fail:
 
 // ----------------------------------------
 // Function:  bool isInitialized
+// Attrs:     +intent(result)
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 static char PP_isInitialized__doc__[] =
@@ -134,6 +137,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
+// Attrs:     +intent(in)
 // Exact:     py_string_&_in
 static PyObject *
 PP_test_names(
@@ -164,9 +168,11 @@ PP_test_names(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
+// Attrs:     +intent(in)
 // Exact:     py_string_&_in
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -200,10 +206,12 @@ PP_test_names_flag(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int i=1 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long j=2 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_testoptional_2__doc__[] =
@@ -250,6 +258,7 @@ PP_testoptional_2(
 
 // ----------------------------------------
 // Function:  size_t test_size_t
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PP_test_size_t__doc__[] =
@@ -279,6 +288,7 @@ PP_test_size_t(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
+// Attrs:     +intent(in)
 // Requested: py_unknown_scalar_in
 // Match:     py_default
 #ifdef HAVE_MPI
@@ -468,33 +478,43 @@ PP_FuncPtr5(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname2 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname3 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname4 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname5 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname6 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname7 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname8 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname9 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * verylongname10 +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_native_*_inout
 static char PP_verylongfunctionname1__doc__[] =
 "documentation"
@@ -555,46 +575,57 @@ PP_verylongfunctionname1(
 
 // ----------------------------------------
 // Function:  int verylongfunctionname2
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname1 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname2 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname3 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname4 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname5 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname6 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname7 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname8 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname9 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int verylongname10 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_verylongfunctionname2__doc__[] =
@@ -657,9 +688,11 @@ PP_verylongfunctionname2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)
+// Attrs:     +intent(in)
 // Exact:     py_native_*_in_pointer_numpy
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
 // Exact:     py_native_*_out_allocatable_numpy
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value

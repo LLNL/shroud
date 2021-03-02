@@ -71,7 +71,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_vector_int_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -100,9 +100,9 @@ module templates_std_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const int & value +intent(in)
+        ! Attrs:     +intent(in)
         ! Requested: c_native_&_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         subroutine c_vector_int_push_back(self, value) &
                 bind(C, name="TEM_vector_int_push_back")
             use iso_c_binding, only : C_INT
@@ -114,14 +114,14 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at +deref(pointer)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function c_vector_int_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_int_at")
@@ -138,7 +138,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_vector_double_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -167,9 +167,9 @@ module templates_std_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const double & value +intent(in)
+        ! Attrs:     +intent(in)
         ! Requested: c_native_&_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         subroutine c_vector_double_push_back(self, value) &
                 bind(C, name="TEM_vector_double_push_back")
             use iso_c_binding, only : C_DOUBLE
@@ -181,14 +181,14 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at +deref(pointer)
-        !    metaattrs:  +deref(pointer)+intent(result)
+        ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function c_vector_double_at(self, n) &
                 result(SHT_rv) &
                 bind(C, name="TEM_vector_double_at")
@@ -220,8 +220,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! vector
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     function vector_int_ctor() &
             result(SHT_rv)
@@ -256,9 +257,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const int & value +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_native_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_&_in
     ! Match:     c_default
     subroutine vector_int_push_back(obj, value)
@@ -274,16 +276,18 @@ contains
     ! ----------------------------------------
     ! Function:  int & at +deref(pointer)
     ! int & at +deref(pointer)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_type n +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function vector_int_at(obj, n) &
@@ -328,8 +332,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! vector
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     function vector_double_ctor() &
             result(SHT_rv)
@@ -364,9 +369,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const double & value +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_native_&_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_&_in
     ! Match:     c_default
     subroutine vector_double_push_back(obj, value)
@@ -382,16 +388,18 @@ contains
     ! ----------------------------------------
     ! Function:  double & at +deref(pointer)
     ! double & at +deref(pointer)
-    !    metaattrs:  +deref(pointer)+intent(result)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_type n +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function vector_double_at(obj, n) &

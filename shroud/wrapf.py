@@ -1119,9 +1119,8 @@ rv = .false.
                 "! ----------------------------------------")
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + c_decl)
-            self.document_metaattrs(stmts_comments, ast)
             self.document_stmts(
-                stmts_comments, statements.compute_name(c_stmts),
+                stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
 
         if c_result_blk.return_type:
@@ -1176,9 +1175,8 @@ rv = .false.
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, statements.compute_name(c_stmts),
+                    stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
-                self.document_metaattrs(stmts_comments, arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1619,14 +1617,13 @@ rv = .false.
             f_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + f_decl)
             stmts_comments.append("! " + f_decl)
-            self.document_metaattrs(stmts_comments, ast)
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, fmt_result.stmtc0, fmt_result.stmtc1)
+                stmts_comments, C_node.ast, fmt_result.stmtc0, fmt_result.stmtc1)
 
         if f_result_blk.result:
             # Change a subroutine into function.
@@ -1827,13 +1824,12 @@ rv = .false.
                 f_decl = f_arg.gen_decl()
                 stmts_comments.append("! Argument:  " + f_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
-                self.document_metaattrs(stmts_comments, f_arg)
+                    stmts_comments, f_arg, fmt_arg.stmt0, fmt_arg.stmt1)
                 c_decl = c_arg.gen_decl()
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmtc0, fmt_arg.stmtc1)
+                    stmts_comments, c_arg, fmt_arg.stmtc0, fmt_arg.stmtc1)
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 

@@ -36,6 +36,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(result)
 // Requested: py_native_*_result_scalar
 // Match:     py_default
 static char PY_ReturnIntPtrScalar__doc__[] =
@@ -62,6 +63,7 @@ PY_ReturnIntPtrScalar(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_ReturnIntPtrPointer__doc__[] =
 "documentation"
@@ -92,9 +94,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimPointer__doc__[] =
 "documentation"
@@ -128,9 +132,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimAlloc__doc__[] =
 "documentation"
@@ -164,9 +170,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimDefault__doc__[] =
 "documentation"
@@ -200,9 +208,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimPointerNew__doc__[] =
 "documentation"
@@ -236,9 +246,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_native_*_result_allocatable_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimAllocNew__doc__[] =
 "documentation"
@@ -272,9 +284,11 @@ fail:
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_native_*_out
 static char PY_ReturnIntPtrDimDefaultNew__doc__[] =
 "documentation"
@@ -311,6 +325,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_createClassStatic__doc__[] =
@@ -340,6 +355,7 @@ PY_createClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
+// Attrs:     +intent(result)
 // Exact:     py_shadow_*_result
 static char PY_getClassStatic__doc__[] =
 "documentation"
@@ -364,9 +380,11 @@ PY_getClassStatic(
 
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
+// Attrs:     +intent(result)
 // Exact:     py_shadow_*_result
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_getClassNew__doc__[] =

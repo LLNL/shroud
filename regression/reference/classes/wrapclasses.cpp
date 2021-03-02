@@ -43,14 +43,14 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 int CLA_direction_func(int arg)
 {
     // splicer begin function.direction_func
@@ -73,8 +73,8 @@ int CLA_direction_func(int arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Class1 arg +value
+// Attrs:     +intent(in)
 // Exact:     c_shadow_scalar_in
-//    metaattrs:  +intent(in)
 void CLA_pass_class_by_value(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value
@@ -86,14 +86,14 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
 
 // ----------------------------------------
 // Function:  int useclass
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Class1 * arg
+// Attrs:     +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
-//    metaattrs:  +intent(in)
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
@@ -106,9 +106,9 @@ int CLA_useclass(CLA_Class1 * arg)
 
 // ----------------------------------------
 // Function:  const Class1 * getclass2
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass2
@@ -121,9 +121,9 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass3
@@ -136,9 +136,9 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  const Class1 & getConstClassReference
+// Attrs:     +intent(result)
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_const_class_reference
@@ -152,9 +152,9 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
+// Attrs:     +intent(result)
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
-//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_reference
@@ -171,13 +171,13 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
  */
 // ----------------------------------------
 // Function:  Class1 getClassCopy
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_result
-//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_copy
@@ -195,9 +195,9 @@ CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag
@@ -207,9 +207,9 @@ void CLA_set_global_flag(int arg)
 
 // ----------------------------------------
 // Function:  int get_global_flag
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
-//    metaattrs:  +intent(result)
 int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag
@@ -220,8 +220,8 @@ int CLA_get_global_flag(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
-//    metaattrs:  +deref(result-as-arg)+intent(result)
 const char * CLA_last_function_called(void)
 {
     // splicer begin function.last_function_called
@@ -237,8 +237,8 @@ const char * CLA_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +len(NSHF_rv)
+// Attrs:     +intent(out)
 // Exact:     c_string_&_result_buf
-//    metaattrs:  +intent(out)
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

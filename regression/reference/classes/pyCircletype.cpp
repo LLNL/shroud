@@ -39,6 +39,7 @@ PY_Circle_tp_del (PY_Circle *self)
 
 // ----------------------------------------
 // Function:  Circle
+// Attrs:     +intent(result)
 // Exact:     py_default
 static int
 PY_Circle_tp_init(

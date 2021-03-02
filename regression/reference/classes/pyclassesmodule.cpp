@@ -33,10 +33,12 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
@@ -79,6 +81,7 @@ PY_directionFunc(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class1 arg +value
+// Attrs:     +intent(in)
 // Exact:     py_shadow_scalar_in
 static char PY_passClassByValue__doc__[] =
 "documentation"
@@ -114,10 +117,12 @@ PY_passClassByValue(
 
 // ----------------------------------------
 // Function:  int useclass
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Class1 * arg
+// Attrs:     +intent(in)
 // Exact:     py_shadow_*_in
 static char PY_useclass__doc__[] =
 "documentation"
@@ -154,6 +159,7 @@ PY_useclass(
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
+// Attrs:     +intent(result)
 // Exact:     py_shadow_*_result
 static char PY_getclass3__doc__[] =
 "documentation"
@@ -178,6 +184,7 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
+// Attrs:     +intent(result)
 // Exact:     py_shadow_&_result
 static char PY_getClassReference__doc__[] =
 "documentation"
@@ -205,6 +212,7 @@ PY_getClassReference(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_set_global_flag__doc__[] =
@@ -234,6 +242,7 @@ PY_set_global_flag(
 
 // ----------------------------------------
 // Function:  int get_global_flag
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_get_global_flag__doc__[] =
@@ -260,6 +269,7 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"

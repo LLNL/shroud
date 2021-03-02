@@ -41,10 +41,12 @@ PyObject *PY_init_templates_internal(void);
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long arg2 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -79,10 +81,12 @@ PY_FunctionTU_0(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float arg1 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg2 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -114,6 +118,7 @@ PY_FunctionTU_1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker1__doc__[] =
@@ -144,6 +149,7 @@ PY_UseImplWorker_internal_ImplWorker1(
 
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 static char PY_UseImplWorker_internal_ImplWorker2__doc__[] =

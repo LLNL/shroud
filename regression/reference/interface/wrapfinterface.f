@@ -33,19 +33,19 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  int arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function function2(arg1, arg2) &
                 result(SHT_rv) &
                 bind(C, name="Function2")

@@ -40,9 +40,9 @@ int STR_Cstruct_as_class_get_x1(STR_Cstruct_as_class * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // start STR_Cstruct_as_class_set_x1
 void STR_Cstruct_as_class_set_x1(STR_Cstruct_as_class * self, int val)
 {
@@ -76,9 +76,9 @@ int STR_Cstruct_as_class_get_y1(STR_Cstruct_as_class * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-//    metaattrs:  +intent(in)
 // start STR_Cstruct_as_class_set_y1
 void STR_Cstruct_as_class_set_y1(STR_Cstruct_as_class * self, int val)
 {

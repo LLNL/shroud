@@ -82,6 +82,7 @@ PY_method2(
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int i=0 +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 #if defined(USE_THREE)

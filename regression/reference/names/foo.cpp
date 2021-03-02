@@ -19,8 +19,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_ctor
-//    metaattrs:  +intent(result)
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHadow_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor

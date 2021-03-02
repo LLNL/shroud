@@ -52,10 +52,12 @@ PY_Cstruct_ptr_tp_del (PY_Cstruct_ptr *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * cfield
+// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05b9a90>)
 // Requested: py_ctor_char_*_numpy
 // Match:     py_ctor_char_*
 // ----------------------------------------
 // Argument:  const double * const_dvalue
+// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05a9ef0>)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 static int

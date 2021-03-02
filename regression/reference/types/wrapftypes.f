@@ -24,14 +24,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  short arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function short_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_func")
@@ -43,14 +43,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int_func")
@@ -62,14 +62,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_func")
@@ -81,14 +81,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long long arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function long_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_func")
@@ -100,14 +100,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  short int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function short_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_short_int_func")
@@ -119,14 +119,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_int_func")
@@ -138,14 +138,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  long long int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function long_long_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_long_long_int_func")
@@ -157,14 +157,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function unsigned_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_unsigned_func")
@@ -176,14 +176,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned short arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function ushort_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ushort_func")
@@ -195,14 +195,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function uint_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint_func")
@@ -214,14 +214,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function ulong_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_func")
@@ -233,14 +233,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long long arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function ulong_long_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_long_func")
@@ -252,14 +252,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  unsigned long int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function ulong_int_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_ulong_int_func")
@@ -271,14 +271,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int8_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function int8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int8_func")
@@ -290,14 +290,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int16_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function int16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int16_func")
@@ -309,14 +309,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int32_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function int32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int32_func")
@@ -328,14 +328,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int64_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function int64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_int64_func")
@@ -347,14 +347,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint8_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function uint8_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint8_func")
@@ -366,14 +366,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint16_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function uint16_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint16_func")
@@ -385,14 +385,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint32_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function uint32_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint32_func")
@@ -404,14 +404,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  uint64_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function uint64_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_uint64_func")
@@ -423,14 +423,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_t arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function size_func(arg1) &
                 result(SHT_rv) &
                 bind(C, name="TYP_size_func")
@@ -442,14 +442,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  bool arg +value
+        ! Attrs:     +intent(in)
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
-        !    metaattrs:  +intent(in)
         function c_bool_func(arg) &
                 result(SHT_rv) &
                 bind(C, name="TYP_bool_func")
@@ -461,14 +461,14 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
-        !    metaattrs:  +intent(result)
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * flag +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        !    metaattrs:  +intent(out)
         function c_return_bool_and_others(flag) &
                 result(SHT_rv) &
                 bind(C, name="TYP_return_bool_and_others")
@@ -487,16 +487,18 @@ contains
     ! ----------------------------------------
     ! Function:  bool bool_func
     ! bool bool_func
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  bool arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
-    !    metaattrs:  +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     function bool_func(arg) &
@@ -514,16 +516,18 @@ contains
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
     ! bool returnBoolAndOthers
-    !    metaattrs:  +intent(result)
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    !    metaattrs:  +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>

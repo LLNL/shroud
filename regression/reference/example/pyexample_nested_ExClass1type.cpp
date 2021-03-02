@@ -55,6 +55,7 @@ PP_ExClass1_tp_richcompare (PP_ExClass1 *self, PyObject *other, int opid)
 
 // ----------------------------------------
 // Function:  ExClass1
+// Attrs:     +intent(result)
 // Exact:     py_default
 static int
 PP_ExClass1_tp_init_0(
@@ -75,9 +76,11 @@ PP_ExClass1_tp_init_0(
 
 // ----------------------------------------
 // Function:  ExClass1
+// Attrs:     +intent(result)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const string * name
+// Attrs:     +intent(in)
 // Exact:     py_string_*_in
 /**
  * \brief constructor
@@ -118,10 +121,12 @@ PP_ExClass1_tp_init_1(
 
 // ----------------------------------------
 // Function:  int incrementCount
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int incr +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_incrementCount__doc__[] =
@@ -156,6 +161,7 @@ PP_incrementCount(
 
 // ----------------------------------------
 // Function:  const string & getNameErrorCheck +deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getNameErrorCheck__doc__[] =
 "documentation"
@@ -182,6 +188,7 @@ PP_getNameErrorCheck(
 
 // ----------------------------------------
 // Function:  const string & getNameArg +deref(result-as-arg)
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getNameArg__doc__[] =
 "documentation"
@@ -208,10 +215,12 @@ PP_getNameArg(
 
 // ----------------------------------------
 // Function:  int getValue
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -242,10 +251,12 @@ PP_getValue_from_int(
 
 // ----------------------------------------
 // Function:  long getValue
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
 // Argument:  long value +value
+// Attrs:     +intent(in)
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -276,10 +287,12 @@ PP_getValue_1(
 
 // ----------------------------------------
 // Function:  bool hasAddr
+// Attrs:     +intent(result)
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
 // Argument:  bool in +value
+// Attrs:     +intent(in)
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 static char PP_hasAddr__doc__[] =
