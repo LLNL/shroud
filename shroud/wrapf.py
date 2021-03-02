@@ -1153,10 +1153,11 @@ rv = .false.
             fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs
+            meta = arg.metaattrs
             intent = attrs["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
-            deref_attr = attrs["deref"]
+            deref_attr = meta["deref"]
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = arg.get_indirect_stmt()
@@ -1220,7 +1221,7 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            return_deref_attr = ast.attrs["deref"]
+            return_deref_attr = ast.metaattrs["deref"]
             if c_result_blk.f_result_decl:
                 for arg in c_result_blk.f_result_decl:
                     arg_c_decl.append(arg.format(c_var=fmt_func.F_result))
@@ -1586,7 +1587,7 @@ rv = .false.
                                 modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
-            return_deref_attr = ast.attrs["deref"]
+            return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
@@ -1681,6 +1682,7 @@ rv = .false.
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
             c_attrs = c_arg.attrs
+            c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
             intent = c_attrs["intent"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
@@ -1712,13 +1714,14 @@ rv = .false.
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
+            f_meta = f_arg.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
-            c_deref_attr = c_attrs["deref"]
+            c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
-            f_deref_attr = f_attrs["deref"]
+            f_deref_attr = f_meta["deref"]
             if c_attrs["_is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
@@ -1893,7 +1896,7 @@ rv = .false.
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        return_deref_attr = ast.attrs["deref"]
+        return_deref_attr = ast.metaattrs["deref"]
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '

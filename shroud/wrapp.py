@@ -1264,6 +1264,7 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
+            meta = arg.metaattrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
@@ -1294,7 +1295,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = attrs["deref"] or "pointer"
+            deref = meta["deref"] or "pointer"
             if intent_blk is not None:
                 pass
             elif arg.is_function_pointer():
@@ -1937,6 +1938,7 @@ return 1;""",
         options = node.options
         ast = node.ast
         attrs = ast.attrs
+        meta = ast.metaattrs
         is_ctor = ast.is_ctor()
         result_typemap = ast.typemap
 
@@ -1993,7 +1995,7 @@ return 1;""",
             spointer = ast.get_indirect_stmt()
             stmts = ["py", sgroup, spointer, "result"]
             if spointer != "scalar":
-                deref = attrs["deref"] or "pointer"
+                deref = meta["deref"] or "pointer"
                 stmts.append(deref)
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)

@@ -1001,6 +1001,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
             c_attrs = arg.attrs
+            c_meta = arg.metaattrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
@@ -1034,7 +1035,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                return_deref_attr = c_attrs["deref"]
+                return_deref_attr = c_meta["deref"]
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", sgroup, spointer, "result",
@@ -1160,7 +1161,7 @@ class Wrapc(util.WrapperMixin):
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
-        return_deref_attr = ast.attrs["deref"]
+        return_deref_attr = ast.metaattrs["deref"]
         if result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
