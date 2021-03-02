@@ -1154,7 +1154,7 @@ rv = .false.
 
             attrs = arg.attrs
             meta = arg.metaattrs
-            intent = meta["intent"] or "inout"
+            intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
             deref_attr = meta["deref"]
