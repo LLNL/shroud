@@ -72,7 +72,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -89,7 +88,6 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -116,7 +114,7 @@
                             ]
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                        "declgen": "void nested(T arg1 +value, U arg2 +value)",
                         "fmtdict": {
                             "function_name": "nested",
                             "underscore_name": "nested"
@@ -258,7 +256,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -275,7 +272,6 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -297,7 +293,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                        "declgen": "void nested(int arg1 +value, double arg2 +value)",
                         "fmtdict": {
                             "CXX_template": "<double>",
                             "C_call_list": "arg1,\t arg2",
@@ -406,7 +402,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -423,7 +418,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -451,7 +445,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -620,7 +614,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -637,7 +630,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -659,7 +651,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -853,7 +845,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -870,7 +861,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -892,7 +882,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -1670,7 +1660,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -1692,7 +1681,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -1823,7 +1812,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -1845,7 +1833,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +intent(in)+value)",
+                                "declgen": "int & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
@@ -2297,7 +2285,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -2319,7 +2306,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -2450,7 +2437,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -2472,7 +2458,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +intent(in)+value)",
+                                "declgen": "double & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",

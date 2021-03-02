@@ -118,7 +118,7 @@ module templates_std_mod
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  size_type n +intent(in)+value
+        ! Argument:  size_type n +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -185,7 +185,7 @@ module templates_std_mod
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  size_type n +intent(in)+value
+        ! Argument:  size_type n +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -280,7 +280,7 @@ contains
     ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  size_type n +intent(in)+value
+    ! Argument:  size_type n +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -388,7 +388,7 @@ contains
     ! Requested: c_native_&_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  size_type n +intent(in)+value
+    ! Argument:  size_type n +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)

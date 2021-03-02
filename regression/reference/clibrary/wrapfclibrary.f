@@ -88,12 +88,12 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1 +intent(in)+value
+    ! Argument:  double arg1 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int arg2 +intent(in)+value
+    ! Argument:  int arg2 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -143,7 +143,7 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg2 +intent(in)+value
+    ! Argument:  int arg2 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -163,7 +163,7 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const bool arg1 +intent(in)+value
+    ! Argument:  const bool arg1 +value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -195,12 +195,12 @@ module clibrary_mod
     !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Exact:     c_char_*_result
     ! ----------------------------------------
-    ! Argument:  const char * arg1 +intent(in)
+    ! Argument:  const char * arg1
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  const char * arg2 +intent(in)
+    ! Argument:  const char * arg2
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -221,17 +221,17 @@ module clibrary_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * arg1 +intent(in)
+    ! Argument:  const char * arg1
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  const char * arg2 +intent(in)
+    ! Argument:  const char * arg2
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  char * SHF_rv +len(NSHF_rv)
     ! Exact:     c_char_*_result_buf
     !    metaattrs:  +intent(out)
     interface
@@ -251,7 +251,7 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * name +intent(in)
+    ! Argument:  const char * name
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -402,7 +402,7 @@ module clibrary_mod
     ! Match:     c_default
     !    metaattrs:  +intent(out)
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+intent(in)+value
+    ! Argument:  int ltext +implied(len(text))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -427,7 +427,7 @@ module clibrary_mod
     ! Exact:     c_char_*_out_buf
     !    metaattrs:  +intent(out)
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+intent(in)+value
+    ! Argument:  int ltext +implied(len(text))+value
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -450,17 +450,17 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * text +intent(in)
+    ! Argument:  const char * text
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len(text))+intent(in)+value
+    ! Argument:  int ltext +implied(len(text))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(false)+intent(in)+value
+    ! Argument:  bool flag +implied(false)+value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -483,17 +483,17 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * text +intent(in)
+    ! Argument:  const char * text
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int ltext +implied(len_trim(text))+intent(in)+value
+    ! Argument:  int ltext +implied(len_trim(text))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(true)+intent(in)+value
+    ! Argument:  bool flag +implied(true)+value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -516,7 +516,7 @@ module clibrary_mod
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(true)+intent(in)+value
+    ! Argument:  bool flag +implied(true)+value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -537,7 +537,7 @@ module clibrary_mod
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool flag +implied(false)+intent(in)+value
+    ! Argument:  bool flag +implied(false)+value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -631,7 +631,7 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype+intent(in)
+    ! Argument:  void * arg +assumedtype
     ! Requested: c_void_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -653,7 +653,7 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype+intent(in)+rank(1)
+    ! Argument:  void * arg +assumedtype+rank(1)
     ! Requested: c_void_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -673,7 +673,7 @@ module clibrary_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype+intent(in)
+    ! Argument:  void * arg +assumedtype
     ! Requested: c_void_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -700,7 +700,7 @@ module clibrary_mod
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * arg +assumedtype+intent(in)
+    ! Argument:  void * arg +assumedtype
     ! Requested: c_void_*_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -726,12 +726,12 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(void) +external+intent(in)+value
+    ! Argument:  void ( * incr)(void) +external+value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -753,12 +753,12 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(void) +external+intent(in)+value
+    ! Argument:  void ( * incr)(void) +external+value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -780,17 +780,17 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void * in +assumedtype+intent(in)
+    ! Argument:  void * in +assumedtype
     ! Requested: c_void_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+intent(in)+value
+    ! Argument:  void ( * incr)(int *) +external+value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -811,17 +811,17 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * type +intent(in)
+    ! Argument:  const char * type
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void * in +assumedtype+intent(in)
+    ! Argument:  void * in +assumedtype
     ! Requested: c_void_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+intent(in)+value
+    ! Argument:  void ( * incr)(int *) +external+value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -848,17 +848,17 @@ module clibrary_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * type +intent(in)
+    ! Argument:  const char * type
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void * in +assumedtype+intent(in)
+    ! Argument:  void * in +assumedtype
     ! Requested: c_void_*_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  void ( * incr)(int *) +external+intent(in)+value
+    ! Argument:  void ( * incr)(int *) +external+value
     ! Requested: c_void_scalar_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -886,7 +886,7 @@ module clibrary_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int tc +intent(in)+value
+    ! Argument:  int tc +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -896,7 +896,7 @@ module clibrary_mod
     ! Match:     c_struct
     !    metaattrs:  +intent(inout)
     ! ----------------------------------------
-    ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value
+    ! Argument:  void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value
     ! Requested: c_void_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -927,7 +927,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const bool arg1 +intent(in)+value
+    ! Argument:  const bool arg1 +value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     !    metaattrs:  +intent(in)
@@ -980,7 +980,7 @@ contains
     ! Function:  void Function4a +len(30)
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  char * SHF_rv +len(NSHF_rv)
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
     !    metaattrs:  +intent(out)
@@ -1322,7 +1322,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1351,7 +1351,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1381,7 +1381,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)

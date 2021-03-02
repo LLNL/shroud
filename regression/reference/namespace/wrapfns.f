@@ -87,7 +87,7 @@ module ns_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+        ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
         ! Exact:     c_string_&_result_buf_allocatable
         !    metaattrs:  +deref(allocatable)+intent(out)
         subroutine c_last_function_called_bufferify(DSHF_rv) &
@@ -137,7 +137,7 @@ contains
     ! Function:  void LastFunctionCalled
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     f_string_&_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable

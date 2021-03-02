@@ -45,7 +45,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 // Function:  void getName
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Exact:     py_char_*_inout
 static char PY_getName__doc__[] =
 "documentation"
@@ -118,7 +118,7 @@ PY_function2(
 // Function:  void function3a
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -146,7 +146,7 @@ PY_function3a_0(
 // Function:  void function3a
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  long i +intent(in)+value
+// Argument:  long i +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -175,7 +175,7 @@ PY_function3a_1(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const std::string & rv +intent(in)
+// Argument:  const std::string & rv
 // Exact:     py_string_&_in
 static char PY_function4__doc__[] =
 "documentation"
@@ -233,7 +233,7 @@ PY_fiveplus(
 // Function:  void TestMultilineSplicer
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)
+// Argument:  std::string & name
 // Exact:     py_string_&_inout
 // ----------------------------------------
 // Argument:  int * value +intent(out)
@@ -261,11 +261,11 @@ PY_TestMultilineSplicer(
 // Function:  void FunctionTU
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int arg1 +intent(in)+value
+// Argument:  int arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  long arg2 +intent(in)+value
+// Argument:  long arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -299,11 +299,11 @@ PY_name_instantiation1(
 // Function:  void FunctionTU
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  float arg1 +intent(in)+value
+// Argument:  float arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -368,7 +368,7 @@ PY_UseImplWorker_instantiation3(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Argument:  const Cstruct_as_class * point +pass
 // Exact:     py_shadow_*_in
 static char PY_Cstruct_as_class_sum__doc__[] =
 "documentation"

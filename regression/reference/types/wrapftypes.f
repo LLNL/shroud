@@ -28,7 +28,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  short arg1 +intent(in)+value
+        ! Argument:  short arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -47,7 +47,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int arg1 +intent(in)+value
+        ! Argument:  int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -66,7 +66,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long arg1 +intent(in)+value
+        ! Argument:  long arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -85,7 +85,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long long arg1 +intent(in)+value
+        ! Argument:  long long arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -104,7 +104,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  short int arg1 +intent(in)+value
+        ! Argument:  short int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -123,7 +123,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long int arg1 +intent(in)+value
+        ! Argument:  long int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -142,7 +142,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long long int arg1 +intent(in)+value
+        ! Argument:  long long int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -161,7 +161,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned arg1 +intent(in)+value
+        ! Argument:  unsigned arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -180,7 +180,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned short arg1 +intent(in)+value
+        ! Argument:  unsigned short arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -199,7 +199,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned int arg1 +intent(in)+value
+        ! Argument:  unsigned int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -218,7 +218,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned long arg1 +intent(in)+value
+        ! Argument:  unsigned long arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -237,7 +237,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned long long arg1 +intent(in)+value
+        ! Argument:  unsigned long long arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -256,7 +256,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  unsigned long int arg1 +intent(in)+value
+        ! Argument:  unsigned long int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -275,7 +275,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int8_t arg1 +intent(in)+value
+        ! Argument:  int8_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -294,7 +294,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int16_t arg1 +intent(in)+value
+        ! Argument:  int16_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -313,7 +313,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int32_t arg1 +intent(in)+value
+        ! Argument:  int32_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -332,7 +332,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int64_t arg1 +intent(in)+value
+        ! Argument:  int64_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -351,7 +351,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  uint8_t arg1 +intent(in)+value
+        ! Argument:  uint8_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -370,7 +370,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  uint16_t arg1 +intent(in)+value
+        ! Argument:  uint16_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -389,7 +389,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  uint32_t arg1 +intent(in)+value
+        ! Argument:  uint32_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -408,7 +408,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  uint64_t arg1 +intent(in)+value
+        ! Argument:  uint64_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -427,7 +427,7 @@ module types_mod
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  size_t arg1 +intent(in)+value
+        ! Argument:  size_t arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -446,7 +446,7 @@ module types_mod
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  bool arg +intent(in)+value
+        ! Argument:  bool arg +value
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -493,7 +493,7 @@ contains
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool arg +intent(in)+value
+    ! Argument:  bool arg +value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     !    metaattrs:  +intent(in)

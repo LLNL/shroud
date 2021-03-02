@@ -330,7 +330,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -347,7 +346,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -369,7 +367,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
+                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "TUT_pass_by_value",
@@ -533,9 +531,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -554,9 +549,6 @@
                             "typemap_name": "std::string"
                         },
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg2",
@@ -581,7 +573,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)",
+                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2) +deref(allocatable)",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -741,7 +733,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len_trim": "Larg1"
                             },
                             "const": true,
@@ -764,7 +755,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len_trim": "Larg2"
                             },
                             "const": true,
@@ -789,8 +779,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "context": "DSHF_rv",
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -817,7 +806,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "void ConcatenateStrings(const std::string & arg1 +intent(in)+len_trim, const std::string & arg2 +intent(in)+len_trim, const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim, const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable))",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -1000,7 +989,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1023,7 +1011,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +intent(in)+value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -1274,7 +1262,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1292,7 +1279,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1315,7 +1301,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double UseDefaultArguments(double arg1 = 3.1415, bool arg2 = true)",
-                "declgen": "double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)",
+                "declgen": "double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)",
                 "default_arg_suffix": [
                     "",
                     "_arg1",
@@ -1431,9 +1417,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -1458,7 +1441,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name +intent(in))",
+                "declgen": "void OverloadedFunction(const std::string & name)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name",
@@ -1541,7 +1524,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len_trim": "Lname"
                             },
                             "const": true,
@@ -1569,7 +1551,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(const std::string& name)",
-                "declgen": "void OverloadedFunction(const std::string & name +intent(in)+len_trim)",
+                "declgen": "void OverloadedFunction(const std::string & name +len_trim)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name",
                     "C_name": "TUT_overloaded_function_from_name_bufferify",
@@ -1674,7 +1656,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1696,7 +1677,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void OverloadedFunction(int indx)",
-                "declgen": "void OverloadedFunction(int indx +intent(in)+value)",
+                "declgen": "void OverloadedFunction(int indx +value)",
                 "fmtdict": {
                     "C_call_list": "indx",
                     "C_name": "TUT_overloaded_function_from_index",
@@ -1739,7 +1720,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1767,7 +1747,7 @@
                     ]
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(ArgType arg +intent(in)+value)",
+                "declgen": "void TemplateArgument(ArgType arg +value)",
                 "fmtdict": {
                     "function_name": "TemplateArgument",
                     "underscore_name": "template_argument"
@@ -1888,7 +1868,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1910,7 +1889,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(int arg +intent(in)+value)",
+                "declgen": "void TemplateArgument(int arg +value)",
                 "fmtdict": {
                     "CXX_template": "<int>",
                     "C_call_list": "arg",
@@ -2059,7 +2038,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2081,7 +2059,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<typename ArgType>\nvoid TemplateArgument(ArgType arg)\n",
-                "declgen": "void TemplateArgument(double arg +intent(in)+value)",
+                "declgen": "void TemplateArgument(double arg +value)",
                 "fmtdict": {
                     "CXX_template": "<double>",
                     "C_call_list": "arg",
@@ -2610,9 +2588,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -2632,7 +2607,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2654,7 +2628,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1",
@@ -2674,9 +2648,6 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "const": true,
                                 "declarator": {
                                     "name": "name",
@@ -2696,7 +2667,6 @@
                             },
                             {
                                 "attrs": {
-                                    "intent": "in",
                                     "value": true
                                 },
                                 "declarator": {
@@ -2718,9 +2688,6 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "const": true,
                                 "declarator": {
                                     "name": "name",
@@ -2740,7 +2707,6 @@
                             },
                             {
                                 "attrs": {
-                                    "intent": "in",
                                     "value": true
                                 },
                                 "declarator": {
@@ -2779,9 +2745,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -2801,7 +2764,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2823,7 +2785,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), float arg2 +intent(in)+value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, float arg2 +value)",
                 "fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE)",
@@ -2857,9 +2819,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -2879,7 +2838,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2901,7 +2859,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name, double arg2 +value)",
                 "fmtdict": {
                     "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
@@ -3006,7 +2964,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len_trim": "Lname"
                             },
                             "const": true,
@@ -3029,7 +2986,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3052,7 +3008,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
-                "declgen": "void FortranGenericOverloaded(const std::string & name +intent(in)+len_trim, double arg2 +intent(in)+value)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +len_trim, double arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
                     "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
@@ -3071,9 +3027,6 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "const": true,
                                 "declarator": {
                                     "name": "name",
@@ -3093,7 +3046,6 @@
                             },
                             {
                                 "attrs": {
-                                    "intent": "in",
                                     "value": true
                                 },
                                 "declarator": {
@@ -3115,9 +3067,6 @@
                     {
                         "decls": [
                             {
-                                "attrs": {
-                                    "intent": "in"
-                                },
                                 "const": true,
                                 "declarator": {
                                     "name": "name",
@@ -3137,7 +3086,6 @@
                             },
                             {
                                 "attrs": {
-                                    "intent": "in",
                                     "value": true
                                 },
                                 "declarator": {
@@ -3243,7 +3191,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3265,7 +3212,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(int num +value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -3411,7 +3358,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3428,7 +3374,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3451,7 +3396,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -3764,7 +3709,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3781,7 +3725,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3799,7 +3742,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3822,7 +3764,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(int num +value, int offset=0 +value, int stride=1 +value)",
                 "default_arg_suffix": [
                     "_num",
                     "_num_offset",
@@ -3974,7 +3916,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3991,7 +3932,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4013,7 +3953,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(double type +value, int num +value)",
                 "fmtdict": {
                     "C_call_list": "type,\t num",
                     "C_name": "TUT_use_default_overload_3",
@@ -4187,7 +4127,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4204,7 +4143,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4221,7 +4159,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4244,7 +4181,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value)",
                 "fmtdict": {
                     "C_call_list": "type,\t num,\t offset",
                     "C_name": "TUT_use_default_overload_4",
@@ -4618,7 +4555,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4635,7 +4571,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4652,7 +4587,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4670,7 +4604,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4693,7 +4626,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int UseDefaultOverload(double type, int num, int offset = 0, int stride = 1)",
-                "declgen": "int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)",
+                "declgen": "int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)",
                 "fmtdict": {
                     "C_call_list": "type,\t num,\t offset,\t stride",
                     "C_name": "TUT_use_default_overload_5",
@@ -4863,7 +4796,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4885,7 +4817,7 @@
                     "typemap_name": "tutorial::TypeID"
                 },
                 "decl": "TypeID typefunc(TypeID arg)",
-                "declgen": "TypeID typefunc(TypeID arg +intent(in)+value)",
+                "declgen": "TypeID typefunc(TypeID arg +value)",
                 "fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TUT_typefunc",
@@ -5061,7 +4993,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5083,7 +5014,7 @@
                     "typemap_name": "tutorial::EnumTypeID"
                 },
                 "decl": "EnumTypeID enumfunc(EnumTypeID arg)",
-                "declgen": "EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)",
+                "declgen": "EnumTypeID enumfunc(EnumTypeID arg +value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_enumfunc",
@@ -5259,7 +5190,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5281,7 +5211,7 @@
                     "typemap_name": "tutorial::Color"
                 },
                 "decl": "Color colorfunc(Color arg);",
-                "declgen": "Color colorfunc(Color arg +intent(in)+value)",
+                "declgen": "Color colorfunc(Color arg +value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "TUT_colorfunc",
@@ -5619,7 +5549,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5636,7 +5565,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5676,7 +5604,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int callback1(int in, int (*incr)(int));",
-                "declgen": "int callback1(int in +intent(in)+value, int ( * incr)(int +value) +intent(in)+value)",
+                "declgen": "int callback1(int in +value, int ( * incr)(int +value) +value)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -5899,7 +5827,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
                                 "len": "NSHF_rv"
                             },
                             "declarator": {
@@ -5925,7 +5852,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",

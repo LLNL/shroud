@@ -3300,7 +3300,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3322,7 +3321,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void createClassStatic(int flag)",
-                "declgen": "void createClassStatic(int flag +intent(in)+value)",
+                "declgen": "void createClassStatic(int flag +value)",
                 "fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "OWN_create_class_static",
@@ -3579,7 +3578,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3601,7 +3599,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)",
+                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },

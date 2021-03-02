@@ -130,7 +130,7 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Requested: c_char_*_inout
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -146,7 +146,7 @@ module top_module
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Exact:     c_char_*_inout_buf
         !    metaattrs:  +intent(inout)
         subroutine c_get_name_bufferify(name, worktrim, worklen) &
@@ -181,7 +181,7 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int i +intent(in)+value
+        ! Argument:  int i +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -197,7 +197,7 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long i +intent(in)+value
+        ! Argument:  long i +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -214,7 +214,7 @@ module top_module
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & rv +intent(in)
+        ! Argument:  const std::string & rv
         ! Exact:     c_string_&_in
         !    metaattrs:  +intent(in)
         function yyy_tes_function4(rv) &
@@ -232,7 +232,7 @@ module top_module
         ! Requested: c_native_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
+        ! Argument:  const std::string & rv +len_trim(Lrv)
         ! Exact:     c_string_&_in_buf
         !    metaattrs:  +intent(in)
         function yyy_tes_function4_bufferify(rv, Lrv) &
@@ -259,7 +259,7 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(inout)
+        ! Argument:  std::string & name
         ! Exact:     c_string_&_inout
         !    metaattrs:  +intent(inout)
         ! ----------------------------------------
@@ -280,7 +280,7 @@ module top_module
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+        ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
         ! Exact:     c_string_&_inout_buf
         !    metaattrs:  +intent(inout)
         ! ----------------------------------------
@@ -304,12 +304,12 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int arg1 +intent(in)+value
+        ! Argument:  int arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
         ! ----------------------------------------
-        ! Argument:  long arg2 +intent(in)+value
+        ! Argument:  long arg2 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -326,12 +326,12 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  float arg1 +intent(in)+value
+        ! Argument:  float arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
         ! ----------------------------------------
-        ! Argument:  double arg2 +intent(in)+value
+        ! Argument:  double arg2 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -362,7 +362,7 @@ module top_module
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+        ! Argument:  const Cstruct_as_class * point +pass
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         !    metaattrs:  +intent(in)
@@ -531,7 +531,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+    ! Argument:  char * name +len(worklen)+len_trim(worktrim)
     ! Requested: f_char_*_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -579,7 +579,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -601,7 +601,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long i +intent(in)+value
+    ! Argument:  long i +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -625,11 +625,11 @@ contains
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & rv +intent(in)
+    ! Argument:  const std::string & rv
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
+    ! Argument:  const std::string & rv +len_trim(Lrv)
     ! Exact:     c_string_&_in_buf
     function testnames_function4(rv) &
             result(SHT_rv)
@@ -664,11 +664,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & name +intent(inout)
+    ! Argument:  std::string & name
     ! Requested: f_string_&_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
-    ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
     ! Exact:     c_string_&_inout_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
@@ -699,14 +699,14 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg1 +intent(in)+value
+    ! Argument:  int arg1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -734,14 +734,14 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg1 +intent(in)+value
+    ! Argument:  float arg1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -791,7 +791,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Argument:  const Cstruct_as_class * point +pass
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)

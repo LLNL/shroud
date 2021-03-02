@@ -52,7 +52,7 @@ module statement_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+        ! Argument:  string & SHF_rv +len(NSHF_rv)
         ! Exact:     c_string_&_result_buf
         !    metaattrs:  +intent(out)
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
@@ -79,7 +79,7 @@ contains
     ! Function:  void getNameErrorPattern +len(get_name_length())
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  string & SHF_rv +len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
     !    metaattrs:  +intent(out)

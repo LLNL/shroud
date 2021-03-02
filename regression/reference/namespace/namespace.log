@@ -7,7 +7,7 @@ Close wrapns_outer.h
 Close wrapns_outer.cpp
 class ClassWork
 C function const std::string & LastFunctionCalled(void) +deref(allocatable)
-C function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
 C function void One(void)
 Close wrapns.h
 Close wrapns.cpp
@@ -15,7 +15,7 @@ Close typesns.h
 Fortran const std::string & LastFunctionCalled(void) +deref(allocatable)
 Fortran void One(void)
 C-interface const std::string & LastFunctionCalled(void) +deref(allocatable)
-C-interface void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C-interface void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
 C-interface void One(void)
 class Cstruct1
 Fortran void One(void)
@@ -25,7 +25,7 @@ class ClassWork
 Close wrapfns.f
 Close utilns.cpp
 class Cstruct1
-Python method Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)
+Python method Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)
 Close pyouter_Cstruct1type.cpp
 Python function void One(void)
 Close pyns_outermodule.cpp

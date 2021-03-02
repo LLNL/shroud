@@ -117,7 +117,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     c_char_scalar_in
 //    metaattrs:  +intent(in)
 void STR_pass_char(char status)
@@ -136,7 +136,7 @@ void STR_pass_char(char status)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     c_char_scalar_in
 //    metaattrs:  +intent(in)
 void STR_pass_char_force(char status)
@@ -171,7 +171,7 @@ char STR_return_char(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  char * SHF_rv +len(NSHF_rv)
 // Exact:     c_char_scalar_result_buf
 //    metaattrs:  +intent(out)
 void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
@@ -200,7 +200,7 @@ void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Match:     c_default
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)
+// Argument:  const char * src
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -229,7 +229,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Exact:     c_char_*_out_buf
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)
+// Argument:  const char * src
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -317,7 +317,7 @@ const char * STR_get_char_ptr1(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_char_*_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 // start STR_get_char_ptr1_bufferify
@@ -363,7 +363,7 @@ const char * STR_get_char_ptr2(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  char * SHF_rv +len(NSHF_rv)
 // Exact:     c_char_*_result_buf
 //    metaattrs:  +intent(out)
 // start STR_get_char_ptr2_bufferify
@@ -403,7 +403,7 @@ const char * STR_get_char_ptr3(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * output +intent(out)+len(Noutput)
+// Argument:  char * output +len(Noutput)
 // Exact:     c_char_*_result_buf
 //    metaattrs:  +intent(out)
 // start STR_get_char_ptr3_bufferify
@@ -441,7 +441,7 @@ const char * STR_get_char_ptr4(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_scalar_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -462,7 +462,7 @@ void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  string * SHF_rv +len(NSHF_rv)
 // Exact:     c_string_scalar_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
@@ -487,7 +487,7 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * output +intent(out)+len(Noutput)
+// Argument:  string * output +len(Noutput)
 // Exact:     c_string_scalar_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
@@ -508,7 +508,7 @@ void STR_get_const_string_as_arg_bufferify(char * output, int Noutput)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_scalar_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -548,7 +548,7 @@ const char * STR_get_const_string_ref_pure(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_&_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 // start STR_get_const_string_ref_pure_bufferify
@@ -598,7 +598,7 @@ const char * STR_get_const_string_ref_len(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  string & SHF_rv +len(NSHF_rv)
 // Exact:     c_string_&_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_len_bufferify(char * SHF_rv, int NSHF_rv)
@@ -649,7 +649,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & output +intent(out)+len(Noutput)
+// Argument:  string & output +len(Noutput)
 // Exact:     c_string_&_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_as_arg_bufferify(char * output,
@@ -697,7 +697,7 @@ const char * STR_get_const_string_ref_len_empty(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  string & SHF_rv +len(NSHF_rv)
 // Exact:     c_string_&_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
@@ -732,7 +732,7 @@ const char * STR_get_const_string_ref_alloc(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_&_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ref_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -777,7 +777,7 @@ const char * STR_get_const_string_ptr_len(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  string * SHF_rv +len(NSHF_rv)
 // Exact:     c_string_*_result_buf
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv)
@@ -815,7 +815,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library)
 // Exact:     c_string_*_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
@@ -858,7 +858,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(caller)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(caller)
 // Exact:     c_string_*_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_owns_alloc_bufferify(
@@ -894,7 +894,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // Exact:     c_string_*_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
@@ -918,7 +918,7 @@ void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)
+// Argument:  const std::string & arg1
 // Exact:     c_string_&_in
 //    metaattrs:  +intent(in)
 void STR_accept_string_const_reference(const char * arg1)
@@ -941,7 +941,7 @@ void STR_accept_string_const_reference(const char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
+// Argument:  const std::string & arg1 +len_trim(Larg1)
 // Exact:     c_string_&_in_buf
 //    metaattrs:  +intent(in)
 void STR_accept_string_const_reference_bufferify(const char * arg1,
@@ -1013,7 +1013,7 @@ void STR_accept_string_reference_out_bufferify(char * arg1, int Narg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(inout)
+// Argument:  std::string & arg1
 // Exact:     c_string_&_inout
 //    metaattrs:  +intent(inout)
 // start STR_accept_string_reference
@@ -1039,7 +1039,7 @@ void STR_accept_string_reference(char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_&_inout_buf
 //    metaattrs:  +intent(inout)
 // start STR_accept_string_reference_bufferify
@@ -1063,7 +1063,7 @@ void STR_accept_string_reference_bufferify(char * arg1, int Larg1,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * arg1 +intent(in)
+// Argument:  const std::string * arg1
 // Exact:     c_string_*_in
 //    metaattrs:  +intent(in)
 void STR_accept_string_pointer_const(const char * arg1)
@@ -1083,7 +1083,7 @@ void STR_accept_string_pointer_const(const char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * arg1 +intent(in)+len_trim(Larg1)
+// Argument:  const std::string * arg1 +len_trim(Larg1)
 // Exact:     c_string_*_in_buf
 //    metaattrs:  +intent(in)
 void STR_accept_string_pointer_const_bufferify(const char * arg1,
@@ -1104,7 +1104,7 @@ void STR_accept_string_pointer_const_bufferify(const char * arg1,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     c_string_*_inout
 //    metaattrs:  +intent(inout)
 void STR_accept_string_pointer(char * arg1)
@@ -1125,7 +1125,7 @@ void STR_accept_string_pointer(char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_*_inout_buf
 //    metaattrs:  +intent(inout)
 void STR_accept_string_pointer_bufferify(char * arg1, int Larg1,
@@ -1193,7 +1193,7 @@ void STR_fetch_string_pointer_bufferify(char * arg1, int Narg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     c_string_*_inout
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -1221,7 +1221,7 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_*_inout_buf
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -1308,7 +1308,7 @@ void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  std::string arg1 +intent(in)+value
+// Argument:  std::string arg1 +value
 // Exact:     c_string_scalar_in
 //    metaattrs:  +intent(in)
 int STR_accept_string_instance(char *arg1)
@@ -1329,7 +1329,7 @@ int STR_accept_string_instance(char *arg1)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  std::string arg1 +intent(in)+len_trim(Larg1)+value
+// Argument:  std::string arg1 +len_trim(Larg1)+value
 // Exact:     c_string_scalar_in_buf
 //    metaattrs:  +intent(in)
 int STR_accept_string_instance_bufferify(char *arg1, int Larg1)
@@ -1398,7 +1398,7 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  char * SHF_rv +len(NSHF_rv)
 // Exact:     c_char_scalar_result_buf
 //    metaattrs:  +intent(out)
 void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
@@ -1426,7 +1426,7 @@ void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
 // Exact:     c_char_*_out_buf
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)
+// Argument:  const char * src
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -1455,7 +1455,7 @@ void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)
+// Argument:  std::string & name
 // Exact:     c_string_&_inout
 //    metaattrs:  +intent(inout)
 void STR_post_declare(int * count, char * name)
@@ -1483,7 +1483,7 @@ void STR_post_declare(int * count, char * name)
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+// Argument:  std::string & name +len(Nname)+len_trim(Lname)
 // Exact:     c_string_&_inout_buf
 //    metaattrs:  +intent(inout)
 void STR_post_declare_bufferify(int * count, char * name, int Lname,

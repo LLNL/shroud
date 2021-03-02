@@ -40,7 +40,7 @@ PyArray_Descr *PY_Cstruct1_array_descr;
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(inout)
+// Argument:  Cstruct1 & arg
 // Exact:     py_struct_&_inout_numpy
 static char PY_passStructByReference__doc__[] =
 "documentation"
@@ -102,7 +102,7 @@ fail:
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const Cstruct1 & arg +intent(in)
+// Argument:  const Cstruct1 & arg
 // Exact:     py_struct_&_in_numpy
 static char PY_passStructByReferenceIn__doc__[] =
 "documentation"

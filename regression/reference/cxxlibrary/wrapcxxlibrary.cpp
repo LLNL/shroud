@@ -41,7 +41,7 @@ bool CXX_default_ptr_is_null_0(void)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  double * data=nullptr +intent(in)+rank(1)
+// Argument:  double * data=nullptr +intent(IN)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -58,7 +58,7 @@ bool CXX_default_ptr_is_null_1(double * data)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int in1 +intent(in)+value
+// Argument:  int in1 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -84,7 +84,7 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int in1 +intent(in)+value
+// Argument:  int in1 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -99,7 +99,7 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 // Match:     c_default
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  bool flag=false +intent(in)+value
+// Argument:  bool flag=false +value
 // Requested: c_bool_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

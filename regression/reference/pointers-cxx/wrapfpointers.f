@@ -53,7 +53,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * arg +intent(in)
+    ! Argument:  const int * arg
     ! Requested: c_native_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -73,7 +73,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * arg +intent(inout)
+    ! Argument:  int * arg
     ! Requested: c_native_*_inout
     ! Match:     c_default
     !    metaattrs:  +intent(inout)
@@ -155,7 +155,7 @@ module pointers_mod
     ! Match:     c_default
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+intent(in)+value
+    ! Argument:  int sizein +implied(size(in))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -187,7 +187,7 @@ module pointers_mod
     ! Match:     c_default
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(in))+intent(in)+value
+    ! Argument:  int sizein +implied(size(in))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -209,7 +209,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * nvalues +intent(out)
+    ! Argument:  int * nvalues +intent(OUT)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !    metaattrs:  +intent(out)
@@ -261,7 +261,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvar +intent(in)+value
+    ! Argument:  int nvar +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -287,7 +287,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvar +intent(in)+value
+    ! Argument:  int nvar +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -313,12 +313,12 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int len +implied(size(values))+intent(in)+value
+    ! Argument:  int len +implied(size(values))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -370,7 +370,7 @@ module pointers_mod
     ! Match:     c_default
     !    metaattrs:  +intent(inout)
     ! ----------------------------------------
-    ! Argument:  int sizein +implied(size(array))+intent(in)+value
+    ! Argument:  int sizein +implied(size(array))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -391,12 +391,12 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * x +intent(inout)+rank(1)
+    ! Argument:  double * x +rank(1)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     !    metaattrs:  +intent(inout)
     ! ----------------------------------------
-    ! Argument:  int x_length +implied(size(x))+intent(in)+value
+    ! Argument:  int x_length +implied(size(x))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -418,12 +418,12 @@ module pointers_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * arr +intent(in)+rank(1)
+    ! Argument:  const int * arr +rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  size_t len +implied(size(arr))+intent(in)+value
+    ! Argument:  size_t len +implied(size(arr))+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -492,7 +492,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int value +intent(in)+value
+    ! Argument:  int value +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -1038,7 +1038,7 @@ module pointers_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Argument:  const int * arg +dimension(10,20)
     ! Requested: c_native_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -1059,7 +1059,7 @@ module pointers_mod
     ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -1082,7 +1082,7 @@ module pointers_mod
     ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -1125,7 +1125,7 @@ module pointers_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * * addr +intent(in)+rank(1)
+    ! Argument:  void * * addr +rank(1)
     ! Exact:     c_void_**_in
     !    metaattrs:  +intent(in)
     ! start c_void_ptr_array
@@ -1286,7 +1286,7 @@ module pointers_mod
     ! Requested: c_native_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * name +intent(in)
+    ! Argument:  const char * name
     ! Requested: c_char_*_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -1414,7 +1414,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvar +intent(in)+value
+    ! Argument:  int nvar +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1446,7 +1446,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1509,7 +1509,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * x +intent(inout)+rank(1)
+    ! Argument:  double * x +rank(1)
     ! Requested: f_native_*_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -1536,7 +1536,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * arr +intent(in)+rank(1)
+    ! Argument:  const int * arr +rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1932,7 +1932,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * arg +dimension(10,20)+intent(in)
+    ! Argument:  const int * arg +dimension(10,20)
     ! Requested: f_native_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1960,7 +1960,7 @@ contains
     ! Requested: c_void_*_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1987,7 +1987,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * * addr +intent(in)+rank(1)
+    ! Argument:  void * * addr +rank(1)
     ! Exact:     f_void_**_in
     !    metaattrs:  +intent(in)
     ! Exact:     c_void_**_in

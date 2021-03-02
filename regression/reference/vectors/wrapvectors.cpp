@@ -44,7 +44,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg)
+// Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_native
 // Match:     c_vector_in_buf
 //    metaattrs:  +intent(in)
@@ -227,7 +227,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg)
+// Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
 //    metaattrs:  +intent(inout)
@@ -287,7 +287,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg)
+// Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_string
 // Match:     c_vector_in_buf_string
 //    metaattrs:  +intent(in)
@@ -321,12 +321,12 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int n +intent(in)+value
+// Argument:  int n +value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
+// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf
 //    metaattrs:  +deref(allocatable)+intent(out)

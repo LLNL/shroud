@@ -1,22 +1,22 @@
 Read yaml ccomplex.yaml
-C function void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))
-C function void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
+C function void acceptFloatComplexInoutPtr(float complex * arg1)
+C function void acceptDoubleComplexInoutPtr(double complex * arg1)
 C function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 C function void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close wrapccomplex.c
 Close typesccomplex.h
-Fortran void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))
-Fortran void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
+Fortran void acceptFloatComplexInoutPtr(float complex * arg1)
+Fortran void acceptDoubleComplexInoutPtr(double complex * arg1)
 Fortran void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 Fortran void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
-C-interface void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))
-C-interface void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
+C-interface void acceptFloatComplexInoutPtr(float complex * arg1)
+C-interface void acceptDoubleComplexInoutPtr(double complex * arg1)
 C-interface void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 C-interface void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close wrapfccomplex.f
-Python function void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))
+Python function void acceptDoubleComplexInoutPtr(double complex * arg1)
 Python function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
-Python function void acceptDoubleComplexInoutPtrFlag(double complex * arg1 +intent(inout), int * flag +intent(out))
+Python function void acceptDoubleComplexInoutPtrFlag(double complex * arg1, int * flag +intent(out))
 Python function void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))
 Close pyccomplexmodule.c
 Close pyccomplexmodule.h

@@ -41,7 +41,7 @@ module cxxlibrary_mod
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * data=nullptr +intent(in)+rank(1)
+        ! Argument:  double * data=nullptr +intent(IN)+rank(1)
         ! Requested: c_native_*_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -59,7 +59,7 @@ module cxxlibrary_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int in1 +intent(in)+value
+        ! Argument:  int in1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -87,7 +87,7 @@ module cxxlibrary_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int in1 +intent(in)+value
+        ! Argument:  int in1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -102,7 +102,7 @@ module cxxlibrary_mod
         ! Match:     c_default
         !    metaattrs:  +intent(out)
         ! ----------------------------------------
-        ! Argument:  bool flag=false +intent(in)+value
+        ! Argument:  bool flag=false +value
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -159,7 +159,7 @@ contains
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * data=nullptr +intent(in)+rank(1)
+    ! Argument:  double * data=nullptr +intent(IN)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -184,7 +184,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int in1 +intent(in)+value
+    ! Argument:  int in1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -222,7 +222,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int in1 +intent(in)+value
+    ! Argument:  int in1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -243,7 +243,7 @@ contains
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool flag=false +intent(in)+value
+    ! Argument:  bool flag=false +value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     !    metaattrs:  +intent(in)

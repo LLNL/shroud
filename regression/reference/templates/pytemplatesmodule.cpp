@@ -40,11 +40,11 @@ PyObject *PY_init_templates_internal(void);
 // Function:  void FunctionTU
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int arg1 +intent(in)+value
+// Argument:  int arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  long arg2 +intent(in)+value
+// Argument:  long arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**
@@ -78,11 +78,11 @@ PY_FunctionTU_0(
 // Function:  void FunctionTU
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  float arg1 +intent(in)+value
+// Argument:  float arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 /**

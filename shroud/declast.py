@@ -1223,7 +1223,6 @@ class Declaration(Node):
             new.declarator.pointer = [Ptr("*")]
         # new.array = None
         new.attrs = copy.deepcopy(self.attrs) # XXX no need for deepcopy in future
-        new.attrs["intent"] = "out"
         new.metaattrs = copy.deepcopy(self.metaattrs)
         new.metaattrs["intent"] = "out"
         new.typemap = self.typemap
@@ -1540,6 +1539,7 @@ class Declaration(Node):
         """
         t = []
         attrs = self.attrs
+        meta = self.metaattrs
         ntypemap = self.typemap
         basedef = ntypemap
         if self.template_arguments:
@@ -1554,8 +1554,8 @@ class Declaration(Node):
         t.append(typ)
         if attrs["value"]:
             t.append("value")
-        intent = intent or attrs["intent"]
-        if intent:
+        intent = intent or meta["intent"]
+        if intent and intent != "result":
             t.append("intent(%s)" % intent.upper())
 
         decl = []
@@ -1597,6 +1597,7 @@ class Declaration(Node):
         """
         t = []
         attrs = self.attrs
+        meta = self.metaattrs
         ntypemap = self.typemap
         if self.template_arguments:
             # If a template, use its type (std::vector)
@@ -1636,8 +1637,8 @@ class Declaration(Node):
         if not local:  # must be dummy argument
             if attrs["value"]:
                 t.append("value")
-            intent = attrs["intent"]
-            if intent:
+            intent = meta["intent"]
+            if intent and intent != "result":
                 t.append("intent(%s)" % intent.upper())
 
         if is_allocatable:

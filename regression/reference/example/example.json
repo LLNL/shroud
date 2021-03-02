@@ -304,9 +304,6 @@
                                             },
                                             "params": [
                                                 {
-                                                    "attrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "const": true,
                                                     "declarator": {
                                                         "name": "name",
@@ -331,7 +328,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1( const string *name )",
-                                        "declgen": "ExClass1(const string * name +intent(in))",
+                                        "declgen": "ExClass1(const string * name)",
                                         "doxygen": {
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
@@ -440,7 +437,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "len_trim": "Lname"
                                                     },
                                                     "const": true,
@@ -468,7 +464,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1( const string *name )",
-                                        "declgen": "ExClass1(const string * name +intent(in)+len_trim)",
+                                        "declgen": "ExClass1(const string * name +len_trim)",
                                         "doxygen": {
                                             "brief": "constructor",
                                             "description": "longer description\nusually multiple lines\n",
@@ -694,7 +690,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -716,7 +711,7 @@
                                             "typemap_name": "int"
                                         },
                                         "decl": "int incrementCount(int incr)",
-                                        "declgen": "int incrementCount(int incr +intent(in)+value)",
+                                        "declgen": "int incrementCount(int incr +value)",
                                         "fmtdict": {
                                             "C_call_list": "incr",
                                             "C_name": "AA_example_nested_ExClass1_increment_count",
@@ -945,8 +940,7 @@
                                                     "attrs": {
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
-                                                        "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "deref": "allocatable"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -973,7 +967,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
-                                        "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
+                                        "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -1166,7 +1160,6 @@
                                                 {
                                                     "attrs": {
                                                         "_is_result": true,
-                                                        "intent": "out",
                                                         "len": "Nname"
                                                     },
                                                     "declarator": {
@@ -1192,7 +1185,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const",
+                                        "declgen": "void getNameArg(string & name +len(Nname)) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t char * name,\t int Nname",
@@ -1229,7 +1222,6 @@
                                                 {
                                                     "attrs": {
                                                         "_is_result": true,
-                                                        "intent": "out",
                                                         "len": "Nname"
                                                     },
                                                     "declarator": {
@@ -1255,7 +1247,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "void getNameArg(string & name +intent(out)+len(Nname)) const",
+                                        "declgen": "void getNameArg(string & name +len(Nname)) const",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass1_get_name_arg_bufferify",
                                             "F_arg_c_call": "obj%cxxmem,\t name,\t len(name, kind=C_INT)",
@@ -1416,7 +1408,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -1438,7 +1429,7 @@
                                             "typemap_name": "int"
                                         },
                                         "decl": "int  getValue(int value)",
-                                        "declgen": "int getValue(int value +intent(in)+value)",
+                                        "declgen": "int getValue(int value +value)",
                                         "fmtdict": {
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass1_get_value_from_int",
@@ -1615,7 +1606,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -1637,7 +1627,7 @@
                                             "typemap_name": "long"
                                         },
                                         "decl": "long getValue(long value)",
-                                        "declgen": "long getValue(long value +intent(in)+value)",
+                                        "declgen": "long getValue(long value +value)",
                                         "fmtdict": {
                                             "C_call_list": "value",
                                             "C_name": "AA_example_nested_ExClass1_get_value_1",
@@ -1814,7 +1804,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -1836,7 +1825,7 @@
                                             "typemap_name": "bool"
                                         },
                                         "decl": "bool hasAddr(bool in)",
-                                        "declgen": "bool hasAddr(bool in +intent(in)+value)",
+                                        "declgen": "bool hasAddr(bool in +value)",
                                         "fmtdict": {
                                             "C_call_list": "in",
                                             "C_name": "AA_example_nested_ExClass1_has_addr",
@@ -2142,7 +2131,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "len_trim": "trim_name"
                                                     },
                                                     "const": true,
@@ -2169,7 +2157,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2(const string *name)",
-                                        "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))",
+                                        "declgen": "ExClass2(const string * name +len_trim(trim_name))",
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
@@ -2277,7 +2265,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "len_trim": "trim_name"
                                                     },
                                                     "const": true,
@@ -2305,7 +2292,7 @@
                                             "typemap_name": "example::nested::ExClass2"
                                         },
                                         "decl": "ExClass2(const string *name)",
-                                        "declgen": "ExClass2(const string * name +intent(in)+len_trim(trim_name))",
+                                        "declgen": "ExClass2(const string * name +len_trim(trim_name))",
                                         "doxygen": {
                                             "brief": "constructor"
                                         },
@@ -2587,7 +2574,6 @@
                                                 {
                                                     "attrs": {
                                                         "_is_result": true,
-                                                        "intent": "out",
                                                         "len": "NSHF_rv"
                                                     },
                                                     "declarator": {
@@ -2613,7 +2599,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getName() const",
-                                        "declgen": "void getName(string & SHF_rv +intent(out)+len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "declgen": "void getName(string & SHF_rv +len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t char * SHF_rv,\t int NSHF_rv",
@@ -2824,8 +2810,7 @@
                                                     "attrs": {
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
-                                                        "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "deref": "allocatable"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -2852,7 +2837,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getName2()",
-                                        "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                                        "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -3065,8 +3050,7 @@
                                                     "attrs": {
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
-                                                        "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "deref": "allocatable"
                                                     },
                                                     "declarator": {
                                                         "name": "SHF_rv",
@@ -3092,7 +3076,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName3() const",
-                                        "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)) const",
+                                        "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -3302,8 +3286,7 @@
                                                     "attrs": {
                                                         "_is_result": true,
                                                         "context": "DSHF_rv",
-                                                        "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "deref": "allocatable"
                                                     },
                                                     "declarator": {
                                                         "name": "SHF_rv",
@@ -3329,7 +3312,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName4()",
-                                        "declgen": "void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                                        "declgen": "void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -3618,9 +3601,6 @@
                                             },
                                             "params": [
                                                 {
-                                                    "attrs": {
-                                                        "intent": "in"
-                                                    },
                                                     "const": true,
                                                     "declarator": {
                                                         "name": "in",
@@ -3645,7 +3625,7 @@
                                             "typemap_name": "example::nested::ExClass1"
                                         },
                                         "decl": "ExClass1 *get_class1(const ExClass1 *in)",
-                                        "declgen": "ExClass1 * get_class1(const ExClass1 * in +intent(in))",
+                                        "declgen": "ExClass1 * get_class1(const ExClass1 * in)",
                                         "fmtdict": {
                                             "C_call_list": "SHCXX_in",
                                             "C_name": "AA_example_nested_ExClass2_get_class1",
@@ -3702,7 +3682,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -3724,7 +3703,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value)",
+                                        "declgen": "void * declare(TypeID type +value)",
                                         "fmtdict": {
                                             "function_name": "declare",
                                             "function_suffix": "_0",
@@ -3735,7 +3714,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3752,7 +3730,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3776,7 +3753,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3793,7 +3769,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3869,7 +3844,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -3891,7 +3865,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value)",
                                         "fmtdict": {
                                             "C_call_list": "SHCXX_type",
                                             "C_name": "AA_example_nested_ExClass2_declare_0",
@@ -3916,7 +3890,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3933,7 +3906,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3957,7 +3929,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -3974,7 +3945,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4015,7 +3985,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4032,7 +4001,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4055,7 +4023,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value, int len=1 +value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_0",
                                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -4092,7 +4060,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4109,7 +4076,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4132,7 +4098,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value, long len=1 +value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_0",
                                             "F_arg_c_call": "obj%cxxmem,\t type",
@@ -4284,7 +4250,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4301,7 +4266,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4324,7 +4288,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void * declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)",
+                                        "declgen": "void * declare(TypeID type +value, SidreLength len=1 +value)",
                                         "fmtdict": {
                                             "LUA_name": "declare",
                                             "LUA_name_impl": "l_example_nested_ExClass2_declare",
@@ -4339,7 +4303,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4356,7 +4319,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4380,7 +4342,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4397,7 +4358,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4517,7 +4477,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4534,7 +4493,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4557,7 +4515,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value, SidreLength len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value, SidreLength len=1 +value)",
                                         "fmtdict": {
                                             "C_call_list": "SHCXX_type,\t len",
                                             "C_name": "AA_example_nested_ExClass2_declare_1",
@@ -4582,7 +4540,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4599,7 +4556,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4623,7 +4579,6 @@
                                                 "decls": [
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4640,7 +4595,6 @@
                                                     },
                                                     {
                                                         "attrs": {
-                                                            "intent": "in",
                                                             "value": true
                                                         },
                                                         "declarator": {
@@ -4689,7 +4643,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4706,7 +4659,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4729,7 +4681,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value, int len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value, int len=1 +value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_1",
                                             "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
@@ -4774,7 +4726,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4791,7 +4742,6 @@
                                                 },
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -4814,7 +4764,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "void* declare(TypeID type, SidreLength len = 1)",
-                                        "declgen": "void declare(TypeID type +intent(in)+value, long len=1 +intent(in)+value)",
+                                        "declgen": "void declare(TypeID type +value, long len=1 +value)",
                                         "fmtdict": {
                                             "F_C_call": "c_exclass2_declare_1",
                                             "F_arg_c_call": "obj%cxxmem,\t type,\t int(len, C_LONG)",
@@ -5018,7 +4968,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -5048,7 +4997,7 @@
                                             ]
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(ValueType value +intent(in)+value)",
+                                        "declgen": "void setValue(ValueType value +value)",
                                         "fmtdict": {
                                             "function_name": "setValue",
                                             "underscore_name": "set_value"
@@ -5191,7 +5140,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -5213,7 +5161,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(int value +intent(in)+value)",
+                                        "declgen": "void setValue(int value +value)",
                                         "fmtdict": {
                                             "CXX_template": "<int>",
                                             "C_call_list": "value",
@@ -5389,7 +5337,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -5411,7 +5358,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(long value +intent(in)+value)",
+                                        "declgen": "void setValue(long value +value)",
                                         "fmtdict": {
                                             "CXX_template": "<long>",
                                             "C_call_list": "value",
@@ -5585,7 +5532,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -5607,7 +5553,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(float value +intent(in)+value)",
+                                        "declgen": "void setValue(float value +value)",
                                         "fmtdict": {
                                             "CXX_template": "<float>",
                                             "C_call_list": "value",
@@ -5781,7 +5727,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "intent": "in",
                                                         "value": true
                                                     },
                                                     "declarator": {
@@ -5803,7 +5748,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "template<typename ValueType> void setValue(ValueType value)",
-                                        "declgen": "void setValue(double value +intent(in)+value)",
+                                        "declgen": "void setValue(double value +value)",
                                         "fmtdict": {
                                             "CXX_template": "<double>",
                                             "C_call_list": "value",
@@ -6476,9 +6421,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -6503,7 +6445,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
-                                "declgen": "bool isNameValid(const std::string & name +intent(in))",
+                                "declgen": "bool isNameValid(const std::string & name)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid",
@@ -6616,7 +6558,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "len_trim": "Lname"
                                             },
                                             "const": true,
@@ -6644,7 +6585,7 @@
                                     "typemap_name": "bool"
                                 },
                                 "decl": "bool isNameValid(const std::string& name)",
-                                "declgen": "bool isNameValid(const std::string & name +intent(in)+len_trim)",
+                                "declgen": "bool isNameValid(const std::string & name +len_trim)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_is_name_valid_bufferify",
@@ -6855,9 +6796,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -6882,7 +6820,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name)",
-                                "declgen": "void test_names(const std::string & name +intent(in))",
+                                "declgen": "void test_names(const std::string & name)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names",
@@ -6965,7 +6903,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "len_trim": "Lname"
                                             },
                                             "const": true,
@@ -6993,7 +6930,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name)",
-                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim)",
+                                "declgen": "void test_names(const std::string & name +len_trim)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name",
                                     "C_name": "AA_example_nested_test_names_bufferify",
@@ -7142,9 +7079,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "name",
@@ -7164,7 +7098,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7186,7 +7119,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name +intent(in), int flag +intent(in)+value)",
+                                "declgen": "void test_names(const std::string & name, int flag +value)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag",
@@ -7300,7 +7233,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "len_trim": "Lname"
                                             },
                                             "const": true,
@@ -7323,7 +7255,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7346,7 +7277,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void test_names(const std::string &name, int flag)",
-                                "declgen": "void test_names(const std::string & name +intent(in)+len_trim, int flag +intent(in)+value)",
+                                "declgen": "void test_names(const std::string & name +len_trim, int flag +value)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_name,\t flag",
                                     "C_name": "AA_example_nested_test_names_flag_bufferify",
@@ -7456,7 +7387,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7479,7 +7409,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
-                                "declgen": "void testoptional(int i=1 +intent(in)+value)",
+                                "declgen": "void testoptional(int i=1 +value)",
                                 "fmtdict": {
                                     "C_call_list": "i",
                                     "C_name": "AA_example_nested_testoptional_1",
@@ -7668,7 +7598,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7686,7 +7615,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7709,7 +7637,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testoptional(int i = 1, long j=2)",
-                                "declgen": "void testoptional(int i=1 +intent(in)+value, long j=2 +intent(in)+value)",
+                                "declgen": "void testoptional(int i=1 +value, long j=2 +value)",
                                 "fmtdict": {
                                     "C_call_list": "i,\t j",
                                     "C_name": "AA_example_nested_testoptional_2",
@@ -7937,7 +7865,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -7959,7 +7886,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void testmpi(MPI_Comm comm)",
-                                "declgen": "void testmpi(MPI_Comm comm +intent(in)+value)",
+                                "declgen": "void testmpi(MPI_Comm comm +value)",
                                 "fmtdict": {
                                     "C_call_list": "SHCXX_comm",
                                     "C_name": "AA_example_nested_testmpi_mpi",
@@ -8121,7 +8048,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -8151,7 +8077,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr1(void (*get)());",
-                                "declgen": "void FuncPtr1(void ( * get)(void) +intent(in)+value)",
+                                "declgen": "void FuncPtr1(void ( * get)(void) +value)",
                                 "doxygen": {
                                     "brief": "subroutine"
                                 },
@@ -8265,9 +8191,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "declarator": {
                                                 "func": {
                                                     "name": "get",
@@ -8299,7 +8222,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr2(double * (*get)());",
-                                "declgen": "void FuncPtr2(double * ( * get)(void) +intent(in))",
+                                "declgen": "void FuncPtr2(double * ( * get)(void))",
                                 "doxygen": {
                                     "brief": "return a pointer"
                                 },
@@ -8413,7 +8336,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -8466,7 +8388,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr3(double (*get)(int i, int));",
-                                "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +intent(in)+value)",
+                                "declgen": "void FuncPtr3(double ( * get)(int i +value, int +value) +value)",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -8545,7 +8467,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -8594,7 +8515,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr4(double (*get)(double, int));",
-                                "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +intent(in)+value)",
+                                "declgen": "void FuncPtr4(double ( * get)(double +value, int +value) +value)",
                                 "doxygen": {
                                     "brief": "abstract argument"
                                 },
@@ -8708,7 +8629,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -8869,7 +8789,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void FuncPtr5(void (*get)(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10))",
-                                "declgen": "void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value)",
+                                "declgen": "void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value)",
                                 "fmtdict": {
                                     "C_call_list": "get",
                                     "C_name": "AA_example_nested_func_ptr5",
@@ -10561,7 +10481,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10578,7 +10497,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10595,7 +10513,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10612,7 +10529,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10629,7 +10545,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10646,7 +10561,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10663,7 +10577,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10680,7 +10593,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10697,7 +10609,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10714,7 +10625,6 @@
                                         },
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -10736,7 +10646,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "int verylongfunctionname2(int verylongname1, int verylongname2, int verylongname3, int verylongname4, int verylongname5, int verylongname6, int verylongname7, int verylongname8, int verylongname9, int verylongname10)",
-                                "declgen": "int verylongfunctionname2(int verylongname1 +intent(in)+value, int verylongname2 +intent(in)+value, int verylongname3 +intent(in)+value, int verylongname4 +intent(in)+value, int verylongname5 +intent(in)+value, int verylongname6 +intent(in)+value, int verylongname7 +intent(in)+value, int verylongname8 +intent(in)+value, int verylongname9 +intent(in)+value, int verylongname10 +intent(in)+value)",
+                                "declgen": "int verylongfunctionname2(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value)",
                                 "fmtdict": {
                                     "C_call_list": "verylongname1,\t verylongname2,\t verylongname3,\t verylongname4,\t verylongname5,\t verylongname6,\t verylongname7,\t verylongname8,\t verylongname9,\t verylongname10",
                                     "C_name": "AA_example_nested_verylongfunctionname2",
@@ -11055,7 +10965,6 @@
                                         {
                                             "attrs": {
                                                 "implied": "size(in)",
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -11077,7 +10986,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void cos_doubles( double * in   +intent(in)  +rank(2), double * out  +intent(out) +deref(allocatable)+dimension(shape(in)), int      sizein +implied(size(in)))",
-                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                                "declgen": "void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)",
                                 "doxygen": {
                                     "brief": "Test multidimensional arrays with allocatable"
                                 },

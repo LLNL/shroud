@@ -83,12 +83,12 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1 +intent(in)+value
+    ! Argument:  double arg1 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int arg2 +intent(in)+value
+    ! Argument:  int arg2 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -109,15 +109,15 @@ module tutorial_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
+    ! Argument:  const std::string & arg1 +len_trim(Larg1)
     ! Exact:     c_string_&_in_buf
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
+    ! Argument:  const std::string & arg2 +len_trim(Larg2)
     ! Exact:     c_string_&_in_buf
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     c_string_*_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     interface
@@ -158,7 +158,7 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +intent(in)+value
+    ! Argument:  double arg1=3.1415 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -181,12 +181,12 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +intent(in)+value
+    ! Argument:  double arg1=3.1415 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  bool arg2=true +intent(in)+value
+    ! Argument:  bool arg2=true +value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -209,7 +209,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
     ! Exact:     c_string_&_in
     !    metaattrs:  +intent(in)
     interface
@@ -226,7 +226,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     !    metaattrs:  +intent(in)
     interface
@@ -245,7 +245,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int indx +intent(in)+value
+    ! Argument:  int indx +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -263,7 +263,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg +intent(in)+value
+    ! Argument:  int arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -281,7 +281,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -340,11 +340,11 @@ module tutorial_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
     ! Exact:     c_string_&_in
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -363,11 +363,11 @@ module tutorial_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -389,7 +389,7 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -410,12 +410,12 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -437,17 +437,17 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int stride=1 +intent(in)+value
+    ! Argument:  int stride=1 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -471,12 +471,12 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -498,17 +498,17 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -531,22 +531,22 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int stride=1 +intent(in)+value
+    ! Argument:  int stride=1 +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -570,7 +570,7 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  TypeID arg +intent(in)+value
+    ! Argument:  TypeID arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -591,7 +591,7 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  EnumTypeID arg +intent(in)+value
+    ! Argument:  EnumTypeID arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -612,7 +612,7 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Color arg +intent(in)+value
+    ! Argument:  Color arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -659,12 +659,12 @@ module tutorial_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int in +intent(in)+value
+    ! Argument:  int in +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  int ( * incr)(int +value) +intent(in)+value
+    ! Argument:  int ( * incr)(int +value) +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -702,7 +702,7 @@ module tutorial_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Exact:     c_string_&_result_buf
     !    metaattrs:  +intent(out)
     interface
@@ -781,21 +781,21 @@ contains
     ! Function:  void ConcatenateStrings
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & arg1 +intent(in)
+    ! Argument:  const std::string & arg1
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
+    ! Argument:  const std::string & arg1 +len_trim(Larg1)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & arg2 +intent(in)
+    ! Argument:  const std::string & arg2
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
+    ! Argument:  const std::string & arg2 +len_trim(Larg2)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     f_string_*_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_*_result_buf_allocatable
@@ -849,7 +849,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +intent(in)+value
+    ! Argument:  double arg1=3.1415 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -876,14 +876,14 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg1=3.1415 +intent(in)+value
+    ! Argument:  double arg1=3.1415 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool arg2=true +intent(in)+value
+    ! Argument:  bool arg2=true +value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     !    metaattrs:  +intent(in)
@@ -913,11 +913,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     subroutine overloaded_function_from_name(name)
         use iso_c_binding, only : C_INT
@@ -936,7 +936,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int indx +intent(in)+value
+    ! Argument:  int indx +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -959,7 +959,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg +intent(in)+value
+    ! Argument:  int arg +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -982,7 +982,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1054,18 +1054,18 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  float arg2 +intent(in)+value
+    ! Argument:  float arg2 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     subroutine fortran_generic_overloaded_1_float(name, arg2)
@@ -1087,14 +1087,14 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
     ! Requested: f_string_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1120,7 +1120,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1146,14 +1146,14 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1179,21 +1179,21 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int stride=1 +intent(in)+value
+    ! Argument:  int stride=1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1222,14 +1222,14 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1256,21 +1256,21 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1297,28 +1297,28 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double type +intent(in)+value
+    ! Argument:  double type +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int num +intent(in)+value
+    ! Argument:  int num +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int offset=0 +intent(in)+value
+    ! Argument:  int offset=0 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int stride=1 +intent(in)+value
+    ! Argument:  int stride=1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1347,7 +1347,7 @@ contains
     ! Function:  void LastFunctionCalled +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
     !    metaattrs:  +intent(out)

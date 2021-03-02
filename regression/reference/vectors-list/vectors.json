@@ -75,7 +75,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -110,7 +109,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
                 "fmtdict": {
                     "PY_name_impl": "PY_vector_sum",
                     "function_name": "vector_sum",
@@ -499,7 +498,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "rank": 1
                             },
                             "declarator": {
@@ -533,7 +531,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +intent(inout)+rank(1))",
+                "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
                 "fmtdict": {
                     "function_name": "vector_increment",
                     "underscore_name": "vector_increment"
@@ -645,7 +643,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -680,7 +677,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+rank(1))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +rank(1))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -875,7 +872,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -905,7 +901,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +rank(1)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },

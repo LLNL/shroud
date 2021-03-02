@@ -40,7 +40,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

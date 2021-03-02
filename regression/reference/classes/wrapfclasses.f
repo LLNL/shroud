@@ -165,7 +165,7 @@ module classes_mod
     !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -224,7 +224,7 @@ module classes_mod
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Class1 & obj2 +intent(in)
+    ! Argument:  const Class1 & obj2
     ! Requested: c_shadow_&_in
     ! Match:     c_shadow_in
     !    metaattrs:  +intent(in)
@@ -269,7 +269,7 @@ module classes_mod
     ! Exact:     c_string_&_in
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  bool flag +intent(in)+value
+    ! Argument:  bool flag +value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -300,7 +300,7 @@ module classes_mod
     ! Exact:     c_string_&_in_buf
     !    metaattrs:  +intent(in)
     ! ----------------------------------------
-    ! Argument:  bool flag +intent(in)+value
+    ! Argument:  bool flag +value
     ! Requested: c_bool_scalar_in_buf
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -366,7 +366,7 @@ module classes_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! start c_class1_get_name_bufferify
@@ -387,7 +387,7 @@ module classes_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  DIRECTION arg +intent(in)+value
+    ! Argument:  DIRECTION arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -488,7 +488,7 @@ module classes_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     interface
@@ -585,7 +585,7 @@ module classes_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Class1::DIRECTION arg +intent(in)+value
+    ! Argument:  Class1::DIRECTION arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -605,7 +605,7 @@ module classes_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Class1 arg +intent(in)+value
+    ! Argument:  Class1 arg +value
     ! Exact:     c_shadow_scalar_in
     !    metaattrs:  +intent(in)
     interface
@@ -623,7 +623,7 @@ module classes_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Class1 * arg +intent(in)
+    ! Argument:  const Class1 * arg
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     !    metaattrs:  +intent(in)
@@ -712,7 +712,7 @@ module classes_mod
     !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -734,7 +734,7 @@ module classes_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg +intent(in)+value
+    ! Argument:  int arg +value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !    metaattrs:  +intent(in)
@@ -781,7 +781,7 @@ module classes_mod
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Exact:     c_string_&_result_buf
     !    metaattrs:  +intent(out)
     interface
@@ -854,7 +854,7 @@ contains
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -921,7 +921,7 @@ contains
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Class1 & obj2 +intent(in)
+    ! Argument:  const Class1 & obj2
     ! Requested: f_shadow_&_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -983,7 +983,7 @@ contains
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  bool flag +intent(in)+value
+    ! Argument:  bool flag +value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     !    metaattrs:  +intent(in)
@@ -1045,7 +1045,7 @@ contains
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     f_string_&_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
@@ -1076,7 +1076,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  DIRECTION arg +intent(in)+value
+    ! Argument:  DIRECTION arg +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1193,7 +1193,7 @@ contains
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
     ! Exact:     f_string_&_result_buf_allocatable
     !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
@@ -1370,7 +1370,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Class1 arg +intent(in)+value
+    ! Argument:  Class1 arg +value
     ! Requested: f_shadow_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1395,7 +1395,7 @@ contains
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Class1 * arg +intent(in)
+    ! Argument:  const Class1 * arg
     ! Requested: f_shadow_*_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1491,7 +1491,7 @@ contains
     ! Match:     f_shadow_result
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -1522,7 +1522,7 @@ contains
     ! Function:  void LastFunctionCalled +len(30)
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
     !    metaattrs:  +intent(out)

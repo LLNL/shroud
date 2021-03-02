@@ -77,7 +77,7 @@ PP_ExClass1_tp_init_0(
 // Function:  ExClass1
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const string * name +intent(in)
+// Argument:  const string * name
 // Exact:     py_string_*_in
 /**
  * \brief constructor
@@ -121,7 +121,7 @@ PP_ExClass1_tp_init_1(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int incr +intent(in)+value
+// Argument:  int incr +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_incrementCount__doc__[] =
@@ -211,7 +211,7 @@ PP_getNameArg(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int value +intent(in)+value
+// Argument:  int value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -245,7 +245,7 @@ PP_getValue_from_int(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  long value +intent(in)+value
+// Argument:  long value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -279,7 +279,7 @@ PP_getValue_1(
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  bool in +intent(in)+value
+// Argument:  bool in +value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 static char PP_hasAddr__doc__[] =

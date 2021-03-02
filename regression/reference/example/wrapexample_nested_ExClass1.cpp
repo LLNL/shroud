@@ -88,7 +88,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
 // Exact:     c_shadow_scalar_ctor
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const string * name +intent(in)
+// Argument:  const string * name
 // Exact:     c_string_*_in
 //    metaattrs:  +intent(in)
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
@@ -118,7 +118,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
 // Match:     c_shadow_scalar_ctor
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const string * name +intent(in)+len_trim(Lname)
+// Argument:  const string * name +len_trim(Lname)
 // Exact:     c_string_*_in_buf
 //    metaattrs:  +intent(in)
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
@@ -159,7 +159,7 @@ void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int incr +intent(in)+value
+// Argument:  int incr +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -195,7 +195,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_&_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
@@ -230,7 +230,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & name +intent(out)+len(Nname)
+// Argument:  string & name +len(Nname)
 // Exact:     c_string_&_result_buf
 //    metaattrs:  +intent(out)
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
@@ -254,7 +254,7 @@ void AA_example_nested_ExClass1_get_name_arg_bufferify(
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int value +intent(in)+value
+// Argument:  int value +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -275,7 +275,7 @@ int AA_example_nested_ExClass1_get_value_from_int(
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  long value +intent(in)+value
+// Argument:  long value +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -296,7 +296,7 @@ long AA_example_nested_ExClass1_get_value_1(
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  bool in +intent(in)+value
+// Argument:  bool in +value
 // Requested: c_bool_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

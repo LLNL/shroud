@@ -28,7 +28,7 @@ extern "C" {
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(inout)
+// Argument:  Cstruct1 & arg
 // Requested: c_struct_&_inout
 // Match:     c_struct
 //    metaattrs:  +intent(inout)
@@ -51,7 +51,7 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const Cstruct1 & arg +intent(in)
+// Argument:  const Cstruct1 & arg
 // Requested: c_struct_&_in
 // Match:     c_struct
 //    metaattrs:  +intent(in)

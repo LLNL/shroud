@@ -72,7 +72,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Match:     c_default
 //    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
-// Argument:  size_type n +intent(in)+value
+// Argument:  size_type n +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

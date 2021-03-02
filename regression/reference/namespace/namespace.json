@@ -182,8 +182,7 @@
                             "attrs": {
                                 "_is_result": true,
                                 "context": "DSHF_rv",
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -210,7 +209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
                 "fmtdict": {
                     "C_name": "NS_last_function_called_bufferify",
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",
@@ -463,9 +462,6 @@
                                     },
                                     "params": [
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "declarator": {
                                                 "name": "ifield",
                                                 "pointer": []
@@ -480,9 +476,6 @@
                                             "typemap_name": "int"
                                         },
                                         {
-                                            "attrs": {
-                                                "intent": "in"
-                                            },
                                             "declarator": {
                                                 "name": "dfield",
                                                 "pointer": []
@@ -503,7 +496,7 @@
                                     "typemap_name": "outer::Cstruct1"
                                 },
                                 "decl": "Cstruct1_ctor",
-                                "declgen": "Cstruct1(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_ctor)",
+                                "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
                                 "fmtdict": {
                                     "PY_name_impl": "PY_Cstruct1_tp_init",
                                     "PY_type_impl": "PY_Cstruct1_tp_init",

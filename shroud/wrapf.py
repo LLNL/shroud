@@ -1472,7 +1472,7 @@ rv = .false.
             # XXX - looked up in parent
             pass
         else:
-            fmt.f_intent = c_attrs["intent"].upper()
+            fmt.f_intent = c_meta["intent"].upper()
             
             ntypemap = f_ast.typemap
             if c_ast.template_arguments:

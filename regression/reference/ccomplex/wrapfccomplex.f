@@ -25,7 +25,7 @@ module ccomplex_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float complex * arg1 +intent(inout)
+    ! Argument:  float complex * arg1
     ! Requested: c_native_*_inout
     ! Match:     c_default
     !    metaattrs:  +intent(inout)
@@ -43,7 +43,7 @@ module ccomplex_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double complex * arg1 +intent(inout)
+    ! Argument:  double complex * arg1
     ! Requested: c_native_*_inout
     ! Match:     c_default
     !    metaattrs:  +intent(inout)

@@ -55,11 +55,11 @@ PY_NoReturnNoArguments(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double arg1 +intent(in)+value
+// Argument:  double arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValue__doc__[] =
@@ -98,10 +98,10 @@ PY_PassByValue(
 // Function:  const std::string ConcatenateStrings +deref(allocatable)
 // Exact:     py_string_scalar_result
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)
+// Argument:  const std::string & arg1
 // Exact:     py_string_&_in
 // ----------------------------------------
-// Argument:  const std::string & arg2 +intent(in)
+// Argument:  const std::string & arg2
 // Exact:     py_string_&_in
 static char PY_ConcatenateStrings__doc__[] =
 "documentation"
@@ -151,11 +151,11 @@ PY_ConcatenateStrings(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +intent(in)+value
+// Argument:  double arg1=3.1415 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  bool arg2=true +intent(in)+value
+// Argument:  bool arg2=true +value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 static char PY_UseDefaultArguments_arg1_arg2__doc__[] =
@@ -217,7 +217,7 @@ PY_UseDefaultArguments_arg1_arg2(
 // Function:  void OverloadedFunction
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     py_string_&_in
 static PyObject *
 PY_OverloadedFunction_from_name(
@@ -247,7 +247,7 @@ PY_OverloadedFunction_from_name(
 // Function:  void OverloadedFunction
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int indx +intent(in)+value
+// Argument:  int indx +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -275,7 +275,7 @@ PY_OverloadedFunction_from_index(
 // Function:  void TemplateArgument
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int arg +intent(in)+value
+// Argument:  int arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -303,7 +303,7 @@ PY_TemplateArgument_int(
 // Function:  void TemplateArgument
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double arg +intent(in)+value
+// Argument:  double arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -346,10 +346,10 @@ PY_FortranGenericOverloaded_0(
 // Function:  void FortranGenericOverloaded
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     py_string_&_in
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -384,15 +384,15 @@ PY_FortranGenericOverloaded_1(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Argument:  int stride=1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -447,19 +447,19 @@ PY_UseDefaultOverload_num_offset_stride(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  double type +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Argument:  int stride=1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -517,7 +517,7 @@ PY_UseDefaultOverload_5(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  TypeID arg +intent(in)+value
+// Argument:  TypeID arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_typefunc__doc__[] =
@@ -555,7 +555,7 @@ PY_typefunc(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  EnumTypeID arg +intent(in)+value
+// Argument:  EnumTypeID arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_enumfunc__doc__[] =
@@ -597,7 +597,7 @@ PY_enumfunc(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Color arg +intent(in)+value
+// Argument:  Color arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_colorfunc__doc__[] =

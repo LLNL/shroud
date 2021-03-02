@@ -72,7 +72,7 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_&_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,

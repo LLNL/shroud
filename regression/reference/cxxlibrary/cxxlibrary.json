@@ -110,9 +110,6 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "ifield",
                                         "pointer": []
@@ -127,9 +124,6 @@
                                     "typemap_name": "int"
                                 },
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "dfield",
                                         "pointer": []
@@ -150,7 +144,7 @@
                             "typemap_name": "Cstruct1_cls"
                         },
                         "decl": "Cstruct1_cls_ctor",
-                        "declgen": "Cstruct1_cls(int ifield +intent(in), double dfield +intent(in)) +name(Cstruct1_cls_ctor)",
+                        "declgen": "Cstruct1_cls(int ifield, double dfield) +name(Cstruct1_cls_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct1_cls_tp_init",
                             "PY_type_impl": "PY_Cstruct1_cls_tp_init",
@@ -309,9 +303,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg",
                                 "pointer": [
@@ -335,7 +326,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceCls(Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg +intent(inout))",
+                "declgen": "int passStructByReferenceCls(Cstruct1_cls & arg)",
                 "fmtdict": {
                     "PY_name_impl": "PY_passStructByReferenceCls",
                     "function_name": "passStructByReferenceCls",
@@ -405,9 +396,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -432,7 +420,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByReferenceInCls(const Cstruct1_cls &arg)",
-                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls & arg +intent(in))",
+                "declgen": "int passStructByReferenceInCls(const Cstruct1_cls & arg)",
                 "doxygen": {
                     "description": "const defaults to intent(in)\n"
                 },
@@ -796,7 +784,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
+                                "intent": "IN",
                                 "rank": 1
                             },
                             "declarator": {
@@ -823,7 +811,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool defaultPtrIsNULL(double* data +intent(IN)+rank(1) = nullptr )",
-                "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(in)+rank(1))",
+                "declgen": "bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))",
                 "fmtdict": {
                     "C_call_list": "data",
                     "C_name": "CXX_default_ptr_is_null_1",
@@ -968,7 +956,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1030,7 +1017,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +intent(in)+value, int * out1 +intent(out), int * out2 +intent(out))",
+                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))",
                 "fmtdict": {
                     "C_call_list": "in1,\t out1,\t out2",
                     "C_name": "CXX_default_args_in_out_0",
@@ -1292,7 +1279,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1349,7 +1335,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1372,7 +1357,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void defaultArgsInOut(int in1, int *out1+intent(out), int *out2+intent(out), bool flag = false)",
-                "declgen": "void defaultArgsInOut(int in1 +intent(in)+value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +intent(in)+value)",
+                "declgen": "void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)",
                 "fmtdict": {
                     "C_call_list": "in1,\t out1,\t out2,\t flag",
                     "C_name": "CXX_default_args_in_out_1",
@@ -1636,9 +1621,6 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "inout"
-                                    },
                                     "declarator": {
                                         "name": "arg",
                                         "pointer": [
@@ -1662,7 +1644,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReference(Cstruct1 &arg)",
-                        "declgen": "int passStructByReference(Cstruct1 & arg +intent(inout))",
+                        "declgen": "int passStructByReference(Cstruct1 & arg)",
                         "doxygen": {
                             "description": "Argument is modified by library, defaults to intent(inout).\n"
                         },
@@ -1812,9 +1794,6 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "const": true,
                                     "declarator": {
                                         "name": "arg",
@@ -1839,7 +1818,7 @@
                             "typemap_name": "int"
                         },
                         "decl": "int passStructByReferenceIn(const Cstruct1 &arg)",
-                        "declgen": "int passStructByReferenceIn(const Cstruct1 & arg +intent(in))",
+                        "declgen": "int passStructByReferenceIn(const Cstruct1 & arg)",
                         "doxygen": {
                             "description": "const defaults to intent(in)\n"
                         },

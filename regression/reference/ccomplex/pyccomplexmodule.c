@@ -35,7 +35,7 @@ PyObject *PY_error_obj;
 // Function:  void acceptDoubleComplexInoutPtr
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double complex * arg1 +intent(inout)
+// Argument:  double complex * arg1
 // Exact:     py_native_*_inout
 static char PY_acceptDoubleComplexInoutPtr__doc__[] =
 "documentation"
@@ -104,7 +104,7 @@ PY_acceptDoubleComplexOutPtr(
 // Function:  void acceptDoubleComplexInoutPtrFlag
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double complex * arg1 +intent(inout)
+// Argument:  double complex * arg1
 // Exact:     py_native_*_inout
 // ----------------------------------------
 // Argument:  int * flag +intent(out)

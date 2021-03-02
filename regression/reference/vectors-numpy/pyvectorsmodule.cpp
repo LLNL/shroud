@@ -39,7 +39,7 @@ PyObject *PY_error_obj;
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const std::vector<int> & arg +intent(in)+rank(1)
+// Argument:  const std::vector<int> & arg +rank(1)
 // Exact:     py_vector_in_numpy
 static char PY_vector_sum__doc__[] =
 "documentation"
@@ -216,7 +216,7 @@ fail:
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Exact:     py_vector_result_numpy
 // ----------------------------------------
-// Argument:  int n +intent(in)+value
+// Argument:  int n +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_ReturnVectorAlloc__doc__[] =

@@ -45,7 +45,7 @@ module library_three_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  CustomType arg1 +intent(in)+value
+        ! Argument:  CustomType arg1 +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -71,7 +71,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  CustomType arg1 +intent(in)+value
+    ! Argument:  CustomType arg1 +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)

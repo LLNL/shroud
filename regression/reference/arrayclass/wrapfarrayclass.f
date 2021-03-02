@@ -101,7 +101,7 @@ module arrayclass_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int size +intent(in)+value
+        ! Argument:  int size +value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -289,7 +289,7 @@ module arrayclass_mod
         ! Match:     c_default
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(inout)
+        ! Argument:  int * isize +hidden
         ! Requested: c_native_*_inout
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -313,7 +313,7 @@ module arrayclass_mod
         ! Match:     c_native_**_out_buf
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(inout)
+        ! Argument:  int * isize +hidden
         ! Requested: c_native_*_inout_buf
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -338,7 +338,7 @@ module arrayclass_mod
         ! Match:     c_default
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(inout)
+        ! Argument:  int & isize +hidden
         ! Requested: c_native_&_inout
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -362,7 +362,7 @@ module arrayclass_mod
         ! Match:     c_native_*&_out_buf
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(inout)
+        ! Argument:  int & isize +hidden
         ! Requested: c_native_&_inout_buf
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -387,7 +387,7 @@ module arrayclass_mod
         ! Match:     c_default
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(inout)
+        ! Argument:  int * isize +hidden
         ! Requested: c_native_*_inout
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -412,7 +412,7 @@ module arrayclass_mod
         ! Match:     c_native_**_out_buf
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int * isize +hidden+intent(inout)
+        ! Argument:  int * isize +hidden
         ! Requested: c_native_*_inout_buf
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -437,7 +437,7 @@ module arrayclass_mod
         ! Match:     c_default
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(inout)
+        ! Argument:  int & isize +hidden
         ! Requested: c_native_&_inout
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -462,7 +462,7 @@ module arrayclass_mod
         ! Match:     c_native_*&_out_buf
         !    metaattrs:  +deref(pointer)+intent(out)
         ! ----------------------------------------
-        ! Argument:  int & isize +hidden+intent(inout)
+        ! Argument:  int & isize +hidden
         ! Requested: c_native_&_inout_buf
         ! Match:     c_default
         !    metaattrs:  +intent(inout)
@@ -519,7 +519,7 @@ module arrayclass_mod
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  void * array +intent(in)+value
+        ! Argument:  void * array +value
         ! Requested: c_void_*_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -586,7 +586,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int size +intent(in)+value
+    ! Argument:  int size +value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -760,7 +760,7 @@ contains
     ! Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  int * isize +hidden+intent(inout)
+    ! Argument:  int * isize +hidden
     ! Requested: f_native_*_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -795,7 +795,7 @@ contains
     ! Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_*&_out_buf
     ! ----------------------------------------
-    ! Argument:  int & isize +hidden+intent(inout)
+    ! Argument:  int & isize +hidden
     ! Requested: f_native_&_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -830,7 +830,7 @@ contains
     ! Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
-    ! Argument:  int * isize +hidden+intent(inout)
+    ! Argument:  int * isize +hidden
     ! Requested: f_native_*_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -865,7 +865,7 @@ contains
     ! Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
     ! Exact:     c_native_*&_out_buf
     ! ----------------------------------------
-    ! Argument:  int & isize +hidden+intent(inout)
+    ! Argument:  int & isize +hidden
     ! Requested: f_native_&_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)
@@ -937,7 +937,7 @@ contains
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * array +intent(in)+value
+    ! Argument:  void * array +value
     ! Exact:     f_void_*_in
     !    metaattrs:  +intent(in)
     ! Requested: c_void_*_in

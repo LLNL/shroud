@@ -96,7 +96,7 @@ static void ShroudStrFree(char *src)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     c_char_scalar_in
 //    metaattrs:  +intent(in)
 void STR_pass_char(char status)
@@ -115,7 +115,7 @@ void STR_pass_char(char status)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     c_char_scalar_in
 //    metaattrs:  +intent(in)
 void STR_pass_char_force(char status)
@@ -150,7 +150,7 @@ char STR_return_char(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)
+// Argument:  char * SHF_rv
 // Exact:     c_char_scalar_result_cfi
 //    metaattrs:  +intent(out)
 void STR_return_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -180,7 +180,7 @@ void STR_return_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Match:     c_default
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)
+// Argument:  const char * src
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -209,7 +209,7 @@ void STR_pass_char_ptr(char * dest, const char * src)
 // Exact:     c_char_*_out_cfi
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)+len(Nsrc)+len_trim(Lsrc)
+// Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
 // Exact:     c_char_*_in_cfi
 //    metaattrs:  +intent(in)
 // start STR_pass_char_ptr_CFI
@@ -301,7 +301,7 @@ const char * STR_get_char_ptr1(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * SHF_rv +deref(allocatable)+intent(out)
+// Argument:  const char * SHF_rv +deref(allocatable)
 // Exact:     c_char_*_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 // start STR_get_char_ptr1_CFI
@@ -348,7 +348,7 @@ const char * STR_get_char_ptr2(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(30)
+// Argument:  char * SHF_rv +len(30)
 // Exact:     c_char_*_result_cfi
 //    metaattrs:  +intent(out)
 // start STR_get_char_ptr2_CFI
@@ -389,7 +389,7 @@ const char * STR_get_char_ptr3(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * output +intent(out)
+// Argument:  char * output
 // Exact:     c_char_*_result_cfi
 //    metaattrs:  +intent(out)
 // start STR_get_char_ptr3_CFI
@@ -428,7 +428,7 @@ const char * STR_get_char_ptr4(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string * SHF_rv +deref(allocatable)+intent(out)
+// Argument:  const string * SHF_rv +deref(allocatable)
 // Exact:     c_string_scalar_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -453,7 +453,7 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * SHF_rv +intent(out)+len(30)
+// Argument:  string * SHF_rv +len(30)
 // Exact:     c_string_scalar_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -479,7 +479,7 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * output +intent(out)
+// Argument:  string * output
 // Exact:     c_string_scalar_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
@@ -501,7 +501,7 @@ void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)
+// Argument:  const std::string * SHF_rv +deref(allocatable)
 // Exact:     c_string_scalar_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -545,7 +545,7 @@ const char * STR_get_const_string_ref_pure(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string & SHF_rv +deref(allocatable)+intent(out)
+// Argument:  const string & SHF_rv +deref(allocatable)
 // Exact:     c_string_&_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 // start STR_get_const_string_ref_pure_CFI
@@ -600,7 +600,7 @@ const char * STR_get_const_string_ref_len(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +intent(out)+len(30)
+// Argument:  string & SHF_rv +len(30)
 // Exact:     c_string_&_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -652,7 +652,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & output +intent(out)
+// Argument:  string & output
 // Exact:     c_string_&_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
@@ -700,7 +700,7 @@ const char * STR_get_const_string_ref_len_empty(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +intent(out)+len(30)
+// Argument:  string & SHF_rv +len(30)
 // Exact:     c_string_&_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -735,7 +735,7 @@ const char * STR_get_const_string_ref_alloc(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +deref(allocatable)+intent(out)
+// Argument:  const std::string & SHF_rv +deref(allocatable)
 // Exact:     c_string_&_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -785,7 +785,7 @@ const char * STR_get_const_string_ptr_len(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string * SHF_rv +intent(out)+len(30)
+// Argument:  string * SHF_rv +len(30)
 // Exact:     c_string_*_result_cfi
 //    metaattrs:  +intent(out)
 void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -820,7 +820,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(library)
+// Argument:  const std::string * SHF_rv +deref(allocatable)+owner(library)
 // Exact:     c_string_*_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -868,7 +868,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(caller)
+// Argument:  const std::string * SHF_rv +deref(allocatable)+owner(caller)
 // Exact:     c_string_*_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -908,7 +908,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
+// Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // Exact:     c_string_*_result_cfi_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
@@ -937,7 +937,7 @@ void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)
+// Argument:  const std::string & arg1
 // Exact:     c_string_&_in
 //    metaattrs:  +intent(in)
 void STR_accept_string_const_reference(const char * arg1)
@@ -960,7 +960,7 @@ void STR_accept_string_const_reference(const char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)+len(Narg1)+len_trim(Larg1)
+// Argument:  const std::string & arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_&_in_cfi
 //    metaattrs:  +intent(in)
 void STR_accept_string_const_reference_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1035,7 +1035,7 @@ void STR_accept_string_reference_out_CFI(CFI_cdesc_t *SHcfi_arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(inout)
+// Argument:  std::string & arg1
 // Exact:     c_string_&_inout
 //    metaattrs:  +intent(inout)
 // start STR_accept_string_reference
@@ -1061,7 +1061,7 @@ void STR_accept_string_reference(char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_&_inout_cfi
 //    metaattrs:  +intent(inout)
 // start STR_accept_string_reference_CFI
@@ -1087,7 +1087,7 @@ void STR_accept_string_reference_CFI(CFI_cdesc_t *SHcfi_arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * arg1 +intent(in)
+// Argument:  const std::string * arg1
 // Exact:     c_string_*_in
 //    metaattrs:  +intent(in)
 void STR_accept_string_pointer_const(const char * arg1)
@@ -1107,7 +1107,7 @@ void STR_accept_string_pointer_const(const char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * arg1 +intent(in)+len(Narg1)+len_trim(Larg1)
+// Argument:  const std::string * arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_*_in_cfi
 //    metaattrs:  +intent(in)
 void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1129,7 +1129,7 @@ void STR_accept_string_pointer_const_CFI(CFI_cdesc_t *SHcfi_arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     c_string_*_inout
 //    metaattrs:  +intent(inout)
 void STR_accept_string_pointer(char * arg1)
@@ -1150,7 +1150,7 @@ void STR_accept_string_pointer(char * arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_*_inout_cfi
 //    metaattrs:  +intent(inout)
 void STR_accept_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1222,7 +1222,7 @@ void STR_fetch_string_pointer_CFI(CFI_cdesc_t *SHcfi_arg1)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     c_string_*_inout
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -1250,7 +1250,7 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)+len(Narg1)+len_trim(Larg1)
+// Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
 // Exact:     c_string_*_inout_cfi
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -1342,7 +1342,7 @@ void STR_fetch_string_pointer_len_CFI(CFI_cdesc_t *SHcfi_arg1,
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  std::string arg1 +intent(in)+value
+// Argument:  std::string arg1 +value
 // Exact:     c_string_scalar_in
 //    metaattrs:  +intent(in)
 int STR_accept_string_instance(char *arg1)
@@ -1363,7 +1363,7 @@ int STR_accept_string_instance(char *arg1)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  std::string arg1 +intent(in)+len(Narg1)+len_trim(Larg1)+value
+// Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
 // Exact:     c_string_scalar_in_cfi
 //    metaattrs:  +intent(in)
 int STR_accept_string_instance_CFI(CFI_cdesc_t *SHcfi_arg1)
@@ -1453,7 +1453,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)
+// Argument:  char * SHF_rv
 // Exact:     c_char_scalar_result_cfi
 //    metaattrs:  +intent(out)
 void STR_creturn_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -1482,7 +1482,7 @@ void STR_creturn_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Exact:     c_char_*_out_cfi
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  const char * src +intent(in)+len(Nsrc)+len_trim(Lsrc)
+// Argument:  const char * src +len(Nsrc)+len_trim(Lsrc)
 // Exact:     c_char_*_in_cfi
 //    metaattrs:  +intent(in)
 void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
@@ -1514,7 +1514,7 @@ void STR_cpass_char_ptr_CFI(CFI_cdesc_t *SHcfi_dest,
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)
+// Argument:  std::string & name
 // Exact:     c_string_&_inout
 //    metaattrs:  +intent(inout)
 void STR_post_declare(int * count, char * name)
@@ -1542,7 +1542,7 @@ void STR_post_declare(int * count, char * name)
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+// Argument:  std::string & name +len(Nname)+len_trim(Lname)
 // Exact:     c_string_&_inout_cfi
 //    metaattrs:  +intent(inout)
 void STR_post_declare_CFI(int * count, CFI_cdesc_t *SHcfi_name)

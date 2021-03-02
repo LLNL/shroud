@@ -58,7 +58,7 @@ PP_local_function1(
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     py_string_&_in
 static char PP_isNameValid__doc__[] =
 "documentation"
@@ -133,7 +133,7 @@ fail:
 // Function:  void test_names
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     py_string_&_in
 static PyObject *
 PP_test_names(
@@ -163,10 +163,10 @@ PP_test_names(
 // Function:  void test_names
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     py_string_&_in
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -199,11 +199,11 @@ PP_test_names_flag(
 // Function:  void testoptional
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int i=1 +intent(in)+value
+// Argument:  int i=1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  long j=2 +intent(in)+value
+// Argument:  long j=2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_testoptional_2__doc__[] =
@@ -278,7 +278,7 @@ PP_test_size_t(
 // Function:  void testmpi
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  MPI_Comm comm +intent(in)+value
+// Argument:  MPI_Comm comm +value
 // Requested: py_unknown_scalar_in
 // Match:     py_default
 #ifdef HAVE_MPI
@@ -328,7 +328,7 @@ PP_testmpi_serial(
 // Function:  void FuncPtr1
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  void ( * get)(void) +intent(in)+value
+// Argument:  void ( * get)(void) +value
 // Exact:     py_default
 static char PP_FuncPtr1__doc__[] =
 "documentation"
@@ -363,7 +363,7 @@ PP_FuncPtr1(
 // Function:  void FuncPtr2
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double * ( * get)(void) +intent(in)
+// Argument:  double * ( * get)(void)
 // Exact:     py_default
 static char PP_FuncPtr2__doc__[] =
 "documentation"
@@ -398,7 +398,7 @@ PP_FuncPtr2(
 // Function:  void FuncPtr3
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
+// Argument:  double ( * get)(int i +value, int +value) +value
 // Exact:     py_default
 static char PP_FuncPtr3__doc__[] =
 "documentation"
@@ -433,7 +433,7 @@ PP_FuncPtr3(
 // Function:  void FuncPtr5
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
+// Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
 // Exact:     py_default
 static char PP_FuncPtr5__doc__[] =
 "documentation"
@@ -558,43 +558,43 @@ PP_verylongfunctionname1(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname1 +intent(in)+value
+// Argument:  int verylongname1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname2 +intent(in)+value
+// Argument:  int verylongname2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname3 +intent(in)+value
+// Argument:  int verylongname3 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname4 +intent(in)+value
+// Argument:  int verylongname4 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname5 +intent(in)+value
+// Argument:  int verylongname5 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname6 +intent(in)+value
+// Argument:  int verylongname6 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname7 +intent(in)+value
+// Argument:  int verylongname7 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname8 +intent(in)+value
+// Argument:  int verylongname8 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname9 +intent(in)+value
+// Argument:  int verylongname9 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int verylongname10 +intent(in)+value
+// Argument:  int verylongname10 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_verylongfunctionname2__doc__[] =
@@ -662,7 +662,7 @@ PP_verylongfunctionname2(
 // Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
 // Exact:     py_native_*_out_allocatable_numpy
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default
 static char PP_cos_doubles__doc__[] =
 "documentation"

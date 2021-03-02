@@ -96,7 +96,7 @@ PY_push_back(
 // Function:  int & at +deref(pointer)
 // Exact:     py_native_&_result_pointer_numpy
 // ----------------------------------------
-// Argument:  size_type n +intent(in)+value
+// Argument:  size_type n +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_at__doc__[] =

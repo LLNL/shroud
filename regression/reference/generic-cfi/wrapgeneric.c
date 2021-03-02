@@ -28,11 +28,11 @@
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const int * values +dimension(..)+intent(in)
+// Argument:  const int * values +dimension(..)
 // Exact:     c_native_*_in_cfi
 //    metaattrs:  +assumed-rank+intent(in)
 // ----------------------------------------
-// Argument:  int nvalues +intent(in)+value
+// Argument:  int nvalues +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -50,17 +50,17 @@ int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  void * addr +intent(in)+value
+// Argument:  void * addr +value
 // Requested: c_void_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  int type +implied(type(addr))+intent(in)+value
+// Argument:  int type +implied(type(addr))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+intent(in)+value
+// Argument:  size_t size +implied(size(addr))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

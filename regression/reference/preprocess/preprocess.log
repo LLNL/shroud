@@ -4,12 +4,12 @@ class User1
 C method void method1(void)
 C method void method2(void)
 C method void method3def(void)
-C method void method3def(int i=0 +intent(in)+value)
+C method void method3def(int i=0 +value)
 Close wrapUser1.h
 Close wrapUser1.cpp
 class User2
 C method void exfunc(void)
-C method void exfunc(int flag +intent(in)+value)
+C method void exfunc(int flag +value)
 Close wrapUser2.h
 Close wrapUser2.cpp
 Close wrappreprocess.cpp
@@ -18,25 +18,25 @@ class User1
 Fortran void method1(void)
 Fortran void method2(void)
 Fortran void method3def(void)
-Fortran void method3def(int i=0 +intent(in)+value)
+Fortran void method3def(int i=0 +value)
 C-interface void method1(void)
 C-interface void method2(void)
 C-interface void method3def(void)
-C-interface void method3def(int i=0 +intent(in)+value)
+C-interface void method3def(int i=0 +value)
 class User2
 Fortran void exfunc(void)
-Fortran void exfunc(int flag +intent(in)+value)
+Fortran void exfunc(int flag +value)
 C-interface void exfunc(void)
-C-interface void exfunc(int flag +intent(in)+value)
+C-interface void exfunc(int flag +value)
 Close wrapfpreprocess.f
 class User1
 Python method void method1(void)
 Python method void method2(void)
-Python method void method3def(int i=0 +intent(in)+value)
+Python method void method3def(int i=0 +value)
 Close pyUser1type.cpp
 class User2
 Python method void exfunc(void)
-Python method void exfunc(int flag +intent(in)+value)
+Python method void exfunc(int flag +value)
 Close pyUser2type.cpp
 Close pypreprocessmodule.cpp
 Close pypreprocessutil.cpp

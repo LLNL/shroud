@@ -281,7 +281,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -298,7 +297,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -320,7 +318,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
+                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByValue",
@@ -660,7 +658,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -682,7 +679,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double PassByValueMacro(int arg2)",
-                "declgen": "double PassByValueMacro(int arg2 +intent(in)+value)",
+                "declgen": "double PassByValueMacro(int arg2 +value)",
                 "doxygen": {
                     "description": "PassByValueMacro is a #define macro. Force a C wrapper\nto allow Fortran to have an actual function to call.\n"
                 },
@@ -892,7 +889,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "const": true,
@@ -955,7 +951,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
-                "declgen": "void checkBool(const bool arg1 +intent(in)+value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
+                "declgen": "void checkBool(const bool arg1 +value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
                 "doxygen": {
                     "brief": "Check intent with bool"
                 },
@@ -1146,9 +1142,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -1168,9 +1161,6 @@
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg2",
@@ -1196,7 +1186,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in)) +deref(result-as-arg)+len(30)",
+                "declgen": "char * Function4a(const char * arg1, const char * arg2) +deref(result-as-arg)+len(30)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function4a",
@@ -1351,9 +1341,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -1373,9 +1360,6 @@
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg2",
@@ -1397,7 +1381,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
                                 "len": "NSHF_rv"
                             },
                             "declarator": {
@@ -1423,7 +1406,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "void Function4a(const char * arg1 +intent(in), const char * arg2 +intent(in), char * SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void Function4a(const char * arg1, const char * arg2, char * SHF_rv +len(NSHF_rv)) +len(30)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "CLI_function4a_bufferify",
@@ -1502,9 +1485,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -1530,7 +1510,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptName(const char *name)",
-                "declgen": "void acceptName(const char * name +intent(in))",
+                "declgen": "void acceptName(const char * name)",
                 "fmtdict": {
                     "C_call_list": "name",
                     "C_name": "acceptName",
@@ -2450,7 +2430,6 @@
                         {
                             "attrs": {
                                 "implied": "len(text)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2472,7 +2451,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+intent(in)+value)",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -2609,7 +2588,6 @@
                         {
                             "attrs": {
                                 "implied": "len(text)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2632,7 +2610,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len, int ltext +implied(len(text))+intent(in)+value)",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len, int ltext +implied(len(text))+value)",
                 "doxygen": {
                     "brief": "Fill text, at most ltext characters."
                 },
@@ -2863,9 +2841,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "text",
@@ -2887,7 +2862,6 @@
                         {
                             "attrs": {
                                 "implied": "len(text)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2905,7 +2879,6 @@
                         {
                             "attrs": {
                                 "implied": "false",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2927,7 +2900,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text +intent(in), int ltext +implied(len(text))+intent(in)+value, bool flag +implied(false)+intent(in)+value)",
+                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text))+value, bool flag +implied(false)+value)",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
@@ -3169,9 +3142,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "text",
@@ -3193,7 +3163,6 @@
                         {
                             "attrs": {
                                 "implied": "len_trim(text)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3211,7 +3180,6 @@
                         {
                             "attrs": {
                                 "implied": "true",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3233,7 +3201,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text +intent(in), int ltext +implied(len_trim(text))+intent(in)+value, bool flag +implied(true)+intent(in)+value)",
+                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text))+value, bool flag +implied(true)+value)",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
@@ -3381,7 +3349,6 @@
                         {
                             "attrs": {
                                 "implied": "true",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3403,7 +3370,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
-                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+intent(in)+value)",
+                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+value)",
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
@@ -3548,7 +3515,6 @@
                         {
                             "attrs": {
                                 "implied": "false",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3570,7 +3536,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
-                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+intent(in)+value)",
+                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+value)",
                 "doxygen": {
                     "brief": "Single, implied bool argument"
                 },
@@ -4076,8 +4042,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "arg",
@@ -4102,7 +4067,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedType(void *arg+assumedtype)",
-                "declgen": "int passAssumedType(void * arg +assumedtype+intent(in))",
+                "declgen": "int passAssumedType(void * arg +assumedtype)",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4182,7 +4147,6 @@
                         {
                             "attrs": {
                                 "assumedtype": true,
-                                "intent": "in",
                                 "rank": 1
                             },
                             "declarator": {
@@ -4208,7 +4172,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passAssumedTypeDim(void *arg+assumedtype+rank(1))",
-                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+intent(in)+rank(1))",
+                "declgen": "void passAssumedTypeDim(void * arg +assumedtype+rank(1))",
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
@@ -4330,8 +4294,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "arg",
@@ -4376,7 +4339,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out))",
+                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4507,8 +4470,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "arg",
@@ -4556,7 +4518,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passAssumedTypeBuf(void *arg+assumedtype, char *outbuf+intent(out))",
-                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype+intent(in), char * outbuf +intent(out)+len)",
+                "declgen": "int passAssumedTypeBuf(void * arg +assumedtype, char * outbuf +intent(out)+len)",
                 "doxygen": {
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
@@ -4656,7 +4618,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4674,7 +4635,6 @@
                         {
                             "attrs": {
                                 "external": true,
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4704,7 +4664,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1(int type, void (*incr)(void)+external)",
-                "declgen": "void callback1(int type +intent(in)+value, void ( * incr)(void) +external+intent(in)+value)",
+                "declgen": "void callback1(int type +value, void ( * incr)(void) +external+value)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -4812,7 +4772,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4830,7 +4789,6 @@
                         {
                             "attrs": {
                                 "external": true,
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4860,7 +4818,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback1a(int type, void (*incr)(void)+external)",
-                "declgen": "void callback1a(int type +intent(in)+value, void ( * incr)(void) +external+intent(in)+value)",
+                "declgen": "void callback1a(int type +value, void ( * incr)(void) +external+value)",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "Add C_force_wrapper to test generating function pointer prototype.\n"
@@ -4998,7 +4956,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5015,8 +4972,7 @@
                         },
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "in",
@@ -5037,7 +4993,6 @@
                         {
                             "attrs": {
                                 "external": true,
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5081,7 +5036,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback2(int type, void * in+assumedtype, void (*incr)(int *)+external)",
-                "declgen": "void callback2(int type +intent(in)+value, void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value)",
+                "declgen": "void callback2(int type +value, void * in +assumedtype, void ( * incr)(int *) +external+value)",
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
@@ -5214,9 +5169,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "type",
@@ -5237,8 +5189,7 @@
                         },
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "in",
@@ -5259,7 +5210,6 @@
                         {
                             "attrs": {
                                 "external": true,
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5323,7 +5273,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out))",
+                "declgen": "void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out))",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
@@ -5490,9 +5440,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "type",
@@ -5513,8 +5460,7 @@
                         },
                         {
                             "attrs": {
-                                "assumedtype": true,
-                                "intent": "in"
+                                "assumedtype": true
                             },
                             "declarator": {
                                 "name": "in",
@@ -5536,7 +5482,6 @@
                         {
                             "attrs": {
                                 "external": true,
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5603,7 +5548,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback3(const char *type, void * in+assumedtype, void (*incr)(int *)+external, char *outbuf+intent(out))",
-                "declgen": "void callback3(const char * type +intent(in), void * in +assumedtype+intent(in), void ( * incr)(int *) +external+intent(in)+value, char * outbuf +intent(out)+len)",
+                "declgen": "void callback3(const char * type, void * in +assumedtype, void ( * incr)(int *) +external+value, char * outbuf +intent(out)+len)",
                 "doxygen": {
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
@@ -5735,7 +5680,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5772,7 +5716,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -5840,7 +5783,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void callback_set_alloc(int tc, array_info *arr+intent(inout), void (*alloc)(int tc+intent(in), array_info *arr+intent(inout)))",
-                "declgen": "void callback_set_alloc(int tc +intent(in)+value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +intent(in)+value)",
+                "declgen": "void callback_set_alloc(int tc +value, array_info * arr +intent(inout), void ( * alloc)(int tc +intent(in)+value, array_info * arr +intent(inout)) +value)",
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },

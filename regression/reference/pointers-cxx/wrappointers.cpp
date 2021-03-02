@@ -73,7 +73,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * arg +intent(in)
+// Argument:  const int * arg
 // Requested: c_native_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -94,7 +94,7 @@ void POI_intargs_in(const int * arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * arg +intent(inout)
+// Argument:  int * arg
 // Requested: c_native_*_inout
 // Match:     c_default
 //    metaattrs:  +intent(inout)
@@ -173,7 +173,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Match:     c_default
 //    metaattrs:  +deref(allocatable)+intent(out)
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Argument:  int sizein +implied(size(in))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -207,7 +207,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Match:     c_default
 //    metaattrs:  +deref(allocatable)+intent(out)
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Argument:  int sizein +implied(size(in))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -233,7 +233,7 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * nvalues +intent(out)
+// Argument:  int * nvalues +intent(OUT)
 // Requested: c_native_*_out
 // Match:     c_default
 //    metaattrs:  +intent(out)
@@ -285,7 +285,7 @@ void POI_get_values2(int * arg1, int * arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int nvar +intent(in)+value
+// Argument:  int nvar +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -308,7 +308,7 @@ void POI_iota_allocatable(int nvar, int * values)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int nvar +intent(in)+value
+// Argument:  int nvar +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -331,12 +331,12 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int len +implied(size(values))+intent(in)+value
+// Argument:  int len +implied(size(values))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  const int * values +intent(in)+rank(1)
+// Argument:  const int * values +rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -388,7 +388,7 @@ void POI_fill_int_array(int * out)
 // Match:     c_default
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
-// Argument:  int sizein +implied(size(array))+intent(in)+value
+// Argument:  int sizein +implied(size(array))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -406,12 +406,12 @@ void POI_increment_int_array(int * array, int sizein)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * x +intent(inout)+rank(1)
+// Argument:  double * x +rank(1)
 // Requested: c_native_*_inout
 // Match:     c_default
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
-// Argument:  int x_length +implied(size(x))+intent(in)+value
+// Argument:  int x_length +implied(size(x))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -430,12 +430,12 @@ void POI_fill_with_zeros(double * x, int x_length)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const int * arr +intent(in)+rank(1)
+// Argument:  const int * arr +rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  size_t len +implied(size(arr))+intent(in)+value
+// Argument:  size_t len +implied(size(arr))+value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -501,7 +501,7 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int value +intent(in)+value
+// Argument:  int value +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -1142,7 +1142,7 @@ int POI_check_int2d(int **arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * arg +dimension(10,20)+intent(in)
+// Argument:  const int * arg +dimension(10,20)
 // Requested: c_native_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -1161,7 +1161,7 @@ void POI_dimension_in(const int * arg)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -1181,7 +1181,7 @@ void * POI_return_address1(int flag)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -1219,7 +1219,7 @@ void POI_fetch_void_ptr(void * * addr)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  void * * addr +intent(in)+rank(1)
+// Argument:  void * * addr +rank(1)
 // Exact:     c_void_**_in
 //    metaattrs:  +intent(in)
 // start POI_void_ptr_array
@@ -1381,7 +1381,7 @@ int * POI_return_int_raw(void)
 // Match:     c_default
 //    metaattrs:  +deref(raw)+intent(result)
 // ----------------------------------------
-// Argument:  const char * name +intent(in)
+// Argument:  const char * name
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

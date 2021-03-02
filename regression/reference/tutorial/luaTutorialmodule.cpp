@@ -36,15 +36,15 @@ static int l_no_return_no_arguments(lua_State *)
     // splicer end function.NoReturnNoArguments
 }
 
-// double PassByValue(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+// double PassByValue(double arg1 +value, int arg2 +value)
 // ----------------------------------------
 // Function:  double PassByValue
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double arg1 +intent(in)+value
+// Argument:  double arg1 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
 // Exact:     lua_native_scalar_in
 static int l_pass_by_value(lua_State *L)
 {
@@ -57,15 +57,15 @@ static int l_pass_by_value(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// const std::string ConcatenateStrings(const std::string & arg1 +intent(in), const std::string & arg2 +intent(in)) +deref(allocatable)
+// const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2) +deref(allocatable)
 // ----------------------------------------
 // Function:  const std::string ConcatenateStrings +deref(allocatable)
 // Exact:     lua_string_scalar_result
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)
+// Argument:  const std::string & arg1
 // Exact:     lua_string_&_in
 // ----------------------------------------
-// Argument:  const std::string & arg2 +intent(in)
+// Argument:  const std::string & arg2
 // Exact:     lua_string_&_in
 /**
  * Note that since a reference is returned, no intermediate string
@@ -83,7 +83,7 @@ static int l_concatenate_strings(lua_State *L)
     // splicer end function.ConcatenateStrings
 }
 
-// double UseDefaultArguments(double arg1=3.1415 +intent(in)+value, bool arg2=true +intent(in)+value)
+// double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Exact:     lua_native_scalar_result
@@ -91,16 +91,16 @@ static int l_concatenate_strings(lua_State *L)
 // Function:  double UseDefaultArguments
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +intent(in)+value
+// Argument:  double arg1=3.1415 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  double UseDefaultArguments
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +intent(in)+value
+// Argument:  double arg1=3.1415 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  bool arg2=true +intent(in)+value
+// Argument:  bool arg2=true +value
 // Exact:     lua_bool_scalar_in
 static int l_use_default_arguments(lua_State *L)
 {
@@ -149,19 +149,19 @@ static int l_use_default_arguments(lua_State *L)
     // splicer end function.UseDefaultArguments
 }
 
-// void OverloadedFunction(const std::string & name +intent(in))
-// void OverloadedFunction(int indx +intent(in)+value)
+// void OverloadedFunction(const std::string & name)
+// void OverloadedFunction(int indx +value)
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     lua_string_&_in
 // ----------------------------------------
 // Function:  void OverloadedFunction
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  int indx +intent(in)+value
+// Argument:  int indx +value
 // Exact:     lua_native_scalar_in
 static int l_overloaded_function(lua_State *L)
 {
@@ -193,19 +193,19 @@ static int l_overloaded_function(lua_State *L)
     // splicer end function.OverloadedFunction
 }
 
-// void TemplateArgument(int arg +intent(in)+value)
-// void TemplateArgument(double arg +intent(in)+value)
+// void TemplateArgument(int arg +value)
+// void TemplateArgument(double arg +value)
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  int arg +intent(in)+value
+// Argument:  int arg +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  void TemplateArgument
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  double arg +intent(in)+value
+// Argument:  double arg +value
 // Exact:     lua_native_scalar_in
 static int l_template_argument(lua_State *L)
 {
@@ -238,7 +238,7 @@ static int l_template_argument(lua_State *L)
 }
 
 // void FortranGenericOverloaded(void)
-// void FortranGenericOverloaded(const std::string & name +intent(in), double arg2 +intent(in)+value)
+// void FortranGenericOverloaded(const std::string & name, double arg2 +value)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
 // Exact:     lua_subroutine
@@ -246,10 +246,10 @@ static int l_template_argument(lua_State *L)
 // Function:  void FortranGenericOverloaded
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
 // Exact:     lua_string_&_in
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
 // Exact:     lua_native_scalar_in
 static int l_fortran_generic_overloaded(lua_State *L)
 {
@@ -285,70 +285,70 @@ static int l_fortran_generic_overloaded(lua_State *L)
     // splicer end function.FortranGenericOverloaded
 }
 
-// int UseDefaultOverload(int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
-// int UseDefaultOverload(double type +intent(in)+value, int num +intent(in)+value, int offset=0 +intent(in)+value, int stride=1 +intent(in)+value)
+// int UseDefaultOverload(int num +value, int offset=0 +value, int stride=1 +value)
+// int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Function:  int UseDefaultOverload
-// Exact:     lua_native_scalar_result
-// ----------------------------------------
-// Argument:  int num +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int num +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  int num +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Function:  int UseDefaultOverload
-// Exact:     lua_native_scalar_result
-// ----------------------------------------
-// Argument:  int num +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Argument:  int offset=0 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  double type +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
-// Exact:     lua_native_scalar_in
-// ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int num +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
 // Function:  int UseDefaultOverload
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  int num +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int offset=0 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int stride=1 +value
 // Exact:     lua_native_scalar_in
 // ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Argument:  double type +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Argument:  int num +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Argument:  int offset=0 +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Function:  int UseDefaultOverload
+// Exact:     lua_native_scalar_result
+// ----------------------------------------
+// Argument:  double type +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Argument:  int num +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Argument:  int offset=0 +value
+// Exact:     lua_native_scalar_in
+// ----------------------------------------
+// Argument:  int stride=1 +value
 // Exact:     lua_native_scalar_in
 static int l_use_default_overload(lua_State *L)
 {
@@ -445,12 +445,12 @@ static int l_use_default_overload(lua_State *L)
     // splicer end function.UseDefaultOverload
 }
 
-// TypeID typefunc(TypeID arg +intent(in)+value)
+// TypeID typefunc(TypeID arg +value)
 // ----------------------------------------
 // Function:  TypeID typefunc
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  TypeID arg +intent(in)+value
+// Argument:  TypeID arg +value
 // Exact:     lua_native_scalar_in
 static int l_typefunc(lua_State *L)
 {
@@ -462,12 +462,12 @@ static int l_typefunc(lua_State *L)
     // splicer end function.typefunc
 }
 
-// EnumTypeID enumfunc(EnumTypeID arg +intent(in)+value)
+// EnumTypeID enumfunc(EnumTypeID arg +value)
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  EnumTypeID arg +intent(in)+value
+// Argument:  EnumTypeID arg +value
 // Exact:     lua_native_scalar_in
 static int l_enumfunc(lua_State *L)
 {
@@ -480,12 +480,12 @@ static int l_enumfunc(lua_State *L)
     // splicer end function.enumfunc
 }
 
-// Color colorfunc(Color arg +intent(in)+value)
+// Color colorfunc(Color arg +value)
 // ----------------------------------------
 // Function:  Color colorfunc
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  Color arg +intent(in)+value
+// Argument:  Color arg +value
 // Exact:     lua_native_scalar_in
 static int l_colorfunc(lua_State *L)
 {

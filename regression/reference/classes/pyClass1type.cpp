@@ -61,7 +61,7 @@ PY_Class1_tp_init_default(
 // Function:  Class1
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static int
@@ -125,7 +125,7 @@ PY_Method1(
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  const Class1 & obj2 +intent(in)
+// Argument:  const Class1 & obj2
 // Exact:     py_shadow_&_in
 static char PY_equivalent__doc__[] =
 "documentation"
@@ -232,7 +232,7 @@ PY_getName(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  DIRECTION arg +intent(in)+value
+// Argument:  DIRECTION arg +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_directionFunc__doc__[] =

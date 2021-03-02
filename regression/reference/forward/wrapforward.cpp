@@ -28,7 +28,7 @@ extern "C" {
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const Cstruct1 * arg +intent(in)
+// Argument:  const Cstruct1 * arg
 // Requested: c_struct_*_in
 // Match:     c_struct
 //    metaattrs:  +intent(in)

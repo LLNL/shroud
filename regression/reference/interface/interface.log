@@ -1,10 +1,10 @@
 Read yaml interface.yaml
 C function void Function1(void)
-C function double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+C function double Function2(double arg1 +value, int arg2 +value)
 Close wrapInterface.c
 Close typesInterface.h
 Fortran void Function1(void)
-Fortran double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+Fortran double Function2(double arg1 +value, int arg2 +value)
 C-interface void Function1(void)
-C-interface double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)
+C-interface double Function2(double arg1 +value, int arg2 +value)
 Close wrapfinterface.f

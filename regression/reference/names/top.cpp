@@ -84,7 +84,7 @@ static void ShroudStrFree(char *src)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Requested: c_char_*_inout
 // Match:     c_default
 //    metaattrs:  +intent(inout)
@@ -100,7 +100,7 @@ void TES_get_name(char * name)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+// Argument:  char * name +len(worklen)+len_trim(worktrim)
 // Exact:     c_char_*_inout_buf
 //    metaattrs:  +intent(inout)
 void TES_get_name_bufferify(char * name, int worktrim, int worklen)
@@ -140,7 +140,7 @@ void c_name_special(void)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -156,7 +156,7 @@ void YYY_TES_function3a_0(int i)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  long i +intent(in)+value
+// Argument:  long i +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -173,7 +173,7 @@ void YYY_TES_function3a_1(long i)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const std::string & rv +intent(in)
+// Argument:  const std::string & rv
 // Exact:     c_string_&_in
 //    metaattrs:  +intent(in)
 int YYY_TES_function4(const char * rv)
@@ -191,7 +191,7 @@ int YYY_TES_function4(const char * rv)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
+// Argument:  const std::string & rv +len_trim(Lrv)
 // Exact:     c_string_&_in_buf
 //    metaattrs:  +intent(in)
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
@@ -222,7 +222,7 @@ void YYY_TES_fiveplus(void)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)
+// Argument:  std::string & name
 // Exact:     c_string_&_inout
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -246,7 +246,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+// Argument:  std::string & name +len(Nname)+len_trim(Lname)
 // Exact:     c_string_&_inout_buf
 //    metaattrs:  +intent(inout)
 // ----------------------------------------
@@ -272,12 +272,12 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int arg1 +intent(in)+value
+// Argument:  int arg1 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  long arg2 +intent(in)+value
+// Argument:  long arg2 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -297,12 +297,12 @@ void c_name_instantiation1(int arg1, long arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  float arg1 +intent(in)+value
+// Argument:  float arg1 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -336,7 +336,7 @@ int TES_use_impl_worker_instantiation3(void)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Argument:  const Cstruct_as_class * point +pass
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 //    metaattrs:  +intent(in)

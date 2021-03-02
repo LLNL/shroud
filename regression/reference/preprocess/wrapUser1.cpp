@@ -65,7 +65,7 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int i=0 +intent(in)+value
+// Argument:  int i=0 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

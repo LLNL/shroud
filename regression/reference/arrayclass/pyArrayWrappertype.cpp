@@ -65,7 +65,7 @@ PY_ArrayWrapper_tp_init(
 // Function:  void setSize
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int size +intent(in)+value
+// Argument:  int size +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_setSize__doc__[] =
@@ -306,7 +306,7 @@ fail:
 // Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
 // Exact:     py_native_*_inout
 static char PY_fetchArrayPtr__doc__[] =
 "documentation"
@@ -347,7 +347,7 @@ fail:
 // Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
 // Exact:     py_native_&_inout
 static char PY_fetchArrayRef__doc__[] =
 "documentation"
@@ -388,7 +388,7 @@ fail:
 // Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
 // Exact:     py_native_*_inout
 static char PY_fetchArrayPtrConst__doc__[] =
 "documentation"
@@ -429,7 +429,7 @@ fail:
 // Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
 // Exact:     py_native_&_inout
 static char PY_fetchArrayRefConst__doc__[] =
 "documentation"
@@ -526,7 +526,7 @@ PY_fetchVoidRef(
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  void * array +intent(in)+value
+// Argument:  void * array +value
 // Exact:     py_void_*_in
 static char PY_checkPtr__doc__[] =
 "documentation"

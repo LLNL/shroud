@@ -362,7 +362,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -384,7 +383,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1(int flag)",
-                        "declgen": "Class1(int flag +intent(in)+value)",
+                        "declgen": "Class1(int flag +value)",
                         "fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "CLA_Class1_ctor_flag",
@@ -708,9 +707,6 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "const": true,
                                     "declarator": {
                                         "name": "obj2",
@@ -735,7 +731,7 @@
                             "typemap_name": "bool"
                         },
                         "decl": "bool equivalent(Class1 const &obj2) const;",
-                        "declgen": "bool equivalent(const Class1 & obj2 +intent(in)) const",
+                        "declgen": "bool equivalent(const Class1 & obj2) const",
                         "doxygen": {
                             "brief": "Pass in reference to instance"
                         },
@@ -978,7 +974,6 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -1000,7 +995,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)",
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1166,7 +1161,6 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -1189,7 +1183,7 @@
                             "typemap_name": "classes::Class1"
                         },
                         "decl": "Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);",
-                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)",
+                        "declgen": "Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)",
                         "doxygen": {
                             "brief": "Return pointer to 'this' to allow chaining calls"
                         },
@@ -1521,8 +1515,7 @@
                                     "attrs": {
                                         "_is_result": true,
                                         "context": "DSHF_rv",
-                                        "deref": "allocatable",
-                                        "intent": "out"
+                                        "deref": "allocatable"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -1549,7 +1542,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -1718,7 +1711,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -1740,7 +1732,7 @@
                             "typemap_name": "classes::Class1::DIRECTION"
                         },
                         "decl": "DIRECTION directionFunc(DIRECTION arg);",
-                        "declgen": "DIRECTION directionFunc(DIRECTION arg +intent(in)+value)",
+                        "declgen": "DIRECTION directionFunc(DIRECTION arg +value)",
                         "fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "CLA_Class1_direction_func",
@@ -2352,8 +2344,7 @@
                                     "attrs": {
                                         "_is_result": true,
                                         "context": "DSHF_rv",
-                                        "deref": "allocatable",
-                                        "intent": "out"
+                                        "deref": "allocatable"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -2380,7 +2371,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))",
+                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -3153,7 +3144,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3175,7 +3165,7 @@
                     "typemap_name": "classes::Class1::DIRECTION"
                 },
                 "decl": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg);",
-                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)",
+                "declgen": "Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "CLA_direction_func",
@@ -3275,7 +3265,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3297,7 +3286,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passClassByValue(Class1 arg)",
-                "declgen": "void passClassByValue(Class1 arg +intent(in)+value)",
+                "declgen": "void passClassByValue(Class1 arg +value)",
                 "doxygen": {
                     "brief": "Pass arguments to a function."
                 },
@@ -3448,9 +3437,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -3475,7 +3461,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int useclass(const Class1 *arg)",
-                "declgen": "int useclass(const Class1 * arg +intent(in))",
+                "declgen": "int useclass(const Class1 * arg)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "CLA_useclass",
@@ -3940,7 +3926,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3962,7 +3947,7 @@
                     "typemap_name": "classes::Class1"
                 },
                 "decl": "Class1 getClassCopy(int flag)",
-                "declgen": "Class1 getClassCopy(int flag +intent(in)+value)",
+                "declgen": "Class1 getClassCopy(int flag +value)",
                 "doxygen": {
                     "brief": "Return Class1 instance by value, uses copy constructor"
                 },
@@ -4080,7 +4065,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -4102,7 +4086,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void set_global_flag(int arg)",
-                "declgen": "void set_global_flag(int arg +intent(in)+value)",
+                "declgen": "void set_global_flag(int arg +value)",
                 "fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "CLA_set_global_flag",
@@ -4427,7 +4411,6 @@
                         {
                             "attrs": {
                                 "_is_result": true,
-                                "intent": "out",
                                 "len": "NSHF_rv"
                             },
                             "declarator": {
@@ -4453,7 +4436,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)",
+                "declgen": "void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)",
                 "fmtdict": {
                     "C_name": "CLA_last_function_called_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",

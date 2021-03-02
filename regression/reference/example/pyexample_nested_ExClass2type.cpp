@@ -153,7 +153,7 @@ PP_ExClass2_tp_del (PP_ExClass2 *self)
 // Function:  ExClass2
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const string * name +intent(in)+len_trim(trim_name)
+// Argument:  const string * name +len_trim(trim_name)
 // Exact:     py_string_*_in
 /**
  * \brief constructor
@@ -326,7 +326,7 @@ PP_GetNameLength(
 // Function:  ExClass1 * get_class1
 // Exact:     py_shadow_*_result
 // ----------------------------------------
-// Argument:  const ExClass1 * in +intent(in)
+// Argument:  const ExClass1 * in
 // Exact:     py_shadow_*_in
 static char PP_get_class1__doc__[] =
 "documentation"
@@ -367,11 +367,11 @@ PP_get_class1(
 // Function:  void * declare
 // Exact:     py_void_*_result
 // ----------------------------------------
-// Argument:  TypeID type +intent(in)+value
+// Argument:  TypeID type +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  SidreLength len=1 +intent(in)+value
+// Argument:  SidreLength len=1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PP_declare_1__doc__[] =
@@ -478,7 +478,7 @@ PP_getTypeID(
 // Function:  void setValue
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int value +intent(in)+value
+// Argument:  int value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -506,7 +506,7 @@ PP_setValue_int(
 // Function:  void setValue
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  long value +intent(in)+value
+// Argument:  long value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -534,7 +534,7 @@ PP_setValue_long(
 // Function:  void setValue
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  float value +intent(in)+value
+// Argument:  float value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *
@@ -562,7 +562,7 @@ PP_setValue_float(
 // Function:  void setValue
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double value +intent(in)+value
+// Argument:  double value +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static PyObject *

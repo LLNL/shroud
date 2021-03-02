@@ -177,14 +177,12 @@ class VerifyAttrs(object):
         else:
             intent = intent.lower()
             if intent in ["in", "out", "inout"]:
-                attrs["intent"] = intent
                 meta["intent"] = intent
             else:
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
             if not is_ptr and intent != "in":
                 # Nonpointers can only be intent(in).
                 raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
-        attrs["intent"] = intent
         meta["intent"] = intent
         return intent    
         
@@ -771,7 +769,6 @@ class GenFunctions(object):
         #  Add variables as function parameters by coping AST.
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
-            a.attrs["intent"] = "in"
             a.metaattrs["intent"] = "in"
             a.metaattrs["struct_member"] = var
             ast.params.append(a)

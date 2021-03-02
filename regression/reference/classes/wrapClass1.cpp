@@ -65,7 +65,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 // Exact:     c_shadow_scalar_ctor
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -127,7 +127,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  const Class1 & obj2 +intent(in)
+// Argument:  const Class1 & obj2
 // Requested: c_shadow_&_in
 // Match:     c_shadow_in
 //    metaattrs:  +intent(in)
@@ -179,7 +179,7 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Exact:     c_string_&_in
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  bool flag +intent(in)+value
+// Argument:  bool flag +value
 // Requested: c_bool_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -214,7 +214,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Exact:     c_string_&_in_buf
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  bool flag +intent(in)+value
+// Argument:  bool flag +value
 // Requested: c_bool_scalar_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -289,7 +289,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
 // Exact:     c_string_&_result_buf_allocatable
 //    metaattrs:  +deref(allocatable)+intent(out)
 // start CLA_Class1_get_name_bufferify
@@ -311,7 +311,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  DIRECTION arg +intent(in)+value
+// Argument:  DIRECTION arg +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

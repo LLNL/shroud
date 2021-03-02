@@ -2,17 +2,17 @@ Read yaml classes.yaml
 Close classes_types.yaml
 class Class1
 C method Class1(void)
-C method Class1(int flag +intent(in)+value)
+C method Class1(int flag +value)
 C method ~Class1(void) +name(delete)
 C method int Method1(void)
-C method bool equivalent(const Class1 & obj2 +intent(in)) const
+C method bool equivalent(const Class1 & obj2) const
 C method void returnThis(void)
-C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
+C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
+C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)
 C method Class1 * getclass3(void) const
 C method const std::string & getName(void) +deref(allocatable)
-C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
-C method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C method DIRECTION directionFunc(DIRECTION arg +value)
 C method int getM_flag(void)
 C method int getTest(void)
 C method void setTest(int val +intent(in)+value)
@@ -20,7 +20,7 @@ Close wrapClass1.h
 Close wrapClass1.cpp
 class Class2
 C method const std::string & getName(void) +deref(allocatable)
-C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
 Close wrapClass2.h
 Close wrapClass2.cpp
 class Singleton
@@ -36,54 +36,54 @@ class Circle
 C method Circle(void)
 Close wrapCircle.h
 Close wrapCircle.cpp
-C function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-C function void passClassByValue(Class1 arg +intent(in)+value)
-C function int useclass(const Class1 * arg +intent(in))
+C function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+C function void passClassByValue(Class1 arg +value)
+C function int useclass(const Class1 * arg)
 C function const Class1 * getclass2(void)
 C function Class1 * getclass3(void)
 C function const Class1 & getConstClassReference(void)
 C function Class1 & getClassReference(void)
-C function Class1 getClassCopy(int flag +intent(in)+value)
-C function void set_global_flag(int arg +intent(in)+value)
+C function Class1 getClassCopy(int flag +value)
+C function void set_global_flag(int arg +value)
 C function int get_global_flag(void)
 C function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
-C function void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C function void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
 Close typesclasses.h
 class Class1
 Fortran Class1(void)
-Fortran Class1(int flag +intent(in)+value)
+Fortran Class1(int flag +value)
 Fortran ~Class1(void) +name(delete)
 Fortran int Method1(void)
-Fortran bool equivalent(const Class1 & obj2 +intent(in)) const
+Fortran bool equivalent(const Class1 & obj2) const
 Fortran void returnThis(void)
-Fortran Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
+Fortran Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
 Fortran Class1 * getclass3(void) const
 Fortran const std::string & getName(void) +deref(allocatable)
-Fortran DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+Fortran DIRECTION directionFunc(DIRECTION arg +value)
 Fortran int getM_flag(void)
 Fortran int getTest(void)
 Fortran void setTest(int val +intent(in)+value)
 C-interface Class1(void)
-C-interface Class1(int flag +intent(in)+value)
+C-interface Class1(int flag +value)
 C-interface ~Class1(void) +name(delete)
 C-interface int Method1(void)
-C-interface bool equivalent(const Class1 & obj2 +intent(in)) const
+C-interface bool equivalent(const Class1 & obj2) const
 C-interface void returnThis(void)
-C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +intent(in)+value)
-C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +intent(in)+value)
+C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
+C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)
 C-interface Class1 * getclass3(void) const
 C-interface const std::string & getName(void) +deref(allocatable)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
-C-interface DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C-interface DIRECTION directionFunc(DIRECTION arg +value)
 C-interface int getM_flag(void)
 C-interface int getTest(void)
 C-interface void setTest(int val +intent(in)+value)
 class Class2
 Fortran const std::string & getName(void) +deref(allocatable)
 C-interface const std::string & getName(void) +deref(allocatable)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out))
+C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
 class Singleton
 Fortran static Singleton & getReference(void)
 C-interface static Singleton & getReference(void)
@@ -95,40 +95,40 @@ C-interface int get_ivar(void) const
 class Circle
 Fortran Circle(void)
 C-interface Circle(void)
-Fortran Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-Fortran void passClassByValue(Class1 arg +intent(in)+value)
-Fortran int useclass(const Class1 * arg +intent(in))
+Fortran Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+Fortran void passClassByValue(Class1 arg +value)
+Fortran int useclass(const Class1 * arg)
 Fortran const Class1 * getclass2(void)
 Fortran Class1 * getclass3(void)
 Fortran const Class1 & getConstClassReference(void)
 Fortran Class1 & getClassReference(void)
-Fortran Class1 getClassCopy(int flag +intent(in)+value)
-Fortran void set_global_flag(int arg +intent(in)+value)
+Fortran Class1 getClassCopy(int flag +value)
+Fortran void set_global_flag(int arg +value)
 Fortran int get_global_flag(void)
 Fortran const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
-C-interface Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-C-interface void passClassByValue(Class1 arg +intent(in)+value)
-C-interface int useclass(const Class1 * arg +intent(in))
+C-interface Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+C-interface void passClassByValue(Class1 arg +value)
+C-interface int useclass(const Class1 * arg)
 C-interface const Class1 * getclass2(void)
 C-interface Class1 * getclass3(void)
 C-interface const Class1 & getConstClassReference(void)
 C-interface Class1 & getClassReference(void)
-C-interface Class1 getClassCopy(int flag +intent(in)+value)
-C-interface void set_global_flag(int arg +intent(in)+value)
+C-interface Class1 getClassCopy(int flag +value)
+C-interface void set_global_flag(int arg +value)
 C-interface int get_global_flag(void)
 C-interface const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
-C-interface void LastFunctionCalled(std::string & SHF_rv +intent(out)+len(NSHF_rv)) +len(30)
+C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)
 Close wrapfclasses.f
 Close utilclasses.cpp
 class Class1
 Python method Class1(void)
-Python method Class1(int flag +intent(in)+value)
+Python method Class1(int flag +value)
 Python method ~Class1(void) +name(delete)
 Python method int Method1(void)
-Python method bool equivalent(const Class1 & obj2 +intent(in)) const
+Python method bool equivalent(const Class1 & obj2) const
 Python method Class1 * getclass3(void) const
 Python method const std::string & getName(void) +deref(allocatable)
-Python method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+Python method DIRECTION directionFunc(DIRECTION arg +value)
 Close pyClass1type.cpp
 class Class2
 Python method const std::string & getName(void) +deref(allocatable)
@@ -143,12 +143,12 @@ Close pyShapetype.cpp
 class Circle
 Python method Circle(void)
 Close pyCircletype.cpp
-Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-Python function void passClassByValue(Class1 arg +intent(in)+value)
-Python function int useclass(const Class1 * arg +intent(in))
+Python function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+Python function void passClassByValue(Class1 arg +value)
+Python function int useclass(const Class1 * arg)
 Python function Class1 * getclass3(void)
 Python function Class1 & getClassReference(void)
-Python function void set_global_flag(int arg +intent(in)+value)
+Python function void set_global_flag(int arg +value)
 Python function int get_global_flag(void)
 Python function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
 Close pyclassesmodule.cpp
@@ -156,17 +156,17 @@ Close pyclassesutil.cpp
 Close pyclassesmodule.hpp
 Close setup.py
 Lua method Class1(void)
-Lua method Class1(int flag +intent(in)+value)
+Lua method Class1(int flag +value)
 Lua method ~Class1(void) +name(delete)
 Lua method int Method1(void)
 Lua method const std::string & getName(void) +deref(allocatable)
-Lua method DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+Lua method DIRECTION directionFunc(DIRECTION arg +value)
 Lua method const std::string & getName(void) +deref(allocatable)
 Lua method Shape(void)
 Lua method int get_ivar(void) const
 Lua method Circle(void)
-Lua function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
-Lua function void set_global_flag(int arg +intent(in)+value)
+Lua function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
+Lua function void set_global_flag(int arg +value)
 Lua function int get_global_flag(void)
 Lua function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
 Close luaclassesmodule.hpp

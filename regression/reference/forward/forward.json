@@ -647,9 +647,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -674,7 +671,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
+                "declgen": "int passStruct1(const Cstruct1 * arg)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "FOR_pass_struct1",

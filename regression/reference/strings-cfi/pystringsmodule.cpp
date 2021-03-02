@@ -86,7 +86,7 @@ PyObject *PY_error_obj;
 // Function:  void passChar
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     py_char_scalar_in
 static char PY_passChar__doc__[] =
 "documentation"
@@ -153,7 +153,7 @@ PY_returnChar(
 // Argument:  char * dest +charlen(40)+intent(out)
 // Exact:     py_char_*_out_charlen
 // ----------------------------------------
-// Argument:  const char * src +intent(in)
+// Argument:  const char * src
 // Exact:     py_char_*_in
 static char PY_passCharPtr__doc__[] =
 "documentation"
@@ -715,7 +715,7 @@ PY_getConstStringPtrOwnsAllocPattern(
 // Function:  void acceptStringConstReference
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)
+// Argument:  const std::string & arg1
 // Exact:     py_string_&_in
 static char PY_acceptStringConstReference__doc__[] =
 "documentation"
@@ -796,7 +796,7 @@ PY_acceptStringReferenceOut(
 // Function:  void acceptStringReference
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  std::string & arg1 +intent(inout)
+// Argument:  std::string & arg1
 // Exact:     py_string_&_inout
 static char PY_acceptStringReference__doc__[] =
 "documentation"
@@ -844,7 +844,7 @@ PY_acceptStringReference(
 // Function:  void acceptStringPointerConst
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const std::string * arg1 +intent(in)
+// Argument:  const std::string * arg1
 // Exact:     py_string_*_in
 static char PY_acceptStringPointerConst__doc__[] =
 "documentation"
@@ -883,7 +883,7 @@ PY_acceptStringPointerConst(
 // Function:  void acceptStringPointer
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     py_string_*_inout
 static char PY_acceptStringPointer__doc__[] =
 "documentation"
@@ -965,7 +965,7 @@ PY_fetchStringPointer(
 // Function:  void acceptStringPointerLen
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  std::string * arg1 +intent(inout)
+// Argument:  std::string * arg1
 // Exact:     py_string_*_inout
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
@@ -1060,7 +1060,7 @@ PY_fetchStringPointerLen(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  std::string arg1 +intent(in)+value
+// Argument:  std::string arg1 +value
 // Exact:     py_string_scalar_in
 static char PY_acceptStringInstance__doc__[] =
 "documentation"
@@ -1175,7 +1175,7 @@ PY_explicit1(
 // Function:  void CpassChar
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  char status +intent(in)+value
+// Argument:  char status +value
 // Exact:     py_char_scalar_in
 static char PY_CpassChar__doc__[] =
 "documentation"
@@ -1242,7 +1242,7 @@ PY_CreturnChar(
 // Argument:  int * count +intent(in)+rank(1)
 // Exact:     py_native_*_in_pointer_list
 // ----------------------------------------
-// Argument:  std::string & name +intent(inout)
+// Argument:  std::string & name
 // Exact:     py_string_&_inout
 static char PY_PostDeclare__doc__[] =
 "documentation"

@@ -125,7 +125,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -147,7 +146,7 @@
                     "typemap_name": "short"
                 },
                 "decl": "short short_func(short arg1)",
-                "declgen": "short short_func(short arg1 +intent(in)+value)",
+                "declgen": "short short_func(short arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_func",
@@ -290,7 +289,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -312,7 +310,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int int_func(int arg1)",
-                "declgen": "int int_func(int arg1 +intent(in)+value)",
+                "declgen": "int int_func(int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int_func",
@@ -455,7 +453,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -477,7 +474,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long long_func(long arg1)",
-                "declgen": "long long_func(long arg1 +intent(in)+value)",
+                "declgen": "long long_func(long arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_func",
@@ -622,7 +619,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -646,7 +642,7 @@
                     "typemap_name": "long_long"
                 },
                 "decl": "long long long_long_func(long long arg1)",
-                "declgen": "long long long_long_func(long long arg1 +intent(in)+value)",
+                "declgen": "long long long_long_func(long long arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_func",
@@ -789,7 +785,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -813,7 +808,7 @@
                     "typemap_name": "short"
                 },
                 "decl": "short int short_int_func(short int arg1)",
-                "declgen": "short int short_int_func(short int arg1 +intent(in)+value)",
+                "declgen": "short int short_int_func(short int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_short_int_func",
@@ -956,7 +951,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -980,7 +974,7 @@
                     "typemap_name": "long"
                 },
                 "decl": "long int long_int_func(long int arg1)",
-                "declgen": "long int long_int_func(long int arg1 +intent(in)+value)",
+                "declgen": "long int long_int_func(long int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_int_func",
@@ -1125,7 +1119,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1151,7 +1144,7 @@
                     "typemap_name": "long_long"
                 },
                 "decl": "long long int long_long_int_func(long long int arg1)",
-                "declgen": "long long int long_long_int_func(long long int arg1 +intent(in)+value)",
+                "declgen": "long long int long_long_int_func(long long int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_long_long_int_func",
@@ -1294,7 +1287,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1316,7 +1308,7 @@
                     "typemap_name": "unsigned_int"
                 },
                 "decl": "unsigned unsigned_func(unsigned arg1)",
-                "declgen": "unsigned unsigned_func(unsigned arg1 +intent(in)+value)",
+                "declgen": "unsigned unsigned_func(unsigned arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_unsigned_func",
@@ -1459,7 +1451,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1483,7 +1474,7 @@
                     "typemap_name": "unsigned_short"
                 },
                 "decl": "unsigned short ushort_func(unsigned short arg1)",
-                "declgen": "unsigned short ushort_func(unsigned short arg1 +intent(in)+value)",
+                "declgen": "unsigned short ushort_func(unsigned short arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ushort_func",
@@ -1626,7 +1617,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1650,7 +1640,7 @@
                     "typemap_name": "unsigned_int"
                 },
                 "decl": "unsigned int uint_func(unsigned int arg1)",
-                "declgen": "unsigned int uint_func(unsigned int arg1 +intent(in)+value)",
+                "declgen": "unsigned int uint_func(unsigned int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint_func",
@@ -1793,7 +1783,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1817,7 +1806,7 @@
                     "typemap_name": "unsigned_long"
                 },
                 "decl": "unsigned long ulong_func(unsigned long arg1)",
-                "declgen": "unsigned long ulong_func(unsigned long arg1 +intent(in)+value)",
+                "declgen": "unsigned long ulong_func(unsigned long arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_func",
@@ -1962,7 +1951,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1988,7 +1976,7 @@
                     "typemap_name": "unsigned_long_long"
                 },
                 "decl": "unsigned long long ulong_long_func(unsigned long long arg1)",
-                "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +intent(in)+value)",
+                "declgen": "unsigned long long ulong_long_func(unsigned long long arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_long_func",
@@ -2131,7 +2119,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2157,7 +2144,7 @@
                     "typemap_name": "unsigned_long"
                 },
                 "decl": "unsigned long int ulong_int_func(unsigned long int arg1)",
-                "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +intent(in)+value)",
+                "declgen": "unsigned long int ulong_int_func(unsigned long int arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_ulong_int_func",
@@ -2300,7 +2287,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2322,7 +2308,7 @@
                     "typemap_name": "int8_t"
                 },
                 "decl": "int8_t  int8_func(int8_t arg1)",
-                "declgen": "int8_t int8_func(int8_t arg1 +intent(in)+value)",
+                "declgen": "int8_t int8_func(int8_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int8_func",
@@ -2465,7 +2451,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2487,7 +2472,7 @@
                     "typemap_name": "int16_t"
                 },
                 "decl": "int16_t int16_func(int16_t arg1)",
-                "declgen": "int16_t int16_func(int16_t arg1 +intent(in)+value)",
+                "declgen": "int16_t int16_func(int16_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int16_func",
@@ -2630,7 +2615,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2652,7 +2636,7 @@
                     "typemap_name": "int32_t"
                 },
                 "decl": "int32_t int32_func(int32_t arg1)",
-                "declgen": "int32_t int32_func(int32_t arg1 +intent(in)+value)",
+                "declgen": "int32_t int32_func(int32_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int32_func",
@@ -2795,7 +2779,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2817,7 +2800,7 @@
                     "typemap_name": "int64_t"
                 },
                 "decl": "int64_t int64_func(int64_t arg1)",
-                "declgen": "int64_t int64_func(int64_t arg1 +intent(in)+value)",
+                "declgen": "int64_t int64_func(int64_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_int64_func",
@@ -2960,7 +2943,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2982,7 +2964,7 @@
                     "typemap_name": "uint8_t"
                 },
                 "decl": "uint8_t  uint8_func(uint8_t arg1)",
-                "declgen": "uint8_t uint8_func(uint8_t arg1 +intent(in)+value)",
+                "declgen": "uint8_t uint8_func(uint8_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint8_func",
@@ -3125,7 +3107,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3147,7 +3128,7 @@
                     "typemap_name": "uint16_t"
                 },
                 "decl": "uint16_t uint16_func(uint16_t arg1)",
-                "declgen": "uint16_t uint16_func(uint16_t arg1 +intent(in)+value)",
+                "declgen": "uint16_t uint16_func(uint16_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint16_func",
@@ -3290,7 +3271,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3312,7 +3292,7 @@
                     "typemap_name": "uint32_t"
                 },
                 "decl": "uint32_t uint32_func(uint32_t arg1)",
-                "declgen": "uint32_t uint32_func(uint32_t arg1 +intent(in)+value)",
+                "declgen": "uint32_t uint32_func(uint32_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint32_func",
@@ -3455,7 +3435,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3477,7 +3456,7 @@
                     "typemap_name": "uint64_t"
                 },
                 "decl": "uint64_t uint64_func(uint64_t arg1)",
-                "declgen": "uint64_t uint64_func(uint64_t arg1 +intent(in)+value)",
+                "declgen": "uint64_t uint64_func(uint64_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_uint64_func",
@@ -3620,7 +3599,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3642,7 +3620,7 @@
                     "typemap_name": "size_t"
                 },
                 "decl": "size_t size_func(size_t arg1)",
-                "declgen": "size_t size_func(size_t arg1 +intent(in)+value)",
+                "declgen": "size_t size_func(size_t arg1 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "TYP_size_func",
@@ -3788,7 +3766,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3810,7 +3787,7 @@
                     "typemap_name": "bool"
                 },
                 "decl": "bool bool_func(bool arg)",
-                "declgen": "bool bool_func(bool arg +intent(in)+value)",
+                "declgen": "bool bool_func(bool arg +value)",
                 "fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "TYP_bool_func",

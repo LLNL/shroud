@@ -398,7 +398,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "worklen",
                                 "len_trim": "worktrim"
                             },
@@ -425,7 +424,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
-                "declgen": "void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))",
+                "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
                 "fmtdict": {
                     "C_call_list": "name",
                     "C_name": "TES_get_name",
@@ -505,7 +504,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "worklen",
                                 "len_trim": "worktrim"
                             },
@@ -533,7 +531,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getName(char *name +len(worklen) +len_trim(worktrim))",
-                "declgen": "void getName(char * name +intent(inout)+len(worklen)+len_trim(worktrim))",
+                "declgen": "void getName(char * name +len(worklen)+len_trim(worktrim))",
                 "fmtdict": {
                     "C_call_list": "ARG_name",
                     "C_name": "TES_get_name_bufferify",
@@ -702,7 +700,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -724,7 +721,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(int i)",
-                "declgen": "void function3a(int i +intent(in)+value)",
+                "declgen": "void function3a(int i +value)",
                 "fmtdict": {
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_0",
@@ -820,7 +817,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -842,7 +838,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void function3a(long i)",
-                "declgen": "void function3a(long i +intent(in)+value)",
+                "declgen": "void function3a(long i +value)",
                 "fmtdict": {
                     "C_call_list": "i",
                     "C_name": "YYY_TES_function3a_1",
@@ -975,9 +971,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "rv",
@@ -1002,7 +995,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv +intent(in))",
+                "declgen": "int function4(const std::string & rv)",
                 "fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4",
@@ -1101,7 +1094,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len_trim": "Lrv"
                             },
                             "const": true,
@@ -1129,7 +1121,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int function4(const std::string &rv)",
-                "declgen": "int function4(const std::string & rv +intent(in)+len_trim)",
+                "declgen": "int function4(const std::string & rv +len_trim)",
                 "fmtdict": {
                     "C_call_list": "ARG_rv",
                     "C_name": "YYY_TES_function4_bufferify",
@@ -1290,9 +1282,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "name",
                                 "pointer": [
@@ -1336,7 +1325,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout), int * value +intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name, int * value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
@@ -1470,7 +1459,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "Nname",
                                 "len_trim": "Lname"
                             },
@@ -1519,7 +1507,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void TestMultilineSplicer(std::string & name, int *value+intent(out))",
-                "declgen": "void TestMultilineSplicer(std::string & name +intent(inout)+len+len_trim, int * value +intent(out))",
+                "declgen": "void TestMultilineSplicer(std::string & name +len+len_trim, int * value +intent(out))",
                 "doxygen": {
                     "description": "Use std::string argument to get bufferified function.\n"
                 },
@@ -1571,7 +1559,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1588,7 +1575,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1616,7 +1602,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -1794,7 +1780,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1811,7 +1796,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1833,7 +1817,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2036,7 +2020,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2053,7 +2036,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2075,7 +2057,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -2449,7 +2431,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "pass": true
                             },
                             "const": true,
@@ -2476,7 +2457,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
                 "fmtdict": {
                     "C_call_list": "ARG_point",
                     "C_name": "TES_cstruct_as_class_sum",

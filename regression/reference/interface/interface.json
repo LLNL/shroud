@@ -162,7 +162,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -179,7 +178,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -201,7 +199,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double Function2(double arg1, int arg2)",
-                "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
+                "declgen": "double Function2(double arg1 +value, int arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function2",

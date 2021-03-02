@@ -55,11 +55,11 @@ PY_NoReturnNoArguments(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  double arg1 +intent(in)+value
+// Argument:  double arg1 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValue__doc__[] =
@@ -139,7 +139,7 @@ PY_PassByReference(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
 // Requested: py_native_scalar_in
 // Match:     py_default
 static char PY_PassByValueMacro__doc__[] =
@@ -180,7 +180,7 @@ PY_PassByValueMacro(
 // Function:  void checkBool
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const bool arg1 +intent(in)+value
+// Argument:  const bool arg1 +value
 // Requested: py_bool_scalar_in
 // Match:     py_bool_in
 // ----------------------------------------
@@ -246,10 +246,10 @@ fail:
 // Function:  char * Function4a +deref(result-as-arg)+len(30)
 // Exact:     py_char_*_result
 // ----------------------------------------
-// Argument:  const char * arg1 +intent(in)
+// Argument:  const char * arg1
 // Exact:     py_char_*_in
 // ----------------------------------------
-// Argument:  const char * arg2 +intent(in)
+// Argument:  const char * arg2
 // Exact:     py_char_*_in
 static char PY_Function4a__doc__[] =
 "documentation"
@@ -287,7 +287,7 @@ PY_Function4a(
 // Function:  void acceptName
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const char * name +intent(in)
+// Argument:  const char * name
 // Exact:     py_char_*_in
 static char PY_acceptName__doc__[] =
 "documentation"
@@ -439,7 +439,7 @@ PY_returnTwoNames(
 // Argument:  char * text +charlen(MAXNAME)+intent(out)
 // Exact:     py_char_*_out_charlen
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+intent(in)+value
+// Argument:  int ltext +implied(len(text))+value
 // Exact:     py_default
 static char PY_ImpliedTextLen__doc__[] =
 "documentation"
@@ -477,13 +477,13 @@ PY_ImpliedTextLen(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const char * text +intent(in)
+// Argument:  const char * text
 // Exact:     py_char_*_in
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+intent(in)+value
+// Argument:  int ltext +implied(len(text))+value
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  bool flag +implied(false)+intent(in)+value
+// Argument:  bool flag +implied(false)+value
 // Exact:     py_default
 static char PY_ImpliedLen__doc__[] =
 "documentation"
@@ -532,13 +532,13 @@ PY_ImpliedLen(
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const char * text +intent(in)
+// Argument:  const char * text
 // Exact:     py_char_*_in
 // ----------------------------------------
-// Argument:  int ltext +implied(len_trim(text))+intent(in)+value
+// Argument:  int ltext +implied(len_trim(text))+value
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  bool flag +implied(true)+intent(in)+value
+// Argument:  bool flag +implied(true)+value
 // Exact:     py_default
 static char PY_ImpliedLenTrim__doc__[] =
 "documentation"
@@ -587,7 +587,7 @@ PY_ImpliedLenTrim(
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  bool flag +implied(true)+intent(in)+value
+// Argument:  bool flag +implied(true)+value
 // Exact:     py_default
 static char PY_ImpliedBoolTrue__doc__[] =
 "documentation"
@@ -629,7 +629,7 @@ fail:
 // Requested: py_bool_scalar_result
 // Match:     py_bool_result
 // ----------------------------------------
-// Argument:  bool flag +implied(false)+intent(in)+value
+// Argument:  bool flag +implied(false)+value
 // Exact:     py_default
 static char PY_ImpliedBoolFalse__doc__[] =
 "documentation"

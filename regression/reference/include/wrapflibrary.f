@@ -46,7 +46,7 @@ module library_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  MPI_Comm comm +intent(in)+value
+        ! Argument:  MPI_Comm comm +value
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         !    metaattrs:  +intent(in)
@@ -64,7 +64,7 @@ module library_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  three::Class1 * c2 +intent(inout)
+        ! Argument:  three::Class1 * c2
         ! Requested: c_shadow_*_inout
         ! Match:     c_shadow_inout
         !    metaattrs:  +intent(inout)
@@ -89,7 +89,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  MPI_Comm comm +intent(in)+value
+    ! Argument:  MPI_Comm comm +value
     ! Requested: f_unknown_scalar_in
     ! Match:     f_default
     !    metaattrs:  +intent(in)
@@ -109,7 +109,7 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  three::Class1 * c2 +intent(inout)
+    ! Argument:  three::Class1 * c2
     ! Requested: f_shadow_*_inout
     ! Match:     f_default
     !    metaattrs:  +intent(inout)

@@ -91,7 +91,7 @@ static void ShroudStrFree(char *src)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -108,17 +108,17 @@ double CLI_pass_by_value_macro(int arg2)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * arg1 +intent(in)
+// Argument:  const char * arg1
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  const char * arg2 +intent(in)
+// Argument:  const char * arg2
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  char * SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  char * SHF_rv +len(NSHF_rv)
 // Exact:     c_char_*_result_buf
 //    metaattrs:  +intent(out)
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
@@ -221,7 +221,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
 // Exact:     c_char_*_out_buf
 //    metaattrs:  +intent(out)
 // ----------------------------------------
-// Argument:  int ltext +implied(len(text))+intent(in)+value
+// Argument:  int ltext +implied(len(text))+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -269,7 +269,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Match:     c_default
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  void * arg +assumedtype+intent(in)
+// Argument:  void * arg +assumedtype
 // Requested: c_void_*_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -297,12 +297,12 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int type +intent(in)+value
+// Argument:  int type +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  void ( * incr)(void) +external+intent(in)+value
+// Argument:  void ( * incr)(void) +external+value
 // Requested: c_void_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -325,17 +325,17 @@ void CLI_callback1a(int type, void ( * incr)(void))
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * type +intent(in)
+// Argument:  const char * type
 // Requested: c_char_*_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  void * in +assumedtype+intent(in)
+// Argument:  void * in +assumedtype
 // Requested: c_void_*_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)
 // ----------------------------------------
-// Argument:  void ( * incr)(int *) +external+intent(in)+value
+// Argument:  void ( * incr)(int *) +external+value
 // Requested: c_void_scalar_in_buf
 // Match:     c_default
 //    metaattrs:  +intent(in)

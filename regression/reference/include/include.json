@@ -65,7 +65,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -87,7 +86,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method1(MPI_Comm comm)",
-                        "declgen": "void method1(MPI_Comm comm +intent(in)+value)",
+                        "declgen": "void method1(MPI_Comm comm +value)",
                         "fmtdict": {
                             "C_call_list": "SHCXX_comm",
                             "C_name": "LIB_Class2_method1",
@@ -163,9 +162,6 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "inout"
-                                    },
                                     "declarator": {
                                         "name": "c2",
                                         "pointer": [
@@ -189,7 +185,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method2(three::Class1 * c2)",
-                        "declgen": "void method2(three::Class1 * c2 +intent(inout))",
+                        "declgen": "void method2(three::Class1 * c2)",
                         "fmtdict": {
                             "C_call_list": "SHCXX_c2",
                             "C_name": "LIB_Class2_method2",
@@ -415,7 +411,6 @@
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
@@ -437,7 +432,7 @@
                                     "typemap_name": "void"
                                 },
                                 "decl": "void method1(CustomType arg1)",
-                                "declgen": "void method1(CustomType arg1 +intent(in)+value)",
+                                "declgen": "void method1(CustomType arg1 +value)",
                                 "fmtdict": {
                                     "C_call_list": "arg1",
                                     "C_name": "LIB_three_Class1_method1",

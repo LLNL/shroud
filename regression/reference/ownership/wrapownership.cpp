@@ -359,7 +359,7 @@ int * OWN_return_int_ptr_dim_default_new_bufferify(
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)
@@ -395,7 +395,7 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
 // Match:     c_shadow_result
 //    metaattrs:  +intent(result)
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Requested: c_native_scalar_in
 // Match:     c_default
 //    metaattrs:  +intent(in)

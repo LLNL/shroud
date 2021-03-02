@@ -45,9 +45,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -72,7 +69,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_in(const int *arg)",
-                "declgen": "void intargs_in(const int * arg +intent(in))",
+                "declgen": "void intargs_in(const int * arg)",
                 "fmtdict": {
                     "PY_name_impl": "PY_intargs_in",
                     "function_name": "intargs_in",
@@ -115,9 +112,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg",
                                 "pointer": [
@@ -141,7 +135,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_inout(int *arg)",
-                "declgen": "void intargs_inout(int * arg +intent(inout))",
+                "declgen": "void intargs_inout(int * arg)",
                 "doxygen": {
                     "description": "Argument is modified by library, defaults to intent(inout).\n"
                 },
@@ -512,7 +506,6 @@
                         {
                             "attrs": {
                                 "implied": "size(in)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -534,7 +527,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -687,7 +680,6 @@
                         {
                             "attrs": {
                                 "implied": "size(in)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -709,7 +701,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -785,7 +777,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out"
+                                "intent": "OUT"
                             },
                             "declarator": {
                                 "name": "nvalues",
@@ -836,7 +828,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
-                "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))",
+                "declgen": "void get_values(int * nvalues +intent(OUT), int * values +dimension(3)+intent(out))",
                 "doxygen": {
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
@@ -1050,7 +1042,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1100,7 +1091,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
-                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
+                "declgen": "void iota_allocatable(int nvar +value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_allocatable",
                     "function_name": "iota_allocatable",
@@ -1171,7 +1162,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1219,7 +1209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_dimension",
                     "function_name": "iota_dimension",
@@ -1308,7 +1298,6 @@
                         {
                             "attrs": {
                                 "implied": "size(values)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1325,7 +1314,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -1372,7 +1360,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, const int * values +intent(in)+rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum",
@@ -1547,7 +1535,6 @@
                         {
                             "attrs": {
                                 "implied": "size(array)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1569,7 +1556,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1639,7 +1626,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "rank": 1
                             },
                             "declarator": {
@@ -1661,7 +1647,6 @@
                         {
                             "attrs": {
                                 "implied": "size(x)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1683,7 +1668,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +intent(inout)+rank(1), int x_length +implied(size(x))+intent(in)+value)",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_fill_with_zeros",
                     "function_name": "fill_with_zeros",
@@ -1771,7 +1756,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -1794,7 +1778,6 @@
                         {
                             "attrs": {
                                 "implied": "size(arr)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1816,7 +1799,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +intent(in)+rank(1), size_t len +implied(size(arr))+intent(in)+value)",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_accumulate",
                     "function_name": "accumulate",
@@ -1959,7 +1942,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1981,7 +1963,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void setGlobalInt(int value)",
-                "declgen": "void setGlobalInt(int value +intent(in)+value)",
+                "declgen": "void setGlobalInt(int value +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_setGlobalInt",
                     "function_name": "setGlobalInt",
@@ -3043,8 +3025,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "10,20",
-                                "intent": "in"
+                                "dimension": "10,20"
                             },
                             "const": true,
                             "declarator": {
@@ -3078,7 +3059,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DimensionIn(const int *arg +dimension(10,20))",
-                "declgen": "void DimensionIn(const int * arg +dimension(10,20)+intent(in))",
+                "declgen": "void DimensionIn(const int * arg +dimension(10,20))",
                 "doxygen": {
                     "description": "Test +dimension(10,20) +intent(in) together.\nThis will not use assumed-shape in the Fortran wrapper.\n"
                 },
@@ -3151,7 +3132,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3173,7 +3153,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag +intent(in)+value)",
+                "declgen": "void * returnAddress1(int flag +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnAddress1",
                     "function_name": "returnAddress1",
@@ -3243,7 +3223,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -3265,7 +3244,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag +intent(in)+value)",
+                "declgen": "void * returnAddress2(int flag +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnAddress2",
                     "function_name": "returnAddress2",
@@ -3362,7 +3341,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "declarator": {
@@ -3391,7 +3369,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int VoidPtrArray(void **addr+rank(1))",
-                "declgen": "int VoidPtrArray(void * * addr +intent(in)+rank(1))",
+                "declgen": "int VoidPtrArray(void * * addr +rank(1))",
                 "fmtdict": {
                     "function_name": "VoidPtrArray",
                     "underscore_name": "void_ptr_array"
@@ -3761,9 +3739,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -3789,7 +3764,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
-                "declgen": "int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)",
+                "declgen": "int * returnIntRawWithArgs(const char * name) +deref(raw)",
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_native_*_result_raw.\n"
                 },

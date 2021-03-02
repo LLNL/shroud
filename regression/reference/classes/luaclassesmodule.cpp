@@ -25,7 +25,7 @@ extern "C" {
 // splicer end C_definition
 
 // Class1(void)
-// Class1(int flag +intent(in)+value)
+// Class1(int flag +value)
 // ----------------------------------------
 // Function:  Class1
 // Requested: lua_shadow_scalar_ctor
@@ -35,7 +35,7 @@ extern "C" {
 // Requested: lua_shadow_scalar_ctor
 // Match:     lua_shadow_ctor
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
 // Exact:     lua_native_scalar_in
 static int l_Class1_ctor(lua_State *L)
 {
@@ -134,12 +134,12 @@ static int l_Class1_get_name(lua_State *L)
     // splicer end class.Class1.method.getName
 }
 
-// DIRECTION directionFunc(DIRECTION arg +intent(in)+value)
+// DIRECTION directionFunc(DIRECTION arg +value)
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  DIRECTION arg +intent(in)+value
+// Argument:  DIRECTION arg +value
 // Exact:     lua_native_scalar_in
 static int l_Class1_direction_func(lua_State *L)
 {
@@ -269,12 +269,12 @@ static const struct luaL_Reg l_Circle_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +intent(in)+value)
+// Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
 // Exact:     lua_native_scalar_result
 // ----------------------------------------
-// Argument:  Class1::DIRECTION arg +intent(in)+value
+// Argument:  Class1::DIRECTION arg +value
 // Exact:     lua_native_scalar_in
 static int l_direction_func(lua_State *L)
 {
@@ -287,12 +287,12 @@ static int l_direction_func(lua_State *L)
     // splicer end function.directionFunc
 }
 
-// void set_global_flag(int arg +intent(in)+value)
+// void set_global_flag(int arg +value)
 // ----------------------------------------
 // Function:  void set_global_flag
 // Exact:     lua_subroutine
 // ----------------------------------------
-// Argument:  int arg +intent(in)+value
+// Argument:  int arg +value
 // Exact:     lua_native_scalar_in
 static int l_set_global_flag(lua_State *L)
 {

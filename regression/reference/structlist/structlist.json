@@ -121,9 +121,6 @@
                                             "constant": "20"
                                         }
                                     ],
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "name",
                                         "pointer": []
@@ -143,9 +140,6 @@
                                             "constant": "10"
                                         }
                                     ],
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "count",
                                         "pointer": []
@@ -166,7 +160,7 @@
                             "typemap_name": "Arrays1"
                         },
                         "decl": "Arrays1_ctor",
-                        "declgen": "Arrays1(char name[20] +intent(in), int count[10] +intent(in)) +name(Arrays1_ctor)",
+                        "declgen": "Arrays1(char name[20], int count[10]) +name(Arrays1_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Arrays1_tp_init",
                             "PY_type_impl": "PY_Arrays1_tp_init",

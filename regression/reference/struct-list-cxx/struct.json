@@ -1213,7 +1213,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1235,7 +1234,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStructByValue(Cstruct1 arg)",
-                "declgen": "int passStructByValue(Cstruct1 arg +intent(in)+value)",
+                "declgen": "int passStructByValue(Cstruct1 arg +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_passStructByValue",
                     "function_name": "passStructByValue",
@@ -1307,9 +1306,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -1334,7 +1330,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
+                "declgen": "int passStruct1(const Cstruct1 * arg)",
                 "fmtdict": {
                     "PY_name_impl": "PY_passStruct1",
                     "function_name": "passStruct1",
@@ -1429,9 +1425,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "s1",
@@ -1477,7 +1470,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct2(const Cstruct1 *s1, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "int passStruct2(const Cstruct1 * s1 +intent(in), char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "int passStruct2(const Cstruct1 * s1, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1688,7 +1681,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1705,7 +1697,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1727,7 +1718,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStructOutPtr(Cstruct1 *arg +intent(out), int i, double d)",
-                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +intent(in)+value, double d +intent(in)+value)",
+                "declgen": "void acceptStructOutPtr(Cstruct1 * arg +intent(out), int i +value, double d +value)",
                 "doxygen": {
                     "description": "Pass name argument which will build a bufferify function.\n"
                 },
@@ -1898,7 +1889,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1915,7 +1905,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -1937,7 +1926,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 returnStructByValue(int i, double d);",
-                "declgen": "Cstruct1 returnStructByValue(int i +intent(in)+value, double d +intent(in)+value)",
+                "declgen": "Cstruct1 returnStructByValue(int i +value, double d +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnStructByValue",
                     "function_name": "returnStructByValue",
@@ -2038,7 +2027,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2055,7 +2043,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2077,7 +2064,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +intent(in)+value, double d +intent(in)+value)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -2205,7 +2192,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2222,7 +2208,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2265,7 +2250,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +intent(in)+value, double d +intent(in)+value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -2389,7 +2374,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2406,7 +2390,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2428,7 +2411,7 @@
                     "typemap_name": "Cstruct_as_class"
                 },
                 "decl": "Cstruct_as_class *Create_Cstruct_as_class_args(int x, int y)",
-                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +intent(in)+value, int y +intent(in)+value)",
+                "declgen": "Cstruct_as_class * Create_Cstruct_as_class_args(int x +value, int y +value)",
                 "fmtdict": {
                     "function_name": "Create_Cstruct_as_class_args",
                     "underscore_name": "create__cstruct_as_class_args"
@@ -2451,7 +2434,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "pass": true
                             },
                             "const": true,
@@ -2478,7 +2460,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int Cstruct_as_class_sum(const Cstruct_as_class *point +pass)",
-                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +intent(in)+pass)",
+                "declgen": "int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)",
                 "fmtdict": {
                     "F_name_function": "sum",
                     "function_name": "Cstruct_as_class_sum",
@@ -2506,7 +2488,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2523,7 +2504,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2540,7 +2520,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
@@ -2562,7 +2541,7 @@
                     "typemap_name": "Cstruct_as_subclass"
                 },
                 "decl": "Cstruct_as_subclass *Create_Cstruct_as_subclass_args(int x, int y, int z)",
-                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +intent(in)+value, int y +intent(in)+value, int z +intent(in)+value)",
+                "declgen": "Cstruct_as_subclass * Create_Cstruct_as_subclass_args(int x +value, int y +value, int z +value)",
                 "fmtdict": {
                     "function_name": "Create_Cstruct_as_subclass_args",
                     "underscore_name": "create__cstruct_as_subclass_args"
