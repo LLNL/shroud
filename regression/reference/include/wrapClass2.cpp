@@ -23,7 +23,8 @@ extern "C" {
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  MPI_Comm comm +intent(in)+value
+// Argument:  MPI_Comm comm +value
+// Attrs:     +intent(in)
 // Requested: c_unknown_scalar_in
 // Match:     c_default
 void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
@@ -38,7 +39,8 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  three::Class1 * c2 +intent(inout)
+// Argument:  three::Class1 * c2
+// Attrs:     +intent(inout)
 // Requested: c_shadow_*_inout
 // Match:     c_shadow_inout
 void LIB_Class2_method2(LIB_Class2 * self, LIB_three_Class1 * c2)

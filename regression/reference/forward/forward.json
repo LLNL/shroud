@@ -144,6 +144,9 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "Class2"
@@ -339,6 +342,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "tutorial::Class1"
                                     ],
@@ -487,6 +493,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "Class3"
                                     ],
@@ -633,11 +642,11 @@
                         "name": "passStruct1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -646,6 +655,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct1"
@@ -659,7 +671,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
-                "declgen": "int passStruct1(const Cstruct1 * arg +intent(in))",
+                "declgen": "int passStruct1(const Cstruct1 * arg)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "FOR_pass_struct1",

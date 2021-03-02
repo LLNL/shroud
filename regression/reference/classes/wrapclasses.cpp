@@ -43,10 +43,12 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Class1::DIRECTION arg +intent(in)+value
+// Argument:  Class1::DIRECTION arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int CLA_direction_func(int arg)
@@ -70,7 +72,8 @@ int CLA_direction_func(int arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Class1 arg +intent(in)+value
+// Argument:  Class1 arg +value
+// Attrs:     +intent(in)
 // Exact:     c_shadow_scalar_in
 void CLA_pass_class_by_value(CLA_Class1 arg)
 {
@@ -83,10 +86,12 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
 
 // ----------------------------------------
 // Function:  int useclass
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Class1 * arg +intent(in)
+// Argument:  const Class1 * arg
+// Attrs:     +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 int CLA_useclass(CLA_Class1 * arg)
@@ -101,6 +106,7 @@ int CLA_useclass(CLA_Class1 * arg)
 
 // ----------------------------------------
 // Function:  const Class1 * getclass2
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
@@ -115,6 +121,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
@@ -129,6 +136,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  const Class1 & getConstClassReference
+// Attrs:     +intent(result)
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
@@ -144,6 +152,7 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
+// Attrs:     +intent(result)
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
 CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
@@ -162,9 +171,11 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
  */
 // ----------------------------------------
 // Function:  Class1 getClassCopy
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_result
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
@@ -183,7 +194,8 @@ CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int arg +intent(in)+value
+// Argument:  int arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void CLA_set_global_flag(int arg)
@@ -195,6 +207,7 @@ void CLA_set_global_flag(int arg)
 
 // ----------------------------------------
 // Function:  int get_global_flag
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int CLA_get_global_flag(void)
@@ -207,6 +220,7 @@ int CLA_get_global_flag(void)
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
 const char * CLA_last_function_called(void)
 {
@@ -222,7 +236,8 @@ const char * CLA_last_function_called(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  std::string & SHF_rv +len(NSHF_rv)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

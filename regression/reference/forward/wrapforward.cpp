@@ -24,10 +24,12 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  int passStruct1
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct1 * arg +intent(in)
+// Argument:  const Cstruct1 * arg
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
 int FOR_pass_struct1(const STR_cstruct1 * arg)

@@ -33,10 +33,12 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 
 // ----------------------------------------
 // Function:  int passStructByValue
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Cstruct1 arg +intent(in)+value
+// Argument:  Cstruct1 arg +value
+// Attrs:     +intent(in)
 // Requested: c_struct_scalar_in
 // Match:     c_struct
 // start STR_pass_struct_by_value
@@ -53,10 +55,12 @@ int STR_pass_struct_by_value(STR_cstruct1 arg)
 
 // ----------------------------------------
 // Function:  int passStruct1
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct1 * arg +intent(in)
+// Argument:  const Cstruct1 * arg
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
 // start STR_pass_struct1
@@ -76,14 +80,17 @@ int STR_pass_struct1(const STR_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  int passStruct2
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct1 * s1 +intent(in)
+// Argument:  const Cstruct1 * s1
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_char_*_out
 // Match:     c_default
 int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
@@ -101,14 +108,17 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
  */
 // ----------------------------------------
 // Function:  int passStruct2
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct1 * s1 +intent(in)
+// Argument:  const Cstruct1 * s1
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in_buf
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Attrs:     +intent(out)
 // Exact:     c_char_*_out_buf
 int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
     int Noutbuf)
@@ -124,10 +134,12 @@ int STR_pass_struct2_bufferify(const STR_cstruct1 * s1, char * outbuf,
 
 // ----------------------------------------
 // Function:  int acceptStructInPtr
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(in)
+// Attrs:     +intent(in)
 // Requested: c_struct_*_in
 // Match:     c_struct
 int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
@@ -149,14 +161,17 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_struct_*_out
 // Match:     c_struct
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double d +intent(in)+value
+// Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
@@ -174,6 +189,7 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)
+// Attrs:     +intent(inout)
 // Requested: c_struct_*_inout
 // Match:     c_struct
 void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
@@ -187,14 +203,17 @@ void STR_accept_struct_in_out_ptr(STR_cstruct1 * arg)
 
 // ----------------------------------------
 // Function:  Cstruct1 returnStructByValue
+// Attrs:     +intent(result)
 // Requested: c_struct_scalar_result
 // Match:     c_struct_result
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double d +intent(in)+value
+// Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 STR_cstruct1 STR_return_struct_by_value(int i, double d)
@@ -214,14 +233,17 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double d +intent(in)+value
+// Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
@@ -241,18 +263,22 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double d +intent(in)+value
+// Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_char_*_out
 // Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
@@ -272,18 +298,22 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  */
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
 // ----------------------------------------
-// Argument:  int i +intent(in)+value
+// Argument:  int i +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double d +intent(in)+value
+// Argument:  double d +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+// Attrs:     +intent(out)
 // Exact:     c_char_*_out_buf
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf)
@@ -299,6 +329,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
 STR_cstruct_list * STR_get_global_struct_list(void)
@@ -313,6 +344,7 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // start STR_create__cstruct_as_class
@@ -330,14 +362,17 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
 
 // ----------------------------------------
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // ----------------------------------------
-// Argument:  int x +intent(in)+value
+// Argument:  int x +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int y +intent(in)+value
+// Argument:  int y +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
@@ -353,10 +388,12 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 
 // ----------------------------------------
 // Function:  int Cstruct_as_class_sum
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct_as_class * point +intent(in)+pass
+// Argument:  const Cstruct_as_class * point +pass
+// Attrs:     +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
 int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
@@ -371,18 +408,22 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 
 // ----------------------------------------
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // ----------------------------------------
-// Argument:  int x +intent(in)+value
+// Argument:  int x +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int y +intent(in)+value
+// Argument:  int y +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int z +intent(in)+value
+// Argument:  int z +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,

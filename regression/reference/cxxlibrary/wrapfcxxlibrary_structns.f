@@ -31,10 +31,12 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReference
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  Cstruct1 & arg +intent(inout)
+        ! Argument:  Cstruct1 & arg
+        ! Attrs:     +intent(inout)
         ! Requested: c_struct_&_inout
         ! Match:     c_struct
         function pass_struct_by_reference(arg) &
@@ -49,10 +51,12 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReferenceIn
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const Cstruct1 & arg +intent(in)
+        ! Argument:  const Cstruct1 & arg
+        ! Attrs:     +intent(in)
         ! Requested: c_struct_&_in
         ! Match:     c_struct
         function pass_struct_by_reference_in(arg) &
@@ -71,6 +75,7 @@ module cxxlibrary_structns_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_struct_&_inout
         ! Match:     c_struct
         subroutine pass_struct_by_reference_inout(arg) &
@@ -86,6 +91,7 @@ module cxxlibrary_structns_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_struct_&_out
         ! Match:     c_struct
         subroutine pass_struct_by_reference_out(arg) &

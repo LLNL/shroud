@@ -244,7 +244,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
@@ -252,6 +251,9 @@
                                         "pointer": []
                                     },
                                     "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -264,7 +266,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void method3def(int i=0)",
-                        "declgen": "void method3def(int i=0 +intent(in)+value)",
+                        "declgen": "void method3def(int i=0 +value)",
                         "fmtdict": {
                             "C_call_list": "i",
                             "C_name": "PRE_User1_method3def_1",
@@ -455,12 +457,14 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
                                         "name": "flag",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "int"
@@ -474,7 +478,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void exfunc(int flag)",
-                        "declgen": "void exfunc(int flag +intent(in)+value)",
+                        "declgen": "void exfunc(int flag +value)",
                         "fmtdict": {
                             "C_call_list": "flag",
                             "C_name": "PRE_User2_exfunc_1",

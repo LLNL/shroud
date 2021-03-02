@@ -37,10 +37,12 @@ PyArray_Descr *PY_Cstruct1_array_descr;
 
 // ----------------------------------------
 // Function:  int passStructByReference
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(inout)
+// Argument:  Cstruct1 & arg
+// Attrs:     +intent(inout)
 // Exact:     py_struct_&_inout_numpy
 static char PY_passStructByReference__doc__[] =
 "documentation"
@@ -99,10 +101,12 @@ fail:
 
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
+// Attrs:     +intent(result)
 // Requested: py_native_scalar_result
 // Match:     py_default
 // ----------------------------------------
-// Argument:  const Cstruct1 & arg +intent(in)
+// Argument:  const Cstruct1 & arg
+// Attrs:     +intent(in)
 // Exact:     py_struct_&_in_numpy
 static char PY_passStructByReferenceIn__doc__[] =
 "documentation"
@@ -167,6 +171,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
+// Attrs:     +intent(inout)
 // Exact:     py_struct_&_inout_numpy
 static char PY_passStructByReferenceInout__doc__[] =
 "documentation"
@@ -219,6 +224,7 @@ fail:
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
+// Attrs:     +intent(out)
 // Exact:     py_struct_&_out_numpy
 static char PY_passStructByReferenceOut__doc__[] =
 "documentation"

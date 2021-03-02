@@ -156,15 +156,20 @@
                         "name": "Function2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -173,12 +178,14 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -192,7 +199,7 @@
                     "typemap_name": "double"
                 },
                 "decl": "double Function2(double arg1, int arg2)",
-                "declgen": "double Function2(double arg1 +intent(in)+value, int arg2 +intent(in)+value)",
+                "declgen": "double Function2(double arg1 +value, int arg2 +value)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function2",

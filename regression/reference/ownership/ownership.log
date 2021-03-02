@@ -22,9 +22,9 @@ C function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +conte
 C function int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)
-C function void createClassStatic(int flag +intent(in)+value)
+C function void createClassStatic(int flag +value)
 C function Class1 * getClassStatic(void) +owner(library)
-C function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+C function Class1 * getClassNew(int flag +value) +owner(caller)
 Close wrapownership.h
 Close wrapownership.cpp
 Close typesownership.h
@@ -40,9 +40,9 @@ Fortran int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocat
 Fortran int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)
 Fortran int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 Fortran int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-Fortran void createClassStatic(int flag +intent(in)+value)
+Fortran void createClassStatic(int flag +value)
 Fortran Class1 * getClassStatic(void) +owner(library)
-Fortran Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+Fortran Class1 * getClassNew(int flag +value) +owner(caller)
 C-interface int * ReturnIntPtrRaw(void) +deref(raw)
 C-interface int * ReturnIntPtrScalar(void) +deref(scalar)
 C-interface int * ReturnIntPtrPointer(void) +deref(pointer)
@@ -60,9 +60,9 @@ C-interface int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +cont
 C-interface int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 C-interface int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
 C-interface int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)
-C-interface void createClassStatic(int flag +intent(in)+value)
+C-interface void createClassStatic(int flag +value)
 C-interface Class1 * getClassStatic(void) +owner(library)
-C-interface Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+C-interface Class1 * getClassNew(int flag +value) +owner(caller)
 Close wrapfownership.f
 Close utilownership.cpp
 class Class1
@@ -76,9 +76,9 @@ Python function int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dim
 Python function int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)
 Python function int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)
 Python function int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)
-Python function void createClassStatic(int flag +intent(in)+value)
+Python function void createClassStatic(int flag +value)
 Python function Class1 * getClassStatic(void) +owner(library)
-Python function Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)
+Python function Class1 * getClassNew(int flag +value) +owner(caller)
 Close pyownershipmodule.cpp
 Close pyownershiputil.cpp
 Close pyownershipmodule.hpp

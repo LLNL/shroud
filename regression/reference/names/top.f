@@ -130,7 +130,8 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+        ! Attrs:     +intent(inout)
         ! Requested: c_char_*_inout
         ! Match:     c_default
         subroutine c_get_name(name) &
@@ -145,7 +146,8 @@ module top_module
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+        ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+        ! Attrs:     +intent(inout)
         ! Exact:     c_char_*_inout_buf
         subroutine c_get_name_bufferify(name, worktrim, worklen) &
                 bind(C, name="TES_get_name_bufferify")
@@ -179,7 +181,8 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int i +intent(in)+value
+        ! Argument:  int i +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine yyy_tes_function3a_0(i) &
@@ -194,7 +197,8 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long i +intent(in)+value
+        ! Argument:  long i +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine yyy_tes_function3a_1(i) &
@@ -206,10 +210,12 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & rv +intent(in)
+        ! Argument:  const std::string & rv
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in
         function yyy_tes_function4(rv) &
                 result(SHT_rv) &
@@ -222,10 +228,12 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
+        ! Argument:  const std::string & rv +len_trim(Lrv)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
@@ -251,10 +259,12 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(inout)
+        ! Argument:  std::string & name
+        ! Attrs:     +intent(inout)
         ! Exact:     c_string_&_inout
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         subroutine c_test_multiline_splicer(name, value) &
@@ -270,10 +280,12 @@ module top_module
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+        ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+        ! Attrs:     +intent(inout)
         ! Exact:     c_string_&_inout_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
@@ -292,11 +304,13 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int arg1 +intent(in)+value
+        ! Argument:  int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long arg2 +intent(in)+value
+        ! Argument:  long arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine f_c_name_instantiation1(arg1, arg2) &
@@ -312,11 +326,13 @@ module top_module
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  float arg1 +intent(in)+value
+        ! Argument:  float arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double arg2 +intent(in)+value
+        ! Argument:  double arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_function_tu_instantiation2(arg1, arg2) &
@@ -329,6 +345,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_instantiation3() &
@@ -341,10 +358,12 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int Cstruct_as_class_sum
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+        ! Argument:  const Cstruct_as_class * point +pass
+        ! Attrs:     +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         function c_cstruct_as_class_sum(point) &
@@ -512,9 +531,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
+    ! Argument:  char * name +len(worklen)+len_trim(worktrim)
+    ! Attrs:     +intent(inout)
     ! Requested: f_char_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Exact:     c_char_*_inout_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
@@ -559,9 +580,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine F_name_function3a_int(i)
@@ -580,9 +603,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long i +intent(in)+value
+    ! Argument:  long i +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine F_name_function3a_long(i)
@@ -597,15 +622,19 @@ contains
     ! ----------------------------------------
     ! Function:  int function4
     ! int function4
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & rv +intent(in)
+    ! Argument:  const std::string & rv
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
+    ! Argument:  const std::string & rv +len_trim(Lrv)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     function testnames_function4(rv) &
             result(SHT_rv)
@@ -640,15 +669,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  std::string & name +intent(inout)
+    ! Argument:  std::string & name
+    ! Attrs:     +intent(inout)
     ! Requested: f_string_&_inout
     ! Match:     f_default
-    ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
+    ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
+    ! Attrs:     +intent(inout)
     ! Exact:     c_string_&_inout_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     !>
@@ -673,15 +706,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg1 +intent(in)+value
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -706,15 +743,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg1 +intent(in)+value
+    ! Argument:  float arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -734,8 +775,10 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>
@@ -754,14 +797,18 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! int Cstruct_as_class_sum
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Argument:  const Cstruct_as_class * point +pass
+    ! Attrs:     +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function cstruct_as_class_sum(point) &

@@ -24,6 +24,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrRaw +deref(raw)
+// Attrs:     +deref(raw)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 int * OWN_return_int_ptr_raw(void)
@@ -36,6 +37,7 @@ int * OWN_return_int_ptr_raw(void)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 int OWN_return_int_ptr_scalar(void)
@@ -48,6 +50,7 @@ int OWN_return_int_ptr_scalar(void)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 int * OWN_return_int_ptr_pointer(void)
@@ -60,6 +63,7 @@ int * OWN_return_int_ptr_pointer(void)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 int * OWN_return_int_ptr_pointer_bufferify(OWN_SHROUD_array *DSHC_rv)
 {
@@ -78,10 +82,12 @@ int * OWN_return_int_ptr_pointer_bufferify(OWN_SHROUD_array *DSHC_rv)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRaw +deref(raw)
+// Attrs:     +deref(raw)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_raw(int * len)
@@ -94,10 +100,12 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer(int * len)
@@ -110,9 +118,11 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_bufferify(
@@ -134,10 +144,12 @@ int * OWN_return_int_ptr_dim_pointer_bufferify(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
+// Attrs:     +deref(allocatable)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_alloc(int * len)
@@ -150,9 +162,11 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
@@ -174,10 +188,12 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default(int * len)
@@ -190,9 +206,11 @@ int * OWN_return_int_ptr_dim_default(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+deref(pointer)+dimension(len)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default_bufferify(
@@ -214,10 +232,12 @@ int * OWN_return_int_ptr_dim_default_bufferify(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_raw_new(int * len)
@@ -230,10 +250,12 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
@@ -246,9 +268,11 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_new_bufferify(
@@ -270,10 +294,12 @@ int * OWN_return_int_ptr_dim_pointer_new_bufferify(
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
+// Attrs:     +deref(allocatable)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
@@ -286,10 +312,12 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default_new(int * len)
@@ -302,9 +330,11 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 
 // ----------------------------------------
 // Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default_new_bufferify(
@@ -329,7 +359,8 @@ int * OWN_return_int_ptr_dim_default_new_bufferify(
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void OWN_create_class_static(int flag)
@@ -341,6 +372,7 @@ void OWN_create_class_static(int flag)
 
 // ----------------------------------------
 // Function:  Class1 * getClassStatic +owner(library)
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
@@ -359,10 +391,12 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
  */
 // ----------------------------------------
 // Function:  Class1 * getClassNew +owner(caller)
+// Attrs:     +intent(result)
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHadow_rv)

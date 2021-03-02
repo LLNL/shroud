@@ -110,14 +110,12 @@
                             },
                             "params": [
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "x1",
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "x1"
                                     },
                                     "specifier": [
@@ -126,14 +124,12 @@
                                     "typemap_name": "int"
                                 },
                                 {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
                                     "declarator": {
                                         "name": "y1",
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "y1"
                                     },
                                     "specifier": [
@@ -148,7 +144,7 @@
                             "typemap_name": "Cstruct_as_class"
                         },
                         "decl": "Cstruct_as_class_ctor",
-                        "declgen": "Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)",
+                        "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
                         "fmtdict": {
                             "PY_name_impl": "PY_Cstruct_as_class_tp_init",
                             "PY_type_impl": "PY_Cstruct_as_class_tp_init",
@@ -414,6 +410,9 @@
                         "name": "acceptBothStructs",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -426,6 +425,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct_as_class"
@@ -443,6 +445,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct_as_numpy"

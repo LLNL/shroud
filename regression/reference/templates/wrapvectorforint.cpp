@@ -23,6 +23,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  vector
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_ctor
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 {
@@ -53,6 +54,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int & value +intent(in)
+// Attrs:     +intent(in)
 // Requested: c_native_&_in
 // Match:     c_default
 void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
@@ -66,10 +68,12 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 
 // ----------------------------------------
 // Function:  int & at +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_&_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  size_type n +intent(in)+value
+// Argument:  size_type n +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int * TEM_vector_int_at(TEM_vector_int * self, size_t n)

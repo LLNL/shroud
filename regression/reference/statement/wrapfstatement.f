@@ -24,6 +24,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength +pure
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function get_name_length() &
@@ -36,6 +37,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
+        ! Attrs:     +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
@@ -50,7 +52,8 @@ module statement_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+        ! Argument:  string & SHF_rv +len(NSHF_rv)
+        ! Attrs:     +intent(out)+is_result
         ! Exact:     c_string_&_result_buf
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
@@ -70,14 +73,17 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
     ! const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
+    ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  string & SHF_rv +len(NSHF_rv)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     function get_name_error_pattern() &
             result(SHT_rv)

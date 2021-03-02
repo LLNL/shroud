@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  ArrayWrapper
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_ctor
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 {
@@ -37,7 +38,8 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int size +intent(in)+value
+// Argument:  int size +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void ARR_ArrayWrapper_set_size(ARR_ArrayWrapper * self, int size)
@@ -50,6 +52,7 @@ void ARR_ArrayWrapper_set_size(ARR_ArrayWrapper * self, int size)
 
 // ----------------------------------------
 // Function:  int getSize
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
@@ -68,6 +71,7 @@ int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int & size +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_&_out
 // Match:     c_default
 void ARR_ArrayWrapper_fill_size(ARR_ArrayWrapper * self, int * size)
@@ -92,6 +96,7 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double * getArray +deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
@@ -105,6 +110,7 @@ double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *DSHC_rv)
@@ -126,6 +132,7 @@ double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
@@ -140,6 +147,7 @@ double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 double * ARR_ArrayWrapper_get_array_const_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
@@ -162,6 +170,7 @@ double * ARR_ArrayWrapper_get_array_const_bufferify(
 
 // ----------------------------------------
 // Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
@@ -175,6 +184,7 @@ const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 const double * ARR_ArrayWrapper_get_array_c_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
@@ -196,6 +206,7 @@ const double * ARR_ArrayWrapper_get_array_c_bufferify(
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 const double * ARR_ArrayWrapper_get_array_const_c(
@@ -211,6 +222,7 @@ const double * ARR_ArrayWrapper_get_array_const_c(
 
 // ----------------------------------------
 // Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
@@ -237,10 +249,12 @@ const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
@@ -258,9 +272,11 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
@@ -287,10 +303,12 @@ void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_*&_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_&_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
@@ -308,9 +326,11 @@ void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_*&_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_&_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
@@ -337,10 +357,12 @@ void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
@@ -358,9 +380,11 @@ void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const double * * array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
-// Argument:  int * isize +hidden+intent(inout)
+// Argument:  int * isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
@@ -387,10 +411,12 @@ void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_*&_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_&_inout
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
@@ -408,9 +434,11 @@ void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const double * & array +context(Darray)+deref(pointer)+dimension(isize)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_*&_out_buf
 // ----------------------------------------
-// Argument:  int & isize +hidden+intent(inout)
+// Argument:  int & isize +hidden
+// Attrs:     +intent(inout)
 // Requested: c_native_&_inout_buf
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
@@ -437,6 +465,7 @@ void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_void_**_out
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
@@ -454,6 +483,7 @@ void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_void_*&_out
 // Match:     c_default
 void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
@@ -467,10 +497,12 @@ void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  bool checkPtr
+// Attrs:     +intent(result)
 // Requested: c_bool_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  void * array +intent(in)+value
+// Argument:  void * array +value
+// Attrs:     +intent(in)
 // Requested: c_void_*_in
 // Match:     c_default
 bool ARR_ArrayWrapper_check_ptr(ARR_ArrayWrapper * self, void * array)
@@ -484,6 +516,7 @@ bool ARR_ArrayWrapper_check_ptr(ARR_ArrayWrapper * self, void * array)
 
 // ----------------------------------------
 // Function:  double sumArray
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 double ARR_ArrayWrapper_sum_array(ARR_ArrayWrapper * self)

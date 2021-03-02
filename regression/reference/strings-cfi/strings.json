@@ -77,12 +77,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "status",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -96,7 +98,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passChar(char status)",
-                "declgen": "void passChar(char status +intent(in)+value)",
+                "declgen": "void passChar(char status +value)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar."
                 },
@@ -174,12 +176,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "status",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -193,7 +197,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharForce(char status)",
-                "declgen": "void passCharForce(char status +intent(in)+value)",
+                "declgen": "void passCharForce(char status +value)",
                 "doxygen": {
                     "description": "By default no Fortran wrapper is created.\nForce one so it can be tested.\n"
                 },
@@ -279,6 +283,9 @@
                     "declarator": {
                         "name": "returnChar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -382,10 +389,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "SHF_rv",
                                 "pointer": [
@@ -393,6 +396,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -406,7 +413,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "char returnChar()",
-                "declgen": "void returnChar(char * SHF_rv +intent(out))",
+                "declgen": "void returnChar(char * SHF_rv)",
                 "doxygen": {
                     "brief": "return a char argument (non-pointer)"
                 },
@@ -537,15 +544,15 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -554,6 +561,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -567,7 +577,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src +intent(in))",
+                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
@@ -705,6 +715,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -713,7 +726,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Nsrc",
                                 "len_trim": "Lsrc"
                             },
@@ -725,6 +737,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -739,7 +754,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void passCharPtr(char * dest+intent(out)+charlen(40), const char *src)",
-                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out)+len+len_trim, const char * src +intent(in)+len+len_trim)",
+                "declgen": "void passCharPtr(char * dest +charlen(40)+intent(out)+len+len_trim, const char * src +len+len_trim)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nIn Python, src must not be over 40 characters, defined by charlen.\n"
@@ -830,6 +845,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "char"
@@ -941,6 +959,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -1041,6 +1062,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1146,9 +1171,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -1158,6 +1181,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1171,7 +1199,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr1()",
-                "declgen": "void getCharPtr1(const char * SHF_rv +deref(allocatable)+intent(out))",
+                "declgen": "void getCharPtr1(const char * SHF_rv +deref(allocatable))",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
@@ -1259,6 +1287,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1370,8 +1402,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": "30"
                             },
                             "declarator": {
@@ -1381,6 +1411,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1394,7 +1428,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "void getCharPtr2(char * SHF_rv +intent(out)+len(30)) +len(30)",
+                "declgen": "void getCharPtr2(char * SHF_rv +len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1468,6 +1502,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1564,10 +1602,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1575,6 +1609,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1588,7 +1626,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +intent(out))",
+                "declgen": "void getCharPtr3(char * output)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1623,10 +1661,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1634,6 +1668,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1647,7 +1685,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "void getCharPtr3(char * output +intent(out))",
+                "declgen": "void getCharPtr3(char * output)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1719,6 +1757,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1799,6 +1841,10 @@
                     "declarator": {
                         "name": "getConstStringResult",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1894,9 +1940,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -1906,6 +1950,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -1919,7 +1968,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringResult()",
-                "declgen": "void getConstStringResult(const string * SHF_rv +deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringResult(const string * SHF_rv +deref(allocatable))",
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
@@ -1985,6 +2034,10 @@
                     "declarator": {
                         "name": "getConstStringLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2086,8 +2139,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": 30
                             },
                             "declarator": {
@@ -2097,6 +2148,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2110,7 +2165,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringLen() +len=30",
-                "declgen": "void getConstStringLen(string * SHF_rv +intent(out)+len(30)) +len(30)",
+                "declgen": "void getConstStringLen(string * SHF_rv +len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2163,6 +2218,10 @@
                     "declarator": {
                         "name": "getConstStringAsArg",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2249,10 +2308,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2260,6 +2315,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2273,7 +2332,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +intent(out))",
+                "declgen": "void getConstStringAsArg(string * output)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2308,10 +2367,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2319,6 +2374,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2332,7 +2391,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "void getConstStringAsArg(string * output +intent(out))",
+                "declgen": "void getConstStringAsArg(string * output)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2400,6 +2459,10 @@
                     "declarator": {
                         "name": "getConstStringAlloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2491,9 +2554,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -2503,6 +2564,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -2516,7 +2582,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string getConstStringAlloc()",
-                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +deref(allocatable))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -2598,6 +2664,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2703,9 +2773,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -2715,6 +2783,11 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2728,7 +2801,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "void getConstStringRefPure(const string & SHF_rv +deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefPure(const string & SHF_rv +deref(allocatable))",
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
@@ -2818,6 +2891,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2930,8 +3007,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": 30
                             },
                             "declarator": {
@@ -2941,6 +3016,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2954,7 +3033,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "void getConstStringRefLen(string & SHF_rv +intent(out)+len(30)) +len(30)",
+                "declgen": "void getConstStringRefLen(string & SHF_rv +len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
@@ -3030,6 +3109,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3127,10 +3210,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3138,6 +3217,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3151,7 +3234,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +intent(out))",
+                "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3187,10 +3270,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3198,6 +3277,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3211,7 +3294,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "void getConstStringRefAsArg(string & output +intent(out))",
+                "declgen": "void getConstStringRefAsArg(string & output)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3306,6 +3389,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3417,8 +3504,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": 30
                             },
                             "declarator": {
@@ -3428,6 +3513,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3441,7 +3530,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +intent(out)+len(30)) +len(30)",
+                "declgen": "void getConstStringRefLenEmpty(string & SHF_rv +len(30)) +len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
@@ -3526,6 +3615,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3627,9 +3720,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "deref": "allocatable",
-                                "intent": "out"
+                                "deref": "allocatable"
                             },
                             "const": true,
                             "declarator": {
@@ -3639,6 +3730,11 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -3652,7 +3748,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +deref(allocatable)+intent(out))",
+                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +deref(allocatable))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -3737,6 +3833,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3855,8 +3955,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": 30
                             },
                             "declarator": {
@@ -3866,6 +3964,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3879,7 +3981,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "void getConstStringPtrLen(string * SHF_rv +intent(out)+len(30)) +len(30)",
+                "declgen": "void getConstStringPtrLen(string * SHF_rv +len(30)) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
@@ -3973,6 +4075,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4074,9 +4180,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
-                                "intent": "out",
                                 "owner": "library"
                             },
                             "const": true,
@@ -4087,6 +4191,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -4100,7 +4209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(library))",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +deref(allocatable)+owner(library))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -4183,6 +4292,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4287,9 +4400,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
-                                "intent": "out",
                                 "owner": "caller"
                             },
                             "const": true,
@@ -4300,6 +4411,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -4313,7 +4429,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +deref(allocatable)+owner(caller))",
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
@@ -4400,6 +4516,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4505,10 +4625,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
                                 "free_pattern": "C_string_free",
-                                "intent": "out",
                                 "owner": "caller"
                             },
                             "const": true,
@@ -4519,6 +4637,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -4532,7 +4655,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller))",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
@@ -4608,9 +4731,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -4619,6 +4739,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -4632,7 +4755,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
-                "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in))",
+                "declgen": "void acceptStringConstReference(const std::string & arg1)",
                 "doxygen": {
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -4718,7 +4841,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Narg1",
                                 "len_trim": "Larg1"
                             },
@@ -4730,6 +4852,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -4744,7 +4869,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringConstReference(const std::string & arg1)",
-                "declgen": "void acceptStringConstReference(const std::string & arg1 +intent(in)+len+len_trim)",
+                "declgen": "void acceptStringConstReference(const std::string & arg1 +len+len_trim)",
                 "doxygen": {
                     "brief": "Accept a const string reference",
                     "description": "Save contents of arg1.\narg1 is assumed to be intent(IN) since it is const\nWill copy in.\n"
@@ -4833,6 +4958,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -4944,6 +5072,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -5036,9 +5167,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -5046,6 +5174,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5059,7 +5190,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReference(std::string & arg1)",
-                "declgen": "void acceptStringReference(std::string & arg1 +intent(inout))",
+                "declgen": "void acceptStringReference(std::string & arg1)",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -5146,7 +5277,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "Narg1",
                                 "len_trim": "Larg1"
                             },
@@ -5157,6 +5287,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5171,7 +5304,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringReference(std::string & arg1)",
-                "declgen": "void acceptStringReference(std::string & arg1 +intent(inout)+len+len_trim)",
+                "declgen": "void acceptStringReference(std::string & arg1 +len+len_trim)",
                 "doxygen": {
                     "brief": "Accept a string reference",
                     "description": "Append \"dog\" to the end of arg1.\narg1 is assumed to be intent(INOUT)\nMust copy in and copy out.\n"
@@ -5251,9 +5384,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg1",
@@ -5262,6 +5392,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -5275,7 +5408,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerConst(const std::string * arg1)",
-                "declgen": "void acceptStringPointerConst(const std::string * arg1 +intent(in))",
+                "declgen": "void acceptStringPointerConst(const std::string * arg1)",
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
@@ -5360,7 +5493,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Narg1",
                                 "len_trim": "Larg1"
                             },
@@ -5372,6 +5504,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -5386,7 +5521,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerConst(const std::string * arg1)",
-                "declgen": "void acceptStringPointerConst(const std::string * arg1 +intent(in)+len+len_trim)",
+                "declgen": "void acceptStringPointerConst(const std::string * arg1 +len+len_trim)",
                 "doxygen": {
                     "brief": "Accept a const string pointer - intent(in)"
                 },
@@ -5464,9 +5599,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -5474,6 +5606,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5487,7 +5622,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointer(std::string * arg1)",
-                "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout))",
+                "declgen": "void acceptStringPointer(std::string * arg1)",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
@@ -5572,7 +5707,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "Narg1",
                                 "len_trim": "Larg1"
                             },
@@ -5583,6 +5717,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5597,7 +5734,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointer(std::string * arg1)",
-                "declgen": "void acceptStringPointer(std::string * arg1 +intent(inout)+len+len_trim)",
+                "declgen": "void acceptStringPointer(std::string * arg1 +len+len_trim)",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)"
                 },
@@ -5685,6 +5822,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -5795,6 +5935,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -5930,9 +6073,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -5940,6 +6080,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5958,6 +6101,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -5970,7 +6116,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
-                "declgen": "void acceptStringPointerLen(std::string * arg1 +intent(inout), int * nlen +intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string * arg1, int * nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -6089,7 +6235,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "Narg1",
                                 "len_trim": "Larg1"
                             },
@@ -6100,6 +6245,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -6119,6 +6267,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -6131,7 +6282,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptStringPointerLen(std::string * arg1, int *nlen+intent(out))",
-                "declgen": "void acceptStringPointerLen(std::string * arg1 +intent(inout)+len+len_trim, int * nlen +intent(out))",
+                "declgen": "void acceptStringPointerLen(std::string * arg1 +len+len_trim, int * nlen +intent(out))",
                 "doxygen": {
                     "brief": "Accept a string pointer - intent(inout)",
                     "description": "Test return tuple with two arguments.\nMust rename argument to nlen to avoid conflict with intrinsic len.\n"
@@ -6263,6 +6414,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6279,6 +6433,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6423,6 +6580,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6440,6 +6600,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6575,15 +6738,20 @@
                         "name": "acceptStringInstance",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -6597,7 +6765,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +intent(in)+value)",
+                "declgen": "int acceptStringInstance(std::string arg1 +value)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -6697,10 +6865,12 @@
                         "name": "acceptStringInstance",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Narg1",
                                 "len_trim": "Larg1",
                                 "value": true
@@ -6708,6 +6878,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -6722,7 +6895,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int acceptStringInstance(std::string arg1)",
-                "declgen": "int acceptStringInstance(std::string arg1 +intent(in)+len+len_trim+value)",
+                "declgen": "int acceptStringInstance(std::string arg1 +len+len_trim+value)",
                 "doxygen": {
                     "brief": "Accept a string instance"
                 },
@@ -6814,6 +6987,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6830,6 +7006,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -6866,6 +7045,9 @@
                         "name": "returnMany",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6878,6 +7060,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6970,6 +7155,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7078,6 +7266,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7159,6 +7350,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -7266,6 +7460,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7368,12 +7565,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "status",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7387,7 +7586,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassChar(char status)",
-                "declgen": "void CpassChar(char status +intent(in)+value)",
+                "declgen": "void CpassChar(char status +value)",
                 "doxygen": {
                     "brief": "pass a single char argument as a scalar, extern \"C\""
                 },
@@ -7474,6 +7673,9 @@
                     "declarator": {
                         "name": "CreturnChar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -7578,10 +7780,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true,
-                                "intent": "out"
-                            },
                             "declarator": {
                                 "name": "SHF_rv",
                                 "pointer": [
@@ -7589,6 +7787,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -7602,7 +7804,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "char CreturnChar()",
-                "declgen": "void CreturnChar(char * SHF_rv +intent(out))",
+                "declgen": "void CreturnChar(char * SHF_rv)",
                 "doxygen": {
                     "brief": "return a char argument (non-pointer), extern \"C\""
                 },
@@ -7692,15 +7894,15 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
                             "typemap_name": "char"
                         },
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "src",
@@ -7709,6 +7911,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7722,7 +7927,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src +intent(in))",
+                "declgen": "void CpassCharPtr(char * dest +intent(out), const char * src)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
@@ -7858,6 +8063,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7866,7 +8074,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Nsrc",
                                 "len_trim": "Lsrc"
                             },
@@ -7878,6 +8085,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7892,7 +8102,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void CpassCharPtr(char * dest+intent(out), const char *src)",
-                "declgen": "void CpassCharPtr(char * dest +intent(out)+len+len_trim, const char * src +intent(in)+len+len_trim)",
+                "declgen": "void CpassCharPtr(char * dest +intent(out)+len+len_trim, const char * src +len+len_trim)",
                 "doxygen": {
                     "brief": "strcpy like behavior",
                     "description": "dest is marked intent(OUT) to override the intent(INOUT) default\nThis avoid a copy-in on dest.\nextern \"C\"\n"
@@ -8030,15 +8240,15 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
                             "typemap_name": "int"
                         },
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "name",
                                 "pointer": [
@@ -8046,6 +8256,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -8059,7 +8272,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
-                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout))",
+                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name)",
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },
@@ -8193,6 +8406,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -8200,7 +8416,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "len": "Nname",
                                 "len_trim": "Lname"
                             },
@@ -8211,6 +8426,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -8225,7 +8443,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void PostDeclare(int *count +rank(1)+intent(in), std::string &name)",
-                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +intent(inout)+len+len_trim)",
+                "declgen": "void PostDeclare(int * count +intent(in)+rank(1), std::string & name +len+len_trim)",
                 "doxygen": {
                     "description": "Test post_declare.\nThe std::string in py_string_inout must be declared before the\ngoto added by py_native_*_in_pointer_list to avoid\n\"jump to label 'fail' crosses initialization of\" error.\n"
                 },

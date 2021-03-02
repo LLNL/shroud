@@ -781,7 +781,7 @@ return 1;""",
         # getter
         output.append("")
         if options.debug:
-            self.document_stmts(output, stmt0, intent_blk.name)
+            self.document_stmts(output, ast, stmt0, intent_blk.name)
         append_format(
             output,
             "static PyObject *{PY_getter}("
@@ -816,7 +816,7 @@ return 1;""",
 
             output.append("")
             if options.debug:
-                self.document_stmts(output, stmt0, intent_blk.name)
+                self.document_stmts(output, ast, stmt0, intent_blk.name)
             append_format(
                 output,
                 "static int {PY_setter}("
@@ -1184,7 +1184,7 @@ return 1;""",
             stmts_comments.append(
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
         self.set_fmt_hnamefunc(result_blk, fmt_result)
         if result_blk.fmtdict is not None:
             for key, value in result_blk.fmtdict.items():
@@ -1264,6 +1264,7 @@ return 1;""",
                 fmt_arg.ctor_expr = fmt_arg.c_var
             update_fmt_from_typemap(fmt_arg, arg_typemap)
             attrs = arg.attrs
+            meta = arg.metaattrs
 
             self.set_fmt_fields(cls, node, arg, fmt_arg)
             self.set_cxx_nonconst_ptr(arg, fmt_arg)
@@ -1273,7 +1274,7 @@ return 1;""",
             dimension = arg.attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
-            intent = attrs["intent"]
+            intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = arg.get_indirect_stmt()
             stmts = None
@@ -1294,7 +1295,7 @@ return 1;""",
                 if not found_optional:
                     parse_format.append("|")  # add once
                     found_optional = True
-            deref = attrs["deref"] or "pointer"
+            deref = meta["deref"] or "pointer"
             if intent_blk is not None:
                 pass
             elif arg.is_function_pointer():
@@ -1336,7 +1337,7 @@ return 1;""",
                 # Add some debug comments to function.
                 if options.debug:
                     self.document_stmts(
-                        stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                        stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
             elif options.debug:
                 stmts_comments.append(
                     self.comment + " Exact:     " + intent_blk.name)
@@ -1937,6 +1938,7 @@ return 1;""",
         options = node.options
         ast = node.ast
         attrs = ast.attrs
+        meta = ast.metaattrs
         is_ctor = ast.is_ctor()
         result_typemap = ast.typemap
 
@@ -1993,7 +1995,7 @@ return 1;""",
             spointer = ast.get_indirect_stmt()
             stmts = ["py", sgroup, spointer, "result"]
             if spointer != "scalar":
-                deref = attrs["deref"] or "pointer"
+                deref = meta["deref"] or "pointer"
                 stmts.append(deref)
                 if deref != "scalar":
                     stmts.append(options.PY_array_arg)
@@ -3453,7 +3455,7 @@ class ToImplied(todict.PrintNode):
 
             # find argname in function parameters
             arg = self.func.ast.find_arg_by_name(argname)
-            if arg.attrs["intent"] == "out":
+            if arg.metaattrs["intent"] == "out":
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
                 # len(text) in this case is the value of "charlen"

@@ -131,6 +131,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cstruct_as_class_set_x1
@@ -170,6 +171,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cstruct_as_class_set_y1
@@ -212,6 +214,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cstruct_as_subclass_set_x1
@@ -251,6 +254,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cstruct_as_subclass_set_y1
@@ -290,6 +294,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_cstruct_as_subclass_set_z1
@@ -310,10 +315,12 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStructByValue
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  Cstruct1 arg +intent(in)+value
+    ! Argument:  Cstruct1 arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_scalar_in
     ! Match:     c_struct
     ! start pass_struct_by_value
@@ -332,10 +339,12 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * arg +intent(in)
+    ! Argument:  const Cstruct1 * arg
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! start pass_struct1
@@ -354,14 +363,17 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct2
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     interface
@@ -379,14 +391,17 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct2
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+    ! Attrs:     +intent(out)
     ! Exact:     c_char_*_out_buf
     interface
         function c_pass_struct2_bufferify(s1, outbuf, Noutbuf) &
@@ -404,10 +419,12 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     interface
@@ -428,14 +445,17 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_struct_*_out
     ! Match:     c_struct
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -456,6 +476,7 @@ module struct_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: c_struct_*_inout
     ! Match:     c_struct
     interface
@@ -469,14 +490,17 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 returnStructByValue
+    ! Attrs:     +intent(result)
     ! Requested: c_struct_scalar_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -494,14 +518,17 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -518,18 +545,22 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_char_*_out
     ! Match:     c_default
     interface
@@ -547,18 +578,22 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+    ! Attrs:     +intent(out)
     ! Exact:     c_char_*_out_buf
     interface
         function c_return_struct_ptr2_bufferify(i, d, outbuf, Noutbuf) &
@@ -576,6 +611,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     interface
@@ -590,6 +626,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! start c_create__cstruct_as_class
@@ -608,14 +645,17 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  int x +intent(in)+value
+    ! Argument:  int x +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int y +intent(in)+value
+    ! Argument:  int y +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -634,10 +674,12 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Argument:  const Cstruct_as_class * point +pass
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     interface
@@ -654,18 +696,22 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  int x +intent(in)+value
+    ! Argument:  int x +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int y +intent(in)+value
+    ! Argument:  int y +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int z +intent(in)+value
+    ! Argument:  int z +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -729,8 +775,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_class_set_x1
@@ -772,8 +820,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_class_set_y1
@@ -818,8 +868,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_x1
@@ -861,8 +913,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_y1
@@ -904,8 +958,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_z1
@@ -926,21 +982,27 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! int passStruct2
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct1 * s1 +intent(in)
+    ! Argument:  const Cstruct1 * s1
+    ! Attrs:     +intent(in)
     ! Requested: f_struct_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_struct_*_in_buf
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+    ! Attrs:     +intent(out)
     ! Exact:     c_char_*_out_buf
     !>
     !! Pass name argument which will build a bufferify function.
@@ -960,20 +1022,26 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
     ! Cstruct1 * returnStructPtr1 +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -998,27 +1066,35 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
     ! Cstruct1 * returnStructPtr2 +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_buf_pointer
     ! Match:     f_struct_*_result
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
-    ! Argument:  int i +intent(in)+value
+    ! Argument:  int i +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double d +intent(in)+value
+    ! Argument:  double d +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_char_*_out
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
+    ! Attrs:     +intent(out)
     ! Exact:     c_char_*_out_buf
     !>
     !! \brief Return a pointer to a struct
@@ -1043,8 +1119,10 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
     ! Cstruct_list * get_global_struct_list +deref(pointer)
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
+    ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     function get_global_struct_list() &
@@ -1061,8 +1139,10 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Cstruct_as_class * Create_Cstruct_as_class
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! start create__cstruct_as_class
@@ -1080,20 +1160,26 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Cstruct_as_class * Create_Cstruct_as_class_args
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  int x +intent(in)+value
+    ! Argument:  int x +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int y +intent(in)+value
+    ! Argument:  int y +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function create__cstruct_as_class_args(x, y) &
@@ -1111,14 +1197,18 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! int Cstruct_as_class_sum
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const Cstruct_as_class * point +intent(in)+pass
+    ! Argument:  const Cstruct_as_class * point +pass
+    ! Attrs:     +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function cstruct_as_class_sum(point) &
@@ -1134,26 +1224,34 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  int x +intent(in)+value
+    ! Argument:  int x +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int y +intent(in)+value
+    ! Argument:  int y +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int z +intent(in)+value
+    ! Argument:  int z +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function create__cstruct_as_subclass_args(x, y, z) &

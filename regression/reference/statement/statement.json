@@ -51,6 +51,9 @@
                         "name": "GetNameLength",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -142,6 +145,10 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -247,8 +254,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
-                                "intent": "out",
                                 "len": "NSHF_rv"
                             },
                             "declarator": {
@@ -258,6 +263,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -271,7 +280,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getNameErrorPattern()",
-                "declgen": "void getNameErrorPattern(string & SHF_rv +intent(out)+len(NSHF_rv)) +len(get_name_length())",
+                "declgen": "void getNameErrorPattern(string & SHF_rv +len(NSHF_rv)) +len(get_name_length())",
                 "fmtdict": {
                     "C_name": "STMT_get_name_error_pattern_bufferify",
                     "C_prototype": "char * SHF_rv,\t int NSHF_rv",

@@ -955,7 +955,7 @@ rv = .false.
                     # Treat too many pointers as a type(C_PTR)
                     # and let the wrapper sort it out.
                     # 'char **' uses c_char_**_in as a special case.
-                    intent = ast.attrs["intent"].upper()
+                    intent = ast.metaattrs["intent"].upper()
                     arg_c_decl.append(
                         "type(C_PTR), intent({}) :: {}".format(
                             intent, fmt.F_C_var))
@@ -977,7 +977,7 @@ rv = .false.
                 arg_c_names.append(fmt.F_C_var)
                 arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
-                    (intent or ast.attrs["intent"]).upper(),
+                    (intent or ast.metaattrs["intent"]).upper(),
                     ", value" if attrs["value"] else "",
                     fmt.F_C_var))
                 self.update_f_module(
@@ -1024,7 +1024,7 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
-                if ast.attrs["_is_result"]:
+                if ast.metaattrs["is_result"]:
                     intent = "OUT"
                 else:
                     intent = "INOUT"
@@ -1120,7 +1120,7 @@ rv = .false.
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, statements.compute_name(c_stmts),
+                stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
 
         if c_result_blk.return_type:
@@ -1153,14 +1153,15 @@ rv = .false.
             fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs
-            intent = attrs["intent"] or "inout"
+            meta = arg.metaattrs
+            intent = meta["intent"]
             if intent != "in":
                 args_all_in = False
-            deref_attr = attrs["deref"]
+            deref_attr = meta["deref"]
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = arg.get_indirect_stmt()
-            if attrs["_is_result"]:
+            if meta["is_result"]:
                 c_stmts = ["c", sgroup, spointer, "result",
                            generated_suffix, deref_attr]
             else:
@@ -1174,7 +1175,7 @@ rv = .false.
                 c_decl = arg.gen_decl()
                 stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, statements.compute_name(c_stmts),
+                    stmts_comments, arg, statements.compute_name(c_stmts),
                     c_intent_blk.name)
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1220,7 +1221,7 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            return_deref_attr = ast.attrs["deref"]
+            return_deref_attr = ast.metaattrs["deref"]
             if c_result_blk.f_result_decl:
                 for arg in c_result_blk.f_result_decl:
                     arg_c_decl.append(arg.format(c_var=fmt_func.F_result))
@@ -1461,6 +1462,7 @@ rv = .false.
             fmt - format dictionary
         """
         c_attrs = c_ast.attrs
+        c_meta = c_ast.metaattrs
         statements.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
@@ -1468,7 +1470,7 @@ rv = .false.
             # XXX - looked up in parent
             pass
         else:
-            fmt.f_intent = c_attrs["intent"].upper()
+            fmt.f_intent = c_meta["intent"].upper()
             
             ntypemap = f_ast.typemap
             if c_ast.template_arguments:
@@ -1586,7 +1588,7 @@ rv = .false.
                                 modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
-            return_deref_attr = ast.attrs["deref"]
+            return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
                 f_stmts = ["f", "shadow", "ctor"]
                 c_stmts = ["c", "shadow", "ctor"]
@@ -1616,12 +1618,12 @@ rv = .false.
             stmts_comments.append("! Function:  " + f_decl)
             stmts_comments.append("! " + f_decl)
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
             c_decl = C_node.ast.gen_decl(params=None)
             if f_decl != c_decl:
                 stmts_comments.append("! Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, fmt_result.stmtc0, fmt_result.stmtc1)
+                stmts_comments, C_node.ast, fmt_result.stmtc0, fmt_result.stmtc1)
 
         if f_result_blk.result:
             # Change a subroutine into function.
@@ -1681,8 +1683,9 @@ rv = .false.
             fmt_arg.F_pointer = "SHPTR_" + arg_name
 
             c_attrs = c_arg.attrs
+            c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
-            intent = c_attrs["intent"]
+            intent = c_meta["intent"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             if c_arg.template_arguments:
@@ -1695,7 +1698,7 @@ rv = .false.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
             is_f_arg = True  # assume C and Fortran arguments match
-            if c_attrs["_is_result"]:
+            if c_meta["is_result"]:
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1712,14 +1715,15 @@ rv = .false.
             arg_typemap = self.set_fmt_fields(
                 cls, C_node, f_arg, c_arg, fmt_arg, modules, fileinfo)
             f_attrs = f_arg.attrs
+            f_meta = f_arg.metaattrs
 
             c_sgroup = c_arg.typemap.sgroup
             c_spointer = c_arg.get_indirect_stmt()
-            c_deref_attr = c_attrs["deref"]
+            c_deref_attr = c_meta["deref"]
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
-            f_deref_attr = f_attrs["deref"]
-            if c_attrs["_is_result"]:
+            f_deref_attr = f_meta["deref"]
+            if c_meta["is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
                 f_stmts = ["f", f_sgroup, f_spointer, "result", generated_suffix, f_deref_attr]
@@ -1820,12 +1824,12 @@ rv = .false.
                 f_decl = f_arg.gen_decl()
                 stmts_comments.append("! Argument:  " + f_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                    stmts_comments, f_arg, fmt_arg.stmt0, fmt_arg.stmt1)
                 c_decl = c_arg.gen_decl()
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmtc0, fmt_arg.stmtc1)
+                    stmts_comments, c_arg, fmt_arg.stmtc0, fmt_arg.stmtc1)
 
             self.update_f_module(modules, imports, arg_typemap.f_module)
 
@@ -1893,7 +1897,7 @@ rv = .false.
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        return_deref_attr = ast.attrs["deref"]
+        return_deref_attr = ast.metaattrs["deref"]
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '

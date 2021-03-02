@@ -40,6 +40,7 @@ int STR_Cstruct_as_subclass_get_x1(STR_Cstruct_as_subclass * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_x1
@@ -76,6 +77,7 @@ int STR_Cstruct_as_subclass_get_y1(STR_Cstruct_as_subclass * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_y1
@@ -112,6 +114,7 @@ int STR_Cstruct_as_subclass_get_z1(STR_Cstruct_as_subclass * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_z1

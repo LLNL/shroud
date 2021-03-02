@@ -24,6 +24,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         function c_default_ptr_is_null_0() &
@@ -36,10 +37,12 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * data=nullptr +intent(in)+rank(1)
+        ! Argument:  double * data=nullptr +intent(IN)+rank(1)
+        ! Attrs:     +intent(in)
         ! Requested: c_native_*_in
         ! Match:     c_default
         function c_default_ptr_is_null_1(data) &
@@ -56,15 +59,18 @@ module cxxlibrary_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int in1 +intent(in)+value
+        ! Argument:  int in1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         subroutine c_default_args_in_out_0(in1, out1, out2) &
@@ -81,19 +87,23 @@ module cxxlibrary_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int in1 +intent(in)+value
+        ! Argument:  int in1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
+        ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  bool flag=false +intent(in)+value
+        ! Argument:  bool flag=false +value
+        ! Attrs:     +intent(in)
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
@@ -126,8 +136,10 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! bool defaultPtrIsNULL
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     function default_ptr_is_null_0() &
@@ -142,14 +154,18 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! bool defaultPtrIsNULL
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double * data=nullptr +intent(in)+rank(1)
+    ! Argument:  double * data=nullptr +intent(IN)+rank(1)
+    ! Attrs:     +intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     function default_ptr_is_null_1(data) &
@@ -171,21 +187,27 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int in1 +intent(in)+value
+    ! Argument:  int in1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine default_args_in_out_0(in1, out1, out2)
@@ -206,27 +228,35 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int in1 +intent(in)+value
+    ! Argument:  int in1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool flag=false +intent(in)+value
+    ! Argument:  bool flag=false +value
+    ! Attrs:     +intent(in)
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
+    ! Attrs:     +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     subroutine default_args_in_out_1(in1, out1, out2, flag)

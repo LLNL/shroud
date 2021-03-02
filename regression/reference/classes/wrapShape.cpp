@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_ctor
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
 {
@@ -34,6 +35,7 @@ CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
 
 // ----------------------------------------
 // Function:  int get_ivar
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int CLA_Shape_get_ivar(const CLA_Shape * self)

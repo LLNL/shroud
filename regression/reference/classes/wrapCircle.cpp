@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Circle
+// Attrs:     +intent(result)
 // Exact:     c_shadow_scalar_ctor
 CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv)
 {

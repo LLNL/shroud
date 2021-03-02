@@ -46,7 +46,8 @@ module library_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  MPI_Comm comm +intent(in)+value
+        ! Argument:  MPI_Comm comm +value
+        ! Attrs:     +intent(in)
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine c_class2_method1(self, comm) &
@@ -63,7 +64,8 @@ module library_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  three::Class1 * c2 +intent(inout)
+        ! Argument:  three::Class1 * c2
+        ! Attrs:     +intent(inout)
         ! Requested: c_shadow_*_inout
         ! Match:     c_shadow_inout
         subroutine c_class2_method2(self, c2) &
@@ -87,9 +89,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  MPI_Comm comm +intent(in)+value
+    ! Argument:  MPI_Comm comm +value
+    ! Attrs:     +intent(in)
     ! Requested: f_unknown_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_unknown_scalar_in
     ! Match:     c_default
     subroutine class2_method1(obj, comm)
@@ -106,9 +110,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  three::Class1 * c2 +intent(inout)
+    ! Argument:  three::Class1 * c2
+    ! Attrs:     +intent(inout)
     ! Requested: f_shadow_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_shadow_*_inout
     ! Match:     c_shadow_inout
     subroutine class2_method2(obj, c2)

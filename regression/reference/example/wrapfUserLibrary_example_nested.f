@@ -163,6 +163,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
@@ -176,9 +177,11 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  const string * name +intent(in)
+        ! Argument:  const string * name
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_*_in
         function c_exclass1_ctor_1(name, SHT_crv) &
                 result(SHT_rv) &
@@ -193,10 +196,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        ! Attrs:     +intent(result)
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  const string * name +intent(in)+len_trim(Lname)
+        ! Argument:  const string * name +len_trim(Lname)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_*_in_buf
         function c_exclass1_ctor_1_bufferify(name, Lname, SHT_crv) &
                 result(SHT_rv) &
@@ -223,10 +228,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int incrementCount
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int incr +intent(in)+value
+        ! Argument:  int incr +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_increment_count(self, incr) &
@@ -242,6 +249,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck +deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -258,7 +266,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
@@ -271,6 +280,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg +deref(result-as-arg)
+        ! Attrs:     +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
@@ -287,7 +297,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & name +intent(out)+len(Nname)
+        ! Argument:  string & name +len(Nname)
+        ! Attrs:     +intent(out)+is_result
         ! Exact:     c_string_&_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
@@ -301,10 +312,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int getValue
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int value +intent(in)+value
+        ! Argument:  int value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_get_value_from_int(self, value) &
@@ -320,10 +333,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  long getValue
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long value +intent(in)+value
+        ! Argument:  long value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_exclass1_get_value_1(self, value) &
@@ -339,10 +354,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool hasAddr
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  bool in +intent(in)+value
+        ! Argument:  bool in +value
+        ! Attrs:     +intent(in)
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
         function c_exclass1_has_addr(self, in) &
@@ -372,9 +389,11 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
+        ! Attrs:     +intent(result)
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  const string * name +intent(in)+len_trim(trim_name)
+        ! Argument:  const string * name +len_trim(trim_name)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_*_in
         function c_exclass2_ctor(name, SHT_crv) &
                 result(SHT_rv) &
@@ -389,10 +408,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
+        ! Attrs:     +intent(result)
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
-        ! Argument:  const string * name +intent(in)+len_trim(trim_name)
+        ! Argument:  const string * name +len_trim(trim_name)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_*_in_buf
         function c_exclass2_ctor_bufferify(name, trim_name, SHT_crv) &
                 result(SHT_rv) &
@@ -419,6 +440,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+        ! Attrs:     +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
@@ -435,7 +457,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+        ! Argument:  string & SHF_rv +len(NSHF_rv)
+        ! Attrs:     +intent(out)+is_result
         ! Exact:     c_string_&_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
@@ -449,6 +472,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2 +deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
@@ -465,7 +489,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+        ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
@@ -477,6 +502,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3 +deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
@@ -493,7 +519,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
@@ -505,6 +532,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4 +deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
@@ -521,7 +549,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+        ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
@@ -533,6 +562,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_name_length(self) &
@@ -547,10 +577,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
+        ! Attrs:     +intent(result)
         ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
-        ! Argument:  const ExClass1 * in +intent(in)
+        ! Argument:  const ExClass1 * in
+        ! Attrs:     +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
         function c_exclass2_get_class1(self, in, SHT_crv) &
@@ -567,10 +599,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void declare
+        ! Attrs:     +intent(result)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  TypeID type +intent(in)+value
+        ! Argument:  TypeID type +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_declare_0(self, type) &
@@ -584,14 +618,17 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void declare
+        ! Attrs:     +intent(result)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  TypeID type +intent(in)+value
+        ! Argument:  TypeID type +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  SidreLength len=1 +intent(in)+value
+        ! Argument:  SidreLength len=1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_declare_1(self, type, len) &
@@ -617,6 +654,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_type_id(self) &
@@ -634,7 +672,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int value +intent(in)+value
+        ! Argument:  int value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_int(self, value) &
@@ -651,7 +690,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long value +intent(in)+value
+        ! Argument:  long value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_long(self, value) &
@@ -668,7 +708,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  float value +intent(in)+value
+        ! Argument:  float value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_float(self, value) &
@@ -685,7 +726,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double value +intent(in)+value
+        ! Argument:  double value +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_exclass2_set_value_double(self, value) &
@@ -699,6 +741,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int getValue
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_int(self) &
@@ -713,6 +756,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  double getValue
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_double(self) &
@@ -739,10 +783,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)
+        ! Argument:  const std::string & name
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in
         function c_is_name_valid(name) &
                 result(SHT_rv) &
@@ -755,10 +801,12 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         function c_is_name_valid_bufferify(name, Lname) &
                 result(SHT_rv) &
@@ -772,6 +820,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isInitialized
+        ! Attrs:     +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         function c_is_initialized() &
@@ -787,7 +836,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)
+        ! Argument:  const std::string & name
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in
         subroutine c_test_names(name) &
                 bind(C, name="AA_example_nested_test_names")
@@ -801,7 +851,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         subroutine c_test_names_bufferify(name, Lname) &
                 bind(C, name="AA_example_nested_test_names_bufferify")
@@ -816,10 +867,12 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)
+        ! Argument:  const std::string & name
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in
         ! ----------------------------------------
-        ! Argument:  int flag +intent(in)+value
+        ! Argument:  int flag +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_test_names_flag(name, flag) &
@@ -835,10 +888,12 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+        ! Argument:  const std::string & name +len_trim(Lname)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         ! ----------------------------------------
-        ! Argument:  int flag +intent(in)+value
+        ! Argument:  int flag +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in_buf
         ! Match:     c_default
         subroutine c_test_names_flag_bufferify(name, Lname, flag) &
@@ -864,7 +919,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int i=1 +intent(in)+value
+        ! Argument:  int i=1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_testoptional_1(i) &
@@ -879,11 +935,13 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int i=1 +intent(in)+value
+        ! Argument:  int i=1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long j=2 +intent(in)+value
+        ! Argument:  long j=2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_testoptional_2(i, j) &
@@ -896,6 +954,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  size_t test_size_t
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function test_size_t() &
@@ -912,7 +971,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  MPI_Comm comm +intent(in)+value
+        ! Argument:  MPI_Comm comm +value
+        ! Attrs:     +intent(in)
         ! Requested: c_unknown_scalar_in
         ! Match:     c_default
         subroutine c_testmpi_mpi(comm) &
@@ -939,7 +999,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  void ( * get)(void) +intent(in)+value
+        ! Argument:  void ( * get)(void) +value
+        ! Attrs:     +intent(in)
         ! Requested: c_void_scalar_in
         ! Match:     c_default
         subroutine func_ptr1(get) &
@@ -954,7 +1015,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double * ( * get)(void) +intent(in)
+        ! Argument:  double * ( * get)(void)
+        ! Attrs:     +intent(in)
         ! Requested: c_native_*_in
         ! Match:     c_default
         subroutine func_ptr2(get) &
@@ -969,7 +1031,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double ( * get)(int i +value, int +value) +intent(in)+value
+        ! Argument:  double ( * get)(int i +value, int +value) +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_func_ptr3(get) &
@@ -984,7 +1047,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double ( * get)(double +value, int +value) +intent(in)+value
+        ! Argument:  double ( * get)(double +value, int +value) +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_func_ptr4(get) &
@@ -999,7 +1063,8 @@ module userlibrary_example_nested_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +intent(in)+value
+        ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
+        ! Attrs:     +intent(in)
         ! Requested: c_void_scalar_in
         ! Match:     c_default
         subroutine func_ptr5(get) &
@@ -1015,42 +1080,52 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname1 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname2 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname3 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname4 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname5 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname6 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname7 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname8 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname9 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * verylongname10 +intent(inout)
+        ! Attrs:     +intent(inout)
         ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_verylongfunctionname1(verylongname1, verylongname2, &
@@ -1074,46 +1149,57 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int verylongfunctionname2
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname1 +intent(in)+value
+        ! Argument:  int verylongname1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname2 +intent(in)+value
+        ! Argument:  int verylongname2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname3 +intent(in)+value
+        ! Argument:  int verylongname3 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname4 +intent(in)+value
+        ! Argument:  int verylongname4 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname5 +intent(in)+value
+        ! Argument:  int verylongname5 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname6 +intent(in)+value
+        ! Argument:  int verylongname6 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname7 +intent(in)+value
+        ! Argument:  int verylongname7 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname8 +intent(in)+value
+        ! Argument:  int verylongname8 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname9 +intent(in)+value
+        ! Argument:  int verylongname9 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int verylongname10 +intent(in)+value
+        ! Argument:  int verylongname10 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_verylongfunctionname2(verylongname1, verylongname2, &
@@ -1143,14 +1229,17 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * in +intent(in)+rank(2)
+        ! Attrs:     +intent(in)
         ! Requested: c_native_*_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)
         ! Requested: c_native_*_out_allocatable
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int sizein +implied(size(in))+intent(in)+value
+        ! Argument:  int sizein +implied(size(in))+value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_cos_doubles(in, out, sizein) &
@@ -1213,7 +1302,9 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! ExClass1
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     function exclass1_ctor_0() &
             result(SHT_rv)
@@ -1229,13 +1320,17 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! ExClass1
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
-    ! Argument:  const string * name +intent(in)
+    ! Argument:  const string * name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_*_in
     ! Match:     f_default
-    ! Argument:  const string * name +intent(in)+len_trim(Lname)
+    ! Argument:  const string * name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_*_in_buf
     !>
     !! \brief constructor
@@ -1278,14 +1373,18 @@ contains
     ! ----------------------------------------
     ! Function:  int incrementCount
     ! int incrementCount
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int incr +intent(in)+value
+    ! Argument:  int incr +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function exclass1_increment_count(obj, incr) &
@@ -1303,12 +1402,15 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck +deref(allocatable)
     ! const string & getNameErrorCheck +deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getNameErrorCheck
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1332,9 +1434,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  string & name +intent(out)+len(Nname)
+    ! Argument:  string & name +len(Nname)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
@@ -1349,14 +1453,18 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! int getValue
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int value +intent(in)+value
+    ! Argument:  int value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function exclass1_get_value_from_int(obj, value) &
@@ -1373,14 +1481,18 @@ contains
     ! ----------------------------------------
     ! Function:  long getValue
     ! long getValue
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long value +intent(in)+value
+    ! Argument:  long value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function exclass1_get_value_1(obj, value) &
@@ -1397,14 +1509,18 @@ contains
     ! ----------------------------------------
     ! Function:  bool hasAddr
     ! bool hasAddr
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  bool in +intent(in)+value
+    ! Argument:  bool in +value
+    ! Attrs:     +intent(in)
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
+    ! Attrs:     +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     function exclass1_has_addr(obj, in) &
@@ -1457,12 +1573,16 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass2
     ! ExClass2
+    ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
-    ! Argument:  const string * name +intent(in)+len_trim(trim_name)
+    ! Argument:  const string * name +len_trim(trim_name)
+    ! Attrs:     +intent(in)
     ! Requested: f_string_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_*_in_buf
     !>
     !! \brief constructor
@@ -1501,14 +1621,17 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+    ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
+    ! Argument:  string & SHF_rv +len(NSHF_rv)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
@@ -1525,12 +1648,15 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2 +deref(allocatable)
     ! const string & getName2 +deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName2
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
@@ -1548,12 +1674,15 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3 +deref(allocatable)
     ! string & getName3 +deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName3
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
@@ -1571,12 +1700,15 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4 +deref(allocatable)
     ! string & getName4 +deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName4
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
-    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+    ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
@@ -1593,8 +1725,10 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength
     ! int GetNameLength
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>
@@ -1614,14 +1748,18 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
     ! ExClass1 * get_class1
+    ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
+    ! Attrs:     +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
-    ! Argument:  const ExClass1 * in +intent(in)
+    ! Argument:  const ExClass1 * in
+    ! Attrs:     +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function exclass2_get_class1(obj, in) &
@@ -1641,14 +1779,18 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    ! Attrs:     +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  TypeID type +intent(in)+value
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_0_int(obj, type)
@@ -1664,14 +1806,18 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    ! Attrs:     +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  TypeID type +intent(in)+value
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_0_long(obj, type)
@@ -1687,21 +1833,27 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    ! Attrs:     +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  TypeID type +intent(in)+value
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int len=1 +intent(in)+value
+    ! Argument:  int len=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    ! Argument:  SidreLength len=1 +intent(in)+value
+    ! Argument:  SidreLength len=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_1_int(obj, type, len)
@@ -1718,21 +1870,27 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    ! Attrs:     +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  TypeID type +intent(in)+value
+    ! Argument:  TypeID type +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long len=1 +intent(in)+value
+    ! Argument:  long len=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    ! Argument:  SidreLength len=1 +intent(in)+value
+    ! Argument:  SidreLength len=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_declare_1_long(obj, type, len)
@@ -1762,8 +1920,10 @@ contains
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
     ! TypeID getTypeID
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function exclass2_get_type_id(obj) &
@@ -1785,9 +1945,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int value +intent(in)+value
+    ! Argument:  int value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_set_value_int(obj, value)
@@ -1808,9 +1970,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long value +intent(in)+value
+    ! Argument:  long value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_set_value_long(obj, value)
@@ -1831,9 +1995,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float value +intent(in)+value
+    ! Argument:  float value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_set_value_float(obj, value)
@@ -1854,9 +2020,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double value +intent(in)+value
+    ! Argument:  double value +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine exclass2_set_value_double(obj, value)
@@ -1872,8 +2040,10 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! int getValue
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function exclass2_get_value_int(obj) &
@@ -1890,8 +2060,10 @@ contains
     ! ----------------------------------------
     ! Function:  double getValue
     ! double getValue
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function exclass2_get_value_double(obj) &
@@ -1926,15 +2098,19 @@ contains
     ! ----------------------------------------
     ! Function:  bool isNameValid
     ! bool isNameValid
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result_buf
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     function is_name_valid(name) &
             result(SHT_rv)
@@ -1949,8 +2125,10 @@ contains
     ! ----------------------------------------
     ! Function:  bool isInitialized
     ! bool isInitialized
+    ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
+    ! Attrs:     +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     function is_initialized() &
@@ -1971,10 +2149,12 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     subroutine test_names(name)
         use iso_c_binding, only : C_INT
@@ -1993,15 +2173,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & name +intent(in)
+    ! Argument:  const std::string & name
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
-    ! Argument:  const std::string & name +intent(in)+len_trim(Lname)
+    ! Argument:  const std::string & name +len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     subroutine test_names_flag(name, flag)
@@ -2037,9 +2221,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int i=1 +intent(in)+value
+    ! Argument:  int i=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine testoptional_1(i)
@@ -2058,15 +2244,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int i=1 +intent(in)+value
+    ! Argument:  int i=1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long j=2 +intent(in)+value
+    ! Argument:  long j=2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine testoptional_2(i, j)
@@ -2087,9 +2277,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  MPI_Comm comm +intent(in)+value
+    ! Argument:  MPI_Comm comm +value
+    ! Attrs:     +intent(in)
     ! Requested: f_unknown_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_unknown_scalar_in
     ! Match:     c_default
     subroutine testmpi_mpi(comm)
@@ -2160,62 +2352,82 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname1 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname2 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname3 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname4 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname5 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname6 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname7 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname8 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname9 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * verylongname10 +intent(inout)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     subroutine verylongfunctionname1(verylongname1, verylongname2, &
@@ -2242,68 +2454,90 @@ contains
     ! ----------------------------------------
     ! Function:  int verylongfunctionname2
     ! int verylongfunctionname2
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname1 +intent(in)+value
+    ! Argument:  int verylongname1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname2 +intent(in)+value
+    ! Argument:  int verylongname2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname3 +intent(in)+value
+    ! Argument:  int verylongname3 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname4 +intent(in)+value
+    ! Argument:  int verylongname4 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname5 +intent(in)+value
+    ! Argument:  int verylongname5 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname6 +intent(in)+value
+    ! Argument:  int verylongname6 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname7 +intent(in)+value
+    ! Argument:  int verylongname7 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname8 +intent(in)+value
+    ! Argument:  int verylongname8 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname9 +intent(in)+value
+    ! Argument:  int verylongname9 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int verylongname10 +intent(in)+value
+    ! Argument:  int verylongname10 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     function verylongfunctionname2(verylongname1, verylongname2, &
@@ -2338,13 +2572,17 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * in +intent(in)+rank(2)
+    ! Attrs:     +intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_native_*_out_allocatable
+    ! Attrs:     +deref(allocatable)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>

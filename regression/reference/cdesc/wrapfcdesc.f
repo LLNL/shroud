@@ -85,6 +85,7 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
+        ! Attrs:     +intent(in)
         ! Exact:     c_native_*_in_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
@@ -99,9 +100,11 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+        ! Attrs:     +intent(out)
         ! Requested: c_void_*_out_cdesc
         ! Match:     c_void_*_cdesc
         subroutine c_get_scalar1(name, Dvalue) &
@@ -119,9 +122,11 @@ module cdesc_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+        ! Attrs:     +intent(out)
         ! Requested: c_void_*_out_buf_cdesc
         ! Match:     c_void_*_cdesc
         subroutine c_get_scalar1_bufferify(name, Lname, Dvalue) &
@@ -136,6 +141,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  int getData
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_get_data_int() &
@@ -148,6 +154,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  double getData
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_get_data_double() &
@@ -183,7 +190,9 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
+    ! Attrs:     +intent(in)
     ! Exact:     f_native_*_in_cdesc
+    ! Attrs:     +intent(in)
     ! Exact:     c_native_*_in_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
@@ -210,14 +219,18 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+    ! Attrs:     +intent(out)
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+    ! Attrs:     +intent(out)
     ! Requested: c_void_*_out_buf_cdesc
     ! Match:     c_void_*_cdesc
     !>
@@ -256,14 +269,18 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+    ! Attrs:     +intent(out)
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+    ! Attrs:     +intent(out)
     ! Requested: c_void_*_out_buf_cdesc
     ! Match:     c_void_*_cdesc
     !>
@@ -296,8 +313,10 @@ contains
     ! ----------------------------------------
     ! Function:  int getData
     ! int getData
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>
@@ -316,8 +335,10 @@ contains
     ! ----------------------------------------
     ! Function:  double getData
     ! double getData
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>
@@ -342,14 +363,18 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Argument:  void * value +intent(out)+value
+    ! Attrs:     +intent(out)
     ! Requested: c_void_*_out
     ! Match:     c_default
     !>
@@ -378,14 +403,18 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
+    ! Attrs:     +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Exact:     c_string_&_in
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Argument:  void * value +intent(out)+value
+    ! Attrs:     +intent(out)
     ! Requested: c_void_*_out
     ! Match:     c_default
     !>

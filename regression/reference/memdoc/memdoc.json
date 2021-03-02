@@ -55,6 +55,10 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "std::string"
@@ -154,10 +158,8 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
-                                "intent": "out",
                                 "owner": "library"
                             },
                             "const": true,
@@ -168,6 +170,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -181,7 +188,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library))",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",

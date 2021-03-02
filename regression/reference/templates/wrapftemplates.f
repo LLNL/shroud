@@ -72,11 +72,13 @@ module templates_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int arg1 +intent(in)+value
+        ! Argument:  int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double arg2 +intent(in)+value
+        ! Argument:  double arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_user_int_nested_double(self, arg1, arg2) &
@@ -97,11 +99,13 @@ module templates_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int arg1 +intent(in)+value
+        ! Argument:  int arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  long arg2 +intent(in)+value
+        ! Argument:  long arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_function_tu_0(arg1, arg2) &
@@ -117,11 +121,13 @@ module templates_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  float arg1 +intent(in)+value
+        ! Argument:  float arg1 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  double arg2 +intent(in)+value
+        ! Argument:  double arg2 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_function_tu_1(arg1, arg2) &
@@ -134,6 +140,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker1() &
@@ -146,6 +153,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker2() &
@@ -202,15 +210,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg1 +intent(in)+value
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user_int_nested_double(obj, arg1, arg2)
@@ -258,15 +270,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg1 +intent(in)+value
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -291,15 +307,19 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg1 +intent(in)+value
+    ! Argument:  float arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg2 +intent(in)+value
+    ! Argument:  double arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -319,8 +339,10 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>
@@ -340,8 +362,10 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     !>

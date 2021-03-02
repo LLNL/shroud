@@ -20,7 +20,8 @@ extern "C" {
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  CustomType arg1 +intent(in)+value
+// Argument:  CustomType arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void LIB_three_Class1_method1(LIB_three_Class1 * self, int arg1)

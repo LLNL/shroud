@@ -56,9 +56,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -66,6 +63,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "float",
@@ -80,7 +80,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
-                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1 +intent(inout))",
+                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptFloatComplexInoutPtr",
@@ -177,9 +177,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -187,6 +184,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "double",
@@ -201,7 +201,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
-                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1 +intent(inout))",
+                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
                 "fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexInoutPtr",
@@ -308,6 +308,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -409,9 +412,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": [
@@ -419,6 +419,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "double",
@@ -438,6 +441,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -450,7 +456,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void acceptDoubleComplexInoutPtrFlag(double complex *arg1, int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex * arg1 +intent(inout), int * flag +intent(out))",
+                "declgen": "void acceptDoubleComplexInoutPtrFlag(double complex * arg1, int * flag +intent(out))",
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
@@ -596,6 +602,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -613,6 +622,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"

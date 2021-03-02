@@ -72,12 +72,14 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
                                         "name": "arg1",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "T"
@@ -86,12 +88,14 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
                                         "name": "arg2",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "U"
@@ -110,7 +114,7 @@
                             ]
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                        "declgen": "void nested(T arg1 +value, U arg2 +value)",
                         "fmtdict": {
                             "function_name": "nested",
                             "underscore_name": "nested"
@@ -252,12 +256,14 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
                                         "name": "arg1",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "int"
@@ -266,12 +272,14 @@
                                 },
                                 {
                                     "attrs": {
-                                        "intent": "in",
                                         "value": true
                                     },
                                     "declarator": {
                                         "name": "arg2",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "double"
@@ -285,7 +293,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "template<U> void nested( T arg1, U arg2 );",
-                        "declgen": "void nested(int arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                        "declgen": "void nested(int arg1 +value, double arg2 +value)",
                         "fmtdict": {
                             "CXX_template": "<double>",
                             "C_call_list": "arg1,\t arg2",
@@ -394,12 +402,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "T"
@@ -408,12 +418,14 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "U"
@@ -433,7 +445,7 @@
                     ]
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(T arg1 +intent(in)+value, U arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(T arg1 +value, U arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -602,12 +614,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -616,12 +630,14 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "long"
@@ -635,7 +651,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(int arg1 +intent(in)+value, long arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(int arg1 +value, long arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -829,12 +845,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -843,12 +861,14 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -862,7 +882,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "template<T,U> void FunctionTU(T arg1, U arg2)",
-                "declgen": "void FunctionTU(float arg1 +intent(in)+value, double arg2 +intent(in)+value)",
+                "declgen": "void FunctionTU(float arg1 +value, double arg2 +value)",
                 "doxygen": {
                     "brief": "Function template with two template parameters."
                 },
@@ -951,6 +971,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1059,6 +1082,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1184,6 +1210,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1348,6 +1377,9 @@
                                         "_constructor": true,
                                         "_name": "ctor"
                                     },
+                                    "metaattrs": {
+                                        "intent": "result"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "vector"
@@ -1456,6 +1488,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "T"
                                             ],
@@ -1553,6 +1588,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -1615,15 +1653,21 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
                                                 "name": "n",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "size_type"
@@ -1637,7 +1681,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -1761,15 +1805,21 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
                                                 "name": "n",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "size_type"
@@ -1783,7 +1833,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +intent(in)+value)",
+                                "declgen": "int & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
@@ -1952,6 +2002,9 @@
                                         "_constructor": true,
                                         "_name": "ctor"
                                     },
+                                    "metaattrs": {
+                                        "intent": "result"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "vector"
@@ -2060,6 +2113,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "T"
                                             ],
@@ -2157,6 +2213,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "double"
                                             ],
@@ -2219,15 +2278,21 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
                                                 "name": "n",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "size_type"
@@ -2241,7 +2306,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +intent(in)+value)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -2365,15 +2430,21 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
-                                                "intent": "in",
                                                 "value": true
                                             },
                                             "declarator": {
                                                 "name": "n",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "size_type"
@@ -2387,7 +2458,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +intent(in)+value)",
+                                "declgen": "double & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",

@@ -62,7 +62,8 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg +intent(in)+value
+    ! Argument:  float arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -79,7 +80,8 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -93,6 +95,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  double GetGlobalDouble
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -110,7 +113,8 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_generic_real
@@ -126,14 +130,17 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  long GenericReal2
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg1 +intent(in)+value
+    ! Argument:  long arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -150,14 +157,17 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  int SumValues
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)
+    ! Argument:  const int * values
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvalues +intent(in)+value
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -174,14 +184,17 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  int SumValues
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +rank(1)
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvalues +intent(in)+value
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -201,19 +214,23 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)
+    ! Argument:  const int * from
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)
+    ! Argument:  int * to
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -233,19 +250,23 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)
+    ! Argument:  const int * from
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Argument:  int * to +rank(1)
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -265,19 +286,23 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)+rank(1)
+    ! Argument:  const int * from +rank(1)
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Argument:  int * to +rank(1)
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -298,15 +323,18 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +intent(in)+value
+    ! Argument:  int type +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+intent(in)+value
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -326,15 +354,18 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int type +implied(type(addr))+intent(in)+value
+    ! Argument:  int type +implied(type(addr))+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  size_t size +implied(size(addr))+intent(in)+value
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     interface
@@ -354,14 +385,17 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_t * size +intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     interface
@@ -382,14 +416,17 @@ module generic_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_t * size +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     interface
@@ -467,9 +504,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg +intent(in)+value
+    ! Argument:  float arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine update_as_float(arg)
@@ -488,9 +527,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine update_as_double(arg)
@@ -510,10 +551,12 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  float arg +intent(in)+value
+    ! Argument:  float arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -539,9 +582,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  double arg +intent(in)+value
+    ! Argument:  double arg +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -562,22 +607,28 @@ contains
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! long GenericReal2
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg1 +intent(in)+value
+    ! Argument:  int arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    ! Argument:  long arg1 +intent(in)+value
+    ! Argument:  long arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int arg2 +intent(in)+value
+    ! Argument:  int arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -601,20 +652,26 @@ contains
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! long GenericReal2
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg1 +intent(in)+value
+    ! Argument:  long arg1 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  long arg2 +intent(in)+value
+    ! Argument:  long arg2 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -638,21 +695,27 @@ contains
     ! ----------------------------------------
     ! Function:  int SumValues
     ! int SumValues
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(0)
+    ! Argument:  const int * values +rank(0)
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Argument:  const int * values +intent(in)
+    ! Argument:  const int * values
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvalues +intent(in)+value
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -674,20 +737,26 @@ contains
     ! ----------------------------------------
     ! Function:  int SumValues
     ! int SumValues
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +rank(1)
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvalues +intent(in)+value
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -709,21 +778,27 @@ contains
     ! ----------------------------------------
     ! Function:  int SumValues
     ! int SumValues
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * values +intent(in)+rank(2)
+    ! Argument:  const int * values +rank(2)
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Argument:  const int * values +intent(in)+rank(1)
+    ! Argument:  const int * values +rank(1)
+    ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nvalues +intent(in)+value
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -750,27 +825,35 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)
+    ! Argument:  const int * from
+    ! Attrs:     +intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)
+    ! Argument:  int * to
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -797,27 +880,35 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)
+    ! Argument:  const int * from
+    ! Attrs:     +intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Argument:  int * to +rank(1)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -844,27 +935,35 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const int * from +intent(in)+rank(1)
+    ! Argument:  const int * from +rank(1)
+    ! Attrs:     +intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nfrom +intent(in)+value
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int * to +intent(inout)+rank(1)
+    ! Argument:  int * to +rank(1)
+    ! Attrs:     +intent(inout)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int nto +intent(in)+value
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -893,8 +992,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
+    ! Attrs:     +deref(raw)+intent(in)
     ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
@@ -921,8 +1022,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
+    ! Attrs:     +deref(raw)+intent(in)
     ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
@@ -948,8 +1051,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
+    ! Attrs:     +deref(raw)+intent(in)
     ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
@@ -974,8 +1079,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
+    ! Attrs:     +deref(raw)+intent(in)
     ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +intent(in)+value
+    ! Argument:  void * addr +value
+    ! Attrs:     +intent(in)
     ! Requested: c_void_*_in
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
@@ -1001,21 +1108,27 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
+    ! Attrs:     +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_t * size +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float1d(addr)
@@ -1041,21 +1154,27 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
+    ! Attrs:     +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_t * size +hidden+intent(out)
+    ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    ! Attrs:     +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine get_pointer_as_pointer_float2d(addr)

@@ -529,12 +529,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = arg.attrs
+            meta = arg.metaattrs
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
 
             intent_blk = None
-            intent = attrs["intent"]
+            intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = arg.get_indirect_stmt()
             stmts = None
@@ -550,7 +551,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                     "// ----------------------------------------")
                 stmts_comments_args.append("// Argument:  " + arg.gen_decl())
                 self.document_stmts(
-                    stmts_comments_args, fmt_arg.stmt0, fmt_arg.stmt1)
+                    stmts_comments_args, arg, fmt_arg.stmt0, fmt_arg.stmt1)
             
             if intent in ["inout", "in"]:
                 # XXX lua_pop = wformat(arg_typemap.LUA_pop, fmt_arg)
@@ -615,7 +616,7 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
             stmts_comments.append(
                 "// Function:  " + ast.gen_decl(params=None))
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
             stmts_comments.extend(stmts_comments_args)
             
 

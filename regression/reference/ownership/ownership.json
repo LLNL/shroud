@@ -264,6 +264,10 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "raw",
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -352,6 +356,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "scalar",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -453,6 +461,10 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -525,6 +537,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -611,6 +627,10 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "raw",
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -623,6 +643,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -779,11 +802,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -798,6 +823,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -918,11 +946,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -937,6 +967,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1094,11 +1127,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "allocatable",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1113,6 +1148,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1233,11 +1271,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "allocatable",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1252,6 +1292,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1409,11 +1452,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1428,6 +1473,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1548,11 +1596,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1567,6 +1617,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1666,11 +1719,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1685,6 +1740,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1845,11 +1903,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1864,6 +1924,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1987,11 +2050,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2006,6 +2071,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2146,11 +2214,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "allocatable",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2165,6 +2235,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2326,11 +2399,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2345,6 +2420,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2468,11 +2546,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2487,6 +2567,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2549,6 +2632,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2565,6 +2652,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2617,11 +2707,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2640,6 +2732,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2692,11 +2787,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2715,6 +2812,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2767,11 +2867,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2790,6 +2892,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2840,6 +2945,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2857,6 +2966,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2910,11 +3022,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2933,6 +3047,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2985,11 +3102,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3008,6 +3127,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3061,11 +3183,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3084,6 +3208,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3173,12 +3300,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3192,7 +3321,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void createClassStatic(int flag)",
-                "declgen": "void createClassStatic(int flag +intent(in)+value)",
+                "declgen": "void createClassStatic(int flag +value)",
                 "fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "OWN_create_class_static",
@@ -3285,6 +3414,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3440,15 +3572,20 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3462,7 +3599,7 @@
                     "typemap_name": "Class1"
                 },
                 "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag +intent(in)+value) +owner(caller)",
+                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
                 "doxygen": {
                     "brief": "Return pointer to new Class1 instance."
                 },

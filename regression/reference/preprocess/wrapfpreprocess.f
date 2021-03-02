@@ -140,7 +140,8 @@ module preprocess_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int i=0 +intent(in)+value
+        ! Argument:  int i=0 +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_user1_method3def_1(self, i) &
@@ -176,7 +177,8 @@ module preprocess_mod
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
-        ! Argument:  int flag +intent(in)+value
+        ! Argument:  int flag +value
+        ! Attrs:     +intent(in)
         ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_user2_exfunc_1(self, flag) &
@@ -255,9 +257,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int i=0 +intent(in)+value
+    ! Argument:  int i=0 +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user1_method3def_1(obj, i)
@@ -322,9 +326,11 @@ contains
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  int flag +intent(in)+value
+    ! Argument:  int flag +value
+    ! Attrs:     +intent(in)
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user2_exfunc_1(obj, flag)

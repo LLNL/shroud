@@ -23,15 +23,18 @@
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  void * addr +intent(in)+value
+// Argument:  void * addr +value
+// Attrs:     +intent(in)
 // Requested: c_void_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int type +implied(type(addr))+intent(in)+value
+// Argument:  int type +implied(type(addr))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  size_t size +implied(size(addr))+intent(in)+value
+// Argument:  size_t size +implied(size(addr))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void GEN_save_pointer2(void * addr, int type, size_t size)

@@ -66,10 +66,12 @@ static void ShroudStrArrayFree(char **src, int nsrc)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
+// Attrs:     +intent(in)
 // Exact:     c_char_**_in_buf
 // start POI_accept_char_array_in_bufferify
 int POI_accept_char_array_in_bufferify(char *names, long Snames,
@@ -90,6 +92,7 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_scalar_bufferify
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -117,6 +120,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_array_bufferify
 void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -146,9 +150,11 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
@@ -181,6 +187,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_func_array_bufferify
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
@@ -206,6 +213,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_const_scalar_bufferify
 void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -230,6 +238,7 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_const_array_bufferify
 void POI_get_ptr_to_fixed_const_array_bufferify(
@@ -256,9 +265,11 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_const_array_bufferify
@@ -289,6 +300,7 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_bufferify
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -316,6 +328,7 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_force_bufferify
 void POI_get_raw_ptr_to_scalar_force_bufferify(
@@ -346,6 +359,7 @@ void POI_get_raw_ptr_to_scalar_force_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_bufferify
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -374,6 +388,7 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_force_bufferify
 void POI_get_raw_ptr_to_fixed_array_force_bufferify(
@@ -395,6 +410,7 @@ void POI_get_raw_ptr_to_fixed_array_force_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
@@ -417,6 +433,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
@@ -439,6 +456,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_scalar

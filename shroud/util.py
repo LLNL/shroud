@@ -459,9 +459,20 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
-    def document_stmts(self, output, stmt0, stmt1):
+    def document_stmts(self, output, ast, stmt0, stmt1):
         """A comments to show which statements were used.
+
+        Skip metaattributes which are objects.
         """
+        decl = []
+        ast.gen_attrs(ast.metaattrs, decl, dict(
+            dimension=True,
+            struct_member=True
+        ))
+        if decl:
+            dbg = "".join(decl)
+            output.append(self.comment + " Attrs:    " + dbg)
+        
         if stmt0 == stmt1:
             output.append(
                 self.comment + " Exact:     " + stmt0)

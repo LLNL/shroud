@@ -45,9 +45,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "arg",
@@ -56,6 +53,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -69,7 +69,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_in(const int *arg)",
-                "declgen": "void intargs_in(const int * arg +intent(in))",
+                "declgen": "void intargs_in(const int * arg)",
                 "fmtdict": {
                     "PY_name_impl": "PY_intargs_in",
                     "function_name": "intargs_in",
@@ -112,9 +112,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "inout"
-                            },
                             "declarator": {
                                 "name": "arg",
                                 "pointer": [
@@ -122,6 +119,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "int"
@@ -135,7 +135,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void  intargs_inout(int *arg)",
-                "declgen": "void intargs_inout(int * arg +intent(inout))",
+                "declgen": "void intargs_inout(int * arg)",
                 "doxygen": {
                     "description": "Argument is modified by library, defaults to intent(inout).\n"
                 },
@@ -191,6 +191,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -299,6 +302,9 @@
                                 "name": "argin",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -316,6 +322,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -332,6 +341,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -450,6 +462,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "double"
                             ],
@@ -470,6 +485,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -479,7 +495,8 @@
                                         ],
                                         "name": "size"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "double"
@@ -489,12 +506,14 @@
                         {
                             "attrs": {
                                 "implied": "size(in)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "sizein",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -508,7 +527,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void cos_doubles(double * in     +intent(in)  +rank(1), double * out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "declgen": "void cos_doubles(double * in +intent(in)+rank(1), double * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "compute cos of IN and save in OUT",
                     "description": "allocate OUT same type as IN implied size of array"
@@ -617,6 +636,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "double"
                             ],
@@ -637,6 +659,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -646,7 +669,8 @@
                                         ],
                                         "name": "size"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -656,12 +680,14 @@
                         {
                             "attrs": {
                                 "implied": "size(in)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "sizein",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -675,7 +701,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void truncate_to_int(double * in     +intent(in)  +rank(1), int *    out    +intent(out) +deref(allocatable)+dimension(size(in)), int      sizein +implied(size(in)))",
-                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+intent(in)+value)",
+                "declgen": "void truncate_to_int(double * in +intent(in)+rank(1), int * out +deref(allocatable)+dimension(size(in))+intent(out), int sizein +implied(size(in))+value)",
                 "doxygen": {
                     "brief": "truncate IN argument and save in OUT",
                     "description": "allocate OUT different type as IN\nimplied size of array\n"
@@ -751,7 +777,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "out"
+                                "intent": "OUT"
                             },
                             "declarator": {
                                 "name": "nvalues",
@@ -760,6 +786,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -784,7 +813,8 @@
                                     {
                                         "constant": "3"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -798,7 +828,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void get_values(int *nvalues+intent(OUT), int *values +intent(out)+dimension(3))",
-                "declgen": "void get_values(int * nvalues +intent(out), int * values +dimension(3)+intent(out))",
+                "declgen": "void get_values(int * nvalues +intent(OUT), int * values +dimension(3)+intent(out))",
                 "doxygen": {
                     "brief": "fill values into array",
                     "description": "The function knows how long the array must be.\nFortran will treat the dimension as assumed-length.\nThe Python wrapper will create a NumPy array or list so it must\nhave an explicit dimension (not assumed-length).\n"
@@ -896,7 +926,8 @@
                                     {
                                         "constant": "3"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -921,7 +952,8 @@
                                     {
                                         "constant": "3"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1010,12 +1042,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "nvar",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1037,11 +1071,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "name": "nvar"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1055,7 +1091,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_allocatable (int nvar, int *values+intent(out)+deref(allocatable)+dimension(nvar))",
-                "declgen": "void iota_allocatable(int nvar +intent(in)+value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
+                "declgen": "void iota_allocatable(int nvar +value, int * values +deref(allocatable)+dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_allocatable",
                     "function_name": "iota_allocatable",
@@ -1126,12 +1162,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "nvar",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1156,7 +1194,8 @@
                                     {
                                         "name": "nvar"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1170,7 +1209,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void iota_dimension (int nvar, int *values+intent(out)+dimension(nvar))",
-                "declgen": "void iota_dimension(int nvar +intent(in)+value, int * values +dimension(nvar)+intent(out))",
+                "declgen": "void iota_dimension(int nvar +value, int * values +dimension(nvar)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_iota_dimension",
                     "function_name": "iota_dimension",
@@ -1259,12 +1298,14 @@
                         {
                             "attrs": {
                                 "implied": "size(values)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "len",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1273,7 +1314,6 @@
                         },
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -1284,6 +1324,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1302,6 +1345,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1314,7 +1360,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void Sum(int len +implied(size(values)), const int *values +rank(1), int *result +intent(out))",
-                "declgen": "void Sum(int len +implied(size(values))+intent(in)+value, const int * values +intent(in)+rank(1), int * result +intent(out))",
+                "declgen": "void Sum(int len +implied(size(values))+value, const int * values +rank(1), int * result +intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_Sum",
                     "function_name": "Sum",
@@ -1382,7 +1428,8 @@
                                     {
                                         "constant": "3"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1477,6 +1524,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1485,12 +1535,14 @@
                         {
                             "attrs": {
                                 "implied": "size(array)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "sizein",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1504,7 +1556,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void incrementIntArray(int * array  +rank(1)+intent(inout), int   sizein +implied(size(array)))",
-                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+intent(in)+value)",
+                "declgen": "void incrementIntArray(int * array +intent(inout)+rank(1), int sizein +implied(size(array))+value)",
                 "doxygen": {
                     "description": "Increment array in place using intent(INOUT).\n"
                 },
@@ -1574,7 +1626,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "rank": 1
                             },
                             "declarator": {
@@ -1585,6 +1636,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "double"
                             ],
@@ -1593,12 +1647,14 @@
                         {
                             "attrs": {
                                 "implied": "size(x)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "x_length",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1612,7 +1668,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void fill_with_zeros(double* x+rank(1), int x_length+implied(size(x)));",
-                "declgen": "void fill_with_zeros(double * x +intent(inout)+rank(1), int x_length +implied(size(x))+intent(in)+value)",
+                "declgen": "void fill_with_zeros(double * x +rank(1), int x_length +implied(size(x))+value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_fill_with_zeros",
                     "function_name": "fill_with_zeros",
@@ -1694,10 +1750,12 @@
                         "name": "accumulate",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -1709,6 +1767,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1717,12 +1778,14 @@
                         {
                             "attrs": {
                                 "implied": "size(arr)",
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "len",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -1736,7 +1799,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int accumulate(const int *arr+rank(1), size_t len+implied(size(arr)));",
-                "declgen": "int accumulate(const int * arr +intent(in)+rank(1), size_t len +implied(size(arr))+intent(in)+value)",
+                "declgen": "int accumulate(const int * arr +rank(1), size_t len +implied(size(arr))+value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_accumulate",
                     "function_name": "accumulate",
@@ -1798,6 +1861,9 @@
                         "name": "acceptCharArrayIn",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1814,6 +1880,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -1873,12 +1942,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "value",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1892,7 +1963,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void setGlobalInt(int value)",
-                "declgen": "void setGlobalInt(int value +intent(in)+value)",
+                "declgen": "void setGlobalInt(int value +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_setGlobalInt",
                     "function_name": "setGlobalInt",
@@ -1927,6 +1998,9 @@
                     "declarator": {
                         "name": "sumFixedArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1971,6 +2045,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2049,11 +2127,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2158,11 +2238,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2181,6 +2263,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2263,12 +2348,14 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
                                         "name": "getLen"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2319,6 +2406,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2398,11 +2489,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2505,11 +2598,13 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2528,6 +2623,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2599,6 +2697,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2647,6 +2749,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2721,6 +2827,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2769,6 +2879,10 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2821,6 +2935,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2852,6 +2969,9 @@
                         "name": "checkInt2d",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2867,6 +2987,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2902,8 +3025,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "dimension": "10,20",
-                                "intent": "in"
+                                "dimension": "10,20"
                             },
                             "const": true,
                             "declarator": {
@@ -2922,7 +3044,8 @@
                                     {
                                         "constant": "20"
                                     }
-                                ]
+                                ],
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2936,7 +3059,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void DimensionIn(const int *arg +dimension(10,20))",
-                "declgen": "void DimensionIn(const int * arg +dimension(10,20)+intent(in))",
+                "declgen": "void DimensionIn(const int * arg +dimension(10,20))",
                 "doxygen": {
                     "description": "Test +dimension(10,20) +intent(in) together.\nThis will not use assumed-shape in the Fortran wrapper.\n"
                 },
@@ -3003,15 +3126,20 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3025,7 +3153,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress1(int flag)",
-                "declgen": "void * returnAddress1(int flag +intent(in)+value)",
+                "declgen": "void * returnAddress1(int flag +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnAddress1",
                     "function_name": "returnAddress1",
@@ -3089,15 +3217,20 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3111,7 +3244,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void *returnAddress2(int flag)",
-                "declgen": "void * returnAddress2(int flag +intent(in)+value)",
+                "declgen": "void * returnAddress2(int flag +value)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnAddress2",
                     "function_name": "returnAddress2",
@@ -3170,6 +3303,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3199,10 +3335,12 @@
                         "name": "VoidPtrArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "declarator": {
@@ -3216,6 +3354,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3228,7 +3369,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int VoidPtrArray(void **addr+rank(1))",
-                "declgen": "int VoidPtrArray(void * * addr +intent(in)+rank(1))",
+                "declgen": "int VoidPtrArray(void * * addr +rank(1))",
                 "fmtdict": {
                     "function_name": "VoidPtrArray",
                     "underscore_name": "void_ptr_array"
@@ -3272,6 +3413,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3332,11 +3477,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3390,6 +3537,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3451,11 +3602,13 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3508,6 +3661,10 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "scalar",
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -3538,6 +3695,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3572,11 +3733,12 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "raw",
+                        "intent": "result"
+                    },
                     "params": [
                         {
-                            "attrs": {
-                                "intent": "in"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "name",
@@ -3587,6 +3749,9 @@
                                 ]
                             },
                             "ftrim_char_in": true,
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -3599,7 +3764,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntRawWithArgs(const char *name) +deref(raw)",
-                "declgen": "int * returnIntRawWithArgs(const char * name +intent(in)) +deref(raw)",
+                "declgen": "int * returnIntRawWithArgs(const char * name) +deref(raw)",
                 "doxygen": {
                     "description": "Like returnIntRaw but with another argument to force a wrapper.\nUses fc_statements f_native_*_result_raw.\n"
                 },
@@ -3627,6 +3792,10 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

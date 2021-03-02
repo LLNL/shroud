@@ -32,10 +32,12 @@
                         "name": "vector_sum",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -46,6 +48,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
@@ -67,7 +72,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1))",
+                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
                 "fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)",
@@ -156,10 +161,12 @@
                         "name": "vector_sum",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1,
                                 "size": "Sarg"
                             },
@@ -171,6 +178,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
@@ -193,7 +203,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
-                "declgen": "int vector_sum(const std::vector<int> & arg +intent(in)+rank(1)+size)",
+                "declgen": "int vector_sum(const std::vector<int> & arg +rank(1)+size)",
                 "fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
@@ -237,6 +247,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -351,6 +364,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -418,6 +434,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -558,6 +577,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -650,6 +672,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -784,6 +809,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -870,6 +898,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -986,6 +1018,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -1055,6 +1091,10 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1174,6 +1214,10 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -1232,7 +1276,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "inout",
                                 "rank": 1
                             },
                             "declarator": {
@@ -1242,6 +1285,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1263,7 +1309,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +intent(inout)+rank(1))",
+                "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
                 "fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
@@ -1344,7 +1390,6 @@
                         {
                             "attrs": {
                                 "context": "Darg",
-                                "intent": "inout",
                                 "rank": 1,
                                 "size": "Sarg"
                             },
@@ -1355,6 +1400,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1377,7 +1425,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
-                "declgen": "void vector_increment(std::vector<int> & arg +context+intent(inout)+rank(1)+size)",
+                "declgen": "void vector_increment(std::vector<int> & arg +context+rank(1)+size)",
                 "fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
@@ -1420,6 +1468,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1533,6 +1584,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -1599,10 +1653,12 @@
                         "name": "vector_string_count",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "rank": 1
                             },
                             "const": true,
@@ -1613,6 +1669,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1634,7 +1693,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+rank(1))",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +rank(1))",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1728,10 +1787,12 @@
                         "name": "vector_string_count",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "len": "Narg",
                                 "rank": 1,
                                 "size": "Sarg"
@@ -1744,6 +1805,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1766,7 +1830,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int vector_string_count(const std::vector< std::string > &arg)",
-                "declgen": "int vector_string_count(const std::vector<std::string> & arg +intent(in)+len+rank(1)+size)",
+                "declgen": "int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)",
                 "doxygen": {
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
@@ -1813,6 +1877,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1870,6 +1937,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1933,15 +2003,21 @@
                         "name": "ReturnVectorAlloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "n",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1963,7 +2039,7 @@
                     "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "std::vector<int> ReturnVectorAlloc(int n +intent(in)+value) +deref(allocatable)+rank(1)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +deref(allocatable)+rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
@@ -2090,12 +2166,14 @@
                     "params": [
                         {
                             "attrs": {
-                                "intent": "in",
                                 "value": true
                             },
                             "declarator": {
                                 "name": "n",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2105,10 +2183,8 @@
                         },
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
-                                "intent": "out",
                                 "rank": 1
                             },
                             "declarator": {
@@ -2118,6 +2194,11 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::vector"
@@ -2139,7 +2220,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "void ReturnVectorAlloc(int n +intent(in)+value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)) +rank(1)",
+                "declgen": "void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },

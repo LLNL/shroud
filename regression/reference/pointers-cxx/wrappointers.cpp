@@ -73,7 +73,8 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * arg +intent(in)
+// Argument:  const int * arg
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // start POI_intargs_in
@@ -93,7 +94,8 @@ void POI_intargs_in(const int * arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * arg +intent(inout)
+// Argument:  int * arg
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 // start POI_intargs_inout
@@ -111,6 +113,7 @@ void POI_intargs_inout(int * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_intargs_out
@@ -128,14 +131,17 @@ void POI_intargs_out(int * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * argout +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_intargs
@@ -158,14 +164,17 @@ void POI_intargs(const int argin, int * arginout, int * argout)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Argument:  int sizein +implied(size(in))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_cos_doubles
@@ -189,14 +198,17 @@ void POI_cos_doubles(double * in, double * out, int sizein)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int sizein +implied(size(in))+intent(in)+value
+// Argument:  int sizein +implied(size(in))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_truncate_to_int
@@ -221,11 +233,13 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * nvalues +intent(out)
+// Argument:  int * nvalues +intent(OUT)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_values
@@ -249,10 +263,12 @@ void POI_get_values(int * nvalues, int * values)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_values2
@@ -269,11 +285,13 @@ void POI_get_values2(int * arg1, int * arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int nvar +intent(in)+value
+// Argument:  int nvar +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_iota_allocatable
@@ -290,11 +308,13 @@ void POI_iota_allocatable(int nvar, int * values)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int nvar +intent(in)+value
+// Argument:  int nvar +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_iota_dimension
@@ -311,15 +331,18 @@ void POI_iota_dimension(int nvar, int * values)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int len +implied(size(values))+intent(in)+value
+// Argument:  int len +implied(size(values))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * values +intent(in)+rank(1)
+// Argument:  const int * values +rank(1)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * result +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_sum
@@ -340,6 +363,7 @@ void POI_sum(int len, const int * values, int * result)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_fill_int_array
@@ -360,10 +384,12 @@ void POI_fill_int_array(int * out)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int sizein +implied(size(array))+intent(in)+value
+// Argument:  int sizein +implied(size(array))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_increment_int_array
@@ -380,11 +406,13 @@ void POI_increment_int_array(int * array, int sizein)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double * x +intent(inout)+rank(1)
+// Argument:  double * x +rank(1)
+// Attrs:     +intent(inout)
 // Requested: c_native_*_inout
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int x_length +implied(size(x))+intent(in)+value
+// Argument:  int x_length +implied(size(x))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_fill_with_zeros
@@ -398,14 +426,17 @@ void POI_fill_with_zeros(double * x, int x_length)
 
 // ----------------------------------------
 // Function:  int accumulate
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * arr +intent(in)+rank(1)
+// Argument:  const int * arr +rank(1)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  size_t len +implied(size(arr))+intent(in)+value
+// Argument:  size_t len +implied(size(arr))+value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_accumulate
@@ -423,10 +454,12 @@ int POI_accumulate(const int * arr, size_t len)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
+// Attrs:     +intent(in)
 // Exact:     c_char_**_in
 // start POI_accept_char_array_in
 int POI_accept_char_array_in(char **names)
@@ -443,10 +476,12 @@ int POI_accept_char_array_in(char **names)
  */
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
+// Attrs:     +intent(in)
 // Exact:     c_char_**_in_buf
 // start POI_accept_char_array_in_bufferify
 int POI_accept_char_array_in_bufferify(char *names, long Snames,
@@ -466,7 +501,8 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int value +intent(in)+value
+// Argument:  int value +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_set_global_int
@@ -483,6 +519,7 @@ void POI_set_global_int(int value)
  */
 // ----------------------------------------
 // Function:  int sumFixedArray
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start POI_sum_fixed_array
@@ -501,6 +538,7 @@ int POI_sum_fixed_array(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_scalar
@@ -518,6 +556,7 @@ void POI_get_ptr_to_scalar(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_scalar_bufferify
 void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -545,6 +584,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_fixed_array
@@ -565,6 +605,7 @@ void POI_get_ptr_to_fixed_array(int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_array_bufferify
 void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -594,10 +635,12 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array
@@ -619,9 +662,11 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
@@ -654,6 +699,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_func_array
@@ -676,6 +722,7 @@ void POI_get_ptr_to_func_array(int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_func_array_bufferify
 void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
@@ -701,6 +748,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * nitems +deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_const_scalar
@@ -718,6 +766,7 @@ void POI_get_ptr_to_const_scalar(const int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_const_scalar_bufferify
 void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -742,6 +791,7 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_ptr_to_fixed_const_array
@@ -759,6 +809,7 @@ void POI_get_ptr_to_fixed_const_array(const int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_const_array_bufferify
 void POI_get_ptr_to_fixed_const_array_bufferify(
@@ -785,10 +836,12 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_const_array
@@ -807,9 +860,11 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_const_array_bufferify
@@ -840,6 +895,7 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_scalar
@@ -860,6 +916,7 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_bufferify
 void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
@@ -887,6 +944,7 @@ void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_scalar_force
@@ -907,6 +965,7 @@ void POI_get_raw_ptr_to_scalar_force(int * * nitems)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_scalar_force_bufferify
 void POI_get_raw_ptr_to_scalar_force_bufferify(
@@ -937,6 +996,7 @@ void POI_get_raw_ptr_to_scalar_force_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_fixed_array
@@ -959,6 +1019,7 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_bufferify
 void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
@@ -987,6 +1048,7 @@ void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Requested: c_native_**_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_fixed_array_force
@@ -1008,6 +1070,7 @@ void POI_get_raw_ptr_to_fixed_array_force(int * * count)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
+// Attrs:     +deref(raw)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_raw_ptr_to_fixed_array_force_bufferify
 void POI_get_raw_ptr_to_fixed_array_force_bufferify(
@@ -1036,6 +1099,7 @@ void POI_get_raw_ptr_to_fixed_array_force_bufferify(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * * arg +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_***_out
 // Match:     c_default
 // start POI_get_raw_ptr_to_int2d
@@ -1052,10 +1116,12 @@ void POI_get_raw_ptr_to_int2d(int * * * arg)
  */
 // ----------------------------------------
 // Function:  int checkInt2d
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
+// Attrs:     +intent(in)
 // Exact:     c_native_**_in
 // start POI_check_int2d
 int POI_check_int2d(int **arg)
@@ -1076,7 +1142,8 @@ int POI_check_int2d(int **arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * arg +dimension(10,20)+intent(in)
+// Argument:  const int * arg +dimension(10,20)
+// Attrs:     +intent(in)
 // Requested: c_native_*_in
 // Match:     c_default
 // start POI_dimension_in
@@ -1090,10 +1157,12 @@ void POI_dimension_in(const int * arg)
 
 // ----------------------------------------
 // Function:  void * returnAddress1
+// Attrs:     +intent(result)
 // Requested: c_void_*_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_return_address1
@@ -1108,10 +1177,12 @@ void * POI_return_address1(int flag)
 
 // ----------------------------------------
 // Function:  void * returnAddress2
+// Attrs:     +intent(result)
 // Requested: c_void_*_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int flag +intent(in)+value
+// Argument:  int flag +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start POI_return_address2
@@ -1130,6 +1201,7 @@ void * POI_return_address2(int flag)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_void_**_out
 // Match:     c_default
 // start POI_fetch_void_ptr
@@ -1143,10 +1215,12 @@ void POI_fetch_void_ptr(void * * addr)
 
 // ----------------------------------------
 // Function:  int VoidPtrArray
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  void * * addr +intent(in)+rank(1)
+// Argument:  void * * addr +rank(1)
+// Attrs:     +intent(in)
 // Exact:     c_void_**_in
 // start POI_void_ptr_array
 int POI_void_ptr_array(void **addr)
@@ -1160,6 +1234,7 @@ int POI_void_ptr_array(void **addr)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_scalar
@@ -1174,6 +1249,7 @@ int * POI_return_int_ptr_to_scalar(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_array
@@ -1188,6 +1264,7 @@ int * POI_return_int_ptr_to_fixed_array(void)
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
@@ -1210,6 +1287,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_const_scalar
@@ -1224,6 +1302,7 @@ const int * POI_return_int_ptr_to_const_scalar(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_ptr_to_fixed_const_array
@@ -1238,6 +1317,7 @@ const int * POI_return_int_ptr_to_fixed_const_array(void)
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
@@ -1260,6 +1340,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
+// Attrs:     +deref(scalar)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_scalar
@@ -1277,6 +1358,7 @@ int POI_return_int_scalar(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRaw +deref(raw)
+// Attrs:     +deref(raw)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // start POI_return_int_raw
@@ -1295,10 +1377,12 @@ int * POI_return_int_raw(void)
  */
 // ----------------------------------------
 // Function:  int * returnIntRawWithArgs +deref(raw)
+// Attrs:     +deref(raw)+intent(result)
 // Requested: c_native_*_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const char * name +intent(in)
+// Argument:  const char * name
+// Attrs:     +intent(in)
 // Requested: c_char_*_in
 // Match:     c_default
 // start POI_return_int_raw_with_args
@@ -1317,6 +1401,7 @@ int * POI_return_int_raw_with_args(const char * name)
  */
 // ----------------------------------------
 // Function:  int * * returnRawPtrToInt2d +deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_**_result
 // Match:     c_default
 // start POI_return_raw_ptr_to_int2d

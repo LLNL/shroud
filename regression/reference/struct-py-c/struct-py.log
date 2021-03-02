@@ -1,7 +1,7 @@
 Read yaml struct-py.yaml
 Close struct_types.yaml
 class Cstruct_as_class
-Python method Cstruct_as_class(int x1 +intent(in), int y1 +intent(in)) +name(Cstruct_as_class_ctor)
+Python method Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)
 Close pyCstruct_as_classtype.c
 Python function int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))
 Close pystructmodule.c

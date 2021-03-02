@@ -929,7 +929,7 @@ class Wrapc(util.WrapperMixin):
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("// Function:  " + c_decl)
             self.document_stmts(
-                stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
+                stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
         
         # Indicate which argument contains function result, usually none.
         # Can be changed when a result is converted into an argument (string/vector).
@@ -1001,6 +1001,7 @@ class Wrapc(util.WrapperMixin):
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
             fmt_arg = fmt_arg0.setdefault("fmtc", util.Scope(fmt_func))
             c_attrs = arg.attrs
+            c_meta = arg.metaattrs
 
             arg_typemap = arg.typemap  # XXX - look up vector
             sgroup = arg_typemap.sgroup
@@ -1016,8 +1017,7 @@ class Wrapc(util.WrapperMixin):
 
             self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
             
-            is_result = c_attrs["_is_result"]
-            if is_result:
+            if c_meta["is_result"]:
                 # This argument is the C function result
                 arg_call = False
 
@@ -1034,7 +1034,7 @@ class Wrapc(util.WrapperMixin):
 
                 fmt_pattern = fmt_arg
                 result_arg = arg
-                return_deref_attr = c_attrs["deref"]
+                return_deref_attr = c_meta["deref"]
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
                     "c", sgroup, spointer, "result",
@@ -1052,7 +1052,7 @@ class Wrapc(util.WrapperMixin):
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
-                stmts = ["c", sgroup, spointer, c_attrs["intent"],
+                stmts = ["c", sgroup, spointer, c_meta["intent"],
                          arg.stmts_suffix, cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 
@@ -1089,7 +1089,7 @@ class Wrapc(util.WrapperMixin):
                 c_decl = arg.gen_decl()
                 stmts_comments.append("// Argument:  " + c_decl)
                 self.document_stmts(
-                    stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                    stmts_comments, arg, fmt_arg.stmt0, fmt_arg.stmt1)
 
             need_wrapper = self.build_proto_list(
                 fmt_arg,
@@ -1160,7 +1160,7 @@ class Wrapc(util.WrapperMixin):
             "C_prototype", ",\t ".join(proto_list + proto_tail)
         )
 
-        return_deref_attr = ast.attrs["deref"]
+        return_deref_attr = ast.metaattrs["deref"]
         if result_blk.return_type:
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)

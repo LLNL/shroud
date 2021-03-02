@@ -50,6 +50,7 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
  */
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 const char * CLA_Class2_get_name(CLA_Class2 * self)
 {
@@ -71,7 +72,8 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
     CLA_SHROUD_array *DSHF_rv)

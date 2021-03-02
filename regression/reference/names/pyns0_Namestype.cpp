@@ -39,6 +39,7 @@ PY_Names_tp_del (PY_Names *self)
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
+// Attrs:     +intent(result)
 // Exact:     py_default
 static int
 PY_Names_tp_init(

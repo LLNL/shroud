@@ -77,14 +77,17 @@ void TUT_no_return_no_arguments(void)
 
 // ----------------------------------------
 // Function:  double PassByValue
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double arg1 +intent(in)+value
+// Argument:  double arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int arg2 +intent(in)+value
+// Argument:  int arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 double TUT_pass_by_value(double arg1, int arg2)
@@ -104,13 +107,16 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
+// Argument:  const std::string & arg1 +len_trim(Larg1)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
-// Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
+// Argument:  const std::string & arg2 +len_trim(Larg2)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_scalar_result_buf_allocatable
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
@@ -126,6 +132,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 
 // ----------------------------------------
 // Function:  double UseDefaultArguments
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start TUT_use_default_arguments
@@ -140,10 +147,12 @@ double TUT_use_default_arguments(void)
 
 // ----------------------------------------
 // Function:  double UseDefaultArguments
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +intent(in)+value
+// Argument:  double arg1=3.1415 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start TUT_use_default_arguments_arg1
@@ -158,14 +167,17 @@ double TUT_use_default_arguments_arg1(double arg1)
 
 // ----------------------------------------
 // Function:  double UseDefaultArguments
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double arg1=3.1415 +intent(in)+value
+// Argument:  double arg1=3.1415 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  bool arg2=true +intent(in)+value
+// Argument:  bool arg2=true +value
+// Attrs:     +intent(in)
 // Requested: c_bool_scalar_in
 // Match:     c_default
 // start TUT_use_default_arguments_arg1_arg2
@@ -183,7 +195,8 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in
 void TUT_overloaded_function_from_name(const char * name)
 {
@@ -198,7 +211,8 @@ void TUT_overloaded_function_from_name(const char * name)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)+len_trim(Lname)
+// Argument:  const std::string & name +len_trim(Lname)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
@@ -214,7 +228,8 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int indx +intent(in)+value
+// Argument:  int indx +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TUT_overloaded_function_from_index(int indx)
@@ -229,7 +244,8 @@ void TUT_overloaded_function_from_index(int indx)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int arg +intent(in)+value
+// Argument:  int arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TUT_template_argument_int(int arg)
@@ -244,7 +260,8 @@ void TUT_template_argument_int(int arg)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double arg +intent(in)+value
+// Argument:  double arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TUT_template_argument_double(double arg)
@@ -256,6 +273,7 @@ void TUT_template_argument_double(double arg)
 
 // ----------------------------------------
 // Function:  int TemplateReturn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int TUT_template_return_int(void)
@@ -268,6 +286,7 @@ int TUT_template_return_int(void)
 
 // ----------------------------------------
 // Function:  double TemplateReturn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 double TUT_template_return_double(void)
@@ -294,10 +313,12 @@ void TUT_fortran_generic_overloaded_0(void)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)
+// Argument:  const std::string & name
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
@@ -313,10 +334,12 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & name +intent(in)+len_trim(Lname)
+// Argument:  const std::string & name +len_trim(Lname)
+// Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
@@ -330,10 +353,12 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_num(int num)
@@ -346,14 +371,17 @@ int TUT_use_default_overload_num(int num)
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_num_offset(int num, int offset)
@@ -366,18 +394,22 @@ int TUT_use_default_overload_num_offset(int num, int offset)
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Argument:  int stride=1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_num_offset_stride(int num, int offset,
@@ -391,14 +423,17 @@ int TUT_use_default_overload_num_offset_stride(int num, int offset,
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  double type +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_3(double type, int num)
@@ -411,18 +446,22 @@ int TUT_use_default_overload_3(double type, int num)
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  double type +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_4(double type, int num, int offset)
@@ -435,22 +474,27 @@ int TUT_use_default_overload_4(double type, int num, int offset)
 
 // ----------------------------------------
 // Function:  int UseDefaultOverload
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double type +intent(in)+value
+// Argument:  double type +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int num +intent(in)+value
+// Argument:  int num +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int offset=0 +intent(in)+value
+// Argument:  int offset=0 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int stride=1 +intent(in)+value
+// Argument:  int stride=1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_use_default_overload_5(double type, int num, int offset,
@@ -465,10 +509,12 @@ int TUT_use_default_overload_5(double type, int num, int offset,
 
 // ----------------------------------------
 // Function:  TypeID typefunc
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  TypeID arg +intent(in)+value
+// Argument:  TypeID arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_typefunc(int arg)
@@ -481,10 +527,12 @@ int TUT_typefunc(int arg)
 
 // ----------------------------------------
 // Function:  EnumTypeID enumfunc
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  EnumTypeID arg +intent(in)+value
+// Argument:  EnumTypeID arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_enumfunc(int arg)
@@ -500,10 +548,12 @@ int TUT_enumfunc(int arg)
 
 // ----------------------------------------
 // Function:  Color colorfunc
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Color arg +intent(in)+value
+// Argument:  Color arg +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 int TUT_colorfunc(int arg)
@@ -526,10 +576,12 @@ int TUT_colorfunc(int arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int & min +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_&_out
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int & max +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_native_&_out
 // Match:     c_default
 // start TUT_get_min_max
@@ -547,14 +599,17 @@ void TUT_get_min_max(int * min, int * max)
  */
 // ----------------------------------------
 // Function:  int callback1
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int in +intent(in)+value
+// Argument:  int in +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int ( * incr)(int +value) +intent(in)+value
+// Argument:  int ( * incr)(int +value) +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // start TUT_callback1
@@ -569,6 +624,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
 const char * TUT_last_function_called(void)
 {
@@ -584,7 +640,8 @@ const char * TUT_last_function_called(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
+// Argument:  std::string & SHF_rv +len(NSHF_rv)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

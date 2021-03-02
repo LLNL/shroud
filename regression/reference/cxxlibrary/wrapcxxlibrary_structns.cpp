@@ -24,10 +24,12 @@ extern "C" {
  */
 // ----------------------------------------
 // Function:  int passStructByReference
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  Cstruct1 & arg +intent(inout)
+// Argument:  Cstruct1 & arg
+// Attrs:     +intent(inout)
 // Requested: c_struct_&_inout
 // Match:     c_struct
 int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
@@ -45,10 +47,12 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  int passStructByReferenceIn
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const Cstruct1 & arg +intent(in)
+// Argument:  const Cstruct1 & arg
+// Attrs:     +intent(in)
 // Requested: c_struct_&_in
 // Match:     c_struct
 int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
@@ -68,6 +72,7 @@ int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
+// Attrs:     +intent(inout)
 // Requested: c_struct_&_inout
 // Match:     c_struct
 void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
@@ -85,6 +90,7 @@ void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)
+// Attrs:     +intent(out)
 // Requested: c_struct_&_out
 // Match:     c_struct
 void CXX_structns_pass_struct_by_reference_out(CXX_cstruct1 * arg)

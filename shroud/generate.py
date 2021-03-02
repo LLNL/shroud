@@ -28,6 +28,10 @@ class VerifyAttrs(object):
     """
     Check attributes and set some defaults.
     Generate types for classes.
+
+    check order:
+      indent - check_intent_attr
+      deref - check_deref_attr
     """
 
     def __init__(self, newlibrary, config):
@@ -124,6 +128,8 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
+        if ast.get_subprogram() == "function":
+            ast.metaattrs["intent"] = "result"
         self.check_common_attrs(node.ast)
 
         if ast.typemap is None:
@@ -141,16 +147,56 @@ class VerifyAttrs(object):
             check_implied_attrs(node, ast.params)
 
         self.parse_attrs(node, ast)
-            
-    def check_common_attrs(self, ast):
-        """Check attributes which are common to function and argument AST
-        This includes: deref, dimension, free_pattern, owner, rank
+
+    def check_intent_attr(self, node, arg):
+        """Set default intent meta-attribute.
+
+        Intent is only valid on arguments.
+        intent: lower case, no parens, must be in, out, or inout
+        """
+        attrs = arg.attrs
+        meta = arg.metaattrs
+        is_ptr = arg.is_indirect()
+        intent = arg.attrs["intent"]
+        if intent is None:
+            if node is None:
+                # do not default intent for function pointers
+                pass
+            elif arg.is_function_pointer():
+                intent = "in"
+            elif not is_ptr:
+                intent = "in"
+            elif arg.const:
+                intent = "in"
+            elif arg.typemap.sgroup == "void":
+                # void *
+                intent = "in"  # XXX must coordinate with VALUE
+            else:
+                intent = "inout"
+            # XXX - Do hidden arguments need intent?
+        else:
+            intent = intent.lower()
+            if intent in ["in", "out", "inout"]:
+                meta["intent"] = intent
+            else:
+                raise RuntimeError("Bad value for intent: " + attrs["intent"])
+            if not is_ptr and intent != "in":
+                # Nonpointers can only be intent(in).
+                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
+        meta["intent"] = intent
+        return intent    
+        
+    def check_deref_attr(self, ast):
+        """Check deref attr and set default.
+
+        Pointer variables set the default deref meta attribute.
 
         Parameters
         ----------
         ast : declast.Declaration
         """
         attrs = ast.attrs
+        meta = ast.metaattrs
         ntypemap = ast.typemap
         is_ptr = ast.is_indirect()
 
@@ -162,7 +208,37 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
-        # XXX deref only on pointer, vector
+            if not ast.is_indirect():
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on non-pointer")
+            meta["deref"] = attrs["deref"]
+            return
+
+        # Set deref attribute for arguments which return values.
+        intent = meta["intent"]
+        spointer = ast.get_indirect_stmt()
+        if ntypemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif spointer in ["**", "*&"] and intent == "out":
+            attrs["deref"] = "pointer"
+            meta["deref"] = "pointer"
+        
+            
+    def check_common_attrs(self, ast):
+        """Check attributes which are common to function and argument AST
+        This includes: deref, dimension, free_pattern, owner, rank
+
+        Parameters
+        ----------
+        ast : declast.Declaration
+        """
+        attrs = ast.attrs
+        meta = ast.metaattrs
+        ntypemap = ast.typemap
+        is_ptr = ast.is_indirect()
+
+        self.check_deref_attr(ast)
 
         # dimension
         dimension = attrs["dimension"]
@@ -233,7 +309,6 @@ class VerifyAttrs(object):
 
     def check_arg_attrs(self, node, arg, options=None):
         """Regularize attributes.
-        intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to None (pass-by-reference)
                else True (pass-by-value).
 
@@ -253,6 +328,7 @@ class VerifyAttrs(object):
             options = node.options
         argname = arg.name
         attrs = arg.attrs
+        meta = arg.metaattrs
 
         for attr in attrs:
             if attr[0] == "_":  # Shroud internal attribute.
@@ -293,38 +369,10 @@ class VerifyAttrs(object):
                 )
             )
 
+        intent = self.check_intent_attr(node, arg)
         self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
-
-        # intent
-        intent = attrs["intent"]
-        if intent is None:
-            if node is None:
-                # do not default intent for function pointers
-                pass
-            elif arg.is_function_pointer():
-                intent = "in"
-            elif not is_ptr:
-                intent = "in"
-            elif arg.const:
-                intent = "in"
-            elif arg_typemap.sgroup == "void":
-                # void *
-                intent = "in"  # XXX must coordinate with VALUE
-            else:
-                intent = "inout"
-            attrs["intent"] = intent
-            # XXX - Do hidden arguments need intent?
-        else:
-            intent = intent.lower()
-            if intent in ["in", "out", "inout"]:
-                attrs["intent"] = intent
-            else:
-                raise RuntimeError("Bad value for intent: " + attrs["intent"])
-            if not is_ptr and intent != "in":
-                # Nonpointers can only be intent(in).
-                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
 
         # assumedtype
         assumedtype = attrs["assumedtype"]
@@ -348,17 +396,6 @@ class VerifyAttrs(object):
             else:
                 attrs["value"] = True
 
-        # Set deref attribute for arguments which return values.
-        spointer = arg.get_indirect_stmt()
-        if attrs["deref"]:
-            # User defined.
-            pass
-        elif arg_typemap.name == "void":
-            # void cannot be dereferenced.
-            pass
-        elif spointer in ["**", "*&"] and intent == "out":
-            attrs["deref"] = "pointer"
-                
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
@@ -610,6 +647,8 @@ class GenFunctions(object):
         )
 
         fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
+        # XXX - The function is not processed like other, so set intent directly.
+        fcn.ast.params[0].metaattrs["intent"] = "in"
         fcn.wrap.lua = False
         fcn.wrap.python = False
 
@@ -730,7 +769,7 @@ class GenFunctions(object):
         #  Add variables as function parameters by coping AST.
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
-            a.attrs["intent"] = "in"
+            a.metaattrs["intent"] = "in"
             a.metaattrs["struct_member"] = var
             ast.params.append(a)
         # Python only
@@ -1134,7 +1173,7 @@ class GenFunctions(object):
             for arg in generic.decls:
                 # double **arg +intent(out)+rank(1)
                 if (arg.typemap.sgroup == "native" and
-                    arg.attrs["intent"] == "out" and
+                    arg.metaattrs["intent"] == "out" and
                     arg.get_indirect_stmt() in  ["**", "*&"]):
                     context_args[arg.name] = True
 
@@ -1221,7 +1260,7 @@ class GenFunctions(object):
         except IndexError:
             pass
 
-    def move_arg_attributes(self, attrs, old_node, new_node):
+    def move_arg_attributes(self, arg, old_node, new_node):
         """After new_node has been created from old_node,
         the result is being converted into an argument.
         Move some attributes that are associated with the function
@@ -1229,16 +1268,28 @@ class GenFunctions(object):
 
         If deref is not set, then default to allocatable.
 
-        Args:
-            attrs - attributes of the new argument
-            old_node - The FunctionNode of the original function.
-            new_node - The FunctionNode of the new function with
+        Note: Used with 'char *' and std::string arguments.
+
+        Parameters
+        ----------
+        arg : ast.Declaration
+            New argument, result of old_node.
+        old_node : FunctionNode
+            Original function (wrap fortran).
+        new_node : FunctionNode
+            New function (wrap c) that passes arg.
         """
+        attrs = arg.attrs
+        meta = arg.metaattrs
+        
         c_attrs = new_node.ast.attrs
         f_attrs = old_node.ast.attrs
         if f_attrs["deref"] is None:
             f_attrs["deref"] = "allocatable"
             attrs["deref"] = "allocatable"
+
+            old_node.ast.metaattrs["deref"] = "allocatable"
+            meta["deref"] = "allocatable"
         for name in ["owner", "free_pattern"]:
             if c_attrs[name]:
                 attrs[name] = c_attrs[name]
@@ -1413,6 +1464,7 @@ class GenFunctions(object):
         ast = C_new.ast
         if has_string_result:
             f_attrs = node.ast.attrs  # Fortran function attributes
+            f_meta = node.ast.metaattrs  # Fortran function attributes
             if ast.attrs["len"] or result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
@@ -1424,19 +1476,18 @@ class GenFunctions(object):
 #                )
                 # Special case for wrapf.py to override "allocatable"
                 f_attrs["deref"] = "result-as-arg"
+                f_meta["deref"] = "result-as-arg"
             elif (result_typemap.sgroup == "string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
-                self.move_arg_attributes(attrs, node, C_new)
+                self.move_arg_attributes(result_as_string, node, C_new)
             else: # char
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-            attrs["intent"] = "out"
-            attrs["_is_result"] = True
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
+            result_as_string.metaattrs["is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)
@@ -1522,7 +1573,7 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "vector":
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
-                  arg.attrs["intent"] == "out" and
+                  arg.metaattrs["intent"] == "out" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 # double **values +intent(out) +dimension(nvalues)
@@ -1582,6 +1633,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             attrs = arg.attrs
+            meta = arg.metaattrs
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
@@ -1596,7 +1648,7 @@ class GenFunctions(object):
                 node.wrap.lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
-                  arg.attrs["intent"] == "out" and
+                  meta["intent"] == "out" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 attrs["context"] = True
@@ -1607,7 +1659,7 @@ class GenFunctions(object):
             arg.stmts_suffix = generated_suffix
             
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
+            c_stmts = ["c", sgroup, spointer, meta["intent"], generated_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 
@@ -1618,6 +1670,7 @@ class GenFunctions(object):
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
+            f_meta = node.ast.metaattrs  # Fortran function attributes
 
             if ast.attrs["len"] or result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
@@ -1630,6 +1683,7 @@ class GenFunctions(object):
                 )
                 # Special case for wrapf.py to override "allocatable"
                 f_attrs["deref"] = "result-as-arg"
+                f_meta["deref"] = "result-as-arg"
             elif (result_typemap.cxx_type == "std::string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1637,7 +1691,7 @@ class GenFunctions(object):
                 attrs["context"] = options.C_var_context_template.format(
                     c_var=result_name
                 )
-                self.move_arg_attributes(attrs, node, C_new)
+                self.move_arg_attributes(result_as_string, node, C_new)
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
@@ -1645,10 +1699,8 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-            attrs["intent"] = "out"
-            attrs["_is_result"] = True
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
+            result_as_string.metaattrs["is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result
@@ -1659,11 +1711,9 @@ class GenFunctions(object):
             attrs["context"] = options.C_var_context_template.format(
                 c_var=result_name
             )
-            self.move_arg_attributes(attrs, node, C_new)
-            attrs["intent"] = "out"
-            attrs["_is_result"] = True
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
+            self.move_arg_attributes(result_as_vector, node, C_new)
+            result_as_vector.metaattrs["is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
         elif need_cdesc_result:
             # Non-string and Non-char results
             # XXX - c_var is duplicated in wrapc.py wrap_function
@@ -1982,6 +2032,7 @@ def check_return_pointer(node, ast):
     """
     options = node.options
     attrs = ast.attrs
+    meta = ast.metaattrs
     ntypemap = ast.typemap
     if ntypemap.cxx_type == "void":
         # subprogram == subroutine
@@ -2002,14 +2053,17 @@ def check_return_pointer(node, ast):
                 # If the function has +len, result will be an argument.
                 if not attrs["len"]:
                     attrs["deref"] = "allocatable"
+                    meta["deref"] = "allocatable"
     elif ast.is_indirect():
         # pointer to a POD  e.g. int *
         if attrs["deref"]:
             pass
         elif attrs["dimension"]:
             attrs["deref"] = "pointer"
+            meta["deref"] = "pointer"
         else:
             attrs["deref"] = options.return_scalar_pointer
+            meta["deref"] = options.return_scalar_pointer
     else:
         if attrs["deref"]:
             raise RuntimeError(

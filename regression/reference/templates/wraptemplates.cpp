@@ -35,11 +35,13 @@ extern "C" {
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int arg1 +intent(in)+value
+// Argument:  int arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  long arg2 +intent(in)+value
+// Argument:  long arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TEM_function_tu_0(int arg1, long arg2)
@@ -58,11 +60,13 @@ void TEM_function_tu_0(int arg1, long arg2)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  float arg1 +intent(in)+value
+// Argument:  float arg1 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
-// Argument:  double arg2 +intent(in)+value
+// Argument:  double arg2 +value
+// Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
 void TEM_function_tu_1(float arg1, double arg2)
@@ -78,6 +82,7 @@ void TEM_function_tu_1(float arg1, double arg2)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker1(void)
@@ -94,6 +99,7 @@ int TEM_use_impl_worker_internal_ImplWorker1(void)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker2(void)
