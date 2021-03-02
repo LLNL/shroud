@@ -141,10 +141,11 @@ class VerifyAttrs(object):
             check_implied_attrs(node, ast.params)
 
         self.parse_attrs(node, ast)
-            
-    def check_common_attrs(self, ast):
-        """Check attributes which are common to function and argument AST
-        This includes: deref, dimension, free_pattern, owner, rank
+
+    def check_deref_attr(self, ast):
+        """Check deref attr and set default.
+
+        Pointer variables set the default deref meta attribute.
 
         Parameters
         ----------
@@ -163,8 +164,37 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
+            if not ast.is_indirect():
+                raise RuntimeError(
+                    "Cannot have attribute 'deref' on non-pointer")
             meta["deref"] = attrs["deref"]
-        # XXX deref only on pointer, vector
+            return
+
+        # Set deref attribute for arguments which return values.
+        intent = attrs["intent"]
+        spointer = ast.get_indirect_stmt()
+        if ntypemap.name == "void":
+            # void cannot be dereferenced.
+            pass
+        elif spointer in ["**", "*&"] and intent == "out":
+            attrs["deref"] = "pointer"
+            meta["deref"] = "pointer"
+        
+            
+    def check_common_attrs(self, ast):
+        """Check attributes which are common to function and argument AST
+        This includes: deref, dimension, free_pattern, owner, rank
+
+        Parameters
+        ----------
+        ast : declast.Declaration
+        """
+        attrs = ast.attrs
+        meta = ast.metaattrs
+        ntypemap = ast.typemap
+        is_ptr = ast.is_indirect()
+
+        self.check_deref_attr(ast)
 
         # dimension
         dimension = attrs["dimension"]
@@ -351,18 +381,6 @@ class VerifyAttrs(object):
             else:
                 attrs["value"] = True
 
-        # Set deref attribute for arguments which return values.
-        spointer = arg.get_indirect_stmt()
-        if attrs["deref"]:
-            # User defined.
-            pass
-        elif arg_typemap.name == "void":
-            # void cannot be dereferenced.
-            pass
-        elif spointer in ["**", "*&"] and intent == "out":
-            attrs["deref"] = "pointer"
-            meta["deref"] = "pointer"
-                
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
         # XXX - Python needs a value if 'char *+intent(out)'
