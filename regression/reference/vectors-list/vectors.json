@@ -376,6 +376,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -431,6 +434,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::vector"

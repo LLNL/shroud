@@ -2676,6 +2676,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "deref": "raw"
+                                },
                                 "specifier": [
                                     "float"
                                 ],
@@ -2730,6 +2733,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "deref": "raw"
                                 },
                                 "specifier": [
                                     "float"
@@ -2798,6 +2804,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "float"
@@ -2885,6 +2894,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "float"
@@ -3143,6 +3155,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "deref": "raw"
+                                },
                                 "specifier": [
                                     "float"
                                 ],
@@ -3197,6 +3212,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "deref": "raw"
                                 },
                                 "specifier": [
                                     "float"
@@ -3275,6 +3293,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "float"
@@ -3372,6 +3393,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "float"
@@ -3857,6 +3881,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "deref": "pointer"
+                                },
                                 "specifier": [
                                     "float"
                                 ],
@@ -3920,6 +3947,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "deref": "pointer"
                                 },
                                 "specifier": [
                                     "float"
@@ -3997,6 +4027,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer"
                             },
                             "specifier": [
                                 "float"
@@ -4093,6 +4126,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer"
                             },
                             "specifier": [
                                 "float"

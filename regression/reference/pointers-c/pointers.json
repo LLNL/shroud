@@ -641,6 +641,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -858,6 +859,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "args": [
@@ -1371,6 +1373,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "allocatable",
                                 "dimension": [
                                     {
                                         "name": "nvar"
@@ -2804,6 +2807,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "pointer"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2910,6 +2916,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "pointer"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2996,6 +3005,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
@@ -3119,6 +3129,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
@@ -3234,6 +3245,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
@@ -3408,6 +3420,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
@@ -3520,6 +3533,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -3644,6 +3658,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -3735,6 +3750,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer"
                             },
                             "specifier": [
                                 "int"
@@ -3843,6 +3861,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "pointer"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3930,6 +3951,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
@@ -4051,6 +4073,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "constant": "10"
@@ -4164,6 +4187,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
@@ -4336,6 +4360,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "name": "ncount"
@@ -4441,6 +4466,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "int"
@@ -4548,6 +4576,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4631,6 +4662,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "int"
@@ -4741,6 +4775,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4827,6 +4864,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "int"
@@ -4934,6 +4974,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "raw"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -5017,6 +5060,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "int"
@@ -5126,6 +5172,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "raw"
                             },
                             "specifier": [
                                 "int"
@@ -6045,6 +6094,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "pointer"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -6131,6 +6183,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
@@ -6211,6 +6264,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
@@ -6287,6 +6341,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer"
                     },
                     "params": [],
                     "specifier": [
@@ -6375,6 +6432,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
@@ -6456,6 +6514,7 @@
                         ]
                     },
                     "metaattrs": {
+                        "deref": "pointer",
                         "dimension": [
                             {
                                 "constant": "10"
@@ -6530,6 +6589,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "scalar"
                     },
                     "params": [],
                     "specifier": [
@@ -6606,6 +6668,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "raw"
                     },
                     "params": [],
                     "specifier": [
@@ -6719,6 +6784,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "raw"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6824,6 +6892,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer"
                     },
                     "params": [],
                     "specifier": [

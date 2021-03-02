@@ -582,6 +582,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -670,6 +671,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -786,6 +788,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -876,6 +879,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -992,6 +996,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -1081,6 +1086,7 @@
                                 ]
                             },
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -1198,6 +1204,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -1289,6 +1296,7 @@
                             },
                             "func_const": true,
                             "metaattrs": {
+                                "deref": "pointer",
                                 "dimension": [
                                     {
                                         "args": [],
@@ -1446,6 +1454,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -1624,6 +1633,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -1805,6 +1815,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -1983,6 +1994,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -2165,6 +2177,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -2344,6 +2357,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -2526,6 +2540,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"
@@ -2705,6 +2720,7 @@
                                         ]
                                     },
                                     "metaattrs": {
+                                        "deref": "pointer",
                                         "dimension": [
                                             {
                                                 "name": "isize"

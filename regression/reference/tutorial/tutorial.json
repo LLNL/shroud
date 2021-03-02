@@ -518,6 +518,9 @@
                         "name": "ConcatenateStrings",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -775,6 +778,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::string"
@@ -5568,6 +5574,9 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [

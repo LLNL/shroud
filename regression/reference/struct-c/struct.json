@@ -2988,6 +2988,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "pointer"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3165,6 +3168,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer"
                     },
                     "params": [
                         {
@@ -3388,6 +3394,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "pointer"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3512,6 +3521,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer"
                     },
                     "params": [],
                     "specifier": [

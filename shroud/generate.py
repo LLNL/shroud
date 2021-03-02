@@ -151,6 +151,7 @@ class VerifyAttrs(object):
         ast : declast.Declaration
         """
         attrs = ast.attrs
+        meta = ast.metaattrs
         ntypemap = ast.typemap
         is_ptr = ast.is_indirect()
 
@@ -162,6 +163,7 @@ class VerifyAttrs(object):
                     "Must be 'allocatable', 'pointer', 'raw', "
                     "or 'scalar'.".format(deref)
                 )
+            meta["deref"] = attrs["deref"]
         # XXX deref only on pointer, vector
 
         # dimension
@@ -253,6 +255,7 @@ class VerifyAttrs(object):
             options = node.options
         argname = arg.name
         attrs = arg.attrs
+        meta = arg.metaattrs
 
         for attr in attrs:
             if attr[0] == "_":  # Shroud internal attribute.
@@ -358,6 +361,7 @@ class VerifyAttrs(object):
             pass
         elif spointer in ["**", "*&"] and intent == "out":
             attrs["deref"] = "pointer"
+            meta["deref"] = "pointer"
                 
         # charlen
         # Only meaningful with 'char *arg+intent(out)'
@@ -1221,7 +1225,7 @@ class GenFunctions(object):
         except IndexError:
             pass
 
-    def move_arg_attributes(self, attrs, old_node, new_node):
+    def move_arg_attributes(self, arg, old_node, new_node):
         """After new_node has been created from old_node,
         the result is being converted into an argument.
         Move some attributes that are associated with the function
@@ -1229,16 +1233,28 @@ class GenFunctions(object):
 
         If deref is not set, then default to allocatable.
 
-        Args:
-            attrs - attributes of the new argument
-            old_node - The FunctionNode of the original function.
-            new_node - The FunctionNode of the new function with
+        Note: Used with 'char *' and std::string arguments.
+
+        Parameters
+        ----------
+        arg : ast.Declaration
+            New argument, result of old_node.
+        old_node : FunctionNode
+            Original function (wrap fortran).
+        new_node : FunctionNode
+            New function (wrap c) that passes arg.
         """
+        attrs = arg.attrs
+        meta = arg.metaattrs
+        
         c_attrs = new_node.ast.attrs
         f_attrs = old_node.ast.attrs
         if f_attrs["deref"] is None:
             f_attrs["deref"] = "allocatable"
             attrs["deref"] = "allocatable"
+
+            old_node.ast.metaattrs["deref"] = "allocatable"
+            meta["deref"] = "allocatable"
         for name in ["owner", "free_pattern"]:
             if c_attrs[name]:
                 attrs[name] = c_attrs[name]
@@ -1413,6 +1429,7 @@ class GenFunctions(object):
         ast = C_new.ast
         if has_string_result:
             f_attrs = node.ast.attrs  # Fortran function attributes
+            f_meta = node.ast.metaattrs  # Fortran function attributes
             if ast.attrs["len"] or result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
                 # +len implies copying into users buffer.
@@ -1424,11 +1441,12 @@ class GenFunctions(object):
 #                )
                 # Special case for wrapf.py to override "allocatable"
                 f_attrs["deref"] = "result-as-arg"
+                f_meta["deref"] = "result-as-arg"
             elif (result_typemap.sgroup == "string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
-                self.move_arg_attributes(attrs, node, C_new)
+                self.move_arg_attributes(result_as_string, node, C_new)
             else: # char
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
@@ -1618,6 +1636,7 @@ class GenFunctions(object):
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
+            f_meta = node.ast.metaattrs  # Fortran function attributes
 
             if ast.attrs["len"] or result_as_arg:
                 # decl: const char * getCharPtr2() +len(30)
@@ -1630,6 +1649,7 @@ class GenFunctions(object):
                 )
                 # Special case for wrapf.py to override "allocatable"
                 f_attrs["deref"] = "result-as-arg"
+                f_meta["deref"] = "result-as-arg"
             elif (result_typemap.cxx_type == "std::string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1637,7 +1657,7 @@ class GenFunctions(object):
                 attrs["context"] = options.C_var_context_template.format(
                     c_var=result_name
                 )
-                self.move_arg_attributes(attrs, node, C_new)
+                self.move_arg_attributes(result_as_string, node, C_new)
             else:  # char
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
@@ -1659,7 +1679,7 @@ class GenFunctions(object):
             attrs["context"] = options.C_var_context_template.format(
                 c_var=result_name
             )
-            self.move_arg_attributes(attrs, node, C_new)
+            self.move_arg_attributes(result_as_vector, node, C_new)
             attrs["intent"] = "out"
             attrs["_is_result"] = True
             # convert to subroutine
@@ -1982,6 +2002,7 @@ def check_return_pointer(node, ast):
     """
     options = node.options
     attrs = ast.attrs
+    meta = ast.metaattrs
     ntypemap = ast.typemap
     if ntypemap.cxx_type == "void":
         # subprogram == subroutine
@@ -2002,14 +2023,17 @@ def check_return_pointer(node, ast):
                 # If the function has +len, result will be an argument.
                 if not attrs["len"]:
                     attrs["deref"] = "allocatable"
+                    meta["deref"] = "allocatable"
     elif ast.is_indirect():
         # pointer to a POD  e.g. int *
         if attrs["deref"]:
             pass
         elif attrs["dimension"]:
             attrs["deref"] = "pointer"
+            meta["deref"] = "pointer"
         else:
             attrs["deref"] = options.return_scalar_pointer
+            meta["deref"] = options.return_scalar_pointer
     else:
         if attrs["deref"]:
             raise RuntimeError(

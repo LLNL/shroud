@@ -55,6 +55,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [],
                     "specifier": [
                         "std::string"
@@ -168,6 +171,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::string"

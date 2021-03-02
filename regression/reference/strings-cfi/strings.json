@@ -1042,6 +1042,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [],
                     "specifier": [
                         "char"
@@ -1159,6 +1162,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -1259,6 +1265,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -1468,6 +1477,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -1720,6 +1732,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "raw"
+                    },
                     "params": [],
                     "specifier": [
                         "char"
@@ -1799,6 +1814,9 @@
                     "declarator": {
                         "name": "getConstStringResult",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable"
                     },
                     "params": [],
                     "specifier": [
@@ -1907,6 +1925,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -1985,6 +2006,9 @@
                     "declarator": {
                         "name": "getConstStringLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -2163,6 +2187,9 @@
                     "declarator": {
                         "name": "getConstStringAsArg",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -2401,6 +2428,9 @@
                         "name": "getConstStringAlloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [],
                     "specifier": [
                         "std::string"
@@ -2504,6 +2534,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -2598,6 +2631,9 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable"
                     },
                     "params": [],
                     "specifier": [
@@ -2716,6 +2752,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -2818,6 +2857,9 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -3030,6 +3072,9 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -3307,6 +3352,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
+                    },
                     "params": [],
                     "specifier": [
                         "string"
@@ -3527,6 +3575,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [],
                     "specifier": [
                         "std::string"
@@ -3640,6 +3691,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -3737,6 +3791,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
@@ -3974,6 +4031,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [],
                     "specifier": [
                         "std::string"
@@ -4088,6 +4148,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -4183,6 +4246,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable"
                     },
                     "params": [],
                     "specifier": [
@@ -4301,6 +4367,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -4400,6 +4469,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable"
                     },
                     "params": [],
                     "specifier": [
@@ -4519,6 +4591,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::string"

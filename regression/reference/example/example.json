@@ -807,6 +807,9 @@
                                                 ]
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "deref": "allocatable"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "string"
@@ -932,6 +935,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "deref": "allocatable"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -1030,6 +1036,9 @@
                                                 ]
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "deref": "result-as-arg"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "string"
@@ -2399,6 +2408,9 @@
                                                 ]
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "deref": "result-as-arg"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "string"
@@ -2633,6 +2645,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "deref": "allocatable"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "string"
@@ -2756,6 +2771,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "deref": "allocatable"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -2864,6 +2882,9 @@
                                                 ]
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "deref": "allocatable"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "string"
@@ -2988,6 +3009,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "deref": "allocatable"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -3094,6 +3118,9 @@
                                                         "ptr": "&"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "deref": "allocatable"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -3216,6 +3243,9 @@
                                                                 "ptr": "&"
                                                             }
                                                         ]
+                                                    },
+                                                    "metaattrs": {
+                                                        "deref": "allocatable"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -10655,6 +10685,7 @@
                                                 ]
                                             },
                                             "metaattrs": {
+                                                "deref": "allocatable",
                                                 "dimension": [
                                                     {
                                                         "args": [

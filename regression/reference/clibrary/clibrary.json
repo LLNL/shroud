@@ -1110,6 +1110,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
+                    },
                     "params": [
                         {
                             "attrs": {

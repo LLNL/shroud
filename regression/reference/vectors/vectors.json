@@ -871,6 +871,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -986,6 +989,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -1055,6 +1061,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1173,6 +1182,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::vector"
@@ -1933,6 +1945,9 @@
                         "name": "ReturnVectorAlloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "deref": "allocatable"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2118,6 +2133,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable"
                             },
                             "specifier": [
                                 "std::vector"

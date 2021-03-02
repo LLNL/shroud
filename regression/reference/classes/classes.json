@@ -1358,6 +1358,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "params": [],
                             "specifier": [
                                 "std::string"
@@ -1483,6 +1486,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable"
                                     },
                                     "specifier": [
                                         "std::string"
@@ -2172,6 +2178,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "deref": "allocatable"
+                            },
                             "params": [],
                             "specifier": [
                                 "std::string"
@@ -2297,6 +2306,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "deref": "allocatable"
                                     },
                                     "specifier": [
                                         "std::string"
@@ -4193,6 +4205,9 @@
                                 "ptr": "&"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg"
                     },
                     "params": [],
                     "specifier": [
