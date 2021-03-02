@@ -42,12 +42,12 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int x1
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05ec0b8>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  int y1
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05ec240>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 static int

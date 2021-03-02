@@ -54,22 +54,22 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nitems
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1668>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_scalar_list
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  int * ivalue +dimension(nitems+nitems)
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1cf8>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_*_list
 // Match:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  double * dvalue +dimension(nitems*TWO)
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1780>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_*_list
 // Match:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  char * * svalue +dimension(nitems)
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1908>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_char_**_list
 // Match:     py_ctor_char_**
 static int

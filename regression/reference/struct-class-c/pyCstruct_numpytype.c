@@ -52,17 +52,17 @@ PY_Cstruct_numpy_tp_del (PY_Cstruct_numpy *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nitems
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1f98>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_scalar_numpy
 // Match:     py_ctor_native
 // ----------------------------------------
 // Argument:  int * ivalue +dimension(nitems)
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab05e1eb8>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 // ----------------------------------------
 // Argument:  double * dvalue +dimension(nitems)
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab060d128>)
+// Attrs:     +intent(in)
 // Requested: py_ctor_native_*_numpy
 // Match:     py_ctor_native_*
 static int

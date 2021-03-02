@@ -1488,8 +1488,6 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)
@@ -1703,8 +1701,6 @@ class GenFunctions(object):
                 )
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result
@@ -1718,8 +1714,6 @@ class GenFunctions(object):
             self.move_arg_attributes(result_as_vector, node, C_new)
             result_as_vector.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
-            # convert to subroutine
-            C_new._subprogram = "subroutine"
         elif need_cdesc_result:
             # Non-string and Non-char results
             # XXX - c_var is duplicated in wrapc.py wrap_function
