@@ -138,6 +138,7 @@ module vectors_mod
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Requested: c_vector_&_out_buf_allocatable_native
     ! Match:     c_vector_out_buf
+    !    metaattrs:  +deref(allocatable)
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
@@ -157,6 +158,7 @@ module vectors_mod
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Requested: c_vector_&_inout_buf_allocatable_native
     ! Match:     c_vector_inout_buf
+    !    metaattrs:  +deref(allocatable)
     ! start c_vector_iota_inout_alloc_bufferify
     interface
         subroutine c_vector_iota_inout_alloc_bufferify(arg, Sarg, Darg) &
@@ -241,6 +243,7 @@ module vectors_mod
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
+    !    metaattrs:  +deref(allocatable)
     interface
         subroutine c_return_vector_alloc_bufferify(n, DSHF_rv) &
                 bind(C, name="VEC_return_vector_alloc_bufferify")
@@ -431,6 +434,7 @@ contains
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Requested: f_vector_&_out_allocatable_native
     ! Match:     f_vector_out_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Requested: c_vector_&_out_buf_native
     ! Match:     c_vector_out_buf
@@ -464,6 +468,7 @@ contains
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Requested: f_vector_&_inout_allocatable_native
     ! Match:     f_vector_inout_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Requested: c_vector_&_inout_buf_native
     ! Match:     c_vector_inout_buf
@@ -578,6 +583,7 @@ contains
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
     ! std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
+    !    metaattrs:  +deref(allocatable)
     ! Requested: f_vector_scalar_result_buf_allocatable
     ! Match:     f_vector_result_allocatable
     ! Function:  void ReturnVectorAlloc +rank(1)
@@ -593,6 +599,7 @@ contains
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
     ! Requested: f_vector_*_result_buf_allocatable_native
     ! Match:     f_vector_result_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
     !>

@@ -112,6 +112,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -175,6 +176,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -264,6 +266,7 @@ contains
     ! ----------------------------------------
     ! Function:  int & at +deref(pointer)
     ! int & at +deref(pointer)
+    !    metaattrs:  +deref(pointer)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
     ! Requested: c_native_&_result
@@ -368,6 +371,7 @@ contains
     ! ----------------------------------------
     ! Function:  double & at +deref(pointer)
     ! double & at +deref(pointer)
+    !    metaattrs:  +deref(pointer)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
     ! Requested: c_native_&_result

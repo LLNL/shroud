@@ -72,6 +72,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)
         ! Exact:     c_string_&_result
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -88,6 +89,7 @@ module ns_mod
         ! ----------------------------------------
         ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Exact:     c_string_&_result_buf_allocatable
+        !    metaattrs:  +deref(allocatable)
         subroutine c_last_function_called_bufferify(DSHF_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
             import :: NS_SHROUD_array
@@ -130,12 +132,14 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(allocatable)
     ! const std::string & LastFunctionCalled +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void LastFunctionCalled
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)

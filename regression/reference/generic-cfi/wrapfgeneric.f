@@ -156,6 +156,7 @@ module generic_mod
     ! Argument:  const int * values +dimension(..)+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +assumed-rank
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
     ! Requested: c_native_scalar_in
@@ -179,6 +180,7 @@ module generic_mod
     ! ----------------------------------------
     ! Argument:  const int * values +dimension(..)+intent(in)
     ! Exact:     c_native_*_in_cfi
+    !    metaattrs:  +assumed-rank
     ! ----------------------------------------
     ! Argument:  int nvalues +intent(in)+value
     ! Requested: c_native_scalar_in
@@ -780,6 +782,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Exact:     f_native_*_in_raw
+    !    metaattrs:  +deref(raw)
     ! Argument:  void * addr +intent(in)+value
     ! Requested: c_void_*_in
     ! Match:     c_default
@@ -808,6 +811,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Exact:     f_native_*_in_raw
+    !    metaattrs:  +deref(raw)
     ! Argument:  void * addr +intent(in)+value
     ! Requested: c_void_*_in
     ! Match:     c_default
@@ -835,6 +839,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Exact:     f_native_*_in_raw
+    !    metaattrs:  +deref(raw)
     ! Argument:  void * addr +intent(in)+value
     ! Requested: c_void_*_in
     ! Match:     c_default
@@ -861,6 +866,7 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Exact:     f_native_*_in_raw
+    !    metaattrs:  +deref(raw)
     ! Argument:  void * addr +intent(in)+value
     ! Requested: c_void_*_in
     ! Match:     c_default
@@ -889,6 +895,7 @@ contains
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
+    !    metaattrs:  +deref(pointer)
     ! Argument:  void * * addr +context(FIXME)+intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
@@ -929,6 +936,7 @@ contains
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
+    !    metaattrs:  +deref(pointer)
     ! Argument:  void * * addr +context(FIXME)+intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default

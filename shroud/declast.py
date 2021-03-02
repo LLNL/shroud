@@ -1366,12 +1366,14 @@ class Declaration(Node):
 
     _skip_annotations = ["template"]
 
-    def gen_attrs(self, attrs, decl):
+    def gen_attrs(self, attrs, decl, skip={}):
         space = " "
         for attr in sorted(attrs):
             if attr[0] == "_":  # internal attribute
                 continue
             if attr in self._skip_annotations:
+                continue
+            if attr in skip:
                 continue
             value = attrs[attr]
             if value is None:  # unset

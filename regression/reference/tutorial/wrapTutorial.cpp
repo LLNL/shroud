@@ -112,6 +112,7 @@ double TUT_pass_by_value(double arg1, int arg2)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_buf_allocatable
+//    metaattrs:  +deref(allocatable)
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
@@ -570,6 +571,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(result-as-arg)
 const char * TUT_last_function_called(void)
 {
     // splicer begin function.last_function_called

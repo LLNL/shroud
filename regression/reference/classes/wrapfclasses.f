@@ -331,6 +331,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result
     ! start c_class1_get_name
     interface
@@ -353,6 +354,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
@@ -450,6 +452,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result
     interface
         function c_class2_get_name(self) &
@@ -470,6 +473,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     interface
         subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
@@ -726,6 +730,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
@@ -989,12 +994,14 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
     ! const std::string & getName +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1132,12 +1139,14 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
     ! const std::string & getName +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1445,6 +1454,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)

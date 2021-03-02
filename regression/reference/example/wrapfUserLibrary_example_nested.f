@@ -242,6 +242,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -260,6 +261,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Exact:     c_string_&_result_buf_allocatable
+        !    metaattrs:  +deref(allocatable)
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
@@ -271,6 +273,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg +deref(result-as-arg)
+        !    metaattrs:  +deref(result-as-arg)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
@@ -419,6 +422,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+        !    metaattrs:  +deref(result-as-arg)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
@@ -449,6 +453,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2 +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
@@ -467,6 +472,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Exact:     c_string_&_result_buf_allocatable
+        !    metaattrs:  +deref(allocatable)
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -477,6 +483,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3 +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
@@ -495,6 +502,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Exact:     c_string_&_result_buf_allocatable
+        !    metaattrs:  +deref(allocatable)
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -505,6 +513,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4 +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
@@ -523,6 +532,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
         ! Exact:     c_string_&_result_buf_allocatable
+        !    metaattrs:  +deref(allocatable)
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
@@ -1149,6 +1159,7 @@ module userlibrary_example_nested_mod
         ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
         ! Requested: c_native_*_out_allocatable
         ! Match:     c_default
+        !    metaattrs:  +deref(allocatable)
         ! ----------------------------------------
         ! Argument:  int sizein +implied(size(in))+intent(in)+value
         ! Requested: c_native_scalar_in
@@ -1303,12 +1314,14 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck +deref(allocatable)
     ! const string & getNameErrorCheck +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getNameErrorCheck
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1501,6 +1514,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+    !    metaattrs:  +deref(result-as-arg)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
@@ -1525,12 +1539,14 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2 +deref(allocatable)
     ! const string & getName2 +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName2
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
@@ -1548,12 +1564,14 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3 +deref(allocatable)
     ! string & getName3 +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName3
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
@@ -1571,12 +1589,14 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4 +deref(allocatable)
     ! string & getName4 +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName4
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
@@ -2345,6 +2365,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
     ! Exact:     f_native_*_out_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>

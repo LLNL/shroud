@@ -271,6 +271,7 @@ void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s)
 // ----------------------------------------
 // Function:  const char * getCharPtr1 +deref(allocatable)
 // Exact:     c_char_*_result
+//    metaattrs:  +deref(allocatable)
 // start STR_get_char_ptr1
 const char * STR_get_char_ptr1(void)
 {
@@ -292,6 +293,7 @@ const char * STR_get_char_ptr1(void)
 // ----------------------------------------
 // Argument:  const char * SHF_rv +deref(allocatable)+intent(out)
 // Exact:     c_char_*_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 // start STR_get_char_ptr1_CFI
 void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -316,6 +318,7 @@ void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
 // Exact:     c_char_*_result
+//    metaattrs:  +deref(result-as-arg)
 // start STR_get_char_ptr2
 const char * STR_get_char_ptr2(void)
 {
@@ -355,6 +358,7 @@ void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const char * getCharPtr3 +deref(result-as-arg)
 // Exact:     c_char_*_result
+//    metaattrs:  +deref(result-as-arg)
 // start STR_get_char_ptr3
 const char * STR_get_char_ptr3(void)
 {
@@ -394,6 +398,7 @@ void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output)
 // ----------------------------------------
 // Function:  const char * getCharPtr4 +deref(raw)
 // Exact:     c_char_*_result
+//    metaattrs:  +deref(raw)
 const char * STR_get_char_ptr4(void)
 {
     // splicer begin function.get_char_ptr4
@@ -413,6 +418,7 @@ const char * STR_get_char_ptr4(void)
 // ----------------------------------------
 // Argument:  const string * SHF_rv +deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
     // splicer begin function.get_const_string_result_CFI
@@ -483,6 +489,7 @@ void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
     // splicer begin function.get_const_string_alloc_CFI
@@ -503,6 +510,7 @@ void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const string & getConstStringRefPure +deref(allocatable)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(allocatable)
 // start STR_get_const_string_ref_pure
 const char * STR_get_const_string_ref_pure(void)
 {
@@ -525,6 +533,7 @@ const char * STR_get_const_string_ref_pure(void)
 // ----------------------------------------
 // Argument:  const string & SHF_rv +deref(allocatable)+intent(out)
 // Exact:     c_string_&_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 // start STR_get_const_string_ref_pure_CFI
 void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -550,6 +559,7 @@ void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(result-as-arg)
 const char * STR_get_const_string_ref_len(void)
 {
     // splicer begin function.get_const_string_ref_len
@@ -601,6 +611,7 @@ void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(result-as-arg)
 const char * STR_get_const_string_ref_as_arg(void)
 {
     // splicer begin function.get_const_string_ref_as_arg
@@ -649,6 +660,7 @@ void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 // ----------------------------------------
 // Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(result-as-arg)
 const char * STR_get_const_string_ref_len_empty(void)
 {
     // splicer begin function.get_const_string_ref_len_empty
@@ -691,6 +703,7 @@ void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
 // Exact:     c_string_&_result
+//    metaattrs:  +deref(allocatable)
 const char * STR_get_const_string_ref_alloc(void)
 {
     // splicer begin function.get_const_string_ref_alloc
@@ -707,6 +720,7 @@ const char * STR_get_const_string_ref_alloc(void)
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +deref(allocatable)+intent(out)
 // Exact:     c_string_&_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
     // splicer begin function.get_const_string_ref_alloc_CFI
@@ -731,6 +745,7 @@ void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
 // Exact:     c_string_*_result
+//    metaattrs:  +deref(result-as-arg)
 const char * STR_get_const_string_ptr_len(void)
 {
     // splicer begin function.get_const_string_ptr_len
@@ -772,6 +787,7 @@ void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
 // Exact:     c_string_*_result
+//    metaattrs:  +deref(allocatable)
 const char * STR_get_const_string_ptr_alloc(void)
 {
     // splicer begin function.get_const_string_ptr_alloc
@@ -788,6 +804,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(library)
 // Exact:     c_string_*_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
     // splicer begin function.get_const_string_ptr_alloc_CFI
@@ -811,6 +828,7 @@ void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
 // Exact:     c_string_*_result
+//    metaattrs:  +deref(allocatable)
 const char * STR_get_const_string_ptr_owns_alloc(void)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc
@@ -834,6 +852,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+intent(out)+owner(caller)
 // Exact:     c_string_*_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc_CFI
@@ -853,6 +872,7 @@ void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
 // Exact:     c_string_*_result
+//    metaattrs:  +deref(allocatable)
 const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc_pattern
@@ -872,6 +892,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+intent(out)+owner(caller)
 // Exact:     c_string_*_result_cfi_allocatable
+//    metaattrs:  +deref(allocatable)
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     CFI_cdesc_t *SHcfi_SHF_rv)
 {

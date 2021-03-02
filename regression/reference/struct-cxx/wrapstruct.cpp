@@ -216,6 +216,7 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
 // Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
+//    metaattrs:  +deref(pointer)
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in
@@ -243,6 +244,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
+//    metaattrs:  +deref(pointer)
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in
@@ -274,6 +276,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
+//    metaattrs:  +deref(pointer)
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in_buf
@@ -301,6 +304,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Function:  Cstruct_list * get_global_struct_list +deref(pointer)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
+//    metaattrs:  +deref(pointer)
 STR_cstruct_list * STR_get_global_struct_list(void)
 {
     // splicer begin function.get_global_struct_list

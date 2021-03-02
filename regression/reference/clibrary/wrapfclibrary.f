@@ -182,6 +182,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Exact:     c_char_*_result
     ! ----------------------------------------
     ! Argument:  const char * arg1 +intent(in)
@@ -899,6 +900,7 @@ contains
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
     ! char * Function4a +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)

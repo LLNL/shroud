@@ -471,6 +471,16 @@ class WrapperMixin(object):
             output.append(
                 self.comment + " Match:     " + stmt1)
 
+    def document_metaattrs(self, output, ast):
+        """Document metaattrs as a string.
+
+        Skip 'dimension' since it is an AST.
+        """
+        decl = []
+        ast.gen_attrs(ast.metaattrs, decl, dict(dimension=True))
+        if decl:
+            dbg = "".join(decl)
+            output.append(self.comment + "    metaattrs: " + dbg)
 
 class Header(object):
     """Manage header files for a wrapper file.

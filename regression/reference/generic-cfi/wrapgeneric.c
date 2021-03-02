@@ -29,6 +29,7 @@
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)+intent(in)
 // Exact:     c_native_*_in_cfi
+//    metaattrs:  +assumed-rank
 // ----------------------------------------
 // Argument:  int nvalues +intent(in)+value
 // Requested: c_native_scalar_in

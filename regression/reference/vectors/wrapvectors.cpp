@@ -166,6 +166,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
+//    metaattrs:  +deref(allocatable)
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -196,6 +197,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
+//    metaattrs:  +deref(allocatable)
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
@@ -317,6 +319,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf
+//    metaattrs:  +deref(allocatable)
 void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
 {
     // splicer begin function.return_vector_alloc_bufferify

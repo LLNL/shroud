@@ -70,6 +70,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Function:  double & at +deref(pointer)
 // Requested: c_native_&_result
 // Match:     c_default
+//    metaattrs:  +deref(pointer)
 // ----------------------------------------
 // Argument:  size_type n +intent(in)+value
 // Requested: c_native_scalar_in

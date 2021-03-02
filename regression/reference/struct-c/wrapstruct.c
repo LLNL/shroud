@@ -59,6 +59,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
+//    metaattrs:  +deref(pointer)
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in_buf

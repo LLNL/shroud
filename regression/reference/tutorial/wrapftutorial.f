@@ -114,6 +114,7 @@ module tutorial_mod
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     c_string_*_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
                 Larg2, DSHF_rv) &
@@ -630,6 +631,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
@@ -719,6 +721,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings +deref(allocatable)
     ! const std::string ConcatenateStrings +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void ConcatenateStrings
     ! Exact:     c_string_scalar_result_buf
@@ -737,6 +740,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_*_result_buf_allocatable
+    !    metaattrs:  +deref(allocatable)
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -1243,6 +1247,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+    !    metaattrs:  +deref(result-as-arg)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)

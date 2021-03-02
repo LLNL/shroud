@@ -458,6 +458,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
         ! ----------------------------------------
@@ -480,6 +481,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
         ! ----------------------------------------
@@ -507,6 +509,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_struct_*_result_buf
         ! Match:     c_struct_result
         ! ----------------------------------------
@@ -534,6 +537,7 @@ module struct_mod
 
         ! ----------------------------------------
         ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+        !    metaattrs:  +deref(pointer)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
         function c_get_global_struct_list() &
@@ -907,6 +911,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
     ! Cstruct1 * returnStructPtr1 +deref(pointer)
+    !    metaattrs:  +deref(pointer)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result
@@ -945,6 +950,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
     ! Cstruct1 * returnStructPtr2 +deref(pointer)
+    !    metaattrs:  +deref(pointer)
     ! Requested: f_struct_*_result_buf_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result_buf
@@ -990,6 +996,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
     ! Cstruct_list * get_global_struct_list +deref(pointer)
+    !    metaattrs:  +deref(pointer)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result

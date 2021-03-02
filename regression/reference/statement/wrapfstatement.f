@@ -36,6 +36,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
+        !    metaattrs:  +deref(result-as-arg)
         ! Exact:     c_string_&_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
@@ -70,6 +71,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
     ! const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
+    !    metaattrs:  +deref(result-as-arg)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())

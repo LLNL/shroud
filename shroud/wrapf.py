@@ -1119,6 +1119,7 @@ rv = .false.
                 "! ----------------------------------------")
             c_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + c_decl)
+            self.document_metaattrs(stmts_comments, ast)
             self.document_stmts(
                 stmts_comments, statements.compute_name(c_stmts),
                 c_result_blk.name)
@@ -1177,6 +1178,7 @@ rv = .false.
                 self.document_stmts(
                     stmts_comments, statements.compute_name(c_stmts),
                     c_intent_blk.name)
+                self.document_metaattrs(stmts_comments, arg)
             self.build_arg_list_interface(
                 node, fileinfo,
                 fmt_arg,
@@ -1616,6 +1618,7 @@ rv = .false.
             f_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + f_decl)
             stmts_comments.append("! " + f_decl)
+            self.document_metaattrs(stmts_comments, ast)
             self.document_stmts(
                 stmts_comments, fmt_result.stmt0, fmt_result.stmt1)
             c_decl = C_node.ast.gen_decl(params=None)
@@ -1824,6 +1827,7 @@ rv = .false.
                 stmts_comments.append("! Argument:  " + f_decl)
                 self.document_stmts(
                     stmts_comments, fmt_arg.stmt0, fmt_arg.stmt1)
+                self.document_metaattrs(stmts_comments, f_arg)
                 c_decl = c_arg.gen_decl()
                 if f_decl != c_decl:
                     stmts_comments.append("! Argument:  " + c_decl)
