@@ -28,6 +28,10 @@ class VerifyAttrs(object):
     """
     Check attributes and set some defaults.
     Generate types for classes.
+
+    check order:
+      indent - check_intent_attr
+      deref - check_deref_attr
     """
 
     def __init__(self, newlibrary, config):
@@ -144,6 +148,46 @@ class VerifyAttrs(object):
 
         self.parse_attrs(node, ast)
 
+    def check_intent_attr(self, node, arg):
+        """Set default intent meta-attribute.
+
+        Intent is only valid on arguments.
+        intent: lower case, no parens, must be in, out, or inout
+        """
+        attrs = arg.attrs
+        meta = arg.metaattrs
+        is_ptr = arg.is_indirect()
+        intent = arg.attrs["intent"]
+        if intent is None:
+            if node is None:
+                # do not default intent for function pointers
+                pass
+            elif arg.is_function_pointer():
+                intent = "in"
+            elif not is_ptr:
+                intent = "in"
+            elif arg.const:
+                intent = "in"
+            elif arg.typemap.sgroup == "void":
+                # void *
+                intent = "in"  # XXX must coordinate with VALUE
+            else:
+                intent = "inout"
+            # XXX - Do hidden arguments need intent?
+        else:
+            intent = intent.lower()
+            if intent in ["in", "out", "inout"]:
+                attrs["intent"] = intent
+                meta["intent"] = intent
+            else:
+                raise RuntimeError("Bad value for intent: " + attrs["intent"])
+            if not is_ptr and intent != "in":
+                # Nonpointers can only be intent(in).
+                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
+        attrs["intent"] = intent
+        meta["intent"] = intent
+        return intent    
+        
     def check_deref_attr(self, ast):
         """Check deref attr and set default.
 
@@ -173,7 +217,7 @@ class VerifyAttrs(object):
             return
 
         # Set deref attribute for arguments which return values.
-        intent = attrs["intent"]
+        intent = meta["intent"]
         spointer = ast.get_indirect_stmt()
         if ntypemap.name == "void":
             # void cannot be dereferenced.
@@ -267,7 +311,6 @@ class VerifyAttrs(object):
 
     def check_arg_attrs(self, node, arg, options=None):
         """Regularize attributes.
-        intent: lower case, no parens, must be in, out, or inout
         value: if pointer, default to None (pass-by-reference)
                else True (pass-by-value).
 
@@ -328,40 +371,10 @@ class VerifyAttrs(object):
                 )
             )
 
+        intent = self.check_intent_attr(node, arg)
         self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
-
-        # intent
-        intent = attrs["intent"]
-        if intent is None:
-            if node is None:
-                # do not default intent for function pointers
-                pass
-            elif arg.is_function_pointer():
-                intent = "in"
-            elif not is_ptr:
-                intent = "in"
-            elif arg.const:
-                intent = "in"
-            elif arg_typemap.sgroup == "void":
-                # void *
-                intent = "in"  # XXX must coordinate with VALUE
-            else:
-                intent = "inout"
-            attrs["intent"] = intent
-            meta["intent"] = intent
-            # XXX - Do hidden arguments need intent?
-        else:
-            intent = intent.lower()
-            if intent in ["in", "out", "inout"]:
-                attrs["intent"] = intent
-                meta["intent"] = intent
-            else:
-                raise RuntimeError("Bad value for intent: " + attrs["intent"])
-            if not is_ptr and intent != "in":
-                # Nonpointers can only be intent(in).
-                raise RuntimeError("{}: Only pointer arguments may have intent attribute".format(node.linenumber))
 
         # assumedtype
         assumedtype = attrs["assumedtype"]
@@ -1163,7 +1176,7 @@ class GenFunctions(object):
             for arg in generic.decls:
                 # double **arg +intent(out)+rank(1)
                 if (arg.typemap.sgroup == "native" and
-                    arg.attrs["intent"] == "out" and
+                    arg.metaattrs["intent"] == "out" and
                     arg.get_indirect_stmt() in  ["**", "*&"]):
                     context_args[arg.name] = True
 
@@ -1565,7 +1578,7 @@ class GenFunctions(object):
             elif arg_typemap.sgroup == "vector":
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
-                  arg.attrs["intent"] == "out" and
+                  arg.metaattrs["intent"] == "out" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 # double **values +intent(out) +dimension(nvalues)
@@ -1625,6 +1638,7 @@ class GenFunctions(object):
 
         for arg in C_new.ast.params:
             attrs = arg.attrs
+            meta = arg.metaattrs
             if arg.ftrim_char_in:
                 continue
             arg_typemap = arg.typemap
@@ -1639,7 +1653,7 @@ class GenFunctions(object):
                 node.wrap.lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
-                  arg.attrs["intent"] == "out" and
+                  meta["intent"] == "out" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
 #                 arg.attrs["dimension"]:
                 attrs["context"] = True
@@ -1650,7 +1664,7 @@ class GenFunctions(object):
             arg.stmts_suffix = generated_suffix
             
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, attrs["intent"], generated_suffix, specialize]
+            c_stmts = ["c", sgroup, spointer, meta["intent"], generated_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 
