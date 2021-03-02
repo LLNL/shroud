@@ -31,6 +31,7 @@ extern "C" {
 // ----------------------------------------
 // Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
 // Exact:     c_native_*_in_cdesc
+//    metaattrs:  +intent(in)
 void CDE_rank2_in(CDE_SHROUD_array *Darg)
 {
     // splicer begin function.rank2_in
@@ -55,10 +56,12 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Exact:     c_string_&_in
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Requested: c_void_*_out_cdesc
 // Match:     c_void_*_cdesc
+//    metaattrs:  +intent(out)
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 {
     // splicer begin function.get_scalar1
@@ -82,10 +85,12 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Requested: c_void_*_out_buf_cdesc
 // Match:     c_void_*_cdesc
+//    metaattrs:  +intent(out)
 void CDE_get_scalar1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {

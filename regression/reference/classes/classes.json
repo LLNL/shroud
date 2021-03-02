@@ -363,6 +363,9 @@
                                         "name": "flag",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -705,6 +708,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "Class1"
                                     ],
@@ -941,6 +947,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -954,6 +963,9 @@
                                     "declarator": {
                                         "name": "flag",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "bool"
@@ -1119,6 +1131,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "std::string"
                                     ],
@@ -1133,6 +1148,9 @@
                                     "declarator": {
                                         "name": "flag",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "bool"
@@ -1488,7 +1506,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable"
+                                        "deref": "allocatable",
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "std::string"
@@ -1674,6 +1693,9 @@
                                     "declarator": {
                                         "name": "arg",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "DIRECTION"
@@ -2308,7 +2330,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "allocatable"
+                                        "deref": "allocatable",
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "std::string"
@@ -3087,6 +3110,9 @@
                                 "name": "arg",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "Class1::DIRECTION"
                             ],
@@ -3205,6 +3231,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Class1"
@@ -3377,6 +3406,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Class1"
@@ -3847,6 +3879,9 @@
                                 "name": "flag",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3983,6 +4018,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -4327,6 +4365,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"

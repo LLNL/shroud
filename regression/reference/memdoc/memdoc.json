@@ -173,7 +173,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"

@@ -87,6 +87,7 @@ static void ShroudStrFree(char *src)
 // Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
 // Requested: c_char_*_inout
 // Match:     c_default
+//    metaattrs:  +intent(inout)
 void TES_get_name(char * name)
 {
     // splicer begin function.get_name
@@ -101,6 +102,7 @@ void TES_get_name(char * name)
 // ----------------------------------------
 // Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
 // Exact:     c_char_*_inout_buf
+//    metaattrs:  +intent(inout)
 void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 {
     // splicer begin function.get_name_bufferify
@@ -141,6 +143,7 @@ void c_name_special(void)
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void YYY_TES_function3a_0(int i)
 {
     // splicer begin function.function3a_0
@@ -156,6 +159,7 @@ void YYY_TES_function3a_0(int i)
 // Argument:  long i +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void YYY_TES_function3a_1(long i)
 {
     // splicer begin function.function3a_1
@@ -170,6 +174,7 @@ void YYY_TES_function3a_1(long i)
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)
 // Exact:     c_string_&_in
+//    metaattrs:  +intent(in)
 int YYY_TES_function4(const char * rv)
 {
     // splicer begin function.function4
@@ -186,6 +191,7 @@ int YYY_TES_function4(const char * rv)
 // ----------------------------------------
 // Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 {
     // splicer begin function.function4_bufferify
@@ -216,10 +222,12 @@ void YYY_TES_fiveplus(void)
 // ----------------------------------------
 // Argument:  std::string & name +intent(inout)
 // Exact:     c_string_&_inout
+//    metaattrs:  +intent(inout)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 void TES_test_multiline_splicer(char * name, int * value)
 {
     // splicer begin function.test_multiline_splicer
@@ -238,10 +246,12 @@ void TES_test_multiline_splicer(char * name, int * value)
 // ----------------------------------------
 // Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
 // Exact:     c_string_&_inout_buf
+//    metaattrs:  +intent(inout)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     int Nname, int * value)
 {
@@ -263,10 +273,12 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
 // Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  long arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void c_name_instantiation1(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
@@ -286,10 +298,12 @@ void c_name_instantiation1(int arg1, long arg2)
 // Argument:  float arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TES_function_tu_instantiation2(float arg1, double arg2)
 {
     // splicer begin function.function_tu_instantiation2
@@ -321,6 +335,7 @@ int TES_use_impl_worker_instantiation3(void)
 // Argument:  const Cstruct_as_class * point +intent(in)+pass
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
+//    metaattrs:  +intent(in)
 int TES_cstruct_as_class_sum(TES_Cstruct_as_class * point)
 {
     // splicer begin function.cstruct_as_class_sum

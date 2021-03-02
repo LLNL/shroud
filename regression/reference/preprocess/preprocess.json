@@ -252,6 +252,9 @@
                                         "pointer": []
                                     },
                                     "init": 0,
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -461,6 +464,9 @@
                                     "declarator": {
                                         "name": "flag",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "int"

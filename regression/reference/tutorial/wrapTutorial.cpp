@@ -83,10 +83,12 @@ void TUT_no_return_no_arguments(void)
 // Argument:  double arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 double TUT_pass_by_value(double arg1, int arg2)
 {
     // splicer begin function.pass_by_value
@@ -106,13 +108,15 @@ double TUT_pass_by_value(double arg1, int arg2)
 // ----------------------------------------
 // Argument:  const std::string & arg1 +intent(in)+len_trim(Larg1)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  const std::string & arg2 +intent(in)+len_trim(Larg2)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_scalar_result_buf_allocatable
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(out)
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
 {
@@ -147,6 +151,7 @@ double TUT_use_default_arguments(void)
 // Argument:  double arg1=3.1415 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start TUT_use_default_arguments_arg1
 double TUT_use_default_arguments_arg1(double arg1)
 {
@@ -165,10 +170,12 @@ double TUT_use_default_arguments_arg1(double arg1)
 // Argument:  double arg1=3.1415 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  bool arg2=true +intent(in)+value
 // Requested: c_bool_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start TUT_use_default_arguments_arg1_arg2
 double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 {
@@ -186,6 +193,7 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
 // Exact:     c_string_&_in
+//    metaattrs:  +intent(in)
 void TUT_overloaded_function_from_name(const char * name)
 {
     // splicer begin function.overloaded_function_from_name
@@ -201,6 +209,7 @@ void TUT_overloaded_function_from_name(const char * name)
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 void TUT_overloaded_function_from_name_bufferify(const char * name,
     int Lname)
 {
@@ -218,6 +227,7 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
 // Argument:  int indx +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TUT_overloaded_function_from_index(int indx)
 {
     // splicer begin function.overloaded_function_from_index
@@ -233,6 +243,7 @@ void TUT_overloaded_function_from_index(int indx)
 // Argument:  int arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TUT_template_argument_int(int arg)
 {
     // splicer begin function.template_argument_int
@@ -248,6 +259,7 @@ void TUT_template_argument_int(int arg)
 // Argument:  double arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TUT_template_argument_double(double arg)
 {
     // splicer begin function.template_argument_double
@@ -297,10 +309,12 @@ void TUT_fortran_generic_overloaded_0(void)
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)
 // Exact:     c_string_&_in
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 {
     // splicer begin function.fortran_generic_overloaded_1
@@ -316,10 +330,12 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // ----------------------------------------
 // Argument:  const std::string & name +intent(in)+len_trim(Lname)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     int Lname, double arg2)
 {
@@ -337,6 +353,7 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_num(int num)
 {
     // splicer begin function.use_default_overload_num
@@ -353,10 +370,12 @@ int TUT_use_default_overload_num(int num)
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int offset=0 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_num_offset(int num, int offset)
 {
     // splicer begin function.use_default_overload_num_offset
@@ -373,14 +392,17 @@ int TUT_use_default_overload_num_offset(int num, int offset)
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int offset=0 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int stride=1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_num_offset_stride(int num, int offset,
     int stride)
 {
@@ -398,10 +420,12 @@ int TUT_use_default_overload_num_offset_stride(int num, int offset,
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_3(double type, int num)
 {
     // splicer begin function.use_default_overload_3
@@ -418,14 +442,17 @@ int TUT_use_default_overload_3(double type, int num)
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int offset=0 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_4(double type, int num, int offset)
 {
     // splicer begin function.use_default_overload_4
@@ -442,18 +469,22 @@ int TUT_use_default_overload_4(double type, int num, int offset)
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int offset=0 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int stride=1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_use_default_overload_5(double type, int num, int offset,
     int stride)
 {
@@ -472,6 +503,7 @@ int TUT_use_default_overload_5(double type, int num, int offset,
 // Argument:  TypeID arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_typefunc(int arg)
 {
     // splicer begin function.typefunc
@@ -488,6 +520,7 @@ int TUT_typefunc(int arg)
 // Argument:  EnumTypeID arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_enumfunc(int arg)
 {
     // splicer begin function.enumfunc
@@ -507,6 +540,7 @@ int TUT_enumfunc(int arg)
 // Argument:  Color arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int TUT_colorfunc(int arg)
 {
     // splicer begin function.colorfunc
@@ -529,10 +563,12 @@ int TUT_colorfunc(int arg)
 // Argument:  int & min +intent(out)
 // Requested: c_native_&_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int & max +intent(out)
 // Requested: c_native_&_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 // start TUT_get_min_max
 void TUT_get_min_max(int * min, int * max)
 {
@@ -554,10 +590,12 @@ void TUT_get_min_max(int * min, int * max)
 // Argument:  int in +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int ( * incr)(int +value) +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start TUT_callback1
 int TUT_callback1(int in, int ( * incr)(int))
 {
@@ -588,6 +626,7 @@ const char * TUT_last_function_called(void)
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
 // Exact:     c_string_&_result_buf
+//    metaattrs:  +intent(out)
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

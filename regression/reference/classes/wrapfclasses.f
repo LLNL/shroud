@@ -166,6 +166,7 @@ module classes_mod
     ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_class1_ctor_flag
     interface
         function c_class1_ctor_flag(flag, SHT_crv) &
@@ -222,6 +223,7 @@ module classes_mod
     ! Argument:  const Class1 & obj2 +intent(in)
     ! Requested: c_shadow_&_in
     ! Match:     c_shadow_in
+    !    metaattrs:  +intent(in)
     ! start c_class1_equivalent
     interface
         pure function c_class1_equivalent(self, obj2) &
@@ -259,10 +261,12 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Exact:     c_string_&_in
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_class1_return_this_buffer
     interface
         function c_class1_return_this_buffer(self, name, flag, SHT_crv) &
@@ -287,10 +291,12 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Exact:     c_string_&_in_buf
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: c_bool_scalar_in_buf
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_class1_return_this_buffer_bufferify
     interface
         function c_class1_return_this_buffer_bufferify(self, name, &
@@ -354,7 +360,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! start c_class1_get_name_bufferify
     interface
         subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
@@ -375,6 +381,7 @@ module classes_mod
     ! Argument:  DIRECTION arg +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_class1_direction_func
     interface
         function c_class1_direction_func(self, arg) &
@@ -473,7 +480,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     interface
         subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
@@ -566,6 +573,7 @@ module classes_mod
     ! Argument:  Class1::DIRECTION arg +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     interface
         function direction_func(arg) &
                 result(SHT_rv) &
@@ -584,6 +592,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  Class1 arg +intent(in)+value
     ! Exact:     c_shadow_scalar_in
+    !    metaattrs:  +intent(in)
     interface
         subroutine c_pass_class_by_value(arg) &
                 bind(C, name="CLA_pass_class_by_value")
@@ -601,6 +610,7 @@ module classes_mod
     ! Argument:  const Class1 * arg +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
+    !    metaattrs:  +intent(in)
     interface
         function c_useclass(arg) &
                 result(SHT_rv) &
@@ -684,6 +694,7 @@ module classes_mod
     ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     interface
         function c_get_class_copy(flag, SHT_crv) &
                 result(SHT_rv) &
@@ -705,6 +716,7 @@ module classes_mod
     ! Argument:  int arg +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     interface
         subroutine set_global_flag(arg) &
                 bind(C, name="CLA_set_global_flag")
@@ -749,6 +761,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Exact:     c_string_&_result_buf
+    !    metaattrs:  +intent(out)
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="CLA_last_function_called_bufferify")
@@ -820,6 +833,7 @@ contains
     ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start class1_ctor_flag
@@ -884,6 +898,7 @@ contains
     ! Argument:  const Class1 & obj2 +intent(in)
     ! Requested: f_shadow_&_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_shadow_&_in
     ! Match:     c_shadow_in
     !>
@@ -936,12 +951,14 @@ contains
     ! Argument:  std::string & name +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  bool flag +intent(in)+value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
+    !    metaattrs:  +intent(in)
     ! Requested: c_bool_scalar_in_buf
     ! Match:     c_default
     !>
@@ -1001,7 +1018,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1032,6 +1049,7 @@ contains
     ! Argument:  DIRECTION arg +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start class1_direction_func
@@ -1146,7 +1164,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
     ! Exact:     f_string_&_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1320,6 +1338,7 @@ contains
     ! Argument:  Class1 arg +intent(in)+value
     ! Requested: f_shadow_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Exact:     c_shadow_scalar_in
     !>
     !! \brief Pass arguments to a function.
@@ -1343,6 +1362,7 @@ contains
     ! Argument:  const Class1 * arg +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function useclass(arg) &
@@ -1433,6 +1453,7 @@ contains
     ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -1463,6 +1484,7 @@ contains
     ! Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Exact:     c_string_&_result_buf
     function last_function_called() &
             result(SHT_rv)

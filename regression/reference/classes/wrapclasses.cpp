@@ -49,6 +49,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Argument:  Class1::DIRECTION arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int CLA_direction_func(int arg)
 {
     // splicer begin function.direction_func
@@ -72,6 +73,7 @@ int CLA_direction_func(int arg)
 // ----------------------------------------
 // Argument:  Class1 arg +intent(in)+value
 // Exact:     c_shadow_scalar_in
+//    metaattrs:  +intent(in)
 void CLA_pass_class_by_value(CLA_Class1 arg)
 {
     // splicer begin function.pass_class_by_value
@@ -89,6 +91,7 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
 // Argument:  const Class1 * arg +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
+//    metaattrs:  +intent(in)
 int CLA_useclass(CLA_Class1 * arg)
 {
     // splicer begin function.useclass
@@ -167,6 +170,7 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_copy
@@ -186,6 +190,7 @@ CLA_Class1 * CLA_get_class_copy(int flag, CLA_Class1 * SHadow_rv)
 // Argument:  int arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void CLA_set_global_flag(int arg)
 {
     // splicer begin function.set_global_flag
@@ -225,6 +230,7 @@ const char * CLA_last_function_called(void)
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +intent(out)+len(NSHF_rv)
 // Exact:     c_string_&_result_buf
+//    metaattrs:  +intent(out)
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

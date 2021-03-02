@@ -58,6 +58,7 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
+//    metaattrs:  +intent(in)
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
@@ -77,6 +78,7 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 // Argument:  Class3 * arg +intent(in)
 // Requested: c_shadow_*_in
 // Match:     c_shadow_in
+//    metaattrs:  +intent(in)
 void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>

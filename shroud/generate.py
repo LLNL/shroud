@@ -348,11 +348,13 @@ class VerifyAttrs(object):
             else:
                 intent = "inout"
             attrs["intent"] = intent
+            meta["intent"] = intent
             # XXX - Do hidden arguments need intent?
         else:
             intent = intent.lower()
             if intent in ["in", "out", "inout"]:
                 attrs["intent"] = intent
+                meta["intent"] = intent
             else:
                 raise RuntimeError("Bad value for intent: " + attrs["intent"])
             if not is_ptr and intent != "in":
@@ -753,6 +755,7 @@ class GenFunctions(object):
         for var in cls.variables:
             a = copy.deepcopy(var.ast)
             a.attrs["intent"] = "in"
+            a.metaattrs["intent"] = "in"
             a.metaattrs["struct_member"] = var
             ast.params.append(a)
         # Python only
@@ -1469,7 +1472,6 @@ class GenFunctions(object):
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-            attrs["intent"] = "out"
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"
@@ -1683,7 +1685,6 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-            attrs["intent"] = "out"
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"
@@ -1698,7 +1699,6 @@ class GenFunctions(object):
                 c_var=result_name
             )
             self.move_arg_attributes(result_as_vector, node, C_new)
-            attrs["intent"] = "out"
             attrs["_is_result"] = True
             # convert to subroutine
             C_new._subprogram = "subroutine"

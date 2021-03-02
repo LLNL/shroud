@@ -53,6 +53,7 @@ module statement_mod
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
         ! Exact:     c_string_&_result_buf
+        !    metaattrs:  +intent(out)
         subroutine c_get_name_error_pattern_bufferify(SHF_rv, NSHF_rv) &
                 bind(C, name="STMT_get_name_error_pattern_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -80,6 +81,7 @@ contains
     ! Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Exact:     c_string_&_result_buf
     function get_name_error_pattern() &
             result(SHT_rv)

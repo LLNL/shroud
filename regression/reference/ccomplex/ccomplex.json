@@ -67,6 +67,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "float",
                                 "complex"
@@ -188,6 +191,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -308,6 +314,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -420,6 +429,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -437,6 +449,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -596,6 +611,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "double",
                                 "complex"
@@ -613,6 +631,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"

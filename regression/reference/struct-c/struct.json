@@ -1812,6 +1812,9 @@
                                 "name": "arg",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -1937,6 +1940,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct1"
@@ -2076,6 +2082,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -2093,6 +2102,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -2246,6 +2258,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -2265,6 +2280,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -2385,6 +2403,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct1"
@@ -2546,6 +2567,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "Cstruct1"
                             ],
@@ -2560,6 +2584,9 @@
                                 "name": "i",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2573,6 +2600,9 @@
                             "declarator": {
                                 "name": "d",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -2670,6 +2700,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "Cstruct1"
@@ -2824,6 +2857,9 @@
                                 "name": "i",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2837,6 +2873,9 @@
                             "declarator": {
                                 "name": "d",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -3001,6 +3040,9 @@
                                 "name": "i",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3014,6 +3056,9 @@
                             "declarator": {
                                 "name": "d",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -3182,6 +3227,9 @@
                                 "name": "i",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3195,6 +3243,9 @@
                             "declarator": {
                                 "name": "d",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -3213,6 +3264,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -3407,6 +3461,9 @@
                                 "name": "i",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3421,6 +3478,9 @@
                             "declarator": {
                                 "name": "d",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -3441,6 +3501,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -3750,6 +3813,9 @@
                                 "name": "x",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3763,6 +3829,9 @@
                             "declarator": {
                                 "name": "y",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3891,6 +3960,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "Cstruct_as_class"
@@ -4084,6 +4156,9 @@
                                 "name": "x",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4098,6 +4173,9 @@
                                 "name": "y",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4111,6 +4189,9 @@
                             "declarator": {
                                 "name": "z",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"

@@ -194,7 +194,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -469,6 +470,7 @@
                                                 "pointer": []
                                             },
                                             "metaattrs": {
+                                                "intent": "in",
                                                 "struct_member": "ifield"
                                             },
                                             "specifier": [
@@ -485,6 +487,7 @@
                                                 "pointer": []
                                             },
                                             "metaattrs": {
+                                                "intent": "in",
                                                 "struct_member": "dfield"
                                             },
                                             "specifier": [

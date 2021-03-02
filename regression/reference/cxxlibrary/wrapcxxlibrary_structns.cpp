@@ -30,6 +30,7 @@ extern "C" {
 // Argument:  Cstruct1 & arg +intent(inout)
 // Requested: c_struct_&_inout
 // Match:     c_struct
+//    metaattrs:  +intent(inout)
 int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference
@@ -51,6 +52,7 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 // Argument:  const Cstruct1 & arg +intent(in)
 // Requested: c_struct_&_in
 // Match:     c_struct
+//    metaattrs:  +intent(in)
 int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_in
@@ -70,6 +72,7 @@ int CXX_structns_pass_struct_by_reference_in(const CXX_cstruct1 * arg)
 // Argument:  Cstruct1 & arg +intent(inout)
 // Requested: c_struct_&_inout
 // Match:     c_struct
+//    metaattrs:  +intent(inout)
 void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_inout
@@ -87,6 +90,7 @@ void CXX_structns_pass_struct_by_reference_inout(CXX_cstruct1 * arg)
 // Argument:  Cstruct1 & arg +intent(out)
 // Requested: c_struct_&_out
 // Match:     c_struct
+//    metaattrs:  +intent(out)
 void CXX_structns_pass_struct_by_reference_out(CXX_cstruct1 * arg)
 {
     // splicer begin namespace.structns.function.pass_struct_by_reference_out

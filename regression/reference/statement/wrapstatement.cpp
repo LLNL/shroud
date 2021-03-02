@@ -81,6 +81,7 @@ const char * STMT_get_name_error_pattern(void)
 // ----------------------------------------
 // Argument:  string & SHF_rv +intent(out)+len(NSHF_rv)
 // Exact:     c_string_&_result_buf
+//    metaattrs:  +intent(out)
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {
     // splicer begin function.get_name_error_pattern_bufferify

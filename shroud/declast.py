@@ -1222,7 +1222,10 @@ class Declaration(Node):
             # make sure the return type is a pointer
             new.declarator.pointer = [Ptr("*")]
         # new.array = None
-        new.attrs = copy.deepcopy(self.attrs)
+        new.attrs = copy.deepcopy(self.attrs) # XXX no need for deepcopy in future
+        new.attrs["intent"] = "out"
+        new.metaattrs = copy.deepcopy(self.metaattrs)
+        new.metaattrs["intent"] = "out"
         new.typemap = self.typemap
         new.template_arguments = self.template_arguments
         return new

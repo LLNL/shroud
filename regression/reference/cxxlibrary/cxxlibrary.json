@@ -118,6 +118,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "ifield"
                                     },
                                     "specifier": [
@@ -134,6 +135,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "dfield"
                                     },
                                     "specifier": [
@@ -315,6 +317,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "Cstruct1_cls"
                             ],
@@ -406,6 +411,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "Cstruct1_cls"
                             ],
@@ -480,6 +488,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "Cstruct1_cls"
                             ],
@@ -549,6 +560,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "Cstruct1_cls"
@@ -782,6 +796,9 @@
                                 ]
                             },
                             "init": "nullptr",
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "double"
                             ],
@@ -946,6 +963,9 @@
                                 "name": "in1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -963,6 +983,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -979,6 +1002,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1261,6 +1287,9 @@
                                 "name": "in1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1277,6 +1306,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1295,6 +1327,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1310,6 +1345,9 @@
                                 "pointer": []
                             },
                             "init": "false",
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "bool"
                             ],
@@ -1594,6 +1632,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
                                     "specifier": [
                                         "Cstruct1"
                                     ],
@@ -1765,6 +1806,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "Cstruct1"
                                     ],
@@ -1889,6 +1933,9 @@
                                             }
                                         ]
                                     },
+                                    "metaattrs": {
+                                        "intent": "inout"
+                                    },
                                     "specifier": [
                                         "Cstruct1"
                                     ],
@@ -2008,6 +2055,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "Cstruct1"

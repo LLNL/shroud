@@ -29,11 +29,12 @@
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)+intent(in)
 // Exact:     c_native_*_in_cfi
-//    metaattrs:  +assumed-rank
+//    metaattrs:  +assumed-rank+intent(in)
 // ----------------------------------------
 // Argument:  int nvalues +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
 {
     // splicer begin function.sum_values_CFI
@@ -51,14 +52,17 @@ int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
 // Argument:  void * addr +intent(in)+value
 // Requested: c_void_*_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int type +implied(type(addr))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  size_t size +implied(size(addr))+intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void GEN_save_pointer2(void * addr, int type, size_t size)
 {
     // splicer begin function.save_pointer2

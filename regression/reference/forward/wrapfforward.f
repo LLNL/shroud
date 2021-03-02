@@ -101,6 +101,7 @@ module forward_mod
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
+        !    metaattrs:  +intent(in)
         subroutine c_class2_func1(self, arg) &
                 bind(C, name="FOR_Class2_func1")
             use tutorial_mod, only : SHROUD_class1_capsule
@@ -118,6 +119,7 @@ module forward_mod
         ! Argument:  Class3 * arg +intent(in)
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
+        !    metaattrs:  +intent(in)
         subroutine c_class2_accept_class3(self, arg) &
                 bind(C, name="FOR_Class2_accept_class3")
             import :: FOR_SHROUD_capsule_data
@@ -137,6 +139,7 @@ module forward_mod
         ! Argument:  const Cstruct1 * arg +intent(in)
         ! Requested: c_struct_*_in
         ! Match:     c_struct
+        !    metaattrs:  +intent(in)
         function c_pass_struct1(arg) &
                 result(SHT_rv) &
                 bind(C, name="FOR_pass_struct1")
@@ -222,6 +225,7 @@ contains
     ! Argument:  tutorial::Class1 * arg +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_func1(obj, arg)
@@ -244,6 +248,7 @@ contains
     ! Argument:  Class3 * arg +intent(in)
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     subroutine class2_accept_class3(obj, arg)
@@ -291,6 +296,7 @@ contains
     ! Argument:  const Cstruct1 * arg +intent(in)
     ! Requested: f_struct_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_struct_*_in
     ! Match:     c_struct
     function pass_struct1(arg) &

@@ -77,6 +77,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -185,6 +188,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -205,6 +211,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "void"
@@ -250,6 +259,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -269,6 +281,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "int"
@@ -293,6 +308,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -312,6 +330,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "double"
@@ -375,6 +396,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -394,6 +418,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -479,6 +506,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -498,6 +528,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "double"
@@ -658,6 +691,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -679,6 +715,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "void"
@@ -726,6 +765,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -745,6 +787,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "int"
@@ -769,6 +814,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -788,6 +836,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "double"
@@ -1158,6 +1209,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -1175,6 +1229,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "void"
@@ -1211,6 +1268,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -1227,6 +1287,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "int"
@@ -1254,6 +1317,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "std::string"
                                 ],
@@ -1270,6 +1336,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "double"
@@ -1322,6 +1391,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -1338,6 +1410,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1412,6 +1487,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -1428,6 +1506,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "double"

@@ -129,6 +129,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "short"
                             ],
@@ -288,6 +291,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -446,6 +452,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "long"
@@ -608,6 +617,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "long",
                                 "long"
@@ -769,6 +781,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "short",
                                 "int"
@@ -929,6 +944,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "long",
@@ -1093,6 +1111,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "long",
                                 "long",
@@ -1256,6 +1277,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "unsigned"
                             ],
@@ -1414,6 +1438,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "unsigned",
@@ -1576,6 +1603,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "unsigned",
                                 "int"
@@ -1736,6 +1766,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "unsigned",
@@ -1900,6 +1933,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "unsigned",
                                 "long",
@@ -2062,6 +2098,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "unsigned",
@@ -2226,6 +2265,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int8_t"
                             ],
@@ -2384,6 +2426,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int16_t"
@@ -2544,6 +2589,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int32_t"
                             ],
@@ -2702,6 +2750,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int64_t"
@@ -2862,6 +2913,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "uint8_t"
                             ],
@@ -3020,6 +3074,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "uint16_t"
@@ -3180,6 +3237,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "uint32_t"
                             ],
@@ -3339,6 +3399,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "uint64_t"
                             ],
@@ -3497,6 +3560,9 @@
                             "declarator": {
                                 "name": "arg1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3659,6 +3725,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "bool"
@@ -3823,6 +3892,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"

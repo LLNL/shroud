@@ -193,6 +193,9 @@
                                         "name": "size",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -410,6 +413,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "int"
@@ -1459,7 +1465,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -1478,6 +1485,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -1638,7 +1648,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -1658,6 +1669,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -1820,7 +1834,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -1839,6 +1854,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -1999,7 +2017,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -2019,6 +2038,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -2182,7 +2204,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -2201,6 +2224,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -2362,7 +2388,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -2382,6 +2409,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -2545,7 +2575,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -2564,6 +2595,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -2725,7 +2759,8 @@
                                             {
                                                 "name": "isize"
                                             }
-                                        ]
+                                        ],
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "double"
@@ -2745,6 +2780,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "int"
@@ -2860,6 +2898,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "void"
@@ -2984,6 +3025,9 @@
                                                 "ptr": "&"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "out"
                                     },
                                     "specifier": [
                                         "void"
@@ -3154,6 +3198,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "void"

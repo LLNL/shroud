@@ -65,6 +65,9 @@
                                 "name": "arg",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "float"
                             ],
@@ -158,6 +161,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -323,6 +329,9 @@
                                 "name": "arg",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "double"
                             ],
@@ -364,6 +373,9 @@
                                     "name": "arg",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "float"
                                 ],
@@ -383,6 +395,9 @@
                                 "declarator": {
                                     "name": "arg",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "double"
@@ -418,6 +433,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -475,6 +493,9 @@
                             "declarator": {
                                 "name": "arg",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "double"
@@ -618,6 +639,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "long"
                             ],
@@ -631,6 +655,9 @@
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "long"
@@ -675,6 +702,9 @@
                                     "name": "arg1",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -688,6 +718,9 @@
                                 "declarator": {
                                     "name": "arg2",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -709,6 +742,9 @@
                                     "name": "arg1",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "long"
                                 ],
@@ -722,6 +758,9 @@
                                 "declarator": {
                                     "name": "arg2",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "long"
@@ -769,6 +808,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -782,6 +824,9 @@
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -849,6 +894,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "long"
                             ],
@@ -862,6 +910,9 @@
                             "declarator": {
                                 "name": "arg2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "long"
@@ -1013,7 +1064,8 @@
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
-                                }
+                                },
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1028,6 +1080,9 @@
                             "declarator": {
                                 "name": "nvalues",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1080,7 +1135,8 @@
                                     "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
-                                    }
+                                    },
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1095,6 +1151,9 @@
                                 "declarator": {
                                     "name": "nvalues",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1125,7 +1184,8 @@
                                     "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
-                                    }
+                                    },
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1140,6 +1200,9 @@
                                 "declarator": {
                                     "name": "nvalues",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1170,7 +1233,8 @@
                                     "assumed-rank": true,
                                     "dimension": {
                                         "assumedrank": true
-                                    }
+                                    },
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1185,6 +1249,9 @@
                                 "declarator": {
                                     "name": "nvalues",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1244,7 +1311,8 @@
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
-                                }
+                                },
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1259,6 +1327,9 @@
                             "declarator": {
                                 "name": "nvalues",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1337,7 +1408,8 @@
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
-                                }
+                                },
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1352,6 +1424,9 @@
                             "declarator": {
                                 "name": "nvalues",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1507,7 +1582,8 @@
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
-                                }
+                                },
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1522,6 +1598,9 @@
                             "declarator": {
                                 "name": "nvalues",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1602,7 +1681,8 @@
                                 "assumed-rank": true,
                                 "dimension": {
                                     "assumedrank": true
-                                }
+                                },
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1617,6 +1697,9 @@
                             "declarator": {
                                 "name": "nvalues",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1809,6 +1892,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1822,6 +1908,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1840,6 +1929,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1853,6 +1945,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -1899,6 +1994,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -1912,6 +2010,9 @@
                                 "declarator": {
                                     "name": "nfrom",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1930,6 +2031,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "inout"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -1943,6 +2047,9 @@
                                 "declarator": {
                                     "name": "nto",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -1968,6 +2075,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -1981,6 +2091,9 @@
                                 "declarator": {
                                     "name": "nfrom",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -2000,6 +2113,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "inout"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -2013,6 +2129,9 @@
                                 "declarator": {
                                     "name": "nto",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -2039,6 +2158,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -2052,6 +2174,9 @@
                                 "declarator": {
                                     "name": "nfrom",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -2071,6 +2196,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "inout"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -2084,6 +2212,9 @@
                                 "declarator": {
                                     "name": "nto",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "int"
@@ -2122,6 +2253,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2135,6 +2269,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2153,6 +2290,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2166,6 +2306,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2226,6 +2369,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2239,6 +2385,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2258,6 +2407,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2271,6 +2423,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2469,6 +2624,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2482,6 +2640,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2501,6 +2662,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2514,6 +2678,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2573,6 +2740,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2586,6 +2756,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2605,6 +2778,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2618,6 +2794,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2821,6 +3000,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2834,6 +3016,9 @@
                             "declarator": {
                                 "name": "nfrom",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -2853,6 +3038,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2866,6 +3054,9 @@
                             "declarator": {
                                 "name": "nto",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3022,6 +3213,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3035,6 +3229,9 @@
                             "declarator": {
                                 "name": "type",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3050,6 +3247,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3095,7 +3295,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw"
+                                    "deref": "raw",
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "float"
@@ -3112,6 +3313,9 @@
                                     "name": "type",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -3126,6 +3330,9 @@
                                 "declarator": {
                                     "name": "size",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -3153,7 +3360,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw"
+                                    "deref": "raw",
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "float"
@@ -3170,6 +3378,9 @@
                                     "name": "type",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -3184,6 +3395,9 @@
                                 "declarator": {
                                     "name": "size",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -3224,7 +3438,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -3241,6 +3456,9 @@
                                 "name": "type",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3255,6 +3473,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3314,7 +3535,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -3331,6 +3553,9 @@
                                 "name": "type",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3345,6 +3570,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3500,6 +3728,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -3515,6 +3746,9 @@
                                 "name": "type",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3529,6 +3763,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3574,7 +3811,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw"
+                                    "deref": "raw",
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "float"
@@ -3591,6 +3829,9 @@
                                     "name": "type",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -3605,6 +3846,9 @@
                                 "declarator": {
                                     "name": "size",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -3632,7 +3876,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "raw"
+                                    "deref": "raw",
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "float"
@@ -3649,6 +3894,9 @@
                                     "name": "type",
                                     "pointer": []
                                 },
+                                "metaattrs": {
+                                    "intent": "in"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -3663,6 +3911,9 @@
                                 "declarator": {
                                     "name": "size",
                                     "pointer": []
+                                },
+                                "metaattrs": {
+                                    "intent": "in"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -3713,7 +3964,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -3730,6 +3982,9 @@
                                 "name": "type",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3744,6 +3999,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -3813,7 +4071,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "in"
                             },
                             "specifier": [
                                 "float"
@@ -3830,6 +4089,9 @@
                                 "name": "type",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -3844,6 +4106,9 @@
                             "declarator": {
                                 "name": "size",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "size_t"
@@ -4011,6 +4276,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -4028,6 +4296,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4044,6 +4315,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "size_t"
@@ -4217,6 +4491,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "void"
                             ],
@@ -4235,6 +4512,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4252,6 +4532,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "size_t"
@@ -4300,7 +4583,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "pointer"
+                                    "deref": "pointer",
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "float"
@@ -4320,6 +4604,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "out"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -4337,6 +4624,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -4367,7 +4657,8 @@
                                     ]
                                 },
                                 "metaattrs": {
-                                    "deref": "pointer"
+                                    "deref": "pointer",
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "float"
@@ -4387,6 +4678,9 @@
                                         }
                                     ]
                                 },
+                                "metaattrs": {
+                                    "intent": "out"
+                                },
                                 "specifier": [
                                     "int"
                                 ],
@@ -4404,6 +4698,9 @@
                                             "ptr": "*"
                                         }
                                     ]
+                                },
+                                "metaattrs": {
+                                    "intent": "out"
                                 },
                                 "specifier": [
                                     "size_t"
@@ -4447,7 +4744,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "pointer"
+                                "deref": "pointer",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "float"
@@ -4467,6 +4765,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4484,6 +4785,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "size_t"
@@ -4546,7 +4850,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "pointer"
+                                "deref": "pointer",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "float"
@@ -4566,6 +4871,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -4583,6 +4891,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "size_t"

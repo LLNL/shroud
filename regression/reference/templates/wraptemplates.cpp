@@ -38,10 +38,12 @@ extern "C" {
 // Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  long arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TEM_function_tu_0(int arg1, long arg2)
 {
     // splicer begin function.function_tu_0
@@ -61,10 +63,12 @@ void TEM_function_tu_0(int arg1, long arg2)
 // Argument:  float arg1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  double arg2 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TEM_function_tu_1(float arg1, double arg2)
 {
     // splicer begin function.function_tu_1

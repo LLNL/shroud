@@ -42,6 +42,7 @@ module cxxlibrary_mod
         ! Argument:  double * data=nullptr +intent(in)+rank(1)
         ! Requested: c_native_*_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         function c_default_ptr_is_null_1(data) &
                 result(SHT_rv) &
                 bind(C, name="CXX_default_ptr_is_null_1")
@@ -59,14 +60,17 @@ module cxxlibrary_mod
         ! Argument:  int in1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         subroutine c_default_args_in_out_0(in1, out1, out2) &
                 bind(C, name="CXX_default_args_in_out_0")
             use iso_c_binding, only : C_INT
@@ -84,18 +88,22 @@ module cxxlibrary_mod
         ! Argument:  int in1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  int * out1 +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         ! ----------------------------------------
         ! Argument:  int * out2 +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         ! ----------------------------------------
         ! Argument:  bool flag=false +intent(in)+value
         ! Requested: c_bool_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_default_args_in_out_1(in1, out1, out2, flag) &
                 bind(C, name="CXX_default_args_in_out_1")
             use iso_c_binding, only : C_BOOL, C_INT
@@ -150,6 +158,7 @@ contains
     ! Argument:  double * data=nullptr +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     function default_ptr_is_null_1(data) &
@@ -174,18 +183,21 @@ contains
     ! Argument:  int in1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     subroutine default_args_in_out_0(in1, out1, out2)
@@ -209,24 +221,28 @@ contains
     ! Argument:  int in1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out1 +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out2 +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  bool flag=false +intent(in)+value
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
+    !    metaattrs:  +intent(in)
     ! Requested: c_bool_scalar_in
     ! Match:     c_default
     subroutine default_args_in_out_1(in1, out1, out2, flag)

@@ -48,6 +48,7 @@ module library_three_mod
         ! Argument:  CustomType arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_class1_method1(self, arg1) &
                 bind(C, name="LIB_three_Class1_method1")
             use iso_c_binding, only : C_INT
@@ -73,6 +74,7 @@ contains
     ! Argument:  CustomType arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine class1_method1(obj, arg1)

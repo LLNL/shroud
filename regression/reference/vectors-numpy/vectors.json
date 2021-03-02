@@ -83,6 +83,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -169,6 +172,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -225,6 +231,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -304,6 +313,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -378,7 +390,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -437,7 +450,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -493,6 +507,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -577,6 +594,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -634,6 +654,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::vector"
                             ],
@@ -687,6 +710,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::vector"
@@ -744,6 +770,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::vector"
@@ -849,6 +878,9 @@
                             "declarator": {
                                 "name": "n",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"

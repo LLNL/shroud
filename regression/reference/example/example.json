@@ -310,6 +310,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -439,6 +442,9 @@
                                                                 "ptr": "*"
                                                             }
                                                         ]
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -682,6 +688,9 @@
                                                     "declarator": {
                                                         "name": "incr",
                                                         "pointer": []
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -936,7 +945,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "deref": "allocatable"
+                                                        "deref": "allocatable",
+                                                        "intent": "out"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -1153,6 +1163,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "out"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -1212,6 +1225,9 @@
                                                                 "ptr": "&"
                                                             }
                                                         ]
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "out"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -1389,6 +1405,9 @@
                                                     "declarator": {
                                                         "name": "value",
                                                         "pointer": []
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -1583,6 +1602,9 @@
                                                         "name": "value",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "long"
                                                     ],
@@ -1775,6 +1797,9 @@
                                                     "declarator": {
                                                         "name": "in",
                                                         "pointer": []
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "bool"
@@ -2103,6 +2128,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -2231,6 +2259,9 @@
                                                                 "ptr": "*"
                                                             }
                                                         ]
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -2537,6 +2568,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "out"
+                                                    },
                                                     "specifier": [
                                                         "string"
                                                     ],
@@ -2772,7 +2806,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "deref": "allocatable"
+                                                        "deref": "allocatable",
+                                                        "intent": "out"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -3010,7 +3045,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "deref": "allocatable"
+                                                        "deref": "allocatable",
+                                                        "intent": "out"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -3245,7 +3281,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "deref": "allocatable"
+                                                        "deref": "allocatable",
+                                                        "intent": "out"
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -3554,6 +3591,9 @@
                                                             }
                                                         ]
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "ExClass1"
                                                     ],
@@ -3627,6 +3667,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -3657,6 +3700,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -3672,6 +3718,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "int"
                                                         ],
@@ -3692,6 +3741,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -3707,6 +3759,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "long"
                                                         ],
@@ -3776,6 +3831,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -3820,6 +3878,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -3835,6 +3896,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "int"
                                                         ],
@@ -3855,6 +3919,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -3870,6 +3937,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "long"
                                                         ],
@@ -3904,6 +3974,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -3919,6 +3992,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "int"
                                                     ],
@@ -3972,6 +4048,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -3987,6 +4066,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "long"
                                                     ],
@@ -4155,6 +4237,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -4170,6 +4255,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "SidreLength"
                                                     ],
@@ -4204,6 +4292,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -4219,6 +4310,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "int"
                                                         ],
@@ -4239,6 +4333,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -4254,6 +4351,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "long"
                                                         ],
@@ -4367,6 +4467,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -4382,6 +4485,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "SidreLength"
                                                     ],
@@ -4426,6 +4532,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -4441,6 +4550,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "int"
                                                         ],
@@ -4461,6 +4573,9 @@
                                                             "name": "type",
                                                             "pointer": []
                                                         },
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "TypeID"
                                                         ],
@@ -4476,6 +4591,9 @@
                                                             "pointer": []
                                                         },
                                                         "init": 1,
+                                                        "metaattrs": {
+                                                            "intent": "in"
+                                                        },
                                                         "specifier": [
                                                             "long"
                                                         ],
@@ -4518,6 +4636,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -4533,6 +4654,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "int"
                                                     ],
@@ -4594,6 +4718,9 @@
                                                         "name": "type",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "TypeID"
                                                     ],
@@ -4609,6 +4736,9 @@
                                                         "pointer": []
                                                     },
                                                     "init": 1,
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "long"
                                                     ],
@@ -4829,6 +4959,9 @@
                                                         "name": "value",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "ValueType"
                                                     ],
@@ -4998,6 +5131,9 @@
                                                     "declarator": {
                                                         "name": "value",
                                                         "pointer": []
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "int"
@@ -5194,6 +5330,9 @@
                                                         "name": "value",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "long"
                                                     ],
@@ -5387,6 +5526,9 @@
                                                         "name": "value",
                                                         "pointer": []
                                                     },
+                                                    "metaattrs": {
+                                                        "intent": "in"
+                                                    },
                                                     "specifier": [
                                                         "float"
                                                     ],
@@ -5579,6 +5721,9 @@
                                                     "declarator": {
                                                         "name": "value",
                                                         "pointer": []
+                                                    },
+                                                    "metaattrs": {
+                                                        "intent": "in"
                                                     },
                                                     "specifier": [
                                                         "double"
@@ -6265,6 +6410,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "std::string"
                                             ],
@@ -6398,6 +6546,9 @@
                                                         "ptr": "&"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "std::string"
@@ -6632,6 +6783,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "std::string"
                                             ],
@@ -6738,6 +6892,9 @@
                                                         "ptr": "&"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "std::string"
@@ -6913,6 +7070,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "std::string"
                                             ],
@@ -6926,6 +7086,9 @@
                                             "declarator": {
                                                 "name": "flag",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -7065,6 +7228,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "std::string"
                                             ],
@@ -7079,6 +7245,9 @@
                                             "declarator": {
                                                 "name": "flag",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -7211,6 +7380,9 @@
                                                 "pointer": []
                                             },
                                             "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -7420,6 +7592,9 @@
                                                 "pointer": []
                                             },
                                             "init": 1,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -7435,6 +7610,9 @@
                                                 "pointer": []
                                             },
                                             "init": 2,
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "long"
                                             ],
@@ -7679,6 +7857,9 @@
                                                 "name": "comm",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "MPI_Comm"
                                             ],
@@ -7867,6 +8048,9 @@
                                                 },
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "void"
@@ -8012,6 +8196,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "double"
@@ -8153,6 +8340,9 @@
                                                 },
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -8281,6 +8471,9 @@
                                                     ]
                                                 },
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "params": [
                                                 {
@@ -8441,6 +8634,9 @@
                                                     ]
                                                 },
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "params": [
                                                 {
@@ -9317,6 +9513,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -9333,6 +9532,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
                                             },
                                             "specifier": [
                                                 "int"
@@ -9351,6 +9553,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -9367,6 +9572,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
                                             },
                                             "specifier": [
                                                 "int"
@@ -9385,6 +9593,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -9401,6 +9612,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
                                             },
                                             "specifier": [
                                                 "int"
@@ -9419,6 +9633,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -9435,6 +9652,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
                                             },
                                             "specifier": [
                                                 "int"
@@ -9453,6 +9673,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "inout"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -9469,6 +9692,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "inout"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10252,6 +10478,9 @@
                                                 "name": "verylongname1",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -10265,6 +10494,9 @@
                                             "declarator": {
                                                 "name": "verylongname2",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10280,6 +10512,9 @@
                                                 "name": "verylongname3",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -10293,6 +10528,9 @@
                                             "declarator": {
                                                 "name": "verylongname4",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10308,6 +10546,9 @@
                                                 "name": "verylongname5",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -10321,6 +10562,9 @@
                                             "declarator": {
                                                 "name": "verylongname6",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10336,6 +10580,9 @@
                                                 "name": "verylongname7",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -10349,6 +10596,9 @@
                                             "declarator": {
                                                 "name": "verylongname8",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10364,6 +10614,9 @@
                                                 "name": "verylongname9",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "int"
                                             ],
@@ -10377,6 +10630,9 @@
                                             "declarator": {
                                                 "name": "verylongname10",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"
@@ -10665,6 +10921,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
                                             "specifier": [
                                                 "double"
                                             ],
@@ -10695,7 +10954,8 @@
                                                         ],
                                                         "name": "shape"
                                                     }
-                                                ]
+                                                ],
+                                                "intent": "out"
                                             },
                                             "specifier": [
                                                 "double"
@@ -10711,6 +10971,9 @@
                                             "declarator": {
                                                 "name": "sizein",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "int"

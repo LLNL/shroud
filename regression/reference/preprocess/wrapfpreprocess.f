@@ -143,6 +143,7 @@ module preprocess_mod
         ! Argument:  int i=0 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_user1_method3def_1(self, i) &
                 bind(C, name="PRE_User1_method3def_1")
             use iso_c_binding, only : C_INT
@@ -179,6 +180,7 @@ module preprocess_mod
         ! Argument:  int flag +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_user2_exfunc_1(self, flag) &
                 bind(C, name="PRE_User2_exfunc_1")
             use iso_c_binding, only : C_INT
@@ -258,6 +260,7 @@ contains
     ! Argument:  int i=0 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user1_method3def_1(obj, i)
@@ -325,6 +328,7 @@ contains
     ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user2_exfunc_1(obj, flag)

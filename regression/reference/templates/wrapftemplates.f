@@ -75,10 +75,12 @@ module templates_mod
         ! Argument:  int arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  double arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_user_int_nested_double(self, arg1, arg2) &
                 bind(C, name="TEM_user_int_nested_double")
             use iso_c_binding, only : C_DOUBLE, C_INT
@@ -100,10 +102,12 @@ module templates_mod
         ! Argument:  int arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  long arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_function_tu_0(arg1, arg2) &
                 bind(C, name="TEM_function_tu_0")
             use iso_c_binding, only : C_INT, C_LONG
@@ -120,10 +124,12 @@ module templates_mod
         ! Argument:  float arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  double arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_function_tu_1(arg1, arg2) &
                 bind(C, name="TEM_function_tu_1")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -205,12 +211,14 @@ contains
     ! Argument:  int arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine user_int_nested_double(obj, arg1, arg2)
@@ -261,12 +269,14 @@ contains
     ! Argument:  int arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  long arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -294,12 +304,14 @@ contains
     ! Argument:  float arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>

@@ -639,6 +639,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -815,6 +818,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -954,6 +960,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1132,6 +1141,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1271,6 +1283,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1449,6 +1464,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1589,6 +1607,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -1707,6 +1728,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -1888,6 +1912,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2030,6 +2057,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2190,6 +2220,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2372,6 +2405,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2515,6 +2551,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -2577,7 +2616,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2595,6 +2635,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2652,7 +2695,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2671,6 +2715,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2728,7 +2775,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2747,6 +2795,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2804,7 +2855,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2823,6 +2875,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2874,7 +2929,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "raw"
+                                "deref": "raw",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2893,6 +2949,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2951,7 +3010,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -2970,6 +3030,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3027,7 +3090,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3046,6 +3110,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3104,7 +3171,8 @@
                                     {
                                         "name": "len"
                                     }
-                                ]
+                                ],
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3123,6 +3191,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -3218,6 +3289,9 @@
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"
@@ -3488,6 +3562,9 @@
                             "declarator": {
                                 "name": "flag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "int"

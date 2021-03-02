@@ -64,7 +64,7 @@ const char * NS_last_function_called(void)
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_&_result_buf_allocatable
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(out)
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {
     // splicer begin function.last_function_called_bufferify

@@ -89,6 +89,7 @@ int * OWN_return_int_ptr_pointer_bufferify(OWN_SHROUD_array *DSHC_rv)
 // Argument:  int * len +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_raw(int * len)
 {
     // splicer begin function.return_int_ptr_dim_raw
@@ -106,6 +107,7 @@ int * OWN_return_int_ptr_dim_raw(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_pointer(int * len)
 {
     // splicer begin function.return_int_ptr_dim_pointer
@@ -122,6 +124,7 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_pointer_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
 {
@@ -148,6 +151,7 @@ int * OWN_return_int_ptr_dim_pointer_bufferify(
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_alloc(int * len)
 {
     // splicer begin function.return_int_ptr_dim_alloc
@@ -164,6 +168,7 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
 {
@@ -190,6 +195,7 @@ int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_default(int * len)
 {
     // splicer begin function.return_int_ptr_dim_default
@@ -206,6 +212,7 @@ int * OWN_return_int_ptr_dim_default(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_default_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
 {
@@ -232,6 +239,7 @@ int * OWN_return_int_ptr_dim_default_bufferify(
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_raw_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_raw_new
@@ -249,6 +257,7 @@ int * OWN_return_int_ptr_dim_raw_new(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_pointer_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_pointer_new
@@ -265,6 +274,7 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_pointer_new_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
 {
@@ -291,6 +301,7 @@ int * OWN_return_int_ptr_dim_pointer_new_bufferify(
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_alloc_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_alloc_new
@@ -308,6 +319,7 @@ int * OWN_return_int_ptr_dim_alloc_new(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_default_new(int * len)
 {
     // splicer begin function.return_int_ptr_dim_default_new
@@ -324,6 +336,7 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 // Argument:  int * len +hidden+intent(out)
 // Requested: c_native_*_out_buf
 // Match:     c_default
+//    metaattrs:  +intent(out)
 int * OWN_return_int_ptr_dim_default_new_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
 {
@@ -349,6 +362,7 @@ int * OWN_return_int_ptr_dim_default_new_bufferify(
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void OWN_create_class_static(int flag)
 {
     // splicer begin function.create_class_static
@@ -382,6 +396,7 @@ OWN_Class1 * OWN_get_class_static(OWN_Class1 * SHadow_rv)
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_new

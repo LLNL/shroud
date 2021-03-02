@@ -46,6 +46,7 @@ static int ShroudLenTrim(const char *src, int nsrc) {
 // Argument:  const std::vector<int> & arg +intent(in)+rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_native
 // Match:     c_vector_in_buf
+//    metaattrs:  +intent(in)
 // start VEC_vector_sum_bufferify
 int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 {
@@ -69,6 +70,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
+//    metaattrs:  +intent(out)
 // start VEC_vector_iota_out_bufferify
 void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -102,6 +104,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
+//    metaattrs:  +intent(out)
 // start VEC_vector_iota_out_with_num_bufferify
 long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -136,6 +139,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
+//    metaattrs:  +intent(out)
 // start VEC_vector_iota_out_with_num2_bufferify
 void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -166,7 +170,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(out)
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 {
@@ -197,7 +201,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(inout)
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
@@ -225,6 +229,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 // Argument:  std::vector<int> & arg +context(Darg)+intent(inout)+rank(1)+size(Sarg)
 // Requested: c_vector_&_inout_buf_native
 // Match:     c_vector_inout_buf
+//    metaattrs:  +intent(inout)
 void VEC_vector_increment_bufferify(int * arg, long Sarg,
     VEC_SHROUD_array *Darg)
 {
@@ -254,6 +259,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
 // Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
 // Requested: c_vector_&_out_buf_native
 // Match:     c_vector_out_buf
+//    metaattrs:  +intent(out)
 void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 {
     // splicer begin function.vector_iota_out_d_bufferify
@@ -282,6 +288,7 @@ void VEC_vector_iota_out_d_bufferify(VEC_SHROUD_array *Darg)
 // Argument:  const std::vector<std::string> & arg +intent(in)+len(Narg)+rank(1)+size(Sarg)
 // Requested: c_vector_&_in_buf_string
 // Match:     c_vector_in_buf_string
+//    metaattrs:  +intent(in)
 int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
     int Narg)
 {
@@ -315,11 +322,12 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // Argument:  int n +intent(in)+value
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+rank(1)
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(out)
 void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
 {
     // splicer begin function.return_vector_alloc_bufferify

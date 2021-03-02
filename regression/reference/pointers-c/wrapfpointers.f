@@ -56,6 +56,7 @@ module pointers_mod
     ! Argument:  const int * arg +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start intargs_in
     interface
         subroutine intargs_in(arg) &
@@ -75,6 +76,7 @@ module pointers_mod
     ! Argument:  int * arg +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
+    !    metaattrs:  +intent(inout)
     ! start intargs_inout
     interface
         subroutine intargs_inout(arg) &
@@ -94,6 +96,7 @@ module pointers_mod
     ! Argument:  int * arg +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start intargs_out
     interface
         subroutine intargs_out(arg) &
@@ -113,14 +116,17 @@ module pointers_mod
     ! Argument:  const int argin +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int * arginout +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
+    !    metaattrs:  +intent(inout)
     ! ----------------------------------------
     ! Argument:  int * argout +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start intargs
     interface
         subroutine intargs(argin, arginout, argout) &
@@ -142,15 +148,17 @@ module pointers_mod
     ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cos_doubles
     interface
         subroutine c_cos_doubles(in, out, sizein) &
@@ -172,15 +180,17 @@ module pointers_mod
     ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(in))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_truncate_to_int
     interface
         subroutine c_truncate_to_int(in, out, sizein) &
@@ -202,10 +212,12 @@ module pointers_mod
     ! Argument:  int * nvalues +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! ----------------------------------------
     ! Argument:  int * values +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start get_values
     interface
         subroutine get_values(nvalues, values) &
@@ -226,10 +238,12 @@ module pointers_mod
     ! Argument:  int * arg1 +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! ----------------------------------------
     ! Argument:  int * arg2 +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start get_values2
     interface
         subroutine get_values2(arg1, arg2) &
@@ -250,11 +264,12 @@ module pointers_mod
     ! Argument:  int nvar +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
     ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! start c_iota_allocatable
     interface
         subroutine c_iota_allocatable(nvar, values) &
@@ -275,10 +290,12 @@ module pointers_mod
     ! Argument:  int nvar +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int * values +dimension(nvar)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start iota_dimension
     interface
         subroutine iota_dimension(nvar, values) &
@@ -299,14 +316,17 @@ module pointers_mod
     ! Argument:  int len +implied(size(values))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  const int * values +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start c_sum
     interface
         subroutine c_sum(len, values, result) &
@@ -328,6 +348,7 @@ module pointers_mod
     ! Argument:  int * out +dimension(3)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start fill_int_array
     interface
         subroutine fill_int_array(out) &
@@ -347,10 +368,12 @@ module pointers_mod
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Requested: c_native_*_inout
     ! Match:     c_default
+    !    metaattrs:  +intent(inout)
     ! ----------------------------------------
     ! Argument:  int sizein +implied(size(array))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_increment_int_array
     interface
         subroutine c_increment_int_array(array, sizein) &
@@ -371,10 +394,12 @@ module pointers_mod
     ! Argument:  double * x +intent(inout)+rank(1)
     ! Requested: c_native_*_inout
     ! Match:     c_default
+    !    metaattrs:  +intent(inout)
     ! ----------------------------------------
     ! Argument:  int x_length +implied(size(x))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_fill_with_zeros
     interface
         subroutine c_fill_with_zeros(x, x_length) &
@@ -395,10 +420,12 @@ module pointers_mod
     ! Argument:  const int * arr +intent(in)+rank(1)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! ----------------------------------------
     ! Argument:  size_t len +implied(size(arr))+intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_accumulate
     interface
         function c_accumulate(arr, len) &
@@ -420,6 +447,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Exact:     c_char_**_in
+    !    metaattrs:  +intent(in)
     ! start c_accept_char_array_in
     interface
         function c_accept_char_array_in(names) &
@@ -440,6 +468,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
     ! Exact:     c_char_**_in_buf
+    !    metaattrs:  +intent(in)
     ! start c_accept_char_array_in_bufferify
     interface
         function c_accept_char_array_in_bufferify(names, Snames, Nnames) &
@@ -463,6 +492,7 @@ module pointers_mod
     ! Argument:  int value +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start set_global_int
     interface
         subroutine set_global_int(value) &
@@ -498,7 +528,7 @@ module pointers_mod
     ! Argument:  int * * nitems +deref(pointer)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_scalar
     interface
         subroutine c_get_ptr_to_scalar(nitems) &
@@ -518,7 +548,7 @@ module pointers_mod
     ! Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_scalar_bufferify
     interface
         subroutine c_get_ptr_to_scalar_bufferify(Dnitems) &
@@ -538,7 +568,7 @@ module pointers_mod
     ! Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_fixed_array
     interface
         subroutine c_get_ptr_to_fixed_array(count) &
@@ -558,7 +588,7 @@ module pointers_mod
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_fixed_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_array_bufferify(Dcount) &
@@ -578,11 +608,12 @@ module pointers_mod
     ! Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start c_get_ptr_to_dynamic_array
     interface
         subroutine c_get_ptr_to_dynamic_array(count, ncount) &
@@ -603,11 +634,12 @@ module pointers_mod
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_array_bufferify(Dcount, ncount) &
@@ -629,7 +661,7 @@ module pointers_mod
     ! Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_func_array
     interface
         subroutine c_get_ptr_to_func_array(count) &
@@ -649,7 +681,7 @@ module pointers_mod
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_func_array_bufferify
     interface
         subroutine c_get_ptr_to_func_array_bufferify(Dcount) &
@@ -669,7 +701,7 @@ module pointers_mod
     ! Argument:  const int * * nitems +deref(pointer)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_const_scalar
     interface
         subroutine c_get_ptr_to_const_scalar(nitems) &
@@ -689,7 +721,7 @@ module pointers_mod
     ! Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_const_scalar_bufferify
     interface
         subroutine c_get_ptr_to_const_scalar_bufferify(Dnitems) &
@@ -709,7 +741,7 @@ module pointers_mod
     ! Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_fixed_const_array
     interface
         subroutine c_get_ptr_to_fixed_const_array(count) &
@@ -729,7 +761,7 @@ module pointers_mod
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! start c_get_ptr_to_fixed_const_array_bufferify
     interface
         subroutine c_get_ptr_to_fixed_const_array_bufferify(Dcount) &
@@ -749,11 +781,12 @@ module pointers_mod
     ! Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: c_native_**_out_pointer
     ! Match:     c_default
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start c_get_ptr_to_dynamic_const_array
     interface
         subroutine c_get_ptr_to_dynamic_const_array(count, ncount) &
@@ -774,11 +807,12 @@ module pointers_mod
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: c_native_**_out_buf_pointer
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
         subroutine c_get_ptr_to_dynamic_const_array_bufferify(Dcount, &
@@ -801,7 +835,7 @@ module pointers_mod
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_scalar
     interface
         subroutine c_get_raw_ptr_to_scalar(nitems) &
@@ -821,7 +855,7 @@ module pointers_mod
     ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_scalar_bufferify
     interface
         subroutine c_get_raw_ptr_to_scalar_bufferify(Dnitems) &
@@ -841,7 +875,7 @@ module pointers_mod
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_scalar_force
     interface
         subroutine c_get_raw_ptr_to_scalar_force(nitems) &
@@ -861,7 +895,7 @@ module pointers_mod
     ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_scalar_force_bufferify
     interface
         subroutine c_get_raw_ptr_to_scalar_force_bufferify(Dnitems) &
@@ -881,7 +915,7 @@ module pointers_mod
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_fixed_array
     interface
         subroutine c_get_raw_ptr_to_fixed_array(count) &
@@ -901,7 +935,7 @@ module pointers_mod
     ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_fixed_array_bufferify
     interface
         subroutine c_get_raw_ptr_to_fixed_array_bufferify(Dcount) &
@@ -921,7 +955,7 @@ module pointers_mod
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_fixed_array_force
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force(count) &
@@ -941,7 +975,7 @@ module pointers_mod
     ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Requested: c_native_**_out_buf_raw
     ! Match:     c_native_**_out_buf
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! start c_get_raw_ptr_to_fixed_array_force_bufferify
     interface
         subroutine c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount) &
@@ -961,6 +995,7 @@ module pointers_mod
     ! Argument:  int * * * arg +intent(out)
     ! Requested: c_native_***_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start get_raw_ptr_to_int2d
     interface
         subroutine get_raw_ptr_to_int2d(arg) &
@@ -979,6 +1014,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * * arg +intent(in)
     ! Exact:     c_native_**_in
+    !    metaattrs:  +intent(in)
     ! start check_int2d
     interface
         function check_int2d(arg) &
@@ -1000,6 +1036,7 @@ module pointers_mod
     ! Argument:  const int * arg +dimension(10,20)+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_dimension_in
     interface
         subroutine c_dimension_in(arg) &
@@ -1019,6 +1056,7 @@ module pointers_mod
     ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start return_address1
     interface
         function return_address1(flag) &
@@ -1040,6 +1078,7 @@ module pointers_mod
     ! Argument:  int flag +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_return_address2
     interface
         function c_return_address2(flag) &
@@ -1061,6 +1100,7 @@ module pointers_mod
     ! Argument:  void * * addr +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
+    !    metaattrs:  +intent(out)
     ! start fetch_void_ptr
     interface
         subroutine fetch_void_ptr(addr) &
@@ -1079,6 +1119,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(in)+rank(1)
     ! Exact:     c_void_**_in
+    !    metaattrs:  +intent(in)
     ! start c_void_ptr_array
     interface
         function c_void_ptr_array(addr) &
@@ -1240,6 +1281,7 @@ module pointers_mod
     ! Argument:  const char * name +intent(in)
     ! Requested: c_char_*_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_return_int_raw_with_args
     interface
         function c_return_int_raw_with_args(name) &
@@ -1288,12 +1330,13 @@ contains
     ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Exact:     f_native_*_out_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>
@@ -1326,12 +1369,13 @@ contains
     ! Argument:  double * in +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
     ! Exact:     f_native_*_out_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     !>
@@ -1365,12 +1409,13 @@ contains
     ! Argument:  int nvar +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
     ! Exact:     f_native_*_out_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start iota_allocatable
@@ -1396,12 +1441,14 @@ contains
     ! Argument:  const int * values +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * result +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out
     ! Match:     c_default
     ! start sum
@@ -1428,6 +1475,7 @@ contains
     ! Argument:  int * array +intent(inout)+rank(1)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    !    metaattrs:  +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     !>
@@ -1456,6 +1504,7 @@ contains
     ! Argument:  double * x +intent(inout)+rank(1)
     ! Requested: f_native_*_inout
     ! Match:     f_default
+    !    metaattrs:  +intent(inout)
     ! Requested: c_native_*_inout
     ! Match:     c_default
     ! start fill_with_zeros
@@ -1481,6 +1530,7 @@ contains
     ! Argument:  const int * arr +intent(in)+rank(1)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     ! start accumulate
@@ -1509,6 +1559,7 @@ contains
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Requested: f_char_**_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
     ! Exact:     c_char_**_in_buf
     !>
@@ -1539,7 +1590,7 @@ contains
     ! Argument:  int * * nitems +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start get_ptr_to_scalar
@@ -1566,7 +1617,7 @@ contains
     ! Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1596,13 +1647,14 @@ contains
     ! Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     !>
@@ -1634,7 +1686,7 @@ contains
     ! Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1666,7 +1718,7 @@ contains
     ! Argument:  const int * * nitems +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start get_ptr_to_const_scalar
@@ -1693,7 +1745,7 @@ contains
     ! Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! start get_ptr_to_fixed_const_array
@@ -1720,13 +1772,14 @@ contains
     ! Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(out)
     ! Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
     ! Exact:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     ! start get_ptr_to_dynamic_const_array
@@ -1753,7 +1806,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1782,7 +1835,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1811,7 +1864,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1842,7 +1895,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    !    metaattrs:  +deref(raw)
+    !    metaattrs:  +deref(raw)+intent(out)
     ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Exact:     c_native_**_out_buf
     !>
@@ -1872,6 +1925,7 @@ contains
     ! Argument:  const int * arg +dimension(10,20)+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
     !>
@@ -1898,6 +1952,7 @@ contains
     ! Argument:  int flag +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start return_address2
@@ -1922,6 +1977,7 @@ contains
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(in)+rank(1)
     ! Exact:     f_void_**_in
+    !    metaattrs:  +intent(in)
     ! Exact:     c_void_**_in
     ! start void_ptr_array
     function void_ptr_array(addr) &

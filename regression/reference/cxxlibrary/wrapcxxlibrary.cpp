@@ -42,6 +42,7 @@ bool CXX_default_ptr_is_null_0(void)
 // Argument:  double * data=nullptr +intent(in)+rank(1)
 // Requested: c_native_*_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 bool CXX_default_ptr_is_null_1(double * data)
 {
     // splicer begin function.default_ptr_is_null_1
@@ -58,14 +59,17 @@ bool CXX_default_ptr_is_null_1(double * data)
 // Argument:  int in1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 {
     // splicer begin function.default_args_in_out_0
@@ -81,18 +85,22 @@ void CXX_default_args_in_out_0(int in1, int * out1, int * out2)
 // Argument:  int in1 +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  int * out1 +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  int * out2 +intent(out)
 // Requested: c_native_*_out
 // Match:     c_default
+//    metaattrs:  +intent(out)
 // ----------------------------------------
 // Argument:  bool flag=false +intent(in)+value
 // Requested: c_bool_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     bool flag)
 {

@@ -129,6 +129,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "name"
                                     },
                                     "specifier": [
@@ -150,6 +151,7 @@
                                         "pointer": []
                                     },
                                     "metaattrs": {
+                                        "intent": "in",
                                         "struct_member": "count"
                                     },
                                     "specifier": [

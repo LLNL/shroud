@@ -84,6 +84,9 @@
                                 "name": "status",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -180,6 +183,9 @@
                             "declarator": {
                                 "name": "status",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -394,6 +400,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -537,6 +546,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -554,6 +566,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -705,6 +720,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -725,6 +743,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -830,6 +851,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "char"
@@ -940,6 +964,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "char"
@@ -1163,7 +1190,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -1391,6 +1419,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -1588,6 +1619,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -1646,6 +1680,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -1926,7 +1963,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "string"
@@ -2122,6 +2160,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -2288,6 +2329,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -2346,6 +2390,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "string"
@@ -2535,7 +2582,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -2753,7 +2801,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "string"
@@ -2984,6 +3033,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -3184,6 +3236,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -3243,6 +3298,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "string"
@@ -3477,6 +3535,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -3692,7 +3753,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -3924,6 +3986,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "string"
                             ],
@@ -4149,7 +4214,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -4368,7 +4434,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -4593,7 +4660,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "deref": "allocatable"
+                                "deref": "allocatable",
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -4694,6 +4762,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -4806,6 +4877,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -4908,6 +4982,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -5019,6 +5096,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -5121,6 +5201,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5233,6 +5316,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -5337,6 +5423,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "std::string"
@@ -5448,6 +5537,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -5549,6 +5641,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -5659,6 +5754,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -5760,6 +5858,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -5870,6 +5971,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -6016,6 +6120,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6032,6 +6139,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6176,6 +6286,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6193,6 +6306,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6338,6 +6454,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6354,6 +6473,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6498,6 +6620,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6515,6 +6640,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -6660,6 +6788,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6784,6 +6915,9 @@
                                 "name": "arg1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6889,6 +7023,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "std::string"
                             ],
@@ -6905,6 +7042,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "std::string"
@@ -6953,6 +7093,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -7045,6 +7188,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7153,6 +7299,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7234,6 +7383,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -7340,6 +7492,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
                             },
                             "specifier": [
                                 "char"
@@ -7449,6 +7604,9 @@
                             "declarator": {
                                 "name": "status",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7665,6 +7823,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7767,6 +7928,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7784,6 +7948,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -7933,6 +8100,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
                             "specifier": [
                                 "char"
                             ],
@@ -7953,6 +8123,9 @@
                                         "ptr": "*"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
@@ -8105,6 +8278,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -8121,6 +8297,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"
@@ -8268,6 +8447,9 @@
                                     }
                                 ]
                             },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
                             "specifier": [
                                 "int"
                             ],
@@ -8286,6 +8468,9 @@
                                         "ptr": "&"
                                     }
                                 ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
                             },
                             "specifier": [
                                 "std::string"

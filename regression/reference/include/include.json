@@ -72,6 +72,9 @@
                                         "name": "comm",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "MPI_Comm"
                                     ],
@@ -170,6 +173,9 @@
                                                 "ptr": "*"
                                             }
                                         ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "inout"
                                     },
                                     "specifier": [
                                         "three::Class1"
@@ -415,6 +421,9 @@
                                             "declarator": {
                                                 "name": "arg1",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
                                             },
                                             "specifier": [
                                                 "CustomType"

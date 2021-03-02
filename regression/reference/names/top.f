@@ -133,6 +133,7 @@ module top_module
         ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
         ! Requested: c_char_*_inout
         ! Match:     c_default
+        !    metaattrs:  +intent(inout)
         subroutine c_get_name(name) &
                 bind(C, name="TES_get_name")
             use iso_c_binding, only : C_CHAR
@@ -147,6 +148,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
         ! Exact:     c_char_*_inout_buf
+        !    metaattrs:  +intent(inout)
         subroutine c_get_name_bufferify(name, worktrim, worklen) &
                 bind(C, name="TES_get_name_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -182,6 +184,7 @@ module top_module
         ! Argument:  int i +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine yyy_tes_function3a_0(i) &
                 bind(C, name="YYY_TES_function3a_0")
             use iso_c_binding, only : C_INT
@@ -197,6 +200,7 @@ module top_module
         ! Argument:  long i +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine yyy_tes_function3a_1(i) &
                 bind(C, name="YYY_TES_function3a_1")
             use iso_c_binding, only : C_LONG
@@ -211,6 +215,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const std::string & rv +intent(in)
         ! Exact:     c_string_&_in
+        !    metaattrs:  +intent(in)
         function yyy_tes_function4(rv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4")
@@ -227,6 +232,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
         ! Exact:     c_string_&_in_buf
+        !    metaattrs:  +intent(in)
         function yyy_tes_function4_bufferify(rv, Lrv) &
                 result(SHT_rv) &
                 bind(C, name="YYY_TES_function4_bufferify")
@@ -253,10 +259,12 @@ module top_module
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)
         ! Exact:     c_string_&_inout
+        !    metaattrs:  +intent(inout)
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         subroutine c_test_multiline_splicer(name, value) &
                 bind(C, name="TES_test_multiline_splicer")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -272,10 +280,12 @@ module top_module
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
         ! Exact:     c_string_&_inout_buf
+        !    metaattrs:  +intent(inout)
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Requested: c_native_*_out_buf
         ! Match:     c_default
+        !    metaattrs:  +intent(out)
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
                 Nname, value) &
                 bind(C, name="TES_test_multiline_splicer_bufferify")
@@ -295,10 +305,12 @@ module top_module
         ! Argument:  int arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  long arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine f_c_name_instantiation1(arg1, arg2) &
                 bind(C, name="c_name_instantiation1")
             use iso_c_binding, only : C_INT, C_LONG
@@ -315,10 +327,12 @@ module top_module
         ! Argument:  float arg1 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         ! ----------------------------------------
         ! Argument:  double arg2 +intent(in)+value
         ! Requested: c_native_scalar_in
         ! Match:     c_default
+        !    metaattrs:  +intent(in)
         subroutine c_function_tu_instantiation2(arg1, arg2) &
                 bind(C, name="TES_function_tu_instantiation2")
             use iso_c_binding, only : C_DOUBLE, C_FLOAT
@@ -347,6 +361,7 @@ module top_module
         ! Argument:  const Cstruct_as_class * point +intent(in)+pass
         ! Requested: c_shadow_*_in
         ! Match:     c_shadow_in
+        !    metaattrs:  +intent(in)
         function c_cstruct_as_class_sum(point) &
                 result(SHT_rv) &
                 bind(C, name="TES_cstruct_as_class_sum")
@@ -515,6 +530,7 @@ contains
     ! Argument:  char * name +intent(inout)+len(worklen)+len_trim(worktrim)
     ! Requested: f_char_*_inout
     ! Match:     f_default
+    !    metaattrs:  +intent(inout)
     ! Exact:     c_char_*_inout_buf
     subroutine get_name(name)
         use iso_c_binding, only : C_INT
@@ -562,6 +578,7 @@ contains
     ! Argument:  int i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine F_name_function3a_int(i)
@@ -583,6 +600,7 @@ contains
     ! Argument:  long i +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine F_name_function3a_long(i)
@@ -605,6 +623,7 @@ contains
     ! Argument:  const std::string & rv +intent(in)
     ! Requested: f_string_&_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Argument:  const std::string & rv +intent(in)+len_trim(Lrv)
     ! Exact:     c_string_&_in_buf
     function testnames_function4(rv) &
@@ -643,12 +662,14 @@ contains
     ! Argument:  std::string & name +intent(inout)
     ! Requested: f_string_&_inout
     ! Match:     f_default
+    !    metaattrs:  +intent(inout)
     ! Argument:  std::string & name +intent(inout)+len(Nname)+len_trim(Lname)
     ! Exact:     c_string_&_inout_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
+    !    metaattrs:  +intent(out)
     ! Requested: c_native_*_out_buf
     ! Match:     c_default
     !>
@@ -676,12 +697,14 @@ contains
     ! Argument:  int arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  long arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -709,12 +732,14 @@ contains
     ! Argument:  float arg1 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double arg2 +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
@@ -762,6 +787,7 @@ contains
     ! Argument:  const Cstruct_as_class * point +intent(in)+pass
     ! Requested: f_shadow_*_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_shadow_*_in
     ! Match:     c_shadow_in
     function cstruct_as_class_sum(point) &

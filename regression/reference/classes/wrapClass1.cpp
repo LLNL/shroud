@@ -66,6 +66,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start CLA_Class1_ctor_flag
 CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHadow_rv)
 {
@@ -125,6 +126,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // Argument:  const Class1 & obj2 +intent(in)
 // Requested: c_shadow_&_in
 // Match:     c_shadow_in
+//    metaattrs:  +intent(in)
 // start CLA_Class1_equivalent
 bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 {
@@ -169,10 +171,12 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Exact:     c_string_&_in
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  bool flag +intent(in)+value
 // Requested: c_bool_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start CLA_Class1_return_this_buffer
 CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
     char * name, bool flag, CLA_Class1 * SHadow_rv)
@@ -201,10 +205,12 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Exact:     c_string_&_in_buf
+//    metaattrs:  +intent(in)
 // ----------------------------------------
 // Argument:  bool flag +intent(in)+value
 // Requested: c_bool_scalar_in_buf
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start CLA_Class1_return_this_buffer_bufferify
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
     char * name, int Lname, bool flag, CLA_Class1 * SHadow_rv)
@@ -277,7 +283,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)
 // Exact:     c_string_&_result_buf_allocatable
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(out)
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
     CLA_SHROUD_array *DSHF_rv)
@@ -299,6 +305,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 // Argument:  DIRECTION arg +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start CLA_Class1_direction_func
 int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 {

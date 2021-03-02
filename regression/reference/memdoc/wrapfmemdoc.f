@@ -71,7 +71,7 @@ module memdoc_mod
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Exact:     c_string_*_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
@@ -115,7 +115,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+intent(out)+owner(library)
     ! Exact:     f_string_*_result_buf_allocatable
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(out)
     ! Exact:     c_string_*_result_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &

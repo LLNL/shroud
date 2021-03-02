@@ -56,6 +56,7 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 // Argument:  const double & value +intent(in)
 // Requested: c_native_&_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 void TEM_vector_double_push_back(TEM_vector_double * self,
     const double * value)
 {
@@ -75,6 +76,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Argument:  size_type n +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>
