@@ -88,7 +88,7 @@ module ns_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-        ! Attrs:     +deref(allocatable)+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_last_function_called_bufferify(DSHF_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
@@ -138,9 +138,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)

@@ -118,7 +118,7 @@ module tutorial_mod
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
@@ -703,7 +703,7 @@ module tutorial_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     interface
         subroutine c_last_function_called_bufferify(SHF_rv, NSHF_rv) &
@@ -798,9 +798,9 @@ contains
     ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Note that since a reference is returned, no intermediate string
@@ -1388,10 +1388,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     function last_function_called() &
             result(SHT_rv)

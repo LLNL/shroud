@@ -938,7 +938,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable"
                                                     },
@@ -953,7 +952,8 @@
                                                     },
                                                     "metaattrs": {
                                                         "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -1159,7 +1159,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "len": "Nname"
                                                     },
                                                     "declarator": {
@@ -1171,7 +1170,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -1221,7 +1221,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "len": "Nname"
                                                     },
                                                     "declarator": {
@@ -1233,7 +1232,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -2573,7 +2573,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "len": "NSHF_rv"
                                                     },
                                                     "declarator": {
@@ -2585,7 +2584,8 @@
                                                         ]
                                                     },
                                                     "metaattrs": {
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -2808,7 +2808,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable"
                                                     },
@@ -2823,7 +2822,8 @@
                                                     },
                                                     "metaattrs": {
                                                         "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -3048,7 +3048,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable"
                                                     },
@@ -3062,7 +3061,8 @@
                                                     },
                                                     "metaattrs": {
                                                         "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"
@@ -3284,7 +3284,6 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "_is_result": true,
                                                         "context": "DSHF_rv",
                                                         "deref": "allocatable"
                                                     },
@@ -3298,7 +3297,8 @@
                                                     },
                                                     "metaattrs": {
                                                         "deref": "allocatable",
-                                                        "intent": "out"
+                                                        "intent": "out",
+                                                        "is_result": true
                                                     },
                                                     "specifier": [
                                                         "string"

@@ -63,7 +63,7 @@ const char * NS_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
 {

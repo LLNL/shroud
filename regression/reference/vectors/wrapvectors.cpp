@@ -327,7 +327,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf
 void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)

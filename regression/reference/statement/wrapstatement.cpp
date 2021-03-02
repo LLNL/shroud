@@ -81,7 +81,7 @@ const char * STMT_get_name_error_pattern(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
 {

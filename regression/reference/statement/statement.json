@@ -254,7 +254,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": "NSHF_rv"
                             },
                             "declarator": {
@@ -266,7 +265,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"

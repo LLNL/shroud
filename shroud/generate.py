@@ -1486,7 +1486,7 @@ class GenFunctions(object):
                 result_as_string = ast.result_as_arg(result_name)
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
-            attrs["_is_result"] = True
+            result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"
@@ -1701,7 +1701,7 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-            attrs["_is_result"] = True
+            result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"
@@ -1716,7 +1716,7 @@ class GenFunctions(object):
                 c_var=result_name
             )
             self.move_arg_attributes(result_as_vector, node, C_new)
-            attrs["_is_result"] = True
+            result_as_vector.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"

@@ -237,7 +237,7 @@ const char * CLA_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void CLA_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

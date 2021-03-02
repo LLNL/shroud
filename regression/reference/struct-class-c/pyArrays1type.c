@@ -52,12 +52,12 @@ PY_Arrays1_tp_del (PY_Arrays1 *self)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char name[20]
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab060d630>)
+// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab060d780>)
 // Requested: py_ctor_char_[]_numpy
 // Match:     py_ctor_char_[]
 // ----------------------------------------
 // Argument:  int count[10]
-// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab060d7b8>)
+// Attrs:     +intent(in)+struct_member(<shroud.ast.VariableNode object at 0x2aaab060d908>)
 // Requested: py_ctor_native_[]_numpy
 // Match:     py_ctor_native_[]
 static int

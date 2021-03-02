@@ -389,9 +389,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "SHF_rv",
                                 "pointer": [
@@ -401,7 +398,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1173,7 +1171,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable"
                             },
                             "const": true,
@@ -1187,7 +1184,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1404,7 +1402,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": "30"
                             },
                             "declarator": {
@@ -1416,7 +1413,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1604,9 +1602,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1616,7 +1611,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1665,9 +1661,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -1677,7 +1670,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1946,7 +1940,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable"
                             },
                             "const": true,
@@ -1960,7 +1953,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2145,7 +2139,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": 30
                             },
                             "declarator": {
@@ -2157,7 +2150,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2314,9 +2308,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2326,7 +2317,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2375,9 +2367,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -2387,7 +2376,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -2564,7 +2554,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable"
                             },
                             "const": true,
@@ -2578,7 +2567,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -2783,7 +2773,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable"
                             },
                             "const": true,
@@ -2797,7 +2786,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3017,7 +3007,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": 30
                             },
                             "declarator": {
@@ -3029,7 +3018,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3220,9 +3210,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3232,7 +3219,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3282,9 +3270,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "output",
                                 "pointer": [
@@ -3294,7 +3279,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3518,7 +3504,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": 30
                             },
                             "declarator": {
@@ -3530,7 +3515,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -3734,7 +3720,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable"
                             },
                             "const": true,
@@ -3748,7 +3733,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -3969,7 +3955,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "len": 30
                             },
                             "declarator": {
@@ -3981,7 +3966,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "string"
@@ -4194,7 +4180,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
                                 "owner": "library"
                             },
@@ -4209,7 +4194,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -4414,7 +4400,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
                                 "owner": "caller"
                             },
@@ -4429,7 +4414,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -4639,7 +4625,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "deref": "allocatable",
                                 "free_pattern": "C_string_free",
                                 "owner": "caller"
@@ -4655,7 +4640,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"
@@ -7794,9 +7780,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "_is_result": true
-                            },
                             "declarator": {
                                 "name": "SHF_rv",
                                 "pointer": [
@@ -7806,7 +7789,8 @@
                                 ]
                             },
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "char"

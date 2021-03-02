@@ -116,7 +116,7 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_scalar_result_buf_allocatable
 void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
     const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
@@ -641,7 +641,7 @@ const char * TUT_last_function_called(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
 {

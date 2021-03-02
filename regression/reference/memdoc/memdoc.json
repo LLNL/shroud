@@ -158,7 +158,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "_is_result": true,
                                 "context": "DSHF_rv",
                                 "deref": "allocatable",
                                 "owner": "library"
@@ -174,7 +173,8 @@
                             },
                             "metaattrs": {
                                 "deref": "allocatable",
-                                "intent": "out"
+                                "intent": "out",
+                                "is_result": true
                             },
                             "specifier": [
                                 "std::string"

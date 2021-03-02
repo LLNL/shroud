@@ -251,7 +251,7 @@ module vectors_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
     interface
@@ -629,10 +629,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Requested: f_vector_*_result_buf_allocatable_native
     ! Match:     f_vector_result_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
     !>

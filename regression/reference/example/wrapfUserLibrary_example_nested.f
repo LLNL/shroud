@@ -267,7 +267,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-        ! Attrs:     +deref(allocatable)+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
                 DSHF_rv) &
@@ -298,7 +298,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & name +len(Nname)
-        ! Attrs:     +intent(out)
+        ! Attrs:     +intent(out)+is_result
         ! Exact:     c_string_&_result_buf
         subroutine c_exclass1_get_name_arg_bufferify(self, name, Nname) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg_bufferify")
@@ -458,7 +458,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +len(NSHF_rv)
-        ! Attrs:     +intent(out)
+        ! Attrs:     +intent(out)+is_result
         ! Exact:     c_string_&_result_buf
         subroutine c_exclass2_get_name_bufferify(self, SHF_rv, NSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name_bufferify")
@@ -490,7 +490,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-        ! Attrs:     +deref(allocatable)+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
@@ -520,7 +520,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-        ! Attrs:     +deref(allocatable)+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
@@ -550,7 +550,7 @@ module userlibrary_example_nested_mod
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-        ! Attrs:     +deref(allocatable)+intent(out)
+        ! Attrs:     +deref(allocatable)+intent(out)+is_result
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
@@ -1408,9 +1408,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
@@ -1435,10 +1435,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & name +len(Nname)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     subroutine exclass1_get_name_arg(obj, name)
         use iso_c_binding, only : C_INT
@@ -1628,10 +1628,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     function exclass2_get_name(obj) &
             result(SHT_rv)
@@ -1654,9 +1654,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
@@ -1680,9 +1680,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
@@ -1706,9 +1706,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)

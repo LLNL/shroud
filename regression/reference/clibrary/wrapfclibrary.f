@@ -232,7 +232,7 @@ module clibrary_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     interface
         subroutine c_function4a_bufferify(arg1, arg2, SHF_rv, NSHF_rv) &
@@ -984,10 +984,10 @@ contains
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     function function4a(arg1, arg2) &
             result(SHT_rv)

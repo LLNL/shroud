@@ -102,7 +102,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     interface
         subroutine c_return_char_bufferify(SHF_rv, NSHF_rv) &
@@ -225,7 +225,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_char_*_result_buf_allocatable
     ! start c_get_char_ptr1_bufferify
     interface
@@ -260,7 +260,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     ! start c_get_char_ptr2_bufferify
     interface
@@ -296,7 +296,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     ! start c_get_char_ptr3_bufferify
     interface
@@ -330,7 +330,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_result_bufferify(DSHF_rv) &
@@ -347,7 +347,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_len_bufferify(SHF_rv, NSHF_rv) &
@@ -365,7 +365,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_as_arg_bufferify(output, Noutput) &
@@ -383,7 +383,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_alloc_bufferify(DSHF_rv) &
@@ -416,7 +416,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     ! start c_get_const_string_ref_pure_bufferify
     interface
@@ -449,7 +449,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_len_bufferify(SHF_rv, NSHF_rv) &
@@ -481,7 +481,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_as_arg_bufferify(output, &
@@ -514,7 +514,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     interface
         subroutine c_get_const_string_ref_len_empty_bufferify(SHF_rv, &
@@ -547,7 +547,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     interface
         subroutine c_get_const_string_ref_alloc_bufferify(DSHF_rv) &
@@ -578,7 +578,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     interface
         subroutine c_get_const_string_ptr_len_bufferify(SHF_rv, NSHF_rv) &
@@ -610,7 +610,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
@@ -641,7 +641,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv) &
@@ -672,7 +672,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     interface
         subroutine c_get_const_string_ptr_owns_alloc_pattern_bufferify( &
@@ -1131,7 +1131,7 @@ module strings_mod
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     interface
         subroutine c_creturn_char_bufferify(SHF_rv, NSHF_rv) &
@@ -1294,10 +1294,10 @@ contains
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     !>
     !! \brief return a char argument (non-pointer)
@@ -1388,9 +1388,9 @@ contains
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const char * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_char_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_char_*_result_buf_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
@@ -1420,10 +1420,10 @@ contains
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     !>
     !! \brief return 'const char *' with fixed size (len=30)
@@ -1450,10 +1450,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     !>
     !! \brief return a 'const char *' as argument
@@ -1479,9 +1479,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
@@ -1509,10 +1509,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string' as argument
@@ -1538,10 +1538,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string * output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string' as argument
@@ -1566,9 +1566,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
@@ -1591,9 +1591,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
@@ -1623,10 +1623,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     !>
     !! \brief return 'const string&' with fixed size (len=30)
@@ -1655,10 +1655,10 @@ contains
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  string & output +len(Noutput)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     !>
     !! \brief return a 'const string&' as argument
@@ -1686,10 +1686,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_&_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_&_result_buf
     !>
     !! \brief Test returning empty string reference
@@ -1715,9 +1715,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_buf_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
@@ -1741,10 +1741,10 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_string_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_string_*_result_buf
     !>
     !! \brief return a 'const string *' as character(30)
@@ -1775,9 +1775,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
@@ -1801,9 +1801,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! It is the caller's responsibility to release the string
@@ -1834,9 +1834,9 @@ contains
     ! Exact:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)
+    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_buf_allocatable
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
@@ -2200,10 +2200,10 @@ contains
     ! Exact:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Requested: f_char_*_result_buf
     ! Match:     f_default
-    ! Attrs:     +intent(out)
+    ! Attrs:     +intent(out)+is_result
     ! Exact:     c_char_*_result_buf
     !>
     !! \brief return a char argument (non-pointer), extern "C"

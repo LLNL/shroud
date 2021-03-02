@@ -151,7 +151,7 @@ char STR_return_char(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_char_scalar_result_cfi
 void STR_return_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -302,7 +302,7 @@ const char * STR_get_char_ptr1(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * SHF_rv +deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_char_*_result_cfi_allocatable
 // start STR_get_char_ptr1_CFI
 void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -349,7 +349,7 @@ const char * STR_get_char_ptr2(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +len(30)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_char_*_result_cfi
 // start STR_get_char_ptr2_CFI
 void STR_get_char_ptr2_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -390,7 +390,7 @@ const char * STR_get_char_ptr3(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * output
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_char_*_result_cfi
 // start STR_get_char_ptr3_CFI
 void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output)
@@ -429,7 +429,7 @@ const char * STR_get_char_ptr4(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string * SHF_rv +deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_scalar_result_cfi_allocatable
 void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -454,7 +454,7 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +len(30)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_scalar_result_cfi
 void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -480,7 +480,7 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * output
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_scalar_result_cfi
 void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
@@ -502,7 +502,7 @@ void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_scalar_result_cfi_allocatable
 void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -546,7 +546,7 @@ const char * STR_get_const_string_ref_pure(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_cfi_allocatable
 // start STR_get_const_string_ref_pure_CFI
 void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
@@ -601,7 +601,7 @@ const char * STR_get_const_string_ref_len(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(30)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_cfi
 void STR_get_const_string_ref_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -653,7 +653,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & output
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_cfi
 void STR_get_const_string_ref_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 {
@@ -701,7 +701,7 @@ const char * STR_get_const_string_ref_len_empty(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(30)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_cfi
 void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -736,7 +736,7 @@ const char * STR_get_const_string_ref_alloc(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_cfi_allocatable
 void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -786,7 +786,7 @@ const char * STR_get_const_string_ptr_len(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +len(30)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_*_result_cfi
 void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -821,7 +821,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+owner(library)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_*_result_cfi_allocatable
 void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -869,7 +869,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+owner(caller)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_*_result_cfi_allocatable
 void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {
@@ -909,7 +909,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_*_result_cfi_allocatable
 void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     CFI_cdesc_t *SHcfi_SHF_rv)
@@ -1454,7 +1454,7 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_char_scalar_result_cfi
 void STR_creturn_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
 {

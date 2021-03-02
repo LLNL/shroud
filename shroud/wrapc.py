@@ -1017,8 +1017,7 @@ class Wrapc(util.WrapperMixin):
 
             self.set_fmt_fields(cls, node, arg, arg_typemap, fmt_arg, False)
             
-            is_result = c_attrs["_is_result"]
-            if is_result:
+            if c_meta["is_result"]:
                 # This argument is the C function result
                 arg_call = False
 

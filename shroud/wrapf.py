@@ -1024,7 +1024,7 @@ rv = .false.
                 )
                 imports[fmt.F_capsule_data_type] = True
             elif buf_arg == "context":
-                if ast.attrs["_is_result"]:
+                if ast.metaattrs["is_result"]:
                     intent = "OUT"
                 else:
                     intent = "INOUT"
@@ -1161,7 +1161,7 @@ rv = .false.
             cdesc = "cdesc" if attrs["cdesc"] is not None else None
 
             spointer = arg.get_indirect_stmt()
-            if attrs["_is_result"]:
+            if meta["is_result"]:
                 c_stmts = ["c", sgroup, spointer, "result",
                            generated_suffix, deref_attr]
             else:
@@ -1698,7 +1698,7 @@ rv = .false.
             # Or the wrapper may provide an argument in the Fortran API
             # to hold the result.
             is_f_arg = True  # assume C and Fortran arguments match
-            if c_attrs["_is_result"]:
+            if c_meta["is_result"]:
                 if not fmt_func.F_string_result_as_arg:
                     # It is not in the Fortran API
                     is_f_arg = False
@@ -1723,7 +1723,7 @@ rv = .false.
             f_sgroup = f_arg.typemap.sgroup
             f_spointer = f_arg.get_indirect_stmt()
             f_deref_attr = f_meta["deref"]
-            if c_attrs["_is_result"]:
+            if c_meta["is_result"]:
                 # This argument is the C function result
                 c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
                 f_stmts = ["f", f_sgroup, f_spointer, "result", generated_suffix, f_deref_attr]

@@ -290,7 +290,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,

@@ -196,7 +196,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
-// Attrs:     +deref(allocatable)+intent(out)
+// Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
     const AA_example_nested_ExClass1 * self, AA_SHROUD_array *DSHF_rv)
@@ -231,7 +231,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & name +len(Nname)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_string_&_result_buf
 void AA_example_nested_ExClass1_get_name_arg_bufferify(
     const AA_example_nested_ExClass1 * self, char * name, int Nname)

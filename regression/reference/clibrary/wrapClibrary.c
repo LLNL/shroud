@@ -119,7 +119,7 @@ double CLI_pass_by_value_macro(int arg2)
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)
+// Attrs:     +intent(out)+is_result
 // Exact:     c_char_*_result_buf
 void CLI_function4a_bufferify(const char * arg1, const char * arg2,
     char * SHF_rv, int NSHF_rv)
