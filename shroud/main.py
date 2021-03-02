@@ -15,6 +15,7 @@ from __future__ import absolute_import
 import argparse
 import json
 import os
+import re
 import sys
 import yaml
 from yaml.composer import Composer
@@ -406,7 +407,7 @@ def main_with_args(args):
 
     for filename in args.filename:
         ext = os.path.splitext(filename)[1]
-        if ext == ".yaml":
+        if re.search(ext, "[.](yaml|yml)$"):
             # print("Read %s" % os.path.basename(filename))
             log.write("Read yaml %s\n" % os.path.basename(filename))
             fp = open(filename, "r")
