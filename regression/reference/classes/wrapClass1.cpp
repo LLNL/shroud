@@ -369,6 +369,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 // Argument:  int val +intent(in)+value
 // Requested: c_native_scalar_in
 // Match:     c_default
+//    metaattrs:  +intent(in)
 // start CLA_Class1_set_test
 void CLA_Class1_set_test(CLA_Class1 * self, int val)
 {

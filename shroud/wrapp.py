@@ -1274,7 +1274,7 @@ return 1;""",
             dimension = arg.attrs["dimension"]
             hidden = attrs["hidden"]
             implied = attrs["implied"]
-            intent = attrs["intent"]
+            intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = arg.get_indirect_stmt()
             stmts = None
@@ -3455,7 +3455,7 @@ class ToImplied(todict.PrintNode):
 
             # find argname in function parameters
             arg = self.func.ast.find_arg_by_name(argname)
-            if arg.attrs["intent"] == "out":
+            if arg.metaattrs["intent"] == "out":
                 #   char *text+intent(out)+charlen(XXX), 
                 #   int ltext+implied(len(text)))
                 # len(text) in this case is the value of "charlen"

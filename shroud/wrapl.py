@@ -529,12 +529,13 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
                 fmt_arg.c_member = "."
                 fmt_arg.cxx_member = "."
             attrs = arg.attrs
+            meta = arg.metaattrs
 
             arg_typemap = arg.typemap
             fmt_arg.cxx_type = arg_typemap.cxx_type
 
             intent_blk = None
-            intent = attrs["intent"]
+            intent = meta["intent"]
             sgroup = arg_typemap.sgroup
             spointer = arg.get_indirect_stmt()
             stmts = None

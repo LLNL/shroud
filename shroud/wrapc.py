@@ -1054,7 +1054,7 @@ class Wrapc(util.WrapperMixin):
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
-                stmts = ["c", sgroup, spointer, c_attrs["intent"],
+                stmts = ["c", sgroup, spointer, c_meta["intent"],
                          arg.stmts_suffix, cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 

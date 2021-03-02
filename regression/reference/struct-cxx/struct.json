@@ -748,6 +748,9 @@
                                         "name": "val",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -930,6 +933,9 @@
                                     "declarator": {
                                         "name": "val",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "int"
@@ -1205,6 +1211,9 @@
                                         "name": "val",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -1388,6 +1397,9 @@
                                         "name": "val",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
                                     "specifier": [
                                         "int"
                                     ],
@@ -1570,6 +1582,9 @@
                                     "declarator": {
                                         "name": "val",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
                                     },
                                     "specifier": [
                                         "int"

@@ -636,6 +636,8 @@ class GenFunctions(object):
         )
 
         fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
+        # XXX - The function is not processed like other, so set intent directly.
+        fcn.ast.params[0].metaattrs["intent"] = "in"
         fcn.wrap.lua = False
         fcn.wrap.python = False
 

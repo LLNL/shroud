@@ -133,6 +133,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cstruct_as_class_set_x1
     interface
         subroutine c_cstruct_as_class_set_x1(self, val) &
@@ -172,6 +173,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cstruct_as_class_set_y1
     interface
         subroutine c_cstruct_as_class_set_y1(self, val) &
@@ -214,6 +216,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cstruct_as_subclass_set_x1
     interface
         subroutine c_cstruct_as_subclass_set_x1(self, val) &
@@ -253,6 +256,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cstruct_as_subclass_set_y1
     interface
         subroutine c_cstruct_as_subclass_set_y1(self, val) &
@@ -292,6 +296,7 @@ module struct_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_cstruct_as_subclass_set_z1
     interface
         subroutine c_cstruct_as_subclass_set_z1(self, val) &
@@ -772,6 +777,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_class_set_x1
@@ -815,6 +821,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_class_set_y1
@@ -861,6 +868,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_x1
@@ -904,6 +912,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_y1
@@ -947,6 +956,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start cstruct_as_subclass_set_z1

@@ -450,6 +450,7 @@ module classes_mod
     ! Argument:  int val +intent(in)+value
     ! Requested: c_native_scalar_in
     ! Match:     c_default
+    !    metaattrs:  +intent(in)
     ! start c_class1_set_test
     interface
         subroutine c_class1_set_test(self, val) &
@@ -1143,6 +1144,7 @@ contains
     ! Argument:  int val +intent(in)+value
     ! Requested: f_native_scalar_in
     ! Match:     f_default
+    !    metaattrs:  +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start class1_set_test

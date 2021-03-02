@@ -955,7 +955,7 @@ rv = .false.
                     # Treat too many pointers as a type(C_PTR)
                     # and let the wrapper sort it out.
                     # 'char **' uses c_char_**_in as a special case.
-                    intent = ast.attrs["intent"].upper()
+                    intent = ast.metaattrs["intent"].upper()
                     arg_c_decl.append(
                         "type(C_PTR), intent({}) :: {}".format(
                             intent, fmt.F_C_var))
@@ -977,7 +977,7 @@ rv = .false.
                 arg_c_names.append(fmt.F_C_var)
                 arg_c_decl.append("{}, intent({}){} :: {}".format(
                     ast.typemap.f_c_type,
-                    (intent or ast.attrs["intent"]).upper(),
+                    (intent or ast.metaattrs["intent"]).upper(),
                     ", value" if attrs["value"] else "",
                     fmt.F_C_var))
                 self.update_f_module(
@@ -1155,7 +1155,7 @@ rv = .false.
 
             attrs = arg.attrs
             meta = arg.metaattrs
-            intent = attrs["intent"] or "inout"
+            intent = meta["intent"] or "inout"
             if intent != "in":
                 args_all_in = False
             deref_attr = meta["deref"]
@@ -1464,6 +1464,7 @@ rv = .false.
             fmt - format dictionary
         """
         c_attrs = c_ast.attrs
+        c_meta = c_ast.metaattrs
         statements.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
@@ -1687,7 +1688,7 @@ rv = .false.
             c_attrs = c_arg.attrs
             c_meta = c_arg.metaattrs
             hidden = c_attrs["hidden"]
-            intent = c_attrs["intent"]
+            intent = c_meta["intent"]
             cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
 
             if c_arg.template_arguments:
