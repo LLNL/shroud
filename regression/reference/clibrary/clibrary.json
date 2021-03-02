@@ -275,6 +275,9 @@
                         "name": "PassByValue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -650,6 +653,9 @@
                     "declarator": {
                         "name": "PassByValueMacro",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1135,7 +1141,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2851,6 +2858,9 @@
                         "name": "ImpliedLen",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3154,6 +3164,9 @@
                         "name": "ImpliedLenTrim",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3361,6 +3374,9 @@
                         "name": "ImpliedBoolTrue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3524,6 +3540,9 @@
                     "declarator": {
                         "name": "ImpliedBoolFalse",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -4051,6 +4070,9 @@
                         "name": "passAssumedType",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4302,6 +4324,9 @@
                         "name": "passAssumedTypeBuf",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4475,6 +4500,9 @@
                     "declarator": {
                         "name": "passAssumedTypeBuf",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

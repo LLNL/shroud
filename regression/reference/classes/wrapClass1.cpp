@@ -47,6 +47,7 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  Class1
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 // start CLA_Class1_ctor_default
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 {
@@ -62,6 +63,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 // ----------------------------------------
 // Function:  Class1
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
@@ -102,6 +104,7 @@ void CLA_Class1_delete(CLA_Class1 * self)
 // Function:  int Method1
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // start CLA_Class1_method1
 int CLA_Class1_method1(CLA_Class1 * self)
 {
@@ -122,6 +125,7 @@ int CLA_Class1_method1(CLA_Class1 * self)
 // Function:  bool equivalent
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Class1 & obj2 +intent(in)
 // Requested: c_shadow_&_in
@@ -149,6 +153,7 @@ bool CLA_Class1_equivalent(const CLA_Class1 * self, CLA_Class1 * obj2)
 // Function:  void returnThis
 // Requested: c
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // start CLA_Class1_return_this
 void CLA_Class1_return_this(CLA_Class1 * self)
 {
@@ -168,6 +173,7 @@ void CLA_Class1_return_this(CLA_Class1 * self)
 // Function:  Class1 * returnThisBuffer
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
 // Exact:     c_string_&_in
@@ -202,6 +208,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // Function:  Class1 * returnThisBuffer
 // Requested: c_shadow_*_result_buf
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
 // Exact:     c_string_&_in_buf
@@ -236,6 +243,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,
 // Function:  Class1 * getclass3
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // start CLA_Class1_getclass3
 CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
     CLA_Class1 * SHadow_rv)
@@ -258,7 +266,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
 // ----------------------------------------
 // Function:  const std::string & getName +deref(allocatable)
 // Exact:     c_string_&_result
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(result)
 // start CLA_Class1_get_name
 const char * CLA_Class1_get_name(CLA_Class1 * self)
 {
@@ -301,6 +309,7 @@ void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
 // Function:  DIRECTION directionFunc
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  DIRECTION arg +intent(in)+value
 // Requested: c_native_scalar_in

@@ -32,6 +32,9 @@
                         "name": "vector_sum",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -158,6 +161,9 @@
                     "declarator": {
                         "name": "vector_sum",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1651,6 +1657,9 @@
                         "name": "vector_string_count",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1782,6 +1791,9 @@
                     "declarator": {
                         "name": "vector_string_count",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1998,7 +2010,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [
                         {

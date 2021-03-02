@@ -89,6 +89,7 @@ static void ShroudStrFree(char *src)
 // Function:  double PassByValueMacro
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int arg2 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -266,6 +267,7 @@ void CLI_bind_c2_bufferify(char * outbuf, int Noutbuf)
 // Function:  int passAssumedTypeBuf
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  void * arg +assumedtype+intent(in)
 // Requested: c_void_*_in_buf

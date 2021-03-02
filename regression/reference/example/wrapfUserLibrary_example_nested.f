@@ -163,6 +163,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_exclass1_ctor_0(SHT_crv) &
                 result(SHT_rv) &
@@ -176,6 +177,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)
@@ -194,6 +196,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1
+        !    metaattrs:  +intent(result)
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
@@ -225,6 +228,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int incrementCount
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -245,7 +249,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck +deref(allocatable)
-        !    metaattrs:  +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
@@ -276,7 +280,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameArg +deref(result-as-arg)
-        !    metaattrs:  +deref(result-as-arg)
+        !    metaattrs:  +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
@@ -308,6 +312,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int getValue
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -328,6 +333,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  long getValue
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -348,6 +354,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool hasAddr
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -382,6 +389,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         ! ----------------------------------------
         ! Argument:  const string * name +intent(in)+len_trim(trim_name)
@@ -400,6 +408,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass2
+        !    metaattrs:  +intent(result)
         ! Requested: c_shadow_scalar_result_buf
         ! Match:     c_shadow_scalar_result
         ! ----------------------------------------
@@ -431,7 +440,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-        !    metaattrs:  +deref(result-as-arg)
+        !    metaattrs:  +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
@@ -463,7 +472,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  const string & getName2 +deref(allocatable)
-        !    metaattrs:  +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
@@ -493,7 +502,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName3 +deref(allocatable)
-        !    metaattrs:  +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
@@ -523,7 +532,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  string & getName4 +deref(allocatable)
-        !    metaattrs:  +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
@@ -553,6 +562,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_name_length(self) &
@@ -567,6 +577,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  ExClass1 * get_class1
+        !    metaattrs:  +intent(result)
         ! Requested: c_shadow_*_result
         ! Match:     c_shadow_result
         ! ----------------------------------------
@@ -588,6 +599,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void declare
+        !    metaattrs:  +intent(result)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -606,6 +618,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void declare
+        !    metaattrs:  +intent(result)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -641,6 +654,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  TypeID getTypeID
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_exclass2_get_type_id(self) &
@@ -727,6 +741,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int getValue
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_int(self) &
@@ -741,6 +756,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  double getValue
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_exclass2_get_value_double(self) &
@@ -767,6 +783,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -784,6 +801,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isNameValid
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
@@ -802,6 +820,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  bool isInitialized
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         function c_is_initialized() &
@@ -935,6 +954,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  size_t test_size_t
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function test_size_t() &
@@ -1129,6 +1149,7 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  int verylongfunctionname2
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -1281,6 +1302,7 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! ExClass1
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function exclass1_ctor_0() &
@@ -1297,6 +1319,7 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1
     ! ExClass1
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
@@ -1347,6 +1370,7 @@ contains
     ! ----------------------------------------
     ! Function:  int incrementCount
     ! int incrementCount
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1373,7 +1397,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck +deref(allocatable)
     ! const string & getNameErrorCheck +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getNameErrorCheck
     ! Exact:     c_string_scalar_result_buf
@@ -1422,6 +1446,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! int getValue
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1447,6 +1472,7 @@ contains
     ! ----------------------------------------
     ! Function:  long getValue
     ! long getValue
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1472,6 +1498,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool hasAddr
     ! bool hasAddr
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -1533,6 +1560,7 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass2
     ! ExClass2
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
@@ -1578,7 +1606,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
     ! const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
@@ -1604,7 +1632,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2 +deref(allocatable)
     ! const string & getName2 +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName2
     ! Exact:     c_string_scalar_result_buf
@@ -1629,7 +1657,7 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3 +deref(allocatable)
     ! string & getName3 +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName3
     ! Exact:     c_string_scalar_result_buf
@@ -1654,7 +1682,7 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4 +deref(allocatable)
     ! string & getName4 +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName4
     ! Exact:     c_string_scalar_result_buf
@@ -1678,6 +1706,7 @@ contains
     ! ----------------------------------------
     ! Function:  int GetNameLength
     ! int GetNameLength
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1699,6 +1728,7 @@ contains
     ! ----------------------------------------
     ! Function:  ExClass1 * get_class1
     ! ExClass1 * get_class1
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1727,6 +1757,7 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    !    metaattrs:  +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1751,6 +1782,7 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    !    metaattrs:  +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1775,6 +1807,7 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    !    metaattrs:  +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1808,6 +1841,7 @@ contains
     ! ----------------------------------------
     ! Function:  void declare
     ! void declare
+    !    metaattrs:  +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -1854,6 +1888,7 @@ contains
     ! ----------------------------------------
     ! Function:  TypeID getTypeID
     ! TypeID getTypeID
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1968,6 +2003,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getValue
     ! int getValue
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1986,6 +2022,7 @@ contains
     ! ----------------------------------------
     ! Function:  double getValue
     ! double getValue
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -2022,6 +2059,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool isNameValid
     ! bool isNameValid
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result_buf
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result_buf
@@ -2046,6 +2084,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool isInitialized
     ! bool isInitialized
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -2356,6 +2395,7 @@ contains
     ! ----------------------------------------
     ! Function:  int verylongfunctionname2
     ! int verylongfunctionname2
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

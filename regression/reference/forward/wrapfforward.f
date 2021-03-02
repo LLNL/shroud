@@ -71,6 +71,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -133,6 +134,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  int passStruct1
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -189,6 +191,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class2
     ! Class2
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function class2_ctor() &
@@ -288,6 +291,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct1
     ! int passStruct1
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

@@ -45,6 +45,7 @@ static void ShroudStrCopy(char *dest, int ndest, const char *src, int nsrc)
 // Function:  Class1::DIRECTION directionFunc
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +intent(in)+value
 // Requested: c_native_scalar_in
@@ -87,6 +88,7 @@ void CLA_pass_class_by_value(CLA_Class1 arg)
 // Function:  int useclass
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Class1 * arg +intent(in)
 // Requested: c_shadow_*_in
@@ -106,6 +108,7 @@ int CLA_useclass(CLA_Class1 * arg)
 // Function:  const Class1 * getclass2
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass2
@@ -120,6 +123,7 @@ CLA_Class1 * CLA_getclass2(CLA_Class1 * SHadow_rv)
 // Function:  Class1 * getclass3
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.getclass3
@@ -134,6 +138,7 @@ CLA_Class1 * CLA_getclass3(CLA_Class1 * SHadow_rv)
 // Function:  const Class1 & getConstClassReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_const_class_reference
@@ -149,6 +154,7 @@ CLA_Class1 * CLA_get_const_class_reference(CLA_Class1 * SHadow_rv)
 // Function:  Class1 & getClassReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
 {
     // splicer begin function.get_class_reference
@@ -166,6 +172,7 @@ CLA_Class1 * CLA_get_class_reference(CLA_Class1 * SHadow_rv)
 // ----------------------------------------
 // Function:  Class1 getClassCopy
 // Exact:     c_shadow_scalar_result
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
@@ -202,6 +209,7 @@ void CLA_set_global_flag(int arg)
 // Function:  int get_global_flag
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 int CLA_get_global_flag(void)
 {
     // splicer begin function.get_global_flag
@@ -213,7 +221,7 @@ int CLA_get_global_flag(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Exact:     c_string_&_result
-//    metaattrs:  +deref(result-as-arg)
+//    metaattrs:  +deref(result-as-arg)+intent(result)
 const char * CLA_last_function_called(void)
 {
     // splicer begin function.last_function_called

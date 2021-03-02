@@ -27,6 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 {
     // splicer begin class.Class2.method.ctor

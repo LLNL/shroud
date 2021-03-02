@@ -76,7 +76,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

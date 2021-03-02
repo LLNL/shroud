@@ -26,6 +26,7 @@ extern "C" {
 // Function:  bool defaultPtrIsNULL
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 bool CXX_default_ptr_is_null_0(void)
 {
     // splicer begin function.default_ptr_is_null_0
@@ -38,6 +39,7 @@ bool CXX_default_ptr_is_null_0(void)
 // Function:  bool defaultPtrIsNULL
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double * data=nullptr +intent(in)+rank(1)
 // Requested: c_native_*_in

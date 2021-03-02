@@ -79,6 +79,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValue
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -136,6 +137,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_use_default_arguments
@@ -152,6 +154,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -174,6 +177,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -292,6 +296,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int TemplateReturn
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -306,6 +311,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  double TemplateReturn
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -379,6 +385,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -399,6 +406,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -425,6 +433,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -458,6 +467,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -484,6 +494,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -516,6 +527,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -554,6 +566,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  TypeID typefunc
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -574,6 +587,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  EnumTypeID enumfunc
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -594,6 +608,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  Color colorfunc
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -640,6 +655,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  int callback1
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -669,7 +685,7 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
@@ -760,7 +776,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string ConcatenateStrings +deref(allocatable)
     ! const std::string ConcatenateStrings +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void ConcatenateStrings
     ! Exact:     c_string_scalar_result_buf
@@ -807,6 +823,7 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -826,6 +843,7 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -852,6 +870,7 @@ contains
     ! ----------------------------------------
     ! Function:  double UseDefaultArguments
     ! double UseDefaultArguments
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -981,6 +1000,7 @@ contains
     ! ----------------------------------------
     ! Function:  int TemplateReturn
     ! int TemplateReturn
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -998,6 +1018,7 @@ contains
     ! ----------------------------------------
     ! Function:  double TemplateReturn
     ! double TemplateReturn
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1093,6 +1114,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1118,6 +1140,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1150,6 +1173,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1192,6 +1216,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1225,6 +1250,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1265,6 +1291,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseDefaultOverload
     ! int UseDefaultOverload
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1314,7 +1341,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)

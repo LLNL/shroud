@@ -304,6 +304,9 @@
                         "name": "passStructByReferenceCls",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -396,6 +399,9 @@
                     "declarator": {
                         "name": "passStructByReferenceInCls",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -624,6 +630,9 @@
                         "name": "defaultPtrIsNULL",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "bool"
@@ -780,6 +789,9 @@
                     "declarator": {
                         "name": "defaultPtrIsNULL",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1619,6 +1631,9 @@
                                 "name": "passStructByReference",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -1791,6 +1806,9 @@
                             "declarator": {
                                 "name": "passStructByReferenceIn",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
                             },
                             "params": [
                                 {

@@ -72,7 +72,7 @@ module ns_mod
 
         ! ----------------------------------------
         ! Function:  const std::string & LastFunctionCalled +deref(allocatable)
-        !    metaattrs:  +deref(allocatable)
+        !    metaattrs:  +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result
         function c_last_function_called() &
                 result(SHT_rv) &
@@ -132,7 +132,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(allocatable)
     ! const std::string & LastFunctionCalled +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void LastFunctionCalled
     ! Exact:     c_string_scalar_result_buf

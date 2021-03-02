@@ -33,6 +33,7 @@ module interface_mod
 
         ! ----------------------------------------
         ! Function:  double Function2
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------

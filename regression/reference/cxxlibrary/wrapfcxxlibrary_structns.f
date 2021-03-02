@@ -31,6 +31,7 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReference
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -50,6 +51,7 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  int passStructByReferenceIn
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------

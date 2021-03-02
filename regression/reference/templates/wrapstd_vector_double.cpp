@@ -24,6 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 TEM_vector_double * TEM_vector_double_ctor(
     TEM_vector_double * SHadow_rv)
 {
@@ -71,7 +72,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 // Function:  double & at +deref(pointer)
 // Requested: c_native_&_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  size_type n +intent(in)+value
 // Requested: c_native_scalar_in

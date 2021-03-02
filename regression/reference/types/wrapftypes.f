@@ -24,6 +24,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short short_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -42,6 +43,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int int_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -60,6 +62,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -78,6 +81,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long long_long_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -96,6 +100,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  short int short_int_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -114,6 +119,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long int long_int_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -132,6 +138,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  long long int long_long_int_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -150,6 +157,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned unsigned_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -168,6 +176,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned short ushort_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -186,6 +195,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned int uint_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -204,6 +214,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long ulong_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -222,6 +233,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long long ulong_long_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -240,6 +252,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  unsigned long int ulong_int_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -258,6 +271,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int8_t int8_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -276,6 +290,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int16_t int16_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -294,6 +309,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int32_t int32_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -312,6 +328,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  int64_t int64_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -330,6 +347,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint8_t uint8_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -348,6 +366,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint16_t uint16_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -366,6 +385,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint32_t uint32_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -384,6 +404,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  uint64_t uint64_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -402,6 +423,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  size_t size_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -420,6 +442,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool bool_func
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -438,6 +461,7 @@ module types_mod
 
         ! ----------------------------------------
         ! Function:  bool returnBoolAndOthers
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -463,6 +487,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool bool_func
     ! bool bool_func
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -489,6 +514,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
     ! bool returnBoolAndOthers
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result

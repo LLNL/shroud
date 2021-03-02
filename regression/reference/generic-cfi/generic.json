@@ -243,6 +243,9 @@
                         "name": "GetGlobalDouble",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "double"
@@ -629,6 +632,9 @@
                         "name": "GenericReal2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -798,6 +804,9 @@
                         "name": "GenericReal2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -883,6 +892,9 @@
                     "declarator": {
                         "name": "GenericReal2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1031,6 +1043,9 @@
                     "declarator": {
                         "name": "SumValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1214,6 +1229,9 @@
                     "declarator": {
                         "name": "SumValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

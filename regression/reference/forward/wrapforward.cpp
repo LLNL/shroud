@@ -26,6 +26,7 @@ extern "C" {
 // Function:  int passStruct1
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 * arg +intent(in)
 // Requested: c_struct_*_in

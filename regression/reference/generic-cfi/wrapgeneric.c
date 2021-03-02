@@ -26,6 +26,7 @@
 // Function:  int SumValues
 // Requested: c_native_scalar_result_cfi
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const int * values +dimension(..)+intent(in)
 // Exact:     c_native_*_in_cfi

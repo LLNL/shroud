@@ -416,6 +416,9 @@
                         "name": "acceptBothStructs",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {

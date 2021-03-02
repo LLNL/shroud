@@ -141,6 +141,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  int getData
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_get_data_int() &
@@ -153,6 +154,7 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  double getData
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_get_data_double() &
@@ -306,6 +308,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getData
     ! int getData
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -326,6 +329,7 @@ contains
     ! ----------------------------------------
     ! Function:  double getData
     ! double getData
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

@@ -23,6 +23,7 @@ extern "C" {
 // Function:  static Singleton & getReference
 // Requested: c_shadow_&_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 CLA_Singleton * CLA_Singleton_get_reference(CLA_Singleton * SHadow_rv)
 {
     // splicer begin class.Singleton.method.get_reference

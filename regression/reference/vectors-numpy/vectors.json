@@ -68,6 +68,9 @@
                         "name": "vector_sum",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -639,6 +642,9 @@
                         "name": "vector_string_count",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -868,6 +874,9 @@
                     "declarator": {
                         "name": "ReturnVectorAlloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

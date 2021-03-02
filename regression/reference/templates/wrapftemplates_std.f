@@ -71,6 +71,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_vector_int_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -113,7 +114,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  int & at +deref(pointer)
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -137,6 +138,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_vector_double_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -179,7 +181,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  double & at +deref(pointer)
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_&_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -218,6 +220,7 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! vector
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function vector_int_ctor() &
@@ -271,7 +274,7 @@ contains
     ! ----------------------------------------
     ! Function:  int & at +deref(pointer)
     ! int & at +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
     ! Requested: c_native_&_result
@@ -325,6 +328,7 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! vector
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function vector_double_ctor() &
@@ -378,7 +382,7 @@ contains
     ! ----------------------------------------
     ! Function:  double & at +deref(pointer)
     ! double & at +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: f_native_&_result_pointer
     ! Match:     f_native_&_result
     ! Requested: c_native_&_result

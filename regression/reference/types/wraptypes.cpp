@@ -26,6 +26,7 @@ extern "C" {
 // Function:  short short_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  short arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -43,6 +44,7 @@ short TYP_short_func(short arg1)
 // Function:  int int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -60,6 +62,7 @@ int TYP_int_func(int arg1)
 // Function:  long long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -77,6 +80,7 @@ long TYP_long_func(long arg1)
 // Function:  long long long_long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  long long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -94,6 +98,7 @@ long long TYP_long_long_func(long long arg1)
 // Function:  short int short_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  short int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -111,6 +116,7 @@ short TYP_short_int_func(short arg1)
 // Function:  long int long_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -128,6 +134,7 @@ long TYP_long_int_func(long arg1)
 // Function:  long long int long_long_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  long long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -145,6 +152,7 @@ long long TYP_long_long_int_func(long long arg1)
 // Function:  unsigned unsigned_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -162,6 +170,7 @@ unsigned int TYP_unsigned_func(unsigned int arg1)
 // Function:  unsigned short ushort_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned short arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -179,6 +188,7 @@ unsigned short TYP_ushort_func(unsigned short arg1)
 // Function:  unsigned int uint_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -196,6 +206,7 @@ unsigned int TYP_uint_func(unsigned int arg1)
 // Function:  unsigned long ulong_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -213,6 +224,7 @@ unsigned long TYP_ulong_func(unsigned long arg1)
 // Function:  unsigned long long ulong_long_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned long long arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -230,6 +242,7 @@ unsigned long long TYP_ulong_long_func(unsigned long long arg1)
 // Function:  unsigned long int ulong_int_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  unsigned long int arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -247,6 +260,7 @@ unsigned long TYP_ulong_int_func(unsigned long arg1)
 // Function:  int8_t int8_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int8_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -264,6 +278,7 @@ int8_t TYP_int8_func(int8_t arg1)
 // Function:  int16_t int16_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int16_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -281,6 +296,7 @@ int16_t TYP_int16_func(int16_t arg1)
 // Function:  int32_t int32_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int32_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -298,6 +314,7 @@ int32_t TYP_int32_func(int32_t arg1)
 // Function:  int64_t int64_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int64_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -315,6 +332,7 @@ int64_t TYP_int64_func(int64_t arg1)
 // Function:  uint8_t uint8_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  uint8_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -332,6 +350,7 @@ uint8_t TYP_uint8_func(uint8_t arg1)
 // Function:  uint16_t uint16_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  uint16_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -349,6 +368,7 @@ uint16_t TYP_uint16_func(uint16_t arg1)
 // Function:  uint32_t uint32_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  uint32_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -366,6 +386,7 @@ uint32_t TYP_uint32_func(uint32_t arg1)
 // Function:  uint64_t uint64_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  uint64_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -383,6 +404,7 @@ uint64_t TYP_uint64_func(uint64_t arg1)
 // Function:  size_t size_func
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  size_t arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -400,6 +422,7 @@ size_t TYP_size_func(size_t arg1)
 // Function:  bool bool_func
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  bool arg +intent(in)+value
 // Requested: c_bool_scalar_in
@@ -427,6 +450,7 @@ bool TYP_bool_func(bool arg)
 // Function:  bool returnBoolAndOthers
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Requested: c_native_*_out

@@ -286,6 +286,9 @@
                         "name": "returnChar",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "char"
@@ -1070,7 +1073,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1295,7 +1299,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1510,7 +1515,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1770,7 +1776,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "raw"
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1853,7 +1860,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2046,7 +2054,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2230,7 +2239,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2476,7 +2486,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2681,7 +2692,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2908,7 +2920,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3126,7 +3139,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3411,7 +3425,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3637,7 +3652,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3855,7 +3871,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4097,7 +4114,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4314,7 +4332,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -4538,7 +4557,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6778,6 +6798,9 @@
                         "name": "acceptStringInstance",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6902,6 +6925,9 @@
                     "declarator": {
                         "name": "acceptStringInstance",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -7080,6 +7106,9 @@
                     "declarator": {
                         "name": "returnMany",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -7707,6 +7736,9 @@
                     "declarator": {
                         "name": "CreturnChar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

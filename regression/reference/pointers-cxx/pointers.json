@@ -2348,6 +2348,9 @@
                         "name": "accumulate",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2484,6 +2487,9 @@
                         "name": "acceptCharArrayIn",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2615,6 +2621,9 @@
                     "declarator": {
                         "name": "acceptCharArrayIn",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2805,6 +2814,9 @@
                     "declarator": {
                         "name": "sumFixedArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -5512,6 +5524,9 @@
                         "name": "checkInt2d",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5768,6 +5783,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5894,6 +5912,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -6124,6 +6145,9 @@
                         "name": "VoidPtrArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6231,7 +6255,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6324,7 +6349,8 @@
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6405,7 +6431,8 @@
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6479,7 +6506,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6573,7 +6601,8 @@
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6655,7 +6684,8 @@
                             {
                                 "constant": "10"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6727,7 +6757,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "scalar"
+                        "deref": "scalar",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6806,7 +6837,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "raw"
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -6921,7 +6953,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "raw"
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -7033,7 +7066,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

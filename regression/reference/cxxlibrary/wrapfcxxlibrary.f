@@ -24,6 +24,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         function c_default_ptr_is_null_0() &
@@ -36,6 +37,7 @@ module cxxlibrary_mod
 
         ! ----------------------------------------
         ! Function:  bool defaultPtrIsNULL
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -134,6 +136,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! bool defaultPtrIsNULL
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -150,6 +153,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool defaultPtrIsNULL
     ! bool defaultPtrIsNULL
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result

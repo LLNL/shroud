@@ -84,6 +84,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValue
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -138,6 +139,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  double PassByValueMacro
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -190,7 +192,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Exact:     c_char_*_result
     ! ----------------------------------------
     ! Argument:  const char * arg1 +intent(in)
@@ -444,6 +446,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int ImpliedLen
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -476,6 +479,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -508,6 +512,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
+    !    metaattrs:  +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -528,6 +533,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
+    !    metaattrs:  +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -621,6 +627,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int passAssumedType
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -662,6 +669,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -688,6 +696,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -965,7 +974,7 @@ contains
     ! ----------------------------------------
     ! Function:  char * Function4a +deref(result-as-arg)+len(30)
     ! char * Function4a +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
@@ -1141,6 +1150,7 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLen
     ! int ImpliedLen
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1169,6 +1179,7 @@ contains
     ! ----------------------------------------
     ! Function:  int ImpliedLenTrim
     ! int ImpliedLenTrim
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1197,6 +1208,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolTrue
     ! bool ImpliedBoolTrue
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -1219,6 +1231,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool ImpliedBoolFalse
     ! bool ImpliedBoolFalse
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -1270,6 +1283,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passAssumedTypeBuf
     ! int passAssumedTypeBuf
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf

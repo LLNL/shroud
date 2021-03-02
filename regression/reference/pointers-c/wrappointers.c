@@ -68,6 +68,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 // Function:  int acceptCharArrayIn
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
 // Exact:     c_char_**_in_buf
@@ -410,7 +411,7 @@ void POI_get_raw_ptr_to_fixed_array_force_bufferify(
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *DSHC_rv)
@@ -433,7 +434,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *DSHC_rv)
@@ -457,7 +458,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 // Function:  int * returnIntScalar +deref(scalar)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(scalar)
+//    metaattrs:  +deref(scalar)+intent(result)
 // start POI_return_int_scalar
 int POI_return_int_scalar(void)
 {

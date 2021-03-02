@@ -210,6 +210,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -227,6 +228,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int function4
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
@@ -343,6 +345,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_instantiation3() &
@@ -355,6 +358,7 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  int Cstruct_as_class_sum
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -615,6 +619,7 @@ contains
     ! ----------------------------------------
     ! Function:  int function4
     ! int function4
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
@@ -759,6 +764,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -779,6 +785,7 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! int Cstruct_as_class_sum
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

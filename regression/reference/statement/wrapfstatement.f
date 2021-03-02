@@ -24,6 +24,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  int GetNameLength +pure
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function get_name_length() &
@@ -36,7 +37,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
-        !    metaattrs:  +deref(result-as-arg)
+        !    metaattrs:  +deref(result-as-arg)+intent(result)
         ! Exact:     c_string_&_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
@@ -72,7 +73,7 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
     ! const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())

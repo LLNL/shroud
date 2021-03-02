@@ -84,6 +84,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function c_arraywrapper_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -115,6 +116,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  int getSize
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         pure function c_arraywrapper_get_size(self) &
@@ -158,7 +160,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         function c_arraywrapper_get_array(self) &
@@ -173,7 +175,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         function c_arraywrapper_get_array_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
@@ -188,7 +190,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         pure function c_arraywrapper_get_array_const(self) &
@@ -203,7 +205,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         function c_arraywrapper_get_array_const_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
@@ -218,7 +220,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         function c_arraywrapper_get_array_c(self) &
@@ -233,7 +235,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         function c_arraywrapper_get_array_c_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
@@ -248,7 +250,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Requested: c_native_*_result
         ! Match:     c_default
         pure function c_arraywrapper_get_array_const_c(self) &
@@ -263,7 +265,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
-        !    metaattrs:  +deref(pointer)
+        !    metaattrs:  +deref(pointer)+intent(result)
         ! Exact:     c_native_*_result_buf
         function c_arraywrapper_get_array_const_c_bufferify(self, &
                 DSHC_rv) &
@@ -513,6 +515,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  bool checkPtr
+        !    metaattrs:  +intent(result)
         ! Requested: c_bool_scalar_result
         ! Match:     c_default
         ! ----------------------------------------
@@ -533,6 +536,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  double sumArray
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_arraywrapper_sum_array(self) &
@@ -561,6 +565,7 @@ contains
     ! ----------------------------------------
     ! Function:  ArrayWrapper
     ! ArrayWrapper
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function arraywrapper_ctor() &
@@ -599,6 +604,7 @@ contains
     ! ----------------------------------------
     ! Function:  int getSize
     ! int getSize
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -654,7 +660,7 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArray +deref(pointer)+dimension(getSize())
     ! double * getArray +deref(pointer)+dimension(getSize())
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
@@ -676,7 +682,7 @@ contains
     ! ----------------------------------------
     ! Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
     ! double * getArrayConst +deref(pointer)+dimension(getSize())
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
@@ -698,7 +704,7 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
     ! const double * getArrayC +deref(pointer)+dimension(getSize())
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
@@ -720,7 +726,7 @@ contains
     ! ----------------------------------------
     ! Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
     ! const double * getArrayConstC +deref(pointer)+dimension(getSize())
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
     ! Exact:     c_native_*_result_buf
@@ -925,6 +931,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool checkPtr
     ! bool checkPtr
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -949,6 +956,7 @@ contains
     ! ----------------------------------------
     ! Function:  double sumArray
     ! double sumArray
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

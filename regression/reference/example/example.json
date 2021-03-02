@@ -130,6 +130,9 @@
                                                 "_constructor": true,
                                                 "_name": "ctor"
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "ExClass1"
@@ -296,6 +299,9 @@
                                                 "_constructor": true,
                                                 "_name": "ctor"
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -427,6 +433,9 @@
                                             "attrs": {
                                                 "_constructor": true,
                                                 "_name": "ctor"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -679,6 +688,9 @@
                                                 "name": "incrementCount",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -817,7 +829,8 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "deref": "allocatable"
+                                                "deref": "allocatable",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -1047,7 +1060,8 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "deref": "result-as-arg"
+                                                "deref": "result-as-arg",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -1396,6 +1410,9 @@
                                                 "name": "getValue",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -1592,6 +1609,9 @@
                                                 "name": "getValue",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -1787,6 +1807,9 @@
                                             "declarator": {
                                                 "name": "hasAddr",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -2113,6 +2136,9 @@
                                                 "_constructor": true,
                                                 "_name": "ctor"
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -2244,6 +2270,9 @@
                                             "attrs": {
                                                 "_constructor": true,
                                                 "_name": "ctor"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -2440,7 +2469,8 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "deref": "result-as-arg"
+                                                "deref": "result-as-arg",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -2680,7 +2710,8 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "deref": "allocatable"
+                                                "deref": "allocatable",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -2918,7 +2949,8 @@
                                             },
                                             "func_const": true,
                                             "metaattrs": {
-                                                "deref": "allocatable"
+                                                "deref": "allocatable",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -3156,7 +3188,8 @@
                                                 ]
                                             },
                                             "metaattrs": {
-                                                "deref": "allocatable"
+                                                "deref": "allocatable",
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -3383,6 +3416,9 @@
                                                 "pointer": []
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "int"
@@ -3577,6 +3613,9 @@
                                                     }
                                                 ]
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -3656,6 +3695,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -3821,6 +3863,9 @@
                                                 "name": "declare",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -3964,6 +4009,9 @@
                                                 "name": "declare",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -4037,6 +4085,9 @@
                                             "declarator": {
                                                 "name": "declare",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -4226,6 +4277,9 @@
                                                         "ptr": "*"
                                                     }
                                                 ]
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -4457,6 +4511,9 @@
                                                 "name": "declare",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -4626,6 +4683,9 @@
                                                 "name": "declare",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -4707,6 +4767,9 @@
                                             "declarator": {
                                                 "name": "declare",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [
                                                 {
@@ -4896,6 +4959,9 @@
                                                 "pointer": []
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "TypeID"
@@ -5839,6 +5905,9 @@
                                                 "name": "getValue",
                                                 "pointer": []
                                             },
+                                            "metaattrs": {
+                                                "intent": "result"
+                                            },
                                             "params": [],
                                             "specifier": [
                                                 "ValueType"
@@ -5951,6 +6020,9 @@
                                             "declarator": {
                                                 "name": "getValue",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -6092,6 +6164,9 @@
                                             "declarator": {
                                                 "name": "getValue",
                                                 "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "result"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -6396,6 +6471,9 @@
                                         "name": "isNameValid",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
@@ -6532,6 +6610,9 @@
                                         "name": "isNameValid",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "result"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
@@ -6658,6 +6739,9 @@
                                     "declarator": {
                                         "name": "isInitialized",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -7722,6 +7806,9 @@
                                     "declarator": {
                                         "name": "test_size_t",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -10467,6 +10554,9 @@
                                     "declarator": {
                                         "name": "verylongfunctionname2",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [
                                         {

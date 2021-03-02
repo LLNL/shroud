@@ -889,6 +889,9 @@
                         "name": "getData",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "DataType"
@@ -977,6 +980,9 @@
                     "declarator": {
                         "name": "getData",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1083,6 +1089,9 @@
                     "declarator": {
                         "name": "getData",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

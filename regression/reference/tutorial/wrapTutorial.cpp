@@ -79,6 +79,7 @@ void TUT_no_return_no_arguments(void)
 // Function:  double PassByValue
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double arg1 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -133,6 +134,7 @@ void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
 // Function:  double UseDefaultArguments
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // start TUT_use_default_arguments
 double TUT_use_default_arguments(void)
 {
@@ -147,6 +149,7 @@ double TUT_use_default_arguments(void)
 // Function:  double UseDefaultArguments
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -166,6 +169,7 @@ double TUT_use_default_arguments_arg1(double arg1)
 // Function:  double UseDefaultArguments
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double arg1=3.1415 +intent(in)+value
 // Requested: c_native_scalar_in
@@ -271,6 +275,7 @@ void TUT_template_argument_double(double arg)
 // Function:  int TemplateReturn
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 int TUT_template_return_int(void)
 {
     // splicer begin function.template_return_int
@@ -283,6 +288,7 @@ int TUT_template_return_int(void)
 // Function:  double TemplateReturn
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 double TUT_template_return_double(void)
 {
     // splicer begin function.template_return_double
@@ -349,6 +355,7 @@ void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
@@ -366,6 +373,7 @@ int TUT_use_default_overload_num(int num)
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
@@ -388,6 +396,7 @@ int TUT_use_default_overload_num_offset(int num, int offset)
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int num +intent(in)+value
 // Requested: c_native_scalar_in
@@ -416,6 +425,7 @@ int TUT_use_default_overload_num_offset_stride(int num, int offset,
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
@@ -438,6 +448,7 @@ int TUT_use_default_overload_3(double type, int num)
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
@@ -465,6 +476,7 @@ int TUT_use_default_overload_4(double type, int num, int offset)
 // Function:  int UseDefaultOverload
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  double type +intent(in)+value
 // Requested: c_native_scalar_in
@@ -499,6 +511,7 @@ int TUT_use_default_overload_5(double type, int num, int offset,
 // Function:  TypeID typefunc
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  TypeID arg +intent(in)+value
 // Requested: c_native_scalar_in
@@ -516,6 +529,7 @@ int TUT_typefunc(int arg)
 // Function:  EnumTypeID enumfunc
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  EnumTypeID arg +intent(in)+value
 // Requested: c_native_scalar_in
@@ -536,6 +550,7 @@ int TUT_enumfunc(int arg)
 // Function:  Color colorfunc
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Color arg +intent(in)+value
 // Requested: c_native_scalar_in
@@ -586,6 +601,7 @@ void TUT_get_min_max(int * min, int * max)
 // Function:  int callback1
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int in +intent(in)+value
 // Requested: c_native_scalar_in
@@ -609,7 +625,7 @@ int TUT_callback1(int in, int ( * incr)(int))
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
 // Exact:     c_string_&_result
-//    metaattrs:  +deref(result-as-arg)
+//    metaattrs:  +deref(result-as-arg)+intent(result)
 const char * TUT_last_function_called(void)
 {
     // splicer begin function.last_function_called

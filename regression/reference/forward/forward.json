@@ -144,6 +144,9 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "Class2"
@@ -638,6 +641,9 @@
                     "declarator": {
                         "name": "passStruct1",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

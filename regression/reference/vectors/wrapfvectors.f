@@ -50,6 +50,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  int vector_sum
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -218,6 +219,7 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  int vector_string_count
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -300,6 +302,7 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_sum
     ! int vector_sum
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
@@ -567,6 +570,7 @@ contains
     ! ----------------------------------------
     ! Function:  int vector_string_count
     ! int vector_string_count
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
@@ -598,7 +602,7 @@ contains
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
     ! std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Requested: f_vector_scalar_result_buf_allocatable
     ! Match:     f_vector_result_allocatable
     ! Function:  void ReturnVectorAlloc +rank(1)

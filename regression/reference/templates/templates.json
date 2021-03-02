@@ -982,6 +982,9 @@
                         "name": "UseImplWorker",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -1089,6 +1092,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1214,6 +1220,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -1377,6 +1386,9 @@
                                     "attrs": {
                                         "_constructor": true,
                                         "_name": "ctor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -1652,7 +1664,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer"
+                                        "deref": "pointer",
+                                        "intent": "result"
                                     },
                                     "params": [
                                         {
@@ -1804,7 +1817,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer"
+                                        "deref": "pointer",
+                                        "intent": "result"
                                     },
                                     "params": [
                                         {
@@ -1999,6 +2013,9 @@
                                     "attrs": {
                                         "_constructor": true,
                                         "_name": "ctor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -2274,7 +2291,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer"
+                                        "deref": "pointer",
+                                        "intent": "result"
                                     },
                                     "params": [
                                         {
@@ -2426,7 +2444,8 @@
                                         ]
                                     },
                                     "metaattrs": {
-                                        "deref": "pointer"
+                                        "deref": "pointer",
+                                        "intent": "result"
                                     },
                                     "params": [
                                         {

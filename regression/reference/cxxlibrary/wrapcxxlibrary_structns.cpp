@@ -26,6 +26,7 @@ extern "C" {
 // Function:  int passStructByReference
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
 // Requested: c_struct_&_inout
@@ -48,6 +49,7 @@ int CXX_structns_pass_struct_by_reference(CXX_cstruct1 * arg)
 // Function:  int passStructByReferenceIn
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 & arg +intent(in)
 // Requested: c_struct_&_in

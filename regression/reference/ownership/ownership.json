@@ -265,7 +265,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "raw"
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -357,7 +358,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "scalar"
+                        "deref": "scalar",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -460,7 +462,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -536,7 +539,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -624,7 +628,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "raw"
+                        "deref": "raw",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -802,7 +807,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -945,7 +951,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1125,7 +1132,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1268,7 +1276,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1448,7 +1457,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1591,7 +1601,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1713,7 +1724,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1896,7 +1908,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2042,7 +2055,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2205,7 +2219,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2389,7 +2404,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2535,7 +2551,8 @@
                             {
                                 "name": "len"
                             }
-                        ]
+                        ],
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3399,6 +3416,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "Class1"
@@ -3552,6 +3572,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

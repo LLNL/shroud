@@ -124,6 +124,8 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
+        if ast.get_subprogram() == "function":
+            ast.metaattrs["intent"] = "result"
         self.check_common_attrs(node.ast)
 
         if ast.typemap is None:
@@ -1473,6 +1475,7 @@ class GenFunctions(object):
                 result_as_string.const = False # must be writeable
                 attrs = result_as_string.attrs
             attrs["_is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"
 
@@ -1686,6 +1689,7 @@ class GenFunctions(object):
                     c_var=result_name
                 )
             attrs["_is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"
         elif has_vector_result:
@@ -1700,6 +1704,7 @@ class GenFunctions(object):
             )
             self.move_arg_attributes(result_as_vector, node, C_new)
             attrs["_is_result"] = True
+            C_new.ast.metaattrs["intent"] = None
             # convert to subroutine
             C_new._subprogram = "subroutine"
         elif need_cdesc_result:

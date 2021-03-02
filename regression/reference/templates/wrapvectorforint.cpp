@@ -24,6 +24,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -69,7 +70,7 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // Function:  int & at +deref(pointer)
 // Requested: c_native_&_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  size_type n +intent(in)+value
 // Requested: c_native_scalar_in

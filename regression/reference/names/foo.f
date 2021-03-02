@@ -53,6 +53,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
+        !    metaattrs:  +intent(result)
         ! Exact:     c_shadow_scalar_result
         function xxx_tes_names_defaultctor(SHT_crv) &
                 result(SHT_rv) &
@@ -102,6 +103,7 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Names +name(defaultctor)
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function names_defaultctor() &

@@ -144,6 +144,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
+    !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     ! start c_class1_ctor_default
     interface
@@ -161,6 +162,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
+    !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
@@ -199,6 +201,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int Method1
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_class1_method1
@@ -217,6 +220,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  bool equivalent
+    !    metaattrs:  +intent(result)
     ! Requested: c_bool_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -241,6 +245,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void returnThis
+    !    metaattrs:  +intent(result)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! start c_class1_return_this
@@ -256,6 +261,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
@@ -286,6 +292,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result_buf
     ! Match:     c_shadow_result
     ! ----------------------------------------
@@ -318,6 +325,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! start c_class1_getclass3
@@ -337,7 +345,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result
     ! start c_class1_get_name
     interface
@@ -375,6 +383,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -459,7 +468,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result
     interface
         function c_class2_get_name(self) &
@@ -496,6 +505,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
@@ -515,6 +525,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
+    !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     interface
         function c_shape_ctor(SHT_crv) &
@@ -530,6 +541,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int get_ivar
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -549,6 +561,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
+    !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     interface
         function c_circle_ctor(SHT_crv) &
@@ -567,6 +580,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1::DIRECTION directionFunc
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -604,6 +618,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int useclass
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -625,6 +640,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     interface
@@ -641,6 +657,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     interface
@@ -657,6 +674,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
@@ -673,6 +691,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_&_result
     ! Match:     c_shadow_result
     interface
@@ -689,6 +708,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
+    !    metaattrs:  +intent(result)
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
     ! Argument:  int flag +intent(in)+value
@@ -728,6 +748,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int get_global_flag
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -742,7 +763,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
         function c_last_function_called() &
@@ -810,6 +831,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Class1
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! start class1_ctor_default
@@ -827,6 +849,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Class1
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
@@ -867,6 +890,7 @@ contains
     ! ----------------------------------------
     ! Function:  int Method1
     ! int Method1
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -890,6 +914,7 @@ contains
     ! ----------------------------------------
     ! Function:  bool equivalent
     ! bool equivalent
+    !    metaattrs:  +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
     ! Requested: c_bool_scalar_result
@@ -922,6 +947,7 @@ contains
     ! ----------------------------------------
     ! Function:  void returnThis
     ! void returnThis
+    !    metaattrs:  +intent(result)
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -943,6 +969,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * returnThisBuffer
     ! Class1 * returnThisBuffer
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result_buf
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result_buf
@@ -986,6 +1013,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Class1 * getclass3
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1011,7 +1039,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
     ! const std::string & getName +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
@@ -1041,6 +1069,7 @@ contains
     ! ----------------------------------------
     ! Function:  DIRECTION directionFunc
     ! DIRECTION directionFunc
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1157,7 +1186,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName +deref(allocatable)
     ! const std::string & getName +deref(allocatable)
-    !    metaattrs:  +deref(allocatable)
+    !    metaattrs:  +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
     ! Exact:     c_string_scalar_result_buf
@@ -1211,6 +1240,7 @@ contains
     ! ----------------------------------------
     ! Function:  static Singleton & getReference
     ! static Singleton & getReference
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_&_result
@@ -1254,6 +1284,7 @@ contains
     ! ----------------------------------------
     ! Function:  Shape
     ! Shape
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function shape_ctor() &
@@ -1269,6 +1300,7 @@ contains
     ! ----------------------------------------
     ! Function:  int get_ivar
     ! int get_ivar
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1312,6 +1344,7 @@ contains
     ! ----------------------------------------
     ! Function:  Circle
     ! Circle
+    !    metaattrs:  +intent(result)
     ! Exact:     f_shadow_ctor
     ! Exact:     c_shadow_ctor
     function circle_ctor() &
@@ -1354,6 +1387,7 @@ contains
     ! ----------------------------------------
     ! Function:  int useclass
     ! int useclass
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1378,6 +1412,7 @@ contains
     ! ----------------------------------------
     ! Function:  const Class1 * getclass2
     ! const Class1 * getclass2
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1395,6 +1430,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 * getclass3
     ! Class1 * getclass3
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1412,6 +1448,7 @@ contains
     ! ----------------------------------------
     ! Function:  const Class1 & getConstClassReference
     ! const Class1 & getConstClassReference
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_&_result
@@ -1429,6 +1466,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 & getClassReference
     ! Class1 & getClassReference
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_&_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_&_result
@@ -1446,6 +1484,7 @@ contains
     ! ----------------------------------------
     ! Function:  Class1 getClassCopy
     ! Class1 getClassCopy
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_scalar_result
     ! Match:     f_shadow_result
     ! Exact:     c_shadow_scalar_result
@@ -1475,7 +1514,7 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
     ! const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
-    !    metaattrs:  +deref(result-as-arg)
+    !    metaattrs:  +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)

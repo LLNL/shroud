@@ -47,7 +47,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
 // Exact:     c_string_*_result
-//    metaattrs:  +deref(allocatable)
+//    metaattrs:  +deref(allocatable)+intent(result)
 // start STR_get_const_string_ptr_alloc
 const char * STR_get_const_string_ptr_alloc(void)
 {

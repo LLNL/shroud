@@ -33,6 +33,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // Function:  int passStruct2
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1 +intent(in)
 // Requested: c_struct_*_in_buf
@@ -61,7 +62,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 // Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // ----------------------------------------
 // Argument:  int i +intent(in)+value
 // Requested: c_native_scalar_in_buf
@@ -90,6 +91,7 @@ Cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // Function:  Cstruct_as_class * Create_Cstruct_as_class
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // start STR_create__cstruct_as_class
 STR_Cstruct_as_class * STR_create__cstruct_as_class(
     STR_Cstruct_as_class * SHadow_rv)
@@ -107,6 +109,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class(
 // Function:  Cstruct_as_class * Create_Cstruct_as_class_args
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int x +intent(in)+value
 // Requested: c_native_scalar_in
@@ -132,6 +135,7 @@ STR_Cstruct_as_class * STR_create__cstruct_as_class_args(int x, int y,
 // Function:  int Cstruct_as_class_sum
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const Cstruct_as_class * point +intent(in)+pass
 // Requested: c_shadow_*_in
@@ -151,6 +155,7 @@ int STR_cstruct_as_class_sum(STR_Cstruct_as_class * point)
 // Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
 // Requested: c_shadow_*_result
 // Match:     c_shadow_result
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int x +intent(in)+value
 // Requested: c_native_scalar_in

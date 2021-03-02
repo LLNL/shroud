@@ -324,6 +324,9 @@
                         "name": "PassByValue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -525,7 +528,8 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "deref": "allocatable"
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -873,6 +877,9 @@
                         "name": "UseDefaultArguments",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "double"
@@ -986,6 +993,9 @@
                     "declarator": {
                         "name": "UseDefaultArguments",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1257,6 +1267,9 @@
                     "declarator": {
                         "name": "UseDefaultArguments",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2141,6 +2154,9 @@
                         "name": "TemplateReturn",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "RetType"
@@ -2229,6 +2245,9 @@
                     "declarator": {
                         "name": "TemplateReturn",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2334,6 +2353,9 @@
                     "declarator": {
                         "name": "TemplateReturn",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3215,6 +3237,9 @@
                         "name": "UseDefaultOverload",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3379,6 +3404,9 @@
                     "declarator": {
                         "name": "UseDefaultOverload",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3730,6 +3758,9 @@
                         "name": "UseDefaultOverload",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3936,6 +3967,9 @@
                     "declarator": {
                         "name": "UseDefaultOverload",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -4146,6 +4180,9 @@
                     "declarator": {
                         "name": "UseDefaultOverload",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -4575,6 +4612,9 @@
                         "name": "UseDefaultOverload",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4817,6 +4857,9 @@
                         "name": "typefunc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5012,6 +5055,9 @@
                         "name": "enumfunc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5206,6 +5252,9 @@
                     "declarator": {
                         "name": "colorfunc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -5564,6 +5613,9 @@
                         "name": "callback1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5736,7 +5788,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "result-as-arg"
+                        "deref": "result-as-arg",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [

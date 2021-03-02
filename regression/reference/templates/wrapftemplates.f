@@ -140,6 +140,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker1() &
@@ -152,6 +153,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  int UseImplWorker
+        !    metaattrs:  +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_use_impl_worker_internal_implworker2() &
@@ -331,6 +333,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -352,6 +355,7 @@ contains
     ! ----------------------------------------
     ! Function:  int UseImplWorker
     ! int UseImplWorker
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

@@ -95,6 +95,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  double GetGlobalDouble
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     interface
@@ -129,6 +130,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  long GenericReal2
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -155,6 +157,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  int SumValues
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -181,6 +184,7 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  int SumValues
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -592,6 +596,7 @@ contains
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! long GenericReal2
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -633,6 +638,7 @@ contains
     ! ----------------------------------------
     ! Function:  long GenericReal2
     ! long GenericReal2
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result

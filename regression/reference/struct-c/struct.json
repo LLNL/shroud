@@ -1802,6 +1802,9 @@
                         "name": "passStructByValue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1926,6 +1929,9 @@
                     "declarator": {
                         "name": "passStruct1",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2067,6 +2073,9 @@
                     "declarator": {
                         "name": "passStruct2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2244,6 +2253,9 @@
                         "name": "passStruct2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2390,6 +2402,9 @@
                     "declarator": {
                         "name": "acceptStructInPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2847,6 +2862,9 @@
                         "name": "returnStructByValue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3028,7 +3046,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3215,7 +3234,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3449,7 +3469,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3586,7 +3607,8 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "pointer"
+                        "deref": "pointer",
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3658,6 +3680,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -3803,6 +3828,9 @@
                             }
                         ]
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3945,6 +3973,9 @@
                     "declarator": {
                         "name": "Cstruct_as_class_sum",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -4145,6 +4176,9 @@
                                 "ptr": "*"
                             }
                         ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {

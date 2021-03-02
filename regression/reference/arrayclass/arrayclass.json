@@ -82,6 +82,9 @@
                                 "_constructor": true,
                                 "_name": "ctor"
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "ArrayWrapper"
@@ -297,6 +300,9 @@
                                 "pointer": []
                             },
                             "func_const": true,
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -594,7 +600,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -683,7 +690,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -800,7 +808,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -891,7 +900,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -1008,7 +1018,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -1098,7 +1109,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -1216,7 +1228,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -1308,7 +1321,8 @@
                                         "args": [],
                                         "name": "getSize"
                                     }
-                                ]
+                                ],
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [
@@ -3185,6 +3199,9 @@
                                 "name": "checkPtr",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -3301,6 +3318,9 @@
                             "declarator": {
                                 "name": "sumArray",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [

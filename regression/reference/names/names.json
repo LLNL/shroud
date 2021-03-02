@@ -970,6 +970,9 @@
                         "name": "function4",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1091,6 +1094,9 @@
                     "declarator": {
                         "name": "function4",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2168,6 +2174,9 @@
                         "name": "UseImplWorker",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [],
                     "specifier": [
                         "int"
@@ -2260,6 +2269,9 @@
                     "declarator": {
                         "name": "UseImplWorker",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [],
                     "specifier": [
@@ -2431,6 +2443,9 @@
                         "name": "Cstruct_as_class_sum",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2579,6 +2594,9 @@
                                         "_constructor": true,
                                         "_name": "ctor",
                                         "name": "defaultctor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "result"
                                     },
                                     "params": [],
                                     "specifier": [

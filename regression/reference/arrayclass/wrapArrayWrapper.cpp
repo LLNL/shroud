@@ -22,6 +22,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Exact:     c_shadow_scalar_ctor
+//    metaattrs:  +intent(result)
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor
@@ -53,6 +54,7 @@ void ARR_ArrayWrapper_set_size(ARR_ArrayWrapper * self, int size)
 // Function:  int getSize
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -96,7 +98,7 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 // Function:  double * getArray +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -109,7 +111,7 @@ double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  double * getArray +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
     ARR_SHROUD_array *DSHC_rv)
 {
@@ -132,7 +134,7 @@ double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
 // Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -146,7 +148,7 @@ double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  double * getArrayConst +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 double * ARR_ArrayWrapper_get_array_const_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
 {
@@ -170,7 +172,7 @@ double * ARR_ArrayWrapper_get_array_const_bufferify(
 // Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -183,7 +185,7 @@ const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  const double * getArrayC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 const double * ARR_ArrayWrapper_get_array_c_bufferify(
     ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
 {
@@ -206,7 +208,7 @@ const double * ARR_ArrayWrapper_get_array_c_bufferify(
 // Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 const double * ARR_ArrayWrapper_get_array_const_c(
     const ARR_ArrayWrapper * self)
 {
@@ -221,7 +223,7 @@ const double * ARR_ArrayWrapper_get_array_const_c(
 // ----------------------------------------
 // Function:  const double * getArrayConstC +context(DSHC_rv)+deref(pointer)+dimension(getSize())
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
     const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
 {
@@ -497,6 +499,7 @@ void ARR_ArrayWrapper_fetch_void_ref(ARR_ArrayWrapper * self,
 // Function:  bool checkPtr
 // Requested: c_bool_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  void * array +intent(in)+value
 // Requested: c_void_*_in
@@ -515,6 +518,7 @@ bool ARR_ArrayWrapper_check_ptr(ARR_ArrayWrapper * self, void * array)
 // Function:  double sumArray
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 double ARR_ArrayWrapper_sum_array(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);

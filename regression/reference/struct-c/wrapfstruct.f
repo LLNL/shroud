@@ -310,6 +310,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStructByValue
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -333,6 +334,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct1
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -356,6 +358,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct2
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -383,6 +386,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int passStruct2
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -410,6 +414,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int acceptStructInPtr
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -480,6 +485,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 returnStructByValue
+    !    metaattrs:  +intent(result)
     ! Requested: c_struct_scalar_result
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -507,7 +513,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -534,7 +540,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -567,7 +573,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
@@ -600,7 +606,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result
     ! Match:     c_struct_result
     interface
@@ -615,6 +621,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! start c_create__cstruct_as_class
@@ -633,6 +640,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
@@ -661,6 +669,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
+    !    metaattrs:  +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -682,6 +691,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    !    metaattrs:  +intent(result)
     ! Requested: c_shadow_*_result
     ! Match:     c_shadow_result
     ! ----------------------------------------
@@ -957,6 +967,7 @@ contains
     ! ----------------------------------------
     ! Function:  int passStruct2
     ! int passStruct2
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
     ! Requested: c_native_scalar_result_buf
@@ -993,7 +1004,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
     ! Cstruct1 * returnStructPtr1 +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result
@@ -1034,7 +1045,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
     ! Cstruct1 * returnStructPtr2 +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_buf_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result_buf
@@ -1083,7 +1094,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
     ! Cstruct_list * get_global_struct_list +deref(pointer)
-    !    metaattrs:  +deref(pointer)
+    !    metaattrs:  +deref(pointer)+intent(result)
     ! Requested: f_struct_*_result_pointer
     ! Match:     f_struct_*_result
     ! Requested: c_struct_*_result
@@ -1102,6 +1113,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
     ! Cstruct_as_class * Create_Cstruct_as_class
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1121,6 +1133,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
     ! Cstruct_as_class * Create_Cstruct_as_class_args
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result
@@ -1154,6 +1167,7 @@ contains
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
     ! int Cstruct_as_class_sum
+    !    metaattrs:  +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -1178,6 +1192,7 @@ contains
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Cstruct_as_subclass * Create_Cstruct_as_subclass_args
+    !    metaattrs:  +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
     ! Requested: c_shadow_*_result

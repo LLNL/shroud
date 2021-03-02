@@ -428,6 +428,7 @@ void POI_fill_with_zeros(double * x, int x_length)
 // Function:  int accumulate
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  const int * arr +intent(in)+rank(1)
 // Requested: c_native_*_in
@@ -455,6 +456,7 @@ int POI_accumulate(const int * arr, size_t len)
 // Function:  int acceptCharArrayIn
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Exact:     c_char_**_in
@@ -476,6 +478,7 @@ int POI_accept_char_array_in(char **names)
 // Function:  int acceptCharArrayIn
 // Requested: c_native_scalar_result_buf
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
 // Exact:     c_char_**_in_buf
@@ -518,6 +521,7 @@ void POI_set_global_int(int value)
 // Function:  int sumFixedArray
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // start POI_sum_fixed_array
 int POI_sum_fixed_array(void)
 {
@@ -1114,6 +1118,7 @@ void POI_get_raw_ptr_to_int2d(int * * * arg)
 // Function:  int checkInt2d
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int * * arg +intent(in)
 // Exact:     c_native_**_in
@@ -1154,6 +1159,7 @@ void POI_dimension_in(const int * arg)
 // Function:  void * returnAddress1
 // Requested: c_void_*_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
@@ -1173,6 +1179,7 @@ void * POI_return_address1(int flag)
 // Function:  void * returnAddress2
 // Requested: c_void_*_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  int flag +intent(in)+value
 // Requested: c_native_scalar_in
@@ -1210,6 +1217,7 @@ void POI_fetch_void_ptr(void * * addr)
 // Function:  int VoidPtrArray
 // Requested: c_native_scalar_result
 // Match:     c_default
+//    metaattrs:  +intent(result)
 // ----------------------------------------
 // Argument:  void * * addr +intent(in)+rank(1)
 // Exact:     c_void_**_in
@@ -1228,7 +1236,7 @@ int POI_void_ptr_array(void **addr)
 // Function:  int * returnIntPtrToScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_scalar
 int * POI_return_int_ptr_to_scalar(void)
 {
@@ -1243,7 +1251,7 @@ int * POI_return_int_ptr_to_scalar(void)
 // Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_array
 int * POI_return_int_ptr_to_fixed_array(void)
 {
@@ -1257,7 +1265,7 @@ int * POI_return_int_ptr_to_fixed_array(void)
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_array_bufferify
 int * POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *DSHC_rv)
@@ -1281,7 +1289,7 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // Function:  const int * returnIntPtrToConstScalar +deref(pointer)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_const_scalar
 const int * POI_return_int_ptr_to_const_scalar(void)
 {
@@ -1296,7 +1304,7 @@ const int * POI_return_int_ptr_to_const_scalar(void)
 // Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_const_array
 const int * POI_return_int_ptr_to_fixed_const_array(void)
 {
@@ -1310,7 +1318,7 @@ const int * POI_return_int_ptr_to_fixed_const_array(void)
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
 // Exact:     c_native_*_result_buf
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
 const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
     POI_SHROUD_array *DSHC_rv)
@@ -1334,7 +1342,7 @@ const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
 // Function:  int * returnIntScalar +deref(scalar)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(scalar)
+//    metaattrs:  +deref(scalar)+intent(result)
 // start POI_return_int_scalar
 int POI_return_int_scalar(void)
 {
@@ -1352,7 +1360,7 @@ int POI_return_int_scalar(void)
 // Function:  int * returnIntRaw +deref(raw)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(raw)
+//    metaattrs:  +deref(raw)+intent(result)
 // start POI_return_int_raw
 int * POI_return_int_raw(void)
 {
@@ -1371,7 +1379,7 @@ int * POI_return_int_raw(void)
 // Function:  int * returnIntRawWithArgs +deref(raw)
 // Requested: c_native_*_result
 // Match:     c_default
-//    metaattrs:  +deref(raw)
+//    metaattrs:  +deref(raw)+intent(result)
 // ----------------------------------------
 // Argument:  const char * name +intent(in)
 // Requested: c_char_*_in
@@ -1395,7 +1403,7 @@ int * POI_return_int_raw_with_args(const char * name)
 // Function:  int * * returnRawPtrToInt2d +deref(pointer)
 // Requested: c_native_**_result
 // Match:     c_default
-//    metaattrs:  +deref(pointer)
+//    metaattrs:  +deref(pointer)+intent(result)
 // start POI_return_raw_ptr_to_int2d
 int * * POI_return_raw_ptr_to_int2d(void)
 {

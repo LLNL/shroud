@@ -119,6 +119,9 @@
                         "name": "short_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -281,6 +284,9 @@
                         "name": "int_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -442,6 +448,9 @@
                     "declarator": {
                         "name": "long_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -607,6 +616,9 @@
                         "name": "long_long_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -771,6 +783,9 @@
                         "name": "short_int_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -934,6 +949,9 @@
                     "declarator": {
                         "name": "long_int_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1101,6 +1119,9 @@
                         "name": "long_long_int_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1267,6 +1288,9 @@
                         "name": "unsigned_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1428,6 +1452,9 @@
                     "declarator": {
                         "name": "ushort_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1593,6 +1620,9 @@
                         "name": "uint_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1756,6 +1786,9 @@
                     "declarator": {
                         "name": "ulong_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -1923,6 +1956,9 @@
                         "name": "ulong_long_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2088,6 +2124,9 @@
                     "declarator": {
                         "name": "ulong_int_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2255,6 +2294,9 @@
                         "name": "int8_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2416,6 +2458,9 @@
                     "declarator": {
                         "name": "int16_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2579,6 +2624,9 @@
                         "name": "int32_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2740,6 +2788,9 @@
                     "declarator": {
                         "name": "int64_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2903,6 +2954,9 @@
                         "name": "uint8_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3064,6 +3118,9 @@
                     "declarator": {
                         "name": "uint16_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3227,6 +3284,9 @@
                         "name": "uint32_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3389,6 +3449,9 @@
                         "name": "uint64_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3550,6 +3613,9 @@
                     "declarator": {
                         "name": "size_func",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -3716,6 +3782,9 @@
                         "name": "bool_func",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3879,6 +3948,9 @@
                     "declarator": {
                         "name": "returnBoolAndOthers",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
