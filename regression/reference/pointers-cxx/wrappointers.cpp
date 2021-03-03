@@ -1248,6 +1248,27 @@ int * POI_return_int_ptr_to_scalar(void)
 // end POI_return_int_ptr_to_scalar
 
 // ----------------------------------------
+// Function:  int * returnIntPtrToScalar +context(DSHC_rv)+deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_scalar_bufferify
+int * POI_return_int_ptr_to_scalar_bufferify(POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_scalar_bufferify
+    int * SHC_rv = returnIntPtrToScalar();
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 0;
+    DSHC_rv->size = 1;
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_scalar_bufferify
+}
+// end POI_return_int_ptr_to_scalar_bufferify
+
+// ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result
@@ -1299,6 +1320,28 @@ const int * POI_return_int_ptr_to_const_scalar(void)
     // splicer end function.return_int_ptr_to_const_scalar
 }
 // end POI_return_int_ptr_to_const_scalar
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)+deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_const_scalar_bufferify
+const int * POI_return_int_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_const_scalar_bufferify
+    const int * SHC_rv = returnIntPtrToConstScalar();
+    DSHC_rv->cxx.addr  = const_cast<int *>(SHC_rv);
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 0;
+    DSHC_rv->size = 1;
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_const_scalar_bufferify
+}
+// end POI_return_int_ptr_to_const_scalar_bufferify
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
@@ -1413,6 +1456,25 @@ int * * POI_return_raw_ptr_to_int2d(void)
     // splicer end function.return_raw_ptr_to_int2d
 }
 // end POI_return_raw_ptr_to_int2d
+
+/**
+ * Test multiple layers of indirection.
+ * # getRawPtrToInt2d
+ */
+// ----------------------------------------
+// Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)+deref(pointer)
+// Attrs:     +deref(pointer)+intent(result)
+// Requested: c_native_**_result_buf
+// Match:     c_default
+// start POI_return_raw_ptr_to_int2d_bufferify
+int * * POI_return_raw_ptr_to_int2d_bufferify(void)
+{
+    // splicer begin function.return_raw_ptr_to_int2d_bufferify
+    int * * SHC_rv = returnRawPtrToInt2d();
+    return SHC_rv;
+    // splicer end function.return_raw_ptr_to_int2d_bufferify
+}
+// end POI_return_raw_ptr_to_int2d_bufferify
 
 // start release allocated memory
 // Release library allocated memory.

@@ -4,14 +4,16 @@ class vector
 C method vector(void)
 C method ~vector(void)
 C method void push_back(const int & value +intent(in))
-C method int & at(size_type n +value)
+C method int & at(size_type n +value) +deref(pointer)
+C method int & at(size_type n +value) +context(DSHC_rv)+deref(pointer)
 Close wrapstd_vector_int.h
 Close wrapvectorforint.cpp
 class vector
 C method vector(void)
 C method ~vector(void)
 C method void push_back(const double & value +intent(in))
-C method double & at(size_type n +value)
+C method double & at(size_type n +value) +deref(pointer)
+C method double & at(size_type n +value) +context(DSHC_rv)+deref(pointer)
 Close wrapstd_vector_double.h
 Close wrapstd_vector_double.cpp
 class ImplWorker1
@@ -44,20 +46,22 @@ class vector
 Fortran vector(void)
 Fortran ~vector(void)
 Fortran void push_back(const int & value +intent(in))
-Fortran int & at(size_type n +value)
+Fortran int & at(size_type n +value) +deref(pointer)
 C-interface vector(void)
 C-interface ~vector(void)
 C-interface void push_back(const int & value +intent(in))
-C-interface int & at(size_type n +value)
+C-interface int & at(size_type n +value) +deref(pointer)
+C-interface int & at(size_type n +value) +context(DSHC_rv)+deref(pointer)
 class vector
 Fortran vector(void)
 Fortran ~vector(void)
 Fortran void push_back(const double & value +intent(in))
-Fortran double & at(size_type n +value)
+Fortran double & at(size_type n +value) +deref(pointer)
 C-interface vector(void)
 C-interface ~vector(void)
 C-interface void push_back(const double & value +intent(in))
-C-interface double & at(size_type n +value)
+C-interface double & at(size_type n +value) +deref(pointer)
+C-interface double & at(size_type n +value) +context(DSHC_rv)+deref(pointer)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
@@ -65,13 +69,13 @@ class vector
 Python method vector(void)
 Python method ~vector(void)
 Python method void push_back(const int & value +intent(in))
-Python method int & at(size_type n +value)
+Python method int & at(size_type n +value) +deref(pointer)
 Close pystd_vector_inttype.cpp
 class vector
 Python method vector(void)
 Python method ~vector(void)
 Python method void push_back(const double & value +intent(in))
-Python method double & at(size_type n +value)
+Python method double & at(size_type n +value) +deref(pointer)
 Close pystd_vector_doubletype.cpp
 Close pytemplates_stdmodule.cpp
 class ImplWorker1

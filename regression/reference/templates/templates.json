@@ -1681,7 +1681,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value)",
+                                "declgen": "T & at(size_type n +value) +deref(pointer)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -1711,18 +1711,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n",
-                                            "F_pointer": "SHPTR_n",
-                                            "c_var": "n",
-                                            "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
-                                            "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "f_native_scalar_in",
-                                            "stmt1": "f_default",
-                                            "stmtc0": "c_native_scalar_in",
-                                            "stmtc1": "c_default"
+                                            "F_C_var": "n"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -1763,14 +1752,15 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "c_var_context": "DSHC_rv",
                                         "cxx_type": "int",
                                         "f_kind": "C_INT",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_INT",
-                                        "stmt0": "f_native_&_result_pointer",
+                                        "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
-                                        "stmtc0": "c_native_&_result",
+                                        "stmtc0": "c_native_&_result_buf",
                                         "stmtc1": "c_default"
                                     },
                                     "fmtpy": {
@@ -1833,14 +1823,14 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +value)",
+                                "declgen": "int & at(size_type n +value) +deref(pointer)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
                                     "C_prototype": "TEM_vector_int * self,\t size_t n",
                                     "C_return_type": "int *",
                                     "F_C_arguments": "self,\t n",
-                                    "F_C_call": "c_vector_int_at",
+                                    "F_C_call": "c_vector_int_at_bufferify",
                                     "F_C_name": "c_vector_int_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -1870,6 +1860,134 @@
                                     "c": true,
                                     "fortran": true,
                                     "python": true
+                                }
+                            },
+                            {
+                                "_fmtargs": {
+                                    "n": {
+                                        "fmtc": {
+                                            "c_addr": "&",
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "&n",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "shadow_var": "SHadow_n",
+                                            "stmt0": "c_native_scalar_in_buf",
+                                            "stmt1": "c_default"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "n",
+                                            "F_pointer": "SHPTR_n",
+                                            "c_var": "n",
+                                            "f_intent": "IN",
+                                            "f_kind": "C_SIZE_T",
+                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_var": "n",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmt0": "f_native_scalar_in",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc1": "c_default"
+                                        }
+                                    }
+                                },
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "&",
+                                        "c_type": "int",
+                                        "c_var": "SHC_rv",
+                                        "c_var_context": "DSHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "int",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_INT",
+                                        "shadow_var": "SHadow_rv",
+                                        "stmt0": "c_native_&_result_buf",
+                                        "stmt1": "c_default"
+                                    }
+                                },
+                                "_generated": "arg_to_buffer",
+                                "ast": {
+                                    "attrs": {
+                                        "context": "DSHC_rv",
+                                        "deref": "pointer"
+                                    },
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "stmts_suffix": "buf",
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "int & at(size_type n +value) +context(DSHC_rv)+deref(pointer)",
+                                "fmtdict": {
+                                    "C_call_list": "n",
+                                    "C_name": "TEM_vector_int_at_bufferify",
+                                    "C_prototype": "TEM_vector_int * self,\t size_t n",
+                                    "C_return_type": "int *",
+                                    "F_C_arguments": "self,\t n",
+                                    "F_C_name": "c_vector_int_at_bufferify",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "cxx_rv_decl": "int & SHC_rv",
+                                    "function_name": "at",
+                                    "function_suffix": "_bufferify",
+                                    "shadow_var": "SHadow_self",
+                                    "underscore_name": "at"
+                                },
+                                "generated_suffix": "buf",
+                                "have_template_args": true,
+                                "options": {
+                                    "F_create_generic": false
+                                },
+                                "wrap": {
+                                    "c": true
                                 }
                             }
                         ],
@@ -2306,7 +2424,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value)",
+                                "declgen": "T & at(size_type n +value) +deref(pointer)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -2336,18 +2454,7 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n",
-                                            "F_pointer": "SHPTR_n",
-                                            "c_var": "n",
-                                            "f_intent": "IN",
-                                            "f_kind": "C_SIZE_T",
-                                            "f_type": "integer(C_SIZE_T)",
-                                            "f_var": "n",
-                                            "sh_type": "SH_TYPE_SIZE_T",
-                                            "stmt0": "f_native_scalar_in",
-                                            "stmt1": "f_default",
-                                            "stmtc0": "c_native_scalar_in",
-                                            "stmtc1": "c_default"
+                                            "F_C_var": "n"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -2388,14 +2495,15 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "c_var_context": "DSHC_rv",
                                         "cxx_type": "double",
                                         "f_kind": "C_DOUBLE",
                                         "f_type": "real(C_DOUBLE)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_DOUBLE",
-                                        "stmt0": "f_native_&_result_pointer",
+                                        "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
-                                        "stmtc0": "c_native_&_result",
+                                        "stmtc0": "c_native_&_result_buf",
                                         "stmtc1": "c_default"
                                     },
                                     "fmtpy": {
@@ -2458,14 +2566,14 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +value)",
+                                "declgen": "double & at(size_type n +value) +deref(pointer)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",
                                     "C_prototype": "TEM_vector_double * self,\t size_t n",
                                     "C_return_type": "double *",
                                     "F_C_arguments": "self,\t n",
-                                    "F_C_call": "c_vector_double_at",
+                                    "F_C_call": "c_vector_double_at_bufferify",
                                     "F_C_name": "c_vector_double_at",
                                     "F_C_result_clause": "\fresult(SHT_rv)",
                                     "F_C_subprogram": "function",
@@ -2495,6 +2603,134 @@
                                     "c": true,
                                     "fortran": true,
                                     "python": true
+                                }
+                            },
+                            {
+                                "_fmtargs": {
+                                    "n": {
+                                        "fmtc": {
+                                            "c_addr": "&",
+                                            "c_const": "",
+                                            "c_deref": "",
+                                            "c_member": ".",
+                                            "c_var": "n",
+                                            "cxx_addr": "&",
+                                            "cxx_member": ".",
+                                            "cxx_nonconst_ptr": "&n",
+                                            "cxx_type": "std::vector::size_type",
+                                            "cxx_var": "n",
+                                            "idtor": "0",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "shadow_var": "SHadow_n",
+                                            "stmt0": "c_native_scalar_in_buf",
+                                            "stmt1": "c_default"
+                                        },
+                                        "fmtf": {
+                                            "F_C_var": "n",
+                                            "F_pointer": "SHPTR_n",
+                                            "c_var": "n",
+                                            "f_intent": "IN",
+                                            "f_kind": "C_SIZE_T",
+                                            "f_type": "integer(C_SIZE_T)",
+                                            "f_var": "n",
+                                            "sh_type": "SH_TYPE_SIZE_T",
+                                            "stmt0": "f_native_scalar_in",
+                                            "stmt1": "f_default",
+                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc1": "c_default"
+                                        }
+                                    }
+                                },
+                                "_fmtresult": {
+                                    "fmtc": {
+                                        "c_const": "",
+                                        "c_get_value": "&",
+                                        "c_type": "double",
+                                        "c_var": "SHC_rv",
+                                        "c_var_context": "DSHC_rv",
+                                        "cxx_addr": "&",
+                                        "cxx_member": ".",
+                                        "cxx_nonconst_ptr": "&SHC_rv",
+                                        "cxx_type": "double",
+                                        "cxx_var": "SHC_rv",
+                                        "idtor": "0",
+                                        "sh_type": "SH_TYPE_DOUBLE",
+                                        "shadow_var": "SHadow_rv",
+                                        "stmt0": "c_native_&_result_buf",
+                                        "stmt1": "c_default"
+                                    }
+                                },
+                                "_generated": "arg_to_buffer",
+                                "ast": {
+                                    "attrs": {
+                                        "context": "DSHC_rv",
+                                        "deref": "pointer"
+                                    },
+                                    "declarator": {
+                                        "name": "at",
+                                        "pointer": [
+                                            {
+                                                "ptr": "&"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "deref": "pointer",
+                                        "intent": "result"
+                                    },
+                                    "params": [
+                                        {
+                                            "attrs": {
+                                                "value": true
+                                            },
+                                            "declarator": {
+                                                "name": "n",
+                                                "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in"
+                                            },
+                                            "specifier": [
+                                                "size_type"
+                                            ],
+                                            "stmts_suffix": "buf",
+                                            "typemap_name": "std::vector::size_type"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                },
+                                "decl": "T & at(size_type n)",
+                                "declgen": "double & at(size_type n +value) +context(DSHC_rv)+deref(pointer)",
+                                "fmtdict": {
+                                    "C_call_list": "n",
+                                    "C_name": "TEM_vector_double_at_bufferify",
+                                    "C_prototype": "TEM_vector_double * self,\t size_t n",
+                                    "C_return_type": "double *",
+                                    "F_C_arguments": "self,\t n",
+                                    "F_C_name": "c_vector_double_at_bufferify",
+                                    "F_C_result_clause": "\fresult(SHT_rv)",
+                                    "F_C_subprogram": "function",
+                                    "F_C_var": "SHT_crv",
+                                    "c_const": "",
+                                    "c_deref": "*",
+                                    "c_member": "->",
+                                    "c_var": "self",
+                                    "cxx_rv_decl": "double & SHC_rv",
+                                    "function_name": "at",
+                                    "function_suffix": "_bufferify",
+                                    "shadow_var": "SHadow_self",
+                                    "underscore_name": "at"
+                                },
+                                "generated_suffix": "buf",
+                                "have_template_args": true,
+                                "options": {
+                                    "F_create_generic": false
+                                },
+                                "wrap": {
+                                    "c": true
                                 }
                             }
                         ],

@@ -1629,6 +1629,10 @@ fc_statements = [
         name="f_struct_*_result",
         base="f_native_*_result_pointer",
     ),
+    dict(
+        name="f_struct_*_result_buf_pointer",
+        base="f_native_*_result_pointer",
+    ),
 
     ########################################
     # CFI - Further Interoperability with C

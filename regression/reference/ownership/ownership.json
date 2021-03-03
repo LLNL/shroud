@@ -1489,7 +1489,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
+                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default",
@@ -1634,7 +1634,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)",
+                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_bufferify",
@@ -1756,7 +1756,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw_new",
@@ -2436,7 +2436,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new",
@@ -2584,7 +2584,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new_bufferify",

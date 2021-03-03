@@ -2958,18 +2958,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "d",
-                            "F_pointer": "SHPTR_d",
-                            "c_var": "d",
-                            "f_intent": "IN",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_var": "d",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_scalar_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
-                            "stmtc1": "c_default"
+                            "F_C_var": "d"
                         }
                     },
                     "i": {
@@ -2991,18 +2980,7 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "i",
-                            "F_pointer": "SHPTR_i",
-                            "c_var": "i",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "i",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
-                            "stmtc1": "c_default"
+                            "F_C_var": "i"
                         }
                     }
                 },
@@ -3024,13 +3002,14 @@
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_pointer",
-                        "stmt1": "f_struct_*_result",
-                        "stmtc0": "c_struct_*_result",
+                        "stmt0": "f_struct_*_result_buf_pointer",
+                        "stmt1": "f_struct_*_result_buf_pointer",
+                        "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"
                     }
                 },
@@ -3090,7 +3069,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +deref(pointer)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3101,7 +3080,7 @@
                     "C_prototype": "int i,\t double d",
                     "C_return_type": "STR_cstruct1 *",
                     "F_C_arguments": "i,\t d",
-                    "F_C_call": "c_return_struct_ptr1",
+                    "F_C_call": "c_return_struct_ptr1_bufferify",
                     "F_C_name": "c_return_struct_ptr1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -3121,6 +3100,180 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                }
+            },
+            {
+                "_fmtargs": {
+                    "d": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "d",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&d",
+                            "cxx_type": "double",
+                            "cxx_var": "d",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_d",
+                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "d",
+                            "F_pointer": "SHPTR_d",
+                            "c_var": "d",
+                            "f_intent": "IN",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "d",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "i": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "i",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&i",
+                            "cxx_type": "int",
+                            "cxx_var": "i",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_i",
+                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "i",
+                            "F_pointer": "SHPTR_i",
+                            "c_var": "i",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "i",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "STR_cstruct1",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct1",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_struct_*_result_buf",
+                        "stmt1": "c_struct_result"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "context": "DSHC_rv",
+                        "deref": "pointer"
+                    },
+                    "declarator": {
+                        "name": "returnStructPtr1",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "i",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "d",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "Cstruct1"
+                    ],
+                    "typemap_name": "Cstruct1"
+                },
+                "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +context(DSHC_rv)+deref(pointer)",
+                "doxygen": {
+                    "brief": "Return a pointer to a struct",
+                    "description": "Does not generate a bufferify C wrapper.\n"
+                },
+                "fmtdict": {
+                    "C_call_list": "i,\t d",
+                    "C_name": "STR_return_struct_ptr1_bufferify",
+                    "C_prototype": "int i,\t double d",
+                    "C_return_type": "STR_cstruct1 *",
+                    "F_C_arguments": "i,\t d",
+                    "F_C_name": "c_return_struct_ptr1_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "Cstruct1 * SHCXX_rv",
+                    "function_name": "returnStructPtr1",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_struct_ptr1"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -3210,12 +3363,13 @@
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
-                        "stmt1": "f_struct_*_result",
+                        "stmt1": "f_struct_*_result_buf_pointer",
                         "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"
                     }
@@ -3297,7 +3451,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)) +deref(pointer)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3440,6 +3594,7 @@
                         "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -3455,6 +3610,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
+                        "context": "DSHC_rv",
                         "deref": "pointer"
                     },
                     "declarator": {
@@ -3534,7 +3690,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len) +context(DSHC_rv)+deref(pointer)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3579,13 +3735,14 @@
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct_list",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
-                        "stmt0": "f_struct_*_result_pointer",
-                        "stmt1": "f_struct_*_result",
-                        "stmtc0": "c_struct_*_result",
+                        "stmt0": "f_struct_*_result_buf_pointer",
+                        "stmt1": "f_struct_*_result_buf_pointer",
+                        "stmtc0": "c_struct_*_result_buf",
                         "stmtc1": "c_struct_result"
                     }
                 },
@@ -3612,13 +3769,13 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void)",
+                "declgen": "Cstruct_list * get_global_struct_list(void) +deref(pointer)",
                 "fmtdict": {
                     "C_name": "STR_get_global_struct_list",
                     "C_prototype": "void",
                     "C_return_type": "STR_cstruct_list *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_get_global_struct_list",
+                    "F_C_call": "c_get_global_struct_list_bufferify",
                     "F_C_name": "c_get_global_struct_list",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -3637,6 +3794,72 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "STR_cstruct_list",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "Cstruct_list",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_STRUCT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_struct_*_result_buf",
+                        "stmt1": "c_struct_result"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "context": "DSHC_rv",
+                        "deref": "pointer"
+                    },
+                    "declarator": {
+                        "name": "get_global_struct_list",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Cstruct_list"
+                    ],
+                    "typemap_name": "Cstruct_list"
+                },
+                "decl": "Cstruct_list *get_global_struct_list();",
+                "declgen": "Cstruct_list * get_global_struct_list(void) +context(DSHC_rv)+deref(pointer)",
+                "fmtdict": {
+                    "C_name": "STR_get_global_struct_list_bufferify",
+                    "C_prototype": "void",
+                    "C_return_type": "STR_cstruct_list *",
+                    "F_C_arguments": "",
+                    "F_C_name": "c_get_global_struct_list_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "Cstruct_list * SHCXX_rv",
+                    "function_name": "get_global_struct_list",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "get_global_struct_list"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
                 }
             },
             {

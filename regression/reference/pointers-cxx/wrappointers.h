@@ -139,12 +139,17 @@ int POI_void_ptr_array(void **addr);
 
 int * POI_return_int_ptr_to_scalar(void);
 
+int * POI_return_int_ptr_to_scalar_bufferify(POI_SHROUD_array *DSHC_rv);
+
 int * POI_return_int_ptr_to_fixed_array(void);
 
 int * POI_return_int_ptr_to_fixed_array_bufferify(
     POI_SHROUD_array *DSHC_rv);
 
 const int * POI_return_int_ptr_to_const_scalar(void);
+
+const int * POI_return_int_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *DSHC_rv);
 
 const int * POI_return_int_ptr_to_fixed_const_array(void);
 
@@ -158,6 +163,8 @@ int * POI_return_int_raw(void);
 int * POI_return_int_raw_with_args(const char * name);
 
 int * * POI_return_raw_ptr_to_int2d(void);
+
+int * * POI_return_raw_ptr_to_int2d_bufferify(void);
 
 #ifdef __cplusplus
 }
