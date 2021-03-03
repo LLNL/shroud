@@ -6,16 +6,16 @@ C function void One(void)
 Close wrapns_outer.h
 Close wrapns_outer.cpp
 class ClassWork
-C function const std::string & LastFunctionCalled(void) +deref(allocatable)
-C function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C function const std::string & LastFunctionCalled(void)
+C function void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv))
 C function void One(void)
 Close wrapns.h
 Close wrapns.cpp
 Close typesns.h
-Fortran const std::string & LastFunctionCalled(void) +deref(allocatable)
+Fortran const std::string & LastFunctionCalled(void)
 Fortran void One(void)
-C-interface const std::string & LastFunctionCalled(void) +deref(allocatable)
-C-interface void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C-interface const std::string & LastFunctionCalled(void)
+C-interface void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv))
 C-interface void One(void)
 class Cstruct1
 Fortran void One(void)
@@ -32,7 +32,7 @@ Close pyns_outermodule.cpp
 class ClassWork
 Close pynswork_ClassWorktype.cpp
 Close pyns_nsworkmodule.cpp
-Python function const std::string & LastFunctionCalled(void) +deref(allocatable)
+Python function const std::string & LastFunctionCalled(void)
 Python function void One(void)
 Close pynsmodule.cpp
 Close pynsutil.cpp

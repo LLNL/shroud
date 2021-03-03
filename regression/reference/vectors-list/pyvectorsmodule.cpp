@@ -216,7 +216,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  std::vector<int> ReturnVectorAlloc +deref(allocatable)+rank(1)
+// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_vector_result_list
 // ----------------------------------------

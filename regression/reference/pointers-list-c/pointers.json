@@ -2032,7 +2032,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2062,7 +2061,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +deref(pointer)+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToScalar",
                     "underscore_name": "get_ptr_to_scalar"
@@ -2111,7 +2110,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -2147,7 +2145,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -2222,7 +2220,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -2279,7 +2276,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -2332,7 +2329,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -2369,7 +2365,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
@@ -2392,7 +2388,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "const": true,
@@ -2423,7 +2418,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +deref(pointer)+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
                 "fmtdict": {
                     "function_name": "getPtrToConstScalar",
                     "underscore_name": "get_ptr_to_const_scalar"
@@ -2472,7 +2467,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -2509,7 +2503,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_getPtrToFixedConstArray",
                     "function_name": "getPtrToFixedConstArray",
@@ -2581,7 +2575,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -2639,7 +2632,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "fmtdict": {
                     "PY_name_impl": "PY_getPtrToDynamicConstArray",
                     "function_name": "getPtrToDynamicConstArray",
@@ -3403,9 +3396,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnIntPtrToScalar",
                         "pointer": [
@@ -3425,7 +3415,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
-                "declgen": "int * returnIntPtrToScalar(void) +deref(pointer)",
+                "declgen": "int * returnIntPtrToScalar(void)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToScalar",
                     "function_name": "returnIntPtrToScalar",
@@ -3465,7 +3455,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "declarator": {
@@ -3492,7 +3481,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray(void) +deref(pointer)+dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToFixedArray",
                     "function_name": "returnIntPtrToFixedArray",
@@ -3526,9 +3515,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "returnIntPtrToConstScalar",
@@ -3549,7 +3535,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
-                "declgen": "const int * returnIntPtrToConstScalar(void) +deref(pointer)",
+                "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToConstScalar",
                     "function_name": "returnIntPtrToConstScalar",
@@ -3589,7 +3575,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "const": true,
@@ -3617,7 +3602,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray(void) +deref(pointer)+dimension(10)",
+                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "fmtdict": {
                     "PY_name_impl": "PY_returnIntPtrToFixedConstArray",
                     "function_name": "returnIntPtrToFixedConstArray",
@@ -3779,9 +3764,6 @@
             },
             {
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
                         "pointer": [
@@ -3804,7 +3786,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int **returnRawPtrToInt2d(void)",
-                "declgen": "int * * returnRawPtrToInt2d(void) +deref(pointer)",
+                "declgen": "int * * returnRawPtrToInt2d(void)",
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },

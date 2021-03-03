@@ -264,7 +264,7 @@ CLA_Class1 * CLA_Class1_getclass3(const CLA_Class1 * self,
  *
  */
 // ----------------------------------------
-// Function:  const std::string & getName +deref(allocatable)
+// Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 // start CLA_Class1_get_name
@@ -289,7 +289,7 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Argument:  const std::string & SHF_rv +context(DSHF_rv)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 // start CLA_Class1_get_name_bufferify

@@ -3014,9 +3014,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -3069,7 +3066,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3193,8 +3190,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "context": "DSHC_rv",
-                        "deref": "pointer"
+                        "context": "DSHC_rv"
                     },
                     "declarator": {
                         "name": "returnStructPtr1",
@@ -3250,7 +3246,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +context(DSHC_rv)+deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +context(DSHC_rv)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3375,9 +3371,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -3451,7 +3444,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)) +deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3610,8 +3603,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "context": "DSHC_rv",
-                        "deref": "pointer"
+                        "context": "DSHC_rv"
                     },
                     "declarator": {
                         "name": "returnStructPtr2",
@@ -3690,7 +3682,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len) +context(DSHC_rv)+deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len) +context(DSHC_rv)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3747,9 +3739,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [
@@ -3769,7 +3758,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void) +deref(pointer)",
+                "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "fmtdict": {
                     "C_name": "STR_get_global_struct_list",
                     "C_prototype": "void",
@@ -3819,8 +3808,7 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "context": "DSHC_rv",
-                        "deref": "pointer"
+                        "context": "DSHC_rv"
                     },
                     "declarator": {
                         "name": "get_global_struct_list",
@@ -3841,7 +3829,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void) +context(DSHC_rv)+deref(pointer)",
+                "declgen": "Cstruct_list * get_global_struct_list(void) +context(DSHC_rv)",
                 "fmtdict": {
                     "C_name": "STR_get_global_struct_list_bufferify",
                     "C_prototype": "void",

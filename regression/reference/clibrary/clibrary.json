@@ -1125,7 +1125,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "declarator": {
@@ -1186,7 +1185,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1, const char * arg2) +deref(result-as-arg)+len(30)",
+                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
                 "fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "Function4a",

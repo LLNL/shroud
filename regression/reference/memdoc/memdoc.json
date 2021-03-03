@@ -43,7 +43,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
                         "owner": "library"
                     },
                     "const": true,
@@ -66,7 +65,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +deref(allocatable)+owner(library)",
+                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_prototype": "void",
@@ -159,7 +158,6 @@
                         {
                             "attrs": {
                                 "context": "DSHF_rv",
-                                "deref": "allocatable",
                                 "owner": "library"
                             },
                             "const": true,
@@ -188,7 +186,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library))",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+owner(library))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",

@@ -485,7 +485,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr1
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_struct_result_numpy
 // ----------------------------------------
@@ -543,7 +543,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_struct_result_numpy
 // ----------------------------------------
@@ -608,7 +608,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Function:  Cstruct_list * get_global_struct_list
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_struct_result_numpy
 static char PY_get_global_struct_list__doc__[] =

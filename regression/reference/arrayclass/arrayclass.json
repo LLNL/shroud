@@ -581,7 +581,6 @@
                         },
                         "ast": {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -609,7 +608,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray(void) +deref(pointer)+dimension(getSize())",
+                        "declgen": "double * getArray(void) +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array",
                             "C_prototype": "ARR_ArrayWrapper * self",
@@ -671,7 +670,6 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -699,7 +697,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArray() +dimension(getSize())",
-                        "declgen": "double * getArray(void) +context(DSHC_rv)+deref(pointer)+dimension(getSize())",
+                        "declgen": "double * getArray(void) +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -788,7 +786,6 @@
                         },
                         "ast": {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -817,7 +814,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst(void) const +deref(pointer)+dimension(getSize())",
+                        "declgen": "double * getArrayConst(void) const +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const",
                             "C_prototype": "const ARR_ArrayWrapper * self",
@@ -880,7 +877,6 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "declarator": {
@@ -909,7 +905,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "double* getArrayConst() const +dimension(getSize())",
-                        "declgen": "double * getArrayConst(void) const +context(DSHC_rv)+deref(pointer)+dimension(getSize())",
+                        "declgen": "double * getArrayConst(void) const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -998,7 +994,6 @@
                         },
                         "ast": {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -1027,7 +1022,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC(void) +deref(pointer)+dimension(getSize())",
+                        "declgen": "const double * getArrayC(void) +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c",
                             "C_prototype": "ARR_ArrayWrapper * self",
@@ -1089,7 +1084,6 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -1118,7 +1112,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayC() +dimension(getSize())",
-                        "declgen": "const double * getArrayC(void) +context(DSHC_rv)+deref(pointer)+dimension(getSize())",
+                        "declgen": "const double * getArrayC(void) +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
                             "C_prototype": "ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -1207,7 +1201,6 @@
                         },
                         "ast": {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -1237,7 +1230,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC(void) const +deref(pointer)+dimension(getSize())",
+                        "declgen": "const double * getArrayConstC(void) const +dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c",
                             "C_prototype": "const ARR_ArrayWrapper * self",
@@ -1300,7 +1293,6 @@
                         "ast": {
                             "attrs": {
                                 "context": "DSHC_rv",
-                                "deref": "pointer",
                                 "dimension": "getSize()"
                             },
                             "const": true,
@@ -1330,7 +1322,7 @@
                             "typemap_name": "double"
                         },
                         "decl": "const double *getArrayConstC() const +dimension(getSize())",
-                        "declgen": "const double * getArrayConstC(void) const +context(DSHC_rv)+deref(pointer)+dimension(getSize())",
+                        "declgen": "const double * getArrayConstC(void) const +context(DSHC_rv)+dimension(getSize())",
                         "fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
                             "C_prototype": "const ARR_ArrayWrapper * self,\t ARR_SHROUD_array *DSHC_rv",
@@ -1457,7 +1449,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -1513,7 +1504,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtr(double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr",
@@ -1639,7 +1630,6 @@
                                 {
                                     "attrs": {
                                         "context": "Darray",
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -1697,7 +1687,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtr(double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtr(double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtr(double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_bufferify",
@@ -1824,7 +1814,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -1880,7 +1869,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRef(double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref",
@@ -2006,7 +1995,6 @@
                                 {
                                     "attrs": {
                                         "context": "Darray",
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2064,7 +2052,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRef(double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRef(double * & array +context+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRef(double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_bufferify",
@@ -2191,7 +2179,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2248,7 +2235,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +deref(pointer)+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +dimension(isize)+intent(out), int * isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const",
@@ -2374,7 +2361,6 @@
                                 {
                                     "attrs": {
                                         "context": "Darray",
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2433,7 +2419,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayPtrConst( const double **array +intent(out)+dimension(isize), int *isize     +hidden)",
-                        "declgen": "void fetchArrayPtrConst(const double * * array +context+deref(pointer)+dimension(isize)+intent(out), int * isize +hidden)",
+                        "declgen": "void fetchArrayPtrConst(const double * * array +context+dimension(isize)+intent(out), int * isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "&array,\t isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ptr_const_bufferify",
@@ -2560,7 +2546,6 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2617,7 +2602,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +deref(pointer)+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double * & array +dimension(isize)+intent(out), int & isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "*array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const",
@@ -2743,7 +2728,6 @@
                                 {
                                     "attrs": {
                                         "context": "Darray",
-                                        "deref": "pointer",
                                         "dimension": "isize",
                                         "intent": "out"
                                     },
@@ -2802,7 +2786,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "void fetchArrayRefConst( const double *&array +intent(out)+dimension(isize), int &isize     +hidden)",
-                        "declgen": "void fetchArrayRefConst(const double * & array +context+deref(pointer)+dimension(isize)+intent(out), int & isize +hidden)",
+                        "declgen": "void fetchArrayRefConst(const double * & array +context+dimension(isize)+intent(out), int & isize +hidden)",
                         "fmtdict": {
                             "C_call_list": "array,\t *isize",
                             "C_name": "ARR_ArrayWrapper_fetch_array_ref_const_bufferify",

@@ -134,7 +134,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": "get_name_length()"
                     },
                     "const": true,
@@ -157,7 +156,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getNameErrorPattern()",
-                "declgen": "const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())",
+                "declgen": "const string & getNameErrorPattern(void) +len(get_name_length())",
                 "fmtdict": {
                     "C_name": "STMT_get_name_error_pattern",
                     "C_prototype": "void",

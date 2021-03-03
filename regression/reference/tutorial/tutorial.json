@@ -517,9 +517,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "ConcatenateStrings",
@@ -573,7 +570,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2) +deref(allocatable)",
+                "declgen": "const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -777,8 +774,7 @@
                         },
                         {
                             "attrs": {
-                                "context": "DSHF_rv",
-                                "deref": "allocatable"
+                                "context": "DSHF_rv"
                             },
                             "const": true,
                             "declarator": {
@@ -806,7 +802,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "void ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim, const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                "declgen": "void ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim, const std::string * SHF_rv +context(DSHF_rv))",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -5703,7 +5699,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "const": true,
@@ -5726,7 +5721,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "fmtdict": {
                     "C_name": "TUT_last_function_called",
                     "C_prototype": "void",

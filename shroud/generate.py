@@ -237,7 +237,6 @@ class VerifyAttrs(object):
                     node.decl
                 )
             )
-        ast.attrs["deref"] = mderef
         ast.metaattrs["deref"] = mderef
         
     def check_deref_attr_var(self, ast):
@@ -275,13 +274,12 @@ class VerifyAttrs(object):
             # void cannot be dereferenced.
             pass
         elif spointer in ["**", "*&"] and intent == "out":
-            attrs["deref"] = "pointer"
             meta["deref"] = "pointer"
         
             
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
-        This includes: deref, dimension, free_pattern, owner, rank
+        This includes: dimension, free_pattern, owner, rank
 
         Parameters
         ----------
@@ -1319,8 +1317,6 @@ class GenFunctions(object):
         Move some attributes that are associated with the function
         to the new argument.
 
-        If deref is not set, then default to allocatable.
-
         Note: Used with 'char *' and std::string arguments.
 
         Parameters
@@ -1332,18 +1328,11 @@ class GenFunctions(object):
         new_node : FunctionNode
             New function (wrap c) that passes arg.
         """
-        attrs = arg.attrs
-        meta = arg.metaattrs
-        
-        c_attrs = new_node.ast.attrs
-        f_attrs = old_node.ast.attrs
-
-        attrs["deref"] = new_node.ast.attrs["deref"]
-        meta["deref"] = new_node.ast.metaattrs["deref"]
-
-        new_node.ast.attrs["deref"] = None
+        arg.metaattrs["deref"] = new_node.ast.metaattrs["deref"]
         new_node.ast.metaattrs["deref"] = None
             
+        c_attrs = new_node.ast.attrs
+        attrs = arg.attrs
         for name in ["owner", "free_pattern"]:
             if c_attrs[name]:
                 attrs[name] = c_attrs[name]
@@ -1475,7 +1464,8 @@ class GenFunctions(object):
 
         # Check if result needs to be an argument.
         attrs = ast.attrs
-        if attrs["deref"] == "raw":
+        meta = ast.metaattrs
+        if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup in ["char", "string"]:
@@ -1529,12 +1519,8 @@ class GenFunctions(object):
 #                    c_var=result_name
 #                )
                 # Special case for wrapf.py to override "allocatable"
-                f_attrs["deref"] = "result-as-arg"
                 f_meta["deref"] = "result-as-arg"
-
-                result_as_string.attrs["deref"] = None
                 result_as_string.metaattrs["deref"] = None
-                
             elif (result_typemap.sgroup == "string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1547,7 +1533,6 @@ class GenFunctions(object):
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             C_new.ast.metaattrs["deref"] = None
-            C_new.ast.attrs["deref"] = None
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)
@@ -1649,7 +1634,8 @@ class GenFunctions(object):
 
         # Check if result needs to be an argument.
         attrs = ast.attrs
-        if attrs["deref"] == "raw":
+        meta = ast.metaattrs
+        if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup in ["char", "string"]:
@@ -1659,7 +1645,7 @@ class GenFunctions(object):
         elif result_typemap.base == "vector":
             has_vector_result = True
         elif result_is_ptr:
-            if attrs["deref"] in ["allocatable", "pointer"]:
+            if meta["deref"] in ["allocatable", "pointer"]:
                 need_cdesc_result = True
             elif attrs["dimension"]:
                 need_cdesc_result = True
@@ -1726,7 +1712,6 @@ class GenFunctions(object):
         ast = C_new.ast
         if has_string_result:
             # Add additional argument to hold result.
-            # Default to deref(allocatable).
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
@@ -1741,15 +1726,10 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-                attrs["deref"] = None
                 result_as_string.metaattrs["deref"] = None
                 # Special case for wrapf.py to override "allocatable"
-                f_attrs["deref"] = "result-as-arg"
                 f_meta["deref"] = "result-as-arg"
-
-                result_as_string.attrs["deref"] = None
                 result_as_string.metaattrs["deref"] = None
-                
             elif (result_typemap.cxx_type == "std::string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1768,7 +1748,6 @@ class GenFunctions(object):
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             C_new.ast.metaattrs["deref"] = None
-            C_new.ast.attrs["deref"] = None
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result
@@ -1970,16 +1949,16 @@ class Preprocess(object):
 #            options, node.ast.attrs, "aaa")
 
         attrs = node.ast.attrs
+        meta = node.ast.metaattrs
         if attrs["owner"] == "caller" and \
-           attrs["deref"] == "pointer" and \
+           meta["deref"] == "pointer" and \
            attrs["capsule"] is None:
             attrs["capsule"] = options.C_var_capsule_template.format(
                 c_var=node.fmtdict.C_result
             )
 
         for arg in node.ast.params:
-            statements.set_buf_variable_names(
-                options, arg.attrs, arg.name)
+            statements.set_buf_variable_names(options, arg)
 
 
 def generate_functions(library, config):

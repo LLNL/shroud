@@ -1642,9 +1642,6 @@
                             },
                             {
                                 "ast": {
-                                    "attrs": {
-                                        "deref": "pointer"
-                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -1681,7 +1678,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value) +deref(pointer)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -1784,9 +1781,6 @@
                                 },
                                 "_generated": "cxx_template",
                                 "ast": {
-                                    "attrs": {
-                                        "deref": "pointer"
-                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -1823,7 +1817,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +value) +deref(pointer)",
+                                "declgen": "int & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at",
@@ -1920,8 +1914,7 @@
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "attrs": {
-                                        "context": "DSHC_rv",
-                                        "deref": "pointer"
+                                        "context": "DSHC_rv"
                                     },
                                     "declarator": {
                                         "name": "at",
@@ -1960,7 +1953,7 @@
                                     "typemap_name": "int"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "int & at(size_type n +value) +context(DSHC_rv)+deref(pointer)",
+                                "declgen": "int & at(size_type n +value) +context(DSHC_rv)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_int_at_bufferify",
@@ -2385,9 +2378,6 @@
                             },
                             {
                                 "ast": {
-                                    "attrs": {
-                                        "deref": "pointer"
-                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -2424,7 +2414,7 @@
                                     "typemap_name": "std::vector::T"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "T & at(size_type n +value) +deref(pointer)",
+                                "declgen": "T & at(size_type n +value)",
                                 "fmtdict": {
                                     "function_name": "at",
                                     "underscore_name": "at"
@@ -2527,9 +2517,6 @@
                                 },
                                 "_generated": "cxx_template",
                                 "ast": {
-                                    "attrs": {
-                                        "deref": "pointer"
-                                    },
                                     "declarator": {
                                         "name": "at",
                                         "pointer": [
@@ -2566,7 +2553,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +value) +deref(pointer)",
+                                "declgen": "double & at(size_type n +value)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at",
@@ -2663,8 +2650,7 @@
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "attrs": {
-                                        "context": "DSHC_rv",
-                                        "deref": "pointer"
+                                        "context": "DSHC_rv"
                                     },
                                     "declarator": {
                                         "name": "at",
@@ -2703,7 +2689,7 @@
                                     "typemap_name": "double"
                                 },
                                 "decl": "T & at(size_type n)",
-                                "declgen": "double & at(size_type n +value) +context(DSHC_rv)+deref(pointer)",
+                                "declgen": "double & at(size_type n +value) +context(DSHC_rv)",
                                 "fmtdict": {
                                     "C_call_list": "n",
                                     "C_name": "TEM_vector_double_at_bufferify",

@@ -326,7 +326,7 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
 // Requested: c_native_scalar_in_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)
+// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Requested: c_vector_scalar_result_buf_allocatable
 // Match:     c_vector_result_buf

@@ -34,7 +34,7 @@ PyObject *PY_init_ns_nswork(void);
 // splicer end additional_functions
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +deref(allocatable)
+// Function:  const std::string & LastFunctionCalled
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PY_LastFunctionCalled__doc__[] =

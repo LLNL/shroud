@@ -810,9 +810,6 @@
                                             }
                                         },
                                         "ast": {
-                                            "attrs": {
-                                                "deref": "allocatable"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "getNameErrorCheck",
@@ -834,7 +831,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
-                                        "declgen": "const string & getNameErrorCheck(void) const +deref(allocatable)",
+                                        "declgen": "const string & getNameErrorCheck(void) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
@@ -938,8 +935,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "context": "DSHF_rv",
-                                                        "deref": "allocatable"
+                                                        "context": "DSHF_rv"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -967,7 +963,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getNameErrorCheck() const",
-                                        "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const",
+                                        "declgen": "void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -1040,9 +1036,6 @@
                                             }
                                         },
                                         "ast": {
-                                            "attrs": {
-                                                "deref": "result-as-arg"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "getNameArg",
@@ -1064,7 +1057,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getNameArg() const",
-                                        "declgen": "const string & getNameArg(void) const +deref(result-as-arg)",
+                                        "declgen": "const string & getNameArg(void) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_arg",
                                             "C_prototype": "const AA_example_nested_ExClass1 * self",
@@ -2442,7 +2435,6 @@
                                         },
                                         "ast": {
                                             "attrs": {
-                                                "deref": "result-as-arg",
                                                 "len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})"
                                             },
                                             "const": true,
@@ -2466,7 +2458,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getName() const",
-                                        "declgen": "const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
+                                        "declgen": "const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
@@ -2683,9 +2675,6 @@
                                             }
                                         },
                                         "ast": {
-                                            "attrs": {
-                                                "deref": "allocatable"
-                                            },
                                             "const": true,
                                             "declarator": {
                                                 "name": "getName2",
@@ -2706,7 +2695,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "const string& getName2()",
-                                        "declgen": "const string & getName2(void) +deref(allocatable)",
+                                        "declgen": "const string & getName2(void)",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name2",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -2808,8 +2797,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "context": "DSHF_rv",
-                                                        "deref": "allocatable"
+                                                        "context": "DSHF_rv"
                                                     },
                                                     "const": true,
                                                     "declarator": {
@@ -2837,7 +2825,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "const string& getName2()",
-                                        "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                                        "declgen": "void getName2(const string & SHF_rv +context(DSHF_rv))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -2921,9 +2909,6 @@
                                             }
                                         },
                                         "ast": {
-                                            "attrs": {
-                                                "deref": "allocatable"
-                                            },
                                             "declarator": {
                                                 "name": "getName3",
                                                 "pointer": [
@@ -2944,7 +2929,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "string& getName3() const",
-                                        "declgen": "string & getName3(void) const +deref(allocatable)",
+                                        "declgen": "string & getName3(void) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name3",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self",
@@ -3048,8 +3033,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "context": "DSHF_rv",
-                                                        "deref": "allocatable"
+                                                        "context": "DSHF_rv"
                                                     },
                                                     "declarator": {
                                                         "name": "SHF_rv",
@@ -3076,7 +3060,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName3() const",
-                                        "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const",
+                                        "declgen": "void getName3(string & SHF_rv +context(DSHF_rv)) const",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
                                             "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",
@@ -3160,9 +3144,6 @@
                                             }
                                         },
                                         "ast": {
-                                            "attrs": {
-                                                "deref": "allocatable"
-                                            },
                                             "declarator": {
                                                 "name": "getName4",
                                                 "pointer": [
@@ -3182,7 +3163,7 @@
                                             "typemap_name": "std::string"
                                         },
                                         "decl": "string& getName4()",
-                                        "declgen": "string & getName4(void) +deref(allocatable)",
+                                        "declgen": "string & getName4(void)",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name4",
                                             "C_prototype": "AA_example_nested_ExClass2 * self",
@@ -3284,8 +3265,7 @@
                                             "params": [
                                                 {
                                                     "attrs": {
-                                                        "context": "DSHF_rv",
-                                                        "deref": "allocatable"
+                                                        "context": "DSHF_rv"
                                                     },
                                                     "declarator": {
                                                         "name": "SHF_rv",
@@ -3312,7 +3292,7 @@
                                             "typemap_name": "void"
                                         },
                                         "decl": "string& getName4()",
-                                        "declgen": "void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                                        "declgen": "void getName4(string & SHF_rv +context(DSHF_rv))",
                                         "fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
                                             "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *DSHF_rv",

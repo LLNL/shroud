@@ -130,7 +130,7 @@ void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 }
 
 // ----------------------------------------
-// Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
 const char * AA_example_nested_ExClass2_get_name(
@@ -170,7 +170,7 @@ void AA_example_nested_ExClass2_get_name_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const string & getName2 +deref(allocatable)
+// Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 const char * AA_example_nested_ExClass2_get_name2(
@@ -190,7 +190,7 @@ const char * AA_example_nested_ExClass2_get_name2(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Argument:  const string & SHF_rv +context(DSHF_rv)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
@@ -205,7 +205,7 @@ void AA_example_nested_ExClass2_get_name2_bufferify(
 }
 
 // ----------------------------------------
-// Function:  string & getName3 +deref(allocatable)
+// Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 char * AA_example_nested_ExClass2_get_name3(
@@ -225,7 +225,7 @@ char * AA_example_nested_ExClass2_get_name3(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Argument:  string & SHF_rv +context(DSHF_rv)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
@@ -240,7 +240,7 @@ void AA_example_nested_ExClass2_get_name3_bufferify(
 }
 
 // ----------------------------------------
-// Function:  string & getName4 +deref(allocatable)
+// Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 char * AA_example_nested_ExClass2_get_name4(
@@ -260,7 +260,7 @@ char * AA_example_nested_ExClass2_get_name4(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Argument:  string & SHF_rv +context(DSHF_rv)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(

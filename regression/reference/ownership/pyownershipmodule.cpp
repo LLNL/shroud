@@ -169,7 +169,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefault +deref(pointer)+dimension(len)
+// Function:  int * ReturnIntPtrDimDefault +dimension(len)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------
@@ -283,7 +283,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
+// Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 // ----------------------------------------

@@ -1267,7 +1267,7 @@ PY_sumFixedArray(
 // Function:  void getPtrToFixedArray
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int * * count +deref(pointer)+dimension(10)+intent(out)
+// Argument:  int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_list
 static char PY_getPtrToFixedArray__doc__[] =
@@ -1305,7 +1305,7 @@ fail:
 // Function:  void getPtrToDynamicArray
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Argument:  int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_list
 // ----------------------------------------
@@ -1349,7 +1349,7 @@ fail:
 // Function:  void getPtrToFuncArray
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  int * * count +deref(pointer)+dimension(getLen())+intent(out)
+// Argument:  int * * count +dimension(getLen())+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_list
 static char PY_getPtrToFuncArray__doc__[] =
@@ -1389,7 +1389,7 @@ fail:
 // Function:  void getPtrToFixedConstArray
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const int * * count +deref(pointer)+dimension(10)+intent(out)
+// Argument:  const int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_list
 static char PY_getPtrToFixedConstArray__doc__[] =
@@ -1424,7 +1424,7 @@ fail:
 // Function:  void getPtrToDynamicConstArray
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const int * * count +deref(pointer)+dimension(ncount)+intent(out)
+// Argument:  const int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_list
 // ----------------------------------------
@@ -1637,7 +1637,7 @@ PY_fetchVoidPtr(
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar +deref(pointer)
+// Function:  int * returnIntPtrToScalar
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToScalar__doc__[] =
@@ -1668,7 +1668,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +deref(pointer)+dimension(10)
+// Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToFixedArray__doc__[] =
@@ -1699,7 +1699,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar +deref(pointer)
+// Function:  const int * returnIntPtrToConstScalar
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToConstScalar__doc__[] =
@@ -1730,7 +1730,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +deref(pointer)+dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_list
 static char PY_returnIntPtrToFixedConstArray__doc__[] =

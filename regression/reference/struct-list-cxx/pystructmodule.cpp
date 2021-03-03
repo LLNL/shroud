@@ -346,7 +346,7 @@ PY_returnStructByValue(
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr1
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
@@ -398,7 +398,7 @@ PY_returnStructPtr1(
 }
 
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default
@@ -455,7 +455,7 @@ PY_returnStructPtr2(
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Function:  Cstruct_list * get_global_struct_list
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: py_struct_result_list
 // Match:     py_default

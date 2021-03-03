@@ -205,7 +205,7 @@ PY_getclass3(
 }
 
 // ----------------------------------------
-// Function:  const std::string & getName +deref(allocatable)
+// Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getName__doc__[] =

@@ -9,9 +9,9 @@ C method ExClass1(const string * name)
 C method ExClass1(const string * name +len_trim)
 C method ~ExClass1(void)
 C method int incrementCount(int incr +value)
-C method const string & getNameErrorCheck(void) const +deref(allocatable)
-C method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const
-C method const string & getNameArg(void) const +deref(result-as-arg)
+C method const string & getNameErrorCheck(void) const
+C method void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)) const
+C method const string & getNameArg(void) const
 C method void getNameArg(string & name +len(Nname)) const
 C method int getValue(int value +value)
 C method long getValue(long value +value)
@@ -23,14 +23,14 @@ class ExClass2
 C method ExClass2(const string * name +len_trim(trim_name))
 C method ExClass2(const string * name +len_trim(trim_name))
 C method ~ExClass2(void)
-C method const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+C method const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C method void getName(string & SHF_rv +len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-C method const string & getName2(void) +deref(allocatable)
-C method void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable))
-C method string & getName3(void) const +deref(allocatable)
-C method void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const
-C method string & getName4(void) +deref(allocatable)
-C method void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C method const string & getName2(void)
+C method void getName2(const string & SHF_rv +context(DSHF_rv))
+C method string & getName3(void) const
+C method void getName3(string & SHF_rv +context(DSHF_rv)) const
+C method string & getName4(void)
+C method void getName4(string & SHF_rv +context(DSHF_rv))
 C method int GetNameLength(void) const
 C method ExClass1 * get_class1(const ExClass1 * in)
 C method void declare(TypeID type +value)
@@ -76,7 +76,7 @@ Fortran ExClass1(void)
 Fortran ExClass1(const string * name)
 Fortran ~ExClass1(void)
 Fortran int incrementCount(int incr +value)
-Fortran const string & getNameErrorCheck(void) const +deref(allocatable)
+Fortran const string & getNameErrorCheck(void) const
 Fortran void getNameArg(string & name +len(Nname)) const
 Fortran int getValue(int value +value)
 Fortran long getValue(long value +value)
@@ -87,9 +87,9 @@ C-interface ExClass1(const string * name)
 C-interface ExClass1(const string * name +len_trim)
 C-interface ~ExClass1(void)
 C-interface int incrementCount(int incr +value)
-C-interface const string & getNameErrorCheck(void) const +deref(allocatable)
-C-interface void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const
-C-interface const string & getNameArg(void) const +deref(result-as-arg)
+C-interface const string & getNameErrorCheck(void) const
+C-interface void getNameErrorCheck(const string & SHF_rv +context(DSHF_rv)) const
+C-interface const string & getNameArg(void) const
 C-interface void getNameArg(string & name +len(Nname)) const
 C-interface int getValue(int value +value)
 C-interface long getValue(long value +value)
@@ -98,10 +98,10 @@ C-interface void SplicerSpecial(void)
 class ExClass2
 Fortran ExClass2(const string * name +len_trim(trim_name))
 Fortran ~ExClass2(void)
-Fortran const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-Fortran const string & getName2(void) +deref(allocatable)
-Fortran string & getName3(void) const +deref(allocatable)
-Fortran string & getName4(void) +deref(allocatable)
+Fortran const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+Fortran const string & getName2(void)
+Fortran string & getName3(void) const
+Fortran string & getName4(void)
 Fortran int GetNameLength(void) const
 Fortran ExClass1 * get_class1(const ExClass1 * in)
 Fortran void declare(TypeID type +value, int len=1 +value)
@@ -119,14 +119,14 @@ Fortran double getValue(void)
 C-interface ExClass2(const string * name +len_trim(trim_name))
 C-interface ExClass2(const string * name +len_trim(trim_name))
 C-interface ~ExClass2(void)
-C-interface const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+C-interface const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 C-interface void getName(string & SHF_rv +len(NSHF_rv)) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-C-interface const string & getName2(void) +deref(allocatable)
-C-interface void getName2(const string & SHF_rv +context(DSHF_rv)+deref(allocatable))
-C-interface string & getName3(void) const +deref(allocatable)
-C-interface void getName3(string & SHF_rv +context(DSHF_rv)+deref(allocatable)) const
-C-interface string & getName4(void) +deref(allocatable)
-C-interface void getName4(string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C-interface const string & getName2(void)
+C-interface void getName2(const string & SHF_rv +context(DSHF_rv))
+C-interface string & getName3(void) const
+C-interface void getName3(string & SHF_rv +context(DSHF_rv)) const
+C-interface string & getName4(void)
+C-interface void getName4(string & SHF_rv +context(DSHF_rv))
 C-interface int GetNameLength(void) const
 C-interface ExClass1 * get_class1(const ExClass1 * in)
 C-interface void declare(TypeID type +value)
@@ -189,8 +189,8 @@ Python method ExClass1(void)
 Python method ExClass1(const string * name)
 Python method ~ExClass1(void)
 Python method int incrementCount(int incr +value)
-Python method const string & getNameErrorCheck(void) const +deref(allocatable)
-Python method const string & getNameArg(void) const +deref(result-as-arg)
+Python method const string & getNameErrorCheck(void) const
+Python method const string & getNameArg(void) const
 Python method int getValue(int value +value)
 Python method long getValue(long value +value)
 Python method bool hasAddr(bool in +value)
@@ -199,10 +199,10 @@ Close pyexample_nested_ExClass1type.cpp
 class ExClass2
 Python method ExClass2(const string * name +len_trim(trim_name))
 Python method ~ExClass2(void)
-Python method const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-Python method const string & getName2(void) +deref(allocatable)
-Python method string & getName3(void) const +deref(allocatable)
-Python method string & getName4(void) +deref(allocatable)
+Python method const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+Python method const string & getName2(void)
+Python method string & getName3(void) const
+Python method string & getName4(void)
 Python method int GetNameLength(void) const
 Python method ExClass1 * get_class1(const ExClass1 * in)
 Python method void * declare(TypeID type +value, SidreLength len=1 +value)
@@ -241,18 +241,18 @@ Lua method ExClass1(void)
 Lua method ExClass1(const string * name)
 Lua method ~ExClass1(void)
 Lua method int incrementCount(int incr +value)
-Lua method const string & getNameErrorCheck(void) const +deref(allocatable)
-Lua method const string & getNameArg(void) const +deref(result-as-arg)
+Lua method const string & getNameErrorCheck(void) const
+Lua method const string & getNameArg(void) const
 Lua method int getValue(int value +value)
 Lua method long getValue(long value +value)
 Lua method bool hasAddr(bool in +value)
 Lua method void SplicerSpecial(void)
 Lua method ExClass2(const string * name +len_trim(trim_name))
 Lua method ~ExClass2(void)
-Lua method const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-Lua method const string & getName2(void) +deref(allocatable)
-Lua method string & getName3(void) const +deref(allocatable)
-Lua method string & getName4(void) +deref(allocatable)
+Lua method const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+Lua method const string & getName2(void)
+Lua method string & getName3(void) const
+Lua method string & getName4(void)
 Lua method int GetNameLength(void) const
 Lua method ExClass1 * get_class1(const ExClass1 * in)
 Lua method void * declare(TypeID type +value, SidreLength len=1 +value)

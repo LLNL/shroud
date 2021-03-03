@@ -69,7 +69,7 @@ void TEM_vector_double_push_back(TEM_vector_double * self,
 }
 
 // ----------------------------------------
-// Function:  double & at +deref(pointer)
+// Function:  double & at
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_&_result
 // Match:     c_default
@@ -89,7 +89,7 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 }
 
 // ----------------------------------------
-// Function:  double & at +context(DSHC_rv)+deref(pointer)
+// Function:  double & at +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_&_result_buf
 // Match:     c_default

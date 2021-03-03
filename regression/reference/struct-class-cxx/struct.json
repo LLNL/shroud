@@ -3017,9 +3017,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -3072,7 +3069,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3180,9 +3177,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -3256,7 +3250,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)) +deref(pointer)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out))",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3297,9 +3291,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [
@@ -3319,7 +3310,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void) +deref(pointer)",
+                "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "fmtdict": {
                     "PY_name_impl": "PY_get_global_struct_list",
                     "function_name": "get_global_struct_list",

@@ -1051,9 +1051,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getCharPtr1",
@@ -1074,7 +1071,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr1()",
-                "declgen": "const char * getCharPtr1(void) +deref(allocatable)",
+                "declgen": "const char * getCharPtr1(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
@@ -1170,9 +1167,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
@@ -1199,7 +1193,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const char * getCharPtr1()",
-                "declgen": "void getCharPtr1(const char * SHF_rv +deref(allocatable))",
+                "declgen": "void getCharPtr1(const char * SHF_rv)",
                 "doxygen": {
                     "brief": "return a 'const char *' as character(*)"
                 },
@@ -1276,7 +1270,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "const": true,
@@ -1299,7 +1292,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr2() +len(30)",
-                "declgen": "const char * getCharPtr2(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const char * getCharPtr2(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const char *' with fixed size (len=30)"
                 },
@@ -1491,9 +1484,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "result-as-arg"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getCharPtr3",
@@ -1514,7 +1504,7 @@
                     "typemap_name": "char"
                 },
                 "decl": "const char * getCharPtr3()",
-                "declgen": "const char * getCharPtr3(void) +deref(result-as-arg)",
+                "declgen": "const char * getCharPtr3(void)",
                 "doxygen": {
                     "brief": "return a 'const char *' as argument"
                 },
@@ -1834,9 +1824,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringResult",
@@ -1853,7 +1840,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringResult()",
-                "declgen": "const string getConstStringResult(void) +deref(allocatable)",
+                "declgen": "const string getConstStringResult(void)",
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
@@ -1939,9 +1926,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
@@ -1968,7 +1952,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string getConstStringResult()",
-                "declgen": "void getConstStringResult(const string * SHF_rv +deref(allocatable))",
+                "declgen": "void getConstStringResult(const string * SHF_rv)",
                 "doxygen": {
                     "brief": "return an ALLOCATABLE CHARACTER from std::string"
                 },
@@ -2027,7 +2011,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -2046,7 +2029,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringLen() +len=30",
-                "declgen": "const string getConstStringLen(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const string getConstStringLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2211,9 +2194,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "result-as-arg"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringAsArg",
@@ -2230,7 +2210,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string getConstStringAsArg()",
-                "declgen": "const string getConstStringAsArg(void) +deref(result-as-arg)",
+                "declgen": "const string getConstStringAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string' as argument"
                 },
@@ -2452,9 +2432,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringAlloc",
@@ -2471,7 +2448,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string getConstStringAlloc()",
-                "declgen": "const std::string getConstStringAlloc(void) +deref(allocatable)",
+                "declgen": "const std::string getConstStringAlloc(void)",
                 "fmtdict": {
                     "F_C_call": "c_get_const_string_alloc_cfi",
                     "F_arg_c_call": "SHT_rv",
@@ -2553,9 +2530,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
@@ -2582,7 +2556,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string getConstStringAlloc()",
-                "declgen": "void getConstStringAlloc(const std::string * SHF_rv +deref(allocatable))",
+                "declgen": "void getConstStringAlloc(const std::string * SHF_rv)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -2653,9 +2627,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringRefPure",
@@ -2676,7 +2647,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "const string & getConstStringRefPure(void) +deref(allocatable)",
+                "declgen": "const string & getConstStringRefPure(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
@@ -2772,9 +2743,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
@@ -2801,7 +2769,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const string& getConstStringRefPure()",
-                "declgen": "void getConstStringRefPure(const string & SHF_rv +deref(allocatable))",
+                "declgen": "void getConstStringRefPure(const string & SHF_rv)",
                 "doxygen": {
                     "brief": "return a 'const string&' as ALLOCATABLE character"
                 },
@@ -2880,7 +2848,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -2903,7 +2870,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLen() +len=30",
-                "declgen": "const string & getConstStringRefLen(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const string & getConstStringRefLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return 'const string&' with fixed size (len=30)",
                     "description": "Since +len(30) is provided, the result of the function\nwill be copied directly into memory provided by Fortran.\nThe function will not be ALLOCATABLE.\n"
@@ -3098,9 +3065,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "result-as-arg"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringRefAsArg",
@@ -3121,7 +3085,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefAsArg()",
-                "declgen": "const string & getConstStringRefAsArg(void) +deref(result-as-arg)",
+                "declgen": "const string & getConstStringRefAsArg(void)",
                 "doxygen": {
                     "brief": "return a 'const string&' as argument",
                     "description": "Pass an additional argument which wil be used as the return value.\nThe length of the output variable is declared by the caller.\n"
@@ -3378,7 +3342,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -3401,7 +3364,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string& getConstStringRefLenEmpty() +len=30",
-                "declgen": "const string & getConstStringRefLenEmpty(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const string & getConstStringRefLenEmpty(void) +len(30)",
                 "doxygen": {
                     "brief": "Test returning empty string reference"
                 },
@@ -3604,9 +3567,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "getConstStringRefAlloc",
@@ -3627,7 +3587,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "const std::string & getConstStringRefAlloc(void) +deref(allocatable)",
+                "declgen": "const std::string & getConstStringRefAlloc(void)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc",
                     "C_prototype": "void",
@@ -3719,9 +3679,6 @@
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "SHF_rv",
@@ -3748,7 +3705,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& getConstStringRefAlloc()",
-                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv +deref(allocatable))",
+                "declgen": "void getConstStringRefAlloc(const std::string & SHF_rv)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ref_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -3822,7 +3779,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": 30
                     },
                     "const": true,
@@ -3845,7 +3801,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const string * getConstStringPtrLen() +len=30",
-                "declgen": "const string * getConstStringPtrLen(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const string * getConstStringPtrLen(void) +len(30)",
                 "doxygen": {
                     "brief": "return a 'const string *' as character(30)",
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished with C_finalize_buf which is possible\nbecause +len(30) so the contents are copied before returning.\n"
@@ -4064,7 +4020,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
                         "owner": "library"
                     },
                     "const": true,
@@ -4087,7 +4042,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +deref(allocatable)+owner(library)",
+                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc",
                     "C_prototype": "void",
@@ -4180,7 +4135,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "allocatable",
                                 "owner": "library"
                             },
                             "const": true,
@@ -4209,7 +4163,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +deref(allocatable)+owner(library))",
+                "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +owner(library))",
                 "fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_CFI",
                     "C_prototype": "CFI_cdesc_t *SHcfi_SHF_rv",
@@ -4281,7 +4235,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
                         "owner": "caller"
                     },
                     "const": true,
@@ -4304,7 +4257,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
-                "declgen": "const std::string * getConstStringPtrOwnsAlloc(void) +deref(allocatable)+owner(caller)",
+                "declgen": "const std::string * getConstStringPtrOwnsAlloc(void) +owner(caller)",
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
@@ -4400,7 +4353,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "allocatable",
                                 "owner": "caller"
                             },
                             "const": true,
@@ -4429,7 +4381,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAlloc() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +deref(allocatable)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAlloc(const std::string * SHF_rv +owner(caller))",
                 "doxygen": {
                     "description": "It is the caller's responsibility to release the string\ncreated by the C++ library.\nThis is accomplished +owner(caller) which sets idtor.\nThe contents are copied by Fortran so they must outlast\nthe return from the C wrapper.\n"
                 },
@@ -4504,7 +4456,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "allocatable",
                         "free_pattern": "C_string_free",
                         "owner": "caller"
                     },
@@ -4528,7 +4479,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern(void) +deref(allocatable)+free_pattern(C_string_free)+owner(caller)",
+                "declgen": "const std::string * getConstStringPtrOwnsAllocPattern(void) +free_pattern(C_string_free)+owner(caller)",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },
@@ -4625,7 +4576,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "allocatable",
                                 "free_pattern": "C_string_free",
                                 "owner": "caller"
                             },
@@ -4655,7 +4605,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string * getConstStringPtrOwnsAllocPattern() +owner(caller)",
-                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller))",
+                "declgen": "void getConstStringPtrOwnsAllocPattern(const std::string * SHF_rv +free_pattern(C_string_free)+owner(caller))",
                 "doxygen": {
                     "description": "Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.\n"
                 },

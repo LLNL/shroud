@@ -77,10 +77,15 @@ def create_buf_variable_names(options, blk, attrs):
                          "len_trim", "len"]:
             attrs[buf_arg] = True
 
-def set_buf_variable_names(options, attrs, c_var):
+def set_buf_variable_names(options, arg):
     """Set attribute name from option template.
     XXX - make sure they don't conflict with other names.
+    XXX = move capsule, context, cdesc to metaattrs
     """
+    c_var = arg.name
+    attrs = arg.attrs
+    meta = arg.metaattrs
+    
     if attrs["size"] is True:
         attrs["size"] = options.C_var_size_template.format(
             c_var=c_var
@@ -90,7 +95,7 @@ def set_buf_variable_names(options, attrs, c_var):
             c_var=c_var
         )
     if attrs["owner"] == "caller" and \
-       attrs["deref"] == "pointer" \
+       meta["deref"] == "pointer" \
               and attrs["capsule"] is None:
         attrs["capsule"] = options.C_var_capsule_template.format(
             c_var=c_var

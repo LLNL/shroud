@@ -191,7 +191,7 @@ PP_ExClass2_tp_init(
 }
 
 // ----------------------------------------
-// Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName__doc__[] =
@@ -218,7 +218,7 @@ PP_getName(
 }
 
 // ----------------------------------------
-// Function:  const string & getName2 +deref(allocatable)
+// Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName2__doc__[] =
@@ -245,7 +245,7 @@ PP_getName2(
 }
 
 // ----------------------------------------
-// Function:  string & getName3 +deref(allocatable)
+// Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName3__doc__[] =
@@ -272,7 +272,7 @@ PP_getName3(
 }
 
 // ----------------------------------------
-// Function:  string & getName4 +deref(allocatable)
+// Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PP_getName4__doc__[] =

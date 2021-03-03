@@ -172,7 +172,7 @@ PY_allocate(
 }
 
 // ----------------------------------------
-// Function:  double * getArray +deref(pointer)+dimension(getSize())
+// Function:  double * getArray +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArray__doc__[] =
@@ -206,7 +206,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +deref(pointer)+dimension(getSize())
+// Function:  double * getArrayConst +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConst__doc__[] =
@@ -240,7 +240,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +deref(pointer)+dimension(getSize())
+// Function:  const double * getArrayC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayC__doc__[] =
@@ -274,7 +274,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +deref(pointer)+dimension(getSize())
+// Function:  const double * getArrayConstC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_*_result_pointer_numpy
 static char PY_getArrayConstC__doc__[] =
@@ -311,7 +311,7 @@ fail:
 // Function:  void fetchArrayPtr
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Argument:  double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
@@ -354,7 +354,7 @@ fail:
 // Function:  void fetchArrayRef
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Argument:  double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------
@@ -397,7 +397,7 @@ fail:
 // Function:  void fetchArrayPtrConst
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const double * * array +deref(pointer)+dimension(isize)+intent(out)
+// Argument:  const double * * array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_**_out_pointer_numpy
 // ----------------------------------------
@@ -440,7 +440,7 @@ fail:
 // Function:  void fetchArrayRefConst
 // Exact:     py_default
 // ----------------------------------------
-// Argument:  const double * & array +deref(pointer)+dimension(isize)+intent(out)
+// Argument:  const double * & array +dimension(isize)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     py_native_*&_out_pointer_numpy
 // ----------------------------------------

@@ -58,7 +58,7 @@ int STMT_get_name_length(void)
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorPattern +deref(result-as-arg)+len(get_name_length())
+// Function:  const string & getNameErrorPattern +len(get_name_length())
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
 const char * STMT_get_name_error_pattern(void)

@@ -1440,7 +1440,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer",
                         "dimension": "len"
                     },
                     "declarator": {
@@ -1489,7 +1488,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default",
@@ -1584,7 +1583,6 @@
                 "ast": {
                     "attrs": {
                         "context": "DSHC_rv",
-                        "deref": "pointer",
                         "dimension": "len"
                     },
                     "declarator": {
@@ -1634,7 +1632,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)",
+                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_bufferify",
@@ -1706,7 +1704,6 @@
                 "ast": {
                     "attrs": {
                         "capsule": "Crv",
-                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -1756,7 +1753,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw_new",
@@ -2386,7 +2383,6 @@
                 "ast": {
                     "attrs": {
                         "capsule": "Crv",
-                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2436,7 +2432,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new",
@@ -2533,7 +2529,6 @@
                     "attrs": {
                         "capsule": "Crv",
                         "context": "DSHC_rv",
-                        "deref": "pointer",
                         "dimension": "len",
                         "owner": "caller"
                     },
@@ -2584,7 +2579,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)",
+                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)",
                 "fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new_bufferify",
@@ -2850,7 +2845,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "library"
@@ -2908,7 +2902,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefault(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefault",
                     "underscore_name": "int_ptr_dim_default"
@@ -3166,7 +3160,6 @@
                         {
                             "attrs": {
                                 "capsule": "Carray",
-                                "deref": "pointer",
                                 "dimension": "len",
                                 "intent": "out",
                                 "owner": "caller"
@@ -3224,7 +3217,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
-                "declgen": "void IntPtrDimDefaultNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
+                "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
                 "fmtdict": {
                     "function_name": "IntPtrDimDefaultNew",
                     "underscore_name": "int_ptr_dim_default_new"

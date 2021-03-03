@@ -168,7 +168,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr1 +deref(allocatable)
+    ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_char_*_result
     ! start c_get_char_ptr1
@@ -188,7 +188,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const char * SHF_rv +deref(allocatable)
+    ! Argument:  const char * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_char_*_result_cfi_allocatable
     ! start c_get_char_ptr1_cfi
@@ -202,7 +202,7 @@ module strings_mod
     ! end c_get_char_ptr1_cfi
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
+    ! Function:  const char * getCharPtr2 +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_char_*_result
     ! start c_get_char_ptr2
@@ -236,7 +236,7 @@ module strings_mod
     ! end c_get_char_ptr2_cfi
 
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr3 +deref(result-as-arg)
+    ! Function:  const char * getCharPtr3
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_char_*_result
     ! start c_get_char_ptr3
@@ -288,7 +288,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const string * SHF_rv +deref(allocatable)
+    ! Argument:  const string * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
@@ -336,7 +336,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)
+    ! Argument:  const std::string * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
@@ -348,7 +348,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefPure +deref(allocatable)
+    ! Function:  const string & getConstStringRefPure
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result
     ! start c_get_const_string_ref_pure
@@ -368,7 +368,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +deref(allocatable)
+    ! Argument:  const string & SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_cfi_allocatable
     ! start c_get_const_string_ref_pure_cfi
@@ -382,7 +382,7 @@ module strings_mod
     ! end c_get_const_string_ref_pure_cfi
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
+    ! Function:  const string & getConstStringRefLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
@@ -412,7 +412,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
+    ! Function:  const string & getConstStringRefAsArg
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
@@ -442,7 +442,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
+    ! Function:  const string & getConstStringRefLenEmpty +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_&_result
     interface
@@ -472,7 +472,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
+    ! Function:  const std::string & getConstStringRefAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result
     interface
@@ -490,7 +490,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +deref(allocatable)
+    ! Argument:  const std::string & SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_&_result_cfi_allocatable
     interface
@@ -502,7 +502,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
+    ! Function:  const string * getConstStringPtrLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Exact:     c_string_*_result
     interface
@@ -532,7 +532,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
+    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result
     interface
@@ -550,7 +550,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+owner(library)
+    ! Argument:  const std::string * SHF_rv +owner(library)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
@@ -562,7 +562,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
+    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result
     interface
@@ -580,7 +580,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+owner(caller)
+    ! Argument:  const std::string * SHF_rv +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
@@ -592,7 +592,7 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result
     interface
@@ -610,7 +610,7 @@ module strings_mod
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+    ! Argument:  const std::string * SHF_rv +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
@@ -1222,14 +1222,14 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr1 +deref(allocatable)
-    ! const char * getCharPtr1 +deref(allocatable)
+    ! Function:  const char * getCharPtr1
+    ! const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_char_scalar_result_cfi_allocatable
     ! Function:  void getCharPtr1
     ! Exact:     c_char_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const char * SHF_rv +deref(allocatable)
+    ! Argument:  const char * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_char_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1250,8 +1250,8 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
-    ! const char * getCharPtr2 +deref(result-as-arg)+len(30)
+    ! Function:  const char * getCharPtr2 +len(30)
+    ! const char * getCharPtr2 +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_char_scalar_result_cfi_result-as-arg
     ! Match:     f_default
@@ -1280,14 +1280,14 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string getConstStringResult +deref(allocatable)
-    ! const string getConstStringResult +deref(allocatable)
+    ! Function:  const string getConstStringResult
+    ! const string getConstStringResult
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringResult
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const string * SHF_rv +deref(allocatable)
+    ! Argument:  const string * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1306,8 +1306,8 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string getConstStringLen +deref(result-as-arg)+len(30)
-    ! const string getConstStringLen +deref(result-as-arg)+len(30)
+    ! Function:  const string getConstStringLen +len(30)
+    ! const string getConstStringLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
@@ -1334,14 +1334,14 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const std::string getConstStringAlloc +deref(allocatable)
-    ! const std::string getConstStringAlloc +deref(allocatable)
+    ! Function:  const std::string getConstStringAlloc
+    ! const std::string getConstStringAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringAlloc
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)
+    ! Argument:  const std::string * SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1356,14 +1356,14 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefPure +deref(allocatable)
-    ! const string & getConstStringRefPure +deref(allocatable)
+    ! Function:  const string & getConstStringRefPure
+    ! const string & getConstStringRefPure
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringRefPure
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +deref(allocatable)
+    ! Argument:  const string & SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1384,8 +1384,8 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
-    ! const string & getConstStringRefLen +deref(result-as-arg)+len(30)
+    ! Function:  const string & getConstStringRefLen +len(30)
+    ! const string & getConstStringRefLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
@@ -1415,8 +1415,8 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
-    ! const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
+    ! Function:  const string & getConstStringRefLenEmpty +len(30)
+    ! const string & getConstStringRefLenEmpty +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
@@ -1443,14 +1443,14 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
-    ! const std::string & getConstStringRefAlloc +deref(allocatable)
+    ! Function:  const std::string & getConstStringRefAlloc
+    ! const std::string & getConstStringRefAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringRefAlloc
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +deref(allocatable)
+    ! Argument:  const std::string & SHF_rv
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1465,8 +1465,8 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
-    ! const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
+    ! Function:  const string * getConstStringPtrLen +len(30)
+    ! const string * getConstStringPtrLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
@@ -1497,15 +1497,15 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
-    ! const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
+    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: f_string_scalar_result_cfi_allocatable_library
     ! Match:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringPtrAlloc
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+owner(library)
+    ! Argument:  const std::string * SHF_rv +owner(library)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1520,15 +1520,15 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
-    ! const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
+    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+    ! const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: f_string_scalar_result_cfi_allocatable_caller
     ! Match:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringPtrOwnsAlloc
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+owner(caller)
+    ! Argument:  const std::string * SHF_rv +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1550,15 +1550,15 @@ contains
 
     ! Generated by arg_to_cfi
     ! ----------------------------------------
-    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
-    ! const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: f_string_scalar_result_cfi_allocatable_caller
     ! Match:     f_string_scalar_result_cfi_allocatable
     ! Function:  void getConstStringPtrOwnsAllocPattern
     ! Exact:     c_string_scalar_result_cfi
     ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+    ! Argument:  const std::string * SHF_rv +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_*_result_cfi_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
