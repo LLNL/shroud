@@ -1274,6 +1274,9 @@ class GenFunctions(object):
             node -
             ordered_functions -
         """
+        # Need to create individual routines for Fortran and C
+        if node.wrap.fortran == False and node.wrap.c == False:
+            return
         default_funcs = []
 
         default_arg_suffix = node.default_arg_suffix
