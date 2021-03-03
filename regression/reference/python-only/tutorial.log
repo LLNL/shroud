@@ -1,0 +1,22 @@
+Read yaml tutorial.yaml
+Read splicer ftutorialsplicer.f
+Python function void NoReturnNoArguments(void)
+Python function double PassByValue(double arg1 +value, int arg2 +value)
+Python function const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
+Python function double UseDefaultArguments(double arg1=3.1415 +value, bool arg2=true +value)
+Python function void OverloadedFunction(const std::string & name)
+Python function void OverloadedFunction(int indx +value)
+Python function void TemplateArgument(int arg +value)
+Python function void TemplateArgument(double arg +value)
+Python function void FortranGenericOverloaded(void)
+Python function void FortranGenericOverloaded(const std::string & name, double arg2 +value)
+Python function int UseDefaultOverload(int num +value, int offset=0 +value, int stride=1 +value)
+Python function int UseDefaultOverload(double type +value, int num +value, int offset=0 +value, int stride=1 +value)
+Python function TypeID typefunc(TypeID arg +value)
+Python function EnumTypeID enumfunc(EnumTypeID arg +value)
+Python function Color colorfunc(Color arg +value)
+Python function void getMinMax(int & min +intent(out), int & max +intent(out))
+Python function const std::string & LastFunctionCalled(void) +len(30)
+Close pyTutorialmodule.cpp
+Close pyTutorialmodule.hpp
+Close setup.py

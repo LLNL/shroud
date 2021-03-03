@@ -330,6 +330,12 @@ if __name__ == "__main__":
                  cmdline=[
                      "--option", "debug=False",
                  ]),
+        TestDesc("python-only", yaml="tutorial",
+                 cmdline=[
+                     "--option", "wrap_fortran=False",
+                     "--option", "wrap_c=False",
+                     "--option", "wrap_lua=False",
+                 ]),
         TestDesc("types"),
         TestDesc("classes"),
 
