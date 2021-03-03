@@ -1,0 +1,19 @@
+library: helloworld
+
+# This must be relative to python directory targeted by shroud
+cxx_header: ../helloworld.hpp
+
+options:
+  wrap_fortran: False
+  wrap_c: False
+  wrap_python: True
+  debug: True
+
+declarations:
+- decl: namespace helloworld
+  declarations:
+  - decl: class Person
+    declarations:
+    - decl: int SayHello()
+    - decl: int NamedHello(std::string path)
+
