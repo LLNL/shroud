@@ -241,7 +241,7 @@ PY_passCharPtrInOut(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr1 +deref(allocatable)
+// Function:  const char * getCharPtr1
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_char_*_result
 static char PY_getCharPtr1__doc__[] =
@@ -271,7 +271,7 @@ PY_getCharPtr1(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr2 +deref(result-as-arg)+len(30)
+// Function:  const char * getCharPtr2 +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_char_*_result
 static char PY_getCharPtr2__doc__[] =
@@ -301,7 +301,7 @@ PY_getCharPtr2(
 }
 
 // ----------------------------------------
-// Function:  const char * getCharPtr3 +deref(result-as-arg)
+// Function:  const char * getCharPtr3
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_char_*_result
 static char PY_getCharPtr3__doc__[] =
@@ -331,7 +331,7 @@ PY_getCharPtr3(
 }
 
 // ----------------------------------------
-// Function:  const string getConstStringResult +deref(allocatable)
+// Function:  const string getConstStringResult
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_scalar_result
 static char PY_getConstStringResult__doc__[] =
@@ -362,7 +362,7 @@ PY_getConstStringResult(
 }
 
 // ----------------------------------------
-// Function:  const string getConstStringLen +deref(result-as-arg)+len(30)
+// Function:  const string getConstStringLen +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_scalar_result
 static char PY_getConstStringLen__doc__[] =
@@ -393,7 +393,7 @@ PY_getConstStringLen(
 }
 
 // ----------------------------------------
-// Function:  const string getConstStringAsArg +deref(result-as-arg)
+// Function:  const string getConstStringAsArg
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_scalar_result
 static char PY_getConstStringAsArg__doc__[] =
@@ -424,7 +424,7 @@ PY_getConstStringAsArg(
 }
 
 // ----------------------------------------
-// Function:  const std::string getConstStringAlloc +deref(allocatable)
+// Function:  const std::string getConstStringAlloc
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_scalar_result
 static char PY_getConstStringAlloc__doc__[] =
@@ -451,7 +451,7 @@ PY_getConstStringAlloc(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefPure +deref(allocatable)
+// Function:  const string & getConstStringRefPure
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getConstStringRefPure__doc__[] =
@@ -482,7 +482,7 @@ PY_getConstStringRefPure(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefLen +deref(result-as-arg)+len(30)
+// Function:  const string & getConstStringRefLen +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getConstStringRefLen__doc__[] =
@@ -516,7 +516,7 @@ PY_getConstStringRefLen(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefAsArg +deref(result-as-arg)
+// Function:  const string & getConstStringRefAsArg
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getConstStringRefAsArg__doc__[] =
@@ -549,7 +549,7 @@ PY_getConstStringRefAsArg(
 }
 
 // ----------------------------------------
-// Function:  const string & getConstStringRefLenEmpty +deref(result-as-arg)+len(30)
+// Function:  const string & getConstStringRefLenEmpty +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getConstStringRefLenEmpty__doc__[] =
@@ -580,7 +580,7 @@ PY_getConstStringRefLenEmpty(
 }
 
 // ----------------------------------------
-// Function:  const std::string & getConstStringRefAlloc +deref(allocatable)
+// Function:  const std::string & getConstStringRefAlloc
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_&_result
 static char PY_getConstStringRefAlloc__doc__[] =
@@ -607,7 +607,7 @@ PY_getConstStringRefAlloc(
 }
 
 // ----------------------------------------
-// Function:  const string * getConstStringPtrLen +deref(result-as-arg)+len(30)
+// Function:  const string * getConstStringPtrLen +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_*_result
 static char PY_getConstStringPtrLen__doc__[] =
@@ -642,7 +642,7 @@ PY_getConstStringPtrLen(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
+// Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_*_result
 static char PY_getConstStringPtrAlloc__doc__[] =
@@ -669,7 +669,7 @@ PY_getConstStringPtrAlloc(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrOwnsAlloc +deref(allocatable)+owner(caller)
+// Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_*_result
 static char PY_getConstStringPtrOwnsAlloc__doc__[] =
@@ -703,7 +703,7 @@ PY_getConstStringPtrOwnsAlloc(
 }
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrOwnsAllocPattern +deref(allocatable)+free_pattern(C_string_free)+owner(caller)
+// Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_*_result
 static char PY_getConstStringPtrOwnsAllocPattern__doc__[] =

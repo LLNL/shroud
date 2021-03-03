@@ -2004,9 +2004,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -2167,9 +2164,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -2284,9 +2278,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [

@@ -95,7 +95,7 @@ PY_push_back(
 }
 
 // ----------------------------------------
-// Function:  double & at +deref(pointer)
+// Function:  double & at
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     py_native_&_result_pointer_numpy
 // ----------------------------------------

@@ -85,12 +85,16 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d);
 
 STR_cstruct1 * STR_return_struct_ptr1(int i, double d);
 
+STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d);
+
 STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf);
 
 STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
     char * outbuf, int Noutbuf);
 
 STR_cstruct_list * STR_get_global_struct_list(void);
+
+STR_cstruct_list * STR_get_global_struct_list_bufferify(void);
 
 STR_Cstruct_as_class * STR_create__cstruct_as_class(
     STR_Cstruct_as_class * SHadow_rv);

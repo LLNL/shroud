@@ -98,7 +98,7 @@ PY_PassByValue(
 }
 
 // ----------------------------------------
-// Function:  const std::string ConcatenateStrings +deref(allocatable)
+// Function:  const std::string ConcatenateStrings
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_string_scalar_result
 // ----------------------------------------
@@ -703,7 +703,7 @@ PY_getMinMax(
 }
 
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_string_&_result
 static char PY_LastFunctionCalled__doc__[] =

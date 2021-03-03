@@ -31,7 +31,7 @@ class VerifyAttrs(object):
 
     check order:
       indent - check_intent_attr
-      deref - check_deref_attr
+      deref - check_deref_attr_func / check_deref_attr_var
     """
 
     def __init__(self, newlibrary, config):
@@ -130,6 +130,7 @@ class VerifyAttrs(object):
                 )
         if ast.get_subprogram() == "function":
             ast.metaattrs["intent"] = "result"
+        self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
         if ast.typemap is None:
@@ -186,8 +187,60 @@ class VerifyAttrs(object):
         meta["intent"] = intent
         return intent    
         
-    def check_deref_attr(self, ast):
-        """Check deref attr and set default.
+    def check_deref_attr_func(self, node):
+        """Check deref attr and set default for function.
+
+        Function which return pointers or objects (std::string)
+        set the deref meta attribute.
+
+        Parameters
+        ----------
+        node : FunctionNode
+        ast : declast.Declaration
+        """
+        options = node.options
+        ast = node.ast
+        attrs = ast.attrs
+        deref = attrs["deref"]
+        mderef = None
+        ntypemap = ast.typemap
+        if ast.get_subprogram() == "subroutine":
+            pass
+        if ntypemap.sgroup == "void":
+            # Unable to set Fortran pointer for void
+            # if deref set, error
+            pass
+        elif ntypemap.sgroup == "shadow":
+            # Change a C++ pointer into a Fortran pointer
+            # return 'void *' as 'type(C_PTR)'
+            # 'shadow' assigns pointer to type(C_PTR) in a derived type
+            # Array of shadow?
+            pass
+        elif ntypemap.sgroup in ["string", "vector"]:
+            if deref:
+                mderef = deref
+            else:
+                mderef = "allocatable"
+        elif ast.is_indirect():
+            # pointer to a POD  e.g. int *
+            if deref:
+                mderef = deref
+            elif ntypemap.sgroup == "char":  # char *
+                mderef = "allocatable"
+            elif attrs["dimension"]:
+                mderef = "pointer"
+            else:
+                mderef = options.return_scalar_pointer
+        elif deref:
+            raise RuntimeError(
+                "Cannot have attribute 'deref' on non-pointer in {}".format(
+                    node.decl
+                )
+            )
+        ast.metaattrs["deref"] = mderef
+        
+    def check_deref_attr_var(self, ast):
+        """Check deref attr and set default for variable.
 
         Pointer variables set the default deref meta attribute.
 
@@ -221,13 +274,12 @@ class VerifyAttrs(object):
             # void cannot be dereferenced.
             pass
         elif spointer in ["**", "*&"] and intent == "out":
-            attrs["deref"] = "pointer"
             meta["deref"] = "pointer"
         
             
     def check_common_attrs(self, ast):
         """Check attributes which are common to function and argument AST
-        This includes: deref, dimension, free_pattern, owner, rank
+        This includes: dimension, free_pattern, owner, rank
 
         Parameters
         ----------
@@ -237,8 +289,6 @@ class VerifyAttrs(object):
         meta = ast.metaattrs
         ntypemap = ast.typemap
         is_ptr = ast.is_indirect()
-
-        self.check_deref_attr(ast)
 
         # dimension
         dimension = attrs["dimension"]
@@ -370,6 +420,7 @@ class VerifyAttrs(object):
             )
 
         intent = self.check_intent_attr(node, arg)
+        self.check_deref_attr_var(arg)
         self.check_common_attrs(arg)
 
         is_ptr = arg.is_indirect()
@@ -1266,8 +1317,6 @@ class GenFunctions(object):
         Move some attributes that are associated with the function
         to the new argument.
 
-        If deref is not set, then default to allocatable.
-
         Note: Used with 'char *' and std::string arguments.
 
         Parameters
@@ -1279,17 +1328,11 @@ class GenFunctions(object):
         new_node : FunctionNode
             New function (wrap c) that passes arg.
         """
-        attrs = arg.attrs
-        meta = arg.metaattrs
-        
+        arg.metaattrs["deref"] = new_node.ast.metaattrs["deref"]
+        new_node.ast.metaattrs["deref"] = None
+            
         c_attrs = new_node.ast.attrs
-        f_attrs = old_node.ast.attrs
-        if f_attrs["deref"] is None:
-            f_attrs["deref"] = "allocatable"
-            attrs["deref"] = "allocatable"
-
-            old_node.ast.metaattrs["deref"] = "allocatable"
-            meta["deref"] = "allocatable"
+        attrs = arg.attrs
         for name in ["owner", "free_pattern"]:
             if c_attrs[name]:
                 attrs[name] = c_attrs[name]
@@ -1421,7 +1464,8 @@ class GenFunctions(object):
 
         # Check if result needs to be an argument.
         attrs = ast.attrs
-        if attrs["deref"] == "raw":
+        meta = ast.metaattrs
+        if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup in ["char", "string"]:
@@ -1475,8 +1519,8 @@ class GenFunctions(object):
 #                    c_var=result_name
 #                )
                 # Special case for wrapf.py to override "allocatable"
-                f_attrs["deref"] = "result-as-arg"
                 f_meta["deref"] = "result-as-arg"
+                result_as_string.metaattrs["deref"] = None
             elif (result_typemap.sgroup == "string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1488,6 +1532,7 @@ class GenFunctions(object):
                 attrs = result_as_string.attrs
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
+            C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)
@@ -1589,7 +1634,8 @@ class GenFunctions(object):
 
         # Check if result needs to be an argument.
         attrs = ast.attrs
-        if attrs["deref"] == "raw":
+        meta = ast.metaattrs
+        if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
         elif result_typemap.sgroup in ["char", "string"]:
@@ -1599,7 +1645,7 @@ class GenFunctions(object):
         elif result_typemap.base == "vector":
             has_vector_result = True
         elif result_is_ptr:
-            if attrs["deref"] in ["allocatable", "pointer"]:
+            if meta["deref"] in ["allocatable", "pointer"]:
                 need_cdesc_result = True
             elif attrs["dimension"]:
                 need_cdesc_result = True
@@ -1666,7 +1712,6 @@ class GenFunctions(object):
         ast = C_new.ast
         if has_string_result:
             # Add additional argument to hold result.
-            # Default to deref(allocatable).
             # This will allocate a new character variable to hold the
             # results of the C++ function.
             f_attrs = node.ast.attrs  # Fortran function attributes
@@ -1681,9 +1726,10 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
+                result_as_string.metaattrs["deref"] = None
                 # Special case for wrapf.py to override "allocatable"
-                f_attrs["deref"] = "result-as-arg"
                 f_meta["deref"] = "result-as-arg"
+                result_as_string.metaattrs["deref"] = None
             elif (result_typemap.cxx_type == "std::string" or
                   result_is_ptr):  # 'char *'
                 result_as_string = ast.result_as_arg(result_name)
@@ -1701,6 +1747,7 @@ class GenFunctions(object):
                 )
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
+            C_new.ast.metaattrs["deref"] = None
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result
@@ -1896,27 +1943,22 @@ class Preprocess(object):
             cls -
             node -
         """
-        # Any nodes with cxx_template have been replaced with nodes
-        # that have the template expanded.
-        if not node.cxx_template:
-            check_return_pointer(node, node.ast)
-
         options = self.newlibrary.options
         # XXX - not sure if result uses any of these attributes.
 #        typemap.set_buf_variable_names(
 #            options, node.ast.attrs, "aaa")
 
         attrs = node.ast.attrs
+        meta = node.ast.metaattrs
         if attrs["owner"] == "caller" and \
-           attrs["deref"] == "pointer" and \
+           meta["deref"] == "pointer" and \
            attrs["capsule"] is None:
             attrs["capsule"] = options.C_var_capsule_template.format(
                 c_var=node.fmtdict.C_result
             )
 
         for arg in node.ast.params:
-            statements.set_buf_variable_names(
-                options, arg.attrs, arg.name)
+            statements.set_buf_variable_names(options, arg)
 
 
 def generate_functions(library, config):
@@ -2021,53 +2063,3 @@ def check_implied(context, expr, decls):
     visitor = CheckImplied(context, expr, decls)
     return visitor.visit(node)
 
-
-def check_return_pointer(node, ast):
-    """Compute how to deal with a pointer function result.
-
-    Parameters
-    ----------
-    node : ast.FunctionNode
-    ast : declast.Declaration
-    """
-    options = node.options
-    attrs = ast.attrs
-    meta = ast.metaattrs
-    ntypemap = ast.typemap
-    if ntypemap.cxx_type == "void":
-        # subprogram == subroutine
-        # deref may be set when a string function is converted into a subroutine.
-        pass
-    elif ntypemap.base == "shadow":
-        # Change a C++ pointer into a Fortran pointer
-        # return 'void *' as 'type(C_PTR)'
-        # 'shadow' assigns pointer to type(C_PTR) in a derived type
-        pass
-    elif ntypemap.base in ["string", "vector"]:
-        if attrs["deref"]:
-            pass
-        else:
-            # Default strings to create a Fortran allocatable.
-            # XXX - do not deref a scalar.
-            if ast.is_indirect():
-                # If the function has +len, result will be an argument.
-                if not attrs["len"]:
-                    attrs["deref"] = "allocatable"
-                    meta["deref"] = "allocatable"
-    elif ast.is_indirect():
-        # pointer to a POD  e.g. int *
-        if attrs["deref"]:
-            pass
-        elif attrs["dimension"]:
-            attrs["deref"] = "pointer"
-            meta["deref"] = "pointer"
-        else:
-            attrs["deref"] = options.return_scalar_pointer
-            meta["deref"] = options.return_scalar_pointer
-    else:
-        if attrs["deref"]:
-            raise RuntimeError(
-                "Cannot have attribute 'deref' on non-pointer in {}".format(
-                    node.decl
-                )
-            )

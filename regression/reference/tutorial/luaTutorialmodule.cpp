@@ -60,9 +60,9 @@ static int l_pass_by_value(lua_State *L)
     // splicer end function.PassByValue
 }
 
-// const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2) +deref(allocatable)
+// const std::string ConcatenateStrings(const std::string & arg1, const std::string & arg2)
 // ----------------------------------------
-// Function:  const std::string ConcatenateStrings +deref(allocatable)
+// Function:  const std::string ConcatenateStrings
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_scalar_result
 // ----------------------------------------
@@ -543,9 +543,9 @@ static int l_colorfunc(lua_State *L)
     // splicer end function.colorfunc
 }
 
-// const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+// const std::string & LastFunctionCalled(void) +len(30)
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     lua_string_&_result
 static int l_last_function_called(lua_State *L)

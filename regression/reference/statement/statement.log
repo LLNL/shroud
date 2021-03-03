@@ -1,13 +1,13 @@
 Read yaml statement.yaml
 C function int GetNameLength(void) +pure
-C function const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
+C function const string & getNameErrorPattern(void) +len(get_name_length())
 C function void getNameErrorPattern(string & SHF_rv +len(NSHF_rv)) +len(get_name_length())
 Close wrapstatement.h
 Close wrapstatement.cpp
 Close typesstatement.h
 Fortran int GetNameLength(void) +pure
-Fortran const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
+Fortran const string & getNameErrorPattern(void) +len(get_name_length())
 C-interface int GetNameLength(void) +pure
-C-interface const string & getNameErrorPattern(void) +deref(result-as-arg)+len(get_name_length())
+C-interface const string & getNameErrorPattern(void) +len(get_name_length())
 C-interface void getNameErrorPattern(string & SHF_rv +len(NSHF_rv)) +len(get_name_length())
 Close wrapfstatement.f

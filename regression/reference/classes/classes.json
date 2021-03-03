@@ -1385,9 +1385,6 @@
                             }
                         },
                         "ast": {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "getName",
@@ -1408,7 +1405,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName(void) +deref(allocatable)",
+                        "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -1513,8 +1510,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "DSHF_rv",
-                                        "deref": "allocatable"
+                                        "context": "DSHF_rv"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -1542,7 +1538,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv))",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -2214,9 +2210,6 @@
                             }
                         },
                         "ast": {
-                            "attrs": {
-                                "deref": "allocatable"
-                            },
                             "const": true,
                             "declarator": {
                                 "name": "getName",
@@ -2237,7 +2230,7 @@
                             "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "const std::string & getName(void) +deref(allocatable)",
+                        "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -2342,8 +2335,7 @@
                             "params": [
                                 {
                                     "attrs": {
-                                        "context": "DSHF_rv",
-                                        "deref": "allocatable"
+                                        "context": "DSHF_rv"
                                     },
                                     "const": true,
                                     "declarator": {
@@ -2371,7 +2363,7 @@
                             "typemap_name": "void"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv))",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -4287,7 +4279,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "result-as-arg",
                         "len": "30"
                     },
                     "const": true,
@@ -4310,7 +4301,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled() +len(30)",
-                "declgen": "const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)",
+                "declgen": "const std::string & LastFunctionCalled(void) +len(30)",
                 "fmtdict": {
                     "C_name": "CLA_last_function_called",
                     "C_prototype": "void",

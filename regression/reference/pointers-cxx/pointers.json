@@ -2870,7 +2870,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -2900,7 +2899,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +deref(pointer)+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +intent(out))",
                 "fmtdict": {
                     "C_call_list": "nitems",
                     "C_name": "POI_get_ptr_to_scalar",
@@ -2980,7 +2979,6 @@
                         {
                             "attrs": {
                                 "context": "Dnitems",
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -3011,7 +3009,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToScalar(int **nitems+intent(out))",
-                "declgen": "void getPtrToScalar(int * * nitems +context+deref(pointer)+intent(out))",
+                "declgen": "void getPtrToScalar(int * * nitems +context+intent(out))",
                 "fmtdict": {
                     "C_call_list": "&nitems",
                     "C_name": "POI_get_ptr_to_scalar_bufferify",
@@ -3068,7 +3066,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -3104,7 +3101,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int * * count +dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -3193,7 +3190,6 @@
                         {
                             "attrs": {
                                 "context": "Dcount",
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -3230,7 +3226,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedArray(int **count+intent(out)+dimension(10))",
-                "declgen": "void getPtrToFixedArray(int * * count +context+deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedArray(int * * count +context+dimension(10)+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is always the same length.\n"
                 },
@@ -3310,7 +3306,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -3367,7 +3362,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -3489,7 +3484,6 @@
                         {
                             "attrs": {
                                 "context": "Dcount",
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -3548,7 +3542,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicArray(int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicArray(int * * count +context+deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicArray(int * * count +context+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length of\nthe argument ncount.\n"
                 },
@@ -3606,7 +3600,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -3643,7 +3636,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +deref(pointer)+dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int * * count +dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
@@ -3732,7 +3725,6 @@
                         {
                             "attrs": {
                                 "context": "Dcount",
-                                "deref": "pointer",
                                 "dimension": "getLen()",
                                 "intent": "out"
                             },
@@ -3770,7 +3762,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFuncArray(int **count+intent(out) +dimension(getLen()))",
-                "declgen": "void getPtrToFuncArray(int * * count +context+deref(pointer)+dimension(getLen())+intent(out))",
+                "declgen": "void getPtrToFuncArray(int * * count +context+dimension(getLen())+intent(out))",
                 "doxygen": {
                     "description": "Return a Fortran pointer to an array which is the length\nis computed by C++ function getLen.\ngetLen will be called from C/C++ to compute the shape.\n"
                 },
@@ -3827,7 +3819,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "const": true,
@@ -3858,7 +3849,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +deref(pointer)+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +intent(out))",
                 "fmtdict": {
                     "C_call_list": "nitems",
                     "C_name": "POI_get_ptr_to_const_scalar",
@@ -3938,7 +3929,6 @@
                         {
                             "attrs": {
                                 "context": "Dnitems",
-                                "deref": "pointer",
                                 "intent": "out"
                             },
                             "const": true,
@@ -3970,7 +3960,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToConstScalar( const int **nitems+intent(out))",
-                "declgen": "void getPtrToConstScalar(const int * * nitems +context+deref(pointer)+intent(out))",
+                "declgen": "void getPtrToConstScalar(const int * * nitems +context+intent(out))",
                 "fmtdict": {
                     "C_call_list": "&nitems",
                     "C_name": "POI_get_ptr_to_const_scalar_bufferify",
@@ -4027,7 +4017,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -4064,7 +4053,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +dimension(10)+intent(out))",
                 "fmtdict": {
                     "C_call_list": "count",
                     "C_name": "POI_get_ptr_to_fixed_const_array",
@@ -4150,7 +4139,6 @@
                         {
                             "attrs": {
                                 "context": "Dcount",
-                                "deref": "pointer",
                                 "dimension": "10",
                                 "intent": "out"
                             },
@@ -4188,7 +4176,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToFixedConstArray( const int **count+intent(out)+dimension(10));",
-                "declgen": "void getPtrToFixedConstArray(const int * * count +context+deref(pointer)+dimension(10)+intent(out))",
+                "declgen": "void getPtrToFixedConstArray(const int * * count +context+dimension(10)+intent(out))",
                 "fmtdict": {
                     "C_call_list": "&count",
                     "C_name": "POI_get_ptr_to_fixed_const_array_bufferify",
@@ -4265,7 +4253,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -4323,7 +4310,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "fmtdict": {
                     "C_call_list": "count,\t ncount",
                     "C_name": "POI_get_ptr_to_dynamic_const_array",
@@ -4442,7 +4429,6 @@
                         {
                             "attrs": {
                                 "context": "Dcount",
-                                "deref": "pointer",
                                 "dimension": "ncount",
                                 "intent": "out"
                             },
@@ -4502,7 +4488,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void getPtrToDynamicConstArray( const int **count+intent(out)+dimension(ncount), int *ncount+intent(out)+hidden)",
-                "declgen": "void getPtrToDynamicConstArray(const int * * count +context+deref(pointer)+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
+                "declgen": "void getPtrToDynamicConstArray(const int * * count +context+dimension(ncount)+intent(out), int * ncount +hidden+intent(out))",
                 "fmtdict": {
                     "C_call_list": "&count,\t ncount",
                     "C_name": "POI_get_ptr_to_dynamic_const_array_bufferify",
@@ -6209,21 +6195,20 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result_pointer",
-                        "stmt1": "f_native_*_result_pointer",
-                        "stmtc0": "c_native_*_result",
-                        "stmtc1": "c_default"
+                        "stmt0": "f_native_*_result_buf_pointer",
+                        "stmt1": "f_native_*_result_buf_pointer",
+                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc1": "c_native_*_result_buf"
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnIntPtrToScalar",
                         "pointer": [
@@ -6249,11 +6234,12 @@
                     "C_prototype": "void",
                     "C_return_type": "int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_scalar",
+                    "F_C_call": "c_return_int_ptr_to_scalar_bufferify",
                     "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
@@ -6268,6 +6254,71 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "context": "DSHC_rv"
+                    },
+                    "declarator": {
+                        "name": "returnIntPtrToScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int *returnIntPtrToScalar(void)",
+                "declgen": "int * returnIntPtrToScalar(void) +context(DSHC_rv)",
+                "fmtdict": {
+                    "C_name": "POI_return_int_ptr_to_scalar_bufferify",
+                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "DSHC_rv",
+                    "F_C_name": "c_return_int_ptr_to_scalar_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "returnIntPtrToScalar",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_int_ptr_to_scalar"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -6310,7 +6361,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "declarator": {
@@ -6392,7 +6442,6 @@
                 "ast": {
                     "attrs": {
                         "context": "DSHC_rv",
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "declarator": {
@@ -6459,21 +6508,20 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "array_context",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_*_result_pointer",
-                        "stmt1": "f_native_*_result_pointer",
-                        "stmtc0": "c_native_*_result",
-                        "stmtc1": "c_default"
+                        "stmt0": "f_native_*_result_buf_pointer",
+                        "stmt1": "f_native_*_result_buf_pointer",
+                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc1": "c_native_*_result_buf"
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "returnIntPtrToConstScalar",
@@ -6500,11 +6548,12 @@
                     "C_prototype": "void",
                     "C_return_type": "const int *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_to_const_scalar",
+                    "F_C_call": "c_return_int_ptr_to_const_scalar_bufferify",
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
                     "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
@@ -6519,6 +6568,72 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "const ",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "const_cast<int *>\t(SHC_rv)",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "context": "DSHC_rv"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "returnIntPtrToConstScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "const int *returnIntPtrToConstScalar(void)",
+                "declgen": "const int * returnIntPtrToConstScalar(void) +context(DSHC_rv)",
+                "fmtdict": {
+                    "C_name": "POI_return_int_ptr_to_const_scalar_bufferify",
+                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
+                    "C_return_type": "const int *",
+                    "F_C_arguments": "DSHC_rv",
+                    "F_C_name": "c_return_int_ptr_to_const_scalar_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "const int * SHC_rv",
+                    "function_name": "returnIntPtrToConstScalar",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_int_ptr_to_const_scalar"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
                 }
             },
             {
@@ -6561,7 +6676,6 @@
                 },
                 "ast": {
                     "attrs": {
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "const": true,
@@ -6644,7 +6758,6 @@
                 "ast": {
                     "attrs": {
                         "context": "DSHC_rv",
-                        "deref": "pointer",
                         "dimension": "10"
                     },
                     "const": true,
@@ -7014,21 +7127,19 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_**_result_pointer",
+                        "stmt0": "f_native_**_result_buf_pointer",
                         "stmt1": "f_native_**_result",
-                        "stmtc0": "c_native_**_result",
+                        "stmtc0": "c_native_**_result_buf",
                         "stmtc1": "c_default"
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
                         "pointer": [
@@ -7060,7 +7171,7 @@
                     "C_prototype": "void",
                     "C_return_type": "int * *",
                     "F_C_arguments": "",
-                    "F_C_call": "c_return_raw_ptr_to_int2d",
+                    "F_C_call": "c_return_raw_ptr_to_int2d_bufferify",
                     "F_C_name": "c_return_raw_ptr_to_int2d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
@@ -7082,6 +7193,80 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
+                }
+            },
+            {
+                "_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_**_result_buf",
+                        "stmt1": "c_default"
+                    }
+                },
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "context": "DSHC_rv"
+                    },
+                    "declarator": {
+                        "name": "returnRawPtrToInt2d",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            },
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int **returnRawPtrToInt2d(void)",
+                "declgen": "int * * returnRawPtrToInt2d(void) +context(DSHC_rv)",
+                "doxygen": {
+                    "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
+                },
+                "fmtdict": {
+                    "C_name": "POI_return_raw_ptr_to_int2d_bufferify",
+                    "C_prototype": "void",
+                    "C_return_type": "int * *",
+                    "F_C_arguments": "",
+                    "F_C_name": "c_return_raw_ptr_to_int2d_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "int * * SHC_rv",
+                    "function_name": "returnRawPtrToInt2d",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_raw_ptr_to_int2d"
+                },
+                "generated_suffix": "buf",
+                "options": {
+                    "F_force_wrapper": true,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
                 }
             }
         ],

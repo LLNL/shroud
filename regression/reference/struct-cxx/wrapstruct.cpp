@@ -232,7 +232,7 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
  * Does not generate a bufferify C wrapper.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr1
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
@@ -259,10 +259,40 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 /**
  * \brief Return a pointer to a struct
  *
+ * Does not generate a bufferify C wrapper.
+ */
+// ----------------------------------------
+// Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
+// Attrs:     +deref(pointer)+intent(result)
+// Requested: c_struct_*_result_buf
+// Match:     c_struct_result
+// ----------------------------------------
+// Argument:  int i +value
+// Attrs:     +intent(in)
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+// ----------------------------------------
+// Argument:  double d +value
+// Attrs:     +intent(in)
+// Requested: c_native_scalar_in_buf
+// Match:     c_default
+STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d)
+{
+    // splicer begin function.return_struct_ptr1_bufferify
+    Cstruct1 * SHCXX_rv = returnStructPtr1(i, d);
+    STR_cstruct1 * SHC_rv = static_cast<STR_cstruct1 *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
+    // splicer end function.return_struct_ptr1_bufferify
+}
+
+/**
+ * \brief Return a pointer to a struct
+ *
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
@@ -297,7 +327,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+// Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
 // Match:     c_struct_result
@@ -328,7 +358,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 }
 
 // ----------------------------------------
-// Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+// Function:  Cstruct_list * get_global_struct_list
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result
 // Match:     c_struct_result
@@ -340,6 +370,21 @@ STR_cstruct_list * STR_get_global_struct_list(void)
         static_cast<void *>(SHCXX_rv));
     return SHC_rv;
     // splicer end function.get_global_struct_list
+}
+
+// ----------------------------------------
+// Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
+// Attrs:     +deref(pointer)+intent(result)
+// Requested: c_struct_*_result_buf
+// Match:     c_struct_result
+STR_cstruct_list * STR_get_global_struct_list_bufferify(void)
+{
+    // splicer begin function.get_global_struct_list_bufferify
+    Cstruct_list * SHCXX_rv = get_global_struct_list();
+    STR_cstruct_list * SHC_rv = static_cast<STR_cstruct_list *>(
+        static_cast<void *>(SHCXX_rv));
+    return SHC_rv;
+    // splicer end function.get_global_struct_list_bufferify
 }
 
 // ----------------------------------------

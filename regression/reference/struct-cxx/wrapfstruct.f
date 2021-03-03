@@ -481,7 +481,7 @@ module struct_mod
         end function return_struct_by_value
 
         ! ----------------------------------------
-        ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
+        ! Function:  Cstruct1 * returnStructPtr1
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
@@ -506,7 +506,32 @@ module struct_mod
         end function c_return_struct_ptr1
 
         ! ----------------------------------------
-        ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+        ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
+        ! Attrs:     +deref(pointer)+intent(result)
+        ! Requested: c_struct_*_result_buf
+        ! Match:     c_struct_result
+        ! ----------------------------------------
+        ! Argument:  int i +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double d +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in_buf
+        ! Match:     c_default
+        function c_return_struct_ptr1_bufferify(i, d) &
+                result(SHT_rv) &
+                bind(C, name="STR_return_struct_ptr1_bufferify")
+            use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR
+            implicit none
+            integer(C_INT), value, intent(IN) :: i
+            real(C_DOUBLE), value, intent(IN) :: d
+            type(C_PTR) SHT_rv
+        end function c_return_struct_ptr1_bufferify
+
+        ! ----------------------------------------
+        ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
@@ -537,7 +562,7 @@ module struct_mod
         end function c_return_struct_ptr2
 
         ! ----------------------------------------
-        ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
+        ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result_buf
         ! Match:     c_struct_result
@@ -568,7 +593,7 @@ module struct_mod
         end function c_return_struct_ptr2_bufferify
 
         ! ----------------------------------------
-        ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
+        ! Function:  Cstruct_list * get_global_struct_list
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result
         ! Match:     c_struct_result
@@ -579,6 +604,19 @@ module struct_mod
             implicit none
             type(C_PTR) SHT_rv
         end function c_get_global_struct_list
+
+        ! ----------------------------------------
+        ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
+        ! Attrs:     +deref(pointer)+intent(result)
+        ! Requested: c_struct_*_result_buf
+        ! Match:     c_struct_result
+        function c_get_global_struct_list_bufferify() &
+                result(SHT_rv) &
+                bind(C, name="STR_get_global_struct_list_bufferify")
+            use iso_c_binding, only : C_PTR
+            implicit none
+            type(C_PTR) SHT_rv
+        end function c_get_global_struct_list_bufferify
 
         ! ----------------------------------------
         ! Function:  Cstruct_as_class * Create_Cstruct_as_class
@@ -696,7 +734,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! int getX1
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -715,7 +752,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! void setX1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -741,7 +777,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! int getY1
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -760,7 +795,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! void setY1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -789,7 +823,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
-    ! int getX1
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -808,7 +841,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
-    ! void setX1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -834,7 +866,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
-    ! int getY1
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -853,7 +884,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
-    ! void setY1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -879,7 +909,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getZ1
-    ! int getZ1
     ! Requested: f_native_scalar_result
     ! Match:     f_default
     ! Requested: c_native_scalar_result
@@ -898,7 +927,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setZ1
-    ! void setZ1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -928,7 +956,6 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int passStruct2
-    ! int passStruct2
     ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result_buf
     ! Match:     f_default
@@ -966,14 +993,14 @@ contains
         ! splicer end function.pass_struct2
     end function pass_struct2
 
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr1 +deref(pointer)
-    ! Cstruct1 * returnStructPtr1 +deref(pointer)
+    ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: f_struct_*_result_pointer
-    ! Match:     f_struct_*_result
+    ! Exact:     f_struct_*_result_buf_pointer
+    ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_struct_*_result
+    ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  int i +value
@@ -981,7 +1008,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
@@ -989,7 +1016,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_native_scalar_in_buf
     ! Match:     c_default
     !>
     !! \brief Return a pointer to a struct
@@ -1004,18 +1031,17 @@ contains
         type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr1
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_struct_ptr1(i, d)
+        SHT_ptr = c_return_struct_ptr1_bufferify(i, d)
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.return_struct_ptr1
     end function return_struct_ptr1
 
     ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Function:  Cstruct1 * returnStructPtr2 +deref(pointer)
-    ! Cstruct1 * returnStructPtr2 +deref(pointer)
+    ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: f_struct_*_result_buf_pointer
-    ! Match:     f_struct_*_result
+    ! Exact:     f_struct_*_result_buf_pointer
+    ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
@@ -1063,14 +1089,14 @@ contains
         ! splicer end function.return_struct_ptr2
     end function return_struct_ptr2
 
+    ! Generated by arg_to_buffer
     ! ----------------------------------------
-    ! Function:  Cstruct_list * get_global_struct_list +deref(pointer)
-    ! Cstruct_list * get_global_struct_list +deref(pointer)
+    ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: f_struct_*_result_pointer
-    ! Match:     f_struct_*_result
+    ! Exact:     f_struct_*_result_buf_pointer
+    ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_struct_*_result
+    ! Requested: c_struct_*_result_buf
     ! Match:     c_struct_result
     function get_global_struct_list() &
             result(SHT_rv)
@@ -1078,14 +1104,13 @@ contains
         type(cstruct_list), pointer :: SHT_rv
         ! splicer begin function.get_global_struct_list
         type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_get_global_struct_list()
+        SHT_ptr = c_get_global_struct_list_bufferify()
         call c_f_pointer(SHT_ptr, SHT_rv)
         ! splicer end function.get_global_struct_list
     end function get_global_struct_list
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class
-    ! Cstruct_as_class * Create_Cstruct_as_class
     ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
@@ -1106,7 +1131,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_class * Create_Cstruct_as_class_args
-    ! Cstruct_as_class * Create_Cstruct_as_class_args
     ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result
@@ -1143,7 +1167,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int Cstruct_as_class_sum
-    ! int Cstruct_as_class_sum
     ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
@@ -1170,7 +1193,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  Cstruct_as_subclass * Create_Cstruct_as_subclass_args
-    ! Cstruct_as_subclass * Create_Cstruct_as_subclass_args
     ! Attrs:     +intent(result)
     ! Requested: f_shadow_*_result
     ! Match:     f_shadow_result

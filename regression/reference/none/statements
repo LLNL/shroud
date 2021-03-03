@@ -194,6 +194,8 @@ root
     struct
       *
         result -- f_struct_*_result
+          buf
+            pointer -- f_struct_*_result_buf_pointer
       scalar
         result -- f_struct_scalar_result
     vector

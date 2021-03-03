@@ -131,9 +131,9 @@ static int l_example_nested_ExClass1_increment_count(lua_State *L)
     // splicer end class.ExClass1.method.incrementCount
 }
 
-// const string & getNameErrorCheck(void) const +deref(allocatable)
+// const string & getNameErrorCheck(void) const
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck +deref(allocatable)
+// Function:  const string & getNameErrorCheck
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
@@ -147,9 +147,9 @@ static int l_example_nested_ExClass1_get_name_error_check(lua_State *L)
     // splicer end class.ExClass1.method.getNameErrorCheck
 }
 
-// const string & getNameArg(void) const +deref(result-as-arg)
+// const string & getNameArg(void) const
 // ----------------------------------------
-// Function:  const string & getNameArg +deref(result-as-arg)
+// Function:  const string & getNameArg
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass1_get_name_arg(lua_State *L)
@@ -317,9 +317,9 @@ static int l_example_nested_ExClass2_dtor(lua_State *L)
     // splicer end class.ExClass2.method.__gc
 }
 
-// const string & getName(void) const +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// const string & getName(void) const +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // ----------------------------------------
-// Function:  const string & getName +deref(result-as-arg)+len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass2_get_name(lua_State *L)
@@ -333,9 +333,9 @@ static int l_example_nested_ExClass2_get_name(lua_State *L)
     // splicer end class.ExClass2.method.getName
 }
 
-// const string & getName2(void) +deref(allocatable)
+// const string & getName2(void)
 // ----------------------------------------
-// Function:  const string & getName2 +deref(allocatable)
+// Function:  const string & getName2
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass2_get_name2(lua_State *L)
@@ -349,9 +349,9 @@ static int l_example_nested_ExClass2_get_name2(lua_State *L)
     // splicer end class.ExClass2.method.getName2
 }
 
-// string & getName3(void) const +deref(allocatable)
+// string & getName3(void) const
 // ----------------------------------------
-// Function:  string & getName3 +deref(allocatable)
+// Function:  string & getName3
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass2_get_name3(lua_State *L)
@@ -365,9 +365,9 @@ static int l_example_nested_ExClass2_get_name3(lua_State *L)
     // splicer end class.ExClass2.method.getName3
 }
 
-// string & getName4(void) +deref(allocatable)
+// string & getName4(void)
 // ----------------------------------------
-// Function:  string & getName4 +deref(allocatable)
+// Function:  string & getName4
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 static int l_example_nested_ExClass2_get_name4(lua_State *L)

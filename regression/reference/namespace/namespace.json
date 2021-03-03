@@ -63,9 +63,6 @@
                     }
                 },
                 "ast": {
-                    "attrs": {
-                        "deref": "allocatable"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "LastFunctionCalled",
@@ -86,7 +83,7 @@
                     "typemap_name": "std::string"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void) +deref(allocatable)",
+                "declgen": "const std::string & LastFunctionCalled(void)",
                 "fmtdict": {
                     "C_name": "NS_last_function_called",
                     "C_prototype": "void",
@@ -180,8 +177,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "DSHF_rv",
-                                "deref": "allocatable"
+                                "context": "DSHF_rv"
                             },
                             "const": true,
                             "declarator": {
@@ -209,7 +205,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))",
+                "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv))",
                 "fmtdict": {
                     "C_name": "NS_last_function_called_bufferify",
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",

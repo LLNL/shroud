@@ -486,7 +486,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool bool_func
-    ! bool bool_func
     ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result
@@ -515,7 +514,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  bool returnBoolAndOthers
-    ! bool returnBoolAndOthers
     ! Attrs:     +intent(result)
     ! Requested: f_bool_scalar_result
     ! Match:     f_bool_result

@@ -45,7 +45,7 @@ static void ShroudStrToArray(STR_SHROUD_array *array, const std::string * src, i
 // splicer end C_definitions
 
 // ----------------------------------------
-// Function:  const std::string * getConstStringPtrAlloc +deref(allocatable)+owner(library)
+// Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_*_result
 // start STR_get_const_string_ptr_alloc
@@ -64,7 +64,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+deref(allocatable)+owner(library)
+// Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_*_result_buf_allocatable
 // start STR_get_const_string_ptr_alloc_bufferify

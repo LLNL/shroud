@@ -253,7 +253,7 @@ fail:
 }
 
 // ----------------------------------------
-// Function:  char * Function4a +deref(result-as-arg)+len(30)
+// Function:  char * Function4a +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     py_char_*_result
 // ----------------------------------------

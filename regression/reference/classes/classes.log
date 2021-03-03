@@ -10,8 +10,8 @@ C method void returnThis(void)
 C method Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
 C method Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)
 C method Class1 * getclass3(void) const
-C method const std::string & getName(void) +deref(allocatable)
-C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C method const std::string & getName(void)
+C method void getName(const std::string & SHF_rv +context(DSHF_rv))
 C method DIRECTION directionFunc(DIRECTION arg +value)
 C method int getM_flag(void)
 C method int getTest(void)
@@ -19,8 +19,8 @@ C method void setTest(int val +intent(in)+value)
 Close wrapClass1.h
 Close wrapClass1.cpp
 class Class2
-C method const std::string & getName(void) +deref(allocatable)
-C method void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C method const std::string & getName(void)
+C method void getName(const std::string & SHF_rv +context(DSHF_rv))
 Close wrapClass2.h
 Close wrapClass2.cpp
 class Singleton
@@ -46,7 +46,7 @@ C function Class1 & getClassReference(void)
 C function Class1 getClassCopy(int flag +value)
 C function void set_global_flag(int arg +value)
 C function int get_global_flag(void)
-C function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+C function const std::string & LastFunctionCalled(void) +len(30)
 C function void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)
 Close wrapclasses.h
 Close wrapclasses.cpp
@@ -60,7 +60,7 @@ Fortran bool equivalent(const Class1 & obj2) const
 Fortran void returnThis(void)
 Fortran Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
 Fortran Class1 * getclass3(void) const
-Fortran const std::string & getName(void) +deref(allocatable)
+Fortran const std::string & getName(void)
 Fortran DIRECTION directionFunc(DIRECTION arg +value)
 Fortran int getM_flag(void)
 Fortran int getTest(void)
@@ -74,16 +74,16 @@ C-interface void returnThis(void)
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)
 C-interface Class1 * getclass3(void) const
-C-interface const std::string & getName(void) +deref(allocatable)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+C-interface const std::string & getName(void)
+C-interface void getName(const std::string & SHF_rv +context(DSHF_rv))
 C-interface DIRECTION directionFunc(DIRECTION arg +value)
 C-interface int getM_flag(void)
 C-interface int getTest(void)
 C-interface void setTest(int val +intent(in)+value)
 class Class2
-Fortran const std::string & getName(void) +deref(allocatable)
-C-interface const std::string & getName(void) +deref(allocatable)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)+deref(allocatable))
+Fortran const std::string & getName(void)
+C-interface const std::string & getName(void)
+C-interface void getName(const std::string & SHF_rv +context(DSHF_rv))
 class Singleton
 Fortran static Singleton & getReference(void)
 C-interface static Singleton & getReference(void)
@@ -105,7 +105,7 @@ Fortran Class1 & getClassReference(void)
 Fortran Class1 getClassCopy(int flag +value)
 Fortran void set_global_flag(int arg +value)
 Fortran int get_global_flag(void)
-Fortran const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+Fortran const std::string & LastFunctionCalled(void) +len(30)
 C-interface Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
 C-interface void passClassByValue(Class1 arg +value)
 C-interface int useclass(const Class1 * arg)
@@ -116,7 +116,7 @@ C-interface Class1 & getClassReference(void)
 C-interface Class1 getClassCopy(int flag +value)
 C-interface void set_global_flag(int arg +value)
 C-interface int get_global_flag(void)
-C-interface const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+C-interface const std::string & LastFunctionCalled(void) +len(30)
 C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)
 Close wrapfclasses.f
 Close utilclasses.cpp
@@ -127,11 +127,11 @@ Python method ~Class1(void) +name(delete)
 Python method int Method1(void)
 Python method bool equivalent(const Class1 & obj2) const
 Python method Class1 * getclass3(void) const
-Python method const std::string & getName(void) +deref(allocatable)
+Python method const std::string & getName(void)
 Python method DIRECTION directionFunc(DIRECTION arg +value)
 Close pyClass1type.cpp
 class Class2
-Python method const std::string & getName(void) +deref(allocatable)
+Python method const std::string & getName(void)
 Close pyClass2type.cpp
 class Singleton
 Python method static Singleton & getReference(void)
@@ -150,7 +150,7 @@ Python function Class1 * getclass3(void)
 Python function Class1 & getClassReference(void)
 Python function void set_global_flag(int arg +value)
 Python function int get_global_flag(void)
-Python function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+Python function const std::string & LastFunctionCalled(void) +len(30)
 Close pyclassesmodule.cpp
 Close pyclassesutil.cpp
 Close pyclassesmodule.hpp
@@ -159,15 +159,15 @@ Lua method Class1(void)
 Lua method Class1(int flag +value)
 Lua method ~Class1(void) +name(delete)
 Lua method int Method1(void)
-Lua method const std::string & getName(void) +deref(allocatable)
+Lua method const std::string & getName(void)
 Lua method DIRECTION directionFunc(DIRECTION arg +value)
-Lua method const std::string & getName(void) +deref(allocatable)
+Lua method const std::string & getName(void)
 Lua method Shape(void)
 Lua method int get_ivar(void) const
 Lua method Circle(void)
 Lua function Class1::DIRECTION directionFunc(Class1::DIRECTION arg +value)
 Lua function void set_global_flag(int arg +value)
 Lua function int get_global_flag(void)
-Lua function const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+Lua function const std::string & LastFunctionCalled(void) +len(30)
 Close luaclassesmodule.hpp
 Close luaclassesmodule.cpp

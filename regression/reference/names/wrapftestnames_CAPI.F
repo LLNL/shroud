@@ -81,7 +81,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Member1
-    ! void Member1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -121,7 +120,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Worker1
-    ! void Worker1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

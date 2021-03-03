@@ -119,9 +119,9 @@ static int l_Class1_method1(lua_State *L)
     // splicer end class.Class1.method.Method1
 }
 
-// const std::string & getName(void) +deref(allocatable)
+// const std::string & getName(void)
 // ----------------------------------------
-// Function:  const std::string & getName +deref(allocatable)
+// Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 /**
@@ -175,9 +175,9 @@ static const struct luaL_Reg l_Class1_Reg [] = {
     {NULL, NULL}   /*sentinel */
 };
 
-// const std::string & getName(void) +deref(allocatable)
+// const std::string & getName(void)
 // ----------------------------------------
-// Function:  const std::string & getName +deref(allocatable)
+// Function:  const std::string & getName
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     lua_string_&_result
 /**
@@ -331,9 +331,9 @@ static int l_get_global_flag(lua_State *L)
     // splicer end function.get_global_flag
 }
 
-// const std::string & LastFunctionCalled(void) +deref(result-as-arg)+len(30)
+// const std::string & LastFunctionCalled(void) +len(30)
 // ----------------------------------------
-// Function:  const std::string & LastFunctionCalled +deref(result-as-arg)+len(30)
+// Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     lua_string_&_result
 static int l_last_function_called(lua_State *L)

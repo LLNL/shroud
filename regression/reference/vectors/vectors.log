@@ -9,7 +9,7 @@ C function void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(al
 C function void vector_increment(std::vector<int> & arg +context+rank(1)+size)
 C function void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1))
 C function int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)
-C function void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)) +rank(1)
+C function void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1)
 Close wrapvectors.h
 Close wrapvectors.cpp
 Close typesvectors.h
@@ -22,7 +22,7 @@ Fortran void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+
 Fortran void vector_increment(std::vector<int> & arg +rank(1))
 Fortran void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1))
 Fortran int vector_string_count(const std::vector<std::string> & arg +rank(1))
-Fortran std::vector<int> ReturnVectorAlloc(int n +value) +deref(allocatable)+rank(1)
+Fortran std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)
 C-interface int vector_sum(const std::vector<int> & arg +rank(1)+size)
 C-interface void vector_iota_out(std::vector<int> & arg +context+intent(out)+rank(1))
 C-interface void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1))
@@ -32,6 +32,6 @@ C-interface void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(a
 C-interface void vector_increment(std::vector<int> & arg +context+rank(1)+size)
 C-interface void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1))
 C-interface int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)
-C-interface void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+deref(allocatable)+rank(1)) +rank(1)
+C-interface void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1)
 Close wrapfvectors.f
 Close utilvectors.cpp

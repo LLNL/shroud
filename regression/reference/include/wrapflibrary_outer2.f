@@ -67,7 +67,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method
-    ! void method
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

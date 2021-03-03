@@ -91,7 +91,7 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Argument:  int * * nitems +context(Dnitems)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_scalar_bufferify
@@ -119,7 +119,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_array_bufferify
@@ -149,7 +149,7 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
@@ -186,7 +186,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  int * * count +context(Dcount)+deref(pointer)+dimension(getLen())+intent(out)
+// Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_func_array_bufferify
@@ -212,7 +212,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * * nitems +context(Dnitems)+deref(pointer)+intent(out)
+// Argument:  const int * * nitems +context(Dnitems)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_const_scalar_bufferify
@@ -237,7 +237,7 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(10)+intent(out)
+// Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // start POI_get_ptr_to_fixed_const_array_bufferify
@@ -264,7 +264,7 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 // Requested: c
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const int * * count +context(Dcount)+deref(pointer)+dimension(ncount)+intent(out)
+// Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
 // Exact:     c_native_**_out_buf
 // ----------------------------------------
@@ -409,7 +409,28 @@ void POI_get_raw_ptr_to_fixed_array_force_bufferify(
 // end POI_get_raw_ptr_to_fixed_array_force_bufferify
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Function:  int * returnIntPtrToScalar +context(DSHC_rv)
+// Attrs:     +deref(pointer)+intent(result)
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_scalar_bufferify
+int * POI_return_int_ptr_to_scalar_bufferify(POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_scalar_bufferify
+    int * SHC_rv = returnIntPtrToScalar();
+    DSHC_rv->cxx.addr  = SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 0;
+    DSHC_rv->size = 1;
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_scalar_bufferify
+}
+// end POI_return_int_ptr_to_scalar_bufferify
+
+// ----------------------------------------
+// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
@@ -432,7 +453,29 @@ int * POI_return_int_ptr_to_fixed_array_bufferify(
 // end POI_return_int_ptr_to_fixed_array_bufferify
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+deref(pointer)+dimension(10)
+// Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
+// Attrs:     +deref(pointer)+intent(result)
+// Exact:     c_native_*_result_buf
+// start POI_return_int_ptr_to_const_scalar_bufferify
+const int * POI_return_int_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *DSHC_rv)
+{
+    // splicer begin function.return_int_ptr_to_const_scalar_bufferify
+    const int * SHC_rv = returnIntPtrToConstScalar();
+    DSHC_rv->cxx.addr  = (int *) SHC_rv;
+    DSHC_rv->cxx.idtor = 0;
+    DSHC_rv->addr.base = SHC_rv;
+    DSHC_rv->type = SH_TYPE_INT;
+    DSHC_rv->elem_len = sizeof(int);
+    DSHC_rv->rank = 0;
+    DSHC_rv->size = 1;
+    return SHC_rv;
+    // splicer end function.return_int_ptr_to_const_scalar_bufferify
+}
+// end POI_return_int_ptr_to_const_scalar_bufferify
+
+// ----------------------------------------
+// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Exact:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify

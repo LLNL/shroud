@@ -218,7 +218,7 @@ fail:
 
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +intent(result)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     py_vector_result_numpy
 // ----------------------------------------
 // Argument:  int n +value

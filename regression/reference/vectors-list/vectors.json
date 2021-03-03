@@ -867,6 +867,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
+                        "deref": "allocatable",
                         "intent": "result"
                     },
                     "params": [

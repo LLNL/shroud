@@ -175,7 +175,7 @@ int AA_example_nested_ExClass1_increment_count(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameErrorCheck +deref(allocatable)
+// Function:  const string & getNameErrorCheck
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result
 const char * AA_example_nested_ExClass1_get_name_error_check(
@@ -195,7 +195,7 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------
-// Argument:  const string & SHF_rv +context(DSHF_rv)+deref(allocatable)
+// Argument:  const string & SHF_rv +context(DSHF_rv)
 // Attrs:     +deref(allocatable)+intent(out)+is_result
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
@@ -210,7 +210,7 @@ void AA_example_nested_ExClass1_get_name_error_check_bufferify(
 }
 
 // ----------------------------------------
-// Function:  const string & getNameArg +deref(result-as-arg)
+// Function:  const string & getNameArg
 // Attrs:     +deref(result-as-arg)+intent(result)
 // Exact:     c_string_&_result
 const char * AA_example_nested_ExClass1_get_name_arg(
