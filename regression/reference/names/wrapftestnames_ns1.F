@@ -39,7 +39,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void init_ns1
-    ! void init_ns1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c

@@ -1616,7 +1616,6 @@ rv = .false.
                 "! ----------------------------------------")
             f_decl = ast.gen_decl(params=None)
             stmts_comments.append("! Function:  " + f_decl)
-            stmts_comments.append("! " + f_decl)
             self.document_stmts(
                 stmts_comments, ast, fmt_result.stmt0, fmt_result.stmt1)
             c_decl = C_node.ast.gen_decl(params=None)

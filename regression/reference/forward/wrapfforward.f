@@ -190,7 +190,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Class2
     ! Attrs:     +intent(result)
     ! Exact:     f_shadow_ctor
     ! Attrs:     +intent(result)
@@ -207,7 +206,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Class2
-    ! ~Class2
     ! Requested: f_shadow_dtor
     ! Match:     f_default
     ! Exact:     c_shadow_dtor
@@ -220,7 +218,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void func1
-    ! void func1
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -244,7 +241,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  void acceptClass3
-    ! void acceptClass3
     ! Requested: f_subroutine
     ! Match:     f_default
     ! Requested: c
@@ -293,7 +289,6 @@ contains
 
     ! ----------------------------------------
     ! Function:  int passStruct1
-    ! int passStruct1
     ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
