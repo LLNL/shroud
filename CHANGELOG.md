@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   Used when option *F_CFI* is True (C/Fortran Interoperability).
 
 ### Fixed
+- yaml extensions supported include .yml in addition to the previous .yaml
 - Order of header files in *cxx_header* is preserved in the generated code.
 - Struct in an inner namespace using Py_struct_arg=numpy is now properly wrapped.
 - Support an array of pointers - ``void **addr+rank(1)``.
