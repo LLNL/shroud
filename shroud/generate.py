@@ -1225,6 +1225,7 @@ class GenFunctions(object):
                 # double **arg +intent(out)+rank(1)
                 if (arg.typemap.sgroup == "native" and
                     arg.metaattrs["intent"] == "out" and
+                    arg.metaattrs["deref"] != "raw" and
                     arg.get_indirect_stmt() in  ["**", "*&"]):
                     context_args[arg.name] = True
 
@@ -1623,9 +1624,9 @@ class GenFunctions(object):
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
                   arg.metaattrs["intent"] == "out" and
+                  arg.metaattrs["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-#                 arg.attrs["dimension"]:
-                # double **values +intent(out) +dimension(nvalues)
+                # double **values +intent(out) +deref(raw)
                 has_buf_arg = True
             buf_args[arg.name] = has_buf_arg
         has_buf_arg = any(buf_args.values())
@@ -1703,8 +1704,8 @@ class GenFunctions(object):
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
                   meta["intent"] == "out" and
+                  meta["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-#                 arg.attrs["dimension"]:
                 attrs["context"] = True
             arg_typemap, sp = statements.lookup_c_statements(arg)
 

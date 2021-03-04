@@ -908,34 +908,6 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
 // end POI_get_raw_ptr_to_scalar
 
 /**
- * Called directly via an interface in Fortran.
- */
-// ----------------------------------------
-// Function:  void getRawPtrToScalar
-// Requested: c
-// Match:     c_default
-// ----------------------------------------
-// Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
-// Exact:     c_native_**_out_buf
-// start POI_get_raw_ptr_to_scalar_bufferify
-void POI_get_raw_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
-{
-    // splicer begin function.get_raw_ptr_to_scalar_bufferify
-    int *nitems;
-    getRawPtrToScalar(&nitems);
-    Dnitems->cxx.addr  = nitems;
-    Dnitems->cxx.idtor = 0;
-    Dnitems->addr.base = nitems;
-    Dnitems->type = SH_TYPE_INT;
-    Dnitems->elem_len = sizeof(int);
-    Dnitems->rank = 0;
-    Dnitems->size = 1;
-    // splicer end function.get_raw_ptr_to_scalar_bufferify
-}
-// end POI_get_raw_ptr_to_scalar_bufferify
-
-/**
  * Create a Fortran wrapper.
  */
 // ----------------------------------------
@@ -955,35 +927,6 @@ void POI_get_raw_ptr_to_scalar_force(int * * nitems)
     // splicer end function.get_raw_ptr_to_scalar_force
 }
 // end POI_get_raw_ptr_to_scalar_force
-
-/**
- * Create a Fortran wrapper.
- */
-// ----------------------------------------
-// Function:  void getRawPtrToScalarForce
-// Requested: c
-// Match:     c_default
-// ----------------------------------------
-// Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
-// Exact:     c_native_**_out_buf
-// start POI_get_raw_ptr_to_scalar_force_bufferify
-void POI_get_raw_ptr_to_scalar_force_bufferify(
-    POI_SHROUD_array *Dnitems)
-{
-    // splicer begin function.get_raw_ptr_to_scalar_force_bufferify
-    int *nitems;
-    getRawPtrToScalarForce(&nitems);
-    Dnitems->cxx.addr  = nitems;
-    Dnitems->cxx.idtor = 0;
-    Dnitems->addr.base = nitems;
-    Dnitems->type = SH_TYPE_INT;
-    Dnitems->elem_len = sizeof(int);
-    Dnitems->rank = 0;
-    Dnitems->size = 1;
-    // splicer end function.get_raw_ptr_to_scalar_force_bufferify
-}
-// end POI_get_raw_ptr_to_scalar_force_bufferify
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
@@ -1010,36 +953,6 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
 
 /**
  * Return a type(C_PTR) to an array which is always the same length.
- * Called directly via an interface in Fortran.
- * # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
- */
-// ----------------------------------------
-// Function:  void getRawPtrToFixedArray
-// Requested: c
-// Match:     c_default
-// ----------------------------------------
-// Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
-// Exact:     c_native_**_out_buf
-// start POI_get_raw_ptr_to_fixed_array_bufferify
-void POI_get_raw_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
-{
-    // splicer begin function.get_raw_ptr_to_fixed_array_bufferify
-    int *count;
-    getRawPtrToFixedArray(&count);
-    Dcount->cxx.addr  = count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 0;
-    Dcount->size = 1;
-    // splicer end function.get_raw_ptr_to_fixed_array_bufferify
-}
-// end POI_get_raw_ptr_to_fixed_array_bufferify
-
-/**
- * Return a type(C_PTR) to an array which is always the same length.
  * Create a Fortran wrapper.
  */
 // ----------------------------------------
@@ -1059,36 +972,6 @@ void POI_get_raw_ptr_to_fixed_array_force(int * * count)
     // splicer end function.get_raw_ptr_to_fixed_array_force
 }
 // end POI_get_raw_ptr_to_fixed_array_force
-
-/**
- * Return a type(C_PTR) to an array which is always the same length.
- * Create a Fortran wrapper.
- */
-// ----------------------------------------
-// Function:  void getRawPtrToFixedArrayForce
-// Requested: c
-// Match:     c_default
-// ----------------------------------------
-// Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
-// Attrs:     +deref(raw)+intent(out)
-// Exact:     c_native_**_out_buf
-// start POI_get_raw_ptr_to_fixed_array_force_bufferify
-void POI_get_raw_ptr_to_fixed_array_force_bufferify(
-    POI_SHROUD_array *Dcount)
-{
-    // splicer begin function.get_raw_ptr_to_fixed_array_force_bufferify
-    int *count;
-    getRawPtrToFixedArrayForce(&count);
-    Dcount->cxx.addr  = count;
-    Dcount->cxx.idtor = 0;
-    Dcount->addr.base = count;
-    Dcount->type = SH_TYPE_INT;
-    Dcount->elem_len = sizeof(int);
-    Dcount->rank = 0;
-    Dcount->size = 1;
-    // splicer end function.get_raw_ptr_to_fixed_array_force_bufferify
-}
-// end POI_get_raw_ptr_to_fixed_array_force_bufferify
 
 /**
  * Test multiple layers of indirection.
