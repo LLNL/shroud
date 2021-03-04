@@ -3,8 +3,50 @@
     "library": {
         "classes": [
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [],
-                "fmtdict": {
+                "name": "array_info",
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "parse_keyword": "struct",
+                "scope": "array_info::",
+                "typemap_name": "array_info",
+                "variables": [
+                    {
+                        "__VARIABLE__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "tc",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "tc",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "tc",
+                            "variable_lower": "tc",
+                            "variable_name": "tc",
+                            "variable_upper": "TC"
+                        }
+                    }
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "C_header_filename": "wraparray_info.h",
                     "C_impl_filename": "wraparray_info.c",
                     "C_name_scope": "array_info_",
@@ -18,46 +60,6 @@
                     "cxx_class": "array_info",
                     "cxx_type": "array_info",
                     "file_scope": "array_info"
-                },
-                "name": "array_info",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "parse_keyword": "struct",
-                "scope": "array_info::",
-                "typemap_name": "array_info",
-                "variables": [
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "tc",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "fmtdict": {
-                            "c_type": "int",
-                            "cxx_type": "int",
-                            "field_name": "tc",
-                            "variable_lower": "tc",
-                            "variable_name": "tc",
-                            "variable_upper": "TC"
-                        },
-                        "name": "tc",
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true
-                        }
-                    }
-                ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             }
         ],
@@ -74,6 +76,7 @@
         ],
         "functions": [
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "NoReturnNoArguments",
@@ -87,7 +90,15 @@
                 },
                 "decl": "void NoReturnNoArguments(void)",
                 "declgen": "void NoReturnNoArguments(void)",
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
                     "C_name": "NoReturnNoArguments",
                     "C_prototype": "void",
                     "C_return_type": "void",
@@ -107,7 +118,59 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "no_return_no_arguments"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "PassByValue",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
                 },
+                "decl": "double PassByValue(double arg1, int arg2)",
+                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
                 "options": {
                     "literalinclude": true
                 },
@@ -115,10 +178,8 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "&",
@@ -224,7 +285,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "PassByValue",
+                    "C_prototype": "double arg1,\t int arg2",
+                    "C_return_type": "double",
+                    "F_C_arguments": "arg1,\t arg2",
+                    "F_C_call": "c_pass_by_value",
+                    "F_C_name": "pass_by_value",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "arg1,\t arg2",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_name_function": "pass_by_value",
+                    "F_name_generic": "pass_by_value",
+                    "F_name_impl": "pass_by_value",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_PassByValue",
+                    "cxx_rv_decl": "double SHC_rv",
+                    "function_name": "PassByValue",
+                    "underscore_name": "pass_by_value"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -269,23 +353,27 @@
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValue",
+                        "name": "PassByReference",
                         "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
                     },
                     "params": [
                         {
                             "attrs": {
-                                "value": true
+                                "intent": "in"
                             },
                             "declarator": {
                                 "name": "arg1",
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
                             },
                             "metaattrs": {
                                 "intent": "in"
@@ -297,14 +385,18 @@
                         },
                         {
                             "attrs": {
-                                "value": true
+                                "intent": "out"
                             },
                             "declarator": {
                                 "name": "arg2",
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
                             },
                             "metaattrs": {
-                                "intent": "in"
+                                "intent": "out"
                             },
                             "specifier": [
                                 "int"
@@ -313,35 +405,12 @@
                         }
                     ],
                     "specifier": [
-                        "double"
+                        "void"
                     ],
-                    "typemap_name": "double"
+                    "typemap_name": "void"
                 },
-                "decl": "double PassByValue(double arg1, int arg2)",
-                "declgen": "double PassByValue(double arg1 +value, int arg2 +value)",
-                "fmtdict": {
-                    "C_call_list": "arg1,\t arg2",
-                    "C_name": "PassByValue",
-                    "C_prototype": "double arg1,\t int arg2",
-                    "C_return_type": "double",
-                    "F_C_arguments": "arg1,\t arg2",
-                    "F_C_call": "c_pass_by_value",
-                    "F_C_name": "pass_by_value",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "arg1,\t arg2",
-                    "F_arguments": "arg1,\t arg2",
-                    "F_name_function": "pass_by_value",
-                    "F_name_generic": "pass_by_value",
-                    "F_name_impl": "pass_by_value",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_PassByValue",
-                    "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "PassByValue",
-                    "underscore_name": "pass_by_value"
-                },
+                "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
+                "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
                 "options": {
                     "literalinclude": true
                 },
@@ -349,10 +418,8 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -460,61 +527,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "PassByReference",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "double"
-                            ],
-                            "typemap_name": "double"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void PassByReference(double *arg1+intent(in), int *arg2+intent(out))",
-                "declgen": "void PassByReference(double * arg1 +intent(in), int * arg2 +intent(out))",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2",
                     "C_name": "PassByReference",
                     "C_prototype": "double * arg1,\t int * arg2",
@@ -536,18 +549,55 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "pass_by_reference"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "PassByValueMacro",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "double"
+                    ],
+                    "typemap_name": "double"
+                },
+                "decl": "double PassByValueMacro(int arg2)",
+                "declgen": "double PassByValueMacro(int arg2 +value)",
+                "doxygen": {
+                    "description": "PassByValueMacro is a #define macro. Force a C wrapper\nto allow Fortran to have an actual function to call.\n"
                 },
                 "options": {
-                    "literalinclude": true
+                    "C_force_wrapper": true
                 },
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg2": {
                         "fmtc": {
                             "c_addr": "&",
@@ -601,7 +651,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "arg2",
+                    "C_name": "CLI_pass_by_value_macro",
+                    "C_prototype": "int arg2",
+                    "C_return_type": "double",
+                    "F_C_arguments": "arg2",
+                    "F_C_call": "c_pass_by_value_macro",
+                    "F_C_name": "pass_by_value_macro",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "arg2",
+                    "F_arguments": "arg2",
+                    "F_name_function": "pass_by_value_macro",
+                    "F_name_generic": "pass_by_value_macro",
+                    "F_name_impl": "pass_by_value_macro",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_PassByValueMacro",
+                    "cxx_rv_decl": "double SHC_rv",
+                    "function_name": "PassByValueMacro",
+                    "underscore_name": "pass_by_value_macro"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -646,77 +719,93 @@
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "PassByValueMacro",
+                        "name": "checkBool",
                         "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
                     },
                     "params": [
                         {
                             "attrs": {
                                 "value": true
                             },
+                            "const": true,
                             "declarator": {
-                                "name": "arg2",
+                                "name": "arg1",
                                 "pointer": []
                             },
                             "metaattrs": {
                                 "intent": "in"
                             },
                             "specifier": [
-                                "int"
+                                "bool"
                             ],
-                            "typemap_name": "int"
+                            "typemap_name": "bool"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "arg3",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
                         }
                     ],
                     "specifier": [
-                        "double"
+                        "void"
                     ],
-                    "typemap_name": "double"
+                    "typemap_name": "void"
                 },
-                "decl": "double PassByValueMacro(int arg2)",
-                "declgen": "double PassByValueMacro(int arg2 +value)",
+                "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
+                "declgen": "void checkBool(const bool arg1 +value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
                 "doxygen": {
-                    "description": "PassByValueMacro is a #define macro. Force a C wrapper\nto allow Fortran to have an actual function to call.\n"
-                },
-                "fmtdict": {
-                    "C_call_list": "arg2",
-                    "C_name": "CLI_pass_by_value_macro",
-                    "C_prototype": "int arg2",
-                    "C_return_type": "double",
-                    "F_C_arguments": "arg2",
-                    "F_C_call": "c_pass_by_value_macro",
-                    "F_C_name": "pass_by_value_macro",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "arg2",
-                    "F_arguments": "arg2",
-                    "F_name_function": "pass_by_value_macro",
-                    "F_name_generic": "pass_by_value_macro",
-                    "F_name_impl": "pass_by_value_macro",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_PassByValueMacro",
-                    "cxx_rv_decl": "double SHC_rv",
-                    "function_name": "PassByValueMacro",
-                    "underscore_name": "pass_by_value_macro"
+                    "brief": "Check intent with bool"
                 },
                 "options": {
-                    "C_force_wrapper": true
+                    "literalinclude": true
                 },
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "&",
@@ -881,81 +970,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "checkBool",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "arg3",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void checkBool(const bool arg1, bool *arg2+intent(out), bool *arg3+intent(inout))",
-                "declgen": "void checkBool(const bool arg1 +value, bool * arg2 +intent(out), bool * arg3 +intent(inout))",
-                "doxygen": {
-                    "brief": "Check intent with bool"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1,\t arg2,\t arg3",
                     "C_name": "checkBool",
                     "C_prototype": "const bool arg1,\t bool * arg2,\t bool * arg3",
@@ -977,18 +992,80 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "check_bool"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "len": "30"
+                    },
+                    "declarator": {
+                        "name": "Function4a",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "result-as-arg",
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "const": true,
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "ftrim_char_in": true,
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "const": true,
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "ftrim_char_in": true,
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "char"
+                    ],
+                    "typemap_name": "char"
                 },
-                "options": {
-                    "literalinclude": true
-                },
+                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
+                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -1074,7 +1151,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "Function4a",
+                    "C_prototype": "const char * arg1,\t const char * arg2",
+                    "C_return_type": "char *",
+                    "F_C_arguments": "arg1,\t arg2",
+                    "F_C_call": "c_function4a_bufferify",
+                    "F_C_name": "c_function4a",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
+                    "F_arguments": "arg1,\t arg2",
+                    "F_name_function": "function4a",
+                    "F_name_generic": "function4a",
+                    "F_name_impl": "function4a",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_Function4a",
+                    "cxx_rv_decl": "char * SHC_rv",
+                    "function_name": "Function4a",
+                    "underscore_name": "function4a"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1122,22 +1222,18 @@
                         "stmt1": "py_char_*_result",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
                         "len": "30"
                     },
                     "declarator": {
                         "name": "Function4a",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "result-as-arg",
-                        "intent": "result"
+                        "pointer": []
                     },
                     "params": [
                         {
@@ -1177,47 +1273,42 @@
                                 "char"
                             ],
                             "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "len": "NSHF_rv"
+                            },
+                            "declarator": {
+                                "name": "SHF_rv",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out",
+                                "is_result": true
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
                         }
                     ],
                     "specifier": [
-                        "char"
+                        "void"
                     ],
-                    "typemap_name": "char"
+                    "typemap_name": "void"
                 },
                 "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "char * Function4a(const char * arg1, const char * arg2) +len(30)",
-                "fmtdict": {
-                    "C_call_list": "arg1,\t arg2",
-                    "C_name": "Function4a",
-                    "C_prototype": "const char * arg1,\t const char * arg2",
-                    "C_return_type": "char *",
-                    "F_C_arguments": "arg1,\t arg2",
-                    "F_C_call": "c_function4a_bufferify",
-                    "F_C_name": "c_function4a",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "trim(arg1)//C_NULL_CHAR,\t trim(arg2)//C_NULL_CHAR,\t SHT_rv,\t len(SHT_rv, kind=C_INT)",
-                    "F_arguments": "arg1,\t arg2",
-                    "F_name_function": "function4a",
-                    "F_name_generic": "function4a",
-                    "F_name_impl": "function4a",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_Function4a",
-                    "cxx_rv_decl": "char * SHC_rv",
-                    "function_name": "Function4a",
-                    "underscore_name": "function4a"
-                },
+                "declgen": "void Function4a(const char * arg1, const char * arg2, char * SHF_rv +len(NSHF_rv)) +len(30)",
+                "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true
+                },
+                "zz_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
                             "c_addr": "",
@@ -1312,7 +1403,20 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "arg1,\t arg2",
+                    "C_name": "CLI_function4a_bufferify",
+                    "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "arg1,\t arg2,\t SHF_rv,\t NSHF_rv",
+                    "F_C_name": "c_function4a_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "char * SHC_rv",
+                    "function_name": "Function4a",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "function4a"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_type": "void",
@@ -1328,21 +1432,20 @@
                         "stmt0": "c_void_scalar_result_buf",
                         "stmt1": "c_default"
                     }
-                },
-                "_generated": "arg_to_buffer",
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
-                    "attrs": {
-                        "len": "30"
-                    },
                     "declarator": {
-                        "name": "Function4a",
+                        "name": "acceptName",
                         "pointer": []
                     },
                     "params": [
                         {
                             "const": true,
                             "declarator": {
-                                "name": "arg1",
+                                "name": "name",
                                 "pointer": [
                                     {
                                         "ptr": "*"
@@ -1352,46 +1455,6 @@
                             "ftrim_char_in": true,
                             "metaattrs": {
                                 "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "arg2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "len": "NSHF_rv"
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out",
-                                "is_result": true
                             },
                             "specifier": [
                                 "char"
@@ -1404,29 +1467,17 @@
                     ],
                     "typemap_name": "void"
                 },
-                "decl": "char *Function4a( const char *arg1, const char *arg2 ) +len(30)",
-                "declgen": "void Function4a(const char * arg1, const char * arg2, char * SHF_rv +len(NSHF_rv)) +len(30)",
-                "fmtdict": {
-                    "C_call_list": "arg1,\t arg2",
-                    "C_name": "CLI_function4a_bufferify",
-                    "C_prototype": "const char * arg1,\t const char * arg2,\t char * SHF_rv,\t int NSHF_rv",
-                    "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t arg2,\t SHF_rv,\t NSHF_rv",
-                    "F_C_name": "c_function4a_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "char * SHC_rv",
-                    "function_name": "Function4a",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "function4a"
+                "decl": "void acceptName(const char *name)",
+                "declgen": "void acceptName(const char * name)",
+                "options": {
+                    "literalinclude": true
                 },
-                "generated_suffix": "buf",
-                "options": {},
                 "wrap": {
-                    "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "name": {
                         "fmtc": {
                             "c_addr": "",
@@ -1477,40 +1528,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptName",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "name",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptName(const char *name)",
-                "declgen": "void acceptName(const char * name)",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "name",
                     "C_name": "acceptName",
                     "C_prototype": "const char * name",
@@ -1532,18 +1550,55 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "accept_name"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "passCharPtrInOut",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "inout"
+                            },
+                            "declarator": {
+                                "name": "s",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
                 },
-                "options": {
-                    "literalinclude": true
+                "decl": "void passCharPtrInOut(char * s+intent(inout))",
+                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
+                "doxygen": {
+                    "brief": "toupper",
+                    "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "s": {
                         "fmtc": {
                             "c_addr": "",
@@ -1587,45 +1642,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "passCharPtrInOut",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "inout"
-                            },
-                            "declarator": {
-                                "name": "s",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void passCharPtrInOut(char * s+intent(inout))",
-                "declgen": "void passCharPtrInOut(char * s +intent(inout))",
-                "doxygen": {
-                    "brief": "toupper",
-                    "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "s",
                     "C_name": "passCharPtrInOut",
                     "C_prototype": "char * s",
@@ -1647,54 +1664,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "s": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_s",
-                            "cxx_type": "char",
-                            "cxx_var": "SHCXX_s",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_s",
-                            "stmt0": "c_char_*_inout_buf",
-                            "stmt1": "c_char_*_inout_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "s",
-                            "F_pointer": "SHPTR_s",
-                            "c_var": "s",
-                            "c_var_len": "Ns",
-                            "c_var_trim": "Ls",
-                            "f_intent": "INOUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "s",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_inout",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_char_*_inout_buf",
-                            "stmtc1": "c_char_*_inout_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1737,7 +1710,51 @@
                     "brief": "toupper",
                     "description": "Change a string in-place.\nFor Python, return a new string since strings are immutable.\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "s": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "s",
+                            "c_var_len": "Ns",
+                            "c_var_trim": "Ls",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_s",
+                            "cxx_type": "char",
+                            "cxx_var": "SHCXX_s",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_s",
+                            "stmt0": "c_char_*_inout_buf",
+                            "stmt1": "c_char_*_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "s",
+                            "F_pointer": "SHPTR_s",
+                            "c_var": "s",
+                            "c_var_len": "Ns",
+                            "c_var_trim": "Ls",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "s",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_inout_buf",
+                            "stmtc1": "c_char_*_inout_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "SHCXX_s",
                     "C_name": "CLI_pass_char_ptr_in_out_bufferify",
                     "C_prototype": "char * s,\t int Ls,\t int Ns",
@@ -1750,15 +1767,58 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "pass_char_ptr_in_out"
-                },
-                "generated_suffix": "buf",
-                "options": {},
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnOneName",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
+                "doxygen": {
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "options": {
+                    "literalinclude": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "name1": {
                         "fmtc": {
                             "c_addr": "",
@@ -1803,46 +1863,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "returnOneName",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void returnOneName(char *name1+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnOneName(char * name1 +charlen(MAXNAME)+intent(out))",
-                "doxygen": {
-                    "brief": "Test charlen attribute",
-                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "name1",
                     "C_name": "returnOneName",
                     "C_prototype": "char * name1",
@@ -1864,54 +1885,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "return_one_name"
-                },
-                "options": {
-                    "literalinclude": true
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "name1": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "name1",
-                            "c_var_len": "Nname1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "name1",
-                            "cxx_type": "char",
-                            "cxx_var": "name1",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_name1",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "name1",
-                            "F_pointer": "SHPTR_name1",
-                            "c_var": "name1",
-                            "c_var_len": "Nname1",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "name1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1954,7 +1931,51 @@
                     "brief": "Test charlen attribute",
                     "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "literalinclude": true
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "name1": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name1",
+                            "c_var_len": "Nname1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "name1",
+                            "cxx_type": "char",
+                            "cxx_var": "name1",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name1",
+                            "stmt0": "c_char_*_out_buf",
+                            "stmt1": "c_char_*_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name1",
+                            "F_pointer": "SHPTR_name1",
+                            "c_var": "name1",
+                            "c_var_len": "Nname1",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_out_buf",
+                            "stmtc1": "c_char_*_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "name1",
                     "C_name": "CLI_return_one_name_bufferify",
                     "C_prototype": "char * name1,\t int Nname1",
@@ -1967,17 +1988,77 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "return_one_name"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "literalinclude": true
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnTwoNames",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "name2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
+                "doxygen": {
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "name1": {
                         "fmtc": {
                             "c_addr": "",
@@ -2065,67 +2146,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "returnTwoNames",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "name2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out), char * name2 +charlen(MAXNAME)+intent(out))",
-                "doxygen": {
-                    "brief": "Test charlen attribute",
-                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "name1,\t name2",
                     "C_name": "returnTwoNames",
                     "C_prototype": "char * name1,\t char * name2",
@@ -2147,16 +2168,81 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "return_two_names"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "returnTwoNames",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Nname1"
+                            },
+                            "declarator": {
+                                "name": "name1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Nname2"
+                            },
+                            "declarator": {
+                                "name": "name2",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "char"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
+                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len, char * name2 +charlen(MAXNAME)+intent(out)+len)",
+                "doxygen": {
+                    "brief": "Test charlen attribute",
+                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
                     "name1": {
                         "fmtc": {
                             "c_addr": "",
@@ -2228,72 +2314,7 @@
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
-                "ast": {
-                    "declarator": {
-                        "name": "returnTwoNames",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out",
-                                "len": "Nname1"
-                            },
-                            "declarator": {
-                                "name": "name1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "stmts_suffix": "buf",
-                            "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out",
-                                "len": "Nname2"
-                            },
-                            "declarator": {
-                                "name": "name2",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "stmts_suffix": "buf",
-                            "typemap_name": "char"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void returnTwoNames(char *name1+intent(out)+charlen(MAXNAME), char *name2+intent(out)+charlen(MAXNAME))",
-                "declgen": "void returnTwoNames(char * name1 +charlen(MAXNAME)+intent(out)+len, char * name2 +charlen(MAXNAME)+intent(out)+len)",
-                "doxygen": {
-                    "brief": "Test charlen attribute",
-                    "description": "Each argument is assumed to be at least MAXNAME long.\nThis define is provided by the user.\nThe function will copy into the user provided buffer.\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "name1,\t name2",
                     "C_name": "CLI_return_two_names_bufferify",
                     "C_prototype": "char * name1,\t int Nname1,\t char * name2,\t int Nname2",
@@ -2306,15 +2327,74 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "return_two_names"
-                },
-                "generated_suffix": "buf",
-                "options": {},
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedTextLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "text",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "len(text)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ltext",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
+                "doxygen": {
+                    "brief": "Fill text, at most ltext characters."
+                },
+                "options": {
+                    "literalinclude": true
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "ltext": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2399,62 +2479,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "ImpliedTextLen",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "len(text)",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "ltext",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out), int ltext +implied(len(text))+value)",
-                "doxygen": {
-                    "brief": "Fill text, at most ltext characters."
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "text,\t ltext",
                     "C_name": "ImpliedTextLen",
                     "C_prototype": "char * text,\t int ltext",
@@ -2476,18 +2501,77 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "implied_text_len"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "declarator": {
+                        "name": "ImpliedTextLen",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "charlen": "MAXNAME",
+                                "intent": "out",
+                                "len": "Ntext"
+                            },
+                            "declarator": {
+                                "name": "text",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "char"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "char"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "len(text)",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "ltext",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
                 },
+                "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
+                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len, int ltext +implied(len(text))+value)",
+                "doxygen": {
+                    "brief": "Fill text, at most ltext characters."
+                },
+                "generated_suffix": "buf",
                 "options": {
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true
+                },
+                "zz_fmtargs": {
                     "ltext": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2554,19 +2638,34 @@
                         }
                     }
                 },
-                "_generated": "arg_to_buffer",
+                "zz_fmtdict": {
+                    "C_call_list": "text,\t ltext",
+                    "C_name": "CLI_implied_text_len_bufferify",
+                    "C_prototype": "char * text,\t int Ntext,\t int ltext",
+                    "C_return_type": "void",
+                    "F_C_arguments": "text,\t Ntext,\t ltext",
+                    "F_C_name": "c_implied_text_len_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "ImpliedTextLen",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "implied_text_len"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedTextLen",
+                        "name": "ImpliedLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
                     },
                     "params": [
                         {
-                            "attrs": {
-                                "charlen": "MAXNAME",
-                                "intent": "out",
-                                "len": "Ntext"
-                            },
+                            "const": true,
                             "declarator": {
                                 "name": "text",
                                 "pointer": [
@@ -2575,13 +2674,13 @@
                                     }
                                 ]
                             },
+                            "ftrim_char_in": true,
                             "metaattrs": {
-                                "intent": "out"
+                                "intent": "in"
                             },
                             "specifier": [
                                 "char"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "char"
                         },
                         {
@@ -2599,44 +2698,46 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "implied": "false",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "bool"
+                            ],
+                            "typemap_name": "bool"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "int"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "int"
                 },
-                "decl": "void ImpliedTextLen(char *text+intent(out)+charlen(MAXNAME), int ltext+implied(len(text)))",
-                "declgen": "void ImpliedTextLen(char * text +charlen(MAXNAME)+intent(out)+len, int ltext +implied(len(text))+value)",
+                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
+                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text))+value, bool flag +implied(false)+value)",
                 "doxygen": {
-                    "brief": "Fill text, at most ltext characters."
+                    "brief": "Return the implied argument - text length",
+                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "text,\t ltext",
-                    "C_name": "CLI_implied_text_len_bufferify",
-                    "C_prototype": "char * text,\t int Ntext,\t int ltext",
-                    "C_return_type": "void",
-                    "F_C_arguments": "text,\t Ntext,\t ltext",
-                    "F_C_name": "c_implied_text_len_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "function_name": "ImpliedTextLen",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
-                    "underscore_name": "implied_text_len"
-                },
-                "generated_suffix": "buf",
                 "options": {
-                    "literalinclude": true
+                    "F_create_bufferify_function": false
                 },
                 "wrap": {
-                    "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2784,7 +2885,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "text,\t ltext,\t flag",
+                    "C_name": "ImpliedLen",
+                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
+                    "C_return_type": "int",
+                    "F_C_arguments": "text,\t ltext,\t flag",
+                    "F_C_call": "c_implied_len",
+                    "F_C_name": "c_implied_len",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
+                    "F_arguments": "text",
+                    "F_name_function": "implied_len",
+                    "F_name_generic": "implied_len",
+                    "F_name_impl": "implied_len",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedLen",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "ImpliedLen",
+                    "underscore_name": "implied_len"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -2829,10 +2953,13 @@
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLen",
+                        "name": "ImpliedLenTrim",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -2860,7 +2987,7 @@
                         },
                         {
                             "attrs": {
-                                "implied": "len(text)",
+                                "implied": "len_trim(text)",
                                 "value": true
                             },
                             "declarator": {
@@ -2877,7 +3004,7 @@
                         },
                         {
                             "attrs": {
-                                "implied": "false",
+                                "implied": "true",
                                 "value": true
                             },
                             "declarator": {
@@ -2898,34 +3025,11 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int ImpliedLen(const char *text, int ltext+implied(len(text)), bool flag+implied(false))",
-                "declgen": "int ImpliedLen(const char * text, int ltext +implied(len(text))+value, bool flag +implied(false)+value)",
+                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
+                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text))+value, bool flag +implied(true)+value)",
                 "doxygen": {
                     "brief": "Return the implied argument - text length",
                     "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
-                },
-                "fmtdict": {
-                    "C_call_list": "text,\t ltext,\t flag",
-                    "C_name": "ImpliedLen",
-                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
-                    "C_return_type": "int",
-                    "F_C_arguments": "text,\t ltext,\t flag",
-                    "F_C_call": "c_implied_len",
-                    "F_C_name": "c_implied_len",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
-                    "F_arguments": "text",
-                    "F_name_function": "implied_len",
-                    "F_name_generic": "implied_len",
-                    "F_name_impl": "implied_len",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ImpliedLen",
-                    "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "ImpliedLen",
-                    "underscore_name": "implied_len"
                 },
                 "options": {
                     "F_create_bufferify_function": false
@@ -2934,10 +3038,8 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3085,7 +3187,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "text,\t ltext,\t flag",
+                    "C_name": "ImpliedLenTrim",
+                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
+                    "C_return_type": "int",
+                    "F_C_arguments": "text,\t ltext,\t flag",
+                    "F_C_call": "c_implied_len_trim",
+                    "F_C_name": "c_implied_len_trim",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
+                    "F_arguments": "text",
+                    "F_name_function": "implied_len_trim",
+                    "F_name_generic": "implied_len_trim",
+                    "F_name_impl": "implied_len_trim",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedLenTrim",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "ImpliedLenTrim",
+                    "underscore_name": "implied_len_trim"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -3130,52 +3255,19 @@
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedLenTrim",
+                        "name": "ImpliedBoolTrue",
                         "pointer": []
                     },
                     "metaattrs": {
                         "intent": "result"
                     },
                     "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "text",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "ftrim_char_in": true,
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "char"
-                            ],
-                            "typemap_name": "char"
-                        },
-                        {
-                            "attrs": {
-                                "implied": "len_trim(text)",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "ltext",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
                         {
                             "attrs": {
                                 "implied": "true",
@@ -3195,50 +3287,22 @@
                         }
                     ],
                     "specifier": [
-                        "int"
+                        "bool"
                     ],
-                    "typemap_name": "int"
+                    "typemap_name": "bool"
                 },
-                "decl": "int ImpliedLenTrim(const char *text, int ltext+implied(len_trim(text)), bool flag+implied(true))",
-                "declgen": "int ImpliedLenTrim(const char * text, int ltext +implied(len_trim(text))+value, bool flag +implied(true)+value)",
+                "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
+                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+value)",
                 "doxygen": {
-                    "brief": "Return the implied argument - text length",
-                    "description": "Pass the Fortran length of the char argument directy to the C function.\nNo need for the bufferify version which will needlessly copy the string.\n"
+                    "brief": "Single, implied bool argument"
                 },
-                "fmtdict": {
-                    "C_call_list": "text,\t ltext,\t flag",
-                    "C_name": "ImpliedLenTrim",
-                    "C_prototype": "const char * text,\t int ltext,\t bool flag",
-                    "C_return_type": "int",
-                    "F_C_arguments": "text,\t ltext,\t flag",
-                    "F_C_call": "c_implied_len_trim",
-                    "F_C_name": "c_implied_len_trim",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "trim(text)//C_NULL_CHAR,\t SH_ltext,\t SH_flag",
-                    "F_arguments": "text",
-                    "F_name_function": "implied_len_trim",
-                    "F_name_generic": "implied_len_trim",
-                    "F_name_impl": "implied_len_trim",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ImpliedLenTrim",
-                    "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "ImpliedLenTrim",
-                    "underscore_name": "implied_len_trim"
-                },
-                "options": {
-                    "F_create_bufferify_function": false
-                },
+                "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3289,7 +3353,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "flag",
+                    "C_name": "ImpliedBoolTrue",
+                    "C_prototype": "bool flag",
+                    "C_return_type": "bool",
+                    "F_C_arguments": "flag",
+                    "F_C_call": "c_implied_bool_true",
+                    "F_C_name": "c_implied_bool_true",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "SH_flag",
+                    "F_arguments": "",
+                    "F_name_function": "implied_bool_true",
+                    "F_name_generic": "implied_bool_true",
+                    "F_name_impl": "implied_bool_true",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedBoolTrue",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "ImpliedBoolTrue",
+                    "underscore_name": "implied_bool_true"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -3335,10 +3422,13 @@
                         "stmt1": "py_bool_result",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
-                        "name": "ImpliedBoolTrue",
+                        "name": "ImpliedBoolFalse",
                         "pointer": []
                     },
                     "metaattrs": {
@@ -3347,7 +3437,7 @@
                     "params": [
                         {
                             "attrs": {
-                                "implied": "true",
+                                "implied": "false",
                                 "value": true
                             },
                             "declarator": {
@@ -3368,43 +3458,18 @@
                     ],
                     "typemap_name": "bool"
                 },
-                "decl": "bool ImpliedBoolTrue(bool flag+implied(true))",
-                "declgen": "bool ImpliedBoolTrue(bool flag +implied(true)+value)",
+                "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
+                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+value)",
                 "doxygen": {
                     "brief": "Single, implied bool argument"
-                },
-                "fmtdict": {
-                    "C_call_list": "flag",
-                    "C_name": "ImpliedBoolTrue",
-                    "C_prototype": "bool flag",
-                    "C_return_type": "bool",
-                    "F_C_arguments": "flag",
-                    "F_C_call": "c_implied_bool_true",
-                    "F_C_name": "c_implied_bool_true",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SH_flag",
-                    "F_arguments": "",
-                    "F_name_function": "implied_bool_true",
-                    "F_name_generic": "implied_bool_true",
-                    "F_name_impl": "implied_bool_true",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ImpliedBoolTrue",
-                    "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "ImpliedBoolTrue",
-                    "underscore_name": "implied_bool_true"
                 },
                 "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3455,7 +3520,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "flag",
+                    "C_name": "ImpliedBoolFalse",
+                    "C_prototype": "bool flag",
+                    "C_return_type": "bool",
+                    "F_C_arguments": "flag",
+                    "F_C_call": "c_implied_bool_false",
+                    "F_C_name": "c_implied_bool_false",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "SH_flag",
+                    "F_arguments": "",
+                    "F_name_function": "implied_bool_false",
+                    "F_name_generic": "implied_bool_false",
+                    "F_name_impl": "implied_bool_false",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ImpliedBoolFalse",
+                    "cxx_rv_decl": "bool SHC_rv",
+                    "function_name": "ImpliedBoolFalse",
+                    "underscore_name": "implied_bool_false"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -3501,75 +3589,10 @@
                         "stmt1": "py_bool_result",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "declarator": {
-                        "name": "ImpliedBoolFalse",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "implied": "false",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "bool"
-                            ],
-                            "typemap_name": "bool"
-                        }
-                    ],
-                    "specifier": [
-                        "bool"
-                    ],
-                    "typemap_name": "bool"
-                },
-                "decl": "bool ImpliedBoolFalse(bool flag+implied(false))",
-                "declgen": "bool ImpliedBoolFalse(bool flag +implied(false)+value)",
-                "doxygen": {
-                    "brief": "Single, implied bool argument"
-                },
-                "fmtdict": {
-                    "C_call_list": "flag",
-                    "C_name": "ImpliedBoolFalse",
-                    "C_prototype": "bool flag",
-                    "C_return_type": "bool",
-                    "F_C_arguments": "flag",
-                    "F_C_call": "c_implied_bool_false",
-                    "F_C_name": "c_implied_bool_false",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SH_flag",
-                    "F_arguments": "",
-                    "F_name_function": "implied_bool_false",
-                    "F_name_generic": "implied_bool_false",
-                    "F_name_impl": "implied_bool_false",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ImpliedBoolFalse",
-                    "cxx_rv_decl": "bool SHC_rv",
-                    "function_name": "ImpliedBoolFalse",
-                    "underscore_name": "implied_bool_false"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "bindC1",
@@ -3587,7 +3610,14 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates only an interface.\n"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "C_name": "bindC1",
                     "C_prototype": "void",
                     "C_return_type": "void",
@@ -3606,40 +3636,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "bind_c1"
-                },
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "outbuf",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "outbuf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "bindC2",
@@ -3678,7 +3678,38 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "outbuf",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
+                            "stmt0": "c_char_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "outbuf",
                     "C_name": "bindC2",
                     "C_prototype": "char * outbuf",
@@ -3699,53 +3730,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "bind_c2"
-                },
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "outbuf",
-                            "F_pointer": "SHPTR_outbuf",
-                            "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "outbuf",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -3787,7 +3775,51 @@
                     "brief": "Rename Fortran name for interface only function",
                     "description": "This creates a Fortran bufferify function and an interface.\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
+                            "stmt0": "c_char_*_out_buf",
+                            "stmt1": "c_char_*_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf",
+                            "F_pointer": "SHPTR_outbuf",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_out_buf",
+                            "stmtc1": "c_char_*_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "outbuf",
                     "C_name": "CLI_bind_c2_bufferify",
                     "C_prototype": "char * outbuf,\t int Noutbuf",
@@ -3801,17 +3833,81 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "bind_c2"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "passVoidStarStar",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "in",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "out",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
+                "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
+                "doxygen": {
+                    "brief": "Assign in to out.",
+                    "description": "No bufferify function is created, only an interface.\n"
+                },
+                "options": {
+                    "literalinclude": true,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
                     "in": {
                         "fmtc": {
                             "c_addr": "",
@@ -3877,69 +3973,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "passVoidStarStar",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "in",
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "in",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "out",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    },
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void passVoidStarStar(void *in+intent(in), void **out+intent(out))",
-                "declgen": "void passVoidStarStar(void * in +intent(in)+value, void * * out +intent(out))",
-                "doxygen": {
-                    "brief": "Assign in to out.",
-                    "description": "No bufferify function is created, only an interface.\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "in,\t out",
                     "C_name": "passVoidStarStar",
                     "C_prototype": "void * in,\t void * * out",
@@ -3960,76 +3994,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "pass_void_star_star"
-                },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "void",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_void_*_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "arg",
-                            "sh_type": "SH_TYPE_CPTR"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
-                        "stmtc1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passAssumedType",
@@ -4071,28 +4039,6 @@
                     "brief": "Test assumed-type",
                     "description": "No bufferify function is created, only an interface.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "arg",
-                    "C_name": "passAssumedType",
-                    "C_prototype": "void * arg",
-                    "C_return_type": "int",
-                    "F_C_arguments": "arg",
-                    "F_C_call": "c_pass_assumed_type",
-                    "F_C_name": "pass_assumed_type",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "arg",
-                    "F_arguments": "arg",
-                    "F_name_function": "pass_assumed_type",
-                    "F_name_generic": "pass_assumed_type",
-                    "F_name_impl": "pass_assumed_type",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "int SHC_rv",
-                    "function_name": "passAssumedType",
-                    "underscore_name": "pass_assumed_type"
-                },
                 "options": {
                     "literalinclude": true,
                     "wrap_python": false
@@ -4100,10 +4046,8 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg": {
                         "fmtc": {
                             "c_addr": "",
@@ -4126,17 +4070,67 @@
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
                             "c_var": "arg",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
                             "f_intent": "IN",
                             "f_type": "type(C_PTR)",
                             "f_var": "arg",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "size": "size(arg)"
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     }
                 },
+                "zz_fmtdict": {
+                    "C_call_list": "arg",
+                    "C_name": "passAssumedType",
+                    "C_prototype": "void * arg",
+                    "C_return_type": "int",
+                    "F_C_arguments": "arg",
+                    "F_C_call": "c_pass_assumed_type",
+                    "F_C_name": "pass_assumed_type",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "arg",
+                    "F_arguments": "arg",
+                    "F_name_function": "pass_assumed_type",
+                    "F_name_generic": "pass_assumed_type",
+                    "F_name_impl": "pass_assumed_type",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "passAssumedType",
+                    "underscore_name": "pass_assumed_type"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passAssumedTypeDim",
@@ -4175,7 +4169,49 @@
                 "doxygen": {
                     "brief": "Test assumed-type with rank(1)"
                 },
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "void",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_void_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "arg",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "size": "size(arg)"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "arg",
                     "C_name": "passAssumedTypeDim",
                     "C_prototype": "void * arg",
@@ -4196,92 +4232,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "pass_assumed_type_dim"
-                },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "void",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_void_*_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg"
-                        }
-                    },
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "outbuf",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "outbuf"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
-                        "stmtc1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passAssumedTypeBuf",
@@ -4343,7 +4297,60 @@
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "void",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_void_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg"
+                        }
+                    },
+                    "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "outbuf",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
+                            "stmt0": "c_char_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "passAssumedTypeBuf",
                     "C_prototype": "void * arg,\t char * outbuf",
@@ -4365,81 +4372,7 @@
                     "function_name": "passAssumedTypeBuf",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg",
-                            "cxx_type": "void",
-                            "cxx_var": "arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_void_*_in_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "arg",
-                            "sh_type": "SH_TYPE_CPTR"
-                        }
-                    },
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "outbuf",
-                            "F_pointer": "SHPTR_outbuf",
-                            "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "outbuf",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
-                        }
-                    }
-                },
-                "_fmtresult": {
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -4453,10 +4386,24 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -4522,7 +4469,79 @@
                     "brief": "Test assumed-type",
                     "description": "A bufferify function is created.\nShould only be call with an C_INT argument, and will\nreturn the value passed in.\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg",
+                            "cxx_type": "void",
+                            "cxx_var": "arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_void_*_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_CPTR"
+                        }
+                    },
+                    "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
+                            "stmt0": "c_char_*_out_buf",
+                            "stmt1": "c_char_*_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf",
+                            "F_pointer": "SHPTR_outbuf",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_out_buf",
+                            "stmtc1": "c_char_*_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "arg,\t outbuf",
                     "C_name": "CLI_pass_assumed_type_buf_bufferify",
                     "C_prototype": "void * arg,\t char * outbuf,\t int Noutbuf",
@@ -4537,78 +4556,27 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "pass_assumed_type_buf"
                 },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtargs": {
-                    "incr": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "incr",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&incr",
-                            "cxx_type": "void",
-                            "cxx_var": "incr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_incr",
-                            "stmt0": "c_void_scalar_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "incr",
-                            "F_pointer": "SHPTR_incr",
-                            "c_var": "incr",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "incr",
-                            "sh_type": "SH_TYPE_CPTR"
-                        }
-                    },
-                    "type": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "type",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&type",
-                            "cxx_type": "int",
-                            "cxx_var": "type",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_type",
-                            "stmt0": "c_native_scalar_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "type",
-                            "F_pointer": "SHPTR_type",
-                            "c_var": "type",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "type",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback1",
@@ -4667,28 +4635,6 @@
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
-                "fmtdict": {
-                    "C_call_list": "type,\t incr",
-                    "C_name": "callback1",
-                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t incr",
-                    "F_C_call": "c_callback1",
-                    "F_C_name": "c_callback1",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t incr",
-                    "F_arguments": "type,\t incr",
-                    "F_name_function": "callback1",
-                    "F_name_generic": "callback1",
-                    "F_name_impl": "callback1",
-                    "F_subprogram": "subroutine",
-                    "function_name": "callback1",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "callback1"
-                },
                 "options": {
                     "literalinclude": true,
                     "wrap_lua": false,
@@ -4697,10 +4643,8 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "incr": {
                         "fmtc": {
                             "c_addr": "&",
@@ -4763,6 +4707,31 @@
                         }
                     }
                 },
+                "zz_fmtdict": {
+                    "C_call_list": "type,\t incr",
+                    "C_name": "callback1",
+                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
+                    "C_return_type": "void",
+                    "F_C_arguments": "type,\t incr",
+                    "F_C_call": "c_callback1",
+                    "F_C_name": "c_callback1",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "type,\t incr",
+                    "F_arguments": "type,\t incr",
+                    "F_name_function": "callback1",
+                    "F_name_generic": "callback1",
+                    "F_name_impl": "callback1",
+                    "F_subprogram": "subroutine",
+                    "function_name": "callback1",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "callback1"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback1a",
@@ -4822,28 +4791,6 @@
                     "brief": "Test function pointer",
                     "description": "Add C_force_wrapper to test generating function pointer prototype.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "type,\t incr",
-                    "C_name": "CLI_callback1a",
-                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t incr",
-                    "F_C_call": "c_callback1a",
-                    "F_C_name": "c_callback1a",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t incr",
-                    "F_arguments": "type,\t incr",
-                    "F_name_function": "callback1a",
-                    "F_name_generic": "callback1a",
-                    "F_name_impl": "callback1a",
-                    "F_subprogram": "subroutine",
-                    "function_name": "callback1a",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "callback1a"
-                },
                 "options": {
                     "C_force_wrapper": true,
                     "literalinclude": true,
@@ -4853,38 +4800,8 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
-                    "in": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "in",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "in",
-                            "cxx_type": "void",
-                            "cxx_var": "in",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_in",
-                            "stmt0": "c_void_*_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "in",
-                            "F_pointer": "SHPTR_in",
-                            "c_var": "in",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "in",
-                            "sh_type": "SH_TYPE_CPTR"
-                        }
-                    },
+                },
+                "zz_fmtargs": {
                     "incr": {
                         "fmtc": {
                             "c_addr": "&",
@@ -4947,6 +4864,31 @@
                         }
                     }
                 },
+                "zz_fmtdict": {
+                    "C_call_list": "type,\t incr",
+                    "C_name": "CLI_callback1a",
+                    "C_prototype": "int type,\t void ( * incr)(\tvoid)",
+                    "C_return_type": "void",
+                    "F_C_arguments": "type,\t incr",
+                    "F_C_call": "c_callback1a",
+                    "F_C_name": "c_callback1a",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "type,\t incr",
+                    "F_arguments": "type,\t incr",
+                    "F_name_function": "callback1a",
+                    "F_name_generic": "callback1a",
+                    "F_name_impl": "callback1a",
+                    "F_subprogram": "subroutine",
+                    "function_name": "callback1a",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "callback1a"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback2",
@@ -5039,28 +4981,6 @@
                 "doxygen": {
                     "brief": "Test function pointer"
                 },
-                "fmtdict": {
-                    "C_call_list": "type,\t in,\t incr",
-                    "C_name": "callback2",
-                    "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t in,\t incr",
-                    "F_C_call": "c_callback2",
-                    "F_C_name": "c_callback2",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "type,\t in,\t incr",
-                    "F_arguments": "type,\t in,\t incr",
-                    "F_name_function": "callback2",
-                    "F_name_generic": "callback2",
-                    "F_name_impl": "callback2",
-                    "F_subprogram": "subroutine",
-                    "function_name": "callback2",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "callback2"
-                },
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5068,10 +4988,8 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "in": {
                         "fmtc": {
                             "c_addr": "",
@@ -5091,7 +5009,13 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "in"
+                            "F_C_var": "in",
+                            "F_pointer": "SHPTR_in",
+                            "c_var": "in",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "incr": {
@@ -5113,54 +5037,74 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "incr"
-                        }
-                    },
-                    "outbuf": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "outbuf",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "outbuf",
-                            "cxx_type": "char",
-                            "cxx_var": "outbuf",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "outbuf"
+                            "F_C_var": "incr",
+                            "F_pointer": "SHPTR_incr",
+                            "c_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
                         }
                     },
                     "type": {
                         "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
                             "c_var": "type",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "(char *) type",
-                            "cxx_type": "char",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
                             "cxx_var": "type",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
+                            "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_type",
-                            "stmt0": "c_char_*_in",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "type"
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
+                "zz_fmtdict": {
+                    "C_call_list": "type,\t in,\t incr",
+                    "C_name": "callback2",
+                    "C_prototype": "int type,\t void * in,\t void ( * incr)(\tint *)",
+                    "C_return_type": "void",
+                    "F_C_arguments": "type,\t in,\t incr",
+                    "F_C_call": "c_callback2",
+                    "F_C_name": "c_callback2",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "type,\t in,\t incr",
+                    "F_arguments": "type,\t in,\t incr",
+                    "F_name_function": "callback2",
+                    "F_name_generic": "callback2",
+                    "F_name_impl": "callback2",
+                    "F_subprogram": "subroutine",
+                    "function_name": "callback2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "callback2"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback3",
@@ -5277,28 +5221,6 @@
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "type,\t in,\t incr,\t outbuf",
-                    "C_name": "callback3",
-                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
-                    "C_return_type": "void",
-                    "F_C_arguments": "type,\t in,\t incr,\t outbuf",
-                    "F_C_call": "c_callback3_bufferify",
-                    "F_C_name": "c_callback3",
-                    "F_C_subprogram": "subroutine",
-                    "F_arg_c_call": "trim(type)//C_NULL_CHAR,\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT)",
-                    "F_arguments": "type,\t in,\t incr,\t outbuf",
-                    "F_name_function": "callback3",
-                    "F_name_generic": "callback3",
-                    "F_name_impl": "callback3",
-                    "F_subprogram": "subroutine",
-                    "function_name": "callback3",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "callback3"
-                },
                 "options": {
                     "wrap_lua": false,
                     "wrap_python": false
@@ -5306,10 +5228,8 @@
                 "wrap": {
                     "c": true,
                     "fortran": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "in": {
                         "fmtc": {
                             "c_addr": "",
@@ -5325,17 +5245,11 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_in",
-                            "stmt0": "c_void_*_in_buf",
+                            "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "in",
-                            "F_pointer": "SHPTR_in",
-                            "c_var": "in",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "in",
-                            "sh_type": "SH_TYPE_CPTR"
+                            "F_C_var": "in"
                         }
                     },
                     "incr": {
@@ -5353,17 +5267,11 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_incr",
-                            "stmt0": "c_void_scalar_in_buf",
+                            "stmt0": "c_void_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "incr",
-                            "F_pointer": "SHPTR_incr",
-                            "c_var": "incr",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "incr",
-                            "sh_type": "SH_TYPE_CPTR"
+                            "F_C_var": "incr"
                         }
                     },
                     "outbuf": {
@@ -5373,7 +5281,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "outbuf",
@@ -5382,23 +5289,11 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_outbuf",
-                            "stmt0": "c_char_*_out_buf",
-                            "stmt1": "c_char_*_out_buf"
+                            "stmt0": "c_char_*_out",
+                            "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "outbuf",
-                            "F_pointer": "SHPTR_outbuf",
-                            "c_var": "outbuf",
-                            "c_var_len": "Noutbuf",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "outbuf",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_char_*_out_buf",
-                            "stmtc1": "c_char_*_out_buf"
+                            "F_C_var": "outbuf"
                         }
                     },
                     "type": {
@@ -5420,17 +5315,35 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "type",
-                            "F_pointer": "SHPTR_type",
-                            "c_var": "type",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "type",
-                            "sh_type": "SH_TYPE_OTHER"
+                            "F_C_var": "type"
                         }
                     }
                 },
+                "zz_fmtdict": {
+                    "C_call_list": "type,\t in,\t incr,\t outbuf",
+                    "C_name": "callback3",
+                    "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf",
+                    "C_return_type": "void",
+                    "F_C_arguments": "type,\t in,\t incr,\t outbuf",
+                    "F_C_call": "c_callback3_bufferify",
+                    "F_C_name": "c_callback3",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "trim(type)//C_NULL_CHAR,\t in,\t incr,\t outbuf,\t len(outbuf, kind=C_INT)",
+                    "F_arguments": "type,\t in,\t incr,\t outbuf",
+                    "F_name_function": "callback3",
+                    "F_name_generic": "callback3",
+                    "F_name_impl": "callback3",
+                    "F_subprogram": "subroutine",
+                    "function_name": "callback3",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "callback3"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -5552,7 +5465,137 @@
                     "brief": "Test function pointer",
                     "description": "A bufferify function will be created.\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "in": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "in",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "in",
+                            "cxx_type": "void",
+                            "cxx_var": "in",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_in",
+                            "stmt0": "c_void_*_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "in",
+                            "F_pointer": "SHPTR_in",
+                            "c_var": "in",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "in",
+                            "sh_type": "SH_TYPE_CPTR"
+                        }
+                    },
+                    "incr": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "incr",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&incr",
+                            "cxx_type": "void",
+                            "cxx_var": "incr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_incr",
+                            "stmt0": "c_void_scalar_in_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "incr",
+                            "F_pointer": "SHPTR_incr",
+                            "c_var": "incr",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "incr",
+                            "sh_type": "SH_TYPE_CPTR"
+                        }
+                    },
+                    "outbuf": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "outbuf",
+                            "cxx_type": "char",
+                            "cxx_var": "outbuf",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_outbuf",
+                            "stmt0": "c_char_*_out_buf",
+                            "stmt1": "c_char_*_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "outbuf",
+                            "F_pointer": "SHPTR_outbuf",
+                            "c_var": "outbuf",
+                            "c_var_len": "Noutbuf",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "outbuf",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_char_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_char_*_out_buf",
+                            "stmtc1": "c_char_*_out_buf"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(char *) type",
+                            "cxx_type": "char",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_char_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_OTHER"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "type,\t in,\t incr,\t outbuf",
                     "C_name": "CLI_callback3_bufferify",
                     "C_prototype": "const char * type,\t void * in,\t void ( * incr)(\tint *),\t char * outbuf,\t int Noutbuf",
@@ -5565,112 +5608,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "callback3"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtargs": {
-                    "alloc": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "alloc",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&alloc",
-                            "cxx_type": "void",
-                            "cxx_var": "alloc",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
-                            "shadow_var": "SHadow_alloc",
-                            "stmt0": "c_void_scalar_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "alloc",
-                            "F_pointer": "SHPTR_alloc",
-                            "c_var": "alloc",
-                            "f_intent": "IN",
-                            "f_type": "type(C_PTR)",
-                            "f_var": "alloc",
-                            "sh_type": "SH_TYPE_CPTR"
-                        }
-                    },
-                    "arr": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arr",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arr",
-                            "cxx_type": "array_info",
-                            "cxx_var": "arr",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "shadow_var": "SHadow_arr",
-                            "stmt0": "c_struct_*_inout",
-                            "stmt1": "c_struct"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arr",
-                            "F_pointer": "SHPTR_arr",
-                            "c_var": "arr",
-                            "f_intent": "INOUT",
-                            "f_type": "type(array_info)",
-                            "f_var": "arr",
-                            "sh_type": "SH_TYPE_STRUCT",
-                            "stmt0": "f_struct_*_inout",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_inout",
-                            "stmtc1": "c_struct"
-                        }
-                    },
-                    "tc": {
-                        "fmtc": {
-                            "c_addr": "&",
-                            "c_const": "",
-                            "c_deref": "",
-                            "c_member": ".",
-                            "c_var": "tc",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "&tc",
-                            "cxx_type": "int",
-                            "cxx_var": "tc",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_tc",
-                            "stmt0": "c_native_scalar_in",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "tc",
-                            "F_pointer": "SHPTR_tc",
-                            "c_var": "tc",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "tc",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_scalar_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "callback_set_alloc",
@@ -5786,7 +5727,110 @@
                 "doxygen": {
                     "description": "The function argument takes a struct argument\nwhich is defined in this library.\nUse IMPORT.\n"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "alloc": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "alloc",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&alloc",
+                            "cxx_type": "void",
+                            "cxx_var": "alloc",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_CPTR",
+                            "shadow_var": "SHadow_alloc",
+                            "stmt0": "c_void_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "alloc",
+                            "F_pointer": "SHPTR_alloc",
+                            "c_var": "alloc",
+                            "f_intent": "IN",
+                            "f_type": "type(C_PTR)",
+                            "f_var": "alloc",
+                            "sh_type": "SH_TYPE_CPTR"
+                        }
+                    },
+                    "arr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arr",
+                            "cxx_type": "array_info",
+                            "cxx_var": "arr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "shadow_var": "SHadow_arr",
+                            "stmt0": "c_struct_*_inout",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arr",
+                            "F_pointer": "SHPTR_arr",
+                            "c_var": "arr",
+                            "f_intent": "INOUT",
+                            "f_type": "type(array_info)",
+                            "f_var": "arr",
+                            "sh_type": "SH_TYPE_STRUCT",
+                            "stmt0": "f_struct_*_inout",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_*_inout",
+                            "stmtc1": "c_struct"
+                        }
+                    },
+                    "tc": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "tc",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&tc",
+                            "cxx_type": "int",
+                            "cxx_var": "tc",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_tc",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "tc",
+                            "F_pointer": "SHPTR_tc",
+                            "c_var": "tc",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "tc",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "tc,\t arr,\t alloc",
                     "C_name": "callback_set_alloc",
                     "C_prototype": "int tc,\t array_info * arr,\t void ( * alloc)(\tint tc,\t array_info * arr)",
@@ -5807,14 +5851,6 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "callback_set_alloc"
-                },
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             }
         ],
@@ -5824,6 +5860,7 @@
         ],
         "typedefs": [
             {
+                "__TYPEDEF__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "TypeID",
@@ -5837,16 +5874,17 @@
                     ],
                     "typemap_name": "int"
                 },
-                "fmtdict": {},
                 "name": "TypeID",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
+                },
+                "zz_fmtdict": {}
             },
             {
+                "__TYPEDEF__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "EnumTypeID",
@@ -5860,14 +5898,14 @@
                     ],
                     "typemap_name": "int"
                 },
-                "fmtdict": {},
                 "name": "EnumTypeID",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
+                },
+                "zz_fmtdict": {}
             }
         ],
         "wrap": {

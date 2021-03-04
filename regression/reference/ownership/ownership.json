@@ -3,44 +3,11 @@
     "library": {
         "classes": [
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [],
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapClass1.h",
-                    "C_impl_filename": "wrapClass1.cpp",
-                    "C_name_scope": "Class1_",
-                    "C_type_name": "OWN_Class1",
-                    "F_derived_name": "class1",
-                    "F_name_scope": "class1_",
-                    "LUA_class_reg": "l_Class1_Reg",
-                    "LUA_ctor_name": "Class1",
-                    "LUA_metadata": "Class1.metatable",
-                    "LUA_this_call": "SH_this->self->",
-                    "LUA_userdata_member": "self",
-                    "LUA_userdata_type": "l_Class1_Type",
-                    "LUA_userdata_var": "SH_this",
-                    "PY_PyObject": "PY_Class1",
-                    "PY_PyTypeObject": "PY_Class1_Type",
-                    "PY_capsule_name": "PY_Class1_capsule_name",
-                    "PY_from_object_func": "PP_Class1_from_Object",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_Class1_to_Object",
-                    "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
-                    "PY_type_filename": "pyClass1type.cpp",
-                    "class_scope": "Class1::",
-                    "cxx_class": "Class1",
-                    "cxx_type": "Class1",
-                    "file_scope": "Class1",
-                    "hnamefunc0": "capsule_data_helper"
-                },
                 "functions": [
                     {
-                        "_fmtresult": {
-                            "fmtl": {
-                                "stmt0": "lua_shadow_scalar_dtor",
-                                "stmt1": "lua_shadow_dtor"
-                            }
-                        },
+                        "__FUNCTION__": "****************************************",
                         "ast": {
                             "attrs": {
                                 "_destructor": "Class1",
@@ -54,7 +21,14 @@
                         },
                         "decl": "~Class1()",
                         "declgen": "~Class1(void)",
-                        "fmtdict": {
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "C_name": "OWN_Class1_dtor",
                             "C_prototype": "OWN_Class1 * self",
                             "C_return_type": "void",
@@ -82,16 +56,65 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "lua": true,
-                            "python": true
+                        "zz_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_shadow_scalar_dtor",
+                                "stmt1": "lua_shadow_dtor"
+                            }
                         }
                     },
                     {
-                        "_fmtresult": {
+                        "__FUNCTION__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "getFlag",
+                                "pointer": []
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int getFlag()",
+                        "declgen": "int getFlag(void)",
+                        "options": {},
+                        "splicer": {
+                            "c": [
+                                "return SH_this->m_flag;"
+                            ]
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "OWN_Class1_get_flag",
+                            "C_prototype": "OWN_Class1 * self",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_class1_get_flag",
+                            "F_C_name": "c_class1_get_flag",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_flag",
+                            "F_name_generic": "get_flag",
+                            "F_name_impl": "class1_get_flag",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "getFlag",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_flag"
+                        },
+                        "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
                                 "c_get_value": "",
@@ -119,55 +142,6 @@
                                 "stmtc0": "c_native_scalar_result",
                                 "stmtc1": "c_default"
                             }
-                        },
-                        "ast": {
-                            "declarator": {
-                                "name": "getFlag",
-                                "pointer": []
-                            },
-                            "params": [],
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "decl": "int getFlag()",
-                        "declgen": "int getFlag(void)",
-                        "fmtdict": {
-                            "C_name": "OWN_Class1_get_flag",
-                            "C_prototype": "OWN_Class1 * self",
-                            "C_return_type": "int",
-                            "F_C_arguments": "self",
-                            "F_C_call": "c_class1_get_flag",
-                            "F_C_name": "c_class1_get_flag",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
-                            "F_arg_c_call": "obj%cxxmem",
-                            "F_arguments": "obj",
-                            "F_name_function": "get_flag",
-                            "F_name_generic": "get_flag",
-                            "F_name_impl": "class1_get_flag",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "self",
-                            "cxx_rv_decl": "int SHC_rv",
-                            "function_name": "getFlag",
-                            "shadow_var": "SHadow_self",
-                            "underscore_name": "get_flag"
-                        },
-                        "options": {},
-                        "splicer": {
-                            "c": [
-                                "return SH_this->m_flag;"
-                            ]
-                        },
-                        "wrap": {
-                            "c": true,
-                            "fortran": true
                         }
                     }
                 ],
@@ -178,6 +152,7 @@
                 "typemap_name": "Class1",
                 "variables": [
                     {
+                        "__VARIABLE__": "****************************************",
                         "ast": {
                             "attrs": {
                                 "name": "flag",
@@ -192,7 +167,15 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "fmtdict": {
+                        "name": "flag",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "PY_getter": "PY_Class1_flag_getter",
                             "PY_setter": "nullptr",
                             "PY_struct_context": "self->obj->",
@@ -202,14 +185,6 @@
                             "variable_lower": "flag",
                             "variable_name": "flag",
                             "variable_upper": "FLAG"
-                        },
-                        "name": "flag",
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "lua": true,
-                            "python": true
                         }
                     }
                 ],
@@ -218,6 +193,35 @@
                     "fortran": true,
                     "lua": true,
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapClass1.h",
+                    "C_impl_filename": "wrapClass1.cpp",
+                    "C_name_scope": "Class1_",
+                    "C_type_name": "OWN_Class1",
+                    "F_derived_name": "class1",
+                    "F_name_scope": "class1_",
+                    "LUA_class_reg": "l_Class1_Reg",
+                    "LUA_ctor_name": "Class1",
+                    "LUA_metadata": "Class1.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Class1_Type",
+                    "LUA_userdata_var": "SH_this",
+                    "PY_PyObject": "PY_Class1",
+                    "PY_PyTypeObject": "PY_Class1_Type",
+                    "PY_capsule_name": "PY_Class1_capsule_name",
+                    "PY_from_object_func": "PP_Class1_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Class1_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class1_to_Object_idtor",
+                    "PY_type_filename": "pyClass1type.cpp",
+                    "class_scope": "Class1::",
+                    "cxx_class": "Class1",
+                    "cxx_type": "Class1",
+                    "file_scope": "Class1",
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -234,24 +238,7 @@
         ],
         "functions": [
             {
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -276,7 +263,15 @@
                 },
                 "decl": "int * ReturnIntPtrRaw()",
                 "declgen": "int * ReturnIntPtrRaw(void) +deref(raw)",
-                "fmtdict": {
+                "options": {
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtdict": {
                     "C_name": "OWN_return_int_ptr_raw",
                     "C_prototype": "void",
                     "C_return_type": "int *",
@@ -289,17 +284,81 @@
                     "function_name": "ReturnIntPtrRaw",
                     "underscore_name": "return_int_ptr_raw"
                 },
-                "options": {
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtresult": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "deref": "scalar"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrScalar",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "scalar",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrScalar()",
+                "declgen": "int * ReturnIntPtrScalar(void) +deref(scalar)",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "OWN_return_int_ptr_scalar",
+                    "C_prototype": "void",
+                    "C_return_type": "int",
+                    "F_C_arguments": "",
+                    "F_C_call": "c_return_int_ptr_scalar",
+                    "F_C_name": "return_int_ptr_scalar",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_scalar",
+                    "F_name_generic": "return_int_ptr_scalar",
+                    "F_name_impl": "return_int_ptr_scalar",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrScalar",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrScalar",
+                    "underscore_name": "return_int_ptr_scalar"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_type": "int",
@@ -344,13 +403,16 @@
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
-                        "deref": "scalar"
+                        "deref": "pointer"
                     },
                     "declarator": {
-                        "name": "ReturnIntPtrScalar",
+                        "name": "ReturnIntPtrPointer",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -358,7 +420,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "deref": "scalar",
+                        "deref": "pointer",
                         "intent": "result"
                     },
                     "params": [],
@@ -367,29 +429,8 @@
                     ],
                     "typemap_name": "int"
                 },
-                "decl": "int * ReturnIntPtrScalar()",
-                "declgen": "int * ReturnIntPtrScalar(void) +deref(scalar)",
-                "fmtdict": {
-                    "C_name": "OWN_return_int_ptr_scalar",
-                    "C_prototype": "void",
-                    "C_return_type": "int",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_scalar",
-                    "F_C_name": "return_int_ptr_scalar",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arguments": "",
-                    "F_name_function": "return_int_ptr_scalar",
-                    "F_name_generic": "return_int_ptr_scalar",
-                    "F_name_impl": "return_int_ptr_scalar",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrScalar",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrScalar",
-                    "underscore_name": "return_int_ptr_scalar"
-                },
+                "decl": "int * ReturnIntPtrPointer()",
+                "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
                 "options": {
                     "wrap_lua": false
                 },
@@ -397,10 +438,30 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtresult": {
+                },
+                "zz_fmtdict": {
+                    "C_name": "OWN_return_int_ptr_pointer",
+                    "C_prototype": "void",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "",
+                    "F_C_call": "c_return_int_ptr_pointer_bufferify",
+                    "F_C_name": "c_return_int_ptr_pointer",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_pointer",
+                    "F_name_generic": "return_int_ptr_pointer",
+                    "F_name_impl": "return_int_ptr_pointer",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrPointer",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrPointer",
+                    "underscore_name": "return_int_ptr_pointer"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -448,82 +509,10 @@
                         "stmt1": "py_native_*_result_pointer_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "deref": "pointer"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrPointer",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "intent": "result"
-                    },
-                    "params": [],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrPointer()",
-                "declgen": "int * ReturnIntPtrPointer(void) +deref(pointer)",
-                "fmtdict": {
-                    "C_name": "OWN_return_int_ptr_pointer",
-                    "C_prototype": "void",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_return_int_ptr_pointer_bufferify",
-                    "F_C_name": "c_return_int_ptr_pointer",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv",
-                    "F_arguments": "",
-                    "F_name_function": "return_int_ptr_pointer",
-                    "F_name_generic": "return_int_ptr_pointer",
-                    "F_name_impl": "return_int_ptr_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrPointer",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrPointer",
-                    "underscore_name": "return_int_ptr_pointer"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -550,7 +539,14 @@
                 },
                 "decl": "int * ReturnIntPtrPointer()",
                 "declgen": "int * ReturnIntPtrPointer(void) +context(DSHC_rv)+deref(pointer)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtdict": {
                     "C_name": "OWN_return_int_ptr_pointer_bufferify",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv",
                     "C_return_type": "int *",
@@ -564,45 +560,13 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_pointer"
                 },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true
-                }
-            },
-            {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len"
-                        }
-                    }
-                },
-                "_fmtresult": {
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -611,10 +575,13 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "raw"
@@ -660,7 +627,39 @@
                 },
                 "decl": "int * ReturnIntPtrDimRaw(int *len+intent(out))",
                 "declgen": "int * ReturnIntPtrDimRaw(int * len +intent(out)) +deref(raw)",
-                "fmtdict": {
+                "options": {
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw",
                     "C_prototype": "int * len",
@@ -674,17 +673,88 @@
                     "function_name": "ReturnIntPtrDimRaw",
                     "underscore_name": "return_int_ptr_dim_raw"
                 },
-                "options": {
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "deref": "pointer",
+                        "dimension": "len"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrDimPointer",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "len"
+                            }
+                        ],
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
+                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -728,7 +798,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_pointer",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_call": "c_return_int_ptr_dim_pointer_bufferify",
+                    "F_C_name": "c_return_int_ptr_dim_pointer",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv,\t len",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_dim_pointer",
+                    "F_name_generic": "return_int_ptr_dim_pointer",
+                    "F_name_impl": "return_int_ptr_dim_pointer",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrDimPointer",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimPointer",
+                    "underscore_name": "return_int_ptr_dim_pointer"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -787,149 +880,10 @@
                         "stmt1": "py_native_*_result_pointer_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "deref": "pointer",
-                        "dimension": "len"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrDimPointer",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
-                        ],
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_pointer",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_call": "c_return_int_ptr_dim_pointer_bufferify",
-                    "F_C_name": "c_return_int_ptr_dim_pointer",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv,\t len",
-                    "F_arguments": "",
-                    "F_name_function": "return_int_ptr_dim_pointer",
-                    "F_name_generic": "return_int_ptr_dim_pointer",
-                    "F_name_impl": "return_int_ptr_dim_pointer",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrDimPointer",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointer",
-                    "underscore_name": "return_int_ptr_dim_pointer"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "F_pointer": "SHPTR_len",
-                            "c_var": "len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
-                        "c_array_size": "DSHC_rv->shape[0]",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -985,7 +939,49 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointer(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointer(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "F_pointer": "SHPTR_len",
+                            "c_var": "len",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_pointer_bufferify",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
@@ -1000,16 +996,92 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_pointer"
                 },
-                "generated_suffix": "buf",
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
+                    }
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "deref": "allocatable",
+                        "dimension": "len"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrDimAlloc",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "dimension": [
+                            {
+                                "name": "len"
+                            }
+                        ],
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
+                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
                 "options": {
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -1053,7 +1125,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_alloc",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_call": "c_return_int_ptr_dim_alloc_bufferify",
+                    "F_C_name": "c_return_int_ptr_dim_alloc",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv,\t len",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_dim_alloc",
+                    "F_name_generic": "return_int_ptr_dim_alloc",
+                    "F_name_impl": "return_int_ptr_dim_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimAlloc",
+                    "underscore_name": "return_int_ptr_dim_alloc"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1112,149 +1207,10 @@
                         "stmt1": "py_native_*_result_allocatable_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "deref": "allocatable",
-                        "dimension": "len"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrDimAlloc",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
-                        ],
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_alloc",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_call": "c_return_int_ptr_dim_alloc_bufferify",
-                    "F_C_name": "c_return_int_ptr_dim_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv,\t len",
-                    "F_arguments": "",
-                    "F_name_function": "return_int_ptr_dim_alloc",
-                    "F_name_generic": "return_int_ptr_dim_alloc",
-                    "F_name_impl": "return_int_ptr_dim_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrDimAlloc",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimAlloc",
-                    "underscore_name": "return_int_ptr_dim_alloc"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "F_pointer": "SHPTR_len",
-                            "c_var": "len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
-                        "c_array_size": "DSHC_rv->shape[0]",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -1310,7 +1266,49 @@
                 },
                 "decl": "int * ReturnIntPtrDimAlloc(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAlloc(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(allocatable)+dimension(len)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "F_pointer": "SHPTR_len",
+                            "c_var": "len",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_alloc_bufferify",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
@@ -1325,16 +1323,91 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_alloc"
                 },
-                "generated_suffix": "buf",
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
+                    }
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "dimension": "len"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrDimDefault",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "len"
+                            }
+                        ],
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
+                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
                 "options": {
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -1378,7 +1451,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_default",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_call": "c_return_int_ptr_dim_default_bufferify",
+                    "F_C_name": "c_return_int_ptr_dim_default",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv,\t len",
+                    "F_arguments": "",
+                    "F_name_function": "return_int_ptr_dim_default",
+                    "F_name_generic": "return_int_ptr_dim_default",
+                    "F_name_impl": "return_int_ptr_dim_default",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrDimDefault",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimDefault",
+                    "underscore_name": "return_int_ptr_dim_default"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1437,148 +1533,10 @@
                         "stmt1": "py_native_*_result_pointer_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "dimension": "len"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrDimDefault",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
-                        ],
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +dimension(len)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_default",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_call": "c_return_int_ptr_dim_default_bufferify",
-                    "F_C_name": "c_return_int_ptr_dim_default",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv,\t len",
-                    "F_arguments": "",
-                    "F_name_function": "return_int_ptr_dim_default",
-                    "F_name_generic": "return_int_ptr_dim_default",
-                    "F_name_impl": "return_int_ptr_dim_default",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrDimDefault",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefault",
-                    "underscore_name": "return_int_ptr_dim_default"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "F_pointer": "SHPTR_len",
-                            "c_var": "len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
-                        "c_array_size": "DSHC_rv->shape[0]",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -1633,31 +1591,14 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefault(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefault(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_default_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "DSHC_rv,\t len",
-                    "F_C_name": "c_return_int_ptr_dim_default_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefault",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_default"
-                },
                 "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -1673,34 +1614,65 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_native_*_out_buf",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "len"
+                            "F_C_var": "len",
+                            "F_pointer": "SHPTR_len",
+                            "c_var": "len",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_default_bufferify",
+                    "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "DSHC_rv,\t len",
+                    "F_C_name": "c_return_int_ptr_dim_default_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimDefault",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_int_ptr_dim_default"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_capsule": "Crv",
+                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
                         "cxx_type": "int",
                         "cxx_var": "SHC_rv",
-                        "idtor": "2",
+                        "idtor": "0",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
                         "capsule": "Crv",
@@ -1754,7 +1726,39 @@
                 },
                 "decl": "int * ReturnIntPtrDimRawNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimRawNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
-                "fmtdict": {
+                "options": {
+                    "wrap_fortran": false,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_raw_new",
                     "C_prototype": "int * len",
@@ -1768,17 +1772,92 @@
                     "function_name": "ReturnIntPtrDimRawNew",
                     "underscore_name": "return_int_ptr_dim_raw_new"
                 },
-                "options": {
-                    "wrap_fortran": false,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_capsule": "Crv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "2",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "capsule": "Crv",
+                        "deref": "pointer",
+                        "dimension": "len",
+                        "owner": "caller"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrDimPointerNew",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "len"
+                            }
+                        ],
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
+                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -1822,7 +1901,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_pointer_new",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_call": "c_return_int_ptr_dim_pointer_new_bufferify",
+                    "F_C_name": "c_return_int_ptr_dim_pointer_new",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv,\t len",
+                    "F_arguments": "Crv",
+                    "F_name_function": "return_int_ptr_dim_pointer_new",
+                    "F_name_generic": "return_int_ptr_dim_pointer_new",
+                    "F_name_impl": "return_int_ptr_dim_pointer_new",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimPointerNew",
+                    "underscore_name": "return_int_ptr_dim_pointer_new"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -1883,152 +1985,10 @@
                         "stmt1": "py_native_*_result_pointer_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "capsule": "Crv",
-                        "deref": "pointer",
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrDimPointerNew",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
-                        ],
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +deref(pointer)+dimension(len)+owner(caller)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_pointer_new",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_call": "c_return_int_ptr_dim_pointer_new_bufferify",
-                    "F_C_name": "c_return_int_ptr_dim_pointer_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv,\t len",
-                    "F_arguments": "Crv",
-                    "F_name_function": "return_int_ptr_dim_pointer_new",
-                    "F_name_generic": "return_int_ptr_dim_pointer_new",
-                    "F_name_impl": "return_int_ptr_dim_pointer_new",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrDimPointerNew",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointerNew",
-                    "underscore_name": "return_int_ptr_dim_pointer_new"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "F_pointer": "SHPTR_len",
-                            "c_var": "len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
-                        "c_array_size": "DSHC_rv->shape[0]",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_capsule": "Crv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -2086,31 +2046,14 @@
                 },
                 "decl": "int * ReturnIntPtrDimPointerNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimPointerNew(int * len +hidden+intent(out)) +context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_pointer_new_bufferify",
-                    "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "DSHC_rv,\t len",
-                    "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimPointerNew",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_int_ptr_dim_pointer_new"
-                },
                 "generated_suffix": "buf",
                 "options": {
                     "wrap_lua": false
                 },
                 "wrap": {
                     "c": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -2126,40 +2069,50 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_native_*_out_buf",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "len"
-                        },
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
+                            "F_C_var": "len",
+                            "F_pointer": "SHPTR_len",
                             "c_var": "len",
-                            "ctor_expr": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "data_var": "SHData_len",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_len",
-                            "size_var": "SHSize_len",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
-                            "value_var": "SHValue_len"
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_pointer_new_bufferify",
+                    "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "DSHC_rv,\t len",
+                    "F_C_name": "c_return_int_ptr_dim_pointer_new_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimPointerNew",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_int_ptr_dim_pointer_new"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
                         "c_const": "",
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
+                        "c_var_capsule": "Crv",
+                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -2169,33 +2122,13 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtpy": {
-                        "array_size": "len",
-                        "c_deref": "*",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "*SHCXX_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "npy_dims_var": "SHD_rv",
-                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
-                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
-                        "npy_rank": "1",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "rank": "1",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_native_*_result_allocatable_numpy",
-                        "stmt1": "py_native_*_result_allocatable_numpy",
-                        "value_var": "SHValue_rv"
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
                         "deref": "allocatable",
@@ -2249,21 +2182,6 @@
                 },
                 "decl": "int * ReturnIntPtrDimAllocNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimAllocNew(int * len +hidden+intent(out)) +deref(allocatable)+dimension(len)+owner(caller)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_alloc_new",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_name": "c_return_int_ptr_dim_alloc_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimAllocNew",
-                    "underscore_name": "return_int_ptr_dim_alloc_new"
-                },
                 "options": {
                     "wrap_fortran": false,
                     "wrap_lua": false
@@ -2271,10 +2189,8 @@
                 "wrap": {
                     "c": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "len": {
                         "fmtc": {
                             "c_addr": "",
@@ -2318,7 +2234,195 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_alloc_new",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_name": "c_return_int_ptr_dim_alloc_new",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "PY_name_impl": "PY_ReturnIntPtrDimAllocNew",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimAllocNew",
+                    "underscore_name": "return_int_ptr_dim_alloc_new"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "2",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtpy": {
+                        "array_size": "len",
+                        "c_deref": "*",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "*SHCXX_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "npy_dims_var": "SHD_rv",
+                        "npy_intp_asgn": "SHD_rv[0] = len;\n",
+                        "npy_intp_decl": "npy_intp SHD_rv[1];\n",
+                        "npy_rank": "1",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "rank": "1",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_*_result_allocatable_numpy",
+                        "stmt1": "py_native_*_result_allocatable_numpy",
+                        "value_var": "SHValue_rv"
+                    }
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "capsule": "Crv",
+                        "dimension": "len",
+                        "owner": "caller"
+                    },
+                    "declarator": {
+                        "name": "ReturnIntPtrDimDefaultNew",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "pointer",
+                        "dimension": [
+                            {
+                                "name": "len"
+                            }
+                        ],
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "len",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
+                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len"
+                        },
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "len",
+                            "ctor_expr": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "data_var": "SHData_len",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_len",
+                            "size_var": "SHSize_len",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out",
+                            "value_var": "SHValue_len"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "len",
+                    "C_name": "OWN_return_int_ptr_dim_default_new",
+                    "C_prototype": "int * len",
+                    "C_return_type": "int *",
+                    "F_C_arguments": "len",
+                    "F_C_call": "c_return_int_ptr_dim_default_new_bufferify",
+                    "F_C_name": "c_return_int_ptr_dim_default_new",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHC_rv,\t len",
+                    "F_arguments": "Crv",
+                    "F_name_function": "return_int_ptr_dim_default_new",
+                    "F_name_generic": "return_int_ptr_dim_default_new",
+                    "F_name_impl": "return_int_ptr_dim_default_new",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
+                    "cxx_rv_decl": "int * SHC_rv",
+                    "function_name": "ReturnIntPtrDimDefaultNew",
+                    "underscore_name": "return_int_ptr_dim_default_new"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_get_value": "",
@@ -2379,151 +2483,10 @@
                         "stmt1": "py_native_*_result_pointer_numpy",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "capsule": "Crv",
-                        "dimension": "len",
-                        "owner": "caller"
-                    },
-                    "declarator": {
-                        "name": "ReturnIntPtrDimDefaultNew",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "pointer",
-                        "dimension": [
-                            {
-                                "name": "len"
-                            }
-                        ],
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "hidden": true,
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "len",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
-                "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +dimension(len)+owner(caller)",
-                "fmtdict": {
-                    "C_call_list": "len",
-                    "C_name": "OWN_return_int_ptr_dim_default_new",
-                    "C_prototype": "int * len",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "len",
-                    "F_C_call": "c_return_int_ptr_dim_default_new_bufferify",
-                    "F_C_name": "c_return_int_ptr_dim_default_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHC_rv,\t len",
-                    "F_arguments": "Crv",
-                    "F_name_function": "return_int_ptr_dim_default_new",
-                    "F_name_generic": "return_int_ptr_dim_default_new",
-                    "F_name_impl": "return_int_ptr_dim_default_new",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_ReturnIntPtrDimDefaultNew",
-                    "cxx_rv_decl": "int * SHC_rv",
-                    "function_name": "ReturnIntPtrDimDefaultNew",
-                    "underscore_name": "return_int_ptr_dim_default_new"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "len": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "len",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "len",
-                            "cxx_type": "int",
-                            "cxx_var": "len",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
-                            "stmt1": "c_default"
-                        },
-                        "fmtf": {
-                            "F_C_var": "len",
-                            "F_pointer": "SHPTR_len",
-                            "c_var": "len",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "len",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
-                        "c_array_size": "DSHC_rv->shape[0]",
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "c_var_capsule": "Crv",
-                        "c_var_context": "DSHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_nonconst_ptr": "SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "2",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
-                        "stmt1": "c_native_*_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
@@ -2580,7 +2543,49 @@
                 },
                 "decl": "int * ReturnIntPtrDimDefaultNew(int *len+intent(out)+hidden)",
                 "declgen": "int * ReturnIntPtrDimDefaultNew(int * len +hidden+intent(out)) +context(DSHC_rv)+dimension(len)+owner(caller)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "len": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "len",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "len",
+                            "cxx_type": "int",
+                            "cxx_var": "len",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_len",
+                            "stmt0": "c_native_*_out_buf",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "len",
+                            "F_pointer": "SHPTR_len",
+                            "c_var": "len",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "len",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "len",
                     "C_name": "OWN_return_int_ptr_dim_default_new_bufferify",
                     "C_prototype": "OWN_SHROUD_array *DSHC_rv,\t int * len",
@@ -2595,15 +2600,32 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "return_int_ptr_dim_default_new"
                 },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_array_shape": "\nDSHC_rv->shape[0] = *len;",
+                        "c_array_size": "DSHC_rv->shape[0]",
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "c_var_capsule": "Crv",
+                        "c_var_context": "DSHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "2",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_*_result_buf",
+                        "stmt1": "c_native_*_result_buf"
+                    }
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimRaw",
@@ -2664,19 +2686,20 @@
                 },
                 "decl": "void IntPtrDimRaw(int **array, int *len+intent(out))",
                 "declgen": "void IntPtrDimRaw(int * * array +deref(raw)+intent(out)+owner(library), int * len +intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimRaw",
-                    "underscore_name": "int_ptr_dim_raw"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimRaw",
+                    "underscore_name": "int_ptr_dim_raw"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimPointer",
@@ -2744,19 +2767,20 @@
                 },
                 "decl": "void IntPtrDimPointer(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimPointer(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimPointer",
-                    "underscore_name": "int_ptr_dim_pointer"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimPointer",
+                    "underscore_name": "int_ptr_dim_pointer"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimAlloc",
@@ -2824,19 +2848,20 @@
                 },
                 "decl": "void IntPtrDimAlloc(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimAlloc(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimAlloc",
-                    "underscore_name": "int_ptr_dim_alloc"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimAlloc",
+                    "underscore_name": "int_ptr_dim_alloc"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimDefault",
@@ -2903,19 +2928,20 @@
                 },
                 "decl": "void IntPtrDimDefault(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimDefault(int * * array +dimension(len)+intent(out)+owner(library), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimDefault",
-                    "underscore_name": "int_ptr_dim_default"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimDefault",
+                    "underscore_name": "int_ptr_dim_default"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimRawNew",
@@ -2977,19 +3003,20 @@
                 },
                 "decl": "void IntPtrDimRawNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimRawNew(int * * array +deref(raw)+intent(out)+owner(caller), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimRawNew",
-                    "underscore_name": "int_ptr_dim_raw_new"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimRawNew",
+                    "underscore_name": "int_ptr_dim_raw_new"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimPointerNew",
@@ -3058,19 +3085,20 @@
                 },
                 "decl": "void IntPtrDimPointerNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimPointerNew(int * * array +deref(pointer)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimPointerNew",
-                    "underscore_name": "int_ptr_dim_pointer_new"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimPointerNew",
+                    "underscore_name": "int_ptr_dim_pointer_new"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimAllocNew",
@@ -3138,19 +3166,20 @@
                 },
                 "decl": "void IntPtrDimAllocNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimAllocNew(int * * array +deref(allocatable)+dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimAllocNew",
-                    "underscore_name": "int_ptr_dim_alloc_new"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimAllocNew",
+                    "underscore_name": "int_ptr_dim_alloc_new"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "IntPtrDimDefaultNew",
@@ -3218,20 +3247,59 @@
                 },
                 "decl": "void IntPtrDimDefaultNew(int **array, int *len+intent(out)+hidden)",
                 "declgen": "void IntPtrDimDefaultNew(int * * array +dimension(len)+intent(out)+owner(caller), int * len +hidden+intent(out))",
-                "fmtdict": {
-                    "function_name": "IntPtrDimDefaultNew",
-                    "underscore_name": "int_ptr_dim_default_new"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "IntPtrDimDefaultNew",
+                    "underscore_name": "int_ptr_dim_default_new"
+                }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "createClassStatic",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void createClassStatic(int flag)",
+                "declgen": "void createClassStatic(int flag +value)",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3285,37 +3353,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "createClassStatic",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void createClassStatic(int flag)",
-                "declgen": "void createClassStatic(int flag +value)",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "flag",
                     "C_name": "OWN_create_class_static",
                     "C_prototype": "int flag",
@@ -3337,7 +3375,33 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "create_class_static"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "owner": "library"
+                    },
+                    "declarator": {
+                        "name": "getClassStatic",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "Class1"
+                    ],
+                    "typemap_name": "Class1"
                 },
+                "decl": "Class1 * getClassStatic() +owner(library)",
+                "declgen": "Class1 * getClassStatic(void) +owner(library)",
                 "options": {
                     "wrap_lua": false
                 },
@@ -3345,10 +3409,30 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtresult": {
+                },
+                "zz_fmtdict": {
+                    "C_name": "OWN_get_class_static",
+                    "C_prototype": "OWN_Class1 * SHadow_rv",
+                    "C_return_type": "OWN_Class1 *",
+                    "F_C_arguments": "SHT_crv",
+                    "F_C_call": "c_get_class_static",
+                    "F_C_name": "c_get_class_static",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "get_class_static",
+                    "F_name_generic": "get_class_static",
+                    "F_name_impl": "get_class_static",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_getClassStatic",
+                    "cxx_rv_decl": "Class1 * SHCXX_rv",
+                    "function_name": "getClassStatic",
+                    "underscore_name": "get_class_static"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_type": "OWN_Class1",
@@ -3395,13 +3479,16 @@
                         "stmt1": "py_shadow_*_result",
                         "value_var": "SHValue_rv"
                     }
-                },
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
-                        "owner": "library"
+                        "owner": "caller"
                     },
                     "declarator": {
-                        "name": "getClassStatic",
+                        "name": "getClassNew",
                         "pointer": [
                             {
                                 "ptr": "*"
@@ -3411,35 +3498,33 @@
                     "metaattrs": {
                         "intent": "result"
                     },
-                    "params": [],
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
                     "specifier": [
                         "Class1"
                     ],
                     "typemap_name": "Class1"
                 },
-                "decl": "Class1 * getClassStatic() +owner(library)",
-                "declgen": "Class1 * getClassStatic(void) +owner(library)",
-                "fmtdict": {
-                    "C_name": "OWN_get_class_static",
-                    "C_prototype": "OWN_Class1 * SHadow_rv",
-                    "C_return_type": "OWN_Class1 *",
-                    "F_C_arguments": "SHT_crv",
-                    "F_C_call": "c_get_class_static",
-                    "F_C_name": "c_get_class_static",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "SHT_rv%cxxmem",
-                    "F_arguments": "",
-                    "F_name_function": "get_class_static",
-                    "F_name_generic": "get_class_static",
-                    "F_name_impl": "get_class_static",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_getClassStatic",
-                    "cxx_rv_decl": "Class1 * SHCXX_rv",
-                    "function_name": "getClassStatic",
-                    "underscore_name": "get_class_static"
+                "decl": "Class1 * getClassNew(int flag) +owner(caller)",
+                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
+                "doxygen": {
+                    "brief": "Return pointer to new Class1 instance."
                 },
                 "options": {
                     "wrap_lua": false
@@ -3448,10 +3533,8 @@
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "flag": {
                         "fmtc": {
                             "c_addr": "&",
@@ -3505,7 +3588,30 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "flag",
+                    "C_name": "OWN_get_class_new",
+                    "C_prototype": "int flag,\t OWN_Class1 * SHadow_rv",
+                    "C_return_type": "OWN_Class1 *",
+                    "F_C_arguments": "flag,\t SHT_crv",
+                    "F_C_call": "c_get_class_new",
+                    "F_C_name": "c_get_class_new",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
+                    "F_arguments": "flag",
+                    "F_name_function": "get_class_new",
+                    "F_name_generic": "get_class_new",
+                    "F_name_impl": "get_class_new",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_getClassNew",
+                    "cxx_rv_decl": "Class1 * SHCXX_rv",
+                    "function_name": "getClassNew",
+                    "underscore_name": "get_class_new"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_type": "OWN_Class1",
@@ -3552,80 +3658,6 @@
                         "stmt1": "py_shadow_*_result",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "owner": "caller"
-                    },
-                    "declarator": {
-                        "name": "getClassNew",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "Class1"
-                    ],
-                    "typemap_name": "Class1"
-                },
-                "decl": "Class1 * getClassNew(int flag) +owner(caller)",
-                "declgen": "Class1 * getClassNew(int flag +value) +owner(caller)",
-                "doxygen": {
-                    "brief": "Return pointer to new Class1 instance."
-                },
-                "fmtdict": {
-                    "C_call_list": "flag",
-                    "C_name": "OWN_get_class_new",
-                    "C_prototype": "int flag,\t OWN_Class1 * SHadow_rv",
-                    "C_return_type": "OWN_Class1 *",
-                    "F_C_arguments": "flag,\t SHT_crv",
-                    "F_C_call": "c_get_class_new",
-                    "F_C_name": "c_get_class_new",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "flag,\t SHT_rv%cxxmem",
-                    "F_arguments": "flag",
-                    "F_name_function": "get_class_new",
-                    "F_name_generic": "get_class_new",
-                    "F_name_impl": "get_class_new",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_getClassNew",
-                    "cxx_rv_decl": "Class1 * SHCXX_rv",
-                    "function_name": "getClassNew",
-                    "underscore_name": "get_class_new"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             }
         ],

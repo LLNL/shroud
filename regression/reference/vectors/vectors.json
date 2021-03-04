@@ -14,19 +14,7 @@
         ],
         "functions": [
             {
-                "_fmtresult": {
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
-                        "stmtc1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_sum",
@@ -73,7 +61,14 @@
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +rank(1))",
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_sum_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG)",
                     "F_arguments": "arg",
@@ -85,76 +80,22 @@
                     "function_name": "vector_sum",
                     "underscore_name": "vector_sum"
                 },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "fortran": true
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_in_buf_native",
-                            "stmt1": "c_vector_in_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_in_native",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_vector_&_in_buf_native",
-                            "stmtc1": "c_vector_in_buf"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
-                        "stmt1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -204,7 +145,58 @@
                 },
                 "decl": "int vector_sum(const std::vector<int> &arg)",
                 "declgen": "int vector_sum(const std::vector<int> & arg +rank(1)+size)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<int *>\t(&SHCXX_arg)",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_in_buf_native",
+                            "stmt1": "c_vector_in_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_in_native",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_&_in_buf_native",
+                            "stmtc1": "c_vector_in_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_sum_bufferify",
                     "C_prototype": "const int * arg,\t long Sarg",
@@ -219,16 +211,27 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_sum"
                 },
-                "generated_suffix": "buf",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out",
@@ -275,7 +278,14 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_bufferify",
                     "F_arg_c_call": "Darg",
                     "F_arguments": "arg",
@@ -289,60 +299,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out"
-                },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -392,7 +352,59 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_out_native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_&_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_bufferify",
                     "C_prototype": "VEC_SHROUD_array *Darg",
@@ -405,17 +417,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_with_num",
@@ -463,23 +468,6 @@
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
-                "fmtdict": {
-                    "F_C_call": "c_vector_iota_out_with_num_bufferify",
-                    "F_arg_c_call": "Darg",
-                    "F_arguments": "arg",
-                    "F_name_function": "vector_iota_out_with_num",
-                    "F_name_generic": "vector_iota_out_with_num",
-                    "F_name_impl": "vector_iota_out_with_num",
-                    "F_result": "num",
-                    "F_result_clause": "\fresult(num)",
-                    "F_subprogram": "function",
-                    "function_name": "vector_iota_out_with_num",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "vector_iota_out_with_num"
-                },
                 "fstatements": {
                     "c_buf": {
                         "ret": [
@@ -509,53 +497,27 @@
                 },
                 "wrap": {
                     "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_vector_iota_out_with_num_bufferify",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_name_function": "vector_iota_out_with_num",
+                    "F_name_generic": "vector_iota_out_with_num",
+                    "F_name_impl": "vector_iota_out_with_num",
+                    "F_result": "num",
+                    "F_result_clause": "\fresult(num)",
+                    "F_subprogram": "function",
+                    "function_name": "vector_iota_out_with_num",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "vector_iota_out_with_num"
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -606,21 +568,6 @@
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function and\nreturn the number of items copied into argument\nby setting fstatements for both C and Fortran.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "*SHCXX_arg",
-                    "C_name": "VEC_vector_iota_out_with_num_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
-                    "C_return_type": "long",
-                    "F_C_arguments": "Darg",
-                    "F_C_name": "c_vector_iota_out_with_num_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "function_name": "vector_iota_out_with_num",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
-                    "underscore_name": "vector_iota_out_with_num"
-                },
                 "fstatements": {
                     "c_buf": {
                         "ret": [
@@ -651,9 +598,69 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_out_native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_&_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "VEC_vector_iota_out_with_num_bufferify",
+                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_return_type": "long",
+                    "F_C_arguments": "Darg",
+                    "F_C_name": "c_vector_iota_out_with_num_bufferify",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "function_name": "vector_iota_out_with_num",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "vector_iota_out_with_num"
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_with_num2",
@@ -701,23 +708,6 @@
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
                 },
-                "fmtdict": {
-                    "F_C_call": "c_vector_iota_out_with_num2_bufferify",
-                    "F_arg_c_call": "Darg",
-                    "F_arguments": "arg",
-                    "F_name_function": "vector_iota_out_with_num2",
-                    "F_name_generic": "vector_iota_out_with_num2",
-                    "F_name_impl": "vector_iota_out_with_num2",
-                    "F_result": "num",
-                    "F_result_clause": "\fresult(num)",
-                    "F_subprogram": "function",
-                    "function_name": "vector_iota_out_with_num2",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "vector_iota_out_with_num2"
-                },
                 "fstatements": {
                     "f": {
                         "declare": [
@@ -741,53 +731,27 @@
                 },
                 "wrap": {
                     "fortran": true
+                },
+                "zz_fmtdict": {
+                    "F_C_call": "c_vector_iota_out_with_num2_bufferify",
+                    "F_arg_c_call": "Darg",
+                    "F_arguments": "arg",
+                    "F_name_function": "vector_iota_out_with_num2",
+                    "F_name_generic": "vector_iota_out_with_num2",
+                    "F_name_impl": "vector_iota_out_with_num2",
+                    "F_result": "num",
+                    "F_result_clause": "\fresult(num)",
+                    "F_subprogram": "function",
+                    "function_name": "vector_iota_out_with_num2",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
+                    "underscore_name": "vector_iota_out_with_num2"
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -838,20 +802,6 @@
                     "brief": "Copy vector into Fortran input array",
                     "description": "Convert subroutine in to a function.\nReturn the number of items copied into argument\nby setting fstatements for the Fortran wrapper only.\n"
                 },
-                "fmtdict": {
-                    "C_call_list": "*SHCXX_arg",
-                    "C_name": "VEC_vector_iota_out_with_num2_bufferify",
-                    "C_prototype": "VEC_SHROUD_array *Darg",
-                    "C_return_type": "void",
-                    "F_C_arguments": "Darg",
-                    "F_C_name": "c_vector_iota_out_with_num2_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "function_name": "vector_iota_out_with_num2",
-                    "function_suffix": "_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
-                    "underscore_name": "vector_iota_out_with_num2"
-                },
                 "fstatements": {
                     "f": {
                         "declare": [
@@ -876,9 +826,68 @@
                 },
                 "wrap": {
                     "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_out_native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_&_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "*SHCXX_arg",
+                    "C_name": "VEC_vector_iota_out_with_num2_bufferify",
+                    "C_prototype": "VEC_SHROUD_array *Darg",
+                    "C_return_type": "void",
+                    "F_C_arguments": "Darg",
+                    "F_C_name": "c_vector_iota_out_with_num2_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "vector_iota_out_with_num2",
+                    "function_suffix": "_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "vector_iota_out_with_num2"
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_alloc",
@@ -927,7 +936,15 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_alloc_bufferify",
                     "F_arg_c_call": "Darg",
                     "F_arguments": "arg",
@@ -941,61 +958,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
-                },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_allocatable_native",
-                            "stmt1": "f_vector_out_allocatable",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1047,7 +1013,60 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_out_allocatable_native",
+                            "stmt1": "f_vector_out_allocatable",
+                            "stmtc0": "c_vector_&_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_alloc_bufferify",
                     "C_prototype": "VEC_SHROUD_array *Darg",
@@ -1060,18 +1079,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_alloc"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
@@ -1120,7 +1131,15 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "fmtdict": {
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_inout_alloc_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
                     "F_arguments": "arg",
@@ -1134,63 +1153,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
-                },
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_inout_buf_native",
-                            "stmt1": "c_vector_inout_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_inout_allocatable_native",
-                            "stmt1": "f_vector_inout_allocatable",
-                            "stmtc0": "c_vector_&_inout_buf_native",
-                            "stmtc1": "c_vector_inout_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1243,7 +1209,62 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran allocatable array"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "literalinclude": true,
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_inout_allocatable_native",
+                            "stmt1": "f_vector_inout_allocatable",
+                            "stmtc0": "c_vector_&_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_inout_alloc_bufferify",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
@@ -1256,18 +1277,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_inout_alloc"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "literalinclude": true,
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_increment",
@@ -1310,7 +1323,14 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +rank(1))",
-                "fmtdict": {
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_increment_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t Darg",
                     "F_arguments": "arg",
@@ -1324,62 +1344,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "vector_increment"
-                },
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "int",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_inout_buf_native",
-                            "stmt1": "c_vector_inout_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "INOUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_inout_native",
-                            "stmt1": "f_vector_inout",
-                            "stmtc0": "c_vector_&_inout_buf_native",
-                            "stmtc1": "c_vector_inout_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1426,7 +1394,61 @@
                 },
                 "decl": "void vector_increment(std::vector<int> &arg)",
                 "declgen": "void vector_increment(std::vector<int> & arg +context+rank(1)+size)",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "int",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_inout_buf_native",
+                            "stmt1": "c_vector_inout_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "int",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "INOUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_inout_native",
+                            "stmt1": "f_vector_inout",
+                            "stmtc0": "c_vector_&_inout_buf_native",
+                            "stmtc1": "c_vector_inout_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_increment_bufferify",
                     "C_prototype": "int * arg,\t long Sarg,\t VEC_SHROUD_array *Darg",
@@ -1439,17 +1461,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "vector_increment"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_iota_out_d",
@@ -1496,7 +1511,13 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_iota_out_d_bufferify",
                     "F_arg_c_call": "Darg",
                     "F_arguments": "arg",
@@ -1510,59 +1531,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "vector_iota_out_d"
-                },
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "double",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHCXX_arg",
-                            "cxx_type": "double",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "2",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
-                            "stmt1": "c_vector_out_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_context": "Darg",
-                            "cxx_T": "double",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_var": "arg",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_double",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_out_native",
-                            "stmt1": "f_vector_out",
-                            "stmtc0": "c_vector_&_out_buf_native",
-                            "stmtc1": "c_vector_out_buf"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1612,7 +1584,58 @@
                 "doxygen": {
                     "brief": "Copy vector into Fortran input array"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_lua": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "double",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "SHCXX_arg",
+                            "cxx_type": "double",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "2",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt1": "c_vector_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_context": "Darg",
+                            "cxx_T": "double",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "arg",
+                            "hnamefunc0": "VEC_SHROUD_copy_array_double",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_out_native",
+                            "stmt1": "f_vector_out",
+                            "stmtc0": "c_vector_&_out_buf_native",
+                            "stmtc1": "c_vector_out_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "*SHCXX_arg",
                     "C_name": "VEC_vector_iota_out_d_bufferify",
                     "C_prototype": "VEC_SHROUD_array *Darg",
@@ -1625,29 +1648,10 @@
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "vector_iota_out_d"
-                },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_lua": false
-                },
-                "wrap": {
-                    "c": true
                 }
             },
             {
-                "_fmtresult": {
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result_buf",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result_buf",
-                        "stmtc1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_count",
@@ -1698,7 +1702,13 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
-                "fmtdict": {
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_vector_string_count_bufferify",
                     "F_arg_c_call": "arg,\t size(arg, kind=C_LONG),\t len(arg, kind=C_INT)",
                     "F_arguments": "arg",
@@ -1710,77 +1720,22 @@
                     "function_name": "vector_string_count",
                     "underscore_name": "vector_string_count"
                 },
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "fortran": true
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result_buf",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result_buf",
+                        "stmtc1": "c_default"
+                    }
                 }
             },
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "c_var_len": "Narg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "std::string",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_in_buf_string",
-                            "stmt1": "c_vector_in_buf_string"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "c_var_len": "Narg",
-                            "c_var_size": "Sarg",
-                            "cxx_T": "std::string",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "arg",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "size": "size(arg)",
-                            "stmt0": "f_vector_&_in_string",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_vector_&_in_buf_string",
-                            "stmtc1": "c_vector_in_buf_string"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result_buf",
-                        "stmt1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -1835,7 +1790,59 @@
                     "brief": "count number of underscore in vector of strings",
                     "decription": "The input will be copied in order to create the C++ argument\n"
                 },
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "c_var_len": "Narg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "std::string",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_arg)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_vector_&_in_buf_string",
+                            "stmt1": "c_vector_in_buf_string"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "c_var_len": "Narg",
+                            "c_var_size": "Sarg",
+                            "cxx_T": "std::string",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "arg",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "size": "size(arg)",
+                            "stmt0": "f_vector_&_in_string",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_vector_&_in_buf_string",
+                            "stmtc1": "c_vector_in_buf_string"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "VEC_vector_string_count_bufferify",
                     "C_prototype": "const char * arg,\t long Sarg,\t int Narg",
@@ -1850,15 +1857,27 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "vector_string_count"
                 },
-                "generated_suffix": "buf",
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_fill",
@@ -1906,19 +1925,20 @@
                     "brief": "Fill in arg with some animal names",
                     "description": "The C++ function returns void. But the C and Fortran wrappers return\nan int with the number of items added to arg.\n"
                 },
-                "fmtdict": {
-                    "function_name": "vector_string_fill",
-                    "underscore_name": "vector_string_fill"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "vector_string_fill",
+                    "underscore_name": "vector_string_fill"
+                }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "vector_string_append",
@@ -1965,35 +1985,20 @@
                 "doxygen": {
                     "brief": "append '-like' to names."
                 },
-                "fmtdict": {
-                    "function_name": "vector_string_append",
-                    "underscore_name": "vector_string_append"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false,
                     "wrap_lua": false,
                     "wrap_python": false
                 },
-                "wrap": {}
+                "wrap": {},
+                "zz_fmtdict": {
+                    "function_name": "vector_string_append",
+                    "underscore_name": "vector_string_append"
+                }
             },
             {
-                "_fmtresult": {
-                    "fmtf": {
-                        "cxx_type": "std::vector<{cxx_T}>",
-                        "f_assumed_shape": "(:)",
-                        "f_c_dimension": "(*)",
-                        "f_type": null,
-                        "f_var": "SHT_rv",
-                        "rank": "1",
-                        "sh_type": "SH_TYPE_OTHER",
-                        "size": "size(SHT_rv)",
-                        "stmt0": "f_vector_scalar_result_buf_allocatable",
-                        "stmt1": "f_vector_result_allocatable",
-                        "stmtc0": "c_vector_scalar_result_buf",
-                        "stmtc1": "c_vector_result_buf"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "attrs": {
                         "rank": 1
@@ -2042,7 +2047,11 @@
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
-                "fmtdict": {
+                "options": {},
+                "wrap": {
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "F_C_call": "c_return_vector_alloc_bufferify",
                     "F_arg_c_call": "n,\t DSHF_rv",
                     "F_arguments": "n",
@@ -2054,13 +2063,100 @@
                     "function_name": "ReturnVectorAlloc",
                     "underscore_name": "return_vector_alloc"
                 },
-                "options": {},
-                "wrap": {
-                    "fortran": true
+                "zz_fmtresult": {
+                    "fmtf": {
+                        "cxx_type": "std::vector<{cxx_T}>",
+                        "f_assumed_shape": "(:)",
+                        "f_c_dimension": "(*)",
+                        "f_type": null,
+                        "f_var": "SHT_rv",
+                        "rank": "1",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "size": "size(SHT_rv)",
+                        "stmt0": "f_vector_scalar_result_buf_allocatable",
+                        "stmt1": "f_vector_result_allocatable",
+                        "stmtc0": "c_vector_scalar_result_buf",
+                        "stmtc1": "c_vector_result_buf"
+                    }
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "_generated": "arg_to_buffer",
+                "ast": {
+                    "attrs": {
+                        "rank": 1
+                    },
+                    "declarator": {
+                        "name": "ReturnVectorAlloc",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "n",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "context": "DSHF_rv",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "SHF_rv",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "out",
+                                "is_result": true
+                            },
+                            "specifier": [
+                                "std::vector"
+                            ],
+                            "template_arguments": [
+                                {
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "typemap_name": "std::vector"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
+                "declgen": "void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1)",
+                "doxygen": {
+                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
                     "SHF_rv": {
                         "fmtc": {
                             "c_addr": "",
@@ -2137,7 +2233,20 @@
                         }
                     }
                 },
-                "_fmtresult": {
+                "zz_fmtdict": {
+                    "C_call_list": "n",
+                    "C_name": "VEC_return_vector_alloc_bufferify",
+                    "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
+                    "C_return_type": "void",
+                    "F_C_arguments": "n,\t DSHF_rv",
+                    "F_C_name": "c_return_vector_alloc_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "cxx_rv_decl": "*SHC_rv",
+                    "function_name": "ReturnVectorAlloc",
+                    "function_suffix": "_bufferify",
+                    "underscore_name": "return_vector_alloc"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
                         "c_type": "void",
@@ -2152,93 +2261,6 @@
                         "stmt0": "c_void_scalar_result_buf",
                         "stmt1": "c_default"
                     }
-                },
-                "_generated": "arg_to_buffer",
-                "ast": {
-                    "attrs": {
-                        "rank": 1
-                    },
-                    "declarator": {
-                        "name": "ReturnVectorAlloc",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "n",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "stmts_suffix": "buf",
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "context": "DSHF_rv",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1)",
-                "doxygen": {
-                    "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
-                },
-                "fmtdict": {
-                    "C_call_list": "n",
-                    "C_name": "VEC_return_vector_alloc_bufferify",
-                    "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
-                    "C_return_type": "void",
-                    "F_C_arguments": "n,\t DSHF_rv",
-                    "F_C_name": "c_return_vector_alloc_bufferify",
-                    "F_C_subprogram": "subroutine",
-                    "cxx_rv_decl": "*SHC_rv",
-                    "function_name": "ReturnVectorAlloc",
-                    "function_suffix": "_bufferify",
-                    "underscore_name": "return_vector_alloc"
-                },
-                "generated_suffix": "buf",
-                "options": {},
-                "wrap": {
-                    "c": true
                 }
             }
         ],

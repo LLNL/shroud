@@ -3,33 +3,63 @@
     "library": {
         "classes": [
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [],
-                "fmtdict": {
-                    "C_header_filename": "wrapCstruct_as_class.h",
-                    "C_impl_filename": "wrapCstruct_as_class.c",
-                    "C_name_scope": "Cstruct_as_class_",
-                    "C_type_name": "Cstruct_as_class",
-                    "F_derived_name": "cstruct_as_class",
-                    "F_name_scope": "cstruct_as_class_",
-                    "PY_PyObject": "PY_Cstruct_as_class",
-                    "PY_PyTypeObject": "PY_Cstruct_as_class_Type",
-                    "PY_capsule_name": "PY_Cstruct_as_class_capsule_name",
-                    "PY_from_object_func": "PP_Cstruct_as_class_from_Object",
-                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
-                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
-                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_Cstruct_as_class_to_Object",
-                    "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
-                    "PY_type_filename": "pyCstruct_as_classtype.c",
-                    "class_scope": "Cstruct_as_class::",
-                    "cxx_class": "Cstruct_as_class",
-                    "cxx_type": "Cstruct_as_class",
-                    "file_scope": "Cstruct_as_class"
-                },
                 "functions": [
                     {
-                        "_fmtargs": {
+                        "__FUNCTION__": "****************************************",
+                        "_generated": "struct_as_class_ctor",
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "name": "Cstruct_as_class_ctor"
+                            },
+                            "params": [
+                                {
+                                    "declarator": {
+                                        "name": "x1",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct_member": "x1"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                },
+                                {
+                                    "declarator": {
+                                        "name": "y1",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in",
+                                        "struct_member": "y1"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "Cstruct_as_class"
+                            ],
+                            "typemap_name": "Cstruct_as_class"
+                        },
+                        "decl": "Cstruct_as_class_ctor",
+                        "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
+                        "options": {
+                            "wrap_c": false,
+                            "wrap_fortran": false,
+                            "wrap_lua": false
+                        },
+                        "wrap": {
+                            "python": true
+                        },
+                        "zz_fmtargs": {
                             "x1": {
                                 "fmtpy": {
                                     "PY_member_object": "XXXPY_member_object",
@@ -77,7 +107,14 @@
                                 }
                             }
                         },
-                        "_fmtresult": {
+                        "zz_fmtdict": {
+                            "PY_name_impl": "PY_Cstruct_as_class_tp_init",
+                            "PY_type_impl": "PY_Cstruct_as_class_tp_init",
+                            "PY_type_method": "tp_init",
+                            "function_name": "Cstruct_as_class_ctor",
+                            "underscore_name": "cstruct_as_class_ctor"
+                        },
+                        "zz_fmtresult": {
                             "fmtpy": {
                                 "PYN_descr": "PY_Cstruct_as_class_array_descr",
                                 "PY_build_format": "O",
@@ -101,64 +138,6 @@
                                 "value_var": "SHValue_rv",
                                 "vargs": "SHCXX_rv"
                             }
-                        },
-                        "_generated": "struct_as_class_ctor",
-                        "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "name": "Cstruct_as_class_ctor"
-                            },
-                            "params": [
-                                {
-                                    "declarator": {
-                                        "name": "x1",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "x1"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                },
-                                {
-                                    "declarator": {
-                                        "name": "y1",
-                                        "pointer": []
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in",
-                                        "struct_member": "y1"
-                                    },
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "specifier": [
-                                "Cstruct_as_class"
-                            ],
-                            "typemap_name": "Cstruct_as_class"
-                        },
-                        "decl": "Cstruct_as_class_ctor",
-                        "declgen": "Cstruct_as_class(int x1, int y1) +name(Cstruct_as_class_ctor)",
-                        "fmtdict": {
-                            "PY_name_impl": "PY_Cstruct_as_class_tp_init",
-                            "PY_type_impl": "PY_Cstruct_as_class_tp_init",
-                            "PY_type_method": "tp_init",
-                            "function_name": "Cstruct_as_class_ctor",
-                            "underscore_name": "cstruct_as_class_ctor"
-                        },
-                        "options": {
-                            "wrap_c": false,
-                            "wrap_fortran": false,
-                            "wrap_lua": false
-                        },
-                        "wrap": {
-                            "python": true
                         }
                     }
                 ],
@@ -171,6 +150,7 @@
                 "typemap_name": "Cstruct_as_class",
                 "variables": [
                     {
+                        "__VARIABLE__": "****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "x1",
@@ -181,7 +161,12 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "fmtdict": {
+                        "name": "x1",
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_x1_getter",
                             "PY_setter": "PY_Cstruct_as_class_x1_setter",
                             "PY_struct_context": "self->obj->",
@@ -191,14 +176,10 @@
                             "variable_lower": "x1",
                             "variable_name": "x1",
                             "variable_upper": "X1"
-                        },
-                        "name": "x1",
-                        "options": {},
-                        "wrap": {
-                            "python": true
                         }
                     },
                     {
+                        "__VARIABLE__": "****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "y1",
@@ -209,7 +190,12 @@
                             ],
                             "typemap_name": "int"
                         },
-                        "fmtdict": {
+                        "name": "y1",
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "PY_getter": "PY_Cstruct_as_class_y1_getter",
                             "PY_setter": "PY_Cstruct_as_class_y1_setter",
                             "PY_struct_context": "self->obj->",
@@ -219,21 +205,104 @@
                             "variable_lower": "y1",
                             "variable_name": "y1",
                             "variable_upper": "Y1"
-                        },
-                        "name": "y1",
-                        "options": {},
-                        "wrap": {
-                            "python": true
                         }
                     }
                 ],
                 "wrap": {
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "C_header_filename": "wrapCstruct_as_class.h",
+                    "C_impl_filename": "wrapCstruct_as_class.c",
+                    "C_name_scope": "Cstruct_as_class_",
+                    "C_type_name": "Cstruct_as_class",
+                    "F_derived_name": "cstruct_as_class",
+                    "F_name_scope": "cstruct_as_class_",
+                    "PY_PyObject": "PY_Cstruct_as_class",
+                    "PY_PyTypeObject": "PY_Cstruct_as_class_Type",
+                    "PY_capsule_name": "PY_Cstruct_as_class_capsule_name",
+                    "PY_from_object_func": "PP_Cstruct_as_class_from_Object",
+                    "PY_struct_array_descr_create": "PY_Cstruct_as_class_create_array_descr",
+                    "PY_struct_array_descr_name": "Cstruct_as_class_dtype",
+                    "PY_struct_array_descr_variable": "PY_Cstruct_as_class_array_descr",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Cstruct_as_class_to_Object",
+                    "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
+                    "PY_type_filename": "pyCstruct_as_classtype.c",
+                    "class_scope": "Cstruct_as_class::",
+                    "cxx_class": "Cstruct_as_class",
+                    "cxx_type": "Cstruct_as_class",
+                    "file_scope": "Cstruct_as_class"
                 }
             },
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [],
-                "fmtdict": {
+                "name": "Cstruct_as_numpy",
+                "options": {
+                    "PY_struct_arg": "numpy"
+                },
+                "parse_keyword": "struct",
+                "scope": "Cstruct_as_numpy::",
+                "typemap_name": "Cstruct_as_numpy",
+                "variables": [
+                    {
+                        "__VARIABLE__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "x2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "x2",
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "x2",
+                            "variable_lower": "x2",
+                            "variable_name": "x2",
+                            "variable_upper": "X2"
+                        }
+                    },
+                    {
+                        "__VARIABLE__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "y2",
+                                "pointer": []
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "name": "y2",
+                        "options": {},
+                        "wrap": {
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "c_type": "int",
+                            "cxx_type": "int",
+                            "field_name": "y2",
+                            "variable_lower": "y2",
+                            "variable_name": "y2",
+                            "variable_upper": "Y2"
+                        }
+                    }
+                ],
+                "wrap": {
+                    "python": true
+                },
+                "zz_fmtdict": {
                     "C_header_filename": "wrapCstruct_as_numpy.h",
                     "C_impl_filename": "wrapCstruct_as_numpy.c",
                     "C_name_scope": "Cstruct_as_numpy_",
@@ -252,68 +321,6 @@
                     "cxx_class": "Cstruct_as_numpy",
                     "cxx_type": "Cstruct_as_numpy",
                     "file_scope": "Cstruct_as_numpy"
-                },
-                "name": "Cstruct_as_numpy",
-                "options": {
-                    "PY_struct_arg": "numpy"
-                },
-                "parse_keyword": "struct",
-                "scope": "Cstruct_as_numpy::",
-                "typemap_name": "Cstruct_as_numpy",
-                "variables": [
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "x2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "fmtdict": {
-                            "c_type": "int",
-                            "cxx_type": "int",
-                            "field_name": "x2",
-                            "variable_lower": "x2",
-                            "variable_name": "x2",
-                            "variable_upper": "X2"
-                        },
-                        "name": "x2",
-                        "options": {},
-                        "wrap": {
-                            "python": true
-                        }
-                    },
-                    {
-                        "ast": {
-                            "declarator": {
-                                "name": "y2",
-                                "pointer": []
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        "fmtdict": {
-                            "c_type": "int",
-                            "cxx_type": "int",
-                            "field_name": "y2",
-                            "variable_lower": "y2",
-                            "variable_name": "y2",
-                            "variable_upper": "Y2"
-                        },
-                        "name": "y2",
-                        "options": {},
-                        "wrap": {
-                            "python": true
-                        }
-                    }
-                ],
-                "wrap": {
-                    "python": true
                 }
             }
         ],
@@ -330,81 +337,7 @@
         ],
         "functions": [
             {
-                "_fmtargs": {
-                    "s1": {
-                        "fmtpy": {
-                            "PYN_descr": "PY_Cstruct_as_class_array_descr",
-                            "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
-                            "PyObject": "PY_Cstruct_as_class",
-                            "PyTypeObject": "PY_Cstruct_as_class_Type",
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "Cstruct_as_class",
-                            "c_var": "s1",
-                            "ctor_expr": "*s1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s1",
-                            "cxx_type": "Cstruct_as_class",
-                            "cxx_var": "s1",
-                            "data_var": "SHData_s1",
-                            "numpy_type": null,
-                            "py_object": "PY_Cstruct_as_class",
-                            "py_var": "SHPy_s1",
-                            "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_*_in_class",
-                            "stmt1": "py_struct_*_in_class",
-                            "value_var": "SHValue_s1"
-                        }
-                    },
-                    "s2": {
-                        "fmtpy": {
-                            "PYN_descr": "PY_Cstruct_as_numpy_array_descr",
-                            "PY_to_object_idtor_func": "PP_Cstruct_as_numpy_to_Object_idtor",
-                            "PyObject": "PY_Cstruct_as_numpy",
-                            "PyTypeObject": "PY_Cstruct_as_numpy_Type",
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "Cstruct_as_numpy",
-                            "c_var": "s2",
-                            "ctor_expr": "*s2",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "s2",
-                            "cxx_type": "Cstruct_as_numpy",
-                            "cxx_var": "s2",
-                            "data_var": "SHData_s2",
-                            "numpy_type": null,
-                            "py_var": "SHPy_s2",
-                            "pytmp_var": "SHTPy_s2",
-                            "size_var": "SHSize_s2",
-                            "stmt0": "py_struct_*_in_numpy",
-                            "stmt1": "py_struct_*_in_numpy",
-                            "value_var": "SHValue_s2"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtpy": {
-                        "c_deref": "",
-                        "c_var": "SHCXX_rv",
-                        "ctor_expr": "SHCXX_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHCXX_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHCXX_rv",
-                        "data_var": "SHData_rv",
-                        "numpy_type": "NPY_INT",
-                        "py_var": "SHTPy_rv",
-                        "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
-                        "stmt1": "py_default",
-                        "value_var": "SHValue_rv"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptBothStructs",
@@ -462,14 +395,89 @@
                 },
                 "decl": "int acceptBothStructs( Cstruct_as_class *s1 +intent(in), Cstruct_as_numpy *s2 +intent(in))",
                 "declgen": "int acceptBothStructs(Cstruct_as_class * s1 +intent(in), Cstruct_as_numpy * s2 +intent(in))",
-                "fmtdict": {
+                "options": {},
+                "wrap": {
+                    "python": true
+                },
+                "zz_fmtargs": {
+                    "s1": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct_as_class_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct_as_class_to_Object_idtor",
+                            "PyObject": "PY_Cstruct_as_class",
+                            "PyTypeObject": "PY_Cstruct_as_class_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "Cstruct_as_class",
+                            "c_var": "s1",
+                            "ctor_expr": "*s1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "s1",
+                            "cxx_type": "Cstruct_as_class",
+                            "cxx_var": "s1",
+                            "data_var": "SHData_s1",
+                            "numpy_type": null,
+                            "py_object": "PY_Cstruct_as_class",
+                            "py_var": "SHPy_s1",
+                            "size_var": "SHSize_s1",
+                            "stmt0": "py_struct_*_in_class",
+                            "stmt1": "py_struct_*_in_class",
+                            "value_var": "SHValue_s1"
+                        }
+                    },
+                    "s2": {
+                        "fmtpy": {
+                            "PYN_descr": "PY_Cstruct_as_numpy_array_descr",
+                            "PY_to_object_idtor_func": "PP_Cstruct_as_numpy_to_Object_idtor",
+                            "PyObject": "PY_Cstruct_as_numpy",
+                            "PyTypeObject": "PY_Cstruct_as_numpy_Type",
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "Cstruct_as_numpy",
+                            "c_var": "s2",
+                            "ctor_expr": "*s2",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "s2",
+                            "cxx_type": "Cstruct_as_numpy",
+                            "cxx_var": "s2",
+                            "data_var": "SHData_s2",
+                            "numpy_type": null,
+                            "py_var": "SHPy_s2",
+                            "pytmp_var": "SHTPy_s2",
+                            "size_var": "SHSize_s2",
+                            "stmt0": "py_struct_*_in_numpy",
+                            "stmt1": "py_struct_*_in_numpy",
+                            "value_var": "SHValue_s2"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "PY_name_impl": "PY_acceptBothStructs",
                     "function_name": "acceptBothStructs",
                     "underscore_name": "accept_both_structs"
                 },
-                "options": {},
-                "wrap": {
-                    "python": true
+                "zz_fmtresult": {
+                    "fmtpy": {
+                        "c_deref": "",
+                        "c_var": "SHCXX_rv",
+                        "ctor_expr": "SHCXX_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHCXX_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHCXX_rv",
+                        "data_var": "SHData_rv",
+                        "numpy_type": "NPY_INT",
+                        "py_var": "SHTPy_rv",
+                        "size_var": "SHSize_rv",
+                        "stmt0": "py_native_scalar_result",
+                        "stmt1": "py_default",
+                        "value_var": "SHValue_rv"
+                    }
                 }
             }
         ],

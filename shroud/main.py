@@ -188,7 +188,7 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
     elif newlibrary.options.debug_testsuite:
         # Clean out this info since it's the same for all tests.
         # XXX - anytime a new fmt or option is added it changes all tests.
-        del out['library']['fmtdict']
+        del out['library']['zz_fmtdict']
         del out['library']['options']
         prune_entries(out, names=['__line__', 'linenumber'])
 

@@ -11,7 +11,59 @@
         ],
         "functions": [
             {
-                "_fmtresult": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "attrs": {
+                        "owner": "library"
+                    },
+                    "const": true,
+                    "declarator": {
+                        "name": "getConstStringPtrAlloc",
+                        "pointer": [
+                            {
+                                "ptr": "*"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
+                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "STR_get_const_string_ptr_alloc",
+                    "C_prototype": "void",
+                    "C_return_type": "const char *",
+                    "F_C_arguments": "",
+                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
+                    "F_C_name": "c_get_const_string_ptr_alloc",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHF_rv",
+                    "F_arguments": "",
+                    "F_name_function": "get_const_string_ptr_alloc",
+                    "F_name_generic": "get_const_string_ptr_alloc",
+                    "F_name_impl": "get_const_string_ptr_alloc",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "const std::string * SHCXX_rv",
+                    "function_name": "getConstStringPtrAlloc",
+                    "underscore_name": "get_const_string_ptr_alloc"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -40,114 +92,10 @@
                         "stmtc0": "c_string_scalar_result_buf",
                         "stmtc1": "c_string_scalar_result_buf"
                     }
-                },
-                "ast": {
-                    "attrs": {
-                        "owner": "library"
-                    },
-                    "const": true,
-                    "declarator": {
-                        "name": "getConstStringPtrAlloc",
-                        "pointer": [
-                            {
-                                "ptr": "*"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "intent": "result"
-                    },
-                    "params": [],
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
-                "declgen": "const std::string * getConstStringPtrAlloc(void) +owner(library)",
-                "fmtdict": {
-                    "C_name": "STR_get_const_string_ptr_alloc",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_get_const_string_ptr_alloc_bufferify",
-                    "F_C_name": "c_get_const_string_ptr_alloc",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
-                    "F_arguments": "",
-                    "F_name_function": "get_const_string_ptr_alloc",
-                    "F_name_generic": "get_const_string_ptr_alloc",
-                    "F_name_impl": "get_const_string_ptr_alloc",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "cxx_rv_decl": "const std::string * SHCXX_rv",
-                    "function_name": "getConstStringPtrAlloc",
-                    "underscore_name": "get_const_string_ptr_alloc"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_*_result_buf_allocatable",
-                            "stmt1": "c_string_*_result_buf_allocatable"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "",
-                        "cxx_member": "->",
-                        "cxx_type": "void",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
-                        "stmt1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -187,7 +135,50 @@
                 },
                 "decl": "const std::string * getConstStringPtrAlloc() +owner(library)",
                 "declgen": "void getConstStringPtrAlloc(const std::string * SHF_rv +context(DSHF_rv)+owner(library))",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "SHF_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_SHF_rv",
+                            "stmt0": "c_string_*_result_buf_allocatable",
+                            "stmt1": "c_string_*_result_buf_allocatable"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SHF_rv",
+                            "F_pointer": "SHPTR_SHF_rv",
+                            "c_var": "SHT_rv",
+                            "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "hnamefunc0": "STR_SHROUD_copy_string_and_free",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_*_result_buf_allocatable",
+                            "stmt1": "f_string_*_result_buf_allocatable",
+                            "stmtc0": "c_string_*_result_buf_allocatable",
+                            "stmtc1": "c_string_*_result_buf_allocatable"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_name": "STR_get_const_string_ptr_alloc_bufferify",
                     "C_prototype": "STR_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -199,10 +190,21 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "get_const_string_ptr_alloc"
                 },
-                "generated_suffix": "buf",
-                "options": {},
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "void",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_CPTR",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
                 }
             }
         ],

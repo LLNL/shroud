@@ -3,12 +3,24 @@
     "library": {
         "classes": [
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [
                     "header1.hpp",
                     "header2.hpp",
                     "forward.hpp"
                 ],
-                "fmtdict": {
+                "name": "Class3",
+                "options": {},
+                "parse_keyword": "class",
+                "scope": "forward::Class3::",
+                "typemap_name": "forward::Class3",
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "lua": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
                     "CXX_this_call": "SH_this->",
                     "C_header_filename": "wrapClass3.h",
                     "C_impl_filename": "wrapClass3.cpp",
@@ -36,53 +48,67 @@
                     "cxx_type": "Class3",
                     "file_scope": "Class3",
                     "hnamefunc0": "capsule_data_helper"
-                },
-                "name": "Class3",
-                "options": {},
-                "parse_keyword": "class",
-                "scope": "forward::Class3::",
-                "typemap_name": "forward::Class3",
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "lua": true,
-                    "python": true
                 }
             },
             {
+                "__CLASS__": "****************************************",
                 "cxx_header": [],
-                "fmtdict": {
-                    "CXX_this_call": "SH_this->",
-                    "C_header_filename": "wrapClass2.h",
-                    "C_impl_filename": "wrapClass2.cpp",
-                    "C_name_scope": "Class2_",
-                    "C_type_name": "FOR_Class2",
-                    "F_derived_name": "class2",
-                    "F_name_scope": "class2_",
-                    "LUA_class_reg": "l_Class2_Reg",
-                    "LUA_ctor_name": "Class2",
-                    "LUA_metadata": "Class2.metatable",
-                    "LUA_this_call": "SH_this->self->",
-                    "LUA_userdata_member": "self",
-                    "LUA_userdata_type": "l_Class2_Type",
-                    "LUA_userdata_var": "SH_this",
-                    "PY_PyObject": "PY_Class2",
-                    "PY_PyTypeObject": "PY_Class2_Type",
-                    "PY_capsule_name": "PY_Class2_capsule_name",
-                    "PY_from_object_func": "PP_Class2_from_Object",
-                    "PY_this_call": "self->obj->",
-                    "PY_to_object_func": "PP_Class2_to_Object",
-                    "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
-                    "PY_type_filename": "pyClass2type.cpp",
-                    "class_scope": "Class2::",
-                    "cxx_class": "Class2",
-                    "cxx_type": "Class2",
-                    "file_scope": "Class2",
-                    "hnamefunc0": "capsule_data_helper"
-                },
                 "functions": [
                     {
-                        "_fmtresult": {
+                        "__FUNCTION__": "****************************************",
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "Class2"
+                            ],
+                            "typemap_name": "forward::Class2"
+                        },
+                        "decl": "Class2()",
+                        "declgen": "Class2(void)",
+                        "options": {
+                            "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "FOR_Class2_ctor",
+                            "C_prototype": "FOR_Class2 * SHadow_rv",
+                            "C_return_type": "FOR_Class2 *",
+                            "F_C_arguments": "SHT_crv",
+                            "F_C_call": "c_class2_ctor",
+                            "F_C_name": "c_class2_ctor",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "class2",
+                            "F_name_impl": "class2_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "LUA_name": "ctor",
+                            "LUA_name_impl": "l_Class2_ctor",
+                            "PY_name_impl": "PY_Class2_tp_init",
+                            "PY_type_impl": "PY_Class2_tp_init",
+                            "PY_type_method": "tp_init",
+                            "cxx_rv_decl": "forward::Class2 SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "zz_fmtresult": {
                             "fmtc": {
                                 "c_const": "",
                                 "c_type": "FOR_Class2",
@@ -137,67 +163,10 @@
                                 "value_var": "SHValue_rv",
                                 "vargs": "SHCXX_rv"
                             }
-                        },
-                        "_overloaded": true,
-                        "ast": {
-                            "attrs": {
-                                "_constructor": true,
-                                "_name": "ctor"
-                            },
-                            "metaattrs": {
-                                "intent": "result"
-                            },
-                            "params": [],
-                            "specifier": [
-                                "Class2"
-                            ],
-                            "typemap_name": "forward::Class2"
-                        },
-                        "decl": "Class2()",
-                        "declgen": "Class2(void)",
-                        "fmtdict": {
-                            "C_name": "FOR_Class2_ctor",
-                            "C_prototype": "FOR_Class2 * SHadow_rv",
-                            "C_return_type": "FOR_Class2 *",
-                            "F_C_arguments": "SHT_crv",
-                            "F_C_call": "c_class2_ctor",
-                            "F_C_name": "c_class2_ctor",
-                            "F_C_result_clause": "\fresult(SHT_rv)",
-                            "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
-                            "F_arg_c_call": "SHT_rv%cxxmem",
-                            "F_arguments": "",
-                            "F_name_function": "ctor",
-                            "F_name_generic": "class2",
-                            "F_name_impl": "class2_ctor",
-                            "F_result_clause": "\fresult(SHT_rv)",
-                            "F_subprogram": "function",
-                            "LUA_name": "ctor",
-                            "LUA_name_impl": "l_Class2_ctor",
-                            "PY_name_impl": "PY_Class2_tp_init",
-                            "PY_type_impl": "PY_Class2_tp_init",
-                            "PY_type_method": "tp_init",
-                            "cxx_rv_decl": "forward::Class2 SHCXX_rv",
-                            "function_name": "ctor",
-                            "underscore_name": "ctor"
-                        },
-                        "options": {
-                            "F_create_generic": true
-                        },
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "lua": true,
-                            "python": true
                         }
                     },
                     {
-                        "_fmtresult": {
-                            "fmtl": {
-                                "stmt0": "lua_shadow_scalar_dtor",
-                                "stmt1": "lua_shadow_dtor"
-                            }
-                        },
+                        "__FUNCTION__": "****************************************",
                         "ast": {
                             "attrs": {
                                 "_destructor": "Class2",
@@ -211,7 +180,14 @@
                         },
                         "decl": "~Class2()",
                         "declgen": "~Class2(void)",
-                        "fmtdict": {
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "lua": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "C_name": "FOR_Class2_dtor",
                             "C_prototype": "FOR_Class2 * self",
                             "C_return_type": "void",
@@ -239,16 +215,57 @@
                             "stmtc1": "c_shadow_dtor",
                             "underscore_name": "dtor"
                         },
+                        "zz_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_shadow_scalar_dtor",
+                                "stmt1": "lua_shadow_dtor"
+                            }
+                        }
+                    },
+                    {
+                        "__FUNCTION__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "func1",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "arg",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "tutorial::Class1"
+                                    ],
+                                    "typemap_name": "tutorial::Class1"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void func1(tutorial::Class1 *arg +intent(in))",
+                        "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
                         "options": {},
                         "wrap": {
                             "c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
-                        }
-                    },
-                    {
-                        "_fmtargs": {
+                        },
+                        "zz_fmtargs": {
                             "arg": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -318,47 +335,7 @@
                                 }
                             }
                         },
-                        "_fmtresult": {
-                            "fmtl": {
-                                "stmt0": "lua_subroutine",
-                                "stmt1": "lua_subroutine"
-                            }
-                        },
-                        "ast": {
-                            "declarator": {
-                                "name": "func1",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "tutorial::Class1"
-                                    ],
-                                    "typemap_name": "tutorial::Class1"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void func1(tutorial::Class1 *arg +intent(in))",
-                        "declgen": "void func1(tutorial::Class1 * arg +intent(in))",
-                        "fmtdict": {
+                        "zz_fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_func1",
                             "C_prototype": "FOR_Class2 * self,\t TUT_Class1 * arg",
@@ -388,16 +365,57 @@
                             "stmtc1": "c_default",
                             "underscore_name": "func1"
                         },
+                        "zz_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_subroutine",
+                                "stmt1": "lua_subroutine"
+                            }
+                        }
+                    },
+                    {
+                        "__FUNCTION__": "****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "acceptClass3",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "intent": "in"
+                                    },
+                                    "declarator": {
+                                        "name": "arg",
+                                        "pointer": [
+                                            {
+                                                "ptr": "*"
+                                            }
+                                        ]
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "Class3"
+                                    ],
+                                    "typemap_name": "forward::Class3"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void acceptClass3(Class3 *arg +intent(in))",
+                        "declgen": "void acceptClass3(Class3 * arg +intent(in))",
                         "options": {},
                         "wrap": {
                             "c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
-                        }
-                    },
-                    {
-                        "_fmtargs": {
+                        },
+                        "zz_fmtargs": {
                             "arg": {
                                 "fmtc": {
                                     "c_addr": "",
@@ -469,47 +487,7 @@
                                 }
                             }
                         },
-                        "_fmtresult": {
-                            "fmtl": {
-                                "stmt0": "lua_subroutine",
-                                "stmt1": "lua_subroutine"
-                            }
-                        },
-                        "ast": {
-                            "declarator": {
-                                "name": "acceptClass3",
-                                "pointer": []
-                            },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "intent": "in"
-                                    },
-                                    "declarator": {
-                                        "name": "arg",
-                                        "pointer": [
-                                            {
-                                                "ptr": "*"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "intent": "in"
-                                    },
-                                    "specifier": [
-                                        "Class3"
-                                    ],
-                                    "typemap_name": "forward::Class3"
-                                }
-                            ],
-                            "specifier": [
-                                "void"
-                            ],
-                            "typemap_name": "void"
-                        },
-                        "decl": "void acceptClass3(Class3 *arg +intent(in))",
-                        "declgen": "void acceptClass3(Class3 * arg +intent(in))",
-                        "fmtdict": {
+                        "zz_fmtdict": {
                             "C_call_list": "SHCXX_arg",
                             "C_name": "FOR_Class2_accept_class3",
                             "C_prototype": "FOR_Class2 * self,\t FOR_Class3 * arg",
@@ -539,12 +517,11 @@
                             "stmtc1": "c_default",
                             "underscore_name": "accept_class3"
                         },
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "lua": true,
-                            "python": true
+                        "zz_fmtresult": {
+                            "fmtl": {
+                                "stmt0": "lua_subroutine",
+                                "stmt1": "lua_subroutine"
+                            }
                         }
                     }
                 ],
@@ -558,6 +535,35 @@
                     "fortran": true,
                     "lua": true,
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapClass2.h",
+                    "C_impl_filename": "wrapClass2.cpp",
+                    "C_name_scope": "Class2_",
+                    "C_type_name": "FOR_Class2",
+                    "F_derived_name": "class2",
+                    "F_name_scope": "class2_",
+                    "LUA_class_reg": "l_Class2_Reg",
+                    "LUA_ctor_name": "Class2",
+                    "LUA_metadata": "Class2.metatable",
+                    "LUA_this_call": "SH_this->self->",
+                    "LUA_userdata_member": "self",
+                    "LUA_userdata_type": "l_Class2_Type",
+                    "LUA_userdata_var": "SH_this",
+                    "PY_PyObject": "PY_Class2",
+                    "PY_PyTypeObject": "PY_Class2_Type",
+                    "PY_capsule_name": "PY_Class2_capsule_name",
+                    "PY_from_object_func": "PP_Class2_from_Object",
+                    "PY_this_call": "self->obj->",
+                    "PY_to_object_func": "PP_Class2_to_Object",
+                    "PY_to_object_idtor_func": "PP_Class2_to_Object_idtor",
+                    "PY_type_filename": "pyClass2type.cpp",
+                    "class_scope": "Class2::",
+                    "cxx_class": "Class2",
+                    "cxx_type": "Class2",
+                    "file_scope": "Class2",
+                    "hnamefunc0": "capsule_data_helper"
                 }
             }
         ],
@@ -574,69 +580,7 @@
         ],
         "functions": [
             {
-                "_fmtargs": {
-                    "arg": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "arg",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(SHCXX_arg)",
-                            "cxx_type": "Cstruct1",
-                            "cxx_var": "SHCXX_arg",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_arg",
-                            "stmt0": "c_struct_*_in",
-                            "stmt1": "c_struct"
-                        },
-                        "fmtf": {
-                            "F_C_var": "arg",
-                            "F_pointer": "SHPTR_arg",
-                            "c_var": "arg",
-                            "f_intent": "IN",
-                            "f_type": "type(Cstruct1)",
-                            "f_var": "arg",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_struct_*_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_in",
-                            "stmtc1": "c_struct"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_get_value": "",
-                        "c_type": "int",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_nonconst_ptr": "&SHC_rv",
-                        "cxx_type": "int",
-                        "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_INT",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
-                        "stmt1": "c_default"
-                    },
-                    "fmtf": {
-                        "cxx_type": "int",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
-                        "stmtc1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "passStruct1",
@@ -672,7 +616,49 @@
                 },
                 "decl": "int passStruct1(const Cstruct1 *arg)",
                 "declgen": "int passStruct1(const Cstruct1 * arg)",
-                "fmtdict": {
+                "options": {
+                    "wrap_lua": false,
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "arg": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "arg",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "const_cast<Cstruct1 *>\t(SHCXX_arg)",
+                            "cxx_type": "Cstruct1",
+                            "cxx_var": "SHCXX_arg",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_arg",
+                            "stmt0": "c_struct_*_in",
+                            "stmt1": "c_struct"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg",
+                            "F_pointer": "SHPTR_arg",
+                            "c_var": "arg",
+                            "f_intent": "IN",
+                            "f_type": "type(Cstruct1)",
+                            "f_var": "arg",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_struct_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_struct_*_in",
+                            "stmtc1": "c_struct"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg",
                     "C_name": "FOR_pass_struct1",
                     "C_prototype": "const STR_cstruct1 * arg",
@@ -694,13 +680,34 @@
                     "function_name": "passStruct1",
                     "underscore_name": "pass_struct1"
                 },
-                "options": {
-                    "wrap_lua": false,
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "cxx_type": "int",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
                 }
             }
         ],

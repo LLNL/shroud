@@ -14,7 +14,47 @@
         ],
         "functions": [
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptFloatComplexInoutPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "float",
+                                "complex"
+                            ],
+                            "typemap_name": "float_complex"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
+                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -49,39 +89,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptFloatComplexInoutPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "float",
-                                "complex"
-                            ],
-                            "typemap_name": "float_complex"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptFloatComplexInoutPtr(float complex *arg1)",
-                "declgen": "void acceptFloatComplexInoutPtr(float complex * arg1)",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptFloatComplexInoutPtr",
                     "C_prototype": "float complex * arg1",
@@ -102,17 +110,49 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "accept_float_complex_inout_ptr"
-                },
-                "options": {
-                    "wrap_python": false
-                },
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptDoubleComplexInoutPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "double",
+                                "complex"
+                            ],
+                            "typemap_name": "double_complex"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
+                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -170,39 +210,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptDoubleComplexInoutPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptDoubleComplexInoutPtr(double complex *arg1)",
-                "declgen": "void acceptDoubleComplexInoutPtr(double complex * arg1)",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexInoutPtr",
                     "C_prototype": "double complex * arg1",
@@ -224,16 +232,52 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_inout_ptr"
+                }
+            },
+            {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptDoubleComplexOutPtr",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "double",
+                                "complex"
+                            ],
+                            "typemap_name": "double_complex"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
                 },
+                "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
                 "options": {},
                 "wrap": {
                     "c": true,
                     "fortran": true,
                     "python": true
-                }
-            },
-            {
-                "_fmtargs": {
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -290,42 +334,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptDoubleComplexOutPtr",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptDoubleComplexOutPtr(double complex *arg1 +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))",
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1",
                     "C_name": "acceptDoubleComplexOutPtr",
                     "C_prototype": "double complex * arg1",
@@ -347,64 +356,10 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_out_ptr"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "arg1": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "double complex",
-                            "c_var": "arg1",
-                            "ctor_expr": "creal(arg1), cimag(arg1)",
-                            "ctype_expr": "SHCPY_arg1.real + SHCPY_arg1.imag * I",
-                            "ctype_var": "SHCPY_arg1",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "arg1",
-                            "cxx_type": "std::complex<double>",
-                            "cxx_var": "arg1",
-                            "data_var": "SHData_arg1",
-                            "numpy_type": "NPY_DOUBLE",
-                            "py_ctype": "Py_complex",
-                            "py_var": "SHPy_arg1",
-                            "size_var": "SHSize_arg1",
-                            "stmt0": "py_native_*_inout",
-                            "stmt1": "py_native_*_inout",
-                            "value_var": "SHValue_arg1"
-                        }
-                    },
-                    "flag": {
-                        "fmtpy": {
-                            "array_size": "1",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_type": "int",
-                            "c_var": "flag",
-                            "ctor_expr": "flag",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "flag",
-                            "cxx_type": "int",
-                            "cxx_var": "flag",
-                            "data_var": "SHData_flag",
-                            "numpy_type": "NPY_INT",
-                            "py_var": "SHPy_flag",
-                            "size_var": "SHSize_flag",
-                            "stmt0": "py_native_*_out",
-                            "stmt1": "py_native_*_out",
-                            "value_var": "SHValue_flag"
-                        }
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "acceptDoubleComplexInoutPtrFlag",
@@ -460,21 +415,135 @@
                 "doxygen": {
                     "description": "Return two values so Py_BuildValue is used.\n"
                 },
-                "fmtdict": {
-                    "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
-                    "function_name": "acceptDoubleComplexInoutPtrFlag",
-                    "underscore_name": "accept_double_complex_inout_ptr_flag"
-                },
                 "options": {
                     "wrap_c": false,
                     "wrap_fortran": false
                 },
                 "wrap": {
                     "python": true
+                },
+                "zz_fmtargs": {
+                    "arg1": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "double complex",
+                            "c_var": "arg1",
+                            "ctor_expr": "creal(arg1), cimag(arg1)",
+                            "ctype_expr": "SHCPY_arg1.real + SHCPY_arg1.imag * I",
+                            "ctype_var": "SHCPY_arg1",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "arg1",
+                            "cxx_type": "std::complex<double>",
+                            "cxx_var": "arg1",
+                            "data_var": "SHData_arg1",
+                            "numpy_type": "NPY_DOUBLE",
+                            "py_ctype": "Py_complex",
+                            "py_var": "SHPy_arg1",
+                            "size_var": "SHSize_arg1",
+                            "stmt0": "py_native_*_inout",
+                            "stmt1": "py_native_*_inout",
+                            "value_var": "SHValue_arg1"
+                        }
+                    },
+                    "flag": {
+                        "fmtpy": {
+                            "array_size": "1",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_type": "int",
+                            "c_var": "flag",
+                            "ctor_expr": "flag",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "flag",
+                            "cxx_type": "int",
+                            "cxx_var": "flag",
+                            "data_var": "SHData_flag",
+                            "numpy_type": "NPY_INT",
+                            "py_var": "SHPy_flag",
+                            "size_var": "SHSize_flag",
+                            "stmt0": "py_native_*_out",
+                            "stmt1": "py_native_*_out",
+                            "value_var": "SHValue_flag"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "PY_name_impl": "PY_acceptDoubleComplexInoutPtrFlag",
+                    "function_name": "acceptDoubleComplexInoutPtrFlag",
+                    "underscore_name": "accept_double_complex_inout_ptr_flag"
                 }
             },
             {
-                "_fmtargs": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "acceptDoubleComplexOutPtrFlag",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "arg1",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "double",
+                                "complex"
+                            ],
+                            "typemap_name": "double_complex"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "flag",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void acceptDoubleComplexOutPtrFlag( double complex *arg1 +intent(out), int *flag +intent(out))",
+                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))",
+                "doxygen": {
+                    "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
+                },
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtargs": {
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -584,65 +653,7 @@
                         }
                     }
                 },
-                "ast": {
-                    "declarator": {
-                        "name": "acceptDoubleComplexOutPtrFlag",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "arg1",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "double",
-                                "complex"
-                            ],
-                            "typemap_name": "double_complex"
-                        },
-                        {
-                            "attrs": {
-                                "intent": "out"
-                            },
-                            "declarator": {
-                                "name": "flag",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "out"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void acceptDoubleComplexOutPtrFlag( double complex *arg1 +intent(out), int *flag +intent(out))",
-                "declgen": "void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out))",
-                "doxygen": {
-                    "description": "Return two values so Py_BuildValue is used.\nCreates a Py_complex for intent(out)\n"
-                },
-                "fmtdict": {
+                "zz_fmtdict": {
                     "C_call_list": "arg1,\t flag",
                     "C_name": "acceptDoubleComplexOutPtrFlag",
                     "C_prototype": "double complex * arg1,\t int * flag",
@@ -664,12 +675,6 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "accept_double_complex_out_ptr_flag"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             }
         ],

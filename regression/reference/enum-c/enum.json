@@ -14,6 +14,7 @@
         ],
         "enums": [
             {
+                "__ENUM__": "****************************************",
                 "_fmtmembers": {
                     "BLUE": {
                         "C_enum_member": "ENU_BLUE",
@@ -59,12 +60,6 @@
                     "name": "Color"
                 },
                 "decl": "enum Color {\n  RED = 10,\n  BLUE,\n  WHITE\n};\n",
-                "fmtdict": {
-                    "C_enum": "ENU_Color",
-                    "enum_lower": "color",
-                    "enum_name": "Color",
-                    "enum_upper": "COLOR"
-                },
                 "name": "Color",
                 "options": {},
                 "typemap_name": "Color",
@@ -72,9 +67,16 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "C_enum": "ENU_Color",
+                    "enum_lower": "color",
+                    "enum_name": "Color",
+                    "enum_upper": "COLOR"
                 }
             },
             {
+                "__ENUM__": "****************************************",
                 "_fmtmembers": {
                     "a1": {
                         "C_enum_member": "ENU_a1",
@@ -193,12 +195,6 @@
                     "name": "val"
                 },
                 "decl": "enum val {\n  a1,\n  b1 = 3,\n  c1,\n  d1 = b1 - a1,\n  e1 = d1,\n  f1,\n  g1,\n  h1 = 100,\n};\n",
-                "fmtdict": {
-                    "C_enum": "ENU_val",
-                    "enum_lower": "val",
-                    "enum_name": "val",
-                    "enum_upper": "VAL"
-                },
                 "name": "val",
                 "options": {},
                 "typemap_name": "val",
@@ -206,6 +202,12 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "C_enum": "ENU_val",
+                    "enum_lower": "val",
+                    "enum_name": "val",
+                    "enum_upper": "VAL"
                 }
             }
         ],

@@ -14,7 +14,58 @@
         ],
         "functions": [
             {
-                "_fmtresult": {
+                "__FUNCTION__": "****************************************",
+                "ast": {
+                    "const": true,
+                    "declarator": {
+                        "name": "LastFunctionCalled",
+                        "pointer": [
+                            {
+                                "ptr": "&"
+                            }
+                        ]
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "std::string"
+                    ],
+                    "typemap_name": "std::string"
+                },
+                "decl": "const std::string& LastFunctionCalled()",
+                "declgen": "const std::string & LastFunctionCalled(void)",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "NS_last_function_called",
+                    "C_prototype": "void",
+                    "C_return_type": "const char *",
+                    "F_C_arguments": "",
+                    "F_C_call": "c_last_function_called_bufferify",
+                    "F_C_name": "c_last_function_called",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "DSHF_rv",
+                    "F_arguments": "",
+                    "F_name_function": "last_function_called",
+                    "F_name_generic": "last_function_called",
+                    "F_name_impl": "last_function_called",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "PY_name_impl": "PY_LastFunctionCalled",
+                    "cxx_rv_decl": "const std::string & SHCXX_rv",
+                    "function_name": "LastFunctionCalled",
+                    "underscore_name": "last_function_called"
+                },
+                "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
                         "c_rv_decl": "const char * SHC_rv",
@@ -61,113 +112,10 @@
                         "stmt1": "py_string_&_result",
                         "value_var": "SHValue_rv"
                     }
-                },
-                "ast": {
-                    "const": true,
-                    "declarator": {
-                        "name": "LastFunctionCalled",
-                        "pointer": [
-                            {
-                                "ptr": "&"
-                            }
-                        ]
-                    },
-                    "metaattrs": {
-                        "deref": "allocatable",
-                        "intent": "result"
-                    },
-                    "params": [],
-                    "specifier": [
-                        "std::string"
-                    ],
-                    "typemap_name": "std::string"
-                },
-                "decl": "const std::string& LastFunctionCalled()",
-                "declgen": "const std::string & LastFunctionCalled(void)",
-                "fmtdict": {
-                    "C_name": "NS_last_function_called",
-                    "C_prototype": "void",
-                    "C_return_type": "const char *",
-                    "F_C_arguments": "",
-                    "F_C_call": "c_last_function_called_bufferify",
-                    "F_C_name": "c_last_function_called",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
-                    "F_arg_c_call": "DSHF_rv",
-                    "F_arguments": "",
-                    "F_name_function": "last_function_called",
-                    "F_name_generic": "last_function_called",
-                    "F_name_impl": "last_function_called",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "PY_name_impl": "PY_LastFunctionCalled",
-                    "cxx_rv_decl": "const std::string & SHCXX_rv",
-                    "function_name": "LastFunctionCalled",
-                    "underscore_name": "last_function_called"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             },
             {
-                "_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "&",
-                            "cxx_member": ".",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "0",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_&_result_buf_allocatable",
-                            "stmt1": "c_string_&_result_buf_allocatable"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
-                            "c_var_context": "DSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "hnamefunc0": "NS_SHROUD_copy_string_and_free",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_result_buf_allocatable",
-                            "stmt1": "f_string_&_result_buf_allocatable",
-                            "stmtc0": "c_string_&_result_buf_allocatable",
-                            "stmtc1": "c_string_&_result_buf_allocatable"
-                        }
-                    }
-                },
-                "_fmtresult": {
-                    "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
-                        "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "void",
-                        "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
-                        "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
-                        "stmt1": "c_default"
-                    }
-                },
+                "__FUNCTION__": "****************************************",
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "declarator": {
@@ -206,7 +154,50 @@
                 },
                 "decl": "const std::string& LastFunctionCalled()",
                 "declgen": "void LastFunctionCalled(const std::string & SHF_rv +context(DSHF_rv))",
-                "fmtdict": {
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "SHF_rv": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "SHF_rv",
+                            "c_var_context": "DSHF_rv",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_rv",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_SHF_rv",
+                            "stmt0": "c_string_&_result_buf_allocatable",
+                            "stmt1": "c_string_&_result_buf_allocatable"
+                        },
+                        "fmtf": {
+                            "F_C_var": "SHF_rv",
+                            "F_pointer": "SHPTR_SHF_rv",
+                            "c_var": "SHT_rv",
+                            "c_var_context": "DSHF_rv",
+                            "f_intent": "OUT",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "SHT_rv",
+                            "hnamefunc0": "NS_SHROUD_copy_string_and_free",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_result_buf_allocatable",
+                            "stmt1": "f_string_&_result_buf_allocatable",
+                            "stmtc0": "c_string_&_result_buf_allocatable",
+                            "stmtc1": "c_string_&_result_buf_allocatable"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
                     "C_name": "NS_last_function_called_bufferify",
                     "C_prototype": "NS_SHROUD_array *DSHF_rv",
                     "C_return_type": "void",
@@ -218,13 +209,25 @@
                     "function_suffix": "_bufferify",
                     "underscore_name": "last_function_called"
                 },
-                "generated_suffix": "buf",
-                "options": {},
-                "wrap": {
-                    "c": true
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "void",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_type": "void",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_CPTR",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_void_scalar_result_buf",
+                        "stmt1": "c_default"
+                    }
                 }
             },
             {
+                "__FUNCTION__": "****************************************",
                 "ast": {
                     "declarator": {
                         "name": "One",
@@ -238,7 +241,13 @@
                 },
                 "decl": "void One()",
                 "declgen": "void One(void)",
-                "fmtdict": {
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
                     "C_name": "NS_one",
                     "C_prototype": "void",
                     "C_return_type": "void",
@@ -258,20 +267,16 @@
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "one"
-                },
-                "options": {},
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             }
         ],
         "language": "cxx",
         "namespaces": [
             {
+                "__NAMESPACE__": "****************************************",
                 "enums": [
                     {
+                        "__ENUM__": "****************************************",
                         "_fmtmembers": {
                             "ERROR": {
                                 "C_enum_member": "NS_upper_ERROR",
@@ -302,22 +307,36 @@
                             "name": "Color"
                         },
                         "decl": "enum Color {\n  ERROR,\n  WARN,\n};\n",
-                        "fmtdict": {
-                            "C_enum": "NS_upper_Color",
-                            "enum_lower": "color",
-                            "enum_name": "Color",
-                            "enum_upper": "COLOR"
-                        },
                         "name": "Color",
                         "options": {},
                         "typemap_name": "upper::Color",
                         "wrap": {
                             "c": true,
                             "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_enum": "NS_upper_Color",
+                            "enum_lower": "color",
+                            "enum_name": "Color",
+                            "enum_upper": "COLOR"
                         }
                     }
                 ],
-                "fmtdict": {
+                "name": "upper",
+                "options": {
+                    "F_flatten_namespace": true,
+                    "wrap_python": false
+                },
+                "scope": "upper::",
+                "scope_file": [
+                    "ns",
+                    "upper"
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
                     "CXX_this_call": "upper::",
                     "C_header_filename": "wrapns_upper.h",
                     "C_impl_filename": "wrapns_upper.cpp",
@@ -332,52 +351,69 @@
                     "PY_this_call": "upper::",
                     "file_scope": "ns_upper",
                     "namespace_scope": "upper::"
-                },
-                "name": "upper",
-                "options": {
-                    "F_flatten_namespace": true,
-                    "wrap_python": false
-                },
-                "scope": "upper::",
-                "scope_file": [
-                    "ns",
-                    "upper"
-                ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true
                 }
             },
             {
+                "__NAMESPACE__": "****************************************",
                 "classes": [
                     {
+                        "__CLASS__": "****************************************",
                         "cxx_header": [],
-                        "fmtdict": {
-                            "C_header_filename": "wrapouter_Cstruct1.h",
-                            "C_impl_filename": "wrapouter_Cstruct1.cpp",
-                            "C_name_scope": "outer_Cstruct1_",
-                            "C_type_name": "NS_cstruct1",
-                            "F_derived_name": "cstruct1",
-                            "F_name_scope": "cstruct1_",
-                            "PY_PyObject": "PY_Cstruct1",
-                            "PY_PyTypeObject": "PY_Cstruct1_Type",
-                            "PY_capsule_name": "PY_Cstruct1_capsule_name",
-                            "PY_from_object_func": "PP_Cstruct1_from_Object",
-                            "PY_struct_array_descr_create": "PY_Cstruct1_create_array_descr",
-                            "PY_struct_array_descr_name": "Cstruct1_dtype",
-                            "PY_struct_array_descr_variable": "PY_Cstruct1_array_descr",
-                            "PY_this_call": "self->obj->",
-                            "PY_to_object_func": "PP_Cstruct1_to_Object",
-                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
-                            "PY_type_filename": "pyouter_Cstruct1type.cpp",
-                            "class_scope": "Cstruct1::",
-                            "cxx_class": "Cstruct1",
-                            "cxx_type": "Cstruct1",
-                            "file_scope": "outer_Cstruct1"
-                        },
                         "functions": [
                             {
-                                "_fmtargs": {
+                                "__FUNCTION__": "****************************************",
+                                "_generated": "struct_as_class_ctor",
+                                "ast": {
+                                    "attrs": {
+                                        "_constructor": true,
+                                        "name": "Cstruct1_ctor"
+                                    },
+                                    "params": [
+                                        {
+                                            "declarator": {
+                                                "name": "ifield",
+                                                "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "ifield"
+                                            },
+                                            "specifier": [
+                                                "int"
+                                            ],
+                                            "typemap_name": "int"
+                                        },
+                                        {
+                                            "declarator": {
+                                                "name": "dfield",
+                                                "pointer": []
+                                            },
+                                            "metaattrs": {
+                                                "intent": "in",
+                                                "struct_member": "dfield"
+                                            },
+                                            "specifier": [
+                                                "double"
+                                            ],
+                                            "typemap_name": "double"
+                                        }
+                                    ],
+                                    "specifier": [
+                                        "Cstruct1"
+                                    ],
+                                    "typemap_name": "outer::Cstruct1"
+                                },
+                                "decl": "Cstruct1_ctor",
+                                "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
+                                "options": {
+                                    "wrap_c": false,
+                                    "wrap_fortran": false,
+                                    "wrap_lua": false
+                                },
+                                "wrap": {
+                                    "python": true
+                                },
+                                "zz_fmtargs": {
                                     "dfield": {
                                         "fmtpy": {
                                             "PY_member_object": "XXXPY_member_object",
@@ -425,7 +461,14 @@
                                         }
                                     }
                                 },
-                                "_fmtresult": {
+                                "zz_fmtdict": {
+                                    "PY_name_impl": "PY_Cstruct1_tp_init",
+                                    "PY_type_impl": "PY_Cstruct1_tp_init",
+                                    "PY_type_method": "tp_init",
+                                    "function_name": "Cstruct1_ctor",
+                                    "underscore_name": "cstruct1_ctor"
+                                },
+                                "zz_fmtresult": {
                                     "fmtpy": {
                                         "PYN_descr": "PY_Cstruct1_array_descr",
                                         "PY_build_format": "O",
@@ -449,64 +492,6 @@
                                         "value_var": "SHValue_rv",
                                         "vargs": "SHCXX_rv"
                                     }
-                                },
-                                "_generated": "struct_as_class_ctor",
-                                "ast": {
-                                    "attrs": {
-                                        "_constructor": true,
-                                        "name": "Cstruct1_ctor"
-                                    },
-                                    "params": [
-                                        {
-                                            "declarator": {
-                                                "name": "ifield",
-                                                "pointer": []
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "ifield"
-                                            },
-                                            "specifier": [
-                                                "int"
-                                            ],
-                                            "typemap_name": "int"
-                                        },
-                                        {
-                                            "declarator": {
-                                                "name": "dfield",
-                                                "pointer": []
-                                            },
-                                            "metaattrs": {
-                                                "intent": "in",
-                                                "struct_member": "dfield"
-                                            },
-                                            "specifier": [
-                                                "double"
-                                            ],
-                                            "typemap_name": "double"
-                                        }
-                                    ],
-                                    "specifier": [
-                                        "Cstruct1"
-                                    ],
-                                    "typemap_name": "outer::Cstruct1"
-                                },
-                                "decl": "Cstruct1_ctor",
-                                "declgen": "Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)",
-                                "fmtdict": {
-                                    "PY_name_impl": "PY_Cstruct1_tp_init",
-                                    "PY_type_impl": "PY_Cstruct1_tp_init",
-                                    "PY_type_method": "tp_init",
-                                    "function_name": "Cstruct1_ctor",
-                                    "underscore_name": "cstruct1_ctor"
-                                },
-                                "options": {
-                                    "wrap_c": false,
-                                    "wrap_fortran": false,
-                                    "wrap_lua": false
-                                },
-                                "wrap": {
-                                    "python": true
                                 }
                             }
                         ],
@@ -517,6 +502,7 @@
                         "typemap_name": "outer::Cstruct1",
                         "variables": [
                             {
+                                "__VARIABLE__": "****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "ifield",
@@ -527,7 +513,14 @@
                                     ],
                                     "typemap_name": "int"
                                 },
-                                "fmtdict": {
+                                "name": "ifield",
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                },
+                                "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_ifield_getter",
                                     "PY_setter": "PY_Cstruct1_ifield_setter",
                                     "PY_struct_context": "self->obj->",
@@ -537,16 +530,10 @@
                                     "variable_lower": "ifield",
                                     "variable_name": "ifield",
                                     "variable_upper": "IFIELD"
-                                },
-                                "name": "ifield",
-                                "options": {},
-                                "wrap": {
-                                    "c": true,
-                                    "fortran": true,
-                                    "python": true
                                 }
                             },
                             {
+                                "__VARIABLE__": "****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "dfield",
@@ -557,7 +544,14 @@
                                     ],
                                     "typemap_name": "double"
                                 },
-                                "fmtdict": {
+                                "name": "dfield",
+                                "options": {},
+                                "wrap": {
+                                    "c": true,
+                                    "fortran": true,
+                                    "python": true
+                                },
+                                "zz_fmtdict": {
                                     "PY_getter": "PY_Cstruct1_dfield_getter",
                                     "PY_setter": "PY_Cstruct1_dfield_setter",
                                     "PY_struct_context": "self->obj->",
@@ -567,13 +561,6 @@
                                     "variable_lower": "dfield",
                                     "variable_name": "dfield",
                                     "variable_upper": "DFIELD"
-                                },
-                                "name": "dfield",
-                                "options": {},
-                                "wrap": {
-                                    "c": true,
-                                    "fortran": true,
-                                    "python": true
                                 }
                             }
                         ],
@@ -581,28 +568,35 @@
                             "c": true,
                             "fortran": true,
                             "python": true
+                        },
+                        "zz_fmtdict": {
+                            "C_header_filename": "wrapouter_Cstruct1.h",
+                            "C_impl_filename": "wrapouter_Cstruct1.cpp",
+                            "C_name_scope": "outer_Cstruct1_",
+                            "C_type_name": "NS_cstruct1",
+                            "F_derived_name": "cstruct1",
+                            "F_name_scope": "cstruct1_",
+                            "PY_PyObject": "PY_Cstruct1",
+                            "PY_PyTypeObject": "PY_Cstruct1_Type",
+                            "PY_capsule_name": "PY_Cstruct1_capsule_name",
+                            "PY_from_object_func": "PP_Cstruct1_from_Object",
+                            "PY_struct_array_descr_create": "PY_Cstruct1_create_array_descr",
+                            "PY_struct_array_descr_name": "Cstruct1_dtype",
+                            "PY_struct_array_descr_variable": "PY_Cstruct1_array_descr",
+                            "PY_this_call": "self->obj->",
+                            "PY_to_object_func": "PP_Cstruct1_to_Object",
+                            "PY_to_object_idtor_func": "PP_Cstruct1_to_Object_idtor",
+                            "PY_type_filename": "pyouter_Cstruct1type.cpp",
+                            "class_scope": "Cstruct1::",
+                            "cxx_class": "Cstruct1",
+                            "cxx_type": "Cstruct1",
+                            "file_scope": "outer_Cstruct1"
                         }
                     }
                 ],
-                "fmtdict": {
-                    "CXX_this_call": "outer::",
-                    "C_header_filename": "wrapns_outer.h",
-                    "C_impl_filename": "wrapns_outer.cpp",
-                    "C_name_scope": "outer_",
-                    "F_impl_filename": "wrapfns_outer.f",
-                    "F_module_name": "ns_outer_mod",
-                    "LUA_this_call": "outer::",
-                    "PY_library_doc": "library documentation",
-                    "PY_module_filename": "pyns_outermodule.cpp",
-                    "PY_module_init": "ns_outer",
-                    "PY_module_name": "outer",
-                    "PY_module_scope": "ns.outer",
-                    "PY_this_call": "outer::",
-                    "file_scope": "ns_outer",
-                    "namespace_scope": "outer::"
-                },
                 "functions": [
                     {
+                        "__FUNCTION__": "****************************************",
                         "ast": {
                             "declarator": {
                                 "name": "One",
@@ -616,7 +610,13 @@
                         },
                         "decl": "void One()",
                         "declgen": "void One(void)",
-                        "fmtdict": {
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "C_name": "NS_outer_one",
                             "C_prototype": "void",
                             "C_return_type": "void",
@@ -636,12 +636,6 @@
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "one"
-                        },
-                        "options": {},
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "python": true
                         }
                     }
                 ],
@@ -656,13 +650,42 @@
                     "c": true,
                     "fortran": true,
                     "python": true
+                },
+                "zz_fmtdict": {
+                    "CXX_this_call": "outer::",
+                    "C_header_filename": "wrapns_outer.h",
+                    "C_impl_filename": "wrapns_outer.cpp",
+                    "C_name_scope": "outer_",
+                    "F_impl_filename": "wrapfns_outer.f",
+                    "F_module_name": "ns_outer_mod",
+                    "LUA_this_call": "outer::",
+                    "PY_library_doc": "library documentation",
+                    "PY_module_filename": "pyns_outermodule.cpp",
+                    "PY_module_init": "ns_outer",
+                    "PY_module_name": "outer",
+                    "PY_module_scope": "ns.outer",
+                    "PY_this_call": "outer::",
+                    "file_scope": "ns_outer",
+                    "namespace_scope": "outer::"
                 }
             },
             {
+                "__NAMESPACE__": "****************************************",
                 "classes": [
                     {
+                        "__CLASS__": "****************************************",
                         "cxx_header": [],
-                        "fmtdict": {
+                        "name": "ClassWork",
+                        "options": {},
+                        "parse_keyword": "class",
+                        "scope": "nswork::ClassWork::",
+                        "typemap_name": "nswork::ClassWork",
+                        "wrap": {
+                            "c": true,
+                            "fortran": true,
+                            "python": true
+                        },
+                        "zz_fmtdict": {
                             "CXX_this_call": "SH_this->",
                             "C_header_filename": "wrapnswork_ClassWork.h",
                             "C_impl_filename": "wrapnswork_ClassWork.cpp",
@@ -683,20 +706,24 @@
                             "cxx_type": "ClassWork",
                             "file_scope": "nswork_ClassWork",
                             "hnamefunc0": "capsule_data_helper"
-                        },
-                        "name": "ClassWork",
-                        "options": {},
-                        "parse_keyword": "class",
-                        "scope": "nswork::ClassWork::",
-                        "typemap_name": "nswork::ClassWork",
-                        "wrap": {
-                            "c": true,
-                            "fortran": true,
-                            "python": true
                         }
                     }
                 ],
-                "fmtdict": {
+                "name": "nswork",
+                "options": {
+                    "F_flatten_namespace": true
+                },
+                "scope": "nswork::",
+                "scope_file": [
+                    "ns",
+                    "nswork"
+                ],
+                "wrap": {
+                    "c": true,
+                    "fortran": true,
+                    "python": true
+                },
+                "zz_fmtdict": {
                     "CXX_this_call": "nswork::",
                     "C_header_filename": "wrapns_nswork.h",
                     "C_impl_filename": "wrapns_nswork.cpp",
@@ -713,20 +740,6 @@
                     "PY_this_call": "nswork::",
                     "file_scope": "ns_nswork",
                     "namespace_scope": "nswork::"
-                },
-                "name": "nswork",
-                "options": {
-                    "F_flatten_namespace": true
-                },
-                "scope": "nswork::",
-                "scope_file": [
-                    "ns",
-                    "nswork"
-                ],
-                "wrap": {
-                    "c": true,
-                    "fortran": true,
-                    "python": true
                 }
             }
         ],
