@@ -23,11 +23,16 @@ def stringify_baseclass(baseclass):
         pbase.append((access_specifier, ns_name, baseclass.typemap.name))
     return pbase
 
-def add_comment(dct, label):
+def add_comment(dct, label, name=None):
     """Add a variable which will sort to the top.
     Helps when trying to locate sections in the written JSON file.
     """
-    dct["__" + label.upper() + "__"] = "****************************************"
+    # "<" sorts towards the top.
+    key = "<" + label.upper() + ">"
+    if name is None:
+        dct[key] = "****************************************"
+    else:
+        dct[key] = str(name) + " ****************************************"
 
 class ToDict(visitor.Visitor):
     """Convert to dictionary.
@@ -264,11 +269,13 @@ class ToDict(visitor.Visitor):
 
     def visit_FunctionNode(self, node):
         d = dict(ast=self.visit(node.ast), decl=node.decl)
-        add_comment(d, "function")
+        add_comment(d, "function", node._function_index)
         self.add_visit_fields(
             node,
             d,
             [
+                "_PTR_C_CXX_index",
+                "_PTR_F_C_index",
                 "_fmtargs",
                 "_fmtresult",
                 "fmtdict",
