@@ -586,9 +586,10 @@ fc_statements = [
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
         f_module=dict(iso_c_binding=["c_f_pointer"]),
-        post_call=[
-            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
-        ],
+        # XXX - Need to have 'buf' in name to use c_f_pointer
+#        post_call=[
+#            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
+#        ],
     ),
     dict(
         # deref(pointer)

@@ -1212,7 +1212,6 @@ class GenFunctions(object):
         corder = get_order(node.ast.params)
         cvariants = {corder: node._function_index}
 
-        context_args = {}
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
@@ -1227,14 +1226,6 @@ class GenFunctions(object):
             new.fortran_generic = {}
             new.wrap.assign(fortran=True)
             new.ast.params = generic.decls
-
-            for arg in generic.decls:
-                # double **arg +intent(out)+rank(1)
-                if (arg.typemap.sgroup == "native" and
-                    arg.metaattrs["intent"] == "out" and
-                    arg.metaattrs["deref"] != "raw" and
-                    arg.get_indirect_stmt() in  ["**", "*&"]):
-                    context_args[arg.name] = True
 
             order = get_order(new.ast.params, corder)
             new._PTR_F_C_index = cvariants.get(order, None)
@@ -1257,10 +1248,6 @@ class GenFunctions(object):
                 cvariants[order] = cnew._function_index
                 new._PTR_F_C_index = cnew._function_index
         
-        for argname in context_args.keys():
-            arg = node.ast.find_arg_by_name(argname)
-            arg.attrs["context"] = "FIXME"
-
         # Do not process templated node, instead process
         # generated functions above.
         #        node.wrap.c = False

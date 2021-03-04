@@ -12,7 +12,7 @@ C function void AssignValues(const int * from +rank(1), int nfrom +value, int * 
 C function void SavePointer(void * addr +value, int type +value, size_t size +implied(size(addr))+value)
 C function void SavePointer2(void * addr +value, int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)
 C function void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
-C function void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+C function void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
 Close wrapgeneric.h
 Close wrapgeneric.c
 Close typesgeneric.h
@@ -49,5 +49,5 @@ C-interface void AssignValues(const int * from +rank(1), int nfrom +value, int *
 C-interface void SavePointer(void * addr +value, int type +value, size_t size +implied(size(addr))+value)
 C-interface void SavePointer2(void * addr +value, int type +implied(type(addr))+value, size_t size +implied(size(addr))+value)
 C-interface void GetPointer(void * * addr +intent(out), int * type +intent(out), size_t * size +intent(out))
-C-interface void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
+C-interface void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))
 Close wrapfgeneric.f
