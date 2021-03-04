@@ -1325,7 +1325,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string * name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_*_in
+    ! Requested: f_string_*_in_buf
     ! Match:     f_default
     ! Argument:  const string * name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -1569,7 +1569,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const string * name +len_trim(trim_name)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_*_in
+    ! Requested: f_string_*_in_buf
     ! Match:     f_default
     ! Attrs:     +intent(in)
     ! Exact:     c_string_*_in_buf
@@ -2076,7 +2076,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -2118,7 +2118,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -2141,7 +2141,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)

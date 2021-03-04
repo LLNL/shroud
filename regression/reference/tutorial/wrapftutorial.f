@@ -782,7 +782,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
     ! Attrs:     +intent(in)
@@ -790,7 +790,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg2
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & arg2 +len_trim(Larg2)
     ! Attrs:     +intent(in)
@@ -919,7 +919,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -1059,7 +1059,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -1093,7 +1093,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)

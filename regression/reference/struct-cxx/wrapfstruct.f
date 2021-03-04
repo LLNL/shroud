@@ -973,7 +973,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)
@@ -1064,7 +1064,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)

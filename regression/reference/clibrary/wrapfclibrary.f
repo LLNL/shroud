@@ -1025,7 +1025,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_char_*_inout
+    ! Requested: f_char_*_inout_buf
     ! Match:     f_default
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
     ! Attrs:     +intent(inout)
@@ -1055,7 +1055,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
     ! Attrs:     +intent(out)
@@ -1087,7 +1087,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
     ! Attrs:     +intent(out)
@@ -1095,7 +1095,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * name2 +charlen(MAXNAME)+intent(out)+len(Nname2)
     ! Attrs:     +intent(out)
@@ -1127,7 +1127,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
     ! Attrs:     +intent(out)
@@ -1263,7 +1263,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)
@@ -1293,7 +1293,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)
@@ -1414,7 +1414,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)

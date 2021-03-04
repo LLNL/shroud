@@ -2646,7 +2646,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_OTHER",
                             "size": "size(names)",
-                            "stmt0": "f_char_**_in",
+                            "stmt0": "f_char_**_in_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_**_in_buf",
                             "stmtc1": "c_char_**_in_buf"
@@ -3035,7 +3035,7 @@
                             "f_var": "nitems",
                             "hnamefunc0": "array_context",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -3257,7 +3257,7 @@
                             "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -3543,7 +3543,7 @@
                             "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -3800,7 +3800,7 @@
                             "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -4001,7 +4001,7 @@
                             "f_var": "nitems",
                             "hnamefunc0": "array_context",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -4219,7 +4219,7 @@
                             "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"
@@ -4501,7 +4501,7 @@
                             "hnamefunc0": "array_context",
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_**_out_pointer",
+                            "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out",
                             "stmtc0": "c_native_**_out_buf",
                             "stmtc1": "c_native_**_out_buf"

@@ -310,7 +310,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_vector_&_in_native
+    ! Requested: f_vector_&_in_buf_native
     ! Match:     f_default
     ! Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
     ! Attrs:     +intent(in)
@@ -338,7 +338,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_native
+    ! Requested: f_vector_&_out_buf_native
     ! Match:     f_vector_out
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
@@ -371,7 +371,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_native
+    ! Requested: f_vector_&_out_buf_native
     ! Match:     f_vector_out
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
@@ -409,7 +409,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_native
+    ! Requested: f_vector_&_out_buf_native
     ! Match:     f_vector_out
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
@@ -448,7 +448,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_vector_&_out_allocatable_native
+    ! Requested: f_vector_&_out_buf_allocatable_native
     ! Match:     f_vector_out_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
@@ -482,7 +482,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: f_vector_&_inout_allocatable_native
+    ! Requested: f_vector_&_inout_buf_allocatable_native
     ! Match:     f_vector_inout_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Attrs:     +deref(allocatable)+intent(inout)
@@ -518,7 +518,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_vector_&_inout_native
+    ! Requested: f_vector_&_inout_buf_native
     ! Match:     f_vector_inout
     ! Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(inout)
@@ -546,7 +546,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_native
+    ! Requested: f_vector_&_out_buf_native
     ! Match:     f_vector_out
     ! Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
@@ -579,7 +579,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_vector_&_in_string
+    ! Requested: f_vector_&_in_buf_string
     ! Match:     f_default
     ! Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(in)

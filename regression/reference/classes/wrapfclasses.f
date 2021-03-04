@@ -979,7 +979,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)

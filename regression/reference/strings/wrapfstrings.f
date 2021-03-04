@@ -1320,7 +1320,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +charlen(40)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * dest +charlen(40)+intent(out)+len(Ndest)
     ! Attrs:     +intent(out)
@@ -1354,7 +1354,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * s +intent(inout)
     ! Attrs:     +intent(inout)
-    ! Requested: f_char_*_inout
+    ! Requested: f_char_*_inout_buf
     ! Match:     f_default
     ! Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
     ! Attrs:     +intent(inout)
@@ -1842,7 +1842,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & arg1 +len_trim(Larg1)
     ! Attrs:     +intent(in)
@@ -1873,7 +1873,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_string_&_out
+    ! Requested: f_string_&_out_buf
     ! Match:     f_default
     ! Argument:  std::string & arg1 +intent(out)+len(Narg1)
     ! Attrs:     +intent(out)
@@ -1904,7 +1904,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_string_&_inout
+    ! Requested: f_string_&_inout_buf
     ! Match:     f_default
     ! Argument:  std::string & arg1 +len(Narg1)+len_trim(Larg1)
     ! Attrs:     +intent(inout)
@@ -1937,7 +1937,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string * arg1
     ! Attrs:     +intent(in)
-    ! Requested: f_string_*_in
+    ! Requested: f_string_*_in_buf
     ! Match:     f_default
     ! Argument:  const std::string * arg1 +len_trim(Larg1)
     ! Attrs:     +intent(in)
@@ -1965,7 +1965,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_string_*_inout
+    ! Requested: f_string_*_inout_buf
     ! Match:     f_default
     ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
     ! Attrs:     +intent(inout)
@@ -1993,7 +1993,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_string_*_out
+    ! Requested: f_string_*_out_buf
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
     ! Attrs:     +intent(out)
@@ -2022,7 +2022,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: f_string_*_inout
+    ! Requested: f_string_*_inout_buf
     ! Match:     f_default
     ! Argument:  std::string * arg1 +len(Narg1)+len_trim(Larg1)
     ! Attrs:     +intent(inout)
@@ -2061,7 +2061,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_string_*_out
+    ! Requested: f_string_*_out_buf
     ! Match:     f_default
     ! Argument:  std::string * arg1 +intent(out)+len(Narg1)
     ! Attrs:     +intent(out)
@@ -2103,7 +2103,8 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_string_scalar_in
+    ! Requested: f_string_scalar_in_buf
+    ! Match:     f_string_scalar_in
     ! Argument:  std::string arg1 +len_trim(Larg1)+value
     ! Attrs:     +intent(in)
     ! Exact:     c_string_scalar_in_buf
@@ -2146,7 +2147,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +intent(out)+len(AAtrim)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Attrs:     +intent(out)
     ! Exact:     c_char_*_out_buf
@@ -2196,7 +2197,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * dest +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * dest +intent(out)+len(Ndest)
     ! Attrs:     +intent(out)
@@ -2236,7 +2237,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Requested: f_string_&_inout
+    ! Requested: f_string_&_inout_buf
     ! Match:     f_default
     ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
     ! Attrs:     +intent(inout)

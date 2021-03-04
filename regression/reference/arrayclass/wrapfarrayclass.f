@@ -753,7 +753,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
+    ! Requested: f_native_**_out_buf_pointer
     ! Match:     f_native_**_out
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -789,7 +789,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_*&_out_pointer
+    ! Requested: f_native_*&_out_buf_pointer
     ! Match:     f_native_*&_out
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -825,7 +825,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
+    ! Requested: f_native_**_out_buf_pointer
     ! Match:     f_native_**_out
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -861,7 +861,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_*&_out_pointer
+    ! Requested: f_native_*&_out_buf_pointer
     ! Match:     f_native_*&_out
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)

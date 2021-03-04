@@ -532,7 +532,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * name +len(worklen)+len_trim(worktrim)
     ! Attrs:     +intent(inout)
-    ! Requested: f_char_*_inout
+    ! Requested: f_char_*_inout_buf
     ! Match:     f_default
     ! Attrs:     +intent(inout)
     ! Exact:     c_char_*_inout_buf
@@ -625,7 +625,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const std::string & rv
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  const std::string & rv +len_trim(Lrv)
     ! Attrs:     +intent(in)
@@ -663,7 +663,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
-    ! Requested: f_string_&_inout
+    ! Requested: f_string_&_inout_buf
     ! Match:     f_default
     ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
     ! Attrs:     +intent(inout)

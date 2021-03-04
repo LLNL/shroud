@@ -540,7 +540,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_inout",
+                            "stmt0": "f_char_*_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_inout_buf",
                             "stmtc1": "c_char_*_inout_buf"
@@ -1120,7 +1120,7 @@
                             "f_type": "character(*)",
                             "f_var": "rv",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in",
+                            "stmt0": "f_string_&_in_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in_buf",
                             "stmtc1": "c_string_&_in_buf"
@@ -1516,7 +1516,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_inout",
+                            "stmt0": "f_string_&_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_buf",
                             "stmtc1": "c_string_&_inout_buf"
