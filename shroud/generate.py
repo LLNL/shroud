@@ -1498,10 +1498,10 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
-            attrs = arg.attrs
-            arg_typemap = arg.typemap
             if cfi_args[arg.name]:
                 arg.stmts_suffix = generated_suffix
+            attrs = arg.attrs
+            arg_typemap = arg.typemap
             if arg_typemap.sgroup in ["char", "string"]:
                 # Create local variable names to be used in statements.
                 # TODO: move into metaattrs
@@ -1608,8 +1608,9 @@ class GenFunctions(object):
         # Is result or any argument a string or vector?
         # If so, additional arguments will be passed down so
         # create buffer version of function.
-        has_buf_arg = False
+        buf_args = {}
         for arg in ast.params:
+            has_buf_arg = False
             arg_typemap = arg.typemap
             if arg_typemap.sgroup == "string":
                 has_buf_arg = True
@@ -1626,6 +1627,8 @@ class GenFunctions(object):
 #                 arg.attrs["dimension"]:
                 # double **values +intent(out) +dimension(nvalues)
                 has_buf_arg = True
+            buf_args[arg.name] = has_buf_arg
+        has_buf_arg = any(buf_args.values())
 
         # Function result.
         has_string_result = False
@@ -1681,6 +1684,8 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
+            if buf_args[arg.name]:
+                arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:
