@@ -1657,7 +1657,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_buf_pointer",
-                                    "stmt1": "f_native_**_out",
+                                    "stmt1": "f_native_**_out_buf_pointer",
                                     "stmtc0": "c_native_**_out_buf",
                                     "stmtc1": "c_native_**_out_buf"
                                 }
@@ -2025,7 +2025,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_buf_pointer",
-                                    "stmt1": "f_native_*&_out",
+                                    "stmt1": "f_native_*&_out_buf_pointer",
                                     "stmtc0": "c_native_*&_out_buf",
                                     "stmtc1": "c_native_*&_out_buf"
                                 }
@@ -2395,7 +2395,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_buf_pointer",
-                                    "stmt1": "f_native_**_out",
+                                    "stmt1": "f_native_**_out_buf_pointer",
                                     "stmtc0": "c_native_**_out_buf",
                                     "stmtc1": "c_native_**_out_buf"
                                 }
@@ -2765,7 +2765,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_buf_pointer",
-                                    "stmt1": "f_native_*&_out",
+                                    "stmt1": "f_native_*&_out_buf_pointer",
                                     "stmtc0": "c_native_*&_out_buf",
                                     "stmtc1": "c_native_*&_out_buf"
                                 }

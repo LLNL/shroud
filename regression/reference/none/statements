@@ -118,10 +118,6 @@ root
       **
         in -- c_void_**_in
   f
-    XXX
-      native
-        **
-          out -- f_XXX_native_**_out
     bool
       in -- f_bool_in
       inout -- f_bool_inout
@@ -163,9 +159,13 @@ root
           raw -- f_native_*_result_raw
           scalar -- f_native_*_result_scalar
       *&
-        out -- f_native_*&_out
+        out
+          buf
+            pointer -- f_native_**/*&_out_buf_pointer
       **
         out -- f_native_**_out
+          buf
+            pointer -- f_native_**/*&_out_buf_pointer
           raw -- f_native_**_out_raw
         result -- f_native_**_result
     shadow

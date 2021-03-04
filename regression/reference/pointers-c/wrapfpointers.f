@@ -1577,8 +1577,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1604,8 +1603,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1634,8 +1632,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1674,8 +1671,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1706,8 +1702,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1733,8 +1728,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1760,8 +1754,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_buf_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
