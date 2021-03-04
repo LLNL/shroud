@@ -1,3 +1,6 @@
+helloworld.log
+helloworld.json
+helloworld/*
 build
 docs/_build
 *.pyc
