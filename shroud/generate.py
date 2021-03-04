@@ -1708,12 +1708,8 @@ class GenFunctions(object):
                 attrs["context"] = True
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
-            # Set names for implied buffer arguments.
-            # This filters out "buf" for ftrim_char_in
-            arg.stmts_suffix = generated_suffix
-            
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, meta["intent"], generated_suffix, specialize]
+            c_stmts = ["c", sgroup, spointer, meta["intent"], arg.stmts_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 

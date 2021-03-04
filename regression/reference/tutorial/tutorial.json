@@ -2954,7 +2954,6 @@
                             "specifier": [
                                 "double"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         }
                     ],
@@ -3070,7 +3069,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_arg2",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3084,7 +3083,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         }
                     },

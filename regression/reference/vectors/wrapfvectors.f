@@ -247,7 +247,7 @@ module vectors_mod
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
@@ -615,7 +615,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)

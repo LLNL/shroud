@@ -89,7 +89,7 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // ----------------------------------------
 // Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
 // Attrs:     +intent(out)
-// Requested: c_void_*_out_buf_cdesc
+// Requested: c_void_*_out_cdesc
 // Match:     c_void_*_cdesc
 void CDE_get_scalar1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)

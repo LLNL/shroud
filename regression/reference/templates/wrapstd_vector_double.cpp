@@ -96,7 +96,7 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 double * TEM_vector_double_at_bufferify(TEM_vector_double * self,
     size_t n)

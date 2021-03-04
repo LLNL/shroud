@@ -2235,7 +2235,6 @@
                             "specifier": [
                                 "Cstruct1"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "Cstruct1"
                         },
                         {
@@ -2328,7 +2327,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_STRUCT",
                             "shadow_var": "SHadow_s1",
-                            "stmt0": "c_struct_*_in_buf",
+                            "stmt0": "c_struct_*_in",
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
@@ -2341,7 +2340,7 @@
                             "sh_type": "SH_TYPE_STRUCT",
                             "stmt0": "f_struct_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_struct_*_in_buf",
+                            "stmtc0": "c_struct_*_in",
                             "stmtc1": "c_struct"
                         }
                     }
@@ -3181,7 +3180,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -3198,7 +3196,6 @@
                             "specifier": [
                                 "double"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         }
                     ],
@@ -3234,7 +3231,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3248,7 +3245,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3267,7 +3264,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3281,7 +3278,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         }
                     }
@@ -3563,7 +3560,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -3580,7 +3576,6 @@
                             "specifier": [
                                 "double"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "double"
                         },
                         {
@@ -3639,7 +3634,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_d",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3653,7 +3648,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3672,7 +3667,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_i",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3686,7 +3681,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_scalar_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_scalar_in_buf",
+                            "stmtc0": "c_native_scalar_in",
                             "stmtc1": "c_default"
                         }
                     },

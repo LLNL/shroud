@@ -286,7 +286,7 @@ module top_module
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         subroutine c_test_multiline_splicer_bufferify(name, Lname, &
                 Nname, value) &
@@ -674,7 +674,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! Use std::string argument to get bufferified function.

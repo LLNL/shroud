@@ -667,7 +667,7 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_array_bufferify
 void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
@@ -865,7 +865,7 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 // start POI_get_ptr_to_dynamic_const_array_bufferify
 void POI_get_ptr_to_dynamic_const_array_bufferify(

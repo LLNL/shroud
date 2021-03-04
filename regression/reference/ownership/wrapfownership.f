@@ -203,7 +203,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
@@ -242,7 +242,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
@@ -281,7 +281,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_default_bufferify(DSHC_rv, len) &
                 result(SHT_rv) &
@@ -339,7 +339,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
                 len) &
@@ -398,7 +398,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out_buf
+        ! Requested: c_native_*_out
         ! Match:     c_default
         function c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
                 len) &
@@ -582,7 +582,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
@@ -611,7 +611,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
@@ -641,7 +641,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_default() &
             result(SHT_rv)
@@ -670,7 +670,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
@@ -702,7 +702,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)

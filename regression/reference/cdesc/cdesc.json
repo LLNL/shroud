@@ -656,7 +656,6 @@
                             "specifier": [
                                 "void"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         }
                     ],
@@ -853,7 +852,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_void_*_out_buf_cdesc",
+                            "stmt0": "c_void_*_out_cdesc",
                             "stmt1": "c_void_*_cdesc"
                         },
                         "fmtf": {
@@ -871,7 +870,7 @@
                             "size": "1",
                             "stmt0": "f_native_*_out_cdesc",
                             "stmt1": "f_native_*_out_cdesc",
-                            "stmtc0": "c_void_*_out_buf_cdesc",
+                            "stmtc0": "c_void_*_out_cdesc",
                             "stmtc1": "c_void_*_cdesc"
                         }
                     }

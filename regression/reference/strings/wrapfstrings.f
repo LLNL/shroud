@@ -936,7 +936,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine c_accept_string_pointer_len_bufferify(arg1, Larg1, &
@@ -985,7 +985,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * nlen +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     interface
         subroutine c_fetch_string_pointer_len_bufferify(arg1, Narg1, &
@@ -1221,7 +1221,7 @@ module strings_mod
     ! ----------------------------------------
     ! Argument:  int * count +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: c_native_*_in_buf
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
@@ -2033,7 +2033,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief Accept a string pointer - intent(inout)
@@ -2072,7 +2072,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! \brief Accept a string pointer - intent(out)
@@ -2231,7 +2231,7 @@ contains
     ! Requested: f_native_*_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_*_in_buf
+    ! Requested: c_native_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name

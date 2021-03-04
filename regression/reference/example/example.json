@@ -7228,7 +7228,6 @@
                                             "specifier": [
                                                 "int"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "int"
                                         }
                                     ],
@@ -7260,7 +7259,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_INT",
                                             "shadow_var": "SHadow_flag",
-                                            "stmt0": "c_native_scalar_in_buf",
+                                            "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
@@ -7274,7 +7273,7 @@
                                             "sh_type": "SH_TYPE_INT",
                                             "stmt0": "f_native_scalar_in",
                                             "stmt1": "f_default",
-                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc0": "c_native_scalar_in",
                                             "stmtc1": "c_default"
                                         }
                                     },

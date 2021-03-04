@@ -429,7 +429,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  int ltext +implied(len(text))+value
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! start c_implied_text_len_bufferify
     interface
@@ -702,7 +702,7 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void * arg +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_buf
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -855,12 +855,12 @@ module clibrary_mod
     ! ----------------------------------------
     ! Argument:  void * in +assumedtype
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_buf
+    ! Requested: c_void_*_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  void ( * incr)(int *) +external+value
     ! Attrs:     +intent(in)
-    ! Requested: c_void_scalar_in_buf
+    ! Requested: c_void_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +intent(out)+len(Noutbuf)

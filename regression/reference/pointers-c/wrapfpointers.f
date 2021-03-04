@@ -642,7 +642,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
@@ -815,7 +815,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
@@ -1725,7 +1725,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length of
@@ -1851,7 +1851,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)

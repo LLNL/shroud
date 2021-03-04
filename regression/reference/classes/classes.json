@@ -1070,7 +1070,6 @@
                                     "specifier": [
                                         "bool"
                                     ],
-                                    "stmts_suffix": "buf",
                                     "typemap_name": "bool"
                                 }
                             ],
@@ -1108,7 +1107,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_BOOL",
                                     "shadow_var": "SHadow_flag",
-                                    "stmt0": "c_bool_scalar_in_buf",
+                                    "stmt0": "c_bool_scalar_in",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -1122,7 +1121,7 @@
                                     "sh_type": "SH_TYPE_BOOL",
                                     "stmt0": "f_bool_scalar_in",
                                     "stmt1": "f_bool_in",
-                                    "stmtc0": "c_bool_scalar_in_buf",
+                                    "stmtc0": "c_bool_scalar_in",
                                     "stmtc1": "c_default"
                                 }
                             },

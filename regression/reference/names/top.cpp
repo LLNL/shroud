@@ -252,7 +252,7 @@ void TES_test_multiline_splicer(char * name, int * value)
 // ----------------------------------------
 // Argument:  int * value +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 void TES_test_multiline_splicer_bufferify(char * name, int Lname,
     int Nname, int * value)

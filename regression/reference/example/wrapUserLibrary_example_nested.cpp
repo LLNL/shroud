@@ -141,7 +141,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 void AA_example_nested_test_names_flag_bufferify(const char * name,
     int Lname, int flag)

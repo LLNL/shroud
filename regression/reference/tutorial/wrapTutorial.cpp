@@ -340,7 +340,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
     int Lname, double arg2)

@@ -894,7 +894,7 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         subroutine c_test_names_flag_bufferify(name, Lname, flag) &
                 bind(C, name="AA_example_nested_test_names_flag_bufferify")
@@ -2152,7 +2152,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     subroutine test_names_flag(name, flag)
         use iso_c_binding, only : C_INT
