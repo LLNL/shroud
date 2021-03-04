@@ -855,6 +855,38 @@ class GenFunctions(object):
             self.add_var_getter_setter(cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
 
+    def define_bufferify_functions(self, functions):
+        """Create additional C bufferify functions."""
+        ordered = []
+        for node in functions:
+            ordered.append(node)
+            
+            if node.options.F_CFI:
+#                node._gen_fortran_generic = False
+                done = self.arg_to_CFI(node, ordered)
+            else:
+                done = False
+
+            if node.options.F_create_bufferify_function and not done:
+                self.arg_to_buffer(node, ordered)
+        return ordered
+
+    def define_fortran_generic_functions(self, functions):
+        """Create multiple generic Fortran wrappers to call a
+        single C function.
+        """
+        ordered = []
+        for node in functions:
+            ordered.append(node)
+            if not node.wrap.fortran:
+                continue
+            if node._gen_fortran_generic and not node.options.F_CFI:
+                self.process_assumed_rank(node)
+            if node.fortran_generic:
+                node._overloaded = True
+                self.generic_function(node, ordered)
+        return ordered
+        
     def define_function_suffix(self, functions):
         """Return a new list with generated function inserted.
 
@@ -932,33 +964,8 @@ class GenFunctions(object):
             if method.return_this:
                 self.process_return_this(method, ordered2)
                 
-
-        # Create additional C bufferify functions.
-        ordered3 = []
-        for method in ordered2:
-            ordered3.append(method)
-            
-            if method.options.F_CFI:
-#                method._gen_fortran_generic = False
-                done = self.arg_to_CFI(method, ordered3)
-            else:
-                done = False
-
-            if method.options.F_create_bufferify_function and not done:
-                self.arg_to_buffer(method, ordered3)
-
-        # Create multiple generic Fortran wrappers to call a
-        # single C functions
-        ordered4 = []
-        for method in ordered3:
-            ordered4.append(method)
-            if not method.wrap.fortran:
-                continue
-            if method._gen_fortran_generic and not method.options.F_CFI:
-                self.process_assumed_rank(method)
-            if method.fortran_generic:
-                method._overloaded = True
-                self.generic_function(method, ordered4)
+        ordered3 = self.define_bufferify_functions(ordered2)
+        ordered4 = self.define_fortran_generic_functions(ordered3)
 
         self.gen_functions_decl(ordered4)
 
