@@ -24,28 +24,43 @@ These steps wil be explained in detail below.
 
 ### 1. Development Environment
 
-Let's first build our development container.
+If you've never used [Docker](https://docs.docker.com/get-started/), it's a container technology that will allow you
+to intsall dependencies in a container, and then work interactively without needing
+to install anything on your host. You'll want to [install Docker](https://docs.docker.com/get-docker/) for your platform,
+and then build and run a development container. If you don't mind installing dependencies on your host, then you can skip
+this step.
+
+Here is how we can build our development container. The  [Dockerfile](Dockerfile)
+in the present working directory provides a recipe for building, and installing the 
+dependencies that we need.
 
 ```bash
 $ docker build -t helloworld .
 ```
 
-We will want to bind the code directory (to write files and work interactively):
+To "shell" into your container but have the present working directory (with your code
+bound so it's accessible from both the host and the container) you'll want to issue
+this command:
 
 ```bash
 $ docker run -it --rm -v $PWD/:/code/ helloworld bash
 ```
 
+This translates to "run my container, remove the instance after I'm done, and bind
+the present working directory to "/code" so I can work." The "bash" command at the end
+means we that we start a bash shell, so this is where we will find ourselves after running it.
+
 If you don't want to use a container this is fine, just make sure you have basic
 dependencies on your host for compiling (build-essential) and a g++ compiler,
 along with shroud. At the time of this writing, installing from the master branch
 of the repository at [https://github.com/llnl/shroud](https://github.com/llnl/shroud)
-is your best bet, as the release on pypi has a bug with strings, and the extensions
-of yaml files.
+is your best bet, as the release on pypi has a bug with strings.  You can look
+at the [Dockerfile](Dockerfile) for reference for how to install dependencies 
+and Shroud itself.
 
 ### 2. Write your C++ Scripts
 
-You can do this as your normally would without shroud. Shroud can handle namespaces
+You can do this as you normally would without shroud. Shroud can handle namespaces
 and classes, and the example scripts show that well:
 
 
@@ -101,7 +116,6 @@ g++ -o bin/helloworld -Iinclude helloworld.cpp -g -Wall
 g++ -c -o bin/helloworld.o -fPIC -Iinclude helloworld.cpp -g -Wall 
 g++ -shared -o bin/helloworld.so bin/helloworld.o
 ```
-```bash
 
 You could then try running the binary file:
 

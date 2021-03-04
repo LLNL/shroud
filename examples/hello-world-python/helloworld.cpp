@@ -1,4 +1,4 @@
-// AbiSpack.cpp
+// helloworld.cpp
 // Functions for spack to interact with libabigail (or other ABI libraries)
 
 #include <iostream>
