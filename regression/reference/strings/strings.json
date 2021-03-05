@@ -727,7 +727,7 @@
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -975,7 +975,7 @@
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_inout",
+                            "stmt0": "f_char_*_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_inout_buf",
                             "stmtc1": "c_char_*_inout_buf"
@@ -4892,7 +4892,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in",
+                            "stmt0": "f_string_&_in_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in_buf",
                             "stmtc1": "c_string_&_in_buf"
@@ -5108,7 +5108,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_out",
+                            "stmt0": "f_string_&_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_out_buf",
                             "stmtc1": "c_string_&_out_buf"
@@ -5327,7 +5327,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_inout",
+                            "stmt0": "f_string_&_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_buf",
                             "stmtc1": "c_string_&_inout_buf"
@@ -5539,7 +5539,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_in",
+                            "stmt0": "f_string_*_in_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_in_buf",
                             "stmtc1": "c_string_*_in_buf"
@@ -5752,7 +5752,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_inout",
+                            "stmt0": "f_string_*_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_inout_buf",
                             "stmtc1": "c_string_*_inout_buf"
@@ -5968,7 +5968,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_out",
+                            "stmt0": "f_string_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_out_buf",
                             "stmtc1": "c_string_*_out_buf"
@@ -6214,7 +6214,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -6266,7 +6265,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_inout",
+                            "stmt0": "f_string_*_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_inout_buf",
                             "stmtc1": "c_string_*_inout_buf"
@@ -6287,7 +6286,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nlen",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -6301,7 +6300,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -6548,7 +6547,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -6598,7 +6596,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_out",
+                            "stmt0": "f_string_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_out_buf",
                             "stmtc1": "c_string_*_out_buf"
@@ -6619,7 +6617,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nlen",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -6633,7 +6631,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -6888,7 +6886,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_scalar_in",
+                            "stmt0": "f_string_scalar_in_buf",
                             "stmt1": "f_string_scalar_in",
                             "stmtc0": "c_string_scalar_in_buf",
                             "stmtc1": "c_string_scalar_in_buf"
@@ -7394,7 +7392,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -7992,7 +7990,7 @@
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -8250,7 +8248,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         },
                         {
@@ -8309,7 +8306,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_*_in_buf",
+                            "stmt0": "c_native_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -8327,7 +8324,7 @@
                             "size": "size(count)",
                             "stmt0": "f_native_*_in",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_in_buf",
+                            "stmtc0": "c_native_*_in",
                             "stmtc1": "c_default"
                         }
                     },
@@ -8362,7 +8359,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_inout",
+                            "stmt0": "f_string_&_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_buf",
                             "stmtc1": "c_string_&_inout_buf"

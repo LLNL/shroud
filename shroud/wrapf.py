@@ -1728,9 +1728,10 @@ rv = .false.
                 f_stmts = ["f", f_sgroup, f_spointer, "result", generated_suffix, f_deref_attr]
 
             else:
-                #                                             buf
+                # Pass c_arg.stmts_suffix to both Fortran and C (i.e. "buf").
+                # Fortran need to know how the C function is being called.
                 c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]
-                f_stmts = ["f", f_sgroup, f_spointer, intent, f_arg.stmts_suffix, f_deref_attr, cdesc]
+                f_stmts = ["f", f_sgroup, f_spointer, intent, c_arg.stmts_suffix, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

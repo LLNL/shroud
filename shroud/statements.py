@@ -577,27 +577,27 @@ fc_statements = [
         arg_call=["{cxx_var}"],
     ),
     dict(
+        # XXX needs a 'buf' here, used in generic.yaml test.
         # deref(pointer)
         # A C function with a 'int **' argument associates it
-        # with a Fortran pointer to a scalar.
-        name="f_XXX_native_**_out",
+        # with a Fortran pointer.
+        name="f_native_**_out",
         arg_decl=[
-            "{f_type}, intent({f_intent}), pointer :: {f_var}",
+            "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        declare=[
-            "type(C_PTR) :: {F_pointer}",
-        ],
-        arg_c_call=["{F_pointer}"],
-        post_call=[
-            "call c_f_pointer({F_pointer}, {f_var})",
-        ],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
+        # XXX - Need to have 'buf' in name to use c_f_pointer
+#        post_call=[
+#            "call c_f_pointer({c_var_context}%base_addr, {f_var}{f_array_shape})",
+#        ],
     ),
     dict(
         # deref(pointer)
         # A C function with a 'int **' argument associates it
         # with a Fortran pointer.
-        name="f_native_**_out",
+        # f_native_**_out_buf_pointer
+        # f_native_*&_out_buf_pointer
+        name="f_native_**/*&_out_buf_pointer",
         arg_decl=[
             "{f_type}, intent({f_intent}), pointer :: {f_var}{f_assumed_shape}",
         ],
@@ -607,27 +607,12 @@ fc_statements = [
         ],
     ),
     dict(
-        # Make argument type(C_PTR) from 'int **'
+        # Make argument type(C_PTR) from 'int ** +intent(out)+deref(raw)'
         name="f_native_**_out_raw",
         arg_decl=[
             "type(C_PTR), intent({f_intent}) :: {f_var}",
         ],
-        declare=[
-            "type({F_array_type}) {c_var_context}",
-        ],
         f_module=dict(iso_c_binding=["C_PTR"]),
-        arg_c_call=["{c_var_context}"],
-        # This post_call block will set need_wrapper=True
-        # No real need for F_array_type since C_PTR can be passed directly
-        # but c_native_**_out_buf uses buf_args=context.
-        # XXX - maybe use c_native_**_out_buf_raw
-        post_call=[
-            "{f_var} = {c_var_context}%base_addr",
-        ],
-    ),
-    dict(
-        name="f_native_*&_out",
-        base="f_native_**_out",
     ),
 
     # XXX only in buf?

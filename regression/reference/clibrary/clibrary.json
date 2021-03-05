@@ -1751,7 +1751,7 @@
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_inout",
+                            "stmt0": "f_char_*_inout_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_inout_buf",
                             "stmtc1": "c_char_*_inout_buf"
@@ -1974,7 +1974,7 @@
                             "f_type": "character(*)",
                             "f_var": "name1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -2280,7 +2280,7 @@
                             "f_type": "character(*)",
                             "f_var": "name1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -2315,7 +2315,7 @@
                             "f_type": "character(*)",
                             "f_var": "name2",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -2560,7 +2560,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -2597,7 +2596,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_ltext",
-                            "stmt0": "c_native_scalar_in_buf",
+                            "stmt0": "c_native_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2641,7 +2640,7 @@
                             "f_type": "character(*)",
                             "f_var": "text",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -3824,7 +3823,7 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -4446,7 +4445,6 @@
                             "specifier": [
                                 "void"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -4506,7 +4504,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_void_*_in_buf",
+                            "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4548,7 +4546,7 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"
@@ -5404,7 +5402,6 @@
                             "specifier": [
                                 "void"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -5444,7 +5441,6 @@
                             "specifier": [
                                 "void"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "void"
                         },
                         {
@@ -5505,7 +5501,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_in",
-                            "stmt0": "c_void_*_in_buf",
+                            "stmt0": "c_void_*_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5533,7 +5529,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_incr",
-                            "stmt0": "c_void_scalar_in_buf",
+                            "stmt0": "c_void_scalar_in",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5575,7 +5571,7 @@
                             "f_type": "character(*)",
                             "f_var": "outbuf",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_buf",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_buf",
                             "stmtc1": "c_char_*_out_buf"

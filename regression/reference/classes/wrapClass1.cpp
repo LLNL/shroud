@@ -216,7 +216,7 @@ CLA_Class1 * CLA_Class1_return_this_buffer(CLA_Class1 * self,
 // ----------------------------------------
 // Argument:  bool flag +value
 // Attrs:     +intent(in)
-// Requested: c_bool_scalar_in_buf
+// Requested: c_bool_scalar_in
 // Match:     c_default
 // start CLA_Class1_return_this_buffer_bufferify
 CLA_Class1 * CLA_Class1_return_this_buffer_bufferify(CLA_Class1 * self,

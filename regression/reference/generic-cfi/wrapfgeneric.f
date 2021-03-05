@@ -414,7 +414,7 @@ module generic_mod
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
-    ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
@@ -965,7 +965,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
@@ -992,7 +992,6 @@ contains
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
         call c_get_pointer_as_pointer(addr, type, size)
-        call c_f_pointer(FIXME%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
@@ -1010,7 +1009,7 @@ contains
     ! Attrs:     +deref(pointer)+intent(out)
     ! Requested: f_native_**_out_pointer
     ! Match:     f_native_**_out
-    ! Argument:  void * * addr +context(FIXME)+intent(out)
+    ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
     ! Requested: c_void_**_out
     ! Match:     c_default
@@ -1037,7 +1036,6 @@ contains
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
         call c_get_pointer_as_pointer(addr, type, size)
-        call c_f_pointer(FIXME%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

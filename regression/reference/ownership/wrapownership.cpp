@@ -123,7 +123,7 @@ int * OWN_return_int_ptr_dim_pointer(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
@@ -167,7 +167,7 @@ int * OWN_return_int_ptr_dim_alloc(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_alloc_bufferify(OWN_SHROUD_array *DSHC_rv,
     int * len)
@@ -211,7 +211,7 @@ int * OWN_return_int_ptr_dim_default(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
@@ -273,7 +273,7 @@ int * OWN_return_int_ptr_dim_pointer_new(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_pointer_new_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)
@@ -335,7 +335,7 @@ int * OWN_return_int_ptr_dim_default_new(int * len)
 // ----------------------------------------
 // Argument:  int * len +hidden+intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 int * OWN_return_int_ptr_dim_default_new_bufferify(
     OWN_SHROUD_array *DSHC_rv, int * len)

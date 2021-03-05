@@ -1571,7 +1571,8 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string arg1 +value
     ! Attrs:     +intent(in)
-    ! Exact:     f_string_scalar_in
+    ! Requested: f_string_scalar_in_cfi
+    ! Match:     f_string_scalar_in
     ! Argument:  std::string arg1 +len(Narg1)+len_trim(Larg1)+value
     ! Attrs:     +intent(in)
     ! Exact:     c_string_scalar_in_cfi

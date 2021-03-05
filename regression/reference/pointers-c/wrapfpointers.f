@@ -642,7 +642,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_array_bufferify
     interface
@@ -815,7 +815,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start c_get_ptr_to_dynamic_const_array_bufferify
     interface
@@ -840,36 +840,16 @@ module pointers_mod
     ! Attrs:     +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    ! start c_get_raw_ptr_to_scalar
+    ! start get_raw_ptr_to_scalar
     interface
-        subroutine c_get_raw_ptr_to_scalar(nitems) &
+        subroutine get_raw_ptr_to_scalar(nitems) &
                 bind(C, name="getRawPtrToScalar")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: nitems
-        end subroutine c_get_raw_ptr_to_scalar
+        end subroutine get_raw_ptr_to_scalar
     end interface
-    ! end c_get_raw_ptr_to_scalar
-
-    ! ----------------------------------------
-    ! Function:  void getRawPtrToScalar
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out_buf_raw
-    ! Match:     c_native_**_out_buf
-    ! start c_get_raw_ptr_to_scalar_bufferify
-    interface
-        subroutine c_get_raw_ptr_to_scalar_bufferify(Dnitems) &
-                bind(C, name="POI_get_raw_ptr_to_scalar_bufferify")
-            import :: POI_SHROUD_array
-            implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
-        end subroutine c_get_raw_ptr_to_scalar_bufferify
-    end interface
-    ! end c_get_raw_ptr_to_scalar_bufferify
+    ! end get_raw_ptr_to_scalar
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
@@ -892,26 +872,6 @@ module pointers_mod
     ! end c_get_raw_ptr_to_scalar_force
 
     ! ----------------------------------------
-    ! Function:  void getRawPtrToScalarForce
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out_buf_raw
-    ! Match:     c_native_**_out_buf
-    ! start c_get_raw_ptr_to_scalar_force_bufferify
-    interface
-        subroutine c_get_raw_ptr_to_scalar_force_bufferify(Dnitems) &
-                bind(C, name="POI_get_raw_ptr_to_scalar_force_bufferify")
-            import :: POI_SHROUD_array
-            implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dnitems
-        end subroutine c_get_raw_ptr_to_scalar_force_bufferify
-    end interface
-    ! end c_get_raw_ptr_to_scalar_force_bufferify
-
-    ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArray
     ! Requested: c_void_scalar_result
     ! Match:     c_default
@@ -920,36 +880,16 @@ module pointers_mod
     ! Attrs:     +deref(raw)+intent(out)
     ! Requested: c_native_**_out_raw
     ! Match:     c_default
-    ! start c_get_raw_ptr_to_fixed_array
+    ! start get_raw_ptr_to_fixed_array
     interface
-        subroutine c_get_raw_ptr_to_fixed_array(count) &
+        subroutine get_raw_ptr_to_fixed_array(count) &
                 bind(C, name="getRawPtrToFixedArray")
             use iso_c_binding, only : C_PTR
             implicit none
             type(C_PTR), intent(OUT) :: count
-        end subroutine c_get_raw_ptr_to_fixed_array
+        end subroutine get_raw_ptr_to_fixed_array
     end interface
-    ! end c_get_raw_ptr_to_fixed_array
-
-    ! ----------------------------------------
-    ! Function:  void getRawPtrToFixedArray
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out_buf_raw
-    ! Match:     c_native_**_out_buf
-    ! start c_get_raw_ptr_to_fixed_array_bufferify
-    interface
-        subroutine c_get_raw_ptr_to_fixed_array_bufferify(Dcount) &
-                bind(C, name="POI_get_raw_ptr_to_fixed_array_bufferify")
-            import :: POI_SHROUD_array
-            implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
-        end subroutine c_get_raw_ptr_to_fixed_array_bufferify
-    end interface
-    ! end c_get_raw_ptr_to_fixed_array_bufferify
+    ! end get_raw_ptr_to_fixed_array
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
@@ -970,26 +910,6 @@ module pointers_mod
         end subroutine c_get_raw_ptr_to_fixed_array_force
     end interface
     ! end c_get_raw_ptr_to_fixed_array_force
-
-    ! ----------------------------------------
-    ! Function:  void getRawPtrToFixedArrayForce
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out_buf_raw
-    ! Match:     c_native_**_out_buf
-    ! start c_get_raw_ptr_to_fixed_array_force_bufferify
-    interface
-        subroutine c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount) &
-                bind(C, name="POI_get_raw_ptr_to_fixed_array_force_bufferify")
-            import :: POI_SHROUD_array
-            implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: Dcount
-        end subroutine c_get_raw_ptr_to_fixed_array_force_bufferify
-    end interface
-    ! end c_get_raw_ptr_to_fixed_array_force_bufferify
 
     ! ----------------------------------------
     ! Function:  void getRawPtrToInt2d
@@ -1626,7 +1546,7 @@ contains
     ! ----------------------------------------
     ! Argument:  char * * names +intent(in)+rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_char_**_in
+    ! Requested: f_char_**_in_buf
     ! Match:     f_default
     ! Argument:  char * * names +intent(in)+len(Nnames)+rank(1)+size(Snames)
     ! Attrs:     +intent(in)
@@ -1657,8 +1577,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1684,8 +1603,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1714,8 +1632,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1725,7 +1642,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! Return a Fortran pointer to an array which is the length of
@@ -1754,8 +1671,7 @@ contains
     ! ----------------------------------------
     ! Argument:  int * * count +dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1786,8 +1702,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * nitems +intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1813,8 +1728,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1840,8 +1754,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const int * * count +dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -1851,7 +1764,7 @@ contains
     ! Requested: f_native_*_out
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out_buf
+    ! Requested: c_native_*_out
     ! Match:     c_default
     ! start get_ptr_to_dynamic_const_array
     subroutine get_ptr_to_dynamic_const_array(count)
@@ -1866,36 +1779,6 @@ contains
     end subroutine get_ptr_to_dynamic_const_array
     ! end get_ptr_to_dynamic_const_array
 
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getRawPtrToScalar
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * nitems +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     f_native_**_out_raw
-    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_native_**_out_buf
-    !>
-    !! Called directly via an interface in Fortran.
-    !<
-    ! start get_raw_ptr_to_scalar
-    subroutine get_raw_ptr_to_scalar(nitems)
-        use iso_c_binding, only : C_INT, C_PTR
-        type(C_PTR), intent(OUT) :: nitems
-        ! splicer begin function.get_raw_ptr_to_scalar
-        type(POI_SHROUD_array) Dnitems
-        call c_get_raw_ptr_to_scalar_bufferify(Dnitems)
-        nitems = Dnitems%base_addr
-        ! splicer end function.get_raw_ptr_to_scalar
-    end subroutine get_raw_ptr_to_scalar
-    ! end get_raw_ptr_to_scalar
-
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getRawPtrToScalarForce
     ! Requested: f_subroutine
@@ -1906,9 +1789,9 @@ contains
     ! Argument:  int * * nitems +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    ! Argument:  int * * nitems +context(Dnitems)+deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     !>
     !! Create a Fortran wrapper.
     !<
@@ -1917,45 +1800,11 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: nitems
         ! splicer begin function.get_raw_ptr_to_scalar_force
-        type(POI_SHROUD_array) Dnitems
-        call c_get_raw_ptr_to_scalar_force_bufferify(Dnitems)
-        nitems = Dnitems%base_addr
+        call c_get_raw_ptr_to_scalar_force(nitems)
         ! splicer end function.get_raw_ptr_to_scalar_force
     end subroutine get_raw_ptr_to_scalar_force
     ! end get_raw_ptr_to_scalar_force
 
-    ! Generated by arg_to_buffer
-    ! ----------------------------------------
-    ! Function:  void getRawPtrToFixedArray
-    ! Requested: f_subroutine
-    ! Match:     f_default
-    ! Requested: c
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  int * * count +deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     f_native_**_out_raw
-    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
-    ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_native_**_out_buf
-    !>
-    !! Return a type(C_PTR) to an array which is always the same length.
-    !! Called directly via an interface in Fortran.
-    !! # Uses +deref(raw) instead of +dimension(10) like getPtrToFixedArray.
-    !<
-    ! start get_raw_ptr_to_fixed_array
-    subroutine get_raw_ptr_to_fixed_array(count)
-        use iso_c_binding, only : C_INT, C_PTR
-        type(C_PTR), intent(OUT) :: count
-        ! splicer begin function.get_raw_ptr_to_fixed_array
-        type(POI_SHROUD_array) Dcount
-        call c_get_raw_ptr_to_fixed_array_bufferify(Dcount)
-        count = Dcount%base_addr
-        ! splicer end function.get_raw_ptr_to_fixed_array
-    end subroutine get_raw_ptr_to_fixed_array
-    ! end get_raw_ptr_to_fixed_array
-
-    ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getRawPtrToFixedArrayForce
     ! Requested: f_subroutine
@@ -1966,9 +1815,9 @@ contains
     ! Argument:  int * * count +deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
-    ! Argument:  int * * count +context(Dcount)+deref(raw)+intent(out)
     ! Attrs:     +deref(raw)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out
+    ! Match:     c_default
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
     !! Create a Fortran wrapper.
@@ -1978,9 +1827,7 @@ contains
         use iso_c_binding, only : C_INT, C_PTR
         type(C_PTR), intent(OUT) :: count
         ! splicer begin function.get_raw_ptr_to_fixed_array_force
-        type(POI_SHROUD_array) Dcount
-        call c_get_raw_ptr_to_fixed_array_force_bufferify(Dcount)
-        count = Dcount%base_addr
+        call c_get_raw_ptr_to_fixed_array_force(count)
         ! splicer end function.get_raw_ptr_to_fixed_array_force
     end subroutine get_raw_ptr_to_fixed_array_force
     ! end get_raw_ptr_to_fixed_array_force

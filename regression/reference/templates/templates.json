@@ -1887,7 +1887,6 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
@@ -1922,7 +1921,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "shadow_var": "SHadow_n",
-                                            "stmt0": "c_native_scalar_in_buf",
+                                            "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
@@ -1936,7 +1935,7 @@
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_native_scalar_in",
                                             "stmt1": "f_default",
-                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc0": "c_native_scalar_in",
                                             "stmtc1": "c_default"
                                         }
                                     }
@@ -2634,7 +2633,6 @@
                                             "specifier": [
                                                 "size_type"
                                             ],
-                                            "stmts_suffix": "buf",
                                             "typemap_name": "std::vector::size_type"
                                         }
                                     ],
@@ -2669,7 +2667,7 @@
                                             "idtor": "0",
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "shadow_var": "SHadow_n",
-                                            "stmt0": "c_native_scalar_in_buf",
+                                            "stmt0": "c_native_scalar_in",
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
@@ -2683,7 +2681,7 @@
                                             "sh_type": "SH_TYPE_SIZE_T",
                                             "stmt0": "f_native_scalar_in",
                                             "stmt1": "f_default",
-                                            "stmtc0": "c_native_scalar_in_buf",
+                                            "stmtc0": "c_native_scalar_in",
                                             "stmtc1": "c_default"
                                         }
                                     }

@@ -855,6 +855,38 @@ class GenFunctions(object):
             self.add_var_getter_setter(cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
 
+    def define_bufferify_functions(self, functions):
+        """Create additional C bufferify functions."""
+        ordered = []
+        for node in functions:
+            ordered.append(node)
+            
+            if node.options.F_CFI:
+#                node._gen_fortran_generic = False
+                done = self.arg_to_CFI(node, ordered)
+            else:
+                done = False
+
+            if node.options.F_create_bufferify_function and not done:
+                self.arg_to_buffer(node, ordered)
+        return ordered
+
+    def define_fortran_generic_functions(self, functions):
+        """Create multiple generic Fortran wrappers to call a
+        single C function.
+        """
+        ordered = []
+        for node in functions:
+            ordered.append(node)
+            if not node.wrap.fortran:
+                continue
+            if node._gen_fortran_generic and not node.options.F_CFI:
+                self.process_assumed_rank(node)
+            if node.fortran_generic:
+                node._overloaded = True
+                self.generic_function(node, ordered)
+        return ordered
+        
     def define_function_suffix(self, functions):
         """Return a new list with generated function inserted.
 
@@ -932,33 +964,8 @@ class GenFunctions(object):
             if method.return_this:
                 self.process_return_this(method, ordered2)
                 
-
-        # Create additional C bufferify functions.
-        ordered3 = []
-        for method in ordered2:
-            ordered3.append(method)
-            
-            if method.options.F_CFI:
-#                method._gen_fortran_generic = False
-                done = self.arg_to_CFI(method, ordered3)
-            else:
-                done = False
-
-            if method.options.F_create_bufferify_function and not done:
-                self.arg_to_buffer(method, ordered3)
-
-        # Create multiple generic Fortran wrappers to call a
-        # single C functions
-        ordered4 = []
-        for method in ordered3:
-            ordered4.append(method)
-            if not method.wrap.fortran:
-                continue
-            if method._gen_fortran_generic and not method.options.F_CFI:
-                self.process_assumed_rank(method)
-            if method.fortran_generic:
-                method._overloaded = True
-                self.generic_function(method, ordered4)
+        ordered3 = self.define_bufferify_functions(ordered2)
+        ordered4 = self.define_fortran_generic_functions(ordered3)
 
         self.gen_functions_decl(ordered4)
 
@@ -1205,7 +1212,6 @@ class GenFunctions(object):
         corder = get_order(node.ast.params)
         cvariants = {corder: node._function_index}
 
-        context_args = {}
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
@@ -1220,13 +1226,6 @@ class GenFunctions(object):
             new.fortran_generic = {}
             new.wrap.assign(fortran=True)
             new.ast.params = generic.decls
-
-            for arg in generic.decls:
-                # double **arg +intent(out)+rank(1)
-                if (arg.typemap.sgroup == "native" and
-                    arg.metaattrs["intent"] == "out" and
-                    arg.get_indirect_stmt() in  ["**", "*&"]):
-                    context_args[arg.name] = True
 
             order = get_order(new.ast.params, corder)
             new._PTR_F_C_index = cvariants.get(order, None)
@@ -1249,10 +1248,6 @@ class GenFunctions(object):
                 cvariants[order] = cnew._function_index
                 new._PTR_F_C_index = cnew._function_index
         
-        for argname in context_args.keys():
-            arg = node.ast.find_arg_by_name(argname)
-            arg.attrs["context"] = "FIXME"
-
         # Do not process templated node, instead process
         # generated functions above.
         #        node.wrap.c = False
@@ -1498,10 +1493,10 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
-            attrs = arg.attrs
-            arg_typemap = arg.typemap
             if cfi_args[arg.name]:
                 arg.stmts_suffix = generated_suffix
+            attrs = arg.attrs
+            arg_typemap = arg.typemap
             if arg_typemap.sgroup in ["char", "string"]:
                 # Create local variable names to be used in statements.
                 # TODO: move into metaattrs
@@ -1608,8 +1603,9 @@ class GenFunctions(object):
         # Is result or any argument a string or vector?
         # If so, additional arguments will be passed down so
         # create buffer version of function.
-        has_buf_arg = False
+        buf_args = {}
         for arg in ast.params:
+            has_buf_arg = False
             arg_typemap = arg.typemap
             if arg_typemap.sgroup == "string":
                 has_buf_arg = True
@@ -1622,10 +1618,12 @@ class GenFunctions(object):
                 has_buf_arg = True
             elif (arg_typemap.sgroup == "native" and
                   arg.metaattrs["intent"] == "out" and
+                  arg.metaattrs["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-#                 arg.attrs["dimension"]:
-                # double **values +intent(out) +dimension(nvalues)
+                # double **values +intent(out) +deref(raw)
                 has_buf_arg = True
+            buf_args[arg.name] = has_buf_arg
+        has_buf_arg = any(buf_args.values())
 
         # Function result.
         has_string_result = False
@@ -1681,6 +1679,8 @@ class GenFunctions(object):
         C_new._PTR_C_CXX_index = node._function_index
 
         for arg in C_new.ast.params:
+            if buf_args[arg.name]:
+                arg.stmts_suffix = generated_suffix
             attrs = arg.attrs
             meta = arg.metaattrs
             if arg.ftrim_char_in:
@@ -1698,17 +1698,13 @@ class GenFunctions(object):
                 specialize = arg.template_arguments[0].typemap.sgroup
             elif (sgroup == "native" and
                   meta["intent"] == "out" and
+                  meta["deref"] != "raw" and
                   arg.get_indirect_stmt() in ["**", "*&"]):
-#                 arg.attrs["dimension"]:
                 attrs["context"] = True
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
-            # Set names for implied buffer arguments.
-            # This filters out "buf" for ftrim_char_in
-            arg.stmts_suffix = generated_suffix
-            
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, meta["intent"], generated_suffix, specialize]
+            c_stmts = ["c", sgroup, spointer, meta["intent"], arg.stmts_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 

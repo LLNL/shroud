@@ -734,7 +734,7 @@
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_cfi",
                             "stmtc1": "c_char_*_out_cfi"
@@ -771,7 +771,7 @@
                             "f_type": "character(*)",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_in",
+                            "stmt0": "f_char_*_in_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_in_cfi",
                             "stmtc1": "c_char_*_in_cfi"
@@ -994,7 +994,7 @@
                             "f_type": "character(*)",
                             "f_var": "s",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_inout",
+                            "stmt0": "f_char_*_inout_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_inout_cfi",
                             "stmtc1": "c_char_*_inout_cfi"
@@ -4913,7 +4913,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in",
+                            "stmt0": "f_string_&_in_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_in_cfi",
                             "stmtc1": "c_string_&_in_cfi"
@@ -5136,7 +5136,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_out",
+                            "stmt0": "f_string_&_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_out_cfi",
                             "stmtc1": "c_string_&_out_cfi"
@@ -5357,7 +5357,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_inout",
+                            "stmt0": "f_string_&_inout_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_cfi",
                             "stmtc1": "c_string_&_inout_cfi"
@@ -5576,7 +5576,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_in",
+                            "stmt0": "f_string_*_in_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_in_cfi",
                             "stmtc1": "c_string_*_in_cfi"
@@ -5793,7 +5793,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_inout",
+                            "stmt0": "f_string_*_inout_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_inout_cfi",
                             "stmtc1": "c_string_*_inout_cfi"
@@ -6016,7 +6016,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_out",
+                            "stmt0": "f_string_*_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_out_cfi",
                             "stmtc1": "c_string_*_out_cfi"
@@ -6317,7 +6317,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_inout",
+                            "stmt0": "f_string_*_inout_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_inout_cfi",
                             "stmtc1": "c_string_*_inout_cfi"
@@ -6655,7 +6655,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_out",
+                            "stmt0": "f_string_*_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_*_out_cfi",
                             "stmtc1": "c_string_*_out_cfi"
@@ -6952,7 +6952,7 @@
                             "f_type": "character(*)",
                             "f_var": "arg1",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_scalar_in",
+                            "stmt0": "f_string_scalar_in_cfi",
                             "stmt1": "f_string_scalar_in",
                             "stmtc0": "c_string_scalar_in_cfi",
                             "stmtc1": "c_string_scalar_in_cfi"
@@ -7360,7 +7360,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_in",
+                            "stmt0": "f_char_*_in_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_in_cfi",
                             "stmtc1": "c_char_*_in_cfi"
@@ -7560,7 +7560,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_cfi",
                             "stmtc1": "c_char_*_out_cfi"
@@ -8163,7 +8163,7 @@
                             "f_type": "character(*)",
                             "f_var": "dest",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_out",
+                            "stmt0": "f_char_*_out_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_out_cfi",
                             "stmtc1": "c_char_*_out_cfi"
@@ -8200,7 +8200,7 @@
                             "f_type": "character(*)",
                             "f_var": "src",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_char_*_in",
+                            "stmt0": "f_char_*_in_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_char_*_in_cfi",
                             "stmtc1": "c_char_*_in_cfi"
@@ -8542,7 +8542,7 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_inout",
+                            "stmt0": "f_string_&_inout_cfi",
                             "stmt1": "f_default",
                             "stmtc0": "c_string_&_inout_cfi",
                             "stmtc1": "c_string_&_inout_cfi"

@@ -127,7 +127,7 @@ module cdesc_mod
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
         ! Attrs:     +intent(out)
-        ! Requested: c_void_*_out_buf_cdesc
+        ! Requested: c_void_*_out_cdesc
         ! Match:     c_void_*_cdesc
         subroutine c_get_scalar1_bufferify(name, Lname, Dvalue) &
                 bind(C, name="CDE_get_scalar1_bufferify")
@@ -218,7 +218,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -229,7 +229,7 @@ contains
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out_buf_cdesc
+    ! Requested: c_void_*_out_cdesc
     ! Match:     c_void_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
@@ -267,7 +267,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -278,7 +278,7 @@ contains
     ! Exact:     f_native_*_out_cdesc
     ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out_buf_cdesc
+    ! Requested: c_void_*_out_cdesc
     ! Match:     c_void_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single

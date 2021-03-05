@@ -315,7 +315,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout_buf
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_bufferify(self, &
                 Darray, isize) &
@@ -364,7 +364,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout_buf
+        ! Requested: c_native_&_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_bufferify(self, &
                 Darray, isize) &
@@ -414,7 +414,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int * isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_*_inout_buf
+        ! Requested: c_native_*_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ptr_const_bufferify(self, &
                 Darray, isize) &
@@ -464,7 +464,7 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Argument:  int & isize +hidden
         ! Attrs:     +intent(inout)
-        ! Requested: c_native_&_inout_buf
+        ! Requested: c_native_&_inout
         ! Match:     c_default
         subroutine c_arraywrapper_fetch_array_ref_const_bufferify(self, &
                 Darray, isize) &
@@ -753,8 +753,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -764,7 +763,7 @@ contains
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout_buf
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -789,8 +788,7 @@ contains
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_*&_out_pointer
-    ! Match:     f_native_*&_out
+    ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_*&_out_buf
@@ -800,7 +798,7 @@ contains
     ! Requested: f_native_&_inout
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_&_inout_buf
+    ! Requested: c_native_&_inout
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -825,8 +823,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
+    ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_**_out_buf
@@ -836,7 +833,7 @@ contains
     ! Requested: f_native_*_inout
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout_buf
+    ! Requested: c_native_*_inout
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ptr_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer
@@ -861,8 +858,7 @@ contains
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_*&_out_pointer
-    ! Match:     f_native_*&_out
+    ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
     ! Exact:     c_native_*&_out_buf
@@ -872,7 +868,7 @@ contains
     ! Requested: f_native_&_inout
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_&_inout_buf
+    ! Requested: c_native_&_inout
     ! Match:     c_default
     subroutine arraywrapper_fetch_array_ref_const(obj, array)
         use iso_c_binding, only : C_DOUBLE, C_INT, c_f_pointer

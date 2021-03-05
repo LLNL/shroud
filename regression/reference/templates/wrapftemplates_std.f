@@ -141,7 +141,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_vector_int_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -229,7 +229,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_vector_double_at_bufferify(self, n) &
                 result(SHT_rv) &
@@ -327,7 +327,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     function vector_int_at(obj, n) &
             result(SHT_rv)
@@ -436,7 +436,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     function vector_double_at(obj, n) &
             result(SHT_rv)

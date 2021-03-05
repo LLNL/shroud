@@ -932,7 +932,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -966,7 +965,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -980,7 +979,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1261,7 +1260,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -1295,7 +1293,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1309,7 +1307,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1588,7 +1586,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -1622,7 +1619,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1636,7 +1633,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2045,7 +2042,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -2079,7 +2075,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2093,7 +2089,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2544,7 +2540,6 @@
                             "specifier": [
                                 "int"
                             ],
-                            "stmts_suffix": "buf",
                             "typemap_name": "int"
                         }
                     ],
@@ -2578,7 +2573,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_len",
-                            "stmt0": "c_native_*_out_buf",
+                            "stmt0": "c_native_*_out",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2592,7 +2587,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out_buf",
+                            "stmtc0": "c_native_*_out",
                             "stmtc1": "c_default"
                         }
                     }

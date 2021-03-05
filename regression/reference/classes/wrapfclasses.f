@@ -302,7 +302,7 @@ module classes_mod
     ! ----------------------------------------
     ! Argument:  bool flag +value
     ! Attrs:     +intent(in)
-    ! Requested: c_bool_scalar_in_buf
+    ! Requested: c_bool_scalar_in
     ! Match:     c_default
     ! start c_class1_return_this_buffer_bufferify
     interface
@@ -979,7 +979,7 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -990,7 +990,7 @@ contains
     ! Requested: f_bool_scalar_in
     ! Match:     f_bool_in
     ! Attrs:     +intent(in)
-    ! Requested: c_bool_scalar_in_buf
+    ! Requested: c_bool_scalar_in
     ! Match:     c_default
     !>
     !! \brief Return pointer to 'this' to allow chaining calls

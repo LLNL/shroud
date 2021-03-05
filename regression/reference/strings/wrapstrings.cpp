@@ -1227,7 +1227,7 @@ void STR_accept_string_pointer_len(char * arg1, int * nlen)
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 void STR_accept_string_pointer_len_bufferify(char * arg1, int Larg1,
     int Narg1, int * nlen)
@@ -1286,7 +1286,7 @@ void STR_fetch_string_pointer_len(char * arg1, int * nlen)
 // ----------------------------------------
 // Argument:  int * nlen +intent(out)
 // Attrs:     +intent(out)
-// Requested: c_native_*_out_buf
+// Requested: c_native_*_out
 // Match:     c_default
 void STR_fetch_string_pointer_len_bufferify(char * arg1, int Narg1,
     int * nlen)
@@ -1480,7 +1480,7 @@ void STR_post_declare(int * count, char * name)
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Requested: c_native_*_in_buf
+// Requested: c_native_*_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  std::string & name +len(Nname)+len_trim(Lname)

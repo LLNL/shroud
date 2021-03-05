@@ -4328,7 +4328,6 @@
                     "params": [
                         {
                             "attrs": {
-                                "context": "FIXME",
                                 "intent": "out"
                             },
                             "declarator": {
@@ -4399,7 +4398,7 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
-                "declgen": "void GetPointerAsPointer(void * * addr +context(FIXME)+intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "declgen": "void GetPointerAsPointer(void * * addr +intent(out), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
                 "fortran_generic": [
                     {
                         "decls": [
@@ -4562,7 +4561,6 @@
                             "c_deref": "*",
                             "c_member": "->",
                             "c_var": "addr",
-                            "c_var_context": "FIXME",
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "addr",
@@ -4578,7 +4576,6 @@
                             "F_C_var": "addr",
                             "F_pointer": "SHPTR_addr",
                             "c_var": "addr",
-                            "c_var_context": "FIXME",
                             "f_assumed_shape": "(:,:)",
                             "f_c_dimension": "(*)",
                             "f_intent": "OUT",

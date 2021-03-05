@@ -37,7 +37,7 @@ static void ShroudStrBlankFill(char *dest, int ndest)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
-// Requested: c_struct_*_in_buf
+// Requested: c_struct_*_in
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
@@ -66,12 +66,12 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)

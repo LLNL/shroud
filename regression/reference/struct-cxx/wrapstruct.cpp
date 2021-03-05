@@ -114,7 +114,7 @@ int STR_pass_struct2(const STR_cstruct1 * s1, char * outbuf)
 // ----------------------------------------
 // Argument:  const Cstruct1 * s1
 // Attrs:     +intent(in)
-// Requested: c_struct_*_in_buf
+// Requested: c_struct_*_in
 // Match:     c_struct
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
@@ -269,12 +269,12 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d)
 {
@@ -334,12 +334,12 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double d +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in_buf
+// Requested: c_native_scalar_in
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)

@@ -371,7 +371,7 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  const Cstruct1 * s1
         ! Attrs:     +intent(in)
-        ! Requested: c_struct_*_in_buf
+        ! Requested: c_struct_*_in
         ! Match:     c_struct
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
@@ -513,12 +513,12 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         function c_return_struct_ptr1_bufferify(i, d) &
                 result(SHT_rv) &
@@ -569,12 +569,12 @@ module struct_mod
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  double d +value
         ! Attrs:     +intent(in)
-        ! Requested: c_native_scalar_in_buf
+        ! Requested: c_native_scalar_in
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
@@ -968,12 +968,12 @@ contains
     ! Requested: f_struct_*_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_struct_*_in_buf
+    ! Requested: c_struct_*_in
     ! Match:     c_struct
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)
@@ -1008,7 +1008,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
@@ -1016,7 +1016,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     !>
     !! \brief Return a pointer to a struct
@@ -1051,7 +1051,7 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double d +value
@@ -1059,12 +1059,12 @@ contains
     ! Requested: f_native_scalar_in
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in_buf
+    ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_char_*_out
+    ! Requested: f_char_*_out_buf
     ! Match:     f_default
     ! Argument:  char * outbuf +charlen(LENOUTBUF)+intent(out)+len(Noutbuf)
     ! Attrs:     +intent(out)
