@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Python hello-world-python example for a simple library in examples/
 - Support for class inheritance.  Fortran uses the `EXTENDS` keyword.
   Python uses `PyTypeObject.tp_base` field.
 - Ability to treat a struct as a class.
