@@ -757,6 +757,7 @@ class LibraryNode(AstNode, NamespaceMixin):
             # Add default values to format to aid debugging.
             # Avoids exception from wformat for non-existent fields.
             fmt_library.update(dict(
+                c_get_value="XXXc_get_value",
                 c_val="XXXc_val",
                 c_var="XXXc_var",
                 c_var_capsule="XXXc_var_capsule",

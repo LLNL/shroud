@@ -855,6 +855,16 @@ class GenFunctions(object):
             self.add_var_getter_setter(cls, var)
         cls.functions = self.define_function_suffix(cls.functions)
 
+    def define_result_as_arg_functions(self, functions):
+        """Convert result into argument if requested."""
+        ordered = []
+        for node in functions:
+            ordered.append(node)
+            if node.wrap.fortran is False:
+                continue
+            self.convert_result_as_arg(node, ordered)
+        return ordered
+
     def define_bufferify_functions(self, functions):
         """Create additional C bufferify functions."""
         ordered = []
@@ -964,7 +974,8 @@ class GenFunctions(object):
             if method.return_this:
                 self.process_return_this(method, ordered2)
                 
-        ordered3 = self.define_bufferify_functions(ordered2)
+        ordered3a = self.define_result_as_arg_functions(ordered2)
+        ordered3 = self.define_bufferify_functions(ordered3a)
         ordered4 = self.define_fortran_generic_functions(ordered3)
 
         self.gen_functions_decl(ordered4)
@@ -1393,6 +1404,90 @@ class GenFunctions(object):
         # Do not return C++ this instance.
         new.ast.set_return_to_void()
     
+    def convert_result_as_arg(self, node, ordered_functions):
+        """Convert a function result into an argument.
+
+        Used when the YAML file names the output argument
+        via fmt.F_string_result_as_arg for (char or string)
+        Create a new function.
+
+        For example, a function returns a 'char *' write a Fortran
+        wrapper which accepts a CHARACTER(*) argument which will be
+        assigned the function result.  This helps memory management
+        issues at the cost of copying data.
+
+        The original function will still be wrapped in C but returns a
+        type(C_PTR) where the use must call c_f_pointer themselves.
+        """
+        return ordered_functions # XXX - do nothing for now
+        options = node.options
+        fmt_func = node.fmtdict
+#        if options.F_string_len_trim is False:  # XXX what about vector?
+#            return
+
+        ast = node.ast
+        result_typemap = ast.typemap
+        result_name = None
+
+        # Check if result needs to be an argument.
+        attrs = ast.attrs
+        meta = ast.metaattrs
+        if meta["deref"] == "raw":
+            # No bufferify required for raw pointer result.
+            pass
+        elif result_typemap.sgroup in ["char", "string"]:
+            result_name = fmt_func.F_string_result_as_arg
+#            result_as_arg = fmt_func.F_string_result_as_arg
+#            result_name = result_as_arg or fmt_func.C_string_result_as_arg
+#        elif result_typemap.base == "vector":
+#            has_vector_result = True
+#        elif result_is_ptr:
+#            if meta["deref"] in ["allocatable", "pointer"]:
+#                need_cdesc_result = True
+#            elif attrs["dimension"]:
+#                need_cdesc_result = True
+
+        if not result_name:
+            return
+
+##########
+        # Create a new C function and change arguments
+        # and add attributes.
+        C_new = node.clone()
+        ordered_functions.append(C_new)
+        self.append_function_index(C_new)
+
+#        generated_suffix = "buf"
+        C_new._generated = "result_to_arg"
+        fmt_func = C_new.fmtdict
+#        fmt_func.function_suffix = fmt_func.function_suffix + fmt_func.C_bufferify_suffix + "XXX"
+#        fmt_func.function_suffix = fmt_func.function_suffix
+
+        options = C_new.options
+        C_new.wrap.assign(c=True, fortran=True)
+        C_new._PTR_C_CXX_index = node._function_index
+##########
+
+        # decl: const char * getCharPtr2()
+        new_arg = C_new.ast.result_as_arg(result_name)
+        new_arg.const = False # must be writeable
+        attrs = new_arg.attrs
+#        attrs["len"] = options.C_var_len_template.format(
+#            c_var=result_name
+#        )
+        new_arg.metaattrs["deref"] = None
+        # Special case for wrapf.py to override "allocatable"
+
+#        f_meta = node.ast.metaattrs  # Fortran function attributes
+#        f_meta["deref"] = "result-as-arg"
+
+        node.wrap.fortran = False
+
+        return
+        F_new = self.result_as_arg(node, C_new)
+        ordered_functions.append(F_new)
+        self.append_function_index(F_new)
+
     def arg_to_CFI(self, node, ordered_functions):
         """Look for functions which can use TS29113
         Futher interoperability with C.
@@ -1774,6 +1869,9 @@ class GenFunctions(object):
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
         else:
+            if node._generated == "result_to_arg":
+                node.wrap.c = False
+            
             # Fortran function may call C subroutine if string/vector result
             node._PTR_F_C_index = C_new._function_index
 
