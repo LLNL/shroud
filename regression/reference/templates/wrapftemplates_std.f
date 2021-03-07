@@ -319,7 +319,7 @@ contains
     ! Match:     f_native_&_result
     ! Function:  int & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_&_result_buf
+    ! Requested: c_native_&_result_buf_pointer
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_type n +value
@@ -428,7 +428,7 @@ contains
     ! Match:     f_native_&_result
     ! Function:  double & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_&_result_buf
+    ! Requested: c_native_&_result_buf_pointer
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  size_type n +value

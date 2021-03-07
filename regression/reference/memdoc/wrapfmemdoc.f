@@ -110,7 +110,7 @@ contains
     ! Requested: f_string_scalar_result_buf_allocatable_library
     ! Match:     f_string_scalar_result_buf_allocatable
     ! Function:  void getConstStringPtrAlloc
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result

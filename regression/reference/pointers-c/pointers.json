@@ -678,7 +678,7 @@
                             "sh_type": "SH_TYPE_DOUBLE",
                             "stmt0": "f_native_*_out_allocatable",
                             "stmt1": "f_native_*_out_allocatable",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_native_*_out_allocatable",
                             "stmtc1": "c_default"
                         }
                     },
@@ -903,7 +903,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out_allocatable",
                             "stmt1": "f_native_*_out_allocatable",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_native_*_out_allocatable",
                             "stmtc1": "c_default"
                         }
                     },
@@ -1435,7 +1435,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_*_out_allocatable",
                             "stmt1": "f_native_*_out_allocatable",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_native_*_out_allocatable",
                             "stmtc1": "c_default"
                         }
                     }
@@ -3037,7 +3037,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     }
@@ -3259,7 +3259,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     }
@@ -3545,7 +3545,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     },
@@ -3802,7 +3802,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     }
@@ -4003,7 +4003,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     }
@@ -4221,7 +4221,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     }
@@ -4503,7 +4503,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_buf_pointer",
                             "stmt1": "f_native_**_out_buf_pointer",
-                            "stmtc0": "c_native_**_out_buf",
+                            "stmtc0": "c_native_**_out_buf_pointer",
                             "stmtc1": "c_native_**_out_buf"
                         }
                     },
@@ -4635,7 +4635,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
+                            "stmtc0": "c_native_**_out_raw",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4745,7 +4745,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
+                            "stmtc0": "c_native_**_out_raw",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4852,7 +4852,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
+                            "stmtc0": "c_native_**_out_raw",
                             "stmtc1": "c_default"
                         }
                     }
@@ -4962,7 +4962,7 @@
                             "sh_type": "SH_TYPE_INT",
                             "stmt0": "f_native_**_out_raw",
                             "stmt1": "f_native_**_out_raw",
-                            "stmtc0": "c_native_**_out",
+                            "stmtc0": "c_native_**_out_raw",
                             "stmtc1": "c_default"
                         }
                     }
@@ -5937,7 +5937,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
-                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc0": "c_native_*_result_buf_pointer",
                         "stmtc1": "c_native_*_result_buf"
                     }
                 }
@@ -6100,7 +6100,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
-                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc0": "c_native_*_result_buf_pointer",
                         "stmtc1": "c_native_*_result_buf"
                     }
                 }
@@ -6259,7 +6259,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
-                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc0": "c_native_*_result_buf_pointer",
                         "stmtc1": "c_native_*_result_buf"
                     }
                 }
@@ -6424,7 +6424,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
-                        "stmtc0": "c_native_*_result_buf",
+                        "stmtc0": "c_native_*_result_buf_pointer",
                         "stmtc1": "c_native_*_result_buf"
                     }
                 }
@@ -6581,7 +6581,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_scalar",
                         "stmt1": "f_native_*_result_scalar",
-                        "stmtc0": "c_native_*_result",
+                        "stmtc0": "c_native_*_result_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -6667,7 +6667,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_raw",
                         "stmt1": "f_native_*_result_raw",
-                        "stmtc0": "c_native_*_result",
+                        "stmtc0": "c_native_*_result_raw",
                         "stmtc1": "c_default"
                     }
                 }
@@ -6806,7 +6806,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_raw",
                         "stmt1": "f_native_*_result_raw",
-                        "stmtc0": "c_native_*_result",
+                        "stmtc0": "c_native_*_result_raw",
                         "stmtc1": "c_default"
                     }
                 }
@@ -6895,7 +6895,7 @@
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_**_result_buf_pointer",
                         "stmt1": "f_native_**_result",
-                        "stmtc0": "c_native_**_result_buf",
+                        "stmtc0": "c_native_**_result_buf_pointer",
                         "stmtc1": "c_default"
                     }
                 }

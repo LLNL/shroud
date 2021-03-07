@@ -1596,7 +1596,8 @@ rv = .false.
                 sintent = "result"
                 f_stmts = ["f", sgroup, spointer, "result", generated_suffix,
                            return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sgroup, spointer, "result", generated_suffix]
+                c_stmts = ["c", sgroup, spointer, "result", generated_suffix,
+                           return_deref_attr]
         fmt_func.F_subprogram = subprogram
 
         f_result_blk = statements.lookup_fc_stmts(f_stmts)
@@ -1730,7 +1731,7 @@ rv = .false.
             else:
                 # Pass c_arg.stmts_suffix to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, cdesc]
+                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, f_deref_attr, cdesc]
                 f_stmts = ["f", f_sgroup, f_spointer, intent, c_arg.stmts_suffix, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)

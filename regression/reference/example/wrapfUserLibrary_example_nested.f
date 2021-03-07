@@ -1400,7 +1400,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getNameErrorCheck
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1612,7 +1612,8 @@ contains
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
-    ! Exact:     c_string_scalar_result_buf
+    ! Requested: c_string_scalar_result_buf_result-as-arg
+    ! Match:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result
@@ -1637,7 +1638,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName2
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1662,7 +1663,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName3
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1687,7 +1688,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName4
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -2539,7 +2540,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_native_*_out_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
     !>
     !! \brief Test multidimensional arrays with allocatable

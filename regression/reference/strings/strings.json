@@ -1080,7 +1080,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_scalar_result_buf_allocatable",
                         "stmt1": "f_char_scalar_result_buf_allocatable",
-                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc0": "c_char_scalar_result_buf_allocatable",
                         "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -1309,7 +1309,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_char_scalar_result_buf",
+                        "stmtc0": "c_char_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_char_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -1803,7 +1803,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_char_*_result_raw",
                         "stmt1": "f_char_*_result_raw",
-                        "stmtc0": "c_char_*_result",
+                        "stmtc0": "c_char_*_result_raw",
                         "stmtc1": "c_char_*_result"
                     }
                 }
@@ -1860,8 +1860,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2055,7 +2055,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -2479,8 +2479,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "c_deref": "",
@@ -2698,8 +2698,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -2928,7 +2928,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -3429,7 +3429,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -3649,8 +3649,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3880,7 +3880,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtpy": {
@@ -4110,8 +4110,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable_library",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4332,8 +4332,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable_caller",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -4558,8 +4558,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable_caller",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtpy": {
                         "array_size": "1",

@@ -3140,7 +3140,7 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
+                        "stmtc0": "c_struct_*_result_buf_pointer",
                         "stmtc1": "c_struct_result"
                     }
                 }
@@ -3520,7 +3520,7 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
+                        "stmtc0": "c_struct_*_result_buf_pointer",
                         "stmtc1": "c_struct_result"
                     }
                 }
@@ -3830,7 +3830,7 @@
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
+                        "stmtc0": "c_struct_*_result_buf_pointer",
                         "stmtc1": "c_struct_result"
                     }
                 }

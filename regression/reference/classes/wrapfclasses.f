@@ -1045,7 +1045,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1192,7 +1192,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_buf_allocatable
     ! Function:  void getName
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
@@ -1523,7 +1523,8 @@ contains
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
-    ! Exact:     c_string_scalar_result_buf
+    ! Requested: c_string_scalar_result_buf_result-as-arg
+    ! Match:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result

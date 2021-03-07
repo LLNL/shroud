@@ -803,8 +803,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                                "stmtc0": "c_string_scalar_result_buf",
-                                                "stmtc1": "c_string_scalar_result_buf"
+                                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2451,7 +2451,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_string_scalar_result_buf_result-as-arg",
                                                 "stmt1": "f_default",
-                                                "stmtc0": "c_string_scalar_result_buf",
+                                                "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                                                 "stmtc1": "c_string_scalar_result_buf"
                                             },
                                             "fmtl": {
@@ -2691,8 +2691,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                                "stmtc0": "c_string_scalar_result_buf",
-                                                "stmtc1": "c_string_scalar_result_buf"
+                                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2930,8 +2930,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                                "stmtc0": "c_string_scalar_result_buf",
-                                                "stmtc1": "c_string_scalar_result_buf"
+                                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3167,8 +3167,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                                "stmtc0": "c_string_scalar_result_buf",
-                                                "stmtc1": "c_string_scalar_result_buf"
+                                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -10932,7 +10932,7 @@
                                             "sh_type": "SH_TYPE_DOUBLE",
                                             "stmt0": "f_native_*_out_allocatable",
                                             "stmt1": "f_native_*_out_allocatable",
-                                            "stmtc0": "c_native_*_out",
+                                            "stmtc0": "c_native_*_out_allocatable",
                                             "stmtc1": "c_default"
                                         },
                                         "fmtl": {

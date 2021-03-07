@@ -1829,7 +1829,7 @@
                                         "sh_type": "SH_TYPE_INT",
                                         "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
-                                        "stmtc0": "c_native_&_result_buf",
+                                        "stmtc0": "c_native_&_result_buf_pointer",
                                         "stmtc1": "c_default"
                                     },
                                     "fmtpy": {
@@ -2575,7 +2575,7 @@
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
-                                        "stmtc0": "c_native_&_result_buf",
+                                        "stmtc0": "c_native_&_result_buf_pointer",
                                         "stmtc1": "c_default"
                                     },
                                     "fmtpy": {

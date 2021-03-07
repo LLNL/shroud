@@ -2856,7 +2856,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in",
+                            "stmtc0": "c_void_*_in_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3376,7 +3376,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in",
+                            "stmtc0": "c_void_*_in_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4146,7 +4146,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_**_out_pointer",
                             "stmt1": "f_native_**_out",
-                            "stmtc0": "c_void_**_out",
+                            "stmtc0": "c_void_**_out_pointer",
                             "stmtc1": "c_default"
                         }
                     },

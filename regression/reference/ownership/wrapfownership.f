@@ -555,7 +555,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function return_int_ptr_pointer() &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
@@ -575,7 +576,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -604,7 +606,8 @@ contains
     ! Exact:     f_native_*_result_buf_allocatable
     ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_allocatable
+    ! Match:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -634,7 +637,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -663,7 +667,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -695,7 +700,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer_caller
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! ----------------------------------------
     ! Argument:  int * len +hidden+intent(out)
     ! Attrs:     +intent(out)

@@ -182,7 +182,7 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     }
                 }

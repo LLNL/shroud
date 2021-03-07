@@ -662,7 +662,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -684,7 +685,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -706,7 +708,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -728,7 +731,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -756,7 +760,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -791,7 +796,8 @@ contains
     ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_*&_out_buf
+    ! Requested: c_native_*&_out_buf_pointer
+    ! Match:     c_native_*&_out_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)
@@ -826,7 +832,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -861,7 +868,8 @@ contains
     ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_*&_out_buf
+    ! Requested: c_native_*&_out_buf_pointer
+    ! Match:     c_native_*&_out_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)

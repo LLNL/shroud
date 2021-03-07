@@ -1000,7 +1000,7 @@ contains
     ! Exact:     f_struct_*_result_buf_pointer
     ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_struct_*_result_buf
+    ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  int i +value
@@ -1043,7 +1043,7 @@ contains
     ! Exact:     f_struct_*_result_buf_pointer
     ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_struct_*_result_buf
+    ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_result
     ! ----------------------------------------
     ! Argument:  int i +value
@@ -1096,7 +1096,7 @@ contains
     ! Exact:     f_struct_*_result_buf_pointer
     ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_struct_*_result_buf
+    ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_result
     function get_global_struct_list() &
             result(SHT_rv)

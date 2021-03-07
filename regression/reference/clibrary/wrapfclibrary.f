@@ -979,7 +979,8 @@ contains
     ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
-    ! Exact:     c_char_scalar_result_buf
+    ! Requested: c_char_scalar_result_buf_result-as-arg
+    ! Match:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result
