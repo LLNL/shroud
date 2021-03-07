@@ -24,6 +24,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -86,6 +87,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -334,6 +336,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -549,7 +552,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "OWN_return_int_ptr_pointer_bufferify",
@@ -953,7 +957,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -1284,7 +1289,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -1613,7 +1619,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -2072,7 +2079,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -2573,7 +2581,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "len": {
@@ -3321,6 +3330,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3432,6 +3442,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3556,6 +3567,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },

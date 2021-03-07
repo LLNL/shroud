@@ -632,6 +632,7 @@ rv = .false.
                 generated.append(C_node._generated)
         node.C_node = C_node
         node.C_generated_path = generated
+        C_node.wrap.f_c = True
 
     def wrap_functions(self, cls, functions, fileinfo):
         """Wrap functions in list
@@ -655,6 +656,15 @@ rv = .false.
         for node in functions:
             if node.wrap.fortran:
                 self.locate_c_function(node)
+#                node.eval_template("F_name_impl")
+#                node.eval_template("F_name_function")
+#                node.eval_template("F_name_generic")
+#        for node in functions:
+#            if node.wrap.f_c:
+#                node.eval_template("C_name")
+#                node.eval_template("F_C_name")
+#                fmt_func = node.fmtdict
+#                fmt_func.F_C_name = fmt_func.F_C_name.lower()
         
         for node in functions:
             if node.wrap.fortran:
@@ -662,6 +672,8 @@ rv = .false.
                 self.wrap_function_impl(cls, node, fileinfo)
 
         for node in functions:
+#            if node.wrap.c != node.wrap.f_c:
+#                print("XXXX", node.decl)
             if node.wrap.c:
                 self.log.write("C-interface {0.declgen}\n".format(node))
                 self.wrap_function_interface(cls, node, fileinfo)

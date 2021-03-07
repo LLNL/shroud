@@ -45,6 +45,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -237,7 +238,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {

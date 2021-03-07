@@ -48,6 +48,7 @@
                                         },
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -387,7 +388,8 @@
                                             "F_create_generic": true
                                         },
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "name": {
@@ -481,6 +483,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -558,6 +561,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -887,7 +891,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "SHF_rv": {
@@ -1106,7 +1111,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "name": {
@@ -1287,6 +1293,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -1486,6 +1493,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -1682,6 +1690,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -1862,6 +1871,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -2238,7 +2248,8 @@
                                             "F_create_generic": true
                                         },
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "name": {
@@ -2331,6 +2342,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -2546,7 +2558,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "SHF_rv": {
@@ -2787,7 +2800,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "SHF_rv": {
@@ -3029,7 +3043,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "SHF_rv": {
@@ -3268,7 +3283,8 @@
                                         "generated_suffix": "buf",
                                         "options": {},
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "SHF_rv": {
@@ -3372,6 +3388,7 @@
                                         },
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -3507,6 +3524,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -3922,7 +3940,8 @@
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "type": {
@@ -4553,7 +4572,8 @@
                                         "options": {},
                                         "return_this": true,
                                         "wrap": {
-                                            "c": true
+                                            "c": true,
+                                            "f_c": true
                                         },
                                         "zz_fmtargs": {
                                             "len": {
@@ -4841,6 +4861,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -4903,6 +4924,7 @@
                                         "options": {},
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -5184,6 +5206,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -5385,6 +5408,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -5584,6 +5608,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -5789,6 +5814,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -6014,6 +6040,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -6166,6 +6193,7 @@
                                         ],
                                         "wrap": {
                                             "c": true,
+                                            "f_c": true,
                                             "fortran": true,
                                             "lua": true,
                                             "python": true
@@ -6338,6 +6366,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -6629,7 +6658,8 @@
                                     ]
                                 },
                                 "wrap": {
-                                    "c": true
+                                    "c": true,
+                                    "f_c": true
                                 },
                                 "zz_fmtargs": {
                                     "name": {
@@ -6723,6 +6753,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -6989,7 +7020,8 @@
                                 "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
-                                    "c": true
+                                    "c": true,
+                                    "f_c": true
                                 },
                                 "zz_fmtargs": {
                                     "name": {
@@ -7309,7 +7341,8 @@
                                 "generated_suffix": "buf",
                                 "options": {},
                                 "wrap": {
-                                    "c": true
+                                    "c": true,
+                                    "f_c": true
                                 },
                                 "zz_fmtargs": {
                                     "flag": {
@@ -7419,6 +7452,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtdict": {
@@ -7484,6 +7518,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtargs": {
@@ -7608,6 +7643,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -7801,6 +7837,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -7921,6 +7958,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -8049,6 +8087,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -8128,6 +8167,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -8272,6 +8312,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -8442,6 +8483,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -8611,6 +8653,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtargs": {
@@ -8841,6 +8884,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -9159,6 +9203,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -10053,6 +10098,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true
@@ -10896,6 +10942,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "lua": true,
                                     "python": true

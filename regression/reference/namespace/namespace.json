@@ -161,7 +161,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -248,6 +249,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -617,6 +619,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },

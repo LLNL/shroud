@@ -51,6 +51,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -148,6 +149,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -229,6 +231,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -367,7 +370,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -682,7 +686,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -1178,7 +1183,8 @@
                     "F_assumed_rank_max": 2
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -1561,7 +1567,8 @@
                     "F_assumed_rank_max": 2
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -2092,7 +2099,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2565,7 +2573,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2936,7 +2945,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -3295,7 +3305,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3821,7 +3832,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -4238,6 +4250,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4597,7 +4610,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {

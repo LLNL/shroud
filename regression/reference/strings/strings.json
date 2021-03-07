@@ -51,6 +51,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -174,6 +175,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -379,7 +381,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -701,7 +704,8 @@
                     "wrap_lua": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -950,7 +954,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "s": {
@@ -1164,7 +1169,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -1397,7 +1403,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -1599,7 +1606,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "output": {
@@ -1775,6 +1783,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -1952,7 +1961,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -2151,7 +2161,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -2320,7 +2331,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "output": {
@@ -2577,7 +2589,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -2805,7 +2818,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -3039,7 +3053,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -3242,7 +3257,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "output": {
@@ -3546,7 +3562,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -3764,7 +3781,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4010,7 +4028,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4232,7 +4251,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4460,7 +4480,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4691,7 +4712,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4923,7 +4945,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5142,7 +5165,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5362,7 +5386,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5579,7 +5604,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -5793,7 +5819,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6014,7 +6041,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6312,7 +6340,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6648,7 +6677,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -6941,7 +6971,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -7226,6 +7257,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -7450,7 +7482,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -7544,6 +7577,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -7775,7 +7809,8 @@
                     "C_extern_C": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -8054,7 +8089,8 @@
                     "wrap_python": false
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "dest": {
@@ -8387,7 +8423,8 @@
                     "PY_array_arg": "list"
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "count": {

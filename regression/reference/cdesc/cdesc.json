@@ -55,6 +55,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -806,7 +807,8 @@
                     ]
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -1020,6 +1022,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -1137,6 +1140,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -1367,7 +1371,9 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {},
+                "wrap": {
+                    "f_c": true
+                },
                 "zz_fmtargs": {
                     "name": {
                         "fmtf": {
