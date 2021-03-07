@@ -96,8 +96,10 @@
                                                 "stmt1": "c_shadow_scalar_ctor"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -294,8 +296,10 @@
                                                 "stmt1": "c_shadow_scalar_ctor"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -462,7 +466,9 @@
                                                 "stmt1": "c_shadow_scalar_ctor"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass1)"
                                             }
                                         }
@@ -688,8 +694,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "int",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
@@ -813,8 +821,10 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "std::string",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -1047,7 +1057,9 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_intent": "OUT",
                                                 "f_type": "character(*)"
                                             },
                                             "fmtl": {
@@ -1427,8 +1439,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "int",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
@@ -1626,8 +1640,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "long",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_LONG",
                                                 "f_type": "integer(C_LONG)",
                                                 "f_var": "SHT_rv",
@@ -1827,8 +1843,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "bool",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_BOOL",
                                                 "f_type": "logical",
                                                 "f_var": "SHT_rv",
@@ -2170,8 +2188,10 @@
                                                 "stmt1": "c_shadow_scalar_ctor"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass2",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass2)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -2336,7 +2356,9 @@
                                                 "stmt1": "c_shadow_scalar_ctor"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass2)"
                                             }
                                         }
@@ -2491,9 +2513,11 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "c_var_len": "aa_exclass2_get_name_length({F_this}%{F_derived_member})",
                                                 "cxx_type": "std::string",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -2737,8 +2761,10 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "std::string",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -2981,8 +3007,10 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "std::string",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -3223,8 +3251,10 @@
                                                 "stmt1": "c_string_&_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "std::string",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_CHAR",
                                                 "f_type": "character(*)",
                                                 "f_var": "SHT_rv",
@@ -3465,8 +3495,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "int",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
@@ -3673,8 +3705,10 @@
                                                 "stmt1": "c_shadow_result"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "example::nested::ExClass1",
+                                                "f_intent": "OUT",
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
@@ -5005,8 +5039,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "TypeID",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
@@ -6121,8 +6157,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "int",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_INT",
                                                 "f_type": "integer(C_INT)",
                                                 "f_var": "SHT_rv",
@@ -6273,8 +6311,10 @@
                                                 "stmt1": "c_default"
                                             },
                                             "fmtf": {
+                                                "F_C_var": "SHT_rv",
                                                 "c_var": "SHT_rv",
                                                 "cxx_type": "double",
+                                                "f_intent": "OUT",
                                                 "f_kind": "C_DOUBLE",
                                                 "f_type": "real(C_DOUBLE)",
                                                 "f_var": "SHT_rv",
@@ -6590,8 +6630,10 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "bool",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
@@ -6761,7 +6803,9 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
+                                        "f_intent": "OUT",
                                         "f_type": "logical"
                                     }
                                 }
@@ -6833,8 +6877,10 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "bool",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_BOOL",
                                         "f_type": "logical",
                                         "f_var": "SHT_rv",
@@ -7918,8 +7964,10 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "size_t",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_SIZE_T",
                                         "f_type": "integer(C_SIZE_T)",
                                         "f_var": "SHT_rv",
@@ -10844,8 +10892,10 @@
                                         "stmt1": "c_default"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "int",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_INT",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",

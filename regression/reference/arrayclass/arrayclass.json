@@ -74,8 +74,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "ArrayWrapper",
+                                "f_intent": "OUT",
                                 "f_type": "type(arraywrapper)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -302,8 +304,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -597,6 +601,7 @@
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
@@ -604,6 +609,7 @@
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -722,7 +728,9 @@
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "f_intent": "OUT",
                                 "f_type": "real(C_DOUBLE)"
                             }
                         }
@@ -817,6 +825,7 @@
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
@@ -824,6 +833,7 @@
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -943,7 +953,9 @@
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "f_intent": "OUT",
                                 "f_type": "real(C_DOUBLE)"
                             }
                         }
@@ -1037,6 +1049,7 @@
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
@@ -1044,6 +1057,7 @@
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -1163,7 +1177,9 @@
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "f_intent": "OUT",
                                 "f_type": "real(C_DOUBLE)"
                             }
                         }
@@ -1259,6 +1275,7 @@
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
@@ -1266,6 +1283,7 @@
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -1386,7 +1404,9 @@
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
+                                "f_intent": "OUT",
                                 "f_type": "real(C_DOUBLE)"
                             }
                         }
@@ -3288,8 +3308,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "bool",
+                                "f_intent": "OUT",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
@@ -3389,8 +3411,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
                                 "c_var": "SHT_rv",
                                 "cxx_type": "double",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",

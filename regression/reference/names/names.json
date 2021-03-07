@@ -1024,8 +1024,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1173,7 +1175,9 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
+                        "f_intent": "OUT",
                         "f_type": "integer(C_INT)"
                     }
                 }
@@ -2347,8 +2351,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2525,8 +2531,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2634,8 +2642,10 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
+                                        "f_intent": "OUT",
                                         "f_type": "type(FNames)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",

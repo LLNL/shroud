@@ -1153,8 +1153,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1291,8 +1293,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1401,8 +1405,10 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
+                                        "f_intent": "OUT",
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
@@ -1854,9 +1860,11 @@
                                         "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "c_var_context": "DSHC_rv",
                                         "cxx_type": "int",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_INT",
                                         "f_type": "integer(C_INT)",
                                         "f_var": "SHT_rv",
@@ -2014,7 +2022,9 @@
                                         "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
+                                        "f_intent": "OUT",
                                         "f_type": "integer(C_INT)"
                                     }
                                 }
@@ -2164,8 +2174,10 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
+                                        "f_intent": "OUT",
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
@@ -2617,9 +2629,11 @@
                                         "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
                                         "c_var_context": "DSHC_rv",
                                         "cxx_type": "double",
+                                        "f_intent": "OUT",
                                         "f_kind": "C_DOUBLE",
                                         "f_type": "real(C_DOUBLE)",
                                         "f_var": "SHT_rv",
@@ -2777,7 +2791,9 @@
                                         "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
                                         "c_var": "SHT_rv",
+                                        "f_intent": "OUT",
                                         "f_type": "real(C_DOUBLE)"
                                     }
                                 }

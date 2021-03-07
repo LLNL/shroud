@@ -1133,8 +1133,10 @@ rv = .false.
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
-            fmt_result.f_type = result_typemap.f_type
             fmt_result.c_var = fmt_func.F_result
+            fmt_result.F_C_var = fmt_func.F_result
+            fmt_result.f_intent = "OUT"
+            fmt_result.f_type = result_typemap.f_type
 
         if cls:
             is_static = "static" in ast.storage
@@ -1511,6 +1513,7 @@ rv = .false.
         if is_result:
 #            ntypemap = ntypemap
             # XXX - looked up in parent
+            fmt.f_intent = "OUT"
             if ntypemap.base == "vector":
                 ntypemap = f_ast.template_arguments[0].typemap
         else:
