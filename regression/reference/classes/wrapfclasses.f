@@ -346,7 +346,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_allocatable
+    ! Match:     c_string_&_result
     ! start c_class1_get_name
     interface
         function c_class1_get_name(self) &
@@ -470,7 +471,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_allocatable
+    ! Match:     c_string_&_result
     interface
         function c_class2_get_name(self) &
                 result(SHT_rv) &
@@ -765,7 +767,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_result-as-arg
+    ! Match:     c_string_&_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &

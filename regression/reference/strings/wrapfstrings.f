@@ -206,7 +206,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_allocatable
+    ! Match:     c_char_*_result
     ! start c_get_char_ptr1
     interface
         function c_get_char_ptr1() &
@@ -241,7 +242,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr2 +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_result-as-arg
+    ! Match:     c_char_*_result
     ! start c_get_char_ptr2
     interface
         function c_get_char_ptr2() &
@@ -277,7 +279,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr3
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_result-as-arg
+    ! Match:     c_char_*_result
     ! start c_get_char_ptr3
     interface
         function c_get_char_ptr3() &
@@ -313,7 +316,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const char * getCharPtr4 +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_raw
+    ! Match:     c_char_*_result
     interface
         function get_char_ptr4() &
                 result(SHT_rv) &
@@ -397,7 +401,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_allocatable
+    ! Match:     c_string_&_result
     ! start c_get_const_string_ref_pure
     interface
         function c_get_const_string_ref_pure() &
@@ -432,7 +437,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_result-as-arg
+    ! Match:     c_string_&_result
     interface
         function c_get_const_string_ref_len() &
                 result(SHT_rv) &
@@ -464,7 +470,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefAsArg
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_result-as-arg
+    ! Match:     c_string_&_result
     interface
         function c_get_const_string_ref_as_arg() &
                 result(SHT_rv) &
@@ -497,7 +504,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefLenEmpty +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_result-as-arg
+    ! Match:     c_string_&_result
     interface
         function c_get_const_string_ref_len_empty() &
                 result(SHT_rv) &
@@ -530,7 +538,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_allocatable
+    ! Match:     c_string_&_result
     interface
         function c_get_const_string_ref_alloc() &
                 result(SHT_rv) &
@@ -561,7 +570,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const string * getConstStringPtrLen +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_*_result
+    ! Requested: c_string_*_result_result-as-arg
+    ! Match:     c_string_*_result
     interface
         function c_get_const_string_ptr_len() &
                 result(SHT_rv) &
@@ -593,7 +603,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_*_result
+    ! Requested: c_string_*_result_allocatable
+    ! Match:     c_string_*_result
     interface
         function c_get_const_string_ptr_alloc() &
                 result(SHT_rv) &
@@ -624,7 +635,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_*_result
+    ! Requested: c_string_*_result_allocatable
+    ! Match:     c_string_*_result
     interface
         function c_get_const_string_ptr_owns_alloc() &
                 result(SHT_rv) &
@@ -655,7 +667,8 @@ module strings_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_*_result
+    ! Requested: c_string_*_result_allocatable
+    ! Match:     c_string_*_result
     interface
         function c_get_const_string_ptr_owns_alloc_pattern() &
                 result(SHT_rv) &

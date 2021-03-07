@@ -115,7 +115,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result
+        ! Requested: c_native_&_result_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value
@@ -136,7 +136,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  int & at +context(DSHC_rv)
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_buf
+        ! Requested: c_native_&_result_buf_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value
@@ -203,7 +203,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result
+        ! Requested: c_native_&_result_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value
@@ -224,7 +224,7 @@ module templates_std_mod
         ! ----------------------------------------
         ! Function:  double & at +context(DSHC_rv)
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_&_result_buf
+        ! Requested: c_native_&_result_buf_pointer
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  size_type n +value

@@ -1064,7 +1064,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_pointer
     ! Match:     c_default
     ! start c_return_int_ptr_to_scalar
     interface
@@ -1081,7 +1081,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
         function c_return_int_ptr_to_scalar_bufferify(DSHC_rv) &
@@ -1099,7 +1100,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_pointer
     ! Match:     c_default
     ! start c_return_int_ptr_to_fixed_array
     interface
@@ -1116,7 +1117,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         function c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv) &
@@ -1134,7 +1136,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_pointer
     ! Match:     c_default
     ! start c_return_int_ptr_to_const_scalar
     interface
@@ -1151,7 +1153,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
         function c_return_int_ptr_to_const_scalar_bufferify(DSHC_rv) &
@@ -1169,7 +1172,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_pointer
     ! Match:     c_default
     ! start c_return_int_ptr_to_fixed_const_array
     interface
@@ -1186,7 +1189,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
         function c_return_int_ptr_to_fixed_const_array_bufferify( &
@@ -1205,7 +1209,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
     ! Attrs:     +deref(scalar)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_scalar
     ! Match:     c_default
     ! start return_int_scalar
     interface
@@ -1222,7 +1226,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_raw
     ! Match:     c_default
     ! start return_int_raw
     interface
@@ -1239,7 +1243,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
-    ! Requested: c_native_*_result
+    ! Requested: c_native_*_result_raw
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const char * name
@@ -1262,7 +1266,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_**_result
+    ! Requested: c_native_**_result_pointer
     ! Match:     c_default
     ! start c_return_raw_ptr_to_int2d
     interface
@@ -1279,7 +1283,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_**_result_buf
+    ! Requested: c_native_**_result_buf_pointer
     ! Match:     c_default
     ! start c_return_raw_ptr_to_int2d_bufferify
     interface

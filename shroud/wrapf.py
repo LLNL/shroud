@@ -1110,7 +1110,8 @@ rv = .false.
 
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
-        c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix]
+        c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix,
+                   ast.metaattrs["deref"]]
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
             ["c", node.generated_suffix], c_result_blk, node)

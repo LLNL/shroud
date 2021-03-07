@@ -686,7 +686,8 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_string_&_result
+    ! Requested: c_string_&_result_result-as-arg
+    ! Match:     c_string_&_result
     interface
         function c_last_function_called() &
                 result(SHT_rv) &

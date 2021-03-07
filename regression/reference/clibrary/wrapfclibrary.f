@@ -193,7 +193,8 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_result-as-arg
+    ! Match:     c_char_*_result
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)

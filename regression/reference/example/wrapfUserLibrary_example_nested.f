@@ -250,7 +250,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorCheck
         ! Attrs:     +deref(allocatable)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_allocatable
+        ! Match:     c_string_&_result
         pure function c_exclass1_get_name_error_check(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check")
@@ -281,7 +282,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getNameArg
         ! Attrs:     +deref(result-as-arg)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_result-as-arg
+        ! Match:     c_string_&_result
         pure function c_exclass1_get_name_arg(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_arg")
@@ -441,7 +443,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +deref(result-as-arg)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_result-as-arg
+        ! Match:     c_string_&_result
         pure function c_exclass2_get_name(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name")
@@ -473,7 +476,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  const string & getName2
         ! Attrs:     +deref(allocatable)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_allocatable
+        ! Match:     c_string_&_result
         function c_exclass2_get_name2(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2")
@@ -503,7 +507,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName3
         ! Attrs:     +deref(allocatable)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_allocatable
+        ! Match:     c_string_&_result
         pure function c_exclass2_get_name3(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3")
@@ -533,7 +538,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  string & getName4
         ! Attrs:     +deref(allocatable)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_allocatable
+        ! Match:     c_string_&_result
         function c_exclass2_get_name4(self) &
                 result(SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4")
