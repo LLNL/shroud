@@ -765,6 +765,9 @@ fc_statements = [
         declare=[
             "type(C_PTR) :: {F_pointer}",
         ],
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
@@ -791,10 +794,14 @@ fc_statements = [
         ],
     ),
     dict(
+        # XXX - no need for f_var since F_pointer exists.
         name="f_native_*_result_buf_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
+        ],
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
@@ -846,6 +853,13 @@ fc_statements = [
     dict(
         name="f_native_&_result",
         base="f_native_*_result_pointer",   # XXX - change base to &?
+    ),
+    dict(
+        name="f_native_&_result_buf_pointer",
+        base="f_native_*_result_pointer",   # XXX - change base to &?
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
     ),
 
     dict(
@@ -1500,6 +1514,9 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
             "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
@@ -1649,6 +1666,9 @@ fc_statements = [
     dict(
         name="f_struct_*_result_buf_pointer",
         base="f_native_*_result_pointer",
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
     ),
 
     ########################################

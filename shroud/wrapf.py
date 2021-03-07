@@ -1511,7 +1511,8 @@ rv = .false.
         if is_result:
 #            ntypemap = ntypemap
             # XXX - looked up in parent
-            pass
+            if ntypemap.base == "vector":
+                ntypemap = f_ast.template_arguments[0].typemap
         else:
             fmt.f_intent = c_meta["intent"].upper()
             
@@ -1939,15 +1940,6 @@ rv = .false.
                 if f_result_blk.arg_name:
                     for aname in f_result_blk.arg_name:
                         append_format(arg_f_names, aname, fmt_result)
-            elif return_deref_attr in ["allocatable", "pointer"]:
-                if result_typemap.base == "vector":
-                    ntypemap = ast.template_arguments[0].typemap
-                else:
-                    ntypemap = result_typemap
-                f_type = ntypemap.f_type
-                arg_f_decl.append("{}, {} :: {}{}".format(
-                    f_type, return_deref_attr,
-                    fmt_result.f_var, fmt_result.f_assumed_shape))
             else:
                 # result_as_arg or None
                 # local=True will add any character len attributes

@@ -147,6 +147,8 @@ root
     native
       &
         result -- f_native_&_result
+          buf
+            pointer -- f_native_&_result_buf_pointer
       *
         in
           cdesc -- f_native_*_in/out/inout_cdesc
