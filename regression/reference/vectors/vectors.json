@@ -15,6 +15,9 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "12",
                 "ast": {
                     "declarator": {
@@ -233,6 +236,9 @@
             },
             {
                 "<FUNCTION>": "1 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "13",
                 "ast": {
                     "declarator": {
@@ -424,6 +430,9 @@
             },
             {
                 "<FUNCTION>": "2 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "14",
                 "ast": {
                     "declarator": {
@@ -666,6 +675,9 @@
             },
             {
                 "<FUNCTION>": "3 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "15",
                 "ast": {
                     "declarator": {
@@ -895,6 +907,9 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "16",
                 "ast": {
                     "declarator": {
@@ -1092,6 +1107,9 @@
             },
             {
                 "<FUNCTION>": "5 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "17",
                 "ast": {
                     "declarator": {
@@ -1292,6 +1310,9 @@
             },
             {
                 "<FUNCTION>": "6 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
@@ -1478,6 +1499,9 @@
             },
             {
                 "<FUNCTION>": "7 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
@@ -1667,6 +1691,9 @@
             },
             {
                 "<FUNCTION>": "8 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
@@ -2016,6 +2043,9 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "21",
                 "ast": {
                     "attrs": {

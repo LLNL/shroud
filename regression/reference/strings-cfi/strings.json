@@ -236,6 +236,9 @@
             },
             {
                 "<FUNCTION>": "2 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "39",
                 "ast": {
                     "declarator": {
@@ -445,6 +448,9 @@
             },
             {
                 "<FUNCTION>": "3 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "40",
                 "ast": {
                     "declarator": {
@@ -795,6 +801,9 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "41",
                 "ast": {
                     "declarator": {
@@ -1018,6 +1027,9 @@
             },
             {
                 "<FUNCTION>": "5 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "42",
                 "ast": {
                     "const": true,
@@ -1238,6 +1250,9 @@
             },
             {
                 "<FUNCTION>": "6 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "43",
                 "ast": {
                     "attrs": {
@@ -1669,6 +1684,10 @@
             },
             {
                 "<FUNCTION>": "45 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi",
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "7",
                 "_PTR_F_C_index": "44",
                 "_generated": "arg_to_cfi",
@@ -1823,6 +1842,9 @@
             {
                 "<FUNCTION>": "9 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "46",
                 "ast": {
                     "const": true,
@@ -2012,6 +2034,9 @@
             {
                 "<FUNCTION>": "10 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "47",
                 "ast": {
                     "attrs": {
@@ -2380,6 +2405,10 @@
             {
                 "<FUNCTION>": "49 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi",
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "11",
                 "_PTR_F_C_index": "48",
                 "_generated": "arg_to_cfi",
@@ -2445,6 +2474,9 @@
             },
             {
                 "<FUNCTION>": "12 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "50",
                 "ast": {
                     "const": true,
@@ -2626,6 +2658,9 @@
             },
             {
                 "<FUNCTION>": "13 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "51",
                 "ast": {
                     "const": true,
@@ -2848,6 +2883,9 @@
             {
                 "<FUNCTION>": "14 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "52",
                 "ast": {
                     "attrs": {
@@ -3285,6 +3323,10 @@
             {
                 "<FUNCTION>": "54 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi",
+                    "arg_to_cfi"
+                ],
                 "_PTR_C_CXX_index": "15",
                 "_PTR_F_C_index": "53",
                 "_generated": "arg_to_cfi",
@@ -3352,6 +3394,9 @@
             {
                 "<FUNCTION>": "16 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "55",
                 "ast": {
                     "attrs": {
@@ -3584,6 +3629,9 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "56",
                 "ast": {
                     "const": true,
@@ -3797,6 +3845,9 @@
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "57",
                 "ast": {
                     "attrs": {
@@ -4044,6 +4095,9 @@
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "58",
                 "ast": {
                     "attrs": {
@@ -4263,6 +4317,9 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "59",
                 "ast": {
                     "attrs": {
@@ -4488,6 +4545,9 @@
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "60",
                 "ast": {
                     "attrs": {
@@ -4716,6 +4776,9 @@
             },
             {
                 "<FUNCTION>": "22 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "61",
                 "ast": {
                     "declarator": {
@@ -4937,6 +5000,9 @@
             },
             {
                 "<FUNCTION>": "23 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "62",
                 "ast": {
                     "declarator": {
@@ -5160,6 +5226,9 @@
             },
             {
                 "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "63",
                 "ast": {
                     "declarator": {
@@ -5381,6 +5450,9 @@
             },
             {
                 "<FUNCTION>": "25 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "64",
                 "ast": {
                     "declarator": {
@@ -5600,6 +5672,9 @@
             },
             {
                 "<FUNCTION>": "26 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "65",
                 "ast": {
                     "declarator": {
@@ -5817,6 +5892,9 @@
             },
             {
                 "<FUNCTION>": "27 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "66",
                 "ast": {
                     "declarator": {
@@ -6040,6 +6118,9 @@
             },
             {
                 "<FUNCTION>": "28 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "67",
                 "ast": {
                     "declarator": {
@@ -6374,6 +6455,9 @@
             },
             {
                 "<FUNCTION>": "29 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "68",
                 "ast": {
                     "declarator": {
@@ -6712,6 +6796,9 @@
             },
             {
                 "<FUNCTION>": "30 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "69",
                 "ast": {
                     "declarator": {
@@ -7166,6 +7253,9 @@
             },
             {
                 "<FUNCTION>": "33 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "70",
                 "ast": {
                     "declarator": {
@@ -7385,6 +7475,9 @@
             },
             {
                 "<FUNCTION>": "34 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "71",
                 "ast": {
                     "declarator": {
@@ -7706,6 +7799,9 @@
             },
             {
                 "<FUNCTION>": "36 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "72",
                 "ast": {
                     "declarator": {
@@ -7917,6 +8013,9 @@
             },
             {
                 "<FUNCTION>": "37 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "73",
                 "ast": {
                     "declarator": {
@@ -8224,6 +8323,9 @@
             },
             {
                 "<FUNCTION>": "38 ****************************************",
+                "C_generated_path": [
+                    "arg_to_cfi"
+                ],
                 "_PTR_F_C_index": "74",
                 "ast": {
                     "declarator": {

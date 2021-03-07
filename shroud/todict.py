@@ -285,6 +285,7 @@ class ToDict(visitor.Visitor):
                 "fstatements",
                 "splicer",
                 "wrap",
+                "C_generated_path",
             ],
         )
         add_true_fields(

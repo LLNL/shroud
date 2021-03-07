@@ -101,6 +101,9 @@
             {
                 "<FUNCTION>": "1 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_F_C_index": "2",
                 "ast": {

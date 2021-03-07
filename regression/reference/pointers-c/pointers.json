@@ -2428,6 +2428,9 @@
             },
             {
                 "<FUNCTION>": "15 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "44",
                 "ast": {
                     "declarator": {
@@ -2860,6 +2863,9 @@
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "45",
                 "ast": {
                     "declarator": {
@@ -3059,6 +3065,9 @@
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "46",
                 "ast": {
                     "declarator": {
@@ -3281,6 +3290,9 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "47",
                 "ast": {
                     "declarator": {
@@ -3600,6 +3612,9 @@
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "48",
                 "ast": {
                     "declarator": {
@@ -3824,6 +3839,9 @@
             },
             {
                 "<FUNCTION>": "22 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "49",
                 "ast": {
                     "declarator": {
@@ -4025,6 +4043,9 @@
             },
             {
                 "<FUNCTION>": "23 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "50",
                 "ast": {
                     "declarator": {
@@ -4243,6 +4264,9 @@
             },
             {
                 "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "51",
                 "ast": {
                     "declarator": {
@@ -5862,6 +5886,9 @@
             },
             {
                 "<FUNCTION>": "36 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "52",
                 "ast": {
                     "declarator": {
@@ -6011,6 +6038,9 @@
             },
             {
                 "<FUNCTION>": "37 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "53",
                 "ast": {
                     "attrs": {
@@ -6183,6 +6213,9 @@
             },
             {
                 "<FUNCTION>": "38 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "54",
                 "ast": {
                     "const": true,
@@ -6334,6 +6367,9 @@
             },
             {
                 "<FUNCTION>": "39 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "55",
                 "ast": {
                     "attrs": {
@@ -6813,6 +6849,9 @@
             },
             {
                 "<FUNCTION>": "43 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "56",
                 "ast": {
                     "declarator": {

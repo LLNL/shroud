@@ -591,6 +591,9 @@
             },
             {
                 "<FUNCTION>": "6 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -856,6 +859,9 @@
             },
             {
                 "<FUNCTION>": "7 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {

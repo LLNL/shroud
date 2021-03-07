@@ -122,6 +122,9 @@
                     },
                     {
                         "<FUNCTION>": "1 ****************************************",
+                        "C_generated_path": [
+                            "cxx_template"
+                        ],
                         "_generated": "cxx_template",
                         "_overloaded": true,
                         "ast": {
@@ -504,6 +507,9 @@
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -736,6 +742,9 @@
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1039,6 +1048,9 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1168,6 +1180,9 @@
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1506,6 +1521,9 @@
                             },
                             {
                                 "<FUNCTION>": "6 ****************************************",
+                                "C_generated_path": [
+                                    "cxx_template"
+                                ],
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -1683,6 +1701,10 @@
                             },
                             {
                                 "<FUNCTION>": "7 ****************************************",
+                                "C_generated_path": [
+                                    "cxx_template",
+                                    "arg_to_buffer"
+                                ],
                                 "_PTR_F_C_index": "8",
                                 "_generated": "cxx_template",
                                 "ast": {
@@ -2252,6 +2274,9 @@
                             },
                             {
                                 "<FUNCTION>": "13 ****************************************",
+                                "C_generated_path": [
+                                    "cxx_template"
+                                ],
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -2429,6 +2454,10 @@
                             },
                             {
                                 "<FUNCTION>": "14 ****************************************",
+                                "C_generated_path": [
+                                    "cxx_template",
+                                    "arg_to_buffer"
+                                ],
                                 "_PTR_F_C_index": "15",
                                 "_generated": "cxx_template",
                                 "ast": {

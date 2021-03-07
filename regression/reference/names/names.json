@@ -351,6 +351,9 @@
         "functions": [
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
@@ -886,6 +889,9 @@
             },
             {
                 "<FUNCTION>": "9 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
@@ -1209,6 +1215,9 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
@@ -1688,6 +1697,9 @@
             },
             {
                 "<FUNCTION>": "15 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1929,6 +1941,9 @@
             },
             {
                 "<FUNCTION>": "16 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2226,6 +2241,9 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {

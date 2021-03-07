@@ -789,6 +789,9 @@
                     },
                     {
                         "<FUNCTION>": "13 ****************************************",
+                        "C_generated_path": [
+                            "return_this"
+                        ],
                         "_generated": "return_this",
                         "ast": {
                             "declarator": {
@@ -847,6 +850,9 @@
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "14",
                         "ast": {
                             "declarator": {
@@ -1311,6 +1317,9 @@
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "15",
                         "ast": {
                             "const": true,
@@ -2147,6 +2156,9 @@
                 "functions": [
                     {
                         "<FUNCTION>": "16 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "17",
                         "ast": {
                             "const": true,
@@ -4263,6 +4275,9 @@
             },
             {
                 "<FUNCTION>": "32 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "33",
                 "ast": {
                     "attrs": {
