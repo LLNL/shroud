@@ -1561,7 +1561,11 @@ class GenFunctions(object):
         if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
-        elif result_typemap.sgroup in ["char", "string"]:
+        elif result_typemap.sgroup == "string":
+            has_string_result = True
+            result_as_arg = fmt_func.F_string_result_as_arg
+            result_name = result_as_arg or fmt_func.C_string_result_as_arg
+        elif result_typemap.sgroup == "char" and result_is_ptr:
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg
@@ -1734,7 +1738,11 @@ class GenFunctions(object):
         if meta["deref"] == "raw":
             # No bufferify required for raw pointer result.
             pass
-        elif result_typemap.sgroup in ["char", "string"]:
+        elif result_typemap.sgroup == "string":
+            has_string_result = True
+            result_as_arg = fmt_func.F_string_result_as_arg
+            result_name = result_as_arg or fmt_func.C_string_result_as_arg
+        elif result_typemap.sgroup == "char" and result_is_ptr:
             has_string_result = True
             result_as_arg = fmt_func.F_string_result_as_arg
             result_name = result_as_arg or fmt_func.C_string_result_as_arg

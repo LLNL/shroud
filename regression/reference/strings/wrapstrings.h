@@ -34,8 +34,6 @@ void STR_pass_char_force(char status);
 
 char STR_return_char(void);
 
-void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv);
-
 void STR_pass_char_ptr(char * dest, const char * src);
 
 void STR_pass_char_ptr_bufferify(char * dest, int Ndest,
@@ -156,8 +154,6 @@ void STR_explicit1(char * name);
 void STR_explicit2(char * name);
 
 void STR_explicit2_bufferify(char * name, int AAtrim);
-
-void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_cpass_char_ptr_bufferify(char * dest, int Ndest,
     const char * src);

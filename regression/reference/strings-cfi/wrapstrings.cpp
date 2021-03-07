@@ -142,28 +142,6 @@ char STR_return_char(void)
 }
 
 /**
- * \brief return a char argument (non-pointer)
- *
- */
-// ----------------------------------------
-// Function:  void returnChar
-// Requested: c_void_scalar_result_cfi
-// Match:     c_default
-// ----------------------------------------
-// Argument:  char * SHF_rv
-// Attrs:     +intent(out)+is_result
-// Exact:     c_char_scalar_result_cfi
-void STR_return_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
-{
-    // splicer begin function.return_char_CFI
-    char SHC_rv = returnChar();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
-    std::memset(SHF_rv, ' ', SHcfi_SHF_rv->elem_len);
-    SHF_rv[0] = SHC_rv;
-    // splicer end function.return_char_CFI
-}
-
-/**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
@@ -1442,28 +1420,6 @@ void STR_explicit2_CFI(CFI_cdesc_t *SHcfi_name)
     explicit2(SHCXX_name);
     ShroudStrBlankFill(SHCXX_name, SHcfi_name->elem_len);
     // splicer end function.explicit2_CFI
-}
-
-/**
- * \brief return a char argument (non-pointer), extern "C"
- *
- */
-// ----------------------------------------
-// Function:  void CreturnChar
-// Requested: c_void_scalar_result_cfi
-// Match:     c_default
-// ----------------------------------------
-// Argument:  char * SHF_rv
-// Attrs:     +intent(out)+is_result
-// Exact:     c_char_scalar_result_cfi
-void STR_creturn_char_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
-{
-    // splicer begin function.creturn_char_CFI
-    char SHC_rv = CreturnChar();
-    char *SHF_rv = static_cast<char *>(SHcfi_SHF_rv->base_addr);
-    std::memset(SHF_rv, ' ', SHcfi_SHF_rv->elem_len);
-    SHF_rv[0] = SHC_rv;
-    // splicer end function.creturn_char_CFI
 }
 
 /**

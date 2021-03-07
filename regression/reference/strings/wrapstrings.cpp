@@ -163,27 +163,6 @@ char STR_return_char(void)
 }
 
 /**
- * \brief return a char argument (non-pointer)
- *
- */
-// ----------------------------------------
-// Function:  void returnChar
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  char * SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)+is_result
-// Exact:     c_char_scalar_result_buf
-void STR_return_char_bufferify(char * SHF_rv, int NSHF_rv)
-{
-    // splicer begin function.return_char_bufferify
-    char SHC_rv = returnChar();
-    std::memset(SHF_rv, ' ', NSHF_rv);
-    SHF_rv[0] = SHC_rv;
-    // splicer end function.return_char_bufferify
-}
-
-/**
  * \brief strcpy like behavior
  *
  * dest is marked intent(OUT) to override the intent(INOUT) default
@@ -1387,27 +1366,6 @@ void STR_explicit2_bufferify(char * name, int AAtrim)
     explicit2(name);
     ShroudStrBlankFill(name, AAtrim);
     // splicer end function.explicit2_bufferify
-}
-
-/**
- * \brief return a char argument (non-pointer), extern "C"
- *
- */
-// ----------------------------------------
-// Function:  void CreturnChar
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  char * SHF_rv +len(NSHF_rv)
-// Attrs:     +intent(out)+is_result
-// Exact:     c_char_scalar_result_buf
-void STR_creturn_char_bufferify(char * SHF_rv, int NSHF_rv)
-{
-    // splicer begin function.creturn_char_bufferify
-    char SHC_rv = CreturnChar();
-    std::memset(SHF_rv, ' ', NSHF_rv);
-    SHF_rv[0] = SHC_rv;
-    // splicer end function.creturn_char_bufferify
 }
 
 /**
