@@ -62,7 +62,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
 // Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
-// Match:     c_struct_result
+// Match:     c_struct_*_result
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)

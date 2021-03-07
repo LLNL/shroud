@@ -520,7 +520,7 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -547,7 +547,7 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -574,7 +574,7 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -607,7 +607,7 @@ module struct_mod
     ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -640,7 +640,7 @@ module struct_mod
     ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     interface
         function c_get_global_struct_list() &
                 result(SHT_rv) &
@@ -655,7 +655,7 @@ module struct_mod
     ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     interface
         function c_get_global_struct_list_bufferify() &
                 result(SHT_rv) &
@@ -1058,7 +1058,7 @@ contains
     ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -1101,7 +1101,7 @@ contains
     ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -1154,7 +1154,7 @@ contains
     ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
-    ! Match:     c_struct_result
+    ! Match:     c_struct_*_result
     function get_global_struct_list() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR, c_f_pointer

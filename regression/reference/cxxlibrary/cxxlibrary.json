@@ -657,6 +657,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "bool",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -829,6 +830,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "bool",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
@@ -1660,6 +1662,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1836,6 +1839,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",

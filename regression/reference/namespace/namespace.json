@@ -88,6 +88,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",

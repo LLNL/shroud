@@ -309,6 +309,7 @@
                         "stmt1": "c_char_scalar_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "char",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1110,6 +1111,7 @@
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "char",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -1338,6 +1340,7 @@
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": "30",
                         "cxx_type": "char",
                         "f_kind": "C_CHAR",
@@ -1556,6 +1559,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_char_*_result",
                         "stmt1": "c_char_*_result"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "character(*)"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -1836,6 +1843,7 @@
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "char",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2750,6 +2758,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -2980,6 +2989,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
@@ -3201,6 +3211,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result",
                         "stmt1": "c_string_&_result"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "character(*)"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -3492,6 +3506,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
@@ -3721,6 +3736,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -3953,6 +3969,7 @@
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
@@ -4192,6 +4209,7 @@
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -4418,6 +4436,7 @@
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -4648,6 +4667,7 @@
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
@@ -6958,6 +6978,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -7108,6 +7129,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_cfi",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -7905,6 +7930,7 @@
                         "stmt1": "c_char_scalar_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "char",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",

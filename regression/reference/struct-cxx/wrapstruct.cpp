@@ -234,8 +234,7 @@ STR_cstruct1 STR_return_struct_by_value(int i, double d)
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr1
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_struct_*_result
-// Match:     c_struct_result
+// Exact:     c_struct_*_result
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -265,7 +264,7 @@ STR_cstruct1 * STR_return_struct_ptr1(int i, double d)
 // Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
-// Match:     c_struct_result
+// Match:     c_struct_*_result
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -294,8 +293,7 @@ STR_cstruct1 * STR_return_struct_ptr1_bufferify(int i, double d)
 // ----------------------------------------
 // Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_struct_*_result
-// Match:     c_struct_result
+// Exact:     c_struct_*_result
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -330,7 +328,7 @@ STR_cstruct1 * STR_return_struct_ptr2(int i, double d, char * outbuf)
 // Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
-// Match:     c_struct_result
+// Match:     c_struct_*_result
 // ----------------------------------------
 // Argument:  int i +value
 // Attrs:     +intent(in)
@@ -360,8 +358,7 @@ STR_cstruct1 * STR_return_struct_ptr2_bufferify(int i, double d,
 // ----------------------------------------
 // Function:  Cstruct_list * get_global_struct_list
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_struct_*_result
-// Match:     c_struct_result
+// Exact:     c_struct_*_result
 STR_cstruct_list * STR_get_global_struct_list(void)
 {
     // splicer begin function.get_global_struct_list
@@ -376,7 +373,7 @@ STR_cstruct_list * STR_get_global_struct_list(void)
 // Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf
-// Match:     c_struct_result
+// Match:     c_struct_*_result
 STR_cstruct_list * STR_get_global_struct_list_bufferify(void)
 {
     // splicer begin function.get_global_struct_list_bufferify

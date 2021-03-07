@@ -1024,6 +1024,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1170,6 +1171,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -2342,6 +2347,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2519,6 +2525,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2627,6 +2634,7 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
                                         "f_type": "type(FNames)",
                                         "f_var": "SHT_rv",

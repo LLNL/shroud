@@ -159,6 +159,7 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -356,6 +357,7 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -532,6 +534,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -726,6 +729,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "bool",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
@@ -1018,6 +1022,7 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -1209,6 +1214,10 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_*_result_buf",
                                 "stmt1": "c_shadow_result"
+                            },
+                            "fmtf": {
+                                "c_var": "SHT_rv",
+                                "f_type": "type(class1)"
                             }
                         }
                     },
@@ -1291,6 +1300,7 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
@@ -1409,6 +1419,7 @@
                                 "stmt1": "c_string_&_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "std::string",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
@@ -1736,6 +1747,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1::DIRECTION",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1845,6 +1857,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -1927,6 +1940,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -2253,6 +2267,7 @@
                                 "stmt1": "c_string_&_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "std::string",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
@@ -2539,6 +2554,7 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Singleton",
                                 "f_type": "type(singleton)",
                                 "f_var": "SHT_rv",
@@ -2682,6 +2698,7 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Shape",
                                 "f_type": "type(shape)",
                                 "f_var": "SHT_rv",
@@ -2798,6 +2815,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -2961,6 +2979,7 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Circle",
                                 "f_type": "type(circle)",
                                 "f_var": "SHT_rv",
@@ -3219,6 +3238,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1::DIRECTION",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -3528,6 +3548,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -3627,6 +3648,7 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -3708,6 +3730,7 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -3810,6 +3833,7 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -3891,6 +3915,7 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4044,6 +4069,7 @@
                         "stmt1": "c_shadow_scalar_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
@@ -4262,6 +4288,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -4383,6 +4410,7 @@
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": "30",
                         "cxx_type": "std::string",
                         "f_kind": "C_CHAR",

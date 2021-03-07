@@ -1153,6 +1153,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1290,6 +1291,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -1399,6 +1401,7 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<int>",
                                         "f_type": "type(vector_int)",
                                         "f_var": "SHT_rv",
@@ -1848,9 +1851,10 @@
                                         "sh_type": "SH_TYPE_INT",
                                         "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result",
-                                        "stmt1": "c_default"
+                                        "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "c_var": "SHT_rv",
                                         "c_var_context": "DSHC_rv",
                                         "cxx_type": "int",
                                         "f_kind": "C_INT",
@@ -1860,7 +1864,7 @@
                                         "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result_buf_pointer",
-                                        "stmtc1": "c_default"
+                                        "stmtc1": "c_native_&_result"
                                     },
                                     "fmtpy": {
                                         "array_size": "1",
@@ -2007,7 +2011,11 @@
                                         "sh_type": "SH_TYPE_INT",
                                         "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result_buf",
-                                        "stmt1": "c_default"
+                                        "stmt1": "c_native_&_result"
+                                    },
+                                    "fmtf": {
+                                        "c_var": "SHT_rv",
+                                        "f_type": "integer(C_INT)"
                                     }
                                 }
                             }
@@ -2156,6 +2164,7 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "c_var": "SHT_rv",
                                         "cxx_type": "std::vector<double>",
                                         "f_type": "type(vector_double)",
                                         "f_var": "SHT_rv",
@@ -2605,9 +2614,10 @@
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result",
-                                        "stmt1": "c_default"
+                                        "stmt1": "c_native_&_result"
                                     },
                                     "fmtf": {
+                                        "c_var": "SHT_rv",
                                         "c_var_context": "DSHC_rv",
                                         "cxx_type": "double",
                                         "f_kind": "C_DOUBLE",
@@ -2617,7 +2627,7 @@
                                         "stmt0": "f_native_&_result_buf_pointer",
                                         "stmt1": "f_native_&_result",
                                         "stmtc0": "c_native_&_result_buf_pointer",
-                                        "stmtc1": "c_default"
+                                        "stmtc1": "c_native_&_result"
                                     },
                                     "fmtpy": {
                                         "array_size": "1",
@@ -2764,7 +2774,11 @@
                                         "sh_type": "SH_TYPE_DOUBLE",
                                         "shadow_var": "SHadow_rv",
                                         "stmt0": "c_native_&_result_buf",
-                                        "stmt1": "c_default"
+                                        "stmt1": "c_native_&_result"
+                                    },
+                                    "fmtf": {
+                                        "c_var": "SHT_rv",
+                                        "f_type": "real(C_DOUBLE)"
                                     }
                                 }
                             }

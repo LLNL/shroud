@@ -109,7 +109,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(result)
         ! Requested: c_native_*_result_raw
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         function c_return_int_ptr_raw() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_raw")
@@ -121,8 +121,7 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrScalar +deref(scalar)
         ! Attrs:     +deref(scalar)+intent(result)
-        ! Requested: c_native_*_result_scalar
-        ! Match:     c_default
+        ! Exact:     c_native_*_result_scalar
         function return_int_ptr_scalar() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_scalar")
@@ -135,7 +134,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         function c_return_int_ptr_pointer() &
                 result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_pointer")
@@ -163,7 +162,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
         ! Attrs:     +deref(raw)+intent(result)
         ! Requested: c_native_*_result_raw
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +intent(out)
         ! Attrs:     +intent(out)
@@ -182,7 +181,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -222,7 +221,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +deref(allocatable)+intent(result)
         ! Requested: c_native_*_result_allocatable
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -262,7 +261,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -302,7 +301,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -321,7 +320,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -362,7 +361,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
         ! Attrs:     +deref(allocatable)+intent(result)
         ! Requested: c_native_*_result_allocatable
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)
@@ -381,7 +380,7 @@ module ownership_mod
         ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_*_result
         ! ----------------------------------------
         ! Argument:  int * len +hidden+intent(out)
         ! Attrs:     +intent(out)

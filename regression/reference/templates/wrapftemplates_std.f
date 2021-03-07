@@ -116,7 +116,7 @@ module templates_std_mod
         ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_&_result
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
@@ -137,7 +137,7 @@ module templates_std_mod
         ! Function:  int & at +context(DSHC_rv)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_buf_pointer
-        ! Match:     c_default
+        ! Match:     c_native_&_result
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
@@ -204,7 +204,7 @@ module templates_std_mod
         ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_pointer
-        ! Match:     c_default
+        ! Match:     c_native_&_result
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
@@ -225,7 +225,7 @@ module templates_std_mod
         ! Function:  double & at +context(DSHC_rv)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_buf_pointer
-        ! Match:     c_default
+        ! Match:     c_native_&_result
         ! ----------------------------------------
         ! Argument:  size_type n +value
         ! Attrs:     +intent(in)
@@ -320,7 +320,7 @@ contains
     ! Function:  int & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result_buf_pointer
-    ! Match:     c_default
+    ! Match:     c_native_&_result
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)
@@ -429,7 +429,7 @@ contains
     ! Function:  double & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result_buf_pointer
-    ! Match:     c_default
+    ! Match:     c_native_&_result
     ! ----------------------------------------
     ! Argument:  size_type n +value
     ! Attrs:     +intent(in)

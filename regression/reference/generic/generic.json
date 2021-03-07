@@ -272,6 +272,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
@@ -787,6 +788,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_LONG)"
                     }
                 }
             },
@@ -1287,6 +1292,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1673,6 +1682,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },

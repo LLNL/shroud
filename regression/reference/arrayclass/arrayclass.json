@@ -74,6 +74,7 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "ArrayWrapper",
                                 "f_type": "type(arraywrapper)",
                                 "f_var": "SHT_rv",
@@ -301,6 +302,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
@@ -592,9 +594,10 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
@@ -717,6 +720,10 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result_buf",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "c_var": "SHT_rv",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -807,9 +814,10 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
@@ -933,6 +941,10 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result_buf",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "c_var": "SHT_rv",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -1022,9 +1034,10 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
@@ -1148,6 +1161,10 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result_buf",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "c_var": "SHT_rv",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -1239,9 +1256,10 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
@@ -1366,6 +1384,10 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_native_*_result_buf",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "c_var": "SHT_rv",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
@@ -3266,6 +3288,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "bool",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
@@ -3366,6 +3389,7 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "c_var": "SHT_rv",
                                 "cxx_type": "double",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",

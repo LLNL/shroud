@@ -710,6 +710,24 @@ fc_statements = [
         ],
     ),
     
+    dict(
+        # Works with deref allocatable and pointer.
+        # c_native_*_result
+        # c_native_&_result
+        # c_native_**_result
+        name="c_native_*/&/**_result",
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="c_native_*_result_scalar",
+        f_result_decl=[
+            "{f_type} :: {c_var}",
+        ],
+        f_module_line="iso_c_binding:{f_kind}",
+    ),
     # Function has a result with deref(allocatable).
     #
     #    C wrapper:
@@ -1610,6 +1628,15 @@ fc_statements = [
         cxx_post_call=[
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
+    ),
+    # Similar to c_native_*_result
+    dict(
+        name="c_struct_*_result",
+        base="c_struct_result",
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
     ),
     dict(
         name="f_struct_scalar_result",

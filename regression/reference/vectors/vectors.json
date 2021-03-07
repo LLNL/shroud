@@ -232,6 +232,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1926,6 +1930,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },

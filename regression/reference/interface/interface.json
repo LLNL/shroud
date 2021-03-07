@@ -220,6 +220,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",

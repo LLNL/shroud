@@ -97,8 +97,7 @@ void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 // ----------------------------------------
 // Function:  double * getArray +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_*_result
-// Match:     c_default
+// Exact:     c_native_*_result
 double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -133,8 +132,7 @@ double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
 // ----------------------------------------
 // Function:  double * getArrayConst +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_*_result
-// Match:     c_default
+// Exact:     c_native_*_result
 double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
@@ -171,8 +169,7 @@ double * ARR_ArrayWrapper_get_array_const_bufferify(
 // ----------------------------------------
 // Function:  const double * getArrayC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_*_result
-// Match:     c_default
+// Exact:     c_native_*_result
 const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
@@ -207,8 +204,7 @@ const double * ARR_ArrayWrapper_get_array_c_bufferify(
 // ----------------------------------------
 // Function:  const double * getArrayConstC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_*_result
-// Match:     c_default
+// Exact:     c_native_*_result
 const double * ARR_ArrayWrapper_get_array_const_c(
     const ARR_ArrayWrapper * self)
 {

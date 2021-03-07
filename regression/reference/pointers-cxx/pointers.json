@@ -2429,6 +2429,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2560,6 +2561,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -2703,6 +2705,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -2867,6 +2873,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -5282,6 +5289,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -5533,6 +5541,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "void",
                         "f_type": "type(C_PTR)",
                         "f_var": "SHT_rv",
@@ -5666,6 +5675,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "void",
                         "f_type": "type(C_PTR)",
                         "f_var": "SHT_rv",
@@ -5908,6 +5918,7 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -5988,9 +5999,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
@@ -6070,6 +6082,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf",
                         "stmt1": "c_native_*_result_buf"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -6150,9 +6166,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "10",
                         "cxx_type": "int",
@@ -6246,6 +6263,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf",
                         "stmt1": "c_native_*_result_buf"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -6318,9 +6339,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
@@ -6401,6 +6423,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf",
                         "stmt1": "c_native_*_result_buf"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -6482,9 +6508,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "c_var_dimension": "10",
                         "cxx_type": "int",
@@ -6579,6 +6606,10 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf",
                         "stmt1": "c_native_*_result_buf"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -6648,9 +6679,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -6659,7 +6691,7 @@
                         "stmt0": "f_native_*_result_scalar",
                         "stmt1": "f_native_*_result_scalar",
                         "stmtc0": "c_native_*_result_scalar",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_native_*_result_scalar"
                     }
                 }
             },
@@ -6735,9 +6767,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -6746,7 +6779,7 @@
                         "stmt0": "f_native_*_result_raw",
                         "stmt1": "f_native_*_result_raw",
                         "stmtc0": "c_native_*_result_raw",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_native_*_result"
                     }
                 }
             },
@@ -6875,9 +6908,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
@@ -6886,7 +6920,7 @@
                         "stmt0": "f_native_*_result_raw",
                         "stmt1": "f_native_*_result_raw",
                         "stmtc0": "c_native_*_result_raw",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_native_*_result"
                     }
                 }
             },
@@ -6966,9 +7000,10 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_**_result",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_**_result"
                     },
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_kind": "C_INT",
@@ -6978,7 +7013,7 @@
                         "stmt0": "f_native_**_result_buf_pointer",
                         "stmt1": "f_native_**_result",
                         "stmtc0": "c_native_**_result_buf_pointer",
-                        "stmtc1": "c_default"
+                        "stmtc1": "c_native_**_result"
                     }
                 }
             },
@@ -7055,7 +7090,11 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_**_result_buf",
-                        "stmt1": "c_default"
+                        "stmt1": "c_native_**_result"
+                    },
+                    "fmtf": {
+                        "c_var": "SHT_rv",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             }

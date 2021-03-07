@@ -1065,7 +1065,7 @@ module pointers_mod
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_pointer
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_scalar
     interface
         function c_return_int_ptr_to_scalar() &
@@ -1101,7 +1101,7 @@ module pointers_mod
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_pointer
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -1137,7 +1137,7 @@ module pointers_mod
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_pointer
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_const_scalar
     interface
         function c_return_int_ptr_to_const_scalar() &
@@ -1173,7 +1173,7 @@ module pointers_mod
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_pointer
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1209,8 +1209,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
     ! Attrs:     +deref(scalar)+intent(result)
-    ! Requested: c_native_*_result_scalar
-    ! Match:     c_default
+    ! Exact:     c_native_*_result_scalar
     ! start return_int_scalar
     interface
         function return_int_scalar() &
@@ -1227,7 +1226,7 @@ module pointers_mod
     ! Function:  int * returnIntRaw +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
     ! Requested: c_native_*_result_raw
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! start return_int_raw
     interface
         function return_int_raw() &
@@ -1244,7 +1243,7 @@ module pointers_mod
     ! Function:  int * returnIntRawWithArgs +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
     ! Requested: c_native_*_result_raw
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
@@ -1267,7 +1266,7 @@ module pointers_mod
     ! Function:  int * * returnRawPtrToInt2d
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_**_result_pointer
-    ! Match:     c_default
+    ! Match:     c_native_**_result
     ! start c_return_raw_ptr_to_int2d
     interface
         function c_return_raw_ptr_to_int2d() &
@@ -1284,7 +1283,7 @@ module pointers_mod
     ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_**_result_buf_pointer
-    ! Match:     c_default
+    ! Match:     c_native_**_result
     ! start c_return_raw_ptr_to_int2d_bufferify
     interface
         function c_return_raw_ptr_to_int2d_bufferify() &
@@ -2022,7 +2021,7 @@ contains
     ! Exact:     f_native_*_result_raw
     ! Attrs:     +deref(raw)+intent(result)
     ! Requested: c_native_*_result_raw
-    ! Match:     c_default
+    ! Match:     c_native_*_result
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_native_*_result_raw.
@@ -2048,7 +2047,7 @@ contains
     ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_**_result_buf_pointer
-    ! Match:     c_default
+    ! Match:     c_native_**_result
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d

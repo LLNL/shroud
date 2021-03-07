@@ -1127,9 +1127,14 @@ rv = .false.
         # compute first to get order of arguments correct.
         if subprogram == "subroutine":
             fmt_func.F_C_subprogram = "subroutine"
+            fmt_result = fmt_func
         else:
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
+            fmt_result0 = node._fmtresult
+            fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
+            fmt_result.f_type = result_typemap.f_type
+            fmt_result.c_var = fmt_func.F_result
 
         if cls:
             is_static = "static" in ast.storage
@@ -1168,7 +1173,7 @@ rv = .false.
 
         self.build_arg_list_interface(
             node, fileinfo,
-            fmt_func,
+            fmt_result,
             ast,
             c_result_blk,
             c_result_blk.buf_args,
@@ -1262,10 +1267,13 @@ rv = .false.
             return_deref_attr = ast.metaattrs["deref"]
             if c_result_blk.f_result_decl:
                 for arg in c_result_blk.f_result_decl:
-                    arg_c_decl.append(arg.format(c_var=fmt_func.F_result))
+                    append_format(arg_c_decl, arg, fmt_result)
                 if c_result_blk.f_module:
                     self.update_f_module(
                         modules, imports, c_result_blk.f_module)
+                if c_result_blk.f_module_line:
+                    self.update_f_module_line(
+                        modules, imports, c_result_blk.f_module_line, fmt_result)
             elif c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1275,9 +1283,6 @@ rv = .false.
                 arg_c_decl.append("{} {}".format(ntypemap.f_type, fmt_func.F_result))
                 self.update_f_module(modules, imports,
                                      ntypemap.f_module)
-            elif return_deref_attr in ["pointer", "allocatable", "raw"]:
-                arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
-                self.set_f_module(modules, "iso_c_binding", "C_PTR")
             else:
                 arg_c_decl.append(ast.bind_c(name=fmt_func.F_result))
                 self.update_f_module(
