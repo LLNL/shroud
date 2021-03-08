@@ -433,6 +433,7 @@ def lookup_stmts_tree(tree, path):
 #  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
 #                with buf_args=arg_decl.
 #  f_result_decl - Declaration for function result.
+#                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
 CStmts = util.Scope(None,
     name="c_default",
@@ -448,7 +449,7 @@ CStmts = util.Scope(None,
     return_type=None, return_cptr=False,
     c_arg_decl=[],
     f_arg_decl=[],
-    f_result_decl=[],
+    f_result_decl=None,
     f_module=None,
     f_module_line=None,
 )
