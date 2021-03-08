@@ -666,7 +666,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_out",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_native_*_out_allocatable",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -892,7 +892,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_out",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_native_*_out_allocatable",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1427,7 +1427,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_values",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_native_*_out_allocatable",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2961,7 +2961,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3061,7 +3061,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -3172,7 +3172,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3282,7 +3282,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -3419,7 +3419,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3572,7 +3572,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -3722,7 +3722,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -3833,7 +3833,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -3942,7 +3942,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4043,7 +4043,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -4152,7 +4152,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4260,7 +4260,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -4395,7 +4395,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_pointer",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4546,7 +4546,7 @@
                             "rank": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out_buf",
+                            "stmt0": "c_native_**_out_buf_pointer",
                             "stmt1": "c_native_**_out_buf"
                         },
                         "fmtf": {
@@ -4686,7 +4686,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4797,7 +4797,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_nitems",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -4905,7 +4905,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -5016,7 +5016,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_count",
-                            "stmt0": "c_native_**_out",
+                            "stmt0": "c_native_**_out_raw",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -6014,7 +6014,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_pointer",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -6098,7 +6098,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
+                        "stmt0": "c_native_*_result_buf_pointer",
                         "stmt1": "c_native_*_result_buf"
                     },
                     "fmtf": {
@@ -6185,7 +6185,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_pointer",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -6283,7 +6283,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
+                        "stmt0": "c_native_*_result_buf_pointer",
                         "stmt1": "c_native_*_result_buf"
                     },
                     "fmtf": {
@@ -6362,7 +6362,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_pointer",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -6447,7 +6447,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
+                        "stmt0": "c_native_*_result_buf_pointer",
                         "stmt1": "c_native_*_result_buf"
                     },
                     "fmtf": {
@@ -6535,7 +6535,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_pointer",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -6634,7 +6634,7 @@
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result_buf",
+                        "stmt0": "c_native_*_result_buf_pointer",
                         "stmt1": "c_native_*_result_buf"
                     },
                     "fmtf": {
@@ -6710,8 +6710,8 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
-                        "stmt1": "c_native_*_result"
+                        "stmt0": "c_native_*_result_scalar",
+                        "stmt1": "c_native_*_result_scalar"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6800,7 +6800,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_raw",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -6943,7 +6943,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_*_result",
+                        "stmt0": "c_native_*_result_raw",
                         "stmt1": "c_native_*_result"
                     },
                     "fmtf": {
@@ -7037,7 +7037,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_**_result",
+                        "stmt0": "c_native_**_result_pointer",
                         "stmt1": "c_native_**_result"
                     },
                     "fmtf": {
@@ -7129,7 +7129,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_**_result_buf",
+                        "stmt0": "c_native_**_result_buf_pointer",
                         "stmt1": "c_native_**_result"
                     },
                     "fmtf": {

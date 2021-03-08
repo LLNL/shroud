@@ -1076,7 +1076,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_out_buf_native",
+                            "stmt0": "c_vector_&_out_buf_allocatable_native",
                             "stmt1": "c_vector_out_buf"
                         },
                         "fmtf": {
@@ -1279,7 +1279,7 @@
                             "idtor": "1",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_vector_&_inout_buf_native",
+                            "stmt0": "c_vector_&_inout_buf_allocatable_native",
                             "stmt1": "c_vector_inout_buf"
                         },
                         "fmtf": {

@@ -877,7 +877,8 @@ class Wrapc(util.WrapperMixin):
                 sintent = "ctor"
             else:
                 sintent = "result"
-            stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
+            stmts = ["c", result_typemap.sgroup, spointer, sintent,
+                     generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -1053,7 +1054,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
                 stmts = ["c", sgroup, spointer, c_meta["intent"],
-                         arg.stmts_suffix, cdesc] + specialize
+                         arg.stmts_suffix, c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:

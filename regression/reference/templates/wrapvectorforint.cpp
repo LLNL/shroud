@@ -69,7 +69,8 @@ void TEM_vector_int_push_back(TEM_vector_int * self, const int * value)
 // ----------------------------------------
 // Function:  int & at
 // Attrs:     +deref(pointer)+intent(result)
-// Exact:     c_native_&_result
+// Requested: c_native_&_result_pointer
+// Match:     c_native_&_result
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
@@ -88,7 +89,7 @@ int * TEM_vector_int_at(TEM_vector_int * self, size_t n)
 // ----------------------------------------
 // Function:  int & at +context(DSHC_rv)
 // Attrs:     +deref(pointer)+intent(result)
-// Requested: c_native_&_result_buf
+// Requested: c_native_&_result_buf_pointer
 // Match:     c_native_&_result
 // ----------------------------------------
 // Argument:  size_type n +value

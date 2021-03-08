@@ -495,7 +495,7 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(shape(in))+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_native_*_out
+// Requested: c_native_*_out_allocatable
 // Match:     c_default
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value

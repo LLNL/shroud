@@ -971,7 +971,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_char_*_result",
+                        "stmt0": "c_char_*_result_allocatable",
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
@@ -1206,7 +1206,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_char_*_result",
+                        "stmt0": "c_char_*_result_result-as-arg",
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
@@ -1427,7 +1427,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_char_*_result",
+                        "stmt0": "c_char_*_result_result-as-arg",
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
@@ -1717,7 +1717,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_char_*_result",
+                        "stmt0": "c_char_*_result_raw",
                         "stmt1": "c_char_*_result"
                     },
                     "fmtf": {
@@ -2638,7 +2638,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_allocatable",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
@@ -2874,7 +2874,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
@@ -3096,7 +3096,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
@@ -3393,7 +3393,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
@@ -3621,7 +3621,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_allocatable",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
@@ -3858,7 +3858,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result",
+                        "stmt0": "c_string_*_result_result-as-arg",
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
@@ -4096,7 +4096,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result",
+                        "stmt0": "c_string_*_result_allocatable",
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
@@ -4325,7 +4325,7 @@
                         "idtor": "2",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result",
+                        "stmt0": "c_string_*_result_allocatable",
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
@@ -4558,7 +4558,7 @@
                         "idtor": "3",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result",
+                        "stmt0": "c_string_*_result_allocatable",
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {

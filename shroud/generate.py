@@ -1623,10 +1623,6 @@ class GenFunctions(object):
                 result_as_string = ast.result_as_arg(result_name)
                 attrs = result_as_string.attrs
                 self.move_arg_attributes(result_as_string, node, C_new)
-            else: # char
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.attrs
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             C_new.ast.metaattrs["deref"] = None
@@ -1840,13 +1836,6 @@ class GenFunctions(object):
                     c_var=result_name
                 )
                 self.move_arg_attributes(result_as_string, node, C_new)
-            else:  # char
-                result_as_string = ast.result_as_arg(result_name)
-                result_as_string.const = False # must be writeable
-                attrs = result_as_string.attrs
-                attrs["len"] = options.C_var_len_template.format(
-                    c_var=result_name
-                )
             result_as_string.metaattrs["is_result"] = True
             C_new.ast.metaattrs["intent"] = None
             C_new.ast.metaattrs["deref"] = None

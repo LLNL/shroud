@@ -3188,7 +3188,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
+                        "stmt0": "c_struct_*_result_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
@@ -3376,7 +3376,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
+                        "stmt0": "c_struct_*_result_buf_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
@@ -3581,7 +3581,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
+                        "stmt0": "c_struct_*_result_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
@@ -3827,7 +3827,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
+                        "stmt0": "c_struct_*_result_buf_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
@@ -3904,7 +3904,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
+                        "stmt0": "c_struct_*_result_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
@@ -3986,7 +3986,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
+                        "stmt0": "c_struct_*_result_buf_pointer",
                         "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {

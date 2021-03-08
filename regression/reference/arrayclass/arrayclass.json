@@ -597,7 +597,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
+                                "stmt0": "c_native_*_result_pointer",
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
@@ -724,7 +724,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
@@ -821,7 +821,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
+                                "stmt0": "c_native_*_result_pointer",
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
@@ -949,7 +949,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
@@ -1045,7 +1045,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
+                                "stmt0": "c_native_*_result_pointer",
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
@@ -1173,7 +1173,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
@@ -1271,7 +1271,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
+                                "stmt0": "c_native_*_result_pointer",
                                 "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
@@ -1400,7 +1400,7 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
                             },
                             "fmtf": {
@@ -1504,7 +1504,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out",
+                                    "stmt0": "c_native_**_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -1704,7 +1704,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out_buf",
+                                    "stmt0": "c_native_**_out_buf_pointer",
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
@@ -1876,7 +1876,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out",
+                                    "stmt0": "c_native_*&_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2076,7 +2076,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out_buf",
+                                    "stmt0": "c_native_*&_out_buf_pointer",
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
@@ -2249,7 +2249,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out",
+                                    "stmt0": "c_native_**_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2450,7 +2450,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out_buf",
+                                    "stmt0": "c_native_**_out_buf_pointer",
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
@@ -2623,7 +2623,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out",
+                                    "stmt0": "c_native_*&_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -2824,7 +2824,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out_buf",
+                                    "stmt0": "c_native_*&_out_buf_pointer",
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
