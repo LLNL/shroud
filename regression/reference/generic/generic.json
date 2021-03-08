@@ -243,7 +243,6 @@
                     "F_C_name": "get_global_double",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_double",
                     "F_name_generic": "get_global_double",
@@ -769,7 +768,6 @@
                     "F_C_name": "c_generic_real2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "GenericReal2",
                     "underscore_name": "generic_real2"
@@ -1277,7 +1275,6 @@
                     "F_C_name": "c_sum_values",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
                     "underscore_name": "sum_values"
@@ -1670,7 +1667,6 @@
                     "F_C_name": "c_sum_values_1d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
                     "function_suffix": "_1d",

@@ -263,7 +263,7 @@ wrapped differently.
     See example :ref:`getCharPtr2 <example_getCharPtr2>`.
 
 ``char *getCharPtr3``
-    Create a Fortran subroutine in an additional ``CHARACTER``
+    Create a Fortran subroutine with an additional ``CHARACTER``
     argument for the C function result. Any size character string can
     be returned limited by the size of the Fortran argument.  The
     argument is defined by the *F_string_result_as_arg* format string.

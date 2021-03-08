@@ -55,7 +55,6 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",

@@ -1230,7 +1230,7 @@ rv = .false.
                 arg_c_decl,
             )
 
-        if subprogram == "function":
+        if subprogram == "function" and c_result_blk.buf_extra:
             fmt_func.F_C_var = fmt_func.F_result_capsule
             self.build_arg_list_interface(
                 node, fileinfo,
@@ -1909,7 +1909,7 @@ rv = .false.
             # End parameters loop.
         #####
 
-        if subprogram == "function":
+        if subprogram == "function" and c_result_blk.buf_extra:
             need_wrapper = self.build_arg_list_impl(
                 fileinfo,
                 fmt_result,
