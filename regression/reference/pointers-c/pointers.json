@@ -708,7 +708,7 @@
                         "fmtf": {
                             "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
-                            "c_var": "SH_sizein",
+                            "c_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -934,7 +934,7 @@
                         "fmtf": {
                             "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
-                            "c_var": "SH_sizein",
+                            "c_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -1735,7 +1735,7 @@
                         "fmtf": {
                             "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
-                            "c_var": "SH_len",
+                            "c_var": "len",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2073,7 +2073,7 @@
                         "fmtf": {
                             "F_C_var": "sizein",
                             "F_pointer": "SHPTR_sizein",
-                            "c_var": "SH_sizein",
+                            "c_var": "sizein",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2224,7 +2224,7 @@
                         "fmtf": {
                             "F_C_var": "x_length",
                             "F_pointer": "SHPTR_x_length",
-                            "c_var": "SH_x_length",
+                            "c_var": "x_length",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -2379,7 +2379,7 @@
                         "fmtf": {
                             "F_C_var": "len",
                             "F_pointer": "SHPTR_len",
-                            "c_var": "SH_len",
+                            "c_var": "len",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -2519,7 +2519,8 @@
                             "stmt1": "c_char_**_in"
                         },
                         "fmtf": {
-                            "F_C_var": "names"
+                            "F_C_var": "names",
+                            "c_var": "names"
                         }
                     }
                 },
@@ -2965,7 +2966,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems"
+                            "F_C_var": "nitems",
+                            "c_var": "nitems"
                         }
                     }
                 },
@@ -3176,7 +3178,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         }
                     }
                 },
@@ -3423,7 +3426,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         }
                     },
                     "ncount": {
@@ -3445,7 +3449,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount"
+                            "F_C_var": "ncount",
+                            "c_var": "ncount"
                         }
                     }
                 },
@@ -3726,7 +3731,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         }
                     }
                 },
@@ -3946,7 +3952,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "nitems"
+                            "F_C_var": "nitems",
+                            "c_var": "nitems"
                         }
                     }
                 },
@@ -4156,7 +4163,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         }
                     }
                 },
@@ -4399,7 +4407,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         }
                     },
                     "ncount": {
@@ -4421,7 +4430,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "ncount"
+                            "F_C_var": "ncount",
+                            "c_var": "ncount"
                         }
                     }
                 },

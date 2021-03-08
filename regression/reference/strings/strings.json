@@ -428,7 +428,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "dest"
+                            "F_C_var": "dest",
+                            "c_var": "dest"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -471,7 +472,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "src"
+                            "F_C_var": "src",
+                            "c_var": "src"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -743,7 +745,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "s"
+                            "F_C_var": "s",
+                            "c_var": "s"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1083,7 +1086,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -1320,7 +1323,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -1888,7 +1891,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -2089,7 +2092,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -2518,7 +2521,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -2750,7 +2753,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -2988,7 +2991,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3506,7 +3509,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3728,7 +3731,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -3978,7 +3981,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4204,7 +4207,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4436,7 +4439,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4671,7 +4674,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -4783,7 +4786,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5003,7 +5007,8 @@
                             "stmt1": "c_string_&_out"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5222,7 +5227,8 @@
                             "stmt1": "c_string_&_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5443,7 +5449,8 @@
                             "stmt1": "c_string_*_in"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5658,7 +5665,8 @@
                             "stmt1": "c_string_*_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -5879,7 +5887,8 @@
                             "stmt1": "c_string_*_out"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6116,7 +6125,8 @@
                             "stmt1": "c_string_*_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6158,7 +6168,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "nlen"
+                            "F_C_var": "nlen",
+                            "c_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6453,7 +6464,8 @@
                             "stmt1": "c_string_*_out"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6495,7 +6507,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "nlen"
+                            "F_C_var": "nlen",
+                            "c_var": "nlen"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -6766,7 +6779,8 @@
                             "stmt1": "c_string_scalar_in"
                         },
                         "fmtf": {
-                            "F_C_var": "arg1"
+                            "F_C_var": "arg1",
+                            "c_var": "arg1"
                         },
                         "fmtpy": {
                             "c_const": "",
@@ -7351,7 +7365,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         }
                     }
                 },
@@ -7795,7 +7810,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "dest"
+                            "F_C_var": "dest",
+                            "c_var": "dest"
                         }
                     },
                     "src": {
@@ -7817,7 +7833,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "src"
+                            "F_C_var": "src",
+                            "c_var": "src"
                         }
                     }
                 },
@@ -8087,7 +8104,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "count"
+                            "F_C_var": "count",
+                            "c_var": "count"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -8131,7 +8149,8 @@
                             "stmt1": "c_string_&_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",

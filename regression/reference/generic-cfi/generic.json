@@ -1081,7 +1081,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "nvalues"
+                            "F_C_var": "nvalues",
+                            "c_var": "nvalues"
                         }
                     },
                     "values": {
@@ -1104,7 +1105,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "values"
+                            "F_C_var": "values",
+                            "c_var": "values"
                         }
                     }
                 },
@@ -2937,7 +2939,7 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
-                            "c_var": "SH_size",
+                            "c_var": "size",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -2967,7 +2969,7 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
-                            "c_var": "SH_type",
+                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3464,7 +3466,7 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
-                            "c_var": "SH_size",
+                            "c_var": "size",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -3494,7 +3496,7 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
-                            "c_var": "SH_type",
+                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",

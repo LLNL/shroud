@@ -1200,7 +1200,7 @@
                         "fmtf": {
                             "F_C_var": "flag",
                             "F_pointer": "SHPTR_flag",
-                            "c_var": "SH_flag",
+                            "c_var": "flag",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",

@@ -338,7 +338,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         }
                     },
                     "value": {
@@ -361,7 +362,8 @@
                             "stmt1": "c_void_*_cdesc"
                         },
                         "fmtf": {
-                            "F_C_var": "value"
+                            "F_C_var": "value",
+                            "c_var": "value"
                         }
                     }
                 },

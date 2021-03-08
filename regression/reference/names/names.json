@@ -418,7 +418,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -959,7 +960,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "rv"
+                            "F_C_var": "rv",
+                            "c_var": "rv"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1333,7 +1335,8 @@
                             "stmt1": "c_string_&_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1375,7 +1378,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "value"
+                            "F_C_var": "value",
+                            "c_var": "value"
                         },
                         "fmtpy": {
                             "array_size": "1",

@@ -960,7 +960,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "flag"
+                                    "F_C_var": "flag",
+                                    "c_var": "flag"
                                 }
                             },
                             "name": {
@@ -982,7 +983,8 @@
                                     "stmt1": "c_string_&_in"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "name"
+                                    "F_C_var": "name",
+                                    "c_var": "name"
                                 }
                             }
                         },
@@ -1141,7 +1143,7 @@
                                 "fmtf": {
                                     "F_C_var": "flag",
                                     "F_pointer": "SHPTR_flag",
-                                    "c_var": "SH_flag",
+                                    "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
@@ -1549,7 +1551,7 @@
                                 "fmtf": {
                                     "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHT_rv",
+                                    "c_var": "SHF_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_intent": "OUT",
                                     "f_kind": "C_CHAR",
@@ -2405,7 +2407,7 @@
                                 "fmtf": {
                                     "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHT_rv",
+                                    "c_var": "SHF_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_intent": "OUT",
                                     "f_kind": "C_CHAR",
@@ -4573,7 +4575,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

@@ -1026,12 +1026,7 @@ rv = .false.
                 # Use explicit declaration from CStmt.
                 arg_c_names.append(fmt.F_C_var)
                 for arg in intent_blk.f_arg_decl:
-                    arg_c_decl.append(arg.format(
-                        c_var=fmt.F_C_var,
-                        f_type=fmt.f_type,
-                        f_intent=fmt.f_intent,
-                        f_c_dimension=fmt.f_c_dimension,
-                    ))
+                    append_format(arg_c_decl, arg, fmt)
                 if intent_blk.f_module:
                     self.update_f_module(
                         modules, imports, intent_blk.f_module)
@@ -1195,6 +1190,7 @@ rv = .false.
             arg_typemap = arg.typemap
             sgroup = arg_typemap.sgroup
             arg_typemap, specialize = statements.lookup_c_statements(arg)
+            fmt_arg.c_var = arg.name
             fmt_arg.F_C_var = arg.name
 
             attrs = arg.attrs

@@ -3825,7 +3825,7 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
-                            "c_var": "SH_arg",
+                            "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",

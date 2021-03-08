@@ -2164,7 +2164,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "outbuf"
+                            "F_C_var": "outbuf",
+                            "c_var": "outbuf"
                         }
                     },
                     "s1": {
@@ -2186,7 +2187,8 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
-                            "F_C_var": "s1"
+                            "F_C_var": "s1",
+                            "c_var": "s1"
                         }
                     }
                 },
@@ -3126,7 +3128,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "d"
+                            "F_C_var": "d",
+                            "c_var": "d"
                         }
                     },
                     "i": {
@@ -3148,7 +3151,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "i"
+                            "F_C_var": "i",
+                            "c_var": "i"
                         }
                     }
                 },
@@ -3497,7 +3501,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "d"
+                            "F_C_var": "d",
+                            "c_var": "d"
                         }
                     },
                     "i": {
@@ -3519,7 +3524,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "i"
+                            "F_C_var": "i",
+                            "c_var": "i"
                         }
                     },
                     "outbuf": {
@@ -3541,7 +3547,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "outbuf"
+                            "F_C_var": "outbuf",
+                            "c_var": "outbuf"
                         }
                     }
                 },

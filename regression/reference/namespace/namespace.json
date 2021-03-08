@@ -190,7 +190,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

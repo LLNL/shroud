@@ -1791,7 +1791,8 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n"
+                                            "F_C_var": "n",
+                                            "c_var": "n"
                                         },
                                         "fmtpy": {
                                             "c_const": "",
@@ -2560,7 +2561,8 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "n"
+                                            "F_C_var": "n",
+                                            "c_var": "n"
                                         },
                                         "fmtpy": {
                                             "c_const": "",

@@ -216,7 +216,8 @@
                                                     "stmt1": "c_string_*_in"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name"
+                                                    "F_C_var": "name",
+                                                    "c_var": "name"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -935,7 +936,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
-                                                    "c_var": "SHT_rv",
+                                                    "c_var": "SHF_rv",
                                                     "c_var_context": "DSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
@@ -1747,7 +1748,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "in",
                                                     "F_pointer": "SHPTR_in",
-                                                    "c_var": "SH_in",
+                                                    "c_var": "in",
                                                     "f_intent": "IN",
                                                     "f_kind": "C_BOOL",
                                                     "f_type": "logical",
@@ -2107,7 +2108,8 @@
                                                     "stmt1": "c_string_*_in"
                                                 },
                                                 "fmtf": {
-                                                    "F_C_var": "name"
+                                                    "F_C_var": "name",
+                                                    "c_var": "name"
                                                 },
                                                 "fmtl": {
                                                     "LUA_index": 1,
@@ -2629,7 +2631,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
-                                                    "c_var": "SHT_rv",
+                                                    "c_var": "SHF_rv",
                                                     "c_var_len": "NSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
@@ -2874,7 +2876,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
-                                                    "c_var": "SHT_rv",
+                                                    "c_var": "SHF_rv",
                                                     "c_var_context": "DSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
@@ -3120,7 +3122,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
-                                                    "c_var": "SHT_rv",
+                                                    "c_var": "SHF_rv",
                                                     "c_var_context": "DSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
@@ -3363,7 +3365,7 @@
                                                 "fmtf": {
                                                     "F_C_var": "SHF_rv",
                                                     "F_pointer": "SHPTR_SHF_rv",
-                                                    "c_var": "SHT_rv",
+                                                    "c_var": "SHF_rv",
                                                     "c_var_context": "DSHF_rv",
                                                     "f_intent": "OUT",
                                                     "f_kind": "C_CHAR",
@@ -6549,7 +6551,8 @@
                                             "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name"
+                                            "F_C_var": "name",
+                                            "c_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -6986,7 +6989,8 @@
                                             "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name"
+                                            "F_C_var": "name",
+                                            "c_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -7238,7 +7242,8 @@
                                             "stmt1": "c_default"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "flag"
+                                            "F_C_var": "flag",
+                                            "c_var": "flag"
                                         },
                                         "fmtl": {
                                             "LUA_index": 2,
@@ -7293,7 +7298,8 @@
                                             "stmt1": "c_string_&_in"
                                         },
                                         "fmtf": {
-                                            "F_C_var": "name"
+                                            "F_C_var": "name",
+                                            "c_var": "name"
                                         },
                                         "fmtl": {
                                             "LUA_index": 1,
@@ -11203,7 +11209,7 @@
                                         "fmtf": {
                                             "F_C_var": "sizein",
                                             "F_pointer": "SHPTR_sizein",
-                                            "c_var": "SH_sizein",
+                                            "c_var": "sizein",
                                             "f_intent": "IN",
                                             "f_kind": "C_INT",
                                             "f_type": "integer(C_INT)",

@@ -1508,7 +1508,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1555,7 +1556,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1880,7 +1882,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1927,7 +1930,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2253,7 +2257,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2300,7 +2305,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2627,7 +2633,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2674,7 +2681,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
