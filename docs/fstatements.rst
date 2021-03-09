@@ -89,7 +89,8 @@ arg_decl
 List of argument or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
-Added before splicer.
+Added before splicer since it is part of the API and must not change.
+Additional declarations can be added within the splicer via *declare*.
 
 .. code-block:: text
 
@@ -113,6 +114,7 @@ declare
 A list of declarations needed by *pre_call* or *post_call*.
 Usually a *c_local_var* is sufficient.
 Implies *need_wrapper*.
+Added within the splicer to make it easier to replace in the YAML file.
    
 pre_call
 ^^^^^^^^

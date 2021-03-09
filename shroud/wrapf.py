@@ -1037,6 +1037,10 @@ rv = .false.
                 if intent_blk.f_module_line:
                     self.update_f_module_line(
                         modules, imports, intent_blk.f_module_line, fmt)
+                if intent_blk.f_import:
+                    for name in intent_blk.f_import:
+                        iname = wformat(name, fmt)
+                        imports[iname] = True
                 continue
 
             buf_arg_name = attrs[buf_arg]

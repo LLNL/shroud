@@ -495,6 +495,7 @@ CStmts = util.Scope(None,
     f_result_decl=None,
     f_module=None,
     f_module_line=None,
+    f_import=None,
 )
 
 # Fortran Statements.
