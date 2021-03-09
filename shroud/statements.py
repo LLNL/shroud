@@ -448,6 +448,7 @@ CStmts = util.Scope(None,
     owner="library",
     return_type=None, return_cptr=False,
     c_arg_decl=[],
+    f_c_arg_names=None,
     f_arg_decl=[],
     f_result_decl=None,
     f_module=None,
@@ -1697,10 +1698,21 @@ fc_statements = [
     # char arg
     dict(
         # Add allocatable attribute to declaration.
+        # f_char_scalar_result_cfi_allocatable
+        # f_char_*_result_cfi_allocatable
         name="f_char_scalar/*_result_cfi_allocatable",
         need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
+        ],
+        arg_c_call=["{f_var}"],
+        declare=[
+            # Function returns a pointer which is discarded.
+            "type(C_PTR) {F_pointer}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
     ),
     
@@ -1713,7 +1725,7 @@ fc_statements = [
             "CFI_cdesc_t *{cfi_prefix}{c_var}",
         ],
         f_arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
         ],
     ),
     dict(
@@ -1802,7 +1814,12 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="c_char_*_result_cfi",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
+        ],
+        f_arg_decl=[        # replace mixin
+            # XXX - result converted into argument strings.yaml
+            #    const char * getCharPtr2() +len(30)
+            "character(len=*), intent({f_intent}) :: {c_var}",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -1819,11 +1836,16 @@ fc_statements = [
     dict(
         name="c_char_*_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
         ],
+        f_c_arg_names=["{F_result_capsule}"],
         f_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
         ],
+        f_result_decl=[
+            "type(C_PTR) {F_result}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
@@ -1931,6 +1953,11 @@ fc_statements = [
         mixin=[
             "c_mixin_cfi_character_result_allocatable",
         ],
+        f_c_arg_names=["{F_result_capsule}"],  # XXX default name is bad
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
         post_call=[
@@ -1941,17 +1968,25 @@ fc_statements = [
             " \t{cxx_var}{cxx_member}length());",
             "-}}",
         ],
+        ret=[
+            "return NULL;",
+        ],
     ),
 
     # std::string & function()
     dict(
         name="c_string_scalar_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
         ],
+        f_c_arg_names=["{F_result_capsule}"],
         f_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
         ],
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
@@ -1959,6 +1994,10 @@ fc_statements = [
             "if (SH_ret == CFI_SUCCESS) {{+",
             "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}.data(), \t{cfi_prefix}{c_var}->elem_len);",
             "-}}",
+        ],
+        c_local_var=True,  # used to avoid cxx_to_c conversion
+        ret=[
+            "return NULL;",
         ],
         
         destructor_name="new_string",
@@ -1973,10 +2012,24 @@ fc_statements = [
     
     # similar to f_char_scalar_result_allocatable
     dict(
+        # f_string_scalar_result_cfi_allocatable
+        # f_string_*_result_cfi_allocatable
+        # f_string_&_result_cfi_allocatable
         name="f_string_scalar/*/&_result_cfi_allocatable",
-#        need_wrapper=True,
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an allocatable, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
+        ],
+        declare=[
+            # Function returns a pointer which is discarded.
+            "type(C_PTR) {F_pointer}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+        call=[
+            "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
     ),
     

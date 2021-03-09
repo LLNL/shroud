@@ -1618,14 +1618,9 @@ class GenFunctions(object):
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
-            elif (result_typemap.sgroup == "string" or
-                  result_is_ptr):  # 'char *'
-                result_as_string = ast.result_as_arg(result_name)
-                attrs = result_as_string.attrs
-                self.move_arg_attributes(result_as_string, node, C_new)
-            result_as_string.metaattrs["is_result"] = True
-            C_new.ast.metaattrs["intent"] = None
-            C_new.ast.metaattrs["deref"] = None
+                result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)

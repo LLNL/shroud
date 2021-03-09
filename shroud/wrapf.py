@@ -1024,7 +1024,11 @@ rv = .false.
                 continue
             elif buf_arg == "arg_decl":
                 # Use explicit declaration from CStmt.
-                arg_c_names.append(fmt.F_C_var)
+                if intent_blk.f_c_arg_names:
+                    for name in intent_blk.f_c_arg_names:
+                        append_format(arg_c_names, name, fmt)
+                else:
+                    arg_c_names.append(fmt.F_C_var)
                 for arg in intent_blk.f_arg_decl:
                     append_format(arg_c_decl, arg, fmt)
                 if intent_blk.f_module:
@@ -1916,7 +1920,7 @@ rv = .false.
                 C_node.ast, #c_arg,
                 ast, # f_arg,
                 result_typemap,
-                f_result_blk,
+                statements.FStmts, #  Empty values like arg_c_call
                 c_result_blk.buf_extra,
                 modules,
                 imports,

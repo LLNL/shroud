@@ -169,20 +169,19 @@ module strings_mod
     ! end c_get_char_ptr1
 
     ! ----------------------------------------
-    ! Function:  void getCharPtr1
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const char * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const char * getCharPtr1
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_char_*_result_cfi_allocatable
     ! start c_get_char_ptr1_cfi
     interface
-        subroutine c_get_char_ptr1_cfi(SHF_rv) &
+        function c_get_char_ptr1_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_char_ptr1_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_char_ptr1_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_char_ptr1_cfi
     end interface
     ! end c_get_char_ptr1_cfi
 
@@ -272,19 +271,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringResult
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const string * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     c_string_*_result_cfi_allocatable
+    ! Function:  const string getConstStringResult
+    ! Attrs:     +deref(allocatable)+intent(result)
+    ! Exact:     c_string_scalar_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_result_cfi(SHF_rv) &
+        function c_get_const_string_result_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_result_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_result_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_result_cfi
     end interface
 
     ! ----------------------------------------
@@ -320,19 +318,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringAlloc
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     c_string_*_result_cfi_allocatable
+    ! Function:  const std::string getConstStringAlloc
+    ! Attrs:     +deref(allocatable)+intent(result)
+    ! Exact:     c_string_scalar_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_alloc_cfi(SHF_rv) &
+        function c_get_const_string_alloc_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_alloc_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -353,20 +350,19 @@ module strings_mod
     ! end c_get_const_string_ref_pure
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefPure
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const string & SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const string & getConstStringRefPure
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_cfi_allocatable
     ! start c_get_const_string_ref_pure_cfi
     interface
-        subroutine c_get_const_string_ref_pure_cfi(SHF_rv) &
+        function c_get_const_string_ref_pure_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_pure_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_ref_pure_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_ref_pure_cfi
     end interface
     ! end c_get_const_string_ref_pure_cfi
 
@@ -479,19 +475,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringRefAlloc
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string & getConstStringRefAlloc
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_ref_alloc_cfi(SHF_rv) &
+        function c_get_const_string_ref_alloc_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_ref_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_ref_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -541,19 +536,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrAlloc
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_ptr_alloc_cfi(SHF_rv) &
+        function c_get_const_string_ptr_alloc_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_ptr_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_ptr_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -572,19 +566,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrOwnsAlloc
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_ptr_owns_alloc_cfi(SHF_rv) &
+        function c_get_const_string_ptr_owns_alloc_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_ptr_owns_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_ptr_owns_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -603,19 +596,18 @@ module strings_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrOwnsAllocPattern
-    ! Requested: c_void_scalar_result_cfi
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +free_pattern(C_string_free)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        subroutine c_get_const_string_ptr_owns_alloc_pattern_cfi(SHF_rv) &
+        function c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_crv) &
+                result(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_pattern_CFI")
+            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHF_rv
-        end subroutine c_get_const_string_ptr_owns_alloc_pattern_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_get_const_string_ptr_owns_alloc_pattern_cfi
     end interface
 
     ! ----------------------------------------
@@ -1176,15 +1168,8 @@ contains
     ! ----------------------------------------
     ! Function:  const char * getCharPtr1
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_char_scalar_result_cfi_allocatable
-    ! Function:  void getCharPtr1
-    ! Requested: c_char_scalar_result_cfi_allocatable
-    ! Match:     c_char_scalar_result_cfi
-    ! ----------------------------------------
-    ! Argument:  const char * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_char_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_char_*_result_cfi_allocatable
     !>
     !! \brief return a 'const char *' as character(*)
@@ -1193,9 +1178,11 @@ contains
     ! start get_char_ptr1
     function get_char_ptr1() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_char_ptr1
-        call c_get_char_ptr1_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_char_ptr1_cfi(SHT_rv)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
@@ -1235,23 +1222,19 @@ contains
     ! Function:  const string getConstStringResult
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringResult
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const string * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     c_string_*_result_cfi_allocatable
     !>
     !! \brief return an ALLOCATABLE CHARACTER from std::string
     !!
     !<
     function get_const_string_result() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_result
-        call c_get_const_string_result_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_result_cfi(SHT_rv)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1288,19 +1271,15 @@ contains
     ! Function:  const std::string getConstStringAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringAlloc
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     c_string_*_result_cfi_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
-        call c_get_const_string_alloc_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1308,14 +1287,8 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getConstStringRefPure
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringRefPure
-    ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const string & SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_cfi_allocatable
     !>
     !! \brief return a 'const string&' as ALLOCATABLE character
@@ -1324,9 +1297,11 @@ contains
     ! start get_const_string_ref_pure
     function get_const_string_ref_pure() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_pure
-        call c_get_const_string_ref_pure_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_ref_pure_cfi(SHT_rv)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1394,20 +1369,16 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getConstStringRefAlloc
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringRefAlloc
-    ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_cfi_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
-        call c_get_const_string_ref_alloc_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_ref_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1447,21 +1418,17 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: f_string_scalar_result_cfi_allocatable_library
-    ! Match:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringPtrAlloc
-    ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Requested: f_string_*_result_cfi_allocatable_library
+    ! Match:     f_string_*_result_cfi_allocatable
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        call c_get_const_string_ptr_alloc_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_ptr_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -1469,15 +1436,9 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: f_string_scalar_result_cfi_allocatable_caller
-    ! Match:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringPtrOwnsAlloc
-    ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Requested: f_string_*_result_cfi_allocatable_caller
+    ! Match:     f_string_*_result_cfi_allocatable
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     !>
     !! It is the caller's responsibility to release the string
@@ -1488,9 +1449,11 @@ contains
     !<
     function get_const_string_ptr_owns_alloc() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
-        call c_get_const_string_ptr_owns_alloc_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_ptr_owns_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -1498,24 +1461,20 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: f_string_scalar_result_cfi_allocatable_caller
-    ! Match:     f_string_scalar_result_cfi_allocatable
-    ! Function:  void getConstStringPtrOwnsAllocPattern
-    ! Exact:     c_string_scalar_result_cfi_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +free_pattern(C_string_free)+owner(caller)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_cfi_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Requested: f_string_*_result_cfi_allocatable_caller
+    ! Match:     f_string_*_result_cfi_allocatable
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     !>
     !! Similar to getConstStringPtrOwnsAlloc, but uses pattern to release memory.
     !<
     function get_const_string_ptr_owns_alloc_pattern() &
             result(SHT_rv)
+        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
-        call c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_rv)
+        type(C_PTR) SHT_ptr
+        SHT_ptr = c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 

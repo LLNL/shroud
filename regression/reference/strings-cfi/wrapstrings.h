@@ -46,7 +46,7 @@ void STR_pass_char_ptr_in_out_CFI(CFI_cdesc_t *SHcfi_s);
 
 const char * STR_get_char_ptr1(void);
 
-void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_char_ptr2(void);
 
@@ -58,17 +58,18 @@ void STR_get_char_ptr3_CFI(CFI_cdesc_t *SHcfi_output);
 
 const char * STR_get_char_ptr4(void);
 
-void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
 
 void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
 
 void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output);
 
-void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_const_string_ref_pure(void);
 
-void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_const_string_ref_pure_CFI(
+    CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_const_string_ref_len(void);
 
@@ -84,7 +85,8 @@ void STR_get_const_string_ref_len_empty_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
 
 const char * STR_get_const_string_ref_alloc(void);
 
-void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_const_string_ref_alloc_CFI(
+    CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_const_string_ptr_len(void);
 
@@ -92,16 +94,18 @@ void STR_get_const_string_ptr_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
 
 const char * STR_get_const_string_ptr_alloc(void);
 
-void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_const_string_ptr_alloc_CFI(
+    CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_const_string_ptr_owns_alloc(void);
 
-void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_const_string_ptr_owns_alloc_CFI(
+    CFI_cdesc_t *SHcfi_SHC_rv);
 
 const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 
-void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
-    CFI_cdesc_t *SHcfi_SHF_rv);
+const char * STR_get_const_string_ptr_owns_alloc_pattern_CFI(
+    CFI_cdesc_t *SHcfi_SHC_rv);
 
 void STR_accept_string_const_reference(const char * arg1);
 
