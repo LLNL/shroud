@@ -1167,8 +1167,14 @@ rv = .false.
                 stmts_comments, ast, statements.compute_name(c_stmts),
                 c_result_blk.name)
 
-        if c_result_blk.return_type:
-            # Change a subroutine into function.
+        if c_result_blk.return_type == "void":
+            # Change a function into a subroutine.
+            fmt_func.F_C_subprogram = "subroutine"
+            fmt_func.F_C_result_clause = ""
+            subprogram = "subroutine"
+        elif c_result_blk.return_type:
+            # Change a subroutine into function
+            # or change the return type.
             fmt_func.F_C_subprogram = "function"
             fmt_func.F_C_result_clause = "\fresult(%s)" % fmt_func.F_result
 
@@ -1233,6 +1239,7 @@ rv = .false.
                 arg_c_names,
                 arg_c_decl,
             )
+        # --- End loop over function parameters
 
         if subprogram == "function" and c_result_blk.buf_extra:
             fmt_func.F_C_var = fmt_func.F_result_capsule
@@ -1659,6 +1666,10 @@ rv = .false.
             self.document_stmts(
                 stmts_comments, C_node.ast, fmt_result.stmtc0, fmt_result.stmtc1)
 
+        if c_result_blk.return_type == "void":
+            # Convert C wrapper from function to subroutine.
+            C_subprogram = "subroutine"
+            need_wrapper = True
         if f_result_blk.result:
             # Change a subroutine into function.
             fmt_func.F_subprogram = "function"
@@ -1910,7 +1921,7 @@ rv = .false.
                 pre_call,
                 post_call,
             )
-            # End parameters loop.
+        # --- End loop over function parameters
         #####
 
         if subprogram == "function" and c_result_blk.buf_extra:
@@ -1938,8 +1949,12 @@ rv = .false.
             #     fmt_func.F_pure_clause = 'pure '
             if f_result_blk.arg_decl:
                 # Explicit declarations from fc_statements.
+                # XXX coordinate arg_c_call
                 for line in f_result_blk.arg_decl:
                     append_format(arg_f_decl, line, fmt_result)
+                if f_result_blk.arg_c_call:
+                    for arg in f_result_blk.arg_c_call:
+                        append_format(arg_c_call, arg, fmt_result)
                 if f_result_blk.arg_name:
                     for aname in f_result_blk.arg_name:
                         append_format(arg_f_names, aname, fmt_result)

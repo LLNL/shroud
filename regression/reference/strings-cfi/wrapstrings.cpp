@@ -280,7 +280,7 @@ const char * STR_get_char_ptr1(void)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_char_*_result_cfi_allocatable
 // start STR_get_char_ptr1_CFI
-const char * STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_char_ptr1_CFI
     const char * SHC_rv = getCharPtr1();
@@ -292,7 +292,6 @@ const char * STR_get_char_ptr1_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
                 SHcfi_SHC_rv->elem_len);
         }
     }
-    return SHC_rv;
     // splicer end function.get_char_ptr1_CFI
 }
 // end STR_get_char_ptr1_CFI
@@ -406,7 +405,7 @@ const char * STR_get_char_ptr4(void)
 // Function:  const string getConstStringResult
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_scalar_result_cfi_allocatable
-const char STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_result_CFI
     const std::string SHCXX_rv = getConstStringResult();
@@ -416,7 +415,6 @@ const char STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv.data(), 
             SHcfi_SHC_rv->elem_len);
     }
-    return NULL;
     // splicer end function.get_const_string_result_CFI
 }
 
@@ -476,7 +474,7 @@ void STR_get_const_string_as_arg_CFI(CFI_cdesc_t *SHcfi_output)
 // Function:  const std::string getConstStringAlloc
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_scalar_result_cfi_allocatable
-const char STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_alloc_CFI
     const std::string SHCXX_rv = getConstStringAlloc();
@@ -486,7 +484,6 @@ const char STR_get_const_string_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv.data(), 
             SHcfi_SHC_rv->elem_len);
     }
-    return NULL;
     // splicer end function.get_const_string_alloc_CFI
 }
 
@@ -519,8 +516,7 @@ const char * STR_get_const_string_ref_pure(void)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_cfi_allocatable
 // start STR_get_const_string_ref_pure_CFI
-const char * STR_get_const_string_ref_pure_CFI(
-    CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_ref_pure_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_pure_CFI
     const std::string & SHCXX_rv = getConstStringRefPure();
@@ -530,8 +526,6 @@ const char * STR_get_const_string_ref_pure_CFI(
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv.data(), 
             SHCXX_rv.length());
     }
-    const char * SHC_rv = SHCXX_rv.c_str();
-    return NULL;
     // splicer end function.get_const_string_ref_pure_CFI
 }
 // end STR_get_const_string_ref_pure_CFI
@@ -711,8 +705,7 @@ const char * STR_get_const_string_ref_alloc(void)
 // Function:  const std::string & getConstStringRefAlloc
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_cfi_allocatable
-const char * STR_get_const_string_ref_alloc_CFI(
-    CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_ref_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ref_alloc_CFI
     const std::string & SHCXX_rv = getConstStringRefAlloc();
@@ -722,8 +715,6 @@ const char * STR_get_const_string_ref_alloc_CFI(
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv.data(), 
             SHCXX_rv.length());
     }
-    const char * SHC_rv = SHCXX_rv.c_str();
-    return NULL;
     // splicer end function.get_const_string_ref_alloc_CFI
 }
 
@@ -797,8 +788,7 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Function:  const std::string * getConstStringPtrAlloc +owner(library)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_*_result_cfi_allocatable
-const char * STR_get_const_string_ptr_alloc_CFI(
-    CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_ptr_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ptr_alloc_CFI
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
@@ -808,8 +798,6 @@ const char * STR_get_const_string_ptr_alloc_CFI(
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    const char * SHC_rv = SHCXX_rv->c_str();
-    return NULL;
     // splicer end function.get_const_string_ptr_alloc_CFI
 }
 
@@ -845,8 +833,7 @@ const char * STR_get_const_string_ptr_owns_alloc(void)
 // Function:  const std::string * getConstStringPtrOwnsAlloc +owner(caller)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_*_result_cfi_allocatable
-const char * STR_get_const_string_ptr_owns_alloc_CFI(
-    CFI_cdesc_t *SHcfi_SHC_rv)
+void STR_get_const_string_ptr_owns_alloc_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc_CFI
     const std::string * SHCXX_rv = getConstStringPtrOwnsAlloc();
@@ -856,8 +843,6 @@ const char * STR_get_const_string_ptr_owns_alloc_CFI(
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    const char * SHC_rv = SHCXX_rv->c_str();
-    return NULL;
     // splicer end function.get_const_string_ptr_owns_alloc_CFI
 }
 
@@ -885,7 +870,7 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern(void)
 // Function:  const std::string * getConstStringPtrOwnsAllocPattern +free_pattern(C_string_free)+owner(caller)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_*_result_cfi_allocatable
-const char * STR_get_const_string_ptr_owns_alloc_pattern_CFI(
+void STR_get_const_string_ptr_owns_alloc_pattern_CFI(
     CFI_cdesc_t *SHcfi_SHC_rv)
 {
     // splicer begin function.get_const_string_ptr_owns_alloc_pattern_CFI
@@ -896,8 +881,6 @@ const char * STR_get_const_string_ptr_owns_alloc_pattern_CFI(
         std::memcpy(SHcfi_SHC_rv->base_addr, SHCXX_rv->data(), 
             SHCXX_rv->length());
     }
-    const char * SHC_rv = SHCXX_rv->c_str();
-    return NULL;
     // splicer end function.get_const_string_ptr_owns_alloc_pattern_CFI
 }
 

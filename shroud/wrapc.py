@@ -1163,6 +1163,7 @@ class Wrapc(util.WrapperMixin):
 
         return_deref_attr = ast.metaattrs["deref"]
         if result_blk.return_type:
+            # Override return type.
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
         elif return_deref_attr == "scalar":
@@ -1213,6 +1214,10 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
+                elif result_blk.return_type == "void":
+                    # Do not return C++ result in C wrapper.
+                    # Probably assigned to an argument.
+                    pass
                 elif result_blk.c_local_var:
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
@@ -1250,7 +1255,9 @@ class Wrapc(util.WrapperMixin):
                 append_format(final_code, line, fmt_result)
             final_code.append("-}")
 
-        if result_blk.ret:
+        if result_blk.return_type == "void":
+            raw_return_code = []
+        elif result_blk.ret:
             raw_return_code = result_blk.ret
         elif return_deref_attr == "scalar":
             # dereference pointer to return scalar

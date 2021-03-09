@@ -326,6 +326,13 @@ For example, with shadow types.
 
 .. from vectors.yaml
 
+*return_type* can also be used to convert a C wrapper into a void
+function.  This is useful for functions which return pointers but the
+pointer value is assigned to a subroutine argument which holds the
+pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
+would be return by the C wrapper is unneeded by the Fortran wrapper.
+   
+
 return_cptr
 ^^^^^^^^^^^
 

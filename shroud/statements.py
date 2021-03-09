@@ -1705,15 +1705,7 @@ fc_statements = [
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        arg_c_call=["{f_var}"],
-        declare=[
-            # Function returns a pointer which is discarded.
-            "type(C_PTR) {F_pointer}",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
-        ],
+        arg_c_call=["{f_var}"],  # Pass result as an argument.
     ),
     
     dict(
@@ -1725,7 +1717,7 @@ fc_statements = [
             "CFI_cdesc_t *{cfi_prefix}{c_var}",
         ],
         f_arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
     ),
     dict(
@@ -1838,14 +1830,11 @@ fc_statements = [
         mixin=[
             "c_mixin_cfi_character_result_allocatable",
         ],
-        f_c_arg_names=["{F_result_capsule}"],
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        f_result_decl=[
-            "type(C_PTR) {F_result}",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
@@ -1953,11 +1942,8 @@ fc_statements = [
         mixin=[
             "c_mixin_cfi_character_result_allocatable",
         ],
-        f_c_arg_names=["{F_result_capsule}"],  # XXX default name is bad
-        f_result_decl=[
-            "type(C_PTR) {c_var}",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
         post_call=[
@@ -1979,14 +1965,11 @@ fc_statements = [
         mixin=[
             "c_mixin_cfi_character_result_allocatable",
         ],
-        f_c_arg_names=["{F_result_capsule}"],
+        f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin
-            "character(len=:), intent({f_intent}), allocatable :: {F_result_capsule}",
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
-        f_result_decl=[
-            "type(C_PTR) {c_var}",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
+        return_type="void",  # convert to function
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
@@ -2023,14 +2006,7 @@ fc_statements = [
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        declare=[
-            # Function returns a pointer which is discarded.
-            "type(C_PTR) {F_pointer}",
-        ],
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
-        ],
+        arg_c_call=["{f_var}"],
     ),
     
 

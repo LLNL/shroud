@@ -174,14 +174,11 @@ module strings_mod
     ! Exact:     c_char_*_result_cfi_allocatable
     ! start c_get_char_ptr1_cfi
     interface
-        function c_get_char_ptr1_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_char_ptr1_cfi(SHT_rv) &
                 bind(C, name="STR_get_char_ptr1_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_char_ptr1_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_char_ptr1_cfi
     end interface
     ! end c_get_char_ptr1_cfi
 
@@ -275,14 +272,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_scalar_result_cfi_allocatable
     interface
-        function c_get_const_string_result_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_result_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_result_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_result_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_result_cfi
     end interface
 
     ! ----------------------------------------
@@ -322,14 +316,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_scalar_result_cfi_allocatable
     interface
-        function c_get_const_string_alloc_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_alloc_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_alloc_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -355,14 +346,11 @@ module strings_mod
     ! Exact:     c_string_&_result_cfi_allocatable
     ! start c_get_const_string_ref_pure_cfi
     interface
-        function c_get_const_string_ref_pure_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_ref_pure_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_pure_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_ref_pure_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_ref_pure_cfi
     end interface
     ! end c_get_const_string_ref_pure_cfi
 
@@ -479,14 +467,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_cfi_allocatable
     interface
-        function c_get_const_string_ref_alloc_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_ref_alloc_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ref_alloc_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_ref_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_ref_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -540,14 +525,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        function c_get_const_string_ptr_alloc_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_ptr_alloc_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_ptr_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_ptr_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -570,14 +552,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        function c_get_const_string_ptr_owns_alloc_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_ptr_owns_alloc_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_ptr_owns_alloc_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_ptr_owns_alloc_cfi
     end interface
 
     ! ----------------------------------------
@@ -600,14 +579,11 @@ module strings_mod
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_cfi_allocatable
     interface
-        function c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_crv) &
-                result(SHT_rv) &
+        subroutine c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_owns_alloc_pattern_CFI")
-            use iso_c_binding, only : C_PTR
             implicit none
-            character(len=:), intent(OUT), allocatable :: SHT_crv
-            type(C_PTR) SHT_rv
-        end function c_get_const_string_ptr_owns_alloc_pattern_cfi
+            character(len=:), intent(OUT), allocatable :: SHT_rv
+        end subroutine c_get_const_string_ptr_owns_alloc_pattern_cfi
     end interface
 
     ! ----------------------------------------
@@ -1178,11 +1154,9 @@ contains
     ! start get_char_ptr1
     function get_char_ptr1() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_char_ptr1
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_char_ptr1_cfi(SHT_rv)
+        call c_get_char_ptr1_cfi(SHT_rv)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
@@ -1230,11 +1204,9 @@ contains
     !<
     function get_const_string_result() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_result
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_result_cfi(SHT_rv)
+        call c_get_const_string_result_cfi(SHT_rv)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1275,11 +1247,9 @@ contains
     ! Exact:     c_string_scalar_result_cfi_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_alloc_cfi(SHT_rv)
+        call c_get_const_string_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1297,11 +1267,9 @@ contains
     ! start get_const_string_ref_pure
     function get_const_string_ref_pure() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_pure
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_ref_pure_cfi(SHT_rv)
+        call c_get_const_string_ref_pure_cfi(SHT_rv)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1374,11 +1342,9 @@ contains
     ! Exact:     c_string_&_result_cfi_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_ref_alloc_cfi(SHT_rv)
+        call c_get_const_string_ref_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1424,11 +1390,9 @@ contains
     ! Exact:     c_string_*_result_cfi_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_ptr_alloc_cfi(SHT_rv)
+        call c_get_const_string_ptr_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -1449,11 +1413,9 @@ contains
     !<
     function get_const_string_ptr_owns_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_ptr_owns_alloc_cfi(SHT_rv)
+        call c_get_const_string_ptr_owns_alloc_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -1470,11 +1432,9 @@ contains
     !<
     function get_const_string_ptr_owns_alloc_pattern() &
             result(SHT_rv)
-        use iso_c_binding, only : C_PTR
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
-        type(C_PTR) SHT_ptr
-        SHT_ptr = c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_rv)
+        call c_get_const_string_ptr_owns_alloc_pattern_cfi(SHT_rv)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 
