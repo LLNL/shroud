@@ -668,12 +668,14 @@ rv = .false.
         
         for node in functions:
             if node.wrap.fortran:
-                self.log.write("Fortran {0.declgen}\n".format(node))
+                self.log.write("Fortran {0.declgen} {1}\n".format(
+                    node, self.get_metaattrs(node.ast)))
                 self.wrap_function_impl(cls, node, fileinfo)
 
         for node in functions:
             if node.wrap.c:
-                self.log.write("C-interface {0.declgen}\n".format(node))
+                self.log.write("C-interface {0.declgen} {1}\n".format(
+                    node, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface(cls, node, fileinfo)
 
     def update_f_module_line(self, modules, imports, line, fmt):

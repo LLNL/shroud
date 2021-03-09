@@ -1,5 +1,5 @@
 Read yaml wrap.yaml
 Close wrap_types.yaml
 class Class1
-Fortran void FuncInClass(void)
+Fortran void FuncInClass(void) 
 Close wrapfwrap.f

@@ -802,11 +802,8 @@ class Wrapc(util.WrapperMixin):
         if not node.wrap.c:
             return
 
-        if cls:
-            cls_function = "method"
-        else:
-            cls_function = "function"
-        self.log.write("C {0} {1.declgen}\n".format(cls_function, node))
+        self.log.write("C {0.declgen} {1}\n".format(
+            node, self.get_metaattrs(node.ast)))
 
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs

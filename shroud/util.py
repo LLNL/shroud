@@ -459,18 +459,21 @@ class WrapperMixin(object):
             output.append(self.doxygen_cont + " \\return %s" % docs["return"])
         output.append(self.doxygen_end)
 
-    def document_stmts(self, output, ast, stmt0, stmt1):
-        """A comments to show which statements were used.
-
-        Skip metaattributes which are objects.
-        """
+    def get_metaattrs(self, ast):
         decl = []
         ast.gen_attrs(ast.metaattrs, decl, dict(
             dimension=True,
             struct_member=True
         ))
-        if decl:
-            dbg = "".join(decl)
+        return "".join(decl)
+        
+    def document_stmts(self, output, ast, stmt0, stmt1):
+        """A comments to show which statements were used.
+
+        Skip metaattributes which are objects.
+        """
+        dbg = self.get_metaattrs(ast)
+        if dbg:
             output.append(self.comment + " Attrs:    " + dbg)
         
         if stmt0 == stmt1:
