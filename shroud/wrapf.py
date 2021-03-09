@@ -1262,8 +1262,7 @@ rv = .false.
         )
 
         if fmt_func.F_C_subprogram == "function":
-            return_deref_attr = ast.metaattrs["deref"]
-            if c_result_blk.f_result_decl:
+            if c_result_blk.f_result_decl is not None:
                 for arg in c_result_blk.f_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
                 if c_result_blk.f_module:
@@ -1612,6 +1611,7 @@ rv = .false.
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
             fmt_result.f_var = fmt_func.F_result
+            fmt_result.c_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,

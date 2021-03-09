@@ -877,6 +877,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
@@ -970,6 +971,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
                         "f_intent": "OUT",
                         "f_kind": "C_LONG",
@@ -1395,6 +1397,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1500,6 +1503,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1789,6 +1793,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",

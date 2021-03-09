@@ -86,6 +86,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1779,6 +1780,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -2134,6 +2136,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::vector<{cxx_T}>",
                         "f_assumed_shape": "(:)",
                         "f_c_dimension": "(*)",

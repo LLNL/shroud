@@ -569,6 +569,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",

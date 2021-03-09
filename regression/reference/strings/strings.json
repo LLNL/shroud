@@ -1782,6 +1782,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
@@ -1981,6 +1982,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "c_var_len": 30,
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
@@ -2416,6 +2418,7 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
                         "f_intent": "OUT",
                         "f_kind": "C_CHAR",
