@@ -6,11 +6,13 @@
 
 """
 """
+import yaml
 
 from . import util
 
 # The tree of c and fortran statements.
 cf_tree = {}
+fc_dict = {} # dictionary of Scope of all expanded fc_statements.
 default_scopes = dict()
 
 def lookup_c_statements(arg):
@@ -167,7 +169,7 @@ def update_statements_for_language(language):
         "c" or "c++"
     """
     update_for_language(fc_statements, language)
-    update_stmt_tree(fc_statements, cf_tree, default_stmts)
+    update_stmt_tree(fc_statements, fc_dict, cf_tree, default_stmts)
     
 
 def update_for_language(stmts, lang):
@@ -275,7 +277,7 @@ def add_statement_to_tree(tree, nodes, node_stmts, node, steps):
     node_stmts[name] = node
     
         
-def update_stmt_tree(stmts, tree, defaults):
+def update_stmt_tree(stmts, nodes, tree, defaults):
     """Update tree by adding stmts.  Each key in stmts is split by
     underscore then inserted into tree to form nested dictionaries to
     the values from stmts.  The end key is named _node, since it is
@@ -311,13 +313,19 @@ def update_stmt_tree(stmts, tree, defaults):
       },
     }
 
+    Parameters
+    ----------
+    stmts : dict
+    nodes : dict
+        Created Scope members for 'base'.
+    tree : dict
+    defaults: dict
     """
     # Convert defaults into Scope nodes.
     for key, node in defaults.items():
         default_scopes[key] = node
 
     # Index by name to find alias, base, mixin.
-    nodes = {}      # Created Scope members for 'base'.
     node_stmts = {} # Dict from fc_statements for 'mixin'.
     for node in stmts:
         # node is a dict.
@@ -352,12 +360,13 @@ def write_cf_tree(fp):
     fp : file
     """
     lines = []
-    print_tree(cf_tree, lines)
+    print_tree_index(cf_tree, lines)
     fp.writelines(lines)
+    print_tree_statements(fp, fc_dict, default_stmts)
 
 
-def print_tree(tree, lines, indent=""):
-    """Print statements search tree.
+def print_tree_index(tree, lines, indent=""):
+    """Print statements search tree index.
     Intermediate nodes are prefixed with --.
     Useful for debugging.
 
@@ -386,8 +395,40 @@ def print_tree(tree, lines, indent=""):
             continue
         value = tree[key]
         if isinstance(value, dict):
-            print_tree(value, lines, indent)
+            print_tree_index(value, lines, indent)
 
+
+def print_tree_statements(fp, statements, defaults):
+    """Print expanded statements.
+
+    Statements may not have all values directly defined since 'base'
+    and 'mixin' brings in other values.  This will dump the values as
+    used by Shroud.
+
+    Statements
+    ----------
+    fp : file
+    statements : dict
+    defaults : dict
+
+    """
+    # Convert Scope into a dictionary for YAML.
+    # Add all non-null values from the default dict.
+    yaml.SafeDumper.ignore_aliases = lambda *args : True
+    complete = {}
+    for name in sorted(statements.keys()):
+        root = name.split("_", 1)[0]
+        base = defaults[root]
+        value = statements[name]
+        all = {}
+        for key in base.__dict__.keys():
+            if key[0] == "_":
+                continue
+            if value[key]:
+                all[key] = value[key]
+        complete[name] = all
+    yaml.safe_dump(complete, fp)
+            
 def lookup_stmts_tree(tree, path):
     """
     Lookup path in statements tree.
