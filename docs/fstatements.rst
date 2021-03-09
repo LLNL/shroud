@@ -37,9 +37,9 @@ A Fortran wrapper is created out of several segments.
 
 
 The ``bind(C)`` interface is defined by the cstatements since it must
-match the C wrapper that is being called.  The C wrapper may have
-a different API than the Fortran wrapper since the Fortran may pass
-down additional arguments.
+match the C wrapper that is being called.  The C wrapper may have a
+different API than the Fortran wrapper since the Fortran may pass down
+additional arguments.
 
 ..        name="f_default",
 ..        c_helper="",

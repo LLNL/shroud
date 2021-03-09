@@ -1954,9 +1954,6 @@ fc_statements = [
             " \t{cxx_var}{cxx_member}length());",
             "-}}",
         ],
-        ret=[
-            "return NULL;",
-        ],
     ),
 
     # std::string & function()
@@ -1977,10 +1974,6 @@ fc_statements = [
             "if (SH_ret == CFI_SUCCESS) {{+",
             "{stdlib}memcpy({cfi_prefix}{c_var}->base_addr, \t{cxx_var}.data(), \t{cfi_prefix}{c_var}->elem_len);",
             "-}}",
-        ],
-        c_local_var=True,  # used to avoid cxx_to_c conversion
-        ret=[
-            "return NULL;",
         ],
         
         destructor_name="new_string",

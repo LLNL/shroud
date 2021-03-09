@@ -672,8 +672,6 @@ rv = .false.
                 self.wrap_function_impl(cls, node, fileinfo)
 
         for node in functions:
-#            if node.wrap.c != node.wrap.f_c:
-#                print("XXXX", node.decl)
             if node.wrap.c:
                 self.log.write("C-interface {0.declgen}\n".format(node))
                 self.wrap_function_interface(cls, node, fileinfo)
