@@ -24,6 +24,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -73,6 +74,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -106,6 +108,9 @@
                     },
                     {
                         "<FUNCTION>": "3 ****************************************",
+                        "C_generated_path": [
+                            "has_default_arg"
+                        ],
                         "_generated": "has_default_arg",
                         "_overloaded": true,
                         "ast": {
@@ -124,6 +129,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -199,6 +205,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -346,6 +353,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -414,6 +422,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },

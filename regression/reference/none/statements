@@ -31,6 +31,8 @@ root
           result
             allocatable -- c_mixin_cfi_character_result_allocatable
     native
+      &
+        result -- c_native_*/&/**_result
       *
         in
           cdesc -- c_native_*_in/out/inout_cdesc
@@ -39,8 +41,9 @@ root
           cdesc -- c_native_*_in/out/inout_cdesc
         out
           cdesc -- c_native_*_in/out/inout_cdesc
-        result
+        result -- c_native_*/&/**_result
           buf -- c_native_*_result_buf
+          scalar -- c_native_*_result_scalar
       *&
         out
           buf -- c_native_*&_out_buf
@@ -48,6 +51,7 @@ root
         in -- c_native_**_in
         out
           buf -- c_native_**_out_buf
+        result -- c_native_*/&/**_result
     shadow
       ctor -- c_shadow_ctor
       dtor -- c_shadow_dtor
@@ -99,6 +103,8 @@ root
           cfi -- c_string_scalar/*/&_result_cfi
             allocatable -- c_string_scalar_result_cfi_allocatable
     struct -- c_struct
+      *
+        result -- c_struct_*_result
       result -- c_struct_result
     vector
       in
@@ -141,6 +147,8 @@ root
     native
       &
         result -- f_native_&_result
+          buf
+            pointer -- f_native_&_result_buf_pointer
       *
         in
           cdesc -- f_native_*_in/out/inout_cdesc

@@ -12,6 +12,9 @@
         "functions": [
             {
                 "<FUNCTION>": "0 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "1",
                 "ast": {
                     "attrs": {
@@ -52,7 +55,6 @@
                     "F_C_name": "c_get_const_string_ptr_alloc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "DSHF_rv",
                     "F_arguments": "",
                     "F_name_function": "get_const_string_ptr_alloc",
@@ -79,19 +81,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_*_result",
+                        "stmt0": "c_string_*_result_allocatable",
                         "stmt1": "c_string_*_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable_library",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     }
                 }
             },
@@ -139,7 +144,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -164,7 +170,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

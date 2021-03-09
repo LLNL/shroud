@@ -111,6 +111,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -158,7 +159,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -240,6 +244,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -354,7 +359,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -414,6 +422,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -477,6 +486,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -490,7 +500,6 @@
                             "F_C_name": "c_class1_method1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "method1",
@@ -528,7 +537,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -613,6 +625,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -685,7 +698,6 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t obj2%cxxmem",
                             "F_arguments": "obj,\t obj2",
                             "F_name_function": "equivalent",
@@ -721,7 +733,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "bool",
+                                "f_intent": "OUT",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
@@ -789,6 +804,9 @@
                     },
                     {
                         "<FUNCTION>": "13 ****************************************",
+                        "C_generated_path": [
+                            "return_this"
+                        ],
                         "_generated": "return_this",
                         "ast": {
                             "declarator": {
@@ -816,6 +834,7 @@
                         "return_this": true,
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -847,6 +866,9 @@
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "14",
                         "ast": {
                             "declarator": {
@@ -936,7 +958,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "flag"
+                                    "F_C_var": "flag",
+                                    "c_var": "flag"
                                 }
                             },
                             "name": {
@@ -958,7 +981,8 @@
                                     "stmt1": "c_string_&_in"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "name"
+                                    "F_C_var": "name",
+                                    "c_var": "name"
                                 }
                             }
                         },
@@ -1006,7 +1030,10 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1089,7 +1116,8 @@
                             "wrap_python": false
                         },
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "flag": {
@@ -1113,7 +1141,7 @@
                                 "fmtf": {
                                     "F_C_var": "flag",
                                     "F_pointer": "SHPTR_flag",
-                                    "c_var": "SH_flag",
+                                    "c_var": "flag",
                                     "f_intent": "IN",
                                     "f_kind": "C_BOOL",
                                     "f_type": "logical",
@@ -1196,6 +1224,12 @@
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_shadow_*_result_buf",
                                 "stmt1": "c_shadow_result"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "type(class1)"
                             }
                         }
                     },
@@ -1230,6 +1264,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -1277,7 +1312,10 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1",
+                                "f_intent": "OUT",
                                 "f_type": "type(class1)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -1311,6 +1349,9 @@
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "15",
                         "ast": {
                             "const": true,
@@ -1353,7 +1394,6 @@
                             "F_C_name": "c_class1_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
@@ -1388,19 +1428,22 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_string_&_result",
+                                "stmt0": "c_string_&_result_allocatable",
                                 "stmt1": "c_string_&_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "std::string",
+                                "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                "stmtc0": "c_string_scalar_result_buf",
-                                "stmtc1": "c_string_scalar_result_buf"
+                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -1479,7 +1522,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "SHF_rv": {
@@ -1504,7 +1548,7 @@
                                 "fmtf": {
                                     "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHT_rv",
+                                    "c_var": "SHF_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_intent": "OUT",
                                     "f_kind": "C_CHAR",
@@ -1591,6 +1635,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -1677,7 +1722,6 @@
                             "F_C_name": "c_class1_direction_func",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t arg",
                             "F_arguments": "obj,\t arg",
                             "F_name_function": "direction_func",
@@ -1717,7 +1761,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Class1::DIRECTION",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1779,6 +1826,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -1790,7 +1838,6 @@
                             "F_C_name": "c_class1_get_m_flag",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_m_flag",
@@ -1825,7 +1872,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1860,6 +1910,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -1871,7 +1922,6 @@
                             "F_C_name": "c_class1_get_test",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_test",
@@ -1906,7 +1956,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1960,6 +2013,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -2147,6 +2201,9 @@
                 "functions": [
                     {
                         "<FUNCTION>": "16 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "17",
                         "ast": {
                             "const": true,
@@ -2189,7 +2246,6 @@
                             "F_C_name": "c_class2_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
@@ -2224,19 +2280,22 @@
                                 "idtor": "0",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_string_&_result",
+                                "stmt0": "c_string_&_result_allocatable",
                                 "stmt1": "c_string_&_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "std::string",
+                                "f_intent": "OUT",
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
                                 "stmt0": "f_string_scalar_result_buf_allocatable",
                                 "stmt1": "f_string_scalar_result_buf_allocatable",
-                                "stmtc0": "c_string_scalar_result_buf",
-                                "stmtc1": "c_string_scalar_result_buf"
+                                "stmtc0": "c_string_scalar_result_buf_allocatable",
+                                "stmtc1": "c_string_scalar_result_buf_allocatable"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -2315,7 +2374,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "SHF_rv": {
@@ -2340,7 +2400,7 @@
                                 "fmtf": {
                                     "F_C_var": "SHF_rv",
                                     "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHT_rv",
+                                    "c_var": "SHF_rv",
                                     "c_var_context": "DSHF_rv",
                                     "f_intent": "OUT",
                                     "f_kind": "C_CHAR",
@@ -2463,6 +2523,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -2512,7 +2573,10 @@
                                 "stmt1": "c_shadow_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Singleton",
+                                "f_intent": "OUT",
                                 "f_type": "type(singleton)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -2608,6 +2672,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -2654,7 +2719,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Shape",
+                                "f_intent": "OUT",
                                 "f_type": "type(shape)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -2717,6 +2785,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -2731,7 +2800,6 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_ivar",
@@ -2769,7 +2837,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -2885,6 +2956,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "lua": true,
                             "python": true
@@ -2931,7 +3003,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "classes::Circle",
+                                "f_intent": "OUT",
                                 "f_type": "type(circle)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -3067,6 +3142,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -3153,7 +3229,6 @@
                     "F_C_name": "direction_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "direction_func",
@@ -3188,7 +3263,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1::DIRECTION",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -3267,6 +3345,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3393,6 +3472,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3464,7 +3544,6 @@
                     "F_C_name": "c_useclass",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg%cxxmem",
                     "F_arguments": "arg",
                     "F_name_function": "useclass",
@@ -3495,7 +3574,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -3553,6 +3635,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -3593,7 +3676,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3631,6 +3717,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3673,7 +3760,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3734,6 +3824,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -3774,7 +3865,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3812,6 +3906,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3854,7 +3949,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -3930,6 +4028,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4006,7 +4105,10 @@
                         "stmt1": "c_shadow_scalar_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "classes::Class1",
+                        "f_intent": "OUT",
                         "f_type": "type(class1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -4052,6 +4154,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -4177,6 +4280,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -4190,7 +4294,6 @@
                     "F_C_name": "get_global_flag",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_flag",
                     "F_name_generic": "get_global_flag",
@@ -4222,7 +4325,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4263,6 +4369,9 @@
             },
             {
                 "<FUNCTION>": "32 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "33",
                 "ast": {
                     "attrs": {
@@ -4305,7 +4414,6 @@
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "last_function_called",
@@ -4336,19 +4444,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_len": "30",
                         "cxx_type": "std::string",
+                        "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtl": {
@@ -4426,7 +4537,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -4451,7 +4563,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

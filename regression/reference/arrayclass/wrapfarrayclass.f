@@ -161,8 +161,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result
-        ! Match:     c_default
+        ! Requested: c_native_*_result_pointer
+        ! Match:     c_native_*_result
         function c_arraywrapper_get_array(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array")
@@ -176,7 +176,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Exact:     c_native_*_result_buf
+        ! Requested: c_native_*_result_buf_pointer
+        ! Match:     c_native_*_result_buf
         function c_arraywrapper_get_array_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_bufferify")
@@ -191,8 +192,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result
-        ! Match:     c_default
+        ! Requested: c_native_*_result_pointer
+        ! Match:     c_native_*_result
         pure function c_arraywrapper_get_array_const(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const")
@@ -206,7 +207,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Exact:     c_native_*_result_buf
+        ! Requested: c_native_*_result_buf_pointer
+        ! Match:     c_native_*_result_buf
         function c_arraywrapper_get_array_const_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_bufferify")
@@ -221,8 +223,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result
-        ! Match:     c_default
+        ! Requested: c_native_*_result_pointer
+        ! Match:     c_native_*_result
         function c_arraywrapper_get_array_c(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c")
@@ -236,7 +238,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Exact:     c_native_*_result_buf
+        ! Requested: c_native_*_result_buf_pointer
+        ! Match:     c_native_*_result_buf
         function c_arraywrapper_get_array_c_bufferify(self, DSHC_rv) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c_bufferify")
@@ -251,8 +254,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Requested: c_native_*_result
-        ! Match:     c_default
+        ! Requested: c_native_*_result_pointer
+        ! Match:     c_native_*_result
         pure function c_arraywrapper_get_array_const_c(self) &
                 result(SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_c")
@@ -266,7 +269,8 @@ module arrayclass_mod
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
-        ! Exact:     c_native_*_result_buf
+        ! Requested: c_native_*_result_buf_pointer
+        ! Match:     c_native_*_result_buf
         function c_arraywrapper_get_array_const_c_bufferify(self, &
                 DSHC_rv) &
                 result(SHT_rv) &
@@ -662,7 +666,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -684,7 +689,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -706,7 +712,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -728,7 +735,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const_c(obj) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
@@ -756,7 +764,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -791,7 +800,8 @@ contains
     ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_*&_out_buf
+    ! Requested: c_native_*&_out_buf_pointer
+    ! Match:     c_native_*&_out_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)
@@ -826,7 +836,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * isize +hidden
     ! Attrs:     +intent(inout)
@@ -861,7 +872,8 @@ contains
     ! Exact:     f_native_*&_out_buf_pointer
     ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_*&_out_buf
+    ! Requested: c_native_*&_out_buf_pointer
+    ! Match:     c_native_*&_out_buf
     ! ----------------------------------------
     ! Argument:  int & isize +hidden
     ! Attrs:     +intent(inout)

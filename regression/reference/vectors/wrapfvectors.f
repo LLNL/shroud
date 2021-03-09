@@ -452,7 +452,7 @@ contains
     ! Match:     f_vector_out_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_vector_&_out_buf_native
+    ! Requested: c_vector_&_out_buf_allocatable_native
     ! Match:     c_vector_out_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -486,7 +486,7 @@ contains
     ! Match:     f_vector_inout_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: c_vector_&_inout_buf_native
+    ! Requested: c_vector_&_inout_buf_allocatable_native
     ! Match:     c_vector_inout_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
@@ -607,7 +607,7 @@ contains
     ! Requested: f_vector_scalar_result_buf_allocatable
     ! Match:     f_vector_result_allocatable
     ! Function:  void ReturnVectorAlloc +rank(1)
-    ! Requested: c_vector_scalar_result_buf
+    ! Requested: c_vector_scalar_result_buf_allocatable
     ! Match:     c_vector_result_buf
     ! ----------------------------------------
     ! Argument:  int n +value

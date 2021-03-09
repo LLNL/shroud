@@ -45,6 +45,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -57,7 +58,6 @@
                     "F_C_pure_clause": "pure ",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_name_length",
                     "F_name_generic": "get_name_length",
@@ -86,7 +86,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -101,6 +104,9 @@
             {
                 "<FUNCTION>": "1 ****************************************",
                 "C_error_pattern": "C_invalid_name",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "PY_error_pattern": "PY_invalid_name",
                 "_PTR_F_C_index": "2",
                 "ast": {
@@ -142,7 +148,6 @@
                     "F_C_name": "c_get_name_error_pattern",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "get_name_error_pattern",
@@ -170,19 +175,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_len": "get_name_length()",
                         "cxx_type": "std::string",
+                        "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     }
                 }
@@ -234,7 +242,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -259,7 +268,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

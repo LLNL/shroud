@@ -1064,8 +1064,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_pointer
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_scalar
     interface
         function c_return_int_ptr_to_scalar() &
@@ -1081,7 +1081,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
         function c_return_int_ptr_to_scalar_bufferify(DSHC_rv) &
@@ -1099,8 +1100,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_pointer
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_fixed_array
     interface
         function c_return_int_ptr_to_fixed_array() &
@@ -1116,7 +1117,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
         function c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv) &
@@ -1134,8 +1136,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_pointer
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_const_scalar
     interface
         function c_return_int_ptr_to_const_scalar() &
@@ -1151,7 +1153,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
         function c_return_int_ptr_to_const_scalar_bufferify(DSHC_rv) &
@@ -1169,8 +1172,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_pointer
+    ! Match:     c_native_*_result
     ! start c_return_int_ptr_to_fixed_const_array
     interface
         function c_return_int_ptr_to_fixed_const_array() &
@@ -1186,7 +1189,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
         function c_return_int_ptr_to_fixed_const_array_bufferify( &
@@ -1205,8 +1209,7 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntScalar +deref(scalar)
     ! Attrs:     +deref(scalar)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Exact:     c_native_*_result_scalar
     ! start return_int_scalar
     interface
         function return_int_scalar() &
@@ -1222,8 +1225,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRaw +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_raw
+    ! Match:     c_native_*_result
     ! start return_int_raw
     interface
         function return_int_raw() &
@@ -1239,8 +1242,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * returnIntRawWithArgs +deref(raw)
     ! Attrs:     +deref(raw)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_raw
+    ! Match:     c_native_*_result
     ! ----------------------------------------
     ! Argument:  const char * name
     ! Attrs:     +intent(in)
@@ -1262,8 +1265,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_**_result
-    ! Match:     c_default
+    ! Requested: c_native_**_result_pointer
+    ! Match:     c_native_**_result
     ! start c_return_raw_ptr_to_int2d
     interface
         function c_return_raw_ptr_to_int2d() &
@@ -1279,8 +1282,8 @@ module pointers_mod
     ! ----------------------------------------
     ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_**_result_buf
-    ! Match:     c_default
+    ! Requested: c_native_**_result_buf_pointer
+    ! Match:     c_native_**_result
     ! start c_return_raw_ptr_to_int2d_bufferify
     interface
         function c_return_raw_ptr_to_int2d_bufferify() &
@@ -1319,7 +1322,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_native_*_out_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
     !>
     !! \brief compute cos of IN and save in OUT
@@ -1359,7 +1362,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_native_*_out_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
     !>
     !! \brief truncate IN argument and save in OUT
@@ -1400,7 +1403,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(out)
     ! Exact:     f_native_*_out_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_native_*_out_allocatable
     ! Match:     c_default
     ! start iota_allocatable
     subroutine iota_allocatable(nvar, values)
@@ -1580,7 +1583,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! start get_ptr_to_scalar
     subroutine get_ptr_to_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1606,7 +1610,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is always the same length.
     !<
@@ -1635,7 +1640,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1674,7 +1680,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     !>
     !! Return a Fortran pointer to an array which is the length
     !! is computed by C++ function getLen.
@@ -1705,7 +1712,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * nitems +context(Dnitems)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! start get_ptr_to_const_scalar
     subroutine get_ptr_to_const_scalar(nitems)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1731,7 +1739,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! start get_ptr_to_fixed_const_array
     subroutine get_ptr_to_fixed_const_array(count)
         use iso_c_binding, only : C_INT, c_f_pointer
@@ -1757,7 +1766,8 @@ contains
     ! Exact:     f_native_**_out_buf_pointer
     ! Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Exact:     c_native_**_out_buf
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * ncount +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1790,7 +1800,7 @@ contains
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out
+    ! Requested: c_native_**_out_raw
     ! Match:     c_default
     !>
     !! Create a Fortran wrapper.
@@ -1816,7 +1826,7 @@ contains
     ! Attrs:     +deref(raw)+intent(out)
     ! Exact:     f_native_**_out_raw
     ! Attrs:     +deref(raw)+intent(out)
-    ! Requested: c_native_**_out
+    ! Requested: c_native_**_out_raw
     ! Match:     c_default
     !>
     !! Return a type(C_PTR) to an array which is always the same length.
@@ -1920,7 +1930,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * returnIntPtrToScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
@@ -1942,7 +1953,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
@@ -1964,7 +1976,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
@@ -1986,7 +1999,8 @@ contains
     ! Exact:     f_native_*_result_buf_pointer
     ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Exact:     c_native_*_result_buf
+    ! Requested: c_native_*_result_buf_pointer
+    ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
@@ -2006,8 +2020,8 @@ contains
     ! Attrs:     +deref(raw)+intent(result)
     ! Exact:     f_native_*_result_raw
     ! Attrs:     +deref(raw)+intent(result)
-    ! Requested: c_native_*_result
-    ! Match:     c_default
+    ! Requested: c_native_*_result_raw
+    ! Match:     c_native_*_result
     !>
     !! Like returnIntRaw but with another argument to force a wrapper.
     !! Uses fc_statements f_native_*_result_raw.
@@ -2032,8 +2046,8 @@ contains
     ! Match:     f_native_**_result
     ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
-    ! Requested: c_native_**_result_buf
-    ! Match:     c_default
+    ! Requested: c_native_**_result_buf_pointer
+    ! Match:     c_native_**_result
     !>
     !! Test multiple layers of indirection.
     !! # getRawPtrToInt2d

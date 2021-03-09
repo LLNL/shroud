@@ -207,7 +207,7 @@ class ToDict(visitor.Visitor):
     def visit_WrapFlags(self, node):
         d = dict()
         add_true_fields(
-            node, d, ["fortran", "c_f", "c", "lua", "python"]
+            node, d, ["fortran", "f_c", "c", "lua", "python"]
         )
         return d
 
@@ -285,6 +285,7 @@ class ToDict(visitor.Visitor):
                 "fstatements",
                 "splicer",
                 "wrap",
+                "C_generated_path",
             ],
         )
         add_true_fields(

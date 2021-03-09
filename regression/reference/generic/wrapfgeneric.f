@@ -983,7 +983,7 @@ contains
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in
+    ! Requested: c_void_*_in_raw
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -1012,7 +1012,7 @@ contains
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in
+    ! Requested: c_void_*_in_raw
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -1040,7 +1040,7 @@ contains
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in
+    ! Requested: c_void_*_in_raw
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -1067,7 +1067,7 @@ contains
     ! Exact:     f_native_*_in_raw
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in
+    ! Requested: c_void_*_in_raw
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
@@ -1096,7 +1096,7 @@ contains
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_void_**_out
+    ! Requested: c_void_**_out_pointer
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
@@ -1140,7 +1140,7 @@ contains
     ! Match:     f_native_**_out
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_void_**_out
+    ! Requested: c_void_**_out_pointer
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)

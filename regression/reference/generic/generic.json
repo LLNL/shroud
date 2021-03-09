@@ -51,6 +51,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -148,6 +149,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -229,6 +231,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -240,7 +243,6 @@
                     "F_C_name": "get_global_double",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_double",
                     "F_name_generic": "get_global_double",
@@ -269,7 +271,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -367,7 +372,8 @@
                     "literalinclude": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg": {
@@ -420,6 +426,9 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "3",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -481,6 +490,9 @@
             },
             {
                 "<FUNCTION>": "12 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "3",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -676,7 +688,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg1": {
@@ -755,7 +768,6 @@
                     "F_C_name": "c_generic_real2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "long SHC_rv",
                     "function_name": "GenericReal2",
                     "underscore_name": "generic_real2"
@@ -776,11 +788,20 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_LONG)"
                     }
                 }
             },
             {
                 "<FUNCTION>": "13 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "4",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -856,7 +877,9 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -870,6 +893,9 @@
             },
             {
                 "<FUNCTION>": "14 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "4",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -945,7 +971,9 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -1166,7 +1194,8 @@
                     "F_assumed_rank_max": 2
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -1248,7 +1277,6 @@
                     "F_C_name": "c_sum_values",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
                     "underscore_name": "sum_values"
@@ -1269,11 +1297,20 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
             {
                 "<FUNCTION>": "15 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "5",
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
@@ -1360,7 +1397,9 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1374,6 +1413,10 @@
             },
             {
                 "<FUNCTION>": "16 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "fortran_generic_c"
+                ],
                 "_PTR_F_C_index": "17",
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
@@ -1460,7 +1503,9 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1542,7 +1587,8 @@
                     "F_assumed_rank_max": 2
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -1625,7 +1671,6 @@
                     "F_C_name": "c_sum_values_1d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
                     "function_suffix": "_1d",
@@ -1647,11 +1692,21 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "fortran_generic_c"
+                ],
                 "_PTR_F_C_index": "17",
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
@@ -1738,7 +1793,9 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2069,7 +2126,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2221,6 +2279,9 @@
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "6",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -2331,6 +2392,10 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "fortran_generic_c"
+                ],
                 "_PTR_F_C_index": "21",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -2535,7 +2600,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2692,6 +2758,10 @@
             },
             {
                 "<FUNCTION>": "22 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "fortran_generic_c"
+                ],
                 "_PTR_F_C_index": "23",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -2902,7 +2972,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -3261,7 +3332,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3297,7 +3369,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in",
+                            "stmtc0": "c_void_*_in_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3322,7 +3394,7 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
-                            "c_var": "SH_size",
+                            "c_var": "size",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -3352,7 +3424,7 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
-                            "c_var": "SH_type",
+                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3378,6 +3450,9 @@
             },
             {
                 "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "7",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -3475,6 +3550,9 @@
             },
             {
                 "<FUNCTION>": "25 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "7",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -3781,7 +3859,8 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3817,7 +3896,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_*_in_raw",
                             "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in",
+                            "stmtc0": "c_void_*_in_raw",
                             "stmtc1": "c_default"
                         }
                     },
@@ -3842,7 +3921,7 @@
                         "fmtf": {
                             "F_C_var": "size",
                             "F_pointer": "SHPTR_size",
-                            "c_var": "SH_size",
+                            "c_var": "size",
                             "f_intent": "IN",
                             "f_kind": "C_SIZE_T",
                             "f_type": "integer(C_SIZE_T)",
@@ -3872,7 +3951,7 @@
                         "fmtf": {
                             "F_C_var": "type",
                             "F_pointer": "SHPTR_type",
-                            "c_var": "SH_type",
+                            "c_var": "type",
                             "f_intent": "IN",
                             "f_kind": "C_INT",
                             "f_type": "integer(C_INT)",
@@ -3898,6 +3977,9 @@
             },
             {
                 "<FUNCTION>": "26 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "8",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -4005,6 +4087,9 @@
             },
             {
                 "<FUNCTION>": "27 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "8",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -4192,6 +4277,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4551,7 +4637,8 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -4587,7 +4674,7 @@
                             "size": "size(addr)",
                             "stmt0": "f_native_**_out_pointer",
                             "stmt1": "f_native_**_out",
-                            "stmtc0": "c_void_**_out",
+                            "stmtc0": "c_void_**_out_pointer",
                             "stmtc1": "c_default"
                         }
                     },
@@ -4674,6 +4761,9 @@
             },
             {
                 "<FUNCTION>": "28 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "10",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -4782,6 +4872,9 @@
             },
             {
                 "<FUNCTION>": "29 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
                 "_PTR_F_C_index": "10",
                 "_generated": "fortran_generic",
                 "_overloaded": true,

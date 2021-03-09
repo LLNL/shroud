@@ -877,7 +877,8 @@ class Wrapc(util.WrapperMixin):
                 sintent = "ctor"
             else:
                 sintent = "result"
-            stmts = ["c", result_typemap.sgroup, spointer, sintent, generated_suffix]
+            stmts = ["c", result_typemap.sgroup, spointer, sintent,
+                     generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
 
             fmt_result.idtor = "0"  # no destructor
@@ -1053,7 +1054,7 @@ class Wrapc(util.WrapperMixin):
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
                 stmts = ["c", sgroup, spointer, c_meta["intent"],
-                         arg.stmts_suffix, cdesc] + specialize
+                         arg.stmts_suffix, c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 
                 if intent_blk.cxx_local_var:
@@ -1162,6 +1163,7 @@ class Wrapc(util.WrapperMixin):
 
         return_deref_attr = ast.metaattrs["deref"]
         if result_blk.return_type:
+            # Override return type.
             fmt_func.C_return_type = wformat(
                 result_blk.return_type, fmt_result)
         elif return_deref_attr == "scalar":
@@ -1212,6 +1214,10 @@ class Wrapc(util.WrapperMixin):
                 # (It was not passed back in an argument)
                 if self.language == "c":
                     pass
+                elif result_blk.return_type == "void":
+                    # Do not return C++ result in C wrapper.
+                    # Probably assigned to an argument.
+                    pass
                 elif result_blk.c_local_var:
                     # c_var is created by the post_call clause or
                     # it may be passed in as an argument.
@@ -1249,7 +1255,9 @@ class Wrapc(util.WrapperMixin):
                 append_format(final_code, line, fmt_result)
             final_code.append("-}")
 
-        if result_blk.ret:
+        if result_blk.return_type == "void":
+            raw_return_code = []
+        elif result_blk.ret:
             raw_return_code = result_blk.ret
         elif return_deref_attr == "scalar":
             # dereference pointer to return scalar

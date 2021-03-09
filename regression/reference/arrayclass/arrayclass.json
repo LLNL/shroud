@@ -30,6 +30,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -73,7 +74,10 @@
                                 "stmt1": "c_shadow_scalar_ctor"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "ArrayWrapper",
+                                "f_intent": "OUT",
                                 "f_type": "type(arraywrapper)",
                                 "f_var": "SHT_rv",
                                 "sh_type": "SH_TYPE_OTHER",
@@ -141,6 +145,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -249,6 +254,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -262,7 +268,6 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_size",
@@ -298,7 +303,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -366,6 +374,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -471,6 +480,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -504,6 +514,9 @@
                     },
                     {
                         "<FUNCTION>": "5 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "17",
                         "ast": {
                             "attrs": {
@@ -550,7 +563,6 @@
                             "F_C_name": "c_arraywrapper_get_array",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array",
@@ -583,16 +595,19 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_native_*_result_pointer",
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -601,7 +616,7 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_buf_pointer",
                                 "stmt1": "f_native_*_result_buf_pointer",
-                                "stmtc0": "c_native_*_result_buf",
+                                "stmtc0": "c_native_*_result_buf_pointer",
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
@@ -667,7 +682,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_bufferify",
@@ -677,7 +693,6 @@
                             "F_C_name": "c_arraywrapper_get_array_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -706,13 +721,22 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "6 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "18",
                         "ast": {
                             "attrs": {
@@ -761,7 +785,6 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const",
@@ -794,16 +817,19 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_native_*_result_pointer",
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -812,7 +838,7 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_buf_pointer",
                                 "stmt1": "f_native_*_result_buf_pointer",
-                                "stmtc0": "c_native_*_result_buf",
+                                "stmtc0": "c_native_*_result_buf_pointer",
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
@@ -879,7 +905,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_bufferify",
@@ -889,7 +916,6 @@
                             "F_C_name": "c_arraywrapper_get_array_const_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -918,13 +944,22 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "7 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "19",
                         "ast": {
                             "attrs": {
@@ -972,7 +1007,6 @@
                             "F_C_name": "c_arraywrapper_get_array_c",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_c",
@@ -1005,16 +1039,19 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_native_*_result_pointer",
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -1023,7 +1060,7 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_buf_pointer",
                                 "stmt1": "f_native_*_result_buf_pointer",
-                                "stmtc0": "c_native_*_result_buf",
+                                "stmtc0": "c_native_*_result_buf_pointer",
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
@@ -1090,7 +1127,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_c_bufferify",
@@ -1100,7 +1138,6 @@
                             "F_C_name": "c_arraywrapper_get_array_c_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "c_const": "",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1129,13 +1166,22 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "20",
                         "ast": {
                             "attrs": {
@@ -1185,7 +1231,6 @@
                             "F_C_pure_clause": "pure ",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t DSHC_rv",
                             "F_arguments": "obj",
                             "F_name_function": "get_array_const_c",
@@ -1218,16 +1263,19 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result",
-                                "stmt1": "c_default"
+                                "stmt0": "c_native_*_result_pointer",
+                                "stmt1": "c_native_*_result"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "c_var_context": "DSHC_rv",
                                 "c_var_dimension": "getSize()",
                                 "cxx_type": "double",
                                 "f_array_allocate": "(obj->getSize())",
                                 "f_array_shape": ", DSHC_rv%shape(1:1)",
                                 "f_assumed_shape": "(:)",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",
@@ -1236,7 +1284,7 @@
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "stmt0": "f_native_*_result_buf_pointer",
                                 "stmt1": "f_native_*_result_buf_pointer",
-                                "stmtc0": "c_native_*_result_buf",
+                                "stmtc0": "c_native_*_result_buf_pointer",
                                 "stmtc1": "c_native_*_result_buf"
                             },
                             "fmtpy": {
@@ -1304,7 +1352,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtdict": {
                             "C_name": "ARR_ArrayWrapper_get_array_const_c_bufferify",
@@ -1314,7 +1363,6 @@
                             "F_C_name": "c_arraywrapper_get_array_const_c_bufferify",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "c_const": "const ",
                             "c_deref": "*",
                             "c_member": "->",
@@ -1343,13 +1391,22 @@
                                 "rank": "1",
                                 "sh_type": "SH_TYPE_DOUBLE",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_native_*_result_buf",
+                                "stmt0": "c_native_*_result_buf_pointer",
                                 "stmt1": "c_native_*_result_buf"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "real(C_DOUBLE)"
                             }
                         }
                     },
                     {
                         "<FUNCTION>": "9 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "21",
                         "ast": {
                             "declarator": {
@@ -1438,11 +1495,12 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out",
+                                    "stmt0": "c_native_**_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1489,7 +1547,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1615,7 +1674,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -1637,7 +1697,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out_buf",
+                                    "stmt0": "c_native_**_out_buf_pointer",
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
@@ -1658,7 +1718,7 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_buf_pointer",
                                     "stmt1": "f_native_**_out_buf_pointer",
-                                    "stmtc0": "c_native_**_out_buf",
+                                    "stmtc0": "c_native_**_out_buf_pointer",
                                     "stmtc1": "c_native_**_out_buf"
                                 }
                             },
@@ -1718,6 +1778,9 @@
                     },
                     {
                         "<FUNCTION>": "10 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "22",
                         "ast": {
                             "declarator": {
@@ -1806,11 +1869,12 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out",
+                                    "stmt0": "c_native_*&_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -1857,7 +1921,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -1983,7 +2048,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -2005,7 +2071,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out_buf",
+                                    "stmt0": "c_native_*&_out_buf_pointer",
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
@@ -2026,7 +2092,7 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_buf_pointer",
                                     "stmt1": "f_native_*&_out_buf_pointer",
-                                    "stmtc0": "c_native_*&_out_buf",
+                                    "stmtc0": "c_native_*&_out_buf_pointer",
                                     "stmtc1": "c_native_*&_out_buf"
                                 }
                             },
@@ -2086,6 +2152,9 @@
                     },
                     {
                         "<FUNCTION>": "11 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "23",
                         "ast": {
                             "declarator": {
@@ -2175,11 +2244,12 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out",
+                                    "stmt0": "c_native_**_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2226,7 +2296,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2353,7 +2424,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -2375,7 +2447,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_**_out_buf",
+                                    "stmt0": "c_native_**_out_buf_pointer",
                                     "stmt1": "c_native_**_out_buf"
                                 },
                                 "fmtf": {
@@ -2396,7 +2468,7 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_**_out_buf_pointer",
                                     "stmt1": "f_native_**_out_buf_pointer",
-                                    "stmtc0": "c_native_**_out_buf",
+                                    "stmtc0": "c_native_**_out_buf_pointer",
                                     "stmtc1": "c_native_**_out_buf"
                                 }
                             },
@@ -2456,6 +2528,9 @@
                     },
                     {
                         "<FUNCTION>": "12 ****************************************",
+                        "C_generated_path": [
+                            "arg_to_buffer"
+                        ],
                         "_PTR_F_C_index": "24",
                         "ast": {
                             "declarator": {
@@ -2545,11 +2620,12 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out",
+                                    "stmt0": "c_native_*&_out_pointer",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "array"
+                                    "F_C_var": "array",
+                                    "c_var": "array"
                                 },
                                 "fmtpy": {
                                     "array_size": "isize",
@@ -2596,7 +2672,8 @@
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
-                                    "F_C_var": "isize"
+                                    "F_C_var": "isize",
+                                    "c_var": "isize"
                                 },
                                 "fmtpy": {
                                     "array_size": "1",
@@ -2723,7 +2800,8 @@
                         "generated_suffix": "buf",
                         "options": {},
                         "wrap": {
-                            "c": true
+                            "c": true,
+                            "f_c": true
                         },
                         "zz_fmtargs": {
                             "array": {
@@ -2745,7 +2823,7 @@
                                     "rank": "1",
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "shadow_var": "SHadow_array",
-                                    "stmt0": "c_native_*&_out_buf",
+                                    "stmt0": "c_native_*&_out_buf_pointer",
                                     "stmt1": "c_native_*&_out_buf"
                                 },
                                 "fmtf": {
@@ -2766,7 +2844,7 @@
                                     "sh_type": "SH_TYPE_DOUBLE",
                                     "stmt0": "f_native_*&_out_buf_pointer",
                                     "stmt1": "f_native_*&_out_buf_pointer",
-                                    "stmtc0": "c_native_*&_out_buf",
+                                    "stmtc0": "c_native_*&_out_buf_pointer",
                                     "stmtc1": "c_native_*&_out_buf"
                                 }
                             },
@@ -2866,6 +2944,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -2994,6 +3073,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -3122,6 +3202,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -3190,7 +3271,6 @@
                             "F_C_name": "c_arraywrapper_check_ptr",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem,\t array",
                             "F_arguments": "obj,\t array",
                             "F_name_function": "check_ptr",
@@ -3226,7 +3306,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "bool",
+                                "f_intent": "OUT",
                                 "f_kind": "C_BOOL",
                                 "f_type": "logical",
                                 "f_var": "SHT_rv",
@@ -3277,6 +3360,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -3289,7 +3373,6 @@
                             "F_C_name": "c_arraywrapper_sum_array",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "sum_array",
@@ -3325,7 +3408,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "double",
+                                "f_intent": "OUT",
                                 "f_kind": "C_DOUBLE",
                                 "f_type": "real(C_DOUBLE)",
                                 "f_var": "SHT_rv",

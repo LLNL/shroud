@@ -170,7 +170,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
 // Attrs:     +deref(allocatable)+intent(out)
-// Requested: c_vector_&_out_buf_native
+// Requested: c_vector_&_out_buf_allocatable_native
 // Match:     c_vector_out_buf
 // start VEC_vector_iota_out_alloc_bufferify
 void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
@@ -201,7 +201,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
 // Attrs:     +deref(allocatable)+intent(inout)
-// Requested: c_vector_&_inout_buf_native
+// Requested: c_vector_&_inout_buf_allocatable_native
 // Match:     c_vector_inout_buf
 // start VEC_vector_iota_inout_alloc_bufferify
 void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,

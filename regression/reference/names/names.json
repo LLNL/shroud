@@ -351,6 +351,9 @@
         "functions": [
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "18",
                 "ast": {
                     "declarator": {
@@ -415,7 +418,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -506,7 +510,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -580,6 +585,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -623,6 +629,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -684,6 +691,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -802,6 +810,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -886,6 +895,9 @@
             },
             {
                 "<FUNCTION>": "9 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "19",
                 "ast": {
                     "declarator": {
@@ -948,7 +960,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "rv"
+                            "F_C_var": "rv",
+                            "c_var": "rv"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -982,7 +995,6 @@
                     "F_C_name": "yyy_tes_function4",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "rv,\t len_trim(rv, kind=C_INT)",
                     "F_arguments": "rv",
                     "F_name_function": "function4",
@@ -1013,7 +1025,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1088,7 +1103,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "rv": {
@@ -1136,7 +1152,6 @@
                     "F_C_name": "yyy_tes_function4_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "function4",
                     "function_suffix": "_bufferify",
@@ -1158,6 +1173,12 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -1182,6 +1203,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1209,6 +1231,9 @@
             },
             {
                 "<FUNCTION>": "11 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "20",
                 "ast": {
                     "declarator": {
@@ -1308,7 +1333,8 @@
                             "stmt1": "c_string_&_inout"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1350,7 +1376,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "value"
+                            "F_C_var": "value",
+                            "c_var": "value"
                         },
                         "fmtpy": {
                             "array_size": "1",
@@ -1482,7 +1509,8 @@
                     ]
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -1688,6 +1716,9 @@
             },
             {
                 "<FUNCTION>": "15 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1792,6 +1823,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1929,6 +1961,9 @@
             },
             {
                 "<FUNCTION>": "16 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2039,6 +2074,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2226,6 +2262,9 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2269,6 +2308,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2282,7 +2322,6 @@
                     "F_C_name": "c_use_impl_worker_instantiation3",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "use_impl_worker_instantiation3",
                     "F_name_generic": "use_impl_worker",
@@ -2313,7 +2352,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2387,6 +2429,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2458,7 +2501,6 @@
                     "F_C_name": "c_cstruct_as_class_sum",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "point%cxxmem",
                     "F_arguments": "point",
                     "F_name_function": "cstruct_as_class_sum",
@@ -2489,7 +2531,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2553,6 +2598,7 @@
                                 },
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "python": true
                                 },
@@ -2596,7 +2642,10 @@
                                         "stmt1": "c_shadow_scalar_ctor"
                                     },
                                     "fmtf": {
+                                        "F_C_var": "SHT_rv",
+                                        "c_var": "SHT_rv",
                                         "cxx_type": "ns0::Names",
+                                        "f_intent": "OUT",
                                         "f_type": "type(FNames)",
                                         "f_var": "SHT_rv",
                                         "sh_type": "SH_TYPE_OTHER",
@@ -2647,6 +2696,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "python": true
                                 },
@@ -2696,6 +2746,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true,
                                     "python": true
                                 },
@@ -2855,6 +2906,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true,
                             "python": true
                         },
@@ -3412,6 +3464,7 @@
                                 "options": {},
                                 "wrap": {
                                     "c": true,
+                                    "f_c": true,
                                     "fortran": true
                                 },
                                 "zz_fmtdict": {
@@ -3486,6 +3539,7 @@
                         "options": {},
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {

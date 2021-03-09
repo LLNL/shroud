@@ -642,6 +642,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -653,7 +654,6 @@
                             "F_C_name": "c_cstruct_as_class_get_x1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_x1",
@@ -688,7 +688,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -742,6 +745,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -830,6 +834,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -841,7 +846,6 @@
                             "F_C_name": "c_cstruct_as_class_get_y1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_y1",
@@ -876,7 +880,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -930,6 +937,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1111,6 +1119,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -1122,7 +1131,6 @@
                             "F_C_name": "c_cstruct_as_subclass_get_x1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_x1",
@@ -1157,7 +1165,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1211,6 +1222,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1299,6 +1311,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -1310,7 +1323,6 @@
                             "F_C_name": "c_cstruct_as_subclass_get_y1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_y1",
@@ -1345,7 +1357,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1399,6 +1414,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1487,6 +1503,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtdict": {
@@ -1498,7 +1515,6 @@
                             "F_C_name": "c_cstruct_as_subclass_get_z1",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_C_var": "SHT_crv",
                             "F_arg_c_call": "obj%cxxmem",
                             "F_arguments": "obj",
                             "F_name_function": "get_z1",
@@ -1533,7 +1549,10 @@
                                 "stmt1": "c_default"
                             },
                             "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
                                 "cxx_type": "int",
+                                "f_intent": "OUT",
                                 "f_kind": "C_INT",
                                 "f_type": "integer(C_INT)",
                                 "f_var": "SHT_rv",
@@ -1587,6 +1606,7 @@
                         },
                         "wrap": {
                             "c": true,
+                            "f_c": true,
                             "fortran": true
                         },
                         "zz_fmtargs": {
@@ -1823,6 +1843,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1869,7 +1890,6 @@
                     "F_C_name": "pass_struct_by_value",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_struct_by_value",
@@ -1899,7 +1919,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1953,6 +1976,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1999,7 +2023,6 @@
                     "F_C_name": "pass_struct1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "pass_struct1",
@@ -2029,7 +2052,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2043,6 +2069,9 @@
             },
             {
                 "<FUNCTION>": "12 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "24",
                 "ast": {
                     "declarator": {
@@ -2128,7 +2157,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "outbuf"
+                            "F_C_var": "outbuf",
+                            "c_var": "outbuf"
                         }
                     },
                     "s1": {
@@ -2150,7 +2180,8 @@
                             "stmt1": "c_struct"
                         },
                         "fmtf": {
-                            "F_C_var": "s1"
+                            "F_C_var": "s1",
+                            "c_var": "s1"
                         }
                     }
                 },
@@ -2164,7 +2195,6 @@
                     "F_C_name": "c_pass_struct2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "s1,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "s1,\t outbuf",
                     "F_name_function": "pass_struct2",
@@ -2194,7 +2224,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2274,7 +2307,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "outbuf": {
@@ -2354,7 +2388,6 @@
                     "F_C_name": "c_pass_struct2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "passStruct2",
                     "function_suffix": "_bufferify",
@@ -2376,6 +2409,12 @@
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_scalar_result_buf",
                         "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
                     }
                 }
             },
@@ -2421,6 +2460,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2467,7 +2507,6 @@
                     "F_C_name": "accept_struct_in_ptr",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "accept_struct_in_ptr",
@@ -2497,7 +2536,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2583,6 +2625,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2747,6 +2790,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2860,6 +2904,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -2940,7 +2985,6 @@
                     "F_C_name": "return_struct_by_value",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
                     "F_name_function": "return_struct_by_value",
@@ -2970,7 +3014,10 @@
                         "stmt1": "c_struct_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "Cstruct1",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
@@ -2983,6 +3030,9 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "25",
                 "ast": {
                     "declarator": {
@@ -3067,7 +3117,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "d"
+                            "F_C_var": "d",
+                            "c_var": "d"
                         }
                     },
                     "i": {
@@ -3089,7 +3140,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "i"
+                            "F_C_var": "i",
+                            "c_var": "i"
                         }
                     }
                 },
@@ -3103,7 +3155,6 @@
                     "F_C_name": "c_return_struct_ptr1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d",
                     "F_arguments": "i,\t d",
                     "F_name_function": "return_struct_ptr1",
@@ -3129,19 +3180,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_pointer",
+                        "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
-                        "stmtc1": "c_struct_result"
+                        "stmtc0": "c_struct_*_result_buf_pointer",
+                        "stmtc1": "c_struct_*_result"
                     }
                 }
             },
@@ -3213,7 +3267,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "d": {
@@ -3292,7 +3347,6 @@
                     "F_C_name": "c_return_struct_ptr1_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "Cstruct1 * SHCXX_rv",
                     "function_name": "returnStructPtr1",
                     "function_suffix": "_bufferify",
@@ -3313,13 +3367,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_buf_pointer",
+                        "stmt1": "c_struct_*_result"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "type(cstruct1)"
                     }
                 }
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "26",
                 "ast": {
                     "declarator": {
@@ -3425,7 +3488,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "d"
+                            "F_C_var": "d",
+                            "c_var": "d"
                         }
                     },
                     "i": {
@@ -3447,7 +3511,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "i"
+                            "F_C_var": "i",
+                            "c_var": "i"
                         }
                     },
                     "outbuf": {
@@ -3469,7 +3534,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "outbuf"
+                            "F_C_var": "outbuf",
+                            "c_var": "outbuf"
                         }
                     }
                 },
@@ -3483,7 +3549,6 @@
                     "F_C_name": "c_return_struct_ptr2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "i,\t d,\t outbuf,\t len(outbuf, kind=C_INT)",
                     "F_arguments": "i,\t d,\t outbuf",
                     "F_name_function": "return_struct_ptr2",
@@ -3509,19 +3574,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_pointer",
+                        "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
-                        "stmtc1": "c_struct_result"
+                        "stmtc0": "c_struct_*_result_buf_pointer",
+                        "stmtc1": "c_struct_*_result"
                     }
                 }
             },
@@ -3616,7 +3684,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "d": {
@@ -3730,7 +3799,6 @@
                     "F_C_name": "c_return_struct_ptr2_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "Cstruct1 * SHCXX_rv",
                     "function_name": "returnStructPtr2",
                     "function_suffix": "_bufferify",
@@ -3751,13 +3819,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_buf_pointer",
+                        "stmt1": "c_struct_*_result"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "type(cstruct1)"
                     }
                 }
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "27",
                 "ast": {
                     "declarator": {
@@ -3794,7 +3871,6 @@
                     "F_C_name": "c_get_global_struct_list",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "get_global_struct_list",
                     "F_name_generic": "get_global_struct_list",
@@ -3819,19 +3895,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_pointer",
+                        "stmt1": "c_struct_*_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct_list",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct_list)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_STRUCT",
                         "stmt0": "f_struct_*_result_buf_pointer",
                         "stmt1": "f_struct_*_result_buf_pointer",
-                        "stmtc0": "c_struct_*_result_buf",
-                        "stmtc1": "c_struct_result"
+                        "stmtc0": "c_struct_*_result_buf_pointer",
+                        "stmtc1": "c_struct_*_result"
                     }
                 }
             },
@@ -3866,7 +3945,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtdict": {
                     "C_name": "STR_get_global_struct_list_bufferify",
@@ -3876,7 +3956,6 @@
                     "F_C_name": "c_get_global_struct_list_bufferify",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "cxx_rv_decl": "Cstruct_list * SHCXX_rv",
                     "function_name": "get_global_struct_list",
                     "function_suffix": "_bufferify",
@@ -3897,8 +3976,14 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_STRUCT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_struct_*_result_buf",
-                        "stmt1": "c_struct_result"
+                        "stmt0": "c_struct_*_result_buf_pointer",
+                        "stmt1": "c_struct_*_result"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "type(cstruct_list)"
                     }
                 }
             },
@@ -3931,6 +4016,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -3971,7 +4057,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -4043,6 +4132,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4152,7 +4242,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_class",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct_as_class)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
@@ -4209,6 +4302,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4255,7 +4349,6 @@
                     "F_C_name": "c_cstruct_as_class_sum",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "point%cxxmem",
                     "F_arguments": "point",
                     "F_name_function": "sum",
@@ -4285,7 +4378,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4374,6 +4470,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4516,7 +4613,10 @@
                         "stmt1": "c_shadow_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "Cstruct_as_subclass",
+                        "f_intent": "OUT",
                         "f_type": "type(cstruct_as_subclass)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",

@@ -51,6 +51,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -118,7 +119,6 @@
                     "F_C_name": "short_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "short_func",
@@ -149,7 +149,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "short",
+                        "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
                         "f_var": "SHT_rv",
@@ -216,6 +219,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -283,7 +287,6 @@
                     "F_C_name": "int_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "int_func",
@@ -314,7 +317,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -381,6 +387,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -448,7 +455,6 @@
                     "F_C_name": "long_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "long_func",
@@ -479,7 +485,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -548,6 +557,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -615,7 +625,6 @@
                     "F_C_name": "long_long_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "long_long_func",
@@ -646,7 +655,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "long long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
                         "f_var": "SHT_rv",
@@ -717,6 +729,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -784,7 +797,6 @@
                     "F_C_name": "short_int_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "short_int_func",
@@ -815,7 +827,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "short",
+                        "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
                         "f_var": "SHT_rv",
@@ -884,6 +899,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -951,7 +967,6 @@
                     "F_C_name": "long_int_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "long_int_func",
@@ -982,7 +997,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -1053,6 +1071,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1120,7 +1139,6 @@
                     "F_C_name": "long_long_int_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "long_long_int_func",
@@ -1151,7 +1169,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "long long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
                         "f_var": "SHT_rv",
@@ -1220,6 +1241,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1287,7 +1309,6 @@
                     "F_C_name": "unsigned_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "unsigned_func",
@@ -1318,7 +1339,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1387,6 +1411,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1454,7 +1479,6 @@
                     "F_C_name": "ushort_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "ushort_func",
@@ -1485,7 +1509,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned short",
+                        "f_intent": "OUT",
                         "f_kind": "C_SHORT",
                         "f_type": "integer(C_SHORT)",
                         "f_var": "SHT_rv",
@@ -1554,6 +1581,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1621,7 +1649,6 @@
                     "F_C_name": "uint_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "uint_func",
@@ -1652,7 +1679,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -1721,6 +1751,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1788,7 +1819,6 @@
                     "F_C_name": "ulong_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "ulong_func",
@@ -1819,7 +1849,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -1890,6 +1923,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -1957,7 +1991,6 @@
                     "F_C_name": "ulong_long_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "ulong_long_func",
@@ -1988,7 +2021,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned long long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG_LONG",
                         "f_type": "integer(C_LONG_LONG)",
                         "f_var": "SHT_rv",
@@ -2061,6 +2097,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2128,7 +2165,6 @@
                     "F_C_name": "ulong_int_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "ulong_int_func",
@@ -2159,7 +2195,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "unsigned long",
+                        "f_intent": "OUT",
                         "f_kind": "C_LONG",
                         "f_type": "integer(C_LONG)",
                         "f_var": "SHT_rv",
@@ -2226,6 +2265,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2293,7 +2333,6 @@
                     "F_C_name": "int8_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "int8_func",
@@ -2324,7 +2363,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int8_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
                         "f_var": "SHT_rv",
@@ -2391,6 +2433,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2458,7 +2501,6 @@
                     "F_C_name": "int16_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "int16_func",
@@ -2489,7 +2531,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int16_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
                         "f_var": "SHT_rv",
@@ -2556,6 +2601,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2623,7 +2669,6 @@
                     "F_C_name": "int32_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "int32_func",
@@ -2654,7 +2699,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int32_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
                         "f_var": "SHT_rv",
@@ -2721,6 +2769,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2788,7 +2837,6 @@
                     "F_C_name": "int64_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "int64_func",
@@ -2819,7 +2867,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int64_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
                         "f_var": "SHT_rv",
@@ -2886,6 +2937,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -2953,7 +3005,6 @@
                     "F_C_name": "uint8_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "uint8_func",
@@ -2984,7 +3035,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "uint8_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT8_T",
                         "f_type": "integer(C_INT8_T)",
                         "f_var": "SHT_rv",
@@ -3051,6 +3105,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3118,7 +3173,6 @@
                     "F_C_name": "uint16_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "uint16_func",
@@ -3149,7 +3203,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "uint16_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT16_T",
                         "f_type": "integer(C_INT16_T)",
                         "f_var": "SHT_rv",
@@ -3216,6 +3273,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3283,7 +3341,6 @@
                     "F_C_name": "uint32_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "uint32_func",
@@ -3314,7 +3371,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "uint32_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT32_T",
                         "f_type": "integer(C_INT32_T)",
                         "f_var": "SHT_rv",
@@ -3381,6 +3441,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3448,7 +3509,6 @@
                     "F_C_name": "uint64_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "uint64_func",
@@ -3479,7 +3539,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "uint64_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT64_T",
                         "f_type": "integer(C_INT64_T)",
                         "f_var": "SHT_rv",
@@ -3546,6 +3609,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3613,7 +3677,6 @@
                     "F_C_name": "size_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "size_func",
@@ -3644,7 +3707,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "size_t",
+                        "f_intent": "OUT",
                         "f_kind": "C_SIZE_T",
                         "f_type": "integer(C_SIZE_T)",
                         "f_var": "SHT_rv",
@@ -3711,6 +3777,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3736,7 +3803,7 @@
                         "fmtf": {
                             "F_C_var": "arg",
                             "F_pointer": "SHPTR_arg",
-                            "c_var": "SH_arg",
+                            "c_var": "arg",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -3780,7 +3847,6 @@
                     "F_C_name": "c_bool_func",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SH_arg",
                     "F_arguments": "arg",
                     "F_name_function": "bool_func",
@@ -3811,7 +3877,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "bool",
+                        "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_var": "SHT_rv",
@@ -3887,6 +3956,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -3955,7 +4025,6 @@
                     "F_C_name": "c_return_bool_and_others",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "flag",
                     "F_arguments": "flag",
                     "F_name_function": "return_bool_and_others",
@@ -3986,7 +4055,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "bool",
+                        "f_intent": "OUT",
                         "f_kind": "C_BOOL",
                         "f_type": "logical",
                         "f_var": "SHT_rv",

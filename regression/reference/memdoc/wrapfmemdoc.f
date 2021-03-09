@@ -51,7 +51,8 @@ module memdoc_mod
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     c_string_*_result
+    ! Requested: c_string_*_result_allocatable
+    ! Match:     c_string_*_result
     ! start c_get_const_string_ptr_alloc
     interface
         function c_get_const_string_ptr_alloc() &
@@ -110,7 +111,7 @@ contains
     ! Requested: f_string_scalar_result_buf_allocatable_library
     ! Match:     f_string_scalar_result_buf_allocatable
     ! Function:  void getConstStringPtrAlloc
-    ! Exact:     c_string_scalar_result_buf
+    ! Exact:     c_string_scalar_result_buf_allocatable
     ! ----------------------------------------
     ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result

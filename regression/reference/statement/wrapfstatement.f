@@ -38,7 +38,8 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  const string & getNameErrorPattern +len(get_name_length())
         ! Attrs:     +deref(result-as-arg)+intent(result)
-        ! Exact:     c_string_&_result
+        ! Requested: c_string_&_result_result-as-arg
+        ! Match:     c_string_&_result
         function c_get_name_error_pattern() &
                 result(SHT_rv) &
                 bind(C, name="STMT_get_name_error_pattern")
@@ -76,7 +77,8 @@ contains
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())
-    ! Exact:     c_string_scalar_result_buf
+    ! Requested: c_string_scalar_result_buf_result-as-arg
+    ! Match:     c_string_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  string & SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result

@@ -96,6 +96,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -184,6 +185,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -332,7 +334,6 @@
                     "F_C_name": "pass_by_value",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "pass_by_value",
@@ -365,7 +366,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -406,6 +410,9 @@
             },
             {
                 "<FUNCTION>": "2 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "28",
                 "ast": {
                     "const": true,
@@ -562,15 +569,17 @@
                 },
                 "zz_fmtresult": {
                     "fmtf": {
+                        "c_var": "SHT_rv",
                         "cxx_type": "std::string",
+                        "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
-                        "stmtc0": "c_string_scalar_result_buf",
-                        "stmtc1": "c_string_scalar_result_buf"
+                        "stmtc0": "c_string_scalar_result_buf_allocatable",
+                        "stmtc1": "c_string_scalar_result_buf_allocatable"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -692,7 +701,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -717,7 +727,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_context": "DSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",
@@ -834,6 +844,9 @@
             },
             {
                 "<FUNCTION>": "18 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -862,6 +875,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -873,7 +887,6 @@
                     "F_C_name": "c_use_default_arguments",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "use_default_arguments",
                     "F_name_generic": "use_default_arguments",
@@ -903,7 +916,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -917,6 +933,9 @@
             },
             {
                 "<FUNCTION>": "19 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -963,6 +982,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -1010,7 +1030,6 @@
                     "F_C_name": "c_use_default_arguments_arg1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1",
                     "F_arguments": "arg1",
                     "F_name_function": "use_default_arguments_arg1",
@@ -1041,7 +1060,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -1126,6 +1148,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -1218,7 +1241,7 @@
                         "fmtf": {
                             "F_C_var": "arg2",
                             "F_pointer": "SHPTR_arg2",
-                            "c_var": "SH_arg2",
+                            "c_var": "arg2",
                             "f_intent": "IN",
                             "f_kind": "C_BOOL",
                             "f_type": "logical",
@@ -1276,7 +1299,6 @@
                     "F_C_name": "c_use_default_arguments_arg1_arg2",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg1,\t SH_arg2",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "use_default_arguments_arg1_arg2",
@@ -1311,7 +1333,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -1352,6 +1377,9 @@
             },
             {
                 "<FUNCTION>": "4 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "29",
                 "_overloaded": true,
                 "ast": {
@@ -1413,7 +1441,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -1528,7 +1557,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "name": {
@@ -1618,6 +1648,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -1797,6 +1828,9 @@
             },
             {
                 "<FUNCTION>": "20 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -1860,6 +1894,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -1968,6 +2003,9 @@
             },
             {
                 "<FUNCTION>": "21 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2035,6 +2073,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -2204,6 +2243,9 @@
             },
             {
                 "<FUNCTION>": "22 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2257,6 +2299,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -2269,7 +2312,6 @@
                     "F_C_name": "c_template_return_int",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "template_return_int",
                     "F_name_generic": "template_return",
@@ -2299,7 +2341,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -2313,6 +2358,9 @@
             },
             {
                 "<FUNCTION>": "23 ****************************************",
+                "C_generated_path": [
+                    "cxx_template"
+                ],
                 "_generated": "cxx_template",
                 "_overloaded": true,
                 "ast": {
@@ -2370,6 +2418,7 @@
                 ],
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtdict": {
@@ -2382,7 +2431,6 @@
                     "F_C_name": "c_template_return_double",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arguments": "",
                     "F_name_function": "template_return_double",
                     "F_name_generic": "template_return",
@@ -2412,7 +2460,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "double",
+                        "f_intent": "OUT",
                         "f_kind": "C_DOUBLE",
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
@@ -2443,6 +2494,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -2640,7 +2692,8 @@
                             "stmt1": "c_default"
                         },
                         "fmtf": {
-                            "F_C_var": "arg2"
+                            "F_C_var": "arg2",
+                            "c_var": "arg2"
                         },
                         "fmtl": {
                             "LUA_index": 2,
@@ -2695,7 +2748,8 @@
                             "stmt1": "c_string_&_in"
                         },
                         "fmtf": {
-                            "F_C_var": "name"
+                            "F_C_var": "name",
+                            "c_var": "name"
                         },
                         "fmtl": {
                             "LUA_index": 1,
@@ -2757,6 +2811,10 @@
             },
             {
                 "<FUNCTION>": "32 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "9",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -2833,6 +2891,10 @@
             },
             {
                 "<FUNCTION>": "33 ****************************************",
+                "C_generated_path": [
+                    "fortran_generic",
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "9",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
@@ -3051,7 +3113,8 @@
                     "F_string_len_trim": true
                 },
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "arg2": {
@@ -3140,6 +3203,9 @@
             },
             {
                 "<FUNCTION>": "24 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -3183,6 +3249,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3230,7 +3297,6 @@
                     "F_C_name": "c_use_default_overload_num",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "num",
                     "F_arguments": "num",
                     "F_name_function": "use_default_overload_num",
@@ -3261,7 +3327,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -3275,6 +3344,9 @@
             },
             {
                 "<FUNCTION>": "25 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -3335,6 +3407,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3415,7 +3488,6 @@
                     "F_C_name": "c_use_default_overload_num_offset",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "num,\t offset",
                     "F_arguments": "num,\t offset",
                     "F_name_function": "use_default_overload_num_offset",
@@ -3446,7 +3518,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -3545,6 +3620,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -3759,7 +3835,6 @@
                     "F_C_name": "c_use_default_overload_num_offset_stride",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "num,\t offset,\t stride",
                     "F_arguments": "num,\t offset,\t stride",
                     "F_name_function": "use_default_overload_num_offset_stride",
@@ -3794,7 +3869,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -3835,6 +3913,9 @@
             },
             {
                 "<FUNCTION>": "26 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -3889,6 +3970,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -3969,7 +4051,6 @@
                     "F_C_name": "c_use_default_overload_3",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "type,\t num",
                     "F_arguments": "type,\t num",
                     "F_name_function": "use_default_overload_3",
@@ -4000,7 +4081,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4014,6 +4098,9 @@
             },
             {
                 "<FUNCTION>": "27 ****************************************",
+                "C_generated_path": [
+                    "has_default_arg"
+                ],
                 "_generated": "has_default_arg",
                 "_overloaded": true,
                 "ast": {
@@ -4085,6 +4172,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -4198,7 +4286,6 @@
                     "F_C_name": "c_use_default_overload_4",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "type,\t num,\t offset",
                     "F_arguments": "type,\t num,\t offset",
                     "F_name_function": "use_default_overload_4",
@@ -4229,7 +4316,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4339,6 +4429,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -4619,7 +4710,6 @@
                     "F_C_name": "c_use_default_overload_5",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "type,\t num,\t offset,\t stride",
                     "F_arguments": "type,\t num,\t offset,\t stride",
                     "F_name_function": "use_default_overload_5",
@@ -4652,7 +4742,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4729,6 +4822,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -4811,7 +4905,6 @@
                     "F_C_name": "typefunc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "typefunc",
@@ -4844,7 +4937,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "tutorial::TypeID",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -4921,6 +5017,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -5007,7 +5104,6 @@
                     "F_C_name": "enumfunc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "enumfunc",
@@ -5042,7 +5138,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "tutorial::EnumTypeID",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -5119,6 +5218,7 @@
                 "options": {},
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "lua": true,
                     "python": true
@@ -5205,7 +5305,6 @@
                     "F_C_name": "colorfunc",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "arg",
                     "F_arguments": "arg",
                     "F_name_function": "colorfunc",
@@ -5240,7 +5339,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "tutorial::Color",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -5344,6 +5446,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true,
                     "python": true
                 },
@@ -5558,6 +5661,7 @@
                 },
                 "wrap": {
                     "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
                 "zz_fmtargs": {
@@ -5634,7 +5738,6 @@
                     "F_C_name": "callback1",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "in,\t incr",
                     "F_arguments": "in,\t incr",
                     "F_name_function": "callback1",
@@ -5664,7 +5767,10 @@
                         "stmt1": "c_default"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "cxx_type": "int",
+                        "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
@@ -5678,6 +5784,9 @@
             },
             {
                 "<FUNCTION>": "17 ****************************************",
+                "C_generated_path": [
+                    "arg_to_buffer"
+                ],
                 "_PTR_F_C_index": "31",
                 "ast": {
                     "attrs": {
@@ -5720,7 +5829,6 @@
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_C_var": "SHT_crv",
                     "F_arg_c_call": "SHT_rv,\t len(SHT_rv, kind=C_INT)",
                     "F_arguments": "",
                     "F_name_function": "last_function_called",
@@ -5751,19 +5859,22 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_string_&_result",
+                        "stmt0": "c_string_&_result_result-as-arg",
                         "stmt1": "c_string_&_result"
                     },
                     "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
                         "c_var_len": "30",
                         "cxx_type": "std::string",
+                        "f_intent": "OUT",
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_result-as-arg",
                         "stmt1": "f_default",
-                        "stmtc0": "c_string_scalar_result_buf",
+                        "stmtc0": "c_string_scalar_result_buf_result-as-arg",
                         "stmtc1": "c_string_scalar_result_buf"
                     },
                     "fmtl": {
@@ -5841,7 +5952,8 @@
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
-                    "c": true
+                    "c": true,
+                    "f_c": true
                 },
                 "zz_fmtargs": {
                     "SHF_rv": {
@@ -5866,7 +5978,7 @@
                         "fmtf": {
                             "F_C_var": "SHF_rv",
                             "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHT_rv",
+                            "c_var": "SHF_rv",
                             "c_var_len": "NSHF_rv",
                             "f_intent": "OUT",
                             "f_kind": "C_CHAR",

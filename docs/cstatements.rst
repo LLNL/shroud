@@ -24,6 +24,20 @@ C Statements
         {ret}
     }
 
+A corresponding ``bind(C)`` interface can be created for Fortran.
+    
+.. code-block:: text
+
+    {F_C_subprogram} {F_C_name}({F_C_arguments}) &
+        {F_C_result_clause} &
+        bind(C, name="{C_name}")
+        arg_c_decl
+    end {F_C_subprogram} {F_C_name}
+
+Where
+F_C_clause =
+F_C_arguments =   f_c_arg_names
+    
 c_statements
 ------------
 
@@ -195,19 +209,25 @@ from the ``char *`` argument passed into the C API wrapper.
 c_arg_decl
 ^^^^^^^^^^
 
-A list of declarations to append to the prototype in the C wrapper
-when buf_arg includes "arg_decl".
+A list of declarations to append to the prototype in the C wrapper.
+Used when *buf_arg* includes "arg_decl".
 
 f_arg_decl
 ^^^^^^^^^^
 
 A list of dummy argument declarations in the Fortran ``bind(C)``
-interface when buf_arg includes "arg_decl".  The variable to be
+interface. Used when *buf_arg* includes "arg_decl".  The variable to be
 declared is *c_var*.  *f_module* can be used to add ``USE`` statements
 needed by the declarations.
 
 .. c_var  c_f_dimension
 
+f_c_arg_names
+^^^^^^^^^^^^^
+
+Names of arguments to pass to C function.
+Used when *buf_arg* is ``arg_decl``.
+Defaults to ``{F_C_var}``.
 
 f_result_decl
 ^^^^^^^^^^^^^
@@ -305,6 +325,13 @@ For example, with shadow types.
       - return Darg->size;
 
 .. from vectors.yaml
+
+*return_type* can also be used to convert a C wrapper into a void
+function.  This is useful for functions which return pointers but the
+pointer value is assigned to a subroutine argument which holds the
+pointer (For example, ``CFI_cdesc_t``).  The ``type(C_PTR)`` which
+would be return by the C wrapper is unneeded by the Fortran wrapper.
+   
 
 return_cptr
 ^^^^^^^^^^^

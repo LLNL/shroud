@@ -47,7 +47,8 @@ static void ShroudStrToArray(NS_SHROUD_array *array, const std::string * src, in
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
 // Attrs:     +deref(allocatable)+intent(result)
-// Exact:     c_string_&_result
+// Requested: c_string_&_result_allocatable
+// Match:     c_string_&_result
 const char * NS_last_function_called(void)
 {
     // splicer begin function.last_function_called

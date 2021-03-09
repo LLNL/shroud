@@ -433,6 +433,7 @@ def lookup_stmts_tree(tree, path):
 #  f_arg_decl  - Add Fortran declaration to Fortran wrapper interface block
 #                with buf_args=arg_decl.
 #  f_result_decl - Declaration for function result.
+#                  Can be an empty list to override default.
 #  f_module    - Add module info to interface block.
 CStmts = util.Scope(None,
     name="c_default",
@@ -447,8 +448,9 @@ CStmts = util.Scope(None,
     owner="library",
     return_type=None, return_cptr=False,
     c_arg_decl=[],
+    f_c_arg_names=None,
     f_arg_decl=[],
-    f_result_decl=[],
+    f_result_decl=None,
     f_module=None,
     f_module_line=None,
 )
@@ -710,6 +712,24 @@ fc_statements = [
         ],
     ),
     
+    dict(
+        # Works with deref allocatable and pointer.
+        # c_native_*_result
+        # c_native_&_result
+        # c_native_**_result
+        name="c_native_*/&/**_result",
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
+    dict(
+        name="c_native_*_result_scalar",
+        f_result_decl=[
+            "{f_type} :: {c_var}",
+        ],
+        f_module_line="iso_c_binding:{f_kind}",
+    ),
     # Function has a result with deref(allocatable).
     #
     #    C wrapper:
@@ -747,6 +767,9 @@ fc_statements = [
         declare=[
             "type(C_PTR) :: {F_pointer}",
         ],
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
         ],
@@ -773,10 +796,14 @@ fc_statements = [
         ],
     ),
     dict(
+        # XXX - no need for f_var since F_pointer exists.
         name="f_native_*_result_buf_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
             "type(C_PTR) :: {F_pointer}",
+        ],
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
         call=[
             "{F_pointer} = {F_C_call}({F_arg_c_call})",
@@ -828,6 +855,13 @@ fc_statements = [
     dict(
         name="f_native_&_result",
         base="f_native_*_result_pointer",   # XXX - change base to &?
+    ),
+    dict(
+        name="f_native_&_result_buf_pointer",
+        base="f_native_*_result_pointer",   # XXX - change base to &?
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
     ),
 
     dict(
@@ -1482,6 +1516,9 @@ fc_statements = [
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
+        arg_decl=[
+            "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
+        ],
         post_call=[
             "allocate({f_var}({c_var_context}%size))",
             "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
@@ -1611,6 +1648,15 @@ fc_statements = [
             "{c_const}{c_type} * {c_var} = \tstatic_cast<{c_const}{c_type} *>(\tstatic_cast<{c_const}void *>(\t{cxx_addr}{cxx_var}));",
         ],
     ),
+    # Similar to c_native_*_result
+    dict(
+        name="c_struct_*_result",
+        base="c_struct_result",
+        f_result_decl=[
+            "type(C_PTR) {c_var}",
+        ],
+        f_module=dict(iso_c_binding=["C_PTR"]),
+    ),
     dict(
         name="f_struct_scalar_result",
         # Needed to differentiate from f_struct_pointer_result.
@@ -1622,6 +1668,9 @@ fc_statements = [
     dict(
         name="f_struct_*_result_buf_pointer",
         base="f_native_*_result_pointer",
+        arg_decl=[
+            "{f_type}, pointer :: {f_var}{f_assumed_shape}",
+        ],
     ),
 
     ########################################
@@ -1649,11 +1698,14 @@ fc_statements = [
     # char arg
     dict(
         # Add allocatable attribute to declaration.
+        # f_char_scalar_result_cfi_allocatable
+        # f_char_*_result_cfi_allocatable
         name="f_char_scalar/*_result_cfi_allocatable",
         need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
+        arg_c_call=["{f_var}"],  # Pass result as an argument.
     ),
     
     dict(
@@ -1754,7 +1806,12 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="c_char_*_result_cfi",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
+        ],
+        f_arg_decl=[        # replace mixin
+            # XXX - result converted into argument strings.yaml
+            #    const char * getCharPtr2() +len(30)
+            "character(len=*), intent({f_intent}) :: {c_var}",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -1771,8 +1828,10 @@ fc_statements = [
     dict(
         name="c_char_*_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
         ],
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
@@ -1883,6 +1942,8 @@ fc_statements = [
         mixin=[
             "c_mixin_cfi_character_result_allocatable",
         ],
+        return_type="void",  # Convert to function.
+        f_c_arg_names=["{c_var}"],
         c_impl_header=["<string.h>"],
         cxx_impl_header=["<cstring>"],
         post_call=[
@@ -1899,11 +1960,13 @@ fc_statements = [
     dict(
         name="c_string_scalar_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_arg",
+            "c_mixin_cfi_character_result_allocatable",
         ],
+        f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin
             "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
+        return_type="void",  # convert to function
         cxx_local_var=None,  # replace mixin
         pre_call=[],         # replace mixin
         post_call=[
@@ -1925,11 +1988,18 @@ fc_statements = [
     
     # similar to f_char_scalar_result_allocatable
     dict(
+        # f_string_scalar_result_cfi_allocatable
+        # f_string_*_result_cfi_allocatable
+        # f_string_&_result_cfi_allocatable
         name="f_string_scalar/*/&_result_cfi_allocatable",
-#        need_wrapper=True,
+        # XXX - avoid calling C directly since the Fortran function
+        # is returning an allocatable, which CFI can not do.
+        # Fortran wrapper passed function result to C which fills it.
+        need_wrapper=True,
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
+        arg_c_call=["{f_var}"],
     ),
     
 

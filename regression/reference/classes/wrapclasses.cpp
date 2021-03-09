@@ -221,7 +221,8 @@ int CLA_get_global_flag(void)
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
 // Attrs:     +deref(result-as-arg)+intent(result)
-// Exact:     c_string_&_result
+// Requested: c_string_&_result_result-as-arg
+// Match:     c_string_&_result
 const char * CLA_last_function_called(void)
 {
     // splicer begin function.last_function_called

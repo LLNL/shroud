@@ -193,7 +193,8 @@ module clibrary_mod
     ! ----------------------------------------
     ! Function:  char * Function4a +len(30)
     ! Attrs:     +deref(result-as-arg)+intent(result)
-    ! Exact:     c_char_*_result
+    ! Requested: c_char_*_result_result-as-arg
+    ! Match:     c_char_*_result
     ! ----------------------------------------
     ! Argument:  const char * arg1
     ! Attrs:     +intent(in)
@@ -979,7 +980,8 @@ contains
     ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
-    ! Exact:     c_char_scalar_result_buf
+    ! Requested: c_char_scalar_result_buf_result-as-arg
+    ! Match:     c_char_scalar_result_buf
     ! ----------------------------------------
     ! Argument:  char * SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result
