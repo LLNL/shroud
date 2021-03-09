@@ -327,6 +327,7 @@ def update_stmt_tree(stmts, nodes, tree, defaults):
 
     # Index by name to find alias, base, mixin.
     node_stmts = {} # Dict from fc_statements for 'mixin'.
+    nodes.clear()   # Allow function to be called multiple times.
     for node in stmts:
         # node is a dict.
         if "name" not in node:

@@ -14,6 +14,7 @@ import unittest
 class Statements(unittest.TestCase):
     def XXXtest_alias(self):
         # Prefix names with "c" to work with statements.default_stmts.
+        cf_dict = {}
         cf_tree = {}
         stmts = [
             dict(
@@ -24,7 +25,8 @@ class Statements(unittest.TestCase):
                 alias="c_a",
             ),
         ]
-        statements.update_stmt_tree(stmts, cf_tree, statements.default_stmts)
+        statements.update_stmt_tree(
+            stmts, cf_dict, cf_tree, statements.default_stmts)
 
         rv = statements.lookup_stmts_tree(cf_tree, ["c", "b"])
         self.assertIsInstance(rv, util.Scope)
@@ -32,6 +34,7 @@ class Statements(unittest.TestCase):
         
     def test_base(self):
         # Prefix names with "c" to work with statements.default_stmts.
+        cf_dict = {}
         cf_tree = {}
         stmts = [
             dict(
@@ -45,7 +48,8 @@ class Statements(unittest.TestCase):
                 field2="field2_from_c_b",
             ),
         ]
-        statements.update_stmt_tree(stmts, cf_tree, statements.default_stmts)
+        statements.update_stmt_tree(
+            stmts, cf_dict, cf_tree, statements.default_stmts)
 
         rv = statements.lookup_stmts_tree(cf_tree, ["c", "a"])
         self.assertIsInstance(rv, util.Scope)
@@ -59,6 +63,7 @@ class Statements(unittest.TestCase):
         
     def test_mixin(self):
         # Prefix names with "c" to work with statements.default_stmts.
+        cf_dict = {}
         cf_tree = {}
         stmts = [
             dict(
@@ -82,7 +87,8 @@ class Statements(unittest.TestCase):
                 field2="field2_from_c_b",
             ),
         ]
-        statements.update_stmt_tree(stmts, cf_tree, statements.default_stmts)
+        statements.update_stmt_tree(
+            stmts, cf_dict, cf_tree, statements.default_stmts)
 
         rv = statements.lookup_stmts_tree(cf_tree, ["c", "a"])
         self.assertIsInstance(rv, util.Scope)
@@ -96,6 +102,7 @@ class Statements(unittest.TestCase):
         self.assertEqual("field2_from_c_b", rv.field2)
         
     def test_lookup_tree1(self):
+        cf_dict = {}
         cf_tree = {}
         stmts = [
             dict(
@@ -105,7 +112,8 @@ class Statements(unittest.TestCase):
                 name="c_string_scalar_result_buf_allocatable"
             ),
         ]
-        statements.update_stmt_tree(stmts, cf_tree, statements.default_stmts)
+        statements.update_stmt_tree(
+            stmts, cf_dict, cf_tree, statements.default_stmts)
 
         rv = statements.lookup_stmts_tree(
             cf_tree, ["c","string","result","buf","allocatable"])
