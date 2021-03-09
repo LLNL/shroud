@@ -553,8 +553,15 @@ def main_with_args(args):
 
     if args.write_statements:
         hfile = os.path.join(args.logdir, args.write_statements)
+        wrapp.update_statements_for_language(newlibrary.language)
+        wrapl.update_statements_for_language(newlibrary.language)
         with open(hfile, "w") as fp:
+            fp.write("***** Fortran/C\n")
             statements.write_cf_tree(fp)
+            fp.write("***** Python\n")
+            wrapp.write_stmts_tree(fp)
+            fp.write("***** Lua\n")
+            wrapl.write_stmts_tree(fp)
             
     log.close()
 

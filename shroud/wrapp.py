@@ -3547,6 +3547,20 @@ def update_statements_for_language(language):
     global default_scope
     default_scope = statements.default_scopes["py"]
 
+
+def write_stmts_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    statements.print_tree_index(py_tree, lines)
+    fp.writelines(lines)
+    statements.print_tree_statements(fp, py_dict, default_stmts)
+
+
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(py_tree, path)
 

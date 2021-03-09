@@ -922,6 +922,20 @@ def update_statements_for_language(language):
     global default_scope
     default_scope = statements.default_scopes["lua"]
 
+
+def write_stmts_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    statements.print_tree_index(lua_tree, lines)
+    fp.writelines(lines)
+    statements.print_tree_statements(fp, lua_dict, default_stmts)
+    
+
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(lua_tree, path)
 

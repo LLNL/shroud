@@ -1,3 +1,4 @@
+***** Fortran/C
 root
   c
     char
@@ -1836,3 +1837,1715 @@ f_void_*_result:
     iso_c_binding:
     - C_PTR
   name: f_void_*_result
+***** Python
+root
+  base
+    py
+      ctor
+        array -- base_py_ctor_array
+          fill -- base_py_ctor_array_fill
+  py
+    bool
+      *
+        inout -- py_bool_*_inout
+        out -- py_bool_*_out
+      in -- py_bool_in
+      inout -- py_bool_inout
+      out -- py_bool_out
+      result -- py_bool_result
+    char
+      *
+        in -- py_char_*_in
+        inout -- py_char_*_inout
+        out
+          charlen -- py_char_*_out_charlen
+        result -- py_char_*_result
+      **
+        in -- py_char_**_in
+      scalar
+        in -- py_char_scalar_in
+        result -- py_char_scalar_result
+    ctor
+      char
+        * -- py_ctor_char_*
+        ** -- py_ctor_char_**
+        [] -- py_ctor_char_[]
+      native -- py_ctor_native
+        * -- py_ctor_native_*
+        [] -- py_ctor_native_[]
+    descr
+      char
+        * -- py_descr_char_*
+        **
+          list -- py_descr_char_**_list
+        [] -- py_descr_char_[]
+      native -- py_descr_native
+        *
+          list -- py_descr_native_*_list
+          numpy -- py_descr_native_*_numpy
+        []
+          list -- py_descr_native_[]_list
+          numpy -- py_descr_native_[]_numpy
+    native
+      &
+        in -- py_native_&_in
+        inout -- py_native_&_inout
+        out -- py_native_&_out
+        result
+          pointer
+            numpy -- py_native_&_result_pointer_numpy
+      *
+        in -- py_native_*_in
+          pointer
+            list -- py_native_*_in_pointer_list
+            numpy -- py_native_*_in_pointer_numpy
+        inout -- py_native_*_inout
+          pointer
+            list -- py_native_*_inout_pointer_list
+            numpy -- py_native_*_inout_pointer_numpy
+        out -- py_native_*_out
+          allocatable
+            list -- py_native_*_out_allocatable_list
+            numpy -- py_native_*_out_allocatable_numpy
+          pointer
+            list -- py_native_*_out_pointer_list
+            numpy -- py_native_*_out_pointer_numpy
+        result
+          allocatable
+            numpy -- py_native_*_result_allocatable_numpy
+          pointer
+            list -- py_native_*_result_pointer_list
+            numpy -- py_native_*_result_pointer_numpy
+      *&
+        out
+          pointer
+            numpy -- py_native_*&_out_pointer_numpy
+      **
+        out
+          pointer
+            list -- py_native_**_out_pointer_list
+            numpy -- py_native_**_out_pointer_numpy
+          raw -- py_native_**_out_raw
+    shadow
+      &
+        in -- py_shadow_&_in
+        result -- py_shadow_&_result
+      *
+        in -- py_shadow_*_in
+        inout -- py_shadow_*_inout
+        out -- py_shadow_*_out
+        result -- py_shadow_*_result
+      scalar
+        in -- py_shadow_scalar_in
+    string
+      &
+        in -- py_string_&_in
+        inout -- py_string_&_inout
+        out -- py_string_&_out
+        result -- py_string_&_result
+      *
+        in -- py_string_*_in
+        inout -- py_string_*_inout
+        out -- py_string_*_out
+        result -- py_string_*_result
+      scalar
+        in -- py_string_scalar_in
+        inout -- py_string_scalar_inout
+        out -- py_string_scalar_out
+        result -- py_string_scalar_result
+    struct
+      &
+        in
+          class -- py_struct_&_in_class
+          numpy -- py_struct_&_in_numpy
+        inout
+          class -- py_struct_&_inout_class
+          numpy -- py_struct_&_inout_numpy
+        out
+          class -- py_struct_&_out_class
+          numpy -- py_struct_&_out_numpy
+      *
+        in
+          class -- py_struct_*_in_class
+          list -- py_struct_*_in_list
+          numpy -- py_struct_*_in_numpy
+        inout
+          class -- py_struct_*_inout_class
+          list -- py_struct_*_inout_list
+          numpy -- py_struct_*_inout_numpy
+        out
+          class -- py_struct_*_out_class
+          list -- py_struct_*_out_list
+          numpy -- py_struct_*_out_numpy
+      in
+        list -- py_struct_in_list
+      inout
+        list -- py_struct_inout_list
+      out
+        list -- py_struct_out_list
+      result
+        class -- py_struct_result_class
+        numpy -- py_struct_result_numpy
+      scalar
+        in
+          class -- py_struct_scalar_in_class
+          list -- py_struct_scalar_in_list
+          numpy -- py_struct_scalar_in_numpy
+    vector
+      in
+        list -- py_vector_in_list
+        numpy -- py_vector_in_numpy
+      out
+        list -- py_vector_out_list
+        numpy -- py_vector_out_numpy
+      result
+        list -- py_vector_result_list
+        numpy -- py_vector_result_numpy
+    void
+      *
+        in -- py_void_*_in
+        result -- py_void_*_result
+      *&
+        out -- py_void_*&_out
+      **
+        out -- py_void_**_out
+base_py_ctor_array:
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  name: base_py_ctor_array
+  parse_args:
+  - '{hnamefunc0}'
+  - '&{value_var}'
+  parse_format: O&
+  post_call:
+  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+base_py_ctor_array_fill:
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  goto_fail: true
+  name: base_py_ctor_array_fill
+  parse_args:
+  - '&{py_var}'
+  parse_format: O
+  post_call:
+  - if ({py_var} != {nullptr}) {{+
+  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
+    \ == -1)"
+  - +goto fail;-
+  - self->{PY_member_object} = {nullptr};
+  - -}}
+py_bool_*_inout:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - bool {cxx_var};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_bool_*_inout
+  object_created: true
+  post_call:
+  - '{py_var} = PyBool_FromLong({c_var});'
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - '{cxx_var} = PyObject_IsTrue({py_var});'
+py_bool_*_out:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - bool {cxx_var};
+  declare:
+  - '{PyObject} * {py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_bool_*_out
+  object_created: true
+  post_call:
+  - '{py_var} = PyBool_FromLong({c_var});'
+  - if ({py_var} == {nullptr}) goto fail;
+py_bool_in:
+  name: py_bool_in
+  pre_call:
+  - '{cxx_var} = PyObject_IsTrue({py_var});'
+py_bool_inout:
+  arg_declare:
+  - bool {cxx_var};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_bool_inout
+  object_created: true
+  post_call:
+  - '{py_var} = PyBool_FromLong({c_var});'
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - '{cxx_var} = PyObject_IsTrue({py_var});'
+py_bool_out:
+  arg_declare:
+  - bool {cxx_var};
+  declare:
+  - '{PyObject} * {py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_bool_out
+  object_created: true
+  post_call:
+  - '{py_var} = PyBool_FromLong({c_var});'
+  - if ({py_var} == {nullptr}) goto fail;
+py_bool_result:
+  declare:
+  - '{PyObject} * {py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_bool_result
+  object_created: true
+  post_call:
+  - '{py_var} = PyBool_FromLong({c_var});'
+  - if ({py_var} == {nullptr}) goto fail;
+py_char_**_in:
+  arg_call:
+  - '{cxx_var}'
+  arg_declare:
+  - '{c_const}char ** {cxx_var} = {nullptr};'
+  c_helper: get_from_object_charptr
+  declare:
+  - PyObject * {pytmp_var};
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{c_var}";'
+  - Py_ssize_t {size_var};
+  fail:
+  - Py_XDECREF({value_var}.dataobj);
+  goto_fail: true
+  name: py_char_**_in
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_call:
+  - Py_XDECREF({value_var}.dataobj);
+  pre_call:
+  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - +goto fail;-
+  - '{cxx_var} = {cast_static}char **{cast1}{value_var}.data{cast2};'
+py_char_*_in:
+  arg_call:
+  - '{c_var}'
+  name: py_char_*_in
+py_char_*_inout:
+  arg_call:
+  - '{c_var}'
+  fmtdict:
+    ctor_expr: '{c_var}'
+  name: py_char_*_inout
+py_char_*_out_charlen:
+  arg_call:
+  - '{c_var}'
+  arg_declare:
+  - '{c_const}char {c_var}[{charlen}];  // intent(out)'
+  fmtdict:
+    ctor_expr: '{c_var}'
+  name: py_char_*_out_charlen
+py_char_*_result:
+  fmtdict:
+    ctor_expr: '{c_var}'
+  name: py_char_*_result
+py_char_scalar_in:
+  arg_call:
+  - '{c_var}[0]'
+  arg_declare:
+  - char *{c_var};
+  name: py_char_scalar_in
+  parse_args:
+  - '&{c_var}'
+  parse_format: s
+py_char_scalar_result:
+  declare:
+  - '{PyObject} * {py_var} = {nullptr};'
+  name: py_char_scalar_result
+  object_created: true
+  post_call:
+  - '{py_var} = PyString_FromStringAndSize(&{cxx_var}, 1);'
+py_ctor_char_*:
+  c_helper: get_from_object_char
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  name: py_ctor_char_*
+  parse_args:
+  - '{hnamefunc0}'
+  - '&{value_var}'
+  parse_format: O&
+  post_call:
+  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+py_ctor_char_**:
+  c_helper: get_from_object_charptr
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  name: py_ctor_char_**
+  parse_args:
+  - '{hnamefunc0}'
+  - '&{value_var}'
+  parse_format: O&
+  post_call:
+  - SH_obj->{field_name} = {cast_static}char **{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+py_ctor_char_[]:
+  c_helper: fill_from_PyObject_char
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  goto_fail: true
+  name: py_ctor_char_[]
+  parse_args:
+  - '&{py_var}'
+  parse_format: O
+  post_call:
+  - if ({py_var} != {nullptr}) {{+
+  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
+    \ == -1)"
+  - +goto fail;-
+  - self->{PY_member_object} = {nullptr};
+  - -}}
+py_ctor_native:
+  declare:
+  - '{c_type} {c_var} = 0;'
+  name: py_ctor_native
+  post_call:
+  - SH_obj->{field_name} = {field_name};
+py_ctor_native_*:
+  c_helper: get_from_object_{c_type}_{PY_array_arg}
+  declare:
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{field_name}";'
+  name: py_ctor_native_*
+  parse_args:
+  - '{hnamefunc0}'
+  - '&{value_var}'
+  parse_format: O&
+  post_call:
+  - SH_obj->{field_name} = {cast_static}{c_type} *{cast1}{value_var}.data{cast2};
+  - self->{PY_member_object} = {value_var}.obj;  // steal reference
+py_ctor_native_[]:
+  c_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  goto_fail: true
+  name: py_ctor_native_[]
+  parse_args:
+  - '&{py_var}'
+  parse_format: O
+  post_call:
+  - if ({py_var} != {nullptr}) {{+
+  - "if ({hnamefunc0}(\t{py_var},\t \"{c_var}\",\t SH_obj->{field_name},\t {field_size})\
+    \ == -1)"
+  - +goto fail;-
+  - self->{PY_member_object} = {nullptr};
+  - -}}
+py_descr_char_*:
+  getter:
+  - if ({c_var} == {nullptr}) {{+
+  - Py_RETURN_NONE;
+  - -}}
+  - PyObject * rv = {ctor};
+  - return rv;
+  name: py_descr_char_*
+  setter:
+  - '{PY_typedef_converter} cvalue;'
+  - Py_XDECREF({c_var_data});
+  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - '{c_var} = {nullptr};'
+  - '{c_var_data} = {nullptr};'
+  - return -1;
+  - -}}
+  - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
+  - '{c_var_data} = cvalue.dataobj;  // steal reference'
+  setter_helper: get_from_object_{c_type}_list
+py_descr_char_**_list:
+  getter:
+  - if ({c_var} == {nullptr}) {{+
+  - Py_RETURN_NONE;
+  - -}}
+  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - return rv;
+  getter_helper: to_PyList_char
+  name: py_descr_char_**_list
+  setter:
+  - '{PY_typedef_converter} cvalue;'
+  - Py_XDECREF({c_var_data});
+  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - '{c_var} = {nullptr};'
+  - '{c_var_data} = {nullptr};'
+  - // XXXX set error
+  - return -1;
+  - -}}
+  - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
+  - '{c_var_data} = cvalue.dataobj;  // steal reference'
+  setter_helper: get_from_object_charptr
+py_descr_char_[]:
+  getter:
+  - 'if ({c_var_obj} != {nullptr}) {{+
+
+    Py_INCREF({c_var_obj});
+
+    return {c_var_obj};
+
+    -}}
+
+    PyObject * rv = PyString_FromString({c_var});
+
+    // XXX assumes is null terminated
+
+    return rv;'
+  name: py_descr_char_[]
+  setter:
+  - Py_XDECREF({c_var_obj});
+  - '{c_var_obj} = {nullptr};'
+  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
+    \ == -1) {{+"
+  - return -1;
+  - -}}
+  setter_helper: fill_from_PyObject_char
+py_descr_native:
+  getter:
+  - PyObject * rv = {ctor};
+  - return rv;
+  name: py_descr_native
+  setter:
+  - '{cxx_decl} = {PY_get};'
+  - if (PyErr_Occurred()) {{+
+  - return -1;
+  - -}}
+  - '{c_var} = rv;'
+py_descr_native_*_list:
+  getter:
+  - if ({c_var} == {nullptr}) {{+
+  - Py_RETURN_NONE;
+  - -}}
+  - if ({c_var_obj} != {nullptr}) {{+
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  - -}}
+  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - return rv;
+  getter_helper: to_PyList_{c_type}
+  name: py_descr_native_*_list
+  setter:
+  - '{PY_typedef_converter} cvalue;'
+  - Py_XDECREF({c_var_obj});
+  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - '{c_var} = {nullptr};'
+  - '{c_var_obj} = {nullptr};'
+  - return -1;
+  - -}}
+  - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
+  - '{c_var_obj} = cvalue.obj;  // steal reference'
+  setter_helper: get_from_object_{c_type}_list
+py_descr_native_*_numpy:
+  getter:
+  - if ({c_var} == {nullptr}) {{+
+  - Py_RETURN_NONE;
+  - -}}
+  - if ({c_var_obj} != {nullptr}) {{+
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  - -}}
+  - npy_intp {npy_dims_var}[{npy_rank}] = {{ {npy_intp_values} }};
+  - "PyObject *rv = PyArray_SimpleNewFromData(\t{npy_rank},\t {npy_dims_var},\t {PYN_typenum},\t\
+    \ {c_var_non_const});"
+  - if (rv != {nullptr}) {{+
+  - Py_INCREF(rv);
+  - '{c_var_obj} = rv;'
+  - -}}
+  - return rv;
+  name: py_descr_native_*_numpy
+  need_numpy: true
+  setter:
+  - '{PY_typedef_converter} cvalue;'
+  - Py_XDECREF({c_var_obj});
+  - if ({hnamefunc0}({py_var}, &cvalue) == 0) {{+
+  - '{c_var} = {nullptr};'
+  - '{c_var_obj} = {nullptr};'
+  - // XXXX set error
+  - return -1;
+  - -}}
+  - '{c_var} = {cast_static}{cast_type}{cast1}cvalue.data{cast2};'
+  - '{c_var_obj} = cvalue.obj;  // steal reference'
+  setter_helper: get_from_object_{c_type}_numpy
+py_descr_native_[]_list:
+  getter:
+  - PyObject *rv = {hnamefunc0}({c_var}, {npy_intp_size});
+  - return rv;
+  getter_helper: to_PyList_{c_type}
+  name: py_descr_native_[]_list
+  need_numpy: true
+  setter:
+  - Py_XDECREF({c_var_obj});
+  - '{c_var_obj} = {nullptr};'
+  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
+    \ == -1) {{+"
+  - return -1;
+  - -}}
+  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+py_descr_native_[]_numpy:
+  getter:
+  - if ({c_var_obj} == {nullptr}) {{+
+  - // Create Numpy object which points to struct member.
+  - npy_intp {npy_dims_var}[{rank}] = {{ {npy_intp_values} }};
+  - "{c_var_obj} = PyArray_SimpleNewFromData(\t{npy_rank},\t {npy_dims_var},\t {PYN_typenum},\t\
+    \ {c_var});"
+  - -}}
+  - Py_INCREF({c_var_obj});
+  - return {c_var_obj};
+  name: py_descr_native_[]_numpy
+  need_numpy: true
+  setter:
+  - Py_XDECREF({c_var_obj});
+  - '{c_var_obj} = {nullptr};'
+  - "if ({hnamefunc0}(\t{py_var},\t \"{field_name}\",\t {c_var},\t {npy_intp_size})\
+    \ == -1) {{+"
+  - return -1;
+  - -}}
+  setter_helper: fill_from_PyObject_{c_type}_{PY_array_arg}
+py_native_&_in:
+  arg_declare:
+  - '{c_type} {c_var};'
+  name: py_native_&_in
+py_native_&_inout:
+  arg_declare:
+  - '{c_type} {c_var};'
+  name: py_native_&_inout
+py_native_&_out:
+  arg_declare:
+  - '{c_const}{c_type} {c_var};'
+  name: py_native_&_out
+py_native_&_result_pointer_numpy:
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_native_&_result_pointer_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_native_*&_out_pointer_numpy:
+  arg_call:
+  - '{cxx_var}'
+  arg_declare:
+  - '{c_const}{c_type} *{c_var};'
+  declare:
+  - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_native_*&_out_pointer_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_native_**_out_pointer_list:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - '{c_const}{c_type} *{c_var};'
+  c_helper: to_PyList_{cxx_type}
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_**_out_pointer_list
+  object_created: true
+  post_call:
+  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - if ({py_var} == {nullptr}) goto fail;
+py_native_**_out_pointer_numpy:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - '{c_const}{c_type} *{c_var};'
+  declare:
+  - '{npy_intp_decl}PyObject *{py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_native_**_out_pointer_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_native_**_out_raw:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - '{c_type} *{c_var};'
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  name: py_native_**_out_raw
+  object_created: true
+  post_call:
+  - '{py_var} = PyCapsule_New({cxx_var}, NULL, NULL);'
+py_native_*_in:
+  arg_call:
+  - '&{c_var}'
+  arg_declare:
+  - '{c_type} {c_var};'
+  name: py_native_*_in
+py_native_*_in_pointer_list:
+  arg_call:
+  - '{cxx_var}'
+  arg_declare:
+  - '{cxx_type} * {cxx_var} = {nullptr};'
+  c_helper: get_from_object_{cxx_type}_list
+  cleanup:
+  - Py_XDECREF({value_var}.dataobj);
+  declare:
+  - PyObject *{pytmp_var} = {nullptr};
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{c_var}";'
+  - Py_ssize_t {size_var};
+  fail:
+  - Py_XDECREF({value_var}.dataobj);
+  goto_fail: true
+  name: py_native_*_in_pointer_list
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - +goto fail;-
+  - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
+  - '{size_var} = {value_var}.size;'
+py_native_*_in_pointer_numpy:
+  arg_call:
+  - '{c_var}'
+  cleanup:
+  - '{PY_cleanup_decref}({py_var});'
+  declare:
+  - PyObject * {pytmp_var};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_*_in_pointer_numpy
+  need_numpy: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
+    \ {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_native_*_inout:
+  arg_call:
+  - '&{c_var}'
+  arg_declare:
+  - '{c_type} {c_var};'
+  fmtdict:
+    ctor_expr: '{c_var}'
+  name: py_native_*_inout
+py_native_*_inout_pointer_list:
+  arg_call:
+  - '{cxx_var}'
+  arg_declare:
+  - '{cxx_type} * {cxx_var} = {nullptr};'
+  c_helper: get_from_object_{cxx_type}_list to_PyList_{cxx_type}
+  cleanup:
+  - Py_XDECREF({value_var}.dataobj);
+  declare:
+  - PyObject *{py_var};
+  - PyObject *{pytmp_var} = {nullptr};
+  - '{PY_typedef_converter} {value_var} = {PY_value_init};'
+  - '{value_var}.name = "{c_var}";'
+  - Py_ssize_t {size_var};
+  fail:
+  - Py_XDECREF({value_var}.dataobj);
+  goto_fail: true
+  name: py_native_*_inout_pointer_list
+  object_created: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_call:
+  - "{py_var} = {hnamefunc1}\t({cxx_var},\t {size_var});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_parse:
+  - "if ({hnamefunc0}\t({pytmp_var}, &{value_var}) == 0)"
+  - +goto fail;-
+  - '{cxx_var} = {cast_static}{cxx_type} *{cast1}{value_var}.data{cast2};'
+  - '{size_var} = {value_var}.size;'
+py_native_*_inout_pointer_numpy:
+  arg_call:
+  - '{c_var}'
+  declare:
+  - PyObject * {pytmp_var};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_*_inout_pointer_numpy
+  need_numpy: true
+  object_created: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
+    \ {numpy_type},\t NPY_ARRAY_INOUT_ARRAY){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_native_*_out:
+  arg_call:
+  - '&{c_var}'
+  arg_declare:
+  - '{c_type} {c_var};'
+  fmtdict:
+    ctor_expr: '{c_var}'
+  name: py_native_*_out
+py_native_*_out_allocatable_list:
+  arg_call:
+  - '{c_var}'
+  arg_declare:
+  - '{cxx_type} * {cxx_var} = {nullptr};'
+  c_header:
+  - <stdlib.h>
+  c_helper: to_PyList_{cxx_type}
+  cleanup:
+  - '{stdlib}free({cxx_var});'
+  - '{cxx_var} = {nullptr};'
+  cxx_header:
+  - <cstdlib>
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
+  goto_fail: true
+  name: py_native_*_out_allocatable_list
+  object_created: true
+  post_call:
+  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));"
+  - if ({cxx_var} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+py_native_*_out_allocatable_numpy:
+  arg_call:
+  - '{c_var}'
+  declare:
+  - '{npy_intp_decl}PyArrayObject * {py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_*_out_allocatable_numpy
+  need_numpy: true
+  object_created: true
+  post_parse:
+  - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
+    {npy_dims_var}, {numpy_type}){cast2};'
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_native_*_out_pointer_list:
+  arg_call:
+  - '{c_var}'
+  arg_declare:
+  - '{cxx_type} * {cxx_var} = {nullptr};'
+  c_header:
+  - <stdlib.h>
+  c_helper: to_PyList_{cxx_type}
+  cleanup:
+  - '{stdlib}free({cxx_var});'
+  - '{cxx_var} = {nullptr};'
+  cxx_header:
+  - <cstdlib>
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  - "if ({cxx_var} != {nullptr})\t {stdlib}free({cxx_var});"
+  goto_fail: true
+  name: py_native_*_out_pointer_list
+  object_created: true
+  post_call:
+  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(std::malloc(\tsizeof({cxx_type}) * ({array_size})));"
+  - if ({cxx_var} == {nullptr}) {{+
+  - PyErr_NoMemory();
+  - goto fail;
+  - -}}
+py_native_*_out_pointer_numpy:
+  arg_call:
+  - '{c_var}'
+  declare:
+  - '{npy_intp_decl}PyArrayObject * {py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_*_out_pointer_numpy
+  need_numpy: true
+  object_created: true
+  post_parse:
+  - '{npy_intp_asgn}{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_SimpleNew({npy_rank},
+    {npy_dims_var}, {numpy_type}){cast2};'
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_native_*_result_allocatable_numpy:
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_native_*_result_allocatable_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_native_*_result_pointer_list:
+  c_helper: to_PyList_{cxx_type}
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_native_*_result_pointer_list
+  object_created: true
+  post_call:
+  - "{py_var} = {hnamefunc0}\t({cxx_var},\t {array_size});"
+  - if ({py_var} == {nullptr}) goto fail;
+py_native_*_result_pointer_numpy:
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_native_*_result_pointer_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - "{npy_intp_asgn}{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t\
+    \ {numpy_type},\t {cxx_nonconst_ptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_shadow_&_in:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  name: py_shadow_&_in
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_shadow_&_result:
+  name: py_shadow_&_result
+  object_created: true
+  post_call:
+  - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
+  - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
+py_shadow_*_in:
+  cxx_local_var: pointer
+  name: py_shadow_*_in
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_shadow_*_inout:
+  cxx_local_var: pointer
+  name: py_shadow_*_inout
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_shadow_*_out:
+  declare:
+  - '{PyObject} *{py_var} = {nullptr};'
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_shadow_*_out
+  object_created: true
+  post_call:
+  - "{py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
+  - if ({py_var} == {nullptr}) goto fail;
+  - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
+py_shadow_*_result:
+  name: py_shadow_*_result
+  object_created: true
+  post_call:
+  - "{PyObject} * {py_var} =\t PyObject_New({PyObject}, &{PyTypeObject});"
+  - '{py_var}->{PY_type_obj} = {cxx_addr}{cxx_var};'
+py_shadow_scalar_in:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  name: py_shadow_scalar_in
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_string_&_in:
+  arg_declare:
+  - char * {c_var};
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_&_in
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_&_inout:
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_&_inout
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_&_out:
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_&_out
+  post_declare:
+  - '{c_const}std::string {cxx_var};'
+py_string_&_result:
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_&_result
+py_string_*_in:
+  arg_call:
+  - '&{cxx_var}'
+  arg_declare:
+  - char * {c_var};
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_*_in
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_*_inout:
+  arg_call:
+  - '&{cxx_var}'
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_*_inout
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_*_out:
+  arg_call:
+  - '&{cxx_var}'
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_*_out
+  post_declare:
+  - '{c_const}std::string {cxx_var};'
+py_string_*_result:
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_*_result
+py_string_scalar_in:
+  arg_declare:
+  - char * {c_var};
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_scalar_in
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_scalar_inout:
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_scalar_inout
+  post_declare:
+  - '{c_const}std::string {cxx_var}({c_var});'
+py_string_scalar_out:
+  cxx_local_var: scalar
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_scalar_out
+  post_declare:
+  - '{c_const}std::string {cxx_var};'
+py_string_scalar_result:
+  fmtdict:
+    ctor_expr: "{cxx_var}{cxx_member}data(),\t {cxx_var}{cxx_member}size()"
+  name: py_string_scalar_result
+py_struct_&_in_class:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  name: py_struct_&_in_class
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_struct_&_in_numpy:
+  arg_call:
+  - '*{cxx_var}'
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  cleanup:
+  - '{PY_cleanup_decref}({py_var});'
+  cxx_local_var: pointer
+  declare:
+  - PyObject * {pytmp_var} = {nullptr};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_&_in_numpy
+  need_numpy: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_&_inout_class:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  name: py_struct_&_inout_class
+  object_created: true
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_struct_&_inout_numpy:
+  arg_call:
+  - '*{cxx_var}'
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  declare:
+  - PyObject * {pytmp_var} = {nullptr};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_&_inout_numpy
+  need_numpy: true
+  object_created: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_&_out_class:
+  arg_call:
+  - '*{cxx_var}'
+  arg_declare:
+  - '{cxx_type} *{cxx_var} = {nullptr};'
+  cxx_local_var: pointer
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_&_out_class
+  object_created: true
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - '{cxx_var} = new {cxx_type};'
+py_struct_&_out_numpy:
+  arg_call:
+  - '*{cxx_var}'
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  declare:
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_&_out_numpy
+  need_numpy: true
+  object_created: true
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
+    \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_*_in_class:
+  cxx_local_var: pointer
+  name: py_struct_*_in_class
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_struct_*_in_list:
+  arg_call:
+  - '&{cxx_var}'
+  name: py_struct_*_in_list
+py_struct_*_in_numpy:
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  cleanup:
+  - '{PY_cleanup_decref}({py_var});'
+  cxx_local_var: pointer
+  declare:
+  - PyObject * {pytmp_var} = {nullptr};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_*_in_numpy
+  need_numpy: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_*_inout_class:
+  cxx_local_var: pointer
+  name: py_struct_*_inout_class
+  object_created: true
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_struct_*_inout_list:
+  arg_call:
+  - '&{cxx_var}'
+  name: py_struct_*_inout_list
+py_struct_*_inout_numpy:
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  declare:
+  - PyObject * {pytmp_var} = {nullptr};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_*_inout_numpy
+  need_numpy: true
+  object_created: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_*_out_class:
+  arg_declare:
+  - '{cxx_type} *{cxx_var} = {nullptr};'
+  cxx_local_var: pointer
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_*_out_class
+  object_created: true
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - '{cxx_var} = new {cxx_type};'
+py_struct_*_out_list:
+  arg_call:
+  - '&{cxx_var}'
+  name: py_struct_*_out_list
+  post_declare:
+  - '{cxx_type} {cxx_var};'
+py_struct_*_out_numpy:
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  declare:
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_*_out_numpy
+  need_numpy: true
+  object_created: true
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_NewFromDescr(\t&PyArray_Type,\t\
+    \ {PYN_descr},\t 0,\t {nullptr},\t {nullptr},\t {nullptr},\t 0,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_struct_in_list:
+  name: py_struct_in_list
+py_struct_inout_list:
+  name: py_struct_inout_list
+py_struct_out_list:
+  name: py_struct_out_list
+  post_declare:
+  - '{cxx_type} {cxx_var};'
+py_struct_result_class:
+  allocate_local_var: true
+  cxx_local_var: pointer
+  declare:
+  - PyObject *{py_var} = {nullptr};  // struct_result_class
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_result_class
+  object_created: true
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+py_struct_result_numpy:
+  allocate_local_var: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_struct_result_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - '{npy_intp_asgn}Py_INCREF({PYN_descr});'
+  - "{py_var} = PyArray_NewFromDescr(&PyArray_Type, \t{PYN_descr},\t {npy_rank}, {npy_dims_var},\
+    \ \t{nullptr}, {cxx_var}, 0, {nullptr});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_struct_scalar_in_class:
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  name: py_struct_scalar_in_class
+  post_declare:
+  - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_struct_scalar_in_list:
+  name: py_struct_scalar_in_list
+py_struct_scalar_in_numpy:
+  arg_call:
+  - '*{cxx_var}'
+  arg_declare:
+  - '{cxx_type} *{cxx_var};'
+  cleanup:
+  - '{PY_cleanup_decref}({py_var});'
+  cxx_local_var: pointer
+  declare:
+  - PyObject * {pytmp_var} = {nullptr};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_struct_scalar_in_numpy
+  need_numpy: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_parse:
+  - Py_INCREF({PYN_descr});
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FromAny(\t{pytmp_var},\t\
+    \ {PYN_descr},\t 0,\t 1,\t NPY_ARRAY_IN_ARRAY,\t {nullptr}){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {c_type}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - "{cxx_var} = static_cast<{cxx_type} *>\t(PyArray_DATA({py_var}));"
+py_vector_in_list:
+  c_helper: create_from_PyObject_vector_{cxx_T}
+  cxx_local_var: scalar
+  declare:
+  - PyObject * {pytmp_var};
+  goto_fail: true
+  name: py_vector_in_list
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_declare:
+  - std::vector<{cxx_T}> {cxx_var};
+  pre_call:
+  - "if ({hnamefunc0}\t({pytmp_var},\t \"{c_var}\",\t {cxx_var}) == -1)"
+  - +goto fail;-
+py_vector_in_numpy:
+  cxx_local_var: scalar
+  declare:
+  - PyObject * {pytmp_var};
+  - PyArrayObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_vector_in_numpy
+  need_numpy: true
+  parse_args:
+  - '&{pytmp_var}'
+  parse_format: O
+  post_declare:
+  - std::vector<{cxx_T}> {cxx_var};
+  - '{cxx_T} * {data_var};'
+  post_parse:
+  - "{py_var} = {cast_reinterpret}PyArrayObject *{cast1}PyArray_FROM_OTF(\t{pytmp_var},\t\
+    \ {numpy_type},\t NPY_ARRAY_IN_ARRAY){cast2};"
+  - if ({py_var} == {nullptr}) {{+
+  - "PyErr_SetString(PyExc_ValueError,\t \"{c_var} must be a 1-D array of {cxx_T}\"\
+    );"
+  - goto fail;
+  - -}}
+  pre_call:
+  - '{data_var} = static_cast<{cxx_T} *>(PyArray_DATA({py_var}));'
+  - "{cxx_var}.assign(\t{data_var},\t {data_var}+PyArray_SIZE({py_var}));"
+py_vector_out_list:
+  c_helper: to_PyList_vector_{cxx_T}
+  cxx_local_var: scalar
+  declare:
+  - PyObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_vector_out_list
+  object_created: true
+  post_call:
+  - "{py_var} = {hnamefunc0}\t({cxx_var});"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_declare:
+  - std::vector<{cxx_T}> {cxx_var};
+py_vector_out_numpy:
+  allocate_local_var: true
+  arg_call:
+  - '*{cxx_var}'
+  cxx_local_var: pointer
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_vector_out_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - '{npy_dims_var}[0] = {cxx_var}->size();'
+  - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
+    \ {cxx_var}->data());"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_vector_result_list:
+  declare:
+  - PyObject * {py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_vector_result_list
+  object_created: true
+  post_call:
+  - "{py_var} = SHROUD_to_PyList_vector_{cxx_T}\t({cxx_var});"
+  - if ({py_var} == {nullptr}) goto fail;
+py_vector_result_numpy:
+  allocate_local_var: true
+  declare:
+  - '{npy_intp_decl}PyObject * {py_var} = {nullptr};'
+  declare_capsule:
+  - PyObject *{py_capsule} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  fail_capsule:
+  - Py_XDECREF({py_capsule});
+  goto_fail: true
+  name: py_vector_result_numpy
+  need_numpy: true
+  object_created: true
+  post_call:
+  - '{npy_dims_var}[0] = {cxx_var}->size();'
+  - "{py_var} = PyArray_SimpleNewFromData({npy_rank},\t {npy_dims_var},\t {numpy_type},\t\
+    \ {cxx_var}->data());"
+  - if ({py_var} == {nullptr}) goto fail;
+  post_call_capsule:
+  - "{py_capsule} = PyCapsule_New({cxx_var}, \"{PY_numpy_array_capsule_name}\", \t\
+    {PY_capsule_destructor_function});"
+  - if ({py_capsule} == {nullptr}) goto fail;
+  - "PyCapsule_SetContext({py_capsule},\t {PY_fetch_context_function}({capsule_order}));"
+  - "if (PyArray_SetBaseObject(\t{cast_reinterpret}PyArrayObject *{cast1}{py_var}{cast2},\t\
+    \ {py_capsule}) < 0)\t goto fail;"
+py_void_*&_out:
+  arg_call:
+  - '{c_var}'
+  arg_declare:
+  - void *{c_var};
+  fmtdict:
+    ctor_expr: '{cxx_var}'
+  name: py_void_*&_out
+py_void_**_out:
+  arg_call:
+  - '&{c_var}'
+  arg_declare:
+  - void *{c_var};
+  fmtdict:
+    ctor_expr: '{cxx_var}'
+  name: py_void_**_out
+py_void_*_in:
+  arg_call:
+  - '{c_var}'
+  declare:
+  - PyObject *{py_var};
+  goto_fail: true
+  name: py_void_*_in
+  parse_args:
+  - '&{py_var}'
+  parse_format: O
+  post_parse:
+  - '{c_var} = PyCapsule_GetPointer({py_var}, NULL);'
+  - if (PyErr_Occurred())
+  - +goto fail;-
+py_void_*_result:
+  fmtdict:
+    ctor_expr: '{cxx_var}'
+  name: py_void_*_result
+***** Lua
+root
+  lua
+    bool
+      scalar
+        in -- lua_bool_scalar_in
+        result -- lua_bool_scalar_result
+    mixin
+      callfunction -- lua_mixin_callfunction
+      push -- lua_mixin_push
+    native
+      *
+        inout -- lua_native_*_inout
+      scalar
+        in -- lua_native_scalar_in
+        result -- lua_native_scalar_result
+    shadow
+      *
+        in -- lua_shadow_*_in
+        result -- lua_shadow_*_result
+      ctor -- lua_shadow_ctor
+      dtor -- lua_shadow_dtor
+    string
+      &
+        in -- lua_string_&_in
+        result -- lua_string_&_result
+      *
+        in -- lua_string_*_in
+      scalar
+        result -- lua_string_scalar_result
+    subroutine -- lua_subroutine
+    void
+      *
+        result -- lua_void_*_result
+lua_bool_scalar_in:
+  name: lua_bool_scalar_in
+  pre_call:
+  - bool {c_var} = {pop_expr};
+lua_bool_scalar_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_bool_scalar_result
+  post_call:
+  - '{push_expr};'
+lua_mixin_callfunction:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_mixin_callfunction
+lua_mixin_push:
+  name: lua_mixin_push
+  post_call:
+  - '{push_expr};'
+lua_native_*_inout:
+  name: lua_native_*_inout
+  pre_call:
+  - // lua_native_*_inout;
+lua_native_scalar_in:
+  name: lua_native_scalar_in
+  pre_call:
+  - "{cxx_type} {cxx_var} =\t {pop_expr};"
+lua_native_scalar_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_native_scalar_result
+  post_call:
+  - '{push_expr};'
+lua_shadow_*_in:
+  name: lua_shadow_*_in
+  pre_call:
+  - "{cxx_type} * {cxx_var} =\t {pop_expr};"
+lua_shadow_*_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_shadow_*_result
+  post_call:
+  - '{push_expr};'
+lua_shadow_ctor:
+  call:
+  - "{LUA_userdata_type} * {LUA_userdata_var} =\t ({LUA_userdata_type} *) lua_newuserdata({LUA_state_var},\
+    \ sizeof(*{LUA_userdata_var}));"
+  - "{LUA_userdata_var}->{LUA_userdata_member} =\t new {namespace_scope}{cxx_class}({cxx_call_list});"
+  - /* Add the metatable to the stack. */
+  - luaL_getmetatable(L, "{LUA_metadata}");
+  - /* Set the metatable on the userdata. */
+  - lua_setmetatable(L, -2);
+  name: lua_shadow_ctor
+lua_shadow_dtor:
+  call:
+  - delete {LUA_userdata_var}->{LUA_userdata_member};
+  - '{LUA_userdata_var}->{LUA_userdata_member} = NULL;'
+  name: lua_shadow_dtor
+lua_string_&_in:
+  name: lua_string_&_in
+  pre_call:
+  - "const char * {c_var} = \t{pop_expr};"
+lua_string_&_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_string_&_result
+  post_call:
+  - '{push_expr};'
+lua_string_*_in:
+  name: lua_string_*_in
+  pre_call:
+  - "const char * {c_var} = \t{pop_expr};"
+lua_string_scalar_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_string_scalar_result
+  post_call:
+  - '{push_expr};'
+lua_subroutine:
+  call:
+  - '{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_subroutine
+lua_void_*_result:
+  call:
+  - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'
+  name: lua_void_*_result
