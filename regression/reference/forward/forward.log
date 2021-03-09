@@ -2,28 +2,28 @@ Read yaml forward.yaml
 Close forward_types.yaml
 class Class3
 class Class2
-C method Class2(void)
-C method ~Class2(void)
-C method void func1(tutorial::Class1 * arg +intent(in))
-C method void acceptClass3(Class3 * arg +intent(in))
+C Class2(void)  +intent(result)
+C ~Class2(void) 
+C void func1(tutorial::Class1 * arg +intent(in)) 
+C void acceptClass3(Class3 * arg +intent(in)) 
 Close wrapClass2.h
 Close wrapClass2.cpp
-C function int passStruct1(const Cstruct1 * arg)
+C int passStruct1(const Cstruct1 * arg)  +intent(result)
 Close wrapforward.h
 Close wrapforward.cpp
 Close typesforward.h
 class Class3
 class Class2
-Fortran Class2(void)
-Fortran ~Class2(void)
-Fortran void func1(tutorial::Class1 * arg +intent(in))
-Fortran void acceptClass3(Class3 * arg +intent(in))
-C-interface Class2(void)
-C-interface ~Class2(void)
-C-interface void func1(tutorial::Class1 * arg +intent(in))
-C-interface void acceptClass3(Class3 * arg +intent(in))
-Fortran int passStruct1(const Cstruct1 * arg)
-C-interface int passStruct1(const Cstruct1 * arg)
+Fortran Class2(void)  +intent(result)
+Fortran ~Class2(void) 
+Fortran void func1(tutorial::Class1 * arg +intent(in)) 
+Fortran void acceptClass3(Class3 * arg +intent(in)) 
+C-interface Class2(void)  +intent(result)
+C-interface ~Class2(void) 
+C-interface void func1(tutorial::Class1 * arg +intent(in)) 
+C-interface void acceptClass3(Class3 * arg +intent(in)) 
+Fortran int passStruct1(const Cstruct1 * arg)  +intent(result)
+C-interface int passStruct1(const Cstruct1 * arg)  +intent(result)
 Close wrapfforward.f
 class Class3
 Close pyClass3type.cpp

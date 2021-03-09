@@ -47,6 +47,7 @@ from .util import wformat, append_format, append_format_lst
 
 # The tree of Python Scope statements.
 py_tree = {}
+py_dict = {} # dictionary of Scope of all expanded py_statements.
 default_scope = None  # for statements
 
 # If multiple values are returned, save up into to build a tuple to return.
@@ -3542,9 +3543,23 @@ def update_statements_for_language(language):
         "c" or "c++"
     """
     statements.update_for_language(py_statements, language)
-    statements.update_stmt_tree(py_statements, py_tree, default_stmts)
+    statements.update_stmt_tree(py_statements, py_dict, py_tree, default_stmts)
     global default_scope
     default_scope = statements.default_scopes["py"]
+
+
+def write_stmts_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    statements.print_tree_index(py_tree, lines)
+    fp.writelines(lines)
+    statements.print_tree_statements(fp, py_dict, default_stmts)
+
 
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(py_tree, path)

@@ -1,36 +1,36 @@
 Read yaml cxxlibrary.yaml
 Close cxxlibrary_types.yaml
 struct Cstruct1
-C function int passStructByReference(Cstruct1 & arg)
-C function int passStructByReferenceIn(const Cstruct1 & arg)
-C function void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
-C function void passStructByReferenceOut(Cstruct1 & arg +intent(out))
+C int passStructByReference(Cstruct1 & arg)  +intent(result)
+C int passStructByReferenceIn(const Cstruct1 & arg)  +intent(result)
+C void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
+C void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
 Close wrapcxxlibrary_structns.h
 Close wrapcxxlibrary_structns.cpp
-C function bool defaultPtrIsNULL(void)
-C function bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))
-C function void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))
-C function void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)
+C bool defaultPtrIsNULL(void)  +intent(result)
+C bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(result)
+C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
+C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
 Close typescxxlibrary.h
-Fortran bool defaultPtrIsNULL(void)
-Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))
-Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))
-Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)
-C-interface bool defaultPtrIsNULL(void)
-C-interface bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))
-C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))
-C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)
+Fortran bool defaultPtrIsNULL(void)  +intent(result)
+Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(result)
+Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
+Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
+C-interface bool defaultPtrIsNULL(void)  +intent(result)
+C-interface bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(result)
+C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
+C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
 class Cstruct1
-Fortran int passStructByReference(Cstruct1 & arg)
-Fortran int passStructByReferenceIn(const Cstruct1 & arg)
-Fortran void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
-Fortran void passStructByReferenceOut(Cstruct1 & arg +intent(out))
-C-interface int passStructByReference(Cstruct1 & arg)
-C-interface int passStructByReferenceIn(const Cstruct1 & arg)
-C-interface void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
-C-interface void passStructByReferenceOut(Cstruct1 & arg +intent(out))
+Fortran int passStructByReference(Cstruct1 & arg)  +intent(result)
+Fortran int passStructByReferenceIn(const Cstruct1 & arg)  +intent(result)
+Fortran void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
+Fortran void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
+C-interface int passStructByReference(Cstruct1 & arg)  +intent(result)
+C-interface int passStructByReferenceIn(const Cstruct1 & arg)  +intent(result)
+C-interface void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
+C-interface void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
 Close wrapfcxxlibrary_structns.f
 Close wrapfcxxlibrary.f
 Python function int passStructByReference(Cstruct1 & arg)

@@ -903,6 +903,7 @@ LuaHelpers = dict(
 
 # The tree of Python Scope statements.
 lua_tree = {}
+lua_dict = {} # dictionary of Scope of all expanded lua_statements,
 default_scope = None  # for statements
 
 def update_statements_for_language(language):
@@ -917,9 +918,23 @@ def update_statements_for_language(language):
         "c" or "c++"
     """
     statements.update_for_language(lua_statements, language)
-    statements.update_stmt_tree(lua_statements, lua_tree, default_stmts)
+    statements.update_stmt_tree(lua_statements, lua_dict, lua_tree, default_stmts)
     global default_scope
     default_scope = statements.default_scopes["lua"]
+
+
+def write_stmts_tree(fp):
+    """Write out statements tree.
+
+    Parameters
+    ----------
+    fp : file
+    """
+    lines = []
+    statements.print_tree_index(lua_tree, lines)
+    fp.writelines(lines)
+    statements.print_tree_statements(fp, lua_dict, default_stmts)
+    
 
 def lookup_stmts(path):
     return statements.lookup_stmts_tree(lua_tree, path)
