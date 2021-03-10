@@ -192,21 +192,18 @@ const char * AA_example_nested_ExClass1_get_name_error_check(
 }
 
 // ----------------------------------------
-// Function:  void getNameErrorCheck
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  const string & SHF_rv +context(DSHF_rv)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
+// Function:  const string & getNameErrorCheck
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass1_get_name_error_check_bufferify(
-    const AA_example_nested_ExClass1 * self, AA_SHROUD_array *DSHF_rv)
+    const AA_example_nested_ExClass1 * self,
+    AA_SHROUD_array *SHC_rv_temp0)
 {
     const example::nested::ExClass1 *SH_this =
         static_cast<const example::nested::ExClass1 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
     const std::string & SHCXX_rv = SH_this->getNameErrorCheck();
-    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check_bufferify
 }
 

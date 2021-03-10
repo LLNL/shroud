@@ -86,17 +86,17 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_concatenate_strings_bufferify(arg1, Larg1, arg2, &
-                Larg2, DSHF_rv) &
+        subroutine c_concatenate_strings_bufferify(SHT_rv, arg1, Larg1, &
+                arg2, Larg2) &
                 bind(C, name="TUT_concatenate_strings_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: TUT_SHROUD_array
             implicit none
+            type(TUT_SHROUD_array), intent(OUT) :: SHT_rv
             character(kind=C_CHAR), intent(IN) :: arg1(*)
             integer(C_INT), value, intent(IN) :: Larg1
             character(kind=C_CHAR), intent(IN) :: arg2(*)
             integer(C_INT), value, intent(IN) :: Larg2
-            type(TUT_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_concatenate_strings_bufferify
     end interface
 
@@ -455,16 +455,17 @@ contains
     function concatenate_strings(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
+        character(len=:), allocatable :: SHT_rv
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
-        type(TUT_SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
         ! splicer begin function.concatenate_strings
-        call c_concatenate_strings_bufferify(arg1, &
+        type(TUT_SHROUD_array) :: SHT_rv_temp0
+        call c_concatenate_strings_bufferify(SHT_rv_temp0, arg1, &
             len_trim(arg1, kind=C_INT), arg2, &
-            len_trim(arg2, kind=C_INT), DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call TUT_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+            len_trim(arg2, kind=C_INT))
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call TUT_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.concatenate_strings
     end function concatenate_strings
 

@@ -59,18 +59,14 @@ const char * NS_last_function_called(void)
 }
 
 // ----------------------------------------
-// Function:  void LastFunctionCalled
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
+// Function:  const std::string & LastFunctionCalled
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
-void NS_last_function_called_bufferify(NS_SHROUD_array *DSHF_rv)
+void NS_last_function_called_bufferify(NS_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.last_function_called_bufferify
     const std::string & SHCXX_rv = LastFunctionCalled();
-    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end function.last_function_called_bufferify
 }
 

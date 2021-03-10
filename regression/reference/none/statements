@@ -26,11 +26,13 @@ root
           buf -- c_char_scalar_result_buf
           cfi -- c_char_scalar_result_cfi
     mixin
+      buf
+        character
+          result -- c_mixin_buf_character_result
       cfi
         character
           arg -- c_mixin_cfi_character_arg
-          result
-            allocatable -- c_mixin_cfi_character_result_allocatable
+          result -- c_mixin_cfi_character_result
     native
       &
         result -- c_native_*/&/**_result
@@ -359,18 +361,26 @@ c_char_*_result_buf:
   - "ShroudStrCopy({c_var}, {c_var_len},\t {cxx_var},\t -1);"
 c_char_*_result_buf_allocatable:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   c_helper: ShroudTypeDefines
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_char_*_result_buf_allocatable
+  ntemps: 1
   owner: library
   post_call:
-  - '{c_var_context}->cxx.addr = {cxx_nonconst_ptr};'
-  - '{c_var_context}->cxx.idtor = {idtor};'
-  - '{c_var_context}->addr.ccharp = {cxx_var};'
-  - '{c_var_context}->type = {sh_type};'
-  - '{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
-  - '{c_var_context}->size = 1;'
-  - '{c_var_context}->rank = 0;'
+  - '{temp0}->cxx.addr = {cxx_nonconst_ptr};'
+  - '{temp0}->cxx.idtor = {idtor};'
+  - '{temp0}->addr.ccharp = {cxx_var};'
+  - '{temp0}->type = {sh_type};'
+  - '{temp0}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});'
+  - '{temp0}->size = 1;'
+  - '{temp0}->rank = 0;'
+  return_type: void
 c_char_*_result_cfi:
   buf_args:
   - arg_decl
@@ -456,6 +466,19 @@ c_char_scalar_result_cfi:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
   - '{stdlib}memset({c_var}, '' '', {cfi_prefix}{c_var}->elem_len);'
   - '{c_var}[0] = {cxx_var};'
+c_mixin_buf_character_result:
+  buf_args:
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
+  name: c_mixin_buf_character_result
+  ntemps: 1
+  owner: library
+  return_type: void
 c_mixin_cfi_character_arg:
   buf_args:
   - arg_decl
@@ -470,16 +493,16 @@ c_mixin_cfi_character_arg:
   owner: library
   pre_call:
   - char *{cxx_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-c_mixin_cfi_character_result_allocatable:
+c_mixin_cfi_character_result:
   buf_args:
   - arg_decl
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   f_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  name: c_mixin_cfi_character_result_allocatable
+  name: c_mixin_cfi_character_result
   owner: library
 c_native_&_result:
   f_module:
@@ -835,12 +858,20 @@ c_string_&_result_buf:
   - -}}
 c_string_&_result_buf_allocatable:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   c_helper: ShroudStrToArray
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_string_&_result_buf_allocatable
+  ntemps: 1
   owner: library
   post_call:
-  - ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});
+  - "ShroudStrToArray(\t{temp0},\t {cxx_addr}{cxx_var},\t {idtor});"
+  return_type: void
 c_string_&_result_cfi:
   buf_args:
   - arg_decl
@@ -1021,12 +1052,20 @@ c_string_*_result_buf:
   - -}}
 c_string_*_result_buf_allocatable:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   c_helper: ShroudStrToArray
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_string_*_result_buf_allocatable
+  ntemps: 1
   owner: library
   post_call:
-  - ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});
+  - "ShroudStrToArray(\t{temp0},\t {cxx_addr}{cxx_var},\t {idtor});"
+  return_type: void
 c_string_*_result_cfi:
   buf_args:
   - arg_decl
@@ -1138,16 +1177,24 @@ c_string_scalar_result_buf:
   - -}}
 c_string_scalar_result_buf_allocatable:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   c_helper: ShroudStrToArray
   cxx_local_var: pointer
   destructor_name: new_string
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_string_scalar_result_buf_allocatable
+  ntemps: 1
   owner: library
   post_call:
-  - ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});
+  - ShroudStrToArray({temp0}, {cxx_var}, {idtor});
   pre_call:
   - std::string * {cxx_var} = new std::string;
+  return_type: void
 c_string_scalar_result_cfi:
   buf_args:
   - arg_decl
@@ -1400,15 +1447,20 @@ f_bool_result:
   name: f_bool_result
   need_wrapper: true
 f_char_*_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   c_helper: copy_string
-  f_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
   name: f_char_*_result_buf_allocatable
   need_wrapper: true
+  ntemps: 1
   post_call:
-  - 'allocate(character(len={c_var_context}%elem_len):: {f_var})'
-  - call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
 f_char_*_result_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1425,15 +1477,20 @@ f_char_scalar_in:
   - 'character, value, intent(IN) :: {f_var}'
   name: f_char_scalar_in
 f_char_scalar_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   c_helper: copy_string
-  f_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
   name: f_char_scalar_result_buf_allocatable
   need_wrapper: true
+  ntemps: 1
   post_call:
-  - 'allocate(character(len={c_var_context}%elem_len):: {f_var})'
-  - call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)"
 f_char_scalar_result_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1578,7 +1635,7 @@ f_native_*_result_buf_allocatable:
   name: f_native_*_result_buf_allocatable
   post_call:
   - allocate({f_var}({c_var_dimension}))
-  - call {hnamefunc0}({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))
+  - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))"
 f_native_*_result_buf_pointer:
   arg_decl:
   - '{f_type}, pointer :: {f_var}{f_assumed_shape}'
@@ -1651,15 +1708,20 @@ f_shadow_result:
   name: f_shadow_result
   need_wrapper: true
 f_string_&_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   c_helper: copy_string
-  f_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
   name: f_string_&_result_buf_allocatable
   need_wrapper: true
+  ntemps: 1
   post_call:
-  - 'allocate(character(len={c_var_context}%elem_len):: {f_var})'
-  - call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
 f_string_&_result_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1668,15 +1730,20 @@ f_string_&_result_cfi_allocatable:
   name: f_string_&_result_cfi_allocatable
   need_wrapper: true
 f_string_*_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   c_helper: copy_string
-  f_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
   name: f_string_*_result_buf_allocatable
   need_wrapper: true
+  ntemps: 1
   post_call:
-  - 'allocate(character(len={c_var_context}%elem_len):: {f_var})'
-  - call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
 f_string_*_result_cfi_allocatable:
   arg_c_call:
   - '{f_var}'
@@ -1690,15 +1757,20 @@ f_string_scalar_in:
   name: f_string_scalar_in
   need_wrapper: true
 f_string_scalar_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - 'character(len=:), allocatable :: {f_var}'
   c_helper: copy_string
-  f_helper: copy_string
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  f_helper: copy_string array_context
   name: f_string_scalar_result_buf_allocatable
   need_wrapper: true
+  ntemps: 1
   post_call:
-  - 'allocate(character(len={c_var_context}%elem_len):: {f_var})'
-  - call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)
+  - 'allocate(character(len={temp0}%elem_len):: {f_var})'
+  - "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)"
 f_string_scalar_result_cfi_allocatable:
   arg_c_call:
   - '{f_var}'

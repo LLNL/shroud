@@ -1394,7 +1394,7 @@
                             "F_C_name": "c_class1_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
                             "F_name_generic": "get_name",
@@ -1439,11 +1439,14 @@
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
+                                "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_string_scalar_result_buf_allocatable",
-                                "stmt1": "f_string_scalar_result_buf_allocatable",
-                                "stmtc0": "c_string_scalar_result_buf_allocatable",
-                                "stmtc1": "c_string_scalar_result_buf_allocatable"
+                                "stmt0": "f_string_&_result_buf_allocatable",
+                                "stmt1": "f_string_&_result_buf_allocatable",
+                                "stmtc0": "c_string_&_result_buf_allocatable",
+                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHT_rv_temp0"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -1480,42 +1483,27 @@
                         "_PTR_C_CXX_index": "8",
                         "_generated": "arg_to_buffer",
                         "ast": {
+                            "const": true,
                             "declarator": {
                                 "name": "getName",
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
                             },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "context": "DSHF_rv"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "SHF_rv",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "result"
+                            },
+                            "params": [],
                             "specifier": [
-                                "void"
+                                "std::string"
                             ],
-                            "typemap_name": "void"
+                            "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv))",
+                        "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -1525,50 +1513,13 @@
                             "c": true,
                             "f_c": true
                         },
-                        "zz_fmtargs": {
-                            "SHF_rv": {
-                                "fmtc": {
-                                    "c_addr": "",
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "SHF_rv",
-                                    "c_var_context": "DSHF_rv",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                    "cxx_type": "std::string",
-                                    "cxx_var": "SHCXX_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_SHF_rv",
-                                    "stmt0": "c_string_&_result_buf_allocatable",
-                                    "stmt1": "c_string_&_result_buf_allocatable"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SHF_rv",
-                                    "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHF_rv",
-                                    "c_var_context": "DSHF_rv",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)",
-                                    "f_var": "SHT_rv",
-                                    "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_string_&_result_buf_allocatable",
-                                    "stmt1": "f_string_&_result_buf_allocatable",
-                                    "stmtc0": "c_string_&_result_buf_allocatable",
-                                    "stmtc1": "c_string_&_result_buf_allocatable"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_get_name_bufferify",
-                            "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *DSHF_rv",
+                            "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *SHC_rv_temp0",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t DSHF_rv",
+                            "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_class1_get_name_bufferify",
+                            "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
@@ -1582,18 +1533,26 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_const": "",
-                                "c_type": "void",
+                                "c_const": "const ",
+                                "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_type": "void",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_CPTR",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_void_scalar_result_buf",
-                                "stmt1": "c_default"
+                                "stmt0": "c_string_&_result_buf_allocatable",
+                                "stmt1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHC_rv_temp0"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "character(*)"
                             }
                         }
                     },
@@ -2246,7 +2205,7 @@
                             "F_C_name": "c_class2_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t DSHF_rv",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
                             "F_name_generic": "get_name",
@@ -2291,11 +2250,14 @@
                                 "f_kind": "C_CHAR",
                                 "f_type": "character(*)",
                                 "f_var": "SHT_rv",
+                                "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
+                                "hnamefunc1": "array_context",
                                 "sh_type": "SH_TYPE_OTHER",
-                                "stmt0": "f_string_scalar_result_buf_allocatable",
-                                "stmt1": "f_string_scalar_result_buf_allocatable",
-                                "stmtc0": "c_string_scalar_result_buf_allocatable",
-                                "stmtc1": "c_string_scalar_result_buf_allocatable"
+                                "stmt0": "f_string_&_result_buf_allocatable",
+                                "stmt1": "f_string_&_result_buf_allocatable",
+                                "stmtc0": "c_string_&_result_buf_allocatable",
+                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHT_rv_temp0"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -2332,42 +2294,27 @@
                         "_PTR_C_CXX_index": "16",
                         "_generated": "arg_to_buffer",
                         "ast": {
+                            "const": true,
                             "declarator": {
                                 "name": "getName",
-                                "pointer": []
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
                             },
-                            "params": [
-                                {
-                                    "attrs": {
-                                        "context": "DSHF_rv"
-                                    },
-                                    "const": true,
-                                    "declarator": {
-                                        "name": "SHF_rv",
-                                        "pointer": [
-                                            {
-                                                "ptr": "&"
-                                            }
-                                        ]
-                                    },
-                                    "metaattrs": {
-                                        "deref": "allocatable",
-                                        "intent": "out",
-                                        "is_result": true
-                                    },
-                                    "specifier": [
-                                        "std::string"
-                                    ],
-                                    "typemap_name": "std::string"
-                                }
-                            ],
+                            "metaattrs": {
+                                "deref": "allocatable",
+                                "intent": "result"
+                            },
+                            "params": [],
                             "specifier": [
-                                "void"
+                                "std::string"
                             ],
-                            "typemap_name": "void"
+                            "typemap_name": "std::string"
                         },
                         "decl": "const std::string& getName();",
-                        "declgen": "void getName(const std::string & SHF_rv +context(DSHF_rv))",
+                        "declgen": "const std::string & getName(void)",
                         "doxygen": {
                             "brief": "test helper"
                         },
@@ -2377,50 +2324,13 @@
                             "c": true,
                             "f_c": true
                         },
-                        "zz_fmtargs": {
-                            "SHF_rv": {
-                                "fmtc": {
-                                    "c_addr": "",
-                                    "c_const": "const ",
-                                    "c_deref": "*",
-                                    "c_member": "->",
-                                    "c_var": "SHF_rv",
-                                    "c_var_context": "DSHF_rv",
-                                    "cxx_addr": "&",
-                                    "cxx_member": ".",
-                                    "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
-                                    "cxx_type": "std::string",
-                                    "cxx_var": "SHCXX_rv",
-                                    "idtor": "0",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "shadow_var": "SHadow_SHF_rv",
-                                    "stmt0": "c_string_&_result_buf_allocatable",
-                                    "stmt1": "c_string_&_result_buf_allocatable"
-                                },
-                                "fmtf": {
-                                    "F_C_var": "SHF_rv",
-                                    "F_pointer": "SHPTR_SHF_rv",
-                                    "c_var": "SHF_rv",
-                                    "c_var_context": "DSHF_rv",
-                                    "f_intent": "OUT",
-                                    "f_kind": "C_CHAR",
-                                    "f_type": "character(*)",
-                                    "f_var": "SHT_rv",
-                                    "hnamefunc0": "CLA_SHROUD_copy_string_and_free",
-                                    "sh_type": "SH_TYPE_OTHER",
-                                    "stmt0": "f_string_&_result_buf_allocatable",
-                                    "stmt1": "f_string_&_result_buf_allocatable",
-                                    "stmtc0": "c_string_&_result_buf_allocatable",
-                                    "stmtc1": "c_string_&_result_buf_allocatable"
-                                }
-                            }
-                        },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class2_get_name_bufferify",
-                            "C_prototype": "CLA_Class2 * self,\t CLA_SHROUD_array *DSHF_rv",
+                            "C_prototype": "CLA_Class2 * self,\t CLA_SHROUD_array *SHC_rv_temp0",
                             "C_return_type": "void",
-                            "F_C_arguments": "self,\t DSHF_rv",
+                            "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_class2_get_name_bufferify",
+                            "F_C_result_clause": "",
                             "F_C_subprogram": "subroutine",
                             "c_const": "",
                             "c_deref": "*",
@@ -2434,18 +2344,26 @@
                         },
                         "zz_fmtresult": {
                             "fmtc": {
-                                "c_const": "",
-                                "c_type": "void",
+                                "c_const": "const ",
+                                "c_type": "char",
                                 "c_var": "SHC_rv",
                                 "cxx_addr": "&",
                                 "cxx_member": ".",
-                                "cxx_type": "void",
+                                "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_rv)",
+                                "cxx_type": "std::string",
                                 "cxx_var": "SHCXX_rv",
                                 "idtor": "0",
-                                "sh_type": "SH_TYPE_CPTR",
+                                "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
-                                "stmt0": "c_void_scalar_result_buf",
-                                "stmt1": "c_default"
+                                "stmt0": "c_string_&_result_buf_allocatable",
+                                "stmt1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHC_rv_temp0"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "f_intent": "OUT",
+                                "f_type": "character(*)"
                             }
                         }
                     }

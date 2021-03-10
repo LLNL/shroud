@@ -89,13 +89,17 @@ arg_decl
 List of argument or result declarations.
 Usually constructed from YAML *decl* but sometimes needs to be explicit
 to add Fortran attributes such as ``TARGET`` or ``POINTER``.
-Added before splicer.
+Added before splicer since it is part of the API and must not change.
+Additional declarations can be added within the splicer via *declare*.
 
 .. code-block:: text
 
         arg_decl=[
             "character, value, intent(IN) :: {f_var}",
         ],
+
+.. result declaration is added before arguments
+   but default declaration are after declarations.
 
 arg_c_call
 ^^^^^^^^^^
@@ -113,7 +117,44 @@ declare
 A list of declarations needed by *pre_call* or *post_call*.
 Usually a *c_local_var* is sufficient.
 Implies *need_wrapper*.
-   
+Added within the splicer to make it easier to replace in the YAML file.
+
+f_import
+^^^^^^^^
+
+List of names to import into the Fortran wrapper.
+The names will be expanded before being used.
+
+In this example, Shroud creates *F_array_type* derived type in the
+module and it is used in the interface.
+
+.. code-block:: yaml
+
+        f_import=["{F_array_type}"],
+                
+f_module
+^^^^^^^^
+
+Fortran modules used in the Fortran wrapper:
+
+.. code-block:: yaml
+
+        f_module=dict(iso_c_binding=["C_PTR"]),
+
+f_module_line
+^^^^^^^^^^^^^
+
+Fortran modules used in the Fortran wrapper as a single line
+which allows format strings to be used.
+
+.. code-block:: yaml
+
+        f_module_line="iso_c_binding:{f_kind}",
+
+The format is::
+
+     module ":" symbol [ "," symbol ]* [ ";" module ":" symbol [ "," symbol ]* ]
+
 pre_call
 ^^^^^^^^
 

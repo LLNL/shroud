@@ -495,6 +495,8 @@ CStmts = util.Scope(None,
     f_result_decl=None,
     f_module=None,
     f_module_line=None,
+    f_import=None,
+    ntemps=0,
 )
 
 # Fortran Statements.
@@ -502,13 +504,17 @@ FStmts = util.Scope(None,
     name="f_default",
     c_helper="",
     c_local_var=None,
-    f_helper="", f_module=None,
+    f_helper="",
+    f_module=None,
+    f_module_line=None,
+    f_import=None,
     need_wrapper=False,
     arg_name=None,
     arg_decl=None,
     arg_c_call=None,
     declare=[], pre_call=[], call=[], post_call=[],
     result=None,  # name of result variable
+    ntemps=0,
 )
 
 # Define class for nodes in tree based on their first entry.
@@ -818,7 +824,7 @@ fc_statements = [
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}({c_var_dimension}))",
-            "call {hnamefunc0}({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1003,22 +1009,42 @@ fc_statements = [
             "\t {cxx_var},\t -1);",
         ],
     ),
+
+    dict(
+        name="c_mixin_buf_character_result",
+        # Pass array_type as argument to contain the function result.
+        buf_args=["arg_decl"],
+        ntemps=1,
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_import=["{F_array_type}"],
+        return_type="void",  # Convert to function.
+###        f_c_arg_names=["{c_var}"],
+    ),
+
+    
     dict(
         name="c_char_*_result_buf_allocatable",
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "{c_var_context}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.ccharp = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{c_var_context}->size = 1;",
-            "{c_var_context}->rank = 0;",
+            "{temp0}->cxx.addr = {cxx_nonconst_ptr};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.ccharp = {cxx_var};",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{temp0}->size = 1;",
+            "{temp0}->rank = 0;",
         ],
     ),
 
@@ -1071,14 +1097,19 @@ fc_statements = [
         name="f_char_scalar/*_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
-        f_helper="copy_string",
+        f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        post_call=[
-            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
         ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        post_call=[
+            "allocate(character(len={temp0}%elem_len):: {f_var})",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)",
+        ],
+        ntemps=1,
     ),
 
     dict(
@@ -1238,15 +1269,16 @@ fc_statements = [
         # c_string_*_result_buf_allocatable
         # c_string_&_result_buf_allocatable
         name="c_string_*/&_result_buf_allocatable",
-        # pass address of string and length back to Fortran
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
+            "ShroudStrToArray(\t{temp0},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -1256,8 +1288,9 @@ fc_statements = [
     # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
     dict(
         name="c_string_scalar_result_buf_allocatable",
-        # pass address of string and length back to Fortran
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         cxx_local_var="pointer",
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -1273,7 +1306,7 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});",
+            "ShroudStrToArray({temp0}, {cxx_var}, {idtor});",
         ],
     ),
     
@@ -1285,14 +1318,19 @@ fc_statements = [
         name="f_string_scalar/*/&_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
-        f_helper="copy_string",
+        f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        post_call=[
-            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
         ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        post_call=[
+            "allocate(character(len={temp0}%elem_len):: {f_var})",
+            "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)",
+        ],
+        ntemps=1,
     ),
     
     ########################################
@@ -1752,14 +1790,14 @@ fc_statements = [
     
     dict(
         # Function which return char * or std::string.
-        name="c_mixin_cfi_character_result_allocatable",
+        name="c_mixin_cfi_character_result",
         iface_header=["ISO_Fortran_binding.h"],
         buf_args=["arg_decl"],
         c_arg_decl=[
             "CFI_cdesc_t *{cfi_prefix}{c_var}",
         ],
         f_arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+            "character(len=*), intent({f_intent}) :: {c_var}",
         ],
     ),
     dict(
@@ -1848,12 +1886,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="c_char_*_result_cfi",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
-        ],
-        f_arg_decl=[        # replace mixin
-            # XXX - result converted into argument strings.yaml
-            #    const char * getCharPtr2() +len(30)
-            "character(len=*), intent({f_intent}) :: {c_var}",
+            "c_mixin_cfi_character_result",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -1870,7 +1903,7 @@ fc_statements = [
     dict(
         name="c_char_*_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
         ],
         return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
@@ -1982,7 +2015,10 @@ fc_statements = [
         # c_string_&_result_cfi_allocatable
         name="c_string_*/&_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
+        ],
+        f_arg_decl=[
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
@@ -2002,7 +2038,7 @@ fc_statements = [
     dict(
         name="c_string_scalar_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
         ],
         f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin

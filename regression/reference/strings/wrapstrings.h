@@ -45,7 +45,7 @@ void STR_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns);
 
 const char * STR_get_char_ptr1(void);
 
-void STR_get_char_ptr1_bufferify(STR_SHROUD_array *DSHF_rv);
+void STR_get_char_ptr1_bufferify(STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_char_ptr2(void);
 
@@ -57,17 +57,20 @@ void STR_get_char_ptr3_bufferify(char * output, int Noutput);
 
 const char * STR_get_char_ptr4(void);
 
-void STR_get_const_string_result_bufferify(STR_SHROUD_array *DSHF_rv);
+void STR_get_const_string_result_bufferify(
+    STR_SHROUD_array *SHC_rv_temp0);
 
 void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv);
 
 void STR_get_const_string_as_arg_bufferify(char * output, int Noutput);
 
-void STR_get_const_string_alloc_bufferify(STR_SHROUD_array *DSHF_rv);
+void STR_get_const_string_alloc_bufferify(
+    STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_const_string_ref_pure(void);
 
-void STR_get_const_string_ref_pure_bufferify(STR_SHROUD_array *DSHF_rv);
+void STR_get_const_string_ref_pure_bufferify(
+    STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_const_string_ref_len(void);
 
@@ -86,7 +89,7 @@ void STR_get_const_string_ref_len_empty_bufferify(char * SHF_rv,
 const char * STR_get_const_string_ref_alloc(void);
 
 void STR_get_const_string_ref_alloc_bufferify(
-    STR_SHROUD_array *DSHF_rv);
+    STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_const_string_ptr_len(void);
 
@@ -95,17 +98,17 @@ void STR_get_const_string_ptr_len_bufferify(char * SHF_rv, int NSHF_rv);
 const char * STR_get_const_string_ptr_alloc(void);
 
 void STR_get_const_string_ptr_alloc_bufferify(
-    STR_SHROUD_array *DSHF_rv);
+    STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_const_string_ptr_owns_alloc(void);
 
 void STR_get_const_string_ptr_owns_alloc_bufferify(
-    STR_SHROUD_array *DSHF_rv);
+    STR_SHROUD_array *SHC_rv_temp0);
 
 const char * STR_get_const_string_ptr_owns_alloc_pattern(void);
 
 void STR_get_const_string_ptr_owns_alloc_pattern_bufferify(
-    STR_SHROUD_array *DSHF_rv);
+    STR_SHROUD_array *SHC_rv_temp0);
 
 void STR_accept_string_const_reference(const char * arg1);
 

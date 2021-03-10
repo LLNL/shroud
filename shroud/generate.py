@@ -1819,21 +1819,12 @@ class GenFunctions(object):
                 attrs["len"] = options.C_var_len_template.format(
                     c_var=result_name
                 )
-                result_as_string.metaattrs["deref"] = None
                 # Special case for wrapf.py to override "allocatable"
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
-            elif (result_typemap.cxx_type == "std::string" or
-                  result_is_ptr):  # 'char *'
-                result_as_string = ast.result_as_arg(result_name)
-                attrs = result_as_string.attrs
-                attrs["context"] = options.C_var_context_template.format(
-                    c_var=result_name
-                )
-                self.move_arg_attributes(result_as_string, node, C_new)
-            result_as_string.metaattrs["is_result"] = True
-            C_new.ast.metaattrs["intent"] = None
-            C_new.ast.metaattrs["deref"] = None
+                result_as_string.metaattrs["is_result"] = True
+                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["deref"] = None
         elif has_vector_result:
             # Pass an argument to C wrapper for the function result.
             # XXX - string_result -> vector_result -> result

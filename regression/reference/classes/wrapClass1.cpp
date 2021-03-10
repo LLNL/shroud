@@ -286,22 +286,18 @@ const char * CLA_Class1_get_name(CLA_Class1 * self)
  *
  */
 // ----------------------------------------
-// Function:  void getName
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
+// Function:  const std::string & getName
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 // start CLA_Class1_get_name_bufferify
 void CLA_Class1_get_name_bufferify(CLA_Class1 * self,
-    CLA_SHROUD_array *DSHF_rv)
+    CLA_SHROUD_array *SHC_rv_temp0)
 {
     classes::Class1 *SH_this = static_cast<classes::Class1 *>
         (self->addr);
     // splicer begin class.Class1.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end class.Class1.method.get_name_bufferify
 }
 // end CLA_Class1_get_name_bufferify

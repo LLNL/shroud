@@ -554,7 +554,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT),\t DSHF_rv",
+                    "F_arg_c_call": "SHT_rv_temp0,\t arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -575,11 +575,14 @@
                         "f_kind": "C_CHAR",
                         "f_type": "character(*)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "TUT_SHROUD_copy_string_and_free",
+                        "hnamefunc1": "array_context",
                         "sh_type": "SH_TYPE_OTHER",
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf_allocatable",
-                        "stmtc1": "c_string_scalar_result_buf_allocatable"
+                        "stmtc1": "c_string_scalar_result_buf_allocatable",
+                        "temp0": "SHT_rv_temp0"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -615,9 +618,14 @@
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
                 "ast": {
+                    "const": true,
                     "declarator": {
                         "name": "ConcatenateStrings",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -663,38 +671,15 @@
                             ],
                             "stmts_suffix": "buf",
                             "typemap_name": "std::string"
-                        },
-                        {
-                            "attrs": {
-                                "context": "DSHF_rv"
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "std::string"
-                            ],
-                            "typemap_name": "std::string"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "std::string"
                     ],
-                    "typemap_name": "void"
+                    "typemap_name": "std::string"
                 },
                 "decl": "const std::string ConcatenateStrings( const std::string& arg1, const std::string& arg2 )",
-                "declgen": "void ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim, const std::string * SHF_rv +context(DSHF_rv))",
+                "declgen": "const std::string ConcatenateStrings(const std::string & arg1 +len_trim, const std::string & arg2 +len_trim)",
                 "doxygen": {
                     "description": "Note that since a reference is returned, no intermediate string\nis allocated.  It is assumed +owner(library).\n"
                 },
@@ -705,42 +690,6 @@
                     "f_c": true
                 },
                 "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "const ",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
-                            "cxx_type": "std::string",
-                            "cxx_var": "SHCXX_rv",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_string_scalar_result_buf_allocatable",
-                            "stmt1": "c_string_scalar_result_buf_allocatable"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "f_intent": "OUT",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "SHT_rv",
-                            "hnamefunc0": "TUT_SHROUD_copy_string_and_free",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_*_result_buf_allocatable",
-                            "stmt1": "f_string_*_result_buf_allocatable",
-                            "stmtc0": "c_string_*_result_buf_allocatable",
-                            "stmtc1": "c_string_*_result_buf_allocatable"
-                        }
-                    },
                     "arg1": {
                         "fmtc": {
                             "c_addr": "",
@@ -815,10 +764,11 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2,\t TUT_SHROUD_array *DSHF_rv",
+                    "C_prototype": "TUT_SHROUD_array *SHC_rv_temp0,\t const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2",
                     "C_return_type": "void",
-                    "F_C_arguments": "arg1,\t Larg1,\t arg2,\t Larg2,\t DSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t arg1,\t Larg1,\t arg2,\t Larg2",
                     "F_C_name": "c_concatenate_strings_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "*SHCXX_rv",
                     "function_name": "ConcatenateStrings",
@@ -827,18 +777,26 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_const": "",
-                        "c_type": "void",
+                        "c_const": "const ",
+                        "c_type": "char",
                         "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "const_cast<std::string *>\t(SHCXX_rv)",
+                        "cxx_type": "std::string",
                         "cxx_var": "SHCXX_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "idtor": "1",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
-                        "stmt1": "c_default"
+                        "stmt0": "c_string_scalar_result_buf_allocatable",
+                        "stmt1": "c_string_scalar_result_buf_allocatable",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "character(*)"
                     }
                 }
             },

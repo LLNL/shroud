@@ -31,7 +31,7 @@ extern "C" {
 const char * CLA_Class2_get_name(CLA_Class2 * self);
 
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
-    CLA_SHROUD_array *DSHF_rv);
+    CLA_SHROUD_array *SHC_rv_temp0);
 
 #ifdef __cplusplus
 }

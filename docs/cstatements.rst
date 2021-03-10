@@ -31,6 +31,8 @@ A corresponding ``bind(C)`` interface can be created for Fortran.
     {F_C_subprogram} {F_C_name}({F_C_arguments}) &
         {F_C_result_clause} &
         bind(C, name="{C_name}")
+        f_module / f_module_line
+        f_import
         arg_c_decl
     end {F_C_subprogram} {F_C_name}
 
@@ -235,6 +237,20 @@ f_result_decl
 A list of declarations in the Fortran interface for a function result value.
 
 .. c_var is set to fmt.F_result
+
+f_import
+^^^^^^^^
+
+List of names to import into the Fortran interface.
+The names will be expanded before being used.
+
+In this example, Shroud creates *F_array_type* derived type in the
+module and it is used in the interface.
+
+.. code-block:: yaml
+
+        f_import=["{F_array_type}"],
+                
 
 f_module
 ^^^^^^^^

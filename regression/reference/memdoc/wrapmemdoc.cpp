@@ -61,19 +61,16 @@ const char * STR_get_const_string_ptr_alloc(void)
 // end STR_get_const_string_ptr_alloc
 
 // ----------------------------------------
-// Function:  void getConstStringPtrAlloc
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
+// Function:  const std::string * getConstStringPtrAlloc +owner(library)
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_*_result_buf_allocatable
 // start STR_get_const_string_ptr_alloc_bufferify
-void STR_get_const_string_ptr_alloc_bufferify(STR_SHROUD_array *DSHF_rv)
+void STR_get_const_string_ptr_alloc_bufferify(
+    STR_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
-    ShroudStrToArray(DSHF_rv, SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 0);
     // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify

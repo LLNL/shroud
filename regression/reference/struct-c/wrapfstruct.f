@@ -1083,9 +1083,9 @@ contains
     function return_struct_ptr1(i, d) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
+        type(cstruct1), pointer :: SHT_rv
         integer(C_INT), value, intent(IN) :: i
         real(C_DOUBLE), value, intent(IN) :: d
-        type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr1
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_struct_ptr1_bufferify(i, d)
@@ -1134,10 +1134,10 @@ contains
     function return_struct_ptr2(i, d, outbuf) &
             result(SHT_rv)
         use iso_c_binding, only : C_DOUBLE, C_INT, C_PTR, c_f_pointer
+        type(cstruct1), pointer :: SHT_rv
         integer(C_INT), value, intent(IN) :: i
         real(C_DOUBLE), value, intent(IN) :: d
         character(len=*), intent(OUT) :: outbuf
-        type(cstruct1), pointer :: SHT_rv
         ! splicer begin function.return_struct_ptr2
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_struct_ptr2_bufferify(i, d, outbuf, &

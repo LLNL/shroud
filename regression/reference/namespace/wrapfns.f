@@ -84,18 +84,14 @@ module ns_mod
         end function c_last_function_called
 
         ! ----------------------------------------
-        ! Function:  void LastFunctionCalled
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-        ! Attrs:     +deref(allocatable)+intent(out)+is_result
+        ! Function:  const std::string & LastFunctionCalled
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result_buf_allocatable
-        subroutine c_last_function_called_bufferify(DSHF_rv) &
+        subroutine c_last_function_called_bufferify(SHT_rv) &
                 bind(C, name="NS_last_function_called_bufferify")
             import :: NS_SHROUD_array
             implicit none
-            type(NS_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(NS_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_last_function_called_bufferify
 
         ! ----------------------------------------
@@ -133,23 +129,18 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & LastFunctionCalled
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void LastFunctionCalled
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)
-        type(NS_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.last_function_called
-        call c_last_function_called_bufferify(DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call NS_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(NS_SHROUD_array) :: SHT_rv_temp0
+        call c_last_function_called_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call NS_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.last_function_called
     end function last_function_called
 

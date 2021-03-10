@@ -900,6 +900,7 @@ class Wrapc(util.WrapperMixin):
                 fmt_result.c_const = "const "
             else:
                 fmt_result.c_const = ""
+            self.name_temp_vars(result_blk, fmt_result)
 
             fmt_func.cxx_rv_decl = CXX_ast.gen_arg_as_cxx(
                 name=fmt_result.cxx_var, params=None, continuation=True
