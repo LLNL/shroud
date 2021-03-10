@@ -32,8 +32,7 @@ root
       cfi
         character
           arg -- c_mixin_cfi_character_arg
-          result
-            allocatable -- c_mixin_cfi_character_result_allocatable
+          result -- c_mixin_cfi_character_result
     native
       &
         result -- c_native_*/&/**_result
@@ -492,16 +491,16 @@ c_mixin_cfi_character_arg:
   owner: library
   pre_call:
   - char *{cxx_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
-c_mixin_cfi_character_result_allocatable:
+c_mixin_cfi_character_result:
   buf_args:
   - arg_decl
   c_arg_decl:
   - CFI_cdesc_t *{cfi_prefix}{c_var}
   f_arg_decl:
-  - 'character(len=:), intent({f_intent}), allocatable :: {c_var}'
+  - 'character(len=*), intent({f_intent}) :: {c_var}'
   iface_header:
   - ISO_Fortran_binding.h
-  name: c_mixin_cfi_character_result_allocatable
+  name: c_mixin_cfi_character_result
   owner: library
 c_native_&_result:
   f_module:

@@ -1785,14 +1785,14 @@ fc_statements = [
     
     dict(
         # Function which return char * or std::string.
-        name="c_mixin_cfi_character_result_allocatable",
+        name="c_mixin_cfi_character_result",
         iface_header=["ISO_Fortran_binding.h"],
         buf_args=["arg_decl"],
         c_arg_decl=[
             "CFI_cdesc_t *{cfi_prefix}{c_var}",
         ],
         f_arg_decl=[
-            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
+            "character(len=*), intent({f_intent}) :: {c_var}",
         ],
     ),
     dict(
@@ -1881,12 +1881,7 @@ fc_statements = [
         # Copy result into caller's buffer.
         name="c_char_*_result_cfi",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
-        ],
-        f_arg_decl=[        # replace mixin
-            # XXX - result converted into argument strings.yaml
-            #    const char * getCharPtr2() +len(30)
-            "character(len=*), intent({f_intent}) :: {c_var}",
+            "c_mixin_cfi_character_result",
         ],
         cxx_local_var=None,  # undo mixin
         pre_call=[],         # undo mixin
@@ -1903,7 +1898,7 @@ fc_statements = [
     dict(
         name="c_char_*_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
         ],
         return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
@@ -2015,7 +2010,10 @@ fc_statements = [
         # c_string_&_result_cfi_allocatable
         name="c_string_*/&_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
+        ],
+        f_arg_decl=[
+            "character(len=:), intent({f_intent}), allocatable :: {c_var}",
         ],
         return_type="void",  # Convert to function.
         f_c_arg_names=["{c_var}"],
@@ -2035,7 +2033,7 @@ fc_statements = [
     dict(
         name="c_string_scalar_result_cfi_allocatable",
         mixin=[
-            "c_mixin_cfi_character_result_allocatable",
+            "c_mixin_cfi_character_result",
         ],
         f_c_arg_names=["{c_var}"],
         f_arg_decl=[        # replace mixin
