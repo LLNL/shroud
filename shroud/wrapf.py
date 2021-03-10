@@ -678,6 +678,29 @@ rv = .false.
                     node, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface(cls, node, fileinfo)
 
+    def add_module_from_stmts(self, blk, modules, imports, fmt):
+        """Add USE/IMPORT statements defined in blk.
+
+        Parameters
+        ----------
+        blk : Scope
+        modules : dict
+            Indexed as [module][symbol]
+        imports : dict
+            Indexed as [symbol]
+        fmt : Scope
+        """
+        if blk.f_module:
+            self.update_f_module(
+                modules, imports, blk.f_module)
+        if blk.f_module_line:
+            self.update_f_module_line(
+                modules, imports, blk.f_module_line, fmt)
+        if blk.f_import:
+            for name in blk.f_import:
+                iname = wformat(name, fmt)
+                imports[iname] = True
+
     def update_f_module_line(self, modules, imports, line, fmt):
         """Aggragate the information from f_module_line into modules.
         
@@ -1031,16 +1054,7 @@ rv = .false.
                     arg_c_names.append(fmt.F_C_var)
                 for arg in intent_blk.f_arg_decl:
                     append_format(arg_c_decl, arg, fmt)
-                if intent_blk.f_module:
-                    self.update_f_module(
-                        modules, imports, intent_blk.f_module)
-                if intent_blk.f_module_line:
-                    self.update_f_module_line(
-                        modules, imports, intent_blk.f_module_line, fmt)
-                if intent_blk.f_import:
-                    for name in intent_blk.f_import:
-                        iname = wformat(name, fmt)
-                        imports[iname] = True
+                self.add_module_from_stmts(intent_blk, modules, imports, fmt)
                 continue
 
             buf_arg_name = attrs[buf_arg]
@@ -1280,12 +1294,7 @@ rv = .false.
             if c_result_blk.f_result_decl is not None:
                 for arg in c_result_blk.f_result_decl:
                     append_format(arg_c_decl, arg, fmt_result)
-                if c_result_blk.f_module:
-                    self.update_f_module(
-                        modules, imports, c_result_blk.f_module)
-                if c_result_blk.f_module_line:
-                    self.update_f_module_line(
-                        modules, imports, c_result_blk.f_module_line, fmt_result)
+                self.add_module_from_stmts(c_result_blk, modules, imports, fmt_result)
             elif c_result_blk.return_cptr:
                 arg_c_decl.append("type(C_PTR) %s" % fmt_func.F_result)
                 self.set_f_module(modules, "iso_c_binding", "C_PTR")
@@ -1474,7 +1483,7 @@ rv = .false.
         return need_wrapper
         A wrapper is needed if code is added.
         """
-        self.update_f_module(modules, imports, intent_blk.f_module)
+        self.add_module_from_stmts(intent_blk, modules, imports, fmt)
 
         if intent_blk.c_helper:
             fileinfo.add_c_helper(intent_blk.c_helper, fmt)
@@ -1610,7 +1619,7 @@ rv = .false.
         pre_call = []
         call = []
         post_call = []
-        modules = {}  # indexed as [module][variable]
+        modules = {}  # indexed as [module][symbol]
         imports = {}
         stmts_comments = []
 
@@ -1857,6 +1866,7 @@ rv = .false.
                             append_format(arg_f_names, aname, fmt_result)
                     else:
                         arg_f_names.append(fmt_arg.f_var)
+                    self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
                     # Generate declaration from argument.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(pass_obj=pass_obj))
