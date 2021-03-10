@@ -696,26 +696,26 @@ rv = .false.
                 append_format(arg_f_names, aname, fmt)
         return found
 
-    def add_module_from_stmts(self, blk, modules, imports, fmt):
-        """Add USE/IMPORT statements defined in blk.
+    def add_module_from_stmts(self, stmt, modules, imports, fmt):
+        """Add USE/IMPORT statements defined in stmt.
 
         Parameters
         ----------
-        blk : Scope
+        stmt : Scope
         modules : dict
             Indexed as [module][symbol]
         imports : dict
             Indexed as [symbol]
         fmt : Scope
         """
-        if blk.f_module:
+        if stmt.f_module:
             self.update_f_module(
-                modules, imports, blk.f_module)
-        if blk.f_module_line:
+                modules, imports, stmt.f_module)
+        if stmt.f_module_line:
             self.update_f_module_line(
-                modules, imports, blk.f_module_line, fmt)
-        if blk.f_import:
-            for name in blk.f_import:
+                modules, imports, stmt.f_module_line, fmt)
+        if stmt.f_import:
+            for name in stmt.f_import:
                 iname = wformat(name, fmt)
                 imports[iname] = True
 
