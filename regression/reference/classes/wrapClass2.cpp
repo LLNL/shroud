@@ -69,21 +69,17 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
  *
  */
 // ----------------------------------------
-// Function:  void getName
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
-// ----------------------------------------
-// Argument:  const std::string & SHF_rv +context(DSHF_rv)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
+// Function:  const std::string & getName
+// Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
-    CLA_SHROUD_array *DSHF_rv)
+    CLA_SHROUD_array *AAASHC_rv)
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStrToArray(DSHF_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(AAASHC_rv, &SHCXX_rv, 0);
     // splicer end class.Class2.method.get_name_bufferify
 }
 

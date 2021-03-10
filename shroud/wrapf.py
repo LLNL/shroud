@@ -1751,6 +1751,7 @@ rv = .false.
         #
         f_args = ast.params
         f_index = -1  # index into f_args
+        have_f_arg = False
         for c_arg in C_node.ast.params:
             arg_name = c_arg.name
             fmt_arg0 = fmtargs.setdefault(arg_name, {})
@@ -1782,6 +1783,7 @@ rv = .false.
                     fmt_arg.c_var = fmt_func.F_result
                     fmt_arg.f_var = fmt_func.F_result
                     need_wrapper = True
+                    have_f_arg = True
             if not is_f_arg:
                 # Pass result as an argument to the C++ function.
                 f_arg = c_arg
@@ -1877,6 +1879,7 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
                 elif f_intent_blk.arg_decl:
+                    # Explicit declarations from fc_statements.
                     self.add_stmt_declaration(
                         f_intent_blk, arg_f_decl, arg_c_call, arg_f_names, fmt_arg)
                     if not f_result_blk.arg_name:
@@ -2073,6 +2076,17 @@ rv = .false.
                 need_wrapper, fileinfo,
                 fmt_result,
                 node.fstatements["f"],
+                modules,
+                imports,
+                declare,
+                pre_call,
+                post_call,
+            )
+        elif not have_f_arg:
+            need_wrapper = self.add_code_from_statements(
+                need_wrapper, fileinfo,
+                fmt_result,
+                f_result_blk,
                 modules,
                 imports,
                 declare,

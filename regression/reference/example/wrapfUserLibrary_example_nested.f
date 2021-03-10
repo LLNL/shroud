@@ -263,20 +263,16 @@ module userlibrary_example_nested_mod
         end function c_exclass1_get_name_error_check
 
         ! ----------------------------------------
-        ! Function:  void getNameErrorCheck
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  const string & SHF_rv +context(DSHF_rv)
-        ! Attrs:     +deref(allocatable)+intent(out)+is_result
+        ! Function:  const string & getNameErrorCheck
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result_buf_allocatable
         subroutine c_exclass1_get_name_error_check_bufferify(self, &
-                DSHF_rv) &
+                SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass1_get_name_error_check_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_exclass1_get_name_error_check_bufferify
 
         ! ----------------------------------------
@@ -489,19 +485,15 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name2
 
         ! ----------------------------------------
-        ! Function:  void getName2
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  const string & SHF_rv +context(DSHF_rv)
-        ! Attrs:     +deref(allocatable)+intent(out)+is_result
+        ! Function:  const string & getName2
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result_buf_allocatable
-        subroutine c_exclass2_get_name2_bufferify(self, DSHF_rv) &
+        subroutine c_exclass2_get_name2_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name2_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_get_name2_bufferify
 
         ! ----------------------------------------
@@ -520,19 +512,15 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name3
 
         ! ----------------------------------------
-        ! Function:  void getName3
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  string & SHF_rv +context(DSHF_rv)
-        ! Attrs:     +deref(allocatable)+intent(out)+is_result
+        ! Function:  string & getName3
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result_buf_allocatable
-        subroutine c_exclass2_get_name3_bufferify(self, DSHF_rv) &
+        subroutine c_exclass2_get_name3_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name3_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_get_name3_bufferify
 
         ! ----------------------------------------
@@ -551,19 +539,15 @@ module userlibrary_example_nested_mod
         end function c_exclass2_get_name4
 
         ! ----------------------------------------
-        ! Function:  void getName4
-        ! Requested: c_void_scalar_result_buf
-        ! Match:     c_default
-        ! ----------------------------------------
-        ! Argument:  string & SHF_rv +context(DSHF_rv)
-        ! Attrs:     +deref(allocatable)+intent(out)+is_result
+        ! Function:  string & getName4
+        ! Attrs:     +deref(allocatable)+intent(result)
         ! Exact:     c_string_&_result_buf_allocatable
-        subroutine c_exclass2_get_name4_bufferify(self, DSHF_rv) &
+        subroutine c_exclass2_get_name4_bufferify(self, SHT_rv) &
                 bind(C, name="AA_example_nested_ExClass2_get_name4_bufferify")
             import :: AA_SHROUD_array, AA_SHROUD_capsule_data
             implicit none
             type(AA_SHROUD_capsule_data), intent(IN) :: self
-            type(AA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(AA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_exclass2_get_name4_bufferify
 
         ! ----------------------------------------
@@ -1404,25 +1388,19 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getNameErrorCheck
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getNameErrorCheck
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
+        type(AA_SHROUD_array) :: SHT_ptr
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
-            DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+            SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
@@ -1642,24 +1620,18 @@ contains
     ! ----------------------------------------
     ! Function:  const string & getName2
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getName2
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
-        call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(AA_SHROUD_array) :: SHT_ptr
+        call c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function exclass2_get_name2
 
@@ -1667,24 +1639,18 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName3
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getName3
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
-        call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(AA_SHROUD_array) :: SHT_ptr
+        call c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function exclass2_get_name3
 
@@ -1692,24 +1658,18 @@ contains
     ! ----------------------------------------
     ! Function:  string & getName4
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getName4
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
-        call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(AA_SHROUD_array) :: SHT_ptr
+        call c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function exclass2_get_name4
 

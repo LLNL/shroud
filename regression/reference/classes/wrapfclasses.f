@@ -363,21 +363,17 @@ module classes_mod
     ! end c_class1_get_name
 
     ! ----------------------------------------
-    ! Function:  void getName
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string & getName
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     ! start c_class1_get_name_bufferify
     interface
-        subroutine c_class1_get_name_bufferify(self, DSHF_rv) &
+        subroutine c_class1_get_name_bufferify(self, SHT_rv) &
                 bind(C, name="CLA_Class1_get_name_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_class1_get_name_bufferify
     end interface
     ! end c_class1_get_name_bufferify
@@ -486,20 +482,16 @@ module classes_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void getName
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string & getName
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     interface
-        subroutine c_class2_get_name_bufferify(self, DSHF_rv) &
+        subroutine c_class2_get_name_bufferify(self, SHT_rv) &
                 bind(C, name="CLA_Class2_get_name_bufferify")
             import :: CLA_SHROUD_array, CLA_SHROUD_capsule_data
             implicit none
             type(CLA_SHROUD_capsule_data), intent(IN) :: self
-            type(CLA_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(CLA_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_class2_get_name_bufferify
     end interface
 
@@ -1046,14 +1038,8 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getName
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1064,11 +1050,11 @@ contains
             result(SHT_rv)
         class(class1) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(CLA_SHROUD_array) :: DSHF_rv
         ! splicer begin class.Class1.method.get_name
-        call c_class1_get_name_bufferify(obj%cxxmem, DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(CLA_SHROUD_array) :: SHT_ptr
+        call c_class1_get_name_bufferify(obj%cxxmem, SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
@@ -1193,14 +1179,8 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string & getName
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Exact:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getName
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string & SHF_rv +context(DSHF_rv)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Exact:     f_string_&_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_&_result_buf_allocatable
     !>
     !! \brief test helper
@@ -1210,11 +1190,11 @@ contains
             result(SHT_rv)
         class(class2) :: obj
         character(len=:), allocatable :: SHT_rv
-        type(CLA_SHROUD_array) :: DSHF_rv
         ! splicer begin class.Class2.method.get_name
-        call c_class2_get_name_bufferify(obj%cxxmem, DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(CLA_SHROUD_array) :: SHT_ptr
+        call c_class2_get_name_bufferify(obj%cxxmem, SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end class.Class2.method.get_name
     end function class2_get_name
 

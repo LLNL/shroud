@@ -103,9 +103,9 @@ double TUT_pass_by_value(double arg1, int arg2)
  * is allocated.  It is assumed +owner(library).
  */
 // ----------------------------------------
-// Function:  void ConcatenateStrings
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
+// Function:  const std::string ConcatenateStrings
+// Attrs:     +deref(allocatable)+intent(result)
+// Exact:     c_string_scalar_result_buf_allocatable
 // ----------------------------------------
 // Argument:  const std::string & arg1 +len_trim(Larg1)
 // Attrs:     +intent(in)
@@ -114,19 +114,15 @@ double TUT_pass_by_value(double arg1, int arg2)
 // Argument:  const std::string & arg2 +len_trim(Larg2)
 // Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
-// ----------------------------------------
-// Argument:  const std::string * SHF_rv +context(DSHF_rv)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
-// Exact:     c_string_scalar_result_buf_allocatable
-void TUT_concatenate_strings_bufferify(const char * arg1, int Larg1,
-    const char * arg2, int Larg2, TUT_SHROUD_array *DSHF_rv)
+void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *AAASHC_rv,
+    const char * arg1, int Larg1, const char * arg2, int Larg2)
 {
     // splicer begin function.concatenate_strings_bufferify
     const std::string SHCXX_arg1(arg1, Larg1);
     const std::string SHCXX_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(DSHF_rv, SHCXX_rv, 1);
+    ShroudStrToArray(AAASHC_rv, SHCXX_rv, 1);
     // splicer end function.concatenate_strings_bufferify
 }
 

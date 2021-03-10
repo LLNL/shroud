@@ -11,7 +11,7 @@ C Class1 * returnThisBuffer(std::string & name +intent(in), bool flag +value)  +
 C Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)  +intent(result)
 C Class1 * getclass3(void) const  +intent(result)
 C const std::string & getName(void)  +deref(allocatable)+intent(result)
-C void getName(const std::string & SHF_rv +context(DSHF_rv)) 
+C const std::string & getName(void)  +deref(allocatable)+intent(result)
 C DIRECTION directionFunc(DIRECTION arg +value)  +intent(result)
 C int getM_flag(void) 
 C int getTest(void) 
@@ -20,7 +20,7 @@ Close wrapClass1.h
 Close wrapClass1.cpp
 class Class2
 C const std::string & getName(void)  +deref(allocatable)+intent(result)
-C void getName(const std::string & SHF_rv +context(DSHF_rv)) 
+C const std::string & getName(void)  +deref(allocatable)+intent(result)
 Close wrapClass2.h
 Close wrapClass2.cpp
 class Singleton
@@ -75,7 +75,7 @@ C-interface Class1 * returnThisBuffer(std::string & name +intent(in), bool flag 
 C-interface Class1 * returnThisBuffer(std::string & name +intent(in)+len_trim, bool flag +value)  +intent(result)
 C-interface Class1 * getclass3(void) const  +intent(result)
 C-interface const std::string & getName(void)  +deref(allocatable)+intent(result)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)) 
+C-interface const std::string & getName(void)  +deref(allocatable)+intent(result)
 C-interface DIRECTION directionFunc(DIRECTION arg +value)  +intent(result)
 C-interface int getM_flag(void) 
 C-interface int getTest(void) 
@@ -83,7 +83,7 @@ C-interface void setTest(int val +intent(in)+value)
 class Class2
 Fortran const std::string & getName(void)  +deref(allocatable)+intent(result)
 C-interface const std::string & getName(void)  +deref(allocatable)+intent(result)
-C-interface void getName(const std::string & SHF_rv +context(DSHF_rv)) 
+C-interface const std::string & getName(void)  +deref(allocatable)+intent(result)
 class Singleton
 Fortran static Singleton & getReference(void)  +intent(result)
 C-interface static Singleton & getReference(void)  +intent(result)

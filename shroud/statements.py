@@ -1007,22 +1007,41 @@ fc_statements = [
             "\t {cxx_var},\t -1);",
         ],
     ),
+
+    dict(
+        name="c_mixin_buf_character_result",
+        # Pass array_type as argument to contain the function result.
+        buf_args=["arg_decl"],
+        c_arg_decl=[
+            "{C_array_type} *AAA{c_var}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_import=["{F_array_type}"],
+        return_type="void",  # Convert to function.
+###        f_c_arg_names=["{c_var}"],
+    ),
+
+    
     dict(
         name="c_char_*_result_buf_allocatable",
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "{c_var_context}->cxx.addr = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.ccharp = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "{c_var_context}->size = 1;",
-            "{c_var_context}->rank = 0;",
+            "AAA{c_var}->cxx.addr = {cxx_nonconst_ptr};",
+            "AAA{c_var}->cxx.idtor = {idtor};",
+            "AAA{c_var}->addr.ccharp = {cxx_var};",
+            "AAA{c_var}->type = {sh_type};",
+            "AAA{c_var}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "AAA{c_var}->size = 1;",
+            "AAA{c_var}->rank = 0;",
         ],
     ),
 
@@ -1075,13 +1094,17 @@ fc_statements = [
         name="f_char_scalar/*_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
-        f_helper="copy_string",
+        f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
+        declare=[
+            "type({F_array_type}) :: {F_pointer}",
+        ],
+        arg_c_call=["{F_pointer}"],  # Pass result as an argument.
         post_call=[
-            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "allocate(character(len={F_pointer}%elem_len):: {f_var})",
+            "call {hnamefunc0}({F_pointer}, {f_var}, {F_pointer}%elem_len)",
         ],
     ),
 
@@ -1242,15 +1265,16 @@ fc_statements = [
         # c_string_*_result_buf_allocatable
         # c_string_&_result_buf_allocatable
         name="c_string_*/&_result_buf_allocatable",
-        # pass address of string and length back to Fortran
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "ShroudStrToArray({c_var_context}, {cxx_addr}{cxx_var}, {idtor});",
+            "ShroudStrToArray(AAA{c_var}, {cxx_addr}{cxx_var}, {idtor});",
         ],
     ),
 
@@ -1260,8 +1284,9 @@ fc_statements = [
     # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
     dict(
         name="c_string_scalar_result_buf_allocatable",
-        # pass address of string and length back to Fortran
-        buf_args=["context"],
+        mixin=[
+            "c_mixin_buf_character_result",
+        ],
         cxx_local_var="pointer",
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -1277,7 +1302,7 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "ShroudStrToArray({c_var_context}, {cxx_var}, {idtor});",
+            "ShroudStrToArray(AAA{c_var}, {cxx_var}, {idtor});",
         ],
     ),
     
@@ -1289,13 +1314,17 @@ fc_statements = [
         name="f_string_scalar/*/&_result_buf_allocatable",
         need_wrapper=True,
         c_helper="copy_string",
-        f_helper="copy_string",
+        f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
+        declare=[
+            "type({F_array_type}) :: {F_pointer}",
+        ],
+        arg_c_call=["{F_pointer}"],  # Pass result as an argument.
         post_call=[
-            "allocate(character(len={c_var_context}%elem_len):: {f_var})",
-            "call {hnamefunc0}({c_var_context}, {f_var}, {c_var_context}%elem_len)",
+            "allocate(character(len={F_pointer}%elem_len):: {f_var})",
+            "call {hnamefunc0}({F_pointer}, {f_var}, {F_pointer}%elem_len)",
         ],
     ),
     

@@ -66,20 +66,16 @@ module memdoc_mod
     ! end c_get_const_string_ptr_alloc
 
     ! ----------------------------------------
-    ! Function:  void getConstStringPtrAlloc
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_buf_allocatable
     ! start c_get_const_string_ptr_alloc_bufferify
     interface
-        subroutine c_get_const_string_ptr_alloc_bufferify(DSHF_rv) &
+        subroutine c_get_const_string_ptr_alloc_bufferify(SHT_rv) &
                 bind(C, name="STR_get_const_string_ptr_alloc_bufferify")
             import :: STR_SHROUD_array
             implicit none
-            type(STR_SHROUD_array), intent(OUT) :: DSHF_rv
+            type(STR_SHROUD_array), intent(OUT) :: SHT_rv
         end subroutine c_get_const_string_ptr_alloc_bufferify
     end interface
     ! end c_get_const_string_ptr_alloc_bufferify
@@ -108,25 +104,19 @@ contains
     ! ----------------------------------------
     ! Function:  const std::string * getConstStringPtrAlloc +owner(library)
     ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: f_string_scalar_result_buf_allocatable_library
-    ! Match:     f_string_scalar_result_buf_allocatable
-    ! Function:  void getConstStringPtrAlloc
-    ! Exact:     c_string_scalar_result_buf_allocatable
-    ! ----------------------------------------
-    ! Argument:  const std::string * SHF_rv +context(DSHF_rv)+owner(library)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Exact:     f_string_*_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
+    ! Requested: f_string_*_result_buf_allocatable_library
+    ! Match:     f_string_*_result_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     c_string_*_result_buf_allocatable
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
-        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
-        allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(DSHF_rv, SHT_rv, DSHF_rv%elem_len)
+        type(STR_SHROUD_array) :: SHT_ptr
+        call c_get_const_string_ptr_alloc_bufferify(SHT_ptr)
+        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
     ! end get_const_string_ptr_alloc
