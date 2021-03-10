@@ -30,7 +30,7 @@ extern "C" {
 
 const char * NS_last_function_called(void);
 
-void NS_last_function_called_bufferify(NS_SHROUD_array *AAASHC_rv);
+void NS_last_function_called_bufferify(NS_SHROUD_array *SHC_rv_temp0);
 
 void NS_one(void);
 

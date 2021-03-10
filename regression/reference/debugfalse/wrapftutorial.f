@@ -459,12 +459,13 @@ contains
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         ! splicer begin function.concatenate_strings
-        type(TUT_SHROUD_array) :: SHT_ptr
-        call c_concatenate_strings_bufferify(SHT_ptr, arg1, &
+        type(TUT_SHROUD_array) :: SHT_rv_temp0
+        call c_concatenate_strings_bufferify(SHT_rv_temp0, arg1, &
             len_trim(arg1, kind=C_INT), arg2, &
             len_trim(arg2, kind=C_INT))
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call TUT_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call TUT_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.concatenate_strings
     end function concatenate_strings
 

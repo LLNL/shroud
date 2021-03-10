@@ -113,10 +113,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ptr_alloc_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
     ! end get_const_string_ptr_alloc

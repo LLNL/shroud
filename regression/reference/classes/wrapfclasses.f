@@ -1051,10 +1051,11 @@ contains
         class(class1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class1.method.get_name
-        type(CLA_SHROUD_array) :: SHT_ptr
-        call c_class1_get_name_bufferify(obj%cxxmem, SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(CLA_SHROUD_array) :: SHT_rv_temp0
+        call c_class1_get_name_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end class.Class1.method.get_name
     end function class1_get_name
     ! end class1_get_name
@@ -1191,10 +1192,11 @@ contains
         class(class2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin class.Class2.method.get_name
-        type(CLA_SHROUD_array) :: SHT_ptr
-        call c_class2_get_name_bufferify(obj%cxxmem, SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call CLA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(CLA_SHROUD_array) :: SHT_rv_temp0
+        call c_class2_get_name_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call CLA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end class.Class2.method.get_name
     end function class2_get_name
 

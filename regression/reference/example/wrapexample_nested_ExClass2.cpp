@@ -192,13 +192,13 @@ const char * AA_example_nested_ExClass2_get_name2(
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name2_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *AAASHC_rv)
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHC_rv_temp0)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name2_bufferify
     const std::string & SHCXX_rv = SH_this->getName2();
-    ShroudStrToArray(AAASHC_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass2.method.get_name2_bufferify
 }
 
@@ -224,13 +224,14 @@ char * AA_example_nested_ExClass2_get_name3(
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name3_bufferify(
-    const AA_example_nested_ExClass2 * self, AA_SHROUD_array *AAASHC_rv)
+    const AA_example_nested_ExClass2 * self,
+    AA_SHROUD_array *SHC_rv_temp0)
 {
     const example::nested::ExClass2 *SH_this =
         static_cast<const example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name3_bufferify
     std::string & SHCXX_rv = SH_this->getName3();
-    ShroudStrToArray(AAASHC_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass2.method.get_name3_bufferify
 }
 
@@ -256,13 +257,13 @@ char * AA_example_nested_ExClass2_get_name4(
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void AA_example_nested_ExClass2_get_name4_bufferify(
-    AA_example_nested_ExClass2 * self, AA_SHROUD_array *AAASHC_rv)
+    AA_example_nested_ExClass2 * self, AA_SHROUD_array *SHC_rv_temp0)
 {
     example::nested::ExClass2 *SH_this =
         static_cast<example::nested::ExClass2 *>(self->addr);
     // splicer begin namespace.example::nested.class.ExClass2.method.get_name4_bufferify
     std::string & SHCXX_rv = SH_this->getName4();
-    ShroudStrToArray(AAASHC_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end namespace.example::nested.class.ExClass2.method.get_name4_bufferify
 }
 

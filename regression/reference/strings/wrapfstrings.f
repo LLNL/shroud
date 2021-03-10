@@ -1307,10 +1307,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_char_ptr1
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_char_ptr1_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_char_ptr1_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_char_ptr1
     end function get_char_ptr1
     ! end get_char_ptr1
@@ -1389,10 +1390,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_result
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_result_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_result_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_result
     end function get_const_string_result
 
@@ -1464,10 +1466,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_alloc
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_alloc_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_alloc_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_alloc
     end function get_const_string_alloc
 
@@ -1487,10 +1490,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_pure
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ref_pure_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ref_pure_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ref_pure
     end function get_const_string_ref_pure
     ! end get_const_string_ref_pure
@@ -1598,10 +1602,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ref_alloc
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ref_alloc_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ref_alloc_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ref_alloc
     end function get_const_string_ref_alloc
 
@@ -1651,10 +1656,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_alloc
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ptr_alloc_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ptr_alloc_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ptr_alloc
     end function get_const_string_ptr_alloc
 
@@ -1677,10 +1683,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ptr_owns_alloc_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc
     end function get_const_string_ptr_owns_alloc
 
@@ -1699,10 +1706,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
-        type(STR_SHROUD_array) :: SHT_ptr
-        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call STR_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(STR_SHROUD_array) :: SHT_rv_temp0
+        call c_get_const_string_ptr_owns_alloc_pattern_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call STR_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.get_const_string_ptr_owns_alloc_pattern
     end function get_const_string_ptr_owns_alloc_pattern
 

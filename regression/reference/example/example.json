@@ -782,7 +782,7 @@
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name_error_check",
                                             "F_name_generic": "get_name_error_check",
@@ -833,7 +833,8 @@
                                                 "stmt0": "f_string_&_result_buf_allocatable",
                                                 "stmt1": "f_string_&_result_buf_allocatable",
                                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHT_rv_temp0"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -900,7 +901,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass1_get_name_error_check_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *AAASHC_rv",
+                                            "C_prototype": "const AA_example_nested_ExClass1 * self,\t AA_SHROUD_array *SHC_rv_temp0",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass1_get_name_error_check_bufferify",
@@ -930,7 +931,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                                "stmt1": "c_string_&_result_buf_allocatable"
+                                                "stmt1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHC_rv_temp0"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2674,7 +2676,7 @@
                                             "F_C_name": "c_exclass2_get_name2",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name2",
                                             "F_name_generic": "get_name2",
@@ -2725,7 +2727,8 @@
                                                 "stmt0": "f_string_&_result_buf_allocatable",
                                                 "stmt1": "f_string_&_result_buf_allocatable",
                                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHT_rv_temp0"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2791,7 +2794,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name2_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *AAASHC_rv",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name2_bufferify",
@@ -2821,7 +2824,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                                "stmt1": "c_string_&_result_buf_allocatable"
+                                                "stmt1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHC_rv_temp0"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2876,7 +2880,7 @@
                                             "F_C_pure_clause": "pure ",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name3",
                                             "F_name_generic": "get_name3",
@@ -2927,7 +2931,8 @@
                                                 "stmt0": "f_string_&_result_buf_allocatable",
                                                 "stmt1": "f_string_&_result_buf_allocatable",
                                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHT_rv_temp0"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -2993,7 +2998,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name3_bufferify",
-                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *AAASHC_rv",
+                                            "C_prototype": "const AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name3_bufferify",
@@ -3023,7 +3028,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                                "stmt1": "c_string_&_result_buf_allocatable"
+                                                "stmt1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHC_rv_temp0"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -3076,7 +3082,7 @@
                                             "F_C_name": "c_exclass2_get_name4",
                                             "F_C_result_clause": "\fresult(SHT_rv)",
                                             "F_C_subprogram": "function",
-                                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                                             "F_arguments": "obj",
                                             "F_name_function": "get_name4",
                                             "F_name_generic": "get_name4",
@@ -3127,7 +3133,8 @@
                                                 "stmt0": "f_string_&_result_buf_allocatable",
                                                 "stmt1": "f_string_&_result_buf_allocatable",
                                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHT_rv_temp0"
                                             },
                                             "fmtl": {
                                                 "c_var": "SHCXX_rv.c_str()",
@@ -3192,7 +3199,7 @@
                                         },
                                         "zz_fmtdict": {
                                             "C_name": "AA_example_nested_ExClass2_get_name4_bufferify",
-                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *AAASHC_rv",
+                                            "C_prototype": "AA_example_nested_ExClass2 * self,\t AA_SHROUD_array *SHC_rv_temp0",
                                             "C_return_type": "void",
                                             "F_C_arguments": "self,\t SHT_rv",
                                             "F_C_name": "c_exclass2_get_name4_bufferify",
@@ -3222,7 +3229,8 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                                "stmt1": "c_string_&_result_buf_allocatable"
+                                                "stmt1": "c_string_&_result_buf_allocatable",
+                                                "temp0": "SHC_rv_temp0"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",

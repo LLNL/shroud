@@ -56,7 +56,7 @@
                     "F_C_name": "c_last_function_called",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "SHT_ptr",
+                    "F_arg_c_call": "SHT_rv_temp0",
                     "F_arguments": "",
                     "F_name_function": "last_function_called",
                     "F_name_generic": "last_function_called",
@@ -100,7 +100,8 @@
                         "stmt0": "f_string_&_result_buf_allocatable",
                         "stmt1": "f_string_&_result_buf_allocatable",
                         "stmtc0": "c_string_&_result_buf_allocatable",
-                        "stmtc1": "c_string_&_result_buf_allocatable"
+                        "stmtc1": "c_string_&_result_buf_allocatable",
+                        "temp0": "SHT_rv_temp0"
                     },
                     "fmtpy": {
                         "array_size": "1",
@@ -155,7 +156,7 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "NS_last_function_called_bufferify",
-                    "C_prototype": "NS_SHROUD_array *AAASHC_rv",
+                    "C_prototype": "NS_SHROUD_array *SHC_rv_temp0",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_last_function_called_bufferify",
@@ -180,7 +181,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_&_result_buf_allocatable",
-                        "stmt1": "c_string_&_result_buf_allocatable"
+                        "stmt1": "c_string_&_result_buf_allocatable",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

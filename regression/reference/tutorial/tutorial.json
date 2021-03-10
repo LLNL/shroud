@@ -554,7 +554,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_concatenate_strings_bufferify",
-                    "F_arg_c_call": "SHT_ptr,\t arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT)",
+                    "F_arg_c_call": "SHT_rv_temp0,\t arg1,\t len_trim(arg1, kind=C_INT),\t arg2,\t len_trim(arg2, kind=C_INT)",
                     "F_arguments": "arg1,\t arg2",
                     "F_name_function": "concatenate_strings",
                     "F_name_generic": "concatenate_strings",
@@ -581,7 +581,8 @@
                         "stmt0": "f_string_scalar_result_buf_allocatable",
                         "stmt1": "f_string_scalar_result_buf_allocatable",
                         "stmtc0": "c_string_scalar_result_buf_allocatable",
-                        "stmtc1": "c_string_scalar_result_buf_allocatable"
+                        "stmtc1": "c_string_scalar_result_buf_allocatable",
+                        "temp0": "SHT_rv_temp0"
                     },
                     "fmtl": {
                         "c_var": "SHCXX_rv.c_str()",
@@ -763,7 +764,7 @@
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_arg1,\t SHCXX_arg2",
                     "C_name": "TUT_concatenate_strings_bufferify",
-                    "C_prototype": "TUT_SHROUD_array *AAASHC_rv,\t const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2",
+                    "C_prototype": "TUT_SHROUD_array *SHC_rv_temp0,\t const char * arg1,\t int Larg1,\t const char * arg2,\t int Larg2",
                     "C_return_type": "void",
                     "F_C_arguments": "SHT_rv,\t arg1,\t Larg1,\t arg2,\t Larg2",
                     "F_C_name": "c_concatenate_strings_bufferify",
@@ -788,7 +789,8 @@
                         "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_string_scalar_result_buf_allocatable",
-                        "stmt1": "c_string_scalar_result_buf_allocatable"
+                        "stmt1": "c_string_scalar_result_buf_allocatable",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",

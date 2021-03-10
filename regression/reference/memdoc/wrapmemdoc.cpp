@@ -66,11 +66,11 @@ const char * STR_get_const_string_ptr_alloc(void)
 // Exact:     c_string_*_result_buf_allocatable
 // start STR_get_const_string_ptr_alloc_bufferify
 void STR_get_const_string_ptr_alloc_bufferify(
-    STR_SHROUD_array *AAASHC_rv)
+    STR_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.get_const_string_ptr_alloc_bufferify
     const std::string * SHCXX_rv = getConstStringPtrAlloc();
-    ShroudStrToArray(AAASHC_rv, SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 0);
     // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify

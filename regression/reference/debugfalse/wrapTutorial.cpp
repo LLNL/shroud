@@ -80,7 +80,7 @@ double TUT_pass_by_value(double arg1, int arg2)
  * Note that since a reference is returned, no intermediate string
  * is allocated.  It is assumed +owner(library).
  */
-void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *AAASHC_rv,
+void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *SHC_rv_temp0,
     const char * arg1, int Larg1, const char * arg2, int Larg2)
 {
     // splicer begin function.concatenate_strings_bufferify
@@ -88,7 +88,7 @@ void TUT_concatenate_strings_bufferify(TUT_SHROUD_array *AAASHC_rv,
     const std::string SHCXX_arg2(arg2, Larg2);
     std::string * SHCXX_rv = new std::string;
     *SHCXX_rv = tutorial::ConcatenateStrings(SHCXX_arg1, SHCXX_arg2);
-    ShroudStrToArray(AAASHC_rv, SHCXX_rv, 1);
+    ShroudStrToArray(SHC_rv_temp0, SHCXX_rv, 1);
     // splicer end function.concatenate_strings_bufferify
 }
 

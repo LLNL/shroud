@@ -73,13 +73,13 @@ const char * CLA_Class2_get_name(CLA_Class2 * self)
 // Attrs:     +deref(allocatable)+intent(result)
 // Exact:     c_string_&_result_buf_allocatable
 void CLA_Class2_get_name_bufferify(CLA_Class2 * self,
-    CLA_SHROUD_array *AAASHC_rv)
+    CLA_SHROUD_array *SHC_rv_temp0)
 {
     classes::Class2 *SH_this = static_cast<classes::Class2 *>
         (self->addr);
     // splicer begin class.Class2.method.get_name_bufferify
     const std::string & SHCXX_rv = SH_this->getName();
-    ShroudStrToArray(AAASHC_rv, &SHCXX_rv, 0);
+    ShroudStrToArray(SHC_rv_temp0, &SHCXX_rv, 0);
     // splicer end class.Class2.method.get_name_bufferify
 }
 

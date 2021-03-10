@@ -1682,6 +1682,7 @@ rv = .false.
             ["c", generated_suffix], c_result_blk, node)
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
+        self.name_temp_vars(f_result_blk, fmt_result)
 
         if options.debug:
             stmts_comments.append(

@@ -136,10 +136,11 @@ contains
             result(SHT_rv)
         character(len=:), allocatable :: SHT_rv
         ! splicer begin function.last_function_called
-        type(NS_SHROUD_array) :: SHT_ptr
-        call c_last_function_called_bufferify(SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call NS_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(NS_SHROUD_array) :: SHT_rv_temp0
+        call c_last_function_called_bufferify(SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call NS_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end function.last_function_called
     end function last_function_called
 

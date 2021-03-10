@@ -1396,11 +1396,12 @@ contains
         class(exclass1) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
-        type(AA_SHROUD_array) :: SHT_ptr
+        type(AA_SHROUD_array) :: SHT_rv_temp0
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
-            SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+            SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end namespace.example::nested.class.ExClass1.method.get_name_error_check
     end function exclass1_get_name_error_check
 
@@ -1628,10 +1629,11 @@ contains
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
-        type(AA_SHROUD_array) :: SHT_ptr
-        call c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(AA_SHROUD_array) :: SHT_rv_temp0
+        call c_exclass2_get_name2_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name2
     end function exclass2_get_name2
 
@@ -1647,10 +1649,11 @@ contains
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
-        type(AA_SHROUD_array) :: SHT_ptr
-        call c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(AA_SHROUD_array) :: SHT_rv_temp0
+        call c_exclass2_get_name3_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name3
     end function exclass2_get_name3
 
@@ -1666,10 +1669,11 @@ contains
         class(exclass2) :: obj
         character(len=:), allocatable :: SHT_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
-        type(AA_SHROUD_array) :: SHT_ptr
-        call c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_ptr)
-        allocate(character(len=SHT_ptr%elem_len):: SHT_rv)
-        call AA_SHROUD_copy_string_and_free(SHT_ptr, SHT_rv, SHT_ptr%elem_len)
+        type(AA_SHROUD_array) :: SHT_rv_temp0
+        call c_exclass2_get_name4_bufferify(obj%cxxmem, SHT_rv_temp0)
+        allocate(character(len=SHT_rv_temp0%elem_len):: SHT_rv)
+        call AA_SHROUD_copy_string_and_free(SHT_rv_temp0, SHT_rv, &
+            SHT_rv_temp0%elem_len)
         ! splicer end namespace.example::nested.class.ExClass2.method.get_name4
     end function exclass2_get_name4
 

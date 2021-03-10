@@ -496,6 +496,7 @@ CStmts = util.Scope(None,
     f_module=None,
     f_module_line=None,
     f_import=None,
+    ntemps=0,
 )
 
 # Fortran Statements.
@@ -513,6 +514,7 @@ FStmts = util.Scope(None,
     arg_c_call=None,
     declare=[], pre_call=[], call=[], post_call=[],
     result=None,  # name of result variable
+    ntemps=0,
 )
 
 # Define class for nodes in tree based on their first entry.
@@ -822,7 +824,7 @@ fc_statements = [
         post_call=[
             # XXX - allocate scalar
             "allocate({f_var}({c_var_dimension}))",
-            "call {hnamefunc0}({c_var_context}, {f_var}, size({f_var}, kind=C_SIZE_T))",
+            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
@@ -1012,8 +1014,9 @@ fc_statements = [
         name="c_mixin_buf_character_result",
         # Pass array_type as argument to contain the function result.
         buf_args=["arg_decl"],
+        ntemps=1,
         c_arg_decl=[
-            "{C_array_type} *AAA{c_var}",
+            "{C_array_type} *{temp0}",
         ],
         f_arg_decl=[
             "type({F_array_type}), intent(OUT) :: {c_var}",
@@ -1035,13 +1038,13 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "AAA{c_var}->cxx.addr = {cxx_nonconst_ptr};",
-            "AAA{c_var}->cxx.idtor = {idtor};",
-            "AAA{c_var}->addr.ccharp = {cxx_var};",
-            "AAA{c_var}->type = {sh_type};",
-            "AAA{c_var}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
-            "AAA{c_var}->size = 1;",
-            "AAA{c_var}->rank = 0;",
+            "{temp0}->cxx.addr = {cxx_nonconst_ptr};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.ccharp = {cxx_var};",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = {cxx_var} == {nullptr} ? 0 : {stdlib}strlen({cxx_var});",
+            "{temp0}->size = 1;",
+            "{temp0}->rank = 0;",
         ],
     ),
 
@@ -1099,13 +1102,14 @@ fc_statements = [
             "character(len=:), allocatable :: {f_var}",
         ],
         declare=[
-            "type({F_array_type}) :: {F_pointer}",
+            "type({F_array_type}) :: {temp0}",
         ],
-        arg_c_call=["{F_pointer}"],  # Pass result as an argument.
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
         post_call=[
-            "allocate(character(len={F_pointer}%elem_len):: {f_var})",
-            "call {hnamefunc0}({F_pointer}, {f_var}, {F_pointer}%elem_len)",
+            "allocate(character(len={temp0}%elem_len):: {f_var})",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)",
         ],
+        ntemps=1,
     ),
 
     dict(
@@ -1274,7 +1278,7 @@ fc_statements = [
         # an intermediate object is created to save the results
         # which will be passed to copy_string
         post_call=[
-            "ShroudStrToArray(AAA{c_var}, {cxx_addr}{cxx_var}, {idtor});",
+            "ShroudStrToArray(\t{temp0},\t {cxx_addr}{cxx_var},\t {idtor});",
         ],
     ),
 
@@ -1302,7 +1306,7 @@ fc_statements = [
             "delete cxx_ptr;",
         ],
         post_call=[
-            "ShroudStrToArray(AAA{c_var}, {cxx_var}, {idtor});",
+            "ShroudStrToArray({temp0}, {cxx_var}, {idtor});",
         ],
     ),
     
@@ -1319,13 +1323,14 @@ fc_statements = [
             "character(len=:), allocatable :: {f_var}",
         ],
         declare=[
-            "type({F_array_type}) :: {F_pointer}",
+            "type({F_array_type}) :: {temp0}",
         ],
-        arg_c_call=["{F_pointer}"],  # Pass result as an argument.
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
         post_call=[
-            "allocate(character(len={F_pointer}%elem_len):: {f_var})",
-            "call {hnamefunc0}({F_pointer}, {f_var}, {F_pointer}%elem_len)",
+            "allocate(character(len={temp0}%elem_len):: {f_var})",
+            "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)",
         ],
+        ntemps=1,
     ),
     
     ########################################

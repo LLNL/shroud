@@ -1394,7 +1394,7 @@
                             "F_C_name": "c_class1_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
                             "F_name_generic": "get_name",
@@ -1445,7 +1445,8 @@
                                 "stmt0": "f_string_&_result_buf_allocatable",
                                 "stmt1": "f_string_&_result_buf_allocatable",
                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHT_rv_temp0"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -1514,7 +1515,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class1_get_name_bufferify",
-                            "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *AAASHC_rv",
+                            "C_prototype": "CLA_Class1 * self,\t CLA_SHROUD_array *SHC_rv_temp0",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_class1_get_name_bufferify",
@@ -1544,7 +1545,8 @@
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                "stmt1": "c_string_&_result_buf_allocatable"
+                                "stmt1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHC_rv_temp0"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
@@ -2203,7 +2205,7 @@
                             "F_C_name": "c_class2_get_name",
                             "F_C_result_clause": "\fresult(SHT_rv)",
                             "F_C_subprogram": "function",
-                            "F_arg_c_call": "obj%cxxmem,\t SHT_ptr",
+                            "F_arg_c_call": "obj%cxxmem,\t SHT_rv_temp0",
                             "F_arguments": "obj",
                             "F_name_function": "get_name",
                             "F_name_generic": "get_name",
@@ -2254,7 +2256,8 @@
                                 "stmt0": "f_string_&_result_buf_allocatable",
                                 "stmt1": "f_string_&_result_buf_allocatable",
                                 "stmtc0": "c_string_&_result_buf_allocatable",
-                                "stmtc1": "c_string_&_result_buf_allocatable"
+                                "stmtc1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHT_rv_temp0"
                             },
                             "fmtl": {
                                 "c_var": "SHCXX_rv.c_str()",
@@ -2323,7 +2326,7 @@
                         },
                         "zz_fmtdict": {
                             "C_name": "CLA_Class2_get_name_bufferify",
-                            "C_prototype": "CLA_Class2 * self,\t CLA_SHROUD_array *AAASHC_rv",
+                            "C_prototype": "CLA_Class2 * self,\t CLA_SHROUD_array *SHC_rv_temp0",
                             "C_return_type": "void",
                             "F_C_arguments": "self,\t SHT_rv",
                             "F_C_name": "c_class2_get_name_bufferify",
@@ -2353,7 +2356,8 @@
                                 "sh_type": "SH_TYPE_OTHER",
                                 "shadow_var": "SHadow_rv",
                                 "stmt0": "c_string_&_result_buf_allocatable",
-                                "stmt1": "c_string_&_result_buf_allocatable"
+                                "stmt1": "c_string_&_result_buf_allocatable",
+                                "temp0": "SHC_rv_temp0"
                             },
                             "fmtf": {
                                 "F_C_var": "SHT_rv",
