@@ -1077,6 +1077,7 @@ rv = .false.
 
             buf_arg_name = attrs[buf_arg]
             if buf_arg_name is None:
+                arg_c_decl.append("ERROR: {} is missing from attrs".format(buf_arg))
                 raise RuntimeError(
                     "attr {} is missing from attrs for {}".format(
                         buf_arg, node.declgen
@@ -1547,19 +1548,14 @@ rv = .false.
         statements.assign_buf_variable_names(c_attrs, fmt)
 
         if is_result:
-#            ntypemap = ntypemap
-            # XXX - looked up in parent
             fmt.f_intent = "OUT"
-            if ntypemap.base == "vector":
-                ntypemap = f_ast.template_arguments[0].typemap
         else:
             fmt.f_intent = c_meta["intent"].upper()
-            
             ntypemap = f_ast.typemap
-            if c_ast.template_arguments:
-                # If a template, use its type
-                ntypemap = c_ast.template_arguments[0].typemap
-                fmt.cxx_T = ntypemap.name
+        if c_ast.template_arguments:
+            # If a template, use its type
+            ntypemap = c_ast.template_arguments[0].typemap
+            fmt.cxx_T = ntypemap.name
         if ntypemap.f_kind:
             fmt.f_kind = ntypemap.f_kind
         fmt.f_type = ntypemap.f_type

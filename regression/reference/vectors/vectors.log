@@ -9,7 +9,7 @@ C void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(allocatable
 C void vector_increment(std::vector<int> & arg +context+rank(1)+size) 
 C void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1)) 
 C int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(result)
-C void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1) 
+C std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(result)
 Close wrapvectors.h
 Close wrapvectors.cpp
 Close typesvectors.h
@@ -32,6 +32,6 @@ C-interface void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(a
 C-interface void vector_increment(std::vector<int> & arg +context+rank(1)+size) 
 C-interface void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1)) 
 C-interface int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(result)
-C-interface void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1) 
+C-interface std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(result)
 Close wrapfvectors.f
 Close utilvectors.cpp

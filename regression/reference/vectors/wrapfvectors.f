@@ -241,27 +241,23 @@ module vectors_mod
     end interface
 
     ! ----------------------------------------
-    ! Function:  void ReturnVectorAlloc +rank(1)
-    ! Requested: c_void_scalar_result_buf
-    ! Match:     c_default
+    ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+    ! Attrs:     +deref(allocatable)+intent(result)
+    ! Requested: c_vector_scalar_result_buf_allocatable
+    ! Match:     c_vector_result_buf
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Requested: c_vector_*_result_buf_allocatable_native
-    ! Match:     c_vector_result_buf
     interface
-        subroutine c_return_vector_alloc_bufferify(n, DSHF_rv) &
+        subroutine c_return_vector_alloc_bufferify(SHT_rv, n) &
                 bind(C, name="VEC_return_vector_alloc_bufferify")
             use iso_c_binding, only : C_INT
             import :: VEC_SHROUD_array
             implicit none
+            type(VEC_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), value, intent(IN) :: n
-            type(VEC_SHROUD_array), intent(OUT) :: DSHF_rv
         end subroutine c_return_vector_alloc_bufferify
     end interface
 
@@ -606,7 +602,7 @@ contains
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: f_vector_scalar_result_buf_allocatable
     ! Match:     f_vector_result_buf_allocatable
-    ! Function:  void ReturnVectorAlloc +rank(1)
+    ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: c_vector_scalar_result_buf_allocatable
     ! Match:     c_vector_result_buf
     ! ----------------------------------------
@@ -617,14 +613,6 @@ contains
     ! Attrs:     +intent(in)
     ! Requested: c_native_scalar_in
     ! Match:     c_default
-    ! ----------------------------------------
-    ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Requested: f_vector_*_result_buf_allocatable_native
-    ! Match:     f_vector_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(out)+is_result
-    ! Requested: c_vector_*_result_buf_allocatable_native
-    ! Match:     c_vector_result_buf
     !>
     !! Implement iota function.
     !! Return a vector as an ALLOCATABLE array.
@@ -635,11 +623,11 @@ contains
         use iso_c_binding, only : C_INT, C_SIZE_T
         integer(C_INT), allocatable :: SHT_rv(:)
         integer(C_INT), value, intent(IN) :: n
-        type(VEC_SHROUD_array) :: DSHF_rv
         ! splicer begin function.return_vector_alloc
-        call c_return_vector_alloc_bufferify(n, DSHF_rv)
-        allocate(SHT_rv(DSHF_rv%size))
-        call VEC_SHROUD_copy_array_int(DSHF_rv, SHT_rv, &
+        type(VEC_SHROUD_array) :: SHT_rv_temp0
+        call c_return_vector_alloc_bufferify(SHT_rv_temp0, n)
+        allocate(SHT_rv(SHT_rv_temp0%size))
+        call VEC_SHROUD_copy_array_int(SHT_rv_temp0, SHT_rv, &
             size(SHT_rv,kind=C_SIZE_T))
         ! splicer end function.return_vector_alloc
     end function return_vector_alloc

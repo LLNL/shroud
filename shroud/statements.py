@@ -1406,7 +1406,7 @@ fc_statements = [
     # Almost same as intent_out_buf.
     dict(
         name="c_vector_result_buf",
-        buf_args=["context"],
+        mixin=["c_mixin_buf_character_result"],  # XXX maybe rename since vector
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1415,15 +1415,15 @@ fc_statements = [
         ],
         post_call=[
             # Return address and size of vector data.
-            "{c_var_context}->cxx.addr  = {cxx_var};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var}->empty()"
+            "{temp0}->cxx.addr  = {cxx_var};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var}->empty()"
             " ? {nullptr} : &{cxx_var}->front();",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_T});",
-            "{c_var_context}->size = {cxx_var}->size();",
-            "{c_var_context}->rank = 1;",
-            "{c_var_context}->shape[0] = {c_var_context}->size;",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_T});",
+            "{temp0}->size = {cxx_var}->size();",
+            "{temp0}->rank = 1;",
+            "{temp0}->shape[0] = {temp0}->size;",
         ],
         destructor_name="std_vector_{cxx_T}",
         destructor=[
@@ -1599,10 +1599,15 @@ fc_statements = [
         arg_decl=[
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
         ],
-        post_call=[
-            "allocate({f_var}({c_var_context}%size))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
         ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        post_call=[
+            "allocate({f_var}({temp0}%size))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
+        ],
+        ntemps=1,
     ),
 
     # Pass in a pointer to a shadow object via buf_args.

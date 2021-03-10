@@ -317,32 +317,29 @@ int VEC_vector_string_count_bufferify(const char * arg, long Sarg,
  * Copy results into the new array.
  */
 // ----------------------------------------
-// Function:  void ReturnVectorAlloc +rank(1)
-// Requested: c_void_scalar_result_buf
-// Match:     c_default
+// Function:  std::vector<int> ReturnVectorAlloc +rank(1)
+// Attrs:     +deref(allocatable)+intent(result)
+// Requested: c_vector_scalar_result_buf_allocatable
+// Match:     c_vector_result_buf
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-// ----------------------------------------
-// Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
-// Attrs:     +deref(allocatable)+intent(out)+is_result
-// Requested: c_vector_scalar_result_buf_allocatable
-// Match:     c_vector_result_buf
-void VEC_return_vector_alloc_bufferify(int n, VEC_SHROUD_array *DSHF_rv)
+void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
+    int n)
 {
     // splicer begin function.return_vector_alloc_bufferify
     std::vector<int> *SHC_rv = new std::vector<int>;
     *SHC_rv = ReturnVectorAlloc(n);
-    DSHF_rv->cxx.addr  = SHC_rv;
-    DSHF_rv->cxx.idtor = 1;
-    DSHF_rv->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
-    DSHF_rv->type = SH_TYPE_INT;
-    DSHF_rv->elem_len = sizeof(int);
-    DSHF_rv->size = SHC_rv->size();
-    DSHF_rv->rank = 1;
-    DSHF_rv->shape[0] = DSHF_rv->size;
+    SHC_rv_temp0->cxx.addr  = SHC_rv;
+    SHC_rv_temp0->cxx.idtor = 1;
+    SHC_rv_temp0->addr.base = SHC_rv->empty() ? nullptr : &SHC_rv->front();
+    SHC_rv_temp0->type = SH_TYPE_OTHER;
+    SHC_rv_temp0->elem_len = sizeof(int);
+    SHC_rv_temp0->size = SHC_rv->size();
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = SHC_rv_temp0->size;
     // splicer end function.return_vector_alloc_bufferify
 }
 

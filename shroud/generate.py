@@ -1825,19 +1825,6 @@ class GenFunctions(object):
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = None
                 C_new.ast.metaattrs["deref"] = None
-        elif has_vector_result:
-            # Pass an argument to C wrapper for the function result.
-            # XXX - string_result -> vector_result -> result
-            vector_as_arg = fmt_func.F_string_result_as_arg
-            result_name = vector_as_arg or fmt_func.C_string_result_as_arg
-            result_as_vector = ast.result_as_arg(result_name)
-            attrs = result_as_vector.attrs
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=result_name
-            )
-            self.move_arg_attributes(result_as_vector, node, C_new)
-            result_as_vector.metaattrs["is_result"] = True
-            C_new.ast.metaattrs["intent"] = None
         elif need_cdesc_result:
             # Non-string and Non-char results
             # XXX - c_var is duplicated in wrapc.py wrap_function

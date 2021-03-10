@@ -849,7 +849,6 @@ class Wrapc(util.WrapperMixin):
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
-        header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
         #            # i.e. This method returns a wrapped type
@@ -884,6 +883,12 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
+            if ast.template_arguments:
+                template_typemap = ast.template_arguments[0].typemap
+                fmt_result.cxx_T = template_typemap.name
+                header_typedef_nodes[template_typemap.name] = template_typemap
+            else:
+                header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
             if self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var

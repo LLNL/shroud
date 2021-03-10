@@ -1391,23 +1391,31 @@ c_vector_out_buf_string:
   - '{c_const}std::vector<{cxx_T}> {cxx_var};'
 c_vector_result_buf:
   buf_args:
-  - context
+  - arg_decl
+  c_arg_decl:
+  - '{C_array_type} *{temp0}'
   c_helper: ShroudTypeDefines
   cxx_local_var: pointer
   destructor_name: std_vector_{cxx_T}
+  f_arg_decl:
+  - 'type({F_array_type}), intent(OUT) :: {c_var}'
+  f_import:
+  - '{F_array_type}'
   name: c_vector_result_buf
+  ntemps: 1
   owner: library
   post_call:
-  - '{c_var_context}->cxx.addr  = {cxx_var};'
-  - '{c_var_context}->cxx.idtor = {idtor};'
-  - '{c_var_context}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
-  - '{c_var_context}->type = {sh_type};'
-  - '{c_var_context}->elem_len = sizeof({cxx_T});'
-  - '{c_var_context}->size = {cxx_var}->size();'
-  - '{c_var_context}->rank = 1;'
-  - '{c_var_context}->shape[0] = {c_var_context}->size;'
+  - '{temp0}->cxx.addr  = {cxx_var};'
+  - '{temp0}->cxx.idtor = {idtor};'
+  - '{temp0}->addr.base = {cxx_var}->empty() ? {nullptr} : &{cxx_var}->front();'
+  - '{temp0}->type = {sh_type};'
+  - '{temp0}->elem_len = sizeof({cxx_T});'
+  - '{temp0}->size = {cxx_var}->size();'
+  - '{temp0}->rank = 1;'
+  - '{temp0}->shape[0] = {temp0}->size;'
   pre_call:
   - "{c_const}std::vector<{cxx_T}>\t *{cxx_var} = new std::vector<{cxx_T}>;"
+  return_type: void
 c_void_**_in:
   buf_args:
   - arg_decl
@@ -1856,17 +1864,22 @@ f_vector_result:
   post_call:
   - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
 f_vector_result_buf_allocatable:
+  arg_c_call:
+  - '{temp0}'
   arg_decl:
   - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
   f_helper: copy_array_{cxx_T}
   f_module:
     iso_c_binding:
     - C_SIZE_T
   name: f_vector_result_buf_allocatable
+  ntemps: 1
   post_call:
-  - allocate({f_var}({c_var_context}%size))
-  - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
+  - allocate({f_var}({temp0}%size))
+  - "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
 f_void_**_in:
   arg_decl:
   - 'type(C_PTR), intent(IN) :: {f_var}{f_assumed_shape}'
