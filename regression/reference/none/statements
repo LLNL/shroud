@@ -215,7 +215,8 @@ root
       out -- f_vector_out
         allocatable -- f_vector_out_allocatable
       result -- f_vector_result
-        allocatable -- f_vector_result_allocatable
+        buf
+          allocatable -- f_vector_result_buf_allocatable
     void
       *
         cdesc -- f_void_*_cdesc
@@ -1854,7 +1855,7 @@ f_vector_result:
   name: f_vector_result
   post_call:
   - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"
-f_vector_result_allocatable:
+f_vector_result_buf_allocatable:
   arg_decl:
   - '{f_type}, allocatable :: {f_var}{f_assumed_shape}'
   c_helper: copy_array
@@ -1862,7 +1863,7 @@ f_vector_result_allocatable:
   f_module:
     iso_c_binding:
     - C_SIZE_T
-  name: f_vector_result_allocatable
+  name: f_vector_result_buf_allocatable
   post_call:
   - allocate({f_var}({c_var_context}%size))
   - "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},kind=C_SIZE_T))"

@@ -605,7 +605,7 @@ contains
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: f_vector_scalar_result_buf_allocatable
-    ! Match:     f_vector_result_allocatable
+    ! Match:     f_vector_result_buf_allocatable
     ! Function:  void ReturnVectorAlloc +rank(1)
     ! Requested: c_vector_scalar_result_buf_allocatable
     ! Match:     c_vector_result_buf
@@ -621,7 +621,7 @@ contains
     ! Argument:  std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Requested: f_vector_*_result_buf_allocatable_native
-    ! Match:     f_vector_result_allocatable
+    ! Match:     f_vector_result_buf_allocatable
     ! Attrs:     +deref(allocatable)+intent(out)+is_result
     ! Requested: c_vector_*_result_buf_allocatable_native
     ! Match:     c_vector_result_buf
