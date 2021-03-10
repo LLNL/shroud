@@ -595,8 +595,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         type(OWN_SHROUD_array) :: DSHC_rv
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
+        integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len)
@@ -625,8 +625,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR
         type(OWN_SHROUD_array) :: DSHC_rv
-        integer(C_INT) :: len
         integer(C_INT), allocatable :: SHT_rv(:)
+        integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_alloc
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
@@ -656,8 +656,8 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         type(OWN_SHROUD_array) :: DSHC_rv
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
+        integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_bufferify(DSHC_rv, len)
@@ -686,9 +686,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         type(OWN_SHROUD_array) :: DSHC_rv
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
+        integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer_new
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
@@ -719,9 +719,9 @@ contains
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
         type(OWN_SHROUD_array) :: DSHC_rv
-        integer(C_INT) :: len
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
+        integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default_new
         type(C_PTR) :: SHT_ptr
         SHT_ptr = c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &

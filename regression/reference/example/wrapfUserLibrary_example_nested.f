@@ -1416,8 +1416,8 @@ contains
     function exclass1_get_name_error_check(obj) &
             result(SHT_rv)
         class(exclass1) :: obj
-        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass1.method.get_name_error_check
         call c_exclass1_get_name_error_check_bufferify(obj%cxxmem, &
             DSHF_rv)
@@ -1654,8 +1654,8 @@ contains
     function exclass2_get_name2(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name2
         call c_exclass2_get_name2_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1679,8 +1679,8 @@ contains
     function exclass2_get_name3(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name3
         call c_exclass2_get_name3_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1704,8 +1704,8 @@ contains
     function exclass2_get_name4(obj) &
             result(SHT_rv)
         class(exclass2) :: obj
-        type(AA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(AA_SHROUD_array) :: DSHF_rv
         ! splicer begin namespace.example::nested.class.ExClass2.method.get_name4
         call c_exclass2_get_name4_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)

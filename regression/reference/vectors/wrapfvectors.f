@@ -633,9 +633,9 @@ contains
     function return_vector_alloc(n) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT, C_SIZE_T
+        integer(C_INT), allocatable :: SHT_rv(:)
         integer(C_INT), value, intent(IN) :: n
         type(VEC_SHROUD_array) :: DSHF_rv
-        integer(C_INT), allocatable :: SHT_rv(:)
         ! splicer begin function.return_vector_alloc
         call c_return_vector_alloc_bufferify(n, DSHF_rv)
         allocate(SHT_rv(DSHF_rv%size))

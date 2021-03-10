@@ -1063,8 +1063,8 @@ contains
     function class1_get_name(obj) &
             result(SHT_rv)
         class(class1) :: obj
-        type(CLA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(CLA_SHROUD_array) :: DSHF_rv
         ! splicer begin class.Class1.method.get_name
         call c_class1_get_name_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1209,8 +1209,8 @@ contains
     function class2_get_name(obj) &
             result(SHT_rv)
         class(class2) :: obj
-        type(CLA_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(CLA_SHROUD_array) :: DSHF_rv
         ! splicer begin class.Class2.method.get_name
         call c_class2_get_name_bufferify(obj%cxxmem, DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)

@@ -144,8 +144,8 @@ contains
     ! Exact:     c_string_&_result_buf_allocatable
     function last_function_called() &
             result(SHT_rv)
-        type(NS_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(NS_SHROUD_array) :: DSHF_rv
         ! splicer begin function.last_function_called
         call c_last_function_called_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)

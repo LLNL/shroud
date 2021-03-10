@@ -809,10 +809,10 @@ contains
     function concatenate_strings(arg1, arg2) &
             result(SHT_rv)
         use iso_c_binding, only : C_INT
+        character(len=:), allocatable :: SHT_rv
         character(len=*), intent(IN) :: arg1
         character(len=*), intent(IN) :: arg2
         type(TUT_SHROUD_array) :: DSHF_rv
-        character(len=:), allocatable :: SHT_rv
         ! splicer begin function.concatenate_strings
         call c_concatenate_strings_bufferify(arg1, &
             len_trim(arg1, kind=C_INT), arg2, &

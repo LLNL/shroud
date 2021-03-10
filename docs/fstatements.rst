@@ -98,6 +98,9 @@ Additional declarations can be added within the splicer via *declare*.
             "character, value, intent(IN) :: {f_var}",
         ],
 
+.. result declaration is added before arguments
+   but default declaration are after declarations.
+
 arg_c_call
 ^^^^^^^^^^
 

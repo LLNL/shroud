@@ -678,6 +678,24 @@ rv = .false.
                     node, self.get_metaattrs(node.ast)))
                 self.wrap_function_interface(cls, node, fileinfo)
 
+    def add_stmt_declaration(self, stmts, arg_f_decl, arg_c_call, arg_f_names, fmt):
+        """Add declarations from fc_statements.
+
+        Return True if arg_decl found.
+        """
+        found = False
+        if stmts.arg_decl:
+            found = True
+            for line in stmts.arg_decl:
+                append_format(arg_f_decl, line, fmt)
+        if stmts.arg_c_call:
+            for arg in stmts.arg_c_call:
+                append_format(arg_c_call, arg, fmt)
+        if stmts.arg_name:
+            for aname in stmts.arg_name:
+                append_format(arg_f_names, aname, fmt)
+        return found
+
     def add_module_from_stmts(self, blk, modules, imports, fmt):
         """Add USE/IMPORT statements defined in blk.
 
@@ -1392,8 +1410,7 @@ rv = .false.
         A wrapper will be needed if there is meta data.
         """
         if f_intent_blk.arg_c_call:
-            for arg in f_intent_blk.arg_c_call:
-                append_format(arg_c_call, arg, fmt)
+            # Already added by add_stmt_declaration
             return need_wrapper
 
         c_attrs = c_ast.attrs
@@ -1721,6 +1738,8 @@ rv = .false.
                 arg_c_call,
                 need_wrapper,
             )
+        found_arg_decl_ret = self.add_stmt_declaration(
+            f_result_blk, arg_f_decl, arg_c_call, arg_f_names, fmt_result)
 
         # Fortran and C arguments may have different types (fortran generic)
         #
@@ -1858,13 +1877,9 @@ rv = .false.
                     arg_f_decl.append(f_arg.gen_arg_as_fortran(local=True, bindc=True))
                     need_wrapper = True
                 elif f_intent_blk.arg_decl:
-                    # Explicit declarations from fc_statements.
-                    for line in f_intent_blk.arg_decl:
-                        append_format(arg_f_decl, line, fmt_arg)
-                    if f_result_blk.arg_name:
-                        for aname in f_result_blk.arg_name:
-                            append_format(arg_f_names, aname, fmt_result)
-                    else:
+                    self.add_stmt_declaration(
+                        f_intent_blk, arg_f_decl, arg_c_call, arg_f_names, fmt_arg)
+                    if not f_result_blk.arg_name:
                         arg_f_names.append(fmt_arg.f_var)
                     self.add_module_from_stmts(f_result_blk, modules, imports, fmt_arg)
                 else:
@@ -1957,22 +1972,11 @@ rv = .false.
         # Declare function return value after arguments
         # since arguments may be used to compute return value
         # (for example, string lengths).
-        return_deref_attr = ast.metaattrs["deref"]
+        # Unless explicitly set by FStmts.arg_decl
         if subprogram == "function":
             # if func_is_const:
             #     fmt_func.F_pure_clause = 'pure '
-            if f_result_blk.arg_decl:
-                # Explicit declarations from fc_statements.
-                # XXX coordinate arg_c_call
-                for line in f_result_blk.arg_decl:
-                    append_format(arg_f_decl, line, fmt_result)
-                if f_result_blk.arg_c_call:
-                    for arg in f_result_blk.arg_c_call:
-                        append_format(arg_c_call, arg, fmt_result)
-                if f_result_blk.arg_name:
-                    for aname in f_result_blk.arg_name:
-                        append_format(arg_f_names, aname, fmt_result)
-            else:
+            if not found_arg_decl_ret:
                 # result_as_arg or None
                 # local=True will add any character len attributes
                 # e.g.  CHARACTER(LEN=30)

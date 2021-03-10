@@ -1344,8 +1344,8 @@ contains
     ! start get_char_ptr1
     function get_char_ptr1() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_char_ptr1
         call c_get_char_ptr1_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1432,8 +1432,8 @@ contains
     !<
     function get_const_string_result() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_result
         call c_get_const_string_result_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1513,8 +1513,8 @@ contains
     ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_alloc() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_alloc
         call c_get_const_string_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1542,8 +1542,8 @@ contains
     ! start get_const_string_ref_pure
     function get_const_string_ref_pure() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ref_pure
         call c_get_const_string_ref_pure_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1659,8 +1659,8 @@ contains
     ! Exact:     c_string_&_result_buf_allocatable
     function get_const_string_ref_alloc() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ref_alloc
         call c_get_const_string_ref_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1718,8 +1718,8 @@ contains
     ! Exact:     c_string_*_result_buf_allocatable
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1750,8 +1750,8 @@ contains
     !<
     function get_const_string_ptr_owns_alloc() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc
         call c_get_const_string_ptr_owns_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
@@ -1778,8 +1778,8 @@ contains
     !<
     function get_const_string_ptr_owns_alloc_pattern() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ptr_owns_alloc_pattern
         call c_get_const_string_ptr_owns_alloc_pattern_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)

@@ -121,8 +121,8 @@ contains
     ! start get_const_string_ptr_alloc
     function get_const_string_ptr_alloc() &
             result(SHT_rv)
-        type(STR_SHROUD_array) :: DSHF_rv
         character(len=:), allocatable :: SHT_rv
+        type(STR_SHROUD_array) :: DSHF_rv
         ! splicer begin function.get_const_string_ptr_alloc
         call c_get_const_string_ptr_alloc_bufferify(DSHF_rv)
         allocate(character(len=DSHF_rv%elem_len):: SHT_rv)
