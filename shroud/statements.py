@@ -817,44 +817,39 @@ fc_statements = [
     #        call c_f_pointer(c_ptr, f_ptr, shape)
     dict(
         name="c_native_*_result_buf",
-        buf_args=["context"],
-        c_helper="ShroudTypeDefines",
+        mixin=["c_mixin_buf_result"],
+        c_helper="ShroudTypeDefines array_context",
         post_call=[
-            "{c_var_context}->cxx.addr  = {cxx_nonconst_ptr};",
-            "{c_var_context}->cxx.idtor = {idtor};",
-            "{c_var_context}->addr.base = {cxx_var};",
-            "{c_var_context}->type = {sh_type};",
-            "{c_var_context}->elem_len = sizeof({cxx_type});",
-            "{c_var_context}->rank = {rank};"
+            "{temp0}->cxx.addr  = {cxx_nonconst_ptr};",
+            "{temp0}->cxx.idtor = {idtor};",
+            "{temp0}->addr.base = {cxx_var};",
+            "{temp0}->type = {sh_type};",
+            "{temp0}->elem_len = sizeof({cxx_type});",
+            "{temp0}->rank = {rank};"
             "{c_array_shape}",
-            "{c_var_context}->size = {c_array_size};",
+            "{temp0}->size = {c_array_size};",
         ],
         return_cptr=True,
     ),
     dict(
         name="f_native_*_result_buf_allocatable",
+        mixin=["f_mixin_buf_result"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_type}",
-        f_module=dict(iso_c_binding=["C_PTR"]),
-        declare=[
-            "type(C_PTR) :: {F_pointer}",
-        ],
         arg_decl=[
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
         ],
-        call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
-        ],
         post_call=[
             # XXX - allocate scalar
-            "allocate({f_var}({c_var_dimension}))",
-            "call {hnamefunc0}(\t{c_var_context},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
+            "allocate({f_var}({f_array_allocate}))",
+            "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},\t kind=C_SIZE_T))",
         ],
     ),
 
     # f_pointer_shape may be blank for a scalar, otherwise it
     # includes a leading comma.
     dict(
+        #### XXX used? c_f_pointer should have 'buf' in the name.
         name="f_native_*_result_pointer",
         f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
         declare=[
@@ -870,43 +865,29 @@ fc_statements = [
     dict(
         # XXX - no need for f_var since F_pointer exists.
         name="f_native_*_result_buf_pointer",
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
-        declare=[
-            "type(C_PTR) :: {F_pointer}",
-        ],
+        mixin=["f_mixin_buf_result"],
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
         arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
         ],
-        call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
-        ],
         post_call=[
-            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
+            "call c_f_pointer({temp0}%base_addr, {F_result}{f_array_shape})",
         ],
     ),
-#    dict(
-#        name="f_native_*_result_buf_pointer",
-#        base="f_native_*_result_pointer",
-#    ),
     dict(
         # +deref(pointer) +owner(caller)
         name="f_native_*_result_buf_pointer_caller",
+        mixin=["f_mixin_buf_result"],
         f_helper="capsule_helper",
-        f_module=dict(iso_c_binding=["C_PTR", "c_f_pointer"]),
+        f_module=dict(iso_c_binding=["c_f_pointer"]),
         arg_name=["{c_var_capsule}"],
         arg_decl=[
             "{f_type}, pointer :: {f_var}{f_assumed_shape}",
             "type({F_capsule_type}), intent(OUT) :: {c_var_capsule}",
         ],
-        declare=[
-            "type(C_PTR) :: {F_pointer}",
-        ],
-        call=[
-            "{F_pointer} = {F_C_call}({F_arg_c_call})",
-        ],
         post_call=[
-            "call c_f_pointer({F_pointer}, {F_result}{f_array_shape})",
-            "{c_var_capsule}%mem = {c_var_context}%cxx",
+            "call c_f_pointer(\t{temp0}%base_addr,\t {F_result}{f_array_shape})",
+            "{c_var_capsule}%mem = {temp0}%cxx",
         ],
     ),
     dict(

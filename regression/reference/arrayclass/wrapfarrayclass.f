@@ -174,20 +174,17 @@ module arrayclass_mod
         end function c_arraywrapper_get_array
 
         ! ----------------------------------------
-        ! Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
+        ! Function:  double * getArray +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
-        function c_arraywrapper_get_array_bufferify(self, DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_arraywrapper_get_array_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_arraywrapper_get_array_bufferify
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_arraywrapper_get_array_bufferify
 
         ! ----------------------------------------
         ! Function:  double * getArrayConst +dimension(getSize())
@@ -205,20 +202,18 @@ module arrayclass_mod
         end function c_arraywrapper_get_array_const
 
         ! ----------------------------------------
-        ! Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
+        ! Function:  double * getArrayConst +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
-        function c_arraywrapper_get_array_const_bufferify(self, DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_arraywrapper_get_array_const_bufferify(self, &
+                SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_arraywrapper_get_array_const_bufferify
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_arraywrapper_get_array_const_bufferify
 
         ! ----------------------------------------
         ! Function:  const double * getArrayC +dimension(getSize())
@@ -236,20 +231,17 @@ module arrayclass_mod
         end function c_arraywrapper_get_array_c
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
+        ! Function:  const double * getArrayC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
-        function c_arraywrapper_get_array_c_bufferify(self, DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_arraywrapper_get_array_c_bufferify(self, SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_c_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_arraywrapper_get_array_c_bufferify
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_arraywrapper_get_array_c_bufferify
 
         ! ----------------------------------------
         ! Function:  const double * getArrayConstC +dimension(getSize())
@@ -267,21 +259,18 @@ module arrayclass_mod
         end function c_arraywrapper_get_array_const_c
 
         ! ----------------------------------------
-        ! Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
+        ! Function:  const double * getArrayConstC +dimension(getSize())
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
-        function c_arraywrapper_get_array_const_c_bufferify(self, &
-                DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_arraywrapper_get_array_const_c_bufferify(self, &
+                SHT_rv) &
                 bind(C, name="ARR_ArrayWrapper_get_array_const_c_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: ARR_SHROUD_array, ARR_SHROUD_capsule_data
             implicit none
             type(ARR_SHROUD_capsule_data), intent(IN) :: self
-            type(ARR_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_arraywrapper_get_array_const_c_bufferify
+            type(ARR_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_arraywrapper_get_array_const_c_bufferify
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
@@ -664,21 +653,19 @@ contains
     ! Function:  double * getArray +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     function arraywrapper_get_array(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
-        type(ARR_SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_arraywrapper_get_array_bufferify(obj%cxxmem, &
-            DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        call c_arraywrapper_get_array_bufferify(obj%cxxmem, &
+            SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array
     end function arraywrapper_get_array
 
@@ -687,21 +674,19 @@ contains
     ! Function:  double * getArrayConst +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
-        type(ARR_SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_const
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_arraywrapper_get_array_const_bufferify(obj%cxxmem, &
-            DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        call c_arraywrapper_get_array_const_bufferify(obj%cxxmem, &
+            SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const
     end function arraywrapper_get_array_const
 
@@ -710,21 +695,19 @@ contains
     ! Function:  const double * getArrayC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_c(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
-        type(ARR_SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_c
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_arraywrapper_get_array_c_bufferify(obj%cxxmem, &
-            DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        call c_arraywrapper_get_array_c_bufferify(obj%cxxmem, &
+            SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_c
     end function arraywrapper_get_array_c
 
@@ -733,21 +716,19 @@ contains
     ! Function:  const double * getArrayConstC +dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     function arraywrapper_get_array_const_c(obj) &
             result(SHT_rv)
-        use iso_c_binding, only : C_DOUBLE, C_PTR, c_f_pointer
+        use iso_c_binding, only : C_DOUBLE, c_f_pointer
         class(arraywrapper) :: obj
-        type(ARR_SHROUD_array) :: DSHC_rv
         real(C_DOUBLE), pointer :: SHT_rv(:)
         ! splicer begin class.ArrayWrapper.method.get_array_const_c
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_arraywrapper_get_array_const_c_bufferify(obj%cxxmem, &
-            DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(ARR_SHROUD_array) :: SHT_rv_temp0
+        call c_arraywrapper_get_array_const_c_bufferify(obj%cxxmem, &
+            SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end class.ArrayWrapper.method.get_array_const_c
     end function arraywrapper_get_array_const_c
 

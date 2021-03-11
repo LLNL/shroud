@@ -1079,21 +1079,18 @@ module pointers_mod
     ! end c_return_int_ptr_to_scalar
 
     ! ----------------------------------------
-    ! Function:  int * returnIntPtrToScalar +context(DSHC_rv)
+    ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_scalar_bufferify
     interface
-        function c_return_int_ptr_to_scalar_bufferify(DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_to_scalar_bufferify(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_scalar_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_scalar_bufferify
+            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_ptr_to_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_scalar_bufferify
 
@@ -1115,21 +1112,18 @@ module pointers_mod
     ! end c_return_int_ptr_to_fixed_array
 
     ! ----------------------------------------
-    ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
+    ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_array_bufferify
     interface
-        function c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_to_fixed_array_bufferify(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_array_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_fixed_array_bufferify
+            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_ptr_to_fixed_array_bufferify
     end interface
     ! end c_return_int_ptr_to_fixed_array_bufferify
 
@@ -1151,21 +1145,18 @@ module pointers_mod
     ! end c_return_int_ptr_to_const_scalar
 
     ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
+    ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_const_scalar_bufferify
     interface
-        function c_return_int_ptr_to_const_scalar_bufferify(DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_to_const_scalar_bufferify(SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_const_scalar_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_const_scalar_bufferify
+            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_ptr_to_const_scalar_bufferify
     end interface
     ! end c_return_int_ptr_to_const_scalar_bufferify
 
@@ -1187,22 +1178,19 @@ module pointers_mod
     ! end c_return_int_ptr_to_fixed_const_array
 
     ! ----------------------------------------
-    ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
+    ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start c_return_int_ptr_to_fixed_const_array_bufferify
     interface
-        function c_return_int_ptr_to_fixed_const_array_bufferify( &
-                DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_to_fixed_const_array_bufferify( &
+                SHT_rv) &
                 bind(C, name="POI_return_int_ptr_to_fixed_const_array_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: POI_SHROUD_array
             implicit none
-            type(POI_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_to_fixed_const_array_bufferify
+            type(POI_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_ptr_to_fixed_const_array_bufferify
     end interface
     ! end c_return_int_ptr_to_fixed_const_array_bufferify
 
@@ -1280,7 +1268,7 @@ module pointers_mod
     ! end c_return_raw_ptr_to_int2d
 
     ! ----------------------------------------
-    ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
+    ! Function:  int * * returnRawPtrToInt2d
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_**_result_buf_pointer
     ! Match:     c_native_**_result
@@ -1928,20 +1916,18 @@ contains
     ! Function:  int * returnIntPtrToScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  int * returnIntPtrToScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_scalar
     function return_int_ptr_to_scalar() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(POI_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_scalar
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_scalar_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(POI_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_to_scalar_bufferify(SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv)
         ! splicer end function.return_int_ptr_to_scalar
     end function return_int_ptr_to_scalar
     ! end return_int_ptr_to_scalar
@@ -1951,20 +1937,18 @@ contains
     ! Function:  int * returnIntPtrToFixedArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_array
     function return_int_ptr_to_fixed_array() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(POI_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_array
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_fixed_array_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(POI_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_to_fixed_array_bufferify(SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_array
     end function return_int_ptr_to_fixed_array
     ! end return_int_ptr_to_fixed_array
@@ -1974,20 +1958,18 @@ contains
     ! Function:  const int * returnIntPtrToConstScalar
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_const_scalar
     function return_int_ptr_to_const_scalar() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(POI_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_to_const_scalar
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_const_scalar_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(POI_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_to_const_scalar_bufferify(SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv)
         ! splicer end function.return_int_ptr_to_const_scalar
     end function return_int_ptr_to_const_scalar
     ! end return_int_ptr_to_const_scalar
@@ -1997,20 +1979,18 @@ contains
     ! Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     ! start return_int_ptr_to_fixed_const_array
     function return_int_ptr_to_fixed_const_array() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(POI_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         ! splicer begin function.return_int_ptr_to_fixed_const_array
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_to_fixed_const_array_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(POI_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_to_fixed_const_array_bufferify(SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_to_fixed_const_array
     end function return_int_ptr_to_fixed_const_array
     ! end return_int_ptr_to_fixed_const_array
@@ -2044,7 +2024,6 @@ contains
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: f_native_**_result_buf_pointer
     ! Match:     f_native_**_result
-    ! Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_**_result_buf_pointer
     ! Match:     c_native_**_result

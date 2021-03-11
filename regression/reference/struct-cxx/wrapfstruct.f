@@ -506,7 +506,7 @@ module struct_mod
         end function c_return_struct_ptr1
 
         ! ----------------------------------------
-        ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
+        ! Function:  Cstruct1 * returnStructPtr1
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result_buf_pointer
         ! Match:     c_struct_*_result
@@ -562,7 +562,7 @@ module struct_mod
         end function c_return_struct_ptr2
 
         ! ----------------------------------------
-        ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
+        ! Function:  Cstruct1 * returnStructPtr2
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result_buf_pointer
         ! Match:     c_struct_*_result
@@ -606,7 +606,7 @@ module struct_mod
         end function c_get_global_struct_list
 
         ! ----------------------------------------
-        ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
+        ! Function:  Cstruct_list * get_global_struct_list
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_struct_*_result_buf_pointer
         ! Match:     c_struct_*_result
@@ -998,7 +998,6 @@ contains
     ! Function:  Cstruct1 * returnStructPtr1
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_struct_*_result_buf_pointer
-    ! Function:  Cstruct1 * returnStructPtr1 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_*_result
@@ -1041,7 +1040,6 @@ contains
     ! Function:  Cstruct1 * returnStructPtr2
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_struct_*_result_buf_pointer
-    ! Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_*_result
@@ -1094,7 +1092,6 @@ contains
     ! Function:  Cstruct_list * get_global_struct_list
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_struct_*_result_buf_pointer
-    ! Function:  Cstruct_list * get_global_struct_list +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_struct_*_result_buf_pointer
     ! Match:     c_struct_*_result

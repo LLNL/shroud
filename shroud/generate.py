@@ -1825,14 +1825,6 @@ class GenFunctions(object):
                 result_as_string.metaattrs["is_result"] = True
                 C_new.ast.metaattrs["intent"] = None
                 C_new.ast.metaattrs["deref"] = None
-        elif need_cdesc_result:
-            # Non-string and Non-char results
-            # XXX - c_var is duplicated in wrapc.py wrap_function
-            fmt_func = C_new.fmtdict
-            attrs = C_new.ast.attrs
-            result_name = fmt_func.C_local + fmt_func.C_result
-            attrs["context"] = options.C_var_context_template.format(
-                c_var=result_name)
 
         if result_as_arg:
             F_new = self.result_as_arg(node, C_new)

@@ -41,16 +41,17 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 void POI_get_ptr_to_dynamic_const_array_bufferify(
     POI_SHROUD_array *Dcount, int * ncount);
 
-int * POI_return_int_ptr_to_scalar_bufferify(POI_SHROUD_array *DSHC_rv);
+void POI_return_int_ptr_to_scalar_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0);
 
-int * POI_return_int_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *DSHC_rv);
+void POI_return_int_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0);
 
-const int * POI_return_int_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *DSHC_rv);
+void POI_return_int_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0);
 
-const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *DSHC_rv);
+void POI_return_int_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0);
 
 int POI_return_int_scalar(void);
 

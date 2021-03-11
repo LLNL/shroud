@@ -1585,8 +1585,9 @@ rv = .false.
             visitor.visit(f_ast.metaattrs["dimension"])
             rank = visitor.rank
             fmt.rank = str(rank)
-            if rank > 0:
+            if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                # XXX use temp0 since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
                 if hasattr(fmt, "temp0"):
                     # XXX kludge, name is assumed to be temp0.
@@ -2341,6 +2342,7 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        self.rank = "assumed"
         return "--assumed-rank--"
         raise RuntimeError("wrapf.py: Detected assumed-rank dimension")
 

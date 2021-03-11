@@ -5990,7 +5990,7 @@
                     "F_C_name": "c_return_int_ptr_to_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "DSHC_rv",
+                    "F_arg_c_call": "SHT_rv_temp0",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_scalar",
                     "F_name_generic": "return_int_ptr_to_scalar",
@@ -6021,18 +6021,17 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
                         "stmtc0": "c_native_*_result_buf_pointer",
-                        "stmtc1": "c_native_*_result_buf"
+                        "stmtc1": "c_native_*_result_buf",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6041,9 +6040,6 @@
                 "_PTR_C_CXX_index": "36",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "declarator": {
                         "name": "returnIntPtrToScalar",
                         "pointer": [
@@ -6063,7 +6059,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToScalar(void)",
-                "declgen": "int * returnIntPtrToScalar(void) +context(DSHC_rv)",
+                "declgen": "int * returnIntPtrToScalar(void)",
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
@@ -6072,12 +6068,12 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_return_int_ptr_to_scalar_bufferify",
-                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "DSHC_rv",
+                    "C_prototype": "POI_SHROUD_array *SHC_rv_temp0",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_to_scalar_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToScalar",
                     "function_suffix": "_bufferify",
@@ -6086,10 +6082,8 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -6099,7 +6093,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf_pointer",
-                        "stmt1": "c_native_*_result_buf"
+                        "stmt1": "c_native_*_result_buf",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6158,7 +6153,7 @@
                     "F_C_name": "c_return_int_ptr_to_fixed_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "DSHC_rv",
+                    "F_arg_c_call": "SHT_rv_temp0",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_array",
                     "F_name_generic": "return_int_ptr_to_fixed_array",
@@ -6190,23 +6185,21 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
-                        "c_var_dimension": "10",
                         "cxx_type": "int",
                         "f_array_allocate": "(10)",
-                        "f_array_shape": ", DSHC_rv%shape(1:1)",
+                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
                         "stmtc0": "c_native_*_result_buf_pointer",
-                        "stmtc1": "c_native_*_result_buf"
+                        "stmtc1": "c_native_*_result_buf",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6216,7 +6209,6 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "context": "DSHC_rv",
                         "dimension": "10"
                     },
                     "declarator": {
@@ -6243,7 +6235,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int *returnIntPtrToFixedArray(void) +dimension(10)",
-                "declgen": "int * returnIntPtrToFixedArray(void) +context(DSHC_rv)+dimension(10)",
+                "declgen": "int * returnIntPtrToFixedArray(void) +dimension(10)",
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
@@ -6252,12 +6244,12 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
-                    "C_return_type": "int *",
-                    "F_C_arguments": "DSHC_rv",
+                    "C_prototype": "POI_SHROUD_array *SHC_rv_temp0",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_to_fixed_array_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "int * SHC_rv",
                     "function_name": "returnIntPtrToFixedArray",
                     "function_suffix": "_bufferify",
@@ -6265,13 +6257,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = 10;",
-                        "c_array_size": "DSHC_rv->shape[0]",
+                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = 10;",
+                        "c_array_size": "SHC_rv_temp0->shape[0]",
                         "c_const": "",
-                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
+                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",
@@ -6282,7 +6273,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf_pointer",
-                        "stmt1": "c_native_*_result_buf"
+                        "stmt1": "c_native_*_result_buf",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6334,7 +6326,7 @@
                     "F_C_name": "c_return_int_ptr_to_const_scalar",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "DSHC_rv",
+                    "F_arg_c_call": "SHT_rv_temp0",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_const_scalar",
                     "F_name_generic": "return_int_ptr_to_const_scalar",
@@ -6365,18 +6357,17 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
                         "stmtc0": "c_native_*_result_buf_pointer",
-                        "stmtc1": "c_native_*_result_buf"
+                        "stmtc1": "c_native_*_result_buf",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6385,9 +6376,6 @@
                 "_PTR_C_CXX_index": "38",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "const": true,
                     "declarator": {
                         "name": "returnIntPtrToConstScalar",
@@ -6408,7 +6396,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToConstScalar(void)",
-                "declgen": "const int * returnIntPtrToConstScalar(void) +context(DSHC_rv)",
+                "declgen": "const int * returnIntPtrToConstScalar(void)",
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
@@ -6417,12 +6405,12 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_return_int_ptr_to_const_scalar_bufferify",
-                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
-                    "C_return_type": "const int *",
-                    "F_C_arguments": "DSHC_rv",
+                    "C_prototype": "POI_SHROUD_array *SHC_rv_temp0",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_to_const_scalar_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToConstScalar",
                     "function_suffix": "_bufferify",
@@ -6431,10 +6419,8 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "const ",
-                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "(int *) SHC_rv",
@@ -6444,7 +6430,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf_pointer",
-                        "stmt1": "c_native_*_result_buf"
+                        "stmt1": "c_native_*_result_buf",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -6504,7 +6491,7 @@
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
-                    "F_arg_c_call": "DSHC_rv",
+                    "F_arg_c_call": "SHT_rv_temp0",
                     "F_arguments": "",
                     "F_name_function": "return_int_ptr_to_fixed_const_array",
                     "F_name_generic": "return_int_ptr_to_fixed_const_array",
@@ -6536,23 +6523,21 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
-                        "c_var_dimension": "10",
                         "cxx_type": "int",
                         "f_array_allocate": "(10)",
-                        "f_array_shape": ", DSHC_rv%shape(1:1)",
+                        "f_array_shape": ", SHT_rv_temp0%shape(1:1)",
                         "f_assumed_shape": "(:)",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
-                        "hnamefunc0": "array_context",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "stmt0": "f_native_*_result_buf_pointer",
                         "stmt1": "f_native_*_result_buf_pointer",
                         "stmtc0": "c_native_*_result_buf_pointer",
-                        "stmtc1": "c_native_*_result_buf"
+                        "stmtc1": "c_native_*_result_buf",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -6562,7 +6547,6 @@
                 "_generated": "arg_to_buffer",
                 "ast": {
                     "attrs": {
-                        "context": "DSHC_rv",
                         "dimension": "10"
                     },
                     "const": true,
@@ -6590,7 +6574,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "const int *returnIntPtrToFixedConstArray(void) +dimension(10)",
-                "declgen": "const int * returnIntPtrToFixedConstArray(void) +context(DSHC_rv)+dimension(10)",
+                "declgen": "const int * returnIntPtrToFixedConstArray(void) +dimension(10)",
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
@@ -6599,12 +6583,12 @@
                 },
                 "zz_fmtdict": {
                     "C_name": "POI_return_int_ptr_to_fixed_const_array_bufferify",
-                    "C_prototype": "POI_SHROUD_array *DSHC_rv",
-                    "C_return_type": "const int *",
-                    "F_C_arguments": "DSHC_rv",
+                    "C_prototype": "POI_SHROUD_array *SHC_rv_temp0",
+                    "C_return_type": "void",
+                    "F_C_arguments": "SHT_rv",
                     "F_C_name": "c_return_int_ptr_to_fixed_const_array_bufferify",
-                    "F_C_result_clause": "\fresult(SHT_rv)",
-                    "F_C_subprogram": "function",
+                    "F_C_result_clause": "",
+                    "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "const int * SHC_rv",
                     "function_name": "returnIntPtrToFixedConstArray",
                     "function_suffix": "_bufferify",
@@ -6612,13 +6596,12 @@
                 },
                 "zz_fmtresult": {
                     "fmtc": {
-                        "c_array_shape": "\nDSHC_rv->shape[0] = 10;",
-                        "c_array_size": "DSHC_rv->shape[0]",
+                        "c_array_shape": "\nSHC_rv_temp0->shape[0] = 10;",
+                        "c_array_size": "SHC_rv_temp0->shape[0]",
                         "c_const": "const ",
-                        "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
+                        "c_var_context": "SHC_rv_temp0",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "(int *) SHC_rv",
@@ -6629,7 +6612,8 @@
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
                         "stmt0": "c_native_*_result_buf_pointer",
-                        "stmt1": "c_native_*_result_buf"
+                        "stmt1": "c_native_*_result_buf",
+                        "temp0": "SHC_rv_temp0"
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
@@ -7033,7 +7017,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -7052,9 +7035,6 @@
                 "_PTR_C_CXX_index": "43",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "declarator": {
                         "name": "returnRawPtrToInt2d",
                         "pointer": [
@@ -7077,7 +7057,7 @@
                     "typemap_name": "int"
                 },
                 "decl": "int **returnRawPtrToInt2d(void)",
-                "declgen": "int * * returnRawPtrToInt2d(void) +context(DSHC_rv)",
+                "declgen": "int * * returnRawPtrToInt2d(void)",
                 "doxygen": {
                     "description": "Test multiple layers of indirection.\n# getRawPtrToInt2d\n"
                 },
@@ -7109,7 +7089,6 @@
                         "c_get_value": "",
                         "c_type": "int",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHC_rv",

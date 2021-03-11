@@ -755,24 +755,24 @@ class Wrapc(util.WrapperMixin):
             visitor = ToDimension(cls, fcn, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
-
-            if hasattr(fmt, "temp0"):
-                # XXX kludge, name is assumed to be temp0.
-                fmt.c_var_context = fmt.temp0
-            elif ast.attrs["context"]:
-                fmt.c_var_context = attrs["context"]
-            if hasattr(fmt, "c_var_context"):
-                # Assign each rank of dimension.
-                fmtdim = []
-                fmtsize = []
-                for i, dim in enumerate(visitor.shape):
-                    fmtdim.append("{}->shape[{}] = {};".format(
-                        fmt.c_var_context, i, dim))
-                    fmtsize.append("{}->shape[{}]".format(
-                        fmt.c_var_context, i, dim))
-                fmt.c_array_shape = "\n" + "\n".join(fmtdim)
-                if fmtsize:
-                    fmt.c_array_size = "*\t".join(fmtsize)
+            if fmt.rank != "assumed":
+                if hasattr(fmt, "temp0"):
+                    # XXX kludge, name is assumed to be temp0.
+                    fmt.c_var_context = fmt.temp0
+                elif ast.attrs["context"]:
+                    fmt.c_var_context = attrs["context"]
+                if hasattr(fmt, "c_var_context"):
+                    # Assign each rank of dimension.
+                    fmtdim = []
+                    fmtsize = []
+                    for i, dim in enumerate(visitor.shape):
+                        fmtdim.append("{}->shape[{}] = {};".format(
+                            fmt.c_var_context, i, dim))
+                        fmtsize.append("{}->shape[{}]".format(
+                            fmt.c_var_context, i, dim))
+                    fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                    if fmtsize:
+                        fmt.c_array_size = "*\t".join(fmtsize)
 
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.
@@ -1606,6 +1606,7 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        self.rank = "assumed"
         return "--assumed-rank--"
         raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
 
