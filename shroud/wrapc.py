@@ -756,9 +756,13 @@ class Wrapc(util.WrapperMixin):
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
 
-            if ast.attrs["context"]:
-                # Assign each rank of dimension.
+            if hasattr(fmt, "temp0"):
+                # XXX kludge, name is assumed to be temp0.
+                fmt.c_var_context = fmt.temp0
+            elif ast.attrs["context"]:
                 fmt.c_var_context = attrs["context"]
+            if hasattr(fmt, "c_var_context"):
+                # Assign each rank of dimension.
                 fmtdim = []
                 fmtsize = []
                 for i, dim in enumerate(visitor.shape):
