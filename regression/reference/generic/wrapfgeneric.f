@@ -13,6 +13,7 @@
 ! splicer begin file_top
 ! splicer end file_top
 module generic_mod
+    use iso_c_binding, only : C_INT, C_LONG, C_NULL_PTR, C_PTR, C_SIZE_T
     ! splicer begin module_use
     ! splicer end module_use
     implicit none
@@ -56,6 +57,33 @@ module generic_mod
         SH_TYPE_CPTR      = 30, &
         SH_TYPE_STRUCT    = 31, &
         SH_TYPE_OTHER     = 32
+
+    ! start helper capsule_data_helper
+    ! helper capsule_data_helper
+    type, bind(C) :: GEN_SHROUD_capsule_data
+        type(C_PTR) :: addr = C_NULL_PTR  ! address of C++ memory
+        integer(C_INT) :: idtor = 0       ! index of destructor
+    end type GEN_SHROUD_capsule_data
+    ! end helper capsule_data_helper
+
+    ! start array_context
+    ! helper array_context
+    type, bind(C) :: GEN_SHROUD_array
+        ! address of C++ memory
+        type(GEN_SHROUD_capsule_data) :: cxx
+        ! address of data in cxx
+        type(C_PTR) :: base_addr = C_NULL_PTR
+        ! type of element
+        integer(C_INT) :: type
+        ! bytes-per-item or character len of data in cxx
+        integer(C_SIZE_T) :: elem_len = 0_C_SIZE_T
+        ! size of data in cxx
+        integer(C_SIZE_T) :: size = 0_C_SIZE_T
+        ! number of dimensions
+        integer(C_INT) :: rank = -1
+        integer(C_LONG) :: shape(7) = 0
+    end type GEN_SHROUD_array
+    ! end array_context
 
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
@@ -188,6 +216,33 @@ module generic_mod
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
+    ! Argument:  const int * values +rank(0)
+    ! Attrs:     +assumed-rank+intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_sum_values_0d(values, nvalues) &
+                result(SHT_rv) &
+                bind(C, name="GEN_sum_values_0d")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: values
+            integer(C_INT), value, intent(IN) :: nvalues
+            integer(C_INT) :: SHT_rv
+        end function c_sum_values_0d
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
     ! Argument:  const int * values +rank(1)
     ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
@@ -200,13 +255,40 @@ module generic_mod
     interface
         function c_sum_values_1d(values, nvalues) &
                 result(SHT_rv) &
-                bind(C, name="SumValues")
+                bind(C, name="GEN_sum_values_1d")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: values(*)
             integer(C_INT), value, intent(IN) :: nvalues
             integer(C_INT) :: SHT_rv
         end function c_sum_values_1d
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  int SumValues
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * values +rank(2)
+    ! Attrs:     +assumed-rank+intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nvalues +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        function c_sum_values_2d(values, nvalues) &
+                result(SHT_rv) &
+                bind(C, name="GEN_sum_values_2d")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: values(*)
+            integer(C_INT), value, intent(IN) :: nvalues
+            integer(C_INT) :: SHT_rv
+        end function c_sum_values_2d
     end interface
 
     ! ----------------------------------------
@@ -260,6 +342,42 @@ module generic_mod
     ! Requested: c_native_scalar_in
     ! Match:     c_default
     ! ----------------------------------------
+    ! Argument:  int * to
+    ! Attrs:     +intent(inout)
+    ! Requested: c_native_*_inout
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nto +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_assign_values_scalar(from, nfrom, to, nto) &
+                bind(C, name="GEN_assign_values_scalar")
+            use iso_c_binding, only : C_INT
+            implicit none
+            integer(C_INT), intent(IN) :: from
+            integer(C_INT), value, intent(IN) :: nfrom
+            integer(C_INT), intent(INOUT) :: to
+            integer(C_INT), value, intent(IN) :: nto
+        end subroutine c_assign_values_scalar
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void AssignValues
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  const int * from
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_*_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int nfrom +value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
     ! Argument:  int * to +rank(1)
     ! Attrs:     +intent(inout)
     ! Requested: c_native_*_inout
@@ -271,7 +389,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_assign_values_broadcast(from, nfrom, to, nto) &
-                bind(C, name="AssignValues")
+                bind(C, name="GEN_assign_values_broadcast")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: from
@@ -307,7 +425,7 @@ module generic_mod
     ! Match:     c_default
     interface
         subroutine c_assign_values_copy(from, nfrom, to, nto) &
-                bind(C, name="AssignValues")
+                bind(C, name="GEN_assign_values_copy")
             use iso_c_binding, only : C_INT
             implicit none
             integer(C_INT), intent(IN) :: from(*)
@@ -349,6 +467,70 @@ module generic_mod
     end interface
 #endif
 
+#if 1
+    ! ----------------------------------------
+    ! Function:  void SavePointer
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +implied(T_FLOAT)+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_save_pointer_float1d(addr, type, size) &
+                bind(C, name="GEN_save_pointer_float1d")
+            use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+            implicit none
+            real(C_FLOAT), intent(IN) :: addr(*)
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer_float1d
+    end interface
+#endif
+
+#if 1
+    ! ----------------------------------------
+    ! Function:  void SavePointer
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +implied(T_FLOAT)+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_save_pointer_float2d(addr, type, size) &
+                bind(C, name="GEN_save_pointer_float2d")
+            use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+            implicit none
+            real(C_FLOAT), intent(IN) :: addr(*)
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer_float2d
+    end interface
+#endif
+
     ! ----------------------------------------
     ! Function:  void SavePointer2
     ! Requested: c_void_scalar_result
@@ -377,6 +559,66 @@ module generic_mod
             integer(C_INT), value, intent(IN) :: type
             integer(C_SIZE_T), value, intent(IN) :: size
         end subroutine c_save_pointer2
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void SavePointer2
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +implied(type(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_save_pointer2_float1d(addr, type, size) &
+                bind(C, name="GEN_save_pointer2_float1d")
+            use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+            implicit none
+            real(C_FLOAT), intent(IN) :: addr(*)
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer2_float1d
+    end interface
+
+    ! ----------------------------------------
+    ! Function:  void SavePointer2
+    ! Requested: c_void_scalar_result
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int type +implied(type(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t size +implied(size(addr))+value
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    interface
+        subroutine c_save_pointer2_float2d(addr, type, size) &
+                bind(C, name="GEN_save_pointer2_float2d")
+            use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+            implicit none
+            real(C_FLOAT), intent(IN) :: addr(*)
+            integer(C_INT), value, intent(IN) :: type
+            integer(C_SIZE_T), value, intent(IN) :: size
+        end subroutine c_save_pointer2_float2d
     end interface
 
     ! ----------------------------------------
@@ -438,6 +680,74 @@ module generic_mod
             integer(C_INT), intent(OUT) :: type
             integer(C_SIZE_T), intent(OUT) :: size
         end subroutine c_get_pointer_as_pointer
+    end interface
+#endif
+
+#if 0
+    ! ----------------------------------------
+    ! Function:  void GetPointerAsPointer
+    ! Requested: c_void_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
+    ! Attrs:     +deref(pointer)+intent(out)
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
+    ! ----------------------------------------
+    ! Argument:  int * type +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t * size +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    interface
+        subroutine c_get_pointer_as_pointer_float1d_bufferify(Daddr, &
+                type, size) &
+                bind(C, name="GEN_get_pointer_as_pointer_float1d_bufferify")
+            use iso_c_binding, only : C_INT, C_SIZE_T
+            import :: GEN_SHROUD_array
+            implicit none
+            type(GEN_SHROUD_array), intent(INOUT) :: Daddr
+            integer(C_INT), intent(OUT) :: type
+            integer(C_SIZE_T), intent(OUT) :: size
+        end subroutine c_get_pointer_as_pointer_float1d_bufferify
+    end interface
+#endif
+
+#if 0
+    ! ----------------------------------------
+    ! Function:  void GetPointerAsPointer
+    ! Requested: c_void_scalar_result_buf
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
+    ! Attrs:     +deref(pointer)+intent(out)
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
+    ! ----------------------------------------
+    ! Argument:  int * type +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  size_t * size +hidden+intent(out)
+    ! Attrs:     +intent(out)
+    ! Requested: c_native_*_out
+    ! Match:     c_default
+    interface
+        subroutine c_get_pointer_as_pointer_float2d_bufferify(Daddr, &
+                type, size) &
+                bind(C, name="GEN_get_pointer_as_pointer_float2d_bufferify")
+            use iso_c_binding, only : C_INT, C_SIZE_T
+            import :: GEN_SHROUD_array
+            implicit none
+            type(GEN_SHROUD_array), intent(INOUT) :: Daddr
+            integer(C_INT), intent(OUT) :: type
+            integer(C_SIZE_T), intent(OUT) :: size
+        end subroutine c_get_pointer_as_pointer_float2d_bufferify
     end interface
 #endif
 
@@ -699,7 +1009,6 @@ contains
     ! Attrs:     +assumed-rank+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Argument:  const int * values
     ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
@@ -722,11 +1031,11 @@ contains
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum_values_0d
-        SHT_rv = c_sum_values(values, nvalues)
+        SHT_rv = c_sum_values_0d(values, nvalues)
         ! splicer end function.sum_values_0d
     end function sum_values_0d
 
-    ! Generated by fortran_generic - fortran_generic_c
+    ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(result)
@@ -766,7 +1075,7 @@ contains
         ! splicer end function.sum_values_1d
     end function sum_values_1d
 
-    ! Generated by fortran_generic - fortran_generic_c
+    ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  int SumValues
     ! Attrs:     +intent(result)
@@ -780,7 +1089,6 @@ contains
     ! Attrs:     +assumed-rank+intent(in)
     ! Requested: f_native_*_in
     ! Match:     f_default
-    ! Argument:  const int * values +rank(1)
     ! Attrs:     +assumed-rank+intent(in)
     ! Requested: c_native_*_in
     ! Match:     c_default
@@ -803,7 +1111,7 @@ contains
         integer(C_INT), value, intent(IN) :: nvalues
         integer(C_INT) :: SHT_rv
         ! splicer begin function.sum_values_2d
-        SHT_rv = c_sum_values_1d(values, nvalues)
+        SHT_rv = c_sum_values_2d(values, nvalues)
         ! splicer end function.sum_values_2d
     end function sum_values_2d
 
@@ -857,11 +1165,11 @@ contains
         integer(C_INT), intent(INOUT) :: to
         integer(C_INT), value, intent(IN) :: nto
         ! splicer begin function.assign_values_scalar
-        call c_assign_values(from, nfrom, to, nto)
+        call c_assign_values_scalar(from, nfrom, to, nto)
         ! splicer end function.assign_values_scalar
     end subroutine assign_values_scalar
 
-    ! Generated by fortran_generic - fortran_generic_c
+    ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Requested: f_subroutine
@@ -915,7 +1223,7 @@ contains
         ! splicer end function.assign_values_broadcast
     end subroutine assign_values_broadcast
 
-    ! Generated by fortran_generic - fortran_generic_c
+    ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void AssignValues
     ! Requested: f_subroutine
@@ -980,20 +1288,20 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Attrs:     +deref(raw)+intent(in)
-    ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_raw
+    ! Requested: f_native_*_in_raw
+    ! Match:     f_default
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
     ! Match:     c_default
     subroutine save_pointer_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN), target :: addr(:)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer_float1d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer(C_LOC(addr), SH_type, SH_size)
+        call c_save_pointer_float1d(addr, SH_type, SH_size)
         ! splicer end function.save_pointer_float1d
     end subroutine save_pointer_float1d
 #endif
@@ -1009,20 +1317,20 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Attrs:     +deref(raw)+intent(in)
-    ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_raw
+    ! Requested: f_native_*_in_raw
+    ! Match:     f_default
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
     ! Match:     c_default
     subroutine save_pointer_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN), target :: addr(:,:)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:,:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer_float2d
         SH_type = T_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer(C_LOC(addr), SH_type, SH_size)
+        call c_save_pointer_float2d(addr, SH_type, SH_size)
         ! splicer end function.save_pointer_float2d
     end subroutine save_pointer_float2d
 #endif
@@ -1037,20 +1345,20 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Attrs:     +deref(raw)+intent(in)
-    ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_raw
+    ! Requested: f_native_*_in_raw
+    ! Match:     f_default
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
     ! Match:     c_default
     subroutine save_pointer2_float1d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN), target :: addr(:)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer2_float1d
         SH_type = SH_TYPE_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        call c_save_pointer2_float1d(addr, SH_type, SH_size)
         ! splicer end function.save_pointer2_float1d
     end subroutine save_pointer2_float1d
 
@@ -1064,25 +1372,25 @@ contains
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Attrs:     +deref(raw)+intent(in)
-    ! Exact:     f_native_*_in_raw
-    ! Argument:  void * addr +value
-    ! Attrs:     +intent(in)
-    ! Requested: c_void_*_in_raw
+    ! Requested: f_native_*_in_raw
+    ! Match:     f_default
+    ! Attrs:     +deref(raw)+intent(in)
+    ! Requested: c_native_*_in_raw
     ! Match:     c_default
     subroutine save_pointer2_float2d(addr)
-        use iso_c_binding, only : C_FLOAT, C_INT, C_LOC, C_SIZE_T
-        real(C_FLOAT), intent(IN), target :: addr(:,:)
+        use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T
+        real(C_FLOAT), intent(IN) :: addr(:,:)
         integer(C_INT) :: SH_type
         integer(C_SIZE_T) :: SH_size
         ! splicer begin function.save_pointer2_float2d
         SH_type = SH_TYPE_FLOAT
         SH_size = size(addr,kind=C_SIZE_T)
-        call c_save_pointer2(C_LOC(addr), SH_type, SH_size)
+        call c_save_pointer2_float2d(addr, SH_type, SH_size)
         ! splicer end function.save_pointer2_float2d
     end subroutine save_pointer2_float2d
 
 #if 0
-    ! Generated by fortran_generic
+    ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Requested: f_subroutine
@@ -1092,12 +1400,11 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
-    ! Argument:  void * * addr +intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_void_**_out_pointer
-    ! Match:     c_default
+    ! Exact:     f_native_**_out_buf_pointer
+    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
+    ! Attrs:     +deref(pointer)+intent(out)
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1117,16 +1424,19 @@ contains
     subroutine get_pointer_as_pointer_float1d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:)
+        type(GEN_SHROUD_array) :: Daddr
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float1d
-        call c_get_pointer_as_pointer(addr, type, size)
+        call c_get_pointer_as_pointer_float1d_bufferify(Daddr, type, &
+            size)
+        call c_f_pointer(Daddr%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float1d
     end subroutine get_pointer_as_pointer_float1d
 #endif
 
 #if 0
-    ! Generated by fortran_generic
+    ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
     ! Requested: f_subroutine
@@ -1136,12 +1446,11 @@ contains
     ! ----------------------------------------
     ! Argument:  float * * addr +deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +deref(pointer)+intent(out)
-    ! Requested: f_native_**_out_pointer
-    ! Match:     f_native_**_out
-    ! Argument:  void * * addr +intent(out)
-    ! Attrs:     +intent(out)
-    ! Requested: c_void_**_out_pointer
-    ! Match:     c_default
+    ! Exact:     f_native_**_out_buf_pointer
+    ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
+    ! Attrs:     +deref(pointer)+intent(out)
+    ! Requested: c_native_**_out_buf_pointer
+    ! Match:     c_native_**_out_buf
     ! ----------------------------------------
     ! Argument:  int * type +hidden+intent(out)
     ! Attrs:     +intent(out)
@@ -1161,10 +1470,13 @@ contains
     subroutine get_pointer_as_pointer_float2d(addr)
         use iso_c_binding, only : C_FLOAT, C_INT, C_SIZE_T, c_f_pointer
         real(C_FLOAT), intent(OUT), pointer :: addr(:,:)
+        type(GEN_SHROUD_array) :: Daddr
         integer(C_INT) :: type
         integer(C_SIZE_T) :: size
         ! splicer begin function.get_pointer_as_pointer_float2d
-        call c_get_pointer_as_pointer(addr, type, size)
+        call c_get_pointer_as_pointer_float2d_bufferify(Daddr, type, &
+            size)
+        call c_f_pointer(Daddr%base_addr, addr)
         ! splicer end function.get_pointer_as_pointer_float2d
     end subroutine get_pointer_as_pointer_float2d
 #endif

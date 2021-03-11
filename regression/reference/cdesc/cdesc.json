@@ -125,7 +125,6 @@
             },
             {
                 "<FUNCTION>": "1 ****************************************",
-                "_PTR_F_C_index": "6",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -382,12 +381,14 @@
                 }
             },
             {
-                "<FUNCTION>": "7 ****************************************",
+                "<FUNCTION>": "6 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "1",
+                "_PTR_C_CXX_index": "1",
+                "_PTR_F_C_index": "10",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -481,7 +482,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_scalar1_bufferify",
+                    "F_C_call": "c_get_scalar1_0_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t Dvalue",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_0",
@@ -498,12 +499,204 @@
                 }
             },
             {
-                "<FUNCTION>": "8 ****************************************",
+                "<FUNCTION>": "10 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "6",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetScalar1",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "len_trim": "Lname"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "cdesc": true,
+                                "context": "Dvalue",
+                                "intent": "out",
+                                "rank": 0
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
+                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, int * value +cdesc+intent(out)+rank(0))",
+                "doxygen": {
+                    "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
+                },
+                "generated_suffix": "buf",
+                "options": {},
+                "splicer": {
+                    "c": [
+                        "// This function should not exist"
+                    ],
+                    "c_buf": [
+                        "switch(Dvalue->type) {",
+                        "case SH_TYPE_INT: {",
+                        "  *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();",
+                        "  break;",
+                        "}",
+                        "case SH_TYPE_LONG: {",
+                        "  *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();",
+                        "  break;",
+                        "}",
+                        "case SH_TYPE_FLOAT: {",
+                        "  *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();",
+                        "  break;",
+                        "}",
+                        "case SH_TYPE_DOUBLE: {",
+                        "  *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();",
+                        "  break;",
+                        "}",
+                        "// default:",
+                        "}"
+                    ]
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
+                            "stmt0": "c_string_&_in_buf",
+                            "stmt1": "c_string_&_in_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name",
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_in_buf",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_&_in_buf",
+                            "stmtc1": "c_string_&_in_buf"
+                        }
+                    },
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "value",
+                            "c_var_context": "Dvalue",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "value",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_value",
+                            "stmt0": "c_native_*_out_cdesc",
+                            "stmt1": "c_native_*_out_cdesc"
+                        },
+                        "fmtf": {
+                            "F_C_var": "value",
+                            "F_pointer": "SHPTR_value",
+                            "c_var": "value",
+                            "c_var_context": "Dvalue",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "value",
+                            "hnamefunc0": "ShroudTypeDefines",
+                            "rank": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "1",
+                            "stmt0": "f_native_*_out_cdesc",
+                            "stmt1": "f_native_*_out_cdesc",
+                            "stmtc0": "c_native_*_out_cdesc",
+                            "stmtc1": "c_native_*_out_cdesc"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_name,\t value",
+                    "C_name": "CDE_get_scalar1_0_bufferify",
+                    "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *Dvalue",
+                    "C_return_type": "void",
+                    "F_C_arguments": "name,\t Lname,\t Dvalue",
+                    "F_C_name": "c_get_scalar1_0_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "GetScalar1",
+                    "function_suffix": "_0_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_scalar1"
+                }
+            },
+            {
+                "<FUNCTION>": "7 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "1",
+                "_PTR_C_CXX_index": "1",
+                "_PTR_F_C_index": "11",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -597,7 +790,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_scalar1_bufferify",
+                    "F_C_call": "c_get_scalar1_1_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t Dvalue",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar1_1",
@@ -614,9 +807,11 @@
                 }
             },
             {
-                "<FUNCTION>": "6 ****************************************",
-                "_PTR_C_CXX_index": "1",
+                "<FUNCTION>": "11 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "7",
                 "_generated": "arg_to_buffer",
+                "_overloaded": true,
                 "ast": {
                     "declarator": {
                         "name": "GetScalar1",
@@ -650,8 +845,7 @@
                                 "cdesc": true,
                                 "context": "Dvalue",
                                 "intent": "out",
-                                "rank": 0,
-                                "value": true
+                                "rank": 0
                             },
                             "declarator": {
                                 "name": "value",
@@ -665,9 +859,9 @@
                                 "intent": "out"
                             },
                             "specifier": [
-                                "void"
+                                "double"
                             ],
-                            "typemap_name": "void"
+                            "typemap_name": "double"
                         }
                     ],
                     "specifier": [
@@ -676,110 +870,10 @@
                     "typemap_name": "void"
                 },
                 "decl": "void GetScalar1(std::string & name+intent(in), void *value+intent(out)+rank(0)+cdesc)",
-                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, void * value +cdesc+intent(out)+rank(0)+value)",
+                "declgen": "void GetScalar1(std::string & name +intent(in)+len_trim, double * value +cdesc+intent(out)+rank(0))",
                 "doxygen": {
                     "description": "Create several Fortran generic functions which call a single\nC wrapper that checkes the type of the Fortran argument\nand calls the correct templated function.\nAdding the string argument forces a bufferified function\nto be create.\nXXX The non-bufferified version should not be created since\nusers will not manually create a context struct.\n"
                 },
-                "fortran_generic": [
-                    {
-                        "decls": [
-                            {
-                                "attrs": {
-                                    "intent": "in"
-                                },
-                                "declarator": {
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "attrs": {
-                                    "cdesc": true,
-                                    "context": "Dvalue",
-                                    "intent": "out",
-                                    "rank": 0
-                                },
-                                "declarator": {
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
-                                },
-                                "specifier": [
-                                    "int"
-                                ],
-                                "typemap_name": "int"
-                            }
-                        ],
-                        "function_suffix": "_0",
-                        "generic": "(int *value+intent(out)+rank(0)+cdesc)"
-                    },
-                    {
-                        "decls": [
-                            {
-                                "attrs": {
-                                    "intent": "in"
-                                },
-                                "declarator": {
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "attrs": {
-                                    "cdesc": true,
-                                    "context": "Dvalue",
-                                    "intent": "out",
-                                    "rank": 0
-                                },
-                                "declarator": {
-                                    "name": "value",
-                                    "pointer": [
-                                        {
-                                            "ptr": "*"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "out"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "function_suffix": "_1",
-                        "generic": "(double *value+intent(out)+rank(0)+cdesc)"
-                    }
-                ],
                 "generated_suffix": "buf",
                 "options": {},
                 "splicer": {
@@ -859,13 +953,13 @@
                             "cxx_addr": "",
                             "cxx_member": "->",
                             "cxx_nonconst_ptr": "value",
-                            "cxx_type": "void",
+                            "cxx_type": "double",
                             "cxx_var": "value",
                             "idtor": "0",
-                            "sh_type": "SH_TYPE_CPTR",
+                            "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_void_*_out_cdesc",
-                            "stmt1": "c_void_*_cdesc"
+                            "stmt0": "c_native_*_out_cdesc",
+                            "stmt1": "c_native_*_out_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -882,21 +976,21 @@
                             "size": "1",
                             "stmt0": "f_native_*_out_cdesc",
                             "stmt1": "f_native_*_out_cdesc",
-                            "stmtc0": "c_void_*_out_cdesc",
-                            "stmtc1": "c_void_*_cdesc"
+                            "stmtc0": "c_native_*_out_cdesc",
+                            "stmtc1": "c_native_*_out_cdesc"
                         }
                     }
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t value",
-                    "C_name": "CDE_get_scalar1_bufferify",
+                    "C_name": "CDE_get_scalar1_1_bufferify",
                     "C_prototype": "char * name,\t int Lname,\t CDE_SHROUD_array *Dvalue",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t Lname,\t Dvalue",
-                    "F_C_name": "c_get_scalar1_bufferify",
+                    "F_C_name": "c_get_scalar1_1_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
-                    "function_suffix": "_bufferify",
+                    "function_suffix": "_1_bufferify",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "get_scalar1"
@@ -1377,52 +1471,21 @@
                         "// This function does not need to exist."
                     ]
                 },
-                "wrap": {
-                    "f_c": true
-                },
-                "zz_fmtargs": {
-                    "name": {
-                        "fmtf": {
-                            "F_pointer": "SHPTR_name",
-                            "c_var": "name",
-                            "f_intent": "IN",
-                            "f_kind": "C_CHAR",
-                            "f_type": "character(*)",
-                            "f_var": "name",
-                            "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_string_&_in",
-                            "stmtc1": "c_string_&_in"
-                        }
-                    },
-                    "value": {
-                        "fmtf": {
-                            "F_pointer": "SHPTR_value",
-                            "c_var": "value",
-                            "f_intent": "OUT",
-                            "f_kind": "C_DOUBLE",
-                            "f_type": "real(C_DOUBLE)",
-                            "f_var": "value",
-                            "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_void_*_out",
-                            "stmtc1": "c_default"
-                        }
-                    }
-                },
+                "wrap": {},
                 "zz_fmtdict": {
                     "function_name": "GetScalar2",
                     "underscore_name": "get_scalar2"
                 }
             },
             {
-                "<FUNCTION>": "9 ****************************************",
+                "<FUNCTION>": "8 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic"
+                    "fortran_generic",
+                    "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "3",
+                "_PTR_C_CXX_index": "3",
+                "_PTR_F_C_index": "12",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1501,8 +1564,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t value",
+                    "F_C_call": "c_get_scalar2_0_bufferify",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_0",
                     "F_name_generic": "get_scalar2",
@@ -1519,11 +1582,185 @@
                 }
             },
             {
-                "<FUNCTION>": "10 ****************************************",
+                "<FUNCTION>": "12 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "8",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetScalar2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "len_trim": "Lname"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
+                "declgen": "void GetScalar2(std::string & name +intent(in)+len_trim, int * value +intent(out))",
+                "doxygen": {
+                    "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
+                },
+                "fstatements": {
+                    "f": {
+                        "call": [
+                            "value = c_get_data_{stype}()"
+                        ]
+                    }
+                },
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_c": false
+                },
+                "splicer": {
+                    "c_buf": [
+                        "// This function does not need to exist."
+                    ]
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
+                            "stmt0": "c_string_&_in_buf",
+                            "stmt1": "c_string_&_in_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name",
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_in_buf",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_&_in_buf",
+                            "stmtc1": "c_string_&_in_buf"
+                        }
+                    },
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "value",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "value",
+                            "cxx_type": "int",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_value",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "value",
+                            "F_pointer": "SHPTR_value",
+                            "c_var": "value",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "value",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_name,\t value",
+                    "C_name": "CDE_get_scalar2_0_bufferify",
+                    "C_prototype": "char * name,\t int Lname,\t int * value",
+                    "C_return_type": "void",
+                    "F_C_arguments": "name,\t Lname,\t value",
+                    "F_C_name": "c_get_scalar2_0_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "GetScalar2",
+                    "function_suffix": "_0_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "stype": "int",
+                    "underscore_name": "get_scalar2"
+                }
+            },
+            {
+                "<FUNCTION>": "9 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic"
+                    "fortran_generic",
+                    "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "3",
+                "_PTR_C_CXX_index": "3",
+                "_PTR_F_C_index": "13",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -1602,8 +1839,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "-F_C_name-",
-                    "F_arg_c_call": "name,\t value",
+                    "F_C_call": "c_get_scalar2_1_bufferify",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t value",
                     "F_arguments": "name,\t value",
                     "F_name_function": "get_scalar2_1",
                     "F_name_generic": "get_scalar2",
@@ -1615,6 +1852,177 @@
                     "stmt1": "f_default",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
+                    "stype": "double",
+                    "underscore_name": "get_scalar2"
+                }
+            },
+            {
+                "<FUNCTION>": "13 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "9",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetScalar2",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "intent": "in",
+                                "len_trim": "Lname"
+                            },
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "value",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetScalar2(std::string & name+intent(in), void *value+intent(out))",
+                "declgen": "void GetScalar2(std::string & name +intent(in)+len_trim, double * value +intent(out))",
+                "doxygen": {
+                    "description": "Call a C++ function which is templated on the return value.\nCreate a Fortran function with the result passed in as an\nargument.  Change the function call clause to directly call the\nwrapped templated function.  fstatements is required instead of\nsplicer in order to get {stype} expanded.\n"
+                },
+                "fstatements": {
+                    "f": {
+                        "call": [
+                            "value = c_get_data_{stype}()"
+                        ]
+                    }
+                },
+                "generated_suffix": "buf",
+                "options": {
+                    "wrap_c": false
+                },
+                "splicer": {
+                    "c_buf": [
+                        "// This function does not need to exist."
+                    ]
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&SHCXX_name",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
+                            "stmt0": "c_string_&_in_buf",
+                            "stmt1": "c_string_&_in_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name",
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_in_buf",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_&_in_buf",
+                            "stmtc1": "c_string_&_in_buf"
+                        }
+                    },
+                    "value": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "value",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "value",
+                            "cxx_type": "double",
+                            "cxx_var": "value",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "shadow_var": "SHadow_value",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "value",
+                            "F_pointer": "SHPTR_value",
+                            "c_var": "value",
+                            "f_intent": "OUT",
+                            "f_kind": "C_DOUBLE",
+                            "f_type": "real(C_DOUBLE)",
+                            "f_var": "value",
+                            "sh_type": "SH_TYPE_DOUBLE",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_name,\t value",
+                    "C_name": "CDE_get_scalar2_1_bufferify",
+                    "C_prototype": "char * name,\t int Lname,\t double * value",
+                    "C_return_type": "void",
+                    "F_C_arguments": "name,\t Lname,\t value",
+                    "F_C_name": "c_get_scalar2_1_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "GetScalar2",
+                    "function_suffix": "_1_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "stype": "double",
                     "underscore_name": "get_scalar2"
                 }

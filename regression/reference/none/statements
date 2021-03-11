@@ -157,7 +157,6 @@ root
       *
         in
           cdesc -- f_native_*_in/out/inout_cdesc
-          raw -- f_native_*_in_raw
         inout
           cdesc -- f_native_*_in/out/inout_cdesc
         out
@@ -1601,15 +1600,6 @@ f_native_*_in_cdesc:
   - '{c_var_context}%size = {size}'
   - '{c_var_context}%rank = {rank}'
   - '{c_var_context}%shape(1:{rank}) = shape({f_var})'
-f_native_*_in_raw:
-  arg_c_call:
-  - C_LOC({f_var})
-  arg_decl:
-  - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'
-  f_module:
-    iso_c_binding:
-    - C_LOC
-  name: f_native_*_in_raw
 f_native_*_inout_cdesc:
   arg_decl:
   - '{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}'

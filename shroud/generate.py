@@ -975,8 +975,8 @@ class GenFunctions(object):
                 self.process_return_this(method, ordered2)
                 
         ordered3a = self.define_result_as_arg_functions(ordered2)
-        ordered3 = self.define_bufferify_functions(ordered3a)
-        ordered4 = self.define_fortran_generic_functions(ordered3)
+        ordered3 = self.define_fortran_generic_functions(ordered3a)
+        ordered4 = self.define_bufferify_functions(ordered3)
 
         self.gen_functions_decl(ordered4)
 
@@ -1155,7 +1155,7 @@ class GenFunctions(object):
         node.declgen = node.ast.gen_decl()
         
     def generic_function(self, node, ordered_functions):
-        """ Create overloaded functions for each generic method.
+        """Create overloaded functions for each generic method.
 
         - decl: void GenericReal(double arg)
           fortran_generic:
@@ -1173,11 +1173,6 @@ class GenFunctions(object):
           fortran_generic:
           - decl: (float **addr+intent(out)+rank(1)+deref(pointer))
           - decl: (float **addr+intent(out)+rank(2)+deref(pointer))
-        The C wrapper must pass down a context argument to allow
-        the shape information to be returned. Normally, this would be
-        added by arg_to_buffer, but since the C argument is 'void **'
-        it will not be.  But the generic function does have
-        an argument which meets the critieria.
 
         # scalar/array generic
           - decl: int SumValues(int *values, int nvalues)
@@ -1188,47 +1183,27 @@ class GenFunctions(object):
         An additional bind(C) will be created to declare values as
         assumed-size argument since it has the rank(1) attribute.
 
+        If all of the arguments are scalar native types, then several
+        Fortran wrappers will be created to call the same C wrapper.
+        The conversion of the arguments will be done by Fortran intrinsics.
+        ex.  int(arg, kind=C_LONG)
+        Otherwise, a C wrapper will be created for each Fortran function.
+        arg_to_buff will be called after this which may create an additional
+        C wrapper to deal with these arguments.
+
         Parameters
         ----------
         node : ast.FunctionNode
             Function with 'fortran_generic'
         ordered_functions : list
             Create functions are appended to this list.
+
         """
-
-        def get_order(params, mold=None):
-            """Return string of ignore/scalar/array for each argument.
-
-            Called first with the args from the C function.
-            Any non-native types are ignored (ex. void *).
-            Then called for each fortran-generic.  Record if
-            scalar or array to compare with C prototype decl.
-            """
-            arglst = []
-            for i, arg in enumerate(params):
-                if mold and i >= len(mold):
-                    break   # fortran_generic and default arguments.
-                elif mold and mold[i] == "-":
-                    arglst.append('-')  # ignore in C prototype
-                elif arg.typemap.sgroup != "native":
-                    arglst.append('-')  # ignore
-                elif arg.attrs["rank"] is None:
-                    arglst.append('s')  # scalar
-                elif arg.attrs["rank"] == 0:
-                    arglst.append('s')  # scalar
-                else:
-                    arglst.append('a')  # array
-            return ''.join(arglst)
-
-        corder = get_order(node.ast.params)
-        cvariants = {corder: node._function_index}
-
         for generic in node.fortran_generic:
             new = node.clone()
             ordered_functions.append(new)
             self.append_function_index(new)
             new._generated = "fortran_generic"
-            new._PTR_F_C_index = node._function_index
             fmt = new.fmtdict
             # XXX append to existing suffix
             if generic.fmtdict:
@@ -1238,26 +1213,27 @@ class GenFunctions(object):
             new.wrap.assign(fortran=True)
             new.ast.params = generic.decls
 
-            order = get_order(new.ast.params, corder)
-            new._PTR_F_C_index = cvariants.get(order, None)
-            if new._PTR_F_C_index is None:
-                # Create C function with correct rank attribute.
-                cnew = node.clone()
-                ordered_functions.append(cnew)
-                self.append_function_index(cnew)
-                cnew._generated = "fortran_generic_c"
-                cfmt = cnew.fmtdict
-                cfmt.function_suffix = cfmt.function_suffix + generic.function_suffix
-                cnew.fortran_generic = {}
-                cnew.wrap.assign(c=True)
-                # Set C function rank based on fortran_generic entry.
-                for arg, rank in zip(cnew.ast.params, order):
-                    if rank == 's':
-                        arg.attrs["rank"] = None
-                    elif rank == 'a':
-                        arg.attrs["rank"] = 1
-                cvariants[order] = cnew._function_index
-                new._PTR_F_C_index = cnew._function_index
+            # Try to call original C function if possible.
+            # All arguments are native scalar.
+            need_wrapper = False
+            for arg in new.ast.params:
+                if arg.is_pointer():
+                    need_wrapper = True
+                    break
+                elif arg.typemap.sgroup == "native":
+                    pass
+                else:
+                    need_wrapper = True
+                    break
+
+            if need_wrapper:
+                # The C wrapper is required to cast constants.
+                # generic.yaml: GenericReal
+                new.C_force_wrapper = True
+                new.wrap.c = True
+                new._PTR_C_CXX_index = node._function_index
+            else:
+                new._PTR_F_C_index = node._function_index
         
         # Do not process templated node, instead process
         # generated functions above.
@@ -1826,7 +1802,7 @@ class GenFunctions(object):
             ordered_functions.append(F_new)
             self.append_function_index(F_new)
         else:
-            if node._generated == "result_to_arg":
+            if node._generated in ["result_to_arg", "fortran_generic"]:
                 node.wrap.c = False
             
             # Fortran function may call C subroutine if string/vector result

@@ -87,14 +87,13 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
 // Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
-// Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+// Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
 // Attrs:     +intent(out)
-// Requested: c_void_*_out_cdesc
-// Match:     c_void_*_cdesc
-void CDE_get_scalar1_bufferify(char * name, int Lname,
+// Exact:     c_native_*_out_cdesc
+void CDE_get_scalar1_0_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue)
 {
-    // splicer begin function.get_scalar1_bufferify
+    // splicer begin function.get_scalar1_0_bufferify
     switch(Dvalue->type) {
     case SH_TYPE_INT: {
       *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
@@ -114,7 +113,54 @@ void CDE_get_scalar1_bufferify(char * name, int Lname,
     }
     // default:
     }
-    // splicer end function.get_scalar1_bufferify
+    // splicer end function.get_scalar1_0_bufferify
+}
+
+/**
+ * Create several Fortran generic functions which call a single
+ * C wrapper that checkes the type of the Fortran argument
+ * and calls the correct templated function.
+ * Adding the string argument forces a bufferified function
+ * to be create.
+ * XXX The non-bufferified version should not be created since
+ * users will not manually create a context struct.
+ */
+// ----------------------------------------
+// Function:  void GetScalar1
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Attrs:     +intent(in)
+// Exact:     c_string_&_in_buf
+// ----------------------------------------
+// Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+// Attrs:     +intent(out)
+// Exact:     c_native_*_out_cdesc
+void CDE_get_scalar1_1_bufferify(char * name, int Lname,
+    CDE_SHROUD_array *Dvalue)
+{
+    // splicer begin function.get_scalar1_1_bufferify
+    switch(Dvalue->type) {
+    case SH_TYPE_INT: {
+      *static_cast<int *>(const_cast<void *>(Dvalue->addr.base)) = getData<int>();
+      break;
+    }
+    case SH_TYPE_LONG: {
+      *static_cast<long *>(const_cast<void *>(Dvalue->addr.base)) = getData<long>();
+      break;
+    }
+    case SH_TYPE_FLOAT: {
+      *static_cast<float *>(const_cast<void *>(Dvalue->addr.base)) = getData<float>();
+      break;
+    }
+    case SH_TYPE_DOUBLE: {
+      *static_cast<double *>(const_cast<void *>(Dvalue->addr.base)) = getData<double>();
+      break;
+    }
+    // default:
+    }
+    // splicer end function.get_scalar1_1_bufferify
 }
 
 /**
@@ -147,6 +193,60 @@ double CDE_get_data_double(void)
     double SHC_rv = getData<double>();
     return SHC_rv;
     // splicer end function.get_data_double
+}
+
+/**
+ * Call a C++ function which is templated on the return value.
+ * Create a Fortran function with the result passed in as an
+ * argument.  Change the function call clause to directly call the
+ * wrapped templated function.  fstatements is required instead of
+ * splicer in order to get {stype} expanded.
+ */
+// ----------------------------------------
+// Function:  void GetScalar2
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Attrs:     +intent(in)
+// Exact:     c_string_&_in_buf
+// ----------------------------------------
+// Argument:  int * value +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value)
+{
+    // splicer begin function.get_scalar2_0_bufferify
+    // This function does not need to exist.
+    // splicer end function.get_scalar2_0_bufferify
+}
+
+/**
+ * Call a C++ function which is templated on the return value.
+ * Create a Fortran function with the result passed in as an
+ * argument.  Change the function call clause to directly call the
+ * wrapped templated function.  fstatements is required instead of
+ * splicer in order to get {stype} expanded.
+ */
+// ----------------------------------------
+// Function:  void GetScalar2
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  std::string & name +intent(in)+len_trim(Lname)
+// Attrs:     +intent(in)
+// Exact:     c_string_&_in_buf
+// ----------------------------------------
+// Argument:  double * value +intent(out)
+// Attrs:     +intent(out)
+// Requested: c_native_*_out
+// Match:     c_default
+void CDE_get_scalar2_1_bufferify(char * name, int Lname, double * value)
+{
+    // splicer begin function.get_scalar2_1_bufferify
+    // This function does not need to exist.
+    // splicer end function.get_scalar2_1_bufferify
 }
 
 // Release library allocated memory.

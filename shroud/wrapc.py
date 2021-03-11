@@ -812,7 +812,9 @@ class Wrapc(util.WrapperMixin):
         fmt_func = node.fmtdict
         fmtargs = node._fmtargs
 
-        if options.C_force_wrapper:
+        if node.C_force_wrapper:
+            need_wrapper = True
+        elif options.C_force_wrapper:
             # User may force a wrapper.  For example, function is really a
             # macro or function pointer.
             need_wrapper = True

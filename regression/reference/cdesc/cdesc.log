@@ -1,9 +1,12 @@
 Read yaml cdesc.yaml
 C void Rank2In(int * arg +cdesc+intent(in)+rank(2)) 
 C void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(out)+rank(0)+value) 
-C void GetScalar1(std::string & name +intent(in)+len_trim, void * value +cdesc+intent(out)+rank(0)+value) 
+C void GetScalar1(std::string & name +intent(in)+len_trim, int * value +cdesc+intent(out)+rank(0)) 
+C void GetScalar1(std::string & name +intent(in)+len_trim, double * value +cdesc+intent(out)+rank(0)) 
 C int getData(void)  +intent(result)
 C double getData(void)  +intent(result)
+C void GetScalar2(std::string & name +intent(in)+len_trim, int * value +intent(out)) 
+C void GetScalar2(std::string & name +intent(in)+len_trim, double * value +intent(out)) 
 Close wrapcdesc.h
 Close wrapcdesc.cpp
 Close typescdesc.h
@@ -16,7 +19,10 @@ Fortran void GetScalar2(std::string & name +intent(in), int * value +intent(out)
 Fortran void GetScalar2(std::string & name +intent(in), double * value +intent(out)) 
 C-interface void Rank2In(int * arg +cdesc+intent(in)+rank(2)) 
 C-interface void GetScalar1(std::string & name +intent(in), void * value +cdesc+intent(out)+rank(0)+value) 
-C-interface void GetScalar1(std::string & name +intent(in)+len_trim, void * value +cdesc+intent(out)+rank(0)+value) 
+C-interface void GetScalar1(std::string & name +intent(in)+len_trim, int * value +cdesc+intent(out)+rank(0)) 
+C-interface void GetScalar1(std::string & name +intent(in)+len_trim, double * value +cdesc+intent(out)+rank(0)) 
 C-interface int getData(void)  +intent(result)
 C-interface double getData(void)  +intent(result)
+C-interface void GetScalar2(std::string & name +intent(in)+len_trim, int * value +intent(out)) 
+C-interface void GetScalar2(std::string & name +intent(in)+len_trim, double * value +intent(out)) 
 Close wrapfcdesc.f

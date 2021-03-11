@@ -69,6 +69,7 @@ endif
 ifeq ($(compiler),ibm)
 # rzansel
 TCE = /usr/tce/packages/xl/xl-2019.08.20/
+TCE = /usr/tce/packages/xl/xl-2020.11.12/
 CC = xlc
 CFLAGS = -g
 CLIBS = -lstdc++

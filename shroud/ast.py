@@ -1438,6 +1438,7 @@ class FunctionNode(AstNode):
         # Fortran wapper variables.
         self.C_node = None   # C wrapper required by Fortran wrapper
         self.C_generated_path = []
+        self.C_force_wrapper = False
 
         # self.function_index = []
 

@@ -125,19 +125,40 @@ module cdesc_mod
         ! Attrs:     +intent(in)
         ! Exact:     c_string_&_in_buf
         ! ----------------------------------------
-        ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
+        ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
         ! Attrs:     +intent(out)
-        ! Requested: c_void_*_out_cdesc
-        ! Match:     c_void_*_cdesc
-        subroutine c_get_scalar1_bufferify(name, Lname, Dvalue) &
-                bind(C, name="CDE_get_scalar1_bufferify")
+        ! Exact:     c_native_*_out_cdesc
+        subroutine c_get_scalar1_0_bufferify(name, Lname, Dvalue) &
+                bind(C, name="CDE_get_scalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
             import :: CDE_SHROUD_array
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             type(CDE_SHROUD_array), intent(INOUT) :: Dvalue
-        end subroutine c_get_scalar1_bufferify
+        end subroutine c_get_scalar1_0_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void GetScalar1
+        ! Requested: c_void_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Attrs:     +intent(in)
+        ! Exact:     c_string_&_in_buf
+        ! ----------------------------------------
+        ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
+        ! Attrs:     +intent(out)
+        ! Exact:     c_native_*_out_cdesc
+        subroutine c_get_scalar1_1_bufferify(name, Lname, Dvalue) &
+                bind(C, name="CDE_get_scalar1_1_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            import :: CDE_SHROUD_array
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            type(CDE_SHROUD_array), intent(INOUT) :: Dvalue
+        end subroutine c_get_scalar1_1_bufferify
 
         ! ----------------------------------------
         ! Function:  int getData
@@ -164,6 +185,50 @@ module cdesc_mod
             implicit none
             real(C_DOUBLE) :: SHT_rv
         end function c_get_data_double
+
+        ! ----------------------------------------
+        ! Function:  void GetScalar2
+        ! Requested: c_void_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Attrs:     +intent(in)
+        ! Exact:     c_string_&_in_buf
+        ! ----------------------------------------
+        ! Argument:  int * value +intent(out)
+        ! Attrs:     +intent(out)
+        ! Requested: c_native_*_out
+        ! Match:     c_default
+        subroutine c_get_scalar2_0_bufferify(name, Lname, value) &
+                bind(C, name="CDE_get_scalar2_0_bufferify")
+            use iso_c_binding, only : C_CHAR, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            integer(C_INT), intent(OUT) :: value
+        end subroutine c_get_scalar2_0_bufferify
+
+        ! ----------------------------------------
+        ! Function:  void GetScalar2
+        ! Requested: c_void_scalar_result_buf
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  std::string & name +intent(in)+len_trim(Lname)
+        ! Attrs:     +intent(in)
+        ! Exact:     c_string_&_in_buf
+        ! ----------------------------------------
+        ! Argument:  double * value +intent(out)
+        ! Attrs:     +intent(out)
+        ! Requested: c_native_*_out
+        ! Match:     c_default
+        subroutine c_get_scalar2_1_bufferify(name, Lname, value) &
+                bind(C, name="CDE_get_scalar2_1_bufferify")
+            use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            real(C_DOUBLE), intent(OUT) :: value
+        end subroutine c_get_scalar2_1_bufferify
 
         ! splicer begin additional_interfaces
         ! splicer end additional_interfaces
@@ -227,10 +292,8 @@ contains
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Attrs:     +intent(out)
     ! Exact:     f_native_*_out_cdesc
-    ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out_cdesc
-    ! Match:     c_void_*_cdesc
+    ! Exact:     c_native_*_out_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -252,7 +315,7 @@ contains
         Dvalue%size = 1
         Dvalue%rank = 0
         Dvalue%shape(1:0) = shape(value)
-        call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
+        call c_get_scalar1_0_bufferify(name, len_trim(name, kind=C_INT), &
             Dvalue)
         ! splicer end function.get_scalar1_0
     end subroutine get_scalar1_0
@@ -276,10 +339,8 @@ contains
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Attrs:     +intent(out)
     ! Exact:     f_native_*_out_cdesc
-    ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out_cdesc
-    ! Match:     c_void_*_cdesc
+    ! Exact:     c_native_*_out_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -301,7 +362,7 @@ contains
         Dvalue%size = 1
         Dvalue%rank = 0
         Dvalue%shape(1:0) = shape(value)
-        call c_get_scalar1_bufferify(name, len_trim(name, kind=C_INT), &
+        call c_get_scalar1_1_bufferify(name, len_trim(name, kind=C_INT), &
             Dvalue)
         ! splicer end function.get_scalar1_1
     end subroutine get_scalar1_1
@@ -348,7 +409,7 @@ contains
         ! splicer end function.get_data_double
     end function get_data_double
 
-    ! Generated by fortran_generic
+    ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar2
     ! Requested: f_subroutine
@@ -358,18 +419,18 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
+    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Argument:  void * value +intent(out)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.
@@ -387,7 +448,7 @@ contains
         ! splicer end function.get_scalar2_0
     end subroutine get_scalar2_0
 
-    ! Generated by fortran_generic
+    ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar2
     ! Requested: f_subroutine
@@ -397,18 +458,18 @@ contains
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in
+    ! Requested: f_string_&_in_buf
     ! Match:     f_default
+    ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in
+    ! Exact:     c_string_&_in_buf
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
     ! Attrs:     +intent(out)
     ! Requested: f_native_*_out
     ! Match:     f_default
-    ! Argument:  void * value +intent(out)+value
     ! Attrs:     +intent(out)
-    ! Requested: c_void_*_out
+    ! Requested: c_native_*_out
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.
@@ -418,7 +479,7 @@ contains
     !! splicer in order to get {stype} expanded.
     !<
     subroutine get_scalar2_1(name, value)
-        use iso_c_binding, only : C_DOUBLE
+        use iso_c_binding, only : C_DOUBLE, C_INT
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), intent(OUT) :: value
         ! splicer begin function.get_scalar2_1

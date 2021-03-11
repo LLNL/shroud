@@ -191,13 +191,22 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
     // splicer end function.fortran_generic_overloaded_1
 }
 
-void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
-    int Lname, double arg2)
+void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
+    int Lname, float arg2)
 {
-    // splicer begin function.fortran_generic_overloaded_1_bufferify
+    // splicer begin function.fortran_generic_overloaded_1_float_bufferify
     const std::string SHCXX_name(name, Lname);
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    // splicer end function.fortran_generic_overloaded_1_bufferify
+    // splicer end function.fortran_generic_overloaded_1_float_bufferify
+}
+
+void TUT_fortran_generic_overloaded_1_double_bufferify(
+    const char * name, int Lname, double arg2)
+{
+    // splicer begin function.fortran_generic_overloaded_1_double_bufferify
+    const std::string SHCXX_name(name, Lname);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
+    // splicer end function.fortran_generic_overloaded_1_double_bufferify
 }
 
 int TUT_use_default_overload_num(int num)
