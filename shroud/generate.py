@@ -1790,11 +1790,6 @@ class GenFunctions(object):
                 node.wrap.c = False
                 node.wrap.lua = False  # NotImplemented
                 specialize = arg.template_arguments[0].typemap.sgroup
-            elif (sgroup == "native" and
-                  meta["intent"] == "out" and
-                  meta["deref"] != "raw" and
-                  arg.get_indirect_stmt() in ["**", "*&"]):
-                attrs["context"] = True
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
             spointer = arg.get_indirect_stmt()
