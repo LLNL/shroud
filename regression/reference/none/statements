@@ -27,8 +27,7 @@ root
           cfi -- c_char_scalar_result_cfi
     mixin
       buf
-        character
-          result -- c_mixin_buf_character_result
+        result -- c_mixin_buf_result
       cfi
         character
           arg -- c_mixin_cfi_character_arg
@@ -147,6 +146,9 @@ root
             allocatable -- f_char_scalar/*_result_buf_allocatable
           cfi
             allocatable -- f_char_scalar/*_result_cfi_allocatable
+    mixin
+      buf
+        result -- f_mixin_buf_result
     native
       &
         result -- f_native_&_result
@@ -467,7 +469,7 @@ c_char_scalar_result_cfi:
   - char *{c_var} = {cast_static}char *{cast1}{cfi_prefix}{c_var}->base_addr{cast2};
   - '{stdlib}memset({c_var}, '' '', {cfi_prefix}{c_var}->elem_len);'
   - '{c_var}[0] = {cxx_var};'
-c_mixin_buf_character_result:
+c_mixin_buf_result:
   buf_args:
   - arg_decl
   c_arg_decl:
@@ -476,7 +478,7 @@ c_mixin_buf_character_result:
   - 'type({F_array_type}), intent(OUT) :: {c_var}'
   f_import:
   - '{F_array_type}'
-  name: c_mixin_buf_character_result
+  name: c_mixin_buf_result
   ntemps: 1
   owner: library
   return_type: void
@@ -1507,6 +1509,13 @@ f_char_scalar_result_cfi_allocatable:
   - 'character(len=:), allocatable :: {f_var}'
   name: f_char_scalar_result_cfi_allocatable
   need_wrapper: true
+f_mixin_buf_result:
+  arg_c_call:
+  - '{temp0}'
+  declare:
+  - 'type({F_array_type}) :: {temp0}'
+  name: f_mixin_buf_result
+  ntemps: 1
 f_native_&_result:
   call:
   - '{F_pointer} = {F_C_call}({F_arg_c_call})'

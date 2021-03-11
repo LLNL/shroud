@@ -543,6 +543,30 @@ default_stmts = dict(
 
 fc_statements = [
     dict(
+        name="c_mixin_buf_result",
+        # Pass array_type as argument to contain the function result.
+        buf_args=["arg_decl"],
+        ntemps=1,
+        c_arg_decl=[
+            "{C_array_type} *{temp0}",
+        ],
+        f_arg_decl=[
+            "type({F_array_type}), intent(OUT) :: {c_var}",
+        ],
+        f_import=["{F_array_type}"],
+        return_type="void",  # Convert to function.
+###        f_c_arg_names=["{c_var}"],
+    ),
+    dict(
+        name="f_mixin_buf_result",
+        declare=[
+            "type({F_array_type}) :: {temp0}",
+        ],
+        arg_c_call=["{temp0}"],  # Pass result as an argument.
+        ntemps=1,
+    ),
+
+    dict(
         name="f_bool_in",
         c_local_var=True,
         pre_call=["{c_var} = {f_var}  ! coerce to C_BOOL"],
@@ -1011,27 +1035,8 @@ fc_statements = [
     ),
 
     dict(
-        name="c_mixin_buf_character_result",
-        # Pass array_type as argument to contain the function result.
-        buf_args=["arg_decl"],
-        ntemps=1,
-        c_arg_decl=[
-            "{C_array_type} *{temp0}",
-        ],
-        f_arg_decl=[
-            "type({F_array_type}), intent(OUT) :: {c_var}",
-        ],
-        f_import=["{F_array_type}"],
-        return_type="void",  # Convert to function.
-###        f_c_arg_names=["{c_var}"],
-    ),
-
-    
-    dict(
         name="c_char_*_result_buf_allocatable",
-        mixin=[
-            "c_mixin_buf_character_result",
-        ],
+        mixin=["c_mixin_buf_result"],
         c_helper="ShroudTypeDefines",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -1095,21 +1100,17 @@ fc_statements = [
         # f_char_scalar_result_buf_allocatable
         # f_char_*_result_buf_allocatable
         name="f_char_scalar/*_result_buf_allocatable",
+        mixin=["f_mixin_buf_result"],
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        declare=[
-            "type({F_array_type}) :: {temp0}",
-        ],
-        arg_c_call=["{temp0}"],  # Pass result as an argument.
         post_call=[
             "allocate(character(len={temp0}%elem_len):: {f_var})",
             "call {hnamefunc0}(\t{temp0},\t {f_var},\t {temp0}%elem_len)",
         ],
-        ntemps=1,
     ),
 
     dict(
@@ -1269,9 +1270,7 @@ fc_statements = [
         # c_string_*_result_buf_allocatable
         # c_string_&_result_buf_allocatable
         name="c_string_*/&_result_buf_allocatable",
-        mixin=[
-            "c_mixin_buf_character_result",
-        ],
+        mixin=["c_mixin_buf_result"],
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
         # When returning a std::string (and not a reference or pointer)
@@ -1288,9 +1287,7 @@ fc_statements = [
     # The Fortran wrapper will ALLOCATE memory, copy then delete the string.
     dict(
         name="c_string_scalar_result_buf_allocatable",
-        mixin=[
-            "c_mixin_buf_character_result",
-        ],
+        mixin=["c_mixin_buf_result"],
         cxx_local_var="pointer",
         c_helper="ShroudStrToArray",
         # Copy address of result into c_var and save length.
@@ -1316,21 +1313,17 @@ fc_statements = [
         # f_string_*_result_buf_allocatable
         # f_string_&_result_buf_allocatable
         name="f_string_scalar/*/&_result_buf_allocatable",
+        mixin=["f_mixin_buf_result"],
         need_wrapper=True,
         c_helper="copy_string",
         f_helper="copy_string array_context",
         arg_decl=[
             "character(len=:), allocatable :: {f_var}",
         ],
-        declare=[
-            "type({F_array_type}) :: {temp0}",
-        ],
-        arg_c_call=["{temp0}"],  # Pass result as an argument.
         post_call=[
             "allocate(character(len={temp0}%elem_len):: {f_var})",
             "call {hnamefunc0}({temp0},\t {f_var},\t {temp0}%elem_len)",
         ],
-        ntemps=1,
     ),
     
     ########################################
@@ -1406,7 +1399,7 @@ fc_statements = [
     # Almost same as intent_out_buf.
     dict(
         name="c_vector_result_buf",
-        mixin=["c_mixin_buf_character_result"],  # XXX maybe rename since vector
+        mixin=["c_mixin_buf_result"],
         cxx_local_var="pointer",
         c_helper="ShroudTypeDefines",
         pre_call=[
@@ -1593,21 +1586,17 @@ fc_statements = [
     # Always return a 1-d array.
     dict(
         name="f_vector_result_buf_allocatable",
+        mixin=["f_mixin_buf_result"],
         c_helper="copy_array",
         f_helper="copy_array_{cxx_T}",
         f_module=dict(iso_c_binding=["C_SIZE_T"]),
         arg_decl=[
             "{f_type}, allocatable :: {f_var}{f_assumed_shape}",
         ],
-        declare=[
-            "type({F_array_type}) :: {temp0}",
-        ],
-        arg_c_call=["{temp0}"],  # Pass result as an argument.
         post_call=[
             "allocate({f_var}({temp0}%size))",
             "call {hnamefunc0}(\t{temp0},\t {f_var},\t size({f_var},kind=C_SIZE_T))",
         ],
-        ntemps=1,
     ),
 
     # Pass in a pointer to a shadow object via buf_args.
