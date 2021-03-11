@@ -134,7 +134,7 @@ module templates_std_mod
         end function c_vector_int_at
 
         ! ----------------------------------------
-        ! Function:  int & at +context(DSHC_rv)
+        ! Function:  int & at
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_buf_pointer
         ! Match:     c_native_&_result
@@ -222,7 +222,7 @@ module templates_std_mod
         end function c_vector_double_at
 
         ! ----------------------------------------
-        ! Function:  double & at +context(DSHC_rv)
+        ! Function:  double & at
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_&_result_buf_pointer
         ! Match:     c_native_&_result
@@ -316,7 +316,6 @@ contains
     ! Function:  int & at
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_&_result_buf_pointer
-    ! Function:  int & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result_buf_pointer
     ! Match:     c_native_&_result
@@ -424,7 +423,6 @@ contains
     ! Function:  double & at
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_&_result_buf_pointer
-    ! Function:  double & at +context(DSHC_rv)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_&_result_buf_pointer
     ! Match:     c_native_&_result

@@ -109,25 +109,24 @@ double * ARR_ArrayWrapper_get_array(ARR_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArray +context(DSHC_rv)+dimension(getSize())
+// Function:  double * getArray +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
-double * ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
-    ARR_SHROUD_array *DSHC_rv)
+void ARR_ArrayWrapper_get_array_bufferify(ARR_ArrayWrapper * self,
+    ARR_SHROUD_array *SHC_rv_temp0)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_bufferify
     double * SHC_rv = SH_this->getArray();
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_DOUBLE;
-    DSHC_rv->elem_len = sizeof(double);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = SH_this->getSize();
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = SHC_rv;
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_DOUBLE;
+    SHC_rv_temp0->elem_len = sizeof(double);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = SH_this->getSize();
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end class.ArrayWrapper.method.get_array_bufferify
 }
 
@@ -147,26 +146,25 @@ double * ARR_ArrayWrapper_get_array_const(const ARR_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  double * getArrayConst +context(DSHC_rv)+dimension(getSize())
+// Function:  double * getArrayConst +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
-double * ARR_ArrayWrapper_get_array_const_bufferify(
-    const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
+void ARR_ArrayWrapper_get_array_const_bufferify(
+    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHC_rv_temp0)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const_bufferify
     double * SHC_rv = SH_this->getArrayConst();
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_DOUBLE;
-    DSHC_rv->elem_len = sizeof(double);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = SH_this->getSize();
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = SHC_rv;
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_DOUBLE;
+    SHC_rv_temp0->elem_len = sizeof(double);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = SH_this->getSize();
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end class.ArrayWrapper.method.get_array_const_bufferify
 }
 
@@ -185,25 +183,24 @@ const double * ARR_ArrayWrapper_get_array_c(ARR_ArrayWrapper * self)
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayC +context(DSHC_rv)+dimension(getSize())
+// Function:  const double * getArrayC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
-const double * ARR_ArrayWrapper_get_array_c_bufferify(
-    ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
+void ARR_ArrayWrapper_get_array_c_bufferify(ARR_ArrayWrapper * self,
+    ARR_SHROUD_array *SHC_rv_temp0)
 {
     ArrayWrapper *SH_this = static_cast<ArrayWrapper *>(self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_c_bufferify
     const double * SHC_rv = SH_this->getArrayC();
-    DSHC_rv->cxx.addr  = const_cast<double *>(SHC_rv);
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_DOUBLE;
-    DSHC_rv->elem_len = sizeof(double);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = SH_this->getSize();
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = const_cast<double *>(SHC_rv);
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_DOUBLE;
+    SHC_rv_temp0->elem_len = sizeof(double);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = SH_this->getSize();
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end class.ArrayWrapper.method.get_array_c_bufferify
 }
 
@@ -224,26 +221,25 @@ const double * ARR_ArrayWrapper_get_array_const_c(
 }
 
 // ----------------------------------------
-// Function:  const double * getArrayConstC +context(DSHC_rv)+dimension(getSize())
+// Function:  const double * getArrayConstC +dimension(getSize())
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
-const double * ARR_ArrayWrapper_get_array_const_c_bufferify(
-    const ARR_ArrayWrapper * self, ARR_SHROUD_array *DSHC_rv)
+void ARR_ArrayWrapper_get_array_const_c_bufferify(
+    const ARR_ArrayWrapper * self, ARR_SHROUD_array *SHC_rv_temp0)
 {
     const ArrayWrapper *SH_this = static_cast<const ArrayWrapper *>
         (self->addr);
     // splicer begin class.ArrayWrapper.method.get_array_const_c_bufferify
     const double * SHC_rv = SH_this->getArrayConstC();
-    DSHC_rv->cxx.addr  = const_cast<double *>(SHC_rv);
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_DOUBLE;
-    DSHC_rv->elem_len = sizeof(double);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = SH_this->getSize();
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = const_cast<double *>(SHC_rv);
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_DOUBLE;
+    SHC_rv_temp0->elem_len = sizeof(double);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = SH_this->getSize();
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end class.ArrayWrapper.method.get_array_const_c_bufferify
 }
 

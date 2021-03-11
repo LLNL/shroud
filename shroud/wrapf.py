@@ -1077,11 +1077,9 @@ rv = .false.
 
             buf_arg_name = attrs[buf_arg]
             if buf_arg_name is None:
-                raise RuntimeError(
-                    "attr {} is missing from attrs for {}".format(
-                        buf_arg, node.declgen
-                    )
-                )
+                msg = "ERROR: {} is missing from attrs".format(buf_arg)
+                arg_c_decl.append(msg)
+                self.log.write(msg + "\n")
             elif buf_arg == "size":
                 arg_c_names.append(buf_arg_name)
                 arg_c_decl.append(
@@ -1528,7 +1526,7 @@ rv = .false.
         return need_wrapper
 
     def set_fmt_fields(self, cls, fcn, f_ast, c_ast, fmt, modules, fileinfo,
-                       is_result=False,
+                       subprogram=None,
                        ntypemap=None):
         """
         Set format fields for ast.
@@ -1546,24 +1544,24 @@ rv = .false.
         c_meta = c_ast.metaattrs
         statements.assign_buf_variable_names(c_attrs, fmt)
 
-        if is_result:
-#            ntypemap = ntypemap
-            # XXX - looked up in parent
+        if subprogram == "subroutine":
+            # XXX - no need to set f_type and sh_type
+            pass
+        elif subprogram == "function":
+            # XXX this also gets set for subroutines
             fmt.f_intent = "OUT"
-            if ntypemap.base == "vector":
-                ntypemap = f_ast.template_arguments[0].typemap
         else:
             fmt.f_intent = c_meta["intent"].upper()
-            
             ntypemap = f_ast.typemap
-            if c_ast.template_arguments:
-                # If a template, use its type
-                ntypemap = c_ast.template_arguments[0].typemap
-                fmt.cxx_T = ntypemap.name
-        if ntypemap.f_kind:
-            fmt.f_kind = ntypemap.f_kind
-        fmt.f_type = ntypemap.f_type
-        fmt.sh_type = ntypemap.sh_type
+        if c_ast.template_arguments:
+            # If a template, use its type
+            ntypemap = c_ast.template_arguments[0].typemap
+            fmt.cxx_T = ntypemap.name
+        if subprogram != "subroutine":
+            if ntypemap.f_kind:
+                fmt.f_kind = ntypemap.f_kind
+            fmt.f_type = ntypemap.f_type
+            fmt.sh_type = ntypemap.sh_type
         
         if c_attrs["context"]:
             if not fmt.c_var_context:
@@ -1587,10 +1585,15 @@ rv = .false.
             visitor.visit(f_ast.metaattrs["dimension"])
             rank = visitor.rank
             fmt.rank = str(rank)
-            if rank > 0:
+            if rank != "assumed" and rank > 0:
                 fmt.f_assumed_shape = fortran_ranks[rank]
+                # XXX use temp0 since shape is assigned in C
                 fmt.f_array_allocate = "(" + ",".join(visitor.shape) + ")"
-                if c_ast.attrs["context"]:
+                if hasattr(fmt, "temp0"):
+                    # XXX kludge, name is assumed to be temp0.
+                    fmt.f_array_shape = wformat(
+                        ", {temp0}%shape(1:{rank})", fmt)
+                elif c_ast.attrs["context"]:
                     fmt.f_array_shape = wformat(
                         ", {c_var_context}%shape(1:{rank})", fmt)
 
@@ -1655,8 +1658,6 @@ rv = .false.
             fmt_result.c_var = fmt_func.F_result
             fmt_result.cxx_type = result_typemap.cxx_type # used with helpers
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
-            self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
-                                modules, fileinfo, True, result_typemap)
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
             return_deref_attr = ast.metaattrs["deref"]
@@ -1682,7 +1683,10 @@ rv = .false.
             ["c", generated_suffix], c_result_blk, node)
         fmt_result.stmtc0 = statements.compute_name(c_stmts)
         fmt_result.stmtc1 = c_result_blk.name
+
         self.name_temp_vars(f_result_blk, fmt_result)
+        self.set_fmt_fields(cls, C_node, ast, C_node.ast, fmt_result,
+                            modules, fileinfo, subprogram, result_typemap)
 
         if options.debug:
             stmts_comments.append(
@@ -2338,6 +2342,7 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        self.rank = "assumed"
         return "--assumed-rank--"
         raise RuntimeError("wrapf.py: Detected assumed-rank dimension")
 

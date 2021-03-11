@@ -27,6 +27,15 @@ module ownership_mod
         integer(C_INT) :: idtor = 0       ! index of destructor
     end type OWN_SHROUD_capsule_data
 
+    ! helper capsule_helper
+    type :: OWN_SHROUD_capsule
+        private
+        type(OWN_SHROUD_capsule_data) :: mem
+    contains
+        final :: SHROUD_capsule_final
+        procedure :: delete => SHROUD_capsule_delete
+    end type OWN_SHROUD_capsule
+
     ! helper array_context
     type, bind(C) :: OWN_SHROUD_array
         ! address of C++ memory
@@ -43,15 +52,6 @@ module ownership_mod
         integer(C_INT) :: rank = -1
         integer(C_LONG) :: shape(7) = 0
     end type OWN_SHROUD_array
-
-    ! helper capsule_helper
-    type :: OWN_SHROUD_capsule
-        private
-        type(OWN_SHROUD_capsule_data) :: mem
-    contains
-        final :: SHROUD_capsule_final
-        procedure :: delete => SHROUD_capsule_delete
-    end type OWN_SHROUD_capsule
 
     type class1
         type(OWN_SHROUD_capsule_data) :: cxxmem
@@ -144,19 +144,16 @@ module ownership_mod
         end function c_return_int_ptr_pointer
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
+        ! Function:  int * ReturnIntPtrPointer +deref(pointer)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
-        function c_return_int_ptr_pointer_bufferify(DSHC_rv) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_pointer_bufferify(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_pointer_bufferify")
-            use iso_c_binding, only : C_PTR
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_pointer_bufferify
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
+        end subroutine c_return_int_ptr_pointer_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRaw +deref(raw)
@@ -197,7 +194,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_pointer
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
+        ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
@@ -206,16 +203,14 @@ module ownership_mod
         ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        function c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_dim_pointer_bufferify(SHT_rv, len) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_bufferify")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_pointer_bufferify
+        end subroutine c_return_int_ptr_dim_pointer_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
@@ -237,7 +232,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_alloc
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
+        ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
         ! Attrs:     +deref(allocatable)+intent(result)
         ! Requested: c_native_*_result_buf_allocatable
         ! Match:     c_native_*_result_buf
@@ -246,16 +241,14 @@ module ownership_mod
         ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        function c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_dim_alloc_bufferify(SHT_rv, len) &
                 bind(C, name="OWN_return_int_ptr_dim_alloc_bufferify")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_alloc_bufferify
+        end subroutine c_return_int_ptr_dim_alloc_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
@@ -277,7 +270,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_default
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+dimension(len)
+        ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
@@ -286,16 +279,14 @@ module ownership_mod
         ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        function c_return_int_ptr_dim_default_bufferify(DSHC_rv, len) &
-                result(SHT_rv) &
+        subroutine c_return_int_ptr_dim_default_bufferify(SHT_rv, len) &
                 bind(C, name="OWN_return_int_ptr_dim_default_bufferify")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_default_bufferify
+        end subroutine c_return_int_ptr_dim_default_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimRawNew +capsule(Crv)+dimension(len)+owner(caller)
@@ -336,7 +327,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_pointer_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
+        ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
@@ -345,17 +336,15 @@ module ownership_mod
         ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        function c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
+        subroutine c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv, &
                 len) &
-                result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_pointer_new_bufferify")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_pointer_new_bufferify
+        end subroutine c_return_int_ptr_dim_pointer_new_bufferify
 
         ! ----------------------------------------
         ! Function:  int * ReturnIntPtrDimAllocNew +deref(allocatable)+dimension(len)+owner(caller)
@@ -396,7 +385,7 @@ module ownership_mod
         end function c_return_int_ptr_dim_default_new
 
         ! ----------------------------------------
-        ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+dimension(len)+owner(caller)
+        ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
         ! Attrs:     +deref(pointer)+intent(result)
         ! Requested: c_native_*_result_buf_pointer
         ! Match:     c_native_*_result_buf
@@ -405,17 +394,15 @@ module ownership_mod
         ! Attrs:     +intent(out)
         ! Requested: c_native_*_out
         ! Match:     c_default
-        function c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
+        subroutine c_return_int_ptr_dim_default_new_bufferify(SHT_rv, &
                 len) &
-                result(SHT_rv) &
                 bind(C, name="OWN_return_int_ptr_dim_default_new_bufferify")
-            use iso_c_binding, only : C_INT, C_PTR
+            use iso_c_binding, only : C_INT
             import :: OWN_SHROUD_array
             implicit none
-            type(OWN_SHROUD_array), intent(INOUT) :: DSHC_rv
+            type(OWN_SHROUD_array), intent(OUT) :: SHT_rv
             integer(C_INT), intent(OUT) :: len
-            type(C_PTR) SHT_rv
-        end function c_return_int_ptr_dim_default_new_bufferify
+        end subroutine c_return_int_ptr_dim_default_new_bufferify
 
         ! ----------------------------------------
         ! Function:  void createClassStatic
@@ -558,19 +545,17 @@ contains
     ! Function:  int * ReturnIntPtrPointer +deref(pointer)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  int * ReturnIntPtrPointer +context(DSHC_rv)+deref(pointer)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
     function return_int_ptr_pointer() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv
         ! splicer begin function.return_int_ptr_pointer
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_pointer_bufferify(DSHC_rv)
-        call c_f_pointer(SHT_ptr, SHT_rv)
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_pointer_bufferify(SHT_rv_temp0)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv)
         ! splicer end function.return_int_ptr_pointer
     end function return_int_ptr_pointer
 
@@ -579,7 +564,6 @@ contains
     ! Function:  int * ReturnIntPtrDimPointer +deref(pointer)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  int * ReturnIntPtrDimPointer +context(DSHC_rv)+deref(pointer)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
@@ -593,14 +577,13 @@ contains
     ! Match:     c_default
     function return_int_ptr_dim_pointer() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim_pointer_bufferify(DSHC_rv, len)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_dim_pointer_bufferify(SHT_rv_temp0, len)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_dim_pointer
     end function return_int_ptr_dim_pointer
 
@@ -609,7 +592,6 @@ contains
     ! Function:  int * ReturnIntPtrDimAlloc +deref(allocatable)+dimension(len)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Exact:     f_native_*_result_buf_allocatable
-    ! Function:  int * ReturnIntPtrDimAlloc +context(DSHC_rv)+deref(allocatable)+dimension(len)
     ! Attrs:     +deref(allocatable)+intent(result)
     ! Requested: c_native_*_result_buf_allocatable
     ! Match:     c_native_*_result_buf
@@ -623,16 +605,15 @@ contains
     ! Match:     c_default
     function return_int_ptr_dim_alloc() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT
         integer(C_INT), allocatable :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_alloc
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim_alloc_bufferify(DSHC_rv, len)
-        allocate(SHT_rv(len))
-        call OWN_SHROUD_copy_array_int(DSHC_rv, SHT_rv, size(SHT_rv, &
-            kind=C_SIZE_T))
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_dim_alloc_bufferify(SHT_rv_temp0, len)
+        allocate(SHT_rv((len)))
+        call OWN_SHROUD_copy_array_int(SHT_rv_temp0, SHT_rv, &
+            size(SHT_rv, kind=C_SIZE_T))
         ! splicer end function.return_int_ptr_dim_alloc
     end function return_int_ptr_dim_alloc
 
@@ -641,7 +622,6 @@ contains
     ! Function:  int * ReturnIntPtrDimDefault +dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer
-    ! Function:  int * ReturnIntPtrDimDefault +context(DSHC_rv)+dimension(len)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
@@ -655,14 +635,13 @@ contains
     ! Match:     c_default
     function return_int_ptr_dim_default() &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim_default_bufferify(DSHC_rv, len)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_dim_default_bufferify(SHT_rv_temp0, len)
+        call c_f_pointer(SHT_rv_temp0%base_addr, SHT_rv, SHT_rv_temp0%shape(1:1))
         ! splicer end function.return_int_ptr_dim_default
     end function return_int_ptr_dim_default
 
@@ -671,7 +650,6 @@ contains
     ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+deref(pointer)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer_caller
-    ! Function:  int * ReturnIntPtrDimPointerNew +capsule(Crv)+context(DSHC_rv)+deref(pointer)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
@@ -685,17 +663,17 @@ contains
     ! Match:     c_default
     function return_int_ptr_dim_pointer_new(Crv) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_pointer_new
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim_pointer_new_bufferify(DSHC_rv, &
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_dim_pointer_new_bufferify(SHT_rv_temp0, &
             len)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
-        Crv%mem = DSHC_rv%cxx
+        call c_f_pointer(SHT_rv_temp0%base_addr, &
+            SHT_rv, SHT_rv_temp0%shape(1:1))
+        Crv%mem = SHT_rv_temp0%cxx
         ! splicer end function.return_int_ptr_dim_pointer_new
     end function return_int_ptr_dim_pointer_new
 
@@ -704,7 +682,6 @@ contains
     ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Exact:     f_native_*_result_buf_pointer_caller
-    ! Function:  int * ReturnIntPtrDimDefaultNew +capsule(Crv)+context(DSHC_rv)+dimension(len)+owner(caller)
     ! Attrs:     +deref(pointer)+intent(result)
     ! Requested: c_native_*_result_buf_pointer
     ! Match:     c_native_*_result_buf
@@ -718,17 +695,17 @@ contains
     ! Match:     c_default
     function return_int_ptr_dim_default_new(Crv) &
             result(SHT_rv)
-        use iso_c_binding, only : C_INT, C_PTR, c_f_pointer
-        type(OWN_SHROUD_array) :: DSHC_rv
+        use iso_c_binding, only : C_INT, c_f_pointer
         integer(C_INT), pointer :: SHT_rv(:)
         type(OWN_SHROUD_capsule), intent(OUT) :: Crv
         integer(C_INT) :: len
         ! splicer begin function.return_int_ptr_dim_default_new
-        type(C_PTR) :: SHT_ptr
-        SHT_ptr = c_return_int_ptr_dim_default_new_bufferify(DSHC_rv, &
+        type(OWN_SHROUD_array) :: SHT_rv_temp0
+        call c_return_int_ptr_dim_default_new_bufferify(SHT_rv_temp0, &
             len)
-        call c_f_pointer(SHT_ptr, SHT_rv, DSHC_rv%shape(1:1))
-        Crv%mem = DSHC_rv%cxx
+        call c_f_pointer(SHT_rv_temp0%base_addr, &
+            SHT_rv, SHT_rv_temp0%shape(1:1))
+        Crv%mem = SHT_rv_temp0%cxx
         ! splicer end function.return_int_ptr_dim_default_new
     end function return_int_ptr_dim_default_new
 

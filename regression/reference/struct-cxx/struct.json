@@ -3186,7 +3186,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
@@ -3204,9 +3203,6 @@
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "declarator": {
                         "name": "returnStructPtr1",
                         "pointer": [
@@ -3259,7 +3255,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr1(int i, double d)",
-                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value) +context(DSHC_rv)",
+                "declgen": "Cstruct1 * returnStructPtr1(int i +value, double d +value)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Does not generate a bufferify C wrapper.\n"
@@ -3358,7 +3354,6 @@
                         "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -3580,7 +3575,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct1",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct1)",
@@ -3598,9 +3592,6 @@
                 "_PTR_C_CXX_index": "18",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "declarator": {
                         "name": "returnStructPtr2",
                         "pointer": [
@@ -3676,7 +3667,7 @@
                     "typemap_name": "Cstruct1"
                 },
                 "decl": "Cstruct1 *returnStructPtr2(int i, double d, char *outbuf+intent(out)+charlen(LENOUTBUF))",
-                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len) +context(DSHC_rv)",
+                "declgen": "Cstruct1 * returnStructPtr2(int i +value, double d +value, char * outbuf +charlen(LENOUTBUF)+intent(out)+len)",
                 "doxygen": {
                     "brief": "Return a pointer to a struct",
                     "description": "Generates a bufferify C wrapper function.\n"
@@ -3810,7 +3801,6 @@
                         "c_get_value": "",
                         "c_type": "STR_cstruct1",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",
@@ -3901,7 +3891,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_type": "Cstruct_list",
                         "f_intent": "OUT",
                         "f_type": "type(cstruct_list)",
@@ -3919,9 +3908,6 @@
                 "_PTR_C_CXX_index": "19",
                 "_generated": "arg_to_buffer",
                 "ast": {
-                    "attrs": {
-                        "context": "DSHC_rv"
-                    },
                     "declarator": {
                         "name": "get_global_struct_list",
                         "pointer": [
@@ -3941,7 +3927,7 @@
                     "typemap_name": "Cstruct_list"
                 },
                 "decl": "Cstruct_list *get_global_struct_list();",
-                "declgen": "Cstruct_list * get_global_struct_list(void) +context(DSHC_rv)",
+                "declgen": "Cstruct_list * get_global_struct_list(void)",
                 "generated_suffix": "buf",
                 "options": {},
                 "wrap": {
@@ -3967,7 +3953,6 @@
                         "c_get_value": "",
                         "c_type": "STR_cstruct_list",
                         "c_var": "SHC_rv",
-                        "c_var_context": "DSHC_rv",
                         "cxx_addr": "",
                         "cxx_member": "->",
                         "cxx_nonconst_ptr": "SHCXX_rv",

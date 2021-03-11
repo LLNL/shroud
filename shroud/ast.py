@@ -770,6 +770,7 @@ class LibraryNode(AstNode, NamespaceMixin):
                 cxx_nonconst_ptr="XXXcxx_nonconst_ptr",
                 cxx_type="XXXcxx_type",
                 cxx_var="XXXcxx_var",
+#                cxx_T="short",   # Needs to be a actual type to find helper.
                 F_C_var="XXXF_C_var",
                 f_intent="XXXf_intent",
                 f_type="XXXf_type",

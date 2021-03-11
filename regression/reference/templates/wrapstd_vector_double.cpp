@@ -89,7 +89,7 @@ double * TEM_vector_double_at(TEM_vector_double * self, size_t n)
 }
 
 // ----------------------------------------
-// Function:  double & at +context(DSHC_rv)
+// Function:  double & at
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_&_result_buf_pointer
 // Match:     c_native_&_result

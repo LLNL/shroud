@@ -59,7 +59,7 @@ int STR_pass_struct2_bufferify(const Cstruct1 * s1, char * outbuf,
  * Generates a bufferify C wrapper function.
  */
 // ----------------------------------------
-// Function:  Cstruct1 * returnStructPtr2 +context(DSHC_rv)
+// Function:  Cstruct1 * returnStructPtr2
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_struct_*_result_buf_pointer
 // Match:     c_struct_*_result

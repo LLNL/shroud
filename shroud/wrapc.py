@@ -755,20 +755,24 @@ class Wrapc(util.WrapperMixin):
             visitor = ToDimension(cls, fcn, fmt, class_context)
             visitor.visit(ast.metaattrs["dimension"])
             fmt.rank = str(visitor.rank)
-
-            if ast.attrs["context"]:
-                # Assign each rank of dimension.
-                fmt.c_var_context = attrs["context"]
-                fmtdim = []
-                fmtsize = []
-                for i, dim in enumerate(visitor.shape):
-                    fmtdim.append("{}->shape[{}] = {};".format(
-                        fmt.c_var_context, i, dim))
-                    fmtsize.append("{}->shape[{}]".format(
-                        fmt.c_var_context, i, dim))
-                fmt.c_array_shape = "\n" + "\n".join(fmtdim)
-                if fmtsize:
-                    fmt.c_array_size = "*\t".join(fmtsize)
+            if fmt.rank != "assumed":
+                if hasattr(fmt, "temp0"):
+                    # XXX kludge, name is assumed to be temp0.
+                    fmt.c_var_context = fmt.temp0
+                elif ast.attrs["context"]:
+                    fmt.c_var_context = attrs["context"]
+                if hasattr(fmt, "c_var_context"):
+                    # Assign each rank of dimension.
+                    fmtdim = []
+                    fmtsize = []
+                    for i, dim in enumerate(visitor.shape):
+                        fmtdim.append("{}->shape[{}] = {};".format(
+                            fmt.c_var_context, i, dim))
+                        fmtsize.append("{}->shape[{}]".format(
+                            fmt.c_var_context, i, dim))
+                    fmt.c_array_shape = "\n" + "\n".join(fmtdim)
+                    if fmtsize:
+                        fmt.c_array_size = "*\t".join(fmtsize)
 
     def set_cxx_nonconst_ptr(self, ast, fmt):
         """Set fmt.cxx_nonconst_ptr.
@@ -849,7 +853,6 @@ class Wrapc(util.WrapperMixin):
         # self.impl_typedef_nodes.update(node.gen_headers_typedef) Python 3.6
         self.impl_typedef_nodes.update(node.gen_headers_typedef.items())
         header_typedef_nodes = OrderedDict()
-        header_typedef_nodes[result_typemap.name] = result_typemap
         #        if result_typemap.forward:
         #            # create forward references for other types being wrapped
         #            # i.e. This method returns a wrapped type
@@ -884,6 +887,12 @@ class Wrapc(util.WrapperMixin):
             fmt_result.c_type = result_typemap.c_type
             fmt_result.cxx_type = result_typemap.cxx_type
             fmt_result.sh_type = result_typemap.sh_type
+            if ast.template_arguments:
+                template_typemap = ast.template_arguments[0].typemap
+                fmt_result.cxx_T = template_typemap.name
+                header_typedef_nodes[template_typemap.name] = template_typemap
+            else:
+                header_typedef_nodes[result_typemap.name] = result_typemap
             c_local_var = ""
             if self.language == "c":
                 fmt_result.cxx_var = fmt_result.c_var
@@ -1597,6 +1606,7 @@ class ToDimension(todict.PrintNode):
         return "--??--"
 
     def visit_AssumedRank(self, node):
+        self.rank = "assumed"
         return "--assumed-rank--"
         raise RuntimeError("wrapc.py: Detected assumed-rank dimension")
 

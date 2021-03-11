@@ -2124,7 +2124,7 @@
                 },
                 "zz_fmtdict": {
                     "F_C_call": "c_return_vector_alloc_bufferify",
-                    "F_arg_c_call": "n,\t DSHF_rv",
+                    "F_arg_c_call": "SHT_rv_temp0,\t n",
                     "F_arguments": "n",
                     "F_name_function": "return_vector_alloc",
                     "F_name_generic": "return_vector_alloc",
@@ -2137,6 +2137,7 @@
                 "zz_fmtresult": {
                     "fmtf": {
                         "c_var": "SHT_rv",
+                        "cxx_T": "int",
                         "cxx_type": "std::vector<{cxx_T}>",
                         "f_assumed_shape": "(:)",
                         "f_c_dimension": "(*)",
@@ -2144,13 +2145,15 @@
                         "f_kind": "C_INT",
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
+                        "hnamefunc0": "VEC_SHROUD_copy_array_int",
                         "rank": "1",
                         "sh_type": "SH_TYPE_INT",
                         "size": "size(SHT_rv)",
                         "stmt0": "f_vector_scalar_result_buf_allocatable",
-                        "stmt1": "f_vector_result_allocatable",
+                        "stmt1": "f_vector_result_buf_allocatable",
                         "stmtc0": "c_vector_scalar_result_buf_allocatable",
-                        "stmtc1": "c_vector_result_buf"
+                        "stmtc1": "c_vector_result_buf",
+                        "temp0": "SHT_rv_temp0"
                     }
                 }
             },
@@ -2165,6 +2168,10 @@
                     "declarator": {
                         "name": "ReturnVectorAlloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "deref": "allocatable",
+                        "intent": "result"
                     },
                     "params": [
                         {
@@ -2182,46 +2189,23 @@
                                 "int"
                             ],
                             "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "context": "DSHF_rv",
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "SHF_rv",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "deref": "allocatable",
-                                "intent": "out",
-                                "is_result": true
-                            },
-                            "specifier": [
-                                "std::vector"
-                            ],
-                            "template_arguments": [
-                                {
-                                    "specifier": [
-                                        "int"
-                                    ],
-                                    "typemap_name": "int"
-                                }
-                            ],
-                            "typemap_name": "std::vector"
                         }
                     ],
                     "specifier": [
-                        "void"
+                        "std::vector"
                     ],
-                    "typemap_name": "void"
+                    "template_arguments": [
+                        {
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "typemap_name": "std::vector"
                 },
                 "decl": "std::vector<int> ReturnVectorAlloc(int n)",
-                "declgen": "void ReturnVectorAlloc(int n +value, std::vector<int> * SHF_rv +context(DSHF_rv)+rank(1)) +rank(1)",
+                "declgen": "std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)",
                 "doxygen": {
                     "description": "Implement iota function.\nReturn a vector as an ALLOCATABLE array.\nCopy results into the new array.\n"
                 },
@@ -2232,48 +2216,6 @@
                     "f_c": true
                 },
                 "zz_fmtargs": {
-                    "SHF_rv": {
-                        "fmtc": {
-                            "c_addr": "",
-                            "c_const": "",
-                            "c_deref": "*",
-                            "c_member": "->",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_T": "int",
-                            "cxx_addr": "",
-                            "cxx_member": "->",
-                            "cxx_nonconst_ptr": "SHC_rv",
-                            "cxx_type": "int",
-                            "cxx_var": "SHC_rv",
-                            "idtor": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "shadow_var": "SHadow_SHF_rv",
-                            "stmt0": "c_vector_scalar_result_buf_allocatable",
-                            "stmt1": "c_vector_result_buf"
-                        },
-                        "fmtf": {
-                            "F_C_var": "SHF_rv",
-                            "F_pointer": "SHPTR_SHF_rv",
-                            "c_var": "SHF_rv",
-                            "c_var_context": "DSHF_rv",
-                            "cxx_T": "int",
-                            "f_assumed_shape": "(:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "SHT_rv",
-                            "hnamefunc0": "VEC_SHROUD_copy_array_int",
-                            "rank": "1",
-                            "sh_type": "SH_TYPE_INT",
-                            "size": "size(SHT_rv)",
-                            "stmt0": "f_vector_*_result_buf_allocatable_native",
-                            "stmt1": "f_vector_result_allocatable",
-                            "stmtc0": "c_vector_*_result_buf_allocatable_native",
-                            "stmtc1": "c_vector_result_buf"
-                        }
-                    },
                     "n": {
                         "fmtc": {
                             "c_addr": "&",
@@ -2311,10 +2253,11 @@
                 "zz_fmtdict": {
                     "C_call_list": "n",
                     "C_name": "VEC_return_vector_alloc_bufferify",
-                    "C_prototype": "int n,\t VEC_SHROUD_array *DSHF_rv",
+                    "C_prototype": "VEC_SHROUD_array *SHC_rv_temp0,\t int n",
                     "C_return_type": "void",
-                    "F_C_arguments": "n,\t DSHF_rv",
+                    "F_C_arguments": "SHT_rv,\t n",
                     "F_C_name": "c_return_vector_alloc_bufferify",
+                    "F_C_result_clause": "",
                     "F_C_subprogram": "subroutine",
                     "cxx_rv_decl": "*SHC_rv",
                     "function_name": "ReturnVectorAlloc",
@@ -2324,17 +2267,26 @@
                 "zz_fmtresult": {
                     "fmtc": {
                         "c_const": "",
-                        "c_type": "void",
+                        "c_type": null,
                         "c_var": "SHC_rv",
-                        "cxx_addr": "&",
-                        "cxx_member": ".",
-                        "cxx_type": "void",
+                        "cxx_T": "int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHC_rv",
+                        "cxx_type": "std::vector<{cxx_T}>",
                         "cxx_var": "SHC_rv",
-                        "idtor": "0",
-                        "sh_type": "SH_TYPE_CPTR",
+                        "idtor": "1",
+                        "sh_type": "SH_TYPE_OTHER",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_buf",
-                        "stmt1": "c_default"
+                        "stmt0": "c_vector_scalar_result_buf_allocatable",
+                        "stmt1": "c_vector_result_buf",
+                        "temp0": "SHC_rv_temp0"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": null
                     }
                 }
             }

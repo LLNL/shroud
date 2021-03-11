@@ -1138,23 +1138,23 @@ int * POI_return_int_ptr_to_scalar(void)
 // end POI_return_int_ptr_to_scalar
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToScalar +context(DSHC_rv)
+// Function:  int * returnIntPtrToScalar
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
 // start POI_return_int_ptr_to_scalar_bufferify
-int * POI_return_int_ptr_to_scalar_bufferify(POI_SHROUD_array *DSHC_rv)
+void POI_return_int_ptr_to_scalar_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.return_int_ptr_to_scalar_bufferify
     int * SHC_rv = returnIntPtrToScalar();
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_INT;
-    DSHC_rv->elem_len = sizeof(int);
-    DSHC_rv->rank = 0;
-    DSHC_rv->size = 1;
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = SHC_rv;
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_INT;
+    SHC_rv_temp0->elem_len = sizeof(int);
+    SHC_rv_temp0->rank = 0;
+    SHC_rv_temp0->size = 1;
     // splicer end function.return_int_ptr_to_scalar_bufferify
 }
 // end POI_return_int_ptr_to_scalar_bufferify
@@ -1175,25 +1175,24 @@ int * POI_return_int_ptr_to_fixed_array(void)
 // end POI_return_int_ptr_to_fixed_array
 
 // ----------------------------------------
-// Function:  int * returnIntPtrToFixedArray +context(DSHC_rv)+dimension(10)
+// Function:  int * returnIntPtrToFixedArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_array_bufferify
-int * POI_return_int_ptr_to_fixed_array_bufferify(
-    POI_SHROUD_array *DSHC_rv)
+void POI_return_int_ptr_to_fixed_array_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.return_int_ptr_to_fixed_array_bufferify
     int * SHC_rv = returnIntPtrToFixedArray();
-    DSHC_rv->cxx.addr  = SHC_rv;
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_INT;
-    DSHC_rv->elem_len = sizeof(int);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = 10;
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = SHC_rv;
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_INT;
+    SHC_rv_temp0->elem_len = sizeof(int);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = 10;
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end function.return_int_ptr_to_fixed_array_bufferify
 }
 // end POI_return_int_ptr_to_fixed_array_bufferify
@@ -1214,24 +1213,23 @@ const int * POI_return_int_ptr_to_const_scalar(void)
 // end POI_return_int_ptr_to_const_scalar
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToConstScalar +context(DSHC_rv)
+// Function:  const int * returnIntPtrToConstScalar
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
 // start POI_return_int_ptr_to_const_scalar_bufferify
-const int * POI_return_int_ptr_to_const_scalar_bufferify(
-    POI_SHROUD_array *DSHC_rv)
+void POI_return_int_ptr_to_const_scalar_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.return_int_ptr_to_const_scalar_bufferify
     const int * SHC_rv = returnIntPtrToConstScalar();
-    DSHC_rv->cxx.addr  = const_cast<int *>(SHC_rv);
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_INT;
-    DSHC_rv->elem_len = sizeof(int);
-    DSHC_rv->rank = 0;
-    DSHC_rv->size = 1;
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = const_cast<int *>(SHC_rv);
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_INT;
+    SHC_rv_temp0->elem_len = sizeof(int);
+    SHC_rv_temp0->rank = 0;
+    SHC_rv_temp0->size = 1;
     // splicer end function.return_int_ptr_to_const_scalar_bufferify
 }
 // end POI_return_int_ptr_to_const_scalar_bufferify
@@ -1252,25 +1250,24 @@ const int * POI_return_int_ptr_to_fixed_const_array(void)
 // end POI_return_int_ptr_to_fixed_const_array
 
 // ----------------------------------------
-// Function:  const int * returnIntPtrToFixedConstArray +context(DSHC_rv)+dimension(10)
+// Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_*_result_buf_pointer
 // Match:     c_native_*_result_buf
 // start POI_return_int_ptr_to_fixed_const_array_bufferify
-const int * POI_return_int_ptr_to_fixed_const_array_bufferify(
-    POI_SHROUD_array *DSHC_rv)
+void POI_return_int_ptr_to_fixed_const_array_bufferify(
+    POI_SHROUD_array *SHC_rv_temp0)
 {
     // splicer begin function.return_int_ptr_to_fixed_const_array_bufferify
     const int * SHC_rv = returnIntPtrToFixedConstArray();
-    DSHC_rv->cxx.addr  = const_cast<int *>(SHC_rv);
-    DSHC_rv->cxx.idtor = 0;
-    DSHC_rv->addr.base = SHC_rv;
-    DSHC_rv->type = SH_TYPE_INT;
-    DSHC_rv->elem_len = sizeof(int);
-    DSHC_rv->rank = 1;
-    DSHC_rv->shape[0] = 10;
-    DSHC_rv->size = DSHC_rv->shape[0];
-    return SHC_rv;
+    SHC_rv_temp0->cxx.addr  = const_cast<int *>(SHC_rv);
+    SHC_rv_temp0->cxx.idtor = 0;
+    SHC_rv_temp0->addr.base = SHC_rv;
+    SHC_rv_temp0->type = SH_TYPE_INT;
+    SHC_rv_temp0->elem_len = sizeof(int);
+    SHC_rv_temp0->rank = 1;
+    SHC_rv_temp0->shape[0] = 10;
+    SHC_rv_temp0->size = SHC_rv_temp0->shape[0];
     // splicer end function.return_int_ptr_to_fixed_const_array_bufferify
 }
 // end POI_return_int_ptr_to_fixed_const_array_bufferify
@@ -1355,7 +1352,7 @@ int * * POI_return_raw_ptr_to_int2d(void)
  * # getRawPtrToInt2d
  */
 // ----------------------------------------
-// Function:  int * * returnRawPtrToInt2d +context(DSHC_rv)
+// Function:  int * * returnRawPtrToInt2d
 // Attrs:     +deref(pointer)+intent(result)
 // Requested: c_native_**_result_buf_pointer
 // Match:     c_native_**_result
