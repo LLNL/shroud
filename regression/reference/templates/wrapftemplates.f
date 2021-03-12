@@ -57,6 +57,10 @@ module templates_mod
         ! splicer begin class.structAsClass_int.component_part
         ! splicer end class.structAsClass_int.component_part
     contains
+        procedure :: set_npts => structasclass_int_set_npts
+        procedure :: get_npts => structasclass_int_get_npts
+        procedure :: set_value => structasclass_int_set_value
+        procedure :: get_value => structasclass_int_get_value
         procedure :: get_instance => structasclass_int_get_instance
         procedure :: set_instance => structasclass_int_set_instance
         procedure :: associated => structasclass_int_associated
@@ -69,6 +73,10 @@ module templates_mod
         ! splicer begin class.structAsClass_double.component_part
         ! splicer end class.structAsClass_double.component_part
     contains
+        procedure :: set_npts => structasclass_double_set_npts
+        procedure :: get_npts => structasclass_double_get_npts
+        procedure :: set_value => structasclass_double_set_value
+        procedure :: get_value => structasclass_double_get_value
         procedure :: get_instance => structasclass_double_get_instance
         procedure :: set_instance => structasclass_double_set_instance
         procedure :: associated => structasclass_double_associated
@@ -122,8 +130,168 @@ module templates_mod
         ! splicer begin class.user_int.additional_interfaces
         ! splicer end class.user_int.additional_interfaces
 
+        ! ----------------------------------------
+        ! Function:  structAsClass
+        ! Attrs:     +intent(result)
+        ! Exact:     c_shadow_scalar_result
+        function c_structasclass_int_ctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_int_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_structasclass_int_ctor
+
+        ! ----------------------------------------
+        ! Function:  void set_npts
+        ! Requested: c_void_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int n +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        subroutine c_structasclass_int_set_npts(self, n) &
+                bind(C, name="TEM_structAsClass_int_set_npts")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: n
+        end subroutine c_structasclass_int_set_npts
+
+        ! ----------------------------------------
+        ! Function:  int get_npts
+        ! Attrs:     +intent(result)
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_structasclass_int_get_npts(self) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_int_get_npts")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_structasclass_int_get_npts
+
+        ! ----------------------------------------
+        ! Function:  void set_value
+        ! Requested: c_void_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int v +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        subroutine c_structasclass_int_set_value(self, v) &
+                bind(C, name="TEM_structAsClass_int_set_value")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: v
+        end subroutine c_structasclass_int_set_value
+
+        ! ----------------------------------------
+        ! Function:  int get_value
+        ! Attrs:     +intent(result)
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_structasclass_int_get_value(self) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_int_get_value")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_structasclass_int_get_value
+
         ! splicer begin class.structAsClass_int.additional_interfaces
         ! splicer end class.structAsClass_int.additional_interfaces
+
+        ! ----------------------------------------
+        ! Function:  structAsClass
+        ! Attrs:     +intent(result)
+        ! Exact:     c_shadow_scalar_result
+        function c_structasclass_double_ctor(SHT_crv) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_double_ctor")
+            use iso_c_binding, only : C_PTR
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(OUT) :: SHT_crv
+            type(C_PTR) SHT_rv
+        end function c_structasclass_double_ctor
+
+        ! ----------------------------------------
+        ! Function:  void set_npts
+        ! Requested: c_void_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  int n +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        subroutine c_structasclass_double_set_npts(self, n) &
+                bind(C, name="TEM_structAsClass_double_set_npts")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT), value, intent(IN) :: n
+        end subroutine c_structasclass_double_set_npts
+
+        ! ----------------------------------------
+        ! Function:  int get_npts
+        ! Attrs:     +intent(result)
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_structasclass_double_get_npts(self) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_double_get_npts")
+            use iso_c_binding, only : C_INT
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            integer(C_INT) :: SHT_rv
+        end function c_structasclass_double_get_npts
+
+        ! ----------------------------------------
+        ! Function:  void set_value
+        ! Requested: c_void_scalar_result
+        ! Match:     c_default
+        ! ----------------------------------------
+        ! Argument:  double v +value
+        ! Attrs:     +intent(in)
+        ! Requested: c_native_scalar_in
+        ! Match:     c_default
+        subroutine c_structasclass_double_set_value(self, v) &
+                bind(C, name="TEM_structAsClass_double_set_value")
+            use iso_c_binding, only : C_DOUBLE
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            real(C_DOUBLE), value, intent(IN) :: v
+        end subroutine c_structasclass_double_set_value
+
+        ! ----------------------------------------
+        ! Function:  double get_value
+        ! Attrs:     +intent(result)
+        ! Requested: c_native_scalar_result
+        ! Match:     c_default
+        function c_structasclass_double_get_value(self) &
+                result(SHT_rv) &
+                bind(C, name="TEM_structAsClass_double_get_value")
+            use iso_c_binding, only : C_DOUBLE
+            import :: TEM_SHROUD_capsule_data
+            implicit none
+            type(TEM_SHROUD_capsule_data), intent(IN) :: self
+            real(C_DOUBLE) :: SHT_rv
+        end function c_structasclass_double_get_value
 
         ! splicer begin class.structAsClass_double.additional_interfaces
         ! splicer end class.structAsClass_double.additional_interfaces
@@ -206,6 +374,14 @@ module templates_mod
         module procedure function_tu_0
         module procedure function_tu_1
     end interface function_tu
+
+    interface structasclass_double
+        module procedure structasclass_double_ctor
+    end interface structasclass_double
+
+    interface structasclass_int
+        module procedure structasclass_int_ctor
+    end interface structasclass_int
 
 contains
 
@@ -294,6 +470,106 @@ contains
     ! splicer begin class.user_int.additional_functions
     ! splicer end class.user_int.additional_functions
 
+    ! ----------------------------------------
+    ! Function:  structAsClass
+    ! Attrs:     +intent(result)
+    ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
+    ! Exact:     c_shadow_ctor
+    function structasclass_int_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(structasclass_int) :: SHT_rv
+        ! splicer begin class.structAsClass_int.method.ctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_structasclass_int_ctor(SHT_rv%cxxmem)
+        ! splicer end class.structAsClass_int.method.ctor
+    end function structasclass_int_ctor
+
+    ! ----------------------------------------
+    ! Function:  void set_npts
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int n +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine structasclass_int_set_npts(obj, n)
+        use iso_c_binding, only : C_INT
+        class(structasclass_int) :: obj
+        integer(C_INT), value, intent(IN) :: n
+        ! splicer begin class.structAsClass_int.method.set_npts
+        call c_structasclass_int_set_npts(obj%cxxmem, n)
+        ! splicer end class.structAsClass_int.method.set_npts
+    end subroutine structasclass_int_set_npts
+
+    ! ----------------------------------------
+    ! Function:  int get_npts
+    ! Attrs:     +intent(result)
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function structasclass_int_get_npts(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(structasclass_int) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.structAsClass_int.method.get_npts
+        SHT_rv = c_structasclass_int_get_npts(obj%cxxmem)
+        ! splicer end class.structAsClass_int.method.get_npts
+    end function structasclass_int_get_npts
+
+    ! Generated by cxx_template
+    ! ----------------------------------------
+    ! Function:  void set_value
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int v +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine structasclass_int_set_value(obj, v)
+        use iso_c_binding, only : C_INT
+        class(structasclass_int) :: obj
+        integer(C_INT), value, intent(IN) :: v
+        ! splicer begin class.structAsClass_int.method.set_value
+        call c_structasclass_int_set_value(obj%cxxmem, v)
+        ! splicer end class.structAsClass_int.method.set_value
+    end subroutine structasclass_int_set_value
+
+    ! Generated by cxx_template
+    ! ----------------------------------------
+    ! Function:  int get_value
+    ! Attrs:     +intent(result)
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function structasclass_int_get_value(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(structasclass_int) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.structAsClass_int.method.get_value
+        SHT_rv = c_structasclass_int_get_value(obj%cxxmem)
+        ! splicer end class.structAsClass_int.method.get_value
+    end function structasclass_int_get_value
+
     ! Return pointer to C++ memory.
     function structasclass_int_get_instance(obj) result (cxxptr)
         use iso_c_binding, only: C_PTR
@@ -319,6 +595,106 @@ contains
 
     ! splicer begin class.structAsClass_int.additional_functions
     ! splicer end class.structAsClass_int.additional_functions
+
+    ! ----------------------------------------
+    ! Function:  structAsClass
+    ! Attrs:     +intent(result)
+    ! Exact:     f_shadow_ctor
+    ! Attrs:     +intent(result)
+    ! Exact:     c_shadow_ctor
+    function structasclass_double_ctor() &
+            result(SHT_rv)
+        use iso_c_binding, only : C_PTR
+        type(structasclass_double) :: SHT_rv
+        ! splicer begin class.structAsClass_double.method.ctor
+        type(C_PTR) :: SHT_prv
+        SHT_prv = c_structasclass_double_ctor(SHT_rv%cxxmem)
+        ! splicer end class.structAsClass_double.method.ctor
+    end function structasclass_double_ctor
+
+    ! ----------------------------------------
+    ! Function:  void set_npts
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  int n +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine structasclass_double_set_npts(obj, n)
+        use iso_c_binding, only : C_INT
+        class(structasclass_double) :: obj
+        integer(C_INT), value, intent(IN) :: n
+        ! splicer begin class.structAsClass_double.method.set_npts
+        call c_structasclass_double_set_npts(obj%cxxmem, n)
+        ! splicer end class.structAsClass_double.method.set_npts
+    end subroutine structasclass_double_set_npts
+
+    ! ----------------------------------------
+    ! Function:  int get_npts
+    ! Attrs:     +intent(result)
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function structasclass_double_get_npts(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_INT
+        class(structasclass_double) :: obj
+        integer(C_INT) :: SHT_rv
+        ! splicer begin class.structAsClass_double.method.get_npts
+        SHT_rv = c_structasclass_double_get_npts(obj%cxxmem)
+        ! splicer end class.structAsClass_double.method.get_npts
+    end function structasclass_double_get_npts
+
+    ! Generated by cxx_template
+    ! ----------------------------------------
+    ! Function:  void set_value
+    ! Requested: f_subroutine
+    ! Match:     f_default
+    ! Requested: c
+    ! Match:     c_default
+    ! ----------------------------------------
+    ! Argument:  double v +value
+    ! Attrs:     +intent(in)
+    ! Requested: f_native_scalar_in
+    ! Match:     f_default
+    ! Attrs:     +intent(in)
+    ! Requested: c_native_scalar_in
+    ! Match:     c_default
+    subroutine structasclass_double_set_value(obj, v)
+        use iso_c_binding, only : C_DOUBLE
+        class(structasclass_double) :: obj
+        real(C_DOUBLE), value, intent(IN) :: v
+        ! splicer begin class.structAsClass_double.method.set_value
+        call c_structasclass_double_set_value(obj%cxxmem, v)
+        ! splicer end class.structAsClass_double.method.set_value
+    end subroutine structasclass_double_set_value
+
+    ! Generated by cxx_template
+    ! ----------------------------------------
+    ! Function:  double get_value
+    ! Attrs:     +intent(result)
+    ! Requested: f_native_scalar_result
+    ! Match:     f_default
+    ! Attrs:     +intent(result)
+    ! Requested: c_native_scalar_result
+    ! Match:     c_default
+    function structasclass_double_get_value(obj) &
+            result(SHT_rv)
+        use iso_c_binding, only : C_DOUBLE
+        class(structasclass_double) :: obj
+        real(C_DOUBLE) :: SHT_rv
+        ! splicer begin class.structAsClass_double.method.get_value
+        SHT_rv = c_structasclass_double_get_value(obj%cxxmem)
+        ! splicer end class.structAsClass_double.method.get_value
+    end function structasclass_double_get_value
 
     ! Return pointer to C++ memory.
     function structasclass_double_get_instance(obj) result (cxxptr)

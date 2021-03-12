@@ -24,7 +24,21 @@ C void nested(int arg1 +value, double arg2 +value)
 Close wrapuser_int.h
 Close wrapuser_int.cpp
 class structAsClass
+C structAsClass(void)  +intent(result)
+C void set_npts(int n +value) 
+C int get_npts(void)  +intent(result)
+C void set_value(int v +value) 
+C int get_value(void)  +intent(result)
+Close wrapstructAsClass_int.h
+Close wrapstructAsClass_int.cpp
 class structAsClass
+C structAsClass(void)  +intent(result)
+C void set_npts(int n +value) 
+C int get_npts(void)  +intent(result)
+C void set_value(double v +value) 
+C double get_value(void)  +intent(result)
+Close wrapstructAsClass_double.h
+Close wrapstructAsClass_double.cpp
 C void FunctionTU(int arg1 +value, long arg2 +value) 
 C void FunctionTU(float arg1 +value, double arg2 +value) 
 C int UseImplWorker(void)  +intent(result)
@@ -37,7 +51,27 @@ class user
 Fortran void nested(int arg1 +value, double arg2 +value) 
 C-interface void nested(int arg1 +value, double arg2 +value) 
 class structAsClass
+Fortran structAsClass(void)  +intent(result)
+Fortran void set_npts(int n +value) 
+Fortran int get_npts(void)  +intent(result)
+Fortran void set_value(int v +value) 
+Fortran int get_value(void)  +intent(result)
+C-interface structAsClass(void)  +intent(result)
+C-interface void set_npts(int n +value) 
+C-interface int get_npts(void)  +intent(result)
+C-interface void set_value(int v +value) 
+C-interface int get_value(void)  +intent(result)
 class structAsClass
+Fortran structAsClass(void)  +intent(result)
+Fortran void set_npts(int n +value) 
+Fortran int get_npts(void)  +intent(result)
+Fortran void set_value(double v +value) 
+Fortran double get_value(void)  +intent(result)
+C-interface structAsClass(void)  +intent(result)
+C-interface void set_npts(int n +value) 
+C-interface int get_npts(void)  +intent(result)
+C-interface void set_value(double v +value) 
+C-interface double get_value(void)  +intent(result)
 Fortran void FunctionTU(int arg1 +value, long arg2 +value) 
 Fortran void FunctionTU(float arg1 +value, double arg2 +value) 
 Fortran int UseImplWorker(void)  +intent(result)

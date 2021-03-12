@@ -34,16 +34,23 @@ void test_pairs()
   assert(big == 100);
 }
 
-void test_struct1()
+void test_structAsClass()
 {
-    userStruct<double> mystruct;
+    structAsClass<double> mystruct = {2, 3.5};
+
+    assert(mystruct.get_npts() == 2);
+    assert(mystruct.get_value() == 3.5);
+
+    mystruct.set_npts(5);
+    mystruct.set_value(2.5);
+
+    assert(mystruct.npts == 5);
+    assert(mystruct.value == 2.5);
 
     struct {
         int npts;
         double value;
     } explicit_struct;
-       
-
     assert(sizeof(mystruct) == sizeof(explicit_struct));
 }
 
@@ -53,6 +60,6 @@ int main(int argc, char *argv[])
 
   test_pairs();
 
-  test_struct1();
+  test_structAsClass();
   
 }

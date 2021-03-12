@@ -134,6 +134,20 @@ void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
+    case 3:   // structAsClass<int>
+    {
+        structAsClass<int> *cxx_ptr =
+            reinterpret_cast<structAsClass<int> *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 4:   // structAsClass<double>
+    {
+        structAsClass<double> *cxx_ptr =
+            reinterpret_cast<structAsClass<double> *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
     default:
     {
         // Unexpected case in destructor

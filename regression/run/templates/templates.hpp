@@ -61,6 +61,10 @@ template<typename T>
 struct structAsClass {
     int npts;
     T value;
+    void set_npts(int n) { npts=n; };
+    int get_npts() { return npts; };
+    void set_value(T v) { value = v; };
+    T get_value() { return value; };
 };
 
 

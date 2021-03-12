@@ -24,7 +24,9 @@ C_OBJS = \
     wraptemplates.o \
     wrapvectorforint.o \
     wrapuser_int.o \
-    wrapstd_vector_double.o
+    wrapstd_vector_double.o \
+    wrapstructAsClass_int.o \
+    wrapstructAsClass_double.o
 F_OBJS = \
     wrapftemplates.o \
     wrapftemplates_internal.o \
@@ -43,6 +45,8 @@ clean :
 wrapvectorforint.o : wrapvectorforint.cpp wrapstd_vector_int.h
 wrapuser_int.o : wrapuser_int.cpp wrapuser_int.h typestemplates.h templates.hpp
 wraptemplates.o : wraptemplates.cpp wraptemplates.h typestemplates.h templates.hpp
+wrapstructAsClass_int.o : wrapstructAsClass_int.h
+wrapstructAsClass_double.o : wrapstructAsClass_double.h
 main.o : main.f wrapftemplates.o
 maincpp.o : maincpp.cpp templates.hpp
 

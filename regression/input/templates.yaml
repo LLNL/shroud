@@ -123,3 +123,9 @@ declarations:
   cxx_template:
   - instantiation: <int>
   - instantiation: <double>
+  declarations:
+  - decl: structAsClass()
+  - decl: void set_npts(int n)
+  - decl: int get_npts()
+  - decl: void set_value(T v)
+  - decl: T get_value()
