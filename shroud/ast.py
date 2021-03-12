@@ -185,7 +185,8 @@ class NamespaceMixin(object):
         elif isinstance(ast, declast.Enum):
             node = self.add_enum(decl, ast=ast, **kwargs)
         elif isinstance(ast, declast.Struct):
-            node = self.add_struct(decl, ast=ast, **kwargs)
+            node = self.add_struct(
+                decl, ast=ast, template_parameters=template_parameters, **kwargs)
         else:
             raise RuntimeError(
                 "add_declaration: unknown ast type {} after parsing '{}'".format(
@@ -267,16 +268,28 @@ class NamespaceMixin(object):
                 ns = ns.add_namespace(name, expose)
         return ns
 
-    def add_struct(self, decl, ast=None, **kwargs):
+    def add_struct(self, decl, ast=None, template_parameters=None, **kwargs):
         """Add a struct.
-        A struct is exactly like a class to the C++ compiler.
-        From the YAML, a struct is a single ast and a class is broken into parts.
+
+        A struct is exactly like a class to the C++ compiler.  From
+        the YAML, a struct may be a single ast and a class is broken
+        into parts.
+
+        - decl: struct Cstruct1 {
+                  int ifield;
+                  double dfield;
+                };
+        - decl: struct Cstruct_ptr
+          declarations:
+          - decl: char *cfield;
+          - decl: const double *const_dvalue;
         """
         if ast is None:
             ast = declast.check_decl(decl, namespace=self)
         name = ast.name
         # XXX - base=... for inheritance
-        node = ClassNode(name, self, parse_keyword="struct", **kwargs)
+        node = ClassNode(name, self, parse_keyword="struct",
+                         template_parameters=template_parameters, **kwargs)
         for member in ast.members:
             node.add_variable(str(member), member)
         self.classes.append(node)

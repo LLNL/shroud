@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   allows structs wrapped outside of the current YAML file to be used.
 - Generate generic interface which allows a scalar or array to be
   passed for an argument.
+- Allow structs to be templated.
 - Process assumed-rank dimension attribute, *dimension(..)*.
   Create a generic interface using scalar and each rank.
 - Started adding support for Futher Interoperability with C.

@@ -114,3 +114,18 @@ declarations:
   cxx_template:
   - instantiation: <internal::ImplWorker1>
   - instantiation: <internal::ImplWorker2>
+
+##################################################
+- decl: template<typename T> struct structAsClass
+  options:
+    wrap_struct_as: class
+    wrap_python: False # XXX test later
+  cxx_template:
+  - instantiation: <int>
+  - instantiation: <double>
+  declarations:
+  - decl: structAsClass()
+  - decl: void set_npts(int n)
+  - decl: int get_npts()
+  - decl: void set_value(T v)
+  - decl: T get_value()

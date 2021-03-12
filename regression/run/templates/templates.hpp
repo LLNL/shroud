@@ -55,3 +55,26 @@ public:
   template<typename U> void nested(T arg1, U arg2)
   { }
 };
+
+
+template<typename T>
+struct structAsClass {
+    int npts;
+    T value;
+    void set_npts(int n) { npts=n; };
+    int get_npts() { return npts; };
+    void set_value(T v) { value = v; };
+    T get_value() { return value; };
+};
+
+
+template<typename T>
+struct userStruct {
+    int npts;
+    T value;
+    void set_npts(int n) { npts=n; };
+    int get_npts() { return npts; };
+    void set_value(T v) { value = v; };
+    T get_value() { return value; };
+};
+

@@ -583,7 +583,7 @@ class GenFunctions(object):
 
         Args:
             node  - ClassNode or FunctionNode
-            targs - list of TemplateArguments
+            targs - ast.TemplateArgument
         """
         newscope = util.Scope(self.instantiate_scope)
         for idx, argast in enumerate(targs.asts):

@@ -386,6 +386,1176 @@
                     "file_scope": "user_int",
                     "hnamefunc0": "capsule_data_helper"
                 }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "functions": [
+                    {
+                        "<FUNCTION>": "2 ****************************************",
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "structAsClass"
+                            ],
+                            "typemap_name": "structAsClass_int"
+                        },
+                        "decl": "structAsClass()",
+                        "declgen": "structAsClass(void)",
+                        "options": {
+                            "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_int_ctor",
+                            "C_prototype": "TEM_structAsClass_int * SHadow_rv",
+                            "C_return_type": "TEM_structAsClass_int *",
+                            "F_C_arguments": "SHT_crv",
+                            "F_C_call": "c_structasclass_int_ctor",
+                            "F_C_name": "c_structasclass_int_ctor",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "structasclass_int",
+                            "F_name_impl": "structasclass_int_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "cxx_rv_decl": "structAsClass<int> SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_type": "TEM_structAsClass_int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "structAsClass<int>",
+                                "cxx_var": "SHCXX_rv",
+                                "idtor": "3",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_shadow_scalar_ctor",
+                                "stmt1": "c_shadow_scalar_ctor"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "structAsClass<int>",
+                                "f_intent": "OUT",
+                                "f_type": "type(structasclass_int)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "f_shadow_ctor",
+                                "stmt1": "f_shadow_ctor",
+                                "stmtc0": "c_shadow_ctor",
+                                "stmtc1": "c_shadow_ctor"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "3 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_npts",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "n",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_npts(int n)",
+                        "declgen": "void set_npts(int n +value)",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtargs": {
+                            "n": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "n",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&n",
+                                    "cxx_type": "int",
+                                    "cxx_var": "n",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_n",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "n",
+                                    "F_pointer": "SHPTR_n",
+                                    "c_var": "n",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "n",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "n",
+                            "C_name": "TEM_structAsClass_int_set_npts",
+                            "C_prototype": "TEM_structAsClass_int * self,\t int n",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t n",
+                            "F_C_call": "c_structasclass_int_set_npts",
+                            "F_C_name": "c_structasclass_int_set_npts",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t n",
+                            "F_arguments": "obj,\t n",
+                            "F_name_function": "set_npts",
+                            "F_name_generic": "set_npts",
+                            "F_name_impl": "structasclass_int_set_npts",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "set_npts",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_npts"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "4 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_npts",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int get_npts()",
+                        "declgen": "int get_npts(void)",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_int_get_npts",
+                            "C_prototype": "TEM_structAsClass_int * self",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_structasclass_int_get_npts",
+                            "F_C_name": "c_structasclass_int_get_npts",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_npts",
+                            "F_name_generic": "get_npts",
+                            "F_name_impl": "structasclass_int_get_npts",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "get_npts",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_npts"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "int",
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "5 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_value",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "v",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "T"
+                                    ],
+                                    "typemap_name": "structAsClass::T"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_value(T v)",
+                        "declgen": "void set_value(T v +value)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {},
+                        "zz_fmtdict": {
+                            "function_name": "set_value",
+                            "underscore_name": "set_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "7 ****************************************",
+                        "C_generated_path": [
+                            "cxx_template"
+                        ],
+                        "_generated": "cxx_template",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_value",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "v",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_value(T v)",
+                        "declgen": "void set_value(int v +value)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtargs": {
+                            "v": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "v",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&v",
+                                    "cxx_type": "int",
+                                    "cxx_var": "v",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_v",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "v",
+                                    "F_pointer": "SHPTR_v",
+                                    "c_var": "v",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "v",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "v",
+                            "C_name": "TEM_structAsClass_int_set_value",
+                            "C_prototype": "TEM_structAsClass_int * self,\t int v",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t v",
+                            "F_C_call": "c_structasclass_int_set_value",
+                            "F_C_name": "c_structasclass_int_set_value",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t v",
+                            "F_arguments": "obj,\t v",
+                            "F_name_function": "set_value",
+                            "F_name_generic": "set_value",
+                            "F_name_impl": "structasclass_int_set_value",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "set_value",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "6 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_value",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "T"
+                            ],
+                            "typemap_name": "structAsClass::T"
+                        },
+                        "decl": "T get_value()",
+                        "declgen": "T get_value(void)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {},
+                        "zz_fmtdict": {
+                            "function_name": "get_value",
+                            "underscore_name": "get_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "8 ****************************************",
+                        "C_generated_path": [
+                            "cxx_template"
+                        ],
+                        "_generated": "cxx_template",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_value",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "T get_value()",
+                        "declgen": "int get_value(void)",
+                        "have_template_args": true,
+                        "options": {
+                            "F_create_generic": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_int_get_value",
+                            "C_prototype": "TEM_structAsClass_int * self",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_structasclass_int_get_value",
+                            "F_C_name": "c_structasclass_int_get_value",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_value",
+                            "F_name_generic": "get_value",
+                            "F_name_impl": "structasclass_int_get_value",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "get_value",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_value"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "int",
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        }
+                    }
+                ],
+                "name": "structAsClass",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "structAsClass::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "structAsClass_int",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "wrap_as": "class",
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapstructAsClass_int.h",
+                    "C_impl_filename": "wrapstructAsClass_int.cpp",
+                    "C_name_scope": "structAsClass_int_",
+                    "C_type_name": "TEM_structAsClass_int",
+                    "F_derived_name": "structasclass_int",
+                    "F_name_scope": "structasclass_int_",
+                    "PY_struct_array_descr_create": "PY_structAsClass_int_create_array_descr",
+                    "PY_struct_array_descr_name": "structAsClass_int_dtype",
+                    "PY_struct_array_descr_variable": "PY_structAsClass_int_array_descr",
+                    "class_scope": "structAsClass_int::",
+                    "cxx_class": "structAsClass_int",
+                    "cxx_type": "structAsClass<int>",
+                    "file_scope": "structAsClass_int",
+                    "hnamefunc0": "capsule_data_helper"
+                }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "functions": [
+                    {
+                        "<FUNCTION>": "9 ****************************************",
+                        "_overloaded": true,
+                        "ast": {
+                            "attrs": {
+                                "_constructor": true,
+                                "_name": "ctor"
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "structAsClass"
+                            ],
+                            "typemap_name": "structAsClass_double"
+                        },
+                        "decl": "structAsClass()",
+                        "declgen": "structAsClass(void)",
+                        "options": {
+                            "F_create_generic": true
+                        },
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_double_ctor",
+                            "C_prototype": "TEM_structAsClass_double * SHadow_rv",
+                            "C_return_type": "TEM_structAsClass_double *",
+                            "F_C_arguments": "SHT_crv",
+                            "F_C_call": "c_structasclass_double_ctor",
+                            "F_C_name": "c_structasclass_double_ctor",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_C_var": "SHT_crv",
+                            "F_arg_c_call": "SHT_rv%cxxmem",
+                            "F_arguments": "",
+                            "F_name_function": "ctor",
+                            "F_name_generic": "structasclass_double",
+                            "F_name_impl": "structasclass_double_ctor",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "cxx_rv_decl": "structAsClass<double> SHCXX_rv",
+                            "function_name": "ctor",
+                            "underscore_name": "ctor"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_type": "TEM_structAsClass_double",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "",
+                                "cxx_member": "->",
+                                "cxx_type": "structAsClass<double>",
+                                "cxx_var": "SHCXX_rv",
+                                "idtor": "4",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_shadow_scalar_ctor",
+                                "stmt1": "c_shadow_scalar_ctor"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "structAsClass<double>",
+                                "f_intent": "OUT",
+                                "f_type": "type(structasclass_double)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_OTHER",
+                                "stmt0": "f_shadow_ctor",
+                                "stmt1": "f_shadow_ctor",
+                                "stmtc0": "c_shadow_ctor",
+                                "stmtc1": "c_shadow_ctor"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "10 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_npts",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "n",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "int"
+                                    ],
+                                    "typemap_name": "int"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_npts(int n)",
+                        "declgen": "void set_npts(int n +value)",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtargs": {
+                            "n": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "n",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&n",
+                                    "cxx_type": "int",
+                                    "cxx_var": "n",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "shadow_var": "SHadow_n",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "n",
+                                    "F_pointer": "SHPTR_n",
+                                    "c_var": "n",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_INT",
+                                    "f_type": "integer(C_INT)",
+                                    "f_var": "n",
+                                    "sh_type": "SH_TYPE_INT",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "n",
+                            "C_name": "TEM_structAsClass_double_set_npts",
+                            "C_prototype": "TEM_structAsClass_double * self,\t int n",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t n",
+                            "F_C_call": "c_structasclass_double_set_npts",
+                            "F_C_name": "c_structasclass_double_set_npts",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t n",
+                            "F_arguments": "obj,\t n",
+                            "F_name_function": "set_npts",
+                            "F_name_generic": "set_npts",
+                            "F_name_impl": "structasclass_double_set_npts",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "set_npts",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_npts"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "11 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_npts",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        "decl": "int get_npts()",
+                        "declgen": "int get_npts(void)",
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_double_get_npts",
+                            "C_prototype": "TEM_structAsClass_double * self",
+                            "C_return_type": "int",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_structasclass_double_get_npts",
+                            "F_C_name": "c_structasclass_double_get_npts",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_npts",
+                            "F_name_generic": "get_npts",
+                            "F_name_impl": "structasclass_double_get_npts",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "int SHC_rv",
+                            "function_name": "get_npts",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_npts"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "int",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "int",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_INT",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "int",
+                                "f_intent": "OUT",
+                                "f_kind": "C_INT",
+                                "f_type": "integer(C_INT)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_INT",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "12 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_value",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "v",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "T"
+                                    ],
+                                    "typemap_name": "structAsClass::T"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_value(T v)",
+                        "declgen": "void set_value(T v +value)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {},
+                        "zz_fmtdict": {
+                            "function_name": "set_value",
+                            "underscore_name": "set_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "14 ****************************************",
+                        "C_generated_path": [
+                            "cxx_template"
+                        ],
+                        "_generated": "cxx_template",
+                        "ast": {
+                            "declarator": {
+                                "name": "set_value",
+                                "pointer": []
+                            },
+                            "params": [
+                                {
+                                    "attrs": {
+                                        "value": true
+                                    },
+                                    "declarator": {
+                                        "name": "v",
+                                        "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "in"
+                                    },
+                                    "specifier": [
+                                        "double"
+                                    ],
+                                    "typemap_name": "double"
+                                }
+                            ],
+                            "specifier": [
+                                "void"
+                            ],
+                            "typemap_name": "void"
+                        },
+                        "decl": "void set_value(T v)",
+                        "declgen": "void set_value(double v +value)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtargs": {
+                            "v": {
+                                "fmtc": {
+                                    "c_addr": "&",
+                                    "c_const": "",
+                                    "c_deref": "",
+                                    "c_member": ".",
+                                    "c_var": "v",
+                                    "cxx_addr": "&",
+                                    "cxx_member": ".",
+                                    "cxx_nonconst_ptr": "&v",
+                                    "cxx_type": "double",
+                                    "cxx_var": "v",
+                                    "idtor": "0",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "shadow_var": "SHadow_v",
+                                    "stmt0": "c_native_scalar_in",
+                                    "stmt1": "c_default"
+                                },
+                                "fmtf": {
+                                    "F_C_var": "v",
+                                    "F_pointer": "SHPTR_v",
+                                    "c_var": "v",
+                                    "f_intent": "IN",
+                                    "f_kind": "C_DOUBLE",
+                                    "f_type": "real(C_DOUBLE)",
+                                    "f_var": "v",
+                                    "sh_type": "SH_TYPE_DOUBLE",
+                                    "stmt0": "f_native_scalar_in",
+                                    "stmt1": "f_default",
+                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc1": "c_default"
+                                }
+                            }
+                        },
+                        "zz_fmtdict": {
+                            "C_call_list": "v",
+                            "C_name": "TEM_structAsClass_double_set_value",
+                            "C_prototype": "TEM_structAsClass_double * self,\t double v",
+                            "C_return_type": "void",
+                            "F_C_arguments": "self,\t v",
+                            "F_C_call": "c_structasclass_double_set_value",
+                            "F_C_name": "c_structasclass_double_set_value",
+                            "F_C_subprogram": "subroutine",
+                            "F_arg_c_call": "obj%cxxmem,\t v",
+                            "F_arguments": "obj,\t v",
+                            "F_name_function": "set_value",
+                            "F_name_generic": "set_value",
+                            "F_name_impl": "structasclass_double_set_value",
+                            "F_subprogram": "subroutine",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "function_name": "set_value",
+                            "shadow_var": "SHadow_self",
+                            "stmt0": "f_subroutine",
+                            "stmt1": "f_default",
+                            "stmtc0": "c",
+                            "stmtc1": "c_default",
+                            "underscore_name": "set_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "13 ****************************************",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_value",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "T"
+                            ],
+                            "typemap_name": "structAsClass::T"
+                        },
+                        "decl": "T get_value()",
+                        "declgen": "T get_value(void)",
+                        "have_template_args": true,
+                        "options": {},
+                        "wrap": {},
+                        "zz_fmtdict": {
+                            "function_name": "get_value",
+                            "underscore_name": "get_value"
+                        }
+                    },
+                    {
+                        "<FUNCTION>": "15 ****************************************",
+                        "C_generated_path": [
+                            "cxx_template"
+                        ],
+                        "_generated": "cxx_template",
+                        "ast": {
+                            "declarator": {
+                                "name": "get_value",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
+                            "params": [],
+                            "specifier": [
+                                "double"
+                            ],
+                            "typemap_name": "double"
+                        },
+                        "decl": "T get_value()",
+                        "declgen": "double get_value(void)",
+                        "have_template_args": true,
+                        "options": {
+                            "F_create_generic": false
+                        },
+                        "wrap": {
+                            "c": true,
+                            "f_c": true,
+                            "fortran": true
+                        },
+                        "zz_fmtdict": {
+                            "C_name": "TEM_structAsClass_double_get_value",
+                            "C_prototype": "TEM_structAsClass_double * self",
+                            "C_return_type": "double",
+                            "F_C_arguments": "self",
+                            "F_C_call": "c_structasclass_double_get_value",
+                            "F_C_name": "c_structasclass_double_get_value",
+                            "F_C_result_clause": "\fresult(SHT_rv)",
+                            "F_C_subprogram": "function",
+                            "F_arg_c_call": "obj%cxxmem",
+                            "F_arguments": "obj",
+                            "F_name_function": "get_value",
+                            "F_name_generic": "get_value",
+                            "F_name_impl": "structasclass_double_get_value",
+                            "F_result_clause": "\fresult(SHT_rv)",
+                            "F_subprogram": "function",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "self",
+                            "cxx_rv_decl": "double SHC_rv",
+                            "function_name": "get_value",
+                            "shadow_var": "SHadow_self",
+                            "underscore_name": "get_value"
+                        },
+                        "zz_fmtresult": {
+                            "fmtc": {
+                                "c_const": "",
+                                "c_get_value": "",
+                                "c_type": "double",
+                                "c_var": "SHC_rv",
+                                "cxx_addr": "&",
+                                "cxx_member": ".",
+                                "cxx_nonconst_ptr": "&SHC_rv",
+                                "cxx_type": "double",
+                                "cxx_var": "SHC_rv",
+                                "idtor": "0",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "shadow_var": "SHadow_rv",
+                                "stmt0": "c_native_scalar_result",
+                                "stmt1": "c_default"
+                            },
+                            "fmtf": {
+                                "F_C_var": "SHT_rv",
+                                "c_var": "SHT_rv",
+                                "cxx_type": "double",
+                                "f_intent": "OUT",
+                                "f_kind": "C_DOUBLE",
+                                "f_type": "real(C_DOUBLE)",
+                                "f_var": "SHT_rv",
+                                "sh_type": "SH_TYPE_DOUBLE",
+                                "stmt0": "f_native_scalar_result",
+                                "stmt1": "f_default",
+                                "stmtc0": "c_native_scalar_result",
+                                "stmtc1": "c_default"
+                            }
+                        }
+                    }
+                ],
+                "name": "structAsClass",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "structAsClass::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "structAsClass_double",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "wrap_as": "class",
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapstructAsClass_double.h",
+                    "C_impl_filename": "wrapstructAsClass_double.cpp",
+                    "C_name_scope": "structAsClass_double_",
+                    "C_type_name": "TEM_structAsClass_double",
+                    "F_derived_name": "structasclass_double",
+                    "F_name_scope": "structasclass_double_",
+                    "PY_struct_array_descr_create": "PY_structAsClass_double_create_array_descr",
+                    "PY_struct_array_descr_name": "structAsClass_double_dtype",
+                    "PY_struct_array_descr_variable": "PY_structAsClass_double_array_descr",
+                    "class_scope": "structAsClass_double::",
+                    "cxx_class": "structAsClass_double",
+                    "cxx_type": "structAsClass<double>",
+                    "file_scope": "structAsClass_double",
+                    "hnamefunc0": "capsule_data_helper"
+                }
             }
         ],
         "copyright": [
@@ -401,7 +1571,7 @@
         ],
         "functions": [
             {
-                "<FUNCTION>": "16 ****************************************",
+                "<FUNCTION>": "30 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -507,7 +1677,7 @@
                 }
             },
             {
-                "<FUNCTION>": "18 ****************************************",
+                "<FUNCTION>": "32 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -743,7 +1913,7 @@
                 }
             },
             {
-                "<FUNCTION>": "19 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -985,7 +2155,7 @@
                 }
             },
             {
-                "<FUNCTION>": "17 ****************************************",
+                "<FUNCTION>": "31 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1050,7 +2220,7 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -1185,7 +2355,7 @@
                 }
             },
             {
-                "<FUNCTION>": "21 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -1336,7 +2506,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "2 ****************************************",
+                                "<FUNCTION>": "16 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "attrs": {
@@ -1440,7 +2610,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "3 ****************************************",
+                                "<FUNCTION>": "17 ****************************************",
                                 "ast": {
                                     "attrs": {
                                         "_destructor": "vector",
@@ -1489,7 +2659,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "4 ****************************************",
+                                "<FUNCTION>": "18 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "push_back",
@@ -1534,7 +2704,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "6 ****************************************",
+                                "<FUNCTION>": "20 ****************************************",
                                 "C_generated_path": [
                                     "cxx_template"
                                 ],
@@ -1667,7 +2837,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "5 ****************************************",
+                                "<FUNCTION>": "19 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "at",
@@ -1715,12 +2885,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "7 ****************************************",
+                                "<FUNCTION>": "21 ****************************************",
                                 "C_generated_path": [
                                     "cxx_template",
                                     "arg_to_buffer"
                                 ],
-                                "_PTR_F_C_index": "8",
+                                "_PTR_F_C_index": "22",
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -1892,8 +3062,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "8 ****************************************",
-                                "_PTR_C_CXX_index": "7",
+                                "<FUNCTION>": "22 ****************************************",
+                                "_PTR_C_CXX_index": "21",
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {
@@ -2099,7 +3269,7 @@
                         ],
                         "functions": [
                             {
-                                "<FUNCTION>": "9 ****************************************",
+                                "<FUNCTION>": "23 ****************************************",
                                 "_overloaded": true,
                                 "ast": {
                                     "attrs": {
@@ -2203,7 +3373,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "10 ****************************************",
+                                "<FUNCTION>": "24 ****************************************",
                                 "ast": {
                                     "attrs": {
                                         "_destructor": "vector",
@@ -2252,7 +3422,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "11 ****************************************",
+                                "<FUNCTION>": "25 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "push_back",
@@ -2297,7 +3467,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "13 ****************************************",
+                                "<FUNCTION>": "27 ****************************************",
                                 "C_generated_path": [
                                     "cxx_template"
                                 ],
@@ -2430,7 +3600,7 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "12 ****************************************",
+                                "<FUNCTION>": "26 ****************************************",
                                 "ast": {
                                     "declarator": {
                                         "name": "at",
@@ -2478,12 +3648,12 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "14 ****************************************",
+                                "<FUNCTION>": "28 ****************************************",
                                 "C_generated_path": [
                                     "cxx_template",
                                     "arg_to_buffer"
                                 ],
-                                "_PTR_F_C_index": "15",
+                                "_PTR_F_C_index": "29",
                                 "_generated": "cxx_template",
                                 "ast": {
                                     "declarator": {
@@ -2655,8 +3825,8 @@
                                 }
                             },
                             {
-                                "<FUNCTION>": "15 ****************************************",
-                                "_PTR_C_CXX_index": "14",
+                                "<FUNCTION>": "29 ****************************************",
+                                "_PTR_C_CXX_index": "28",
                                 "_generated": "arg_to_buffer",
                                 "ast": {
                                     "declarator": {

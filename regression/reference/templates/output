@@ -5,6 +5,10 @@ Wrote wrapstd_vector_double.h
 Wrote wrapstd_vector_double.cpp
 Wrote wrapuser_int.h
 Wrote wrapuser_int.cpp
+Wrote wrapstructAsClass_int.h
+Wrote wrapstructAsClass_int.cpp
+Wrote wrapstructAsClass_double.h
+Wrote wrapstructAsClass_double.cpp
 Wrote wraptemplates.h
 Wrote wraptemplates.cpp
 Wrote typestemplates.h
