@@ -784,6 +784,7 @@ def initialize():
             #            LUA_type='LUA_TSTRING',
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             #            LUA_push='lua_pushstring({LUA_state_var}, {push_arg})',
+            impl_header=["<vector>"],
             base="vector",
             sgroup="vector",
         ),
@@ -1143,4 +1144,10 @@ def create_fcnptr_typemap(node, fields=None):
     return ntypemap
 
 
-
+def return_shadow_types():
+    """Return a dictionary of user defined types."""
+    dct = {}
+    for key, ntypemap in shared_typedict.items():
+        if ntypemap.sgroup in ["shadow", "struct"]:
+            dct[key] = ntypemap
+    return dct

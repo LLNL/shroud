@@ -11,7 +11,6 @@ Close wrapClass2.cpp
 C int passStruct1(const Cstruct1 * arg)  +intent(result)
 Close wrapforward.h
 Close wrapforward.cpp
-Close typesforward.h
 class Class3
 class Class2
 Fortran Class2(void)  +intent(result)
@@ -25,6 +24,8 @@ C-interface void acceptClass3(Class3 * arg +intent(in))
 Fortran int passStruct1(const Cstruct1 * arg)  +intent(result)
 C-interface int passStruct1(const Cstruct1 * arg)  +intent(result)
 Close wrapfforward.f
+Close utilforward.cpp
+Close typesforward.h
 class Class3
 Close pyClass3type.cpp
 class Class2

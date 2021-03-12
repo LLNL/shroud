@@ -28,6 +28,7 @@ C_OBJS = \
     wrapcdesc.o
 F_OBJS = \
     wrapfcdesc.o \
+    utilcdesc.o \
     fruit.o \
     main.o
 

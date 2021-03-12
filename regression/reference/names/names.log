@@ -46,7 +46,6 @@ C int UseImplWorker(void)  +intent(result)
 C int Cstruct_as_class_sum(const Cstruct_as_class * point +pass)  +intent(result)
 Close top.h
 Close top.cpp
-Close typestestnames.hh
 class Names2
 class twoTs
 class twoTs
@@ -104,6 +103,8 @@ Fortran void Worker1(void)
 C-interface void Worker1(void) 
 Close wrapftestnames_CAPI.F
 Close top.f
+Close utiltestnames.cc
+Close typestestnames.hh
 Close pytestnames_ns0_innermodule.cpp
 class Names
 Python method Names(void) +name(defaultctor)

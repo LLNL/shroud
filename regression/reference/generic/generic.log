@@ -24,7 +24,6 @@ C void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+ra
 C void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out)) 
 Close wrapgeneric.h
 Close wrapgeneric.c
-Close typesgeneric.h
 Fortran void UpdateAsFloat(float arg +value) 
 Fortran void UpdateAsDouble(double arg +value) 
 Fortran double GetGlobalDouble(void)  +intent(result)
@@ -69,3 +68,5 @@ C-interface void GetPointerAsPointer(void * * addr +intent(out), int * type +hid
 C-interface void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out)) 
 C-interface void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out)) 
 Close wrapfgeneric.f
+Close utilgeneric.c
+Close typesgeneric.h

@@ -8,10 +8,6 @@
 //
 #include "wrapwrapped.h"
 
-// shroud
-#include "typeswrapped.h"
-#include <cstdlib>
-
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 
@@ -40,13 +36,6 @@ void WWW_worker(void)
     // splicer begin function.worker
     outer::worker();
     // splicer end function.worker
-}
-
-// Release library allocated memory.
-void WWW_SHROUD_memory_destructor(WWW_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

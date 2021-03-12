@@ -1,8 +1,8 @@
 Read yaml enum.yaml
 Close wrapenum.h
-Close wrapenum.c
-Close typesenum.h
 Close wrapfenum.f
+Close utilenum.c
+Close typesenum.h
 Close pyenummodule.c
 Close pyenummodule.h
 Close setup.py

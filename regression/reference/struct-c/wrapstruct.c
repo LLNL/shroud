@@ -11,8 +11,6 @@
 // cxx_header
 #include "struct.h"
 // shroud
-#include "typesstruct.h"
-#include <stdlib.h>
 #include <string.h>
 
 
@@ -182,12 +180,3 @@ STR_Cstruct_as_subclass * STR_create__cstruct_as_subclass_args(int x,
     return SHadow_rv;
     // splicer end function.create__cstruct_as_subclass_args
 }
-
-// start release allocated memory
-// Release library allocated memory.
-void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
-{
-    cap->addr = NULL;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory

@@ -11,7 +11,6 @@
 // cxx_header
 #include "pointers.h"
 // shroud
-#include "typespointers.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -401,12 +400,3 @@ int POI_return_int_scalar(void)
     // splicer end function.return_int_scalar
 }
 // end POI_return_int_scalar
-
-// start release allocated memory
-// Release library allocated memory.
-void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
-{
-    cap->addr = NULL;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory

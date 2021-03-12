@@ -31,6 +31,15 @@ void STR_ShroudCopyStringAndFree(STR_SHROUD_array *data, char *c_var, size_t c_v
 // end helper copy_string
 
 
+// start release allocated memory
+// Release library allocated memory.
+void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
+{
+    cap->addr = nullptr;
+    cap->idtor = 0;  // avoid deleting again
+}
+// end release allocated memory
+
 #ifdef __cplusplus
 }
 #endif

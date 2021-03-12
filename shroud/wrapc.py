@@ -89,6 +89,15 @@ class Wrapc(util.WrapperMixin):
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
         self.gather_helper_code(self.shared_helper)
+
+    def write_post_fortran(self):
+        """Write utility files.
+
+        Fortran wrappers may produce C helper functions.
+        i.e. implemented in C but call from Fortran via BIND(C).
+        Write C utility file after creating Fortran wrappers.
+        """
+        self.write_impl_utility()
         self.write_header_utility()
 
     def wrap_namespace(self, node, top=False):
@@ -152,10 +161,6 @@ class Wrapc(util.WrapperMixin):
         else:
             self.wrap_enums(ns)
             self.wrap_functions(ns)
-            if top:
-                self.write_capsule_code()
-                # self.impl_typedef_nodes.update(self.capsule_typedef_nodes) Python 3.6
-                self.impl_typedef_nodes.update(self.capsule_typedef_nodes.items())
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -239,12 +244,15 @@ class Wrapc(util.WrapperMixin):
             self.helper_source[scope].append(helper_info["source"])
 
     def gather_helper_code(self, helpers):
-        """Gather up all helpers requested and insert code into output.
+        """Gather up all helpers requested.
 
-        helpers should be self.c_helper or self.shared_helper
+        Sort into helper_source and helper_include.
 
-        Args:
-            helpers -
+        Parameters
+        ----------
+        helpers : dict
+           Indexed by name of helper.
+           Should be self.c_helper or self.shared_helper.
         """
         # per class
         self.helper_source = dict(file=[], cwrap_include=[], cwrap_impl=[])
@@ -260,13 +268,26 @@ class Wrapc(util.WrapperMixin):
         Helpers which are implemented in C and called from Fortran.
         Named from fmt.C_impl_utility.
         """
-        self.gather_helper_code(self.shared_helper)
         fmt = self.newlibrary.fmtdict
         fname = fmt.C_impl_utility
         write_file = False
-        output = []
 
+        output = []
         headers = util.Header(self.newlibrary)
+        
+        capsule_code = []
+        self.write_capsule_code(capsule_code)
+        if capsule_code:
+            append_format(
+                self.shared_proto_c,
+                "\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);",
+                fmt,
+            )
+            self.set_capsule_headers(headers)
+            self.shared_helper["capsule_data_helper"] = True
+
+        self.gather_helper_code(self.shared_helper)
+        
         headers.add_shroud_file(fmt.C_header_utility)
         headers.add_shroud_dict(self.helper_include["cwrap_impl"])
         headers.write_headers(output)
@@ -280,6 +301,10 @@ class Wrapc(util.WrapperMixin):
         if self.helper_source["cwrap_impl"]:
             write_file = True
             output.extend(self.helper_source["cwrap_impl"])
+
+        if capsule_code:
+            write_file = True
+            output.extend(capsule_code)
 
         if self.language == "cxx":
             output.extend(["", "#ifdef __cplusplus", "}", "#endif"])
@@ -296,6 +321,12 @@ class Wrapc(util.WrapperMixin):
         One utility header is written for the library.
         Named from fmt.C_header_utility.
         Contains typedefs for each shadow class.
+
+        Note that this file is written after Fortran is processed
+        since Fortran wrappers may contribute code. i.e. C helpers
+        which are called by Fortran wrappers.
+
+        write_impl_utility is called after this function.
         """
         fmt = self.newlibrary.fmtdict
         fname = fmt.C_header_utility
@@ -1338,26 +1369,31 @@ class Wrapc(util.WrapperMixin):
             # There is no C wrapper, have Fortran call the function directly.
             fmt_func.C_name = node.ast.name
 
-    def write_capsule_code(self):
-        """Write a function used to delete memory when C/C++
-        memory is deleted.
+    def set_capsule_headers(self, headers):
+        """Headers used by C_memory_dtor_function.
+        """
+        fmt = self.newlibrary.fmtdict
+        headers.add_shroud_file(fmt.C_header_utility)
+        headers.add_shroud_dict(self.capsule_include)
+        if self.language == "c":
+            # Add header for NULL. C++ uses nullptr.
+            headers.add_shroud_file("<stdlib.h>")
+        for ntypedefs in self.capsule_typedef_nodes.values():
+            headers.add_typemap_list(ntypedefs.impl_header)
+            
+    def write_capsule_code(self, output):
+        """Write a function used to delete C/C++ memory.
+
+        Parameters
+        ----------
+        output : list of str
+            Accumulation of line to file being created.
         """
         library = self.newlibrary
         options = library.options
 
-        self.c_helper["capsule_data_helper"] = True
         fmt = library.fmtdict
 
-        self.header_impl.add_shroud_file(fmt.C_header_utility)
-        self.header_impl.add_shroud_dict(self.capsule_include)
-
-        append_format(
-            self.shared_proto_c,
-            "\nvoid {C_memory_dtor_function}\t({C_capsule_data_type} *cap);",
-            fmt,
-        )
-
-        output = self.impl
         output.append("")
         if options.literalinclude2:
             output.append("// start release allocated memory")
@@ -1399,12 +1435,6 @@ class Wrapc(util.WrapperMixin):
                 "}"
             )
 
-        # Add header for NULL.
-        if self.language == "cxx":
-            self.header_impl.add_shroud_file("<cstdlib>")
-            # XXXX nullptr
-        else:
-            self.header_impl.add_shroud_file("<stdlib.h>")
         append_format(output,
                       "cap->addr = {nullptr};\n"
                       "cap->idtor = 0;  // avoid deleting again\n"
@@ -1456,6 +1486,7 @@ class Wrapc(util.WrapperMixin):
         """Find the destructor based on the typemap.
         idtor = index of destructor.
 
+        XXX - no longer true...
         Only arguments have idtor's.
         For example,
             int * foo() +owner(caller)
@@ -1474,6 +1505,7 @@ class Wrapc(util.WrapperMixin):
             # Custom destructor from statements.
             # Use destructor in typemap to remove intermediate objects
             # e.g. std::vector
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
             destructor_name = wformat(destructor_name, fmt)
             if destructor_name not in self.capsule_code:
                 del_lines = []
@@ -1527,6 +1559,7 @@ class Wrapc(util.WrapperMixin):
                 ntypemap,
             )
             ntypemap.idtor = fmt.idtor
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
         else:
             # A POD type
             fmt.idtor = self.add_destructor(

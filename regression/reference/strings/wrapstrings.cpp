@@ -14,9 +14,8 @@
 #include <string>
 // shroud
 #include <cstring>
-#include "typesstrings.h"
-#include <cstdlib>
 #include <cstddef>
+#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -1439,47 +1438,5 @@ void STR_post_declare_bufferify(int * count, char * name, int Lname,
     ShroudStrCopy(name, Nname, SHCXX_name.data(), SHCXX_name.size());
     // splicer end function.post_declare_bufferify
 }
-
-// start release allocated memory
-// Release library allocated memory.
-void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // new_string
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:   // std::string
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 3:   // C_string_free
-    {
-        // Used with +free_pattern(C_string_free)
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory
 
 }  // extern "C"

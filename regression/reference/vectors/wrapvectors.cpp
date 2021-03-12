@@ -10,9 +10,8 @@
 
 // cxx_header
 #include "vectors.hpp"
-// shroud
-#include "typesvectors.h"
-#include <cstdlib>
+// typemap
+#include <vector>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -342,41 +341,5 @@ void VEC_return_vector_alloc_bufferify(VEC_SHROUD_array *SHC_rv_temp0,
     SHC_rv_temp0->shape[0] = SHC_rv_temp0->size;
     // splicer end function.return_vector_alloc_bufferify
 }
-
-// start release allocated memory
-// Release library allocated memory.
-void VEC_SHROUD_memory_destructor(VEC_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // std_vector_int
-    {
-        std::vector<int> *cxx_ptr = 
-            reinterpret_cast<std::vector<int> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:   // std_vector_double
-    {
-        std::vector<double> *cxx_ptr = 
-            reinterpret_cast<std::vector<double> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory
 
 }  // extern "C"

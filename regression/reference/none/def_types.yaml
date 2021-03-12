@@ -437,6 +437,8 @@ typemap:
       cxx_header:
       - <vector>
       f_cast: "{f_var}"
+      impl_header:
+      - <vector>
       PY_format: O
       LUA_type: LUA_TNONE
       LUA_pop: POP

@@ -45,7 +45,6 @@ C int UseImplWorker(void)  +intent(result)
 C int UseImplWorker(void)  +intent(result)
 Close wraptemplates.h
 Close wraptemplates.cpp
-Close typestemplates.h
 class Worker
 class user
 Fortran void nested(int arg1 +value, double arg2 +value) 
@@ -103,6 +102,8 @@ C-interface double & at(size_type n +value)  +deref(pointer)+intent(result)
 Close wrapftemplates_std.f
 Close wrapftemplates_internal.f
 Close wrapftemplates.f
+Close utiltemplates.cpp
+Close typestemplates.h
 class vector
 Python method vector(void)
 Python method ~vector(void)

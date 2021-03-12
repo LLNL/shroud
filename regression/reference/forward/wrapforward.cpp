@@ -10,9 +10,6 @@
 
 // cxx_header
 #include "forward.hpp"
-// shroud
-#include "typesforward.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -40,33 +37,6 @@ int FOR_pass_struct1(const STR_cstruct1 * arg)
     int SHC_rv = forward::passStruct1(SHCXX_arg);
     return SHC_rv;
     // splicer end function.pass_struct1
-}
-
-// Release library allocated memory.
-void FOR_SHROUD_memory_destructor(FOR_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // forward::Class2
-    {
-        forward::Class2 *cxx_ptr = 
-            reinterpret_cast<forward::Class2 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

@@ -186,6 +186,10 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
         def_types = typemap.get_global_types()
         out["types"] = todict.to_dict(def_types)
     elif newlibrary.options.debug_testsuite:
+        # Add user defined types for debugging.
+        user_types = typemap.return_shadow_types()
+        if user_types:
+            out["types"] = todict.to_dict(user_types)
         # Clean out this info since it's the same for all tests.
         # XXX - anytime a new fmt or option is added it changes all tests.
         del out['library']['zz_fmtdict']
@@ -517,10 +521,8 @@ def main_with_args(args):
         if wrap.fortran:
             wrapf.Wrapf(newlibrary, config, splicers["f"]).wrap_library()
 
-        # Fortran wrappers may produce C helper functions.
-        # i.e. implemented in C but call from Fortran via BIND(C).
-        # Write C utility file after creating Fortran wrappers.
-        clibrary.write_impl_utility()
+        if wrap.c or wrap.fortran:
+            clibrary.write_post_fortran()
 
         if wrap.python:
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()

@@ -10,9 +10,6 @@
 
 // cxx_header
 #include "types.hpp"
-// shroud
-#include "typestypes.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -462,13 +459,6 @@ bool TYP_return_bool_and_others(int * flag)
     bool SHC_rv = returnBoolAndOthers(flag);
     return SHC_rv;
     // splicer end function.return_bool_and_others
-}
-
-// Release library allocated memory.
-void TYP_SHROUD_memory_destructor(TYP_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

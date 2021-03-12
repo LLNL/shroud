@@ -6013,5 +6013,34 @@
             "fortran": true,
             "python": true
         }
+    },
+    "types": {
+        "array_info": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_array_info_array_descr",
+            "PY_struct_as": "numpy",
+            "base": "struct",
+            "c_header": [
+                "clibrary.h"
+            ],
+            "c_type": "array_info",
+            "cxx_type": "array_info",
+            "f_c_module": {
+                "--import--": [
+                    "array_info"
+                ]
+            },
+            "f_derived_type": "array_info",
+            "f_module": {
+                "clibrary_mod": [
+                    "array_info"
+                ]
+            },
+            "f_type": "type(array_info)",
+            "flat_name": "array_info",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        }
     }
 }

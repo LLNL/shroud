@@ -13,10 +13,6 @@
 // typemap
 #include "implworker1.hpp"
 #include "implworker2.hpp"
-#include <vector>
-// shroud
-#include "typestemplates.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -108,54 +104,6 @@ int TEM_use_impl_worker_internal_ImplWorker2(void)
     int SHC_rv = UseImplWorker<internal::ImplWorker2>();
     return SHC_rv;
     // splicer end function.use_impl_worker_internal_ImplWorker2
-}
-
-// Release library allocated memory.
-void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // std::vector<int>
-    {
-        std::vector<int> *cxx_ptr = 
-            reinterpret_cast<std::vector<int> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:   // std::vector<double>
-    {
-        std::vector<double> *cxx_ptr = 
-            reinterpret_cast<std::vector<double> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 3:   // structAsClass<int>
-    {
-        structAsClass<int> *cxx_ptr =
-            reinterpret_cast<structAsClass<int> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 4:   // structAsClass<double>
-    {
-        structAsClass<double> *cxx_ptr =
-            reinterpret_cast<structAsClass<double> *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

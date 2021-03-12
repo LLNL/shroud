@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "ownership.hpp"
 // shroud
 #include "typesownership.h"
 #include <cstring>
@@ -28,6 +30,38 @@ void OWN_ShroudCopyArray(OWN_SHROUD_array *data, void *c_var,
     n *= data->elem_len;
     std::memcpy(c_var, cxx_var, n);
     OWN_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
+}
+
+// Release library allocated memory.
+void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // Class1
+    {
+        Class1 *cxx_ptr = reinterpret_cast<Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // int
+    {
+        int *cxx_ptr = reinterpret_cast<int *>(ptr);
+        free(cxx_ptr);
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    cap->addr = nullptr;
+    cap->idtor = 0;  // avoid deleting again
 }
 
 #ifdef __cplusplus

@@ -7,6 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "classes.hpp"
 // shroud
 #include "typesclasses.h"
 #include <cstddef>
@@ -30,6 +32,49 @@ void CLA_ShroudCopyStringAndFree(CLA_SHROUD_array *data, char *c_var, size_t c_v
 }
 // end helper copy_string
 
+
+// start release allocated memory
+// Release library allocated memory.
+void CLA_SHROUD_memory_destructor(CLA_SHROUD_capsule_data *cap)
+{
+    void *ptr = cap->addr;
+    switch (cap->idtor) {
+    case 0:   // --none--
+    {
+        // Nothing to delete
+        break;
+    }
+    case 1:   // classes::Class1
+    {
+        classes::Class1 *cxx_ptr = 
+            reinterpret_cast<classes::Class1 *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 2:   // classes::Shape
+    {
+        classes::Shape *cxx_ptr =
+            reinterpret_cast<classes::Shape *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    case 3:   // classes::Circle
+    {
+        classes::Circle *cxx_ptr =
+            reinterpret_cast<classes::Circle *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
+    default:
+    {
+        // Unexpected case in destructor
+        break;
+    }
+    }
+    cap->addr = nullptr;
+    cap->idtor = 0;  // avoid deleting again
+}
+// end release allocated memory
 
 #ifdef __cplusplus
 }

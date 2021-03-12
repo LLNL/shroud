@@ -731,5 +731,145 @@
             "lua": true,
             "python": true
         }
+    },
+    "types": {
+        "Cstruct1": {
+            "base": "struct",
+            "c_type": "STR_cstruct1",
+            "cxx_header": [
+                "struct.hpp"
+            ],
+            "cxx_type": "Cstruct1",
+            "f_derived_type": "cstruct1",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct1"
+                ]
+            },
+            "f_module_name": "struct_mod",
+            "f_to_c": "{f_var}",
+            "f_type": "type(Cstruct1)",
+            "flat_name": "Cstruct1",
+            "sgroup": "struct",
+            "wrap_header": [
+                "wrapstruct.h"
+            ]
+        },
+        "forward::Class2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Class2",
+            "PY_PyTypeObject": "PY_Class2_Type",
+            "PY_from_object": "PP_Class2_from_Object",
+            "PY_to_object": "PP_Class2_to_Object",
+            "PY_to_object_idtor": "PP_Class2_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}forward::Class2 *>\t({c_var}->addr)",
+            "c_type": "FOR_Class2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "forward::Class2",
+            "f_c_module": {
+                "--import--": [
+                    "FOR_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(FOR_SHROUD_capsule_data)",
+            "f_capsule_data_type": "FOR_SHROUD_capsule_data",
+            "f_class": "class(class2)",
+            "f_derived_type": "class2",
+            "f_module": {
+                "forward_mod": [
+                    "class2"
+                ]
+            },
+            "f_module_name": "forward_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class2)",
+            "flat_name": "forward_Class2",
+            "forward": "forward::Class2",
+            "idtor": "1",
+            "impl_header": [
+                "forward.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesforward.h"
+            ]
+        },
+        "forward::Class3": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Class3",
+            "PY_PyTypeObject": "PY_Class3_Type",
+            "PY_from_object": "PP_Class3_from_Object",
+            "PY_to_object": "PP_Class3_to_Object",
+            "PY_to_object_idtor": "PP_Class3_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}forward::Class3 *>\t({c_var}->addr)",
+            "c_type": "FOR_Class3",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "forward::Class3",
+            "f_c_module": {
+                "--import--": [
+                    "FOR_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(FOR_SHROUD_capsule_data)",
+            "f_capsule_data_type": "FOR_SHROUD_capsule_data",
+            "f_class": "class(class3)",
+            "f_derived_type": "class3",
+            "f_module": {
+                "forward_mod": [
+                    "class3"
+                ]
+            },
+            "f_module_name": "forward_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class3)",
+            "flat_name": "forward_Class3",
+            "forward": "forward::Class3",
+            "impl_header": [
+                "header1.hpp",
+                "header2.hpp",
+                "forward.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesforward.h"
+            ]
+        },
+        "tutorial::Class1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyTypeObject": "PY_Class1_Type",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}tutorial::Class1 *>\t({c_var}->addr)",
+            "c_type": "TUT_Class1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "tutorial::Class1",
+            "f_c_module": {
+                "tutorial_mod": [
+                    "SHROUD_class1_capsule"
+                ]
+            },
+            "f_c_type": "type(SHROUD_class1_capsule)",
+            "f_capsule_data_type": "SHROUD_class1_capsule",
+            "f_class": "class(class1)",
+            "f_derived_type": "class1",
+            "f_module": {
+                "tutorial_mod": [
+                    "class1"
+                ]
+            },
+            "f_module_name": "tutorial_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class1)",
+            "flat_name": "tutorial_Class1",
+            "forward": "tutorial::Class1",
+            "sgroup": "shadow",
+            "wrap_header": [
+                "wrapClass1.h"
+            ]
+        }
     }
 }

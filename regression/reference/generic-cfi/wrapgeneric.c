@@ -11,9 +11,6 @@
 // cxx_header
 #include "generic.h"
 #include "helper.h"
-// shroud
-#include "typesgeneric.h"
-#include <stdlib.h>
 
 // splicer begin C_definitions
 // splicer end C_definitions
@@ -369,12 +366,3 @@ void GEN_get_pointer_as_pointer_float2d_bufferify(
     // splicer end function.get_pointer_as_pointer_float2d_bufferify
 }
 #endif  // if 0
-
-// start release allocated memory
-// Release library allocated memory.
-void GEN_SHROUD_memory_destructor(GEN_SHROUD_capsule_data *cap)
-{
-    cap->addr = NULL;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory

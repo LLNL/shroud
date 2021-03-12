@@ -287,5 +287,39 @@
         "wrap": {
             "python": true
         }
+    },
+    "types": {
+        "Arrays1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Arrays1_array_descr",
+            "PY_PyObject": "PY_Arrays1",
+            "PY_PyTypeObject": "PY_Arrays1_Type",
+            "PY_from_object": "PP_Arrays1_from_Object",
+            "PY_struct_as": "class",
+            "PY_to_object": "PP_Arrays1_to_Object",
+            "PY_to_object_idtor": "PP_Arrays1_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Arrays1",
+            "cxx_type": "Arrays1",
+            "f_c_module": {
+                "--import--": [
+                    "arrays1"
+                ]
+            },
+            "f_derived_type": "arrays1",
+            "f_module": {
+                "struct_mod": [
+                    "arrays1"
+                ]
+            },
+            "f_type": "type(arrays1)",
+            "flat_name": "Arrays1",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        }
     }
 }

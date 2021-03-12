@@ -11,9 +11,9 @@ Wrote wrapCircle.h
 Wrote wrapCircle.cpp
 Wrote wrapclasses.h
 Wrote wrapclasses.cpp
-Wrote typesclasses.h
 Wrote wrapfclasses.f
 Wrote utilclasses.cpp
+Wrote typesclasses.h
 Wrote pyClass1type.cpp
 Wrote pyClass2type.cpp
 Wrote pySingletontype.cpp

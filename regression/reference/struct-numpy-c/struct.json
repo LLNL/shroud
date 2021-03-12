@@ -2591,5 +2591,237 @@
         "wrap": {
             "python": true
         }
+    },
+    "types": {
+        "Arrays1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Arrays1_array_descr",
+            "PY_PyObject": "PY_Arrays1",
+            "PY_PyTypeObject": "PY_Arrays1_Type",
+            "PY_from_object": "PP_Arrays1_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Arrays1_to_Object",
+            "PY_to_object_idtor": "PP_Arrays1_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Arrays1",
+            "cxx_type": "Arrays1",
+            "f_c_module": {
+                "--import--": [
+                    "arrays1"
+                ]
+            },
+            "f_derived_type": "arrays1",
+            "f_module": {
+                "struct_mod": [
+                    "arrays1"
+                ]
+            },
+            "f_type": "type(arrays1)",
+            "flat_name": "Arrays1",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "Cstruct1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct1_array_descr",
+            "PY_PyObject": "PY_Cstruct1",
+            "PY_PyTypeObject": "PY_Cstruct1_Type",
+            "PY_from_object": "PP_Cstruct1_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct1_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct1_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct1",
+            "cxx_type": "Cstruct1",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct1"
+                ]
+            },
+            "f_derived_type": "cstruct1",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct1"
+                ]
+            },
+            "f_type": "type(cstruct1)",
+            "flat_name": "Cstruct1",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "Cstruct_as_class": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}Cstruct_as_class *>\t({c_var}->addr)",
+            "c_type": "STR_Cstruct_as_class",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Cstruct_as_class",
+            "f_c_module": {
+                "--import--": [
+                    "STR_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(STR_SHROUD_capsule_data)",
+            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+            "f_class": "class(cstruct_as_class)",
+            "f_derived_type": "cstruct_as_class",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_as_class"
+                ]
+            },
+            "f_module_name": "struct_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(cstruct_as_class)",
+            "flat_name": "Cstruct_as_class",
+            "forward": "Cstruct_as_class",
+            "impl_header": [
+                "struct.h"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesstruct.h"
+            ]
+        },
+        "Cstruct_as_subclass": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}Cstruct_as_subclass *>\t({c_var}->addr)",
+            "c_type": "STR_Cstruct_as_subclass",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Cstruct_as_subclass",
+            "f_c_module": {
+                "--import--": [
+                    "STR_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(STR_SHROUD_capsule_data)",
+            "f_capsule_data_type": "STR_SHROUD_capsule_data",
+            "f_class": "class(cstruct_as_subclass)",
+            "f_derived_type": "cstruct_as_subclass",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_as_subclass"
+                ]
+            },
+            "f_module_name": "struct_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(cstruct_as_subclass)",
+            "flat_name": "Cstruct_as_subclass",
+            "forward": "Cstruct_as_subclass",
+            "impl_header": [
+                "struct.h"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesstruct.h"
+            ]
+        },
+        "Cstruct_list": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct_list_array_descr",
+            "PY_PyObject": "PY_Cstruct_list",
+            "PY_PyTypeObject": "PY_Cstruct_list_Type",
+            "PY_from_object": "PP_Cstruct_list_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct_list_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct_list_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct_list",
+            "cxx_type": "Cstruct_list",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct_list"
+                ]
+            },
+            "f_derived_type": "cstruct_list",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_list"
+                ]
+            },
+            "f_type": "type(cstruct_list)",
+            "flat_name": "Cstruct_list",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "Cstruct_numpy": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct_numpy_array_descr",
+            "PY_PyObject": "PY_Cstruct_numpy",
+            "PY_PyTypeObject": "PY_Cstruct_numpy_Type",
+            "PY_from_object": "PP_Cstruct_numpy_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct_numpy_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct_numpy_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct_numpy",
+            "cxx_type": "Cstruct_numpy",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct_numpy"
+                ]
+            },
+            "f_derived_type": "cstruct_numpy",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_numpy"
+                ]
+            },
+            "f_type": "type(cstruct_numpy)",
+            "flat_name": "Cstruct_numpy",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "Cstruct_ptr": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct_ptr_array_descr",
+            "PY_PyObject": "PY_Cstruct_ptr",
+            "PY_PyTypeObject": "PY_Cstruct_ptr_Type",
+            "PY_from_object": "PP_Cstruct_ptr_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct_ptr_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct_ptr_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct_ptr",
+            "cxx_type": "Cstruct_ptr",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct_ptr"
+                ]
+            },
+            "f_derived_type": "cstruct_ptr",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_ptr"
+                ]
+            },
+            "f_type": "type(cstruct_ptr)",
+            "flat_name": "Cstruct_ptr",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        }
     }
 }

@@ -3,8 +3,6 @@ C void acceptFloatComplexInoutPtr(float complex * arg1)
 C void acceptDoubleComplexInoutPtr(double complex * arg1) 
 C void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out)) 
 C void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out)) 
-Close wrapccomplex.c
-Close typesccomplex.h
 Fortran void acceptFloatComplexInoutPtr(float complex * arg1) 
 Fortran void acceptDoubleComplexInoutPtr(double complex * arg1) 
 Fortran void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out)) 
@@ -14,6 +12,8 @@ C-interface void acceptDoubleComplexInoutPtr(double complex * arg1)
 C-interface void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out)) 
 C-interface void acceptDoubleComplexOutPtrFlag(double complex * arg1 +intent(out), int * flag +intent(out)) 
 Close wrapfccomplex.f
+Close utilccomplex.c
+Close typesccomplex.h
 Python function void acceptDoubleComplexInoutPtr(double complex * arg1)
 Python function void acceptDoubleComplexOutPtr(double complex * arg1 +intent(out))
 Python function void acceptDoubleComplexInoutPtrFlag(double complex * arg1, int * flag +intent(out))

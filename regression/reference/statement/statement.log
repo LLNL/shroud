@@ -4,10 +4,11 @@ C const string & getNameErrorPattern(void) +len(get_name_length())  +deref(resul
 C void getNameErrorPattern(string & SHF_rv +len(NSHF_rv)) +len(get_name_length()) 
 Close wrapstatement.h
 Close wrapstatement.cpp
-Close typesstatement.h
 Fortran int GetNameLength(void) +pure  +intent(result)
 Fortran const string & getNameErrorPattern(void) +len(get_name_length())  +deref(result-as-arg)+intent(result)
 C-interface int GetNameLength(void) +pure  +intent(result)
 C-interface const string & getNameErrorPattern(void) +len(get_name_length())  +deref(result-as-arg)+intent(result)
 C-interface void getNameErrorPattern(string & SHF_rv +len(NSHF_rv)) +len(get_name_length()) 
 Close wrapfstatement.f
+Close utilstatement.cpp
+Close typesstatement.h

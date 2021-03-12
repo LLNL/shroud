@@ -14,6 +14,9 @@ Shroud will create multiple output file which must be compiled with
 C++ or Fortran compilers.
 
 One C++ file will be created for the library and one file for each C++ class.
+In addition a utility file will be created with routines which are
+implemented in C but called from Fortran.  This includes some memory
+management routines.
 
 Fortran creates a file for the library and one per additional namespace.
 Since Fortran does not support forward referencing of derived types,

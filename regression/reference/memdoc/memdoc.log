@@ -3,9 +3,9 @@ C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(alloc
 C const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
 Close wrapmemdoc.h
 Close wrapmemdoc.cpp
-Close typesmemdoc.h
 Fortran const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
 C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
 C-interface const std::string * getConstStringPtrAlloc(void) +owner(library)  +deref(allocatable)+intent(result)
 Close wrapfmemdoc.f
 Close utilmemdoc.cpp
+Close typesmemdoc.h

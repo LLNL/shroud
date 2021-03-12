@@ -10,9 +10,6 @@
 
 // cxx_header
 #include "cxxlibrary.hpp"
-// shroud
-#include "typescxxlibrary.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -109,13 +106,6 @@ void CXX_default_args_in_out_1(int in1, int * out1, int * out2,
     // splicer begin function.default_args_in_out_1
     defaultArgsInOut(in1, out1, out2, flag);
     // splicer end function.default_args_in_out_1
-}
-
-// Release library allocated memory.
-void CXX_SHROUD_memory_destructor(CXX_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

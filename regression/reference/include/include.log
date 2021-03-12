@@ -26,8 +26,6 @@ C void method1(MPI_Comm comm +value)
 C void method2(three::Class1 * c2) 
 Close wrapClass2.h
 Close wrapClass2.cpp
-Close wraplibrary.cpp
-Close typeslibrary.h
 class Class2
 Fortran void method1(MPI_Comm comm +value) 
 Fortran void method2(three::Class1 * c2) 
@@ -54,3 +52,5 @@ Fortran void outer_func(void)
 C-interface void outer_func(void) 
 Close wrapflibrary_outer2.f
 Close wrapflibrary.f
+Close utillibrary.cpp
+Close typeslibrary.h

@@ -1,7 +1,8 @@
 Wrote wraptypes.h
 Wrote wraptypes.cpp
-Wrote typestypes.h
 Wrote wrapftypes.f
+Wrote utiltypes.cpp
+Wrote typestypes.h
 Wrote pytypesmodule.cpp
 Wrote pytypesmodule.hpp
 Wrote setup.py

@@ -674,6 +674,9 @@
             ],
             "cxx_type": "std::vector<{cxx_T}>",
             "flat_name": "std_vector_{cxx_T}",
+            "impl_header": [
+                "<vector>"
+            ],
             "sgroup": "vector"
         },
         "uint16_t": {

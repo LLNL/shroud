@@ -12,8 +12,6 @@ C void exfunc(void)
 C void exfunc(int flag +value) 
 Close wrapUser2.h
 Close wrapUser2.cpp
-Close wrappreprocess.cpp
-Close typespreprocess.h
 class User1
 Fortran void method1(void) 
 Fortran void method2(void) 
@@ -29,6 +27,8 @@ Fortran void exfunc(int flag +value)
 C-interface void exfunc(void) 
 C-interface void exfunc(int flag +value) 
 Close wrapfpreprocess.f
+Close utilpreprocess.cpp
+Close typespreprocess.h
 class User1
 Python method void method1(void)
 Python method void method2(void)

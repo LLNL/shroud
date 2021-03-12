@@ -28,8 +28,6 @@ C bool checkPtr(void * array +value)  +intent(result)
 C double sumArray(void)  +intent(result)
 Close wrapArrayWrapper.h
 Close wrapArrayWrapper.cpp
-Close wraparrayclass.cpp
-Close typesarrayclass.h
 class ArrayWrapper
 Fortran ArrayWrapper(void)  +intent(result)
 Fortran void setSize(int size +value) 
@@ -74,6 +72,8 @@ C-interface void fetchVoidRef(void * & array +intent(out))
 C-interface bool checkPtr(void * array +value)  +intent(result)
 C-interface double sumArray(void)  +intent(result)
 Close wrapfarrayclass.f
+Close utilarrayclass.cpp
+Close typesarrayclass.h
 class ArrayWrapper
 Python method ArrayWrapper(void)
 Python method void setSize(int size +value)

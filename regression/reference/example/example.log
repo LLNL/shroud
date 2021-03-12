@@ -70,7 +70,6 @@ C void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocata
 Close wrapUserLibrary_example_nested.h
 Close wrapUserLibrary_example_nested.cpp
 Close wrapUserLibrary.cpp
-Close typesUserLibrary.h
 class ExClass1
 Fortran ExClass1(void)  +intent(result)
 Fortran ExClass1(const string * name)  +intent(result)
@@ -184,6 +183,7 @@ Close wrapfUserLibrary_example_nested.f
 Close wrapfUserLibrary_example.f
 Close wrapfuserlibrary.f
 Close utilUserLibrary.cpp
+Close typesUserLibrary.h
 class ExClass1
 Python method ExClass1(void)
 Python method ExClass1(const string * name)
