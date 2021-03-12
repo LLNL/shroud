@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesns.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 

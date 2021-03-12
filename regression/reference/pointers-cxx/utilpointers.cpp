@@ -9,7 +9,6 @@
 
 // shroud
 #include "typespointers.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

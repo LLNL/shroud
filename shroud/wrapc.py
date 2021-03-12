@@ -1375,13 +1375,9 @@ class Wrapc(util.WrapperMixin):
         fmt = self.newlibrary.fmtdict
         headers.add_shroud_file(fmt.C_header_utility)
         headers.add_shroud_dict(self.capsule_include)
-        # Add header for NULL.
-        if self.language == "cxx":
-            headers.add_shroud_file("<cstdlib>")
-            # XXXX nullptr XXXX
-        else:
+        if self.language == "c":
+            # Add header for NULL. C++ uses nullptr.
             headers.add_shroud_file("<stdlib.h>")
-            #self.capsule_headers
         for ntypedefs in self.capsule_typedef_nodes.values():
             headers.add_typemap_list(ntypedefs.impl_header)
             

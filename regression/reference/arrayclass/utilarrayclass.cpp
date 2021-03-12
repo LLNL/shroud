@@ -11,7 +11,6 @@
 #include "arrayclass.hpp"
 // shroud
 #include "typesarrayclass.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

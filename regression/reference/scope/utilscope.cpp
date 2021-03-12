@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesscope.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

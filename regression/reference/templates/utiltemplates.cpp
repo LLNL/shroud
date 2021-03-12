@@ -12,7 +12,6 @@
 #include "templates.hpp"
 // shroud
 #include "typestemplates.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

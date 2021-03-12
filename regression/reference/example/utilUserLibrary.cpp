@@ -12,7 +12,6 @@
 #include "ExClass2.hpp"
 // shroud
 #include "typesUserLibrary.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 

@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesenum.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

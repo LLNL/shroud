@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesmemdoc.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 

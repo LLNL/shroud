@@ -9,7 +9,6 @@
 
 #include <string>
 #include "typesTutorial.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 

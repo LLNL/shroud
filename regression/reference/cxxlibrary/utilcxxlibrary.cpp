@@ -9,7 +9,6 @@
 
 // shroud
 #include "typescxxlibrary.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

@@ -11,7 +11,6 @@
 #include <string>
 // shroud
 #include "typesstrings.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

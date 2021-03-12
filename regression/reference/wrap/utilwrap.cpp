@@ -8,7 +8,6 @@
 //
 
 #include "typeswrap.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus

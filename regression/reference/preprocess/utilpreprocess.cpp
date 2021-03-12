@@ -9,7 +9,6 @@
 
 // shroud
 #include "typespreprocess.h"
-#include <cstdlib>
 
 
 #ifdef __cplusplus
