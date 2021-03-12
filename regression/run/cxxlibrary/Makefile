@@ -26,6 +26,7 @@ OBJS = \
     wrapfcxxlibrary_structns.o \
     wrapcxxlibrary.o \
     wrapcxxlibrary_structns.o \
+    utilcxxlibrary.o \
     fruit.o \
     main.o
 

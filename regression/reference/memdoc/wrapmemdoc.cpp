@@ -11,8 +11,6 @@
 // typemap
 #include <string>
 // shroud
-#include "typesmemdoc.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 
@@ -74,14 +72,5 @@ void STR_get_const_string_ptr_alloc_bufferify(
     // splicer end function.get_const_string_ptr_alloc_bufferify
 }
 // end STR_get_const_string_ptr_alloc_bufferify
-
-// start release allocated memory
-// Release library allocated memory.
-void STR_SHROUD_memory_destructor(STR_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory
 
 }  // extern "C"

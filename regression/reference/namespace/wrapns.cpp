@@ -13,8 +13,6 @@
 // typemap
 #include <string>
 // shroud
-#include "typesns.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 
@@ -79,13 +77,6 @@ void NS_one(void)
     // splicer begin function.one
     One();
     // splicer end function.one
-}
-
-// Release library allocated memory.
-void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

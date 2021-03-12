@@ -10,9 +10,6 @@
 
 // cxx_header
 #include "ownership.hpp"
-// shroud
-#include "typesownership.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -407,38 +404,6 @@ OWN_Class1 * OWN_get_class_new(int flag, OWN_Class1 * SHadow_rv)
     SHadow_rv->idtor = 1;
     return SHadow_rv;
     // splicer end function.get_class_new
-}
-
-// Release library allocated memory.
-void OWN_SHROUD_memory_destructor(OWN_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // Class1
-    {
-        Class1 *cxx_ptr = reinterpret_cast<Class1 *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    case 2:   // int
-    {
-        int *cxx_ptr = reinterpret_cast<int *>(ptr);
-        free(cxx_ptr);
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

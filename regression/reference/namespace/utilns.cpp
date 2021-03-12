@@ -9,6 +9,8 @@
 
 // shroud
 #include "typesns.h"
+#include "namespace.hpp"
+#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 
@@ -28,6 +30,13 @@ void NS_ShroudCopyStringAndFree(NS_SHROUD_array *data, char *c_var, size_t c_var
     NS_SHROUD_memory_destructor(&data->cxx); // delete data->cxx.addr
 }
 
+
+// Release library allocated memory.
+void NS_SHROUD_memory_destructor(NS_SHROUD_capsule_data *cap)
+{
+    cap->addr = nullptr;
+    cap->idtor = 0;  // avoid deleting again
+}
 
 #ifdef __cplusplus
 }

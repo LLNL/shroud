@@ -517,10 +517,8 @@ def main_with_args(args):
         if wrap.fortran:
             wrapf.Wrapf(newlibrary, config, splicers["f"]).wrap_library()
 
-        # Fortran wrappers may produce C helper functions.
-        # i.e. implemented in C but call from Fortran via BIND(C).
-        # Write C utility file after creating Fortran wrappers.
-        clibrary.write_impl_utility()
+        if wrap.c or wrap.fortran:
+            clibrary.write_post_fortran()
 
         if wrap.python:
             wrapp.Wrapp(newlibrary, config, splicers["py"]).wrap_library()

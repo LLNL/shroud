@@ -12,7 +12,6 @@ Wrote wraptestnames_CAPI.cc
 Wrote wrapNames2.cc
 Wrote top.h
 Wrote top.cpp
-Wrote typestestnames.hh
 Wrote wrapftestnames_ns0_inner.F
 Wrote foo.f
 Wrote wrapftestnames_ns1.F
@@ -20,6 +19,8 @@ Wrote wrapftestnames_internal.F
 Wrote wrapftestnames_std.F
 Wrote wrapftestnames_CAPI.F
 Wrote top.f
+Wrote utiltestnames.cc
+Wrote typestestnames.hh
 Wrote pytestnames_ns0_innermodule.cpp
 Wrote pyns0_Namestype.cpp
 Wrote pytestnames_ns0module.cpp

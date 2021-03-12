@@ -5,5 +5,6 @@ Wrote wrapCstruct_as_subclass.h
 Wrote wrapCstruct_as_subclass.cpp
 Wrote wrapstruct.h
 Wrote wrapstruct.cpp
-Wrote typesstruct.h
 Wrote wrapfstruct.f
+Wrote utilstruct.cpp
+Wrote typesstruct.h

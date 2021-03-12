@@ -11,7 +11,6 @@ C const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(resul
 C void One(void) 
 Close wrapns.h
 Close wrapns.cpp
-Close typesns.h
 Fortran const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(result)
 Fortran void One(void) 
 C-interface const std::string & LastFunctionCalled(void)  +deref(allocatable)+intent(result)
@@ -24,6 +23,7 @@ Close wrapfns_outer.f
 class ClassWork
 Close wrapfns.f
 Close utilns.cpp
+Close typesns.h
 class Cstruct1
 Python method Cstruct1(int ifield, double dfield) +name(Cstruct1_ctor)
 Close pyouter_Cstruct1type.cpp

@@ -58,7 +58,6 @@ C int * * returnRawPtrToInt2d(void)  +deref(pointer)+intent(result)
 C int * * returnRawPtrToInt2d(void)  +deref(pointer)+intent(result)
 Close wrappointers.h
 Close wrappointers.c
-Close typespointers.h
 Fortran void intargs_in(const int * arg) 
 Fortran void intargs_inout(int * arg) 
 Fortran void intargs_out(int * arg +intent(out)) 
@@ -161,3 +160,5 @@ C-interface int * returnIntRawWithArgs(const char * name) +deref(raw)  +deref(ra
 C-interface int * * returnRawPtrToInt2d(void)  +deref(pointer)+intent(result)
 C-interface int * * returnRawPtrToInt2d(void)  +deref(pointer)+intent(result)
 Close wrapfpointers.f
+Close utilpointers.c
+Close typespointers.h

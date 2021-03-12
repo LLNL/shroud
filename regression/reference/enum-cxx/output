@@ -1,7 +1,7 @@
 Wrote wrapenum.h
-Wrote wrapenum.cpp
-Wrote typesenum.h
 Wrote wrapfenum.f
+Wrote utilenum.cpp
+Wrote typesenum.h
 Wrote pyenummodule.cpp
 Wrote pyenummodule.hpp
 Wrote setup.py

@@ -12,9 +12,6 @@
 #include "cdesc.hpp"
 // typemap
 #include <string>
-// shroud
-#include "typescdesc.h"
-#include <cstdlib>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
@@ -247,13 +244,6 @@ void CDE_get_scalar2_1_bufferify(char * name, int Lname, double * value)
     // splicer begin function.get_scalar2_1_bufferify
     // This function does not need to exist.
     // splicer end function.get_scalar2_1_bufferify
-}
-
-// Release library allocated memory.
-void CDE_SHROUD_memory_destructor(CDE_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

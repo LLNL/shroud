@@ -13,8 +13,6 @@
 // typemap
 #include <string>
 // shroud
-#include "typesTutorial.h"
-#include <cstdlib>
 #include <cstddef>
 #include <cstring>
 
@@ -674,33 +672,5 @@ void TUT_last_function_called_bufferify(char * SHF_rv, int NSHF_rv)
     }
     // splicer end function.last_function_called_bufferify
 }
-
-// start release allocated memory
-// Release library allocated memory.
-void TUT_SHROUD_memory_destructor(TUT_SHROUD_capsule_data *cap)
-{
-    void *ptr = cap->addr;
-    switch (cap->idtor) {
-    case 0:   // --none--
-    {
-        // Nothing to delete
-        break;
-    }
-    case 1:   // new_string
-    {
-        std::string *cxx_ptr = reinterpret_cast<std::string *>(ptr);
-        delete cxx_ptr;
-        break;
-    }
-    default:
-    {
-        // Unexpected case in destructor
-        break;
-    }
-    }
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory
 
 }  // extern "C"

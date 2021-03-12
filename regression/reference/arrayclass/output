@@ -1,9 +1,9 @@
 Wrote arrayclass_types.yaml
 Wrote wrapArrayWrapper.h
 Wrote wrapArrayWrapper.cpp
-Wrote wraparrayclass.cpp
-Wrote typesarrayclass.h
 Wrote wrapfarrayclass.f
+Wrote utilarrayclass.cpp
+Wrote typesarrayclass.h
 Wrote pyArrayWrappertype.cpp
 Wrote pyarrayclassmodule.cpp
 Wrote pyarrayclassutil.cpp

@@ -69,7 +69,6 @@ C void PostDeclare(int * count +intent(in)+rank(1), std::string & name)
 C void PostDeclare(int * count +intent(in)+rank(1), std::string & name +len+len_trim) 
 Close wrapstrings.h
 Close wrapstrings.cpp
-Close typesstrings.h
 Fortran void passChar(char status +value) 
 Fortran void passCharForce(char status +value) 
 Fortran char returnChar(void)  +intent(result)
@@ -172,6 +171,8 @@ C-interface void CpassCharPtr(char * dest +intent(out)+len+len_trim, const char 
 C-interface void PostDeclare(int * count +intent(in)+rank(1), std::string & name) 
 C-interface void PostDeclare(int * count +intent(in)+rank(1), std::string & name +len+len_trim) 
 Close wrapfstrings.f
+Close utilstrings.cpp
+Close typesstrings.h
 Python function void passChar(char status +value)
 Python function char returnChar(void)
 Python function void passCharPtr(char * dest +charlen(40)+intent(out), const char * src)

@@ -13,7 +13,6 @@ C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +int
 C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
-Close typescxxlibrary.h
 Fortran bool defaultPtrIsNULL(void)  +intent(result)
 Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(result)
 Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
@@ -33,6 +32,8 @@ C-interface void passStructByReferenceInout(Cstruct1 & arg +intent(inout))
 C-interface void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
 Close wrapfcxxlibrary_structns.f
 Close wrapfcxxlibrary.f
+Close utilcxxlibrary.cpp
+Close typescxxlibrary.h
 Python function int passStructByReference(Cstruct1 & arg)
 Python function int passStructByReferenceIn(const Cstruct1 & arg)
 Python function void passStructByReferenceInout(Cstruct1 & arg +intent(inout))

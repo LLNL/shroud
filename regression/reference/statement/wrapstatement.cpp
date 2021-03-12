@@ -13,8 +13,6 @@
 // typemap
 #include <string>
 // shroud
-#include "typesstatement.h"
-#include <cstdlib>
 #include <cstring>
 
 // splicer begin CXX_definitions
@@ -95,13 +93,6 @@ void STMT_get_name_error_pattern_bufferify(char * SHF_rv, int NSHF_rv)
             SHCXX_rv.size());
     }
     // splicer end function.get_name_error_pattern_bufferify
-}
-
-// Release library allocated memory.
-void STMT_SHROUD_memory_destructor(STMT_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"

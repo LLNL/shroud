@@ -22,8 +22,8 @@ VPATH = \
 #    arrayclass.o   # This file is not created
 OBJS = \
     wrapfarrayclass.o \
-    wraparrayclass.o \
     wrapArrayWrapper.o \
+    utilarrayclass.o \
     fruit.o \
     main.o
 

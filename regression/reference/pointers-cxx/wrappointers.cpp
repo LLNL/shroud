@@ -11,7 +11,6 @@
 // cxx_header
 #include "pointers.h"
 // shroud
-#include "typespointers.h"
 #include <cstdlib>
 #include <cstring>
 
@@ -1365,14 +1364,5 @@ int * * POI_return_raw_ptr_to_int2d_bufferify(void)
     // splicer end function.return_raw_ptr_to_int2d_bufferify
 }
 // end POI_return_raw_ptr_to_int2d_bufferify
-
-// start release allocated memory
-// Release library allocated memory.
-void POI_SHROUD_memory_destructor(POI_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
-}
-// end release allocated memory
 
 }  // extern "C"

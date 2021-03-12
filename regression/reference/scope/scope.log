@@ -7,10 +7,10 @@ Close wrapClass1.h
 class Class2
 Close wrapClass2.h
 Close wrapscope.h
-Close wrapscope.cpp
-Close typesscope.h
 class Class1
 class Class2
 Close wrapfscope_ns1.f
 Close wrapfscope_ns2.f
 Close wrapfscope.f
+Close utilscope.cpp
+Close typesscope.h

@@ -50,7 +50,6 @@ C const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+i
 C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30) 
 Close wrapclasses.h
 Close wrapclasses.cpp
-Close typesclasses.h
 class Class1
 Fortran Class1(void)  +intent(result)
 Fortran Class1(int flag +value)  +intent(result)
@@ -120,6 +119,7 @@ C-interface const std::string & LastFunctionCalled(void) +len(30)  +deref(result
 C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30) 
 Close wrapfclasses.f
 Close utilclasses.cpp
+Close typesclasses.h
 class Class1
 Python method Class1(void)
 Python method Class1(int flag +value)

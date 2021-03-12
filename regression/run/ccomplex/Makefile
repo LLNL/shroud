@@ -21,7 +21,7 @@ VPATH = \
 OBJS = \
     ccomplex.o \
     wrapfccomplex.o \
-    wrapccomplex.o \
+    utilccomplex.o \
     fruit.o \
     main.o
 

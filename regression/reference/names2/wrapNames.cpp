@@ -8,10 +8,6 @@
 //
 #include "wrapNames.h"
 
-// shroud
-#include "typesNames.h"
-#include <cstdlib>
-
 // splicer begin CXX_definitions
 // splicer end CXX_definitions
 
@@ -29,13 +25,6 @@ void NAM_afunction(void)
     // splicer begin function.afunction
     ignore1::ignore2::AFunction();
     // splicer end function.afunction
-}
-
-// Release library allocated memory.
-void NAM_SHROUD_memory_destructor(NAM_SHROUD_capsule_data *cap)
-{
-    cap->addr = nullptr;
-    cap->idtor = 0;  // avoid deleting again
 }
 
 }  // extern "C"
