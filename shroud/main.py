@@ -186,6 +186,10 @@ def dump_jsonfile(config, logdir, basename, newlibrary):
         def_types = typemap.get_global_types()
         out["types"] = todict.to_dict(def_types)
     elif newlibrary.options.debug_testsuite:
+        # Add user defined types for debugging.
+        user_types = typemap.return_shadow_types()
+        if user_types:
+            out["types"] = todict.to_dict(user_types)
         # Clean out this info since it's the same for all tests.
         # XXX - anytime a new fmt or option is added it changes all tests.
         del out['library']['zz_fmtdict']

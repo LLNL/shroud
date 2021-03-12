@@ -858,5 +858,149 @@
             "c": true,
             "fortran": true
         }
+    },
+    "types": {
+        "Class2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}Class2 *>\t({c_var}->addr)",
+            "c_type": "LIB_Class2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Class2",
+            "f_c_module": {
+                "--import--": [
+                    "LIB_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(LIB_SHROUD_capsule_data)",
+            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+            "f_class": "class(class2)",
+            "f_derived_type": "class2",
+            "f_module": {
+                "library_mod": [
+                    "class2"
+                ]
+            },
+            "f_module_name": "library_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class2)",
+            "flat_name": "Class2",
+            "forward": "Class2",
+            "impl_header": [
+                "zzheader.hpp",
+                "global_header.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typeslibrary.h"
+            ]
+        },
+        "outer1::class0": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}outer1::class0 *>\t({c_var}->addr)",
+            "c_type": "LIB_outer1_class0",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "outer1::class0",
+            "f_c_module": {
+                "--import--": [
+                    "LIB_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(LIB_SHROUD_capsule_data)",
+            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+            "f_class": "class(class0)",
+            "f_derived_type": "class0",
+            "f_module": {
+                "library_outer1_mod": [
+                    "class0"
+                ]
+            },
+            "f_module_name": "library_outer1_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class0)",
+            "flat_name": "outer1_class0",
+            "forward": "outer1::class0",
+            "impl_header": [
+                "outer1.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typeslibrary.h"
+            ]
+        },
+        "outer2::class0": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}outer2::class0 *>\t({c_var}->addr)",
+            "c_type": "LIB_outer2_class0",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "outer2::class0",
+            "f_c_module": {
+                "--import--": [
+                    "LIB_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(LIB_SHROUD_capsule_data)",
+            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+            "f_class": "class(class0)",
+            "f_derived_type": "class0",
+            "f_module": {
+                "library_outer2_mod": [
+                    "class0"
+                ]
+            },
+            "f_module_name": "library_outer2_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class0)",
+            "flat_name": "outer2_class0",
+            "forward": "outer2::class0",
+            "impl_header": [
+                "classA.hpp",
+                "classAb.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typeslibrary.h"
+            ]
+        },
+        "three::Class1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}three::Class1 *>\t({c_var}->addr)",
+            "c_type": "LIB_three_Class1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "three::Class1",
+            "f_c_module": {
+                "--import--": [
+                    "LIB_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(LIB_SHROUD_capsule_data)",
+            "f_capsule_data_type": "LIB_SHROUD_capsule_data",
+            "f_class": "class(class1)",
+            "f_derived_type": "class1",
+            "f_module": {
+                "library_three_mod": [
+                    "class1"
+                ]
+            },
+            "f_module_name": "library_three_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(class1)",
+            "flat_name": "three_Class1",
+            "forward": "three::Class1",
+            "impl_header": [
+                "class_header.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typeslibrary.h"
+            ]
+        }
     }
 }

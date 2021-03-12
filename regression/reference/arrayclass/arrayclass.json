@@ -3483,5 +3483,48 @@
             "fortran": true,
             "python": true
         }
+    },
+    "types": {
+        "ArrayWrapper": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_ArrayWrapper",
+            "PY_PyTypeObject": "PY_ArrayWrapper_Type",
+            "PY_from_object": "PP_ArrayWrapper_from_Object",
+            "PY_to_object": "PP_ArrayWrapper_to_Object",
+            "PY_to_object_idtor": "PP_ArrayWrapper_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}ArrayWrapper *>\t({c_var}->addr)",
+            "c_type": "ARR_ArrayWrapper",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "ArrayWrapper",
+            "f_c_module": {
+                "--import--": [
+                    "ARR_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(ARR_SHROUD_capsule_data)",
+            "f_capsule_data_type": "ARR_SHROUD_capsule_data",
+            "f_class": "class(arraywrapper)",
+            "f_derived_type": "arraywrapper",
+            "f_module": {
+                "arrayclass_mod": [
+                    "arraywrapper"
+                ]
+            },
+            "f_module_name": "arrayclass_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(arraywrapper)",
+            "flat_name": "ArrayWrapper",
+            "forward": "ArrayWrapper",
+            "idtor": "1",
+            "impl_header": [
+                "arrayclass.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesarrayclass.h"
+            ]
+        }
     }
 }

@@ -565,5 +565,87 @@
             "fortran": true,
             "python": true
         }
+    },
+    "types": {
+        "User1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_User1",
+            "PY_PyTypeObject": "PY_User1_Type",
+            "PY_from_object": "PP_User1_from_Object",
+            "PY_to_object": "PP_User1_to_Object",
+            "PY_to_object_idtor": "PP_User1_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}User1 *>\t({c_var}->addr)",
+            "c_type": "PRE_User1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "User1",
+            "f_c_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(PRE_SHROUD_capsule_data)",
+            "f_capsule_data_type": "PRE_SHROUD_capsule_data",
+            "f_class": "class(user1)",
+            "f_derived_type": "user1",
+            "f_module": {
+                "preprocess_mod": [
+                    "user1"
+                ]
+            },
+            "f_module_name": "preprocess_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(user1)",
+            "flat_name": "User1",
+            "forward": "User1",
+            "impl_header": [
+                "preprocess.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typespreprocess.h"
+            ]
+        },
+        "User2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_User2",
+            "PY_PyTypeObject": "PY_User2_Type",
+            "PY_from_object": "PP_User2_from_Object",
+            "PY_to_object": "PP_User2_to_Object",
+            "PY_to_object_idtor": "PP_User2_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}User2 *>\t({c_var}->addr)",
+            "c_type": "PRE_User2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "User2",
+            "f_c_module": {
+                "--import--": [
+                    "PRE_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(PRE_SHROUD_capsule_data)",
+            "f_capsule_data_type": "PRE_SHROUD_capsule_data",
+            "f_class": "class(user2)",
+            "f_derived_type": "user2",
+            "f_module": {
+                "preprocess_mod": [
+                    "user2"
+                ]
+            },
+            "f_module_name": "preprocess_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(user2)",
+            "flat_name": "User2",
+            "forward": "User2",
+            "impl_header": [
+                "User2.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typespreprocess.h"
+            ]
+        }
     }
 }

@@ -1143,4 +1143,10 @@ def create_fcnptr_typemap(node, fields=None):
     return ntypemap
 
 
-
+def return_shadow_types():
+    """Return a dictionary of user defined types."""
+    dct = {}
+    for key, ntypemap in shared_typedict.items():
+        if ntypemap.sgroup in ["shadow", "struct"]:
+            dct[key] = ntypemap
+    return dct

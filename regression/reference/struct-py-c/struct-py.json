@@ -488,5 +488,71 @@
         "wrap": {
             "python": true
         }
+    },
+    "types": {
+        "Cstruct_as_class": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct_as_class_array_descr",
+            "PY_PyObject": "PY_Cstruct_as_class",
+            "PY_PyTypeObject": "PY_Cstruct_as_class_Type",
+            "PY_from_object": "PP_Cstruct_as_class_from_Object",
+            "PY_struct_as": "class",
+            "PY_to_object": "PP_Cstruct_as_class_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct_as_class_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct_as_class",
+            "cxx_type": "Cstruct_as_class",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct_as_class"
+                ]
+            },
+            "f_derived_type": "cstruct_as_class",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_as_class"
+                ]
+            },
+            "f_type": "type(cstruct_as_class)",
+            "flat_name": "Cstruct_as_class",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "Cstruct_as_numpy": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct_as_numpy_array_descr",
+            "PY_PyObject": "PY_Cstruct_as_numpy",
+            "PY_PyTypeObject": "PY_Cstruct_as_numpy_Type",
+            "PY_from_object": "PP_Cstruct_as_numpy_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct_as_numpy_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct_as_numpy_to_Object_idtor",
+            "base": "struct",
+            "c_header": [
+                "struct.h"
+            ],
+            "c_type": "Cstruct_as_numpy",
+            "cxx_type": "Cstruct_as_numpy",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct_as_numpy"
+                ]
+            },
+            "f_derived_type": "cstruct_as_numpy",
+            "f_module": {
+                "struct_mod": [
+                    "cstruct_as_numpy"
+                ]
+            },
+            "f_type": "type(cstruct_as_numpy)",
+            "flat_name": "Cstruct_as_numpy",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        }
     }
 }

@@ -11226,5 +11226,124 @@
             "lua": true,
             "python": true
         }
+    },
+    "types": {
+        "example::nested::ExClass1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PP_ExClass1",
+            "PY_PyTypeObject": "PP_ExClass1_Type",
+            "PY_from_object": "PP_ExClass1_from_Object",
+            "PY_to_object": "PP_ExClass1_to_Object",
+            "PY_to_object_idtor": "PP_ExClass1_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass1 *>\t({c_var}->addr)",
+            "c_type": "AA_example_nested_ExClass1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "example::nested::ExClass1",
+            "f_c_module": {
+                "--import--": [
+                    "AA_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(AA_SHROUD_capsule_data)",
+            "f_capsule_data_type": "AA_SHROUD_capsule_data",
+            "f_class": "class(exclass1)",
+            "f_derived_type": "exclass1",
+            "f_module": {
+                "userlibrary_example_nested_mod": [
+                    "exclass1"
+                ]
+            },
+            "f_module_name": "userlibrary_example_nested_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(exclass1)",
+            "flat_name": "example_nested_ExClass1",
+            "forward": "example::nested::ExClass1",
+            "idtor": "1",
+            "impl_header": [
+                "ExClass1.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesUserLibrary.h"
+            ]
+        },
+        "example::nested::ExClass2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PP_ExClass2",
+            "PY_PyTypeObject": "PP_ExClass2_Type",
+            "PY_from_object": "PP_ExClass2_from_Object",
+            "PY_to_object": "PP_ExClass2_to_Object",
+            "PY_to_object_idtor": "PP_ExClass2_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass2 *>\t({c_var}->addr)",
+            "c_type": "AA_example_nested_ExClass2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "example::nested::ExClass2",
+            "f_c_module": {
+                "--import--": [
+                    "AA_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(AA_SHROUD_capsule_data)",
+            "f_capsule_data_type": "AA_SHROUD_capsule_data",
+            "f_class": "class(exclass2)",
+            "f_derived_type": "exclass2",
+            "f_module": {
+                "userlibrary_example_nested_mod": [
+                    "exclass2"
+                ]
+            },
+            "f_module_name": "userlibrary_example_nested_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(exclass2)",
+            "flat_name": "example_nested_ExClass2",
+            "forward": "example::nested::ExClass2",
+            "idtor": "2",
+            "impl_header": [
+                "ExClass2.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesUserLibrary.h"
+            ]
+        },
+        "example::nested::ExClass2Nested": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}example::nested::ExClass2Nested *>\t({c_var}->addr)",
+            "c_type": "AA_example_nested_ExClass2_ExClass2Nested",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "example::nested::ExClass2Nested",
+            "f_c_module": {
+                "--import--": [
+                    "AA_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(AA_SHROUD_capsule_data)",
+            "f_capsule_data_type": "AA_SHROUD_capsule_data",
+            "f_class": "class(exclass2nested)",
+            "f_derived_type": "exclass2nested",
+            "f_module": {
+                "userlibrary_example_nested_mod": [
+                    "exclass2nested"
+                ]
+            },
+            "f_module_name": "userlibrary_example_nested_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(exclass2nested)",
+            "flat_name": "example_nested_ExClass2Nested",
+            "forward": "example::nested::ExClass2Nested",
+            "impl_header": [
+                "ExClass2.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typesUserLibrary.h"
+            ]
+        }
     }
 }

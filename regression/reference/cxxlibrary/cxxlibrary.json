@@ -2164,5 +2164,65 @@
             "fortran": true,
             "python": true
         }
+    },
+    "types": {
+        "Cstruct1_cls": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct1_cls_array_descr",
+            "PY_PyObject": "PY_Cstruct1_cls",
+            "PY_PyTypeObject": "PY_Cstruct1_cls_Type",
+            "PY_from_object": "PP_Cstruct1_cls_from_Object",
+            "PY_struct_as": "class",
+            "PY_to_object": "PP_Cstruct1_cls_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct1_cls_to_Object_idtor",
+            "base": "struct",
+            "c_type": "CXX_cstruct1_cls",
+            "cxx_type": "Cstruct1_cls",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct1_cls"
+                ]
+            },
+            "f_derived_type": "cstruct1_cls",
+            "f_module": {
+                "cxxlibrary_mod": [
+                    "cstruct1_cls"
+                ]
+            },
+            "f_type": "type(cstruct1_cls)",
+            "flat_name": "Cstruct1_cls",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        },
+        "structns::Cstruct1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PYN_descr": "PY_Cstruct1_array_descr",
+            "PY_PyObject": "PY_Cstruct1",
+            "PY_PyTypeObject": "PY_Cstruct1_Type",
+            "PY_from_object": "PP_Cstruct1_from_Object",
+            "PY_struct_as": "numpy",
+            "PY_to_object": "PP_Cstruct1_to_Object",
+            "PY_to_object_idtor": "PP_Cstruct1_to_Object_idtor",
+            "base": "struct",
+            "c_type": "CXX_cstruct1",
+            "cxx_type": "structns::Cstruct1",
+            "f_c_module": {
+                "--import--": [
+                    "cstruct1"
+                ]
+            },
+            "f_derived_type": "cstruct1",
+            "f_module": {
+                "cxxlibrary_structns_mod": [
+                    "cstruct1"
+                ]
+            },
+            "f_type": "type(cstruct1)",
+            "flat_name": "structns_Cstruct1",
+            "sgroup": "struct",
+            "sh_type": "SH_TYPE_STRUCT"
+        }
     }
 }

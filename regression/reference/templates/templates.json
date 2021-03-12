@@ -4172,5 +4172,426 @@
             "fortran": true,
             "python": true
         }
+    },
+    "types": {
+        "Worker": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_Worker",
+            "PY_PyTypeObject": "PY_Worker_Type",
+            "PY_from_object": "PP_Worker_from_Object",
+            "PY_to_object": "PP_Worker_to_Object",
+            "PY_to_object_idtor": "PP_Worker_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}Worker *>\t({c_var}->addr)",
+            "c_type": "TEM_Worker",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "Worker",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(worker)",
+            "f_derived_type": "worker",
+            "f_module": {
+                "templates_mod": [
+                    "worker"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(worker)",
+            "flat_name": "Worker",
+            "forward": "Worker",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "internal::ImplWorker1": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_ImplWorker1",
+            "PY_PyTypeObject": "PY_ImplWorker1_Type",
+            "PY_from_object": "PP_ImplWorker1_from_Object",
+            "PY_to_object": "PP_ImplWorker1_to_Object",
+            "PY_to_object_idtor": "PP_ImplWorker1_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}internal::ImplWorker1 *>\t({c_var}->addr)",
+            "c_type": "TEM_internal_ImplWorker1",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "internal::ImplWorker1",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(implworker1)",
+            "f_derived_type": "implworker1",
+            "f_module": {
+                "templates_internal_mod": [
+                    "implworker1"
+                ]
+            },
+            "f_module_name": "templates_internal_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(implworker1)",
+            "flat_name": "internal_ImplWorker1",
+            "forward": "internal::ImplWorker1",
+            "impl_header": [
+                "implworker1.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "internal::ImplWorker2": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_ImplWorker2",
+            "PY_PyTypeObject": "PY_ImplWorker2_Type",
+            "PY_from_object": "PP_ImplWorker2_from_Object",
+            "PY_to_object": "PP_ImplWorker2_to_Object",
+            "PY_to_object_idtor": "PP_ImplWorker2_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}internal::ImplWorker2 *>\t({c_var}->addr)",
+            "c_type": "TEM_internal_ImplWorker2",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "internal::ImplWorker2",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(implworker2)",
+            "f_derived_type": "implworker2",
+            "f_module": {
+                "templates_internal_mod": [
+                    "implworker2"
+                ]
+            },
+            "f_module_name": "templates_internal_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(implworker2)",
+            "flat_name": "internal_ImplWorker2",
+            "forward": "internal::ImplWorker2",
+            "impl_header": [
+                "implworker2.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "std::vector": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}std::vector *>\t({c_var}->addr)",
+            "c_type": "TEM_vector",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(vector)",
+            "f_derived_type": "vector",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector"
+                ]
+            },
+            "f_module_name": "templates_std_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(vector)",
+            "flat_name": "std_vector",
+            "forward": "std::vector",
+            "impl_header": [
+                "<vector>"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "std::vector_double": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_vector_double",
+            "PY_PyTypeObject": "PY_vector_double_Type",
+            "PY_from_object": "PP_vector_double_from_Object",
+            "PY_to_object": "PP_vector_double_to_Object",
+            "PY_to_object_idtor": "PP_vector_double_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}std::vector<double> *>\t({c_var}->addr)",
+            "c_type": "TEM_vector_double",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector<double>",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(vector_double)",
+            "f_derived_type": "vector_double",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector_double"
+                ]
+            },
+            "f_module_name": "templates_std_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(vector_double)",
+            "flat_name": "std_vector_double",
+            "forward": "std::vector<double>",
+            "idtor": "2",
+            "impl_header": [
+                "<vector>"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "std::vector_int": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_vector_int",
+            "PY_PyTypeObject": "PY_vector_int_Type",
+            "PY_from_object": "PP_vector_int_from_Object",
+            "PY_to_object": "PP_vector_int_to_Object",
+            "PY_to_object_idtor": "PP_vector_int_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}std::vector<int> *>\t({c_var}->addr)",
+            "c_type": "TEM_vector_int",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "std::vector<int>",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(vector_int)",
+            "f_derived_type": "vector_int",
+            "f_module": {
+                "templates_std_mod": [
+                    "vector_int"
+                ]
+            },
+            "f_module_name": "templates_std_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(vector_int)",
+            "flat_name": "std_vector_int",
+            "forward": "std::vector<int>",
+            "idtor": "1",
+            "impl_header": [
+                "<vector>"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "structAsClass": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}structAsClass *>\t({c_var}->addr)",
+            "c_type": "TEM_structAsClass",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "structAsClass",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(structasclass)",
+            "f_derived_type": "structasclass",
+            "f_module": {
+                "templates_mod": [
+                    "structasclass"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(structasclass)",
+            "flat_name": "structAsClass",
+            "forward": "structAsClass",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "structAsClass_double": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}structAsClass<double> *>\t({c_var}->addr)",
+            "c_type": "TEM_structAsClass_double",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "structAsClass<double>",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(structasclass_double)",
+            "f_derived_type": "structasclass_double",
+            "f_module": {
+                "templates_mod": [
+                    "structasclass_double"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(structasclass_double)",
+            "flat_name": "structAsClass_double",
+            "forward": "structAsClass<double>",
+            "idtor": "4",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "structAsClass_int": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}structAsClass<int> *>\t({c_var}->addr)",
+            "c_type": "TEM_structAsClass_int",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "structAsClass<int>",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(structasclass_int)",
+            "f_derived_type": "structasclass_int",
+            "f_module": {
+                "templates_mod": [
+                    "structasclass_int"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(structasclass_int)",
+            "flat_name": "structAsClass_int",
+            "forward": "structAsClass<int>",
+            "idtor": "3",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "user": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}user *>\t({c_var}->addr)",
+            "c_type": "TEM_user",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "user",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(user)",
+            "f_derived_type": "user",
+            "f_module": {
+                "templates_mod": [
+                    "user"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(user)",
+            "flat_name": "user",
+            "forward": "user",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        },
+        "user_int": {
+            "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
+            "LUA_type": "LUA_TUSERDATA",
+            "PY_PyObject": "PY_user_int",
+            "PY_PyTypeObject": "PY_user_int_Type",
+            "PY_from_object": "PP_user_int_from_Object",
+            "PY_to_object": "PP_user_int_to_Object",
+            "PY_to_object_idtor": "PP_user_int_to_Object_idtor",
+            "base": "shadow",
+            "c_to_cxx": "static_cast<{c_const}user<int> *>\t({c_var}->addr)",
+            "c_type": "TEM_user_int",
+            "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
+            "cxx_type": "user<int>",
+            "f_c_module": {
+                "--import--": [
+                    "TEM_SHROUD_capsule_data"
+                ]
+            },
+            "f_c_type": "type(TEM_SHROUD_capsule_data)",
+            "f_capsule_data_type": "TEM_SHROUD_capsule_data",
+            "f_class": "class(user_int)",
+            "f_derived_type": "user_int",
+            "f_module": {
+                "templates_mod": [
+                    "user_int"
+                ]
+            },
+            "f_module_name": "templates_mod",
+            "f_to_c": "{f_var}%cxxmem",
+            "f_type": "type(user_int)",
+            "flat_name": "user_int",
+            "forward": "user<int>",
+            "impl_header": [
+                "templates.hpp"
+            ],
+            "sgroup": "shadow",
+            "wrap_header": [
+                "typestemplates.h"
+            ]
+        }
     }
 }
