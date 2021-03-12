@@ -23,6 +23,8 @@ class user
 C void nested(int arg1 +value, double arg2 +value) 
 Close wrapuser_int.h
 Close wrapuser_int.cpp
+class structAsClass
+class structAsClass
 C void FunctionTU(int arg1 +value, long arg2 +value) 
 C void FunctionTU(float arg1 +value, double arg2 +value) 
 C int UseImplWorker(void)  +intent(result)
@@ -34,6 +36,8 @@ class Worker
 class user
 Fortran void nested(int arg1 +value, double arg2 +value) 
 C-interface void nested(int arg1 +value, double arg2 +value) 
+class structAsClass
+class structAsClass
 Fortran void FunctionTU(int arg1 +value, long arg2 +value) 
 Fortran void FunctionTU(float arg1 +value, double arg2 +value) 
 Fortran int UseImplWorker(void)  +intent(result)

@@ -804,6 +804,8 @@ class Parser(ExprParser):
 
         if self.token.typ == "CLASS":
             node.decl = self.class_statement()
+        elif self.token.typ == "STRUCT":
+            node.decl = self.struct_statement()
         else:
             self.update_namespace(node)
             node.decl = self.declaration()

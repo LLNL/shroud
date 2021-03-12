@@ -22,6 +22,7 @@ program tester
   call test_vector_double
   call function_generic
   call function_templates
+  call struct_templates
 
   call fruit_summary
   call fruit_finalize
@@ -94,5 +95,14 @@ contains
     call assert_equals(2, rv_int)
 
   end subroutine function_templates
+
+  subroutine struct_templates
+
+    type(structasclass_int) s_int
+    type(structasclass_double) s_double
+
+    call set_case_name("struct_templates")
+
+  end subroutine struct_templates
 
 end program tester

@@ -37,6 +37,20 @@ struct s_TEM_internal_ImplWorker2 {
 };
 typedef struct s_TEM_internal_ImplWorker2 TEM_internal_ImplWorker2;
 
+// helper capsule_TEM_structAsClass_double
+struct s_TEM_structAsClass_double {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_double TEM_structAsClass_double;
+
+// helper capsule_TEM_structAsClass_int
+struct s_TEM_structAsClass_int {
+    void *addr;     /* address of C++ memory */
+    int idtor;      /* index of destructor */
+};
+typedef struct s_TEM_structAsClass_int TEM_structAsClass_int;
+
 // helper capsule_TEM_user_int
 struct s_TEM_user_int {
     void *addr;     /* address of C++ memory */

@@ -34,9 +34,25 @@ void test_pairs()
   assert(big == 100);
 }
 
+void test_struct1()
+{
+    userStruct<double> mystruct;
+
+    struct {
+        int npts;
+        double value;
+    } explicit_struct;
+       
+
+    assert(sizeof(mystruct) == sizeof(explicit_struct));
+}
+
 int main(int argc, char *argv[])
 {
   test_vector_int();
 
   test_pairs();
+
+  test_struct1();
+  
 }

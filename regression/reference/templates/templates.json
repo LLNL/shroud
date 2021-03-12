@@ -386,6 +386,128 @@
                     "file_scope": "user_int",
                     "hnamefunc0": "capsule_data_helper"
                 }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "name": "structAsClass",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "structAsClass::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "structAsClass_int",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "wrap_as": "class",
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapstructAsClass_int.h",
+                    "C_impl_filename": "wrapstructAsClass_int.cpp",
+                    "C_name_scope": "structAsClass_int_",
+                    "C_type_name": "TEM_structAsClass_int",
+                    "F_derived_name": "structasclass_int",
+                    "F_name_scope": "structasclass_int_",
+                    "PY_struct_array_descr_create": "PY_structAsClass_int_create_array_descr",
+                    "PY_struct_array_descr_name": "structAsClass_int_dtype",
+                    "PY_struct_array_descr_variable": "PY_structAsClass_int_array_descr",
+                    "class_scope": "structAsClass_int::",
+                    "cxx_class": "structAsClass_int",
+                    "cxx_type": "structAsClass<int>",
+                    "file_scope": "structAsClass_int",
+                    "hnamefunc0": "capsule_data_helper"
+                }
+            },
+            {
+                "<CLASS>": "****************************************",
+                "cxx_header": [],
+                "name": "structAsClass",
+                "options": {
+                    "wrap_python": false,
+                    "wrap_struct_as": "class"
+                },
+                "parse_keyword": "struct",
+                "scope": "structAsClass::",
+                "template_arguments": [
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "int"
+                                ],
+                                "typemap_name": "int"
+                            }
+                        ],
+                        "instantiation": "<int>"
+                    },
+                    {
+                        "asts": [
+                            {
+                                "specifier": [
+                                    "double"
+                                ],
+                                "typemap_name": "double"
+                            }
+                        ],
+                        "instantiation": "<double>"
+                    }
+                ],
+                "template_parameters": [
+                    "T"
+                ],
+                "typemap_name": "structAsClass_double",
+                "wrap": {
+                    "c": true,
+                    "fortran": true
+                },
+                "wrap_as": "class",
+                "zz_fmtdict": {
+                    "CXX_this_call": "SH_this->",
+                    "C_header_filename": "wrapstructAsClass_double.h",
+                    "C_impl_filename": "wrapstructAsClass_double.cpp",
+                    "C_name_scope": "structAsClass_double_",
+                    "C_type_name": "TEM_structAsClass_double",
+                    "F_derived_name": "structasclass_double",
+                    "F_name_scope": "structasclass_double_",
+                    "PY_struct_array_descr_create": "PY_structAsClass_double_create_array_descr",
+                    "PY_struct_array_descr_name": "structAsClass_double_dtype",
+                    "PY_struct_array_descr_variable": "PY_structAsClass_double_array_descr",
+                    "class_scope": "structAsClass_double::",
+                    "cxx_class": "structAsClass_double",
+                    "cxx_type": "structAsClass<double>",
+                    "file_scope": "structAsClass_double",
+                    "hnamefunc0": "capsule_data_helper"
+                }
             }
         ],
         "copyright": [

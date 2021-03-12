@@ -62,6 +62,26 @@ typemap:
         f_derived_type: vector_int
         f_capsule_data_type: TEM_SHROUD_capsule_data
         f_to_c: "{f_var}%cxxmem"
+  - type: structAsClass_double
+    fields:
+      base: shadow
+      wrap_header:
+      - typestemplates.h
+      c_type: TEM_structAsClass_double
+      f_module_name: templates_mod
+      f_derived_type: structasclass_double
+      f_capsule_data_type: TEM_SHROUD_capsule_data
+      f_to_c: "{f_var}%cxxmem"
+  - type: structAsClass_int
+    fields:
+      base: shadow
+      wrap_header:
+      - typestemplates.h
+      c_type: TEM_structAsClass_int
+      f_module_name: templates_mod
+      f_derived_type: structasclass_int
+      f_capsule_data_type: TEM_SHROUD_capsule_data
+      f_to_c: "{f_var}%cxxmem"
   - type: user_int
     fields:
       base: shadow
