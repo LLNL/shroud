@@ -7,9 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "arrayclass.hpp"
 // shroud
 #include "typesarrayclass.h"
-#include "arrayclass.hpp"
 #include <cstdlib>
 
 

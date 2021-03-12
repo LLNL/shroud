@@ -7,9 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "classes.hpp"
 // shroud
 #include "typesclasses.h"
-#include "classes.hpp"
 #include <cstdlib>
 #include <cstddef>
 #include <cstring>

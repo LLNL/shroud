@@ -9,7 +9,6 @@
 
 // shroud
 #include "typespointers.h"
-#include "pointers.h"
 #include <stdlib.h>
 
 // start release allocated memory

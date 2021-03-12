@@ -10,6 +10,8 @@
 
 // cxx_header
 #include "vectors.hpp"
+// typemap
+#include <vector>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

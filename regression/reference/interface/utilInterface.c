@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesInterface.h"
-#include "interface.h"
 #include <stdlib.h>
 
 // Release library allocated memory.

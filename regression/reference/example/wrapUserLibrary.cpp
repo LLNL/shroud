@@ -7,10 +7,6 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
-// typemap
-#include "ExClass1.hpp"
-#include "ExClass2.hpp"
-
 // splicer begin CXX_definitions
 //   CXX_definitions
 // splicer end CXX_definitions

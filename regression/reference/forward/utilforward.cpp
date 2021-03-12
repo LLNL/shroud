@@ -7,11 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "forward.hpp"
 // shroud
 #include "typesforward.h"
-#include "forward.hpp"
-#include "header1.hpp"
-#include "header2.hpp"
 #include <cstdlib>
 
 

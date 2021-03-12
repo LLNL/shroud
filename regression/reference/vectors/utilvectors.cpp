@@ -7,9 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include <vector>
 // shroud
 #include "typesvectors.h"
-#include "vectors.hpp"
 #include <cstdlib>
 #include <cstring>
 

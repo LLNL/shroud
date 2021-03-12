@@ -7,9 +7,10 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include "ownership.hpp"
 // shroud
 #include "typesownership.h"
-#include "ownership.hpp"
 #include <cstdlib>
 #include <cstring>
 

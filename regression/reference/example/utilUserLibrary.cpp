@@ -7,10 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
-// shroud
-#include "typesUserLibrary.h"
+// typemap
 #include "ExClass1.hpp"
 #include "ExClass2.hpp"
+// shroud
+#include "typesUserLibrary.h"
 #include <cstdlib>
 #include <cstddef>
 #include <cstring>

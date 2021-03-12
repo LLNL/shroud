@@ -85,7 +85,6 @@ class Wrapc(util.WrapperMixin):
         newlibrary = self.newlibrary
         fmt_library = newlibrary.fmtdict
         # reserved the 0 slot of capsule_order
-        self.add_capsule_headers(newlibrary)
         self.add_capsule_code("--none--", None, ["// Nothing to delete"])
         self.wrap_namespace(newlibrary.wrap_namespace, True)
 
@@ -162,9 +161,6 @@ class Wrapc(util.WrapperMixin):
         else:
             self.wrap_enums(ns)
             self.wrap_functions(ns)
-            if top:
-                # self.impl_typedef_nodes.update(self.capsule_typedef_nodes) Python 3.6
-                self.impl_typedef_nodes.update(self.capsule_typedef_nodes.items())
 
         c_header = fmt.C_header_filename
         c_impl = fmt.C_impl_filename
@@ -590,8 +586,6 @@ class Wrapc(util.WrapperMixin):
         for method in node.functions:
             self.wrap_function(node, method)
         self._pop_splicer("method")
-
-        self.add_capsule_headers(node)
 
     def compute_idtor(self, node):
         """Create a capsule destructor for type.
@@ -1388,6 +1382,8 @@ class Wrapc(util.WrapperMixin):
         else:
             headers.add_shroud_file("<stdlib.h>")
             #self.capsule_headers
+        for ntypedefs in self.capsule_typedef_nodes.values():
+            headers.add_typemap_list(ntypedefs.impl_header)
             
     def write_capsule_code(self, output):
         """Write a function used to delete C/C++ memory.
@@ -1452,10 +1448,6 @@ class Wrapc(util.WrapperMixin):
         if options.literalinclude2:
             output.append("// end release allocated memory")
 
-    def add_capsule_headers(self, node):
-        for include in node.find_header():
-            self.capsule_include[include] = True
-
     def add_capsule_code(self, name, var_typemap, lines):
         """Add unique names to capsule_code.
         Return index of name.
@@ -1498,6 +1490,7 @@ class Wrapc(util.WrapperMixin):
         """Find the destructor based on the typemap.
         idtor = index of destructor.
 
+        XXX - no longer true...
         Only arguments have idtor's.
         For example,
             int * foo() +owner(caller)
@@ -1516,6 +1509,7 @@ class Wrapc(util.WrapperMixin):
             # Custom destructor from statements.
             # Use destructor in typemap to remove intermediate objects
             # e.g. std::vector
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
             destructor_name = wformat(destructor_name, fmt)
             if destructor_name not in self.capsule_code:
                 del_lines = []
@@ -1569,6 +1563,7 @@ class Wrapc(util.WrapperMixin):
                 ntypemap,
             )
             ntypemap.idtor = fmt.idtor
+            self.capsule_typedef_nodes[ntypemap.name] = ntypemap
         else:
             # A POD type
             fmt.idtor = self.add_destructor(

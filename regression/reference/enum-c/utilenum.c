@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesenum.h"
-#include "enum.h"
 #include <stdlib.h>
 
 // Release library allocated memory.

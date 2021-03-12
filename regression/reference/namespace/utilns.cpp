@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesns.h"
-#include "namespace.hpp"
 #include <cstdlib>
 #include <cstddef>
 #include <cstring>

@@ -9,12 +9,6 @@
 
 // shroud
 #include "typeslibrary.h"
-#include "classA.hpp"
-#include "classAb.hpp"
-#include "class_header.hpp"
-#include "global_header.hpp"
-#include "outer1.hpp"
-#include "zzheader.hpp"
 #include <cstdlib>
 
 

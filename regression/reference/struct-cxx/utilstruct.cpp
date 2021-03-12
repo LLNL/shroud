@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesstruct.h"
-#include "struct.h"
 #include <cstdlib>
 
 

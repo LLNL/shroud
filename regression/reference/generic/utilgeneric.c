@@ -9,8 +9,6 @@
 
 // shroud
 #include "typesgeneric.h"
-#include "generic.h"
-#include "helper.h"
 #include <stdlib.h>
 
 // start release allocated memory

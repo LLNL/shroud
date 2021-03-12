@@ -9,7 +9,6 @@
 
 // shroud
 #include "typesccomplex.h"
-#include "ccomplex.h"
 #include <stdlib.h>
 
 // start release allocated memory

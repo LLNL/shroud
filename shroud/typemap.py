@@ -784,6 +784,7 @@ def initialize():
             #            LUA_type='LUA_TSTRING',
             #            LUA_pop='lua_tostring({LUA_state_var}, {LUA_index})',
             #            LUA_push='lua_pushstring({LUA_state_var}, {push_arg})',
+            impl_header=["<vector>"],
             base="vector",
             sgroup="vector",
         ),

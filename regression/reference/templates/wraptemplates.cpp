@@ -13,7 +13,6 @@
 // typemap
 #include "implworker1.hpp"
 #include "implworker2.hpp"
-#include <vector>
 
 // splicer begin CXX_definitions
 // splicer end CXX_definitions

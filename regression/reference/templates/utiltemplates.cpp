@@ -7,12 +7,11 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+// typemap
+#include <vector>
+#include "templates.hpp"
 // shroud
 #include "typestemplates.h"
-#include <vector>
-#include "implworker1.hpp"
-#include "implworker2.hpp"
-#include "templates.hpp"
 #include <cstdlib>
 
 

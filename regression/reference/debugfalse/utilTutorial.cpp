@@ -7,8 +7,8 @@
 // SPDX-License-Identifier: (BSD-3-Clause)
 //
 
+#include <string>
 #include "typesTutorial.h"
-#include "tutorial.hpp"
 #include <cstdlib>
 #include <cstddef>
 #include <cstring>
