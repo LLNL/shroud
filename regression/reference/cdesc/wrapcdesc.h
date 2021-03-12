@@ -32,12 +32,20 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg);
 
 void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue);
 
-void CDE_get_scalar1_bufferify(char * name, int Lname,
+void CDE_get_scalar1_0_bufferify(char * name, int Lname,
+    CDE_SHROUD_array *Dvalue);
+
+void CDE_get_scalar1_1_bufferify(char * name, int Lname,
     CDE_SHROUD_array *Dvalue);
 
 int CDE_get_data_int(void);
 
 double CDE_get_data_double(void);
+
+void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value);
+
+void CDE_get_scalar2_1_bufferify(char * name, int Lname,
+    double * value);
 
 #ifdef __cplusplus
 }

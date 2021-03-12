@@ -1194,8 +1194,172 @@
                     "F_assumed_rank_max": 2
                 },
                 "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "nvalues": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nvalues",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nvalues",
+                            "cxx_type": "int",
+                            "cxx_var": "nvalues",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nvalues",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nvalues",
+                            "c_var": "nvalues"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) values",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_values",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "values",
+                            "c_var": "values"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "values,\t nvalues",
+                    "C_name": "SumValues",
+                    "C_prototype": "const int * values,\t int nvalues",
+                    "C_return_type": "int",
+                    "F_C_arguments": "values,\t nvalues",
+                    "F_C_name": "c_sum_values",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "SumValues",
+                    "underscore_name": "sum_values"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "f_intent": "OUT",
+                        "f_type": "integer(C_INT)"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "15 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "5",
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SumValues",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "rank": 0
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                },
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int * values +rank(0), int nvalues +value)",
+                "doxygen": {
+                    "brief": "scalar or array argument using assumed rank"
+                },
+                "options": {
+                    "F_assumed_rank_max": 2
+                },
+                "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -1270,15 +1434,24 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "SumValues",
+                    "C_name": "GEN_sum_values_0d",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_name": "c_sum_values",
+                    "F_C_call": "c_sum_values_0d",
+                    "F_C_name": "c_sum_values_0d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "values,\t nvalues",
+                    "F_arguments": "values,\t nvalues",
+                    "F_name_function": "sum_values_0d",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_0d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
+                    "function_suffix": "_0d",
                     "underscore_name": "sum_values"
                 },
                 "zz_fmtresult": {
@@ -1301,103 +1474,6 @@
                     "fmtf": {
                         "F_C_var": "SHT_rv",
                         "c_var": "SHT_rv",
-                        "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "15 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
-                "_PTR_F_C_index": "5",
-                "_gen_fortran_generic": true,
-                "_generated": "fortran_generic",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 0
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "assumed-rank": true,
-                                "dimension": {
-                                    "assumedrank": true
-                                },
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(0), int nvalues +value)",
-                "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
-                },
-                "options": {
-                    "F_assumed_rank_max": 2
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_sum_values",
-                    "F_arg_c_call": "values,\t nvalues",
-                    "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_values_0d",
-                    "F_name_generic": "sum_values",
-                    "F_name_impl": "sum_values_0d",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "function_name": "SumValues",
-                    "function_suffix": "_0d",
-                    "underscore_name": "sum_values"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
                         "f_kind": "C_INT",
@@ -1413,114 +1489,13 @@
             },
             {
                 "<FUNCTION>": "16 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic",
-                    "fortran_generic_c"
+                    "fortran_generic"
                 ],
-                "_PTR_F_C_index": "17",
+                "_PTR_C_CXX_index": "5",
                 "_gen_fortran_generic": true,
                 "_generated": "fortran_generic",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "assumed-rank": true,
-                                "dimension": {
-                                    "assumedrank": true
-                                },
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(1), int nvalues +value)",
-                "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
-                },
-                "options": {
-                    "F_assumed_rank_max": 2
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_sum_values_1d",
-                    "F_arg_c_call": "values,\t nvalues",
-                    "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_values_1d",
-                    "F_name_generic": "sum_values",
-                    "F_name_impl": "sum_values_1d",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "function_name": "SumValues",
-                    "function_suffix": "_1d",
-                    "underscore_name": "sum_values"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
-                        "c_var": "SHT_rv",
-                        "cxx_type": "int",
-                        "f_intent": "OUT",
-                        "f_kind": "C_INT",
-                        "f_type": "integer(C_INT)",
-                        "f_var": "SHT_rv",
-                        "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
-                        "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
-                        "stmtc1": "c_default"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "17 ****************************************",
-                "_gen_fortran_generic": true,
-                "_generated": "fortran_generic_c",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1588,7 +1563,214 @@
                 },
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtargs": {
+                    "nvalues": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nvalues",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nvalues",
+                            "cxx_type": "int",
+                            "cxx_var": "nvalues",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nvalues",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nvalues",
+                            "F_pointer": "SHPTR_nvalues",
+                            "c_var": "nvalues",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "nvalues",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "values": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "values",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) values",
+                            "cxx_type": "int",
+                            "cxx_var": "values",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_values",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "values",
+                            "F_pointer": "SHPTR_values",
+                            "c_var": "values",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "values",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_INT",
+                            "size": "size(values)",
+                            "stmt0": "f_native_*_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "values,\t nvalues",
+                    "C_name": "GEN_sum_values_1d",
+                    "C_prototype": "const int * values,\t int nvalues",
+                    "C_return_type": "int",
+                    "F_C_arguments": "values,\t nvalues",
+                    "F_C_call": "c_sum_values_1d",
+                    "F_C_name": "c_sum_values_1d",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_arg_c_call": "values,\t nvalues",
+                    "F_arguments": "values,\t nvalues",
+                    "F_name_function": "sum_values_1d",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_1d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "int SHC_rv",
+                    "function_name": "SumValues",
+                    "function_suffix": "_1d",
+                    "underscore_name": "sum_values"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_get_value": "",
+                        "c_type": "int",
+                        "c_var": "SHC_rv",
+                        "cxx_addr": "&",
+                        "cxx_member": ".",
+                        "cxx_nonconst_ptr": "&SHC_rv",
+                        "cxx_type": "int",
+                        "cxx_var": "SHC_rv",
+                        "idtor": "0",
+                        "sh_type": "SH_TYPE_INT",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_native_scalar_result",
+                        "stmt1": "c_default"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "int",
+                        "f_intent": "OUT",
+                        "f_kind": "C_INT",
+                        "f_type": "integer(C_INT)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_INT",
+                        "stmt0": "f_native_scalar_result",
+                        "stmt1": "f_default",
+                        "stmtc0": "c_native_scalar_result",
+                        "stmtc1": "c_default"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "17 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "5",
+                "_gen_fortran_generic": true,
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "SumValues",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "rank": 2
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "values",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "assumed-rank": true,
+                                "dimension": {
+                                    "assumedrank": true
+                                },
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nvalues",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "int"
+                    ],
+                    "typemap_name": "int"
+                },
+                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
+                "declgen": "int SumValues(const int * values +rank(2), int nvalues +value)",
+                "doxygen": {
+                    "brief": "scalar or array argument using assumed rank"
+                },
+                "options": {
+                    "F_assumed_rank_max": 2
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "nvalues": {
@@ -1664,16 +1846,24 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "values,\t nvalues",
-                    "C_name": "SumValues",
+                    "C_name": "GEN_sum_values_2d",
                     "C_prototype": "const int * values,\t int nvalues",
                     "C_return_type": "int",
                     "F_C_arguments": "values,\t nvalues",
-                    "F_C_name": "c_sum_values_1d",
+                    "F_C_call": "c_sum_values_2d",
+                    "F_C_name": "c_sum_values_2d",
                     "F_C_result_clause": "\fresult(SHT_rv)",
                     "F_C_subprogram": "function",
+                    "F_arg_c_call": "values,\t nvalues",
+                    "F_arguments": "values,\t nvalues",
+                    "F_name_function": "sum_values_2d",
+                    "F_name_generic": "sum_values",
+                    "F_name_impl": "sum_values_2d",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
                     "cxx_rv_decl": "int SHC_rv",
                     "function_name": "SumValues",
-                    "function_suffix": "_1d",
+                    "function_suffix": "_2d",
                     "underscore_name": "sum_values"
                 },
                 "zz_fmtresult": {
@@ -1695,104 +1885,6 @@
                     },
                     "fmtf": {
                         "F_C_var": "SHT_rv",
-                        "c_var": "SHT_rv",
-                        "f_intent": "OUT",
-                        "f_type": "integer(C_INT)"
-                    }
-                }
-            },
-            {
-                "<FUNCTION>": "18 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic",
-                    "fortran_generic_c"
-                ],
-                "_PTR_F_C_index": "17",
-                "_gen_fortran_generic": true,
-                "_generated": "fortran_generic",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "SumValues",
-                        "pointer": []
-                    },
-                    "metaattrs": {
-                        "intent": "result"
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 2
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "values",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "assumed-rank": true,
-                                "dimension": {
-                                    "assumedrank": true
-                                },
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nvalues",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "int"
-                    ],
-                    "typemap_name": "int"
-                },
-                "decl": "int SumValues(const int *values+dimension(..), int nvalues)",
-                "declgen": "int SumValues(const int * values +rank(2), int nvalues +value)",
-                "doxygen": {
-                    "brief": "scalar or array argument using assumed rank"
-                },
-                "options": {
-                    "F_assumed_rank_max": 2
-                },
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_sum_values_1d",
-                    "F_arg_c_call": "values,\t nvalues",
-                    "F_arguments": "values,\t nvalues",
-                    "F_name_function": "sum_values_2d",
-                    "F_name_generic": "sum_values",
-                    "F_name_impl": "sum_values_2d",
-                    "F_result_clause": "\fresult(SHT_rv)",
-                    "F_subprogram": "function",
-                    "function_name": "SumValues",
-                    "function_suffix": "_2d",
-                    "underscore_name": "sum_values"
-                },
-                "zz_fmtresult": {
-                    "fmtf": {
                         "c_var": "SHT_rv",
                         "cxx_type": "int",
                         "f_intent": "OUT",
@@ -2126,8 +2218,214 @@
                 ],
                 "options": {},
                 "wrap": {
+                    "c": true
+                },
+                "zz_fmtargs": {
+                    "from": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "from",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "(int *) from",
+                            "cxx_type": "int",
+                            "cxx_var": "from",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_from",
+                            "stmt0": "c_native_*_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "from",
+                            "c_var": "from"
+                        }
+                    },
+                    "nfrom": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nfrom",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nfrom",
+                            "cxx_type": "int",
+                            "cxx_var": "nfrom",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nfrom",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nfrom",
+                            "c_var": "nfrom"
+                        }
+                    },
+                    "nto": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "nto",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&nto",
+                            "cxx_type": "int",
+                            "cxx_var": "nto",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_nto",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "nto",
+                            "c_var": "nto"
+                        }
+                    },
+                    "to": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "to",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "to",
+                            "cxx_type": "int",
+                            "cxx_var": "to",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_to",
+                            "stmt0": "c_native_*_inout",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "to",
+                            "c_var": "to"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "from,\t nfrom,\t to,\t nto",
+                    "C_name": "AssignValues",
+                    "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
+                    "C_return_type": "void",
+                    "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_name": "c_assign_values",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "AssignValues",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "assign_values"
+                }
+            },
+            {
+                "<FUNCTION>": "18 ****************************************",
+                "C_force_wrapper": "True",
+                "C_generated_path": [
+                    "fortran_generic"
+                ],
+                "_PTR_C_CXX_index": "6",
+                "_generated": "fortran_generic",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "AssignValues",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "const": true,
+                            "declarator": {
+                                "name": "from",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nfrom",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "declarator": {
+                                "name": "to",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "inout"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "nto",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
+                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
+                "doxygen": {
+                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
+                },
+                "options": {},
+                "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2265,116 +2563,13 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "AssignValues",
+                    "C_name": "GEN_assign_values_scalar",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
-                    "F_C_name": "c_assign_values",
+                    "F_C_call": "c_assign_values_scalar",
+                    "F_C_name": "c_assign_values_scalar",
                     "F_C_subprogram": "subroutine",
-                    "function_name": "AssignValues",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
-                    "underscore_name": "assign_values"
-                }
-            },
-            {
-                "<FUNCTION>": "19 ****************************************",
-                "C_generated_path": [
-                    "fortran_generic"
-                ],
-                "_PTR_F_C_index": "6",
-                "_generated": "fortran_generic",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "from",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "declarator": {
-                                "name": "to",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nto",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to, int nto +value)",
-                "doxygen": {
-                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
-                },
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_assign_values",
                     "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
                     "F_arguments": "from,\t nfrom,\t to,\t nto",
                     "F_name_function": "assign_values_scalar",
@@ -2391,125 +2586,13 @@
                 }
             },
             {
-                "<FUNCTION>": "20 ****************************************",
+                "<FUNCTION>": "19 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic",
-                    "fortran_generic_c"
+                    "fortran_generic"
                 ],
-                "_PTR_F_C_index": "21",
+                "_PTR_C_CXX_index": "6",
                 "_generated": "fortran_generic",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "const": true,
-                            "declarator": {
-                                "name": "from",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "to",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nto",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from, int nfrom +value, int * to +rank(1), int nto +value)",
-                "doxygen": {
-                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
-                },
-                "options": {},
-                "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_assign_values_broadcast",
-                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
-                    "F_arguments": "from,\t nfrom,\t to,\t nto",
-                    "F_name_function": "assign_values_broadcast",
-                    "F_name_generic": "assign_values",
-                    "F_name_impl": "assign_values_broadcast",
-                    "F_subprogram": "subroutine",
-                    "function_name": "AssignValues",
-                    "function_suffix": "_broadcast",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "assign_values"
-                }
-            },
-            {
-                "<FUNCTION>": "21 ****************************************",
-                "_generated": "fortran_generic_c",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2601,7 +2684,8 @@
                 "options": {},
                 "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -2743,26 +2827,35 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "AssignValues",
+                    "C_name": "GEN_assign_values_broadcast",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_call": "c_assign_values_broadcast",
                     "F_C_name": "c_assign_values_broadcast",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                    "F_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_name_function": "assign_values_broadcast",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values_broadcast",
+                    "F_subprogram": "subroutine",
                     "function_name": "AssignValues",
                     "function_suffix": "_broadcast",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "assign_values"
                 }
             },
             {
-                "<FUNCTION>": "22 ****************************************",
+                "<FUNCTION>": "20 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic",
-                    "fortran_generic_c"
+                    "fortran_generic"
                 ],
-                "_PTR_F_C_index": "23",
+                "_PTR_C_CXX_index": "6",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -2857,123 +2950,9 @@
                 },
                 "options": {},
                 "wrap": {
-                    "fortran": true
-                },
-                "zz_fmtdict": {
-                    "F_C_call": "c_assign_values_copy",
-                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
-                    "F_arguments": "from,\t nfrom,\t to,\t nto",
-                    "F_name_function": "assign_values_copy",
-                    "F_name_generic": "assign_values",
-                    "F_name_impl": "assign_values_copy",
-                    "F_subprogram": "subroutine",
-                    "function_name": "AssignValues",
-                    "function_suffix": "_copy",
-                    "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
-                    "underscore_name": "assign_values"
-                }
-            },
-            {
-                "<FUNCTION>": "23 ****************************************",
-                "_generated": "fortran_generic_c",
-                "_overloaded": true,
-                "ast": {
-                    "declarator": {
-                        "name": "AssignValues",
-                        "pointer": []
-                    },
-                    "params": [
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "const": true,
-                            "declarator": {
-                                "name": "from",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nfrom",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "rank": 1
-                            },
-                            "declarator": {
-                                "name": "to",
-                                "pointer": [
-                                    {
-                                        "ptr": "*"
-                                    }
-                                ]
-                            },
-                            "metaattrs": {
-                                "intent": "inout"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        },
-                        {
-                            "attrs": {
-                                "value": true
-                            },
-                            "declarator": {
-                                "name": "nto",
-                                "pointer": []
-                            },
-                            "metaattrs": {
-                                "intent": "in"
-                            },
-                            "specifier": [
-                                "int"
-                            ],
-                            "typemap_name": "int"
-                        }
-                    ],
-                    "specifier": [
-                        "void"
-                    ],
-                    "typemap_name": "void"
-                },
-                "decl": "void AssignValues(const int *from, int nfrom, int *to, int nto)",
-                "declgen": "void AssignValues(const int * from +rank(1), int nfrom +value, int * to +rank(1), int nto +value)",
-                "doxygen": {
-                    "description": "Broadcast if nfrom == 1\nCopy if nfrom == nto\n"
-                },
-                "options": {},
-                "wrap": {
                     "c": true,
-                    "f_c": true
+                    "f_c": true,
+                    "fortran": true
                 },
                 "zz_fmtargs": {
                     "from": {
@@ -3119,16 +3098,25 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "from,\t nfrom,\t to,\t nto",
-                    "C_name": "AssignValues",
+                    "C_name": "GEN_assign_values_copy",
                     "C_prototype": "const int * from,\t int nfrom,\t int * to,\t int nto",
                     "C_return_type": "void",
                     "F_C_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_C_call": "c_assign_values_copy",
                     "F_C_name": "c_assign_values_copy",
                     "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "from,\t nfrom,\t to,\t nto",
+                    "F_arguments": "from,\t nfrom,\t to,\t nto",
+                    "F_name_function": "assign_values_copy",
+                    "F_name_generic": "assign_values",
+                    "F_name_impl": "assign_values_copy",
+                    "F_subprogram": "subroutine",
                     "function_name": "AssignValues",
                     "function_suffix": "_copy",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "f_subroutine",
+                    "stmt1": "f_default",
+                    "stmtc0": "c",
+                    "stmtc1": "c_default",
                     "underscore_name": "assign_values"
                 }
             },
@@ -3332,8 +3320,7 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3356,21 +3343,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "addr",
-                            "F_pointer": "SHPTR_addr",
-                            "c_var": "addr",
-                            "f_assumed_shape": "(:,:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_kind": "C_FLOAT",
-                            "f_type": "real(C_FLOAT)",
-                            "f_var": "addr",
-                            "rank": "2",
-                            "sh_type": "SH_TYPE_FLOAT",
-                            "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
-                            "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in_raw",
-                            "stmtc1": "c_default"
+                            "c_var": "addr"
                         }
                     },
                     "size": {
@@ -3393,14 +3366,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "size",
-                            "F_pointer": "SHPTR_size",
-                            "c_var": "size",
-                            "f_intent": "IN",
-                            "f_kind": "C_SIZE_T",
-                            "f_type": "integer(C_SIZE_T)",
-                            "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
-                            "sh_type": "SH_TYPE_SIZE_T"
+                            "c_var": "size"
                         }
                     },
                     "type": {
@@ -3423,14 +3389,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "type",
-                            "F_pointer": "SHPTR_type",
-                            "c_var": "type",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "type",
-                            "pre_call_intent": "T_FLOAT",
-                            "sh_type": "SH_TYPE_INT"
+                            "c_var": "type"
                         }
                     }
                 },
@@ -3449,11 +3408,12 @@
                 }
             },
             {
-                "<FUNCTION>": "24 ****************************************",
+                "<FUNCTION>": "21 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
-                "_PTR_F_C_index": "7",
+                "_PTR_C_CXX_index": "7",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -3529,11 +3489,119 @@
                 "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(1), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {},
                 "wrap": {
+                    "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_*_in_raw",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "size",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "pre_call_intent": "T_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
+                    "C_call_list": "addr,\t type,\t size",
+                    "C_name": "GEN_save_pointer_float1d",
+                    "C_prototype": "float * addr,\t int type,\t size_t size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
+                    "F_C_call": "c_save_pointer_float1d",
+                    "F_C_name": "c_save_pointer_float1d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_function": "save_pointer_float1d",
                     "F_name_generic": "save_pointer",
@@ -3549,11 +3617,12 @@
                 }
             },
             {
-                "<FUNCTION>": "25 ****************************************",
+                "<FUNCTION>": "22 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
-                "_PTR_F_C_index": "7",
+                "_PTR_C_CXX_index": "7",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -3629,11 +3698,119 @@
                 "declgen": "void SavePointer(float * addr +deref(raw)+intent(in)+rank(2), int type +implied(T_FLOAT)+value, size_t size +implied(size(addr))+value)",
                 "options": {},
                 "wrap": {
+                    "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_*_in_raw",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "size",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "pre_call_intent": "T_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer",
-                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
+                    "C_call_list": "addr,\t type,\t size",
+                    "C_name": "GEN_save_pointer_float2d",
+                    "C_prototype": "float * addr,\t int type,\t size_t size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
+                    "F_C_call": "c_save_pointer_float2d",
+                    "F_C_name": "c_save_pointer_float2d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_function": "save_pointer_float2d",
                     "F_name_generic": "save_pointer",
@@ -3859,8 +4036,7 @@
                 },
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -3883,21 +4059,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "addr",
-                            "F_pointer": "SHPTR_addr",
-                            "c_var": "addr",
-                            "f_assumed_shape": "(:,:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "IN",
-                            "f_kind": "C_FLOAT",
-                            "f_type": "real(C_FLOAT)",
-                            "f_var": "addr",
-                            "rank": "2",
-                            "sh_type": "SH_TYPE_FLOAT",
-                            "size": "size(addr)",
-                            "stmt0": "f_native_*_in_raw",
-                            "stmt1": "f_native_*_in_raw",
-                            "stmtc0": "c_void_*_in_raw",
-                            "stmtc1": "c_default"
+                            "c_var": "addr"
                         }
                     },
                     "size": {
@@ -3920,14 +4082,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "size",
-                            "F_pointer": "SHPTR_size",
-                            "c_var": "size",
-                            "f_intent": "IN",
-                            "f_kind": "C_SIZE_T",
-                            "f_type": "integer(C_SIZE_T)",
-                            "f_var": "size",
-                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
-                            "sh_type": "SH_TYPE_SIZE_T"
+                            "c_var": "size"
                         }
                     },
                     "type": {
@@ -3950,14 +4105,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "type",
-                            "F_pointer": "SHPTR_type",
-                            "c_var": "type",
-                            "f_intent": "IN",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "type",
-                            "pre_call_intent": "SH_TYPE_FLOAT",
-                            "sh_type": "SH_TYPE_INT"
+                            "c_var": "type"
                         }
                     }
                 },
@@ -3976,11 +4124,12 @@
                 }
             },
             {
-                "<FUNCTION>": "26 ****************************************",
+                "<FUNCTION>": "23 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
-                "_PTR_F_C_index": "8",
+                "_PTR_C_CXX_index": "8",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -4066,11 +4215,119 @@
                 },
                 "options": {},
                 "wrap": {
+                    "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_*_in_raw",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "size",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "pre_call_intent": "SH_TYPE_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer2",
-                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
+                    "C_call_list": "addr,\t type,\t size",
+                    "C_name": "GEN_save_pointer2_float1d",
+                    "C_prototype": "float * addr,\t int type,\t size_t size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
+                    "F_C_call": "c_save_pointer2_float1d",
+                    "F_C_name": "c_save_pointer2_float1d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_function": "save_pointer2_float1d",
                     "F_name_generic": "save_pointer2",
@@ -4086,11 +4343,12 @@
                 }
             },
             {
-                "<FUNCTION>": "27 ****************************************",
+                "<FUNCTION>": "24 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic"
                 ],
-                "_PTR_F_C_index": "8",
+                "_PTR_C_CXX_index": "8",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -4176,11 +4434,119 @@
                 },
                 "options": {},
                 "wrap": {
+                    "c": true,
+                    "f_c": true,
                     "fortran": true
                 },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_*_in_raw",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_*_in_raw",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_in_raw",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "size",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "IN",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "pre_call_intent": "size(addr,kind=C_SIZE_T)",
+                            "sh_type": "SH_TYPE_SIZE_T"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "type",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "IN",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "pre_call_intent": "SH_TYPE_FLOAT",
+                            "sh_type": "SH_TYPE_INT"
+                        }
+                    }
+                },
                 "zz_fmtdict": {
-                    "F_C_call": "c_save_pointer2",
-                    "F_arg_c_call": "C_LOC(addr),\t SH_type,\t SH_size",
+                    "C_call_list": "addr,\t type,\t size",
+                    "C_name": "GEN_save_pointer2_float2d",
+                    "C_prototype": "float * addr,\t int type,\t size_t size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "addr,\t type,\t size",
+                    "F_C_call": "c_save_pointer2_float2d",
+                    "F_C_name": "c_save_pointer2_float2d",
+                    "F_C_subprogram": "subroutine",
+                    "F_arg_c_call": "addr,\t SH_type,\t SH_size",
                     "F_arguments": "addr",
                     "F_name_function": "save_pointer2_float2d",
                     "F_name_generic": "save_pointer2",
@@ -4637,8 +5003,7 @@
                 ],
                 "options": {},
                 "wrap": {
-                    "c": true,
-                    "f_c": true
+                    "c": true
                 },
                 "zz_fmtargs": {
                     "addr": {
@@ -4661,21 +5026,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "addr",
-                            "F_pointer": "SHPTR_addr",
-                            "c_var": "addr",
-                            "f_assumed_shape": "(:,:)",
-                            "f_c_dimension": "(*)",
-                            "f_intent": "OUT",
-                            "f_kind": "C_FLOAT",
-                            "f_type": "real(C_FLOAT)",
-                            "f_var": "addr",
-                            "rank": "2",
-                            "sh_type": "SH_TYPE_FLOAT",
-                            "size": "size(addr)",
-                            "stmt0": "f_native_**_out_pointer",
-                            "stmt1": "f_native_**_out",
-                            "stmtc0": "c_void_**_out_pointer",
-                            "stmtc1": "c_default"
+                            "c_var": "addr"
                         }
                     },
                     "size": {
@@ -4698,17 +5049,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "size",
-                            "F_pointer": "SHPTR_size",
-                            "c_var": "size",
-                            "f_intent": "OUT",
-                            "f_kind": "C_SIZE_T",
-                            "f_type": "integer(C_SIZE_T)",
-                            "f_var": "size",
-                            "sh_type": "SH_TYPE_SIZE_T",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
-                            "stmtc1": "c_default"
+                            "c_var": "size"
                         }
                     },
                     "type": {
@@ -4731,17 +5072,7 @@
                         },
                         "fmtf": {
                             "F_C_var": "type",
-                            "F_pointer": "SHPTR_type",
-                            "c_var": "type",
-                            "f_intent": "OUT",
-                            "f_kind": "C_INT",
-                            "f_type": "integer(C_INT)",
-                            "f_var": "type",
-                            "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
-                            "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
-                            "stmtc1": "c_default"
+                            "c_var": "type"
                         }
                     }
                 },
@@ -4760,11 +5091,14 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "25 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic"
+                    "fortran_generic",
+                    "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "10",
+                "_PTR_C_CXX_index": "10",
+                "_PTR_F_C_index": "27",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -4854,8 +5188,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "addr,\t type,\t size",
+                    "F_C_call": "c_get_pointer_as_pointer_float1d_bufferify",
+                    "F_arg_c_call": "Daddr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float1d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -4871,11 +5205,233 @@
                 }
             },
             {
-                "<FUNCTION>": "29 ****************************************",
+                "<FUNCTION>": "27 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "25",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetPointerAsPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Daddr",
+                                "deref": "pointer",
+                                "intent": "out",
+                                "rank": 1
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "size",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
+                "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(1), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "c_var_context": "Daddr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_**_out_buf_pointer",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "c_var_context": "Daddr",
+                            "f_assumed_shape": "(:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "hnamefunc0": "array_context",
+                            "rank": "1",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_**_out_buf_pointer",
+                            "stmt1": "f_native_**_out_buf_pointer",
+                            "stmtc0": "c_native_**_out_buf_pointer",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "size",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "OUT",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "&addr,\t type,\t size",
+                    "C_name": "GEN_get_pointer_as_pointer_float1d_bufferify",
+                    "C_prototype": "GEN_SHROUD_array *Daddr,\t int * type,\t size_t * size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "Daddr,\t type,\t size",
+                    "F_C_name": "c_get_pointer_as_pointer_float1d_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "GetPointerAsPointer",
+                    "function_suffix": "_float1d_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "get_pointer_as_pointer"
+                }
+            },
+            {
+                "<FUNCTION>": "26 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
-                    "fortran_generic"
+                    "fortran_generic",
+                    "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "10",
+                "_PTR_C_CXX_index": "10",
+                "_PTR_F_C_index": "28",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -4965,8 +5521,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_get_pointer_as_pointer",
-                    "F_arg_c_call": "addr,\t type,\t size",
+                    "F_C_call": "c_get_pointer_as_pointer_float2d_bufferify",
+                    "F_arg_c_call": "Daddr,\t type,\t size",
                     "F_arguments": "addr",
                     "F_name_function": "get_pointer_as_pointer_float2d",
                     "F_name_generic": "get_pointer_as_pointer",
@@ -4978,6 +5534,225 @@
                     "stmt1": "f_default",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
+                    "underscore_name": "get_pointer_as_pointer"
+                }
+            },
+            {
+                "<FUNCTION>": "28 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "26",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "GetPointerAsPointer",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "context": "Daddr",
+                                "deref": "pointer",
+                                "intent": "out",
+                                "rank": 2
+                            },
+                            "declarator": {
+                                "name": "addr",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    },
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "deref": "pointer",
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "float"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "type",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        },
+                        {
+                            "attrs": {
+                                "hidden": true,
+                                "intent": "out"
+                            },
+                            "declarator": {
+                                "name": "size",
+                                "pointer": [
+                                    {
+                                        "ptr": "*"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "out"
+                            },
+                            "specifier": [
+                                "size_t"
+                            ],
+                            "typemap_name": "size_t"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void GetPointerAsPointer( void **addr+intent(out), int *type+intent(out)+hidden, size_t *size+intent(out)+hidden)",
+                "declgen": "void GetPointerAsPointer(float * * addr +context+deref(pointer)+intent(out)+rank(2), int * type +hidden+intent(out), size_t * size +hidden+intent(out))",
+                "generated_suffix": "buf",
+                "options": {},
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "addr": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "addr",
+                            "c_var_context": "Daddr",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "addr",
+                            "cxx_type": "float",
+                            "cxx_var": "addr",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_addr",
+                            "stmt0": "c_native_**_out_buf_pointer",
+                            "stmt1": "c_native_**_out_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "addr",
+                            "F_pointer": "SHPTR_addr",
+                            "c_var": "addr",
+                            "c_var_context": "Daddr",
+                            "f_assumed_shape": "(:,:)",
+                            "f_c_dimension": "(*)",
+                            "f_intent": "OUT",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "addr",
+                            "hnamefunc0": "array_context",
+                            "rank": "2",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "size": "size(addr)",
+                            "stmt0": "f_native_**_out_buf_pointer",
+                            "stmt1": "f_native_**_out_buf_pointer",
+                            "stmtc0": "c_native_**_out_buf_pointer",
+                            "stmtc1": "c_native_**_out_buf"
+                        }
+                    },
+                    "size": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "size",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "size",
+                            "cxx_type": "size_t",
+                            "cxx_var": "size",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "shadow_var": "SHadow_size",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "size",
+                            "F_pointer": "SHPTR_size",
+                            "c_var": "size",
+                            "f_intent": "OUT",
+                            "f_kind": "C_SIZE_T",
+                            "f_type": "integer(C_SIZE_T)",
+                            "f_var": "size",
+                            "sh_type": "SH_TYPE_SIZE_T",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "type": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "type",
+                            "cxx_addr": "",
+                            "cxx_member": "->",
+                            "cxx_nonconst_ptr": "type",
+                            "cxx_type": "int",
+                            "cxx_var": "type",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_INT",
+                            "shadow_var": "SHadow_type",
+                            "stmt0": "c_native_*_out",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "type",
+                            "F_pointer": "SHPTR_type",
+                            "c_var": "type",
+                            "f_intent": "OUT",
+                            "f_kind": "C_INT",
+                            "f_type": "integer(C_INT)",
+                            "f_var": "type",
+                            "sh_type": "SH_TYPE_INT",
+                            "stmt0": "f_native_*_out",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_*_out",
+                            "stmtc1": "c_default"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "&addr,\t type,\t size",
+                    "C_name": "GEN_get_pointer_as_pointer_float2d_bufferify",
+                    "C_prototype": "GEN_SHROUD_array *Daddr,\t int * type,\t size_t * size",
+                    "C_return_type": "void",
+                    "F_C_arguments": "Daddr,\t type,\t size",
+                    "F_C_name": "c_get_pointer_as_pointer_float2d_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "GetPointerAsPointer",
+                    "function_suffix": "_float2d_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
                     "underscore_name": "get_pointer_as_pointer"
                 }
             }

@@ -40,6 +40,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   the global level and set True on a function and get a wrapper.
   Before a False at the global level would never attempt to do any
   wrapping.
+- *generic_function* now creates a C wrapper for each Fortran wrapper.
+  This causes each Fortran interface to bind to a different C function which
+  fixes a compile error with xlf.
 
 ### Changed
 

@@ -589,17 +589,6 @@ fc_statements = [
     ),
 
     dict(
-        # A C function with a 'int *' argument passes address of array
-        name="f_native_*_in_raw",
-        # same as "f_void_*",
-        arg_decl=[
-            "{f_type}, intent({f_intent}), target :: {f_var}{f_assumed_shape}",
-        ],
-        f_module=dict(iso_c_binding=["C_LOC"]),
-        arg_c_call=["C_LOC({f_var})"],
-    ),
-
-    dict(
         # double * out +intent(out) +deref(allocatable)+dimension(size(in)),
         # Allocate array then pass to C wrapper.
         name="f_native_*_out_allocatable",

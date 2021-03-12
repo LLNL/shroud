@@ -224,15 +224,27 @@ module tutorial_mod
     end interface
 
     interface
-        subroutine c_fortran_generic_overloaded_1_bufferify(name, Lname, &
-                arg2) &
-                bind(C, name="TUT_fortran_generic_overloaded_1_bufferify")
+        subroutine c_fortran_generic_overloaded_1_float_bufferify(name, &
+                Lname, arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1_float_bufferify")
+            use iso_c_binding, only : C_CHAR, C_FLOAT, C_INT
+            implicit none
+            character(kind=C_CHAR), intent(IN) :: name(*)
+            integer(C_INT), value, intent(IN) :: Lname
+            real(C_FLOAT), value, intent(IN) :: arg2
+        end subroutine c_fortran_generic_overloaded_1_float_bufferify
+    end interface
+
+    interface
+        subroutine c_fortran_generic_overloaded_1_double_bufferify(name, &
+                Lname, arg2) &
+                bind(C, name="TUT_fortran_generic_overloaded_1_double_bufferify")
             use iso_c_binding, only : C_CHAR, C_DOUBLE, C_INT
             implicit none
             character(kind=C_CHAR), intent(IN) :: name(*)
             integer(C_INT), value, intent(IN) :: Lname
             real(C_DOUBLE), value, intent(IN) :: arg2
-        end subroutine c_fortran_generic_overloaded_1_bufferify
+        end subroutine c_fortran_generic_overloaded_1_double_bufferify
     end interface
 
     interface
@@ -565,12 +577,12 @@ contains
     end subroutine fortran_generic_overloaded_0
 
     subroutine fortran_generic_overloaded_1_float(name, arg2)
-        use iso_c_binding, only : C_DOUBLE, C_FLOAT, C_INT
+        use iso_c_binding, only : C_FLOAT, C_INT
         character(len=*), intent(IN) :: name
         real(C_FLOAT), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_float
-        call c_fortran_generic_overloaded_1_bufferify(name, &
-            len_trim(name, kind=C_INT), real(arg2, C_DOUBLE))
+        call c_fortran_generic_overloaded_1_float_bufferify(name, &
+            len_trim(name, kind=C_INT), arg2)
         ! splicer end function.fortran_generic_overloaded_1_float
     end subroutine fortran_generic_overloaded_1_float
 
@@ -579,7 +591,7 @@ contains
         character(len=*), intent(IN) :: name
         real(C_DOUBLE), value, intent(IN) :: arg2
         ! splicer begin function.fortran_generic_overloaded_1_double
-        call c_fortran_generic_overloaded_1_bufferify(name, &
+        call c_fortran_generic_overloaded_1_double_bufferify(name, &
             len_trim(name, kind=C_INT), arg2)
         ! splicer end function.fortran_generic_overloaded_1_double
     end subroutine fortran_generic_overloaded_1_double

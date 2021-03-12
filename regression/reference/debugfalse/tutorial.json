@@ -413,7 +413,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "28",
+                "_PTR_F_C_index": "30",
                 "ast": {
                     "const": true,
                     "declarator": {
@@ -614,7 +614,7 @@
                 }
             },
             {
-                "<FUNCTION>": "28 ****************************************",
+                "<FUNCTION>": "30 ****************************************",
                 "_PTR_C_CXX_index": "2",
                 "_generated": "arg_to_buffer",
                 "ast": {
@@ -1338,7 +1338,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "29",
+                "_PTR_F_C_index": "31",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1472,7 +1472,7 @@
                 }
             },
             {
-                "<FUNCTION>": "29 ****************************************",
+                "<FUNCTION>": "31 ****************************************",
                 "_PTR_C_CXX_index": "4",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
@@ -2490,7 +2490,6 @@
             },
             {
                 "<FUNCTION>": "9 ****************************************",
-                "_PTR_F_C_index": "30",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2768,12 +2767,14 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "28 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "9",
+                "_PTR_C_CXX_index": "9",
+                "_PTR_F_C_index": "32",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -2831,8 +2832,8 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
-                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t real(arg2, C_DOUBLE)",
+                    "F_C_call": "c_fortran_generic_overloaded_1_float_bufferify",
+                    "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_float",
                     "F_name_generic": "fortran_generic_overloaded",
@@ -2848,12 +2849,165 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "32 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "28",
+                "_generated": "arg_to_buffer",
+                "_overloaded": true,
+                "ast": {
+                    "declarator": {
+                        "name": "FortranGenericOverloaded",
+                        "pointer": []
+                    },
+                    "params": [
+                        {
+                            "attrs": {
+                                "len_trim": "Lname"
+                            },
+                            "const": true,
+                            "declarator": {
+                                "name": "name",
+                                "pointer": [
+                                    {
+                                        "ptr": "&"
+                                    }
+                                ]
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "std::string"
+                            ],
+                            "stmts_suffix": "buf",
+                            "typemap_name": "std::string"
+                        },
+                        {
+                            "attrs": {
+                                "value": true
+                            },
+                            "declarator": {
+                                "name": "arg2",
+                                "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "in"
+                            },
+                            "specifier": [
+                                "float"
+                            ],
+                            "typemap_name": "float"
+                        }
+                    ],
+                    "specifier": [
+                        "void"
+                    ],
+                    "typemap_name": "void"
+                },
+                "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
+                "declgen": "void FortranGenericOverloaded(const std::string & name +len_trim, float arg2 +value)",
+                "generated_suffix": "buf",
+                "options": {
+                    "F_string_len_trim": true
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true
+                },
+                "zz_fmtargs": {
+                    "arg2": {
+                        "fmtc": {
+                            "c_addr": "&",
+                            "c_const": "",
+                            "c_deref": "",
+                            "c_member": ".",
+                            "c_var": "arg2",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "&arg2",
+                            "cxx_type": "float",
+                            "cxx_var": "arg2",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "shadow_var": "SHadow_arg2",
+                            "stmt0": "c_native_scalar_in",
+                            "stmt1": "c_default"
+                        },
+                        "fmtf": {
+                            "F_C_var": "arg2",
+                            "F_pointer": "SHPTR_arg2",
+                            "c_var": "arg2",
+                            "f_intent": "IN",
+                            "f_kind": "C_FLOAT",
+                            "f_type": "real(C_FLOAT)",
+                            "f_var": "arg2",
+                            "sh_type": "SH_TYPE_FLOAT",
+                            "stmt0": "f_native_scalar_in",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_native_scalar_in",
+                            "stmtc1": "c_default"
+                        }
+                    },
+                    "name": {
+                        "fmtc": {
+                            "c_addr": "",
+                            "c_const": "const ",
+                            "c_deref": "*",
+                            "c_member": "->",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "cxx_addr": "&",
+                            "cxx_member": ".",
+                            "cxx_nonconst_ptr": "const_cast<std::string *>\t(&SHCXX_name)",
+                            "cxx_type": "std::string",
+                            "cxx_var": "SHCXX_name",
+                            "idtor": "0",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "shadow_var": "SHadow_name",
+                            "stmt0": "c_string_&_in_buf",
+                            "stmt1": "c_string_&_in_buf"
+                        },
+                        "fmtf": {
+                            "F_C_var": "name",
+                            "F_pointer": "SHPTR_name",
+                            "c_var": "name",
+                            "c_var_trim": "Lname",
+                            "f_intent": "IN",
+                            "f_kind": "C_CHAR",
+                            "f_type": "character(*)",
+                            "f_var": "name",
+                            "sh_type": "SH_TYPE_OTHER",
+                            "stmt0": "f_string_&_in_buf",
+                            "stmt1": "f_default",
+                            "stmtc0": "c_string_&_in_buf",
+                            "stmtc1": "c_string_&_in_buf"
+                        }
+                    }
+                },
+                "zz_fmtdict": {
+                    "C_call_list": "SHCXX_name,\t arg2",
+                    "C_name": "TUT_fortran_generic_overloaded_1_float_bufferify",
+                    "C_prototype": "const char * name,\t int Lname,\t float arg2",
+                    "C_return_type": "void",
+                    "F_C_arguments": "name,\t Lname,\t arg2",
+                    "F_C_name": "c_fortran_generic_overloaded_1_float_bufferify",
+                    "F_C_subprogram": "subroutine",
+                    "function_name": "FortranGenericOverloaded",
+                    "function_suffix": "_1_float_bufferify",
+                    "stmt0": "c",
+                    "stmt1": "c_default",
+                    "underscore_name": "fortran_generic_overloaded"
+                }
+            },
+            {
+                "<FUNCTION>": "29 ****************************************",
+                "C_force_wrapper": "True",
                 "C_generated_path": [
                     "fortran_generic",
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "9",
+                "_PTR_C_CXX_index": "9",
+                "_PTR_F_C_index": "33",
                 "_generated": "fortran_generic",
                 "_overloaded": true,
                 "ast": {
@@ -2911,7 +3065,7 @@
                     "fortran": true
                 },
                 "zz_fmtdict": {
-                    "F_C_call": "c_fortran_generic_overloaded_1_bufferify",
+                    "F_C_call": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_arg_c_call": "name,\t len_trim(name, kind=C_INT),\t arg2",
                     "F_arguments": "name,\t arg2",
                     "F_name_function": "fortran_generic_overloaded_1_double",
@@ -2928,8 +3082,9 @@
                 }
             },
             {
-                "<FUNCTION>": "30 ****************************************",
-                "_PTR_C_CXX_index": "9",
+                "<FUNCTION>": "33 ****************************************",
+                "C_force_wrapper": "True",
+                "_PTR_C_CXX_index": "29",
                 "_generated": "arg_to_buffer",
                 "_overloaded": true,
                 "ast": {
@@ -2984,88 +3139,6 @@
                 },
                 "decl": "void FortranGenericOverloaded(const std::string &name, double arg2)",
                 "declgen": "void FortranGenericOverloaded(const std::string & name +len_trim, double arg2 +value)",
-                "fortran_generic": [
-                    {
-                        "decls": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "attrs": {
-                                    "value": true
-                                },
-                                "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "float"
-                                ],
-                                "typemap_name": "float"
-                            }
-                        ],
-                        "function_suffix": "_float",
-                        "generic": "(float arg2)"
-                    },
-                    {
-                        "decls": [
-                            {
-                                "const": true,
-                                "declarator": {
-                                    "name": "name",
-                                    "pointer": [
-                                        {
-                                            "ptr": "&"
-                                        }
-                                    ]
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "std::string"
-                                ],
-                                "typemap_name": "std::string"
-                            },
-                            {
-                                "attrs": {
-                                    "value": true
-                                },
-                                "declarator": {
-                                    "name": "arg2",
-                                    "pointer": []
-                                },
-                                "metaattrs": {
-                                    "intent": "in"
-                                },
-                                "specifier": [
-                                    "double"
-                                ],
-                                "typemap_name": "double"
-                            }
-                        ],
-                        "function_suffix": "_double",
-                        "generic": "(double arg2)"
-                    }
-                ],
                 "generated_suffix": "buf",
                 "options": {
                     "F_string_len_trim": true
@@ -3146,14 +3219,14 @@
                 },
                 "zz_fmtdict": {
                     "C_call_list": "SHCXX_name,\t arg2",
-                    "C_name": "TUT_fortran_generic_overloaded_1_bufferify",
+                    "C_name": "TUT_fortran_generic_overloaded_1_double_bufferify",
                     "C_prototype": "const char * name,\t int Lname,\t double arg2",
                     "C_return_type": "void",
                     "F_C_arguments": "name,\t Lname,\t arg2",
-                    "F_C_name": "c_fortran_generic_overloaded_1_bufferify",
+                    "F_C_name": "c_fortran_generic_overloaded_1_double_bufferify",
                     "F_C_subprogram": "subroutine",
                     "function_name": "FortranGenericOverloaded",
-                    "function_suffix": "_1_bufferify",
+                    "function_suffix": "_1_double_bufferify",
                     "stmt0": "c",
                     "stmt1": "c_default",
                     "underscore_name": "fortran_generic_overloaded"
@@ -5745,7 +5818,7 @@
                 "C_generated_path": [
                     "arg_to_buffer"
                 ],
-                "_PTR_F_C_index": "31",
+                "_PTR_F_C_index": "34",
                 "ast": {
                     "attrs": {
                         "len": "30"
@@ -5866,7 +5939,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "_PTR_C_CXX_index": "17",
                 "_generated": "arg_to_buffer",
                 "ast": {

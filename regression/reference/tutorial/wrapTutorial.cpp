@@ -334,17 +334,39 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 // Attrs:     +intent(in)
 // Exact:     c_string_&_in_buf
 // ----------------------------------------
+// Argument:  float arg2 +value
+// Attrs:     +intent(in)
+// Requested: c_native_scalar_in
+// Match:     c_default
+void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
+    int Lname, float arg2)
+{
+    // splicer begin function.fortran_generic_overloaded_1_float_bufferify
+    const std::string SHCXX_name(name, Lname);
+    tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
+    // splicer end function.fortran_generic_overloaded_1_float_bufferify
+}
+
+// ----------------------------------------
+// Function:  void FortranGenericOverloaded
+// Requested: c
+// Match:     c_default
+// ----------------------------------------
+// Argument:  const std::string & name +len_trim(Lname)
+// Attrs:     +intent(in)
+// Exact:     c_string_&_in_buf
+// ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
 // Requested: c_native_scalar_in
 // Match:     c_default
-void TUT_fortran_generic_overloaded_1_bufferify(const char * name,
-    int Lname, double arg2)
+void TUT_fortran_generic_overloaded_1_double_bufferify(
+    const char * name, int Lname, double arg2)
 {
-    // splicer begin function.fortran_generic_overloaded_1_bufferify
+    // splicer begin function.fortran_generic_overloaded_1_double_bufferify
     const std::string SHCXX_name(name, Lname);
     tutorial::FortranGenericOverloaded(SHCXX_name, arg2);
-    // splicer end function.fortran_generic_overloaded_1_bufferify
+    // splicer end function.fortran_generic_overloaded_1_double_bufferify
 }
 
 // ----------------------------------------
