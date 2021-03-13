@@ -40,6 +40,14 @@ class Typemap(object):
     the interface since the wrapper is a C API.
 
     wrap_header is used for generated wrappers for shadow classes.
+
+    A new typemap is created for each class and struct
+
+    A new typemap is created for each templated class/struct
+    instantiation:
+        - decl: template<typename T> class A
+          cxx_template:
+          - instantiation: <int>
     """
 
     # Array of known keys with default values
@@ -1148,6 +1156,6 @@ def return_shadow_types():
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in shared_typedict.items():
-        if ntypemap.sgroup in ["shadow", "struct"]:
+        if ntypemap.sgroup in ["shadow", "struct", "template"]:
             dct[key] = ntypemap
     return dct

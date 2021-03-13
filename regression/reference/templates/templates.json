@@ -4329,6 +4329,14 @@
                 "typestemplates.h"
             ]
         },
+        "std::vector::T": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
+        },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4446,6 +4454,14 @@
                 "typestemplates.h"
             ]
         },
+        "structAsClass::T": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
+        },
         "structAsClass_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4552,6 +4568,14 @@
             "wrap_header": [
                 "typestemplates.h"
             ]
+        },
+        "user::T": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
         },
         "user_int": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",

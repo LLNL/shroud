@@ -3900,6 +3900,14 @@
                 "typestestnames.hh"
             ]
         },
+        "std::vector::T": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
+        },
         "std::vector_double": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
             "LUA_type": "LUA_TUSERDATA",
@@ -4052,6 +4060,22 @@
             "wrap_header": [
                 "typestestnames.hh"
             ]
+        },
+        "twoTs::T1": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
+        },
+        "twoTs::T2": {
+            "base": "template",
+            "c_type": "c_T",
+            "cxx_type": "cxx_T",
+            "f_type": "f_T",
+            "flat_name": "cxx_T",
+            "sgroup": "template"
         },
         "twoTs_0": {
             "LUA_pop": "\t({LUA_userdata_type} *)\t luaL_checkudata(\t{LUA_state_var}, 1, \"{LUA_metadata}\")",
