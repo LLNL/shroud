@@ -823,7 +823,7 @@ class GenFunctions(object):
 
         Each templated class must be instantated in the YAML type.
         """
-        visitor = TemplateTypemap()
+        visitor = TemplateTypemap(self.config.log)
         return visitor.visit(node)
         
     def add_struct_ctor(self, cls):
@@ -2024,6 +2024,10 @@ class TemplateTypemap(visitor.Visitor):
 
     Can be used as a base class to traverse AST.
     """
+    def __init__(self, log):
+        self.log = log
+        super(TemplateTypemap, self).__init__()
+
     def visit_LibraryNode(self, node):
         for cls in node.classes:
             self.visit(cls)
@@ -2064,7 +2068,8 @@ class TemplateTypemap(visitor.Visitor):
             targs = ast.gen_template_arguments()
             template_typemap = ast.typemap.cxx_instantiation.get(targs, None)
             if template_typemap is None:
-                print("------> not instantiated")
+                self.log.write("ERROR: Template {}{} is not instantiated\n"
+                               .format(ast.typemap.cxx_type, targs))
             else:
                 ast.typemap = template_typemap
         if ast.params is not None:
