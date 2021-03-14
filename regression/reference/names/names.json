@@ -3871,6 +3871,12 @@
             "base": "shadow",
             "c_to_cxx": "static_cast<{c_const}std::vector *>\t({c_var}->addr)",
             "c_type": "TES_std_vector",
+            "cxx_instantiation": {
+                "<double>": "std::vector_double",
+                "<int>": "std::Vvv1",
+                "<internal::ImplWorker1>": "std::vector_instantiation3",
+                "<long>": "std::vector_instantiation5"
+            },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
             "f_c_module": {
@@ -4034,6 +4040,10 @@
             "base": "shadow",
             "c_to_cxx": "static_cast<{c_const}twoTs *>\t({c_var}->addr)",
             "c_type": "TES_twoTs",
+            "cxx_instantiation": {
+                "<float, double>": "twoTs_instantiation4",
+                "<int, long>": "twoTs_0"
+            },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "twoTs",
             "f_c_module": {

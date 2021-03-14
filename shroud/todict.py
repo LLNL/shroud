@@ -195,12 +195,20 @@ class ToDict(visitor.Visitor):
 
     def visit_Typemap(self, node):
         # only export non-default values
-        a = {}
+        d = {}
         for key, defvalue in node.defaults.items():
             value = getattr(node, key)
-            if value is not defvalue:
-                a[key] = value
-        return a
+            if key == "cxx_instantiation":
+                # Only save Typemap names to avoid too much clutter.
+                if value:
+                    names = {}
+                    for key, ntypemap in value.items():
+                        names[key] = ntypemap.name
+                    d["cxx_instantiation"] = names
+            else:
+                if value is not defvalue:
+                    d[key] = value
+        return d
 
     ######################################################################
 

@@ -1572,6 +1572,93 @@
         "functions": [
             {
                 "<FUNCTION>": "30 ****************************************",
+                "ast": {
+                    "declarator": {
+                        "name": "returnUserType",
+                        "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "result"
+                    },
+                    "params": [],
+                    "specifier": [
+                        "user"
+                    ],
+                    "template_arguments": [
+                        {
+                            "specifier": [
+                                "int"
+                            ],
+                            "typemap_name": "int"
+                        }
+                    ],
+                    "typemap_name": "user_int"
+                },
+                "decl": "user<int> returnUserType(void);",
+                "declgen": "user<int> returnUserType(void)",
+                "options": {
+                    "wrap_python": false
+                },
+                "wrap": {
+                    "c": true,
+                    "f_c": true,
+                    "fortran": true
+                },
+                "zz_fmtdict": {
+                    "C_name": "TEM_return_user_type",
+                    "C_prototype": "TEM_user_int * SHadow_rv",
+                    "C_return_type": "TEM_user_int *",
+                    "F_C_arguments": "SHT_crv",
+                    "F_C_call": "c_return_user_type",
+                    "F_C_name": "c_return_user_type",
+                    "F_C_result_clause": "\fresult(SHT_rv)",
+                    "F_C_subprogram": "function",
+                    "F_C_var": "SHT_crv",
+                    "F_arg_c_call": "SHT_rv%cxxmem",
+                    "F_arguments": "",
+                    "F_name_function": "return_user_type",
+                    "F_name_generic": "return_user_type",
+                    "F_name_impl": "return_user_type",
+                    "F_result_clause": "\fresult(SHT_rv)",
+                    "F_subprogram": "function",
+                    "cxx_rv_decl": "*SHCXX_rv",
+                    "function_name": "returnUserType",
+                    "underscore_name": "return_user_type"
+                },
+                "zz_fmtresult": {
+                    "fmtc": {
+                        "c_const": "",
+                        "c_type": "TEM_user_int",
+                        "c_var": "SHC_rv",
+                        "cxx_T": "int",
+                        "cxx_addr": "",
+                        "cxx_member": "->",
+                        "cxx_nonconst_ptr": "SHCXX_rv",
+                        "cxx_type": "user<int>",
+                        "cxx_var": "SHCXX_rv",
+                        "idtor": "5",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "shadow_var": "SHadow_rv",
+                        "stmt0": "c_shadow_scalar_result",
+                        "stmt1": "c_shadow_scalar_result"
+                    },
+                    "fmtf": {
+                        "F_C_var": "SHT_rv",
+                        "c_var": "SHT_rv",
+                        "cxx_type": "user<int>",
+                        "f_intent": "OUT",
+                        "f_type": "type(user_int)",
+                        "f_var": "SHT_rv",
+                        "sh_type": "SH_TYPE_OTHER",
+                        "stmt0": "f_shadow_scalar_result",
+                        "stmt1": "f_shadow_result",
+                        "stmtc0": "c_shadow_scalar_result",
+                        "stmtc1": "c_shadow_scalar_result"
+                    }
+                }
+            },
+            {
+                "<FUNCTION>": "31 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -1677,7 +1764,7 @@
                 }
             },
             {
-                "<FUNCTION>": "32 ****************************************",
+                "<FUNCTION>": "33 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -1913,7 +2000,7 @@
                 }
             },
             {
-                "<FUNCTION>": "33 ****************************************",
+                "<FUNCTION>": "34 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -2155,7 +2242,7 @@
                 }
             },
             {
-                "<FUNCTION>": "31 ****************************************",
+                "<FUNCTION>": "32 ****************************************",
                 "_overloaded": true,
                 "ast": {
                     "declarator": {
@@ -2220,7 +2307,7 @@
                 }
             },
             {
-                "<FUNCTION>": "34 ****************************************",
+                "<FUNCTION>": "35 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -2355,7 +2442,7 @@
                 }
             },
             {
-                "<FUNCTION>": "35 ****************************************",
+                "<FUNCTION>": "36 ****************************************",
                 "C_generated_path": [
                     "cxx_template"
                 ],
@@ -4300,6 +4387,10 @@
             "base": "shadow",
             "c_to_cxx": "static_cast<{c_const}std::vector *>\t({c_var}->addr)",
             "c_type": "TEM_vector",
+            "cxx_instantiation": {
+                "<double>": "std::vector_double",
+                "<int>": "std::vector_int"
+            },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "std::vector",
             "f_c_module": {
@@ -4425,6 +4516,10 @@
             "base": "shadow",
             "c_to_cxx": "static_cast<{c_const}structAsClass *>\t({c_var}->addr)",
             "c_type": "TEM_structAsClass",
+            "cxx_instantiation": {
+                "<double>": "structAsClass_double",
+                "<int>": "structAsClass_int"
+            },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "structAsClass",
             "f_c_module": {
@@ -4540,6 +4635,9 @@
             "base": "shadow",
             "c_to_cxx": "static_cast<{c_const}user *>\t({c_var}->addr)",
             "c_type": "TEM_user",
+            "cxx_instantiation": {
+                "<int>": "user_int"
+            },
             "cxx_to_c": "static_cast<{c_const}void *>(\t{cxx_addr}{cxx_var})",
             "cxx_type": "user",
             "f_c_module": {
@@ -4609,6 +4707,7 @@
             "f_type": "type(user_int)",
             "flat_name": "user_int",
             "forward": "user<int>",
+            "idtor": "5",
             "impl_header": [
                 "templates.hpp"
             ],

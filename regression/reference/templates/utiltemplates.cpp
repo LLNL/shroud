@@ -56,6 +56,12 @@ void TEM_SHROUD_memory_destructor(TEM_SHROUD_capsule_data *cap)
         delete cxx_ptr;
         break;
     }
+    case 5:   // user<int>
+    {
+        user<int> *cxx_ptr = reinterpret_cast<user<int> *>(ptr);
+        delete cxx_ptr;
+        break;
+    }
     default:
     {
         // Unexpected case in destructor

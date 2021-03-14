@@ -68,6 +68,9 @@ class Typemap(object):
             "cxx_header",
             [],
         ),  # Name of C++ header file required for implementation
+        ("cxx_instantiation", None), # Dict of instantiated template types.
+            # None = non-templated type.
+            # index example ["<int>"] = Typemap for instantiated class.
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
         ("c_header", []),  # Name of C header file required for type

@@ -22,6 +22,7 @@ program tester
   call test_vector_double
   call function_generic
   call function_templates
+  call user_class
   call struct_templates
 
   call fruit_summary
@@ -97,11 +98,11 @@ contains
   end subroutine function_templates
 
   subroutine user_class
-    type(user_int) uvar
+    type(user_int) uvar1
 
-    uvar = user_int()
+    uvar1 = return_user_type()
 
-    call uvar%nested_double(12, 45.5d0)
+    call uvar1%nested_double(12, 45.5d0)
     
   end subroutine user_class
 

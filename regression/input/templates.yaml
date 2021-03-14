@@ -71,12 +71,16 @@ declarations:
   cxx_template:
   - instantiation: <int>
   declarations:
+  # constructor is not wrapped
   - decl: template<U> void nested( T arg1, U arg2 );
     # XXX - error if cxx_template is missing
     cxx_template:
     - instantiation: <double>
 
-#- decl: user<double> returnUserType(void);
+- decl: user<int> returnUserType(void);
+  options:
+    # XXX - returns an object, wrapper must allocate first to put into PyObject.
+    wrap_python: False
 
 
 #- decl: template<ArgType> void Function7(ArgType arg)
