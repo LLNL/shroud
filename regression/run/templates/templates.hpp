@@ -56,6 +56,7 @@ public:
   { }
 };
 
+user<double> returnUserType(void);
 
 template<typename T>
 struct structAsClass {

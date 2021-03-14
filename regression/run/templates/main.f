@@ -96,6 +96,15 @@ contains
 
   end subroutine function_templates
 
+  subroutine user_class
+    type(user_int) uvar
+
+    uvar = user_int()
+
+    call uvar%nested_double(12, 45.5d0)
+    
+  end subroutine user_class
+
   subroutine struct_templates
 
     type(structasclass_int) s_int

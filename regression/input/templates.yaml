@@ -76,6 +76,7 @@ declarations:
     cxx_template:
     - instantiation: <double>
 
+#- decl: user<double> returnUserType(void);
 
 
 #- decl: template<ArgType> void Function7(ArgType arg)
