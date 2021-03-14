@@ -1212,6 +1212,9 @@ return 1;""",
 
         cxx_call_list = []
 
+        if result_blk.arg_declare is not None:
+            append_format_lst(declare_code, result_blk.arg_declare, fmt_result)
+
         # parse arguments
         # call function based on number of default arguments provided
         default_calls = []  # each possible default call
@@ -1560,7 +1563,7 @@ return 1;""",
         if result_blk.pre_call:
             if need_blank0:
                 PY_code.extend(["", "// result pre_call"])
-            PY_code.extend(result_blk.pre_call)
+            append_format_lst(PY_code, result_blk.pre_call, fmt_result)
 
         # If multiple calls (because of default argument values),
         # declare return value once; else delare on call line.
@@ -4580,6 +4583,10 @@ py_statements = [
             "Py_XDECREF({py_var});",
         ],
         goto_fail=True,
+    ),
+    dict(
+        name="py_shadow_scalar_result",
+        base="py_struct_*_out_class",
     ),
     dict(
         name="py_shadow_*_result",
