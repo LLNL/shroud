@@ -807,7 +807,6 @@ class GenFunctions(object):
                         print("instantiate_classes: {} already in "
                               "typemap.cxx_instantiation".format(targs.instantiation))
                     orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
-                    self.update_types_for_class_instantiation(newcls)
 
                     self.push_instantiate_scope(newcls, targs)
                     self.process_class(newcls)
@@ -850,16 +849,6 @@ class GenFunctions(object):
         node = cls.add_function(name, ast, options=opt)
         node.declgen = node.ast.gen_decl()
         node._generated = "struct_as_class_ctor"
-
-    def update_types_for_class_instantiation(self, cls):
-        """Update the references to use instantiated class.
-
-        Args:
-            cls - ast.ClassNode
-        """
-        for function in cls.functions:
-            if function.ast.is_ctor():
-                function.ast.typemap = cls.typemap
 
     def process_class(self, cls):
         """Process variables and functions for a class.
@@ -2042,6 +2031,8 @@ class TemplateTypemap(visitor.Visitor):
         for cls in node.classes:
             self.visit(cls)
         for fcn in node.functions:
+            if fcn.ast.is_ctor():
+                fcn.ast.typemap = node.typemap
             self.visit(fcn)
         for var in node.variables:
             self.visit(var)
@@ -2072,6 +2063,7 @@ class TemplateTypemap(visitor.Visitor):
                                .format(ast.typemap.cxx_type, targs))
             else:
                 ast.typemap = template_typemap
+        
         if ast.params is not None:
             for arg in ast.params:
                 self.visit(arg)
