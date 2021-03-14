@@ -1553,8 +1553,8 @@ rv = .false.
         else:
             fmt.f_intent = c_meta["intent"].upper()
             ntypemap = f_ast.typemap
-        if c_ast.template_arguments:
-            # If a template, use its type
+        if ntypemap.sgroup == "vector":
+            # If a vector, use its type.
             ntypemap = c_ast.template_arguments[0].typemap
             fmt.cxx_T = ntypemap.name
         if subprogram != "subroutine":

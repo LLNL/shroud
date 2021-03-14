@@ -1332,11 +1332,7 @@ class Declaration(Node):
                 decl.append(" ")
             decl.append(" ".join(self.specifier))
         if self.template_arguments:
-            decl.append("<")
-            for targ in self.template_arguments:
-                decl.append(str(targ))
-                decl.append(",")
-            decl[-1] = ">"
+            decl.append(self.gen_template_arguments())
 
         if self.declarator:
             self.declarator.gen_decl_work(decl, **kwargs)
@@ -1369,6 +1365,15 @@ class Declaration(Node):
             self.gen_attrs(self.attrs, decl)
 
     _skip_annotations = ["template"]
+
+    def gen_template_arguments(self):
+        """Return string for template_arguments."""
+        decl = ["<"]
+        for targ in self.template_arguments:
+            decl.append(str(targ))
+            decl.append(",")
+        decl[-1] = ">"
+        return ''.join(decl)
 
     def gen_attrs(self, attrs, decl, skip={}):
         space = " "
@@ -1445,12 +1450,13 @@ class Declaration(Node):
         if with_template_args and self.template_arguments:
             # Use template arguments from declaration
             typ = getattr(self.typemap, lang)
-            decl.append(self.typemap.name)
-            decl.append("<")
-            for targ in self.template_arguments:
-                decl.append(str(targ))
-                decl.append(",")
-            decl[-1] = ">"
+            if self.typemap.sgroup == "vector":
+                # Vector types are not explicitly instantiated in the YAML file.
+                decl.append(self.typemap.name)
+                decl.append(self.gen_template_arguments())
+            else:
+                # cxx_type includes template  ex. user<int>
+                decl.append(self.typemap.cxx_type)
         else:
             # Convert template_argument.
             # ex vector<int> -> int
@@ -1601,8 +1607,8 @@ class Declaration(Node):
         attrs = self.attrs
         meta = self.metaattrs
         ntypemap = self.typemap
-        if self.template_arguments:
-            # If a template, use its type (std::vector)
+        if ntypemap.sgroup == "vector":
+            # If std::vector, use its type (<int>)
             ntypemap = self.template_arguments[0].typemap
 
         is_allocatable = False

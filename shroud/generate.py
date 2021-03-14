@@ -19,6 +19,7 @@ from . import todict
 from . import statements
 from . import typemap
 from . import util
+from . import visitor
 from . import whelpers
 
 wformat = util.wformat
@@ -562,6 +563,7 @@ class GenFunctions(object):
         self.function_index = newlibrary.function_index
 
         self.instantiate_all_classes(newlibrary.wrap_namespace)
+        self.update_templated_typemaps(newlibrary.wrap_namespace)
         self.gen_namespace(newlibrary.wrap_namespace)
 
     def gen_namespace(self, node):
@@ -719,14 +721,14 @@ class GenFunctions(object):
 
     def instantiate_classes(self, node):
         """Instantate any template_arguments.
-        node - LibraryNode or ClassNode.
 
         Create a new list of classes replacing
         any class with template_arguments with instantiated classes.
         All new classes will be added to node.classes.
 
-        Args:
-            node - ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
+        Parameters
+        ----------
+        node : ast.LibraryNode, ast.NamespaceNode, ast.ClassNode
         """
         clslist = []
         for cls in node.classes:
@@ -736,7 +738,11 @@ class GenFunctions(object):
                 if cls.wrap.python and options.PY_struct_arg == "class":
                     self.add_struct_ctor(cls)
             elif cls.template_arguments:
+                orig_typemap = cls.typemap
+                if orig_typemap.cxx_instantiation is None:
+                    orig_typemap.cxx_instantiation = {}
                 # Replace class with new class for each template instantiation.
+                # targs -> ast.TemplateArgument
                 for i, targs in enumerate(cls.template_arguments):
                     newcls = cls.clone()
                     clslist.append(newcls)
@@ -797,7 +803,10 @@ class GenFunctions(object):
 
                     newcls.expand_format_templates()
                     newcls.typemap = typemap.create_class_typemap(newcls)
-                    self.update_types_for_class_instantiation(newcls)
+                    if targs.instantiation in orig_typemap.cxx_instantiation:
+                        print("instantiate_classes: {} already in "
+                              "typemap.cxx_instantiation".format(targs.instantiation))
+                    orig_typemap.cxx_instantiation[targs.instantiation] = newcls.typemap
 
                     self.push_instantiate_scope(newcls, targs)
                     self.process_class(newcls)
@@ -808,6 +817,14 @@ class GenFunctions(object):
 
         node.classes = clslist
 
+    def update_templated_typemaps(self, node):
+        """Update templated types to use correct typemap.
+
+        Each templated class must be instantated in the YAML type.
+        """
+        visitor = TemplateTypemap(self.config)
+        return visitor.visit(node)
+        
     def add_struct_ctor(self, cls):
         """Add a constructor function for a struct when
         it will be treated like a class.
@@ -832,16 +849,6 @@ class GenFunctions(object):
         node = cls.add_function(name, ast, options=opt)
         node.declgen = node.ast.gen_decl()
         node._generated = "struct_as_class_ctor"
-
-    def update_types_for_class_instantiation(self, cls):
-        """Update the references to use instantiated class.
-
-        Args:
-            cls - ast.ClassNode
-        """
-        for function in cls.functions:
-            if function.ast.is_ctor():
-                function.ast.typemap = cls.typemap
 
     def process_class(self, cls):
         """Process variables and functions for a class.
@@ -1998,6 +2005,71 @@ def generate_functions(library, config):
     Namify(library, config).name_library()
     Preprocess(library, config).process_library()
     ast.promote_wrap(library)
+
+######################################################################
+
+class TemplateTypemap(visitor.Visitor):
+    """Visit nodes in AST.
+
+    Can be used as a base class to traverse AST.
+    """
+    def __init__(self, config):
+        # config may be None in unitttests.
+        self.config = config
+        super(TemplateTypemap, self).__init__()
+
+    def visit_LibraryNode(self, node):
+        for cls in node.classes:
+            self.visit(cls)
+        for fcn in node.functions:
+            self.visit(fcn)
+        for ns in node.namespaces:
+            self.visit(ns)
+        for var in node.variables:
+            self.visit(var)
+
+    def visit_ClassNode(self, node):
+        for cls in node.classes:
+            self.visit(cls)
+        for fcn in node.functions:
+            if fcn.ast.is_ctor():
+                fcn.ast.typemap = node.typemap
+            self.visit(fcn)
+        for var in node.variables:
+            self.visit(var)
+
+    visit_NamespaceNode = visit_LibraryNode
+
+    def visit_FunctionNode(self, node):
+        self.visit(node.ast)
+
+    def visit_VariableNode(self, node):
+        pass
+
+    def visit_Declaration(self, ast):
+        """Find template typemap
+
+        1) Get template arguments as a string into targs (ex. <int>)
+        2) Look up in the typemap assigned by the parser,
+           typically the original class. 
+        3) Replace typemap in AST.
+
+        Complain if the AST template has not been instantiated.
+        """
+        if ast.template_arguments and ast.typemap.cxx_instantiation is not None:
+            targs = ast.gen_template_arguments()
+            template_typemap = ast.typemap.cxx_instantiation.get(targs, None)
+            if template_typemap is None:
+                if self.config:
+                    self.config.log.write(
+                        "ERROR: Template {}{} is not instantiated\n"
+                        .format(ast.typemap.cxx_type, targs))
+            else:
+                ast.typemap = template_typemap
+        
+        if ast.params is not None:
+            for arg in ast.params:
+                self.visit(arg)
 
 ######################################################################
 

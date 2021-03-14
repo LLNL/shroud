@@ -2028,6 +2028,7 @@ root
         result -- py_shadow_*_result
       scalar
         in -- py_shadow_scalar_in
+        result -- py_shadow_scalar_result
     string
       &
         in -- py_string_&_in
@@ -2959,6 +2960,22 @@ py_shadow_scalar_in:
   name: py_shadow_scalar_in
   post_declare:
   - "{c_const}{cxx_type} * {cxx_var} =\t {py_var} ? {py_var}->{PY_type_obj} : {nullptr};"
+py_shadow_scalar_result:
+  arg_declare:
+  - '{cxx_type} *{cxx_var} = {nullptr};'
+  cxx_local_var: pointer
+  declare:
+  - PyObject *{py_var} = {nullptr};
+  fail:
+  - Py_XDECREF({py_var});
+  goto_fail: true
+  name: py_shadow_scalar_result
+  object_created: true
+  post_call:
+  - "{py_var} = {PY_to_object_idtor_func}({cxx_addr}{cxx_var},\t {capsule_order});"
+  - if ({py_var} == {nullptr}) goto fail;
+  pre_call:
+  - '{cxx_var} = new {cxx_type};'
 py_string_&_in:
   arg_declare:
   - char * {c_var};

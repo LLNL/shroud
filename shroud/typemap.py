@@ -40,6 +40,14 @@ class Typemap(object):
     the interface since the wrapper is a C API.
 
     wrap_header is used for generated wrappers for shadow classes.
+
+    A new typemap is created for each class and struct
+
+    A new typemap is created for each templated class/struct
+    instantiation:
+        - decl: template<typename T> class A
+          cxx_template:
+          - instantiation: <int>
     """
 
     # Array of known keys with default values
@@ -60,6 +68,9 @@ class Typemap(object):
             "cxx_header",
             [],
         ),  # Name of C++ header file required for implementation
+        ("cxx_instantiation", None), # Dict of instantiated template types.
+            # None = non-templated type.
+            # index example ["<int>"] = Typemap for instantiated class.
         # For example, if cxx_to_c was a function
         ("c_type", None),  # Name of type in C
         ("c_header", []),  # Name of C header file required for type
@@ -1111,7 +1122,6 @@ def create_fcnptr_typemap(node, fields=None):
         fields - dictionary
     """
 #    print("XXXXXXXX", dir(node))
-    print("XXXXXXXX - createfcn_typemap", type(node))
 #    print("  name", node.name)   # return type of function pointer
 #    print("  typemap", node.typemap)   # return type of function pointer
 #    raise NotImplementedError(
@@ -1124,9 +1134,6 @@ def create_fcnptr_typemap(node, fields=None):
     cxx_type = cxx_name
 #    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt)
     c_type = fmt.C_prefix + cxx_name
-    print("XXXXXX cxx_name", cxx_name)
-    print("XXXXXX cxx_type", cxx_type)
-    print("XXXXXX c_type", c_type)
     ntypemap = Typemap(
         cxx_name,
         base="fcnptr",
@@ -1148,6 +1155,6 @@ def return_shadow_types():
     """Return a dictionary of user defined types."""
     dct = {}
     for key, ntypemap in shared_typedict.items():
-        if ntypemap.sgroup in ["shadow", "struct"]:
+        if ntypemap.sgroup in ["shadow", "struct", "template"]:
             dct[key] = ntypemap
     return dct

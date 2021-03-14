@@ -28,6 +28,8 @@ extern "C" {
 // splicer begin C_declarations
 // splicer end C_declarations
 
+TEM_user_int * TEM_return_user_type(TEM_user_int * SHadow_rv);
+
 void TEM_function_tu_0(int arg1, long arg2);
 
 void TEM_function_tu_1(float arg1, double arg2);

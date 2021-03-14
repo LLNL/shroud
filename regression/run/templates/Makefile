@@ -21,6 +21,7 @@ VPATH = \
     $(top)/regression/run/fruit
 
 C_OBJS = \
+    templates.o \
     wraptemplates.o \
     wrapvectorforint.o \
     wrapuser_int.o \
@@ -42,6 +43,7 @@ clean :
 	rm -f $(OBJS) *.mod templates
 
 #templates.o : templates.cpp templates.hpp
+templates.o : templates.hpp
 wrapvectorforint.o : wrapvectorforint.cpp wrapstd_vector_int.h
 wrapuser_int.o : wrapuser_int.cpp wrapuser_int.h typestemplates.h templates.hpp
 wraptemplates.o : wraptemplates.cpp wraptemplates.h typestemplates.h templates.hpp

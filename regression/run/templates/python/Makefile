@@ -21,6 +21,7 @@ VPATH = \
     $(top)/regression/run/templates/python
 
 OBJS = \
+    templates.o \
     pyinternal_ImplWorker1type.o \
     pyinternal_ImplWorker2type.o \
     pyWorkertype.o \

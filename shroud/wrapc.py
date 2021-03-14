@@ -1483,8 +1483,11 @@ class Wrapc(util.WrapperMixin):
         return idtor
 
     def find_idtor(self, ast, ntypemap, fmt, intent_blk):
-        """Find the destructor based on the typemap.
-        idtor = index of destructor.
+        """Find the destructor name.
+
+        Set fmt.idtor as index of destructor.
+
+        Check stmts.destructor_name
 
         XXX - no longer true...
         Only arguments have idtor's.

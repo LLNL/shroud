@@ -22,6 +22,21 @@ extern "C" {
 // splicer begin C_definitions
 // splicer end C_definitions
 
+// ----------------------------------------
+// Function:  user<int> returnUserType
+// Attrs:     +intent(result)
+// Exact:     c_shadow_scalar_result
+TEM_user_int * TEM_return_user_type(TEM_user_int * SHadow_rv)
+{
+    // splicer begin function.return_user_type
+    user<int> * SHCXX_rv = new user<int>;
+    *SHCXX_rv = returnUserType();
+    SHadow_rv->addr = SHCXX_rv;
+    SHadow_rv->idtor = 5;
+    return SHadow_rv;
+    // splicer end function.return_user_type
+}
+
 /**
  * \brief Function template with two template parameters.
  *

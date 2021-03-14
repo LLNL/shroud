@@ -1198,11 +1198,20 @@ class ClassNode(AstNode, NamespaceMixin):
         Use base='template'.
 
         The real type will be used during template instantiation.
+
+        Ex: template<T> class A
+          fullname = A::T
+
+        Parameters
+        ----------
+        name : str
+           Template parameters name (ex. "T").
         """
         fullname = self.scope + name
         ntypemap = typemap.Typemap(
             fullname,
             base="template",
+            sgroup="template",
             c_type="c_T",
             cxx_type="cxx_T",
             f_type="f_T",
