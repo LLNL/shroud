@@ -1122,7 +1122,6 @@ def create_fcnptr_typemap(node, fields=None):
         fields - dictionary
     """
 #    print("XXXXXXXX", dir(node))
-    print("XXXXXXXX - createfcn_typemap", type(node))
 #    print("  name", node.name)   # return type of function pointer
 #    print("  typemap", node.typemap)   # return type of function pointer
 #    raise NotImplementedError(
@@ -1135,9 +1134,6 @@ def create_fcnptr_typemap(node, fields=None):
     cxx_type = cxx_name
 #    cxx_type = util.wformat("{namespace_scope}{cxx_type}", fmt)
     c_type = fmt.C_prefix + cxx_name
-    print("XXXXXX cxx_name", cxx_name)
-    print("XXXXXX cxx_type", cxx_type)
-    print("XXXXXX c_type", c_type)
     ntypemap = Typemap(
         cxx_name,
         base="fcnptr",
