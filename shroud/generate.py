@@ -553,6 +553,7 @@ class GenFunctions(object):
         self.newlibrary = newlibrary
         self.config = config
         self.instantiate_scope = None
+        self.language = newlibrary.language
 
     def gen_library(self):
         """Entry routine to generate functions for a library.
@@ -648,15 +649,21 @@ class GenFunctions(object):
         ast = var.ast
         arg_typemap = ast.typemap
         fieldname = ast.name  # attrs["name"]
+        if self.language == "c":
+            lang = "c_type"
+        else:
+            lang = "cxx_type"
 
         fmt = util.Scope(var.fmtdict)
 
         # getter
         funcname = "get" + fieldname.capitalize()
-        argdecl = ast.gen_arg_as_c(name=funcname, continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name=funcname, continuation=True)
         decl = "{}()".format(argdecl)
         field = wformat("{CXX_this}->{field_name}", fmt)
-        if arg_typemap.cxx_to_c is None:
+        if self.language == "c":
+            val = field
+        elif arg_typemap.cxx_to_c is None:
             val = field
         else:
             fmt.cxx_var = field
@@ -676,10 +683,12 @@ class GenFunctions(object):
         if ast.attrs["readonly"]:
             return
         funcname = "set" + ast.name.capitalize()
-        argdecl = ast.gen_arg_as_c(name="val", continuation=True)
+        argdecl = ast.gen_arg_as_language(lang=lang, name="val", continuation=True)
         decl = "void {}({})".format(funcname, argdecl)
         field = wformat("{CXX_this}->{field_name}", fmt)
-        if arg_typemap.c_to_cxx is None:
+        if self.language == "c":
+            val = "val"
+        elif arg_typemap.c_to_cxx is None:            
             val = "val"
         else:
             fmt.c_var = "val"
