@@ -1635,7 +1635,6 @@ rv = .false.
         C_subprogram = C_node.ast.get_subprogram()
         generated_suffix = C_node.generated_suffix
         is_ctor = ast.is_ctor()
-        is_dtor = ast.is_dtor()
         is_static = False
 
         arg_c_call = []  # arguments to C function
@@ -1649,14 +1648,12 @@ rv = .false.
         imports = {}
         stmts_comments = []
 
+        sintent = ast.metaattrs["intent"]
         if subprogram == "subroutine":
             fmt_result = fmt_func
-            if is_dtor:
-                f_stmts = ["f", "dtor"]
-                c_stmts = ["c", "dtor"]
-            else:
-                f_stmts = ["f", "subroutine"]
-                c_stmts = ["c", "subroutine"]
+            # intent will be "subroutine" or "dtor".
+            f_stmts = ["f", sintent]
+            c_stmts = ["c", sintent]
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))
@@ -1666,7 +1663,6 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
-            sintent = ast.metaattrs["intent"]
             return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
                 f_stmts = ["f", sintent]
