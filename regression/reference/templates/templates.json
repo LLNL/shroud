@@ -400,7 +400,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -985,7 +985,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -2601,7 +2601,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
-                                        "intent": "result"
+                                        "intent": "ctor"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -2702,6 +2702,9 @@
                                     "attrs": {
                                         "_destructor": "vector",
                                         "_name": "dtor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "dtor"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -3364,7 +3367,7 @@
                                         "_name": "ctor"
                                     },
                                     "metaattrs": {
-                                        "intent": "result"
+                                        "intent": "ctor"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -3465,6 +3468,9 @@
                                     "attrs": {
                                         "_destructor": "vector",
                                         "_name": "dtor"
+                                    },
+                                    "metaattrs": {
+                                        "intent": "dtor"
                                     },
                                     "params": [],
                                     "specifier": [

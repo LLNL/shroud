@@ -1215,6 +1215,9 @@
                         "name": "getCharPtr2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1423,6 +1426,9 @@
                         "name": "getCharPtr3",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1544,6 +1550,9 @@
                     "declarator": {
                         "name": "getCharPtr3",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1941,6 +1950,9 @@
                         "name": "getConstStringLen",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2111,6 +2123,9 @@
                         "name": "getConstStringAsArg",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2231,6 +2246,9 @@
                     "declarator": {
                         "name": "getConstStringAsArg",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2752,6 +2770,9 @@
                         "name": "getConstStringRefLen",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2961,6 +2982,9 @@
                         "name": "getConstStringRefAsArg",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3082,6 +3106,9 @@
                     "declarator": {
                         "name": "getConstStringRefAsArg",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3268,6 +3295,9 @@
                     "declarator": {
                         "name": "getConstStringRefLenEmpty",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3689,6 +3719,9 @@
                     "declarator": {
                         "name": "getConstStringPtrLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

@@ -13,6 +13,9 @@
                                 "_destructor": "Class1",
                                 "_name": "dtor"
                             },
+                            "metaattrs": {
+                                "intent": "dtor"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -70,6 +73,9 @@
                             "declarator": {
                                 "name": "getFlag",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "result"
                             },
                             "params": [],
                             "specifier": [

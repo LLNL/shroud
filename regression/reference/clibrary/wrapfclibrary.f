@@ -219,6 +219,7 @@ module clibrary_mod
 
     ! ----------------------------------------
     ! Function:  void Function4a +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -980,6 +981,7 @@ contains
     ! Requested: f_char_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void Function4a +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_char_scalar_result_buf_result-as-arg
     ! Match:     c_char_scalar_result_buf
     ! ----------------------------------------

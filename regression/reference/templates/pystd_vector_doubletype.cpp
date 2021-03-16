@@ -43,7 +43,7 @@ PY_vector_double_tp_del (PY_vector_double *self)
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 static int
 PY_vector_double_tp_init(

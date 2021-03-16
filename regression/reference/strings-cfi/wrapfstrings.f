@@ -201,6 +201,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getCharPtr2 +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -236,6 +237,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getCharPtr3
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -281,6 +283,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -297,6 +300,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringAsArg
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -371,6 +375,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -402,6 +407,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefAsArg
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -433,6 +439,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringRefLenEmpty +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -491,6 +498,7 @@ module strings_mod
 
     ! ----------------------------------------
     ! Function:  void getConstStringPtrLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_cfi
     ! Match:     c_default
     ! ----------------------------------------
@@ -1168,6 +1176,7 @@ contains
     ! Requested: f_char_scalar_result_cfi_result-as-arg
     ! Match:     f_default
     ! Function:  void getCharPtr2 +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_char_scalar_result_cfi_result-as-arg
     ! Match:     c_char_scalar_result_cfi
     ! ----------------------------------------
@@ -1217,6 +1226,7 @@ contains
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
     ! Function:  void getConstStringLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_cfi_result-as-arg
     ! Match:     c_string_scalar_result_cfi
     ! ----------------------------------------
@@ -1281,6 +1291,7 @@ contains
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
     ! Function:  void getConstStringRefLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_cfi_result-as-arg
     ! Match:     c_string_scalar_result_cfi
     ! ----------------------------------------
@@ -1312,6 +1323,7 @@ contains
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
     ! Function:  void getConstStringRefLenEmpty +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_cfi_result-as-arg
     ! Match:     c_string_scalar_result_cfi
     ! ----------------------------------------
@@ -1355,6 +1367,7 @@ contains
     ! Requested: f_string_scalar_result_cfi_result-as-arg
     ! Match:     f_default
     ! Function:  void getConstStringPtrLen +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_cfi_result-as-arg
     ! Match:     c_string_scalar_result_cfi
     ! ----------------------------------------

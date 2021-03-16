@@ -209,6 +209,9 @@
                         "name": "getNameErrorPattern",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {

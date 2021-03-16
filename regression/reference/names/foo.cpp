@@ -19,7 +19,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHadow_rv)
 {

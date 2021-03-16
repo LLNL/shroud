@@ -23,7 +23,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  vector
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 TEM_vector_double * TEM_vector_double_ctor(
     TEM_vector_double * SHadow_rv)
@@ -38,6 +38,7 @@ TEM_vector_double * TEM_vector_double_ctor(
 
 // ----------------------------------------
 // Function:  ~vector
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 void TEM_vector_double_dtor(TEM_vector_double * self)
 {

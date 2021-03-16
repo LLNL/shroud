@@ -79,6 +79,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  ~Class1
+        ! Attrs:     +intent(dtor)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class1_dtor(self) &
@@ -90,6 +91,7 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  int getFlag
+        ! Attrs:     +intent(result)
         ! Requested: c_native_scalar_result
         ! Match:     c_default
         function c_class1_get_flag(self) &
@@ -488,8 +490,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Class1
+    ! Attrs:     +intent(dtor)
     ! Requested: f_shadow_dtor
     ! Match:     f_default
+    ! Attrs:     +intent(dtor)
     ! Exact:     c_shadow_dtor
     subroutine class1_dtor(obj)
         class(class1) :: obj
@@ -500,8 +504,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getFlag
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     function class1_get_flag(obj) &

@@ -5950,6 +5950,9 @@
                         "name": "LastFunctionCalled",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {

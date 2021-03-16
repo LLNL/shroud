@@ -46,7 +46,7 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 // start CLA_Class1_ctor_default
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
@@ -62,7 +62,7 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  Class1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  int flag +value
@@ -83,6 +83,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 // start CLA_Class1_delete
 void CLA_Class1_delete(CLA_Class1 * self)
@@ -330,6 +331,7 @@ int CLA_Class1_direction_func(CLA_Class1 * self, int arg)
 
 // ----------------------------------------
 // Function:  int getM_flag
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start CLA_Class1_get_m_flag
@@ -345,6 +347,7 @@ int CLA_Class1_get_m_flag(CLA_Class1 * self)
 
 // ----------------------------------------
 // Function:  int getTest
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 // start CLA_Class1_get_test
@@ -360,6 +363,7 @@ int CLA_Class1_get_test(CLA_Class1 * self)
 
 // ----------------------------------------
 // Function:  void setTest
+// Attrs:     +intent(subroutine)
 // Requested: c
 // Match:     c_default
 // ----------------------------------------

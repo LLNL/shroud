@@ -71,7 +71,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  Class2
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_class2_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -85,6 +85,7 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  ~Class2
+        ! Attrs:     +intent(dtor)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_class2_dtor(self) &
@@ -190,9 +191,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class2
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function class2_ctor() &
             result(SHT_rv)
@@ -206,8 +207,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Class2
+    ! Attrs:     +intent(dtor)
     ! Requested: f_shadow_dtor
     ! Match:     f_default
+    ! Attrs:     +intent(dtor)
     ! Exact:     c_shadow_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj

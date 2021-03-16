@@ -15,7 +15,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [

@@ -39,6 +39,7 @@ PY_Cstruct_as_class_tp_del (PY_Cstruct_as_class *self)
 
 // ----------------------------------------
 // Function:  Cstruct_as_class +name(Cstruct_as_class_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int x1

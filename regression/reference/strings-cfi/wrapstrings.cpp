@@ -320,6 +320,7 @@ const char * STR_get_char_ptr2(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr2 +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -362,6 +363,7 @@ const char * STR_get_char_ptr3(void)
  */
 // ----------------------------------------
 // Function:  void getCharPtr3
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -423,6 +425,7 @@ void STR_get_const_string_result_CFI(CFI_cdesc_t *SHcfi_SHC_rv)
  */
 // ----------------------------------------
 // Function:  void getConstStringLen +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -449,6 +452,7 @@ void STR_get_const_string_len_CFI(CFI_cdesc_t *SHcfi_SHF_rv)
  */
 // ----------------------------------------
 // Function:  void getConstStringAsArg
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -564,6 +568,7 @@ const char * STR_get_const_string_ref_len(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefLen +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -617,6 +622,7 @@ const char * STR_get_const_string_ref_as_arg(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefAsArg
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -666,6 +672,7 @@ const char * STR_get_const_string_ref_len_empty(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringRefLenEmpty +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------
@@ -749,6 +756,7 @@ const char * STR_get_const_string_ptr_len(void)
  */
 // ----------------------------------------
 // Function:  void getConstStringPtrLen +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_cfi
 // Match:     c_default
 // ----------------------------------------

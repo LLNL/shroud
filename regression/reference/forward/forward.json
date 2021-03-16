@@ -63,7 +63,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -175,6 +175,9 @@
                             "attrs": {
                                 "_destructor": "Class2",
                                 "_name": "dtor"
+                            },
+                            "metaattrs": {
+                                "intent": "dtor"
                             },
                             "params": [],
                             "specifier": [

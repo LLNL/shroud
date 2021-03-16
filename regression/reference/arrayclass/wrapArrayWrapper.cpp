@@ -21,7 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  ArrayWrapper
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 {

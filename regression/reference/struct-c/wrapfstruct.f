@@ -109,6 +109,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getX1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_cstruct_as_class_get_x1
@@ -127,6 +128,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setX1
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -149,6 +151,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getY1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_cstruct_as_class_get_y1
@@ -167,6 +170,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setY1
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -192,6 +196,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getX1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_cstruct_as_subclass_get_x1
@@ -210,6 +215,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setX1
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -232,6 +238,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getY1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_cstruct_as_subclass_get_y1
@@ -250,6 +257,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setY1
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -272,6 +280,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  int getZ1
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_cstruct_as_subclass_get_z1
@@ -290,6 +299,7 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void setZ1
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -791,8 +801,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start cstruct_as_class_get_x1
@@ -809,8 +821,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -834,8 +848,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start cstruct_as_class_get_y1
@@ -852,8 +868,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -880,8 +898,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getX1
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start cstruct_as_subclass_get_x1
@@ -898,8 +918,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setX1
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -923,8 +945,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getY1
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start cstruct_as_subclass_get_y1
@@ -941,8 +965,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setY1
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -966,8 +992,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getZ1
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start cstruct_as_subclass_get_z1
@@ -984,8 +1012,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setZ1
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

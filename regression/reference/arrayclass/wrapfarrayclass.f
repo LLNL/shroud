@@ -84,7 +84,7 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  ArrayWrapper
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_arraywrapper_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -557,9 +557,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  ArrayWrapper
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function arraywrapper_ctor() &
             result(SHT_rv)

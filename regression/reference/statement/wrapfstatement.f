@@ -50,6 +50,7 @@ module statement_mod
 
         ! ----------------------------------------
         ! Function:  void getNameErrorPattern +len(get_name_length())
+        ! Attrs:     +intent(subroutine)
         ! Requested: c_void_scalar_result_buf
         ! Match:     c_default
         ! ----------------------------------------
@@ -77,6 +78,7 @@ contains
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void getNameErrorPattern +len(get_name_length())
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_buf_result-as-arg
     ! Match:     c_string_scalar_result_buf
     ! ----------------------------------------

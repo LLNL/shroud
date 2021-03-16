@@ -61,7 +61,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
 
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
     AA_example_nested_ExClass1 * SHadow_rv)
@@ -85,7 +85,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_0(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name
@@ -114,7 +114,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1(
  */
 // ----------------------------------------
 // Function:  ExClass1
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Requested: c_shadow_scalar_ctor_buf
 // Match:     c_shadow_scalar_ctor
 // ----------------------------------------
@@ -142,6 +142,7 @@ AA_example_nested_ExClass1 * AA_example_nested_ExClass1_ctor_1_bufferify(
  */
 // ----------------------------------------
 // Function:  ~ExClass1
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 void AA_example_nested_ExClass1_dtor(AA_example_nested_ExClass1 * self)
 {
@@ -226,6 +227,7 @@ const char * AA_example_nested_ExClass1_get_name_arg(
 
 // ----------------------------------------
 // Function:  void getNameArg
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------

@@ -36,7 +36,7 @@ static const struct luaL_Reg l_Class3_Reg [] = {
 // Class2(void)
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Requested: lua_shadow_scalar_ctor
 // Match:     lua_shadow_ctor
 static int l_Class2_ctor(lua_State *L)
@@ -56,6 +56,7 @@ static int l_Class2_ctor(lua_State *L)
 // ~Class2(void)
 // ----------------------------------------
 // Function:  ~Class2
+// Attrs:     +intent(dtor)
 // Requested: lua_shadow_scalar_dtor
 // Match:     lua_shadow_dtor
 static int l_Class2_dtor(lua_State *L)

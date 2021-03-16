@@ -30,7 +30,7 @@ C Color colorfunc(Color arg +value)  +intent(result)
 C void getMinMax(int & min +intent(out), int & max +intent(out)) 
 C int callback1(int in +value, int ( * incr)(int +value) +value)  +intent(result)
 C const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(result)
-C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30) 
+C void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +intent(subroutine)
 Close wrapTutorial.h
 Close wrapTutorial.cpp
 Fortran void NoReturnNoArguments(void) 
@@ -89,7 +89,7 @@ C-interface Color colorfunc(Color arg +value)  +intent(result)
 C-interface void getMinMax(int & min +intent(out), int & max +intent(out)) 
 C-interface int callback1(int in +value, int ( * incr)(int +value) +value)  +intent(result)
 C-interface const std::string & LastFunctionCalled(void) +len(30)  +deref(result-as-arg)+intent(result)
-C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30) 
+C-interface void LastFunctionCalled(std::string & SHF_rv +len(NSHF_rv)) +len(30)  +intent(subroutine)
 Close wrapftutorial.f
 Close utilTutorial.cpp
 Close typesTutorial.h

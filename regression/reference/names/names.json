@@ -2583,7 +2583,7 @@
                                         "name": "defaultctor"
                                     },
                                     "metaattrs": {
-                                        "intent": "result"
+                                        "intent": "ctor"
                                     },
                                     "params": [],
                                     "specifier": [

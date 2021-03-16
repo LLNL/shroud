@@ -66,7 +66,7 @@ static void ShroudStrToArray(AA_SHROUD_array *array, const std::string * src, in
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
@@ -91,7 +91,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor(
  */
 // ----------------------------------------
 // Function:  ExClass2
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Requested: c_shadow_scalar_ctor_buf
 // Match:     c_shadow_scalar_ctor
 // ----------------------------------------
@@ -118,6 +118,7 @@ AA_example_nested_ExClass2 * AA_example_nested_ExClass2_ctor_bufferify(
  */
 // ----------------------------------------
 // Function:  ~ExClass2
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 void AA_example_nested_ExClass2_dtor(AA_example_nested_ExClass2 * self)
 {
@@ -148,6 +149,7 @@ const char * AA_example_nested_ExClass2_get_name(
 
 // ----------------------------------------
 // Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------

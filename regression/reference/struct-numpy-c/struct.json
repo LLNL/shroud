@@ -633,6 +633,9 @@
                                 "name": "getX1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -659,6 +662,9 @@
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -706,6 +712,9 @@
                                 "name": "getY1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -732,6 +741,9 @@
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -861,6 +873,9 @@
                                 "name": "getX1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -887,6 +902,9 @@
                             "declarator": {
                                 "name": "setX1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -934,6 +952,9 @@
                                 "name": "getY1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -960,6 +981,9 @@
                             "declarator": {
                                 "name": "setY1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1007,6 +1031,9 @@
                                 "name": "getZ1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -1033,6 +1060,9 @@
                             "declarator": {
                                 "name": "setZ1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {

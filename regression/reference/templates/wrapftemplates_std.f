@@ -71,7 +71,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_vector_int_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -85,6 +85,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
+        ! Attrs:     +intent(dtor)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_vector_int_dtor(self) &
@@ -159,7 +160,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  vector
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_vector_double_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -173,6 +174,7 @@ module templates_std_mod
 
         ! ----------------------------------------
         ! Function:  ~vector
+        ! Attrs:     +intent(dtor)
         ! Requested: c_void_scalar_result
         ! Match:     c_default
         subroutine c_vector_double_dtor(self) &
@@ -261,9 +263,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function vector_int_ctor() &
             result(SHT_rv)
@@ -277,8 +279,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~vector
+    ! Attrs:     +intent(dtor)
     ! Requested: f_shadow_dtor
     ! Match:     f_default
+    ! Attrs:     +intent(dtor)
     ! Exact:     c_shadow_dtor
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
@@ -368,9 +372,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  vector
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function vector_double_ctor() &
             result(SHT_rv)
@@ -384,8 +388,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~vector
+    ! Attrs:     +intent(dtor)
     ! Requested: f_shadow_dtor
     ! Match:     f_default
+    ! Attrs:     +intent(dtor)
     ! Exact:     c_shadow_dtor
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj

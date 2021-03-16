@@ -23,6 +23,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  ~Class1
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 void OWN_Class1_dtor(OWN_Class1 * self)
 {
@@ -35,6 +36,7 @@ void OWN_Class1_dtor(OWN_Class1 * self)
 
 // ----------------------------------------
 // Function:  int getFlag
+// Attrs:     +intent(result)
 // Requested: c_native_scalar_result
 // Match:     c_default
 int OWN_Class1_get_flag(OWN_Class1 * self)

@@ -96,7 +96,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -212,7 +212,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [
                                 {
@@ -410,6 +410,9 @@
                                 "_destructor": "Class1",
                                 "_name": "dtor",
                                 "name": "delete"
+                            },
+                            "metaattrs": {
+                                "intent": "dtor"
                             },
                             "params": [],
                             "specifier": [
@@ -1769,6 +1772,9 @@
                                 "name": "getM_flag",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -1853,6 +1859,9 @@
                                 "name": "getTest",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "result"
+                            },
                             "params": [],
                             "specifier": [
                                 "int"
@@ -1936,6 +1945,9 @@
                             "declarator": {
                                 "name": "setTest",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -2575,7 +2587,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -2859,7 +2871,7 @@
                                 "_name": "ctor"
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "ctor"
                             },
                             "params": [],
                             "specifier": [
@@ -4421,6 +4433,9 @@
                     "declarator": {
                         "name": "LastFunctionCalled",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

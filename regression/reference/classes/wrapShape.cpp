@@ -21,7 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Shape
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
 {

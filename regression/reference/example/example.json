@@ -33,7 +33,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
-                                                "intent": "result"
+                                                "intent": "ctor"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -153,7 +153,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
-                                                "intent": "result"
+                                                "intent": "ctor"
                                             },
                                             "params": [
                                                 {
@@ -352,7 +352,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
-                                                "intent": "result"
+                                                "intent": "ctor"
                                             },
                                             "params": [
                                                 {
@@ -480,6 +480,9 @@
                                             "attrs": {
                                                 "_destructor": "ExClass1",
                                                 "_name": "dtor"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "dtor"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -1059,6 +1062,9 @@
                                                 "pointer": []
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "intent": "subroutine"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -1182,6 +1188,9 @@
                                                 "pointer": []
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "intent": "subroutine"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {
@@ -1996,7 +2005,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
-                                                "intent": "result"
+                                                "intent": "ctor"
                                             },
                                             "params": [
                                                 {
@@ -2198,7 +2207,7 @@
                                                 "_name": "ctor"
                                             },
                                             "metaattrs": {
-                                                "intent": "result"
+                                                "intent": "ctor"
                                             },
                                             "params": [
                                                 {
@@ -2324,6 +2333,9 @@
                                             "attrs": {
                                                 "_destructor": "ExClass2",
                                                 "_name": "dtor"
+                                            },
+                                            "metaattrs": {
+                                                "intent": "dtor"
                                             },
                                             "params": [],
                                             "specifier": [
@@ -2524,6 +2536,9 @@
                                                 "pointer": []
                                             },
                                             "func_const": true,
+                                            "metaattrs": {
+                                                "intent": "subroutine"
+                                            },
                                             "params": [
                                                 {
                                                     "attrs": {

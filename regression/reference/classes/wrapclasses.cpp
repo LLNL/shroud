@@ -232,6 +232,7 @@ const char * CLA_last_function_called(void)
 
 // ----------------------------------------
 // Function:  void LastFunctionCalled +len(30)
+// Attrs:     +intent(subroutine)
 // Requested: c_void_scalar_result_buf
 // Match:     c_default
 // ----------------------------------------

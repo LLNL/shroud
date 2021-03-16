@@ -51,6 +51,7 @@ PY_Cstruct_list_tp_del (PY_Cstruct_list *self)
 
 // ----------------------------------------
 // Function:  Cstruct_list +name(Cstruct_list_ctor)
+// Attrs:     +intent(ctor)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nitems

@@ -26,7 +26,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  Class2
-// Attrs:     +intent(result)
+// Attrs:     +intent(ctor)
 // Exact:     c_shadow_scalar_ctor
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 {
@@ -40,6 +40,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 
 // ----------------------------------------
 // Function:  ~Class2
+// Attrs:     +intent(dtor)
 // Exact:     c_shadow_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {

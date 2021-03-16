@@ -132,7 +132,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_structasclass_int_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -215,7 +215,7 @@ module templates_mod
 
         ! ----------------------------------------
         ! Function:  structAsClass
-        ! Attrs:     +intent(result)
+        ! Attrs:     +intent(ctor)
         ! Exact:     c_shadow_scalar_result
         function c_structasclass_double_ctor(SHT_crv) &
                 result(SHT_rv) &
@@ -486,9 +486,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
@@ -612,9 +612,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  structAsClass
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)

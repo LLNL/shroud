@@ -1253,6 +1253,9 @@
                         "name": "Function4a",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,

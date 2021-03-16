@@ -676,6 +676,7 @@ class GenFunctions(object):
         )
 
         fcn = cls.add_function(decl, splicer=splicer)
+        fcn.ast.metaattrs["intent"] = "result"
         fcn.wrap.lua = False
         fcn.wrap.python = False
 
@@ -710,6 +711,7 @@ class GenFunctions(object):
 
         fcn = cls.add_function(decl, attrs=attrs, splicer=splicer)
         # XXX - The function is not processed like other, so set intent directly.
+        fcn.ast.metaattrs["intent"] = "subroutine"
         fcn.ast.params[0].metaattrs["intent"] = "in"
         fcn.wrap.lua = False
         fcn.wrap.python = False
@@ -1611,7 +1613,7 @@ class GenFunctions(object):
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
                 result_as_string.metaattrs["is_result"] = True
-                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
@@ -1810,7 +1812,7 @@ class GenFunctions(object):
                 f_meta["deref"] = "result-as-arg"
                 result_as_string.metaattrs["deref"] = None
                 result_as_string.metaattrs["is_result"] = True
-                C_new.ast.metaattrs["intent"] = None
+                C_new.ast.metaattrs["intent"] = "subroutine"
                 C_new.ast.metaattrs["deref"] = None
 
         if result_as_arg:
@@ -2042,7 +2044,10 @@ class TemplateTypemap(visitor.Visitor):
             self.visit(cls)
         for fcn in node.functions:
             if fcn.ast.is_ctor():
+                fcn.ast.metaattrs["intent"] = "ctor"
                 fcn.ast.typemap = node.typemap
+            elif fcn.ast.is_dtor():
+                fcn.ast.metaattrs["intent"] = "dtor"
             self.visit(fcn)
         for var in node.variables:
             self.visit(var)

@@ -144,7 +144,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_scalar_result
     ! start c_class1_ctor_default
     interface
@@ -162,7 +162,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_scalar_result
     ! ----------------------------------------
     ! Argument:  int flag +value
@@ -186,6 +186,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
+    ! Attrs:     +intent(dtor)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! start c_class1_delete
@@ -405,6 +406,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getM_flag
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_class1_get_m_flag
@@ -423,6 +425,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  int getTest
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start c_class1_get_test
@@ -441,6 +444,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void setTest
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result
     ! Match:     c_default
     ! ----------------------------------------
@@ -520,7 +524,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_scalar_result
     interface
         function c_shape_ctor(SHT_crv) &
@@ -556,7 +560,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_scalar_result
     interface
         function c_circle_ctor(SHT_crv) &
@@ -773,6 +777,7 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_void_scalar_result_buf
     ! Match:     c_default
     ! ----------------------------------------
@@ -826,9 +831,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     ! start class1_ctor_default
     function class1_ctor_default() &
@@ -844,9 +849,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Class1
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
@@ -871,8 +876,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
+    ! Attrs:     +intent(dtor)
     ! Requested: f_shadow_dtor
     ! Match:     f_default
+    ! Attrs:     +intent(dtor)
     ! Exact:     c_shadow_dtor
     ! start class1_delete
     subroutine class1_delete(obj)
@@ -1091,8 +1098,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getM_flag
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start class1_get_m_flag
@@ -1109,8 +1118,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  int getTest
+    ! Attrs:     +intent(result)
     ! Requested: f_native_scalar_result
     ! Match:     f_default
+    ! Attrs:     +intent(result)
     ! Requested: c_native_scalar_result
     ! Match:     c_default
     ! start class1_get_test
@@ -1127,8 +1138,10 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setTest
+    ! Attrs:     +intent(subroutine)
     ! Requested: f_subroutine
     ! Match:     f_default
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1272,9 +1285,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Shape
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function shape_ctor() &
             result(SHT_rv)
@@ -1332,9 +1345,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  Circle
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     f_shadow_ctor
-    ! Attrs:     +intent(result)
+    ! Attrs:     +intent(ctor)
     ! Exact:     c_shadow_ctor
     function circle_ctor() &
             result(SHT_rv)
@@ -1508,6 +1521,7 @@ contains
     ! Requested: f_string_scalar_result_buf_result-as-arg
     ! Match:     f_default
     ! Function:  void LastFunctionCalled +len(30)
+    ! Attrs:     +intent(subroutine)
     ! Requested: c_string_scalar_result_buf_result-as-arg
     ! Match:     c_string_scalar_result_buf
     ! ----------------------------------------
