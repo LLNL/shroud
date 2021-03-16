@@ -20,6 +20,9 @@
                         "name": "passChar",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -140,6 +143,9 @@
                     "declarator": {
                         "name": "passCharForce",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -345,6 +351,9 @@
                         "name": "passCharPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -529,6 +538,9 @@
                         "name": "passCharPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -685,6 +697,9 @@
                         "name": "passCharPtrInOut",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -801,6 +816,9 @@
                     "declarator": {
                         "name": "passCharPtrInOut",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4420,6 +4438,9 @@
                         "name": "acceptStringConstReference",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -4535,6 +4556,9 @@
                         "name": "acceptStringConstReference",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4638,6 +4662,9 @@
                     "declarator": {
                         "name": "acceptStringReferenceOut",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4756,6 +4783,9 @@
                         "name": "acceptStringReferenceOut",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4859,6 +4889,9 @@
                     "declarator": {
                         "name": "acceptStringReference",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4976,6 +5009,9 @@
                         "name": "acceptStringReference",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5083,6 +5119,9 @@
                     "declarator": {
                         "name": "acceptStringPointerConst",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5198,6 +5237,9 @@
                         "name": "acceptStringPointerConst",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5300,6 +5342,9 @@
                     "declarator": {
                         "name": "acceptStringPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5414,6 +5459,9 @@
                         "name": "acceptStringPointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5518,6 +5566,9 @@
                     "declarator": {
                         "name": "fetchStringPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5636,6 +5687,9 @@
                         "name": "fetchStringPointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -5739,6 +5793,9 @@
                     "declarator": {
                         "name": "acceptStringPointerLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5917,6 +5974,9 @@
                         "name": "acceptStringPointerLen",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6075,6 +6135,9 @@
                     "declarator": {
                         "name": "fetchStringPointerLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -6255,6 +6318,9 @@
                     "declarator": {
                         "name": "fetchStringPointerLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -6697,6 +6763,9 @@
                         "name": "returnStrings",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6868,6 +6937,9 @@
                         "name": "explicit1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -6995,6 +7067,9 @@
                         "name": "explicit2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -7090,6 +7165,9 @@
                     "declarator": {
                         "name": "explicit2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -7189,6 +7267,9 @@
                     "declarator": {
                         "name": "CpassChar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -7417,6 +7498,9 @@
                         "name": "CpassCharPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -7557,6 +7641,9 @@
                     "declarator": {
                         "name": "CpassCharPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -7713,6 +7800,9 @@
                     "declarator": {
                         "name": "PostDeclare",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -7894,6 +7984,9 @@
                     "declarator": {
                         "name": "PostDeclare",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

@@ -450,6 +450,9 @@
                         "name": "passStructByReferenceInoutCls",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -524,6 +527,9 @@
                     "declarator": {
                         "name": "passStructByReferenceOutCls",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -878,6 +884,9 @@
                         "name": "defaultArgsInOut",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1089,6 +1098,9 @@
                     "declarator": {
                         "name": "defaultArgsInOut",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1883,6 +1895,9 @@
                                 "name": "passStructByReferenceInout",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -2008,6 +2023,9 @@
                             "declarator": {
                                 "name": "passStructByReferenceOut",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {

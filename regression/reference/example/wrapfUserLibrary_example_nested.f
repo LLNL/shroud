@@ -218,8 +218,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass1
         ! Attrs:     +intent(dtor)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_exclass1_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass1_dtor")
             import :: AA_SHROUD_capsule_data
@@ -294,8 +294,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void getNameArg
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & name +len(Nname)
         ! Attrs:     +intent(out)+is_result
@@ -375,8 +375,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void SplicerSpecial
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_exclass1_splicer_special(self) &
                 bind(C, name="AA_example_nested_ExClass1_splicer_special")
             import :: AA_SHROUD_capsule_data
@@ -430,8 +431,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  ~ExClass2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_exclass2_dtor(self) &
                 bind(C, name="AA_example_nested_ExClass2_dtor")
             import :: AA_SHROUD_capsule_data
@@ -457,8 +458,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +len(NSHF_rv)
         ! Attrs:     +intent(out)+is_result
@@ -594,8 +595,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
@@ -613,8 +614,8 @@ module userlibrary_example_nested_mod
         ! ----------------------------------------
         ! Function:  void declare
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  TypeID type +value
         ! Attrs:     +intent(in)
@@ -637,8 +638,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void destroyall
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_exclass2_destroyall(self) &
                 bind(C, name="AA_example_nested_ExClass2_destroyall")
             import :: AA_SHROUD_capsule_data
@@ -663,8 +665,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int value +value
         ! Attrs:     +intent(in)
@@ -681,8 +684,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  long value +value
         ! Attrs:     +intent(in)
@@ -699,8 +703,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  float value +value
         ! Attrs:     +intent(in)
@@ -717,8 +722,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void setValue
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double value +value
         ! Attrs:     +intent(in)
@@ -768,8 +774,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void local_function1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine local_function1() &
                 bind(C, name="AA_example_nested_local_function1")
             implicit none
@@ -827,8 +834,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -842,8 +850,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
         ! Attrs:     +intent(in)
@@ -858,8 +867,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name
         ! Attrs:     +intent(in)
@@ -879,8 +889,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void test_names
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const std::string & name +len_trim(Lname)
         ! Attrs:     +intent(in)
@@ -901,8 +912,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_testoptional_0() &
                 bind(C, name="AA_example_nested_testoptional_0")
             implicit none
@@ -910,8 +922,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
@@ -926,8 +939,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void testoptional
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int i=1 +value
         ! Attrs:     +intent(in)
@@ -962,8 +976,9 @@ module userlibrary_example_nested_mod
 #ifdef HAVE_MPI
         ! ----------------------------------------
         ! Function:  void testmpi
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
@@ -980,8 +995,9 @@ module userlibrary_example_nested_mod
 #ifndef HAVE_MPI
         ! ----------------------------------------
         ! Function:  void testmpi
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_testmpi_serial() &
                 bind(C, name="AA_example_nested_testmpi_serial")
             implicit none
@@ -990,8 +1006,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * get)(void) +value
         ! Attrs:     +intent(in)
@@ -1006,8 +1023,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr2
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * ( * get)(void)
         ! Attrs:     +intent(in)
@@ -1022,8 +1040,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr3
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double ( * get)(int i +value, int +value) +value
         ! Attrs:     +intent(in)
@@ -1038,8 +1057,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr4
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double ( * get)(double +value, int +value) +value
         ! Attrs:     +intent(in)
@@ -1054,8 +1074,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void FuncPtr5
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
         ! Attrs:     +intent(in)
@@ -1070,8 +1091,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void verylongfunctionname1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int * verylongname1 +intent(inout)
         ! Attrs:     +intent(inout)
@@ -1219,8 +1241,9 @@ module userlibrary_example_nested_mod
 
         ! ----------------------------------------
         ! Function:  void cos_doubles
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * in +intent(in)+rank(2)
         ! Attrs:     +intent(in)
@@ -1521,7 +1544,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void SplicerSpecial
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine exclass1_splicer_special(obj)
@@ -1859,7 +1884,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void destroyall
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine exclass2_destroyall(obj)
@@ -1890,7 +1917,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void setValue
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1913,7 +1942,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void setValue
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1936,7 +1967,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void setValue
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1959,7 +1992,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void setValue
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2082,7 +2117,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void test_names
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2104,7 +2141,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void test_names
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2136,7 +2175,9 @@ contains
     ! Generated by has_default_arg
     ! ----------------------------------------
     ! Function:  void testoptional
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine testoptional_0()
@@ -2148,7 +2189,9 @@ contains
     ! Generated by has_default_arg
     ! ----------------------------------------
     ! Function:  void testoptional
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2169,7 +2212,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void testoptional
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2200,7 +2245,9 @@ contains
 #ifdef HAVE_MPI
     ! ----------------------------------------
     ! Function:  void testmpi
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2222,7 +2269,9 @@ contains
 #ifndef HAVE_MPI
     ! ----------------------------------------
     ! Function:  void testmpi
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine testmpi_serial()
@@ -2234,7 +2283,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void FuncPtr3
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     !>
@@ -2250,7 +2301,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void FuncPtr4
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     !>
@@ -2266,7 +2319,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void verylongfunctionname1
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -2483,7 +2538,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void cos_doubles
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

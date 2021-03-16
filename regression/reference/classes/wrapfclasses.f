@@ -187,8 +187,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! start c_class1_delete
     interface
         subroutine c_class1_delete(self) &
@@ -247,8 +247,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void returnThis
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! start c_class1_return_this
     interface
         subroutine c_class1_return_this(self) &
@@ -407,8 +407,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int getM_flag
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_class1_get_m_flag
     interface
         function c_class1_get_m_flag(self) &
@@ -426,8 +426,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  int getTest
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_class1_get_test
     interface
         function c_class1_get_test(self) &
@@ -445,8 +445,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void setTest
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -600,8 +600,9 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void passClassByValue
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  Class1 arg +value
     ! Attrs:     +intent(in)
@@ -729,8 +730,9 @@ module classes_mod
 
     ! ----------------------------------------
     ! Function:  void set_global_flag
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -778,8 +780,8 @@ module classes_mod
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result
@@ -1362,7 +1364,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void passClassByValue
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

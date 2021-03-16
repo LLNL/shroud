@@ -27,6 +27,7 @@ extern "C" {
 // void NoReturnNoArguments(void)
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 static int l_no_return_no_arguments(lua_State *)
 {
@@ -165,6 +166,7 @@ static int l_use_default_arguments(lua_State *L)
 // void OverloadedFunction(int indx +value)
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -172,6 +174,7 @@ static int l_use_default_arguments(lua_State *L)
 // Exact:     lua_in_string_&
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int indx +value
@@ -211,6 +214,7 @@ static int l_overloaded_function(lua_State *L)
 // void TemplateArgument(double arg +value)
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
@@ -218,6 +222,7 @@ static int l_overloaded_function(lua_State *L)
 // Exact:     lua_in_native_scalar
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double arg +value
@@ -257,9 +262,11 @@ static int l_template_argument(lua_State *L)
 // void FortranGenericOverloaded(const std::string & name, double arg2 +value)
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name

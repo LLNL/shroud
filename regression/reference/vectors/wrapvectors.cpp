@@ -64,6 +64,7 @@ int VEC_vector_sum_bufferify(const int * arg, long Sarg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -97,6 +98,7 @@ void VEC_vector_iota_out_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -131,6 +133,7 @@ long VEC_vector_iota_out_with_num_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_with_num2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
@@ -161,6 +164,7 @@ void VEC_vector_iota_out_with_num2_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_alloc
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
@@ -191,6 +195,7 @@ void VEC_vector_iota_out_alloc_bufferify(VEC_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void vector_iota_inout_alloc
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
@@ -218,6 +223,7 @@ void VEC_vector_iota_inout_alloc_bufferify(int * arg, long Sarg,
 
 // ----------------------------------------
 // Function:  void vector_increment
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
@@ -247,6 +253,7 @@ void VEC_vector_increment_bufferify(int * arg, long Sarg,
  */
 // ----------------------------------------
 // Function:  void vector_iota_out_d
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)

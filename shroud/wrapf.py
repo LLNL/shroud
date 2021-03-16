@@ -1185,9 +1185,15 @@ rv = .false.
                 )
                 imports[fmt_func.F_capsule_data_type] = True
 
+        sintent = ast.metaattrs["intent"]
+        # ctor and dtor are not valid for bind(C) interfaces.
+        if sintent == "ctor":
+            sintent = "function"
+        elif sintent == "dtor":
+            sintent = "subroutine"
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
-        c_stmts = ["c", "function", sgroup, spointer, node.generated_suffix,
+        c_stmts = ["c", sintent, sgroup, spointer, node.generated_suffix,
                    ast.metaattrs["deref"]]
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(

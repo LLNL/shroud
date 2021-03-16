@@ -33,6 +33,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void acceptDoubleComplexInoutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
@@ -74,6 +75,7 @@ PY_acceptDoubleComplexInoutPtr(
 
 // ----------------------------------------
 // Function:  void acceptDoubleComplexOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
@@ -104,6 +106,7 @@ PY_acceptDoubleComplexOutPtr(
 
 // ----------------------------------------
 // Function:  void acceptDoubleComplexInoutPtrFlag
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1
@@ -155,6 +158,7 @@ PY_acceptDoubleComplexInoutPtrFlag(
 
 // ----------------------------------------
 // Function:  void acceptDoubleComplexOutPtrFlag
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)

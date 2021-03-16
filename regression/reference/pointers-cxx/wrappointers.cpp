@@ -69,6 +69,7 @@ static void ShroudStrArrayFree(char **src, int nsrc)
 
 // ----------------------------------------
 // Function:  void intargs_in
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * arg
@@ -89,6 +90,7 @@ void POI_intargs_in(const int * arg)
  */
 // ----------------------------------------
 // Function:  void intargs_inout
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg
@@ -106,6 +108,7 @@ void POI_intargs_inout(int * arg)
 
 // ----------------------------------------
 // Function:  void intargs_out
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
@@ -123,6 +126,7 @@ void POI_intargs_out(int * arg)
 
 // ----------------------------------------
 // Function:  void intargs
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
@@ -155,6 +159,7 @@ void POI_intargs(const int argin, int * arginout, int * argout)
  */
 // ----------------------------------------
 // Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
@@ -188,6 +193,7 @@ void POI_cos_doubles(double * in, double * out, int sizein)
  */
 // ----------------------------------------
 // Function:  void truncate_to_int
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
@@ -223,6 +229,7 @@ void POI_truncate_to_int(double * in, int * out, int sizein)
  */
 // ----------------------------------------
 // Function:  void get_values
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * nvalues +intent(OUT)
@@ -251,6 +258,7 @@ void POI_get_values(int * nvalues, int * values)
  */
 // ----------------------------------------
 // Function:  void get_values2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
@@ -273,6 +281,7 @@ void POI_get_values2(int * arg1, int * arg2)
 
 // ----------------------------------------
 // Function:  void iota_allocatable
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int nvar +value
@@ -295,6 +304,7 @@ void POI_iota_allocatable(int nvar, int * values)
 
 // ----------------------------------------
 // Function:  void iota_dimension
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int nvar +value
@@ -317,6 +327,7 @@ void POI_iota_dimension(int nvar, int * values)
 
 // ----------------------------------------
 // Function:  void Sum
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int len +implied(size(values))+value
@@ -347,6 +358,7 @@ void POI_sum(int len, const int * values, int * result)
  */
 // ----------------------------------------
 // Function:  void fillIntArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
@@ -367,6 +379,7 @@ void POI_fill_int_array(int * out)
  */
 // ----------------------------------------
 // Function:  void incrementIntArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
@@ -389,6 +402,7 @@ void POI_increment_int_array(int * array, int sizein)
 
 // ----------------------------------------
 // Function:  void fill_with_zeros
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * x +rank(1)
@@ -483,6 +497,7 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 
 // ----------------------------------------
 // Function:  void setGlobalInt
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int value +value
@@ -518,6 +533,7 @@ int POI_sum_fixed_array(void)
 
 // ----------------------------------------
 // Function:  void getPtrToScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +intent(out)
@@ -535,6 +551,7 @@ void POI_get_ptr_to_scalar(int * * nitems)
 
 // ----------------------------------------
 // Function:  void getPtrToScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+intent(out)
@@ -563,6 +580,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
  */
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
@@ -583,6 +601,7 @@ void POI_get_ptr_to_fixed_array(int * * count)
  */
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -613,6 +632,7 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
  */
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
@@ -639,6 +659,7 @@ void POI_get_ptr_to_dynamic_array(int * * count, int * ncount)
  */
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
@@ -676,6 +697,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
@@ -698,6 +720,7 @@ void POI_get_ptr_to_func_array(int * * count)
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
@@ -724,6 +747,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +intent(out)
@@ -741,6 +765,7 @@ void POI_get_ptr_to_const_scalar(const int * * nitems)
 
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +context(Dnitems)+intent(out)
@@ -766,6 +791,7 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
@@ -783,6 +809,7 @@ void POI_get_ptr_to_fixed_const_array(const int * * count)
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -810,6 +837,7 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
@@ -833,6 +861,7 @@ void POI_get_ptr_to_dynamic_const_array(const int * * count,
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)
@@ -868,6 +897,7 @@ void POI_get_ptr_to_dynamic_const_array_bufferify(
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
@@ -888,6 +918,7 @@ void POI_get_raw_ptr_to_scalar(int * * nitems)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToScalarForce
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
@@ -910,6 +941,7 @@ void POI_get_raw_ptr_to_scalar_force(int * * nitems)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
@@ -931,6 +963,7 @@ void POI_get_raw_ptr_to_fixed_array(int * * count)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArrayForce
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
@@ -951,6 +984,7 @@ void POI_get_raw_ptr_to_fixed_array_force(int * * count)
  */
 // ----------------------------------------
 // Function:  void getRawPtrToInt2d
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * * arg +intent(out)
@@ -994,6 +1028,7 @@ int POI_check_int2d(int **arg)
  */
 // ----------------------------------------
 // Function:  void DimensionIn
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * arg +dimension(10,20)
@@ -1051,6 +1086,7 @@ void * POI_return_address2(int flag)
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)

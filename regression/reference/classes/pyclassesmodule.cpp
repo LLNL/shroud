@@ -78,6 +78,7 @@ PY_directionFunc(
 
 // ----------------------------------------
 // Function:  void passClassByValue
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class1 arg +value
@@ -209,6 +210,7 @@ PY_getClassReference(
 
 // ----------------------------------------
 // Function:  void set_global_flag
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg +value

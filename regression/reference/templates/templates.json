@@ -50,6 +50,9 @@
                                 "name": "nested",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -131,6 +134,9 @@
                             "declarator": {
                                 "name": "nested",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -476,6 +482,9 @@
                                 "name": "set_npts",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -659,6 +668,9 @@
                                 "name": "set_value",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -702,6 +714,9 @@
                             "declarator": {
                                 "name": "set_value",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1061,6 +1076,9 @@
                                 "name": "set_npts",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -1244,6 +1262,9 @@
                                 "name": "set_value",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -1287,6 +1308,9 @@
                             "declarator": {
                                 "name": "set_value",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -1665,6 +1689,9 @@
                         "name": "FunctionTU",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1774,6 +1801,9 @@
                     "declarator": {
                         "name": "FunctionTU",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2010,6 +2040,9 @@
                     "declarator": {
                         "name": "FunctionTU",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2755,6 +2788,9 @@
                                         "name": "push_back",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
@@ -2803,6 +2839,9 @@
                                     "declarator": {
                                         "name": "push_back",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
                                     },
                                     "params": [
                                         {
@@ -3521,6 +3560,9 @@
                                         "name": "push_back",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [
                                         {
                                             "attrs": {
@@ -3569,6 +3611,9 @@
                                     "declarator": {
                                         "name": "push_back",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
                                     },
                                     "params": [
                                         {

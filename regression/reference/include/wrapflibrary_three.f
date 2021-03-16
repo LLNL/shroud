@@ -42,8 +42,9 @@ module library_three_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  CustomType arg1 +value
         ! Attrs:     +intent(in)
@@ -65,7 +66,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

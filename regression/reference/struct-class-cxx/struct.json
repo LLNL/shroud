@@ -2689,6 +2689,9 @@
                         "name": "acceptStructOutPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2839,6 +2842,9 @@
                     "declarator": {
                         "name": "acceptStructInOutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

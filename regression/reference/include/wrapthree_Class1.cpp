@@ -17,6 +17,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  CustomType arg1 +value

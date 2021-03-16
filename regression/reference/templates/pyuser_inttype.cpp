@@ -43,6 +43,7 @@ PY_user_int_tp_del (PY_user_int *self)
 
 // ----------------------------------------
 // Function:  void nested
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +value

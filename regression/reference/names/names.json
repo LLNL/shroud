@@ -360,6 +360,9 @@
                         "name": "getName",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -476,6 +479,9 @@
                         "name": "getName",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -574,6 +580,9 @@
                         "name": "function1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -617,6 +626,9 @@
                     "declarator": {
                         "name": "function2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [],
                     "specifier": [
@@ -662,6 +674,9 @@
                     "declarator": {
                         "name": "function3a",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -781,6 +796,9 @@
                     "declarator": {
                         "name": "function3a",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1192,6 +1210,9 @@
                         "name": "function5",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -1239,6 +1260,9 @@
                     "declarator": {
                         "name": "TestMultilineSplicer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1434,6 +1458,9 @@
                         "name": "TestMultilineSplicer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1607,6 +1634,9 @@
                         "name": "FunctionTU",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1725,6 +1755,9 @@
                     "declarator": {
                         "name": "FunctionTU",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1970,6 +2003,9 @@
                     "declarator": {
                         "name": "FunctionTU",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2685,6 +2721,9 @@
                                         "name": "method1",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "void"
@@ -2734,6 +2773,9 @@
                                     "declarator": {
                                         "name": "method2",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
                                     },
                                     "params": [],
                                     "specifier": [
@@ -2894,6 +2936,9 @@
                             "declarator": {
                                 "name": "init_ns1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -3453,6 +3498,9 @@
                                         "name": "Member1",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "void"
@@ -3527,6 +3575,9 @@
                             "declarator": {
                                 "name": "Worker1",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [

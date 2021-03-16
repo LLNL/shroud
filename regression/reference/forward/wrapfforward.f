@@ -86,8 +86,8 @@ module forward_mod
         ! ----------------------------------------
         ! Function:  ~Class2
         ! Attrs:     +intent(dtor)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_class2_dtor(self) &
                 bind(C, name="FOR_Class2_dtor")
             import :: FOR_SHROUD_capsule_data
@@ -97,8 +97,9 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void func1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  tutorial::Class1 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -115,8 +116,9 @@ module forward_mod
 
         ! ----------------------------------------
         ! Function:  void acceptClass3
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  Class3 * arg +intent(in)
         ! Attrs:     +intent(in)
@@ -221,7 +223,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void func1
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -243,7 +247,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void acceptClass3
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

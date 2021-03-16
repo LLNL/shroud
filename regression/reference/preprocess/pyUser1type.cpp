@@ -39,6 +39,7 @@ PY_User1_tp_del (PY_User1 *self)
 
 // ----------------------------------------
 // Function:  void method1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_method1__doc__[] =
 "documentation"
@@ -58,6 +59,7 @@ PY_method1(
 
 // ----------------------------------------
 // Function:  void method2
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 #if defined(USE_TWO)
 static char PY_method2__doc__[] =
@@ -79,6 +81,7 @@ PY_method2(
 
 // ----------------------------------------
 // Function:  void method3def
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int i=0 +value

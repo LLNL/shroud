@@ -130,6 +130,9 @@
                         "name": "vector_iota_out",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -223,6 +226,9 @@
                         "name": "vector_iota_out_with_num",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -305,6 +311,9 @@
                         "name": "vector_iota_out_with_num2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -381,6 +390,9 @@
                         "name": "vector_iota_out_alloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -441,6 +453,9 @@
                     "declarator": {
                         "name": "vector_iota_inout_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -503,6 +518,9 @@
                         "name": "vector_increment",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -556,6 +574,9 @@
                     "declarator": {
                         "name": "vector_iota_out_d",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -710,6 +731,9 @@
                         "name": "vector_string_fill",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -770,6 +794,9 @@
                     "declarator": {
                         "name": "vector_string_append",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

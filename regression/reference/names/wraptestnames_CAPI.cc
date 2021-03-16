@@ -18,6 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Worker1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void TES_capi_worker1(void)
 {

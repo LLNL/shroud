@@ -127,8 +127,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void getName
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
@@ -143,8 +144,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void getName
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  char * name +len(worklen)+len_trim(worktrim)
         ! Attrs:     +intent(inout)
@@ -160,8 +162,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine yyy_tes_function1() &
                 bind(C, name="YYY_TES_function1")
             implicit none
@@ -169,8 +172,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function2
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine f_c_name_special() &
                 bind(C, name="c_name_special")
             implicit none
@@ -178,8 +182,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function3a
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int i +value
         ! Attrs:     +intent(in)
@@ -194,8 +199,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function3a
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  long i +value
         ! Attrs:     +intent(in)
@@ -247,8 +253,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void function5 +name(fiveplus)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine yyy_tes_fiveplus() &
                 bind(C, name="YYY_TES_fiveplus")
             implicit none
@@ -256,8 +263,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name
         ! Attrs:     +intent(inout)
@@ -277,8 +285,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void TestMultilineSplicer
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  std::string & name +len(Nname)+len_trim(Lname)
         ! Attrs:     +intent(inout)
@@ -301,8 +310,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int arg1 +value
         ! Attrs:     +intent(in)
@@ -323,8 +333,9 @@ module top_module
 
         ! ----------------------------------------
         ! Function:  void FunctionTU
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  float arg1 +value
         ! Attrs:     +intent(in)
@@ -525,7 +536,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void getName
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -546,7 +559,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void function1
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine testnames_function1()
@@ -557,7 +572,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void function2
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine f_name_special()
@@ -568,7 +585,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void function3a
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -589,7 +608,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void function3a
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -638,7 +659,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void function5 +name(fiveplus)
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine testnames_fiveplus()
@@ -650,7 +673,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void TestMultilineSplicer
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -685,7 +710,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void FunctionTU
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -720,7 +747,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void FunctionTU
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

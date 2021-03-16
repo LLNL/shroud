@@ -38,6 +38,7 @@ PyObject *PY_init_templates_internal(void);
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +value
@@ -78,6 +79,7 @@ PY_FunctionTU_0(
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float arg1 +value

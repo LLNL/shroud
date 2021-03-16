@@ -98,6 +98,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
@@ -158,6 +159,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void vector_iota_out_d
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)

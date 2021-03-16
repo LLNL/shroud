@@ -23,6 +23,7 @@ extern "C" {
 #ifdef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void PRE_User2_exfunc_0(PRE_User2 * self)
 {
@@ -36,6 +37,7 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 #ifndef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value

@@ -353,6 +353,7 @@ void OWN_return_int_ptr_dim_default_new_bufferify(
 
 // ----------------------------------------
 // Function:  void createClassStatic
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value

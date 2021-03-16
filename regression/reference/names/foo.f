@@ -67,8 +67,9 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
             import :: TES_SHROUD_capsule_data
@@ -78,8 +79,9 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
             import :: TES_SHROUD_capsule_data
@@ -118,7 +120,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine names_method1(obj)
@@ -130,7 +134,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine names_method2(obj2)

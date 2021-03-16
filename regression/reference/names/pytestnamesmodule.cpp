@@ -43,6 +43,7 @@ PyArray_Descr *PY_Cstruct_as_subclass_array_descr;
 
 // ----------------------------------------
 // Function:  void getName
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
@@ -80,6 +81,7 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  void function1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_function1__doc__[] =
 "documentation"
@@ -98,6 +100,7 @@ PY_function1(
 
 // ----------------------------------------
 // Function:  void function2
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_function2__doc__[] =
 "documentation"
@@ -117,6 +120,7 @@ PY_function2(
 
 // ----------------------------------------
 // Function:  void function3a
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int i +value
@@ -146,6 +150,7 @@ PY_function3a_0(
 
 // ----------------------------------------
 // Function:  void function3a
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  long i +value
@@ -217,6 +222,7 @@ PY_function4(
 
 // ----------------------------------------
 // Function:  void function5 +name(fiveplus)
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_fiveplus__doc__[] =
 "documentation"
@@ -236,6 +242,7 @@ PY_fiveplus(
 
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string & name
@@ -266,6 +273,7 @@ PY_TestMultilineSplicer(
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg1 +value
@@ -306,6 +314,7 @@ PY_name_instantiation1(
 
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float arg1 +value

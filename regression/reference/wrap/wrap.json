@@ -13,6 +13,9 @@
                                 "name": "FuncInClass",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"

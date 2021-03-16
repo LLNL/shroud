@@ -87,6 +87,7 @@ int POI_accept_char_array_in_bufferify(char *names, long Snames,
 
 // ----------------------------------------
 // Function:  void getPtrToScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * nitems +context(Dnitems)+intent(out)
@@ -115,6 +116,7 @@ void POI_get_ptr_to_scalar_bufferify(POI_SHROUD_array *Dnitems)
  */
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -145,6 +147,7 @@ void POI_get_ptr_to_fixed_array_bufferify(POI_SHROUD_array *Dcount)
  */
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(ncount)+intent(out)
@@ -182,6 +185,7 @@ void POI_get_ptr_to_dynamic_array_bufferify(POI_SHROUD_array *Dcount,
  */
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * * count +context(Dcount)+dimension(getLen())+intent(out)
@@ -208,6 +212,7 @@ void POI_get_ptr_to_func_array_bufferify(POI_SHROUD_array *Dcount)
 
 // ----------------------------------------
 // Function:  void getPtrToConstScalar
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * nitems +context(Dnitems)+intent(out)
@@ -233,6 +238,7 @@ void POI_get_ptr_to_const_scalar_bufferify(POI_SHROUD_array *Dnitems)
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+dimension(10)+intent(out)
@@ -260,6 +266,7 @@ void POI_get_ptr_to_fixed_const_array_bufferify(
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * * count +context(Dcount)+dimension(ncount)+intent(out)

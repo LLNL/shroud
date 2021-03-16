@@ -64,6 +64,7 @@ PY_vector_int_tp_init(
 
 // ----------------------------------------
 // Function:  void push_back
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int & value +intent(in)

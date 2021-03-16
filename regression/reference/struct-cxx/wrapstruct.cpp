@@ -155,6 +155,7 @@ int STR_accept_struct_in_ptr(STR_cstruct1 * arg)
  */
 // ----------------------------------------
 // Function:  void acceptStructOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
@@ -182,6 +183,7 @@ void STR_accept_struct_out_ptr(STR_cstruct1 * arg, int i, double d)
 
 // ----------------------------------------
 // Function:  void acceptStructInOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)

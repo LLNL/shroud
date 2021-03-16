@@ -64,6 +64,7 @@ PY_ArrayWrapper_tp_init(
 
 // ----------------------------------------
 // Function:  void setSize
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int size +value
@@ -124,6 +125,7 @@ PY_getSize(
 
 // ----------------------------------------
 // Function:  void fillSize
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int & size +intent(out)
@@ -154,6 +156,7 @@ PY_fillSize(
 
 // ----------------------------------------
 // Function:  void allocate
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_allocate__doc__[] =
 "documentation"
@@ -309,6 +312,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
@@ -352,6 +356,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRef
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
@@ -395,6 +400,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
@@ -438,6 +444,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
@@ -481,6 +488,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
@@ -511,6 +519,7 @@ PY_fetchVoidPtr(
 
 // ----------------------------------------
 // Function:  void fetchVoidRef
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * & array +intent(out)

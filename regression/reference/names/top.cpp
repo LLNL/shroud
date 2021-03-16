@@ -80,6 +80,7 @@ static void ShroudStrFree(char *src)
 
 // ----------------------------------------
 // Function:  void getName
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
@@ -95,6 +96,7 @@ void TES_get_name(char * name)
 
 // ----------------------------------------
 // Function:  void getName
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name +len(worklen)+len_trim(worktrim)
@@ -112,6 +114,7 @@ void TES_get_name_bufferify(char * name, int worktrim, int worklen)
 
 // ----------------------------------------
 // Function:  void function1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void YYY_TES_function1(void)
 {
@@ -122,6 +125,7 @@ void YYY_TES_function1(void)
 
 // ----------------------------------------
 // Function:  void function2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void c_name_special(void)
 {
@@ -132,6 +136,7 @@ void c_name_special(void)
 
 // ----------------------------------------
 // Function:  void function3a
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i +value
@@ -147,6 +152,7 @@ void YYY_TES_function3a_0(int i)
 
 // ----------------------------------------
 // Function:  void function3a
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  long i +value
@@ -198,6 +204,7 @@ int YYY_TES_function4_bufferify(const char * rv, int Lrv)
 
 // ----------------------------------------
 // Function:  void function5 +name(fiveplus)
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void YYY_TES_fiveplus(void)
 {
@@ -211,6 +218,7 @@ void YYY_TES_fiveplus(void)
  */
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name
@@ -234,6 +242,7 @@ void TES_test_multiline_splicer(char * name, int * value)
  */
 // ----------------------------------------
 // Function:  void TestMultilineSplicer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +len(Nname)+len_trim(Lname)
@@ -259,6 +268,7 @@ void TES_test_multiline_splicer_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
@@ -283,6 +293,7 @@ void c_name_instantiation1(int arg1, long arg2)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value

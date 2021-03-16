@@ -62,6 +62,7 @@ PY_LastFunctionCalled(
 
 // ----------------------------------------
 // Function:  void One
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_One__doc__[] =
 "documentation"

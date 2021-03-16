@@ -443,6 +443,7 @@ PP_declare_1(
 
 // ----------------------------------------
 // Function:  void destroyall
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PP_destroyall__doc__[] =
 "documentation"
@@ -489,6 +490,7 @@ PP_getTypeID(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int value +value
@@ -518,6 +520,7 @@ PP_setValue_int(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  long value +value
@@ -547,6 +550,7 @@ PP_setValue_long(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  float value +value
@@ -576,6 +580,7 @@ PP_setValue_float(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double value +value

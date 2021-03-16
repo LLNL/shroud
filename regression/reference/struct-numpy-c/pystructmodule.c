@@ -297,6 +297,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void acceptStructOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
@@ -363,6 +364,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void acceptStructInOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)

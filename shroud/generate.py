@@ -129,8 +129,7 @@ class VerifyAttrs(object):
                         attr, node.ast.name, node.linenumber
                     )
                 )
-        if ast.get_subprogram() == "function":
-            ast.metaattrs["intent"] = "function"
+        ast.metaattrs["intent"] = ast.get_subprogram()
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 

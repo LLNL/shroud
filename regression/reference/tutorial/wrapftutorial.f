@@ -66,8 +66,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void NoReturnNoArguments
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! start no_return_no_arguments
     interface
         subroutine no_return_no_arguments() &
@@ -202,8 +203,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
@@ -219,8 +221,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -238,8 +241,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int indx +value
     ! Attrs:     +intent(in)
@@ -256,8 +260,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void TemplateArgument
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int arg +value
     ! Attrs:     +intent(in)
@@ -274,8 +279,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void TemplateArgument
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -322,8 +328,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     interface
         subroutine c_fortran_generic_overloaded_0() &
                 bind(C, name="TUT_fortran_generic_overloaded_0")
@@ -333,8 +340,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name
     ! Attrs:     +intent(in)
@@ -356,8 +364,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -381,8 +390,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const std::string & name +len_trim(Lname)
     ! Attrs:     +intent(in)
@@ -650,8 +660,9 @@ module tutorial_mod
 
     ! ----------------------------------------
     ! Function:  void getMinMax
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int & min +intent(out)
     ! Attrs:     +intent(out)
@@ -722,8 +733,8 @@ module tutorial_mod
     ! ----------------------------------------
     ! Function:  void LastFunctionCalled +len(30)
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & SHF_rv +len(NSHF_rv)
     ! Attrs:     +intent(out)+is_result
@@ -930,7 +941,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -952,7 +965,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void OverloadedFunction
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -974,7 +989,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void TemplateArgument
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -996,7 +1013,9 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  void TemplateArgument
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1053,7 +1072,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine fortran_generic_overloaded_0()
@@ -1065,7 +1086,9 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1097,7 +1120,9 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void FortranGenericOverloaded
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

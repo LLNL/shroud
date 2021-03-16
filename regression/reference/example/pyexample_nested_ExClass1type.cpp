@@ -336,6 +336,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PP_SplicerSpecial__doc__[] =
 "documentation"

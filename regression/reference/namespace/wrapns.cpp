@@ -70,6 +70,7 @@ void NS_last_function_called_bufferify(NS_SHROUD_array *SHC_rv_temp0)
 
 // ----------------------------------------
 // Function:  void One
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void NS_one(void)
 {

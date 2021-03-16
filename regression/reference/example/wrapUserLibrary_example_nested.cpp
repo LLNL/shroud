@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void local_function1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void AA_example_nested_local_function1(void)
 {
@@ -77,6 +78,7 @@ bool AA_example_nested_is_initialized(void)
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -92,6 +94,7 @@ void AA_example_nested_test_names(const char * name)
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
@@ -108,6 +111,7 @@ void AA_example_nested_test_names_bufferify(const char * name,
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -128,6 +132,7 @@ void AA_example_nested_test_names_flag(const char * name, int flag)
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
@@ -149,6 +154,7 @@ void AA_example_nested_test_names_flag_bufferify(const char * name,
 
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void AA_example_nested_testoptional_0(void)
 {
@@ -159,6 +165,7 @@ void AA_example_nested_testoptional_0(void)
 
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
@@ -174,6 +181,7 @@ void AA_example_nested_testoptional_1(int i)
 
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
@@ -208,6 +216,7 @@ size_t AA_example_nested_test_size_t(void)
 #ifdef HAVE_MPI
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
@@ -226,6 +235,7 @@ void AA_example_nested_testmpi_mpi(MPI_Fint comm)
 #ifndef HAVE_MPI
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void AA_example_nested_testmpi_serial(void)
 {
@@ -241,6 +251,7 @@ void AA_example_nested_testmpi_serial(void)
  */
 // ----------------------------------------
 // Function:  void FuncPtr1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
@@ -260,6 +271,7 @@ void AA_example_nested_func_ptr1(void ( * get)(void))
  */
 // ----------------------------------------
 // Function:  void FuncPtr2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
@@ -279,6 +291,7 @@ void AA_example_nested_func_ptr2(double * ( * get)(void))
  */
 // ----------------------------------------
 // Function:  void FuncPtr3
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +value
@@ -298,6 +311,7 @@ void AA_example_nested_func_ptr3(double ( * get)(int i, int))
  */
 // ----------------------------------------
 // Function:  void FuncPtr4
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(double +value, int +value) +value
@@ -313,6 +327,7 @@ void AA_example_nested_func_ptr4(double ( * get)(double, int))
 
 // ----------------------------------------
 // Function:  void FuncPtr5
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
@@ -331,6 +346,7 @@ void AA_example_nested_func_ptr5(void ( * get)(int verylongname1,
 
 // ----------------------------------------
 // Function:  void verylongfunctionname1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
@@ -469,6 +485,7 @@ int AA_example_nested_verylongfunctionname2(int verylongname1,
  */
 // ----------------------------------------
 // Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)

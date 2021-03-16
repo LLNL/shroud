@@ -591,20 +591,16 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        print("DDDDDDDDDDDDDD", ast.name)
         sintent = ast.metaattrs["intent"]
         if is_ctor:
-#            sgroup ="shadow"
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
         elif is_dtor:
-#            sgroup ="shadow"
             fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
-#            sgroup = "subroutine"
             spointer = None
             sintent = "subroutine"
         else:
             sgroup = result_typemap.sgroup
         stmts = ["lua", sintent, sgroup, spointer]
-#        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)
         fmt_result.stmt0 = statements.compute_name(stmts)
         fmt_result.stmt1 = result_blk.name

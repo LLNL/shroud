@@ -20,6 +20,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
@@ -35,6 +36,7 @@ void LIB_Class2_method1(LIB_Class2 * self, MPI_Fint comm)
 
 // ----------------------------------------
 // Function:  void method2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  three::Class1 * c2

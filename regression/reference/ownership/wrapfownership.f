@@ -80,8 +80,8 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  ~Class1
         ! Attrs:     +intent(dtor)
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_class1_dtor(self) &
                 bind(C, name="OWN_Class1_dtor")
             import :: OWN_SHROUD_capsule_data
@@ -92,8 +92,8 @@ module ownership_mod
         ! ----------------------------------------
         ! Function:  int getFlag
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_native_scalar
-        ! Match:     c_default
+        ! Requested: c_subroutine_native_scalar
+        ! Match:     c_subroutine
         function c_class1_get_flag(self) &
                 result(SHT_rv) &
                 bind(C, name="OWN_Class1_get_flag")
@@ -408,8 +408,9 @@ module ownership_mod
 
         ! ----------------------------------------
         ! Function:  void createClassStatic
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int flag +value
         ! Attrs:     +intent(in)

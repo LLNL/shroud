@@ -316,6 +316,7 @@ bool AA_example_nested_ExClass1_has_addr(
 
 // ----------------------------------------
 // Function:  void SplicerSpecial
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void AA_example_nested_ExClass1_splicer_special(
     AA_example_nested_ExClass1 * self)

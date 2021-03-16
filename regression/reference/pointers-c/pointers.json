@@ -20,6 +20,9 @@
                         "name": "intargs_in",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -117,6 +120,9 @@
                     "declarator": {
                         "name": "intargs_inout",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -218,6 +224,9 @@
                         "name": "intargs_out",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -317,6 +326,9 @@
                     "declarator": {
                         "name": "intargs",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -521,6 +533,9 @@
                     "declarator": {
                         "name": "cos_doubles",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -748,6 +763,9 @@
                         "name": "truncate_to_int",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -974,6 +992,9 @@
                         "name": "get_values",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1140,6 +1161,9 @@
                     "declarator": {
                         "name": "get_values2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1318,6 +1342,9 @@
                         "name": "iota_allocatable",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1479,6 +1506,9 @@
                         "name": "iota_dimension",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1637,6 +1667,9 @@
                     "declarator": {
                         "name": "Sum",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1845,6 +1878,9 @@
                         "name": "fillIntArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1957,6 +1993,9 @@
                     "declarator": {
                         "name": "incrementIntArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2112,6 +2151,9 @@
                     "declarator": {
                         "name": "fill_with_zeros",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2723,6 +2765,9 @@
                         "name": "setGlobalInt",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2902,6 +2947,9 @@
                         "name": "getPtrToScalar",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2998,6 +3046,9 @@
                     "declarator": {
                         "name": "getPtrToScalar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3106,6 +3157,9 @@
                         "name": "getPtrToFixedArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3210,6 +3264,9 @@
                     "declarator": {
                         "name": "getPtrToFixedArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3332,6 +3389,9 @@
                     "declarator": {
                         "name": "getPtrToDynamicArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3481,6 +3541,9 @@
                     "declarator": {
                         "name": "getPtrToDynamicArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3658,6 +3721,9 @@
                         "name": "getPtrToFuncArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3763,6 +3829,9 @@
                     "declarator": {
                         "name": "getPtrToFuncArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3887,6 +3956,9 @@
                         "name": "getPtrToConstScalar",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3984,6 +4056,9 @@
                     "declarator": {
                         "name": "getPtrToConstScalar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4093,6 +4168,9 @@
                         "name": "getPtrToFixedConstArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4195,6 +4273,9 @@
                     "declarator": {
                         "name": "getPtrToFixedConstArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4315,6 +4396,9 @@
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4462,6 +4546,9 @@
                     "declarator": {
                         "name": "getPtrToDynamicConstArray",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4633,6 +4720,9 @@
                         "name": "getRawPtrToScalar",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4740,6 +4830,9 @@
                     "declarator": {
                         "name": "getRawPtrToScalarForce",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4852,6 +4945,9 @@
                         "name": "getRawPtrToFixedArray",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4959,6 +5055,9 @@
                     "declarator": {
                         "name": "getRawPtrToFixedArrayForce",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5070,6 +5169,9 @@
                     "declarator": {
                         "name": "getRawPtrToInt2d",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5323,6 +5425,9 @@
                     "declarator": {
                         "name": "DimensionIn",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5710,6 +5815,9 @@
                     "declarator": {
                         "name": "fetchVoidPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

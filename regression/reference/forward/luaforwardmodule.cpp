@@ -73,6 +73,7 @@ static int l_Class2_dtor(lua_State *L)
 // void func1(tutorial::Class1 * arg +intent(in))
 // ----------------------------------------
 // Function:  void func1
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
@@ -94,6 +95,7 @@ static int l_Class2_func1(lua_State *L)
 // void acceptClass3(Class3 * arg +intent(in))
 // ----------------------------------------
 // Function:  void acceptClass3
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)

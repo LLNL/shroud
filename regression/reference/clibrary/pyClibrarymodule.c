@@ -33,6 +33,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
@@ -99,6 +100,7 @@ PY_PassByValue(
 
 // ----------------------------------------
 // Function:  void PassByReference
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * arg1 +intent(in)
@@ -185,6 +187,7 @@ PY_PassByValueMacro(
 
 // ----------------------------------------
 // Function:  void checkBool
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const bool arg1 +value
@@ -298,6 +301,7 @@ PY_Function4a(
 
 // ----------------------------------------
 // Function:  void acceptName
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const char * name
@@ -330,6 +334,7 @@ PY_acceptName(
 
 // ----------------------------------------
 // Function:  void passCharPtrInOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
@@ -373,6 +378,7 @@ PY_passCharPtrInOut(
 
 // ----------------------------------------
 // Function:  void returnOneName
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
@@ -410,6 +416,7 @@ PY_returnOneName(
 
 // ----------------------------------------
 // Function:  void returnTwoNames
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)
@@ -452,6 +459,7 @@ PY_returnTwoNames(
 
 // ----------------------------------------
 // Function:  void ImpliedTextLen
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)

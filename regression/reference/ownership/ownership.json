@@ -2730,6 +2730,9 @@
                         "name": "IntPtrDimRaw",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2803,6 +2806,9 @@
                     "declarator": {
                         "name": "IntPtrDimPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2885,6 +2891,9 @@
                         "name": "IntPtrDimAlloc",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2966,6 +2975,9 @@
                         "name": "IntPtrDimDefault",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3046,6 +3058,9 @@
                         "name": "IntPtrDimRawNew",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3120,6 +3135,9 @@
                     "declarator": {
                         "name": "IntPtrDimPointerNew",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3203,6 +3221,9 @@
                         "name": "IntPtrDimAllocNew",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3284,6 +3305,9 @@
                         "name": "IntPtrDimDefaultNew",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3364,6 +3388,9 @@
                     "declarator": {
                         "name": "createClassStatic",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

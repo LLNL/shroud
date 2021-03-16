@@ -242,6 +242,7 @@ static int l_example_nested_ExClass1_has_addr(lua_State *L)
 // void SplicerSpecial(void)
 // ----------------------------------------
 // Function:  void SplicerSpecial
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 static int l_example_nested_ExClass1_splicer_special(lua_State *L)
 {
@@ -493,6 +494,7 @@ static int l_example_nested_ExClass2_declare(lua_State *L)
 // void destroyall(void)
 // ----------------------------------------
 // Function:  void destroyall
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 static int l_example_nested_ExClass2_destroyall(lua_State *L)
 {
@@ -526,6 +528,7 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // void setValue(double value +value)
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int value +value
@@ -533,6 +536,7 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // Exact:     lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  long value +value
@@ -540,6 +544,7 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // Exact:     lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  float value +value
@@ -547,6 +552,7 @@ static int l_example_nested_ExClass2_get_type_id(lua_State *L)
 // Exact:     lua_in_native_scalar
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double value +value
@@ -664,6 +670,7 @@ static const struct luaL_Reg l_ExClass2_Reg [] = {
 // void local_function1(void)
 // ----------------------------------------
 // Function:  void local_function1
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 static int l_example_nested_local_function1(lua_State *)
 {
@@ -710,6 +717,7 @@ static int l_example_nested_is_initialized(lua_State *L)
 // void test_names(const std::string & name, int flag +value)
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -717,6 +725,7 @@ static int l_example_nested_is_initialized(lua_State *L)
 // Exact:     lua_in_string_&
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -767,9 +776,11 @@ static int l_example_nested_test_names(lua_State *L)
 // void testoptional(int i=1 +value, long j=2 +value)
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
@@ -777,6 +788,7 @@ static int l_example_nested_test_names(lua_State *L)
 // Exact:     lua_in_native_scalar
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int i=1 +value
@@ -848,9 +860,11 @@ static int l_example_nested_test_size_t(lua_State *L)
 // void testmpi(void)
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
@@ -890,6 +904,7 @@ static int l_example_nested_testmpi(lua_State *L)
 // void FuncPtr1(void ( * get)(void) +value)
 // ----------------------------------------
 // Function:  void FuncPtr1
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
@@ -911,6 +926,7 @@ static int l_example_nested_func_ptr1(lua_State *)
 // void FuncPtr2(double * ( * get)(void))
 // ----------------------------------------
 // Function:  void FuncPtr2
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
@@ -932,6 +948,7 @@ static int l_example_nested_func_ptr2(lua_State *)
 // void FuncPtr3(double ( * get)(int i +value, int +value) +value)
 // ----------------------------------------
 // Function:  void FuncPtr3
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +value
@@ -953,6 +970,7 @@ static int l_example_nested_func_ptr3(lua_State *L)
 // void FuncPtr5(void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value)
 // ----------------------------------------
 // Function:  void FuncPtr5
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
@@ -970,6 +988,7 @@ static int l_example_nested_func_ptr5(lua_State *)
 // void verylongfunctionname1(int * verylongname1 +intent(inout), int * verylongname2 +intent(inout), int * verylongname3 +intent(inout), int * verylongname4 +intent(inout), int * verylongname5 +intent(inout), int * verylongname6 +intent(inout), int * verylongname7 +intent(inout), int * verylongname8 +intent(inout), int * verylongname9 +intent(inout), int * verylongname10 +intent(inout))
 // ----------------------------------------
 // Function:  void verylongfunctionname1
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
@@ -1111,6 +1130,7 @@ static int l_example_nested_verylongfunctionname2(lua_State *L)
 // void cos_doubles(double * in +intent(in)+rank(2), double * out +deref(allocatable)+dimension(shape(in))+intent(out), int sizein +implied(size(in))+value)
 // ----------------------------------------
 // Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)

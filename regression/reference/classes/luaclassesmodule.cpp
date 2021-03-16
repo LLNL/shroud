@@ -304,6 +304,7 @@ static int l_direction_func(lua_State *L)
 // void set_global_flag(int arg +value)
 // ----------------------------------------
 // Function:  void set_global_flag
+// Attrs:     +intent(subroutine)
 // Exact:     lua_subroutine
 // ----------------------------------------
 // Argument:  int arg +value

@@ -138,6 +138,7 @@ void CLI_function4a_bufferify(const char * arg1, const char * arg2,
  */
 // ----------------------------------------
 // Function:  void passCharPtrInOut
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * s +intent(inout)+len(Ns)+len_trim(Ls)
@@ -162,6 +163,7 @@ void CLI_pass_char_ptr_in_out_bufferify(char * s, int Ls, int Ns)
  */
 // ----------------------------------------
 // Function:  void returnOneName
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
@@ -186,6 +188,7 @@ void CLI_return_one_name_bufferify(char * name1, int Nname1)
  */
 // ----------------------------------------
 // Function:  void returnTwoNames
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * name1 +charlen(MAXNAME)+intent(out)+len(Nname1)
@@ -211,6 +214,7 @@ void CLI_return_two_names_bufferify(char * name1, int Nname1,
  */
 // ----------------------------------------
 // Function:  void ImpliedTextLen
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * text +charlen(MAXNAME)+intent(out)+len(Ntext)
@@ -238,6 +242,7 @@ void CLI_implied_text_len_bufferify(char * text, int Ntext, int ltext)
  */
 // ----------------------------------------
 // Function:  void bindC2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  char * outbuf +intent(out)+len(Noutbuf)
@@ -289,6 +294,7 @@ int CLI_pass_assumed_type_buf_bufferify(void * arg, char * outbuf,
  */
 // ----------------------------------------
 // Function:  void callback1a
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int type +value
@@ -316,6 +322,7 @@ void CLI_callback1a(int type, void ( * incr)(void))
  */
 // ----------------------------------------
 // Function:  void callback3
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const char * type

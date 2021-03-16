@@ -87,8 +87,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float arg +value
     ! Attrs:     +intent(in)
@@ -105,8 +106,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void UpdateAsDouble
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -138,8 +140,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void GenericReal
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double arg +value
     ! Attrs:     +intent(in)
@@ -293,8 +296,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void AssignValues
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -329,8 +333,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void AssignValues
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -365,8 +370,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void AssignValues
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from
     ! Attrs:     +intent(in)
@@ -401,8 +407,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void AssignValues
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const int * from +rank(1)
     ! Attrs:     +intent(in)
@@ -438,8 +445,9 @@ module generic_mod
 #if 1
     ! ----------------------------------------
     ! Function:  void SavePointer
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -470,8 +478,9 @@ module generic_mod
 #if 1
     ! ----------------------------------------
     ! Function:  void SavePointer
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Attrs:     +deref(raw)+intent(in)
@@ -502,8 +511,9 @@ module generic_mod
 #if 1
     ! ----------------------------------------
     ! Function:  void SavePointer
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Attrs:     +deref(raw)+intent(in)
@@ -533,8 +543,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void SavePointer2
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * addr +value
     ! Attrs:     +intent(in)
@@ -563,8 +574,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void SavePointer2
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(1)
     ! Attrs:     +deref(raw)+intent(in)
@@ -593,8 +605,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void SavePointer2
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * addr +deref(raw)+intent(in)+rank(2)
     ! Attrs:     +deref(raw)+intent(in)
@@ -623,8 +636,9 @@ module generic_mod
 
     ! ----------------------------------------
     ! Function:  void GetPointer
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -654,8 +668,9 @@ module generic_mod
 #if 0
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * * addr +intent(out)
     ! Attrs:     +intent(out)
@@ -686,8 +701,9 @@ module generic_mod
 #if 0
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -720,8 +736,9 @@ module generic_mod
 #if 0
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
-    ! Requested: c_function_void_scalar_buf
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar_buf
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -808,7 +825,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void UpdateAsFloat
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -829,7 +848,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void UpdateAsDouble
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -851,7 +872,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void GenericReal
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -880,7 +903,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void GenericReal
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1114,7 +1139,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void AssignValues
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1167,7 +1194,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void AssignValues
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1220,7 +1249,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void AssignValues
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1274,7 +1305,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void SavePointer
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1302,7 +1335,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void SavePointer
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1329,7 +1364,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void SavePointer2
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1355,7 +1392,9 @@ contains
     ! Generated by fortran_generic
     ! ----------------------------------------
     ! Function:  void SavePointer2
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1382,7 +1421,9 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -1427,7 +1468,9 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetPointerAsPointer
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

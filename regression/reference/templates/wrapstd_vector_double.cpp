@@ -53,6 +53,7 @@ void TEM_vector_double_dtor(TEM_vector_double * self)
 
 // ----------------------------------------
 // Function:  void push_back
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double & value +intent(in)

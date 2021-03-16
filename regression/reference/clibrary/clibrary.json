@@ -82,6 +82,9 @@
                         "name": "NoReturnNoArguments",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -365,6 +368,9 @@
                     "declarator": {
                         "name": "PassByReference",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -735,6 +741,9 @@
                     "declarator": {
                         "name": "checkBool",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1463,6 +1472,9 @@
                         "name": "acceptName",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -1586,6 +1598,9 @@
                         "name": "passCharPtrInOut",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1703,6 +1718,9 @@
                         "name": "passCharPtrInOut",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1809,6 +1827,9 @@
                     "declarator": {
                         "name": "returnOneName",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1931,6 +1952,9 @@
                         "name": "returnOneName",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2037,6 +2061,9 @@
                     "declarator": {
                         "name": "returnTwoNames",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2222,6 +2249,9 @@
                         "name": "returnTwoNames",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2384,6 +2414,9 @@
                     "declarator": {
                         "name": "ImpliedTextLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2562,6 +2595,9 @@
                     "declarator": {
                         "name": "ImpliedTextLen",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3662,6 +3698,9 @@
                         "name": "bindC1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -3713,6 +3752,9 @@
                     "declarator": {
                         "name": "bindC2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3810,6 +3852,9 @@
                     "declarator": {
                         "name": "bindC2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3913,6 +3958,9 @@
                     "declarator": {
                         "name": "passVoidStarStar",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4211,6 +4259,9 @@
                     "declarator": {
                         "name": "passAssumedTypeDim",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4673,6 +4724,9 @@
                         "name": "callback1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4828,6 +4882,9 @@
                     "declarator": {
                         "name": "callback1a",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4986,6 +5043,9 @@
                     "declarator": {
                         "name": "callback2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5207,6 +5267,9 @@
                     "declarator": {
                         "name": "callback3",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5452,6 +5515,9 @@
                     "declarator": {
                         "name": "callback3",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5718,6 +5784,9 @@
                     "declarator": {
                         "name": "callback_set_alloc",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

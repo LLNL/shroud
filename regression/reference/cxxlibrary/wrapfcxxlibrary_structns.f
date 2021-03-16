@@ -71,8 +71,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceInout
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(inout)
         ! Attrs:     +intent(inout)
@@ -87,8 +88,9 @@ module cxxlibrary_structns_mod
 
         ! ----------------------------------------
         ! Function:  void passStructByReferenceOut
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  Cstruct1 & arg +intent(out)
         ! Attrs:     +intent(out)

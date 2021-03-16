@@ -60,6 +60,7 @@ PY_Names_tp_init(
 
 // ----------------------------------------
 // Function:  void method1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_method1__doc__[] =
 "documentation"
@@ -79,6 +80,7 @@ PY_method1(
 
 // ----------------------------------------
 // Function:  void method2
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_method2__doc__[] =
 "documentation"

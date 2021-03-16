@@ -322,6 +322,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void createClassStatic
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value

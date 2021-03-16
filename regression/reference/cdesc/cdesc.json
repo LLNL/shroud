@@ -20,6 +20,9 @@
                         "name": "Rank2In",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -130,6 +133,9 @@
                     "declarator": {
                         "name": "GetScalar1",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -396,6 +402,9 @@
                         "name": "GetScalar1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -508,6 +517,9 @@
                     "declarator": {
                         "name": "GetScalar1",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -704,6 +716,9 @@
                         "name": "GetScalar1",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -816,6 +831,9 @@
                     "declarator": {
                         "name": "GetScalar1",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1303,6 +1321,9 @@
                         "name": "GetScalar2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1493,6 +1514,9 @@
                         "name": "GetScalar2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1591,6 +1615,9 @@
                     "declarator": {
                         "name": "GetScalar2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1768,6 +1795,9 @@
                         "name": "GetScalar2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1866,6 +1896,9 @@
                     "declarator": {
                         "name": "GetScalar2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

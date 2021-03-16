@@ -60,6 +60,7 @@ PY_Class2_tp_init(
 
 // ----------------------------------------
 // Function:  void func1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
@@ -95,6 +96,7 @@ PY_func1(
 
 // ----------------------------------------
 // Function:  void acceptClass3
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)

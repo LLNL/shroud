@@ -62,6 +62,7 @@ static void ShroudStrToArray(TUT_SHROUD_array *array, const std::string * src, i
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // start TUT_no_return_no_arguments
 void TUT_no_return_no_arguments(void)
@@ -185,6 +186,7 @@ double TUT_use_default_arguments_arg1_arg2(double arg1, bool arg2)
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -200,6 +202,7 @@ void TUT_overloaded_function_from_name(const char * name)
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
@@ -216,6 +219,7 @@ void TUT_overloaded_function_from_name_bufferify(const char * name,
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int indx +value
@@ -231,6 +235,7 @@ void TUT_overloaded_function_from_index(int indx)
 
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg +value
@@ -246,6 +251,7 @@ void TUT_template_argument_int(int arg)
 
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double arg +value
@@ -287,6 +293,7 @@ double TUT_template_return_double(void)
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void TUT_fortran_generic_overloaded_0(void)
 {
@@ -297,6 +304,7 @@ void TUT_fortran_generic_overloaded_0(void)
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -317,6 +325,7 @@ void TUT_fortran_generic_overloaded_1(const char * name, double arg2)
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
@@ -338,6 +347,7 @@ void TUT_fortran_generic_overloaded_1_float_bufferify(const char * name,
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const std::string & name +len_trim(Lname)
@@ -578,6 +588,7 @@ int TUT_colorfunc(int arg)
  */
 // ----------------------------------------
 // Function:  void getMinMax
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int & min +intent(out)

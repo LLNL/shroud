@@ -237,6 +237,9 @@
                                 "name": "func1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -387,6 +390,9 @@
                             "declarator": {
                                 "name": "acceptClass3",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {

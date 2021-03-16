@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void One
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void NS_outer_one(void)
 {

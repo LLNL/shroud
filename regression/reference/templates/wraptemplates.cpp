@@ -43,6 +43,7 @@ TEM_user_int * TEM_return_user_type(TEM_user_int * SHadow_rv)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
@@ -67,6 +68,7 @@ void TEM_function_tu_0(int arg1, long arg2)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value

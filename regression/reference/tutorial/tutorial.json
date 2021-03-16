@@ -83,6 +83,9 @@
                         "name": "NoReturnNoArguments",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -1345,6 +1348,9 @@
                         "name": "OverloadedFunction",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -1481,6 +1487,9 @@
                         "name": "OverloadedFunction",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1577,6 +1586,9 @@
                     "declarator": {
                         "name": "OverloadedFunction",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1718,6 +1730,9 @@
                         "name": "TemplateArgument",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -1795,6 +1810,9 @@
                     "declarator": {
                         "name": "TemplateArgument",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1970,6 +1988,9 @@
                     "declarator": {
                         "name": "TemplateArgument",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2441,6 +2462,9 @@
                         "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [],
                     "specifier": [
                         "void"
@@ -2495,6 +2519,9 @@
                     "declarator": {
                         "name": "FortranGenericOverloaded",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2782,6 +2809,9 @@
                         "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -2858,6 +2888,9 @@
                     "declarator": {
                         "name": "FortranGenericOverloaded",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3015,6 +3048,9 @@
                         "name": "FortranGenericOverloaded",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -3091,6 +3127,9 @@
                     "declarator": {
                         "name": "FortranGenericOverloaded",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -5418,6 +5457,9 @@
                     "declarator": {
                         "name": "getMinMax",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

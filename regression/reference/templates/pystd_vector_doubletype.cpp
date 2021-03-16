@@ -64,6 +64,7 @@ PY_vector_double_tp_init(
 
 // ----------------------------------------
 // Function:  void push_back
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const double & value +intent(in)

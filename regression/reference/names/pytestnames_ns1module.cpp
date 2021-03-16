@@ -32,6 +32,7 @@
 
 // ----------------------------------------
 // Function:  void init_ns1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_init_ns1__doc__[] =
 "documentation"

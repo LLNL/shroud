@@ -33,6 +33,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void NoReturnNoArguments
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PY_NoReturnNoArguments__doc__[] =
 "documentation"
@@ -224,6 +225,7 @@ PY_UseDefaultArguments_arg1_arg2(
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -255,6 +257,7 @@ PY_OverloadedFunction_from_name(
 
 // ----------------------------------------
 // Function:  void OverloadedFunction
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int indx +value
@@ -284,6 +287,7 @@ PY_OverloadedFunction_from_index(
 
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int arg +value
@@ -313,6 +317,7 @@ PY_TemplateArgument_int(
 
 // ----------------------------------------
 // Function:  void TemplateArgument
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double arg +value
@@ -342,6 +347,7 @@ PY_TemplateArgument_double(
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static PyObject *
 PY_FortranGenericOverloaded_0(
@@ -357,6 +363,7 @@ PY_FortranGenericOverloaded_0(
 
 // ----------------------------------------
 // Function:  void FortranGenericOverloaded
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -665,6 +672,7 @@ PY_colorfunc(
 
 // ----------------------------------------
 // Function:  void getMinMax
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int & min +intent(out)

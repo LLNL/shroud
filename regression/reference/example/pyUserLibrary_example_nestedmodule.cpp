@@ -36,6 +36,7 @@
 
 // ----------------------------------------
 // Function:  void local_function1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 static char PP_local_function1__doc__[] =
 "documentation"
@@ -134,6 +135,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -165,6 +167,7 @@ PP_test_names(
 
 // ----------------------------------------
 // Function:  void test_names
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & name
@@ -203,6 +206,7 @@ PP_test_names_flag(
 
 // ----------------------------------------
 // Function:  void testoptional
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int i=1 +value
@@ -285,6 +289,7 @@ PP_test_size_t(
 
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  MPI_Comm comm +value
@@ -319,6 +324,7 @@ PP_testmpi_mpi(
 
 // ----------------------------------------
 // Function:  void testmpi
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 #ifndef HAVE_MPI
 static PyObject *
@@ -336,6 +342,7 @@ PP_testmpi_serial(
 
 // ----------------------------------------
 // Function:  void FuncPtr1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void ( * get)(void) +value
@@ -371,6 +378,7 @@ PP_FuncPtr1(
 
 // ----------------------------------------
 // Function:  void FuncPtr2
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * ( * get)(void)
@@ -406,6 +414,7 @@ PP_FuncPtr2(
 
 // ----------------------------------------
 // Function:  void FuncPtr3
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double ( * get)(int i +value, int +value) +value
@@ -441,6 +450,7 @@ PP_FuncPtr3(
 
 // ----------------------------------------
 // Function:  void FuncPtr5
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void ( * get)(int verylongname1 +value, int verylongname2 +value, int verylongname3 +value, int verylongname4 +value, int verylongname5 +value, int verylongname6 +value, int verylongname7 +value, int verylongname8 +value, int verylongname9 +value, int verylongname10 +value) +value
@@ -475,6 +485,7 @@ PP_FuncPtr5(
 
 // ----------------------------------------
 // Function:  void verylongfunctionname1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * verylongname1 +intent(inout)
@@ -685,6 +696,7 @@ PP_verylongfunctionname2(
 
 // ----------------------------------------
 // Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(2)

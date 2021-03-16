@@ -3242,6 +3242,9 @@
                         "name": "passClassByValue",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4055,6 +4058,9 @@
                     "declarator": {
                         "name": "set_global_flag",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

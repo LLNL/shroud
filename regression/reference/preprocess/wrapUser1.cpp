@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void PRE_User1_method1(PRE_User1 * self)
 {
@@ -33,6 +34,7 @@ void PRE_User1_method1(PRE_User1 * self)
 #if defined(USE_TWO)
 // ----------------------------------------
 // Function:  void method2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void PRE_User1_method2(PRE_User1 * self)
 {
@@ -46,6 +48,7 @@ void PRE_User1_method2(PRE_User1 * self)
 #if defined(USE_THREE)
 // ----------------------------------------
 // Function:  void method3def
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void PRE_User1_method3def_0(PRE_User1 * self)
 {
@@ -59,6 +62,7 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 #if defined(USE_THREE)
 // ----------------------------------------
 // Function:  void method3def
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i=0 +value

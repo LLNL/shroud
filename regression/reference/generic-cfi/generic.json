@@ -21,6 +21,9 @@
                         "name": "UpdateAsFloat",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -118,6 +121,9 @@
                     "declarator": {
                         "name": "UpdateAsDouble",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -294,6 +300,9 @@
                         "name": "GenericReal",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -437,6 +446,9 @@
                         "name": "GenericReal",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -500,6 +512,9 @@
                     "declarator": {
                         "name": "GenericReal",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -1358,6 +1373,9 @@
                         "name": "AssignValues",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -1793,6 +1811,9 @@
                         "name": "AssignValues",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "const": true,
@@ -2049,6 +2070,9 @@
                     "declarator": {
                         "name": "AssignValues",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2314,6 +2338,9 @@
                         "name": "AssignValues",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -2578,6 +2605,9 @@
                     "declarator": {
                         "name": "SavePointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -2872,6 +2902,9 @@
                         "name": "SavePointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3081,6 +3114,9 @@
                         "name": "SavePointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3283,6 +3319,9 @@
                     "declarator": {
                         "name": "SavePointer2",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -3588,6 +3627,9 @@
                         "name": "SavePointer2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -3807,6 +3849,9 @@
                         "name": "SavePointer2",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4019,6 +4064,9 @@
                         "name": "GetPointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4227,6 +4275,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4557,6 +4608,9 @@
                         "name": "GetPointerAsPointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4665,6 +4719,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -4890,6 +4947,9 @@
                         "name": "GetPointerAsPointer",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "attrs": {
@@ -4998,6 +5058,9 @@
                     "declarator": {
                         "name": "GetPointerAsPointer",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

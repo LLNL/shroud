@@ -98,8 +98,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void setSize
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int size +value
         ! Attrs:     +intent(in)
@@ -131,8 +132,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fillSize
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  int & size +intent(out)
         ! Attrs:     +intent(out)
@@ -149,8 +151,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void allocate
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine c_arraywrapper_allocate(self) &
                 bind(C, name="ARR_ArrayWrapper_allocate")
             import :: ARR_SHROUD_capsule_data
@@ -274,8 +277,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -298,8 +302,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtr
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -323,8 +328,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -347,8 +353,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRef
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -372,8 +379,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -397,8 +405,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayPtrConst
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -422,8 +431,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -447,8 +457,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchArrayRefConst
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
         ! Attrs:     +deref(pointer)+intent(out)
@@ -472,8 +483,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidPtr
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void * * array +intent(out)
         ! Attrs:     +intent(out)
@@ -490,8 +502,9 @@ module arrayclass_mod
 
         ! ----------------------------------------
         ! Function:  void fetchVoidRef
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  void * & array +intent(out)
         ! Attrs:     +intent(out)
@@ -573,7 +586,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void setSize
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -613,7 +628,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fillSize
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -635,7 +652,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void allocate
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     subroutine arraywrapper_allocate(obj)
@@ -732,7 +751,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayPtr
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -767,7 +788,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayRef
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -802,7 +825,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayPtrConst
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -837,7 +862,9 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void fetchArrayRefConst
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -871,7 +898,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fetchVoidPtr
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
@@ -892,7 +921,9 @@ contains
 
     ! ----------------------------------------
     ! Function:  void fetchVoidRef
+    ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
+    ! Attrs:     +intent(subroutine)
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------

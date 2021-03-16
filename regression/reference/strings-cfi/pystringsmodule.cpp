@@ -84,6 +84,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void passChar
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char status +value
@@ -150,6 +151,7 @@ PY_returnChar(
 
 // ----------------------------------------
 // Function:  void passCharPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * dest +charlen(40)+intent(out)
@@ -199,6 +201,7 @@ PY_passCharPtr(
 
 // ----------------------------------------
 // Function:  void passCharPtrInOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * s +intent(inout)
@@ -734,6 +737,7 @@ PY_getConstStringPtrOwnsAllocPattern(
 
 // ----------------------------------------
 // Function:  void acceptStringConstReference
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string & arg1
@@ -777,6 +781,7 @@ PY_acceptStringConstReference(
 
 // ----------------------------------------
 // Function:  void acceptStringReferenceOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
@@ -817,6 +822,7 @@ PY_acceptStringReferenceOut(
 
 // ----------------------------------------
 // Function:  void acceptStringReference
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string & arg1
@@ -866,6 +872,7 @@ PY_acceptStringReference(
 
 // ----------------------------------------
 // Function:  void acceptStringPointerConst
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const std::string * arg1
@@ -906,6 +913,7 @@ PY_acceptStringPointerConst(
 
 // ----------------------------------------
 // Function:  void acceptStringPointer
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1
@@ -952,6 +960,7 @@ PY_acceptStringPointer(
 
 // ----------------------------------------
 // Function:  void fetchStringPointer
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
@@ -990,6 +999,7 @@ PY_fetchStringPointer(
 
 // ----------------------------------------
 // Function:  void acceptStringPointerLen
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1
@@ -1043,6 +1053,7 @@ PY_acceptStringPointerLen(
 
 // ----------------------------------------
 // Function:  void fetchStringPointerLen
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string * arg1 +intent(out)
@@ -1135,6 +1146,7 @@ PY_acceptStringInstance(
 
 // ----------------------------------------
 // Function:  void returnStrings
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  std::string & arg1 +intent(out)
@@ -1177,6 +1189,7 @@ PY_returnStrings(
 
 // ----------------------------------------
 // Function:  void explicit1
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char * name +intent(in)+len_trim(AAlen)
@@ -1209,6 +1222,7 @@ PY_explicit1(
 
 // ----------------------------------------
 // Function:  void CpassChar
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  char status +value
@@ -1275,6 +1289,7 @@ PY_CreturnChar(
 
 // ----------------------------------------
 // Function:  void PostDeclare
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * count +intent(in)+rank(1)

@@ -51,8 +51,8 @@ module statement_mod
         ! ----------------------------------------
         ! Function:  void getNameErrorPattern +len(get_name_length())
         ! Attrs:     +intent(subroutine)
-        ! Requested: c_function_void_scalar_buf
-        ! Match:     c_default
+        ! Requested: c_subroutine_void_scalar_buf
+        ! Match:     c_subroutine
         ! ----------------------------------------
         ! Argument:  string & SHF_rv +len(NSHF_rv)
         ! Attrs:     +intent(out)+is_result

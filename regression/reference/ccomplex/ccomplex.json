@@ -20,6 +20,9 @@
                         "name": "acceptFloatComplexInoutPtr",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "declarator": {
@@ -119,6 +122,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexInoutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -242,6 +248,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexOutPtr",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {
@@ -368,6 +377,9 @@
                         "name": "acceptDoubleComplexInoutPtrFlag",
                         "pointer": []
                     },
+                    "metaattrs": {
+                        "intent": "subroutine"
+                    },
                     "params": [
                         {
                             "declarator": {
@@ -486,6 +498,9 @@
                     "declarator": {
                         "name": "acceptDoubleComplexOutPtrFlag",
                         "pointer": []
+                    },
+                    "metaattrs": {
+                        "intent": "subroutine"
                     },
                     "params": [
                         {

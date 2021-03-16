@@ -18,6 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void worker4
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void WWW_inner4_worker4(void)
 {

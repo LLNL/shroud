@@ -168,6 +168,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInout
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(inout)
@@ -221,6 +222,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 & arg +intent(out)

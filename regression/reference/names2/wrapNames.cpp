@@ -18,6 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void AFunction
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void NAM_afunction(void)
 {

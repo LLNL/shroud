@@ -205,6 +205,7 @@ PY_acceptStructInPtr(
 
 // ----------------------------------------
 // Function:  void acceptStructOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(out)
@@ -261,6 +262,7 @@ PY_acceptStructOutPtr(
 
 // ----------------------------------------
 // Function:  void acceptStructInOutPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1 * arg +intent(inout)

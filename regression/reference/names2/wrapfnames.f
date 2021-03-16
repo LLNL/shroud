@@ -24,8 +24,9 @@ module worker_names
 
         ! ----------------------------------------
         ! Function:  void AFunction
-        ! Requested: c_function_void_scalar
-        ! Match:     c_default
+        ! Attrs:     +intent(subroutine)
+        ! Requested: c_subroutine_void_scalar
+        ! Match:     c_subroutine
         subroutine afunction() &
                 bind(C, name="NAM_afunction")
             implicit none

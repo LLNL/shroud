@@ -363,6 +363,7 @@ void AA_example_nested_ExClass2_declare_1(
 
 // ----------------------------------------
 // Function:  void destroyall
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void AA_example_nested_ExClass2_destroyall(
     AA_example_nested_ExClass2 * self)
@@ -393,6 +394,7 @@ int AA_example_nested_ExClass2_get_type_id(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int value +value
@@ -411,6 +413,7 @@ void AA_example_nested_ExClass2_set_value_int(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  long value +value
@@ -429,6 +432,7 @@ void AA_example_nested_ExClass2_set_value_long(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float value +value
@@ -447,6 +451,7 @@ void AA_example_nested_ExClass2_set_value_float(
 
 // ----------------------------------------
 // Function:  void setValue
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double value +value

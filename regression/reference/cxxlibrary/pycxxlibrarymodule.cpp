@@ -127,6 +127,7 @@ PY_passStructByReferenceInCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceInoutCls
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(inout)
@@ -164,6 +165,7 @@ PY_passStructByReferenceInoutCls(
 
 // ----------------------------------------
 // Function:  void passStructByReferenceOutCls
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  Cstruct1_cls & arg +intent(out)
@@ -280,6 +282,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void defaultArgsInOut
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int in1 +value

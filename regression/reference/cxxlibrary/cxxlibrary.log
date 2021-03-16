@@ -3,33 +3,33 @@ Close cxxlibrary_types.yaml
 struct Cstruct1
 C int passStructByReference(Cstruct1 & arg)  +intent(function)
 C int passStructByReferenceIn(const Cstruct1 & arg)  +intent(function)
-C void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
-C void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
+C void passStructByReferenceInout(Cstruct1 & arg +intent(inout))  +intent(subroutine)
+C void passStructByReferenceOut(Cstruct1 & arg +intent(out))  +intent(subroutine)
 Close wrapcxxlibrary_structns.h
 Close wrapcxxlibrary_structns.cpp
 C bool defaultPtrIsNULL(void)  +intent(function)
 C bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
-C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
-C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
+C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)
+C void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)  +intent(subroutine)
 Close wrapcxxlibrary.h
 Close wrapcxxlibrary.cpp
 Fortran bool defaultPtrIsNULL(void)  +intent(function)
 Fortran bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
-Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
-Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
+Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)
+Fortran void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)  +intent(subroutine)
 C-interface bool defaultPtrIsNULL(void)  +intent(function)
 C-interface bool defaultPtrIsNULL(double * data=nullptr +intent(IN)+rank(1))  +intent(function)
-C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out)) 
-C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value) 
+C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out))  +intent(subroutine)
+C-interface void defaultArgsInOut(int in1 +value, int * out1 +intent(out), int * out2 +intent(out), bool flag=false +value)  +intent(subroutine)
 class Cstruct1
 Fortran int passStructByReference(Cstruct1 & arg)  +intent(function)
 Fortran int passStructByReferenceIn(const Cstruct1 & arg)  +intent(function)
-Fortran void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
-Fortran void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
+Fortran void passStructByReferenceInout(Cstruct1 & arg +intent(inout))  +intent(subroutine)
+Fortran void passStructByReferenceOut(Cstruct1 & arg +intent(out))  +intent(subroutine)
 C-interface int passStructByReference(Cstruct1 & arg)  +intent(function)
 C-interface int passStructByReferenceIn(const Cstruct1 & arg)  +intent(function)
-C-interface void passStructByReferenceInout(Cstruct1 & arg +intent(inout)) 
-C-interface void passStructByReferenceOut(Cstruct1 & arg +intent(out)) 
+C-interface void passStructByReferenceInout(Cstruct1 & arg +intent(inout))  +intent(subroutine)
+C-interface void passStructByReferenceOut(Cstruct1 & arg +intent(out))  +intent(subroutine)
 Close wrapfcxxlibrary_structns.f
 Close wrapfcxxlibrary.f
 Close utilcxxlibrary.cpp

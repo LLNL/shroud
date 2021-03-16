@@ -36,6 +36,7 @@ ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 
 // ----------------------------------------
 // Function:  void setSize
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int size +value
@@ -67,6 +68,7 @@ int ARR_ArrayWrapper_get_size(const ARR_ArrayWrapper * self)
 
 // ----------------------------------------
 // Function:  void fillSize
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int & size +intent(out)
@@ -83,6 +85,7 @@ void ARR_ArrayWrapper_fill_size(ARR_ArrayWrapper * self, int * size)
 
 // ----------------------------------------
 // Function:  void allocate
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 void ARR_ArrayWrapper_allocate(ARR_ArrayWrapper * self)
 {
@@ -243,6 +246,7 @@ void ARR_ArrayWrapper_get_array_const_c_bufferify(
 
 // ----------------------------------------
 // Function:  void fetchArrayPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * * array +dimension(isize)+intent(out)
@@ -265,6 +269,7 @@ void ARR_ArrayWrapper_fetch_array_ptr(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * * array +context(Darray)+dimension(isize)+intent(out)
@@ -296,6 +301,7 @@ void ARR_ArrayWrapper_fetch_array_ptr_bufferify(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayRef
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * & array +dimension(isize)+intent(out)
@@ -318,6 +324,7 @@ void ARR_ArrayWrapper_fetch_array_ref(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayRef
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double * & array +context(Darray)+dimension(isize)+intent(out)
@@ -349,6 +356,7 @@ void ARR_ArrayWrapper_fetch_array_ref_bufferify(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +dimension(isize)+intent(out)
@@ -371,6 +379,7 @@ void ARR_ArrayWrapper_fetch_array_ptr_const(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayPtrConst
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * * array +context(Darray)+dimension(isize)+intent(out)
@@ -402,6 +411,7 @@ void ARR_ArrayWrapper_fetch_array_ptr_const_bufferify(
 
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +dimension(isize)+intent(out)
@@ -424,6 +434,7 @@ void ARR_ArrayWrapper_fetch_array_ref_const(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchArrayRefConst
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const double * & array +context(Darray)+dimension(isize)+intent(out)
@@ -455,6 +466,7 @@ void ARR_ArrayWrapper_fetch_array_ref_const_bufferify(
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void * * array +intent(out)
@@ -472,6 +484,7 @@ void ARR_ArrayWrapper_fetch_void_ptr(ARR_ArrayWrapper * self,
 
 // ----------------------------------------
 // Function:  void fetchVoidRef
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void * & array +intent(out)

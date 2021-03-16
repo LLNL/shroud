@@ -13,6 +13,9 @@
                                 "name": "method1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -62,6 +65,9 @@
                             "declarator": {
                                 "name": "method2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -117,6 +123,9 @@
                             "declarator": {
                                 "name": "method3def",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -175,6 +184,9 @@
                             "declarator": {
                                 "name": "method3def",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -342,6 +354,9 @@
                                 "name": "exfunc",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [],
                             "specifier": [
                                 "void"
@@ -393,6 +408,9 @@
                             "declarator": {
                                 "name": "exfunc",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {

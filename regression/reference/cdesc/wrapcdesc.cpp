@@ -23,6 +23,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Rank2In
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
@@ -47,6 +48,7 @@ void CDE_rank2_in(CDE_SHROUD_array *Darg)
  */
 // ----------------------------------------
 // Function:  void GetScalar1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)
@@ -74,6 +76,7 @@ void CDE_get_scalar1(char * name, CDE_SHROUD_array *Dvalue)
  */
 // ----------------------------------------
 // Function:  void GetScalar1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -120,6 +123,7 @@ void CDE_get_scalar1_0_bufferify(char * name, int Lname,
  */
 // ----------------------------------------
 // Function:  void GetScalar1
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -196,6 +200,7 @@ double CDE_get_data_double(void)
  */
 // ----------------------------------------
 // Function:  void GetScalar2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)
@@ -222,6 +227,7 @@ void CDE_get_scalar2_0_bufferify(char * name, int Lname, int * value)
  */
 // ----------------------------------------
 // Function:  void GetScalar2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  std::string & name +intent(in)+len_trim(Lname)

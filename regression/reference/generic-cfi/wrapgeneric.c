@@ -48,6 +48,7 @@ int GEN_sum_values_CFI(CFI_cdesc_t *values, int nvalues)
  */
 // ----------------------------------------
 // Function:  void AssignValues
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * from
@@ -83,6 +84,7 @@ void GEN_assign_values_scalar(const int * from, int nfrom, int * to,
  */
 // ----------------------------------------
 // Function:  void AssignValues
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * from
@@ -118,6 +120,7 @@ void GEN_assign_values_broadcast(const int * from, int nfrom, int * to,
  */
 // ----------------------------------------
 // Function:  void AssignValues
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int * from +rank(1)
@@ -150,6 +153,7 @@ void GEN_assign_values_copy(const int * from, int nfrom, int * to,
 #if 1
 // ----------------------------------------
 // Function:  void SavePointer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(1)
@@ -177,6 +181,7 @@ void GEN_save_pointer_float1d(float * addr, int type, size_t size)
 #if 1
 // ----------------------------------------
 // Function:  void SavePointer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(2)
@@ -203,6 +208,7 @@ void GEN_save_pointer_float2d(float * addr, int type, size_t size)
 
 // ----------------------------------------
 // Function:  void SavePointer2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  void * addr +value
@@ -231,6 +237,7 @@ void GEN_save_pointer2(void * addr, int type, size_t size)
 
 // ----------------------------------------
 // Function:  void SavePointer2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(1)
@@ -259,6 +266,7 @@ void GEN_save_pointer2_float1d(float * addr, int type, size_t size)
 
 // ----------------------------------------
 // Function:  void SavePointer2
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * addr +deref(raw)+intent(in)+rank(2)
@@ -288,6 +296,7 @@ void GEN_save_pointer2_float2d(float * addr, int type, size_t size)
 #if 0
 // ----------------------------------------
 // Function:  void GetPointerAsPointer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(1)
@@ -324,6 +333,7 @@ void GEN_get_pointer_as_pointer_float1d_bufferify(
 #if 0
 // ----------------------------------------
 // Function:  void GetPointerAsPointer
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float * * addr +context(Daddr)+deref(pointer)+intent(out)+rank(2)

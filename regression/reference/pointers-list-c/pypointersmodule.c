@@ -267,6 +267,7 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  void intargs_in
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int * arg
@@ -299,6 +300,7 @@ PY_intargs_in(
 
 // ----------------------------------------
 // Function:  void intargs_inout
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * arg
@@ -339,6 +341,7 @@ PY_intargs_inout(
 
 // ----------------------------------------
 // Function:  void intargs_out
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
@@ -369,6 +372,7 @@ PY_intargs_out(
 
 // ----------------------------------------
 // Function:  void intargs
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
@@ -418,6 +422,7 @@ PY_intargs(
 
 // ----------------------------------------
 // Function:  void cos_doubles
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
@@ -499,6 +504,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void truncate_to_int
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
@@ -581,6 +587,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void get_values
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * nvalues +intent(OUT)
@@ -643,6 +650,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void get_values2
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
@@ -715,6 +723,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void iota_allocatable
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nvar +value
@@ -775,6 +784,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void iota_dimension
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int nvar +value
@@ -835,6 +845,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void Sum
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int len +implied(size(values))+value
@@ -902,6 +913,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fillIntArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
@@ -952,6 +964,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void incrementIntArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
@@ -1018,6 +1031,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void fill_with_zeros
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  double * x +rank(1)
@@ -1202,6 +1216,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void setGlobalInt
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int value +value
@@ -1265,6 +1280,7 @@ PY_sumFixedArray(
 
 // ----------------------------------------
 // Function:  void getPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
@@ -1303,6 +1319,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
@@ -1347,6 +1364,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToFuncArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
@@ -1387,6 +1405,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToFixedConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
@@ -1422,6 +1441,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getPtrToDynamicConstArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
@@ -1462,6 +1482,7 @@ fail:
 
 // ----------------------------------------
 // Function:  void getRawPtrToScalar
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
@@ -1495,6 +1516,7 @@ PY_getRawPtrToScalar(
 
 // ----------------------------------------
 // Function:  void getRawPtrToFixedArray
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
@@ -1608,6 +1630,7 @@ PY_returnAddress2(
 
 // ----------------------------------------
 // Function:  void fetchVoidPtr
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)

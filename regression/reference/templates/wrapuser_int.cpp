@@ -21,6 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void nested
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value

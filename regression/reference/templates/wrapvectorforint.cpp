@@ -52,6 +52,7 @@ void TEM_vector_int_dtor(TEM_vector_int * self)
 
 // ----------------------------------------
 // Function:  void push_back
+// Attrs:     +intent(subroutine)
 // Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  const int & value +intent(in)

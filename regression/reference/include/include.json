@@ -13,6 +13,9 @@
                                 "name": "method1",
                                 "pointer": []
                             },
+                            "metaattrs": {
+                                "intent": "subroutine"
+                            },
                             "params": [
                                 {
                                     "attrs": {
@@ -115,6 +118,9 @@
                             "declarator": {
                                 "name": "method2",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [
                                 {
@@ -264,6 +270,9 @@
                                         "name": "function1",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "void"
@@ -370,6 +379,9 @@
                                     "declarator": {
                                         "name": "method1",
                                         "pointer": []
+                                    },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
                                     },
                                     "params": [
                                         {
@@ -532,6 +544,9 @@
                                         "name": "method",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "void"
@@ -606,6 +621,9 @@
                             "declarator": {
                                 "name": "outer_func",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -687,6 +705,9 @@
                                         "name": "method",
                                         "pointer": []
                                     },
+                                    "metaattrs": {
+                                        "intent": "subroutine"
+                                    },
                                     "params": [],
                                     "specifier": [
                                         "void"
@@ -761,6 +782,9 @@
                             "declarator": {
                                 "name": "outer_func",
                                 "pointer": []
+                            },
+                            "metaattrs": {
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [

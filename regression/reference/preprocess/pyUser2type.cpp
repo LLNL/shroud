@@ -40,6 +40,7 @@ PY_User2_tp_del (PY_User2 *self)
 
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 #ifdef USE_CLASS3_A
 static PyObject *
@@ -57,6 +58,7 @@ PY_exfunc_0(
 
 // ----------------------------------------
 // Function:  void exfunc
+// Attrs:     +intent(subroutine)
 // Exact:     py_default
 // ----------------------------------------
 // Argument:  int flag +value

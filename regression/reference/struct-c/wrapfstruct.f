@@ -110,8 +110,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int getX1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_cstruct_as_class_get_x1
     interface
         function c_cstruct_as_class_get_x1(self) &
@@ -129,8 +129,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void setX1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -152,8 +152,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int getY1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_cstruct_as_class_get_y1
     interface
         function c_cstruct_as_class_get_y1(self) &
@@ -171,8 +171,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void setY1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -197,8 +197,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int getX1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_cstruct_as_subclass_get_x1
     interface
         function c_cstruct_as_subclass_get_x1(self) &
@@ -216,8 +216,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void setX1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -239,8 +239,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int getY1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_cstruct_as_subclass_get_y1
     interface
         function c_cstruct_as_subclass_get_y1(self) &
@@ -258,8 +258,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void setY1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -281,8 +281,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  int getZ1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_native_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_native_scalar
+    ! Match:     c_subroutine
     ! start c_cstruct_as_subclass_get_z1
     interface
         function c_cstruct_as_subclass_get_z1(self) &
@@ -300,8 +300,8 @@ module struct_mod
     ! ----------------------------------------
     ! Function:  void setZ1
     ! Attrs:     +intent(subroutine)
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int val +intent(in)+value
     ! Attrs:     +intent(in)
@@ -451,8 +451,9 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStructOutPtr
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(out)
     ! Attrs:     +intent(out)
@@ -482,8 +483,9 @@ module struct_mod
 
     ! ----------------------------------------
     ! Function:  void acceptStructInOutPtr
-    ! Requested: c_function_void_scalar
-    ! Match:     c_default
+    ! Attrs:     +intent(subroutine)
+    ! Requested: c_subroutine_void_scalar
+    ! Match:     c_subroutine
     ! ----------------------------------------
     ! Argument:  Cstruct1 * arg +intent(inout)
     ! Attrs:     +intent(inout)
