@@ -20,7 +20,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  Names +name(defaultctor)
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TES_ns0_Names * XXX_TES_ns0_Names_defaultctor(TES_ns0_Names * SHadow_rv)
 {
     // splicer begin namespace.ns0.class.Names.method.defaultctor

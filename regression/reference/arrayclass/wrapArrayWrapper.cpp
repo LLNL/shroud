@@ -22,7 +22,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  ArrayWrapper
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 ARR_ArrayWrapper * ARR_ArrayWrapper_ctor(ARR_ArrayWrapper * SHadow_rv)
 {
     // splicer begin class.ArrayWrapper.method.ctor

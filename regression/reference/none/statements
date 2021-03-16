@@ -1,11 +1,8 @@
 ***** Fortran/C
 root
   c
-    ctor
-      shadow -- c_ctor_shadow
-        scalar -- c_ctor_shadow_scalar
-    dtor
-      shadow -- c_dtor_shadow
+    ctor -- c_ctor
+    dtor -- c_dtor
     function
       char
         * -- c_function_char_*
@@ -135,8 +132,7 @@ root
           cdesc -- c_in/out/inout_void_*_cdesc
     subroutine -- c_subroutine
   f
-    ctor
-      shadow -- f_ctor_shadow
+    ctor -- f_ctor
     function
       bool -- f_function_bool
       char
@@ -237,7 +233,7 @@ root
           cdesc -- f_in/out/inout_void_*_cdesc
         ** -- f_out_void_**
     subroutine -- f_subroutine
-c_ctor_shadow:
+c_ctor:
   buf_extra:
   - shadow
   call:
@@ -245,31 +241,18 @@ c_ctor_shadow:
   - "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
   - '{shadow_var}->idtor = {idtor};'
   cxx_local_var: pointer
-  name: c_ctor_shadow
+  name: c_ctor
   owner: caller
   ret:
   - return {shadow_var};
   return_type: '{c_type} *'
-c_ctor_shadow_scalar:
-  buf_extra:
-  - shadow
-  call:
-  - "{cxx_type} *{cxx_var} =\t new {cxx_type}({C_call_list});"
-  - "{shadow_var}->addr = static_cast<{c_const}void *>(\t{cxx_var});"
-  - '{shadow_var}->idtor = {idtor};'
-  cxx_local_var: pointer
-  name: c_ctor_shadow_scalar
-  owner: caller
-  ret:
-  - return {shadow_var};
-  return_type: '{c_type} *'
-c_dtor_shadow:
+c_dtor:
   call:
   - delete {CXX_this};
   - '{C_this}->addr = {nullptr};'
   impl_header:
   - <cstddef>
-  name: c_dtor_shadow
+  name: c_dtor
   owner: library
   return_type: void
 c_function_char_*:
@@ -1486,7 +1469,7 @@ c_out_void_*_cdesc:
 c_subroutine:
   name: c_subroutine
   owner: library
-f_ctor_shadow:
+f_ctor:
   call:
   - '{F_result_ptr} = {F_C_call}({F_arg_c_call})'
   declare:
@@ -1494,7 +1477,7 @@ f_ctor_shadow:
   f_module:
     iso_c_binding:
     - C_PTR
-  name: f_ctor_shadow
+  name: f_ctor
   need_wrapper: true
 f_function_bool:
   name: f_function_bool
@@ -3610,10 +3593,8 @@ py_out_void_**:
 ***** Lua
 root
   lua
-    ctor
-      shadow -- lua_ctor_shadow
-    dtor
-      shadow -- lua_dtor_shadow
+    ctor -- lua_ctor
+    dtor -- lua_dtor
     function
       bool
         scalar -- lua_function_bool_scalar
@@ -3643,7 +3624,7 @@ root
       callfunction -- lua_mixin_callfunction
       push -- lua_mixin_push
     subroutine -- lua_subroutine
-lua_ctor_shadow:
+lua_ctor:
   call:
   - "{LUA_userdata_type} * {LUA_userdata_var} =\t ({LUA_userdata_type} *) lua_newuserdata({LUA_state_var},\
     \ sizeof(*{LUA_userdata_var}));"
@@ -3652,12 +3633,12 @@ lua_ctor_shadow:
   - luaL_getmetatable(L, "{LUA_metadata}");
   - /* Set the metatable on the userdata. */
   - lua_setmetatable(L, -2);
-  name: lua_ctor_shadow
-lua_dtor_shadow:
+  name: lua_ctor
+lua_dtor:
   call:
   - delete {LUA_userdata_var}->{LUA_userdata_member};
   - '{LUA_userdata_var}->{LUA_userdata_member} = NULL;'
-  name: lua_dtor_shadow
+  name: lua_dtor
 lua_function_bool_scalar:
   call:
   - '{rv_asgn}{LUA_this_call}{function_name}({cxx_call_list});'

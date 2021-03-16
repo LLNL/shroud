@@ -192,9 +192,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class2
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function class2_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -208,10 +208,10 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class2
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor_shadow
+    ! Requested: f_dtor
     ! Match:     f_default
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_shadow
+    ! Exact:     c_dtor
     subroutine class2_dtor(obj)
         class(class2) :: obj
         ! splicer begin class.Class2.method.dtor

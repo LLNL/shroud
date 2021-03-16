@@ -896,7 +896,7 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_func
             result_blk = None
             if is_dtor:
-                stmts = ["c", "dtor", "shadow"]
+                stmts = ["c", "dtor"]
             else:
                 stmts = ["c", "subroutine"]
             result_blk = statements.lookup_fc_stmts(stmts)

@@ -27,7 +27,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 {
     // splicer begin class.Class2.method.ctor
@@ -41,7 +42,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 // ----------------------------------------
 // Function:  ~Class2
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor_shadow
+// Exact:     c_dtor
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>

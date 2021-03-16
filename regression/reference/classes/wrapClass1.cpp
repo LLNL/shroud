@@ -47,7 +47,8 @@ static void ShroudStrToArray(CLA_SHROUD_array *array, const std::string * src, i
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 // start CLA_Class1_ctor_default
 CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 {
@@ -63,7 +64,8 @@ CLA_Class1 * CLA_Class1_ctor_default(CLA_Class1 * SHadow_rv)
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -84,7 +86,7 @@ CLA_Class1 * CLA_Class1_ctor_flag(int flag, CLA_Class1 * SHadow_rv)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor_shadow
+// Exact:     c_dtor
 // start CLA_Class1_delete
 void CLA_Class1_delete(CLA_Class1 * self)
 {

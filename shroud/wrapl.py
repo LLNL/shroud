@@ -591,16 +591,16 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 #        print("DDDDDDDDDDDDDD", ast.name)
         sintent = ast.metaattrs["intent"]
         if is_ctor:
-            sgroup ="shadow"
+#            sgroup ="shadow"
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
         elif is_dtor:
-            sgroup ="shadow"
+#            sgroup ="shadow"
             fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
-            sgroup = "subroutine"
+#            sgroup = "subroutine"
             spointer = None
-            sintent = None
+            sintent = "subroutine"
         else:
             sgroup = result_typemap.sgroup
         stmts = ["lua", sintent, sgroup, spointer]
@@ -1054,7 +1054,7 @@ lua_statements = [
     #####
     # shadow
     dict(
-        name="lua_ctor_shadow",
+        name="lua_ctor",
         call=[
             "{LUA_userdata_type} * {LUA_userdata_var} ="
                 "\t ({LUA_userdata_type} *) lua_newuserdata"
@@ -1068,7 +1068,7 @@ lua_statements = [
         ],
     ),
     dict(
-        name="lua_dtor_shadow",
+        name="lua_dtor",
         call=[
             "delete {LUA_userdata_var}->{LUA_userdata_member};",
             "{LUA_userdata_var}->{LUA_userdata_member} = NULL;",

@@ -22,7 +22,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  Shape
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 CLA_Shape * CLA_Shape_ctor(CLA_Shape * SHadow_rv)
 {
     // splicer begin class.Shape.method.ctor

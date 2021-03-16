@@ -24,7 +24,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TEM_vector_double * TEM_vector_double_ctor(
     TEM_vector_double * SHadow_rv)
 {
@@ -39,7 +40,7 @@ TEM_vector_double * TEM_vector_double_ctor(
 // ----------------------------------------
 // Function:  ~vector
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor_shadow
+// Exact:     c_dtor
 void TEM_vector_double_dtor(TEM_vector_double * self)
 {
     std::vector<double> *SH_this = static_cast<std::vector<double> *>

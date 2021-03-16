@@ -264,9 +264,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function vector_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -280,10 +280,10 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor_shadow
+    ! Requested: f_dtor
     ! Match:     f_default
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_shadow
+    ! Exact:     c_dtor
     subroutine vector_int_dtor(obj)
         class(vector_int) :: obj
         ! splicer begin namespace.std.class.vector_int.method.dtor
@@ -372,9 +372,9 @@ contains
     ! ----------------------------------------
     ! Function:  vector
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function vector_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -388,10 +388,10 @@ contains
     ! ----------------------------------------
     ! Function:  ~vector
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor_shadow
+    ! Requested: f_dtor
     ! Match:     f_default
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_shadow
+    ! Exact:     c_dtor
     subroutine vector_double_dtor(obj)
         class(vector_double) :: obj
         ! splicer begin namespace.std.class.vector_double.method.dtor

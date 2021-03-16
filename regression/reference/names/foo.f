@@ -103,9 +103,9 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

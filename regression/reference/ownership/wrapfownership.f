@@ -491,10 +491,10 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor_shadow
+    ! Requested: f_dtor
     ! Match:     f_default
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_shadow
+    ! Exact:     c_dtor
     subroutine class1_dtor(obj)
         class(class1) :: obj
         ! splicer begin class.Class1.method.dtor

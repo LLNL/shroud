@@ -1646,8 +1646,8 @@ rv = .false.
         if subprogram == "subroutine":
             fmt_result = fmt_func
             if is_dtor:
-                f_stmts = ["f", "dtor", "shadow"]
-                c_stmts = ["c", "dtor", "shadow"]
+                f_stmts = ["f", "dtor"]
+                c_stmts = ["c", "dtor"]
             else:
                 f_stmts = ["f", "subroutine"]
                 c_stmts = ["c"]
@@ -1663,8 +1663,8 @@ rv = .false.
             sintent = ast.metaattrs["intent"]
             return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
-                f_stmts = ["f", sintent, "shadow"]
-                c_stmts = ["c", sintent, "shadow"]
+                f_stmts = ["f", sintent]
+                c_stmts = ["c", sintent]
             else:
                 sintent = "function"
                 f_stmts = ["f", sintent, sgroup, spointer, generated_suffix,

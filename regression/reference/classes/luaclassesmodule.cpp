@@ -29,13 +29,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 // ----------------------------------------
 // Function:  Class1
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
@@ -87,8 +87,8 @@ static int l_Class1_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~Class1 +name(delete)
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_shadow_scalar
-// Match:     lua_dtor_shadow
+// Requested: lua_dtor_scalar
+// Match:     lua_dtor
 static int l_Class1_delete(lua_State *L)
 {
     // splicer begin class.Class1.method.__gc
@@ -210,8 +210,8 @@ static const struct luaL_Reg l_Class2_Reg [] = {
 // ----------------------------------------
 // Function:  Shape
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 static int l_Shape_ctor(lua_State *L)
 {
     // splicer begin class.Shape.method.ctor
@@ -256,8 +256,8 @@ static const struct luaL_Reg l_Shape_Reg [] = {
 // ----------------------------------------
 // Function:  Circle
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 static int l_Circle_ctor(lua_State *L)
 {
     // splicer begin class.Circle.method.ctor

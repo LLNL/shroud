@@ -1657,7 +1657,7 @@ fc_statements = [
         ],
     ),
     dict(
-        name="c_ctor_shadow",
+        name="c_ctor",
         buf_extra=["shadow"],
         cxx_local_var="pointer",
         call=[
@@ -1672,16 +1672,12 @@ fc_statements = [
         owner="caller",
     ),
     dict(
-        name="c_ctor_shadow_scalar",
-        base="c_ctor_shadow",
-    ),
-    dict(
-        name="f_ctor_shadow",
+        name="f_ctor",
         base="f_function_shadow",
     ),
     dict(
         # NULL in stddef.h
-        name="c_dtor_shadow",
+        name="c_dtor",
         c_impl_header=["<stddef.h>"],
         cxx_impl_header=["<cstddef>"],
         call=[

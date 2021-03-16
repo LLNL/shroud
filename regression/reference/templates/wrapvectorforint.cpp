@@ -24,7 +24,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  vector
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 {
     // splicer begin namespace.std.class.vector.method.ctor
@@ -38,7 +39,7 @@ TEM_vector_int * TEM_vector_int_ctor(TEM_vector_int * SHadow_rv)
 // ----------------------------------------
 // Function:  ~vector
 // Attrs:     +intent(dtor)
-// Exact:     c_dtor_shadow
+// Exact:     c_dtor
 void TEM_vector_int_dtor(TEM_vector_int * self)
 {
     std::vector<int> *SH_this = static_cast<std::vector<int> *>

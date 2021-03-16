@@ -22,7 +22,8 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +intent(ctor)
-// Exact:     c_ctor_shadow_scalar
+// Requested: c_ctor_shadow_scalar
+// Match:     c_ctor
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     TEM_structAsClass_int * SHadow_rv)
 {

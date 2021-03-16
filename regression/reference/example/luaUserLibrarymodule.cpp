@@ -27,13 +27,13 @@ extern "C" {
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 // ----------------------------------------
 // Function:  ExClass1
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 // ----------------------------------------
 // Argument:  const string * name
 // Attrs:     +intent(in)
@@ -93,8 +93,8 @@ static int l_example_nested_ExClass1_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~ExClass1
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_shadow_scalar
-// Match:     lua_dtor_shadow
+// Requested: lua_dtor_scalar
+// Match:     lua_dtor
 /**
  * \brief destructor
  *
@@ -273,8 +273,8 @@ static const struct luaL_Reg l_ExClass1_Reg [] = {
 // ----------------------------------------
 // Function:  ExClass2
 // Attrs:     +intent(ctor)
-// Requested: lua_ctor_shadow_scalar
-// Match:     lua_ctor_shadow
+// Requested: lua_ctor_scalar
+// Match:     lua_ctor
 // ----------------------------------------
 // Argument:  const string * name +len_trim(trim_name)
 // Attrs:     +intent(in)
@@ -302,8 +302,8 @@ static int l_example_nested_ExClass2_ctor(lua_State *L)
 // ----------------------------------------
 // Function:  ~ExClass2
 // Attrs:     +intent(dtor)
-// Requested: lua_dtor_shadow_scalar
-// Match:     lua_dtor_shadow
+// Requested: lua_dtor_scalar
+// Match:     lua_dtor
 /**
  * \brief destructor
  *

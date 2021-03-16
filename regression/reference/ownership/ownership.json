@@ -54,16 +54,16 @@
                             "c_var": "self",
                             "function_name": "dtor",
                             "shadow_var": "SHadow_self",
-                            "stmt0": "f_dtor_shadow",
+                            "stmt0": "f_dtor",
                             "stmt1": "f_default",
-                            "stmtc0": "c_dtor_shadow",
-                            "stmtc1": "c_dtor_shadow",
+                            "stmtc0": "c_dtor",
+                            "stmtc1": "c_dtor",
                             "underscore_name": "dtor"
                         },
                         "zz_fmtresult": {
                             "fmtl": {
-                                "stmt0": "lua_dtor_shadow_scalar",
-                                "stmt1": "lua_dtor_shadow"
+                                "stmt0": "lua_dtor_scalar",
+                                "stmt1": "lua_dtor"
                             }
                         }
                     },

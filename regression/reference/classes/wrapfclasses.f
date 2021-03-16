@@ -832,9 +832,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     ! start class1_ctor_default
     function class1_ctor_default() &
             result(SHT_rv)
@@ -850,9 +850,9 @@ contains
     ! ----------------------------------------
     ! Function:  Class1
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)
@@ -877,10 +877,10 @@ contains
     ! ----------------------------------------
     ! Function:  ~Class1 +name(delete)
     ! Attrs:     +intent(dtor)
-    ! Requested: f_dtor_shadow
+    ! Requested: f_dtor
     ! Match:     f_default
     ! Attrs:     +intent(dtor)
-    ! Exact:     c_dtor_shadow
+    ! Exact:     c_dtor
     ! start class1_delete
     subroutine class1_delete(obj)
         class(class1) :: obj
@@ -1284,9 +1284,9 @@ contains
     ! ----------------------------------------
     ! Function:  Shape
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function shape_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -1344,9 +1344,9 @@ contains
     ! ----------------------------------------
     ! Function:  Circle
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function circle_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

@@ -486,9 +486,9 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function structasclass_int_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -610,9 +610,9 @@ contains
     ! ----------------------------------------
     ! Function:  structAsClass
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_ctor_shadow
+    ! Exact:     f_ctor
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_ctor_shadow
+    ! Exact:     c_ctor
     function structasclass_double_ctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR

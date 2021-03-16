@@ -93,7 +93,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor_shadow_scalar"
+                                                "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -103,18 +103,18 @@
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor_shadow",
-                                                "stmt1": "f_ctor_shadow",
-                                                "stmtc0": "c_ctor_shadow",
-                                                "stmtc1": "c_ctor_shadow"
+                                                "stmt0": "f_ctor",
+                                                "stmt1": "f_ctor",
+                                                "stmtc0": "c_ctor",
+                                                "stmtc1": "c_ctor"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv",
-                                                "stmt0": "lua_ctor_shadow_scalar",
-                                                "stmt1": "lua_ctor_shadow"
+                                                "stmt0": "lua_ctor_scalar",
+                                                "stmt1": "lua_ctor"
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
@@ -294,7 +294,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor_shadow_scalar"
+                                                "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -304,18 +304,18 @@
                                                 "f_type": "type(exclass1)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor_shadow",
-                                                "stmt1": "f_ctor_shadow",
-                                                "stmtc0": "c_ctor_shadow",
-                                                "stmtc1": "c_ctor_shadow"
+                                                "stmt0": "f_ctor",
+                                                "stmt1": "f_ctor",
+                                                "stmtc0": "c_ctor",
+                                                "stmtc1": "c_ctor"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv",
-                                                "stmt0": "lua_ctor_shadow_scalar",
-                                                "stmt1": "lua_ctor_shadow"
+                                                "stmt0": "lua_ctor_scalar",
+                                                "stmt1": "lua_ctor"
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
@@ -464,7 +464,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar_buf",
-                                                "stmt1": "c_ctor_shadow_scalar"
+                                                "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -526,16 +526,16 @@
                                             "c_var": "self",
                                             "function_name": "dtor",
                                             "shadow_var": "SHadow_self",
-                                            "stmt0": "f_dtor_shadow",
+                                            "stmt0": "f_dtor",
                                             "stmt1": "f_default",
-                                            "stmtc0": "c_dtor_shadow",
-                                            "stmtc1": "c_dtor_shadow",
+                                            "stmtc0": "c_dtor",
+                                            "stmtc1": "c_dtor",
                                             "underscore_name": "dtor"
                                         },
                                         "zz_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_dtor_shadow_scalar",
-                                                "stmt1": "lua_dtor_shadow"
+                                                "stmt0": "lua_dtor_scalar",
+                                                "stmt1": "lua_dtor"
                                             }
                                         }
                                     },
@@ -2149,7 +2149,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar",
-                                                "stmt1": "c_ctor_shadow_scalar"
+                                                "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2159,18 +2159,18 @@
                                                 "f_type": "type(exclass2)",
                                                 "f_var": "SHT_rv",
                                                 "sh_type": "SH_TYPE_OTHER",
-                                                "stmt0": "f_ctor_shadow",
-                                                "stmt1": "f_ctor_shadow",
-                                                "stmtc0": "c_ctor_shadow",
-                                                "stmtc1": "c_ctor_shadow"
+                                                "stmt0": "f_ctor",
+                                                "stmt1": "f_ctor",
+                                                "stmtc0": "c_ctor",
+                                                "stmtc1": "c_ctor"
                                             },
                                             "fmtl": {
                                                 "c_var": "static_cast<LUAc_constvoid *>(\tSHCXX_rv)",
                                                 "cxx_addr": "",
                                                 "cxx_member": "->",
                                                 "cxx_var": "SHCXX_rv",
-                                                "stmt0": "lua_ctor_shadow_scalar",
-                                                "stmt1": "lua_ctor_shadow"
+                                                "stmt0": "lua_ctor_scalar",
+                                                "stmt1": "lua_ctor"
                                             },
                                             "fmtpy": {
                                                 "PY_build_format": "O",
@@ -2317,7 +2317,7 @@
                                                 "sh_type": "SH_TYPE_OTHER",
                                                 "shadow_var": "SHadow_rv",
                                                 "stmt0": "c_ctor_shadow_scalar_buf",
-                                                "stmt1": "c_ctor_shadow_scalar"
+                                                "stmt1": "c_ctor"
                                             },
                                             "fmtf": {
                                                 "F_C_var": "SHT_rv",
@@ -2378,16 +2378,16 @@
                                             "c_var": "self",
                                             "function_name": "dtor",
                                             "shadow_var": "SHadow_self",
-                                            "stmt0": "f_dtor_shadow",
+                                            "stmt0": "f_dtor",
                                             "stmt1": "f_default",
-                                            "stmtc0": "c_dtor_shadow",
-                                            "stmtc1": "c_dtor_shadow",
+                                            "stmtc0": "c_dtor",
+                                            "stmtc1": "c_dtor",
                                             "underscore_name": "dtor"
                                         },
                                         "zz_fmtresult": {
                                             "fmtl": {
-                                                "stmt0": "lua_dtor_shadow_scalar",
-                                                "stmt1": "lua_dtor_shadow"
+                                                "stmt0": "lua_dtor_scalar",
+                                                "stmt1": "lua_dtor"
                                             }
                                         }
                                     },
