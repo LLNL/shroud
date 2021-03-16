@@ -589,8 +589,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int size +value
     ! Attrs:     +intent(in)
@@ -631,8 +630,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int & size +intent(out)
     ! Attrs:     +intent(out)
@@ -655,8 +653,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine arraywrapper_allocate(obj)
         class(arraywrapper) :: obj
         ! splicer begin class.ArrayWrapper.method.allocate
@@ -754,8 +751,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -791,8 +787,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -828,8 +823,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const double * * array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -865,8 +859,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  const double * & array +dimension(isize)+intent(out)
     ! Attrs:     +deref(pointer)+intent(out)
@@ -901,8 +894,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * * array +intent(out)
     ! Attrs:     +intent(out)
@@ -924,8 +916,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  void * & array +intent(out)
     ! Attrs:     +intent(out)

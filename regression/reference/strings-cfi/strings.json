@@ -132,8 +132,8 @@
                     "function_name": "passChar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_char"
                 }
             },
@@ -237,8 +237,8 @@
                     "function_name": "passCharForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_char_force"
                 }
             },
@@ -524,8 +524,8 @@
                     "function_name": "passCharPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_char_ptr"
                 }
             },
@@ -821,8 +821,8 @@
                     "function_name": "passCharPtrInOut",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_char_ptr_in_out"
                 }
             },
@@ -1639,8 +1639,8 @@
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_char_ptr3"
                 }
             },
@@ -2335,8 +2335,8 @@
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_const_string_as_arg"
                 }
             },
@@ -3196,8 +3196,8 @@
                     "function_suffix": "",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_const_string_ref_as_arg"
                 }
             },
@@ -4568,8 +4568,8 @@
                     "function_name": "acceptStringConstReference",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_const_reference"
                 }
             },
@@ -4802,8 +4802,8 @@
                     "function_name": "acceptStringReferenceOut",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_reference_out"
                 }
             },
@@ -5034,8 +5034,8 @@
                     "function_name": "acceptStringReference",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_reference"
                 }
             },
@@ -5265,8 +5265,8 @@
                     "function_name": "acceptStringPointerConst",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_pointer_const"
                 }
             },
@@ -5494,8 +5494,8 @@
                     "function_name": "acceptStringPointer",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_pointer"
                 }
             },
@@ -5726,8 +5726,8 @@
                     "function_name": "fetchStringPointer",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fetch_string_pointer"
                 }
             },
@@ -6020,8 +6020,8 @@
                     "function_name": "acceptStringPointerLen",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_string_pointer_len"
                 }
             },
@@ -6369,8 +6369,8 @@
                     "function_name": "fetchStringPointerLen",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fetch_string_pointer_len"
                 }
             },
@@ -7124,8 +7124,8 @@
                     "function_name": "explicit1",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "explicit1"
                 }
             },
@@ -7333,8 +7333,8 @@
                     "function_name": "explicit2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "explicit2"
                 }
             },
@@ -7567,8 +7567,8 @@
                     "function_name": "CpassChar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "cpass_char"
                 }
             },
@@ -7813,8 +7813,8 @@
                     "function_name": "CpassCharPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "cpass_char_ptr"
                 }
             },
@@ -8173,8 +8173,8 @@
                     "function_name": "PostDeclare",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "post_declare"
                 }
             },

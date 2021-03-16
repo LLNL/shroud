@@ -69,8 +69,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  CustomType arg1 +value
     ! Attrs:     +intent(in)

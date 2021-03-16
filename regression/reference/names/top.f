@@ -539,8 +539,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  char * name +len(worklen)+len_trim(worktrim)
     ! Attrs:     +intent(inout)
@@ -562,8 +561,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine testnames_function1()
         ! splicer begin function.function1
         call yyy_tes_function1()
@@ -575,8 +573,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine f_name_special()
         ! splicer begin function.function2
         call f_c_name_special()
@@ -588,8 +585,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int i +value
     ! Attrs:     +intent(in)
@@ -611,8 +607,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  long i +value
     ! Attrs:     +intent(in)
@@ -662,8 +657,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine testnames_fiveplus()
         ! splicer begin function.fiveplus
         call yyy_tes_fiveplus()
@@ -676,8 +670,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  std::string & name
     ! Attrs:     +intent(inout)
@@ -713,8 +706,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int arg1 +value
     ! Attrs:     +intent(in)
@@ -750,8 +742,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  float arg1 +value
     ! Attrs:     +intent(in)

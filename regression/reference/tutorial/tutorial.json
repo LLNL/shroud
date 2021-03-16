@@ -123,8 +123,8 @@
                     "function_name": "NoReturnNoArguments",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "no_return_no_arguments"
                 },
                 "zz_fmtresult": {
@@ -1466,8 +1466,8 @@
                     "function_suffix": "_from_name",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "overloaded_function"
                 },
                 "zz_fmtresult": {
@@ -1711,8 +1711,8 @@
                     "function_suffix": "_from_index",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "overloaded_function"
                 },
                 "zz_fmtresult": {
@@ -1965,8 +1965,8 @@
                     "function_name": "TemplateArgument",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "template_suffix": "_int",
                     "underscore_name": "template_argument"
                 },
@@ -2145,8 +2145,8 @@
                     "function_name": "TemplateArgument",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "template_suffix": "_double",
                     "underscore_name": "template_argument"
                 },
@@ -2501,8 +2501,8 @@
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fortran_generic_overloaded"
                 },
                 "zz_fmtresult": {
@@ -2873,8 +2873,8 @@
                     "function_suffix": "_1_float",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fortran_generic_overloaded"
                 }
             },
@@ -3112,8 +3112,8 @@
                     "function_suffix": "_1_double",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fortran_generic_overloaded"
                 }
             },
@@ -5650,8 +5650,8 @@
                     "function_name": "getMinMax",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_min_max"
                 }
             },

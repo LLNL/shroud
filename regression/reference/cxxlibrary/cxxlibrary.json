@@ -1078,8 +1078,8 @@
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "default_args_in_out"
                 }
             },
@@ -1426,8 +1426,8 @@
                     "function_suffix": "_1",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "default_args_in_out"
                 }
             }
@@ -2012,8 +2012,8 @@
                             "function_name": "passStructByReferenceInout",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "pass_struct_by_reference_inout"
                         }
                     },
@@ -2140,8 +2140,8 @@
                             "function_name": "passStructByReferenceOut",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "pass_struct_by_reference_out"
                         }
                     }

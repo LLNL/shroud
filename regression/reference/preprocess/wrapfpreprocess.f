@@ -212,8 +212,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine user1_method1(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method1
@@ -227,8 +226,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine user1_method2(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method2
@@ -244,8 +242,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine user1_method3def_0(obj)
         class(user1) :: obj
         ! splicer begin class.User1.method.method3def_0
@@ -260,8 +257,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int i=0 +value
     ! Attrs:     +intent(in)
@@ -313,8 +309,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     subroutine user2_exfunc_0(obj)
         class(user2) :: obj
         ! splicer begin class.User2.method.exfunc_0
@@ -329,8 +324,7 @@ contains
     ! Attrs:     +intent(subroutine)
     ! Exact:     f_subroutine
     ! Attrs:     +intent(subroutine)
-    ! Requested: c
-    ! Match:     c_default
+    ! Exact:     c_subroutine
     ! ----------------------------------------
     ! Argument:  int flag +value
     ! Attrs:     +intent(in)

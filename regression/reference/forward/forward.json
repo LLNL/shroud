@@ -373,8 +373,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "func1"
                         },
                         "zz_fmtresult": {
@@ -529,8 +529,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "accept_class3"
                         },
                         "zz_fmtresult": {

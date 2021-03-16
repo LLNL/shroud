@@ -812,8 +812,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_x1"
                         }
                     },
@@ -1010,8 +1010,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_y1"
                         }
                     }
@@ -1301,8 +1301,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_x1"
                         }
                     },
@@ -1499,8 +1499,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_y1"
                         }
                     },
@@ -1697,8 +1697,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_z1"
                         }
                     }
@@ -2779,8 +2779,8 @@
                     "function_name": "acceptStructOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_struct_out_ptr"
                 }
             },
@@ -2881,8 +2881,8 @@
                     "function_name": "acceptStructInOutPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "accept_struct_in_out_ptr"
                 }
             },

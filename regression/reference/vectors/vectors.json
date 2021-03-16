@@ -315,8 +315,8 @@
                     "function_name": "vector_iota_out",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out"
                 }
             },
@@ -542,8 +542,8 @@
                     "function_name": "vector_iota_out_with_num",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num"
                 }
             },
@@ -788,8 +788,8 @@
                     "function_name": "vector_iota_out_with_num2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_with_num2"
                 }
             },
@@ -1010,8 +1010,8 @@
                     "function_name": "vector_iota_out_alloc",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_alloc"
                 }
             },
@@ -1217,8 +1217,8 @@
                     "function_name": "vector_iota_inout_alloc",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_inout_alloc"
                 }
             },
@@ -1420,8 +1420,8 @@
                     "function_name": "vector_increment",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_increment"
                 }
             },
@@ -1619,8 +1619,8 @@
                     "function_name": "vector_iota_out_d",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "vector_iota_out_d"
                 }
             },

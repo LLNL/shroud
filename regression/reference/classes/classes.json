@@ -862,8 +862,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "return_this"
                         }
                     },
@@ -2045,8 +2045,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_test"
                         }
                     }
@@ -3358,8 +3358,8 @@
                     "function_name": "passClassByValue",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "pass_class_by_value"
                 }
             },
@@ -4184,8 +4184,8 @@
                     "function_name": "set_global_flag",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "set_global_flag"
                 },
                 "zz_fmtresult": {

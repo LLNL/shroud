@@ -337,8 +337,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "template_suffix": "_double",
                             "underscore_name": "nested"
                         }
@@ -574,8 +574,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_npts"
                         }
                     },
@@ -808,8 +808,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_value"
                         }
                     },
@@ -1168,8 +1168,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_npts"
                         }
                     },
@@ -1402,8 +1402,8 @@
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
                             "stmt1": "f_subroutine",
-                            "stmtc0": "c",
-                            "stmtc1": "c_default",
+                            "stmtc0": "c_subroutine",
+                            "stmtc1": "c_subroutine",
                             "underscore_name": "set_value"
                         }
                     },
@@ -2023,8 +2023,8 @@
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "template_suffix": "_0",
                     "underscore_name": "function_tu"
                 }
@@ -2268,8 +2268,8 @@
                     "function_name": "FunctionTU",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "template_suffix": "_1",
                     "underscore_name": "function_tu"
                 }
@@ -2960,8 +2960,8 @@
                                     "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "push_back"
                                 }
                             },
@@ -3732,8 +3732,8 @@
                                     "shadow_var": "SHadow_self",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "push_back"
                                 }
                             },

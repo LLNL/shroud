@@ -109,8 +109,8 @@
                     "function_name": "intargs_in",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "intargs_in"
                 }
             },
@@ -212,8 +212,8 @@
                     "function_name": "intargs_inout",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "intargs_inout"
                 }
             },
@@ -315,8 +315,8 @@
                     "function_name": "intargs_out",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "intargs_out"
                 }
             },
@@ -522,8 +522,8 @@
                     "function_name": "intargs",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "intargs"
                 }
             },
@@ -751,8 +751,8 @@
                     "function_name": "cos_doubles",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "cos_doubles"
                 }
             },
@@ -980,8 +980,8 @@
                     "function_name": "truncate_to_int",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "truncate_to_int"
                 }
             },
@@ -1150,8 +1150,8 @@
                     "function_name": "get_values",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_values"
                 }
             },
@@ -1330,8 +1330,8 @@
                     "function_name": "get_values2",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_values2"
                 }
             },
@@ -1494,8 +1494,8 @@
                     "function_name": "iota_allocatable",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "iota_allocatable"
                 }
             },
@@ -1656,8 +1656,8 @@
                     "function_name": "iota_dimension",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "iota_dimension"
                 }
             },
@@ -1866,8 +1866,8 @@
                     "function_name": "Sum",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "sum"
                 }
             },
@@ -1982,8 +1982,8 @@
                     "function_name": "fillIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fill_int_array"
                 }
             },
@@ -2140,8 +2140,8 @@
                     "function_name": "incrementIntArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "increment_int_array"
                 }
             },
@@ -2294,8 +2294,8 @@
                     "function_name": "fill_with_zeros",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fill_with_zeros"
                 }
             },
@@ -2852,8 +2852,8 @@
                     "function_name": "setGlobalInt",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "set_global_int"
                 }
             },
@@ -3033,8 +3033,8 @@
                     "function_name": "getPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_scalar"
                 }
             },
@@ -3251,8 +3251,8 @@
                     "function_name": "getPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_fixed_array"
                 }
             },
@@ -3528,8 +3528,8 @@
                     "function_name": "getPtrToDynamicArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_dynamic_array"
                 }
             },
@@ -3816,8 +3816,8 @@
                     "function_name": "getPtrToFuncArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_func_array"
                 }
             },
@@ -4043,8 +4043,8 @@
                     "function_name": "getPtrToConstScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_const_scalar"
                 }
             },
@@ -4260,8 +4260,8 @@
                     "function_name": "getPtrToFixedConstArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_fixed_const_array"
                 }
             },
@@ -4533,8 +4533,8 @@
                     "function_name": "getPtrToDynamicConstArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_ptr_to_dynamic_const_array"
                 }
             },
@@ -4819,8 +4819,8 @@
                     "function_name": "getRawPtrToScalar",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_raw_ptr_to_scalar"
                 }
             },
@@ -4933,8 +4933,8 @@
                     "function_name": "getRawPtrToScalarForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_raw_ptr_to_scalar_force"
                 }
             },
@@ -5044,8 +5044,8 @@
                     "function_name": "getRawPtrToFixedArray",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_raw_ptr_to_fixed_array"
                 }
             },
@@ -5158,8 +5158,8 @@
                     "function_name": "getRawPtrToFixedArrayForce",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_raw_ptr_to_fixed_array_force"
                 }
             },
@@ -5272,8 +5272,8 @@
                     "function_name": "getRawPtrToInt2d",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "get_raw_ptr_to_int2d"
                 }
             },
@@ -5536,8 +5536,8 @@
                     "function_name": "DimensionIn",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "dimension_in"
                 }
             },
@@ -5909,8 +5909,8 @@
                     "function_name": "fetchVoidPtr",
                     "stmt0": "f_subroutine",
                     "stmt1": "f_subroutine",
-                    "stmtc0": "c",
-                    "stmtc1": "c_default",
+                    "stmtc0": "c_subroutine",
+                    "stmtc1": "c_subroutine",
                     "underscore_name": "fetch_void_ptr"
                 }
             },

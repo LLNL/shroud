@@ -1656,7 +1656,7 @@ rv = .false.
                 c_stmts = ["c", "dtor"]
             else:
                 f_stmts = ["f", "subroutine"]
-                c_stmts = ["c"]
+                c_stmts = ["c", "subroutine"]
         else:
             fmt_result0 = node._fmtresult
             fmt_result = fmt_result0.setdefault("fmtf", util.Scope(fmt_func))

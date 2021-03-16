@@ -1239,8 +1239,8 @@
                                             "function_suffix": "",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "get_name_arg"
                                         }
                                     },
@@ -1900,8 +1900,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "splicer_special"
                                         },
                                         "zz_fmtresult": {
@@ -3981,8 +3981,8 @@
                                             "function_suffix": "_0_int",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "declare"
                                         }
                                     },
@@ -4062,8 +4062,8 @@
                                             "function_suffix": "_0_long",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "declare"
                                         }
                                     },
@@ -4654,8 +4654,8 @@
                                             "function_suffix": "_1_int",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "declare"
                                         }
                                     },
@@ -4743,8 +4743,8 @@
                                             "function_suffix": "_1_long",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "declare"
                                         }
                                     },
@@ -4799,8 +4799,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "underscore_name": "destroyall"
                                         },
                                         "zz_fmtresult": {
@@ -5222,8 +5222,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "template_suffix": "_int",
                                             "underscore_name": "set_value"
                                         },
@@ -5425,8 +5425,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "template_suffix": "_long",
                                             "underscore_name": "set_value"
                                         },
@@ -5628,8 +5628,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "template_suffix": "_float",
                                             "underscore_name": "set_value"
                                         },
@@ -5837,8 +5837,8 @@
                                             "shadow_var": "SHadow_self",
                                             "stmt0": "f_subroutine",
                                             "stmt1": "f_subroutine",
-                                            "stmtc0": "c",
-                                            "stmtc1": "c_default",
+                                            "stmtc0": "c_subroutine",
+                                            "stmtc1": "c_subroutine",
                                             "template_suffix": "_double",
                                             "underscore_name": "set_value"
                                         },
@@ -6322,8 +6322,8 @@
                                     "function_name": "local_function1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "local_function1"
                                 },
                                 "zz_fmtresult": {
@@ -6911,8 +6911,8 @@
                                     "function_suffix": "",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "test_names"
                                 },
                                 "zz_fmtresult": {
@@ -7224,8 +7224,8 @@
                                     "function_suffix": "_flag",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "test_names"
                                 },
                                 "zz_fmtresult": {
@@ -7432,8 +7432,8 @@
                                     "function_suffix": "_0",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "testoptional"
                                 }
                             },
@@ -7538,8 +7538,8 @@
                                     "function_suffix": "_1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "testoptional"
                                 }
                             },
@@ -7771,8 +7771,8 @@
                                     "function_suffix": "_2",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "testoptional"
                                 },
                                 "zz_fmtresult": {
@@ -8028,8 +8028,8 @@
                                     "function_suffix": "_mpi",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "testmpi"
                                 },
                                 "zz_fmtresult": {
@@ -8084,8 +8084,8 @@
                                     "function_suffix": "_serial",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "testmpi"
                                 },
                                 "zz_fmtresult": {
@@ -8231,8 +8231,8 @@
                                     "function_name": "FuncPtr1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "func_ptr1"
                                 },
                                 "zz_fmtresult": {
@@ -8381,8 +8381,8 @@
                                     "function_name": "FuncPtr2",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "func_ptr2"
                                 },
                                 "zz_fmtresult": {
@@ -8554,8 +8554,8 @@
                                     "function_name": "FuncPtr3",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "func_ptr3"
                                 },
                                 "zz_fmtresult": {
@@ -8691,8 +8691,8 @@
                                     "function_name": "FuncPtr4",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "func_ptr4"
                                 }
                             },
@@ -8960,8 +8960,8 @@
                                     "function_name": "FuncPtr5",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "func_ptr5"
                                 },
                                 "zz_fmtresult": {
@@ -9893,8 +9893,8 @@
                                     "function_name": "verylongfunctionname1",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "verylongfunctionname1"
                                 },
                                 "zz_fmtresult": {
@@ -11176,8 +11176,8 @@
                                     "function_name": "cos_doubles",
                                     "stmt0": "f_subroutine",
                                     "stmt1": "f_subroutine",
-                                    "stmtc0": "c",
-                                    "stmtc1": "c_default",
+                                    "stmtc0": "c_subroutine",
+                                    "stmtc1": "c_subroutine",
                                     "underscore_name": "cos_doubles"
                                 },
                                 "zz_fmtresult": {
