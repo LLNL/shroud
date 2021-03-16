@@ -18,8 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void Worker1
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void TES_capi_worker1(void)
 {
     // splicer begin namespace.CAPI.function.worker1

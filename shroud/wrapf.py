@@ -1187,7 +1187,7 @@ rv = .false.
 
         sgroup = result_typemap.sgroup
         spointer = ast.get_indirect_stmt()
-        c_stmts = ["c", sgroup, spointer, "result", node.generated_suffix,
+        c_stmts = ["c", "function", sgroup, spointer, node.generated_suffix,
                    ast.metaattrs["deref"]]
         c_result_blk = statements.lookup_fc_stmts(c_stmts)
         c_result_blk = statements.lookup_local_stmts(
@@ -1247,10 +1247,10 @@ rv = .false.
 
             spointer = arg.get_indirect_stmt()
             if meta["is_result"]:
-                c_stmts = ["c", sgroup, spointer, "result",
+                c_stmts = ["c", "function", sgroup, spointer,
                            generated_suffix, deref_attr]
             else:
-                c_stmts = ["c", sgroup, spointer, intent,
+                c_stmts = ["c", intent, sgroup, spointer,
                            arg.stmts_suffix, deref_attr, cdesc]
             c_stmts.extend(specialize)
             c_intent_blk = statements.lookup_fc_stmts(c_stmts)
@@ -1646,8 +1646,8 @@ rv = .false.
         if subprogram == "subroutine":
             fmt_result = fmt_func
             if is_dtor:
-                f_stmts = ["f", "shadow", "dtor"]
-                c_stmts = ["c", "shadow", "dtor"]
+                f_stmts = ["f", "dtor", "shadow"]
+                c_stmts = ["c", "dtor", "shadow"]
             else:
                 f_stmts = ["f", "subroutine"]
                 c_stmts = ["c"]
@@ -1663,13 +1663,13 @@ rv = .false.
             sintent = ast.metaattrs["intent"]
             return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
-                f_stmts = ["f", "shadow", sintent]
-                c_stmts = ["c", "shadow", sintent]
+                f_stmts = ["f", sintent, "shadow"]
+                c_stmts = ["c", sintent, "shadow"]
             else:
-                sintent = "result"
-                f_stmts = ["f", sgroup, spointer, sintent, generated_suffix,
+                sintent = "function"
+                f_stmts = ["f", sintent, sgroup, spointer, generated_suffix,
                            return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sgroup, spointer, sintent, generated_suffix,
+                c_stmts = ["c", sintent, sgroup, spointer, generated_suffix,
                            return_deref_attr]
         fmt_func.F_subprogram = subprogram
 
@@ -1810,14 +1810,14 @@ rv = .false.
             f_deref_attr = f_meta["deref"]
             if c_meta["is_result"]:
                 # This argument is the C function result
-                c_stmts = ["c", c_sgroup, c_spointer, "result", generated_suffix, c_deref_attr]
-                f_stmts = ["f", f_sgroup, f_spointer, "result", generated_suffix, f_deref_attr]
+                c_stmts = ["c", "function", c_sgroup, c_spointer, generated_suffix, c_deref_attr]
+                f_stmts = ["f", "function", f_sgroup, f_spointer, generated_suffix, f_deref_attr]
 
             else:
                 # Pass c_arg.stmts_suffix to both Fortran and C (i.e. "buf").
                 # Fortran need to know how the C function is being called.
-                c_stmts = ["c", c_sgroup, c_spointer, intent, c_arg.stmts_suffix, f_deref_attr, cdesc]
-                f_stmts = ["f", f_sgroup, f_spointer, intent, c_arg.stmts_suffix, f_deref_attr, cdesc]
+                c_stmts = ["c", intent, c_sgroup, c_spointer, c_arg.stmts_suffix, f_deref_attr, cdesc]
+                f_stmts = ["f", intent, f_sgroup, f_spointer, c_arg.stmts_suffix, f_deref_attr, cdesc]
             c_stmts.extend(specialize)
             f_stmts.extend(specialize)
 

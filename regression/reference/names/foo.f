@@ -54,7 +54,7 @@ module name_module
         ! ----------------------------------------
         ! Function:  Names +name(defaultctor)
         ! Attrs:     +intent(ctor)
-        ! Exact:     c_shadow_scalar_result
+        ! Exact:     c_function_shadow_scalar
         function xxx_tes_names_defaultctor(SHT_crv) &
                 result(SHT_rv) &
                 bind(C, name="XXX_TES_ns0_Names_defaultctor")
@@ -67,7 +67,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine xxx_tes_names_method1(self) &
                 bind(C, name="XXX_TES_ns0_Names_method1")
@@ -78,7 +78,7 @@ module name_module
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine xxx_tes_names_method2(self2) &
                 bind(C, name="XXX_TES_ns0_Names_method2")
@@ -103,9 +103,9 @@ contains
     ! ----------------------------------------
     ! Function:  Names +name(defaultctor)
     ! Attrs:     +intent(ctor)
-    ! Exact:     f_shadow_ctor
+    ! Exact:     f_ctor_shadow
     ! Attrs:     +intent(ctor)
-    ! Exact:     c_shadow_ctor
+    ! Exact:     c_ctor_shadow
     function names_defaultctor() &
             result(SHT_rv)
         use iso_c_binding, only : C_PTR
@@ -118,8 +118,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     subroutine names_method1(obj)
@@ -131,8 +130,7 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     subroutine names_method2(obj2)

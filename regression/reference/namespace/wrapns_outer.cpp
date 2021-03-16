@@ -21,8 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void One
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void NS_outer_one(void)
 {
     // splicer begin namespace.outer.function.one

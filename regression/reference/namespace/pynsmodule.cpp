@@ -35,8 +35,8 @@ PyObject *PY_init_ns_nswork(void);
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled
-// Attrs:     +deref(allocatable)+intent(result)
-// Exact:     py_string_&_result
+// Attrs:     +deref(allocatable)+intent(function)
+// Exact:     py_function_string_&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

@@ -24,7 +24,7 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker3
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine inner3_worker3() &
                 bind(C, name="WWW_inner3_worker3")
@@ -33,7 +33,7 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine worker() &
                 bind(C, name="WWW_worker")
@@ -45,7 +45,7 @@ module wrapped_mod
 
         ! ----------------------------------------
         ! Function:  void worker4
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine inner4_worker4() &
                 bind(C, name="WWW_inner4_worker4")

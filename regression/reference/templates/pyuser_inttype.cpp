@@ -47,12 +47,12 @@ PY_user_int_tp_del (PY_user_int *self)
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_nested_double__doc__[] =
 "documentation"

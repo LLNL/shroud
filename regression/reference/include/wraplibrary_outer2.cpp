@@ -17,8 +17,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void outer_func
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void LIB_outer2_outer_func(void)
 {
     outer2::outer_func();

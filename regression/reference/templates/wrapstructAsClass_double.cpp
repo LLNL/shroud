@@ -22,7 +22,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +intent(ctor)
-// Exact:     c_shadow_scalar_ctor
+// Exact:     c_ctor_shadow_scalar
 TEM_structAsClass_double * TEM_structAsClass_double_ctor(
     TEM_structAsClass_double * SHadow_rv)
 {
@@ -36,12 +36,11 @@ TEM_structAsClass_double * TEM_structAsClass_double_ctor(
 
 // ----------------------------------------
 // Function:  void set_npts
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
     int n)
@@ -55,8 +54,8 @@ void TEM_structAsClass_double_set_npts(TEM_structAsClass_double * self,
 
 // ----------------------------------------
 // Function:  int get_npts
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 {
@@ -70,12 +69,11 @@ int TEM_structAsClass_double_get_npts(TEM_structAsClass_double * self)
 
 // ----------------------------------------
 // Function:  void set_value
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  double v +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
     double v)
@@ -89,8 +87,8 @@ void TEM_structAsClass_double_set_value(TEM_structAsClass_double * self,
 
 // ----------------------------------------
 // Function:  double get_value
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 double TEM_structAsClass_double_get_value(
     TEM_structAsClass_double * self)

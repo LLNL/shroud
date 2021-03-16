@@ -48,7 +48,7 @@
                     "PY_name_impl": "PY_worker3",
                     "function_name": "worker3",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "worker3"
@@ -92,7 +92,7 @@
                     "PY_name_impl": "PY_worker",
                     "function_name": "worker",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "worker"
@@ -142,7 +142,7 @@
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "worker"
@@ -220,7 +220,7 @@
                             "PY_name_impl": "PY_worker",
                             "function_name": "worker",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "worker"
@@ -298,7 +298,7 @@
                             "PY_name_impl": "PY_worker4",
                             "function_name": "worker4",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "worker4"

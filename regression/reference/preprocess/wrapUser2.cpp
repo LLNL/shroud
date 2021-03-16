@@ -23,8 +23,7 @@ extern "C" {
 #ifdef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void PRE_User2_exfunc_0(PRE_User2 * self)
 {
     User2 *SH_this = static_cast<User2 *>(self->addr);
@@ -37,12 +36,11 @@ void PRE_User2_exfunc_0(PRE_User2 * self)
 #ifndef USE_CLASS3_A
 // ----------------------------------------
 // Function:  void exfunc
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void PRE_User2_exfunc_1(PRE_User2 * self, int flag)
 {

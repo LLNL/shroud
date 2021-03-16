@@ -53,8 +53,8 @@ declarations:
   - decl: Class1 * returnThisBuffer(std::string & name +intent(in), bool flag);
     # do not set return_this
     # passing in a string will cause node.generated_suffix to be set to '_buf'.
-    # but result is not bufferified so look for c_statements['result'], not
-    # 'result_buf'.
+    # but result is not bufferified so look for c_statements['function'], not
+    # 'function_buf'.
 
     # The bool argument tests that wrapf.py does not use _generated_suffix
     # since it only applies to the generated C function.

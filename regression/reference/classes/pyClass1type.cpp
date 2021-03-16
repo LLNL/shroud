@@ -65,7 +65,7 @@ PY_Class1_tp_init_default(
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static int
 PY_Class1_tp_init_flag(
@@ -95,8 +95,8 @@ PY_Class1_tp_init_flag(
 
 // ----------------------------------------
 // Function:  int Method1
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_Method1__doc__[] =
 "documentation"
@@ -126,13 +126,13 @@ PY_Method1(
 
 // ----------------------------------------
 // Function:  bool equivalent
-// Attrs:     +intent(result)
-// Requested: py_bool_scalar_result
-// Match:     py_bool_result
+// Attrs:     +intent(function)
+// Requested: py_function_bool_scalar
+// Match:     py_function_bool
 // ----------------------------------------
 // Argument:  const Class1 & obj2
 // Attrs:     +intent(in)
-// Exact:     py_shadow_&_in
+// Exact:     py_in_shadow_&
 static char PY_equivalent__doc__[] =
 "documentation"
 ;
@@ -177,8 +177,8 @@ fail:
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +intent(result)
-// Exact:     py_shadow_*_result
+// Attrs:     +intent(function)
+// Exact:     py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -206,8 +206,8 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  const std::string & getName
-// Attrs:     +deref(allocatable)+intent(result)
-// Exact:     py_string_&_result
+// Attrs:     +deref(allocatable)+intent(function)
+// Exact:     py_function_string_&
 static char PY_getName__doc__[] =
 "documentation"
 ;
@@ -237,13 +237,13 @@ PY_getName(
 
 // ----------------------------------------
 // Function:  DIRECTION directionFunc
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"

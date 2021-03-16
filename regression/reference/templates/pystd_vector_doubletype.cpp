@@ -68,7 +68,7 @@ PY_vector_double_tp_init(
 // ----------------------------------------
 // Argument:  const double & value +intent(in)
 // Attrs:     +intent(in)
-// Exact:     py_native_&_in
+// Exact:     py_in_native_&
 static char PY_push_back__doc__[] =
 "documentation"
 ;
@@ -96,12 +96,12 @@ PY_push_back(
 
 // ----------------------------------------
 // Function:  double & at
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_&_result_pointer_numpy
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_&_pointer_numpy
 // ----------------------------------------
 // Argument:  size_type n +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_at__doc__[] =
 "documentation"

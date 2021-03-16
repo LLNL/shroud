@@ -81,12 +81,12 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void Rank2In
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
         ! Attrs:     +intent(in)
-        ! Exact:     c_native_*_in_cdesc
+        ! Exact:     c_in_native_*_cdesc
         subroutine c_rank2_in(Darg) &
                 bind(C, name="CDE_rank2_in")
             import :: CDE_SHROUD_array
@@ -96,17 +96,16 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar1
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)
         ! Attrs:     +intent(in)
-        ! Exact:     c_string_&_in
+        ! Exact:     c_in_string_&
         ! ----------------------------------------
         ! Argument:  void * value +cdesc+context(Dvalue)+intent(out)+rank(0)+value
         ! Attrs:     +intent(out)
-        ! Requested: c_void_*_out_cdesc
-        ! Match:     c_void_*_cdesc
+        ! Exact:     c_out_void_*_cdesc
         subroutine c_get_scalar1(name, Dvalue) &
                 bind(C, name="CDE_get_scalar1")
             use iso_c_binding, only : C_CHAR
@@ -118,16 +117,16 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar1
-        ! Requested: c_void_scalar_result_buf
+        ! Requested: c_function_void_scalar_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
         ! Attrs:     +intent(in)
-        ! Exact:     c_string_&_in_buf
+        ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
         ! Attrs:     +intent(out)
-        ! Exact:     c_native_*_out_cdesc
+        ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_0_bufferify(name, Lname, Dvalue) &
                 bind(C, name="CDE_get_scalar1_0_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -140,16 +139,16 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar1
-        ! Requested: c_void_scalar_result_buf
+        ! Requested: c_function_void_scalar_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
         ! Attrs:     +intent(in)
-        ! Exact:     c_string_&_in_buf
+        ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
         ! Attrs:     +intent(out)
-        ! Exact:     c_native_*_out_cdesc
+        ! Exact:     c_out_native_*_cdesc
         subroutine c_get_scalar1_1_bufferify(name, Lname, Dvalue) &
                 bind(C, name="CDE_get_scalar1_1_bufferify")
             use iso_c_binding, only : C_CHAR, C_INT
@@ -162,8 +161,8 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  int getData
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_get_data_int() &
                 result(SHT_rv) &
@@ -175,8 +174,8 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  double getData
-        ! Attrs:     +intent(result)
-        ! Requested: c_native_scalar_result
+        ! Attrs:     +intent(function)
+        ! Requested: c_function_native_scalar
         ! Match:     c_default
         function c_get_data_double() &
                 result(SHT_rv) &
@@ -188,16 +187,16 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar2
-        ! Requested: c_void_scalar_result_buf
+        ! Requested: c_function_void_scalar_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
         ! Attrs:     +intent(in)
-        ! Exact:     c_string_&_in_buf
+        ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  int * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out
+        ! Requested: c_out_native_*
         ! Match:     c_default
         subroutine c_get_scalar2_0_bufferify(name, Lname, value) &
                 bind(C, name="CDE_get_scalar2_0_bufferify")
@@ -210,16 +209,16 @@ module cdesc_mod
 
         ! ----------------------------------------
         ! Function:  void GetScalar2
-        ! Requested: c_void_scalar_result_buf
+        ! Requested: c_function_void_scalar_buf
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  std::string & name +intent(in)+len_trim(Lname)
         ! Attrs:     +intent(in)
-        ! Exact:     c_string_&_in_buf
+        ! Exact:     c_in_string_&_buf
         ! ----------------------------------------
         ! Argument:  double * value +intent(out)
         ! Attrs:     +intent(out)
-        ! Requested: c_native_*_out
+        ! Requested: c_out_native_*
         ! Match:     c_default
         subroutine c_get_scalar2_1_bufferify(name, Lname, value) &
                 bind(C, name="CDE_get_scalar2_1_bufferify")
@@ -248,16 +247,15 @@ contains
 
     ! ----------------------------------------
     ! Function:  void Rank2In
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * arg +cdesc+context(Darg)+intent(in)+rank(2)
     ! Attrs:     +intent(in)
-    ! Exact:     f_native_*_in_cdesc
+    ! Exact:     f_in_native_*_cdesc
     ! Attrs:     +intent(in)
-    ! Exact:     c_native_*_in_cdesc
+    ! Exact:     c_in_native_*_cdesc
     subroutine rank2_in(arg)
         use iso_c_binding, only : C_INT, C_LOC
         integer(C_INT), intent(IN), target :: arg(:,:)
@@ -276,24 +274,23 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar1
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in_buf
+    ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in_buf
+    ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Attrs:     +intent(out)
-    ! Exact:     f_native_*_out_cdesc
+    ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +intent(out)
-    ! Exact:     c_native_*_out_cdesc
+    ! Exact:     c_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -323,24 +320,23 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar1
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in_buf
+    ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in_buf
+    ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +cdesc+context(Dvalue)+intent(out)+rank(0)
     ! Attrs:     +intent(out)
-    ! Exact:     f_native_*_out_cdesc
+    ! Exact:     f_out_native_*_cdesc
     ! Attrs:     +intent(out)
-    ! Exact:     c_native_*_out_cdesc
+    ! Exact:     c_out_native_*_cdesc
     !>
     !! Create several Fortran generic functions which call a single
     !! C wrapper that checkes the type of the Fortran argument
@@ -370,11 +366,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  int getData
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     !>
     !! Wrapper for function which is templated on the return value.
@@ -391,11 +387,11 @@ contains
     ! Generated by cxx_template
     ! ----------------------------------------
     ! Function:  double getData
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar
     ! Match:     c_default
     !>
     !! Wrapper for function which is templated on the return value.
@@ -412,25 +408,24 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar2
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in_buf
+    ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in_buf
+    ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  int * value +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_native_*_out
+    ! Requested: f_out_native_*
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.
@@ -451,25 +446,24 @@ contains
     ! Generated by fortran_generic - arg_to_buffer
     ! ----------------------------------------
     ! Function:  void GetScalar2
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::string & name +intent(in)
     ! Attrs:     +intent(in)
-    ! Requested: f_string_&_in_buf
+    ! Requested: f_in_string_&_buf
     ! Match:     f_default
     ! Argument:  std::string & name +intent(in)+len_trim(Lname)
     ! Attrs:     +intent(in)
-    ! Exact:     c_string_&_in_buf
+    ! Exact:     c_in_string_&_buf
     ! ----------------------------------------
     ! Argument:  double * value +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: f_native_*_out
+    ! Requested: f_out_native_*
     ! Match:     f_default
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     !>
     !! Call a C++ function which is templated on the return value.

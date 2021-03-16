@@ -271,7 +271,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Argument:  const int * arg
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in
+// Exact:     py_in_native_*
 static char PY_intargs_in__doc__[] =
 "documentation"
 ;
@@ -303,7 +303,7 @@ PY_intargs_in(
 // ----------------------------------------
 // Argument:  int * arg
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout
+// Exact:     py_inout_native_*
 static char PY_intargs_inout__doc__[] =
 "documentation"
 ;
@@ -343,7 +343,7 @@ PY_intargs_inout(
 // ----------------------------------------
 // Argument:  int * arg +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_intargs_out__doc__[] =
 "documentation"
 ;
@@ -373,16 +373,16 @@ PY_intargs_out(
 // ----------------------------------------
 // Argument:  const int argin +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * arginout +intent(inout)
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout
+// Exact:     py_inout_native_*
 // ----------------------------------------
 // Argument:  int * argout +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_intargs__doc__[] =
 "documentation"
 ;
@@ -422,11 +422,11 @@ PY_intargs(
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in_pointer_list
+// Exact:     py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  double * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_native_*_out_allocatable_list
+// Exact:     py_out_native_*_allocatable_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default
@@ -503,11 +503,11 @@ fail:
 // ----------------------------------------
 // Argument:  double * in +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in_pointer_list
+// Exact:     py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int * out +deref(allocatable)+dimension(size(in))+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_native_*_out_allocatable_list
+// Exact:     py_out_native_*_allocatable_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(in))+value
 // Exact:     py_default
@@ -585,11 +585,11 @@ fail:
 // ----------------------------------------
 // Argument:  int * nvalues +intent(OUT)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 // ----------------------------------------
 // Argument:  int * values +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out_pointer_list
+// Exact:     py_out_native_*_pointer_list
 static char PY_get_values__doc__[] =
 "documentation"
 ;
@@ -647,11 +647,11 @@ fail:
 // ----------------------------------------
 // Argument:  int * arg1 +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out_pointer_list
+// Exact:     py_out_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int * arg2 +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out_pointer_list
+// Exact:     py_out_native_*_pointer_list
 static char PY_get_values2__doc__[] =
 "documentation"
 ;
@@ -719,12 +719,12 @@ fail:
 // ----------------------------------------
 // Argument:  int nvar +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +deref(allocatable)+dimension(nvar)+intent(out)
 // Attrs:     +deref(allocatable)+intent(out)
-// Exact:     py_native_*_out_allocatable_list
+// Exact:     py_out_native_*_allocatable_list
 static char PY_iota_allocatable__doc__[] =
 "documentation"
 ;
@@ -779,12 +779,12 @@ fail:
 // ----------------------------------------
 // Argument:  int nvar +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  int * values +dimension(nvar)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out_pointer_list
+// Exact:     py_out_native_*_pointer_list
 static char PY_iota_dimension__doc__[] =
 "documentation"
 ;
@@ -842,11 +842,11 @@ fail:
 // ----------------------------------------
 // Argument:  const int * values +rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in_pointer_list
+// Exact:     py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int * result +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_Sum__doc__[] =
 "documentation"
 ;
@@ -906,7 +906,7 @@ fail:
 // ----------------------------------------
 // Argument:  int * out +dimension(3)+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out_pointer_list
+// Exact:     py_out_native_*_pointer_list
 static char PY_fillIntArray__doc__[] =
 "documentation"
 ;
@@ -956,7 +956,7 @@ fail:
 // ----------------------------------------
 // Argument:  int * array +intent(inout)+rank(1)
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout_pointer_list
+// Exact:     py_inout_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int sizein +implied(size(array))+value
 // Exact:     py_default
@@ -1022,7 +1022,7 @@ fail:
 // ----------------------------------------
 // Argument:  double * x +rank(1)
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout_pointer_list
+// Exact:     py_inout_native_*_pointer_list
 // ----------------------------------------
 // Argument:  int x_length +implied(size(x))+value
 // Exact:     py_default
@@ -1080,13 +1080,13 @@ fail:
 
 // ----------------------------------------
 // Function:  int accumulate
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const int * arr +rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_native_*_in_pointer_list
+// Exact:     py_in_native_*_pointer_list
 // ----------------------------------------
 // Argument:  size_t len +implied(size(arr))+value
 // Exact:     py_default
@@ -1144,13 +1144,13 @@ fail:
 
 // ----------------------------------------
 // Function:  int acceptCharArrayIn
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  char * * names +intent(in)+rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_char_**_in
+// Exact:     py_in_char_**
 static char PY_acceptCharArrayIn__doc__[] =
 "documentation"
 ;
@@ -1206,7 +1206,7 @@ fail:
 // ----------------------------------------
 // Argument:  int value +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_setGlobalInt__doc__[] =
 "documentation"
@@ -1235,8 +1235,8 @@ PY_setGlobalInt(
 
 // ----------------------------------------
 // Function:  int sumFixedArray
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_sumFixedArray__doc__[] =
 "documentation"
@@ -1269,7 +1269,7 @@ PY_sumFixedArray(
 // ----------------------------------------
 // Argument:  int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Exact:     py_native_**_out_pointer_list
+// Exact:     py_out_native_**_pointer_list
 static char PY_getPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -1307,11 +1307,11 @@ fail:
 // ----------------------------------------
 // Argument:  int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Exact:     py_native_**_out_pointer_list
+// Exact:     py_out_native_**_pointer_list
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_getPtrToDynamicArray__doc__[] =
 "documentation"
 ;
@@ -1351,7 +1351,7 @@ fail:
 // ----------------------------------------
 // Argument:  int * * count +dimension(getLen())+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Exact:     py_native_**_out_pointer_list
+// Exact:     py_out_native_**_pointer_list
 static char PY_getPtrToFuncArray__doc__[] =
 "documentation"
 ;
@@ -1391,7 +1391,7 @@ fail:
 // ----------------------------------------
 // Argument:  const int * * count +dimension(10)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Exact:     py_native_**_out_pointer_list
+// Exact:     py_out_native_**_pointer_list
 static char PY_getPtrToFixedConstArray__doc__[] =
 "documentation"
 ;
@@ -1426,11 +1426,11 @@ fail:
 // ----------------------------------------
 // Argument:  const int * * count +dimension(ncount)+intent(out)
 // Attrs:     +deref(pointer)+intent(out)
-// Exact:     py_native_**_out_pointer_list
+// Exact:     py_out_native_**_pointer_list
 // ----------------------------------------
 // Argument:  int * ncount +hidden+intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_getPtrToDynamicConstArray__doc__[] =
 "documentation"
 ;
@@ -1466,7 +1466,7 @@ fail:
 // ----------------------------------------
 // Argument:  int * * nitems +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Exact:     py_native_**_out_raw
+// Exact:     py_out_native_**_raw
 static char PY_getRawPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -1499,7 +1499,7 @@ PY_getRawPtrToScalar(
 // ----------------------------------------
 // Argument:  int * * count +deref(raw)+intent(out)
 // Attrs:     +deref(raw)+intent(out)
-// Exact:     py_native_**_out_raw
+// Exact:     py_out_native_**_raw
 static char PY_getRawPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -1530,12 +1530,12 @@ PY_getRawPtrToFixedArray(
 
 // ----------------------------------------
 // Function:  void * returnAddress1
-// Attrs:     +intent(result)
-// Exact:     py_void_*_result
+// Attrs:     +intent(function)
+// Exact:     py_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_returnAddress1__doc__[] =
 "documentation"
@@ -1569,12 +1569,12 @@ PY_returnAddress1(
 
 // ----------------------------------------
 // Function:  void * returnAddress2
-// Attrs:     +intent(result)
-// Exact:     py_void_*_result
+// Attrs:     +intent(function)
+// Exact:     py_function_void_*
 // ----------------------------------------
 // Argument:  int flag +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_returnAddress2__doc__[] =
 "documentation"
@@ -1612,7 +1612,7 @@ PY_returnAddress2(
 // ----------------------------------------
 // Argument:  void * * addr +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_void_**_out
+// Exact:     py_out_void_**
 static char PY_fetchVoidPtr__doc__[] =
 "documentation"
 ;
@@ -1638,8 +1638,8 @@ PY_fetchVoidPtr(
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToScalar
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_*_result_pointer_list
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_*_pointer_list
 static char PY_returnIntPtrToScalar__doc__[] =
 "documentation"
 ;
@@ -1669,8 +1669,8 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntPtrToFixedArray +dimension(10)
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_*_result_pointer_list
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_*_pointer_list
 static char PY_returnIntPtrToFixedArray__doc__[] =
 "documentation"
 ;
@@ -1700,8 +1700,8 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToConstScalar
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_*_result_pointer_list
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_*_pointer_list
 static char PY_returnIntPtrToConstScalar__doc__[] =
 "documentation"
 ;
@@ -1731,8 +1731,8 @@ fail:
 
 // ----------------------------------------
 // Function:  const int * returnIntPtrToFixedConstArray +dimension(10)
-// Attrs:     +deref(pointer)+intent(result)
-// Exact:     py_native_*_result_pointer_list
+// Attrs:     +deref(pointer)+intent(function)
+// Exact:     py_function_native_*_pointer_list
 static char PY_returnIntPtrToFixedConstArray__doc__[] =
 "documentation"
 ;
@@ -1762,8 +1762,8 @@ fail:
 
 // ----------------------------------------
 // Function:  int * returnIntScalar +deref(scalar)
-// Attrs:     +deref(scalar)+intent(result)
-// Requested: py_native_*_result_scalar
+// Attrs:     +deref(scalar)+intent(function)
+// Requested: py_function_native_*_scalar
 // Match:     py_default
 static char PY_returnIntScalar__doc__[] =
 "documentation"

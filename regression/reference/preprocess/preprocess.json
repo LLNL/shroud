@@ -50,7 +50,7 @@
                             "function_name": "method1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "method1"
@@ -100,7 +100,7 @@
                             "function_name": "method2",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "method2"
@@ -154,7 +154,7 @@
                             "function_suffix": "_0",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
@@ -225,7 +225,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_i",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -237,9 +237,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "i",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -257,7 +257,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_i",
                                     "size_var": "SHSize_i",
-                                    "stmt0": "py_native_scalar_in",
+                                    "stmt0": "py_in_native_scalar",
                                     "stmt1": "py_default",
                                     "value_var": "SHValue_i"
                                 }
@@ -288,7 +288,7 @@
                             "function_suffix": "_1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "method3def"
@@ -380,7 +380,7 @@
                             "function_suffix": "_0",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"
@@ -442,7 +442,7 @@
                                     "idtor": "0",
                                     "sh_type": "SH_TYPE_INT",
                                     "shadow_var": "SHadow_flag",
-                                    "stmt0": "c_native_scalar_in",
+                                    "stmt0": "c_in_native_scalar",
                                     "stmt1": "c_default"
                                 },
                                 "fmtf": {
@@ -454,9 +454,9 @@
                                     "f_type": "integer(C_INT)",
                                     "f_var": "flag",
                                     "sh_type": "SH_TYPE_INT",
-                                    "stmt0": "f_native_scalar_in",
+                                    "stmt0": "f_in_native_scalar",
                                     "stmt1": "f_default",
-                                    "stmtc0": "c_native_scalar_in",
+                                    "stmtc0": "c_in_native_scalar",
                                     "stmtc1": "c_default"
                                 },
                                 "fmtpy": {
@@ -474,7 +474,7 @@
                                     "numpy_type": "NPY_INT",
                                     "py_var": "SHPy_flag",
                                     "size_var": "SHSize_flag",
-                                    "stmt0": "py_native_scalar_in",
+                                    "stmt0": "py_in_native_scalar",
                                     "stmt1": "py_default",
                                     "value_var": "SHValue_flag"
                                 }
@@ -504,7 +504,7 @@
                             "function_suffix": "_1",
                             "shadow_var": "SHadow_self",
                             "stmt0": "f_subroutine",
-                            "stmt1": "f_default",
+                            "stmt1": "f_subroutine",
                             "stmtc0": "c",
                             "stmtc1": "c_default",
                             "underscore_name": "exfunc"

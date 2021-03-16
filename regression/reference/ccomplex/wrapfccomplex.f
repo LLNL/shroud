@@ -22,12 +22,12 @@ module ccomplex_mod
 
     ! ----------------------------------------
     ! Function:  void acceptFloatComplexInoutPtr
-    ! Requested: c_void_scalar_result
+    ! Requested: c_function_void_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  float complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout
+    ! Requested: c_inout_native_*
     ! Match:     c_default
     interface
         subroutine accept_float_complex_inout_ptr(arg1) &
@@ -40,12 +40,12 @@ module ccomplex_mod
 
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexInoutPtr
-    ! Requested: c_void_scalar_result
+    ! Requested: c_function_void_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double complex * arg1
     ! Attrs:     +intent(inout)
-    ! Requested: c_native_*_inout
+    ! Requested: c_inout_native_*
     ! Match:     c_default
     interface
         subroutine accept_double_complex_inout_ptr(arg1) &
@@ -58,12 +58,12 @@ module ccomplex_mod
 
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtr
-    ! Requested: c_void_scalar_result
+    ! Requested: c_function_void_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     interface
         subroutine accept_double_complex_out_ptr(arg1) &
@@ -76,17 +76,17 @@ module ccomplex_mod
 
     ! ----------------------------------------
     ! Function:  void acceptDoubleComplexOutPtrFlag
-    ! Requested: c_void_scalar_result
+    ! Requested: c_function_void_scalar
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  double complex * arg1 +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  int * flag +intent(out)
     ! Attrs:     +intent(out)
-    ! Requested: c_native_*_out
+    ! Requested: c_out_native_*
     ! Match:     c_default
     interface
         subroutine accept_double_complex_out_ptr_flag(arg1, flag) &

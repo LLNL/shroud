@@ -64,7 +64,7 @@ PY_Class2_tp_init(
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Attrs:     +intent(in)
-// Exact:     py_shadow_*_in
+// Exact:     py_in_shadow_*
 static char PY_func1__doc__[] =
 "documentation"
 ;
@@ -99,7 +99,7 @@ PY_func1(
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
-// Exact:     py_shadow_*_in
+// Exact:     py_in_shadow_*
 static char PY_acceptClass3__doc__[] =
 "documentation"
 ;

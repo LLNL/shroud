@@ -18,8 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void worker4
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void WWW_inner4_worker4(void)
 {
     // splicer begin namespace.inner4.function.worker4

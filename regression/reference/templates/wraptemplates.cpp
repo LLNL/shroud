@@ -24,8 +24,8 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  user<int> returnUserType
-// Attrs:     +intent(result)
-// Exact:     c_shadow_scalar_result
+// Attrs:     +intent(function)
+// Exact:     c_function_shadow_scalar
 TEM_user_int * TEM_return_user_type(TEM_user_int * SHadow_rv)
 {
     // splicer begin function.return_user_type
@@ -43,17 +43,16 @@ TEM_user_int * TEM_return_user_type(TEM_user_int * SHadow_rv)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  long arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_function_tu_0(int arg1, long arg2)
 {
@@ -68,17 +67,16 @@ void TEM_function_tu_0(int arg1, long arg2)
  */
 // ----------------------------------------
 // Function:  void FunctionTU
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  float arg1 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // ----------------------------------------
 // Argument:  double arg2 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_function_tu_1(float arg1, double arg2)
 {
@@ -93,8 +91,8 @@ void TEM_function_tu_1(float arg1, double arg2)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker1(void)
 {
@@ -110,8 +108,8 @@ int TEM_use_impl_worker_internal_ImplWorker1(void)
  */
 // ----------------------------------------
 // Function:  int UseImplWorker
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TEM_use_impl_worker_internal_ImplWorker2(void)
 {

@@ -43,12 +43,12 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method1
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  MPI_Comm comm +value
         ! Attrs:     +intent(in)
-        ! Requested: c_unknown_scalar_in
+        ! Requested: c_in_unknown_scalar
         ! Match:     c_default
         subroutine c_class2_method1(self, comm) &
                 bind(C, name="LIB_Class2_method1")
@@ -61,13 +61,13 @@ module library_mod
 
         ! ----------------------------------------
         ! Function:  void method2
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         ! ----------------------------------------
         ! Argument:  three::Class1 * c2
         ! Attrs:     +intent(inout)
-        ! Requested: c_shadow_*_inout
-        ! Match:     c_shadow_inout
+        ! Requested: c_inout_shadow_*
+        ! Match:     c_inout_shadow
         subroutine c_class2_method2(self, c2) &
                 bind(C, name="LIB_Class2_method2")
             import :: LIB_SHROUD_capsule_data
@@ -83,17 +83,16 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method1
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  MPI_Comm comm +value
     ! Attrs:     +intent(in)
-    ! Requested: f_unknown_scalar_in
+    ! Requested: f_in_unknown_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_unknown_scalar_in
+    ! Requested: c_in_unknown_scalar
     ! Match:     c_default
     subroutine class2_method1(obj, comm)
         class(class2) :: obj
@@ -103,18 +102,17 @@ contains
 
     ! ----------------------------------------
     ! Function:  void method2
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  three::Class1 * c2
     ! Attrs:     +intent(inout)
-    ! Requested: f_shadow_*_inout
+    ! Requested: f_inout_shadow_*
     ! Match:     f_default
     ! Attrs:     +intent(inout)
-    ! Requested: c_shadow_*_inout
-    ! Match:     c_shadow_inout
+    ! Requested: c_inout_shadow_*
+    ! Match:     c_inout_shadow
     subroutine class2_method2(obj, c2)
         use library_three_mod, only : class1
         class(class2) :: obj

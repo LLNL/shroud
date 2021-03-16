@@ -75,8 +75,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_arg",
-                            "stmt0": "c_native_*_in_cdesc",
-                            "stmt1": "c_native_*_in_cdesc"
+                            "stmt0": "c_in_native_*_cdesc",
+                            "stmt1": "c_in_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "arg",
@@ -93,10 +93,10 @@
                             "rank": "2",
                             "sh_type": "SH_TYPE_INT",
                             "size": "size(arg)",
-                            "stmt0": "f_native_*_in_cdesc",
-                            "stmt1": "f_native_*_in_cdesc",
-                            "stmtc0": "c_native_*_in_cdesc",
-                            "stmtc1": "c_native_*_in_cdesc"
+                            "stmt0": "f_in_native_*_cdesc",
+                            "stmt1": "f_in_native_*_cdesc",
+                            "stmtc0": "c_in_native_*_cdesc",
+                            "stmtc1": "c_in_native_*_cdesc"
                         }
                     }
                 },
@@ -117,7 +117,7 @@
                     "F_subprogram": "subroutine",
                     "function_name": "Rank2In",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "rank2_in"
@@ -333,8 +333,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_string_&_in",
-                            "stmt1": "c_string_&_in"
+                            "stmt0": "c_in_string_&",
+                            "stmt1": "c_in_string_&"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -357,8 +357,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_CPTR",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_void_*_out_cdesc",
-                            "stmt1": "c_void_*_cdesc"
+                            "stmt0": "c_out_void_*_cdesc",
+                            "stmt1": "c_out_void_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -375,8 +375,8 @@
                     "F_C_name": "c_get_scalar1",
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_scalar1"
                 }
             },
@@ -492,7 +492,7 @@
                     "function_name": "GetScalar1",
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
@@ -615,8 +615,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_&_in_buf"
+                            "stmt0": "c_in_string_&_buf",
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -628,10 +628,10 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in_buf",
+                            "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_&_in_buf"
+                            "stmtc0": "c_in_string_&_buf",
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -650,8 +650,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_native_*_out_cdesc",
-                            "stmt1": "c_native_*_out_cdesc"
+                            "stmt0": "c_out_native_*_cdesc",
+                            "stmt1": "c_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -666,10 +666,10 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_INT",
                             "size": "1",
-                            "stmt0": "f_native_*_out_cdesc",
-                            "stmt1": "f_native_*_out_cdesc",
-                            "stmtc0": "c_native_*_out_cdesc",
-                            "stmtc1": "c_native_*_out_cdesc"
+                            "stmt0": "f_out_native_*_cdesc",
+                            "stmt1": "f_out_native_*_cdesc",
+                            "stmtc0": "c_out_native_*_cdesc",
+                            "stmtc1": "c_out_native_*_cdesc"
                         }
                     }
                 },
@@ -683,8 +683,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
                     "function_suffix": "_0_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_scalar1"
                 }
             },
@@ -800,7 +800,7 @@
                     "function_name": "GetScalar1",
                     "function_suffix": "_1",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "underscore_name": "get_scalar1"
@@ -923,8 +923,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_&_in_buf"
+                            "stmt0": "c_in_string_&_buf",
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -936,10 +936,10 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in_buf",
+                            "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_&_in_buf"
+                            "stmtc0": "c_in_string_&_buf",
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -958,8 +958,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_native_*_out_cdesc",
-                            "stmt1": "c_native_*_out_cdesc"
+                            "stmt0": "c_out_native_*_cdesc",
+                            "stmt1": "c_out_native_*_cdesc"
                         },
                         "fmtf": {
                             "F_C_var": "value",
@@ -974,10 +974,10 @@
                             "rank": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "size": "1",
-                            "stmt0": "f_native_*_out_cdesc",
-                            "stmt1": "f_native_*_out_cdesc",
-                            "stmtc0": "c_native_*_out_cdesc",
-                            "stmtc1": "c_native_*_out_cdesc"
+                            "stmt0": "f_out_native_*_cdesc",
+                            "stmt1": "f_out_native_*_cdesc",
+                            "stmtc0": "c_out_native_*_cdesc",
+                            "stmtc1": "c_out_native_*_cdesc"
                         }
                     }
                 },
@@ -991,8 +991,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar1",
                     "function_suffix": "_1_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "underscore_name": "get_scalar1"
                 }
             },
@@ -1005,7 +1005,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -1072,7 +1072,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -1156,7 +1156,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_INT",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1168,9 +1168,9 @@
                         "f_type": "integer(C_INT)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_INT",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1188,7 +1188,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -1276,7 +1276,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_DOUBLE",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_native_scalar_result",
+                        "stmt0": "c_function_native_scalar",
                         "stmt1": "c_default"
                     },
                     "fmtf": {
@@ -1288,9 +1288,9 @@
                         "f_type": "real(C_DOUBLE)",
                         "f_var": "SHT_rv",
                         "sh_type": "SH_TYPE_DOUBLE",
-                        "stmt0": "f_native_scalar_result",
+                        "stmt0": "f_function_native_scalar",
                         "stmt1": "f_default",
-                        "stmtc0": "c_native_scalar_result",
+                        "stmtc0": "c_function_native_scalar",
                         "stmtc1": "c_default"
                     }
                 }
@@ -1574,7 +1574,7 @@
                     "function_name": "GetScalar2",
                     "function_suffix": "_0",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "stype": "int",
@@ -1683,8 +1683,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_&_in_buf"
+                            "stmt0": "c_in_string_&_buf",
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1696,10 +1696,10 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in_buf",
+                            "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_&_in_buf"
+                            "stmtc0": "c_in_string_&_buf",
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -1717,7 +1717,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_INT",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -1729,9 +1729,9 @@
                             "f_type": "integer(C_INT)",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_INT",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -1746,8 +1746,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar2",
                     "function_suffix": "_0_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "stype": "int",
                     "underscore_name": "get_scalar2"
                 }
@@ -1849,7 +1849,7 @@
                     "function_name": "GetScalar2",
                     "function_suffix": "_1",
                     "stmt0": "f_subroutine",
-                    "stmt1": "f_default",
+                    "stmt1": "f_subroutine",
                     "stmtc0": "c",
                     "stmtc1": "c_default",
                     "stype": "double",
@@ -1958,8 +1958,8 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_OTHER",
                             "shadow_var": "SHadow_name",
-                            "stmt0": "c_string_&_in_buf",
-                            "stmt1": "c_string_&_in_buf"
+                            "stmt0": "c_in_string_&_buf",
+                            "stmt1": "c_in_string_&_buf"
                         },
                         "fmtf": {
                             "F_C_var": "name",
@@ -1971,10 +1971,10 @@
                             "f_type": "character(*)",
                             "f_var": "name",
                             "sh_type": "SH_TYPE_OTHER",
-                            "stmt0": "f_string_&_in_buf",
+                            "stmt0": "f_in_string_&_buf",
                             "stmt1": "f_default",
-                            "stmtc0": "c_string_&_in_buf",
-                            "stmtc1": "c_string_&_in_buf"
+                            "stmtc0": "c_in_string_&_buf",
+                            "stmtc1": "c_in_string_&_buf"
                         }
                     },
                     "value": {
@@ -1992,7 +1992,7 @@
                             "idtor": "0",
                             "sh_type": "SH_TYPE_DOUBLE",
                             "shadow_var": "SHadow_value",
-                            "stmt0": "c_native_*_out",
+                            "stmt0": "c_out_native_*",
                             "stmt1": "c_default"
                         },
                         "fmtf": {
@@ -2004,9 +2004,9 @@
                             "f_type": "real(C_DOUBLE)",
                             "f_var": "value",
                             "sh_type": "SH_TYPE_DOUBLE",
-                            "stmt0": "f_native_*_out",
+                            "stmt0": "f_out_native_*",
                             "stmt1": "f_default",
-                            "stmtc0": "c_native_*_out",
+                            "stmtc0": "c_out_native_*",
                             "stmtc1": "c_default"
                         }
                     }
@@ -2021,8 +2021,8 @@
                     "F_C_subprogram": "subroutine",
                     "function_name": "GetScalar2",
                     "function_suffix": "_1_bufferify",
-                    "stmt0": "c",
-                    "stmt1": "c_default",
+                    "stmt0": "c_subroutine",
+                    "stmt1": "c_subroutine",
                     "stype": "double",
                     "underscore_name": "get_scalar2"
                 }

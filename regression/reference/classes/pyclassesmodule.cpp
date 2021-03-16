@@ -33,13 +33,13 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  Class1::DIRECTION directionFunc
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  Class1::DIRECTION arg +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_directionFunc__doc__[] =
 "documentation"
@@ -82,7 +82,7 @@ PY_directionFunc(
 // ----------------------------------------
 // Argument:  Class1 arg +value
 // Attrs:     +intent(in)
-// Exact:     py_shadow_scalar_in
+// Exact:     py_in_shadow_scalar
 static char PY_passClassByValue__doc__[] =
 "documentation"
 ;
@@ -117,13 +117,13 @@ PY_passClassByValue(
 
 // ----------------------------------------
 // Function:  int useclass
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const Class1 * arg
 // Attrs:     +intent(in)
-// Exact:     py_shadow_*_in
+// Exact:     py_in_shadow_*
 static char PY_useclass__doc__[] =
 "documentation"
 ;
@@ -159,8 +159,8 @@ PY_useclass(
 
 // ----------------------------------------
 // Function:  Class1 * getclass3
-// Attrs:     +intent(result)
-// Exact:     py_shadow_*_result
+// Attrs:     +intent(function)
+// Exact:     py_function_shadow_*
 static char PY_getclass3__doc__[] =
 "documentation"
 ;
@@ -184,8 +184,8 @@ PY_getclass3(
 
 // ----------------------------------------
 // Function:  Class1 & getClassReference
-// Attrs:     +intent(result)
-// Exact:     py_shadow_&_result
+// Attrs:     +intent(function)
+// Exact:     py_function_shadow_&
 static char PY_getClassReference__doc__[] =
 "documentation"
 ;
@@ -213,7 +213,7 @@ PY_getClassReference(
 // ----------------------------------------
 // Argument:  int arg +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_set_global_flag__doc__[] =
 "documentation"
@@ -242,8 +242,8 @@ PY_set_global_flag(
 
 // ----------------------------------------
 // Function:  int get_global_flag
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 static char PY_get_global_flag__doc__[] =
 "documentation"
@@ -269,8 +269,8 @@ PY_get_global_flag(
 
 // ----------------------------------------
 // Function:  const std::string & LastFunctionCalled +len(30)
-// Attrs:     +deref(result-as-arg)+intent(result)
-// Exact:     py_string_&_result
+// Attrs:     +deref(result-as-arg)+intent(function)
+// Exact:     py_function_string_&
 static char PY_LastFunctionCalled__doc__[] =
 "documentation"
 ;

@@ -130,7 +130,7 @@ class VerifyAttrs(object):
                     )
                 )
         if ast.get_subprogram() == "function":
-            ast.metaattrs["intent"] = "result"
+            ast.metaattrs["intent"] = "function"
         self.check_deref_attr_func(node)
         self.check_common_attrs(node.ast)
 
@@ -676,7 +676,7 @@ class GenFunctions(object):
         )
 
         fcn = cls.add_function(decl, splicer=splicer)
-        fcn.ast.metaattrs["intent"] = "result"
+        fcn.ast.metaattrs["intent"] = "subroutine"
         fcn.wrap.lua = False
         fcn.wrap.python = False
 
@@ -1397,6 +1397,7 @@ class GenFunctions(object):
 
         # Do not return C++ this instance.
         new.ast.set_return_to_void()
+        new.ast.metaattrs["intent"] = "subroutine"
     
     def convert_result_as_arg(self, node, ordered_functions):
         """Convert a function result into an argument.
@@ -1787,7 +1788,7 @@ class GenFunctions(object):
             arg_typemap, sp = statements.lookup_c_statements(arg)
 
             spointer = arg.get_indirect_stmt()
-            c_stmts = ["c", sgroup, spointer, meta["intent"], arg.stmts_suffix, specialize]
+            c_stmts = ["c", meta["intent"], sgroup, spointer, arg.stmts_suffix, specialize]
             intent_blk = statements.lookup_fc_stmts(c_stmts)
             statements.create_buf_variable_names(options, intent_blk, attrs)
 

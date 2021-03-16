@@ -27,7 +27,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Class2
 // Attrs:     +intent(ctor)
-// Exact:     c_shadow_scalar_ctor
+// Exact:     c_ctor_shadow_scalar
 FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 {
     // splicer begin class.Class2.method.ctor
@@ -41,7 +41,7 @@ FOR_Class2 * FOR_Class2_ctor(FOR_Class2 * SHadow_rv)
 // ----------------------------------------
 // Function:  ~Class2
 // Attrs:     +intent(dtor)
-// Exact:     c_shadow_dtor
+// Exact:     c_dtor_shadow
 void FOR_Class2_dtor(FOR_Class2 * self)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
@@ -54,13 +54,12 @@ void FOR_Class2_dtor(FOR_Class2 * self)
 
 // ----------------------------------------
 // Function:  void func1
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  tutorial::Class1 * arg +intent(in)
 // Attrs:     +intent(in)
-// Requested: c_shadow_*_in
-// Match:     c_shadow_in
+// Requested: c_in_shadow_*
+// Match:     c_in_shadow
 void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>
@@ -74,13 +73,12 @@ void FOR_Class2_func1(FOR_Class2 * self, TUT_Class1 * arg)
 
 // ----------------------------------------
 // Function:  void acceptClass3
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  Class3 * arg +intent(in)
 // Attrs:     +intent(in)
-// Requested: c_shadow_*_in
-// Match:     c_shadow_in
+// Requested: c_in_shadow_*
+// Match:     c_in_shadow
 void FOR_Class2_accept_class3(FOR_Class2 * self, FOR_Class3 * arg)
 {
     forward::Class2 *SH_this = static_cast<forward::Class2 *>

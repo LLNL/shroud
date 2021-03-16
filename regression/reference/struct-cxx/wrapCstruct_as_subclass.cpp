@@ -21,9 +21,9 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  int getX1
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_native_scalar
+// Match:     c_subroutine
 // start STR_Cstruct_as_subclass_get_x1
 int STR_Cstruct_as_subclass_get_x1(STR_Cstruct_as_subclass * self)
 {
@@ -38,12 +38,11 @@ int STR_Cstruct_as_subclass_get_x1(STR_Cstruct_as_subclass * self)
 // ----------------------------------------
 // Function:  void setX1
 // Attrs:     +intent(subroutine)
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_x1
 void STR_Cstruct_as_subclass_set_x1(STR_Cstruct_as_subclass * self,
@@ -60,9 +59,9 @@ void STR_Cstruct_as_subclass_set_x1(STR_Cstruct_as_subclass * self,
 
 // ----------------------------------------
 // Function:  int getY1
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_native_scalar
+// Match:     c_subroutine
 // start STR_Cstruct_as_subclass_get_y1
 int STR_Cstruct_as_subclass_get_y1(STR_Cstruct_as_subclass * self)
 {
@@ -77,12 +76,11 @@ int STR_Cstruct_as_subclass_get_y1(STR_Cstruct_as_subclass * self)
 // ----------------------------------------
 // Function:  void setY1
 // Attrs:     +intent(subroutine)
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_y1
 void STR_Cstruct_as_subclass_set_y1(STR_Cstruct_as_subclass * self,
@@ -99,9 +97,9 @@ void STR_Cstruct_as_subclass_set_y1(STR_Cstruct_as_subclass * self,
 
 // ----------------------------------------
 // Function:  int getZ1
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
-// Match:     c_default
+// Attrs:     +intent(subroutine)
+// Requested: c_subroutine_native_scalar
+// Match:     c_subroutine
 // start STR_Cstruct_as_subclass_get_z1
 int STR_Cstruct_as_subclass_get_z1(STR_Cstruct_as_subclass * self)
 {
@@ -116,12 +114,11 @@ int STR_Cstruct_as_subclass_get_z1(STR_Cstruct_as_subclass * self)
 // ----------------------------------------
 // Function:  void setZ1
 // Attrs:     +intent(subroutine)
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int val +intent(in)+value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 // start STR_Cstruct_as_subclass_set_z1
 void STR_Cstruct_as_subclass_set_z1(STR_Cstruct_as_subclass * self,

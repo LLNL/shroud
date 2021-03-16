@@ -634,7 +634,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -713,7 +713,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -874,7 +874,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -953,7 +953,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -1032,7 +1032,7 @@
                                 "pointer": []
                             },
                             "metaattrs": {
-                                "intent": "result"
+                                "intent": "subroutine"
                             },
                             "params": [],
                             "specifier": [
@@ -1227,7 +1227,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1282,8 +1282,8 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_scalar_in_list",
-                            "stmt1": "py_struct_scalar_in_list",
+                            "stmt0": "py_in_struct_scalar_list",
+                            "stmt1": "py_in_struct_scalar_list",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -1307,7 +1307,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -1321,7 +1321,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1379,8 +1379,8 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_*_in_list",
-                            "stmt1": "py_struct_*_in_list",
+                            "stmt0": "py_in_struct_*_list",
+                            "stmt1": "py_in_struct_*_list",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -1404,7 +1404,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -1418,7 +1418,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1494,8 +1494,8 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_*_out_charlen",
-                            "stmt1": "py_char_*_out_charlen",
+                            "stmt0": "py_out_char_*_charlen",
+                            "stmt1": "py_out_char_*_charlen",
                             "value_var": "SHValue_outbuf"
                         }
                     },
@@ -1521,8 +1521,8 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_s1",
                             "size_var": "SHSize_s1",
-                            "stmt0": "py_struct_*_in_list",
-                            "stmt1": "py_struct_*_in_list",
+                            "stmt0": "py_in_struct_*_list",
+                            "stmt1": "py_in_struct_*_list",
                             "value_var": "SHValue_s1"
                         }
                     }
@@ -1546,7 +1546,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -1560,7 +1560,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1618,8 +1618,8 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_*_in_list",
-                            "stmt1": "py_struct_*_in_list",
+                            "stmt0": "py_in_struct_*_list",
+                            "stmt1": "py_in_struct_*_list",
                             "value_var": "SHValue_arg"
                         }
                     }
@@ -1643,7 +1643,7 @@
                         "numpy_type": "NPY_INT",
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_native_scalar_result",
+                        "stmt0": "py_function_native_scalar",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv"
                     }
@@ -1747,8 +1747,8 @@
                             "numpy_type": null,
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_*_out_list",
-                            "stmt1": "py_struct_*_out_list",
+                            "stmt0": "py_out_struct_*_list",
+                            "stmt1": "py_out_struct_*_list",
                             "value_var": "SHValue_arg",
                             "vargs": "arg"
                         }
@@ -1769,7 +1769,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_d"
                         }
@@ -1790,7 +1790,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_i"
                         }
@@ -1866,8 +1866,8 @@
                             "py_object": "PY_Cstruct1",
                             "py_var": "SHPy_arg",
                             "size_var": "SHSize_arg",
-                            "stmt0": "py_struct_*_inout_list",
-                            "stmt1": "py_struct_*_inout_list",
+                            "stmt0": "py_inout_struct_*_list",
+                            "stmt1": "py_inout_struct_*_list",
                             "value_var": "SHValue_arg",
                             "vargs": "arg"
                         }
@@ -1887,7 +1887,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -1951,7 +1951,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_d"
                         }
@@ -1972,7 +1972,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_i"
                         }
@@ -2002,7 +2002,7 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_struct_result_list",
+                        "stmt0": "py_function_struct_list",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
@@ -2022,7 +2022,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2090,7 +2090,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_d"
                         }
@@ -2111,7 +2111,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_i"
                         }
@@ -2142,7 +2142,7 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_struct_result_list",
+                        "stmt0": "py_function_struct_list",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
@@ -2162,7 +2162,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2251,7 +2251,7 @@
                             "numpy_type": "NPY_DOUBLE",
                             "py_var": "SHPy_d",
                             "size_var": "SHSize_d",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_d"
                         }
@@ -2272,7 +2272,7 @@
                             "numpy_type": "NPY_INT",
                             "py_var": "SHPy_i",
                             "size_var": "SHSize_i",
-                            "stmt0": "py_native_scalar_in",
+                            "stmt0": "py_in_native_scalar",
                             "stmt1": "py_default",
                             "value_var": "SHValue_i"
                         }
@@ -2295,8 +2295,8 @@
                             "numpy_type": "NPY_INTP",
                             "py_var": "SHPy_outbuf",
                             "size_var": "SHSize_outbuf",
-                            "stmt0": "py_char_*_out_charlen",
-                            "stmt1": "py_char_*_out_charlen",
+                            "stmt0": "py_out_char_*_charlen",
+                            "stmt1": "py_out_char_*_charlen",
                             "value_var": "SHValue_outbuf"
                         }
                     }
@@ -2326,7 +2326,7 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_struct_result_list",
+                        "stmt0": "py_function_struct_list",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
@@ -2346,7 +2346,7 @@
                     },
                     "metaattrs": {
                         "deref": "pointer",
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -2385,7 +2385,7 @@
                         "numpy_type": null,
                         "py_var": "SHTPy_rv",
                         "size_var": "SHSize_rv",
-                        "stmt0": "py_struct_result_list",
+                        "stmt0": "py_function_struct_list",
                         "stmt1": "py_default",
                         "value_var": "SHValue_rv",
                         "vargs": "SHCXX_rv"
@@ -2404,7 +2404,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [],
                     "specifier": [
@@ -2437,7 +2437,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2498,7 +2498,7 @@
                         "pointer": []
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {
@@ -2553,7 +2553,7 @@
                         ]
                     },
                     "metaattrs": {
-                        "intent": "result"
+                        "intent": "function"
                     },
                     "params": [
                         {

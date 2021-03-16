@@ -22,7 +22,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  Circle
 // Attrs:     +intent(ctor)
-// Exact:     c_shadow_scalar_ctor
+// Exact:     c_ctor_shadow_scalar
 CLA_Circle * CLA_Circle_ctor(CLA_Circle * SHadow_rv)
 {
     // splicer begin class.Circle.method.ctor

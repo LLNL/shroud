@@ -896,9 +896,9 @@ class Wrapc(util.WrapperMixin):
             fmt_pattern = fmt_func
             result_blk = None
             if is_dtor:
-                stmts = ["c", "shadow", "dtor"]
+                stmts = ["c", "dtor", "shadow"]
             else:
-                stmts = ["c"]
+                stmts = ["c", "subroutine"]
             result_blk = statements.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
@@ -907,7 +907,7 @@ class Wrapc(util.WrapperMixin):
 
             spointer = ast.get_indirect_stmt()
             sintent = ast.metaattrs["intent"]
-            stmts = ["c", result_typemap.sgroup, spointer, sintent,
+            stmts = ["c", sintent, result_typemap.sgroup, spointer,
                      generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
 
@@ -1075,7 +1075,7 @@ class Wrapc(util.WrapperMixin):
                 return_deref_attr = c_meta["deref"]
                 spointer = CXX_ast.get_indirect_stmt()
                 stmts = [
-                    "c", sgroup, spointer, "result",
+                    "c", "function", sgroup, spointer,
                     generated_suffix, return_deref_attr,
                 ]
                 intent_blk = statements.lookup_fc_stmts(stmts)
@@ -1090,7 +1090,7 @@ class Wrapc(util.WrapperMixin):
                 arg_call = arg
                 spointer = arg.get_indirect_stmt()
                 cdesc = "cdesc" if c_attrs["cdesc"] is not None else None
-                stmts = ["c", sgroup, spointer, c_meta["intent"],
+                stmts = ["c", c_meta["intent"], sgroup, spointer,
                          arg.stmts_suffix, c_meta["deref"], cdesc] + specialize
                 intent_blk = statements.lookup_fc_stmts(stmts)
 

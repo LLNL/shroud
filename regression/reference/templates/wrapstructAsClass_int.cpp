@@ -22,7 +22,7 @@ extern "C" {
 // ----------------------------------------
 // Function:  structAsClass
 // Attrs:     +intent(ctor)
-// Exact:     c_shadow_scalar_ctor
+// Exact:     c_ctor_shadow_scalar
 TEM_structAsClass_int * TEM_structAsClass_int_ctor(
     TEM_structAsClass_int * SHadow_rv)
 {
@@ -36,12 +36,11 @@ TEM_structAsClass_int * TEM_structAsClass_int_ctor(
 
 // ----------------------------------------
 // Function:  void set_npts
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 {
@@ -54,8 +53,8 @@ void TEM_structAsClass_int_set_npts(TEM_structAsClass_int * self, int n)
 
 // ----------------------------------------
 // Function:  int get_npts
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 {
@@ -69,12 +68,11 @@ int TEM_structAsClass_int_get_npts(TEM_structAsClass_int * self)
 
 // ----------------------------------------
 // Function:  void set_value
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int v +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
     int v)
@@ -88,8 +86,8 @@ void TEM_structAsClass_int_set_value(TEM_structAsClass_int * self,
 
 // ----------------------------------------
 // Function:  int get_value
-// Attrs:     +intent(result)
-// Requested: c_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: c_function_native_scalar
 // Match:     c_default
 int TEM_structAsClass_int_get_value(TEM_structAsClass_int * self)
 {

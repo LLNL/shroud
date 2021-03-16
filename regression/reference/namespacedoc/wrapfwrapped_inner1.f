@@ -24,7 +24,7 @@ module wrapped_inner1_mod
 
         ! ----------------------------------------
         ! Function:  void worker
-        ! Requested: c_void_scalar_result
+        ! Requested: c_function_void_scalar
         ! Match:     c_default
         subroutine worker() &
                 bind(C, name="WWW_inner1_worker")

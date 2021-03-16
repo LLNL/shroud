@@ -37,7 +37,7 @@ PyObject *PY_error_obj;
 // ----------------------------------------
 // Argument:  double complex * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout
+// Exact:     py_inout_native_*
 static char PY_acceptDoubleComplexInoutPtr__doc__[] =
 "documentation"
 ;
@@ -78,7 +78,7 @@ PY_acceptDoubleComplexInoutPtr(
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_acceptDoubleComplexOutPtr__doc__[] =
 "documentation"
 ;
@@ -108,11 +108,11 @@ PY_acceptDoubleComplexOutPtr(
 // ----------------------------------------
 // Argument:  double complex * arg1
 // Attrs:     +intent(inout)
-// Exact:     py_native_*_inout
+// Exact:     py_inout_native_*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_acceptDoubleComplexInoutPtrFlag__doc__[] =
 "documentation"
 ;
@@ -159,11 +159,11 @@ PY_acceptDoubleComplexInoutPtrFlag(
 // ----------------------------------------
 // Argument:  double complex * arg1 +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 // ----------------------------------------
 // Argument:  int * flag +intent(out)
 // Attrs:     +intent(out)
-// Exact:     py_native_*_out
+// Exact:     py_out_native_*
 static char PY_acceptDoubleComplexOutPtrFlag__doc__[] =
 "documentation"
 ;

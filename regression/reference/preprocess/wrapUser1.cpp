@@ -21,8 +21,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void method1
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void PRE_User1_method1(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -34,8 +33,7 @@ void PRE_User1_method1(PRE_User1 * self)
 #if defined(USE_TWO)
 // ----------------------------------------
 // Function:  void method2
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void PRE_User1_method2(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -48,8 +46,7 @@ void PRE_User1_method2(PRE_User1 * self)
 #if defined(USE_THREE)
 // ----------------------------------------
 // Function:  void method3def
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void PRE_User1_method3def_0(PRE_User1 * self)
 {
     User1 *SH_this = static_cast<User1 *>(self->addr);
@@ -62,12 +59,11 @@ void PRE_User1_method3def_0(PRE_User1 * self)
 #if defined(USE_THREE)
 // ----------------------------------------
 // Function:  void method3def
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 // ----------------------------------------
 // Argument:  int i=0 +value
 // Attrs:     +intent(in)
-// Requested: c_native_scalar_in
+// Requested: c_in_native_scalar
 // Match:     c_default
 void PRE_User1_method3def_1(PRE_User1 * self, int i)
 {

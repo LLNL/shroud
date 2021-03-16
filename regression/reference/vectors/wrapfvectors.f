@@ -50,14 +50,14 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  int vector_sum
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
     ! Attrs:     +intent(in)
-    ! Requested: c_vector_&_in_buf_native
-    ! Match:     c_vector_in_buf
+    ! Requested: c_in_vector_&_buf_native
+    ! Match:     c_in_vector_buf
     ! start c_vector_sum_bufferify
     interface
         function c_vector_sum_bufferify(arg, Sarg) &
@@ -74,13 +74,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     ! start c_vector_iota_out_bufferify
     interface
         subroutine c_vector_iota_out_bufferify(Darg) &
@@ -94,13 +94,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     ! start c_vector_iota_out_with_num_bufferify
     interface
         function c_vector_iota_out_with_num_bufferify(Darg) &
@@ -117,13 +117,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     ! start c_vector_iota_out_with_num2_bufferify
     interface
         subroutine c_vector_iota_out_with_num2_bufferify(Darg) &
@@ -137,13 +137,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_vector_&_out_buf_allocatable_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_allocatable_native
+    ! Match:     c_out_vector_buf
     ! start c_vector_iota_out_alloc_bufferify
     interface
         subroutine c_vector_iota_out_alloc_bufferify(Darg) &
@@ -157,13 +157,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: c_vector_&_inout_buf_allocatable_native
-    ! Match:     c_vector_inout_buf
+    ! Requested: c_inout_vector_&_buf_allocatable_native
+    ! Match:     c_inout_vector_buf
     ! start c_vector_iota_inout_alloc_bufferify
     interface
         subroutine c_vector_iota_inout_alloc_bufferify(arg, Sarg, Darg) &
@@ -180,13 +180,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_increment
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(inout)
-    ! Requested: c_vector_&_inout_buf_native
-    ! Match:     c_vector_inout_buf
+    ! Requested: c_inout_vector_&_buf_native
+    ! Match:     c_inout_vector_buf
     interface
         subroutine c_vector_increment_bufferify(arg, Sarg, Darg) &
                 bind(C, name="VEC_vector_increment_bufferify")
@@ -201,13 +201,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
-    ! Requested: c_void_scalar_result_buf
+    ! Requested: c_function_void_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     interface
         subroutine c_vector_iota_out_d_bufferify(Darg) &
                 bind(C, name="VEC_vector_iota_out_d_bufferify")
@@ -219,14 +219,14 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  int vector_string_count
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(in)
-    ! Requested: c_vector_&_in_buf_string
-    ! Match:     c_vector_in_buf_string
+    ! Requested: c_in_vector_&_buf_string
+    ! Match:     c_in_vector_buf_string
     interface
         function c_vector_string_count_bufferify(arg, Sarg, Narg) &
                 result(SHT_rv) &
@@ -242,13 +242,13 @@ module vectors_mod
 
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-    ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: c_vector_scalar_result_buf_allocatable
-    ! Match:     c_vector_result_buf
+    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Requested: c_function_vector_scalar_buf_allocatable
+    ! Match:     c_function_vector_buf
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     interface
         subroutine c_return_vector_alloc_bufferify(SHT_rv, n) &
@@ -297,21 +297,21 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int vector_sum
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar_buf
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_vector_&_in_buf_native
+    ! Requested: f_in_vector_&_buf_native
     ! Match:     f_default
     ! Argument:  const std::vector<int> & arg +rank(1)+size(Sarg)
     ! Attrs:     +intent(in)
-    ! Requested: c_vector_&_in_buf_native
-    ! Match:     c_vector_in_buf
+    ! Requested: c_in_vector_&_buf_native
+    ! Match:     c_in_vector_buf
     ! start vector_sum
     function vector_sum(arg) &
             result(SHT_rv)
@@ -327,19 +327,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_out
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_buf_native
-    ! Match:     f_vector_out
+    ! Requested: f_out_vector_&_buf_native
+    ! Match:     f_out_vector
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -360,19 +359,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_buf_native
-    ! Match:     f_vector_out
+    ! Requested: f_out_vector_&_buf_native
+    ! Match:     f_out_vector
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -398,19 +396,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_out_with_num2
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_buf_native
-    ! Match:     f_vector_out
+    ! Requested: f_out_vector_&_buf_native
+    ! Match:     f_out_vector
     ! Argument:  std::vector<int> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -437,19 +434,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_out_alloc
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: f_vector_&_out_buf_allocatable_native
-    ! Match:     f_vector_out_allocatable
+    ! Requested: f_out_vector_&_buf_allocatable_native
+    ! Match:     f_out_vector_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(out)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(out)
-    ! Requested: c_vector_&_out_buf_allocatable_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_allocatable_native
+    ! Match:     c_out_vector_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -471,19 +467,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_inout_alloc
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: f_vector_&_inout_buf_allocatable_native
-    ! Match:     f_vector_inout_allocatable
+    ! Requested: f_inout_vector_&_buf_allocatable_native
+    ! Match:     f_inout_vector_allocatable
     ! Argument:  std::vector<int> & arg +context(Darg)+deref(allocatable)+intent(inout)+rank(1)+size(Sarg)
     ! Attrs:     +deref(allocatable)+intent(inout)
-    ! Requested: c_vector_&_inout_buf_allocatable_native
-    ! Match:     c_vector_inout_buf
+    ! Requested: c_inout_vector_&_buf_allocatable_native
+    ! Match:     c_inout_vector_buf
     !>
     !! \brief Copy vector into Fortran allocatable array
     !!
@@ -507,19 +502,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_increment
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<int> & arg +rank(1)
     ! Attrs:     +intent(inout)
-    ! Requested: f_vector_&_inout_buf_native
-    ! Match:     f_vector_inout
+    ! Requested: f_inout_vector_&_buf_native
+    ! Match:     f_inout_vector
     ! Argument:  std::vector<int> & arg +context(Darg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(inout)
-    ! Requested: c_vector_&_inout_buf_native
-    ! Match:     c_vector_inout_buf
+    ! Requested: c_inout_vector_&_buf_native
+    ! Match:     c_inout_vector_buf
     subroutine vector_increment(arg)
         use iso_c_binding, only : C_INT, C_LONG, C_SIZE_T
         integer(C_INT), intent(INOUT) :: arg(:)
@@ -535,19 +529,18 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  void vector_iota_out_d
-    ! Requested: f_subroutine
-    ! Match:     f_default
+    ! Exact:     f_subroutine
     ! Requested: c
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  std::vector<double> & arg +intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: f_vector_&_out_buf_native
-    ! Match:     f_vector_out
+    ! Requested: f_out_vector_&_buf_native
+    ! Match:     f_out_vector
     ! Argument:  std::vector<double> & arg +context(Darg)+intent(out)+rank(1)
     ! Attrs:     +intent(out)
-    ! Requested: c_vector_&_out_buf_native
-    ! Match:     c_vector_out_buf
+    ! Requested: c_out_vector_&_buf_native
+    ! Match:     c_out_vector_buf
     !>
     !! \brief Copy vector into Fortran input array
     !!
@@ -566,21 +559,21 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  int vector_string_count
-    ! Attrs:     +intent(result)
-    ! Requested: f_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: f_function_native_scalar_buf
     ! Match:     f_default
-    ! Attrs:     +intent(result)
-    ! Requested: c_native_scalar_result_buf
+    ! Attrs:     +intent(function)
+    ! Requested: c_function_native_scalar_buf
     ! Match:     c_default
     ! ----------------------------------------
     ! Argument:  const std::vector<std::string> & arg +rank(1)
     ! Attrs:     +intent(in)
-    ! Requested: f_vector_&_in_buf_string
+    ! Requested: f_in_vector_&_buf_string
     ! Match:     f_default
     ! Argument:  const std::vector<std::string> & arg +len(Narg)+rank(1)+size(Sarg)
     ! Attrs:     +intent(in)
-    ! Requested: c_vector_&_in_buf_string
-    ! Match:     c_vector_in_buf_string
+    ! Requested: c_in_vector_&_buf_string
+    ! Match:     c_in_vector_buf_string
     !>
     !! \brief count number of underscore in vector of strings
     !!
@@ -599,19 +592,19 @@ contains
     ! Generated by arg_to_buffer
     ! ----------------------------------------
     ! Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-    ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: f_vector_scalar_result_buf_allocatable
-    ! Match:     f_vector_result_buf_allocatable
-    ! Attrs:     +deref(allocatable)+intent(result)
-    ! Requested: c_vector_scalar_result_buf_allocatable
-    ! Match:     c_vector_result_buf
+    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Requested: f_function_vector_scalar_buf_allocatable
+    ! Match:     f_function_vector_buf_allocatable
+    ! Attrs:     +deref(allocatable)+intent(function)
+    ! Requested: c_function_vector_scalar_buf_allocatable
+    ! Match:     c_function_vector_buf
     ! ----------------------------------------
     ! Argument:  int n +value
     ! Attrs:     +intent(in)
-    ! Requested: f_native_scalar_in
+    ! Requested: f_in_native_scalar
     ! Match:     f_default
     ! Attrs:     +intent(in)
-    ! Requested: c_native_scalar_in
+    ! Requested: c_in_native_scalar
     ! Match:     c_default
     !>
     !! Implement iota function.

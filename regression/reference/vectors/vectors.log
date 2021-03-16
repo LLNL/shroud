@@ -1,6 +1,6 @@
 Read yaml vectors.yaml
 Skipping std::vector<{cxx_T}>, unable to create C wrapper for function returning ReturnVectorAlloc instance (must return a pointer or reference). Bufferify version will still be created.
-C int vector_sum(const std::vector<int> & arg +rank(1)+size)  +intent(result)
+C int vector_sum(const std::vector<int> & arg +rank(1)+size)  +intent(function)
 C void vector_iota_out(std::vector<int> & arg +context+intent(out)+rank(1)) 
 C void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1)) 
 C void vector_iota_out_with_num2(std::vector<int> & arg +context+intent(out)+rank(1)) 
@@ -8,11 +8,11 @@ C void vector_iota_out_alloc(std::vector<int> & arg +context+deref(allocatable)+
 C void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(inout)+rank(1)+size) 
 C void vector_increment(std::vector<int> & arg +context+rank(1)+size) 
 C void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1)) 
-C int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(result)
-C std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(result)
+C int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(function)
+C std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(function)
 Close wrapvectors.h
 Close wrapvectors.cpp
-Fortran int vector_sum(const std::vector<int> & arg +rank(1))  +intent(result)
+Fortran int vector_sum(const std::vector<int> & arg +rank(1))  +intent(function)
 Fortran void vector_iota_out(std::vector<int> & arg +intent(out)+rank(1)) 
 Fortran void vector_iota_out_with_num(std::vector<int> & arg +intent(out)+rank(1)) 
 Fortran void vector_iota_out_with_num2(std::vector<int> & arg +intent(out)+rank(1)) 
@@ -20,9 +20,9 @@ Fortran void vector_iota_out_alloc(std::vector<int> & arg +deref(allocatable)+in
 Fortran void vector_iota_inout_alloc(std::vector<int> & arg +deref(allocatable)+intent(inout)+rank(1)) 
 Fortran void vector_increment(std::vector<int> & arg +rank(1)) 
 Fortran void vector_iota_out_d(std::vector<double> & arg +intent(out)+rank(1)) 
-Fortran int vector_string_count(const std::vector<std::string> & arg +rank(1))  +intent(result)
-Fortran std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(result)
-C-interface int vector_sum(const std::vector<int> & arg +rank(1)+size)  +intent(result)
+Fortran int vector_string_count(const std::vector<std::string> & arg +rank(1))  +intent(function)
+Fortran std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(function)
+C-interface int vector_sum(const std::vector<int> & arg +rank(1)+size)  +intent(function)
 C-interface void vector_iota_out(std::vector<int> & arg +context+intent(out)+rank(1)) 
 C-interface void vector_iota_out_with_num(std::vector<int> & arg +context+intent(out)+rank(1)) 
 C-interface void vector_iota_out_with_num2(std::vector<int> & arg +context+intent(out)+rank(1)) 
@@ -30,8 +30,8 @@ C-interface void vector_iota_out_alloc(std::vector<int> & arg +context+deref(all
 C-interface void vector_iota_inout_alloc(std::vector<int> & arg +context+deref(allocatable)+intent(inout)+rank(1)+size) 
 C-interface void vector_increment(std::vector<int> & arg +context+rank(1)+size) 
 C-interface void vector_iota_out_d(std::vector<double> & arg +context+intent(out)+rank(1)) 
-C-interface int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(result)
-C-interface std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(result)
+C-interface int vector_string_count(const std::vector<std::string> & arg +len+rank(1)+size)  +intent(function)
+C-interface std::vector<int> ReturnVectorAlloc(int n +value) +rank(1)  +deref(allocatable)+intent(function)
 Close wrapfvectors.f
 Close utilvectors.cpp
 Close typesvectors.h

@@ -18,8 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void function1
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void LIB_one_two_function1(void)
 {
     one::two::function1();

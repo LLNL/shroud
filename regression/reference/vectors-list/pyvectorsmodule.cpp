@@ -84,13 +84,13 @@ PyObject *PY_error_obj;
 
 // ----------------------------------------
 // Function:  int vector_sum
-// Attrs:     +intent(result)
-// Requested: py_native_scalar_result
+// Attrs:     +intent(function)
+// Requested: py_function_native_scalar
 // Match:     py_default
 // ----------------------------------------
 // Argument:  const std::vector<int> & arg +rank(1)
 // Attrs:     +intent(in)
-// Exact:     py_vector_in_list
+// Exact:     py_in_vector_list
 static char PY_vector_sum__doc__[] =
 "documentation"
 ;
@@ -139,7 +139,7 @@ fail:
 // ----------------------------------------
 // Argument:  std::vector<int> & arg +intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Exact:     py_vector_out_list
+// Exact:     py_out_vector_list
 static char PY_vector_iota_out__doc__[] =
 "documentation"
 ;
@@ -180,7 +180,7 @@ fail:
 // ----------------------------------------
 // Argument:  std::vector<double> & arg +intent(out)+rank(1)
 // Attrs:     +intent(out)
-// Exact:     py_vector_out_list
+// Exact:     py_out_vector_list
 static char PY_vector_iota_out_d__doc__[] =
 "documentation"
 ;
@@ -217,12 +217,12 @@ fail:
 
 // ----------------------------------------
 // Function:  std::vector<int> ReturnVectorAlloc +rank(1)
-// Attrs:     +deref(allocatable)+intent(result)
-// Exact:     py_vector_result_list
+// Attrs:     +deref(allocatable)+intent(function)
+// Exact:     py_function_vector_list
 // ----------------------------------------
 // Argument:  int n +value
 // Attrs:     +intent(in)
-// Requested: py_native_scalar_in
+// Requested: py_in_native_scalar
 // Match:     py_default
 static char PY_ReturnVectorAlloc__doc__[] =
 "documentation"

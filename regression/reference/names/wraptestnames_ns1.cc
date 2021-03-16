@@ -18,8 +18,7 @@ extern "C" {
 
 // ----------------------------------------
 // Function:  void init_ns1
-// Requested: c
-// Match:     c_default
+// Exact:     c_subroutine
 void TES_ns1_init_ns1(void)
 {
     // splicer begin namespace.ns1.function.init_ns1

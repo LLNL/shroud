@@ -52,15 +52,15 @@ A name can contain variants separated by ``/``.
 
 .. code-block:: yaml
 
-    - name: c_native_*_in/out/inout_cfi
+    - name: c_in/out/inout_native_*_cfi
 
 This is equivelent to having three groups:
     
 .. code-block:: yaml
 
-    - name: c_native_*_in_cfi
-    - name: c_native_*_out_cfi
-    - name: c_native_*_inout_cfi
+    - name: c_in_native_*_cfi
+    - name: c_out_native_*_cfi
+    - name: c_inout_native_*_cfi
 
 
 buf_args
