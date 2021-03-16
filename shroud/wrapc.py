@@ -891,14 +891,12 @@ class Wrapc(util.WrapperMixin):
         #            # i.e. This method returns a wrapped type
         #            self.header_forward[result_typemap.c_type] = True
 
+        sintent = ast.metaattrs["intent"]
         if CXX_subprogram == "subroutine":
             fmt_result = fmt_func
             fmt_pattern = fmt_func
-            result_blk = None
-            if is_dtor:
-                stmts = ["c", "dtor"]
-            else:
-                stmts = ["c", "subroutine"]
+            # intent will be "subroutine" or "dtor".
+            stmts = ["c", sintent]
             result_blk = statements.lookup_fc_stmts(stmts)
         else:
             fmt_result0 = node._fmtresult
@@ -906,7 +904,7 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = ast.get_indirect_stmt()
-            sintent = ast.metaattrs["intent"]
+            # intent will be "function" or "ctor".
             stmts = ["c", sintent, result_typemap.sgroup, spointer,
                      generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)
