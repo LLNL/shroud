@@ -588,23 +588,21 @@ luaL_setfuncs({LUA_state_var}, {LUA_class_reg}, 0);
 
         sgroup = None
         spointer = ast.get_indirect_stmt()
-        sintent = None
 #        print("DDDDDDDDDDDDDD", ast.name)
+        sintent = ast.metaattrs["intent"]
         if is_ctor:
             sgroup ="shadow"
-            sintent = "ctor"
             fmt_func.LUA_used_param_state = True
 #            self.helpers.add_helper("maker", fmt_func)
         elif is_dtor:
             sgroup ="shadow"
-            sintent = "dtor"
             fmt_func.LUA_used_param_state = True
         elif CXX_subprogram == "subroutine":
             sgroup = "subroutine"
             spointer = None
+            sintent = None
         else:
             sgroup = result_typemap.sgroup
-            sintent = "result"
         stmts = ["lua", sgroup, spointer, sintent]
 #        print("XXXXXX", stmts)
         result_blk = lookup_stmts(stmts)

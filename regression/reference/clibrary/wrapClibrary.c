@@ -105,7 +105,7 @@ double CLI_pass_by_value_macro(int arg2)
 // ----------------------------------------
 // Function:  void Function4a +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  const char * arg1

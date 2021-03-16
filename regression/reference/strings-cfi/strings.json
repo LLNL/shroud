@@ -1341,7 +1341,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -1549,7 +1549,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -2073,7 +2073,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -2245,7 +2245,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -2894,7 +2894,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -3105,7 +3105,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -3421,7 +3421,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }
@@ -3857,7 +3857,7 @@
                         "idtor": "0",
                         "sh_type": "SH_TYPE_CPTR",
                         "shadow_var": "SHadow_rv",
-                        "stmt0": "c_void_scalar_result_cfi",
+                        "stmt0": "c_void_scalar_subroutine_cfi",
                         "stmt1": "c_default"
                     }
                 }

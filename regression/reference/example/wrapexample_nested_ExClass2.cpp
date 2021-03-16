@@ -150,7 +150,7 @@ const char * AA_example_nested_ExClass2_get_name(
 // ----------------------------------------
 // Function:  void getName +len(aa_exclass2_get_name_length({F_this}%{F_derived_member}))
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)

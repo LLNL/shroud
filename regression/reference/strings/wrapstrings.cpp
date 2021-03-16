@@ -337,7 +337,7 @@ const char * STR_get_char_ptr2(void)
 // ----------------------------------------
 // Function:  void getCharPtr2 +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * SHF_rv +len(NSHF_rv)
@@ -379,7 +379,7 @@ const char * STR_get_char_ptr3(void)
 // ----------------------------------------
 // Function:  void getCharPtr3
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  char * output +len(Noutput)
@@ -437,7 +437,7 @@ void STR_get_const_string_result_bufferify(
 // ----------------------------------------
 // Function:  void getConstStringLen +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +len(NSHF_rv)
@@ -463,7 +463,7 @@ void STR_get_const_string_len_bufferify(char * SHF_rv, int NSHF_rv)
 // ----------------------------------------
 // Function:  void getConstStringAsArg
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * output +len(Noutput)
@@ -571,7 +571,7 @@ const char * STR_get_const_string_ref_len(void)
 // ----------------------------------------
 // Function:  void getConstStringRefLen +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
@@ -624,7 +624,7 @@ const char * STR_get_const_string_ref_as_arg(void)
 // ----------------------------------------
 // Function:  void getConstStringRefAsArg
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & output +len(Noutput)
@@ -674,7 +674,7 @@ const char * STR_get_const_string_ref_len_empty(void)
 // ----------------------------------------
 // Function:  void getConstStringRefLenEmpty +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
@@ -754,7 +754,7 @@ const char * STR_get_const_string_ptr_len(void)
 // ----------------------------------------
 // Function:  void getConstStringPtrLen +len(30)
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string * SHF_rv +len(NSHF_rv)

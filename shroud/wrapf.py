@@ -1660,15 +1660,16 @@ rv = .false.
             fmt_func.F_result_clause = "\fresult(%s)" % fmt_func.F_result
             sgroup = result_typemap.sgroup
             spointer = C_node.ast.get_indirect_stmt()
+            sintent = ast.metaattrs["intent"]
             return_deref_attr = ast.metaattrs["deref"]
             if is_ctor:
-                f_stmts = ["f", "shadow", "ctor"]
-                c_stmts = ["c", "shadow", "ctor"]
+                f_stmts = ["f", "shadow", sintent]
+                c_stmts = ["c", "shadow", sintent]
             else:
                 sintent = "result"
-                f_stmts = ["f", sgroup, spointer, "result", generated_suffix,
+                f_stmts = ["f", sgroup, spointer, sintent, generated_suffix,
                            return_deref_attr, ast.attrs["owner"]]
-                c_stmts = ["c", sgroup, spointer, "result", generated_suffix,
+                c_stmts = ["c", sgroup, spointer, sintent, generated_suffix,
                            return_deref_attr]
         fmt_func.F_subprogram = subprogram
 

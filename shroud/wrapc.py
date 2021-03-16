@@ -906,10 +906,7 @@ class Wrapc(util.WrapperMixin):
             #            fmt_result.cxx_type = result_typemap.cxx_type  # XXX
 
             spointer = ast.get_indirect_stmt()
-            if is_ctor:
-                sintent = "ctor"
-            else:
-                sintent = "result"
+            sintent = ast.metaattrs["intent"]
             stmts = ["c", result_typemap.sgroup, spointer, sintent,
                      generated_suffix, ast.metaattrs["deref"]]
             result_blk = statements.lookup_fc_stmts(stmts)

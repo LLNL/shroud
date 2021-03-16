@@ -77,7 +77,7 @@ const char * STMT_get_name_error_pattern(void)
 // ----------------------------------------
 // Function:  void getNameErrorPattern +len(get_name_length())
 // Attrs:     +intent(subroutine)
-// Requested: c_void_scalar_result_buf
+// Requested: c_void_scalar_subroutine_buf
 // Match:     c_default
 // ----------------------------------------
 // Argument:  string & SHF_rv +len(NSHF_rv)
